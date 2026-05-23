@@ -8,9 +8,6 @@ import AdmZip from "adm-zip";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
 import {
-  computeIntegrityFingerprint,
-} from "./services/deterministic/checksum-ordering.ts";
-import {
   buildExportManifestSnapshot,
   EXPORT_ZIP_FIXED_MTIME,
 } from "./services/deterministic/zip-determinism.ts";
@@ -20,8 +17,8 @@ import {
 } from "./services/integrity/integrity-tree.ts";
 import {
   assembleIntegrityManifest,
-  type IntegrityManifest,
 } from "./services/integrity/integrity-manifest.ts";
+import { createIntegrityCacheService } from "./services/integrity/integrity-cache.ts";
 
 async function startServer() {
   const app = express();
@@ -171,62 +168,21 @@ async function startServer() {
     return assembleIntegrityManifest(INTEGRITY_PROJECT_ROOT, fileList, checksums);
   }
 
-  let integritySnapshot: IntegrityManifest | null = null;
-  let integritySnapshotFingerprint: string | null = null;
-
-  function updateIntegrityCache(manifest: IntegrityManifest, options?: { force?: boolean }) {
-    const force = options?.force === true;
-    const fingerprint = computeIntegrityFingerprint(manifest);
-    const fingerprintChanged = integritySnapshotFingerprint !== fingerprint;
-
-    integritySnapshot = manifest;
-    integritySnapshotFingerprint = fingerprint;
-
-    if (fingerprintChanged || force) {
-      writeIntegrityManifestWithMirrors(manifest);
-    }
-  }
-
-  function writeIntegrityManifestWithMirrors(manifest: IntegrityManifest) {
-    const payload = JSON.stringify(manifest, null, 2);
-    if (fs.existsSync(CANONICAL_MANIFEST_PATH)) {
-      try {
-        const existing = JSON.parse(
-          fs.readFileSync(CANONICAL_MANIFEST_PATH, "utf8")
-        ) as IntegrityManifest;
-        if (computeIntegrityFingerprint(existing) === computeIntegrityFingerprint(manifest)) {
-          return;
-        }
-      } catch {
-        // proceed with write if existing manifest is unreadable
-      }
-    }
-    fs.writeFileSync(CANONICAL_MANIFEST_PATH, payload, "utf8");
-    fs.writeFileSync(PROJECT_MIRROR_PATH, payload, "utf8");
-    fs.writeFileSync(ROOT_MIRROR_PATH, payload, "utf8");
-  }
-
-  function ensureIntegrityManifest(options?: { force?: boolean }): IntegrityManifest {
-    const force = options?.force === true;
-
-    if (!force && integritySnapshot && integritySnapshotFingerprint) {
-      return {
-        ...integritySnapshot,
-        generated_at: new Date().toISOString(),
-      };
-    }
-
-    const manifest = getIntegrityManifest();
-    updateIntegrityCache(manifest, { force });
-    return manifest;
-  }
+  const integrityCache = createIntegrityCacheService(
+    {
+      canonical: CANONICAL_MANIFEST_PATH,
+      projectMirror: PROJECT_MIRROR_PATH,
+      rootMirror: ROOT_MIRROR_PATH,
+    },
+    getIntegrityManifest
+  );
 
   function buildDeterministicExportSnapshot() {
     const { fileList, checksums, zipEntries } = collectIntegrityTree(INTEGRITY_PROJECT_ROOT, {
       includeContent: true,
     });
     const rawManifest = assembleIntegrityManifest(INTEGRITY_PROJECT_ROOT, fileList, checksums);
-    updateIntegrityCache(rawManifest);
+    integrityCache.updateIntegrityCache(rawManifest);
     const exportManifest = buildExportManifestSnapshot(rawManifest);
     const manifestPayload = JSON.stringify(exportManifest, null, 2);
     zipEntries.sort((a, b) => a.zipPath.localeCompare(b.zipPath));
@@ -239,33 +195,8 @@ async function startServer() {
     return entry;
   }
 
-  // Pre-generate the physical manifest file at startup
   try {
-    if (fs.existsSync(CANONICAL_MANIFEST_PATH)) {
-      try {
-        const diskManifest = JSON.parse(
-          fs.readFileSync(CANONICAL_MANIFEST_PATH, "utf8")
-        ) as IntegrityManifest;
-        const liveManifest = getIntegrityManifest();
-        const diskFingerprint = computeIntegrityFingerprint(diskManifest);
-        const liveFingerprint = computeIntegrityFingerprint(liveManifest);
-
-        integritySnapshot = liveManifest;
-        integritySnapshotFingerprint = liveFingerprint;
-
-        if (diskFingerprint === liveFingerprint) {
-          console.log("✅ [NEXUS OS] canonical manifest fresh — startup skip write");
-        } else {
-          writeIntegrityManifestWithMirrors(liveManifest);
-          console.log("✅ [NEXUS OS] canonical manifest stale — regenerated");
-        }
-      } catch {
-        ensureIntegrityManifest({ force: true });
-      }
-    } else {
-      ensureIntegrityManifest({ force: true });
-    }
-    console.log("✅ [NEXUS OS] migration_integrity_manifest.json + mirrors synchronized on startup");
+    integrityCache.initializeIntegrityCacheOnStartup();
   } catch (err) {
     console.error("Failed to initialize migration_integrity_manifest.json physically:", err);
   }
@@ -472,7 +403,7 @@ async function startServer() {
   app.get("/api/developer/integrity-manifest", (req, res) => {
     try {
       const force = req.query.refresh === "1";
-      const manifest = ensureIntegrityManifest({ force });
+      const manifest = integrityCache.ensureIntegrityManifest({ force });
       res.setHeader("Content-Disposition", "attachment; filename=\"migration_integrity_manifest.json\"");
       res.setHeader("Content-Type", "application/json");
       return res.send(JSON.stringify(manifest, null, 2));
