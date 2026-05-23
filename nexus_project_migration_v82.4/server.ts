@@ -7,6 +7,18 @@ import { v4 as uuidv4 } from "uuid";
 import AdmZip from "adm-zip";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
+import {
+  computeIntegrityFingerprint,
+  sortIntegrityChecksums,
+} from "./services/deterministic/checksum-ordering.ts";
+import {
+  buildExportManifestSnapshot,
+  EXPORT_ZIP_FIXED_MTIME,
+} from "./services/deterministic/zip-determinism.ts";
+import {
+  collectIntegrityTree,
+  sanitizeContent,
+} from "./services/integrity/integrity-tree.ts";
 
 async function startServer() {
   const app = express();
@@ -27,12 +39,6 @@ async function startServer() {
     "..",
     "migration_integrity_manifest.json"
   );
-
-  /** PR-03a: export-only ZIP determinism lock */
-  const EXPORT_ZIP_FIXED_MTIME = new Date("2026-05-23T13:04:11.787Z");
-  const EXPORT_DETERMINISTIC_GENERATED_AT: Record<string, string> = {
-    "EXPORT-v82.4": "2026-05-23T13:04:11.787Z",
-  };
 
   // [지중해 연대기] 물리적 격리 저장소 설정
   const LOCAL_VAULT_DIR = path.join(process.cwd(), "storage/local_vault"); // 제조 비법 격리 구역
@@ -155,81 +161,6 @@ async function startServer() {
     }
   });
 
-  function sanitizeContent(content: string): string {
-    let sanitized = content;
-    sanitized = sanitized.replace(/"secret"[ \t]*:[ \t]*"[^"]*"/gi, '"secret": "[REDACTED]"');
-    sanitized = sanitized.replace(/"api_key"[ \t]*:[ \t]*"[^"]*"/gi, '"api_key": "[REDACTED]"');
-    sanitized = sanitized.replace(/"token"[ \t]*:[ \t]*"[^"]*"/gi, '"token": "[REDACTED]"');
-    return sanitized;
-  }
-
-  function sortIntegrityChecksums(checksums: Record<string, string>): Record<string, string> {
-    return Object.fromEntries(
-      Object.entries(checksums).sort(([a], [b]) => a.localeCompare(b))
-    );
-  }
-
-  const INTEGRITY_WALK_SKIP = new Set([
-    "node_modules",
-    "dist",
-    ".git",
-    ".next",
-    ".cache",
-    "project_migration_integrity.json",
-    "migration_integrity_manifest.json",
-  ]);
-
-  type IntegrityTreeEntry = { zipPath: string; content: Buffer };
-
-  function collectIntegrityTree(options: { includeContent: boolean }) {
-    const fileList: string[] = [];
-    const checksums: Record<string, string> = {};
-    const zipEntries: IntegrityTreeEntry[] = [];
-
-    function walk(currentDirPath: string, zipPathPrefix = "") {
-      const gFiles = fs.readdirSync(currentDirPath).sort((a, b) => a.localeCompare(b));
-      for (const file of gFiles) {
-        if (INTEGRITY_WALK_SKIP.has(file)) {
-          continue;
-        }
-
-        const filePath = path.join(currentDirPath, file);
-        const stat = fs.statSync(filePath);
-        const zipPath = zipPathPrefix ? `${zipPathPrefix}/${file}` : file;
-
-        if (stat.isDirectory()) {
-          walk(filePath, zipPath);
-        } else {
-          try {
-            let contentBinary = fs.readFileSync(filePath);
-            const isText = /\.(ts|tsx|js|jsx|json|md|css|html|example)$/i.test(file);
-            if (isText) {
-              let contentStr = contentBinary.toString("utf8");
-              contentStr = sanitizeContent(contentStr);
-              contentBinary = Buffer.from(contentStr, "utf8");
-            }
-            const fileHash = crypto.createHash("sha256").update(contentBinary).digest("hex");
-            fileList.push(zipPath);
-            checksums[zipPath] = fileHash;
-            if (options.includeContent) {
-              zipEntries.push({ zipPath, content: contentBinary });
-            }
-          } catch (err) {
-            // ignore temporary lock files
-          }
-        }
-      }
-    }
-
-    try {
-      walk(INTEGRITY_PROJECT_ROOT);
-    } catch (err) {
-      console.error("Error walking directory for integrity manifest:", err);
-    }
-
-    return { fileList, checksums, zipEntries };
-  }
-
   function assembleIntegrityManifest(fileList: string[], checksums: Record<string, string>) {
     const requiredFiles = [
       "package.json",
@@ -319,7 +250,9 @@ async function startServer() {
   }
 
   function getIntegrityManifest() {
-    const { fileList, checksums } = collectIntegrityTree({ includeContent: false });
+    const { fileList, checksums } = collectIntegrityTree(INTEGRITY_PROJECT_ROOT, {
+      includeContent: false,
+    });
     return assembleIntegrityManifest(fileList, checksums);
   }
 
@@ -327,11 +260,6 @@ async function startServer() {
 
   let integritySnapshot: IntegrityManifest | null = null;
   let integritySnapshotFingerprint: string | null = null;
-
-  function computeIntegrityFingerprint(manifest: IntegrityManifest): string {
-    const { generated_at, ...stable } = manifest;
-    return crypto.createHash("sha256").update(JSON.stringify(stable)).digest("hex");
-  }
 
   function updateIntegrityCache(manifest: IntegrityManifest, options?: { force?: boolean }) {
     const force = options?.force === true;
@@ -380,17 +308,10 @@ async function startServer() {
     return manifest;
   }
 
-  function buildExportManifestSnapshot(raw: ReturnType<typeof getIntegrityManifest>) {
-    return {
-      ...raw,
-      checksums: sortIntegrityChecksums(raw.checksums),
-      generated_at:
-        EXPORT_DETERMINISTIC_GENERATED_AT[raw.export_version] ?? raw.generated_at,
-    };
-  }
-
   function buildDeterministicExportSnapshot() {
-    const { fileList, checksums, zipEntries } = collectIntegrityTree({ includeContent: true });
+    const { fileList, checksums, zipEntries } = collectIntegrityTree(INTEGRITY_PROJECT_ROOT, {
+      includeContent: true,
+    });
     const rawManifest = assembleIntegrityManifest(fileList, checksums);
     updateIntegrityCache(rawManifest);
     const exportManifest = buildExportManifestSnapshot(rawManifest);
