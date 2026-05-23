@@ -6,10 +6,27 @@ import cors from "cors";
 import { v4 as uuidv4 } from "uuid";
 import AdmZip from "adm-zip";
 import crypto from "crypto";
+import { fileURLToPath } from "url";
 
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  /** PR-02: manifest authority root (= nexus package dir, not process.cwd()) */
+  const INTEGRITY_PROJECT_ROOT = path.dirname(fileURLToPath(import.meta.url));
+  const CANONICAL_MANIFEST_PATH = path.join(
+    INTEGRITY_PROJECT_ROOT,
+    "migration_integrity_manifest.json"
+  );
+  const PROJECT_MIRROR_PATH = path.join(
+    INTEGRITY_PROJECT_ROOT,
+    "project_migration_integrity.json"
+  );
+  const ROOT_MIRROR_PATH = path.join(
+    INTEGRITY_PROJECT_ROOT,
+    "..",
+    "migration_integrity_manifest.json"
+  );
 
   // [지중해 연대기] 물리적 격리 저장소 설정
   const LOCAL_VAULT_DIR = path.join(process.cwd(), "storage/local_vault"); // 제조 비법 격리 구역
@@ -186,7 +203,7 @@ async function startServer() {
     }
 
     try {
-      walk(process.cwd());
+      walk(INTEGRITY_PROJECT_ROOT);
     } catch (err) {
       console.error("Error walking directory for integrity manifest:", err);
     }
@@ -208,7 +225,7 @@ async function startServer() {
     const placeholder_files: string[] = [];
 
     for (const relPath of requiredFiles) {
-      const fullPath = path.join(process.cwd(), relPath);
+      const fullPath = path.join(INTEGRITY_PROJECT_ROOT, relPath);
       if (!fs.existsSync(fullPath)) {
         missing_required_files.push(relPath);
       } else {
@@ -233,7 +250,7 @@ async function startServer() {
       "services/qualityService.ts"
     ];
     for (const extraPath of extraFilesToAudit) {
-      const fullPath = path.join(process.cwd(), extraPath);
+      const fullPath = path.join(INTEGRITY_PROJECT_ROOT, extraPath);
       if (fs.existsSync(fullPath)) {
         const stat = fs.statSync(fullPath);
         if (stat.size === 0) {
@@ -247,7 +264,9 @@ async function startServer() {
     const foldersToCheck = ["components", "services", "utils", "config", "data", "storage", "assets", "server", "hooks", "scripts"];
     const folder_presence_check: Record<string, boolean> = {};
     for (const folder of foldersToCheck) {
-      folder_presence_check[folder] = fs.existsSync(path.join(process.cwd(), folder)) || fs.existsSync(path.join(process.cwd(), "src", folder));
+      folder_presence_check[folder] =
+        fs.existsSync(path.join(INTEGRITY_PROJECT_ROOT, folder)) ||
+        fs.existsSync(path.join(INTEGRITY_PROJECT_ROOT, "src", folder));
     }
 
     const required_files_check = missing_required_files.length === 0;
@@ -276,15 +295,18 @@ async function startServer() {
     return manifest;
   }
 
+  function writeIntegrityManifestWithMirrors(manifest: ReturnType<typeof getIntegrityManifest>) {
+    const payload = JSON.stringify(manifest, null, 2);
+    fs.writeFileSync(CANONICAL_MANIFEST_PATH, payload, "utf8");
+    fs.writeFileSync(PROJECT_MIRROR_PATH, payload, "utf8");
+    fs.writeFileSync(ROOT_MIRROR_PATH, payload, "utf8");
+  }
+
   // Pre-generate the physical manifest file at startup
   try {
     const initManifest = getIntegrityManifest();
-    fs.writeFileSync(
-      path.join(process.cwd(), "migration_integrity_manifest.json"),
-      JSON.stringify(initManifest, null, 2),
-      "utf8"
-    );
-    console.log("✅ [NEXUS OS] migration_integrity_manifest.json physically initialized on startup");
+    writeIntegrityManifestWithMirrors(initManifest);
+    console.log("✅ [NEXUS OS] migration_integrity_manifest.json + mirrors synchronized on startup");
   } catch (err) {
     console.error("Failed to initialize migration_integrity_manifest.json physically:", err);
   }
@@ -447,6 +469,7 @@ async function startServer() {
     try {
       const zip = new AdmZip();
       const manifest = getIntegrityManifest();
+      writeIntegrityManifestWithMirrors(manifest);
 
       function walkDir(currentDirPath: string, zipPathPrefix = "") {
         const files = fs.readdirSync(currentDirPath);
@@ -483,7 +506,7 @@ async function startServer() {
         }
       }
 
-      walkDir(process.cwd());
+      walkDir(INTEGRITY_PROJECT_ROOT);
 
       // Physically add migration_integrity_manifest.json and README_MIGRATION.md
       zip.addFile("migration_integrity_manifest.json", Buffer.from(JSON.stringify(manifest, null, 2), "utf8"));
@@ -526,6 +549,7 @@ async function startServer() {
   app.get("/api/developer/integrity-manifest", (req, res) => {
     try {
       const manifest = getIntegrityManifest();
+      writeIntegrityManifestWithMirrors(manifest);
       res.setHeader("Content-Disposition", "attachment; filename=\"migration_integrity_manifest.json\"");
       res.setHeader("Content-Type", "application/json");
       return res.send(JSON.stringify(manifest, null, 2));
