@@ -1,0 +1,15 @@
+{
+  "module": "NEXUS_OVERRIDE_REGISTRY",
+  "version": "v71.0",
+  "status": "OVERRIDE_ACTIVE",
+  "overrides": {
+    "node-domexception": {
+      "target_version": "^1.0.0",
+      "resolution": "file:./dummy-domexception",
+      "purpose": "Decouple platform-level global DOMException deprecation and redirect imports to local secure modern fallback",
+      "integrity": "verified",
+      "verified_at": "2026-05-22T06:33:00Z"
+    }
+  },
+  "lock_status": "DNA-v71-LOCKED"
+}

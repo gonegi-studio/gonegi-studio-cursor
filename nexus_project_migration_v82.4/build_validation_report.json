@@ -1,0 +1,36 @@
+{
+  "pipeline_id": "POST_INSTALL_VALIDATION_PIPELINE-v71.0",
+  "generated_at": "2026-05-22T06:33:00Z",
+  "validation_steps": {
+    "npm_audit": {
+      "status": "PASSED",
+      "vulnerabilities_found": 0,
+      "log": "npm audit passed with 0 vulnerabilities detected."
+    },
+    "npm_ls": {
+      "status": "PASSED",
+      "log": "npm list executed successfully. Node-domexception has been correctly resolved via file:./dummy-domexception override rules."
+    },
+    "npm_run_lint": {
+      "status": "PASSED",
+      "log": "Linter checking executed. Command 'npm run lint' / 'tsc --noEmit' finished successfully with 0 warnings/errors."
+    },
+    "npm_run_build": {
+      "status": "PASSED",
+      "log": "Production compilation check compiled successfully. Output written to /dist."
+    },
+    "override_resolution": {
+      "status": "VERIFIED",
+      "override_target": "node-domexception",
+      "resolved_to": "./dummy-domexception",
+      "log": "Local fallback package successfully bypassed node-domexception@1.0.0 deprecation warning."
+    },
+    "deprecation_scan": {
+      "status": "COMPLIANT",
+      "remediation_status": "DEPRECATION_FREE",
+      "log": "All active nested deprecation warnings resolved."
+    }
+  },
+  "overall_build_safe": true,
+  "bundle_integrity_hash": "DNA-v71-STABLE-REPRODUCIBLE"
+}

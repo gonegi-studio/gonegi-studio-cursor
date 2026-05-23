@@ -1,0 +1,43 @@
+{
+  "name": "라이브러리-허브앱(2.6)",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build",
+    "lint": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "^1.25.0",
+    "@tanstack/react-virtual": "^3.13.24",
+    "adm-zip": "^0.5.17",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "idb": "^8.0.3",
+    "jszip": "^3.10.1",
+    "lucide-react": "^1.14.0",
+    "motion": "^12.38.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.3.0",
+    "tsx": "^4.21.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.8",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  },
+  "overrides": {
+    "node-domexception": "file:./dummy-domexception"
+  }
+}

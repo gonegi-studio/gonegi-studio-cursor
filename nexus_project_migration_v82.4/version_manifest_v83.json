@@ -1,0 +1,78 @@
+{
+  "project_name": "Autonomous Cinematic Production OS",
+  "version": "v83.0",
+  "manifest_kind": "RUNTIME_NAMESPACE_REGISTRY",
+  "status": "SCAFFOLD_ONLY",
+  "zip_inclusion_policy": "INCLUDED_BUT_INACTIVE",
+  "do_not_use_for_runtime": true,
+  "authoritative_namespace": "production_v83",
+  "legacy_namespaces_readonly": [
+    "production_v72",
+    "production_v73",
+    "production_v74",
+    "production_v75",
+    "production_v76",
+    "production_v77",
+    "production_v78",
+    "production_v79",
+    "production_v80",
+    "production_v82"
+  ],
+  "namespaces": {
+    "PLANNED_RUNTIME_VERSION": "v83.0",
+    "EXTRACTION_SCHEMA": "51.4",
+    "RAW_VERSION": "RAW-v83",
+    "SEM_VERSION": "SEM-v83",
+    "SUM_VERSION": "SUM-v83",
+    "AUDIT_VERSION": "AUDIT-v83",
+    "IMAGE_VERSION": "IMAGE-v83",
+    "VIDEO_VERSION": "VIDEO-v83",
+    "DEV_EVIDENCE_VERSION": "DEV-EVIDENCE-v83",
+    "DNA_VERSION": "DNA-v83",
+    "RGS_VERSION": "RGS-v83",
+    "EXPORT_VERSION": "EXPORT-v83",
+    "LOCK_VERSION": "LOCK-v83"
+  },
+  "compat": {
+    "runtime_authority": "lab.constants.ts:APP_VERSION",
+    "runtime_authority_value": "v82.6",
+    "active_manifest_authority": "version_manifest_v82.json",
+    "modes": ["legacy_read", "dual_write", "v83_only"],
+    "default_mode": "legacy_read"
+  },
+  "export_format_freeze": {
+    "IMAGE_APP_7_KEY": [
+      "logline",
+      "story_beats",
+      "keyframe_sequence",
+      "character_visual_dna",
+      "emotion_to_visual_grammar",
+      "visual_continuity_lock",
+      "prompt_memory"
+    ],
+    "CINEMATIC_DNA_EXPORT_TOP_LEVEL": [
+      "project_name",
+      "app_version",
+      "export_version",
+      "exported_at",
+      "dns_version",
+      "cinematic_dna"
+    ],
+    "DOWNLOAD_FILENAMES": {
+      "IMAGE_APP": "summary.json",
+      "PER_SCENE": "cinematic-dna-{id}.json"
+    }
+  },
+  "governance": {
+    "evidence_ledger_required": true,
+    "summary_calibration_default": true,
+    "synthetic_fill_default": true,
+    "note": "Defaults mirror v82.6 until flags wired in PR-07+"
+  },
+  "predecessor_manifests": {
+    "v82": "version_manifest_v82.json",
+    "v71": "version_manifest_v71.json"
+  },
+  "implementation_phase": "PR-00",
+  "timestamp": "2026-05-23T00:00:00Z"
+}
