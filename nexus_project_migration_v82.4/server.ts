@@ -163,12 +163,18 @@ async function startServer() {
     return sanitized;
   }
 
+  function sortIntegrityChecksums(checksums: Record<string, string>): Record<string, string> {
+    return Object.fromEntries(
+      Object.entries(checksums).sort(([a], [b]) => a.localeCompare(b))
+    );
+  }
+
   function getIntegrityManifest() {
     const fileList: string[] = [];
     const checksums: Record<string, string> = {};
 
     function walk(currentDirPath: string, zipPathPrefix = "") {
-      const gFiles = fs.readdirSync(currentDirPath);
+      const gFiles = fs.readdirSync(currentDirPath).sort((a, b) => a.localeCompare(b));
       for (const file of gFiles) {
         const filePath = path.join(currentDirPath, file);
         const stat = fs.statSync(filePath);
@@ -293,10 +299,10 @@ async function startServer() {
       cursor_ready,
       file_count: fileList.length + 1,
       files: [...fileList, "migration_integrity_manifest.json"].sort(),
-      checksums: {
+      checksums: sortIntegrityChecksums({
         ...checksums,
         "migration_integrity_manifest.json": "computed-at-runtime-self-referencing"
-      }
+      })
     };
     return manifest;
   }
@@ -355,12 +361,9 @@ async function startServer() {
   }
 
   function buildExportManifestSnapshot(raw: ReturnType<typeof getIntegrityManifest>) {
-    const checksums = Object.fromEntries(
-      Object.entries(raw.checksums).sort(([a], [b]) => a.localeCompare(b))
-    );
     return {
       ...raw,
-      checksums,
+      checksums: sortIntegrityChecksums(raw.checksums),
       generated_at:
         EXPORT_DETERMINISTIC_GENERATED_AT[raw.export_version] ?? raw.generated_at,
     };
