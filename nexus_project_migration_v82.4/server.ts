@@ -28,6 +28,12 @@ async function startServer() {
     "migration_integrity_manifest.json"
   );
 
+  /** PR-03a: export-only ZIP determinism lock */
+  const EXPORT_ZIP_FIXED_MTIME = new Date("2026-05-23T13:04:11.787Z");
+  const EXPORT_DETERMINISTIC_GENERATED_AT: Record<string, string> = {
+    "EXPORT-v82.4": "2026-05-23T13:04:11.787Z",
+  };
+
   // [지중해 연대기] 물리적 격리 저장소 설정
   const LOCAL_VAULT_DIR = path.join(process.cwd(), "storage/local_vault"); // 제조 비법 격리 구역
   const CLOUD_STORAGE_DIR = path.join(process.cwd(), "storage/cloud");    // 클라우드 배포 시뮬레이션 구역
@@ -302,6 +308,24 @@ async function startServer() {
     fs.writeFileSync(ROOT_MIRROR_PATH, payload, "utf8");
   }
 
+  function buildExportManifestSnapshot(raw: ReturnType<typeof getIntegrityManifest>) {
+    const checksums = Object.fromEntries(
+      Object.entries(raw.checksums).sort(([a], [b]) => a.localeCompare(b))
+    );
+    return {
+      ...raw,
+      checksums,
+      generated_at:
+        EXPORT_DETERMINISTIC_GENERATED_AT[raw.export_version] ?? raw.generated_at,
+    };
+  }
+
+  function addExportZipEntry(zip: AdmZip, entryName: string, content: Buffer) {
+    const entry = zip.addFile(entryName, content);
+    entry.header.time = EXPORT_ZIP_FIXED_MTIME;
+    return entry;
+  }
+
   // Pre-generate the physical manifest file at startup
   try {
     const initManifest = getIntegrityManifest();
@@ -468,11 +492,15 @@ async function startServer() {
   app.get("/api/developer/project-export", (req, res) => {
     try {
       const zip = new AdmZip();
-      const manifest = getIntegrityManifest();
-      writeIntegrityManifestWithMirrors(manifest);
+      const rawManifest = getIntegrityManifest();
+      writeIntegrityManifestWithMirrors(rawManifest);
+      const exportManifest = buildExportManifestSnapshot(rawManifest);
+      const manifestPayload = JSON.stringify(exportManifest, null, 2);
+
+      const zipFileEntries: Array<{ zipPath: string; content: Buffer }> = [];
 
       function walkDir(currentDirPath: string, zipPathPrefix = "") {
-        const files = fs.readdirSync(currentDirPath);
+        const files = fs.readdirSync(currentDirPath).sort((a, b) => a.localeCompare(b));
         for (const file of files) {
           const filePath = path.join(currentDirPath, file);
           const stat = fs.statSync(filePath);
@@ -501,21 +529,24 @@ async function startServer() {
               contentStr = sanitizeContent(contentStr);
               contentBinary = Buffer.from(contentStr, "utf8");
             }
-            zip.addFile(zipPath, contentBinary);
+            zipFileEntries.push({ zipPath, content: contentBinary });
           }
         }
       }
 
       walkDir(INTEGRITY_PROJECT_ROOT);
 
-      // Physically add migration_integrity_manifest.json and README_MIGRATION.md
-      zip.addFile("migration_integrity_manifest.json", Buffer.from(JSON.stringify(manifest, null, 2), "utf8"));
-      zip.addFile("project_migration_integrity.json", Buffer.from(JSON.stringify(manifest, null, 2), "utf8"));
+      zipFileEntries.sort((a, b) => a.zipPath.localeCompare(b.zipPath));
+      for (const { zipPath, content } of zipFileEntries) {
+        addExportZipEntry(zip, zipPath, content);
+      }
 
-      // Also ensure README_MIGRATION.md content is in the zip
-      const readmePath = path.join(process.cwd(), "README_MIGRATION.md");
+      addExportZipEntry(zip, "migration_integrity_manifest.json", Buffer.from(manifestPayload, "utf8"));
+      addExportZipEntry(zip, "project_migration_integrity.json", Buffer.from(manifestPayload, "utf8"));
+
+      const readmePath = path.join(INTEGRITY_PROJECT_ROOT, "README_MIGRATION.md");
       if (fs.existsSync(readmePath)) {
-        zip.addFile("README_MIGRATION.md", fs.readFileSync(readmePath));
+        addExportZipEntry(zip, "README_MIGRATION.md", fs.readFileSync(readmePath));
       }
 
       const zipBuf = zip.toBuffer();
