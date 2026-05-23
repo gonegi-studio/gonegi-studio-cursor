@@ -8,10 +8,6 @@ import AdmZip from "adm-zip";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
 import {
-  buildExportManifestSnapshot,
-  EXPORT_ZIP_FIXED_MTIME,
-} from "./services/deterministic/zip-determinism.ts";
-import {
   collectIntegrityTree,
   sanitizeContent,
 } from "./services/integrity/integrity-tree.ts";
@@ -19,6 +15,7 @@ import {
   assembleIntegrityManifest,
 } from "./services/integrity/integrity-manifest.ts";
 import { createIntegrityCacheService } from "./services/integrity/integrity-cache.ts";
+import { createIntegrityExportService } from "./services/integrity/integrity-export.ts";
 
 async function startServer() {
   const app = express();
@@ -177,23 +174,7 @@ async function startServer() {
     getIntegrityManifest
   );
 
-  function buildDeterministicExportSnapshot() {
-    const { fileList, checksums, zipEntries } = collectIntegrityTree(INTEGRITY_PROJECT_ROOT, {
-      includeContent: true,
-    });
-    const rawManifest = assembleIntegrityManifest(INTEGRITY_PROJECT_ROOT, fileList, checksums);
-    integrityCache.updateIntegrityCache(rawManifest);
-    const exportManifest = buildExportManifestSnapshot(rawManifest);
-    const manifestPayload = JSON.stringify(exportManifest, null, 2);
-    zipEntries.sort((a, b) => a.zipPath.localeCompare(b.zipPath));
-    return { exportManifest, manifestPayload, zipEntries };
-  }
-
-  function addExportZipEntry(zip: AdmZip, entryName: string, content: Buffer) {
-    const entry = zip.addFile(entryName, content);
-    entry.header.time = EXPORT_ZIP_FIXED_MTIME;
-    return entry;
-  }
+  const integrityExport = createIntegrityExportService(INTEGRITY_PROJECT_ROOT, integrityCache);
 
   try {
     integrityCache.initializeIntegrityCacheOnStartup();
@@ -357,22 +338,7 @@ async function startServer() {
   // API: One-Click Full Project Migration Export (v82.4)
   app.get("/api/developer/project-export", (req, res) => {
     try {
-      const zip = new AdmZip();
-      const { manifestPayload, zipEntries } = buildDeterministicExportSnapshot();
-
-      for (const { zipPath, content } of zipEntries) {
-        addExportZipEntry(zip, zipPath, content);
-      }
-
-      addExportZipEntry(zip, "migration_integrity_manifest.json", Buffer.from(manifestPayload, "utf8"));
-      addExportZipEntry(zip, "project_migration_integrity.json", Buffer.from(manifestPayload, "utf8"));
-
-      const readmePath = path.join(INTEGRITY_PROJECT_ROOT, "README_MIGRATION.md");
-      if (fs.existsSync(readmePath)) {
-        addExportZipEntry(zip, "README_MIGRATION.md", fs.readFileSync(readmePath));
-      }
-
-      const zipBuf = zip.toBuffer();
+      const zipBuf = integrityExport.buildProjectMigrationZipBuffer();
       res.setHeader("Content-Disposition", "attachment; filename=\"nexus_project_migration_v82.4.zip\"");
       res.setHeader("Content-Type", "application/zip");
       return res.send(zipBuf);
