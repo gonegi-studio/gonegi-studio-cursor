@@ -301,11 +301,57 @@ async function startServer() {
     return manifest;
   }
 
-  function writeIntegrityManifestWithMirrors(manifest: ReturnType<typeof getIntegrityManifest>) {
+  type IntegrityManifest = ReturnType<typeof getIntegrityManifest>;
+
+  let integritySnapshot: IntegrityManifest | null = null;
+  let integritySnapshotFingerprint: string | null = null;
+
+  function computeIntegrityFingerprint(manifest: IntegrityManifest): string {
+    const { generated_at, ...stable } = manifest;
+    return crypto.createHash("sha256").update(JSON.stringify(stable)).digest("hex");
+  }
+
+  function writeIntegrityManifestWithMirrors(manifest: IntegrityManifest) {
     const payload = JSON.stringify(manifest, null, 2);
+    if (fs.existsSync(CANONICAL_MANIFEST_PATH)) {
+      try {
+        const existing = JSON.parse(
+          fs.readFileSync(CANONICAL_MANIFEST_PATH, "utf8")
+        ) as IntegrityManifest;
+        if (computeIntegrityFingerprint(existing) === computeIntegrityFingerprint(manifest)) {
+          return;
+        }
+      } catch {
+        // proceed with write if existing manifest is unreadable
+      }
+    }
     fs.writeFileSync(CANONICAL_MANIFEST_PATH, payload, "utf8");
     fs.writeFileSync(PROJECT_MIRROR_PATH, payload, "utf8");
     fs.writeFileSync(ROOT_MIRROR_PATH, payload, "utf8");
+  }
+
+  function ensureIntegrityManifest(options?: { force?: boolean }): IntegrityManifest {
+    const force = options?.force === true;
+
+    if (!force && integritySnapshot && integritySnapshotFingerprint) {
+      return {
+        ...integritySnapshot,
+        generated_at: new Date().toISOString(),
+      };
+    }
+
+    const manifest = getIntegrityManifest();
+    const fingerprint = computeIntegrityFingerprint(manifest);
+    const fingerprintChanged = integritySnapshotFingerprint !== fingerprint;
+
+    integritySnapshot = manifest;
+    integritySnapshotFingerprint = fingerprint;
+
+    if (fingerprintChanged || force) {
+      writeIntegrityManifestWithMirrors(manifest);
+    }
+
+    return manifest;
   }
 
   function buildExportManifestSnapshot(raw: ReturnType<typeof getIntegrityManifest>) {
@@ -328,8 +374,30 @@ async function startServer() {
 
   // Pre-generate the physical manifest file at startup
   try {
-    const initManifest = getIntegrityManifest();
-    writeIntegrityManifestWithMirrors(initManifest);
+    if (fs.existsSync(CANONICAL_MANIFEST_PATH)) {
+      try {
+        const diskManifest = JSON.parse(
+          fs.readFileSync(CANONICAL_MANIFEST_PATH, "utf8")
+        ) as IntegrityManifest;
+        const liveManifest = getIntegrityManifest();
+        const diskFingerprint = computeIntegrityFingerprint(diskManifest);
+        const liveFingerprint = computeIntegrityFingerprint(liveManifest);
+
+        integritySnapshot = liveManifest;
+        integritySnapshotFingerprint = liveFingerprint;
+
+        if (diskFingerprint === liveFingerprint) {
+          console.log("✅ [NEXUS OS] canonical manifest fresh — startup skip write");
+        } else {
+          writeIntegrityManifestWithMirrors(liveManifest);
+          console.log("✅ [NEXUS OS] canonical manifest stale — regenerated");
+        }
+      } catch {
+        ensureIntegrityManifest({ force: true });
+      }
+    } else {
+      ensureIntegrityManifest({ force: true });
+    }
     console.log("✅ [NEXUS OS] migration_integrity_manifest.json + mirrors synchronized on startup");
   } catch (err) {
     console.error("Failed to initialize migration_integrity_manifest.json physically:", err);
@@ -492,8 +560,7 @@ async function startServer() {
   app.get("/api/developer/project-export", (req, res) => {
     try {
       const zip = new AdmZip();
-      const rawManifest = getIntegrityManifest();
-      writeIntegrityManifestWithMirrors(rawManifest);
+      const rawManifest = ensureIntegrityManifest();
       const exportManifest = buildExportManifestSnapshot(rawManifest);
       const manifestPayload = JSON.stringify(exportManifest, null, 2);
 
@@ -579,8 +646,8 @@ async function startServer() {
   // API: Download migration_integrity_manifest.json directly
   app.get("/api/developer/integrity-manifest", (req, res) => {
     try {
-      const manifest = getIntegrityManifest();
-      writeIntegrityManifestWithMirrors(manifest);
+      const force = req.query.refresh === "1";
+      const manifest = ensureIntegrityManifest({ force });
       res.setHeader("Content-Disposition", "attachment; filename=\"migration_integrity_manifest.json\"");
       res.setHeader("Content-Type", "application/json");
       return res.send(JSON.stringify(manifest, null, 2));
