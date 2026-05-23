@@ -10,7 +10,7 @@ export function sanitizeContent(content: string): string {
   return sanitized;
 }
 
-export const INTEGRITY_WALK_SKIP = new Set([
+const INTEGRITY_WALK_SKIP_ENTRIES = Object.freeze([
   "node_modules",
   "dist",
   ".git",
@@ -18,7 +18,11 @@ export const INTEGRITY_WALK_SKIP = new Set([
   ".cache",
   "project_migration_integrity.json",
   "migration_integrity_manifest.json",
-]);
+] as const);
+
+export const INTEGRITY_WALK_SKIP: ReadonlySet<string> = Object.freeze(
+  new Set(INTEGRITY_WALK_SKIP_ENTRIES)
+);
 
 export type IntegrityTreeEntry = { zipPath: string; content: Buffer };
 

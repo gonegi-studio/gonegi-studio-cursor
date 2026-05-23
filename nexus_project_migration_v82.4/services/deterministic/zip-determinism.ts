@@ -1,10 +1,11 @@
 import { sortIntegrityChecksums } from "./checksum-ordering.ts";
 
 /** PR-03a: export-only ZIP determinism lock */
-export const EXPORT_ZIP_FIXED_MTIME = new Date("2026-05-23T13:04:11.787Z");
-export const EXPORT_DETERMINISTIC_GENERATED_AT: Record<string, string> = {
-  "EXPORT-v82.4": "2026-05-23T13:04:11.787Z",
-};
+const EXPORT_ZIP_FIXED_MTIME_ISO = "2026-05-23T13:04:11.787Z";
+export const EXPORT_ZIP_FIXED_MTIME = Object.freeze(new Date(EXPORT_ZIP_FIXED_MTIME_ISO));
+export const EXPORT_DETERMINISTIC_GENERATED_AT: Readonly<Record<string, string>> = Object.freeze({
+  "EXPORT-v82.4": EXPORT_ZIP_FIXED_MTIME_ISO,
+});
 
 export function buildExportManifestSnapshot<
   T extends {

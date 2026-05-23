@@ -13,12 +13,16 @@ export function createIntegrityCacheService(
   let integritySnapshot: IntegrityManifest | null = null;
   let integritySnapshotFingerprint: string | null = null;
 
+  function cloneManifest(manifest: IntegrityManifest): IntegrityManifest {
+    return structuredClone(manifest);
+  }
+
   function updateIntegrityCache(manifest: IntegrityManifest, options?: { force?: boolean }) {
     const force = options?.force === true;
     const fingerprint = computeIntegrityFingerprint(manifest);
     const fingerprintChanged = integritySnapshotFingerprint !== fingerprint;
 
-    integritySnapshot = manifest;
+    integritySnapshot = cloneManifest(manifest);
     integritySnapshotFingerprint = fingerprint;
 
     if (fingerprintChanged || force) {
@@ -31,14 +35,14 @@ export function createIntegrityCacheService(
 
     if (!force && integritySnapshot && integritySnapshotFingerprint) {
       return {
-        ...integritySnapshot,
+        ...cloneManifest(integritySnapshot),
         generated_at: new Date().toISOString(),
       };
     }
 
     const manifest = getIntegrityManifest();
     updateIntegrityCache(manifest, { force });
-    return manifest;
+    return cloneManifest(integritySnapshot!);
   }
 
   function initializeIntegrityCacheOnStartup() {
@@ -51,7 +55,7 @@ export function createIntegrityCacheService(
         const diskFingerprint = computeIntegrityFingerprint(diskManifest);
         const liveFingerprint = computeIntegrityFingerprint(liveManifest);
 
-        integritySnapshot = liveManifest;
+        integritySnapshot = cloneManifest(liveManifest);
         integritySnapshotFingerprint = liveFingerprint;
 
         if (diskFingerprint === liveFingerprint) {
