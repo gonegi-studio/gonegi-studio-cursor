@@ -9,7 +9,6 @@ import crypto from "crypto";
 import { fileURLToPath } from "url";
 import {
   computeIntegrityFingerprint,
-  sortIntegrityChecksums,
 } from "./services/deterministic/checksum-ordering.ts";
 import {
   buildExportManifestSnapshot,
@@ -19,6 +18,10 @@ import {
   collectIntegrityTree,
   sanitizeContent,
 } from "./services/integrity/integrity-tree.ts";
+import {
+  assembleIntegrityManifest,
+  type IntegrityManifest,
+} from "./services/integrity/integrity-manifest.ts";
 
 async function startServer() {
   const app = express();
@@ -161,102 +164,12 @@ async function startServer() {
     }
   });
 
-  function assembleIntegrityManifest(fileList: string[], checksums: Record<string, string>) {
-    const requiredFiles = [
-      "package.json",
-      "tsconfig.json",
-      "vite.config.ts",
-      "server.ts",
-      "types.ts",
-      "App.tsx",
-      "index.tsx",
-      "index.html",
-      "README_MIGRATION.md"
-    ];
-    const missing_required_files: string[] = [];
-    const empty_files: string[] = [];
-    const critical_empty_files: string[] = [];
-    const placeholder_files: string[] = [];
-
-    for (const relPath of requiredFiles) {
-      const fullPath = path.join(INTEGRITY_PROJECT_ROOT, relPath);
-      if (!fs.existsSync(fullPath)) {
-        missing_required_files.push(relPath);
-      } else {
-        const stat = fs.statSync(fullPath);
-        if (stat.size === 0) {
-          empty_files.push(relPath);
-          critical_empty_files.push(relPath);
-        }
-        const content = fs.readFileSync(fullPath, "utf8").trim();
-        const lowercaseContent = content.toLowerCase();
-        if (content.length < 20 || lowercaseContent === "todo" || lowercaseContent.includes("placeholder content here")) {
-          placeholder_files.push(relPath);
-        }
-      }
-    }
-
-    // Additional audit candidates for empty files check
-    const extraFilesToAudit = [
-      "assets/goldenSetImages.ts",
-      "components/features/lab/scripts/apply_v62.cjs",
-      "services/jobSimulator.ts",
-      "services/qualityService.ts"
-    ];
-    for (const extraPath of extraFilesToAudit) {
-      const fullPath = path.join(INTEGRITY_PROJECT_ROOT, extraPath);
-      if (fs.existsSync(fullPath)) {
-        const stat = fs.statSync(fullPath);
-        if (stat.size === 0) {
-          if (!empty_files.includes(extraPath)) {
-            empty_files.push(extraPath);
-          }
-        }
-      }
-    }
-
-    const foldersToCheck = ["components", "services", "utils", "config", "data", "storage", "assets", "server", "hooks", "scripts"];
-    const folder_presence_check: Record<string, boolean> = {};
-    for (const folder of foldersToCheck) {
-      folder_presence_check[folder] =
-        fs.existsSync(path.join(INTEGRITY_PROJECT_ROOT, folder)) ||
-        fs.existsSync(path.join(INTEGRITY_PROJECT_ROOT, "src", folder));
-    }
-
-    const required_files_check = missing_required_files.length === 0;
-    const migration_ready = required_files_check && critical_empty_files.length === 0;
-    const cursor_ready = migration_ready;
-
-    const manifest = {
-      app_version: "v82.4",
-      export_version: "EXPORT-v82.4",
-      generated_at: new Date().toISOString(),
-      migration_complete: migration_ready,
-      migration_ready,
-      required_files_check,
-      missing_required_files,
-      empty_files,
-      critical_empty_files,
-      folder_presence_check,
-      cursor_ready,
-      file_count: fileList.length + 1,
-      files: [...fileList, "migration_integrity_manifest.json"].sort(),
-      checksums: sortIntegrityChecksums({
-        ...checksums,
-        "migration_integrity_manifest.json": "computed-at-runtime-self-referencing"
-      })
-    };
-    return manifest;
-  }
-
   function getIntegrityManifest() {
     const { fileList, checksums } = collectIntegrityTree(INTEGRITY_PROJECT_ROOT, {
       includeContent: false,
     });
-    return assembleIntegrityManifest(fileList, checksums);
+    return assembleIntegrityManifest(INTEGRITY_PROJECT_ROOT, fileList, checksums);
   }
-
-  type IntegrityManifest = ReturnType<typeof getIntegrityManifest>;
 
   let integritySnapshot: IntegrityManifest | null = null;
   let integritySnapshotFingerprint: string | null = null;
@@ -312,7 +225,7 @@ async function startServer() {
     const { fileList, checksums, zipEntries } = collectIntegrityTree(INTEGRITY_PROJECT_ROOT, {
       includeContent: true,
     });
-    const rawManifest = assembleIntegrityManifest(fileList, checksums);
+    const rawManifest = assembleIntegrityManifest(INTEGRITY_PROJECT_ROOT, fileList, checksums);
     updateIntegrityCache(rawManifest);
     const exportManifest = buildExportManifestSnapshot(rawManifest);
     const manifestPayload = JSON.stringify(exportManifest, null, 2);
