@@ -1323,6 +1323,9 @@ export interface CinematicExtractionResult {
 
   // v82.4 RELATIONSHIP DYNAMICS & IMAGE GENERATION BRIDGE PATCH
   production_v82?: ProductionOS_v82;
+
+  // PR-01: v83 namespace (inactive until PR-07+; mirrors production_v82 pattern)
+  production_v83?: ProductionOS_v83;
 }
 
 export interface VisualGrammarTranslation {
@@ -2083,4 +2086,66 @@ export interface GhibliLibrary {
   version: string; // "2.6" 표준
   last_updated: number;
   anchors: GhibliAnchor[];
+}
+
+// ── PR-01 SCAFFOLD — types only; NOT consumed by runtime until PR-07+ ──
+// Authority: version_manifest_v83.json | Flags: migrationFlags.v83.ts (PR-00)
+
+export type ProductionNamespaceAuthoritative = 'production_v83';
+
+export type V83ManifestNamespace =
+  | 'RAW-v83' | 'SEM-v83' | 'SUM-v83' | 'AUDIT-v83'
+  | 'IMAGE-v83' | 'VIDEO-v83' | 'DEV-EVIDENCE-v83'
+  | 'DNA-v83' | 'RGS-v83' | 'EXPORT-v83' | 'LOCK-v83';
+
+export type V83CompatMode = 'legacy_read' | 'dual_write' | 'v83_only';
+
+export type V83ImageAppSevenKey =
+  | 'logline' | 'story_beats' | 'keyframe_sequence'
+  | 'character_visual_dna' | 'emotion_to_visual_grammar'
+  | 'visual_continuity_lock' | 'prompt_memory';
+
+/** Ref-only bridge; full payload stays on CinematicExtractionResult.canonical_dna */
+export interface CanonicalDNAV83Bridge {
+  version?: CanonicalDNA['version'];
+  metadata?: CanonicalDNA['metadata'];
+  domain_keys?: (keyof CanonicalDNA['domains'])[];
+}
+
+export interface ProductionOS_v83 extends ProductionOS_v82 {
+  /** Inert marker; satisfies version_manifest_v83 authoritative_namespace */
+  _namespace?: ProductionNamespaceAuthoritative;
+
+  _schema_stamp?: {
+    os_version: 'v83.0';
+    extraction_schema?: '51.4';
+    namespaces?: Partial<Record<string, V83ManifestNamespace>>;
+  };
+
+  /** PR-07+ evidence ledger slot (manifest: evidence_ledger_required) */
+  evidence_ledger?: {
+    ledger_id?: string;
+    compat_mode?: V83CompatMode;
+    entries?: Array<{
+      ts: string;
+      source: 'observed' | 'inferred' | 'synthetic';
+      namespace?: V83ManifestNamespace;
+      ref?: string;
+    }>;
+  };
+
+  /** Pointer bridge — never embed full CanonicalDNA.domains here */
+  canonical_dna_bridge?: CanonicalDNAV83Bridge;
+
+  /** Extends v80 token_governance without redefining it */
+  v83_export_budget?: {
+    max_semantic_tokens?: number;
+    prune_allowlist?: string[];
+  };
+
+  /** Aligns export_format_freeze IMAGE_APP_7_KEY — refs only */
+  image_app_enrichment_ref?: {
+    keys_present?: V83ImageAppSevenKey[];
+    summary_calibration_applied?: boolean;
+  };
 }
