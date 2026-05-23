@@ -169,30 +169,34 @@ async function startServer() {
     );
   }
 
-  function getIntegrityManifest() {
+  const INTEGRITY_WALK_SKIP = new Set([
+    "node_modules",
+    "dist",
+    ".git",
+    ".next",
+    ".cache",
+    "project_migration_integrity.json",
+    "migration_integrity_manifest.json",
+  ]);
+
+  type IntegrityTreeEntry = { zipPath: string; content: Buffer };
+
+  function collectIntegrityTree(options: { includeContent: boolean }) {
     const fileList: string[] = [];
     const checksums: Record<string, string> = {};
+    const zipEntries: IntegrityTreeEntry[] = [];
 
     function walk(currentDirPath: string, zipPathPrefix = "") {
       const gFiles = fs.readdirSync(currentDirPath).sort((a, b) => a.localeCompare(b));
       for (const file of gFiles) {
-        const filePath = path.join(currentDirPath, file);
-        const stat = fs.statSync(filePath);
-        
-        if (
-          file === "node_modules" ||
-          file === "dist" ||
-          file === ".git" ||
-          file === ".next" ||
-          file === ".cache" ||
-          file === "project_migration_integrity.json" ||
-          file === "migration_integrity_manifest.json"
-        ) {
+        if (INTEGRITY_WALK_SKIP.has(file)) {
           continue;
         }
-        
+
+        const filePath = path.join(currentDirPath, file);
+        const stat = fs.statSync(filePath);
         const zipPath = zipPathPrefix ? `${zipPathPrefix}/${file}` : file;
-        
+
         if (stat.isDirectory()) {
           walk(filePath, zipPath);
         } else {
@@ -207,6 +211,9 @@ async function startServer() {
             const fileHash = crypto.createHash("sha256").update(contentBinary).digest("hex");
             fileList.push(zipPath);
             checksums[zipPath] = fileHash;
+            if (options.includeContent) {
+              zipEntries.push({ zipPath, content: contentBinary });
+            }
           } catch (err) {
             // ignore temporary lock files
           }
@@ -220,6 +227,10 @@ async function startServer() {
       console.error("Error walking directory for integrity manifest:", err);
     }
 
+    return { fileList, checksums, zipEntries };
+  }
+
+  function assembleIntegrityManifest(fileList: string[], checksums: Record<string, string>) {
     const requiredFiles = [
       "package.json",
       "tsconfig.json",
@@ -307,6 +318,11 @@ async function startServer() {
     return manifest;
   }
 
+  function getIntegrityManifest() {
+    const { fileList, checksums } = collectIntegrityTree({ includeContent: false });
+    return assembleIntegrityManifest(fileList, checksums);
+  }
+
   type IntegrityManifest = ReturnType<typeof getIntegrityManifest>;
 
   let integritySnapshot: IntegrityManifest | null = null;
@@ -315,6 +331,19 @@ async function startServer() {
   function computeIntegrityFingerprint(manifest: IntegrityManifest): string {
     const { generated_at, ...stable } = manifest;
     return crypto.createHash("sha256").update(JSON.stringify(stable)).digest("hex");
+  }
+
+  function updateIntegrityCache(manifest: IntegrityManifest, options?: { force?: boolean }) {
+    const force = options?.force === true;
+    const fingerprint = computeIntegrityFingerprint(manifest);
+    const fingerprintChanged = integritySnapshotFingerprint !== fingerprint;
+
+    integritySnapshot = manifest;
+    integritySnapshotFingerprint = fingerprint;
+
+    if (fingerprintChanged || force) {
+      writeIntegrityManifestWithMirrors(manifest);
+    }
   }
 
   function writeIntegrityManifestWithMirrors(manifest: IntegrityManifest) {
@@ -347,16 +376,7 @@ async function startServer() {
     }
 
     const manifest = getIntegrityManifest();
-    const fingerprint = computeIntegrityFingerprint(manifest);
-    const fingerprintChanged = integritySnapshotFingerprint !== fingerprint;
-
-    integritySnapshot = manifest;
-    integritySnapshotFingerprint = fingerprint;
-
-    if (fingerprintChanged || force) {
-      writeIntegrityManifestWithMirrors(manifest);
-    }
-
+    updateIntegrityCache(manifest, { force });
     return manifest;
   }
 
@@ -367,6 +387,16 @@ async function startServer() {
       generated_at:
         EXPORT_DETERMINISTIC_GENERATED_AT[raw.export_version] ?? raw.generated_at,
     };
+  }
+
+  function buildDeterministicExportSnapshot() {
+    const { fileList, checksums, zipEntries } = collectIntegrityTree({ includeContent: true });
+    const rawManifest = assembleIntegrityManifest(fileList, checksums);
+    updateIntegrityCache(rawManifest);
+    const exportManifest = buildExportManifestSnapshot(rawManifest);
+    const manifestPayload = JSON.stringify(exportManifest, null, 2);
+    zipEntries.sort((a, b) => a.zipPath.localeCompare(b.zipPath));
+    return { exportManifest, manifestPayload, zipEntries };
   }
 
   function addExportZipEntry(zip: AdmZip, entryName: string, content: Buffer) {
@@ -563,51 +593,9 @@ async function startServer() {
   app.get("/api/developer/project-export", (req, res) => {
     try {
       const zip = new AdmZip();
-      const rawManifest = ensureIntegrityManifest();
-      const exportManifest = buildExportManifestSnapshot(rawManifest);
-      const manifestPayload = JSON.stringify(exportManifest, null, 2);
+      const { manifestPayload, zipEntries } = buildDeterministicExportSnapshot();
 
-      const zipFileEntries: Array<{ zipPath: string; content: Buffer }> = [];
-
-      function walkDir(currentDirPath: string, zipPathPrefix = "") {
-        const files = fs.readdirSync(currentDirPath).sort((a, b) => a.localeCompare(b));
-        for (const file of files) {
-          const filePath = path.join(currentDirPath, file);
-          const stat = fs.statSync(filePath);
-          
-          if (
-            file === "node_modules" ||
-            file === "dist" ||
-            file === ".git" ||
-            file === ".next" ||
-            file === ".cache" ||
-            file === "project_migration_integrity.json" ||
-            file === "migration_integrity_manifest.json"
-          ) {
-            continue;
-          }
-          
-          const zipPath = zipPathPrefix ? `${zipPathPrefix}/${file}` : file;
-          
-          if (stat.isDirectory()) {
-            walkDir(filePath, zipPath);
-          } else {
-            let contentBinary = fs.readFileSync(filePath);
-            const isText = /\.(ts|tsx|js|jsx|json|md|css|html|example)$/i.test(file);
-            if (isText) {
-              let contentStr = contentBinary.toString("utf8");
-              contentStr = sanitizeContent(contentStr);
-              contentBinary = Buffer.from(contentStr, "utf8");
-            }
-            zipFileEntries.push({ zipPath, content: contentBinary });
-          }
-        }
-      }
-
-      walkDir(INTEGRITY_PROJECT_ROOT);
-
-      zipFileEntries.sort((a, b) => a.zipPath.localeCompare(b.zipPath));
-      for (const { zipPath, content } of zipFileEntries) {
+      for (const { zipPath, content } of zipEntries) {
         addExportZipEntry(zip, zipPath, content);
       }
 
