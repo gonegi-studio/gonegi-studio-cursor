@@ -200,7 +200,7 @@ async function startServer() {
   // API: Download README_MIGRATION.md directly
   app.get("/api/developer/readme-export", (req, res) => {
     try {
-      const readmePath = path.join(process.cwd(), "README_MIGRATION.md");
+      const readmePath = path.join(INTEGRITY_PROJECT_ROOT, "README_MIGRATION.md");
       if (fs.existsSync(readmePath)) {
         res.setHeader("Content-Disposition", "attachment; filename=\"README_MIGRATION.md\"");
         res.setHeader("Content-Type", "text/markdown");
