@@ -24,6 +24,7 @@ import { buildGenerationJobManifestPreview } from "./services/cinematic/generati
 import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
+import { registerVisualQaDashboardPreviewRoute } from "./app/api/image-generation/visual-qa-dashboard-preview/route.ts";
 
 async function startServer() {
   const app = express();
@@ -320,6 +321,8 @@ async function startServer() {
       return res.status(500).json({ error: "Failed to build cinematic generation job manifest preview" });
     }
   });
+
+  registerVisualQaDashboardPreviewRoute(app);
 
   registerApiBoundaryGuard(app);
 
