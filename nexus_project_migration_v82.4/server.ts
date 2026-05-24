@@ -19,6 +19,7 @@ import { registerApiBoundaryGuard } from "./services/runtime/api-boundary.ts";
 import { buildCinematicDatasetPreview } from "./services/cinematic/cinematic-preview.ts";
 import { buildStoryboardPreview } from "./services/cinematic/storyboard-preview.ts";
 import { serializePipelinePreview } from "./services/cinematic/pipeline-serializer.ts";
+import { buildMusicDramaPreview } from "./services/cinematic/music-drama-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
 
 async function startServer() {
@@ -274,6 +275,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Pipeline Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic pipeline preview" });
+    }
+  });
+
+  // API: Unified music drama preview (Phase-4E readonly MV/Drama orchestration)
+  app.get("/api/cinematic/music-drama-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildMusicDramaPreview()));
+    } catch (e) {
+      console.error("Cinematic Music Drama Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic music drama preview" });
     }
   });
 
