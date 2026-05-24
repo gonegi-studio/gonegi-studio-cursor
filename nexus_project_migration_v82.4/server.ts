@@ -20,6 +20,7 @@ import { buildCinematicDatasetPreview } from "./services/cinematic/cinematic-pre
 import { buildStoryboardPreview } from "./services/cinematic/storyboard-preview.ts";
 import { serializePipelinePreview } from "./services/cinematic/pipeline-serializer.ts";
 import { buildMusicDramaPreview } from "./services/cinematic/music-drama-preview.ts";
+import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
 
 async function startServer() {
@@ -285,6 +286,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Music Drama Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic music drama preview" });
+    }
+  });
+
+  // API: Scene prompt export preview (Phase-5B readonly generator-ready orchestration)
+  app.get("/api/cinematic/scene-prompt-export-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildScenePromptExportPreview()));
+    } catch (e) {
+      console.error("Cinematic Scene Prompt Export Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic scene prompt export preview" });
     }
   });
 
