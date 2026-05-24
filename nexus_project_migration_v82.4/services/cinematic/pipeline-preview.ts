@@ -26,13 +26,8 @@ export function buildCinematicPipelinePreview(): CinematicPipelinePreview {
   });
 }
 
-export function serializeCinematicPipelinePreview(): string {
-  const preview = buildCinematicPipelinePreview();
-  return JSON.stringify({
-    version: preview.version,
-    sceneDna: preview.sceneDna,
-    evidence: preview.evidence,
-    dataset: preview.dataset,
-    storyboard: preview.storyboard,
-  });
-}
+export {
+  computePipelineFingerprint,
+  serializePipelinePreview,
+  serializePipelinePreview as serializeCinematicPipelinePreview,
+} from "./pipeline-serializer.ts";

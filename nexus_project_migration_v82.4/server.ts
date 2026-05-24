@@ -18,7 +18,8 @@ import { assembleRecoveryDiagnosticsReport } from "./services/integrity/integrit
 import { registerApiBoundaryGuard } from "./services/runtime/api-boundary.ts";
 import { buildCinematicDatasetPreview } from "./services/cinematic/cinematic-preview.ts";
 import { buildStoryboardPreview } from "./services/cinematic/storyboard-preview.ts";
-import { buildCinematicPipelinePreview } from "./services/cinematic/pipeline-preview.ts";
+import { serializePipelinePreview } from "./services/cinematic/pipeline-serializer.ts";
+import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
 
 async function startServer() {
   const app = express();
@@ -247,7 +248,7 @@ async function startServer() {
   // API: Cinematic dataset preview (Phase-2E readonly fixture pipeline)
   app.get("/api/cinematic/dataset-preview", (req, res) => {
     try {
-      return res.json(buildCinematicDatasetPreview());
+      return res.json(runWithRuntimeReadonlyGuard(() => buildCinematicDatasetPreview()));
     } catch (e) {
       console.error("Cinematic Dataset Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic dataset preview" });
@@ -257,7 +258,7 @@ async function startServer() {
   // API: Cinematic storyboard preview (Phase-3B readonly fixture pipeline)
   app.get("/api/cinematic/storyboard-preview", (req, res) => {
     try {
-      return res.json(buildStoryboardPreview());
+      return res.json(runWithRuntimeReadonlyGuard(() => buildStoryboardPreview()));
     } catch (e) {
       console.error("Cinematic Storyboard Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic storyboard preview" });
@@ -267,7 +268,9 @@ async function startServer() {
   // API: Unified cinematic pipeline preview (Phase-3C readonly fixture orchestration)
   app.get("/api/cinematic/pipeline-preview", (req, res) => {
     try {
-      return res.json(buildCinematicPipelinePreview());
+      const payload = runWithRuntimeReadonlyGuard(() => serializePipelinePreview());
+      res.setHeader("Content-Type", "application/json");
+      return res.send(payload);
     } catch (e) {
       console.error("Cinematic Pipeline Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic pipeline preview" });
