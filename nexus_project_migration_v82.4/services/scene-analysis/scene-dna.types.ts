@@ -18,9 +18,17 @@ export type SceneDnaProfile = {
   framing: SceneDnaFraming;
 };
 
+export type SceneDnaInput = {
+  emotionHint: string;
+  paletteHints: readonly string[];
+  lensHint: string;
+  rhythmHint: string;
+  framingHint: string;
+};
+
 export const SCENE_DNA_EXAMPLE: Readonly<SceneDnaProfile> = Object.freeze({
   emotion: "nostalgic",
-  palette: Object.freeze(["warm-green", "dust-orange"] as const),
+  palette: Object.freeze(["dust-orange", "warm-green"] as const),
   lens: "35mm",
   rhythm: "slow-breathing",
   framing: "foreground-frame",
