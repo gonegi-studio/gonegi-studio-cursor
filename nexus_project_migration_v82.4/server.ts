@@ -18,6 +18,7 @@ import { assembleRecoveryDiagnosticsReport } from "./services/integrity/integrit
 import { registerApiBoundaryGuard } from "./services/runtime/api-boundary.ts";
 import { buildCinematicDatasetPreview } from "./services/cinematic/cinematic-preview.ts";
 import { buildStoryboardPreview } from "./services/cinematic/storyboard-preview.ts";
+import { buildCinematicPipelinePreview } from "./services/cinematic/pipeline-preview.ts";
 
 async function startServer() {
   const app = express();
@@ -260,6 +261,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Storyboard Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic storyboard preview" });
+    }
+  });
+
+  // API: Unified cinematic pipeline preview (Phase-3C readonly fixture orchestration)
+  app.get("/api/cinematic/pipeline-preview", (req, res) => {
+    try {
+      return res.json(buildCinematicPipelinePreview());
+    } catch (e) {
+      console.error("Cinematic Pipeline Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic pipeline preview" });
     }
   });
 
