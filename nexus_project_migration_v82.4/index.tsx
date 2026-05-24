@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import VisualQaDashboardPage from './app/visual-qa-dashboard/page';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -9,8 +10,12 @@ if (!rootElement) {
 }
 
 const root = ReactDOM.createRoot(rootElement);
+const isVisualQaDashboardRoute =
+  window.location.pathname === '/visual-qa-dashboard' ||
+  window.location.pathname.startsWith('/visual-qa-dashboard/');
+
 root.render(
   <React.StrictMode>
-    <App />
+    {isVisualQaDashboardRoute ? <VisualQaDashboardPage /> : <App />}
   </React.StrictMode>
 );
