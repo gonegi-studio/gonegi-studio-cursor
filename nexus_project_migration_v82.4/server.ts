@@ -16,6 +16,7 @@ import { createIntegrityExportService } from "./services/integrity/integrity-exp
 import { registerLegacyExportRoutes } from "./services/legacy/legacy-export.ts";
 import { assembleRecoveryDiagnosticsReport } from "./services/integrity/integrity-diagnostics.ts";
 import { registerApiBoundaryGuard } from "./services/runtime/api-boundary.ts";
+import { buildCinematicDatasetPreview } from "./services/cinematic/cinematic-preview.ts";
 
 async function startServer() {
   const app = express();
@@ -238,6 +239,16 @@ async function startServer() {
         error: "Failed to compile runtime recovery diagnostics report",
         message: e.message,
       });
+    }
+  });
+
+  // API: Cinematic dataset preview (Phase-2E readonly fixture pipeline)
+  app.get("/api/cinematic/dataset-preview", (req, res) => {
+    try {
+      return res.json(buildCinematicDatasetPreview());
+    } catch (e) {
+      console.error("Cinematic Dataset Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic dataset preview" });
     }
   });
 
