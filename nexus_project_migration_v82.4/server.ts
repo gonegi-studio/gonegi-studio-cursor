@@ -17,6 +17,7 @@ import { registerLegacyExportRoutes } from "./services/legacy/legacy-export.ts";
 import { assembleRecoveryDiagnosticsReport } from "./services/integrity/integrity-diagnostics.ts";
 import { registerApiBoundaryGuard } from "./services/runtime/api-boundary.ts";
 import { buildCinematicDatasetPreview } from "./services/cinematic/cinematic-preview.ts";
+import { buildStoryboardPreview } from "./services/cinematic/storyboard-preview.ts";
 
 async function startServer() {
   const app = express();
@@ -249,6 +250,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Dataset Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic dataset preview" });
+    }
+  });
+
+  // API: Cinematic storyboard preview (Phase-3B readonly fixture pipeline)
+  app.get("/api/cinematic/storyboard-preview", (req, res) => {
+    try {
+      return res.json(buildStoryboardPreview());
+    } catch (e) {
+      console.error("Cinematic Storyboard Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic storyboard preview" });
     }
   });
 
