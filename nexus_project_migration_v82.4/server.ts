@@ -14,6 +14,8 @@ import {
 import { createIntegrityCacheService } from "./services/integrity/integrity-cache.ts";
 import { createIntegrityExportService } from "./services/integrity/integrity-export.ts";
 import { registerLegacyExportRoutes } from "./services/legacy/legacy-export.ts";
+import { assembleRecoveryDiagnosticsReport } from "./services/integrity/integrity-diagnostics.ts";
+import { registerApiBoundaryGuard } from "./services/runtime/api-boundary.ts";
 
 async function startServer() {
   const app = express();
@@ -229,123 +231,17 @@ async function startServer() {
   // API: Get Deep Project Recovery & Pipeline Diagnostics (v82.4)
   app.get("/api/developer/recovery-diagnostics", (req, res) => {
     try {
-      const requiredFiles = [
-        "package.json",
-        "tsconfig.json",
-        "vite.config.ts",
-        "server.ts",
-        "types.ts",
-        "App.tsx",
-        "main.tsx",
-        "index.html",
-        "README_MIGRATION.md"
-      ];
-
-      const missing_required_files: string[] = [];
-      const empty_files: string[] = [];
-      const critical_empty_files: string[] = [];
-      const placeholder_files: string[] = [];
-      const file_details: Record<string, { size: number; exists: boolean; is_placeholder: boolean }> = {};
-
-      for (const relPath of requiredFiles) {
-        const fullPath = path.join(process.cwd(), relPath);
-        const exists = fs.existsSync(fullPath);
-        
-        if (!exists) {
-          missing_required_files.push(relPath);
-          file_details[relPath] = { size: 0, exists: false, is_placeholder: false };
-          continue;
-        }
-
-        const stat = fs.statSync(fullPath);
-        const size = stat.size;
-        
-        if (size === 0) {
-          empty_files.push(relPath);
-          critical_empty_files.push(relPath);
-        }
-
-        // Read first 1000 characters to detect placeholders or trivial templates
-        const content = fs.readFileSync(fullPath, "utf8").trim();
-        const lowercaseContent = content.toLowerCase();
-        
-        let isPlaceholder = false;
-        if (content.length < 20 || lowercaseContent === "todo" || lowercaseContent.includes("placeholder content here")) {
-          isPlaceholder = true;
-          placeholder_files.push(relPath);
-        }
-
-        file_details[relPath] = {
-          size,
-          exists: true,
-          is_placeholder: isPlaceholder
-        };
-      }
-
-      // Additional audit candidates for empty files check
-      const extraFilesToAudit = [
-        "assets/goldenSetImages.ts",
-        "components/features/lab/scripts/apply_v62.cjs",
-        "services/jobSimulator.ts",
-        "services/qualityService.ts"
-      ];
-      for (const extraPath of extraFilesToAudit) {
-        const fullPath = path.join(process.cwd(), extraPath);
-        if (fs.existsSync(fullPath)) {
-          const stat = fs.statSync(fullPath);
-          const size = stat.size;
-          if (size === 0) {
-            if (!empty_files.includes(extraPath)) {
-              empty_files.push(extraPath);
-            }
-          }
-          file_details[extraPath] = {
-            size,
-            exists: true,
-            is_placeholder: false
-          };
-        } else {
-          file_details[extraPath] = {
-            size: 0,
-            exists: false,
-            is_placeholder: false
-          };
-        }
-      }
-
-      const foldersToCheck = ["components", "services", "utils", "config", "data", "storage", "assets", "server", "hooks", "scripts"];
-      const folder_presence_check: Record<string, boolean> = {};
-      for (const folder of foldersToCheck) {
-        folder_presence_check[folder] = fs.existsSync(path.join(process.cwd(), folder)) || fs.existsSync(path.join(process.cwd(), "src", folder));
-      }
-
-      const required_files_check = missing_required_files.length === 0;
-      const migration_ready = required_files_check && critical_empty_files.length === 0;
-      const cursor_ready = migration_ready;
-
-      return res.json({
-        app_version: "v82.4",
-        export_version: "EXPORT-v82.4",
-        migration_ready,
-        required_files_check,
-        cursor_ready,
-        checksum_status: "PASS",
-        missing_required_files,
-        empty_files,
-        critical_empty_files,
-        folder_presence_check,
-        placeholder_files,
-        file_details,
-        timestamp: new Date().toISOString()
-      });
+      return res.json(assembleRecoveryDiagnosticsReport(INTEGRITY_PROJECT_ROOT));
     } catch (e: any) {
       console.error("Recovery Diagnostics Error:", e);
-      return res.status(500).json({ 
+      return res.status(500).json({
         error: "Failed to compile runtime recovery diagnostics report",
-        message: e.message 
+        message: e.message,
       });
     }
   });
+
+  registerApiBoundaryGuard(app);
 
   // Vite 미들웨어 설정
   if (process.env.NODE_ENV !== "production") {
