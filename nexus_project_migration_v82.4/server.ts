@@ -20,6 +20,7 @@ import { buildCinematicDatasetPreview } from "./services/cinematic/cinematic-pre
 import { buildStoryboardPreview } from "./services/cinematic/storyboard-preview.ts";
 import { serializePipelinePreview } from "./services/cinematic/pipeline-serializer.ts";
 import { buildMusicDramaPreview } from "./services/cinematic/music-drama-preview.ts";
+import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
 
@@ -296,6 +297,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Scene Prompt Export Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic scene prompt export preview" });
+    }
+  });
+
+  // API: Generator adapter preview (Phase-6B readonly provider-neutral orchestration)
+  app.get("/api/cinematic/generator-adapter-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildGeneratorAdapterPreview()));
+    } catch (e) {
+      console.error("Cinematic Generator Adapter Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic generator adapter preview" });
     }
   });
 
