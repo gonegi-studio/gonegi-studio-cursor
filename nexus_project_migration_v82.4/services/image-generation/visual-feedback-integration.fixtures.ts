@@ -1,0 +1,45 @@
+import {
+  AUTOMATED_VISUAL_SIGNAL_AGGREGATION_OUTPUT_EXAMPLE,
+  AUTOMATED_VISUAL_SIGNAL_AGGREGATOR_INPUT_EXAMPLE,
+} from "./automated-visual-signal-aggregator.fixtures.ts";
+import { buildAutomatedVisualSignalAggregation } from "./automated-visual-signal-aggregator.ts";
+import {
+  NEXT_GENERATION_REQUEST_COMPOSER_INPUT_EXAMPLE,
+  NEXT_GENERATION_REQUEST_OUTPUT_EXAMPLE,
+  PROMPT_POLICY_FEEDBACK_REGRESSION_EXAMPLE,
+} from "./next-generation-request-composer.fixtures.ts";
+import { buildNextGenerationRequest } from "./next-generation-request-composer.ts";
+import {
+  PROMPT_POLICY_FEEDBACK_OUTPUT_EXAMPLE,
+} from "./prompt-policy-feedback.fixtures.ts";
+import { buildVisualFeedbackIntegrationResult } from "./visual-feedback-integration.ts";
+
+export const VISUAL_FEEDBACK_INTEGRATION_INPUT_EXAMPLE = Object.freeze({
+  visualAggregation: AUTOMATED_VISUAL_SIGNAL_AGGREGATION_OUTPUT_EXAMPLE,
+  feedback: PROMPT_POLICY_FEEDBACK_OUTPUT_EXAMPLE,
+  nextRequest: NEXT_GENERATION_REQUEST_OUTPUT_EXAMPLE,
+  integrationIndex: 0,
+});
+
+export const VISUAL_FEEDBACK_INTEGRATION_OUTPUT_EXAMPLE = buildVisualFeedbackIntegrationResult(
+  VISUAL_FEEDBACK_INTEGRATION_INPUT_EXAMPLE
+);
+
+export const VISUAL_FEEDBACK_INTEGRATION_ID_EXPECTED = "visual-feedback-001";
+
+export const AUTOMATED_VISUAL_SIGNAL_AGGREGATOR_REGRESSION_EXAMPLE = buildAutomatedVisualSignalAggregation(
+  AUTOMATED_VISUAL_SIGNAL_AGGREGATOR_INPUT_EXAMPLE
+);
+
+export const AUTOMATED_VISUAL_SIGNAL_AGGREGATOR_REGRESSION_OUTPUT =
+  AUTOMATED_VISUAL_SIGNAL_AGGREGATION_OUTPUT_EXAMPLE;
+
+export const PROMPT_POLICY_FEEDBACK_REGRESSION_OUTPUT = PROMPT_POLICY_FEEDBACK_OUTPUT_EXAMPLE;
+
+export const NEXT_GENERATION_REQUEST_REGRESSION_EXAMPLE = buildNextGenerationRequest(
+  NEXT_GENERATION_REQUEST_COMPOSER_INPUT_EXAMPLE
+);
+
+export const NEXT_GENERATION_REQUEST_REGRESSION_OUTPUT = NEXT_GENERATION_REQUEST_OUTPUT_EXAMPLE;
+
+export const PROMPT_POLICY_FEEDBACK_REGRESSION_FIXTURE = PROMPT_POLICY_FEEDBACK_REGRESSION_EXAMPLE;
