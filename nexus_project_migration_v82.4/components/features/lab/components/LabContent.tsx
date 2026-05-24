@@ -6279,12 +6279,7 @@ export const LabContent: React.FC<LabContentProps> = ({
                                    <span className="text-[8px] text-white/30 block mt-0.5">{doc.desc}</span>
                                  </div>
                                  <a
-                                   href={
-                                      doc.path === "package.json" ? "/api/export/system/package-json" :
-                                      doc.path === "package-lock.json" ? "/api/export/system/package-lock" :
-                                      doc.path === "dummy-domexception/package.json" ? "/api/export/system/dummy-domexception-package" :
-                                      `/api/developer/export?file=${encodeURIComponent(doc.path)}`
-                                    }
+                                   href={`/api/developer/export?file=${encodeURIComponent(doc.path)}`}
                                    download={doc.path === "dummy-domexception/package.json" ? "dummy-domexception-package.json" : doc.name}
                                    className="p-1 px-2.5 bg-white/5 hover:bg-purple-600/30 text-white/60 hover:text-purple-300 rounded text-[9px] font-mono transition-all uppercase"
                                  >
