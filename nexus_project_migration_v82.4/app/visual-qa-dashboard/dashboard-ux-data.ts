@@ -658,6 +658,36 @@ export type ReplayRuntimeSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicSequenceStateLayer = {
+  readonly sequenceStateMachineId: string;
+  readonly activeSequenceState: string;
+  readonly priorSceneStateInheritance: string;
+  readonly nextSceneStateReadiness: string;
+  readonly continuityStateLock: string;
+  readonly cinematicStatePersistence: number;
+  readonly stateNormalizationState: string;
+};
+
+export type SceneStateTransitionBridge = {
+  readonly sceneStateTransitionBridgeId: string;
+  readonly activeTransitionRoute: string;
+  readonly replayLinkedStateRoutes: readonly string[];
+  readonly continuitySafeStateRoutes: readonly string[];
+  readonly highDriftStateRoutes: readonly string[];
+  readonly transitionStrength: number;
+  readonly statePersistenceScore: number;
+};
+
+export type SequenceStateDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type SequenceStateSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -1910,6 +1940,77 @@ export const REPLAY_RUNTIME_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "avoid runtime orchestration fracture", severity: "critical" }),
   Object.freeze({ label: "reduce replay-runtime divergence pressure", severity: "warning" }),
 ] as const satisfies readonly ReplayRuntimeSteeringRecommendation[]);
+
+export const CINEMATIC_SEQUENCE_STATE_LAYER = Object.freeze({
+  sequenceStateMachineId: "cinematic-sequence-state-gonegi-v1",
+  activeSequenceState: "warm-glaze-sequence-active",
+  priorSceneStateInheritance: "prior emotional warmth inherited · warm-glaze continuity locked",
+  nextSceneStateReadiness: "next scene continuity ready · harbor transition staged",
+  continuityStateLock: "continuity state locked · sequence inheritance verified",
+  cinematicStatePersistence: 0.817333,
+  stateNormalizationState: "canonical sequence state normalization · long-form scene routing verified",
+} satisfies CinematicSequenceStateLayer);
+
+export const SCENE_STATE_TRANSITION_BRIDGE = Object.freeze({
+  sceneStateTransitionBridgeId: "scene-state-transition-bridge-gonegi-v1",
+  activeTransitionRoute: "state-route-harbor-warmth-001",
+  replayLinkedStateRoutes: Object.freeze(["state-route-harbor-warmth-001", "state-route-glaze-intro-002"]),
+  continuitySafeStateRoutes: Object.freeze(["state-route-harbor-warmth-001", "state-route-glaze-intro-002"]),
+  highDriftStateRoutes: Object.freeze(["state-route-detail-push-experiment"]),
+  transitionStrength: 0.816333,
+  statePersistenceScore: 0.828333,
+} satisfies SceneStateTransitionBridge);
+
+export const SEQUENCE_STATE_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "sequence state fracture", severity: "critical" }),
+  Object.freeze({ label: "scene transition state collapse", severity: "critical" }),
+  Object.freeze({ label: "continuity state divergence", severity: "warning" }),
+  Object.freeze({ label: "cinematic state mismatch", severity: "warning" }),
+  Object.freeze({ label: "next-scene readiness instability", severity: "warning" }),
+] as const satisfies readonly SequenceStateDriftItem[]);
+
+const SEQUENCE_STATE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      sequenceStatePersistence: number;
+      sceneTransitionContinuity: number;
+      continuityStateLockTrend: number;
+      cinematicStateInheritance: number;
+      nextSceneReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    sequenceStatePersistence: 0.319333,
+    sceneTransitionContinuity: 0.620333,
+    continuityStateLockTrend: 0.606333,
+    cinematicStateInheritance: 0.614333,
+    nextSceneReadinessTrend: 0.603333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    sequenceStatePersistence: 0.393333,
+    sceneTransitionContinuity: 0.813333,
+    continuityStateLockTrend: 0.797333,
+    cinematicStateInheritance: 0.790333,
+    nextSceneReadinessTrend: 0.824333,
+  }),
+});
+
+export const SEQUENCE_STATE_TREND_DIMENSIONS = Object.freeze([
+  ["sequence state persistence", "sequenceStatePersistence"],
+  ["scene transition continuity", "sceneTransitionContinuity"],
+  ["continuity state lock trend", "continuityStateLockTrend"],
+  ["cinematic state inheritance", "cinematicStateInheritance"],
+  ["next-scene readiness trend", "nextSceneReadinessTrend"],
+] as const);
+
+export const SEQUENCE_STATE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic sequence state", severity: "stable" }),
+  Object.freeze({ label: "maintain continuity state lock", severity: "stable" }),
+  Object.freeze({ label: "avoid scene transition state collapse", severity: "critical" }),
+  Object.freeze({ label: "reduce next-scene readiness instability", severity: "warning" }),
+] as const satisfies readonly SequenceStateSteeringRecommendation[]);
 
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
@@ -3170,6 +3271,63 @@ export function groupReplayRuntimePersistenceTimelineByDimension(
 
 export function buildReplayRuntimeSteeringRecommendations(): readonly ReplayRuntimeSteeringRecommendation[] {
   return REPLAY_RUNTIME_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicSequenceStateLayer(): CinematicSequenceStateLayer {
+  return CINEMATIC_SEQUENCE_STATE_LAYER;
+}
+
+export function buildSceneStateTransitionBridge(): SceneStateTransitionBridge {
+  return SCENE_STATE_TRANSITION_BRIDGE;
+}
+
+export function buildSequenceStateDriftDetection(): readonly SequenceStateDriftItem[] {
+  return SEQUENCE_STATE_DRIFT_GROUPS;
+}
+
+export function buildSequenceStateTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of SEQUENCE_STATE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = SEQUENCE_STATE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? SEQUENCE_STATE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupSequenceStateTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    SEQUENCE_STATE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildSequenceStateSteeringRecommendations(): readonly SequenceStateSteeringRecommendation[] {
+  return SEQUENCE_STATE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

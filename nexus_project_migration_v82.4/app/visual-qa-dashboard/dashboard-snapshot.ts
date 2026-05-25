@@ -85,6 +85,11 @@ import {
   buildReplayRuntimeDriftDetection,
   buildReplayRuntimePersistenceTimeline,
   buildReplayRuntimeSteeringRecommendations,
+  buildCinematicSequenceStateLayer,
+  buildSceneStateTransitionBridge,
+  buildSequenceStateDriftDetection,
+  buildSequenceStateTimeline,
+  buildSequenceStateSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -206,6 +211,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const replayRuntimeDriftDetection = buildReplayRuntimeDriftDetection();
   const replayRuntimePersistenceTimeline = buildReplayRuntimePersistenceTimeline(payload);
   const replayRuntimeSteeringRecommendations = buildReplayRuntimeSteeringRecommendations();
+  const cinematicSequenceStateLayer = buildCinematicSequenceStateLayer();
+  const sceneStateTransitionBridge = buildSceneStateTransitionBridge();
+  const sequenceStateDriftDetection = buildSequenceStateDriftDetection();
+  const sequenceStateTimeline = buildSequenceStateTimeline(payload);
+  const sequenceStateSteeringRecommendations = buildSequenceStateSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -357,6 +367,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("runtimeDrift", replayRuntimeDriftDetection),
       formatTimelineSnapshotLine("runtimeTimeline", replayRuntimePersistenceTimeline),
       formatSteerSnapshotLine("runtimeSteer", replayRuntimeSteeringRecommendations),
+    ],
+    [
+      `sequenceState:${cinematicSequenceStateLayer.sequenceStateMachineId}:${cinematicSequenceStateLayer.activeSequenceState}:${formatScore3Dec(cinematicSequenceStateLayer.cinematicStatePersistence)}`,
+      `sceneStateTransition:${sceneStateTransitionBridge.sceneStateTransitionBridgeId}:${formatScore3Dec(sceneStateTransitionBridge.transitionStrength)}:${formatScore3Dec(sceneStateTransitionBridge.statePersistenceScore)}:${sceneStateTransitionBridge.replayLinkedStateRoutes.join("+")}`,
+      formatDriftSnapshotLine("sequenceStateDrift", sequenceStateDriftDetection),
+      formatTimelineSnapshotLine("sequenceStateTimeline", sequenceStateTimeline),
+      formatSteerSnapshotLine("sequenceStateSteer", sequenceStateSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

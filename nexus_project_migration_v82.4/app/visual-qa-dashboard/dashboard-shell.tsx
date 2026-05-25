@@ -68,6 +68,11 @@ import {
   buildReplayRuntimeDriftDetection,
   buildReplayRuntimePersistenceTimeline,
   buildReplayRuntimeSteeringRecommendations,
+  buildCinematicSequenceStateLayer,
+  buildSceneStateTransitionBridge,
+  buildSequenceStateDriftDetection,
+  buildSequenceStateTimeline,
+  buildSequenceStateSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -107,6 +112,7 @@ import {
   groupReplayPrepPersistenceTimelineByDimension,
   groupReplayEvaluationPersistenceTimelineByDimension,
   groupReplayRuntimePersistenceTimelineByDimension,
+  groupSequenceStateTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -265,6 +271,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const replayRuntimePersistenceTimeline = buildReplayRuntimePersistenceTimeline(payload);
   const replayRuntimePersistenceTimelineGroups = groupReplayRuntimePersistenceTimelineByDimension(replayRuntimePersistenceTimeline);
   const replayRuntimeSteeringRecommendations = buildReplayRuntimeSteeringRecommendations();
+  const cinematicSequenceStateLayer = buildCinematicSequenceStateLayer();
+  const sceneStateTransitionBridge = buildSceneStateTransitionBridge();
+  const sequenceStateDriftDetection = buildSequenceStateDriftDetection();
+  const sequenceStateTimeline = buildSequenceStateTimeline(payload);
+  const sequenceStateTimelineGroups = groupSequenceStateTimelineByDimension(sequenceStateTimeline);
+  const sequenceStateSteeringRecommendations = buildSequenceStateSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1016,6 +1028,48 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="replay-runtime-steering" title="Replay Runtime Steering Recommendations">
           <SteeringChipList items={replayRuntimeSteeringRecommendations} dataAttr="replay-runtime-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-sequence-state-layer" title="Cinematic Sequence State Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-sequence-state-machine-id={cinematicSequenceStateLayer.sequenceStateMachineId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="State Machine ID" value={cinematicSequenceStateLayer.sequenceStateMachineId} emphasis />
+              <KeyValueField label="Active Sequence State" value={cinematicSequenceStateLayer.activeSequenceState} emphasis />
+              <KeyValueField label="State Persistence" value={formatScore3Dec(cinematicSequenceStateLayer.cinematicStatePersistence)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Prior Scene Inheritance" value={cinematicSequenceStateLayer.priorSceneStateInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Next Scene Readiness" value={cinematicSequenceStateLayer.nextSceneStateReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Continuity State Lock" value={cinematicSequenceStateLayer.continuityStateLock} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="State Normalization" value={cinematicSequenceStateLayer.stateNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="scene-state-transition-bridge" title="Scene State Transition Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-scene-state-transition-bridge-id={sceneStateTransitionBridge.sceneStateTransitionBridgeId}>
+            <p className="text-sm font-black">{sceneStateTransitionBridge.sceneStateTransitionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active transition route · {sceneStateTransitionBridge.activeTransitionRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Transition Strength" value={formatScore3Dec(sceneStateTransitionBridge.transitionStrength)} emphasis />
+              <KeyValueField label="State Persistence Score" value={formatScore3Dec(sceneStateTransitionBridge.statePersistenceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked State Routes</p><TagList tags={sceneStateTransitionBridge.replayLinkedStateRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Routes</p><TagList tags={sceneStateTransitionBridge.continuitySafeStateRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Routes</p><TagList tags={sceneStateTransitionBridge.highDriftStateRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="sequence-state-drift-detection" title="Sequence State Drift Detection">
+          <DriftList items={sequenceStateDriftDetection} dataAttr="sequence-state-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="sequence-state-timeline" title="Sequence State Timeline">
+          <TimelineTrendGrid groups={sequenceStateTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="sequence-state-steering" title="Sequence State Steering Recommendations">
+          <SteeringChipList items={sequenceStateSteeringRecommendations} dataAttr="sequence-state-steer" />
         </DashboardSection>
 
         <section data-section="style-core-profile" className="space-y-4">
