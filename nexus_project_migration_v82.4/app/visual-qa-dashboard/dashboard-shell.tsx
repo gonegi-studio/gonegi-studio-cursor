@@ -63,6 +63,11 @@ import {
   buildReplayEvaluationDriftDetection,
   buildReplayEvaluationPersistenceTimeline,
   buildReplayEvaluationSteeringRecommendations,
+  buildReplayRuntimeBridge,
+  buildRuntimeSessionOrchestration,
+  buildReplayRuntimeDriftDetection,
+  buildReplayRuntimePersistenceTimeline,
+  buildReplayRuntimeSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -101,6 +106,7 @@ import {
   groupQueuePersistenceTimelineByDimension,
   groupReplayPrepPersistenceTimelineByDimension,
   groupReplayEvaluationPersistenceTimelineByDimension,
+  groupReplayRuntimePersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -253,6 +259,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const replayEvaluationPersistenceTimeline = buildReplayEvaluationPersistenceTimeline(payload);
   const replayEvaluationPersistenceTimelineGroups = groupReplayEvaluationPersistenceTimelineByDimension(replayEvaluationPersistenceTimeline);
   const replayEvaluationSteeringRecommendations = buildReplayEvaluationSteeringRecommendations();
+  const replayRuntimeBridge = buildReplayRuntimeBridge();
+  const runtimeSessionOrchestration = buildRuntimeSessionOrchestration();
+  const replayRuntimeDriftDetection = buildReplayRuntimeDriftDetection();
+  const replayRuntimePersistenceTimeline = buildReplayRuntimePersistenceTimeline(payload);
+  const replayRuntimePersistenceTimelineGroups = groupReplayRuntimePersistenceTimelineByDimension(replayRuntimePersistenceTimeline);
+  const replayRuntimeSteeringRecommendations = buildReplayRuntimeSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -960,6 +972,50 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="replay-evaluation-steering" title="Replay Evaluation Steering Recommendations">
           <SteeringChipList items={replayEvaluationSteeringRecommendations} dataAttr="replay-evaluation-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-runtime-bridge" title="Replay Runtime Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-replay-runtime-bridge-id={replayRuntimeBridge.replayRuntimeBridgeId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Runtime Bridge ID" value={replayRuntimeBridge.replayRuntimeBridgeId} emphasis />
+              <KeyValueField label="Active Runtime Session" value={replayRuntimeBridge.activeReplayRuntimeSession} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Normalization State" value={replayRuntimeBridge.runtimeNormalizationState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Runtime Compatibility" value={replayRuntimeBridge.cinematicReplayRuntimeCompatibility} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Safe Runtime Groups</p><TagList tags={replayRuntimeBridge.replaySafeRuntimeGroups} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Runtime</p><TagList tags={replayRuntimeBridge.continuitySafeReplayRuntime} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Runtime</p><TagList tags={replayRuntimeBridge.highDriftReplayRuntime} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="runtime-session-orchestration" title="Runtime Session Orchestration">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-runtime-session-orchestration-id={runtimeSessionOrchestration.runtimeSessionOrchestrationId}>
+            <p className="text-sm font-black">{runtimeSessionOrchestration.runtimeSessionOrchestrationId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active runtime route · {runtimeSessionOrchestration.activeRuntimeRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Orchestration Strength" value={formatScore3Dec(runtimeSessionOrchestration.runtimeOrchestrationStrength)} emphasis />
+              <KeyValueField label="Persistence Score" value={formatScore3Dec(runtimeSessionOrchestration.runtimePersistenceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Runtime Routes</p><TagList tags={runtimeSessionOrchestration.replayLinkedRuntimeRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Routes</p><TagList tags={runtimeSessionOrchestration.continuitySafeRuntimeRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Routes</p><TagList tags={runtimeSessionOrchestration.highDriftRuntimeRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-runtime-drift-detection" title="Replay Runtime Drift Detection">
+          <DriftList items={replayRuntimeDriftDetection} dataAttr="replay-runtime-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-runtime-persistence-timeline" title="Replay Runtime Persistence Timeline">
+          <TimelineTrendGrid groups={replayRuntimePersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-runtime-steering" title="Replay Runtime Steering Recommendations">
+          <SteeringChipList items={replayRuntimeSteeringRecommendations} dataAttr="replay-runtime-steer" />
         </DashboardSection>
 
         <section data-section="style-core-profile" className="space-y-4">

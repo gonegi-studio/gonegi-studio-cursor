@@ -628,6 +628,36 @@ export type ReplayEvaluationSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type ReplayRuntimeBridge = {
+  readonly replayRuntimeBridgeId: string;
+  readonly activeReplayRuntimeSession: string;
+  readonly replaySafeRuntimeGroups: readonly string[];
+  readonly continuitySafeReplayRuntime: readonly string[];
+  readonly highDriftReplayRuntime: readonly string[];
+  readonly runtimeNormalizationState: string;
+  readonly cinematicReplayRuntimeCompatibility: string;
+};
+
+export type RuntimeSessionOrchestration = {
+  readonly runtimeSessionOrchestrationId: string;
+  readonly activeRuntimeRoute: string;
+  readonly replayLinkedRuntimeRoutes: readonly string[];
+  readonly continuitySafeRuntimeRoutes: readonly string[];
+  readonly highDriftRuntimeRoutes: readonly string[];
+  readonly runtimeOrchestrationStrength: number;
+  readonly runtimePersistenceScore: number;
+};
+
+export type ReplayRuntimeDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ReplayRuntimeSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -1809,6 +1839,77 @@ export const REPLAY_EVALUATION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "preserve cinematic replay normalization", severity: "stable" }),
   Object.freeze({ label: "reduce replay orchestration fragmentation", severity: "warning" }),
 ] as const satisfies readonly ReplayEvaluationSteeringRecommendation[]);
+
+export const REPLAY_RUNTIME_BRIDGE = Object.freeze({
+  replayRuntimeBridgeId: "replay-runtime-bridge-gonegi-v1",
+  activeReplayRuntimeSession: "ai-studio-session-safe-001",
+  replaySafeRuntimeGroups: Object.freeze(["runtime-warm-glaze-001", "runtime-harbor-haze-002", "runtime-cinematic-harbor-001"]),
+  continuitySafeReplayRuntime: Object.freeze(["runtime-warm-glaze-001", "runtime-harbor-haze-002", "runtime-cinematic-harbor-001"]),
+  highDriftReplayRuntime: Object.freeze(["runtime-detail-push-experiment"]),
+  runtimeNormalizationState: "canonical replay runtime abstraction · evaluation-safe runtime orchestration locked",
+  cinematicReplayRuntimeCompatibility: "replay-safe cinematic runtime lineage · deterministic runtime bridge verified",
+} satisfies ReplayRuntimeBridge);
+
+export const RUNTIME_SESSION_ORCHESTRATION = Object.freeze({
+  runtimeSessionOrchestrationId: "runtime-session-orchestration-gonegi-v1",
+  activeRuntimeRoute: "runtime-route-cinematic-harbor-001",
+  replayLinkedRuntimeRoutes: Object.freeze(["runtime-route-cinematic-harbor-001", "runtime-route-warm-glaze-002"]),
+  continuitySafeRuntimeRoutes: Object.freeze(["runtime-route-cinematic-harbor-001", "runtime-route-warm-glaze-002"]),
+  highDriftRuntimeRoutes: Object.freeze(["runtime-route-detail-push-experiment"]),
+  runtimeOrchestrationStrength: 0.814333,
+  runtimePersistenceScore: 0.825333,
+} satisfies RuntimeSessionOrchestration);
+
+export const REPLAY_RUNTIME_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "replay runtime instability", severity: "critical" }),
+  Object.freeze({ label: "runtime orchestration fracture", severity: "critical" }),
+  Object.freeze({ label: "runtime continuity divergence", severity: "warning" }),
+  Object.freeze({ label: "replay-runtime mismatch", severity: "warning" }),
+  Object.freeze({ label: "runtime normalization instability", severity: "warning" }),
+] as const satisfies readonly ReplayRuntimeDriftItem[]);
+
+const REPLAY_RUNTIME_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      replayRuntimePersistence: number;
+      runtimeContinuityTrend: number;
+      replayRuntimeNormalization: number;
+      cinematicRuntimeInheritance: number;
+      runtimeOrchestrationStability: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    replayRuntimePersistence: 0.322333,
+    runtimeContinuityTrend: 0.617333,
+    replayRuntimeNormalization: 0.603333,
+    cinematicRuntimeInheritance: 0.611333,
+    runtimeOrchestrationStability: 0.600333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    replayRuntimePersistence: 0.390333,
+    runtimeContinuityTrend: 0.810333,
+    replayRuntimeNormalization: 0.794333,
+    cinematicRuntimeInheritance: 0.787333,
+    runtimeOrchestrationStability: 0.821333,
+  }),
+});
+
+export const REPLAY_RUNTIME_TREND_DIMENSIONS = Object.freeze([
+  ["replay runtime persistence", "replayRuntimePersistence"],
+  ["runtime continuity trend", "runtimeContinuityTrend"],
+  ["replay-runtime normalization", "replayRuntimeNormalization"],
+  ["cinematic runtime inheritance", "cinematicRuntimeInheritance"],
+  ["runtime orchestration stability", "runtimeOrchestrationStability"],
+] as const);
+
+export const REPLAY_RUNTIME_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve replay-safe runtime lineage", severity: "stable" }),
+  Object.freeze({ label: "maintain continuity-safe runtime routing", severity: "stable" }),
+  Object.freeze({ label: "avoid runtime orchestration fracture", severity: "critical" }),
+  Object.freeze({ label: "reduce replay-runtime divergence pressure", severity: "warning" }),
+] as const satisfies readonly ReplayRuntimeSteeringRecommendation[]);
 
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
@@ -3012,6 +3113,63 @@ export function groupReplayEvaluationPersistenceTimelineByDimension(
 
 export function buildReplayEvaluationSteeringRecommendations(): readonly ReplayEvaluationSteeringRecommendation[] {
   return REPLAY_EVALUATION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildReplayRuntimeBridge(): ReplayRuntimeBridge {
+  return REPLAY_RUNTIME_BRIDGE;
+}
+
+export function buildRuntimeSessionOrchestration(): RuntimeSessionOrchestration {
+  return RUNTIME_SESSION_ORCHESTRATION;
+}
+
+export function buildReplayRuntimeDriftDetection(): readonly ReplayRuntimeDriftItem[] {
+  return REPLAY_RUNTIME_DRIFT_GROUPS;
+}
+
+export function buildReplayRuntimePersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REPLAY_RUNTIME_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REPLAY_RUNTIME_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REPLAY_RUNTIME_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupReplayRuntimePersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REPLAY_RUNTIME_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildReplayRuntimeSteeringRecommendations(): readonly ReplayRuntimeSteeringRecommendation[] {
+  return REPLAY_RUNTIME_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

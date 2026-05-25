@@ -80,6 +80,11 @@ import {
   buildReplayEvaluationDriftDetection,
   buildReplayEvaluationPersistenceTimeline,
   buildReplayEvaluationSteeringRecommendations,
+  buildReplayRuntimeBridge,
+  buildRuntimeSessionOrchestration,
+  buildReplayRuntimeDriftDetection,
+  buildReplayRuntimePersistenceTimeline,
+  buildReplayRuntimeSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -196,6 +201,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const replayEvaluationDriftDetection = buildReplayEvaluationDriftDetection();
   const replayEvaluationPersistenceTimeline = buildReplayEvaluationPersistenceTimeline(payload);
   const replayEvaluationSteeringRecommendations = buildReplayEvaluationSteeringRecommendations();
+  const replayRuntimeBridge = buildReplayRuntimeBridge();
+  const runtimeSessionOrchestration = buildRuntimeSessionOrchestration();
+  const replayRuntimeDriftDetection = buildReplayRuntimeDriftDetection();
+  const replayRuntimePersistenceTimeline = buildReplayRuntimePersistenceTimeline(payload);
+  const replayRuntimeSteeringRecommendations = buildReplayRuntimeSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -340,6 +350,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("replayEvaluationDrift", replayEvaluationDriftDetection),
       formatTimelineSnapshotLine("replayEvaluationTimeline", replayEvaluationPersistenceTimeline),
       formatSteerSnapshotLine("replayEvaluationSteer", replayEvaluationSteeringRecommendations),
+    ],
+    [
+      `replayRuntime:${replayRuntimeBridge.replayRuntimeBridgeId}:${replayRuntimeBridge.activeReplayRuntimeSession}:${replayRuntimeBridge.replaySafeRuntimeGroups.join("+")}`,
+      `runtimeOrchestration:${runtimeSessionOrchestration.runtimeSessionOrchestrationId}:${formatScore3Dec(runtimeSessionOrchestration.runtimeOrchestrationStrength)}:${formatScore3Dec(runtimeSessionOrchestration.runtimePersistenceScore)}:${runtimeSessionOrchestration.replayLinkedRuntimeRoutes.join("+")}`,
+      formatDriftSnapshotLine("runtimeDrift", replayRuntimeDriftDetection),
+      formatTimelineSnapshotLine("runtimeTimeline", replayRuntimePersistenceTimeline),
+      formatSteerSnapshotLine("runtimeSteer", replayRuntimeSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);
