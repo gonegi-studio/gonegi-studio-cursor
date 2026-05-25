@@ -93,6 +93,11 @@ import {
   buildIntentResolutionDriftDetection,
   buildIntentResolutionTimeline,
   buildIntentResolutionSteeringRecommendations,
+  buildCinematicDestinationMemory,
+  buildDestinationRoutingBridge,
+  buildDestinationDriftDetection,
+  buildDestinationPersistenceTimeline,
+  buildDestinationSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -137,6 +142,7 @@ import {
   groupEmotionalMemoryTimelineByDimension,
   groupIntentPersistenceTimelineByDimension,
   groupIntentResolutionTimelineByDimension,
+  groupDestinationPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -325,6 +331,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const intentResolutionTimeline = buildIntentResolutionTimeline(payload);
   const intentResolutionTimelineGroups = groupIntentResolutionTimelineByDimension(intentResolutionTimeline);
   const intentResolutionSteeringRecommendations = buildIntentResolutionSteeringRecommendations();
+  const cinematicDestinationMemory = buildCinematicDestinationMemory();
+  const destinationRoutingBridge = buildDestinationRoutingBridge();
+  const destinationDriftDetection = buildDestinationDriftDetection();
+  const destinationPersistenceTimeline = buildDestinationPersistenceTimeline(payload);
+  const destinationPersistenceTimelineGroups = groupDestinationPersistenceTimelineByDimension(destinationPersistenceTimeline);
+  const destinationSteeringRecommendations = buildDestinationSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1386,6 +1398,48 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="intent-resolution-steering" title="Intent Resolution Steering Recommendations">
           <SteeringChipList items={intentResolutionSteeringRecommendations} dataAttr="intent-resolution-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-destination-memory" title="Cinematic Destination Memory">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-destination-memory-id={cinematicDestinationMemory.cinematicDestinationMemoryId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Destination Memory ID" value={cinematicDestinationMemory.cinematicDestinationMemoryId} emphasis />
+              <KeyValueField label="Active Destination State" value={cinematicDestinationMemory.activeDestinationState} emphasis />
+              <KeyValueField label="Cinematic Destination Score" value={formatScore3Dec(cinematicDestinationMemory.cinematicDestinationScore)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Destination Persistence" value={cinematicDestinationMemory.emotionalDestinationPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Endpoint State" value={cinematicDestinationMemory.cinematicEndpointState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Destination Continuity Lock" value={cinematicDestinationMemory.destinationContinuityLock} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Destination Normalization" value={cinematicDestinationMemory.destinationNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="destination-routing-bridge" title="Destination Routing Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-destination-routing-bridge-id={destinationRoutingBridge.destinationRoutingBridgeId}>
+            <p className="text-sm font-black">{destinationRoutingBridge.destinationRoutingBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active destination route · {destinationRoutingBridge.activeDestinationRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(destinationRoutingBridge.destinationRoutingStrength)} emphasis />
+              <KeyValueField label="Destination Persistence" value={formatScore3Dec(destinationRoutingBridge.cinematicDestinationPersistence)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Destination Routes</p><TagList tags={destinationRoutingBridge.replayLinkedDestinationRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Destination Routes</p><TagList tags={destinationRoutingBridge.continuitySafeDestinationRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Destination Routes</p><TagList tags={destinationRoutingBridge.highDriftDestinationRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="destination-drift-detection" title="Destination Drift Detection">
+          <DriftList items={destinationDriftDetection} dataAttr="destination-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="destination-persistence-timeline" title="Destination Persistence Timeline">
+          <TimelineTrendGrid groups={destinationPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="destination-steering" title="Destination Steering Recommendations">
+          <SteeringChipList items={destinationSteeringRecommendations} dataAttr="destination-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
