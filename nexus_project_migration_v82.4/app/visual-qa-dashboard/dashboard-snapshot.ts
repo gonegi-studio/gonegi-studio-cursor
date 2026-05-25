@@ -170,6 +170,11 @@ import {
   buildCostumeColorInheritanceMap,
   buildEmotionalExpressionPersistenceTimeline,
   buildCharacterOrchestrationSteeringRecommendations,
+  buildCinematicMotionOrchestrationLayer,
+  buildCameraMovementContinuityBridge,
+  buildCinematicPacingRhythmMap,
+  buildMotionPersistenceTimeline,
+  buildMotionOrchestrationSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -376,6 +381,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const costumeColorInheritanceMap = buildCostumeColorInheritanceMap();
   const emotionalExpressionPersistenceTimeline = buildEmotionalExpressionPersistenceTimeline(payload);
   const characterOrchestrationSteeringRecommendations = buildCharacterOrchestrationSteeringRecommendations();
+  const cinematicMotionOrchestrationLayer = buildCinematicMotionOrchestrationLayer();
+  const cameraMovementContinuityBridge = buildCameraMovementContinuityBridge();
+  const cinematicPacingRhythmMap = buildCinematicPacingRhythmMap();
+  const motionPersistenceTimeline = buildMotionPersistenceTimeline(payload);
+  const motionOrchestrationSteeringRecommendations = buildMotionOrchestrationSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -646,6 +656,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `costumeInheritance:${costumeColorInheritanceMap.costumeColorInheritanceMapId}:${formatScore3Dec(costumeColorInheritanceMap.costumeInheritanceScore)}:${formatScore3Dec(costumeColorInheritanceMap.colorContinuityLinkageScore)}:${costumeColorInheritanceMap.readyCostumeColorTraits.join("+")}`,
       formatTimelineSnapshotLine("expressionPersistence", emotionalExpressionPersistenceTimeline),
       formatSteerSnapshotLine("characterOrchestrationSteer", characterOrchestrationSteeringRecommendations),
+    ],
+    [
+      `motionOrchestration:${cinematicMotionOrchestrationLayer.cinematicMotionOrchestrationLayerId}:${cinematicMotionOrchestrationLayer.pilotVideoMode}:${formatScore3Dec(cinematicMotionOrchestrationLayer.motionOrchestrationScore)}`,
+      `cameraMovementContinuity:${cameraMovementContinuityBridge.cameraMovementContinuityBridgeId}:${formatScore3Dec(cameraMovementContinuityBridge.cameraMovementContinuityStrength)}:${formatScore3Dec(cameraMovementContinuityBridge.cameraMovementLinkageScore)}:${cameraMovementContinuityBridge.replayLinkedCameraRoutes.join("+")}`,
+      `pacingRhythmMap:${cinematicPacingRhythmMap.cinematicPacingRhythmMapId}:${formatScore3Dec(cinematicPacingRhythmMap.pacingRhythmScore)}:${formatScore3Dec(cinematicPacingRhythmMap.motionRhythmLinkageScore)}:${cinematicPacingRhythmMap.readyPacingRhythmTraits.join("+")}`,
+      formatTimelineSnapshotLine("motionPersistenceTimeline", motionPersistenceTimeline),
+      formatSteerSnapshotLine("motionOrchestrationSteer", motionOrchestrationSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

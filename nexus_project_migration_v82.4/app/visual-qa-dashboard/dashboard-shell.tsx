@@ -153,6 +153,11 @@ import {
   buildCostumeColorInheritanceMap,
   buildEmotionalExpressionPersistenceTimeline,
   buildCharacterOrchestrationSteeringRecommendations,
+  buildCinematicMotionOrchestrationLayer,
+  buildCameraMovementContinuityBridge,
+  buildCinematicPacingRhythmMap,
+  buildMotionPersistenceTimeline,
+  buildMotionOrchestrationSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -209,6 +214,7 @@ import {
   groupPromptRecipeRoutingTimelineByDimension,
   groupStyleDriftPersistenceTimelineByDimension,
   groupEmotionalExpressionPersistenceTimelineByDimension,
+  groupMotionPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -469,6 +475,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const emotionalExpressionPersistenceTimeline = buildEmotionalExpressionPersistenceTimeline(payload);
   const emotionalExpressionPersistenceTimelineGroups = groupEmotionalExpressionPersistenceTimelineByDimension(emotionalExpressionPersistenceTimeline);
   const characterOrchestrationSteeringRecommendations = buildCharacterOrchestrationSteeringRecommendations();
+  const cinematicMotionOrchestrationLayer = buildCinematicMotionOrchestrationLayer();
+  const cameraMovementContinuityBridge = buildCameraMovementContinuityBridge();
+  const cinematicPacingRhythmMap = buildCinematicPacingRhythmMap();
+  const motionPersistenceTimeline = buildMotionPersistenceTimeline(payload);
+  const motionPersistenceTimelineGroups = groupMotionPersistenceTimelineByDimension(motionPersistenceTimeline);
+  const motionOrchestrationSteeringRecommendations = buildMotionOrchestrationSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2174,6 +2186,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="character-orchestration-steering" title="Character Orchestration Steering Recommendations">
           <SteeringChipList items={characterOrchestrationSteeringRecommendations} dataAttr="character-orchestration-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-motion-orchestration-layer" title="Cinematic Motion Orchestration Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-motion-orchestration-layer-id={cinematicMotionOrchestrationLayer.cinematicMotionOrchestrationLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Motion Orchestration Layer ID" value={cinematicMotionOrchestrationLayer.cinematicMotionOrchestrationLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicMotionOrchestrationLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Motion Orchestration Score" value={formatScore3Dec(cinematicMotionOrchestrationLayer.motionOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Motion Orchestration State" value={cinematicMotionOrchestrationLayer.activeMotionOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Motion Continuity" value={cinematicMotionOrchestrationLayer.cinematicMotionContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Camera Movement Persistence" value={cinematicMotionOrchestrationLayer.cameraMovementPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Pacing Rhythm Inheritance" value={cinematicMotionOrchestrationLayer.pacingRhythmInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Motion Orchestration" value={cinematicMotionOrchestrationLayer.replaySafeMotionOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Transition Flow Normalization" value={cinematicMotionOrchestrationLayer.transitionFlowNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Movement Grammar Readiness" value={cinematicMotionOrchestrationLayer.cinematicMovementGrammarReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Video Generation Compatibility" value={cinematicMotionOrchestrationLayer.videoGenerationCompatibility} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Pacing Continuity" value={cinematicMotionOrchestrationLayer.emotionalPacingContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Motion Orchestration Normalization" value={cinematicMotionOrchestrationLayer.motionOrchestrationNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="camera-movement-continuity-bridge" title="Camera Movement Continuity Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-camera-movement-continuity-bridge-id={cameraMovementContinuityBridge.cameraMovementContinuityBridgeId}>
+            <p className="text-sm font-black">{cameraMovementContinuityBridge.cameraMovementContinuityBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active camera route · {cameraMovementContinuityBridge.activeCameraRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Camera Movement Continuity Strength" value={formatScore3Dec(cameraMovementContinuityBridge.cameraMovementContinuityStrength)} emphasis />
+              <KeyValueField label="Camera Movement Linkage Score" value={formatScore3Dec(cameraMovementContinuityBridge.cameraMovementLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Camera Routes</p><TagList tags={cameraMovementContinuityBridge.replayLinkedCameraRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Camera Routes</p><TagList tags={cameraMovementContinuityBridge.continuitySafeCameraRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Camera Routes</p><TagList tags={cameraMovementContinuityBridge.highDriftCameraRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-pacing-rhythm-map" title="Cinematic Pacing Rhythm Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-pacing-rhythm-map-id={cinematicPacingRhythmMap.cinematicPacingRhythmMapId}>
+            <p className="text-sm font-black">{cinematicPacingRhythmMap.cinematicPacingRhythmMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active pacing route · {cinematicPacingRhythmMap.activePacingRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Pacing Rhythm Score" value={formatScore3Dec(cinematicPacingRhythmMap.pacingRhythmScore)} emphasis />
+              <KeyValueField label="Motion Rhythm Linkage Score" value={formatScore3Dec(cinematicPacingRhythmMap.motionRhythmLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Pacing Rhythm Readiness" value={cinematicPacingRhythmMap.pacingRhythmReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Pacing Rhythm Traits</p><TagList tags={cinematicPacingRhythmMap.readyPacingRhythmTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Pacing Rhythm Traits</p><TagList tags={cinematicPacingRhythmMap.pendingPacingRhythmTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="motion-persistence-timeline" title="Motion Persistence Timeline">
+          <TimelineTrendGrid groups={motionPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="motion-orchestration-steering" title="Motion Orchestration Steering Recommendations">
+          <SteeringChipList items={motionOrchestrationSteeringRecommendations} dataAttr="motion-orchestration-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

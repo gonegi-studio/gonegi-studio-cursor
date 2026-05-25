@@ -1245,6 +1245,47 @@ export type CharacterOrchestrationSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicMotionOrchestrationLayer = {
+  readonly cinematicMotionOrchestrationLayerId: string;
+  readonly activeMotionOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly cinematicMotionContinuity: string;
+  readonly cameraMovementPersistence: string;
+  readonly pacingRhythmInheritance: string;
+  readonly replaySafeMotionOrchestration: string;
+  readonly transitionFlowNormalization: string;
+  readonly cinematicMovementGrammarReadiness: string;
+  readonly videoGenerationCompatibility: string;
+  readonly emotionalPacingContinuity: string;
+  readonly motionOrchestrationScore: number;
+  readonly motionOrchestrationNormalizationState: string;
+};
+
+export type CameraMovementContinuityBridge = {
+  readonly cameraMovementContinuityBridgeId: string;
+  readonly activeCameraRoute: string;
+  readonly replayLinkedCameraRoutes: readonly string[];
+  readonly continuitySafeCameraRoutes: readonly string[];
+  readonly highDriftCameraRoutes: readonly string[];
+  readonly cameraMovementContinuityStrength: number;
+  readonly cameraMovementLinkageScore: number;
+};
+
+export type CinematicPacingRhythmMap = {
+  readonly cinematicPacingRhythmMapId: string;
+  readonly activePacingRoute: string;
+  readonly pacingRhythmReadiness: string;
+  readonly readyPacingRhythmTraits: readonly string[];
+  readonly pendingPacingRhythmTraits: readonly string[];
+  readonly pacingRhythmScore: number;
+  readonly motionRhythmLinkageScore: number;
+};
+
+export type MotionOrchestrationSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -3775,6 +3816,86 @@ export const CHARACTER_ORCHESTRATION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer character generation until orchestration layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly CharacterOrchestrationSteeringRecommendation[]);
 
+export const CINEMATIC_MOTION_ORCHESTRATION_LAYER = Object.freeze({
+  cinematicMotionOrchestrationLayerId: "cinematic-motion-orchestration-layer-gonegi-v1",
+  activeMotionOrchestrationState: "25s-pilot-motion-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  cinematicMotionContinuity: "cinematic motion continuity staged for 25s pilot harbor sample without video generation",
+  cameraMovementPersistence: "camera movement persistence indexed for patient hold and horizon-stable framing",
+  pacingRhythmInheritance: "pacing rhythm inheritance prepared for breathable scene transitions",
+  replaySafeMotionOrchestration: "replay-safe motion orchestration reserved without motion inference execution",
+  transitionFlowNormalization: "transition flow normalization locked for atmospheric dissolve continuity",
+  cinematicMovementGrammarReadiness: "cinematic movement grammar readiness verified against ghibli-base pacing profile",
+  videoGenerationCompatibility: "future video-generation compatibility prepared without provider execution",
+  emotionalPacingContinuity: "emotional pacing continuity mapped for soft carry-over scene rhythm",
+  motionOrchestrationScore: 0.876333,
+  motionOrchestrationNormalizationState: "canonical 25s pilot cinematic motion orchestration normalization",
+} satisfies CinematicMotionOrchestrationLayer);
+
+export const CAMERA_MOVEMENT_CONTINUITY_BRIDGE = Object.freeze({
+  cameraMovementContinuityBridgeId: "camera-movement-continuity-bridge-gonegi-v1",
+  activeCameraRoute: "camera-route-patient-hold-001",
+  replayLinkedCameraRoutes: Object.freeze(["camera-route-patient-hold-001", "camera-route-mid-wide-echo-002"]),
+  continuitySafeCameraRoutes: Object.freeze(["camera-route-patient-hold-001", "camera-route-mid-wide-echo-002"]),
+  highDriftCameraRoutes: Object.freeze(["camera-route-aggressive-push-experiment"]),
+  cameraMovementContinuityStrength: 0.872333,
+  cameraMovementLinkageScore: 0.886333,
+} satisfies CameraMovementContinuityBridge);
+
+export const CINEMATIC_PACING_RHYTHM_MAP = Object.freeze({
+  cinematicPacingRhythmMapId: "cinematic-pacing-rhythm-map-gonegi-v1",
+  activePacingRoute: "pacing-route-breathable-hold-001",
+  pacingRhythmReadiness: "pacing rhythm readiness staged for 25s pilot harbor sample",
+  readyPacingRhythmTraits: Object.freeze(["patient-hold", "breathable-transitions", "low-cut-aggression"]),
+  pendingPacingRhythmTraits: Object.freeze(["hard-cut-experiment", "pacing-push-variant"]),
+  pacingRhythmScore: 0.869333,
+  motionRhythmLinkageScore: 0.883333,
+} satisfies CinematicPacingRhythmMap);
+
+const MOTION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicMotionContinuityTrend: number;
+      cameraMovementPersistenceTrend: number;
+      pacingRhythmInheritanceTrend: number;
+      transitionFlowNormalizationTrend: number;
+      emotionalPacingContinuityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicMotionContinuityTrend: 0.337333,
+    cameraMovementPersistenceTrend: 0.644333,
+    pacingRhythmInheritanceTrend: 0.631333,
+    transitionFlowNormalizationTrend: 0.638333,
+    emotionalPacingContinuityTrend: 0.630333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicMotionContinuityTrend: 0.876333,
+    cameraMovementPersistenceTrend: 0.871333,
+    pacingRhythmInheritanceTrend: 0.864333,
+    transitionFlowNormalizationTrend: 0.879333,
+    emotionalPacingContinuityTrend: 0.872333,
+  }),
+});
+
+export const MOTION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic motion continuity trend", "cinematicMotionContinuityTrend"],
+  ["camera movement persistence trend", "cameraMovementPersistenceTrend"],
+  ["pacing rhythm inheritance trend", "pacingRhythmInheritanceTrend"],
+  ["transition flow normalization trend", "transitionFlowNormalizationTrend"],
+  ["emotional pacing continuity trend", "emotionalPacingContinuityTrend"],
+] as const);
+
+export const MOTION_ORCHESTRATION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot motion orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain camera movement continuity readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified pacing rhythm routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve transition flow inheritance linkage", severity: "stable" }),
+  Object.freeze({ label: "defer video generation until motion layer stabilizes", severity: "warning" }),
+] as const satisfies readonly MotionOrchestrationSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -6003,6 +6124,63 @@ export function groupEmotionalExpressionPersistenceTimelineByDimension(
 
 export function buildCharacterOrchestrationSteeringRecommendations(): readonly CharacterOrchestrationSteeringRecommendation[] {
   return CHARACTER_ORCHESTRATION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicMotionOrchestrationLayer(): CinematicMotionOrchestrationLayer {
+  return CINEMATIC_MOTION_ORCHESTRATION_LAYER;
+}
+
+export function buildCameraMovementContinuityBridge(): CameraMovementContinuityBridge {
+  return CAMERA_MOVEMENT_CONTINUITY_BRIDGE;
+}
+
+export function buildCinematicPacingRhythmMap(): CinematicPacingRhythmMap {
+  return CINEMATIC_PACING_RHYTHM_MAP;
+}
+
+export function buildMotionPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of MOTION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = MOTION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? MOTION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupMotionPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    MOTION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildMotionOrchestrationSteeringRecommendations(): readonly MotionOrchestrationSteeringRecommendation[] {
+  return MOTION_ORCHESTRATION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
