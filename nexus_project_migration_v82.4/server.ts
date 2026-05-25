@@ -21,6 +21,7 @@ import { buildStoryboardPreview } from "./services/cinematic/storyboard-preview.
 import { serializePipelinePreview } from "./services/cinematic/pipeline-serializer.ts";
 import { buildMusicDramaPreview } from "./services/cinematic/music-drama-preview.ts";
 import { buildGenerationJobManifestPreview } from "./services/cinematic/generation-job-manifest-preview.ts";
+import { buildPilotIntakePreview } from "./services/cinematic/pilot-intake-schema.ts";
 import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
@@ -319,6 +320,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Generation Job Manifest Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic generation job manifest preview" });
+    }
+  });
+
+  // API: Pilot intake preview (Phase-77B readonly 25s pilot manifest orchestration)
+  app.get("/api/cinematic/pilot-intake-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildPilotIntakePreview()));
+    } catch (e) {
+      console.error("Cinematic Pilot Intake Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic pilot intake preview" });
     }
   });
 

@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import { CINEMATIC_PREVIEW_VERSION } from "./cinematic-preview.ts";
 
 export type PilotVideoManifest = {
   version: "v1";
@@ -294,4 +295,45 @@ export function serializePilotVideoManifest(manifest: PilotVideoManifest): strin
 
 export function computePilotVideoManifestFingerprint(manifest: PilotVideoManifest): string {
   return crypto.createHash("sha256").update(serializePilotVideoManifest(manifest)).digest("hex");
+}
+
+export const PILOT_INTAKE_PREVIEW_VERSION = CINEMATIC_PREVIEW_VERSION;
+
+export type PilotIntakePreviewItemCounts = {
+  sceneSegmentCount: number;
+  frameSampleCount: number;
+  evidenceCount: number;
+};
+
+export type PilotIntakePreview = {
+  version: typeof PILOT_INTAKE_PREVIEW_VERSION;
+  pilotVideoManifest: ReturnType<typeof JSON.parse>;
+  fingerprint: string;
+  itemCounts: PilotIntakePreviewItemCounts;
+};
+
+export function buildPilotIntakePreview(): PilotIntakePreview {
+  const pilotVideoManifest = buildPilotVideoManifest();
+  const fingerprint = computePilotVideoManifestFingerprint(pilotVideoManifest);
+
+  return Object.freeze({
+    version: PILOT_INTAKE_PREVIEW_VERSION,
+    pilotVideoManifest: JSON.parse(serializePilotVideoManifest(pilotVideoManifest)),
+    fingerprint,
+    itemCounts: Object.freeze({
+      sceneSegmentCount: pilotVideoManifest.sceneSegments.length,
+      frameSampleCount: pilotVideoManifest.frameSamples.length,
+      evidenceCount: pilotVideoManifest.evidence.length,
+    }),
+  });
+}
+
+export function serializePilotIntakePreview(): string {
+  const preview = buildPilotIntakePreview();
+  return JSON.stringify({
+    version: preview.version,
+    pilotVideoManifest: preview.pilotVideoManifest,
+    fingerprint: preview.fingerprint,
+    itemCounts: preview.itemCounts,
+  });
 }
