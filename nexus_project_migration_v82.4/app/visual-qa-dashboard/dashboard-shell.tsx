@@ -218,6 +218,11 @@ import {
   buildCinematicSystemContinuityMap,
   buildUnifiedOrchestrationPersistenceTimeline,
   buildUnifiedOrchestrationSteeringRecommendations,
+  buildCinematicRealDatasetTransitionLayer,
+  buildOrchestrationDatasetLinkageBridge,
+  buildCinematicDatasetReadinessMap,
+  buildRealDatasetTransitionPersistenceTimeline,
+  buildRealDatasetTransitionSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -287,6 +292,7 @@ import {
   groupFeatureLengthPersistenceTimelineByDimension,
   groupProductionPipelinePersistenceTimelineByDimension,
   groupUnifiedOrchestrationPersistenceTimelineByDimension,
+  groupRealDatasetTransitionPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -625,6 +631,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const unifiedOrchestrationPersistenceTimeline = buildUnifiedOrchestrationPersistenceTimeline(payload);
   const unifiedOrchestrationPersistenceTimelineGroups = groupUnifiedOrchestrationPersistenceTimelineByDimension(unifiedOrchestrationPersistenceTimeline);
   const unifiedOrchestrationSteeringRecommendations = buildUnifiedOrchestrationSteeringRecommendations();
+  const cinematicRealDatasetTransitionLayer = buildCinematicRealDatasetTransitionLayer();
+  const orchestrationDatasetLinkageBridge = buildOrchestrationDatasetLinkageBridge();
+  const cinematicDatasetReadinessMap = buildCinematicDatasetReadinessMap();
+  const realDatasetTransitionPersistenceTimeline = buildRealDatasetTransitionPersistenceTimeline(payload);
+  const realDatasetTransitionPersistenceTimelineGroups = groupRealDatasetTransitionPersistenceTimelineByDimension(realDatasetTransitionPersistenceTimeline);
+  const realDatasetTransitionSteeringRecommendations = buildRealDatasetTransitionSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -3136,6 +3148,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="unified-orchestration-steering" title="Unified Orchestration Steering Recommendations">
           <SteeringChipList items={unifiedOrchestrationSteeringRecommendations} dataAttr="unified-orchestration-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-real-dataset-transition-layer" title="Cinematic Real Dataset Transition Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-real-dataset-transition-layer-id={cinematicRealDatasetTransitionLayer.cinematicRealDatasetTransitionLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Real Dataset Transition Layer ID" value={cinematicRealDatasetTransitionLayer.cinematicRealDatasetTransitionLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicRealDatasetTransitionLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Real Dataset Transition Orchestration Score" value={formatScore3Dec(cinematicRealDatasetTransitionLayer.realDatasetTransitionOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Real Dataset Transition Orchestration State" value={cinematicRealDatasetTransitionLayer.activeRealDatasetTransitionOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Real Dataset Continuity Readiness" value={cinematicRealDatasetTransitionLayer.realDatasetContinuityReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Orchestration-to-Dataset Persistence" value={cinematicRealDatasetTransitionLayer.orchestrationToDatasetPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Dataset Transition Stabilization" value={cinematicRealDatasetTransitionLayer.datasetTransitionStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Dataset Routing" value={cinematicRealDatasetTransitionLayer.replaySafeDatasetRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Dataset Normalization" value={cinematicRealDatasetTransitionLayer.cinematicDatasetNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Orchestration Continuity Stabilization" value={cinematicRealDatasetTransitionLayer.orchestrationContinuityStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional/Style Continuity Persistence" value={cinematicRealDatasetTransitionLayer.emotionalStyleContinuityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Future Real-Video Dataset Readiness" value={cinematicRealDatasetTransitionLayer.futureRealVideoDatasetReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Real Dataset Transition Normalization" value={cinematicRealDatasetTransitionLayer.realDatasetTransitionNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="orchestration-dataset-linkage-bridge" title="Orchestration Dataset Linkage Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-orchestration-dataset-linkage-bridge-id={orchestrationDatasetLinkageBridge.orchestrationDatasetLinkageBridgeId}>
+            <p className="text-sm font-black">{orchestrationDatasetLinkageBridge.orchestrationDatasetLinkageBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active dataset linkage route · {orchestrationDatasetLinkageBridge.activeDatasetLinkageRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Orchestration Dataset Linkage Strength" value={formatScore3Dec(orchestrationDatasetLinkageBridge.orchestrationDatasetLinkageStrength)} emphasis />
+              <KeyValueField label="Orchestration Dataset Linkage Score" value={formatScore3Dec(orchestrationDatasetLinkageBridge.orchestrationDatasetLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Dataset Linkage Routes</p><TagList tags={orchestrationDatasetLinkageBridge.replayLinkedDatasetLinkageRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Dataset Linkage Routes</p><TagList tags={orchestrationDatasetLinkageBridge.continuitySafeDatasetLinkageRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Dataset Linkage Routes</p><TagList tags={orchestrationDatasetLinkageBridge.highDriftDatasetLinkageRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-dataset-readiness-map" title="Cinematic Dataset Readiness Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-dataset-readiness-map-id={cinematicDatasetReadinessMap.cinematicDatasetReadinessMapId}>
+            <p className="text-sm font-black">{cinematicDatasetReadinessMap.cinematicDatasetReadinessMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active dataset readiness route · {cinematicDatasetReadinessMap.activeDatasetReadinessRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Cinematic Dataset Readiness Score" value={formatScore3Dec(cinematicDatasetReadinessMap.cinematicDatasetReadinessScore)} emphasis />
+              <KeyValueField label="Real Dataset Transition Linkage Score" value={formatScore3Dec(cinematicDatasetReadinessMap.realDatasetTransitionLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Dataset Readiness State" value={cinematicDatasetReadinessMap.cinematicDatasetReadinessState} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Dataset Readiness Traits</p><TagList tags={cinematicDatasetReadinessMap.readyDatasetReadinessTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Dataset Readiness Traits</p><TagList tags={cinematicDatasetReadinessMap.pendingDatasetReadinessTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="real-dataset-transition-persistence-timeline" title="Real Dataset Transition Persistence Timeline">
+          <TimelineTrendGrid groups={realDatasetTransitionPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="real-dataset-transition-steering" title="Real Dataset Transition Steering Recommendations">
+          <SteeringChipList items={realDatasetTransitionSteeringRecommendations} dataAttr="real-dataset-transition-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

@@ -1778,6 +1778,47 @@ export type UnifiedOrchestrationSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicRealDatasetTransitionLayer = {
+  readonly cinematicRealDatasetTransitionLayerId: string;
+  readonly activeRealDatasetTransitionOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly realDatasetContinuityReadiness: string;
+  readonly orchestrationToDatasetPersistence: string;
+  readonly datasetTransitionStabilization: string;
+  readonly replaySafeDatasetRouting: string;
+  readonly cinematicDatasetNormalization: string;
+  readonly orchestrationContinuityStabilization: string;
+  readonly emotionalStyleContinuityPersistence: string;
+  readonly futureRealVideoDatasetReadiness: string;
+  readonly realDatasetTransitionOrchestrationScore: number;
+  readonly realDatasetTransitionNormalizationState: string;
+};
+
+export type OrchestrationDatasetLinkageBridge = {
+  readonly orchestrationDatasetLinkageBridgeId: string;
+  readonly activeDatasetLinkageRoute: string;
+  readonly replayLinkedDatasetLinkageRoutes: readonly string[];
+  readonly continuitySafeDatasetLinkageRoutes: readonly string[];
+  readonly highDriftDatasetLinkageRoutes: readonly string[];
+  readonly orchestrationDatasetLinkageStrength: number;
+  readonly orchestrationDatasetLinkageScore: number;
+};
+
+export type CinematicDatasetReadinessMap = {
+  readonly cinematicDatasetReadinessMapId: string;
+  readonly activeDatasetReadinessRoute: string;
+  readonly cinematicDatasetReadinessState: string;
+  readonly readyDatasetReadinessTraits: readonly string[];
+  readonly pendingDatasetReadinessTraits: readonly string[];
+  readonly cinematicDatasetReadinessScore: number;
+  readonly realDatasetTransitionLinkageScore: number;
+};
+
+export type RealDatasetTransitionSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -5348,6 +5389,86 @@ export const UNIFIED_ORCHESTRATION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer orchestration runtime execution until unified layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly UnifiedOrchestrationSteeringRecommendation[]);
 
+export const CINEMATIC_REAL_DATASET_TRANSITION_LAYER = Object.freeze({
+  cinematicRealDatasetTransitionLayerId: "cinematic-real-dataset-transition-layer-gonegi-v1",
+  activeRealDatasetTransitionOrchestrationState: "25s-pilot-real-dataset-transition-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  realDatasetContinuityReadiness: "real dataset continuity readiness staged for 25s pilot harbor sample without dataset ingestion execution",
+  orchestrationToDatasetPersistence: "orchestration-to-dataset persistence indexed for warm glaze carry-over and mediterranean dataset honesty",
+  datasetTransitionStabilization: "dataset transition stabilization prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeDatasetRouting: "replay-safe dataset routing reserved without video parsing or inference execution",
+  cinematicDatasetNormalization: "cinematic dataset normalization locked for warm dissolve dataset continuity across pilot beats",
+  orchestrationContinuityStabilization: "orchestration continuity stabilization verified against ghibli-base harbor dataset transition profile",
+  emotionalStyleContinuityPersistence: "emotional/style continuity persistence mapped for soft carry-over harbor dataset warmth",
+  futureRealVideoDatasetReadiness: "future real-video dataset readiness staged for ten-video expansion target without runtime orchestration engine",
+  realDatasetTransitionOrchestrationScore: 0.893333,
+  realDatasetTransitionNormalizationState: "canonical 25s pilot cinematic real dataset transition orchestration normalization",
+} satisfies CinematicRealDatasetTransitionLayer);
+
+export const ORCHESTRATION_DATASET_LINKAGE_BRIDGE = Object.freeze({
+  orchestrationDatasetLinkageBridgeId: "orchestration-dataset-linkage-bridge-gonegi-v1",
+  activeDatasetLinkageRoute: "dataset-linkage-route-warm-glaze-transition-001",
+  replayLinkedDatasetLinkageRoutes: Object.freeze(["dataset-linkage-route-warm-glaze-transition-001", "dataset-linkage-route-harbor-dataset-echo-002"]),
+  continuitySafeDatasetLinkageRoutes: Object.freeze(["dataset-linkage-route-warm-glaze-transition-001", "dataset-linkage-route-harbor-dataset-echo-002"]),
+  highDriftDatasetLinkageRoutes: Object.freeze(["dataset-linkage-route-contrast-push-experiment"]),
+  orchestrationDatasetLinkageStrength: 0.889333,
+  orchestrationDatasetLinkageScore: 0.903333,
+} satisfies OrchestrationDatasetLinkageBridge);
+
+export const CINEMATIC_DATASET_READINESS_MAP = Object.freeze({
+  cinematicDatasetReadinessMapId: "cinematic-dataset-readiness-map-gonegi-v1",
+  activeDatasetReadinessRoute: "dataset-readiness-route-harbor-pilot-001",
+  cinematicDatasetReadinessState: "cinematic dataset readiness staged for 25s pilot harbor sample without real video ingestion",
+  readyDatasetReadinessTraits: Object.freeze(["warm-glaze-dataset-stable", "orchestration-linkage-carry", "soft-linework-dataset-carry"]),
+  pendingDatasetReadinessTraits: Object.freeze(["alternate-dataset-experiment", "ingestion-push-variant"]),
+  cinematicDatasetReadinessScore: 0.886333,
+  realDatasetTransitionLinkageScore: 0.900333,
+} satisfies CinematicDatasetReadinessMap);
+
+const REAL_DATASET_TRANSITION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      realDatasetContinuityReadinessTrend: number;
+      orchestrationToDatasetPersistenceTrend: number;
+      datasetTransitionStabilizationTrend: number;
+      cinematicDatasetNormalizationTrend: number;
+      futureRealVideoDatasetReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    realDatasetContinuityReadinessTrend: 0.354333,
+    orchestrationToDatasetPersistenceTrend: 0.661333,
+    datasetTransitionStabilizationTrend: 0.648333,
+    cinematicDatasetNormalizationTrend: 0.655333,
+    futureRealVideoDatasetReadinessTrend: 0.647333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    realDatasetContinuityReadinessTrend: 0.893333,
+    orchestrationToDatasetPersistenceTrend: 0.888333,
+    datasetTransitionStabilizationTrend: 0.881333,
+    cinematicDatasetNormalizationTrend: 0.896333,
+    futureRealVideoDatasetReadinessTrend: 0.889333,
+  }),
+});
+
+export const REAL_DATASET_TRANSITION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["real dataset continuity readiness trend", "realDatasetContinuityReadinessTrend"],
+  ["orchestration-to-dataset persistence trend", "orchestrationToDatasetPersistenceTrend"],
+  ["dataset transition stabilization trend", "datasetTransitionStabilizationTrend"],
+  ["cinematic dataset normalization trend", "cinematicDatasetNormalizationTrend"],
+  ["future real-video dataset readiness trend", "futureRealVideoDatasetReadinessTrend"],
+] as const);
+
+export const REAL_DATASET_TRANSITION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot real dataset transition orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain orchestration-to-dataset linkage routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified cinematic dataset readiness routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve cinematic dataset normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer dataset ingestion until real dataset transition layer stabilizes", severity: "warning" }),
+] as const satisfies readonly RealDatasetTransitionSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -8317,6 +8438,63 @@ export function groupUnifiedOrchestrationPersistenceTimelineByDimension(
 
 export function buildUnifiedOrchestrationSteeringRecommendations(): readonly UnifiedOrchestrationSteeringRecommendation[] {
   return UNIFIED_ORCHESTRATION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicRealDatasetTransitionLayer(): CinematicRealDatasetTransitionLayer {
+  return CINEMATIC_REAL_DATASET_TRANSITION_LAYER;
+}
+
+export function buildOrchestrationDatasetLinkageBridge(): OrchestrationDatasetLinkageBridge {
+  return ORCHESTRATION_DATASET_LINKAGE_BRIDGE;
+}
+
+export function buildCinematicDatasetReadinessMap(): CinematicDatasetReadinessMap {
+  return CINEMATIC_DATASET_READINESS_MAP;
+}
+
+export function buildRealDatasetTransitionPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REAL_DATASET_TRANSITION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REAL_DATASET_TRANSITION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REAL_DATASET_TRANSITION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupRealDatasetTransitionPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REAL_DATASET_TRANSITION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildRealDatasetTransitionSteeringRecommendations(): readonly RealDatasetTransitionSteeringRecommendation[] {
+  return REAL_DATASET_TRANSITION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
