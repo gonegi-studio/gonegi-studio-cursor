@@ -1409,6 +1409,47 @@ export type EmotionalAtmosphereSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicDirectorIntentLayer = {
+  readonly cinematicDirectorIntentLayerId: string;
+  readonly activeDirectorIntentOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly cinematicDirectingContinuity: string;
+  readonly framingPhilosophyInheritance: string;
+  readonly emotionalDirectingPersistence: string;
+  readonly replaySafeDirectingOrchestration: string;
+  readonly cinematicIntentionNormalization: string;
+  readonly directingStyleStabilization: string;
+  readonly emotionalFramingContinuity: string;
+  readonly longFormDirectingConsistency: string;
+  readonly directorIntentOrchestrationScore: number;
+  readonly directorIntentNormalizationState: string;
+};
+
+export type FramingPhilosophyInheritanceBridge = {
+  readonly framingPhilosophyInheritanceBridgeId: string;
+  readonly activeFramingRoute: string;
+  readonly replayLinkedFramingRoutes: readonly string[];
+  readonly continuitySafeFramingRoutes: readonly string[];
+  readonly highDriftFramingRoutes: readonly string[];
+  readonly framingPhilosophyInheritanceStrength: number;
+  readonly framingLinkageScore: number;
+};
+
+export type EmotionalDirectingConsistencyMap = {
+  readonly emotionalDirectingConsistencyMapId: string;
+  readonly activeDirectingRoute: string;
+  readonly emotionalDirectingReadiness: string;
+  readonly readyDirectingConsistencyTraits: readonly string[];
+  readonly pendingDirectingConsistencyTraits: readonly string[];
+  readonly emotionalDirectingConsistencyScore: number;
+  readonly directingIntentLinkageScore: number;
+};
+
+export type DirectorIntentSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4259,6 +4300,86 @@ export const EMOTIONAL_ATMOSPHERE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer emotion inference until emotional atmosphere layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly EmotionalAtmosphereSteeringRecommendation[]);
 
+export const CINEMATIC_DIRECTOR_INTENT_LAYER = Object.freeze({
+  cinematicDirectorIntentLayerId: "cinematic-director-intent-layer-gonegi-v1",
+  activeDirectorIntentOrchestrationState: "25s-pilot-director-intent-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  cinematicDirectingContinuity: "cinematic directing continuity staged for 25s pilot harbor sample without directing inference",
+  framingPhilosophyInheritance: "framing philosophy inheritance indexed for soft wide hold and mediterranean compositional honesty",
+  emotionalDirectingPersistence: "emotional directing persistence prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeDirectingOrchestration: "replay-safe directing orchestration reserved without scene generation execution",
+  cinematicIntentionNormalization: "cinematic intention normalization locked for warm dissolve directing continuity across pilot beats",
+  directingStyleStabilization: "directing-style stabilization verified against ghibli-base harbor framing profile",
+  emotionalFramingContinuity: "emotional framing continuity mapped for soft carry-over harbor directing warmth",
+  longFormDirectingConsistency: "future long-form directing consistency staged for ten-video expansion target",
+  directorIntentOrchestrationScore: 0.884333,
+  directorIntentNormalizationState: "canonical 25s pilot cinematic director intent orchestration normalization",
+} satisfies CinematicDirectorIntentLayer);
+
+export const FRAMING_PHILOSOPHY_INHERITANCE_BRIDGE = Object.freeze({
+  framingPhilosophyInheritanceBridgeId: "framing-philosophy-inheritance-bridge-gonegi-v1",
+  activeFramingRoute: "framing-route-soft-wide-hold-001",
+  replayLinkedFramingRoutes: Object.freeze(["framing-route-soft-wide-hold-001", "framing-route-harbor-composition-echo-002"]),
+  continuitySafeFramingRoutes: Object.freeze(["framing-route-soft-wide-hold-001", "framing-route-harbor-composition-echo-002"]),
+  highDriftFramingRoutes: Object.freeze(["framing-route-contrast-push-experiment"]),
+  framingPhilosophyInheritanceStrength: 0.880333,
+  framingLinkageScore: 0.894333,
+} satisfies FramingPhilosophyInheritanceBridge);
+
+export const EMOTIONAL_DIRECTING_CONSISTENCY_MAP = Object.freeze({
+  emotionalDirectingConsistencyMapId: "emotional-directing-consistency-map-gonegi-v1",
+  activeDirectingRoute: "directing-route-harbor-pilot-001",
+  emotionalDirectingReadiness: "emotional directing consistency readiness staged for 25s pilot harbor sample",
+  readyDirectingConsistencyTraits: Object.freeze(["harbor-opening-hold", "soft-wide-framing", "warm-emotional-carry"]),
+  pendingDirectingConsistencyTraits: Object.freeze(["alternate-directing-experiment", "framing-push-variant"]),
+  emotionalDirectingConsistencyScore: 0.877333,
+  directingIntentLinkageScore: 0.891333,
+} satisfies EmotionalDirectingConsistencyMap);
+
+const DIRECTOR_INTENT_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicDirectingContinuityTrend: number;
+      framingPhilosophyInheritanceTrend: number;
+      emotionalDirectingPersistenceTrend: number;
+      cinematicIntentionNormalizationTrend: number;
+      longFormDirectingConsistencyTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicDirectingContinuityTrend: 0.345333,
+    framingPhilosophyInheritanceTrend: 0.652333,
+    emotionalDirectingPersistenceTrend: 0.639333,
+    cinematicIntentionNormalizationTrend: 0.646333,
+    longFormDirectingConsistencyTrend: 0.638333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicDirectingContinuityTrend: 0.884333,
+    framingPhilosophyInheritanceTrend: 0.879333,
+    emotionalDirectingPersistenceTrend: 0.872333,
+    cinematicIntentionNormalizationTrend: 0.887333,
+    longFormDirectingConsistencyTrend: 0.880333,
+  }),
+});
+
+export const DIRECTOR_INTENT_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic directing continuity trend", "cinematicDirectingContinuityTrend"],
+  ["framing philosophy inheritance trend", "framingPhilosophyInheritanceTrend"],
+  ["emotional directing persistence trend", "emotionalDirectingPersistenceTrend"],
+  ["cinematic intention normalization trend", "cinematicIntentionNormalizationTrend"],
+  ["long-form directing consistency trend", "longFormDirectingConsistencyTrend"],
+] as const);
+
+export const DIRECTOR_INTENT_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot director intent orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain framing philosophy inheritance readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified emotional directing routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve cinematic intention normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer directing inference until director intent layer stabilizes", severity: "warning" }),
+] as const satisfies readonly DirectorIntentSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -6715,6 +6836,63 @@ export function groupEmotionalAtmospherePersistenceTimelineByDimension(
 
 export function buildEmotionalAtmosphereSteeringRecommendations(): readonly EmotionalAtmosphereSteeringRecommendation[] {
   return EMOTIONAL_ATMOSPHERE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicDirectorIntentLayer(): CinematicDirectorIntentLayer {
+  return CINEMATIC_DIRECTOR_INTENT_LAYER;
+}
+
+export function buildFramingPhilosophyInheritanceBridge(): FramingPhilosophyInheritanceBridge {
+  return FRAMING_PHILOSOPHY_INHERITANCE_BRIDGE;
+}
+
+export function buildEmotionalDirectingConsistencyMap(): EmotionalDirectingConsistencyMap {
+  return EMOTIONAL_DIRECTING_CONSISTENCY_MAP;
+}
+
+export function buildDirectorIntentPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of DIRECTOR_INTENT_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = DIRECTOR_INTENT_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? DIRECTOR_INTENT_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupDirectorIntentPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    DIRECTOR_INTENT_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildDirectorIntentSteeringRecommendations(): readonly DirectorIntentSteeringRecommendation[] {
+  return DIRECTOR_INTENT_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

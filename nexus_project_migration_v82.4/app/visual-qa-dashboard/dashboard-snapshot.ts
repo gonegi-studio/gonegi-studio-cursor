@@ -190,6 +190,11 @@ import {
   buildNostalgicToneInheritanceMap,
   buildEmotionalAtmospherePersistenceTimeline,
   buildEmotionalAtmosphereSteeringRecommendations,
+  buildCinematicDirectorIntentLayer,
+  buildFramingPhilosophyInheritanceBridge,
+  buildEmotionalDirectingConsistencyMap,
+  buildDirectorIntentPersistenceTimeline,
+  buildDirectorIntentSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -416,6 +421,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const nostalgicToneInheritanceMap = buildNostalgicToneInheritanceMap();
   const emotionalAtmospherePersistenceTimeline = buildEmotionalAtmospherePersistenceTimeline(payload);
   const emotionalAtmosphereSteeringRecommendations = buildEmotionalAtmosphereSteeringRecommendations();
+  const cinematicDirectorIntentLayer = buildCinematicDirectorIntentLayer();
+  const framingPhilosophyInheritanceBridge = buildFramingPhilosophyInheritanceBridge();
+  const emotionalDirectingConsistencyMap = buildEmotionalDirectingConsistencyMap();
+  const directorIntentPersistenceTimeline = buildDirectorIntentPersistenceTimeline(payload);
+  const directorIntentSteeringRecommendations = buildDirectorIntentSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -714,6 +724,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `nostalgicToneInheritance:${nostalgicToneInheritanceMap.nostalgicToneInheritanceMapId}:${formatScore3Dec(nostalgicToneInheritanceMap.nostalgicToneInheritanceScore)}:${formatScore3Dec(nostalgicToneInheritanceMap.emotionalSpaceLinkageScore)}:${nostalgicToneInheritanceMap.readyNostalgicToneTraits.join("+")}`,
       formatTimelineSnapshotLine("emotionalAtmosphereTimeline", emotionalAtmospherePersistenceTimeline),
       formatSteerSnapshotLine("emotionalAtmosphereSteer", emotionalAtmosphereSteeringRecommendations),
+    ],
+    [
+      `directorIntent:${cinematicDirectorIntentLayer.cinematicDirectorIntentLayerId}:${cinematicDirectorIntentLayer.pilotVideoMode}:${formatScore3Dec(cinematicDirectorIntentLayer.directorIntentOrchestrationScore)}`,
+      `framingPhilosophy:${framingPhilosophyInheritanceBridge.framingPhilosophyInheritanceBridgeId}:${formatScore3Dec(framingPhilosophyInheritanceBridge.framingPhilosophyInheritanceStrength)}:${formatScore3Dec(framingPhilosophyInheritanceBridge.framingLinkageScore)}:${framingPhilosophyInheritanceBridge.replayLinkedFramingRoutes.join("+")}`,
+      `emotionalDirectingConsistency:${emotionalDirectingConsistencyMap.emotionalDirectingConsistencyMapId}:${formatScore3Dec(emotionalDirectingConsistencyMap.emotionalDirectingConsistencyScore)}:${formatScore3Dec(emotionalDirectingConsistencyMap.directingIntentLinkageScore)}:${emotionalDirectingConsistencyMap.readyDirectingConsistencyTraits.join("+")}`,
+      formatTimelineSnapshotLine("directorIntentTimeline", directorIntentPersistenceTimeline),
+      formatSteerSnapshotLine("directorIntentSteer", directorIntentSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

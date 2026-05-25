@@ -173,6 +173,11 @@ import {
   buildNostalgicToneInheritanceMap,
   buildEmotionalAtmospherePersistenceTimeline,
   buildEmotionalAtmosphereSteeringRecommendations,
+  buildCinematicDirectorIntentLayer,
+  buildFramingPhilosophyInheritanceBridge,
+  buildEmotionalDirectingConsistencyMap,
+  buildDirectorIntentPersistenceTimeline,
+  buildDirectorIntentSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -233,6 +238,7 @@ import {
   groupNarrativeRhythmPersistenceTimelineByDimension,
   groupWorldStatePersistenceTimelineByDimension,
   groupEmotionalAtmospherePersistenceTimelineByDimension,
+  groupDirectorIntentPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -517,6 +523,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const emotionalAtmospherePersistenceTimeline = buildEmotionalAtmospherePersistenceTimeline(payload);
   const emotionalAtmospherePersistenceTimelineGroups = groupEmotionalAtmospherePersistenceTimelineByDimension(emotionalAtmospherePersistenceTimeline);
   const emotionalAtmosphereSteeringRecommendations = buildEmotionalAtmosphereSteeringRecommendations();
+  const cinematicDirectorIntentLayer = buildCinematicDirectorIntentLayer();
+  const framingPhilosophyInheritanceBridge = buildFramingPhilosophyInheritanceBridge();
+  const emotionalDirectingConsistencyMap = buildEmotionalDirectingConsistencyMap();
+  const directorIntentPersistenceTimeline = buildDirectorIntentPersistenceTimeline(payload);
+  const directorIntentPersistenceTimelineGroups = groupDirectorIntentPersistenceTimelineByDimension(directorIntentPersistenceTimeline);
+  const directorIntentSteeringRecommendations = buildDirectorIntentSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2470,6 +2482,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="emotional-atmosphere-steering" title="Emotional Atmosphere Steering Recommendations">
           <SteeringChipList items={emotionalAtmosphereSteeringRecommendations} dataAttr="emotional-atmosphere-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-director-intent-layer" title="Cinematic Director Intent Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-director-intent-layer-id={cinematicDirectorIntentLayer.cinematicDirectorIntentLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Director Intent Layer ID" value={cinematicDirectorIntentLayer.cinematicDirectorIntentLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicDirectorIntentLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Director Intent Orchestration Score" value={formatScore3Dec(cinematicDirectorIntentLayer.directorIntentOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Director Intent Orchestration State" value={cinematicDirectorIntentLayer.activeDirectorIntentOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Directing Continuity" value={cinematicDirectorIntentLayer.cinematicDirectingContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Framing Philosophy Inheritance" value={cinematicDirectorIntentLayer.framingPhilosophyInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Directing Persistence" value={cinematicDirectorIntentLayer.emotionalDirectingPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Directing Orchestration" value={cinematicDirectorIntentLayer.replaySafeDirectingOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Intention Normalization" value={cinematicDirectorIntentLayer.cinematicIntentionNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Directing-Style Stabilization" value={cinematicDirectorIntentLayer.directingStyleStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Framing Continuity" value={cinematicDirectorIntentLayer.emotionalFramingContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Directing Consistency" value={cinematicDirectorIntentLayer.longFormDirectingConsistency} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Director Intent Normalization" value={cinematicDirectorIntentLayer.directorIntentNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="framing-philosophy-inheritance-bridge" title="Framing Philosophy Inheritance Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-framing-philosophy-inheritance-bridge-id={framingPhilosophyInheritanceBridge.framingPhilosophyInheritanceBridgeId}>
+            <p className="text-sm font-black">{framingPhilosophyInheritanceBridge.framingPhilosophyInheritanceBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active framing route · {framingPhilosophyInheritanceBridge.activeFramingRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Framing Philosophy Inheritance Strength" value={formatScore3Dec(framingPhilosophyInheritanceBridge.framingPhilosophyInheritanceStrength)} emphasis />
+              <KeyValueField label="Framing Linkage Score" value={formatScore3Dec(framingPhilosophyInheritanceBridge.framingLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Framing Routes</p><TagList tags={framingPhilosophyInheritanceBridge.replayLinkedFramingRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Framing Routes</p><TagList tags={framingPhilosophyInheritanceBridge.continuitySafeFramingRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Framing Routes</p><TagList tags={framingPhilosophyInheritanceBridge.highDriftFramingRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-directing-consistency-map" title="Emotional Directing Consistency Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-emotional-directing-consistency-map-id={emotionalDirectingConsistencyMap.emotionalDirectingConsistencyMapId}>
+            <p className="text-sm font-black">{emotionalDirectingConsistencyMap.emotionalDirectingConsistencyMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active directing route · {emotionalDirectingConsistencyMap.activeDirectingRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Emotional Directing Consistency Score" value={formatScore3Dec(emotionalDirectingConsistencyMap.emotionalDirectingConsistencyScore)} emphasis />
+              <KeyValueField label="Directing Intent Linkage Score" value={formatScore3Dec(emotionalDirectingConsistencyMap.directingIntentLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Directing Readiness" value={emotionalDirectingConsistencyMap.emotionalDirectingReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Directing Consistency Traits</p><TagList tags={emotionalDirectingConsistencyMap.readyDirectingConsistencyTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Directing Consistency Traits</p><TagList tags={emotionalDirectingConsistencyMap.pendingDirectingConsistencyTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="director-intent-persistence-timeline" title="Director Intent Persistence Timeline">
+          <TimelineTrendGrid groups={directorIntentPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="director-intent-steering" title="Director Intent Steering Recommendations">
+          <SteeringChipList items={directorIntentSteeringRecommendations} dataAttr="director-intent-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
