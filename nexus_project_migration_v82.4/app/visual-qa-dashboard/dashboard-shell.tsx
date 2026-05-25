@@ -213,6 +213,11 @@ import {
   buildCinematicAssemblyOrchestrationMap,
   buildProductionPipelinePersistenceTimeline,
   buildProductionPipelineSteeringRecommendations,
+  buildCinematicUnifiedOrchestrationLayer,
+  buildCrossLayerStabilizationBridge,
+  buildCinematicSystemContinuityMap,
+  buildUnifiedOrchestrationPersistenceTimeline,
+  buildUnifiedOrchestrationSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -281,6 +286,7 @@ import {
   groupReplaySafeGenerationPersistenceTimelineByDimension,
   groupFeatureLengthPersistenceTimelineByDimension,
   groupProductionPipelinePersistenceTimelineByDimension,
+  groupUnifiedOrchestrationPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -613,6 +619,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const productionPipelinePersistenceTimeline = buildProductionPipelinePersistenceTimeline(payload);
   const productionPipelinePersistenceTimelineGroups = groupProductionPipelinePersistenceTimelineByDimension(productionPipelinePersistenceTimeline);
   const productionPipelineSteeringRecommendations = buildProductionPipelineSteeringRecommendations();
+  const cinematicUnifiedOrchestrationLayer = buildCinematicUnifiedOrchestrationLayer();
+  const crossLayerStabilizationBridge = buildCrossLayerStabilizationBridge();
+  const cinematicSystemContinuityMap = buildCinematicSystemContinuityMap();
+  const unifiedOrchestrationPersistenceTimeline = buildUnifiedOrchestrationPersistenceTimeline(payload);
+  const unifiedOrchestrationPersistenceTimelineGroups = groupUnifiedOrchestrationPersistenceTimelineByDimension(unifiedOrchestrationPersistenceTimeline);
+  const unifiedOrchestrationSteeringRecommendations = buildUnifiedOrchestrationSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -3062,6 +3074,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="production-pipeline-steering" title="Production Pipeline Steering Recommendations">
           <SteeringChipList items={productionPipelineSteeringRecommendations} dataAttr="production-pipeline-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-unified-orchestration-layer" title="Cinematic Unified Orchestration Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-unified-orchestration-layer-id={cinematicUnifiedOrchestrationLayer.cinematicUnifiedOrchestrationLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Unified Orchestration Layer ID" value={cinematicUnifiedOrchestrationLayer.cinematicUnifiedOrchestrationLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicUnifiedOrchestrationLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Unified Orchestration Stability Score" value={formatScore3Dec(cinematicUnifiedOrchestrationLayer.unifiedOrchestrationStabilityScore)} emphasis />
+              <KeyValueField label="Active Unified Orchestration Stability State" value={cinematicUnifiedOrchestrationLayer.activeUnifiedOrchestrationStabilityState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Unified Cinematic Continuity" value={cinematicUnifiedOrchestrationLayer.unifiedCinematicContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cross-Layer Persistence" value={cinematicUnifiedOrchestrationLayer.crossLayerPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Orchestration Stabilization" value={cinematicUnifiedOrchestrationLayer.orchestrationStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Unified Routing" value={cinematicUnifiedOrchestrationLayer.replaySafeUnifiedRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Orchestration Normalization" value={cinematicUnifiedOrchestrationLayer.orchestrationNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Stack Stabilization" value={cinematicUnifiedOrchestrationLayer.cinematicStackStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional/Style Continuity Persistence" value={cinematicUnifiedOrchestrationLayer.emotionalStyleContinuityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Future Full-Stack Orchestration Readiness" value={cinematicUnifiedOrchestrationLayer.futureFullStackOrchestrationReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Unified Orchestration Normalization" value={cinematicUnifiedOrchestrationLayer.unifiedOrchestrationNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cross-layer-stabilization-bridge" title="Cross-Layer Stabilization Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cross-layer-stabilization-bridge-id={crossLayerStabilizationBridge.crossLayerStabilizationBridgeId}>
+            <p className="text-sm font-black">{crossLayerStabilizationBridge.crossLayerStabilizationBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active cross-layer route · {crossLayerStabilizationBridge.activeCrossLayerRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Cross-Layer Stabilization Strength" value={formatScore3Dec(crossLayerStabilizationBridge.crossLayerStabilizationStrength)} emphasis />
+              <KeyValueField label="Cross-Layer Linkage Score" value={formatScore3Dec(crossLayerStabilizationBridge.crossLayerLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Cross-Layer Routes</p><TagList tags={crossLayerStabilizationBridge.replayLinkedCrossLayerRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Cross-Layer Routes</p><TagList tags={crossLayerStabilizationBridge.continuitySafeCrossLayerRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Cross-Layer Routes</p><TagList tags={crossLayerStabilizationBridge.highDriftCrossLayerRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-system-continuity-map" title="Cinematic System Continuity Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-system-continuity-map-id={cinematicSystemContinuityMap.cinematicSystemContinuityMapId}>
+            <p className="text-sm font-black">{cinematicSystemContinuityMap.cinematicSystemContinuityMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active system continuity route · {cinematicSystemContinuityMap.activeSystemContinuityRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Cinematic System Continuity Score" value={formatScore3Dec(cinematicSystemContinuityMap.cinematicSystemContinuityScore)} emphasis />
+              <KeyValueField label="Unified Orchestration Linkage Score" value={formatScore3Dec(cinematicSystemContinuityMap.unifiedOrchestrationLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic System Continuity Readiness" value={cinematicSystemContinuityMap.cinematicSystemContinuityReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready System Continuity Traits</p><TagList tags={cinematicSystemContinuityMap.readySystemContinuityTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending System Continuity Traits</p><TagList tags={cinematicSystemContinuityMap.pendingSystemContinuityTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="unified-orchestration-persistence-timeline" title="Unified Orchestration Persistence Timeline">
+          <TimelineTrendGrid groups={unifiedOrchestrationPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="unified-orchestration-steering" title="Unified Orchestration Steering Recommendations">
+          <SteeringChipList items={unifiedOrchestrationSteeringRecommendations} dataAttr="unified-orchestration-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

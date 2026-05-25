@@ -1737,6 +1737,47 @@ export type ProductionPipelineSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicUnifiedOrchestrationLayer = {
+  readonly cinematicUnifiedOrchestrationLayerId: string;
+  readonly activeUnifiedOrchestrationStabilityState: string;
+  readonly pilotVideoMode: string;
+  readonly unifiedCinematicContinuity: string;
+  readonly crossLayerPersistence: string;
+  readonly orchestrationStabilization: string;
+  readonly replaySafeUnifiedRouting: string;
+  readonly orchestrationNormalization: string;
+  readonly cinematicStackStabilization: string;
+  readonly emotionalStyleContinuityPersistence: string;
+  readonly futureFullStackOrchestrationReadiness: string;
+  readonly unifiedOrchestrationStabilityScore: number;
+  readonly unifiedOrchestrationNormalizationState: string;
+};
+
+export type CrossLayerStabilizationBridge = {
+  readonly crossLayerStabilizationBridgeId: string;
+  readonly activeCrossLayerRoute: string;
+  readonly replayLinkedCrossLayerRoutes: readonly string[];
+  readonly continuitySafeCrossLayerRoutes: readonly string[];
+  readonly highDriftCrossLayerRoutes: readonly string[];
+  readonly crossLayerStabilizationStrength: number;
+  readonly crossLayerLinkageScore: number;
+};
+
+export type CinematicSystemContinuityMap = {
+  readonly cinematicSystemContinuityMapId: string;
+  readonly activeSystemContinuityRoute: string;
+  readonly cinematicSystemContinuityReadiness: string;
+  readonly readySystemContinuityTraits: readonly string[];
+  readonly pendingSystemContinuityTraits: readonly string[];
+  readonly cinematicSystemContinuityScore: number;
+  readonly unifiedOrchestrationLinkageScore: number;
+};
+
+export type UnifiedOrchestrationSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -5227,6 +5268,86 @@ export const PRODUCTION_PIPELINE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer render and assembly execution until production pipeline layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly ProductionPipelineSteeringRecommendation[]);
 
+export const CINEMATIC_UNIFIED_ORCHESTRATION_LAYER = Object.freeze({
+  cinematicUnifiedOrchestrationLayerId: "cinematic-unified-orchestration-layer-gonegi-v1",
+  activeUnifiedOrchestrationStabilityState: "25s-pilot-unified-orchestration-stability-ready",
+  pilotVideoMode: "single-25s",
+  unifiedCinematicContinuity: "unified cinematic continuity staged for 25s pilot harbor sample without orchestration runtime execution",
+  crossLayerPersistence: "cross-layer persistence indexed for warm glaze carry-over and mediterranean orchestration honesty",
+  orchestrationStabilization: "orchestration stabilization prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeUnifiedRouting: "replay-safe unified routing reserved without distributed execution or runtime coordination",
+  orchestrationNormalization: "orchestration normalization locked for warm dissolve system-wide continuity across pilot beats",
+  cinematicStackStabilization: "cinematic stack stabilization verified against ghibli-base harbor unified orchestration profile",
+  emotionalStyleContinuityPersistence: "emotional/style continuity persistence mapped for soft carry-over harbor stack warmth",
+  futureFullStackOrchestrationReadiness: "future full-stack orchestration readiness staged for ten-video expansion target without GPU scheduling",
+  unifiedOrchestrationStabilityScore: 0.892333,
+  unifiedOrchestrationNormalizationState: "canonical 25s pilot cinematic unified orchestration stability normalization",
+} satisfies CinematicUnifiedOrchestrationLayer);
+
+export const CROSS_LAYER_STABILIZATION_BRIDGE = Object.freeze({
+  crossLayerStabilizationBridgeId: "cross-layer-stabilization-bridge-gonegi-v1",
+  activeCrossLayerRoute: "cross-layer-route-warm-glaze-unified-001",
+  replayLinkedCrossLayerRoutes: Object.freeze(["cross-layer-route-warm-glaze-unified-001", "cross-layer-route-harbor-stack-echo-002"]),
+  continuitySafeCrossLayerRoutes: Object.freeze(["cross-layer-route-warm-glaze-unified-001", "cross-layer-route-harbor-stack-echo-002"]),
+  highDriftCrossLayerRoutes: Object.freeze(["cross-layer-route-contrast-push-experiment"]),
+  crossLayerStabilizationStrength: 0.888333,
+  crossLayerLinkageScore: 0.902333,
+} satisfies CrossLayerStabilizationBridge);
+
+export const CINEMATIC_SYSTEM_CONTINUITY_MAP = Object.freeze({
+  cinematicSystemContinuityMapId: "cinematic-system-continuity-map-gonegi-v1",
+  activeSystemContinuityRoute: "system-continuity-route-harbor-pilot-001",
+  cinematicSystemContinuityReadiness: "cinematic system continuity readiness staged for 25s pilot harbor sample without orchestration engine execution",
+  readySystemContinuityTraits: Object.freeze(["warm-glaze-stack-stable", "cross-layer-continuity-carry", "soft-linework-unified-carry"]),
+  pendingSystemContinuityTraits: Object.freeze(["alternate-stack-experiment", "orchestration-push-variant"]),
+  cinematicSystemContinuityScore: 0.885333,
+  unifiedOrchestrationLinkageScore: 0.899333,
+} satisfies CinematicSystemContinuityMap);
+
+const UNIFIED_ORCHESTRATION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      unifiedCinematicContinuityTrend: number;
+      crossLayerPersistenceTrend: number;
+      orchestrationStabilizationTrend: number;
+      orchestrationNormalizationTrend: number;
+      futureFullStackOrchestrationReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    unifiedCinematicContinuityTrend: 0.353333,
+    crossLayerPersistenceTrend: 0.660333,
+    orchestrationStabilizationTrend: 0.647333,
+    orchestrationNormalizationTrend: 0.654333,
+    futureFullStackOrchestrationReadinessTrend: 0.646333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    unifiedCinematicContinuityTrend: 0.892333,
+    crossLayerPersistenceTrend: 0.887333,
+    orchestrationStabilizationTrend: 0.880333,
+    orchestrationNormalizationTrend: 0.895333,
+    futureFullStackOrchestrationReadinessTrend: 0.888333,
+  }),
+});
+
+export const UNIFIED_ORCHESTRATION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["unified cinematic continuity trend", "unifiedCinematicContinuityTrend"],
+  ["cross-layer persistence trend", "crossLayerPersistenceTrend"],
+  ["orchestration stabilization trend", "orchestrationStabilizationTrend"],
+  ["orchestration normalization trend", "orchestrationNormalizationTrend"],
+  ["future full-stack orchestration readiness trend", "futureFullStackOrchestrationReadinessTrend"],
+] as const);
+
+export const UNIFIED_ORCHESTRATION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot unified orchestration stability layer", severity: "stable" }),
+  Object.freeze({ label: "maintain cross-layer stabilization routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified cinematic system continuity routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve orchestration normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer orchestration runtime execution until unified layer stabilizes", severity: "warning" }),
+] as const satisfies readonly UnifiedOrchestrationSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -8139,6 +8260,63 @@ export function groupProductionPipelinePersistenceTimelineByDimension(
 
 export function buildProductionPipelineSteeringRecommendations(): readonly ProductionPipelineSteeringRecommendation[] {
   return PRODUCTION_PIPELINE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicUnifiedOrchestrationLayer(): CinematicUnifiedOrchestrationLayer {
+  return CINEMATIC_UNIFIED_ORCHESTRATION_LAYER;
+}
+
+export function buildCrossLayerStabilizationBridge(): CrossLayerStabilizationBridge {
+  return CROSS_LAYER_STABILIZATION_BRIDGE;
+}
+
+export function buildCinematicSystemContinuityMap(): CinematicSystemContinuityMap {
+  return CINEMATIC_SYSTEM_CONTINUITY_MAP;
+}
+
+export function buildUnifiedOrchestrationPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of UNIFIED_ORCHESTRATION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = UNIFIED_ORCHESTRATION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? UNIFIED_ORCHESTRATION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupUnifiedOrchestrationPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    UNIFIED_ORCHESTRATION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildUnifiedOrchestrationSteeringRecommendations(): readonly UnifiedOrchestrationSteeringRecommendation[] {
+  return UNIFIED_ORCHESTRATION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
