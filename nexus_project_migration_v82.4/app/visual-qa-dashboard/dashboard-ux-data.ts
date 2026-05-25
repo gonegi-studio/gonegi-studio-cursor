@@ -1163,6 +1163,47 @@ export type ImageAppSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type StyleCoreOrchestrationLayer = {
+  readonly styleCoreOrchestrationLayerId: string;
+  readonly activeOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly warmEmotionalTextureContinuity: string;
+  readonly ghibliStyleWarmthPersistence: string;
+  readonly painterlyLightingInheritance: string;
+  readonly atmosphericContinuityNormalization: string;
+  readonly cinematicTextureRouting: string;
+  readonly replaySafeStyleInheritance: string;
+  readonly styleCoreStabilizationReadiness: string;
+  readonly imageAppOrchestrationCompatibility: string;
+  readonly styleCoreOrchestrationScore: number;
+  readonly orchestrationNormalizationState: string;
+};
+
+export type WarmToneStyleInheritanceBridge = {
+  readonly warmToneStyleInheritanceBridgeId: string;
+  readonly activeWarmToneRoute: string;
+  readonly replayLinkedWarmToneRoutes: readonly string[];
+  readonly continuitySafeWarmToneRoutes: readonly string[];
+  readonly highDriftWarmToneRoutes: readonly string[];
+  readonly warmToneInheritanceStrength: number;
+  readonly styleInheritanceOrchestrationScore: number;
+};
+
+export type CinematicTextureContinuityMap = {
+  readonly cinematicTextureContinuityMapId: string;
+  readonly activeTextureRoute: string;
+  readonly cinematicTextureRoutingReadiness: string;
+  readonly readyTextureContinuityTraits: readonly string[];
+  readonly pendingTextureContinuityTraits: readonly string[];
+  readonly cinematicTextureContinuityScore: number;
+  readonly textureRoutingLinkageScore: number;
+};
+
+export type StyleCoreSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -3533,6 +3574,86 @@ export const IMAGE_APP_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer API linkage until orchestration bridge stabilizes", severity: "warning" }),
 ] as const satisfies readonly ImageAppSteeringRecommendation[]);
 
+export const STYLE_CORE_ORCHESTRATION_LAYER = Object.freeze({
+  styleCoreOrchestrationLayerId: "style-core-orchestration-layer-gonegi-v1",
+  activeOrchestrationState: "25s-pilot-style-core-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  warmEmotionalTextureContinuity: "warm emotional texture continuity staged for 25s pilot harbor sample",
+  ghibliStyleWarmthPersistence: "Ghibli-style warmth persistence indexed without style transfer execution",
+  painterlyLightingInheritance: "painterly lighting inheritance prepared for warm glaze profile routing",
+  atmosphericContinuityNormalization: "atmospheric continuity normalization locked for pilot orchestration flow",
+  cinematicTextureRouting: "cinematic texture routing mapped for style-core orchestration handoff",
+  replaySafeStyleInheritance: "replay-safe style inheritance reserved without generation execution",
+  styleCoreStabilizationReadiness: "style-core stabilization readiness verified against warm glaze profile",
+  imageAppOrchestrationCompatibility: "image-app orchestration compatibility prepared without API linkage execution",
+  styleCoreOrchestrationScore: 0.870333,
+  orchestrationNormalizationState: "canonical 25s pilot style-core orchestration normalization",
+} satisfies StyleCoreOrchestrationLayer);
+
+export const WARM_TONE_STYLE_INHERITANCE_BRIDGE = Object.freeze({
+  warmToneStyleInheritanceBridgeId: "warm-tone-style-inheritance-bridge-gonegi-v1",
+  activeWarmToneRoute: "warm-tone-route-ghibli-glaze-hold-001",
+  replayLinkedWarmToneRoutes: Object.freeze(["warm-tone-route-ghibli-glaze-hold-001", "warm-tone-route-painterly-echo-002"]),
+  continuitySafeWarmToneRoutes: Object.freeze(["warm-tone-route-ghibli-glaze-hold-001", "warm-tone-route-painterly-echo-002"]),
+  highDriftWarmToneRoutes: Object.freeze(["warm-tone-route-contrast-push-experiment"]),
+  warmToneInheritanceStrength: 0.866333,
+  styleInheritanceOrchestrationScore: 0.880333,
+} satisfies WarmToneStyleInheritanceBridge);
+
+export const CINEMATIC_TEXTURE_CONTINUITY_MAP = Object.freeze({
+  cinematicTextureContinuityMapId: "cinematic-texture-continuity-map-gonegi-v1",
+  activeTextureRoute: "texture-route-atmospheric-warm-hold-001",
+  cinematicTextureRoutingReadiness: "cinematic texture routing readiness staged for 25s pilot sample",
+  readyTextureContinuityTraits: Object.freeze(["warm-glaze-diffusion", "painterly-atmosphere", "ghibli-warmth-haze"]),
+  pendingTextureContinuityTraits: Object.freeze(["harsh-contrast-experiment", "detail-push-texture-variant"]),
+  cinematicTextureContinuityScore: 0.863333,
+  textureRoutingLinkageScore: 0.877333,
+} satisfies CinematicTextureContinuityMap);
+
+const STYLE_DRIFT_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      warmEmotionalTextureContinuityTrend: number;
+      ghibliStyleWarmthPersistenceTrend: number;
+      painterlyLightingInheritanceTrend: number;
+      atmosphericContinuityNormalizationTrend: number;
+      styleCoreStabilizationReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    warmEmotionalTextureContinuityTrend: 0.331333,
+    ghibliStyleWarmthPersistenceTrend: 0.638333,
+    painterlyLightingInheritanceTrend: 0.625333,
+    atmosphericContinuityNormalizationTrend: 0.631333,
+    styleCoreStabilizationReadinessTrend: 0.623333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    warmEmotionalTextureContinuityTrend: 0.870333,
+    ghibliStyleWarmthPersistenceTrend: 0.865333,
+    painterlyLightingInheritanceTrend: 0.858333,
+    atmosphericContinuityNormalizationTrend: 0.873333,
+    styleCoreStabilizationReadinessTrend: 0.866333,
+  }),
+});
+
+export const STYLE_DRIFT_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["warm emotional texture continuity trend", "warmEmotionalTextureContinuityTrend"],
+  ["Ghibli-style warmth persistence trend", "ghibliStyleWarmthPersistenceTrend"],
+  ["painterly lighting inheritance trend", "painterlyLightingInheritanceTrend"],
+  ["atmospheric continuity normalization trend", "atmosphericContinuityNormalizationTrend"],
+  ["style-core stabilization readiness trend", "styleCoreStabilizationReadinessTrend"],
+] as const);
+
+export const STYLE_CORE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot style-core orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain Ghibli-style warm-tone inheritance readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified warm-tone routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve cinematic texture continuity linkage", severity: "stable" }),
+  Object.freeze({ label: "defer style transfer until orchestration layer stabilizes", severity: "warning" }),
+] as const satisfies readonly StyleCoreSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -5647,6 +5768,63 @@ export function groupPromptRecipeRoutingTimelineByDimension(
 
 export function buildImageAppSteeringRecommendations(): readonly ImageAppSteeringRecommendation[] {
   return IMAGE_APP_STEERING_RECOMMENDATIONS;
+}
+
+export function buildStyleCoreOrchestrationLayer(): StyleCoreOrchestrationLayer {
+  return STYLE_CORE_ORCHESTRATION_LAYER;
+}
+
+export function buildWarmToneStyleInheritanceBridge(): WarmToneStyleInheritanceBridge {
+  return WARM_TONE_STYLE_INHERITANCE_BRIDGE;
+}
+
+export function buildCinematicTextureContinuityMap(): CinematicTextureContinuityMap {
+  return CINEMATIC_TEXTURE_CONTINUITY_MAP;
+}
+
+export function buildStyleDriftPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of STYLE_DRIFT_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = STYLE_DRIFT_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? STYLE_DRIFT_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupStyleDriftPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    STYLE_DRIFT_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildStyleCoreSteeringRecommendations(): readonly StyleCoreSteeringRecommendation[] {
+  return STYLE_CORE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

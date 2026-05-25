@@ -143,6 +143,11 @@ import {
   buildCharacterCoreCompatibilityMap,
   buildPromptRecipeRoutingTimeline,
   buildImageAppSteeringRecommendations,
+  buildStyleCoreOrchestrationLayer,
+  buildWarmToneStyleInheritanceBridge,
+  buildCinematicTextureContinuityMap,
+  buildStyleDriftPersistenceTimeline,
+  buildStyleCoreSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -197,6 +202,7 @@ import {
   groupSceneIndexPersistenceTimelineByDimension,
   groupCompositionPatternTimelineByDimension,
   groupPromptRecipeRoutingTimelineByDimension,
+  groupStyleDriftPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -445,6 +451,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const promptRecipeRoutingTimeline = buildPromptRecipeRoutingTimeline(payload);
   const promptRecipeRoutingTimelineGroups = groupPromptRecipeRoutingTimelineByDimension(promptRecipeRoutingTimeline);
   const imageAppSteeringRecommendations = buildImageAppSteeringRecommendations();
+  const styleCoreOrchestrationLayer = buildStyleCoreOrchestrationLayer();
+  const warmToneStyleInheritanceBridge = buildWarmToneStyleInheritanceBridge();
+  const cinematicTextureContinuityMap = buildCinematicTextureContinuityMap();
+  const styleDriftPersistenceTimeline = buildStyleDriftPersistenceTimeline(payload);
+  const styleDriftPersistenceTimelineGroups = groupStyleDriftPersistenceTimelineByDimension(styleDriftPersistenceTimeline);
+  const styleCoreSteeringRecommendations = buildStyleCoreSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2026,6 +2038,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="image-app-steering-readiness" title="Image App Steering Readiness">
           <SteeringChipList items={imageAppSteeringRecommendations} dataAttr="image-app-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="style-core-orchestration-layer" title="Style Core Orchestration Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-style-core-orchestration-layer-id={styleCoreOrchestrationLayer.styleCoreOrchestrationLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Orchestration Layer ID" value={styleCoreOrchestrationLayer.styleCoreOrchestrationLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={styleCoreOrchestrationLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Style-Core Orchestration Score" value={formatScore3Dec(styleCoreOrchestrationLayer.styleCoreOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Orchestration State" value={styleCoreOrchestrationLayer.activeOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Warm Emotional Texture Continuity" value={styleCoreOrchestrationLayer.warmEmotionalTextureContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Ghibli-Style Warmth Persistence" value={styleCoreOrchestrationLayer.ghibliStyleWarmthPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Painterly Lighting Inheritance" value={styleCoreOrchestrationLayer.painterlyLightingInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Atmospheric Continuity Normalization" value={styleCoreOrchestrationLayer.atmosphericContinuityNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Texture Routing" value={styleCoreOrchestrationLayer.cinematicTextureRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Style Inheritance" value={styleCoreOrchestrationLayer.replaySafeStyleInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Style-Core Stabilization Readiness" value={styleCoreOrchestrationLayer.styleCoreStabilizationReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Image App Orchestration Compatibility" value={styleCoreOrchestrationLayer.imageAppOrchestrationCompatibility} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Orchestration Normalization" value={styleCoreOrchestrationLayer.orchestrationNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="warm-tone-style-inheritance-bridge" title="Warm Tone Style Inheritance Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-warm-tone-style-inheritance-bridge-id={warmToneStyleInheritanceBridge.warmToneStyleInheritanceBridgeId}>
+            <p className="text-sm font-black">{warmToneStyleInheritanceBridge.warmToneStyleInheritanceBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active warm-tone route · {warmToneStyleInheritanceBridge.activeWarmToneRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Warm-Tone Inheritance Strength" value={formatScore3Dec(warmToneStyleInheritanceBridge.warmToneInheritanceStrength)} emphasis />
+              <KeyValueField label="Style Inheritance Orchestration Score" value={formatScore3Dec(warmToneStyleInheritanceBridge.styleInheritanceOrchestrationScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Warm-Tone Routes</p><TagList tags={warmToneStyleInheritanceBridge.replayLinkedWarmToneRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Warm-Tone Routes</p><TagList tags={warmToneStyleInheritanceBridge.continuitySafeWarmToneRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Warm-Tone Routes</p><TagList tags={warmToneStyleInheritanceBridge.highDriftWarmToneRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-texture-continuity-map" title="Cinematic Texture Continuity Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-texture-continuity-map-id={cinematicTextureContinuityMap.cinematicTextureContinuityMapId}>
+            <p className="text-sm font-black">{cinematicTextureContinuityMap.cinematicTextureContinuityMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active texture route · {cinematicTextureContinuityMap.activeTextureRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Cinematic Texture Continuity Score" value={formatScore3Dec(cinematicTextureContinuityMap.cinematicTextureContinuityScore)} emphasis />
+              <KeyValueField label="Texture Routing Linkage Score" value={formatScore3Dec(cinematicTextureContinuityMap.textureRoutingLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Texture Routing Readiness" value={cinematicTextureContinuityMap.cinematicTextureRoutingReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Texture Continuity Traits</p><TagList tags={cinematicTextureContinuityMap.readyTextureContinuityTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Texture Continuity Traits</p><TagList tags={cinematicTextureContinuityMap.pendingTextureContinuityTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="style-drift-persistence-timeline" title="Style Drift Persistence Timeline">
+          <TimelineTrendGrid groups={styleDriftPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="style-core-steering" title="Style Core Steering Recommendations">
+          <SteeringChipList items={styleCoreSteeringRecommendations} dataAttr="style-core-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
