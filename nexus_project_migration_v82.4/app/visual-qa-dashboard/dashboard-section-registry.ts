@@ -41,6 +41,7 @@ export type DashboardRenderGroup =
   | "temporal-continuity-orchestration"
   | "multi-scene-memory-orchestration"
   | "long-form-cohesion-orchestration"
+  | "generative-readiness-orchestration"
   | "style"
   | "cinematic"
   | "decision"
@@ -269,25 +270,30 @@ export const VISUAL_QA_DASHBOARD_SECTION_REGISTRY = Object.freeze([
   Object.freeze({ sectionId: "emotional-convergence-map", title: "Emotional Convergence Map", description: "Emotional convergence preparation map", renderGroup: "long-form-cohesion-orchestration", order: 205 }),
   Object.freeze({ sectionId: "long-form-cohesion-persistence-timeline", title: "Long-Form Cohesion Persistence Timeline", description: "Long-form cohesion persistence timeline", renderGroup: "long-form-cohesion-orchestration", order: 206 }),
   Object.freeze({ sectionId: "long-form-cohesion-steering", title: "Long-Form Cohesion Steering Recommendations", description: "Cinematic long-form cohesion orchestration steering recommendations", renderGroup: "long-form-cohesion-orchestration", order: 207 }),
-  Object.freeze({ sectionId: "director-grammar-steering", title: "Director Grammar Steering", description: "Director grammar steering", renderGroup: "cinematic", order: 208 }),
-  Object.freeze({ sectionId: "cinematic-drift-detection", title: "Cinematic Drift Detection", description: "Cinematic drift detection", renderGroup: "cinematic", order: 209 }),
-  Object.freeze({ sectionId: "dataset-identity", title: "Dataset Identity", description: "Dataset identity layer", renderGroup: "cinematic", order: 210 }),
-  Object.freeze({ sectionId: "cinematic-steering-recommendations", title: "Generation Steering Recommendations", description: "Cinematic steering recommendations", renderGroup: "cinematic", order: 211 }),
-  Object.freeze({ sectionId: "decision-summary", title: "QA Decision Summary", description: "QA decision summary", renderGroup: "decision", order: 212 }),
-  Object.freeze({ sectionId: "character-continuity-focus", title: "Character Continuity Focus", description: "Character continuity focus", renderGroup: "decision", order: 213 }),
-  Object.freeze({ sectionId: "prompt-evolution-insights", title: "Prompt Evolution Insights", description: "Prompt evolution insights", renderGroup: "decision", order: 214 }),
-  Object.freeze({ sectionId: "decision-matrix", title: "Visual QA Decision Matrix", description: "Visual QA decision matrix", renderGroup: "decision", order: 215 }),
-  Object.freeze({ sectionId: "retry-steering", title: "Retry Steering", description: "Retry steering rules", renderGroup: "decision", order: 216 }),
-  Object.freeze({ sectionId: "decision-ux", title: "Generation Steering", description: "Generation steering UX", renderGroup: "decision", order: 217 }),
-  Object.freeze({ sectionId: "image-evaluation-intake", title: "Real Image Evaluation Intake", description: "Real image evaluation intake", renderGroup: "cycles", order: 218 }),
-  Object.freeze({ sectionId: "cycle-timeline", title: "Real Cycle Timeline", description: "Real cycle timeline", renderGroup: "cycles", order: 219 }),
-  Object.freeze({ sectionId: "real-test-cycles", title: "Real Test Cycles", description: "Real test cycle cards", renderGroup: "cycles", order: 220 }),
-  Object.freeze({ sectionId: "severity-findings", title: "Visual Findings Severity", description: "Grouped severity findings", renderGroup: "cycles", order: 221 }),
-  Object.freeze({ sectionId: "next-request-improvements", title: "Next Request Improvements", description: "Next request improvements", renderGroup: "cycles", order: 222 }),
-  Object.freeze({ sectionId: "ranking-evolution", title: "Ranking Evolution", description: "Ranking evolution panel", renderGroup: "ranking", order: 223 }),
-  Object.freeze({ sectionId: "ranking-table", title: "Style Stability Ranking", description: "Style stability ranking table", renderGroup: "ranking", order: 224 }),
-  Object.freeze({ sectionId: "heatmap-rows", title: "Regression Heatmap", description: "Regression heatmap rows", renderGroup: "ranking", order: 225 }),
-  Object.freeze({ sectionId: "trend-signals", title: "Trend Signals", description: "Trend signal slots", renderGroup: "ranking", order: 226 }),
+  Object.freeze({ sectionId: "cinematic-generative-readiness-layer", title: "Cinematic Generative Readiness Layer", description: "Canonical 25s pilot cinematic generative readiness orchestration preparation layer", renderGroup: "generative-readiness-orchestration", order: 208 }),
+  Object.freeze({ sectionId: "prompt-route-stabilization-bridge", title: "Prompt Route Stabilization Bridge", description: "Prompt route stabilization preparation bridge", renderGroup: "generative-readiness-orchestration", order: 209 }),
+  Object.freeze({ sectionId: "style-character-generation-compatibility-map", title: "Style Character Generation Compatibility Map", description: "Style/character generation compatibility preparation map", renderGroup: "generative-readiness-orchestration", order: 210 }),
+  Object.freeze({ sectionId: "generative-readiness-persistence-timeline", title: "Generative Readiness Persistence Timeline", description: "Generative readiness persistence timeline", renderGroup: "generative-readiness-orchestration", order: 211 }),
+  Object.freeze({ sectionId: "generative-readiness-steering", title: "Generative Readiness Steering Recommendations", description: "Cinematic generative readiness orchestration steering recommendations", renderGroup: "generative-readiness-orchestration", order: 212 }),
+  Object.freeze({ sectionId: "director-grammar-steering", title: "Director Grammar Steering", description: "Director grammar steering", renderGroup: "cinematic", order: 213 }),
+  Object.freeze({ sectionId: "cinematic-drift-detection", title: "Cinematic Drift Detection", description: "Cinematic drift detection", renderGroup: "cinematic", order: 214 }),
+  Object.freeze({ sectionId: "dataset-identity", title: "Dataset Identity", description: "Dataset identity layer", renderGroup: "cinematic", order: 215 }),
+  Object.freeze({ sectionId: "cinematic-steering-recommendations", title: "Generation Steering Recommendations", description: "Cinematic steering recommendations", renderGroup: "cinematic", order: 216 }),
+  Object.freeze({ sectionId: "decision-summary", title: "QA Decision Summary", description: "QA decision summary", renderGroup: "decision", order: 217 }),
+  Object.freeze({ sectionId: "character-continuity-focus", title: "Character Continuity Focus", description: "Character continuity focus", renderGroup: "decision", order: 218 }),
+  Object.freeze({ sectionId: "prompt-evolution-insights", title: "Prompt Evolution Insights", description: "Prompt evolution insights", renderGroup: "decision", order: 219 }),
+  Object.freeze({ sectionId: "decision-matrix", title: "Visual QA Decision Matrix", description: "Visual QA decision matrix", renderGroup: "decision", order: 220 }),
+  Object.freeze({ sectionId: "retry-steering", title: "Retry Steering", description: "Retry steering rules", renderGroup: "decision", order: 221 }),
+  Object.freeze({ sectionId: "decision-ux", title: "Generation Steering", description: "Generation steering UX", renderGroup: "decision", order: 222 }),
+  Object.freeze({ sectionId: "image-evaluation-intake", title: "Real Image Evaluation Intake", description: "Real image evaluation intake", renderGroup: "cycles", order: 223 }),
+  Object.freeze({ sectionId: "cycle-timeline", title: "Real Cycle Timeline", description: "Real cycle timeline", renderGroup: "cycles", order: 224 }),
+  Object.freeze({ sectionId: "real-test-cycles", title: "Real Test Cycles", description: "Real test cycle cards", renderGroup: "cycles", order: 225 }),
+  Object.freeze({ sectionId: "severity-findings", title: "Visual Findings Severity", description: "Grouped severity findings", renderGroup: "cycles", order: 226 }),
+  Object.freeze({ sectionId: "next-request-improvements", title: "Next Request Improvements", description: "Next request improvements", renderGroup: "cycles", order: 227 }),
+  Object.freeze({ sectionId: "ranking-evolution", title: "Ranking Evolution", description: "Ranking evolution panel", renderGroup: "ranking", order: 228 }),
+  Object.freeze({ sectionId: "ranking-table", title: "Style Stability Ranking", description: "Style stability ranking table", renderGroup: "ranking", order: 229 }),
+  Object.freeze({ sectionId: "heatmap-rows", title: "Regression Heatmap", description: "Regression heatmap rows", renderGroup: "ranking", order: 230 }),
+  Object.freeze({ sectionId: "trend-signals", title: "Trend Signals", description: "Trend signal slots", renderGroup: "ranking", order: 231 }),
 ] as const satisfies readonly DashboardSectionRegistryEntry[]);
 
 export function buildDashboardRenderStabilityGuard(): DashboardRenderStabilityGuard {

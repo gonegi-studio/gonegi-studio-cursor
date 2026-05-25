@@ -193,6 +193,11 @@ import {
   buildEmotionalConvergenceMap,
   buildLongFormCohesionPersistenceTimeline,
   buildLongFormCohesionSteeringRecommendations,
+  buildCinematicGenerativeReadinessLayer,
+  buildPromptRouteStabilizationBridge,
+  buildStyleCharacterGenerationCompatibilityMap,
+  buildGenerativeReadinessPersistenceTimeline,
+  buildGenerativeReadinessSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -257,6 +262,7 @@ import {
   groupTemporalContinuityPersistenceTimelineByDimension,
   groupMultiScenePersistenceTimelineByDimension,
   groupLongFormCohesionPersistenceTimelineByDimension,
+  groupGenerativeReadinessPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -565,6 +571,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const longFormCohesionPersistenceTimeline = buildLongFormCohesionPersistenceTimeline(payload);
   const longFormCohesionPersistenceTimelineGroups = groupLongFormCohesionPersistenceTimelineByDimension(longFormCohesionPersistenceTimeline);
   const longFormCohesionSteeringRecommendations = buildLongFormCohesionSteeringRecommendations();
+  const cinematicGenerativeReadinessLayer = buildCinematicGenerativeReadinessLayer();
+  const promptRouteStabilizationBridge = buildPromptRouteStabilizationBridge();
+  const styleCharacterGenerationCompatibilityMap = buildStyleCharacterGenerationCompatibilityMap();
+  const generativeReadinessPersistenceTimeline = buildGenerativeReadinessPersistenceTimeline(payload);
+  const generativeReadinessPersistenceTimelineGroups = groupGenerativeReadinessPersistenceTimelineByDimension(generativeReadinessPersistenceTimeline);
+  const generativeReadinessSteeringRecommendations = buildGenerativeReadinessSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2766,6 +2778,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="long-form-cohesion-steering" title="Long-Form Cohesion Steering Recommendations">
           <SteeringChipList items={longFormCohesionSteeringRecommendations} dataAttr="long-form-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-generative-readiness-layer" title="Cinematic Generative Readiness Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-generative-readiness-layer-id={cinematicGenerativeReadinessLayer.cinematicGenerativeReadinessLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Generative Readiness Layer ID" value={cinematicGenerativeReadinessLayer.cinematicGenerativeReadinessLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicGenerativeReadinessLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Generative Readiness Orchestration Score" value={formatScore3Dec(cinematicGenerativeReadinessLayer.generativeReadinessOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Generative Readiness Orchestration State" value={cinematicGenerativeReadinessLayer.activeGenerativeReadinessOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Generation Readiness" value={cinematicGenerativeReadinessLayer.cinematicGenerationReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Prompt-Route Persistence" value={cinematicGenerativeReadinessLayer.promptRoutePersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Style/Character Compatibility Continuity" value={cinematicGenerativeReadinessLayer.styleCharacterCompatibilityContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Generation Orchestration" value={cinematicGenerativeReadinessLayer.replaySafeGenerationOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Generation Normalization" value={cinematicGenerativeReadinessLayer.generationNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Generation Stabilization" value={cinematicGenerativeReadinessLayer.cinematicGenerationStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional/Style Continuity Persistence" value={cinematicGenerativeReadinessLayer.emotionalStyleContinuityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Feature-Length Generation Readiness" value={cinematicGenerativeReadinessLayer.featureLengthGenerationReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Generative Readiness Normalization" value={cinematicGenerativeReadinessLayer.generativeReadinessNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="prompt-route-stabilization-bridge" title="Prompt Route Stabilization Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-prompt-route-stabilization-bridge-id={promptRouteStabilizationBridge.promptRouteStabilizationBridgeId}>
+            <p className="text-sm font-black">{promptRouteStabilizationBridge.promptRouteStabilizationBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active prompt route · {promptRouteStabilizationBridge.activePromptRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Prompt Route Stabilization Strength" value={formatScore3Dec(promptRouteStabilizationBridge.promptRouteStabilizationStrength)} emphasis />
+              <KeyValueField label="Prompt Route Linkage Score" value={formatScore3Dec(promptRouteStabilizationBridge.promptRouteLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Prompt Routes</p><TagList tags={promptRouteStabilizationBridge.replayLinkedPromptRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Prompt Routes</p><TagList tags={promptRouteStabilizationBridge.continuitySafePromptRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Prompt Routes</p><TagList tags={promptRouteStabilizationBridge.highDriftPromptRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="style-character-generation-compatibility-map" title="Style Character Generation Compatibility Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-style-character-generation-compatibility-map-id={styleCharacterGenerationCompatibilityMap.styleCharacterGenerationCompatibilityMapId}>
+            <p className="text-sm font-black">{styleCharacterGenerationCompatibilityMap.styleCharacterGenerationCompatibilityMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active compatibility route · {styleCharacterGenerationCompatibilityMap.activeCompatibilityRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Generation Compatibility Score" value={formatScore3Dec(styleCharacterGenerationCompatibilityMap.generationCompatibilityScore)} emphasis />
+              <KeyValueField label="Generative Readiness Linkage Score" value={formatScore3Dec(styleCharacterGenerationCompatibilityMap.generativeReadinessLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Generation Compatibility Readiness" value={styleCharacterGenerationCompatibilityMap.generationCompatibilityReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Compatibility Traits</p><TagList tags={styleCharacterGenerationCompatibilityMap.readyCompatibilityTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Compatibility Traits</p><TagList tags={styleCharacterGenerationCompatibilityMap.pendingCompatibilityTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="generative-readiness-persistence-timeline" title="Generative Readiness Persistence Timeline">
+          <TimelineTrendGrid groups={generativeReadinessPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="generative-readiness-steering" title="Generative Readiness Steering Recommendations">
+          <SteeringChipList items={generativeReadinessSteeringRecommendations} dataAttr="generative-readiness-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

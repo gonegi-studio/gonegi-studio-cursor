@@ -1573,6 +1573,47 @@ export type LongFormCohesionSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicGenerativeReadinessLayer = {
+  readonly cinematicGenerativeReadinessLayerId: string;
+  readonly activeGenerativeReadinessOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly cinematicGenerationReadiness: string;
+  readonly promptRoutePersistence: string;
+  readonly styleCharacterCompatibilityContinuity: string;
+  readonly replaySafeGenerationOrchestration: string;
+  readonly generationNormalization: string;
+  readonly cinematicGenerationStabilization: string;
+  readonly emotionalStyleContinuityPersistence: string;
+  readonly featureLengthGenerationReadiness: string;
+  readonly generativeReadinessOrchestrationScore: number;
+  readonly generativeReadinessNormalizationState: string;
+};
+
+export type PromptRouteStabilizationBridge = {
+  readonly promptRouteStabilizationBridgeId: string;
+  readonly activePromptRoute: string;
+  readonly replayLinkedPromptRoutes: readonly string[];
+  readonly continuitySafePromptRoutes: readonly string[];
+  readonly highDriftPromptRoutes: readonly string[];
+  readonly promptRouteStabilizationStrength: number;
+  readonly promptRouteLinkageScore: number;
+};
+
+export type StyleCharacterGenerationCompatibilityMap = {
+  readonly styleCharacterGenerationCompatibilityMapId: string;
+  readonly activeCompatibilityRoute: string;
+  readonly generationCompatibilityReadiness: string;
+  readonly readyCompatibilityTraits: readonly string[];
+  readonly pendingCompatibilityTraits: readonly string[];
+  readonly generationCompatibilityScore: number;
+  readonly generativeReadinessLinkageScore: number;
+};
+
+export type GenerativeReadinessSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4743,6 +4784,86 @@ export const LONG_FORM_COHESION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer narrative inference until long-form cohesion layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly LongFormCohesionSteeringRecommendation[]);
 
+export const CINEMATIC_GENERATIVE_READINESS_LAYER = Object.freeze({
+  cinematicGenerativeReadinessLayerId: "cinematic-generative-readiness-layer-gonegi-v1",
+  activeGenerativeReadinessOrchestrationState: "25s-pilot-generative-readiness-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  cinematicGenerationReadiness: "cinematic generation readiness staged for 25s pilot harbor sample without image or video generation",
+  promptRoutePersistence: "prompt-route persistence indexed for warm glaze carry-over and mediterranean generation honesty",
+  styleCharacterCompatibilityContinuity: "style/character compatibility continuity prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeGenerationOrchestration: "replay-safe generation orchestration reserved without provider execution",
+  generationNormalization: "generation normalization locked for warm dissolve generation continuity across pilot beats",
+  cinematicGenerationStabilization: "cinematic generation stabilization verified against ghibli-base harbor generative profile",
+  emotionalStyleContinuityPersistence: "emotional/style continuity persistence mapped for soft carry-over harbor generation warmth",
+  featureLengthGenerationReadiness: "future feature-length generation readiness staged for ten-video expansion target",
+  generativeReadinessOrchestrationScore: 0.888333,
+  generativeReadinessNormalizationState: "canonical 25s pilot cinematic generative readiness orchestration normalization",
+} satisfies CinematicGenerativeReadinessLayer);
+
+export const PROMPT_ROUTE_STABILIZATION_BRIDGE = Object.freeze({
+  promptRouteStabilizationBridgeId: "prompt-route-stabilization-bridge-gonegi-v1",
+  activePromptRoute: "prompt-route-warm-glaze-hold-001",
+  replayLinkedPromptRoutes: Object.freeze(["prompt-route-warm-glaze-hold-001", "prompt-route-harbor-preset-echo-002"]),
+  continuitySafePromptRoutes: Object.freeze(["prompt-route-warm-glaze-hold-001", "prompt-route-harbor-preset-echo-002"]),
+  highDriftPromptRoutes: Object.freeze(["prompt-route-contrast-push-experiment"]),
+  promptRouteStabilizationStrength: 0.884333,
+  promptRouteLinkageScore: 0.898333,
+} satisfies PromptRouteStabilizationBridge);
+
+export const STYLE_CHARACTER_GENERATION_COMPATIBILITY_MAP = Object.freeze({
+  styleCharacterGenerationCompatibilityMapId: "style-character-generation-compatibility-map-gonegi-v1",
+  activeCompatibilityRoute: "compatibility-route-harbor-pilot-001",
+  generationCompatibilityReadiness: "style/character generation compatibility readiness staged for 25s pilot harbor sample",
+  readyCompatibilityTraits: Object.freeze(["warm-glaze-style", "character-silhouette-stable", "soft-linework-carry"]),
+  pendingCompatibilityTraits: Object.freeze(["alternate-preset-experiment", "style-push-variant"]),
+  generationCompatibilityScore: 0.881333,
+  generativeReadinessLinkageScore: 0.895333,
+} satisfies StyleCharacterGenerationCompatibilityMap);
+
+const GENERATIVE_READINESS_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicGenerationReadinessTrend: number;
+      promptRoutePersistenceTrend: number;
+      styleCharacterCompatibilityContinuityTrend: number;
+      generationNormalizationTrend: number;
+      featureLengthGenerationReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicGenerationReadinessTrend: 0.349333,
+    promptRoutePersistenceTrend: 0.656333,
+    styleCharacterCompatibilityContinuityTrend: 0.643333,
+    generationNormalizationTrend: 0.650333,
+    featureLengthGenerationReadinessTrend: 0.642333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicGenerationReadinessTrend: 0.888333,
+    promptRoutePersistenceTrend: 0.883333,
+    styleCharacterCompatibilityContinuityTrend: 0.876333,
+    generationNormalizationTrend: 0.891333,
+    featureLengthGenerationReadinessTrend: 0.884333,
+  }),
+});
+
+export const GENERATIVE_READINESS_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic generation readiness trend", "cinematicGenerationReadinessTrend"],
+  ["prompt-route persistence trend", "promptRoutePersistenceTrend"],
+  ["style/character compatibility continuity trend", "styleCharacterCompatibilityContinuityTrend"],
+  ["generation normalization trend", "generationNormalizationTrend"],
+  ["feature-length generation readiness trend", "featureLengthGenerationReadinessTrend"],
+] as const);
+
+export const GENERATIVE_READINESS_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot generative readiness orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain prompt-route stabilization readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified style/character compatibility routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve generation normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer image/video generation until generative readiness layer stabilizes", severity: "warning" }),
+] as const satisfies readonly GenerativeReadinessSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -7427,6 +7548,63 @@ export function groupLongFormCohesionPersistenceTimelineByDimension(
 
 export function buildLongFormCohesionSteeringRecommendations(): readonly LongFormCohesionSteeringRecommendation[] {
   return LONG_FORM_COHESION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicGenerativeReadinessLayer(): CinematicGenerativeReadinessLayer {
+  return CINEMATIC_GENERATIVE_READINESS_LAYER;
+}
+
+export function buildPromptRouteStabilizationBridge(): PromptRouteStabilizationBridge {
+  return PROMPT_ROUTE_STABILIZATION_BRIDGE;
+}
+
+export function buildStyleCharacterGenerationCompatibilityMap(): StyleCharacterGenerationCompatibilityMap {
+  return STYLE_CHARACTER_GENERATION_COMPATIBILITY_MAP;
+}
+
+export function buildGenerativeReadinessPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of GENERATIVE_READINESS_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = GENERATIVE_READINESS_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? GENERATIVE_READINESS_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupGenerativeReadinessPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    GENERATIVE_READINESS_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildGenerativeReadinessSteeringRecommendations(): readonly GenerativeReadinessSteeringRecommendation[] {
+  return GENERATIVE_READINESS_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

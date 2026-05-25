@@ -210,6 +210,11 @@ import {
   buildEmotionalConvergenceMap,
   buildLongFormCohesionPersistenceTimeline,
   buildLongFormCohesionSteeringRecommendations,
+  buildCinematicGenerativeReadinessLayer,
+  buildPromptRouteStabilizationBridge,
+  buildStyleCharacterGenerationCompatibilityMap,
+  buildGenerativeReadinessPersistenceTimeline,
+  buildGenerativeReadinessSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -456,6 +461,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const emotionalConvergenceMap = buildEmotionalConvergenceMap();
   const longFormCohesionPersistenceTimeline = buildLongFormCohesionPersistenceTimeline(payload);
   const longFormCohesionSteeringRecommendations = buildLongFormCohesionSteeringRecommendations();
+  const cinematicGenerativeReadinessLayer = buildCinematicGenerativeReadinessLayer();
+  const promptRouteStabilizationBridge = buildPromptRouteStabilizationBridge();
+  const styleCharacterGenerationCompatibilityMap = buildStyleCharacterGenerationCompatibilityMap();
+  const generativeReadinessPersistenceTimeline = buildGenerativeReadinessPersistenceTimeline(payload);
+  const generativeReadinessSteeringRecommendations = buildGenerativeReadinessSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -782,6 +792,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `emotionalConvergence:${emotionalConvergenceMap.emotionalConvergenceMapId}:${formatScore3Dec(emotionalConvergenceMap.emotionalConvergenceScore)}:${formatScore3Dec(emotionalConvergenceMap.longFormCohesionLinkageScore)}:${emotionalConvergenceMap.readyConvergenceTraits.join("+")}`,
       formatTimelineSnapshotLine("longFormTimeline", longFormCohesionPersistenceTimeline),
       formatSteerSnapshotLine("longFormSteer", longFormCohesionSteeringRecommendations),
+    ],
+    [
+      `generativeReadiness:${cinematicGenerativeReadinessLayer.cinematicGenerativeReadinessLayerId}:${cinematicGenerativeReadinessLayer.pilotVideoMode}:${formatScore3Dec(cinematicGenerativeReadinessLayer.generativeReadinessOrchestrationScore)}`,
+      `promptRouteStabilization:${promptRouteStabilizationBridge.promptRouteStabilizationBridgeId}:${formatScore3Dec(promptRouteStabilizationBridge.promptRouteStabilizationStrength)}:${formatScore3Dec(promptRouteStabilizationBridge.promptRouteLinkageScore)}:${promptRouteStabilizationBridge.replayLinkedPromptRoutes.join("+")}`,
+      `generationCompatibility:${styleCharacterGenerationCompatibilityMap.styleCharacterGenerationCompatibilityMapId}:${formatScore3Dec(styleCharacterGenerationCompatibilityMap.generationCompatibilityScore)}:${formatScore3Dec(styleCharacterGenerationCompatibilityMap.generativeReadinessLinkageScore)}:${styleCharacterGenerationCompatibilityMap.readyCompatibilityTraits.join("+")}`,
+      formatTimelineSnapshotLine("generativeReadinessTimeline", generativeReadinessPersistenceTimeline),
+      formatSteerSnapshotLine("generativeReadinessSteer", generativeReadinessSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);
