@@ -90,6 +90,11 @@ import {
   buildSequenceStateDriftDetection,
   buildSequenceStateTimeline,
   buildSequenceStateSteeringRecommendations,
+  buildCinematicStateGraph,
+  buildMultiSequenceGraphBridge,
+  buildGraphDriftDetection,
+  buildGraphPersistenceTimeline,
+  buildGraphSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -216,6 +221,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const sequenceStateDriftDetection = buildSequenceStateDriftDetection();
   const sequenceStateTimeline = buildSequenceStateTimeline(payload);
   const sequenceStateSteeringRecommendations = buildSequenceStateSteeringRecommendations();
+  const cinematicStateGraph = buildCinematicStateGraph();
+  const multiSequenceGraphBridge = buildMultiSequenceGraphBridge();
+  const graphDriftDetection = buildGraphDriftDetection();
+  const graphPersistenceTimeline = buildGraphPersistenceTimeline(payload);
+  const graphSteeringRecommendations = buildGraphSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -374,6 +384,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("sequenceStateDrift", sequenceStateDriftDetection),
       formatTimelineSnapshotLine("sequenceStateTimeline", sequenceStateTimeline),
       formatSteerSnapshotLine("sequenceStateSteer", sequenceStateSteeringRecommendations),
+    ],
+    [
+      `cinematicGraph:${cinematicStateGraph.cinematicStateGraphId}:${cinematicStateGraph.activeGraphState}:${formatScore3Dec(cinematicStateGraph.cinematicGraphPersistence)}`,
+      `graphBridge:${multiSequenceGraphBridge.multiSequenceGraphBridgeId}:${formatScore3Dec(multiSequenceGraphBridge.graphRoutingStrength)}:${formatScore3Dec(multiSequenceGraphBridge.graphPersistenceScore)}:${multiSequenceGraphBridge.replayLinkedGraphRoutes.join("+")}`,
+      formatDriftSnapshotLine("graphDrift", graphDriftDetection),
+      formatTimelineSnapshotLine("graphTimeline", graphPersistenceTimeline),
+      formatSteerSnapshotLine("graphSteer", graphSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

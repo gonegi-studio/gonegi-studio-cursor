@@ -688,6 +688,36 @@ export type SequenceStateSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicStateGraph = {
+  readonly cinematicStateGraphId: string;
+  readonly activeGraphState: string;
+  readonly priorGraphInheritance: string;
+  readonly nextGraphTransitionReadiness: string;
+  readonly graphContinuityLock: string;
+  readonly cinematicGraphPersistence: number;
+  readonly graphNormalizationState: string;
+};
+
+export type MultiSequenceGraphBridge = {
+  readonly multiSequenceGraphBridgeId: string;
+  readonly activeGraphRoute: string;
+  readonly replayLinkedGraphRoutes: readonly string[];
+  readonly continuitySafeGraphRoutes: readonly string[];
+  readonly highDriftGraphRoutes: readonly string[];
+  readonly graphRoutingStrength: number;
+  readonly graphPersistenceScore: number;
+};
+
+export type GraphDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type GraphSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -2012,6 +2042,77 @@ export const SEQUENCE_STATE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce next-scene readiness instability", severity: "warning" }),
 ] as const satisfies readonly SequenceStateSteeringRecommendation[]);
 
+export const CINEMATIC_STATE_GRAPH = Object.freeze({
+  cinematicStateGraphId: "cinematic-state-graph-gonegi-v1",
+  activeGraphState: "warm-glaze-cinematic-graph-active",
+  priorGraphInheritance: "prior cinematic topology inherited · warm-glaze graph continuity locked",
+  nextGraphTransitionReadiness: "next graph transition prepared · harbor topology staged",
+  graphContinuityLock: "continuity graph locked · multi-sequence inheritance verified",
+  cinematicGraphPersistence: 0.820333,
+  graphNormalizationState: "canonical cinematic graph normalization · narrative transition topology verified",
+} satisfies CinematicStateGraph);
+
+export const MULTI_SEQUENCE_GRAPH_BRIDGE = Object.freeze({
+  multiSequenceGraphBridgeId: "multi-sequence-graph-bridge-gonegi-v1",
+  activeGraphRoute: "graph-route-harbor-warmth-001",
+  replayLinkedGraphRoutes: Object.freeze(["graph-route-harbor-warmth-001", "graph-route-glaze-intro-002"]),
+  continuitySafeGraphRoutes: Object.freeze(["graph-route-harbor-warmth-001", "graph-route-glaze-intro-002"]),
+  highDriftGraphRoutes: Object.freeze(["graph-route-detail-push-experiment"]),
+  graphRoutingStrength: 0.819333,
+  graphPersistenceScore: 0.831333,
+} satisfies MultiSequenceGraphBridge);
+
+export const GRAPH_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic graph fracture", severity: "critical" }),
+  Object.freeze({ label: "sequence graph collapse", severity: "critical" }),
+  Object.freeze({ label: "graph continuity divergence", severity: "warning" }),
+  Object.freeze({ label: "narrative topology mismatch", severity: "warning" }),
+  Object.freeze({ label: "graph transition instability", severity: "warning" }),
+] as const satisfies readonly GraphDriftItem[]);
+
+const GRAPH_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicGraphPersistence: number;
+      graphRoutingContinuity: number;
+      continuityGraphLockTrend: number;
+      narrativeTopologyInheritance: number;
+      nextGraphReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicGraphPersistence: 0.316333,
+    graphRoutingContinuity: 0.623333,
+    continuityGraphLockTrend: 0.609333,
+    narrativeTopologyInheritance: 0.617333,
+    nextGraphReadinessTrend: 0.606333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicGraphPersistence: 0.396333,
+    graphRoutingContinuity: 0.816333,
+    continuityGraphLockTrend: 0.800333,
+    narrativeTopologyInheritance: 0.793333,
+    nextGraphReadinessTrend: 0.827333,
+  }),
+});
+
+export const GRAPH_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic graph persistence", "cinematicGraphPersistence"],
+  ["graph routing continuity", "graphRoutingContinuity"],
+  ["continuity graph lock trend", "continuityGraphLockTrend"],
+  ["narrative topology inheritance", "narrativeTopologyInheritance"],
+  ["next-graph readiness trend", "nextGraphReadinessTrend"],
+] as const);
+
+export const GRAPH_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic graph continuity", severity: "stable" }),
+  Object.freeze({ label: "maintain continuity graph lock", severity: "stable" }),
+  Object.freeze({ label: "avoid sequence graph collapse", severity: "critical" }),
+  Object.freeze({ label: "reduce graph transition instability", severity: "warning" }),
+] as const satisfies readonly GraphSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -3328,6 +3429,63 @@ export function groupSequenceStateTimelineByDimension(
 
 export function buildSequenceStateSteeringRecommendations(): readonly SequenceStateSteeringRecommendation[] {
   return SEQUENCE_STATE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicStateGraph(): CinematicStateGraph {
+  return CINEMATIC_STATE_GRAPH;
+}
+
+export function buildMultiSequenceGraphBridge(): MultiSequenceGraphBridge {
+  return MULTI_SEQUENCE_GRAPH_BRIDGE;
+}
+
+export function buildGraphDriftDetection(): readonly GraphDriftItem[] {
+  return GRAPH_DRIFT_GROUPS;
+}
+
+export function buildGraphPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of GRAPH_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = GRAPH_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? GRAPH_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupGraphPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    GRAPH_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildGraphSteeringRecommendations(): readonly GraphSteeringRecommendation[] {
+  return GRAPH_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

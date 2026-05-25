@@ -73,6 +73,11 @@ import {
   buildSequenceStateDriftDetection,
   buildSequenceStateTimeline,
   buildSequenceStateSteeringRecommendations,
+  buildCinematicStateGraph,
+  buildMultiSequenceGraphBridge,
+  buildGraphDriftDetection,
+  buildGraphPersistenceTimeline,
+  buildGraphSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -113,6 +118,7 @@ import {
   groupReplayEvaluationPersistenceTimelineByDimension,
   groupReplayRuntimePersistenceTimelineByDimension,
   groupSequenceStateTimelineByDimension,
+  groupGraphPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -277,6 +283,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const sequenceStateTimeline = buildSequenceStateTimeline(payload);
   const sequenceStateTimelineGroups = groupSequenceStateTimelineByDimension(sequenceStateTimeline);
   const sequenceStateSteeringRecommendations = buildSequenceStateSteeringRecommendations();
+  const cinematicStateGraph = buildCinematicStateGraph();
+  const multiSequenceGraphBridge = buildMultiSequenceGraphBridge();
+  const graphDriftDetection = buildGraphDriftDetection();
+  const graphPersistenceTimeline = buildGraphPersistenceTimeline(payload);
+  const graphPersistenceTimelineGroups = groupGraphPersistenceTimelineByDimension(graphPersistenceTimeline);
+  const graphSteeringRecommendations = buildGraphSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1070,6 +1082,48 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="sequence-state-steering" title="Sequence State Steering Recommendations">
           <SteeringChipList items={sequenceStateSteeringRecommendations} dataAttr="sequence-state-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-state-graph" title="Cinematic State Graph">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-state-graph-id={cinematicStateGraph.cinematicStateGraphId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="State Graph ID" value={cinematicStateGraph.cinematicStateGraphId} emphasis />
+              <KeyValueField label="Active Graph State" value={cinematicStateGraph.activeGraphState} emphasis />
+              <KeyValueField label="Graph Persistence" value={formatScore3Dec(cinematicStateGraph.cinematicGraphPersistence)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Prior Graph Inheritance" value={cinematicStateGraph.priorGraphInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Next Transition Readiness" value={cinematicStateGraph.nextGraphTransitionReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Graph Continuity Lock" value={cinematicStateGraph.graphContinuityLock} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Graph Normalization" value={cinematicStateGraph.graphNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="multi-sequence-graph-bridge" title="Multi-Sequence Graph Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-multi-sequence-graph-bridge-id={multiSequenceGraphBridge.multiSequenceGraphBridgeId}>
+            <p className="text-sm font-black">{multiSequenceGraphBridge.multiSequenceGraphBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active graph route · {multiSequenceGraphBridge.activeGraphRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(multiSequenceGraphBridge.graphRoutingStrength)} emphasis />
+              <KeyValueField label="Persistence Score" value={formatScore3Dec(multiSequenceGraphBridge.graphPersistenceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Graph Routes</p><TagList tags={multiSequenceGraphBridge.replayLinkedGraphRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Routes</p><TagList tags={multiSequenceGraphBridge.continuitySafeGraphRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Routes</p><TagList tags={multiSequenceGraphBridge.highDriftGraphRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="graph-drift-detection" title="Graph Drift Detection">
+          <DriftList items={graphDriftDetection} dataAttr="graph-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="graph-persistence-timeline" title="Graph Persistence Timeline">
+          <TimelineTrendGrid groups={graphPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="graph-steering" title="Graph Steering Recommendations">
+          <SteeringChipList items={graphSteeringRecommendations} dataAttr="graph-steer" />
         </DashboardSection>
 
         <section data-section="style-core-profile" className="space-y-4">
