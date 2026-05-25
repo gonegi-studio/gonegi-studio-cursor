@@ -88,6 +88,11 @@ import {
   buildIntentDriftDetection,
   buildIntentPersistenceTimeline,
   buildIntentSteeringRecommendations,
+  buildCinematicIntentResolutionGraph,
+  buildIntentResolutionRoutingBridge,
+  buildIntentResolutionDriftDetection,
+  buildIntentResolutionTimeline,
+  buildIntentResolutionSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -131,6 +136,7 @@ import {
   groupGraphPersistenceTimelineByDimension,
   groupEmotionalMemoryTimelineByDimension,
   groupIntentPersistenceTimelineByDimension,
+  groupIntentResolutionTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -313,6 +319,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const intentPersistenceTimeline = buildIntentPersistenceTimeline(payload);
   const intentPersistenceTimelineGroups = groupIntentPersistenceTimelineByDimension(intentPersistenceTimeline);
   const intentSteeringRecommendations = buildIntentSteeringRecommendations();
+  const cinematicIntentResolutionGraph = buildCinematicIntentResolutionGraph();
+  const intentResolutionRoutingBridge = buildIntentResolutionRoutingBridge();
+  const intentResolutionDriftDetection = buildIntentResolutionDriftDetection();
+  const intentResolutionTimeline = buildIntentResolutionTimeline(payload);
+  const intentResolutionTimelineGroups = groupIntentResolutionTimelineByDimension(intentResolutionTimeline);
+  const intentResolutionSteeringRecommendations = buildIntentResolutionSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1333,6 +1345,47 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="intent-steering-recommendations" title="Intent Steering Recommendation Map">
           <SteeringChipList items={intentSteeringRecommendations} dataAttr="intent-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-intent-resolution-graph" title="Cinematic Intent Resolution Graph">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-intent-resolution-graph-id={cinematicIntentResolutionGraph.intentResolutionGraphId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Resolution Graph ID" value={cinematicIntentResolutionGraph.intentResolutionGraphId} emphasis />
+              <KeyValueField label="Active Resolution State" value={cinematicIntentResolutionGraph.activeResolutionState} emphasis />
+              <KeyValueField label="Intent Convergence Score" value={formatScore3Dec(cinematicIntentResolutionGraph.intentConvergenceScore)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Resolution Target" value={cinematicIntentResolutionGraph.emotionalResolutionTarget} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Closure State" value={cinematicIntentResolutionGraph.cinematicClosureState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Resolution Normalization" value={cinematicIntentResolutionGraph.resolutionNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-resolution-routing-bridge" title="Intent Resolution Routing Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-intent-resolution-routing-bridge-id={intentResolutionRoutingBridge.intentResolutionRoutingBridgeId}>
+            <p className="text-sm font-black">{intentResolutionRoutingBridge.intentResolutionRoutingBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active resolution route · {intentResolutionRoutingBridge.activeResolutionRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(intentResolutionRoutingBridge.resolutionRoutingStrength)} emphasis />
+              <KeyValueField label="Resolution Persistence" value={formatScore3Dec(intentResolutionRoutingBridge.cinematicResolutionPersistence)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Resolution Routes</p><TagList tags={intentResolutionRoutingBridge.replayLinkedResolutionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Resolution Routes</p><TagList tags={intentResolutionRoutingBridge.continuitySafeResolutionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Resolution Routes</p><TagList tags={intentResolutionRoutingBridge.highDriftResolutionRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-resolution-drift-detection" title="Intent Resolution Drift Detection">
+          <DriftList items={intentResolutionDriftDetection} dataAttr="intent-resolution-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-resolution-timeline" title="Intent Resolution Timeline">
+          <TimelineTrendGrid groups={intentResolutionTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-resolution-steering" title="Intent Resolution Steering Recommendations">
+          <SteeringChipList items={intentResolutionSteeringRecommendations} dataAttr="intent-resolution-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

@@ -105,6 +105,11 @@ import {
   buildIntentDriftDetection,
   buildIntentPersistenceTimeline,
   buildIntentSteeringRecommendations,
+  buildCinematicIntentResolutionGraph,
+  buildIntentResolutionRoutingBridge,
+  buildIntentResolutionDriftDetection,
+  buildIntentResolutionTimeline,
+  buildIntentResolutionSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -246,6 +251,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const intentDriftDetection = buildIntentDriftDetection();
   const intentPersistenceTimeline = buildIntentPersistenceTimeline(payload);
   const intentSteeringRecommendations = buildIntentSteeringRecommendations();
+  const cinematicIntentResolutionGraph = buildCinematicIntentResolutionGraph();
+  const intentResolutionRoutingBridge = buildIntentResolutionRoutingBridge();
+  const intentResolutionDriftDetection = buildIntentResolutionDriftDetection();
+  const intentResolutionTimeline = buildIntentResolutionTimeline(payload);
+  const intentResolutionSteeringRecommendations = buildIntentResolutionSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -425,6 +435,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("intentDrift", intentDriftDetection),
       formatTimelineSnapshotLine("intentTimeline", intentPersistenceTimeline),
       formatSteerSnapshotLine("intentSteer", intentSteeringRecommendations),
+    ],
+    [
+      `intentResolution:${cinematicIntentResolutionGraph.intentResolutionGraphId}:${cinematicIntentResolutionGraph.activeResolutionState}:${formatScore3Dec(cinematicIntentResolutionGraph.intentConvergenceScore)}`,
+      `intentResolutionBridge:${intentResolutionRoutingBridge.intentResolutionRoutingBridgeId}:${formatScore3Dec(intentResolutionRoutingBridge.resolutionRoutingStrength)}:${formatScore3Dec(intentResolutionRoutingBridge.cinematicResolutionPersistence)}:${intentResolutionRoutingBridge.replayLinkedResolutionRoutes.join("+")}`,
+      formatDriftSnapshotLine("intentResolutionDrift", intentResolutionDriftDetection),
+      formatTimelineSnapshotLine("intentResolutionTimeline", intentResolutionTimeline),
+      formatSteerSnapshotLine("intentResolutionSteer", intentResolutionSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);
