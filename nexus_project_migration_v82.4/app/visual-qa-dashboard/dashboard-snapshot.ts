@@ -95,6 +95,11 @@ import {
   buildGraphDriftDetection,
   buildGraphPersistenceTimeline,
   buildGraphSteeringRecommendations,
+  buildCinematicEmotionalMemoryGraph,
+  buildEmotionalTransitionMemoryBridge,
+  buildEmotionalMemoryDriftDetection,
+  buildEmotionalMemoryTimeline,
+  buildEmotionalMemorySteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -226,6 +231,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const graphDriftDetection = buildGraphDriftDetection();
   const graphPersistenceTimeline = buildGraphPersistenceTimeline(payload);
   const graphSteeringRecommendations = buildGraphSteeringRecommendations();
+  const cinematicEmotionalMemoryGraph = buildCinematicEmotionalMemoryGraph();
+  const emotionalTransitionMemoryBridge = buildEmotionalTransitionMemoryBridge();
+  const emotionalMemoryDriftDetection = buildEmotionalMemoryDriftDetection();
+  const emotionalMemoryTimeline = buildEmotionalMemoryTimeline(payload);
+  const emotionalMemorySteeringRecommendations = buildEmotionalMemorySteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -391,6 +401,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("graphDrift", graphDriftDetection),
       formatTimelineSnapshotLine("graphTimeline", graphPersistenceTimeline),
       formatSteerSnapshotLine("graphSteer", graphSteeringRecommendations),
+    ],
+    [
+      `emotionalMemoryGraph:${cinematicEmotionalMemoryGraph.emotionalMemoryGraphId}:${cinematicEmotionalMemoryGraph.activeEmotionalMemoryState}:${formatScore3Dec(cinematicEmotionalMemoryGraph.emotionalMemoryPersistence)}`,
+      `emotionalTransitionBridge:${emotionalTransitionMemoryBridge.emotionalTransitionBridgeId}:${formatScore3Dec(emotionalTransitionMemoryBridge.emotionalTransitionStrength)}:${formatScore3Dec(emotionalTransitionMemoryBridge.emotionalTransitionPersistence)}:${emotionalTransitionMemoryBridge.replayLinkedEmotionalTransitions.join("+")}`,
+      formatDriftSnapshotLine("emotionalMemoryDrift", emotionalMemoryDriftDetection),
+      formatTimelineSnapshotLine("emotionalMemoryTimeline", emotionalMemoryTimeline),
+      formatSteerSnapshotLine("emotionalMemorySteer", emotionalMemorySteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

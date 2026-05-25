@@ -718,6 +718,36 @@ export type GraphSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicEmotionalMemoryGraph = {
+  readonly emotionalMemoryGraphId: string;
+  readonly activeEmotionalMemoryState: string;
+  readonly inheritedEmotionalTone: string;
+  readonly emotionalPersistenceLock: string;
+  readonly emotionalCarryOverState: string;
+  readonly cinematicMemoryCompatibility: string;
+  readonly emotionalMemoryPersistence: number;
+};
+
+export type EmotionalTransitionMemoryBridge = {
+  readonly emotionalTransitionBridgeId: string;
+  readonly activeEmotionalTransition: string;
+  readonly replayLinkedEmotionalTransitions: readonly string[];
+  readonly continuitySafeEmotionalTransitions: readonly string[];
+  readonly highDriftEmotionalTransitions: readonly string[];
+  readonly emotionalTransitionStrength: number;
+  readonly emotionalTransitionPersistence: number;
+};
+
+export type EmotionalMemoryDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type EmotionalMemorySteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -2113,6 +2143,78 @@ export const GRAPH_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce graph transition instability", severity: "warning" }),
 ] as const satisfies readonly GraphSteeringRecommendation[]);
 
+export const CINEMATIC_EMOTIONAL_MEMORY_GRAPH = Object.freeze({
+  emotionalMemoryGraphId: "emotional-memory-graph-gonegi-v1",
+  activeEmotionalMemoryState: "warm-harbor-emotional-memory",
+  inheritedEmotionalTone: "soft nostalgic warmth inherited",
+  emotionalPersistenceLock: "cinematic emotional persistence locked",
+  emotionalCarryOverState: "prior-scene emotional resonance preserved",
+  cinematicMemoryCompatibility: "continuity-safe emotional memory orchestration",
+  emotionalMemoryPersistence: 0.826333,
+} satisfies CinematicEmotionalMemoryGraph);
+
+export const EMOTIONAL_TRANSITION_MEMORY_BRIDGE = Object.freeze({
+  emotionalTransitionBridgeId: "emotional-transition-memory-bridge-gonegi-v1",
+  activeEmotionalTransition: "emotional-transition-harbor-warmth-001",
+  replayLinkedEmotionalTransitions: Object.freeze(["emotional-transition-harbor-warmth-001", "emotional-transition-glaze-intro-002"]),
+  continuitySafeEmotionalTransitions: Object.freeze(["emotional-transition-harbor-warmth-001", "emotional-transition-glaze-intro-002"]),
+  highDriftEmotionalTransitions: Object.freeze(["emotional-transition-detail-push-experiment"]),
+  emotionalTransitionStrength: 0.823333,
+  emotionalTransitionPersistence: 0.831333,
+} satisfies EmotionalTransitionMemoryBridge);
+
+export const EMOTIONAL_MEMORY_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "emotional memory fracture", severity: "critical" }),
+  Object.freeze({ label: "emotional continuity collapse", severity: "critical" }),
+  Object.freeze({ label: "cinematic resonance instability", severity: "warning" }),
+  Object.freeze({ label: "abrupt emotional transition divergence", severity: "warning" }),
+  Object.freeze({ label: "emotional inheritance mismatch", severity: "warning" }),
+] as const satisfies readonly EmotionalMemoryDriftItem[]);
+
+const EMOTIONAL_MEMORY_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      emotionalMemoryPersistence: number;
+      cinematicResonanceContinuity: number;
+      emotionalInheritanceStability: number;
+      sceneEmotionalCarryOverTrend: number;
+      emotionalPacingContinuity: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    emotionalMemoryPersistence: 0.312333,
+    cinematicResonanceContinuity: 0.618333,
+    emotionalInheritanceStability: 0.605333,
+    sceneEmotionalCarryOverTrend: 0.611333,
+    emotionalPacingContinuity: 0.603333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    emotionalMemoryPersistence: 0.826333,
+    cinematicResonanceContinuity: 0.819333,
+    emotionalInheritanceStability: 0.812333,
+    sceneEmotionalCarryOverTrend: 0.828333,
+    emotionalPacingContinuity: 0.821333,
+  }),
+});
+
+export const EMOTIONAL_MEMORY_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["emotional memory persistence", "emotionalMemoryPersistence"],
+  ["cinematic resonance continuity", "cinematicResonanceContinuity"],
+  ["emotional inheritance stability", "emotionalInheritanceStability"],
+  ["scene emotional carry-over trend", "sceneEmotionalCarryOverTrend"],
+  ["emotional pacing continuity", "emotionalPacingContinuity"],
+] as const);
+
+export const EMOTIONAL_MEMORY_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve emotional resonance continuity", severity: "stable" }),
+  Object.freeze({ label: "maintain cinematic emotional inheritance", severity: "stable" }),
+  Object.freeze({ label: "avoid abrupt emotional transitions", severity: "critical" }),
+  Object.freeze({ label: "preserve nostalgic warmth persistence", severity: "stable" }),
+  Object.freeze({ label: "reduce emotional fragmentation pressure", severity: "warning" }),
+] as const satisfies readonly EmotionalMemorySteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -3486,6 +3588,63 @@ export function groupGraphPersistenceTimelineByDimension(
 
 export function buildGraphSteeringRecommendations(): readonly GraphSteeringRecommendation[] {
   return GRAPH_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicEmotionalMemoryGraph(): CinematicEmotionalMemoryGraph {
+  return CINEMATIC_EMOTIONAL_MEMORY_GRAPH;
+}
+
+export function buildEmotionalTransitionMemoryBridge(): EmotionalTransitionMemoryBridge {
+  return EMOTIONAL_TRANSITION_MEMORY_BRIDGE;
+}
+
+export function buildEmotionalMemoryDriftDetection(): readonly EmotionalMemoryDriftItem[] {
+  return EMOTIONAL_MEMORY_DRIFT_GROUPS;
+}
+
+export function buildEmotionalMemoryTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of EMOTIONAL_MEMORY_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = EMOTIONAL_MEMORY_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? EMOTIONAL_MEMORY_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupEmotionalMemoryTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    EMOTIONAL_MEMORY_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildEmotionalMemorySteeringRecommendations(): readonly EmotionalMemorySteeringRecommendation[] {
+  return EMOTIONAL_MEMORY_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

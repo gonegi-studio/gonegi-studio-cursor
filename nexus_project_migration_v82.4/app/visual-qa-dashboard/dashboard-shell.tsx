@@ -78,6 +78,11 @@ import {
   buildGraphDriftDetection,
   buildGraphPersistenceTimeline,
   buildGraphSteeringRecommendations,
+  buildCinematicEmotionalMemoryGraph,
+  buildEmotionalTransitionMemoryBridge,
+  buildEmotionalMemoryDriftDetection,
+  buildEmotionalMemoryTimeline,
+  buildEmotionalMemorySteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -119,6 +124,7 @@ import {
   groupReplayRuntimePersistenceTimelineByDimension,
   groupSequenceStateTimelineByDimension,
   groupGraphPersistenceTimelineByDimension,
+  groupEmotionalMemoryTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -289,6 +295,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const graphPersistenceTimeline = buildGraphPersistenceTimeline(payload);
   const graphPersistenceTimelineGroups = groupGraphPersistenceTimelineByDimension(graphPersistenceTimeline);
   const graphSteeringRecommendations = buildGraphSteeringRecommendations();
+  const cinematicEmotionalMemoryGraph = buildCinematicEmotionalMemoryGraph();
+  const emotionalTransitionMemoryBridge = buildEmotionalTransitionMemoryBridge();
+  const emotionalMemoryDriftDetection = buildEmotionalMemoryDriftDetection();
+  const emotionalMemoryTimeline = buildEmotionalMemoryTimeline(payload);
+  const emotionalMemoryTimelineGroups = groupEmotionalMemoryTimelineByDimension(emotionalMemoryTimeline);
+  const emotionalMemorySteeringRecommendations = buildEmotionalMemorySteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1225,6 +1237,48 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
             </dl>
           </article>
         </section>
+
+        <DashboardSection sectionId="cinematic-emotional-memory-graph" title="Cinematic Emotional Memory Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-emotional-memory-graph-id={cinematicEmotionalMemoryGraph.emotionalMemoryGraphId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Memory Graph ID" value={cinematicEmotionalMemoryGraph.emotionalMemoryGraphId} emphasis />
+              <KeyValueField label="Active Emotional Memory State" value={cinematicEmotionalMemoryGraph.activeEmotionalMemoryState} emphasis />
+              <KeyValueField label="Emotional Memory Persistence" value={formatScore3Dec(cinematicEmotionalMemoryGraph.emotionalMemoryPersistence)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Inherited Emotional Tone" value={cinematicEmotionalMemoryGraph.inheritedEmotionalTone} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Persistence Lock" value={cinematicEmotionalMemoryGraph.emotionalPersistenceLock} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Carry-Over State" value={cinematicEmotionalMemoryGraph.emotionalCarryOverState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Memory Compatibility" value={cinematicEmotionalMemoryGraph.cinematicMemoryCompatibility} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-transition-memory-bridge" title="Emotional Transition Memory Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-emotional-transition-memory-bridge-id={emotionalTransitionMemoryBridge.emotionalTransitionBridgeId}>
+            <p className="text-sm font-black">{emotionalTransitionMemoryBridge.emotionalTransitionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active emotional transition · {emotionalTransitionMemoryBridge.activeEmotionalTransition}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Transition Strength" value={formatScore3Dec(emotionalTransitionMemoryBridge.emotionalTransitionStrength)} emphasis />
+              <KeyValueField label="Transition Persistence" value={formatScore3Dec(emotionalTransitionMemoryBridge.emotionalTransitionPersistence)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Emotional Transitions</p><TagList tags={emotionalTransitionMemoryBridge.replayLinkedEmotionalTransitions} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Transitions</p><TagList tags={emotionalTransitionMemoryBridge.continuitySafeEmotionalTransitions} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Transitions</p><TagList tags={emotionalTransitionMemoryBridge.highDriftEmotionalTransitions} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-memory-drift-detection" title="Emotional Memory Drift Detection">
+          <DriftList items={emotionalMemoryDriftDetection} dataAttr="emotional-memory-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-memory-timeline" title="Emotional Memory Timeline">
+          <TimelineTrendGrid groups={emotionalMemoryTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-memory-steering" title="Emotional Memory Steering Recommendations">
+          <SteeringChipList items={emotionalMemorySteeringRecommendations} dataAttr="emotional-memory-steer" />
+        </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
           <SectionTitle>Director Grammar Steering</SectionTitle>
