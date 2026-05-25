@@ -1655,6 +1655,47 @@ export type ReplaySafeGenerationSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicFeatureLengthReadinessLayer = {
+  readonly cinematicFeatureLengthReadinessLayerId: string;
+  readonly activeFeatureLengthExpansionOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly featureLengthCinematicContinuity: string;
+  readonly longDurationPersistence: string;
+  readonly scalabilityOrchestrationContinuity: string;
+  readonly replaySafeFeatureExpansion: string;
+  readonly expansionNormalization: string;
+  readonly cinematicScalabilityStabilization: string;
+  readonly emotionalContinuityPersistence: string;
+  readonly futureFullAnimationReadiness: string;
+  readonly featureLengthExpansionOrchestrationScore: number;
+  readonly featureLengthExpansionNormalizationState: string;
+};
+
+export type LongDurationContinuityBridge = {
+  readonly longDurationContinuityBridgeId: string;
+  readonly activeLongDurationRoute: string;
+  readonly replayLinkedLongDurationRoutes: readonly string[];
+  readonly continuitySafeLongDurationRoutes: readonly string[];
+  readonly highDriftLongDurationRoutes: readonly string[];
+  readonly longDurationContinuityStrength: number;
+  readonly longDurationLinkageScore: number;
+};
+
+export type ScalabilityOrchestrationMap = {
+  readonly scalabilityOrchestrationMapId: string;
+  readonly activeScalabilityRoute: string;
+  readonly scalabilityOrchestrationReadiness: string;
+  readonly readyScalabilityTraits: readonly string[];
+  readonly pendingScalabilityTraits: readonly string[];
+  readonly scalabilityOrchestrationScore: number;
+  readonly featureLengthExpansionLinkageScore: number;
+};
+
+export type FeatureLengthExpansionSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4985,6 +5026,86 @@ export const REPLAY_SAFE_GENERATION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer replay generation until replay-safe layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly ReplaySafeGenerationSteeringRecommendation[]);
 
+export const CINEMATIC_FEATURE_LENGTH_READINESS_LAYER = Object.freeze({
+  cinematicFeatureLengthReadinessLayerId: "cinematic-feature-length-readiness-layer-gonegi-v1",
+  activeFeatureLengthExpansionOrchestrationState: "25s-pilot-feature-length-expansion-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  featureLengthCinematicContinuity: "feature-length cinematic continuity staged for 25s pilot harbor sample without full animation generation",
+  longDurationPersistence: "long-duration persistence indexed for warm glaze carry-over and mediterranean expansion honesty",
+  scalabilityOrchestrationContinuity: "scalability orchestration continuity prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeFeatureExpansion: "replay-safe feature expansion reserved without render or training pipeline execution",
+  expansionNormalization: "expansion normalization locked for warm dissolve feature-length continuity across pilot beats",
+  cinematicScalabilityStabilization: "cinematic scalability stabilization verified against ghibli-base harbor feature-length profile",
+  emotionalContinuityPersistence: "emotional continuity persistence mapped for soft carry-over harbor expansion warmth",
+  futureFullAnimationReadiness: "future full-animation readiness staged for ten-video expansion target without GPU orchestration",
+  featureLengthExpansionOrchestrationScore: 0.890333,
+  featureLengthExpansionNormalizationState: "canonical 25s pilot cinematic feature-length expansion orchestration normalization",
+} satisfies CinematicFeatureLengthReadinessLayer);
+
+export const LONG_DURATION_CONTINUITY_BRIDGE = Object.freeze({
+  longDurationContinuityBridgeId: "long-duration-continuity-bridge-gonegi-v1",
+  activeLongDurationRoute: "long-duration-route-warm-glaze-expansion-001",
+  replayLinkedLongDurationRoutes: Object.freeze(["long-duration-route-warm-glaze-expansion-001", "long-duration-route-harbor-arc-echo-002"]),
+  continuitySafeLongDurationRoutes: Object.freeze(["long-duration-route-warm-glaze-expansion-001", "long-duration-route-harbor-arc-echo-002"]),
+  highDriftLongDurationRoutes: Object.freeze(["long-duration-route-contrast-push-experiment"]),
+  longDurationContinuityStrength: 0.886333,
+  longDurationLinkageScore: 0.900333,
+} satisfies LongDurationContinuityBridge);
+
+export const SCALABILITY_ORCHESTRATION_MAP = Object.freeze({
+  scalabilityOrchestrationMapId: "scalability-orchestration-map-gonegi-v1",
+  activeScalabilityRoute: "scalability-route-harbor-pilot-001",
+  scalabilityOrchestrationReadiness: "scalability orchestration readiness staged for 25s pilot harbor sample without render execution",
+  readyScalabilityTraits: Object.freeze(["warm-glaze-expansion-stable", "long-duration-continuity-carry", "soft-linework-scale-carry"]),
+  pendingScalabilityTraits: Object.freeze(["alternate-expansion-experiment", "scale-push-variant"]),
+  scalabilityOrchestrationScore: 0.883333,
+  featureLengthExpansionLinkageScore: 0.897333,
+} satisfies ScalabilityOrchestrationMap);
+
+const FEATURE_LENGTH_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      featureLengthCinematicContinuityTrend: number;
+      longDurationPersistenceTrend: number;
+      scalabilityOrchestrationContinuityTrend: number;
+      expansionNormalizationTrend: number;
+      futureFullAnimationReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    featureLengthCinematicContinuityTrend: 0.351333,
+    longDurationPersistenceTrend: 0.658333,
+    scalabilityOrchestrationContinuityTrend: 0.645333,
+    expansionNormalizationTrend: 0.652333,
+    futureFullAnimationReadinessTrend: 0.644333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    featureLengthCinematicContinuityTrend: 0.890333,
+    longDurationPersistenceTrend: 0.885333,
+    scalabilityOrchestrationContinuityTrend: 0.878333,
+    expansionNormalizationTrend: 0.893333,
+    futureFullAnimationReadinessTrend: 0.886333,
+  }),
+});
+
+export const FEATURE_LENGTH_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["feature-length cinematic continuity trend", "featureLengthCinematicContinuityTrend"],
+  ["long-duration persistence trend", "longDurationPersistenceTrend"],
+  ["scalability orchestration continuity trend", "scalabilityOrchestrationContinuityTrend"],
+  ["expansion normalization trend", "expansionNormalizationTrend"],
+  ["future full-animation readiness trend", "futureFullAnimationReadinessTrend"],
+] as const);
+
+export const FEATURE_LENGTH_EXPANSION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot feature-length expansion orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain long-duration continuity routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified scalability orchestration routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve expansion normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer full animation generation until feature-length layer stabilizes", severity: "warning" }),
+] as const satisfies readonly FeatureLengthExpansionSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -7783,6 +7904,63 @@ export function groupReplaySafeGenerationPersistenceTimelineByDimension(
 
 export function buildReplaySafeGenerationSteeringRecommendations(): readonly ReplaySafeGenerationSteeringRecommendation[] {
   return REPLAY_SAFE_GENERATION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicFeatureLengthReadinessLayer(): CinematicFeatureLengthReadinessLayer {
+  return CINEMATIC_FEATURE_LENGTH_READINESS_LAYER;
+}
+
+export function buildLongDurationContinuityBridge(): LongDurationContinuityBridge {
+  return LONG_DURATION_CONTINUITY_BRIDGE;
+}
+
+export function buildScalabilityOrchestrationMap(): ScalabilityOrchestrationMap {
+  return SCALABILITY_ORCHESTRATION_MAP;
+}
+
+export function buildFeatureLengthPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of FEATURE_LENGTH_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = FEATURE_LENGTH_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? FEATURE_LENGTH_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupFeatureLengthPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    FEATURE_LENGTH_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildFeatureLengthExpansionSteeringRecommendations(): readonly FeatureLengthExpansionSteeringRecommendation[] {
+  return FEATURE_LENGTH_EXPANSION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

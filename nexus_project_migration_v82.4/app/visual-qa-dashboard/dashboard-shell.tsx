@@ -203,6 +203,11 @@ import {
   buildRegenerationContinuityMap,
   buildReplaySafeGenerationPersistenceTimeline,
   buildReplaySafeGenerationSteeringRecommendations,
+  buildCinematicFeatureLengthReadinessLayer,
+  buildLongDurationContinuityBridge,
+  buildScalabilityOrchestrationMap,
+  buildFeatureLengthPersistenceTimeline,
+  buildFeatureLengthExpansionSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -269,6 +274,7 @@ import {
   groupLongFormCohesionPersistenceTimelineByDimension,
   groupGenerativeReadinessPersistenceTimelineByDimension,
   groupReplaySafeGenerationPersistenceTimelineByDimension,
+  groupFeatureLengthPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -589,6 +595,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const replaySafeGenerationPersistenceTimeline = buildReplaySafeGenerationPersistenceTimeline(payload);
   const replaySafeGenerationPersistenceTimelineGroups = groupReplaySafeGenerationPersistenceTimelineByDimension(replaySafeGenerationPersistenceTimeline);
   const replaySafeGenerationSteeringRecommendations = buildReplaySafeGenerationSteeringRecommendations();
+  const cinematicFeatureLengthReadinessLayer = buildCinematicFeatureLengthReadinessLayer();
+  const longDurationContinuityBridge = buildLongDurationContinuityBridge();
+  const scalabilityOrchestrationMap = buildScalabilityOrchestrationMap();
+  const featureLengthPersistenceTimeline = buildFeatureLengthPersistenceTimeline(payload);
+  const featureLengthPersistenceTimelineGroups = groupFeatureLengthPersistenceTimelineByDimension(featureLengthPersistenceTimeline);
+  const featureLengthExpansionSteeringRecommendations = buildFeatureLengthExpansionSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2914,6 +2926,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="replay-safe-generation-steering" title="Replay-Safe Generation Steering Recommendations">
           <SteeringChipList items={replaySafeGenerationSteeringRecommendations} dataAttr="replay-safe-generation-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-feature-length-readiness-layer" title="Cinematic Feature-Length Readiness Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-feature-length-readiness-layer-id={cinematicFeatureLengthReadinessLayer.cinematicFeatureLengthReadinessLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Feature-Length Readiness Layer ID" value={cinematicFeatureLengthReadinessLayer.cinematicFeatureLengthReadinessLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicFeatureLengthReadinessLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Feature-Length Expansion Orchestration Score" value={formatScore3Dec(cinematicFeatureLengthReadinessLayer.featureLengthExpansionOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Feature-Length Expansion Orchestration State" value={cinematicFeatureLengthReadinessLayer.activeFeatureLengthExpansionOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Feature-Length Cinematic Continuity" value={cinematicFeatureLengthReadinessLayer.featureLengthCinematicContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Duration Persistence" value={cinematicFeatureLengthReadinessLayer.longDurationPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Scalability Orchestration Continuity" value={cinematicFeatureLengthReadinessLayer.scalabilityOrchestrationContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Feature Expansion" value={cinematicFeatureLengthReadinessLayer.replaySafeFeatureExpansion} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Expansion Normalization" value={cinematicFeatureLengthReadinessLayer.expansionNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Scalability Stabilization" value={cinematicFeatureLengthReadinessLayer.cinematicScalabilityStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Continuity Persistence" value={cinematicFeatureLengthReadinessLayer.emotionalContinuityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Future Full-Animation Readiness" value={cinematicFeatureLengthReadinessLayer.futureFullAnimationReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Feature-Length Expansion Normalization" value={cinematicFeatureLengthReadinessLayer.featureLengthExpansionNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="long-duration-continuity-bridge" title="Long-Duration Continuity Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-long-duration-continuity-bridge-id={longDurationContinuityBridge.longDurationContinuityBridgeId}>
+            <p className="text-sm font-black">{longDurationContinuityBridge.longDurationContinuityBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active long-duration route · {longDurationContinuityBridge.activeLongDurationRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Long-Duration Continuity Strength" value={formatScore3Dec(longDurationContinuityBridge.longDurationContinuityStrength)} emphasis />
+              <KeyValueField label="Long-Duration Linkage Score" value={formatScore3Dec(longDurationContinuityBridge.longDurationLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Long-Duration Routes</p><TagList tags={longDurationContinuityBridge.replayLinkedLongDurationRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Long-Duration Routes</p><TagList tags={longDurationContinuityBridge.continuitySafeLongDurationRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Long-Duration Routes</p><TagList tags={longDurationContinuityBridge.highDriftLongDurationRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="scalability-orchestration-map" title="Scalability Orchestration Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-scalability-orchestration-map-id={scalabilityOrchestrationMap.scalabilityOrchestrationMapId}>
+            <p className="text-sm font-black">{scalabilityOrchestrationMap.scalabilityOrchestrationMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active scalability route · {scalabilityOrchestrationMap.activeScalabilityRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Scalability Orchestration Score" value={formatScore3Dec(scalabilityOrchestrationMap.scalabilityOrchestrationScore)} emphasis />
+              <KeyValueField label="Feature-Length Expansion Linkage Score" value={formatScore3Dec(scalabilityOrchestrationMap.featureLengthExpansionLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Scalability Orchestration Readiness" value={scalabilityOrchestrationMap.scalabilityOrchestrationReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Scalability Traits</p><TagList tags={scalabilityOrchestrationMap.readyScalabilityTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Scalability Traits</p><TagList tags={scalabilityOrchestrationMap.pendingScalabilityTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="feature-length-persistence-timeline" title="Feature-Length Persistence Timeline">
+          <TimelineTrendGrid groups={featureLengthPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="feature-length-expansion-steering" title="Feature-Length Expansion Steering Recommendations">
+          <SteeringChipList items={featureLengthExpansionSteeringRecommendations} dataAttr="feature-length-expansion-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
