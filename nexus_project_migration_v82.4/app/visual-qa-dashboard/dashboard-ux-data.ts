@@ -1614,6 +1614,47 @@ export type GenerativeReadinessSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicReplaySafeGenerationLayer = {
+  readonly cinematicReplaySafeGenerationLayerId: string;
+  readonly activeReplaySafeGenerationOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly replaySafeGenerationContinuity: string;
+  readonly deterministicRoutingPersistence: string;
+  readonly regenerationContinuityStabilization: string;
+  readonly replaySafeOrchestration: string;
+  readonly generationNormalization: string;
+  readonly cinematicReplayConsistency: string;
+  readonly styleCharacterPersistence: string;
+  readonly featureLengthReplayReadiness: string;
+  readonly replaySafeGenerationOrchestrationScore: number;
+  readonly replaySafeGenerationNormalizationState: string;
+};
+
+export type DeterministicGenerationRoutingBridge = {
+  readonly deterministicGenerationRoutingBridgeId: string;
+  readonly activeDeterministicRoute: string;
+  readonly replayLinkedDeterministicRoutes: readonly string[];
+  readonly continuitySafeDeterministicRoutes: readonly string[];
+  readonly highDriftDeterministicRoutes: readonly string[];
+  readonly deterministicRoutingStrength: number;
+  readonly deterministicRoutingLinkageScore: number;
+};
+
+export type RegenerationContinuityMap = {
+  readonly regenerationContinuityMapId: string;
+  readonly activeRegenerationRoute: string;
+  readonly regenerationContinuityReadiness: string;
+  readonly readyRegenerationTraits: readonly string[];
+  readonly pendingRegenerationTraits: readonly string[];
+  readonly regenerationContinuityScore: number;
+  readonly replaySafeGenerationLinkageScore: number;
+};
+
+export type ReplaySafeGenerationSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4864,6 +4905,86 @@ export const GENERATIVE_READINESS_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer image/video generation until generative readiness layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly GenerativeReadinessSteeringRecommendation[]);
 
+export const CINEMATIC_REPLAY_SAFE_GENERATION_LAYER = Object.freeze({
+  cinematicReplaySafeGenerationLayerId: "cinematic-replay-safe-generation-layer-gonegi-v1",
+  activeReplaySafeGenerationOrchestrationState: "25s-pilot-replay-safe-generation-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  replaySafeGenerationContinuity: "replay-safe generation continuity staged for 25s pilot harbor sample without replay generation execution",
+  deterministicRoutingPersistence: "deterministic routing persistence indexed for warm glaze carry-over and mediterranean regeneration honesty",
+  regenerationContinuityStabilization: "regeneration continuity stabilization prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeOrchestration: "replay-safe orchestration reserved without provider or model execution",
+  generationNormalization: "generation normalization locked for warm dissolve replay continuity across pilot beats",
+  cinematicReplayConsistency: "cinematic replay consistency verified against ghibli-base harbor replay-safe profile",
+  styleCharacterPersistence: "style/character persistence mapped for soft carry-over harbor regeneration warmth",
+  featureLengthReplayReadiness: "future feature-length replay readiness staged for ten-video expansion target",
+  replaySafeGenerationOrchestrationScore: 0.889333,
+  replaySafeGenerationNormalizationState: "canonical 25s pilot cinematic replay-safe generation orchestration normalization",
+} satisfies CinematicReplaySafeGenerationLayer);
+
+export const DETERMINISTIC_GENERATION_ROUTING_BRIDGE = Object.freeze({
+  deterministicGenerationRoutingBridgeId: "deterministic-generation-routing-bridge-gonegi-v1",
+  activeDeterministicRoute: "deterministic-route-warm-glaze-replay-001",
+  replayLinkedDeterministicRoutes: Object.freeze(["deterministic-route-warm-glaze-replay-001", "deterministic-route-harbor-regen-echo-002"]),
+  continuitySafeDeterministicRoutes: Object.freeze(["deterministic-route-warm-glaze-replay-001", "deterministic-route-harbor-regen-echo-002"]),
+  highDriftDeterministicRoutes: Object.freeze(["deterministic-route-contrast-push-experiment"]),
+  deterministicRoutingStrength: 0.885333,
+  deterministicRoutingLinkageScore: 0.899333,
+} satisfies DeterministicGenerationRoutingBridge);
+
+export const REGENERATION_CONTINUITY_MAP = Object.freeze({
+  regenerationContinuityMapId: "regeneration-continuity-map-gonegi-v1",
+  activeRegenerationRoute: "regeneration-route-harbor-pilot-001",
+  regenerationContinuityReadiness: "regeneration continuity readiness staged for 25s pilot harbor sample without image or video regeneration",
+  readyRegenerationTraits: Object.freeze(["warm-glaze-replay-stable", "character-silhouette-replay-carry", "soft-linework-regen-carry"]),
+  pendingRegenerationTraits: Object.freeze(["alternate-regen-experiment", "style-push-replay-variant"]),
+  regenerationContinuityScore: 0.882333,
+  replaySafeGenerationLinkageScore: 0.896333,
+} satisfies RegenerationContinuityMap);
+
+const REPLAY_SAFE_GENERATION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      replaySafeGenerationContinuityTrend: number;
+      deterministicRoutingPersistenceTrend: number;
+      regenerationContinuityStabilizationTrend: number;
+      generationNormalizationTrend: number;
+      featureLengthReplayReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    replaySafeGenerationContinuityTrend: 0.350333,
+    deterministicRoutingPersistenceTrend: 0.657333,
+    regenerationContinuityStabilizationTrend: 0.644333,
+    generationNormalizationTrend: 0.651333,
+    featureLengthReplayReadinessTrend: 0.643333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    replaySafeGenerationContinuityTrend: 0.889333,
+    deterministicRoutingPersistenceTrend: 0.884333,
+    regenerationContinuityStabilizationTrend: 0.877333,
+    generationNormalizationTrend: 0.892333,
+    featureLengthReplayReadinessTrend: 0.885333,
+  }),
+});
+
+export const REPLAY_SAFE_GENERATION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["replay-safe generation continuity trend", "replaySafeGenerationContinuityTrend"],
+  ["deterministic routing persistence trend", "deterministicRoutingPersistenceTrend"],
+  ["regeneration continuity stabilization trend", "regenerationContinuityStabilizationTrend"],
+  ["generation normalization trend", "generationNormalizationTrend"],
+  ["feature-length replay readiness trend", "featureLengthReplayReadinessTrend"],
+] as const);
+
+export const REPLAY_SAFE_GENERATION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot replay-safe generation orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain deterministic generation routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified regeneration continuity routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve generation normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer replay generation until replay-safe layer stabilizes", severity: "warning" }),
+] as const satisfies readonly ReplaySafeGenerationSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -7605,6 +7726,63 @@ export function groupGenerativeReadinessPersistenceTimelineByDimension(
 
 export function buildGenerativeReadinessSteeringRecommendations(): readonly GenerativeReadinessSteeringRecommendation[] {
   return GENERATIVE_READINESS_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicReplaySafeGenerationLayer(): CinematicReplaySafeGenerationLayer {
+  return CINEMATIC_REPLAY_SAFE_GENERATION_LAYER;
+}
+
+export function buildDeterministicGenerationRoutingBridge(): DeterministicGenerationRoutingBridge {
+  return DETERMINISTIC_GENERATION_ROUTING_BRIDGE;
+}
+
+export function buildRegenerationContinuityMap(): RegenerationContinuityMap {
+  return REGENERATION_CONTINUITY_MAP;
+}
+
+export function buildReplaySafeGenerationPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REPLAY_SAFE_GENERATION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REPLAY_SAFE_GENERATION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REPLAY_SAFE_GENERATION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupReplaySafeGenerationPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REPLAY_SAFE_GENERATION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildReplaySafeGenerationSteeringRecommendations(): readonly ReplaySafeGenerationSteeringRecommendation[] {
+  return REPLAY_SAFE_GENERATION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

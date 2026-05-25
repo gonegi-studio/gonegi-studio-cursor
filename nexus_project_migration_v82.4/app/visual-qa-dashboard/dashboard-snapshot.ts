@@ -215,6 +215,11 @@ import {
   buildStyleCharacterGenerationCompatibilityMap,
   buildGenerativeReadinessPersistenceTimeline,
   buildGenerativeReadinessSteeringRecommendations,
+  buildCinematicReplaySafeGenerationLayer,
+  buildDeterministicGenerationRoutingBridge,
+  buildRegenerationContinuityMap,
+  buildReplaySafeGenerationPersistenceTimeline,
+  buildReplaySafeGenerationSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -466,6 +471,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const styleCharacterGenerationCompatibilityMap = buildStyleCharacterGenerationCompatibilityMap();
   const generativeReadinessPersistenceTimeline = buildGenerativeReadinessPersistenceTimeline(payload);
   const generativeReadinessSteeringRecommendations = buildGenerativeReadinessSteeringRecommendations();
+  const cinematicReplaySafeGenerationLayer = buildCinematicReplaySafeGenerationLayer();
+  const deterministicGenerationRoutingBridge = buildDeterministicGenerationRoutingBridge();
+  const regenerationContinuityMap = buildRegenerationContinuityMap();
+  const replaySafeGenerationPersistenceTimeline = buildReplaySafeGenerationPersistenceTimeline(payload);
+  const replaySafeGenerationSteeringRecommendations = buildReplaySafeGenerationSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -799,6 +809,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `generationCompatibility:${styleCharacterGenerationCompatibilityMap.styleCharacterGenerationCompatibilityMapId}:${formatScore3Dec(styleCharacterGenerationCompatibilityMap.generationCompatibilityScore)}:${formatScore3Dec(styleCharacterGenerationCompatibilityMap.generativeReadinessLinkageScore)}:${styleCharacterGenerationCompatibilityMap.readyCompatibilityTraits.join("+")}`,
       formatTimelineSnapshotLine("generativeReadinessTimeline", generativeReadinessPersistenceTimeline),
       formatSteerSnapshotLine("generativeReadinessSteer", generativeReadinessSteeringRecommendations),
+    ],
+    [
+      `replaySafeGeneration:${cinematicReplaySafeGenerationLayer.cinematicReplaySafeGenerationLayerId}:${cinematicReplaySafeGenerationLayer.pilotVideoMode}:${formatScore3Dec(cinematicReplaySafeGenerationLayer.replaySafeGenerationOrchestrationScore)}`,
+      `deterministicRouting:${deterministicGenerationRoutingBridge.deterministicGenerationRoutingBridgeId}:${formatScore3Dec(deterministicGenerationRoutingBridge.deterministicRoutingStrength)}:${formatScore3Dec(deterministicGenerationRoutingBridge.deterministicRoutingLinkageScore)}:${deterministicGenerationRoutingBridge.replayLinkedDeterministicRoutes.join("+")}`,
+      `regenerationContinuity:${regenerationContinuityMap.regenerationContinuityMapId}:${formatScore3Dec(regenerationContinuityMap.regenerationContinuityScore)}:${formatScore3Dec(regenerationContinuityMap.replaySafeGenerationLinkageScore)}:${regenerationContinuityMap.readyRegenerationTraits.join("+")}`,
+      formatTimelineSnapshotLine("replaySafeTimeline", replaySafeGenerationPersistenceTimeline),
+      formatSteerSnapshotLine("replaySafeSteer", replaySafeGenerationSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

@@ -198,6 +198,11 @@ import {
   buildStyleCharacterGenerationCompatibilityMap,
   buildGenerativeReadinessPersistenceTimeline,
   buildGenerativeReadinessSteeringRecommendations,
+  buildCinematicReplaySafeGenerationLayer,
+  buildDeterministicGenerationRoutingBridge,
+  buildRegenerationContinuityMap,
+  buildReplaySafeGenerationPersistenceTimeline,
+  buildReplaySafeGenerationSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -263,6 +268,7 @@ import {
   groupMultiScenePersistenceTimelineByDimension,
   groupLongFormCohesionPersistenceTimelineByDimension,
   groupGenerativeReadinessPersistenceTimelineByDimension,
+  groupReplaySafeGenerationPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -577,6 +583,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const generativeReadinessPersistenceTimeline = buildGenerativeReadinessPersistenceTimeline(payload);
   const generativeReadinessPersistenceTimelineGroups = groupGenerativeReadinessPersistenceTimelineByDimension(generativeReadinessPersistenceTimeline);
   const generativeReadinessSteeringRecommendations = buildGenerativeReadinessSteeringRecommendations();
+  const cinematicReplaySafeGenerationLayer = buildCinematicReplaySafeGenerationLayer();
+  const deterministicGenerationRoutingBridge = buildDeterministicGenerationRoutingBridge();
+  const regenerationContinuityMap = buildRegenerationContinuityMap();
+  const replaySafeGenerationPersistenceTimeline = buildReplaySafeGenerationPersistenceTimeline(payload);
+  const replaySafeGenerationPersistenceTimelineGroups = groupReplaySafeGenerationPersistenceTimelineByDimension(replaySafeGenerationPersistenceTimeline);
+  const replaySafeGenerationSteeringRecommendations = buildReplaySafeGenerationSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2840,6 +2852,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="generative-readiness-steering" title="Generative Readiness Steering Recommendations">
           <SteeringChipList items={generativeReadinessSteeringRecommendations} dataAttr="generative-readiness-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-replay-safe-generation-layer" title="Cinematic Replay-Safe Generation Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-replay-safe-generation-layer-id={cinematicReplaySafeGenerationLayer.cinematicReplaySafeGenerationLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Replay-Safe Generation Layer ID" value={cinematicReplaySafeGenerationLayer.cinematicReplaySafeGenerationLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicReplaySafeGenerationLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Replay-Safe Generation Orchestration Score" value={formatScore3Dec(cinematicReplaySafeGenerationLayer.replaySafeGenerationOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Replay-Safe Generation Orchestration State" value={cinematicReplaySafeGenerationLayer.activeReplaySafeGenerationOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Generation Continuity" value={cinematicReplaySafeGenerationLayer.replaySafeGenerationContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Deterministic Routing Persistence" value={cinematicReplaySafeGenerationLayer.deterministicRoutingPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Regeneration Continuity Stabilization" value={cinematicReplaySafeGenerationLayer.regenerationContinuityStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Orchestration" value={cinematicReplaySafeGenerationLayer.replaySafeOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Generation Normalization" value={cinematicReplaySafeGenerationLayer.generationNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Replay Consistency" value={cinematicReplaySafeGenerationLayer.cinematicReplayConsistency} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Style/Character Persistence" value={cinematicReplaySafeGenerationLayer.styleCharacterPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Feature-Length Replay Readiness" value={cinematicReplaySafeGenerationLayer.featureLengthReplayReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Generation Normalization" value={cinematicReplaySafeGenerationLayer.replaySafeGenerationNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="deterministic-generation-routing-bridge" title="Deterministic Generation Routing Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-deterministic-generation-routing-bridge-id={deterministicGenerationRoutingBridge.deterministicGenerationRoutingBridgeId}>
+            <p className="text-sm font-black">{deterministicGenerationRoutingBridge.deterministicGenerationRoutingBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active deterministic route · {deterministicGenerationRoutingBridge.activeDeterministicRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Deterministic Routing Strength" value={formatScore3Dec(deterministicGenerationRoutingBridge.deterministicRoutingStrength)} emphasis />
+              <KeyValueField label="Deterministic Routing Linkage Score" value={formatScore3Dec(deterministicGenerationRoutingBridge.deterministicRoutingLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Deterministic Routes</p><TagList tags={deterministicGenerationRoutingBridge.replayLinkedDeterministicRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Deterministic Routes</p><TagList tags={deterministicGenerationRoutingBridge.continuitySafeDeterministicRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Deterministic Routes</p><TagList tags={deterministicGenerationRoutingBridge.highDriftDeterministicRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="regeneration-continuity-map" title="Regeneration Continuity Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-regeneration-continuity-map-id={regenerationContinuityMap.regenerationContinuityMapId}>
+            <p className="text-sm font-black">{regenerationContinuityMap.regenerationContinuityMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active regeneration route · {regenerationContinuityMap.activeRegenerationRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Regeneration Continuity Score" value={formatScore3Dec(regenerationContinuityMap.regenerationContinuityScore)} emphasis />
+              <KeyValueField label="Replay-Safe Generation Linkage Score" value={formatScore3Dec(regenerationContinuityMap.replaySafeGenerationLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Regeneration Continuity Readiness" value={regenerationContinuityMap.regenerationContinuityReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Regeneration Traits</p><TagList tags={regenerationContinuityMap.readyRegenerationTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Regeneration Traits</p><TagList tags={regenerationContinuityMap.pendingRegenerationTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-safe-generation-persistence-timeline" title="Replay-Safe Generation Persistence Timeline">
+          <TimelineTrendGrid groups={replaySafeGenerationPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-safe-generation-steering" title="Replay-Safe Generation Steering Recommendations">
+          <SteeringChipList items={replaySafeGenerationSteeringRecommendations} dataAttr="replay-safe-generation-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
