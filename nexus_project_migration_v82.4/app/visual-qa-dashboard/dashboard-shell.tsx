@@ -163,6 +163,11 @@ import {
   buildCinematicBeatContinuityMap,
   buildNarrativeRhythmPersistenceTimeline,
   buildNarrativeRhythmSteeringRecommendations,
+  buildCinematicWorldStateLayer,
+  buildAtmosphericContinuityBridge,
+  buildLocationMemoryInheritanceMap,
+  buildWorldStatePersistenceTimeline,
+  buildWorldStateSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -221,6 +226,7 @@ import {
   groupEmotionalExpressionPersistenceTimelineByDimension,
   groupMotionPersistenceTimelineByDimension,
   groupNarrativeRhythmPersistenceTimelineByDimension,
+  groupWorldStatePersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -493,6 +499,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const narrativeRhythmPersistenceTimeline = buildNarrativeRhythmPersistenceTimeline(payload);
   const narrativeRhythmPersistenceTimelineGroups = groupNarrativeRhythmPersistenceTimelineByDimension(narrativeRhythmPersistenceTimeline);
   const narrativeRhythmSteeringRecommendations = buildNarrativeRhythmSteeringRecommendations();
+  const cinematicWorldStateLayer = buildCinematicWorldStateLayer();
+  const atmosphericContinuityBridge = buildAtmosphericContinuityBridge();
+  const locationMemoryInheritanceMap = buildLocationMemoryInheritanceMap();
+  const worldStatePersistenceTimeline = buildWorldStatePersistenceTimeline(payload);
+  const worldStatePersistenceTimelineGroups = groupWorldStatePersistenceTimelineByDimension(worldStatePersistenceTimeline);
+  const worldStateSteeringRecommendations = buildWorldStateSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2322,6 +2334,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="narrative-rhythm-steering" title="Narrative Rhythm Steering Recommendations">
           <SteeringChipList items={narrativeRhythmSteeringRecommendations} dataAttr="narrative-rhythm-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-world-state-layer" title="Cinematic World State Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-world-state-layer-id={cinematicWorldStateLayer.cinematicWorldStateLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="World State Layer ID" value={cinematicWorldStateLayer.cinematicWorldStateLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicWorldStateLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="World State Orchestration Score" value={formatScore3Dec(cinematicWorldStateLayer.worldStateOrchestrationScore)} emphasis />
+              <KeyValueField label="Active World State Orchestration State" value={cinematicWorldStateLayer.activeWorldStateOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic World Continuity" value={cinematicWorldStateLayer.cinematicWorldContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Atmospheric Persistence" value={cinematicWorldStateLayer.atmosphericPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Location Memory Inheritance" value={cinematicWorldStateLayer.locationMemoryInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Environment Orchestration" value={cinematicWorldStateLayer.replaySafeEnvironmentOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Environmental Transition Normalization" value={cinematicWorldStateLayer.environmentalTransitionNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="World-State Stabilization Readiness" value={cinematicWorldStateLayer.worldStateStabilizationReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Atmosphere Continuity" value={cinematicWorldStateLayer.emotionalAtmosphereContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Environment Consistency" value={cinematicWorldStateLayer.longFormEnvironmentConsistency} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="World State Normalization" value={cinematicWorldStateLayer.worldStateNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="atmospheric-continuity-bridge" title="Atmospheric Continuity Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-atmospheric-continuity-bridge-id={atmosphericContinuityBridge.atmosphericContinuityBridgeId}>
+            <p className="text-sm font-black">{atmosphericContinuityBridge.atmosphericContinuityBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active atmosphere route · {atmosphericContinuityBridge.activeAtmosphereRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Atmospheric Continuity Strength" value={formatScore3Dec(atmosphericContinuityBridge.atmosphericContinuityStrength)} emphasis />
+              <KeyValueField label="Atmosphere Linkage Score" value={formatScore3Dec(atmosphericContinuityBridge.atmosphereLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Atmosphere Routes</p><TagList tags={atmosphericContinuityBridge.replayLinkedAtmosphereRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Atmosphere Routes</p><TagList tags={atmosphericContinuityBridge.continuitySafeAtmosphereRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Atmosphere Routes</p><TagList tags={atmosphericContinuityBridge.highDriftAtmosphereRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="location-memory-inheritance-map" title="Location Memory Inheritance Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-location-memory-inheritance-map-id={locationMemoryInheritanceMap.locationMemoryInheritanceMapId}>
+            <p className="text-sm font-black">{locationMemoryInheritanceMap.locationMemoryInheritanceMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active location route · {locationMemoryInheritanceMap.activeLocationRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Location Memory Inheritance Score" value={formatScore3Dec(locationMemoryInheritanceMap.locationMemoryInheritanceScore)} emphasis />
+              <KeyValueField label="Environment Continuity Linkage Score" value={formatScore3Dec(locationMemoryInheritanceMap.environmentContinuityLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Location Memory Readiness" value={locationMemoryInheritanceMap.locationMemoryReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Location Memory Traits</p><TagList tags={locationMemoryInheritanceMap.readyLocationMemoryTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Location Memory Traits</p><TagList tags={locationMemoryInheritanceMap.pendingLocationMemoryTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="world-state-persistence-timeline" title="World State Persistence Timeline">
+          <TimelineTrendGrid groups={worldStatePersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="world-state-steering" title="World State Steering Recommendations">
+          <SteeringChipList items={worldStateSteeringRecommendations} dataAttr="world-state-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

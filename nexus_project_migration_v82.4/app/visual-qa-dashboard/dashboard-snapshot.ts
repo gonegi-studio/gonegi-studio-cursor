@@ -180,6 +180,11 @@ import {
   buildCinematicBeatContinuityMap,
   buildNarrativeRhythmPersistenceTimeline,
   buildNarrativeRhythmSteeringRecommendations,
+  buildCinematicWorldStateLayer,
+  buildAtmosphericContinuityBridge,
+  buildLocationMemoryInheritanceMap,
+  buildWorldStatePersistenceTimeline,
+  buildWorldStateSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -396,6 +401,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const cinematicBeatContinuityMap = buildCinematicBeatContinuityMap();
   const narrativeRhythmPersistenceTimeline = buildNarrativeRhythmPersistenceTimeline(payload);
   const narrativeRhythmSteeringRecommendations = buildNarrativeRhythmSteeringRecommendations();
+  const cinematicWorldStateLayer = buildCinematicWorldStateLayer();
+  const atmosphericContinuityBridge = buildAtmosphericContinuityBridge();
+  const locationMemoryInheritanceMap = buildLocationMemoryInheritanceMap();
+  const worldStatePersistenceTimeline = buildWorldStatePersistenceTimeline(payload);
+  const worldStateSteeringRecommendations = buildWorldStateSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -680,6 +690,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `cinematicBeatContinuity:${cinematicBeatContinuityMap.cinematicBeatContinuityMapId}:${formatScore3Dec(cinematicBeatContinuityMap.cinematicBeatContinuityScore)}:${formatScore3Dec(cinematicBeatContinuityMap.beatRhythmLinkageScore)}:${cinematicBeatContinuityMap.readyBeatContinuityTraits.join("+")}`,
       formatTimelineSnapshotLine("narrativeRhythmTimeline", narrativeRhythmPersistenceTimeline),
       formatSteerSnapshotLine("narrativeRhythmSteer", narrativeRhythmSteeringRecommendations),
+    ],
+    [
+      `worldStateOrchestration:${cinematicWorldStateLayer.cinematicWorldStateLayerId}:${cinematicWorldStateLayer.pilotVideoMode}:${formatScore3Dec(cinematicWorldStateLayer.worldStateOrchestrationScore)}`,
+      `atmosphericContinuity:${atmosphericContinuityBridge.atmosphericContinuityBridgeId}:${formatScore3Dec(atmosphericContinuityBridge.atmosphericContinuityStrength)}:${formatScore3Dec(atmosphericContinuityBridge.atmosphereLinkageScore)}:${atmosphericContinuityBridge.replayLinkedAtmosphereRoutes.join("+")}`,
+      `locationMemoryInheritance:${locationMemoryInheritanceMap.locationMemoryInheritanceMapId}:${formatScore3Dec(locationMemoryInheritanceMap.locationMemoryInheritanceScore)}:${formatScore3Dec(locationMemoryInheritanceMap.environmentContinuityLinkageScore)}:${locationMemoryInheritanceMap.readyLocationMemoryTraits.join("+")}`,
+      formatTimelineSnapshotLine("worldStateTimeline", worldStatePersistenceTimeline),
+      formatSteerSnapshotLine("worldStateSteer", worldStateSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

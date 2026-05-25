@@ -1327,6 +1327,47 @@ export type NarrativeRhythmSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicWorldStateLayer = {
+  readonly cinematicWorldStateLayerId: string;
+  readonly activeWorldStateOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly cinematicWorldContinuity: string;
+  readonly atmosphericPersistence: string;
+  readonly locationMemoryInheritance: string;
+  readonly replaySafeEnvironmentOrchestration: string;
+  readonly environmentalTransitionNormalization: string;
+  readonly worldStateStabilizationReadiness: string;
+  readonly emotionalAtmosphereContinuity: string;
+  readonly longFormEnvironmentConsistency: string;
+  readonly worldStateOrchestrationScore: number;
+  readonly worldStateNormalizationState: string;
+};
+
+export type AtmosphericContinuityBridge = {
+  readonly atmosphericContinuityBridgeId: string;
+  readonly activeAtmosphereRoute: string;
+  readonly replayLinkedAtmosphereRoutes: readonly string[];
+  readonly continuitySafeAtmosphereRoutes: readonly string[];
+  readonly highDriftAtmosphereRoutes: readonly string[];
+  readonly atmosphericContinuityStrength: number;
+  readonly atmosphereLinkageScore: number;
+};
+
+export type LocationMemoryInheritanceMap = {
+  readonly locationMemoryInheritanceMapId: string;
+  readonly activeLocationRoute: string;
+  readonly locationMemoryReadiness: string;
+  readonly readyLocationMemoryTraits: readonly string[];
+  readonly pendingLocationMemoryTraits: readonly string[];
+  readonly locationMemoryInheritanceScore: number;
+  readonly environmentContinuityLinkageScore: number;
+};
+
+export type WorldStateSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4017,6 +4058,86 @@ export const NARRATIVE_RHYTHM_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer video editing until narrative rhythm layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly NarrativeRhythmSteeringRecommendation[]);
 
+export const CINEMATIC_WORLD_STATE_LAYER = Object.freeze({
+  cinematicWorldStateLayerId: "cinematic-world-state-layer-gonegi-v1",
+  activeWorldStateOrchestrationState: "25s-pilot-world-state-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  cinematicWorldContinuity: "cinematic world continuity staged for 25s pilot harbor sample without environment generation",
+  atmosphericPersistence: "atmospheric persistence indexed for warm glaze haze and mediterranean spatial honesty",
+  locationMemoryInheritance: "location-memory inheritance prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeEnvironmentOrchestration: "replay-safe environment orchestration reserved without simulation execution",
+  environmentalTransitionNormalization: "environmental transition normalization locked for atmospheric dissolve continuity",
+  worldStateStabilizationReadiness: "world-state stabilization readiness verified against ghibli-base harbor profile",
+  emotionalAtmosphereContinuity: "emotional atmosphere continuity mapped for soft carry-over harbor warmth",
+  longFormEnvironmentConsistency: "future long-form environment consistency staged for ten-video expansion target",
+  worldStateOrchestrationScore: 0.882333,
+  worldStateNormalizationState: "canonical 25s pilot cinematic world-state orchestration normalization",
+} satisfies CinematicWorldStateLayer);
+
+export const ATMOSPHERIC_CONTINUITY_BRIDGE = Object.freeze({
+  atmosphericContinuityBridgeId: "atmospheric-continuity-bridge-gonegi-v1",
+  activeAtmosphereRoute: "atmosphere-route-warm-haze-hold-001",
+  replayLinkedAtmosphereRoutes: Object.freeze(["atmosphere-route-warm-haze-hold-001", "atmosphere-route-glaze-diffusion-echo-002"]),
+  continuitySafeAtmosphereRoutes: Object.freeze(["atmosphere-route-warm-haze-hold-001", "atmosphere-route-glaze-diffusion-echo-002"]),
+  highDriftAtmosphereRoutes: Object.freeze(["atmosphere-route-contrast-push-experiment"]),
+  atmosphericContinuityStrength: 0.878333,
+  atmosphereLinkageScore: 0.892333,
+} satisfies AtmosphericContinuityBridge);
+
+export const LOCATION_MEMORY_INHERITANCE_MAP = Object.freeze({
+  locationMemoryInheritanceMapId: "location-memory-inheritance-map-gonegi-v1",
+  activeLocationRoute: "location-route-harbor-pilot-001",
+  locationMemoryReadiness: "location-memory inheritance readiness staged for 25s pilot harbor sample",
+  readyLocationMemoryTraits: Object.freeze(["harbor-opening-hold", "mediterranean-dock", "warm-glaze-horizon"]),
+  pendingLocationMemoryTraits: Object.freeze(["alternate-location-experiment", "spatial-push-variant"]),
+  locationMemoryInheritanceScore: 0.875333,
+  environmentContinuityLinkageScore: 0.889333,
+} satisfies LocationMemoryInheritanceMap);
+
+const WORLD_STATE_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicWorldContinuityTrend: number;
+      atmosphericPersistenceTrend: number;
+      locationMemoryInheritanceTrend: number;
+      environmentalTransitionNormalizationTrend: number;
+      longFormEnvironmentConsistencyTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicWorldContinuityTrend: 0.343333,
+    atmosphericPersistenceTrend: 0.650333,
+    locationMemoryInheritanceTrend: 0.637333,
+    environmentalTransitionNormalizationTrend: 0.644333,
+    longFormEnvironmentConsistencyTrend: 0.636333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicWorldContinuityTrend: 0.882333,
+    atmosphericPersistenceTrend: 0.877333,
+    locationMemoryInheritanceTrend: 0.870333,
+    environmentalTransitionNormalizationTrend: 0.885333,
+    longFormEnvironmentConsistencyTrend: 0.878333,
+  }),
+});
+
+export const WORLD_STATE_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic world continuity trend", "cinematicWorldContinuityTrend"],
+  ["atmospheric persistence trend", "atmosphericPersistenceTrend"],
+  ["location-memory inheritance trend", "locationMemoryInheritanceTrend"],
+  ["environmental transition normalization trend", "environmentalTransitionNormalizationTrend"],
+  ["long-form environment consistency trend", "longFormEnvironmentConsistencyTrend"],
+] as const);
+
+export const WORLD_STATE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot world-state orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain atmospheric continuity readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified location memory routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve environmental transition normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer environment generation until world-state layer stabilizes", severity: "warning" }),
+] as const satisfies readonly WorldStateSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -6359,6 +6480,63 @@ export function groupNarrativeRhythmPersistenceTimelineByDimension(
 
 export function buildNarrativeRhythmSteeringRecommendations(): readonly NarrativeRhythmSteeringRecommendation[] {
   return NARRATIVE_RHYTHM_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicWorldStateLayer(): CinematicWorldStateLayer {
+  return CINEMATIC_WORLD_STATE_LAYER;
+}
+
+export function buildAtmosphericContinuityBridge(): AtmosphericContinuityBridge {
+  return ATMOSPHERIC_CONTINUITY_BRIDGE;
+}
+
+export function buildLocationMemoryInheritanceMap(): LocationMemoryInheritanceMap {
+  return LOCATION_MEMORY_INHERITANCE_MAP;
+}
+
+export function buildWorldStatePersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of WORLD_STATE_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = WORLD_STATE_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? WORLD_STATE_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupWorldStatePersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    WORLD_STATE_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildWorldStateSteeringRecommendations(): readonly WorldStateSteeringRecommendation[] {
+  return WORLD_STATE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
