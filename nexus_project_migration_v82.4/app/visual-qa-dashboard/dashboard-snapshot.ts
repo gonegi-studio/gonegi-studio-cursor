@@ -1,0 +1,278 @@
+import type { VisualQaDashboardPreviewRoute } from "../../services/image-generation/visual-qa-dashboard-preview-route.ts";
+import {
+  DASHBOARD_GROUPED_FINDINGS,
+  DASHBOARD_NEXT_REQUEST_IMPROVEMENTS,
+  DASHBOARD_RANKING_SORT_LABELS,
+  DASHBOARD_STYLE_FINDINGS,
+  PROMPT_EVOLUTION_IMPROVEMENTS,
+  VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS,
+  buildCanonicalDatasetRegistry,
+  buildCanonicalSessionIntake,
+  buildCanonicalEvidenceIntake,
+  buildCharacterContinuityBridge,
+  buildCinematicDnaProfile,
+  buildCinematicDriftDetection,
+  buildCinematicSteeringRecommendations,
+  buildCinematicWorldState,
+  buildContinuityFocus,
+  buildCrossLayerContinuityMatrix,
+  buildCrossProjectDriftDetection,
+  buildCycleTimeline,
+  buildDashboardCycleDisplays,
+  buildDashboardDecisions,
+  buildDatasetIdentity,
+  buildDatasetOrchestration,
+  buildDatasetSteeringRecommendations,
+  buildDecisionMatrix,
+  buildDecisionSummary,
+  buildDirectorGrammarSteering,
+  buildEmotionalContinuityTimeline,
+  buildEmotionalDriftDetection,
+  buildEnvironmentalContinuity,
+  buildEnvironmentalPersistenceTimeline,
+  buildEnvironmentalSteeringRecommendations,
+  buildEvidenceDriftDetection,
+  buildEvidenceFamilyOrchestration,
+  buildEvidenceSteeringRecommendations,
+  buildIdentityPersistence,
+  buildIdentityPersistenceTimeline,
+  buildImageEvaluationIntakes,
+  buildLongSessionContinuityMemory,
+  buildMultiCycleContinuityTimeline,
+  buildMultiProjectCinematicMemory,
+  buildNarrativeEmotionalState,
+  buildNarrativeSteeringRecommendations,
+  buildProductionOrchestration,
+  buildProductionPersistenceTimeline,
+  buildProductionSteeringRecommendations,
+  buildPromptEvolutionInsights,
+  buildRankingEvolution,
+  buildRealEvaluationBridge,
+  buildRegistryDriftDetection,
+  buildRegistryPersistenceTimeline,
+  buildRegistrySteeringRecommendations,
+  buildRealGenerationSessionBridge,
+  buildSessionDriftDetection,
+  buildSessionPersistenceTimeline,
+  buildSessionSteeringRecommendations,
+  buildProviderAdapterReadiness,
+  buildSessionProviderCompatibility,
+  buildProviderDriftDetection,
+  buildProviderReadinessTimeline,
+  buildProviderSteeringRecommendations,
+  buildReplayPersistenceTimeline,
+  buildRetryGuardRecommendations,
+  buildRetrySteering,
+  buildSceneGrammarProfile,
+  buildSequenceContinuity,
+  buildSequenceStabilityTimeline,
+  buildSequenceSteeringRecommendations,
+  buildStyleCoreDecision,
+  buildStyleCoreProfile,
+  buildTemporalDriftDetection,
+  buildTemporalSceneMemory,
+  buildUnifiedCinematicIdentity,
+  buildUnifiedDriftDetection,
+  buildUnifiedSteeringRecommendations,
+  buildWorldStateDriftDetection,
+  formatDriftSnapshotLine,
+  formatGrammarBlendSnapshot,
+  formatScore3Dec,
+  formatSteerSnapshotLine,
+  formatTimelineSnapshotLine,
+  groupHeatmapRows,
+  joinSnapshotLineGroups,
+  statusBandTone,
+} from "./dashboard-ux-data.ts";
+
+export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardPreviewRoute): string {
+  const cycles = buildDashboardCycleDisplays(payload);
+  const latest = cycles.find((cycle) => cycle.isLatest);
+  const intakes = buildImageEvaluationIntakes(payload);
+  const timeline = buildCycleTimeline(payload);
+  const evolution = buildRankingEvolution(payload);
+  const decisions = buildDashboardDecisions(payload);
+  const decisionSummary = buildDecisionSummary(payload);
+  const continuityFocus = buildContinuityFocus(payload);
+  const promptInsights = buildPromptEvolutionInsights(payload);
+  const decisionMatrix = buildDecisionMatrix(payload);
+  const retrySteering = buildRetrySteering();
+  const styleCoreProfile = buildStyleCoreProfile();
+  const continuityBridge = buildCharacterContinuityBridge();
+  const styleCoreDecision = buildStyleCoreDecision(payload);
+  const retryGuardRecommendations = buildRetryGuardRecommendations();
+  const cinematicDnaProfile = buildCinematicDnaProfile();
+  const directorGrammarSteering = buildDirectorGrammarSteering();
+  const cinematicDriftDetection = buildCinematicDriftDetection();
+  const datasetIdentity = buildDatasetIdentity();
+  const cinematicSteeringRecommendations = buildCinematicSteeringRecommendations();
+  const sessionMemory = buildLongSessionContinuityMemory();
+  const multiCycleTimeline = buildMultiCycleContinuityTimeline(payload);
+  const datasetOrchestration = buildDatasetOrchestration();
+  const datasetSteeringRecommendations = buildDatasetSteeringRecommendations();
+  const identityPersistence = buildIdentityPersistence();
+  const narrativeEmotionalState = buildNarrativeEmotionalState();
+  const sceneGrammarProfile = buildSceneGrammarProfile();
+  const emotionalDriftDetection = buildEmotionalDriftDetection();
+  const emotionalContinuityTimeline = buildEmotionalContinuityTimeline(payload);
+  const narrativeSteeringRecommendations = buildNarrativeSteeringRecommendations();
+  const temporalSceneMemory = buildTemporalSceneMemory();
+  const sequenceContinuity = buildSequenceContinuity();
+  const temporalDriftDetection = buildTemporalDriftDetection();
+  const sequenceStabilityTimeline = buildSequenceStabilityTimeline(payload);
+  const sequenceSteeringRecommendations = buildSequenceSteeringRecommendations();
+  const cinematicWorldState = buildCinematicWorldState();
+  const environmentalContinuity = buildEnvironmentalContinuity();
+  const worldStateDriftDetection = buildWorldStateDriftDetection();
+  const environmentalPersistenceTimeline = buildEnvironmentalPersistenceTimeline(payload);
+  const environmentalSteeringRecommendations = buildEnvironmentalSteeringRecommendations();
+  const unifiedCinematicIdentity = buildUnifiedCinematicIdentity();
+  const crossLayerContinuityMatrix = buildCrossLayerContinuityMatrix();
+  const unifiedDriftDetection = buildUnifiedDriftDetection();
+  const identityPersistenceTimeline = buildIdentityPersistenceTimeline(payload);
+  const unifiedSteeringRecommendations = buildUnifiedSteeringRecommendations();
+  const multiProjectCinematicMemory = buildMultiProjectCinematicMemory();
+  const productionOrchestration = buildProductionOrchestration();
+  const crossProjectDriftDetection = buildCrossProjectDriftDetection();
+  const productionPersistenceTimeline = buildProductionPersistenceTimeline(payload);
+  const productionSteeringRecommendations = buildProductionSteeringRecommendations();
+  const canonicalEvidenceIntake = buildCanonicalEvidenceIntake();
+  const realEvaluationBridge = buildRealEvaluationBridge();
+  const evidenceDriftDetection = buildEvidenceDriftDetection();
+  const replayPersistenceTimeline = buildReplayPersistenceTimeline(payload);
+  const evidenceSteeringRecommendations = buildEvidenceSteeringRecommendations();
+  const canonicalDatasetRegistry = buildCanonicalDatasetRegistry();
+  const evidenceFamilyOrchestration = buildEvidenceFamilyOrchestration();
+  const registryDriftDetection = buildRegistryDriftDetection();
+  const registryPersistenceTimeline = buildRegistryPersistenceTimeline(payload);
+  const registrySteeringRecommendations = buildRegistrySteeringRecommendations();
+  const canonicalSessionIntake = buildCanonicalSessionIntake();
+  const realGenerationSessionBridge = buildRealGenerationSessionBridge();
+  const sessionDriftDetection = buildSessionDriftDetection();
+  const sessionPersistenceTimeline = buildSessionPersistenceTimeline(payload);
+  const sessionSteeringRecommendations = buildSessionSteeringRecommendations();
+  const providerAdapterReadiness = buildProviderAdapterReadiness();
+  const sessionProviderCompatibility = buildSessionProviderCompatibility();
+  const providerDriftDetection = buildProviderDriftDetection();
+  const providerReadinessTimeline = buildProviderReadinessTimeline(payload);
+  const providerSteeringRecommendations = buildProviderSteeringRecommendations();
+
+  const ranking = payload.rankingPreviewRows
+    .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
+    .join("|");
+  const heatmap = groupHeatmapRows(payload)
+    .map((group) => `${group.cycleReportId}:${group.rows.map((row) => row.signalKind).join("+")}`)
+    .join("|");
+
+  return joinSnapshotLineGroups([
+    [payload.previewRouteId, payload.dashboardId],
+    [
+      `format:${formatScore3Dec(0.381333)}`,
+      `latest:${latest?.cycleId ?? ""}:${latest?.isLatest ? "emphasis" : "none"}`,
+      `colors:${cycles.map((cycle) => `${cycle.cycleId}:${statusBandTone(cycle.statusBand)}`).join(",")}`,
+      ranking,
+      heatmap,
+      `findings:${DASHBOARD_STYLE_FINDINGS.join("+")}`,
+      `next:${DASHBOARD_NEXT_REQUEST_IMPROVEMENTS.join("+")}`,
+      `sort:${DASHBOARD_RANKING_SORT_LABELS.join("+")}`,
+    ],
+    [
+      `intake:${intakes.map((item) => `${item.cycleId}:${item.imageSetId}`).join("|")}`,
+      `timeline:${timeline.map((entry) => `${entry.cycleId}:${entry.cycleOrder}:${entry.driftTrend}:${entry.stabilityTrend}`).join("|")}`,
+      `severity:${DASHBOARD_GROUPED_FINDINGS.map((finding) => `${finding.group}:${finding.severity}`).join("|")}`,
+      `evolution:${evolution.latestCycleId}:${formatScore3Dec(evolution.driftDelta)}:${formatScore3Dec(evolution.continuityDelta)}:${evolution.stabilityTrend}`,
+    ],
+    [
+      `decision:${decisions.bestPromptCandidate}|${decisions.unsafePromptCandidate}`,
+      `summary:${decisionSummary.map((panel) => `${panel.label}:${panel.cycleId}:${formatScore3Dec(panel.score)}`).join("|")}`,
+      `continuity:${continuityFocus.map((metric) => `${metric.label}:${formatScore3Dec(metric.score)}:${metric.severity}`).join("|")}`,
+      `prompt:${promptInsights.previousPrompt}->${promptInsights.latestPrompt}:${PROMPT_EVOLUTION_IMPROVEMENTS.join("+")}`,
+      `matrix:${decisionMatrix.map((row) => `${row.cycleId}:${row.retryPriority}`).join("|")}`,
+      `retry:${retrySteering.preserveRules.join("+")}|${retrySteering.avoidRules.join("+")}`,
+    ],
+    [
+      `styleCore:${styleCoreProfile.styleCoreId}:${styleCoreProfile.styleCoreName}`,
+      `bridge:${continuityBridge.characterId}:${formatScore3Dec(continuityBridge.driftSensitivity)}:${continuityBridge.continuityPriority}`,
+      `styleDecision:${styleCoreDecision.continuityGuardStatus}:${formatScore3Dec(styleCoreDecision.continuityGuardScore)}`,
+      `retryGuard:${retryGuardRecommendations.map((item) => item.label).join("+")}`,
+    ],
+    [
+      `cinematicDna:${cinematicDnaProfile.cinematicProfileId}:${formatGrammarBlendSnapshot(cinematicDnaProfile.directorGrammarBlend)}`,
+      `grammar:${directorGrammarSteering.map((card) => card.label).join("+")}`,
+      formatDriftSnapshotLine("cinematicDrift", cinematicDriftDetection),
+      `dataset:${datasetIdentity.activeGrammarProfile}:${datasetIdentity.cinematicLineage}`,
+      formatSteerSnapshotLine("cinematicSteer", cinematicSteeringRecommendations),
+    ],
+    [
+      `sessionMemory:${sessionMemory.continuitySessionId}:${sessionMemory.activeCharacterIdentity}:${sessionMemory.activeStyleCore}`,
+      formatTimelineSnapshotLine("multiCycle", multiCycleTimeline),
+      `orchestration:${datasetOrchestration.datasetFamilyId}:${datasetOrchestration.activeDatasetBlend.map((entry) => entry.datasetId).join("+")}`,
+      formatSteerSnapshotLine("datasetSteer", datasetSteeringRecommendations),
+      `identityPersistence:${identityPersistence.map((metric) => `${metric.label}:${formatScore3Dec(metric.score)}:${metric.severity}`).join("|")}`,
+    ],
+    [
+      `narrativeState:${narrativeEmotionalState.narrativeStateId}:${formatScore3Dec(narrativeEmotionalState.calmRecoveryCurve)}:${formatScore3Dec(narrativeEmotionalState.tensionCurve)}`,
+      `sceneGrammar:${sceneGrammarProfile.sceneGrammarId}`,
+      formatDriftSnapshotLine("emotionalDrift", emotionalDriftDetection),
+      formatTimelineSnapshotLine("emotionalTimeline", emotionalContinuityTimeline),
+      formatSteerSnapshotLine("narrativeSteer", narrativeSteeringRecommendations),
+    ],
+    [
+      `temporalMemory:${temporalSceneMemory.temporalSequenceId}:${formatScore3Dec(temporalSceneMemory.lightingCarryOverPersistence)}:${formatScore3Dec(temporalSceneMemory.framingCarryOverPersistence)}:${formatScore3Dec(temporalSceneMemory.atmosphereCarryOverPersistence)}`,
+      `sequenceContinuity:${sequenceContinuity.sequenceGrammarId}:${formatScore3Dec(sequenceContinuity.emotionalInheritanceStrength)}:${formatScore3Dec(sequenceContinuity.pacingInheritanceStrength)}:${formatScore3Dec(sequenceContinuity.framingPersistenceStrength)}:${formatScore3Dec(sequenceContinuity.atmospherePersistenceStrength)}`,
+      formatDriftSnapshotLine("temporalDrift", temporalDriftDetection),
+      formatTimelineSnapshotLine("sequenceTimeline", sequenceStabilityTimeline),
+      formatSteerSnapshotLine("sequenceSteer", sequenceSteeringRecommendations),
+    ],
+    [
+      `worldState:${cinematicWorldState.worldStateId}:${cinematicWorldState.environmentalCarryOverRules.join("+")}`,
+      `environmentContinuity:${environmentalContinuity.environmentGrammarId}:${formatScore3Dec(environmentalContinuity.lightingInheritanceProfile)}:${formatScore3Dec(environmentalContinuity.atmosphereInheritanceProfile)}:${formatScore3Dec(environmentalContinuity.spatialPersistenceProfile)}:${formatScore3Dec(environmentalContinuity.environmentalDensityProfile)}:${formatScore3Dec(environmentalContinuity.worldScaleConsistency)}`,
+      formatDriftSnapshotLine("worldStateDrift", worldStateDriftDetection),
+      formatTimelineSnapshotLine("environmentTimeline", environmentalPersistenceTimeline),
+      formatSteerSnapshotLine("environmentSteer", environmentalSteeringRecommendations),
+    ],
+    [
+      `cinematicIdentity:${unifiedCinematicIdentity.cinematicIdentityId}:${formatScore3Dec(unifiedCinematicIdentity.characterIdentityPersistence)}:${formatScore3Dec(unifiedCinematicIdentity.emotionalIdentityPersistence)}:${formatScore3Dec(unifiedCinematicIdentity.environmentalIdentityPersistence)}:${formatScore3Dec(unifiedCinematicIdentity.cinematicGrammarPersistence)}`,
+      `crossLayerMatrix:${crossLayerContinuityMatrix.map((link) => `${link.label}:${formatScore3Dec(link.score)}:${link.severity}`).join("|")}`,
+      formatDriftSnapshotLine("unifiedDrift", unifiedDriftDetection),
+      formatTimelineSnapshotLine("identityTimeline", identityPersistenceTimeline),
+      formatSteerSnapshotLine("unifiedSteer", unifiedSteeringRecommendations),
+    ],
+    [
+      `productionMemory:${multiProjectCinematicMemory.productionMemoryId}:${multiProjectCinematicMemory.activeProjectId}:${formatScore3Dec(multiProjectCinematicMemory.sharedIdentityInheritance)}:${formatScore3Dec(multiProjectCinematicMemory.sharedAtmospherePersistence)}:${formatScore3Dec(multiProjectCinematicMemory.sharedEmotionalPersistence)}`,
+      `productionOrchestration:${productionOrchestration.orchestrationProfileId}:${formatScore3Dec(productionOrchestration.productionStabilityScore)}:${productionOrchestration.continuitySafeProjects.join("+")}`,
+      formatDriftSnapshotLine("crossProjectDrift", crossProjectDriftDetection),
+      formatTimelineSnapshotLine("productionTimeline", productionPersistenceTimeline),
+      formatSteerSnapshotLine("productionSteer", productionSteeringRecommendations),
+    ],
+    [
+      `evidenceIntake:${canonicalEvidenceIntake.evidenceIntakeId}:${canonicalEvidenceIntake.canonicalGenerationId}:${canonicalEvidenceIntake.sourceProvider}:${canonicalEvidenceIntake.sourcePromptVersion}`,
+      `evaluationBridge:${realEvaluationBridge.evaluationBridgeId}:${formatScore3Dec(realEvaluationBridge.evidenceContinuityCompatibility)}:${formatScore3Dec(realEvaluationBridge.replayInheritanceStrength)}:${formatScore3Dec(realEvaluationBridge.steeringCompatibilityScore)}`,
+      formatDriftSnapshotLine("evidenceDrift", evidenceDriftDetection),
+      formatTimelineSnapshotLine("replayTimeline", replayPersistenceTimeline),
+      formatSteerSnapshotLine("evidenceSteer", evidenceSteeringRecommendations),
+    ],
+    [
+      `datasetRegistry:${canonicalDatasetRegistry.datasetRegistryId}:${canonicalDatasetRegistry.activeDatasetFamily}:${canonicalDatasetRegistry.canonicalDatasetGroups.join("+")}`,
+      `evidenceFamilyOrchestration:${evidenceFamilyOrchestration.evidenceFamilyBridgeId}:${formatScore3Dec(evidenceFamilyOrchestration.continuityInheritanceCompatibility)}:${formatScore3Dec(evidenceFamilyOrchestration.orchestrationInheritanceStrength)}:${formatScore3Dec(evidenceFamilyOrchestration.cinematicBlendStability)}`,
+      formatDriftSnapshotLine("registryDrift", registryDriftDetection),
+      formatTimelineSnapshotLine("registryTimeline", registryPersistenceTimeline),
+      formatSteerSnapshotLine("registrySteer", registrySteeringRecommendations),
+    ],
+    [
+      `sessionIntake:${canonicalSessionIntake.generationSessionId}:${canonicalSessionIntake.canonicalSessionId}:${canonicalSessionIntake.sessionProvider}:${canonicalSessionIntake.sessionPromptFamily}:${formatScore3Dec(canonicalSessionIntake.continuitySessionCompatibility)}`,
+      `generationSessionBridge:${realGenerationSessionBridge.generationSessionBridgeId}:${formatScore3Dec(realGenerationSessionBridge.orchestrationSessionStrength)}:${formatScore3Dec(realGenerationSessionBridge.providerNeutralCompatibility)}:${realGenerationSessionBridge.replaySafeSessions.join("+")}`,
+      formatDriftSnapshotLine("sessionDrift", sessionDriftDetection),
+      formatTimelineSnapshotLine("sessionTimeline", sessionPersistenceTimeline),
+      formatSteerSnapshotLine("sessionSteer", sessionSteeringRecommendations),
+    ],
+    [
+      `providerReadiness:${providerAdapterReadiness.providerAdapterReadinessId}:${providerAdapterReadiness.activeProviderFamily}:${providerAdapterReadiness.supportedProviderProfiles.join("+")}`,
+      `sessionProviderCompatibility:${sessionProviderCompatibility.providerCompatibilityId}:${formatScore3Dec(sessionProviderCompatibility.providerCompatibilityScore)}:${formatScore3Dec(sessionProviderCompatibility.adapterReadinessScore)}:${sessionProviderCompatibility.compatibleProviders.join("+")}`,
+      formatDriftSnapshotLine("providerDrift", providerDriftDetection),
+      formatTimelineSnapshotLine("providerTimeline", providerReadinessTimeline),
+      formatSteerSnapshotLine("providerSteer", providerSteeringRecommendations),
+    ],
+    [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
+  ]);
+}

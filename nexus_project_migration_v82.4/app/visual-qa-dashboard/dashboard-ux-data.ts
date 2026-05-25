@@ -1,0 +1,2509 @@
+import type { VisualQaDashboardPreviewRoute } from "../../services/image-generation/visual-qa-dashboard-preview-route.ts";
+
+export const VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS = Object.freeze([
+  "identity",
+  "style",
+  "emotion",
+  "drift",
+  "overall",
+] as const);
+
+export const VISUAL_QA_DASHBOARD_SUMMARY_CARD_FIELDS = Object.freeze([
+  ["dashboardId", "Dashboard ID"],
+  ["matrixId", "Matrix ID"],
+  ["sourceExportId", "Source Export"],
+  ["rankingPreviewRowCount", "Ranking Rows"],
+  ["heatmapPreviewRowCount", "Heatmap Rows"],
+  ["trendSignalCount", "Trend Signals"],
+] as const);
+
+export type FindingSeverity = "stable" | "warning" | "critical";
+
+export type ImageEvaluationIntake = {
+  readonly providerName: string;
+  readonly imageSetId: string;
+  readonly sourcePromptVersion: string;
+  readonly generationPreset: string;
+  readonly visualFindings: readonly string[];
+  readonly continuityFlags: readonly string[];
+  readonly styleSignals: readonly string[];
+  readonly evaluatorSummary: string;
+};
+
+export type CycleTimelineEntry = {
+  readonly cycleId: string;
+  readonly cycleOrder: number;
+  readonly promptVersion: string;
+  readonly promptEvolution: string;
+  readonly driftTrend: "increase" | "decrease" | "flat";
+  readonly driftDelta: number;
+  readonly continuityRecovery: boolean;
+  readonly stabilityTrend: "up" | "down" | "flat";
+  readonly stabilityScore: number;
+  readonly isLatest: boolean;
+};
+
+export type GroupedFinding = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+  readonly group: "continuity" | "style";
+};
+
+export type RankingEvolution = {
+  readonly latestCycleId: string;
+  readonly previousCycleId: string;
+  readonly latestStability: number;
+  readonly previousStability: number;
+  readonly driftDelta: number;
+  readonly continuityDelta: number;
+  readonly stabilityTrend: "up" | "down" | "flat";
+};
+
+export type DashboardDecision = {
+  readonly bestPromptCandidate: string;
+  readonly unsafePromptCandidate: string;
+  readonly recommendedNextIteration: string;
+};
+
+export type DecisionSummaryPanel = {
+  readonly label: string;
+  readonly cycleId: string;
+  readonly promptVersion: string;
+  readonly score: number;
+  readonly severity: FindingSeverity;
+  readonly detail: string;
+};
+
+export type ContinuityMetric = {
+  readonly label: string;
+  readonly score: number;
+  readonly severity: FindingSeverity;
+};
+
+export type PromptEvolutionInsight = {
+  readonly previousPrompt: string;
+  readonly latestPrompt: string;
+  readonly improvementReasons: readonly string[];
+  readonly regressionReasons: readonly string[];
+  readonly retrySteeringRecommendation: string;
+};
+
+export type DecisionMatrixRow = {
+  readonly cycleId: string;
+  readonly promptVersion: string;
+  readonly driftRisk: number;
+  readonly continuityScore: number;
+  readonly styleScore: number;
+  readonly retryPriority: FindingSeverity;
+  readonly recommendation: string;
+};
+
+export type RetrySteering = {
+  readonly safeRetryDirection: string;
+  readonly unsafeRetryDirection: string;
+  readonly preserveRules: readonly string[];
+  readonly avoidRules: readonly string[];
+};
+
+export type StyleCoreProfile = {
+  readonly styleCoreId: string;
+  readonly styleCoreName: string;
+  readonly visualIdentityTraits: readonly string[];
+  readonly continuityRules: readonly string[];
+  readonly preservationRules: readonly string[];
+  readonly driftRiskFactors: readonly string[];
+  readonly retryGuidelines: readonly string[];
+};
+
+export type CharacterContinuityBridge = {
+  readonly characterId: string;
+  readonly faceLockProfile: string;
+  readonly silhouetteProfile: string;
+  readonly expressionProfile: string;
+  readonly continuityPriority: FindingSeverity;
+  readonly driftSensitivity: number;
+};
+
+export type StyleCoreTraitTag = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type StyleCoreDecision = {
+  readonly activeStyleCoreId: string;
+  readonly activeStyleCoreName: string;
+  readonly preservedTraits: readonly StyleCoreTraitTag[];
+  readonly detectedDriftTraits: readonly StyleCoreTraitTag[];
+  readonly retryPreserveTargets: readonly string[];
+  readonly continuityGuardStatus: FindingSeverity;
+  readonly continuityGuardScore: number;
+};
+
+export type RetryGuardRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+  readonly detail: string;
+};
+
+export type DirectorGrammarBlend = {
+  readonly ghibliBase: number;
+  readonly shinkaiLightDistance: number;
+  readonly liveActionMiseEnScene: number;
+};
+
+export type CinematicDnaProfile = {
+  readonly cinematicProfileId: string;
+  readonly directorGrammarBlend: DirectorGrammarBlend;
+  readonly pacingPhilosophy: string;
+  readonly framingRhythm: string;
+  readonly lightingBehavior: string;
+  readonly compositionBias: string;
+  readonly emotionalEscalationLogic: string;
+  readonly spatialBlockingSignature: string;
+};
+
+export type DirectorGrammarSteeringCard = {
+  readonly label: string;
+  readonly detail: string;
+  readonly severity: FindingSeverity;
+};
+
+export type CinematicDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type DatasetIdentity = {
+  readonly sourceFamilyBlend: string;
+  readonly cinematicLineage: string;
+  readonly activeGrammarProfile: string;
+  readonly continuitySafeGrammar: string;
+};
+
+export type CinematicSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type LongSessionContinuityMemory = {
+  readonly continuitySessionId: string;
+  readonly activeCharacterIdentity: string;
+  readonly activeStyleCore: string;
+  readonly activeCinematicGrammar: string;
+  readonly preservedEmotionState: string;
+  readonly preservedLightingState: string;
+  readonly continuityCarryOverRules: readonly string[];
+  readonly continuityFailureHistory: readonly string[];
+};
+
+export type MultiCycleTrendPoint = {
+  readonly dimension: string;
+  readonly cycleId: string;
+  readonly cycleOrder: number;
+  readonly score: number;
+  readonly trend: "up" | "down" | "flat";
+  readonly severity: FindingSeverity;
+};
+
+export type DatasetBlendEntry = {
+  readonly datasetId: string;
+  readonly weight: number;
+};
+
+export type DatasetPriorityEntry = {
+  readonly datasetId: string;
+  readonly priority: FindingSeverity;
+  readonly weight: number;
+};
+
+export type DatasetOrchestration = {
+  readonly datasetFamilyId: string;
+  readonly activeDatasetBlend: readonly DatasetBlendEntry[];
+  readonly datasetPriorityWeights: readonly DatasetPriorityEntry[];
+  readonly continuitySafeDatasets: readonly string[];
+  readonly highDriftDatasets: readonly string[];
+  readonly emotionalToneDatasets: readonly string[];
+  readonly cinematicGrammarDatasets: readonly string[];
+};
+
+export type DatasetSteeringRecommendation = {
+  readonly label: string;
+  readonly detail: string;
+  readonly severity: FindingSeverity;
+};
+
+export type IdentityPersistenceMetric = {
+  readonly label: string;
+  readonly score: number;
+  readonly severity: FindingSeverity;
+};
+
+export type NarrativeEmotionalState = {
+  readonly narrativeStateId: string;
+  readonly activeEmotionArc: string;
+  readonly emotionalBaseline: string;
+  readonly emotionalCarryOver: string;
+  readonly tensionCurve: number;
+  readonly calmRecoveryCurve: number;
+  readonly emotionalTransitionRules: readonly string[];
+};
+
+export type SceneGrammarProfile = {
+  readonly sceneGrammarId: string;
+  readonly transitionPhilosophy: string;
+  readonly pacingDensity: string;
+  readonly silenceSpacing: string;
+  readonly atmospherePersistence: string;
+  readonly framingBreathability: string;
+  readonly motionCalmness: string;
+};
+
+export type EmotionalDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type NarrativeSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type TemporalSceneMemory = {
+  readonly temporalSequenceId: string;
+  readonly previousSceneInheritance: string;
+  readonly activeSequenceEmotion: string;
+  readonly lightingCarryOverPersistence: number;
+  readonly framingCarryOverPersistence: number;
+  readonly atmosphereCarryOverPersistence: number;
+  readonly temporalContinuityRules: readonly string[];
+};
+
+export type SequenceContinuity = {
+  readonly sequenceGrammarId: string;
+  readonly sceneTransitionMemory: string;
+  readonly emotionalInheritanceStrength: number;
+  readonly pacingInheritanceStrength: number;
+  readonly framingPersistenceStrength: number;
+  readonly atmospherePersistenceStrength: number;
+};
+
+export type TemporalDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type SequenceSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type CinematicWorldState = {
+  readonly worldStateId: string;
+  readonly activeEnvironmentProfile: string;
+  readonly atmospherePersistenceState: string;
+  readonly environmentalLightingState: string;
+  readonly spatialHarmonyState: string;
+  readonly environmentalCarryOverRules: readonly string[];
+  readonly worldStateFailureHistory: readonly string[];
+};
+
+export type EnvironmentalContinuity = {
+  readonly environmentGrammarId: string;
+  readonly lightingInheritanceProfile: number;
+  readonly atmosphereInheritanceProfile: number;
+  readonly spatialPersistenceProfile: number;
+  readonly environmentalDensityProfile: number;
+  readonly worldScaleConsistency: number;
+};
+
+export type WorldStateDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type EnvironmentalSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type UnifiedCinematicIdentity = {
+  readonly cinematicIdentityId: string;
+  readonly activeIdentityProfile: string;
+  readonly characterIdentityPersistence: number;
+  readonly emotionalIdentityPersistence: number;
+  readonly environmentalIdentityPersistence: number;
+  readonly cinematicGrammarPersistence: number;
+  readonly unifiedContinuityState: string;
+};
+
+export type CrossLayerContinuityLink = {
+  readonly label: string;
+  readonly score: number;
+  readonly severity: FindingSeverity;
+};
+
+export type UnifiedDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type UnifiedSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type MultiProjectCinematicMemory = {
+  readonly productionMemoryId: string;
+  readonly activeProjectId: string;
+  readonly cinematicProjectFamily: string;
+  readonly sharedIdentityInheritance: number;
+  readonly sharedAtmospherePersistence: number;
+  readonly sharedEmotionalPersistence: number;
+  readonly productionContinuityRules: readonly string[];
+};
+
+export type ProductionOrchestration = {
+  readonly orchestrationProfileId: string;
+  readonly activeProductionState: string;
+  readonly continuitySafeProjects: readonly string[];
+  readonly highDriftProjects: readonly string[];
+  readonly sharedStyleCoreBridge: string;
+  readonly sharedCinematicGrammarBridge: string;
+  readonly productionStabilityScore: number;
+};
+
+export type CrossProjectDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ProductionSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type CanonicalEvidenceIntake = {
+  readonly evidenceIntakeId: string;
+  readonly canonicalGenerationId: string;
+  readonly sourceProvider: string;
+  readonly sourceProjectId: string;
+  readonly sourcePromptVersion: string;
+  readonly evidenceLineageId: string;
+  readonly replayCompatibilityState: string;
+  readonly evaluationNormalizationState: string;
+};
+
+export type RealEvaluationBridge = {
+  readonly evaluationBridgeId: string;
+  readonly canonicalReplayState: string;
+  readonly evidenceContinuityCompatibility: number;
+  readonly continuitySafeEvidence: readonly string[];
+  readonly highDriftEvidence: readonly string[];
+  readonly replayInheritanceStrength: number;
+  readonly steeringCompatibilityScore: number;
+};
+
+export type EvidenceDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type EvidenceSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type EvidenceFamilyBlendEntry = {
+  readonly familyId: string;
+  readonly weight: number;
+};
+
+export type CanonicalDatasetRegistry = {
+  readonly datasetRegistryId: string;
+  readonly activeDatasetFamily: string;
+  readonly canonicalDatasetGroups: readonly string[];
+  readonly continuitySafeDatasetFamilies: readonly string[];
+  readonly highDriftDatasetFamilies: readonly string[];
+  readonly cinematicInheritanceFamilies: readonly string[];
+  readonly registryNormalizationState: string;
+};
+
+export type EvidenceFamilyOrchestration = {
+  readonly evidenceFamilyBridgeId: string;
+  readonly activeEvidenceBlend: readonly EvidenceFamilyBlendEntry[];
+  readonly lineageSafeBlendState: string;
+  readonly continuityInheritanceCompatibility: number;
+  readonly replaySafeDatasetGroups: readonly string[];
+  readonly orchestrationInheritanceStrength: number;
+  readonly cinematicBlendStability: number;
+};
+
+export type RegistryDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type RegistrySteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type CanonicalSessionIntake = {
+  readonly generationSessionId: string;
+  readonly canonicalSessionId: string;
+  readonly sessionProvider: string;
+  readonly sessionProjectId: string;
+  readonly sessionPromptFamily: string;
+  readonly sessionReplayLineage: string;
+  readonly sessionNormalizationState: string;
+  readonly continuitySessionCompatibility: number;
+};
+
+export type RealGenerationSessionBridge = {
+  readonly generationSessionBridgeId: string;
+  readonly activeGenerationSession: string;
+  readonly replaySafeSessions: readonly string[];
+  readonly highDriftSessions: readonly string[];
+  readonly continuityCompatibleSessions: readonly string[];
+  readonly orchestrationSessionStrength: number;
+  readonly providerNeutralCompatibility: number;
+};
+
+export type SessionDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type SessionSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ProviderAdapterReadiness = {
+  readonly providerAdapterReadinessId: string;
+  readonly activeProviderFamily: string;
+  readonly supportedProviderProfiles: readonly string[];
+  readonly providerCapabilitySummary: string;
+  readonly providerSwitchingPolicy: string;
+  readonly providerNeutralSafetyState: string;
+};
+
+export type SessionProviderCompatibility = {
+  readonly providerCompatibilityId: string;
+  readonly activeSessionId: string;
+  readonly compatibleProviders: readonly string[];
+  readonly highDriftProviders: readonly string[];
+  readonly continuitySafeProviders: readonly string[];
+  readonly providerCompatibilityScore: number;
+  readonly adapterReadinessScore: number;
+};
+
+export type ProviderDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ProviderSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export const STYLE_CORE_PROFILE = Object.freeze({
+  styleCoreId: "gonegi-warm-glaze-core",
+  styleCoreName: "Gonegi Warm Glaze Core",
+  visualIdentityTraits: Object.freeze([
+    "warm glaze lighting",
+    "soft linework",
+    "mediterranean palette",
+    "emotional softness",
+  ]),
+  continuityRules: Object.freeze([
+    "eye spacing preservation",
+    "face proportion lock",
+    "silhouette consistency",
+  ]),
+  preservationRules: Object.freeze([
+    "warm glaze lighting",
+    "eye spacing preservation",
+    "emotional softness",
+  ]),
+  driftRiskFactors: Object.freeze(["over-detailing", "harsh contrast", "lighting mismatch"]),
+  retryGuidelines: Object.freeze([
+    "preserve warm glaze palette",
+    "maintain soft linework",
+    "avoid detail-push presets",
+  ]),
+} satisfies StyleCoreProfile);
+
+export const CHARACTER_CONTINUITY_BRIDGE = Object.freeze({
+  characterId: "gonegi-protagonist-v1",
+  faceLockProfile: "eye spacing 1.12 ratio · soft jawline · warm gaze",
+  silhouetteProfile: "rounded shoulders · mediterranean drape · stable head-to-body ratio",
+  expressionProfile: "emotional softness · gentle smile baseline · non-aggressive brows",
+  continuityPriority: "stable",
+  driftSensitivity: 0.812333,
+} satisfies CharacterContinuityBridge);
+
+export const RETRY_GUARD_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({
+    label: "preserve strongly",
+    severity: "stable",
+    detail: "warm glaze lighting · eye spacing · emotional softness",
+  }),
+  Object.freeze({
+    label: "reduce aggressively",
+    severity: "warning",
+    detail: "facial detail noise · over-sharpened linework",
+  }),
+  Object.freeze({
+    label: "avoid retry preset",
+    severity: "critical",
+    detail: "detail-push-aggressive",
+  }),
+  Object.freeze({
+    label: "continuity-safe preset",
+    severity: "stable",
+    detail: "warm-glaze-balanced with face lock guard",
+  }),
+] as const satisfies readonly RetryGuardRecommendation[]);
+
+export const CINEMATIC_DNA_PROFILE = Object.freeze({
+  cinematicProfileId: "gonegi-cinematic-dna-v1",
+  directorGrammarBlend: Object.freeze({
+    ghibliBase: 0.7,
+    shinkaiLightDistance: 0.2,
+    liveActionMiseEnScene: 0.1,
+  }),
+  pacingPhilosophy: "patient emotional hold · breathable scene transitions",
+  framingRhythm: "mid-wide character framing · horizon-stable composition",
+  lightingBehavior: "warm glaze diffusion · atmospheric depth layering",
+  compositionBias: "character-centered blocking · mediterranean spatial honesty",
+  emotionalEscalationLogic: "soft carry-over · no abrupt tonal jumps",
+  spatialBlockingSignature: "grounded silhouette · consistent eye-line geometry",
+} satisfies CinematicDnaProfile);
+
+export const DIRECTOR_GRAMMAR_STEERING = Object.freeze([
+  Object.freeze({ label: "active cinematic grammar", detail: "ghibli-base with shinkai light distance", severity: "stable" }),
+  Object.freeze({ label: "pacing profile", detail: "patient hold · low cut aggression", severity: "stable" }),
+  Object.freeze({ label: "framing profile", detail: "mid-wide rhythm · stable horizon", severity: "stable" }),
+  Object.freeze({ label: "emotional carry-over", detail: "soft escalation · continuity-safe tone", severity: "stable" }),
+  Object.freeze({ label: "transition philosophy", detail: "atmospheric dissolve · no hard pacing jumps", severity: "warning" }),
+  Object.freeze({ label: "spatial honesty", detail: "grounded blocking · mediterranean scale", severity: "stable" }),
+  Object.freeze({ label: "atmosphere density", detail: "warm glaze haze · moderate depth layers", severity: "stable" }),
+] as const satisfies readonly DirectorGrammarSteeringCard[]);
+
+export const CINEMATIC_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "pacing drift", severity: "warning" }),
+  Object.freeze({ label: "framing drift", severity: "warning" }),
+  Object.freeze({ label: "lighting drift", severity: "warning" }),
+  Object.freeze({ label: "emotional rhythm drift", severity: "critical" }),
+  Object.freeze({ label: "composition imbalance", severity: "warning" }),
+] as const satisfies readonly CinematicDriftItem[]);
+
+export const DATASET_IDENTITY = Object.freeze({
+  sourceFamilyBlend: "Ghibli 0.7 · Shinkai 0.2 · live-action cinema 0.1",
+  cinematicLineage: "gonegi-warm-glaze cinematic grammar",
+  activeGrammarProfile: "gonegi-cinematic-dna-v1",
+  continuitySafeGrammar: "patient pacing · soft emotional carry-over · stable framing",
+} satisfies DatasetIdentity);
+
+export const CINEMATIC_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic traits", severity: "stable" }),
+  Object.freeze({ label: "reduce cinematic noise", severity: "warning" }),
+  Object.freeze({ label: "maintain emotional carry-over", severity: "stable" }),
+  Object.freeze({ label: "preserve framing rhythm", severity: "stable" }),
+  Object.freeze({ label: "avoid aggressive pacing presets", severity: "critical" }),
+] as const satisfies readonly CinematicSteeringRecommendation[]);
+
+export const LONG_SESSION_CONTINUITY_MEMORY = Object.freeze({
+  continuitySessionId: "continuity-session-gonegi-001",
+  activeCharacterIdentity: "gonegi-protagonist-v1",
+  activeStyleCore: "gonegi-warm-glaze-core",
+  activeCinematicGrammar: "gonegi-cinematic-dna-v1",
+  preservedEmotionState: "soft warmth · gentle baseline",
+  preservedLightingState: "warm glaze diffusion · atmospheric hold",
+  continuityCarryOverRules: Object.freeze([
+    "preserve eye spacing",
+    "maintain emotional softness",
+    "lock warm glaze lighting",
+  ]),
+  continuityFailureHistory: Object.freeze([
+    "cycle-002 detail-push face drift",
+    "cycle-002 lighting mismatch under aggressive preset",
+  ]),
+} satisfies LongSessionContinuityMemory);
+
+const MULTI_CYCLE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      continuityStability: number;
+      emotionalCarryOver: number;
+      lightingPersistence: number;
+      framingPersistence: number;
+      silhouettePreservation: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    continuityStability: 0.331333,
+    emotionalCarryOver: 0.608333,
+    lightingPersistence: 0.591333,
+    framingPersistence: 0.602333,
+    silhouettePreservation: 0.594333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    continuityStability: 0.381333,
+    emotionalCarryOver: 0.801333,
+    lightingPersistence: 0.812333,
+    framingPersistence: 0.778333,
+    silhouettePreservation: 0.785333,
+  }),
+});
+
+export const MULTI_CYCLE_TREND_DIMENSIONS = Object.freeze([
+  ["continuity stability trend", "continuityStability"],
+  ["emotional carry-over trend", "emotionalCarryOver"],
+  ["lighting persistence trend", "lightingPersistence"],
+  ["framing persistence trend", "framingPersistence"],
+  ["silhouette preservation trend", "silhouettePreservation"],
+] as const);
+
+export const DATASET_ORCHESTRATION = Object.freeze({
+  datasetFamilyId: "gonegi-cinematic-dataset-family-v1",
+  activeDatasetBlend: Object.freeze([
+    Object.freeze({ datasetId: "ghibli-emotion-core", weight: 0.5 }),
+    Object.freeze({ datasetId: "shinkai-lighting-core", weight: 0.3 }),
+    Object.freeze({ datasetId: "live-action-spatial-core", weight: 0.2 }),
+  ]),
+  datasetPriorityWeights: Object.freeze([
+    Object.freeze({ datasetId: "ghibli-emotion-core", priority: "stable", weight: 0.5 }),
+    Object.freeze({ datasetId: "shinkai-lighting-core", priority: "stable", weight: 0.3 }),
+    Object.freeze({ datasetId: "live-action-spatial-core", priority: "warning", weight: 0.2 }),
+  ]),
+  continuitySafeDatasets: Object.freeze(["ghibli-emotion-core", "shinkai-lighting-core"]),
+  highDriftDatasets: Object.freeze(["detail-push-aggressive-dataset"]),
+  emotionalToneDatasets: Object.freeze(["ghibli-emotion-core"]),
+  cinematicGrammarDatasets: Object.freeze(["gonegi-cinematic-dna-v1", "shinkai-lighting-core"]),
+} satisfies DatasetOrchestration);
+
+export const DATASET_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({
+    label: "recommended dataset blend",
+    detail: "ghibli-emotion-core 0.500 · shinkai-lighting-core 0.300 · live-action-spatial-core 0.200",
+    severity: "stable",
+  }),
+  Object.freeze({
+    label: "continuity-safe dataset",
+    detail: "ghibli-emotion-core with shinkai-lighting-core guard",
+    severity: "stable",
+  }),
+  Object.freeze({
+    label: "unstable dataset combinations",
+    detail: "detail-push-aggressive-dataset + high contrast spatial push",
+    severity: "critical",
+  }),
+  Object.freeze({
+    label: "emotional carry-over safe blend",
+    detail: "ghibli-emotion-core dominant with soft glaze overlay",
+    severity: "stable",
+  }),
+  Object.freeze({
+    label: "pacing-safe blend",
+    detail: "patient hold grammar · low cut aggression datasets only",
+    severity: "warning",
+  }),
+] as const satisfies readonly DatasetSteeringRecommendation[]);
+
+export const IDENTITY_PERSISTENCE_METRICS = Object.freeze([
+  Object.freeze({ label: "visual identity persistence", score: 0.812333, severity: "stable" }),
+  Object.freeze({ label: "emotional identity persistence", score: 0.801333, severity: "stable" }),
+  Object.freeze({ label: "cinematic identity persistence", score: 0.778333, severity: "stable" }),
+  Object.freeze({ label: "continuity memory confidence", score: 0.785333, severity: "stable" }),
+] as const satisfies readonly IdentityPersistenceMetric[]);
+
+export const NARRATIVE_EMOTIONAL_STATE = Object.freeze({
+  narrativeStateId: "narrative-emotion-gonegi-v1",
+  activeEmotionArc: "gentle recovery · warm atmospheric hold",
+  emotionalBaseline: "soft warmth · non-aggressive tone",
+  emotionalCarryOver: "continuity-safe emotional inheritance",
+  tensionCurve: 0.321333,
+  calmRecoveryCurve: 0.812333,
+  emotionalTransitionRules: Object.freeze([
+    "gentle recovery pacing",
+    "soft emotional carry-over",
+    "non-abrupt escalation",
+    "warm atmospheric recovery",
+  ]),
+} satisfies NarrativeEmotionalState);
+
+export const SCENE_GRAMMAR_PROFILE = Object.freeze({
+  sceneGrammarId: "gonegi-scene-grammar-v1",
+  transitionPhilosophy: "atmospheric dissolve · patient scene breath",
+  pacingDensity: "low · breathable scene rhythm",
+  silenceSpacing: "generous pause · calm transition gaps",
+  atmospherePersistence: "warm glaze haze · sustained mood hold",
+  framingBreathability: "mid-wide horizon-stable framing",
+  motionCalmness: "grounded motion · no aggressive cut pressure",
+} satisfies SceneGrammarProfile);
+
+export const EMOTIONAL_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "abrupt tone escalation", severity: "critical" }),
+  Object.freeze({ label: "emotional discontinuity", severity: "critical" }),
+  Object.freeze({ label: "pacing overload", severity: "warning" }),
+  Object.freeze({ label: "atmosphere collapse", severity: "warning" }),
+  Object.freeze({ label: "framing pressure increase", severity: "warning" }),
+] as const satisfies readonly EmotionalDriftItem[]);
+
+const EMOTIONAL_CONTINUITY_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      emotionalPersistence: number;
+      tensionRecovery: number;
+      atmosphereContinuity: number;
+      sceneCalmness: number;
+      transitionSoftness: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    emotionalPersistence: 0.608333,
+    tensionRecovery: 0.421333,
+    atmosphereContinuity: 0.591333,
+    sceneCalmness: 0.602333,
+    transitionSoftness: 0.594333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    emotionalPersistence: 0.801333,
+    tensionRecovery: 0.778333,
+    atmosphereContinuity: 0.812333,
+    sceneCalmness: 0.785333,
+    transitionSoftness: 0.801333,
+  }),
+});
+
+export const EMOTIONAL_CONTINUITY_TREND_DIMENSIONS = Object.freeze([
+  ["emotional persistence trend", "emotionalPersistence"],
+  ["tension recovery trend", "tensionRecovery"],
+  ["atmosphere continuity trend", "atmosphereContinuity"],
+  ["scene calmness trend", "sceneCalmness"],
+  ["transition softness trend", "transitionSoftness"],
+] as const);
+
+export const NARRATIVE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve emotional softness", severity: "stable" }),
+  Object.freeze({ label: "maintain calm transition pacing", severity: "stable" }),
+  Object.freeze({ label: "avoid abrupt emotional spikes", severity: "critical" }),
+  Object.freeze({ label: "preserve atmospheric breathing room", severity: "stable" }),
+  Object.freeze({ label: "reduce scene density pressure", severity: "warning" }),
+] as const satisfies readonly NarrativeSteeringRecommendation[]);
+
+export const TEMPORAL_SCENE_MEMORY = Object.freeze({
+  temporalSequenceId: "temporal-sequence-gonegi-001",
+  previousSceneInheritance: "warm glaze residue · soft emotional hold from prior scene",
+  activeSequenceEmotion: "gentle continuity · inherited warmth",
+  lightingCarryOverPersistence: 0.812333,
+  framingCarryOverPersistence: 0.778333,
+  atmosphereCarryOverPersistence: 0.801333,
+  temporalContinuityRules: Object.freeze([
+    "preserve previous emotional warmth",
+    "maintain lighting inheritance",
+    "avoid abrupt framing displacement",
+    "preserve atmospheric residue",
+  ]),
+} satisfies TemporalSceneMemory);
+
+export const SEQUENCE_CONTINUITY = Object.freeze({
+  sequenceGrammarId: "gonegi-sequence-grammar-v1",
+  sceneTransitionMemory: "atmospheric dissolve · inherited mood bridge",
+  emotionalInheritanceStrength: 0.801333,
+  pacingInheritanceStrength: 0.778333,
+  framingPersistenceStrength: 0.785333,
+  atmospherePersistenceStrength: 0.812333,
+} satisfies SequenceContinuity);
+
+export const TEMPORAL_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "abrupt scene transition", severity: "critical" }),
+  Object.freeze({ label: "temporal emotional reset", severity: "critical" }),
+  Object.freeze({ label: "framing discontinuity", severity: "warning" }),
+  Object.freeze({ label: "lighting inheritance loss", severity: "warning" }),
+  Object.freeze({ label: "atmosphere inheritance collapse", severity: "warning" }),
+] as const satisfies readonly TemporalDriftItem[]);
+
+const SEQUENCE_STABILITY_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      sequenceContinuity: number;
+      temporalEmotionalPersistence: number;
+      sceneInheritanceStability: number;
+      transitionMemoryStability: number;
+      cinematicPersistence: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    sequenceContinuity: 0.331333,
+    temporalEmotionalPersistence: 0.608333,
+    sceneInheritanceStability: 0.594333,
+    transitionMemoryStability: 0.602333,
+    cinematicPersistence: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    sequenceContinuity: 0.381333,
+    temporalEmotionalPersistence: 0.801333,
+    sceneInheritanceStability: 0.785333,
+    transitionMemoryStability: 0.778333,
+    cinematicPersistence: 0.812333,
+  }),
+});
+
+export const SEQUENCE_STABILITY_TREND_DIMENSIONS = Object.freeze([
+  ["sequence continuity trend", "sequenceContinuity"],
+  ["temporal emotional persistence", "temporalEmotionalPersistence"],
+  ["scene inheritance stability", "sceneInheritanceStability"],
+  ["transition memory stability", "transitionMemoryStability"],
+  ["cinematic persistence trend", "cinematicPersistence"],
+] as const);
+
+export const SEQUENCE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve temporal inheritance", severity: "stable" }),
+  Object.freeze({ label: "maintain sequence calmness", severity: "stable" }),
+  Object.freeze({ label: "avoid abrupt sequence resets", severity: "critical" }),
+  Object.freeze({ label: "preserve atmospheric residue", severity: "stable" }),
+  Object.freeze({ label: "reduce temporal discontinuity pressure", severity: "warning" }),
+] as const satisfies readonly SequenceSteeringRecommendation[]);
+
+export const CINEMATIC_WORLD_STATE = Object.freeze({
+  worldStateId: "world-state-gonegi-harbor-v1",
+  activeEnvironmentProfile: "warm harbor mediterranean haze",
+  atmospherePersistenceState: "warm harbor haze persistence · stable glow hold",
+  environmentalLightingState: "atmospheric glow inheritance · warm glaze ambient",
+  spatialHarmonyState: "mediterranean spatial continuity · calm harbor geometry",
+  environmentalCarryOverRules: Object.freeze([
+    "warm harbor haze persistence",
+    "mediterranean spatial continuity",
+    "atmospheric glow inheritance",
+    "stable environmental calmness",
+  ]),
+  worldStateFailureHistory: Object.freeze([
+    "detail-push ambient collapse",
+    "harsh contrast spatial drift",
+  ]),
+} satisfies CinematicWorldState);
+
+export const ENVIRONMENTAL_CONTINUITY = Object.freeze({
+  environmentGrammarId: "gonegi-environment-grammar-v1",
+  lightingInheritanceProfile: 0.812333,
+  atmosphereInheritanceProfile: 0.801333,
+  spatialPersistenceProfile: 0.785333,
+  environmentalDensityProfile: 0.778333,
+  worldScaleConsistency: 0.801333,
+} satisfies EnvironmentalContinuity);
+
+export const WORLD_STATE_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "environmental lighting collapse", severity: "critical" }),
+  Object.freeze({ label: "atmosphere inconsistency", severity: "critical" }),
+  Object.freeze({ label: "spatial harmony loss", severity: "warning" }),
+  Object.freeze({ label: "environmental density overload", severity: "warning" }),
+  Object.freeze({ label: "world-scale discontinuity", severity: "warning" }),
+] as const satisfies readonly WorldStateDriftItem[]);
+
+const ENVIRONMENTAL_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      environmentalPersistence: number;
+      atmosphereStability: number;
+      spatialContinuity: number;
+      lightingInheritance: number;
+      worldScaleStability: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    environmentalPersistence: 0.331333,
+    atmosphereStability: 0.608333,
+    spatialContinuity: 0.594333,
+    lightingInheritance: 0.602333,
+    worldScaleStability: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    environmentalPersistence: 0.381333,
+    atmosphereStability: 0.801333,
+    spatialContinuity: 0.785333,
+    lightingInheritance: 0.778333,
+    worldScaleStability: 0.812333,
+  }),
+});
+
+export const ENVIRONMENTAL_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["environmental persistence trend", "environmentalPersistence"],
+  ["atmosphere stability trend", "atmosphereStability"],
+  ["spatial continuity trend", "spatialContinuity"],
+  ["lighting inheritance trend", "lightingInheritance"],
+  ["world-scale stability trend", "worldScaleStability"],
+] as const);
+
+export const ENVIRONMENTAL_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve atmospheric haze", severity: "stable" }),
+  Object.freeze({ label: "maintain spatial calmness", severity: "stable" }),
+  Object.freeze({ label: "avoid environmental overload", severity: "critical" }),
+  Object.freeze({ label: "preserve warm lighting inheritance", severity: "stable" }),
+  Object.freeze({ label: "reduce density pressure", severity: "warning" }),
+] as const satisfies readonly EnvironmentalSteeringRecommendation[]);
+
+export const UNIFIED_CINEMATIC_IDENTITY = Object.freeze({
+  cinematicIdentityId: "cinematic-identity-gonegi-v1",
+  activeIdentityProfile: "warm glaze cinematic identity",
+  characterIdentityPersistence: 0.812333,
+  emotionalIdentityPersistence: 0.801333,
+  environmentalIdentityPersistence: 0.785333,
+  cinematicGrammarPersistence: 0.778333,
+  unifiedContinuityState: "soft emotional continuity · mediterranean environmental persistence · stable atmospheric grammar",
+} satisfies UnifiedCinematicIdentity);
+
+export const CROSS_LAYER_CONTINUITY_MATRIX = Object.freeze([
+  Object.freeze({ label: "character ↔ emotion continuity", score: 0.812333, severity: "stable" }),
+  Object.freeze({ label: "emotion ↔ environment continuity", score: 0.801333, severity: "stable" }),
+  Object.freeze({ label: "environment ↔ sequence continuity", score: 0.785333, severity: "stable" }),
+  Object.freeze({ label: "sequence ↔ cinematic grammar continuity", score: 0.778333, severity: "stable" }),
+  Object.freeze({ label: "unified persistence stability", score: 0.801333, severity: "stable" }),
+] as const satisfies readonly CrossLayerContinuityLink[]);
+
+export const UNIFIED_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic identity fracture", severity: "critical" }),
+  Object.freeze({ label: "emotional/world mismatch", severity: "critical" }),
+  Object.freeze({ label: "sequence/environment mismatch", severity: "warning" }),
+  Object.freeze({ label: "atmosphere/character mismatch", severity: "warning" }),
+  Object.freeze({ label: "cinematic grammar instability", severity: "warning" }),
+] as const satisfies readonly UnifiedDriftItem[]);
+
+const IDENTITY_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      unifiedCinematicPersistence: number;
+      crossLayerContinuityStability: number;
+      atmosphericIdentityPersistence: number;
+      emotionalIdentityPersistence: number;
+      cinematicGrammarPersistence: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    unifiedCinematicPersistence: 0.331333,
+    crossLayerContinuityStability: 0.608333,
+    atmosphericIdentityPersistence: 0.594333,
+    emotionalIdentityPersistence: 0.602333,
+    cinematicGrammarPersistence: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    unifiedCinematicPersistence: 0.381333,
+    crossLayerContinuityStability: 0.801333,
+    atmosphericIdentityPersistence: 0.785333,
+    emotionalIdentityPersistence: 0.778333,
+    cinematicGrammarPersistence: 0.812333,
+  }),
+});
+
+export const IDENTITY_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["unified cinematic persistence", "unifiedCinematicPersistence"],
+  ["cross-layer continuity stability", "crossLayerContinuityStability"],
+  ["atmospheric identity persistence", "atmosphericIdentityPersistence"],
+  ["emotional identity persistence", "emotionalIdentityPersistence"],
+  ["cinematic grammar persistence", "cinematicGrammarPersistence"],
+] as const);
+
+export const UNIFIED_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve unified cinematic identity", severity: "stable" }),
+  Object.freeze({ label: "maintain cross-layer harmony", severity: "stable" }),
+  Object.freeze({ label: "avoid continuity fragmentation", severity: "critical" }),
+  Object.freeze({ label: "preserve atmospheric/emotional cohesion", severity: "stable" }),
+  Object.freeze({ label: "reduce cinematic instability pressure", severity: "warning" }),
+] as const satisfies readonly UnifiedSteeringRecommendation[]);
+
+export const MULTI_PROJECT_CINEMATIC_MEMORY = Object.freeze({
+  productionMemoryId: "production-memory-gonegi-v1",
+  activeProjectId: "project-gonegi-harbor-001",
+  cinematicProjectFamily: "gonegi warm glaze production family",
+  sharedIdentityInheritance: 0.812333,
+  sharedAtmospherePersistence: 0.801333,
+  sharedEmotionalPersistence: 0.785333,
+  productionContinuityRules: Object.freeze([
+    "maintain warm glaze identity across projects",
+    "preserve atmospheric continuity inheritance",
+    "maintain cinematic emotional baseline",
+    "stabilize cross-session continuity",
+  ]),
+} satisfies MultiProjectCinematicMemory);
+
+export const PRODUCTION_ORCHESTRATION = Object.freeze({
+  orchestrationProfileId: "gonegi-production-orchestration-v1",
+  activeProductionState: "continuity-safe warm glaze production loop",
+  continuitySafeProjects: Object.freeze(["project-gonegi-harbor-001", "project-gonegi-glaze-002"]),
+  highDriftProjects: Object.freeze(["project-detail-push-experiment"]),
+  sharedStyleCoreBridge: "gonegi-warm-glaze-core",
+  sharedCinematicGrammarBridge: "gonegi-cinematic-grammar-v1",
+  productionStabilityScore: 0.801333,
+} satisfies ProductionOrchestration);
+
+export const CROSS_PROJECT_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cross-project cinematic fracture", severity: "critical" }),
+  Object.freeze({ label: "atmosphere inheritance mismatch", severity: "critical" }),
+  Object.freeze({ label: "emotional baseline instability", severity: "warning" }),
+  Object.freeze({ label: "style-core fragmentation", severity: "warning" }),
+  Object.freeze({ label: "cinematic grammar divergence", severity: "warning" }),
+] as const satisfies readonly CrossProjectDriftItem[]);
+
+const PRODUCTION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      productionContinuityPersistence: number;
+      crossProjectAtmosphericPersistence: number;
+      emotionalInheritancePersistence: number;
+      cinematicIdentityStability: number;
+      productionOrchestrationStability: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    productionContinuityPersistence: 0.331333,
+    crossProjectAtmosphericPersistence: 0.608333,
+    emotionalInheritancePersistence: 0.594333,
+    cinematicIdentityStability: 0.602333,
+    productionOrchestrationStability: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    productionContinuityPersistence: 0.381333,
+    crossProjectAtmosphericPersistence: 0.801333,
+    emotionalInheritancePersistence: 0.785333,
+    cinematicIdentityStability: 0.778333,
+    productionOrchestrationStability: 0.812333,
+  }),
+});
+
+export const PRODUCTION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["production continuity persistence", "productionContinuityPersistence"],
+  ["cross-project atmospheric persistence", "crossProjectAtmosphericPersistence"],
+  ["emotional inheritance persistence", "emotionalInheritancePersistence"],
+  ["cinematic identity stability", "cinematicIdentityStability"],
+  ["production orchestration stability", "productionOrchestrationStability"],
+] as const);
+
+export const PRODUCTION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve shared cinematic identity", severity: "stable" }),
+  Object.freeze({ label: "maintain cross-project continuity", severity: "stable" }),
+  Object.freeze({ label: "avoid cinematic fragmentation", severity: "critical" }),
+  Object.freeze({ label: "preserve shared atmosphere inheritance", severity: "stable" }),
+  Object.freeze({ label: "reduce orchestration instability pressure", severity: "warning" }),
+] as const satisfies readonly ProductionSteeringRecommendation[]);
+
+export const CANONICAL_EVIDENCE_INTAKE = Object.freeze({
+  evidenceIntakeId: "canonical-evidence-intake-gonegi-v1",
+  canonicalGenerationId: "gen-warm-glaze-001",
+  sourceProvider: "ai-studio-gemini-image",
+  sourceProjectId: "project-gonegi-harbor-001",
+  sourcePromptVersion: "v3-warm-glaze",
+  evidenceLineageId: "lineage-replay-safe-001",
+  replayCompatibilityState: "replay-safe lineage · continuity-compatible evidence intake",
+  evaluationNormalizationState: "deterministic evaluation normalization · continuity-compatible",
+} satisfies CanonicalEvidenceIntake);
+
+export const REAL_EVALUATION_BRIDGE = Object.freeze({
+  evaluationBridgeId: "evaluation-bridge-gonegi-v1",
+  canonicalReplayState: "replay-safe · normalization locked",
+  evidenceContinuityCompatibility: 0.801333,
+  continuitySafeEvidence: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002"]),
+  highDriftEvidence: Object.freeze(["gen-detail-push-experiment"]),
+  replayInheritanceStrength: 0.812333,
+  steeringCompatibilityScore: 0.785333,
+} satisfies RealEvaluationBridge);
+
+export const EVIDENCE_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "replay lineage instability", severity: "critical" }),
+  Object.freeze({ label: "evidence continuity mismatch", severity: "critical" }),
+  Object.freeze({ label: "evaluation normalization drift", severity: "warning" }),
+  Object.freeze({ label: "provider output inconsistency", severity: "warning" }),
+  Object.freeze({ label: "canonical replay fracture", severity: "warning" }),
+] as const satisfies readonly EvidenceDriftItem[]);
+
+const REPLAY_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      replayPersistence: number;
+      evidenceContinuity: number;
+      normalizationStability: number;
+      canonicalLineageStability: number;
+      steeringCompatibility: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    replayPersistence: 0.331333,
+    evidenceContinuity: 0.608333,
+    normalizationStability: 0.594333,
+    canonicalLineageStability: 0.602333,
+    steeringCompatibility: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    replayPersistence: 0.381333,
+    evidenceContinuity: 0.801333,
+    normalizationStability: 0.785333,
+    canonicalLineageStability: 0.778333,
+    steeringCompatibility: 0.812333,
+  }),
+});
+
+export const REPLAY_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["replay persistence trend", "replayPersistence"],
+  ["evidence continuity trend", "evidenceContinuity"],
+  ["normalization stability trend", "normalizationStability"],
+  ["canonical lineage stability", "canonicalLineageStability"],
+  ["steering compatibility trend", "steeringCompatibility"],
+] as const);
+
+export const EVIDENCE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve canonical replay lineage", severity: "stable" }),
+  Object.freeze({ label: "maintain evidence continuity compatibility", severity: "stable" }),
+  Object.freeze({ label: "avoid provider inconsistency escalation", severity: "critical" }),
+  Object.freeze({ label: "preserve normalization stability", severity: "stable" }),
+  Object.freeze({ label: "reduce replay fragmentation pressure", severity: "warning" }),
+] as const satisfies readonly EvidenceSteeringRecommendation[]);
+
+export const CANONICAL_DATASET_REGISTRY = Object.freeze({
+  datasetRegistryId: "canonical-dataset-registry-gonegi-v1",
+  activeDatasetFamily: "gonegi-cinematic-dataset-family-v1",
+  canonicalDatasetGroups: Object.freeze([
+    "ghibli-emotion-family",
+    "shinkai-lighting-family",
+    "live-action-spatial-family",
+  ]),
+  continuitySafeDatasetFamilies: Object.freeze(["ghibli-emotion-family", "shinkai-lighting-family"]),
+  highDriftDatasetFamilies: Object.freeze(["detail-push-aggressive-family"]),
+  cinematicInheritanceFamilies: Object.freeze(["replay-safe cinematic inheritance"]),
+  registryNormalizationState: "replay-safe cinematic inheritance · lineage-normalized registry",
+} satisfies CanonicalDatasetRegistry);
+
+export const EVIDENCE_FAMILY_ORCHESTRATION = Object.freeze({
+  evidenceFamilyBridgeId: "evidence-family-bridge-gonegi-v1",
+  activeEvidenceBlend: Object.freeze([
+    Object.freeze({ familyId: "ghibli-emotion-family", weight: 0.5 }),
+    Object.freeze({ familyId: "shinkai-lighting-family", weight: 0.3 }),
+    Object.freeze({ familyId: "live-action-spatial-family", weight: 0.2 }),
+  ]),
+  lineageSafeBlendState: "lineage-safe blend · replay-compatible orchestration",
+  continuityInheritanceCompatibility: 0.801333,
+  replaySafeDatasetGroups: Object.freeze(["ghibli-emotion-family", "shinkai-lighting-family"]),
+  orchestrationInheritanceStrength: 0.812333,
+  cinematicBlendStability: 0.785333,
+} satisfies EvidenceFamilyOrchestration);
+
+export const REGISTRY_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "dataset lineage fracture", severity: "critical" }),
+  Object.freeze({ label: "cinematic inheritance mismatch", severity: "critical" }),
+  Object.freeze({ label: "replay-safe blend instability", severity: "warning" }),
+  Object.freeze({ label: "normalization divergence", severity: "warning" }),
+  Object.freeze({ label: "continuity inheritance collapse", severity: "warning" }),
+] as const satisfies readonly RegistryDriftItem[]);
+
+const REGISTRY_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      datasetRegistryPersistence: number;
+      cinematicInheritanceStability: number;
+      replaySafeBlendPersistence: number;
+      lineageContinuity: number;
+      orchestrationBlendStability: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    datasetRegistryPersistence: 0.331333,
+    cinematicInheritanceStability: 0.608333,
+    replaySafeBlendPersistence: 0.594333,
+    lineageContinuity: 0.602333,
+    orchestrationBlendStability: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    datasetRegistryPersistence: 0.381333,
+    cinematicInheritanceStability: 0.801333,
+    replaySafeBlendPersistence: 0.785333,
+    lineageContinuity: 0.778333,
+    orchestrationBlendStability: 0.812333,
+  }),
+});
+
+export const REGISTRY_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["dataset registry persistence", "datasetRegistryPersistence"],
+  ["cinematic inheritance stability", "cinematicInheritanceStability"],
+  ["replay-safe blend persistence", "replaySafeBlendPersistence"],
+  ["lineage continuity trend", "lineageContinuity"],
+  ["orchestration blend stability", "orchestrationBlendStability"],
+] as const);
+
+export const REGISTRY_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve replay-safe lineage", severity: "stable" }),
+  Object.freeze({ label: "maintain cinematic inheritance compatibility", severity: "stable" }),
+  Object.freeze({ label: "avoid high-drift dataset blending", severity: "critical" }),
+  Object.freeze({ label: "preserve continuity-safe dataset families", severity: "stable" }),
+  Object.freeze({ label: "reduce orchestration divergence pressure", severity: "warning" }),
+] as const satisfies readonly RegistrySteeringRecommendation[]);
+
+export const CANONICAL_SESSION_INTAKE = Object.freeze({
+  generationSessionId: "ai-studio-session-safe-001",
+  canonicalSessionId: "canonical-session-gonegi-v1",
+  sessionProvider: "ai-studio-gemini-image",
+  sessionProjectId: "project-gonegi-harbor-001",
+  sessionPromptFamily: "warm-glaze-prompt-family",
+  sessionReplayLineage: "continuity-compatible replay lineage · replay-safe session intake",
+  sessionNormalizationState: "normalized generation session intake · provider-neutral structure",
+  continuitySessionCompatibility: 0.801333,
+} satisfies CanonicalSessionIntake);
+
+export const REAL_GENERATION_SESSION_BRIDGE = Object.freeze({
+  generationSessionBridgeId: "generation-session-bridge-gonegi-v1",
+  activeGenerationSession: "ai-studio-session-safe-001",
+  replaySafeSessions: Object.freeze(["ai-studio-session-safe-001", "continuity-session-harbor-002"]),
+  highDriftSessions: Object.freeze(["detail-push-session-experiment"]),
+  continuityCompatibleSessions: Object.freeze(["ai-studio-session-safe-001", "continuity-session-harbor-002"]),
+  orchestrationSessionStrength: 0.812333,
+  providerNeutralCompatibility: 0.785333,
+} satisfies RealGenerationSessionBridge);
+
+export const SESSION_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "session replay instability", severity: "critical" }),
+  Object.freeze({ label: "provider session mismatch", severity: "critical" }),
+  Object.freeze({ label: "continuity session fracture", severity: "warning" }),
+  Object.freeze({ label: "normalization session divergence", severity: "warning" }),
+  Object.freeze({ label: "orchestration session collapse", severity: "warning" }),
+] as const satisfies readonly SessionDriftItem[]);
+
+const SESSION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      generationSessionPersistence: number;
+      replaySessionContinuity: number;
+      providerCompatibilityTrend: number;
+      orchestrationSessionStability: number;
+      continuitySessionTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    generationSessionPersistence: 0.331333,
+    replaySessionContinuity: 0.608333,
+    providerCompatibilityTrend: 0.594333,
+    orchestrationSessionStability: 0.602333,
+    continuitySessionTrend: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    generationSessionPersistence: 0.381333,
+    replaySessionContinuity: 0.801333,
+    providerCompatibilityTrend: 0.785333,
+    orchestrationSessionStability: 0.778333,
+    continuitySessionTrend: 0.812333,
+  }),
+});
+
+export const SESSION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["generation session persistence", "generationSessionPersistence"],
+  ["replay session continuity", "replaySessionContinuity"],
+  ["provider compatibility trend", "providerCompatibilityTrend"],
+  ["orchestration session stability", "orchestrationSessionStability"],
+  ["continuity session trend", "continuitySessionTrend"],
+] as const);
+
+export const SESSION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve replay-safe sessions", severity: "stable" }),
+  Object.freeze({ label: "maintain provider-neutral compatibility", severity: "stable" }),
+  Object.freeze({ label: "avoid high-drift session inheritance", severity: "critical" }),
+  Object.freeze({ label: "preserve continuity-safe sessions", severity: "stable" }),
+  Object.freeze({ label: "reduce orchestration session instability", severity: "warning" }),
+] as const satisfies readonly SessionSteeringRecommendation[]);
+
+export const PROVIDER_ADAPTER_READINESS = Object.freeze({
+  providerAdapterReadinessId: "provider-adapter-readiness-gonegi-v1",
+  activeProviderFamily: "ai-studio-gemini-image",
+  supportedProviderProfiles: Object.freeze([
+    "ai-studio-gemini-image",
+    "future-gpu-video-provider",
+    "local-open-model-provider",
+  ]),
+  providerCapabilitySummary: "image generation · continuity-safe replay · provider-neutral adapter switching",
+  providerSwitchingPolicy: "replay-safe provider switching · continuity-first adapter path",
+  providerNeutralSafetyState: "provider-neutral safety locked · adapter readiness verified",
+} satisfies ProviderAdapterReadiness);
+
+export const SESSION_PROVIDER_COMPATIBILITY = Object.freeze({
+  providerCompatibilityId: "session-provider-compatibility-gonegi-v1",
+  activeSessionId: "ai-studio-session-safe-001",
+  compatibleProviders: Object.freeze(["ai-studio-gemini-image", "local-open-model-provider"]),
+  highDriftProviders: Object.freeze(["future-gpu-video-provider-experimental"]),
+  continuitySafeProviders: Object.freeze(["ai-studio-gemini-image", "local-open-model-provider"]),
+  providerCompatibilityScore: 0.801333,
+  adapterReadinessScore: 0.812333,
+} satisfies SessionProviderCompatibility);
+
+export const PROVIDER_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "provider output mismatch", severity: "critical" }),
+  Object.freeze({ label: "adapter capability divergence", severity: "critical" }),
+  Object.freeze({ label: "session-provider incompatibility", severity: "warning" }),
+  Object.freeze({ label: "continuity loss under provider switch", severity: "warning" }),
+  Object.freeze({ label: "replay instability by provider", severity: "warning" }),
+] as const satisfies readonly ProviderDriftItem[]);
+
+const PROVIDER_READINESS_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      providerCompatibilityTrend: number;
+      adapterReadinessTrend: number;
+      providerNeutralReplayStability: number;
+      continuityUnderProviderSwitch: number;
+      sessionPortabilityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    providerCompatibilityTrend: 0.331333,
+    adapterReadinessTrend: 0.608333,
+    providerNeutralReplayStability: 0.594333,
+    continuityUnderProviderSwitch: 0.602333,
+    sessionPortabilityTrend: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    providerCompatibilityTrend: 0.381333,
+    adapterReadinessTrend: 0.801333,
+    providerNeutralReplayStability: 0.785333,
+    continuityUnderProviderSwitch: 0.778333,
+    sessionPortabilityTrend: 0.812333,
+  }),
+});
+
+export const PROVIDER_READINESS_TREND_DIMENSIONS = Object.freeze([
+  ["provider compatibility trend", "providerCompatibilityTrend"],
+  ["adapter readiness trend", "adapterReadinessTrend"],
+  ["provider-neutral replay stability", "providerNeutralReplayStability"],
+  ["continuity under provider switch", "continuityUnderProviderSwitch"],
+  ["session portability trend", "sessionPortabilityTrend"],
+] as const);
+
+export const PROVIDER_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve provider-neutral session structure", severity: "stable" }),
+  Object.freeze({ label: "maintain replay-safe provider switching", severity: "stable" }),
+  Object.freeze({ label: "avoid high-drift provider families", severity: "critical" }),
+  Object.freeze({ label: "preserve continuity-safe provider path", severity: "stable" }),
+  Object.freeze({ label: "reduce adapter divergence pressure", severity: "warning" }),
+] as const satisfies readonly ProviderSteeringRecommendation[]);
+
+const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
+  "real-test-cycle-001": Object.freeze([
+    Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
+    Object.freeze({ label: "face proportion stability", score: 0.785333, severity: "stable" }),
+    Object.freeze({ label: "silhouette consistency", score: 0.778333, severity: "stable" }),
+    Object.freeze({ label: "emotional expression continuity", score: 0.801333, severity: "stable" }),
+  ]),
+  "real-test-cycle-002": Object.freeze([
+    Object.freeze({ label: "eye spacing stability", score: 0.591333, severity: "critical" }),
+    Object.freeze({ label: "face proportion stability", score: 0.594333, severity: "critical" }),
+    Object.freeze({ label: "silhouette consistency", score: 0.602333, severity: "warning" }),
+    Object.freeze({ label: "emotional expression continuity", score: 0.608333, severity: "warning" }),
+  ]),
+});
+
+const DECISION_MATRIX_LOOKUP: Readonly<Record<string, Omit<DecisionMatrixRow, "cycleId">>> = Object.freeze({
+  "real-test-cycle-001": Object.freeze({
+    promptVersion: "v3-warm-glaze",
+    driftRisk: 0.296333,
+    continuityScore: 0.801333,
+    styleScore: 0.812333,
+    retryPriority: "stable",
+    recommendation: "safe to iterate on lighting",
+  }),
+  "real-test-cycle-002": Object.freeze({
+    promptVersion: "v2-detail-push",
+    driftRisk: 0.331333,
+    continuityScore: 0.608333,
+    styleScore: 0.621333,
+    retryPriority: "critical",
+    recommendation: "avoid retry until detail push reduced",
+  }),
+});
+
+export const RETRY_STEERING_RULES = Object.freeze({
+  safeRetryDirection: "v3-warm-glaze balanced preset with soft linework",
+  unsafeRetryDirection: "detail-push-aggressive preset without continuity guard",
+  preserveRules: Object.freeze(["warm glaze lighting", "eye spacing", "soft linework"]),
+  avoidRules: Object.freeze(["over-sharpened linework", "facial detail noise", "harsh contrast"]),
+} satisfies RetrySteering);
+
+export const PROMPT_EVOLUTION_IMPROVEMENTS = Object.freeze([
+  "reduced over-detailing",
+  "improved warm glaze lighting",
+  "eye spacing stabilized",
+  "emotional tone recovered",
+] as const);
+
+export const PROMPT_EVOLUTION_REGRESSIONS = Object.freeze([
+  "detail-push caused face drift",
+  "lighting mismatch under aggressive preset",
+] as const);
+
+const INTAKE_LOOKUP: Readonly<Record<string, ImageEvaluationIntake>> = Object.freeze({
+  "real-test-cycle-001": Object.freeze({
+    providerName: "gemini-image",
+    imageSetId: "img-set-warm-glaze-001",
+    sourcePromptVersion: "v3-warm-glaze",
+    generationPreset: "warm-glaze-balanced",
+    visualFindings: Object.freeze(["consistent glaze", "stable eye spacing"]),
+    continuityFlags: Object.freeze(["identity locked", "emotion stable"]),
+    styleSignals: Object.freeze(["warm palette", "soft linework"]),
+    evaluatorSummary: "Stable generation loop; safe to iterate on lighting.",
+  }),
+  "real-test-cycle-002": Object.freeze({
+    providerName: "gemini-image",
+    imageSetId: "img-set-detail-push-002",
+    sourcePromptVersion: "v2-detail-push",
+    generationPreset: "detail-push-aggressive",
+    visualFindings: Object.freeze(["over-sharpened edges", "lighting mismatch"]),
+    continuityFlags: Object.freeze(["face drift detected", "emotion drop"]),
+    styleSignals: Object.freeze(["harsh contrast", "detail noise"]),
+    evaluatorSummary: "Unsafe for production; reduce detail push before retry.",
+  }),
+});
+
+export const DASHBOARD_GROUPED_FINDINGS = Object.freeze([
+  Object.freeze({ label: "face consistency unstable", severity: "critical", group: "continuity" }),
+  Object.freeze({ label: "emotional continuity drop", severity: "critical", group: "continuity" }),
+  Object.freeze({ label: "style drift detected", severity: "warning", group: "style" }),
+  Object.freeze({ label: "over-detailing risk", severity: "warning", group: "style" }),
+  Object.freeze({ label: "lighting mismatch", severity: "warning", group: "style" }),
+] as const satisfies readonly GroupedFinding[]);
+
+export type DashboardStatusBand = "stable" | "watch" | "critical";
+
+export type DashboardCycleDisplay = {
+  readonly cycleId: string;
+  readonly promptVersion: string;
+  readonly styleConsistencyScore: number;
+  readonly characterConsistencyScore: number;
+  readonly emotionalContinuityScore: number;
+  readonly promptDriftRisk: number;
+  readonly overCorrectionRisk: number;
+  readonly nextRequestSummary: string;
+  readonly statusBand: DashboardStatusBand;
+  readonly isLatest: boolean;
+  readonly displayRank: number;
+  readonly stabilityScore: number;
+};
+
+export const DASHBOARD_STYLE_FINDINGS = Object.freeze([
+  "style drift detected",
+  "face consistency unstable",
+  "over-detailing risk",
+  "lighting mismatch",
+  "emotional continuity drop",
+] as const);
+
+export const DASHBOARD_NEXT_REQUEST_IMPROVEMENTS = Object.freeze([
+  "reduce facial detail noise",
+  "preserve warm glaze lighting",
+  "maintain eye spacing",
+  "avoid over-sharpened linework",
+] as const);
+
+export const DASHBOARD_RANKING_SORT_LABELS = Object.freeze([
+  "top stable prompt",
+  "strongest continuity cycle",
+  "lowest drift cycle",
+] as const);
+
+const CYCLE_DISPLAY_LOOKUP: Readonly<Record<string, Omit<DashboardCycleDisplay, "cycleId" | "isLatest" | "displayRank" | "stabilityScore">>> =
+  Object.freeze({
+    "real-test-cycle-001": Object.freeze({
+      promptVersion: "v3-warm-glaze",
+      styleConsistencyScore: 0.812333,
+      characterConsistencyScore: 0.785333,
+      emotionalContinuityScore: 0.801333,
+      promptDriftRisk: 0.296333,
+      overCorrectionRisk: 0.124333,
+      nextRequestSummary: "Maintain warm glaze palette and preserve eye spacing across retries.",
+      statusBand: "stable",
+    }),
+    "real-test-cycle-002": Object.freeze({
+      promptVersion: "v2-detail-push",
+      styleConsistencyScore: 0.621333,
+      characterConsistencyScore: 0.594333,
+      emotionalContinuityScore: 0.608333,
+      promptDriftRisk: 0.331333,
+      overCorrectionRisk: 0.287333,
+      nextRequestSummary: "Reduce facial detail noise and soften linework before next generation.",
+      statusBand: "critical",
+    }),
+  });
+
+export function formatScore3Dec(value: number): string {
+  const truncated = Math.floor(value * 1000) / 1000;
+  return truncated.toFixed(3);
+}
+
+export function findingSeverityTone(severity: FindingSeverity): "green" | "amber" | "red" {
+  if (severity === "stable") {
+    return "green";
+  }
+  if (severity === "critical") {
+    return "red";
+  }
+  return "amber";
+}
+
+export function findingSeverityClass(severity: FindingSeverity): string {
+  switch (findingSeverityTone(severity)) {
+    case "green":
+      return "bg-emerald-100 text-emerald-800 border-emerald-200";
+    case "red":
+      return "bg-red-100 text-red-800 border-red-200";
+    default:
+      return "bg-amber-100 text-amber-800 border-amber-200";
+  }
+}
+
+export function formatDelta3Dec(value: number): string {
+  const sign = value >= 0 ? "+" : "";
+  return `${sign}${formatScore3Dec(value)}`;
+}
+
+export function trendMarker(trend: "up" | "down" | "flat" | "increase" | "decrease"): string {
+  if (trend === "up" || trend === "increase") {
+    return "▲";
+  }
+  if (trend === "down" || trend === "decrease") {
+    return "▼";
+  }
+  return "—";
+}
+
+export function buildImageEvaluationIntakes(payload: VisualQaDashboardPreviewRoute): readonly (ImageEvaluationIntake & { cycleId: string })[] {
+  return Object.freeze(
+    [...payload.rankingPreviewRows]
+      .sort((left, right) => left.displayRank - right.displayRank)
+      .map((row) =>
+        Object.freeze({
+          cycleId: row.cycleReportId,
+          ...INTAKE_LOOKUP[row.cycleReportId],
+        })
+      )
+  );
+}
+
+export function buildCycleTimeline(payload: VisualQaDashboardPreviewRoute): readonly CycleTimelineEntry[] {
+  const cycles = buildDashboardCycleDisplays(payload);
+  const chronological = [...cycles].sort((left, right) => right.displayRank - left.displayRank);
+
+  return Object.freeze(
+    chronological.map((cycle, index) => {
+      const previous = chronological[index - 1];
+      const driftDelta = previous ? cycle.promptDriftRisk - previous.promptDriftRisk : 0;
+      const stabilityDelta = previous ? cycle.stabilityScore - previous.stabilityScore : 0;
+
+      return Object.freeze({
+        cycleId: cycle.cycleId,
+        cycleOrder: chronological.length - index,
+        promptVersion: cycle.promptVersion,
+        promptEvolution: previous ? `${previous.promptVersion} → ${cycle.promptVersion}` : cycle.promptVersion,
+        driftTrend: driftDelta > 0 ? "increase" : driftDelta < 0 ? "decrease" : "flat",
+        driftDelta,
+        continuityRecovery: previous ? cycle.emotionalContinuityScore > previous.emotionalContinuityScore : false,
+        stabilityTrend: stabilityDelta > 0 ? "up" : stabilityDelta < 0 ? "down" : "flat",
+        stabilityScore: cycle.stabilityScore,
+        isLatest: cycle.isLatest,
+      });
+    })
+  );
+}
+
+export function groupFindingsByCategory(group: "continuity" | "style"): readonly GroupedFinding[] {
+  return Object.freeze(DASHBOARD_GROUPED_FINDINGS.filter((finding) => finding.group === group));
+}
+
+export function buildRankingEvolution(payload: VisualQaDashboardPreviewRoute): RankingEvolution {
+  const cycles = buildDashboardCycleDisplays(payload);
+  const latest = cycles.find((cycle) => cycle.isLatest)!;
+  const previous = cycles.find((cycle) => !cycle.isLatest)!;
+  const stabilityDelta = latest.stabilityScore - previous.stabilityScore;
+
+  return Object.freeze({
+    latestCycleId: latest.cycleId,
+    previousCycleId: previous.cycleId,
+    latestStability: latest.stabilityScore,
+    previousStability: previous.stabilityScore,
+    driftDelta: latest.promptDriftRisk - previous.promptDriftRisk,
+    continuityDelta: latest.emotionalContinuityScore - previous.emotionalContinuityScore,
+    stabilityTrend: stabilityDelta > 0 ? "up" : stabilityDelta < 0 ? "down" : "flat",
+  });
+}
+
+export function buildDashboardDecisions(payload: VisualQaDashboardPreviewRoute): DashboardDecision {
+  const cycles = buildDashboardCycleDisplays(payload);
+  const best = cycles.find((cycle) => cycle.statusBand === "stable")!;
+  const unsafe = cycles.find((cycle) => cycle.statusBand === "critical")!;
+
+  return Object.freeze({
+    bestPromptCandidate: `${best.promptVersion} (${best.cycleId})`,
+    unsafePromptCandidate: `${unsafe.promptVersion} (${unsafe.cycleId})`,
+    recommendedNextIteration: best.nextRequestSummary,
+  });
+}
+
+export function buildDecisionSummary(payload: VisualQaDashboardPreviewRoute): readonly DecisionSummaryPanel[] {
+  const cycles = buildDashboardCycleDisplays(payload);
+  const stable = cycles.find((cycle) => cycle.statusBand === "stable")!;
+  const highestDrift = [...cycles].sort((left, right) => right.promptDriftRisk - left.promptDriftRisk)[0];
+  const bestCharacter = [...cycles].sort((left, right) => right.characterConsistencyScore - left.characterConsistencyScore)[0];
+  const latest = cycles.find((cycle) => cycle.isLatest)!;
+
+  return Object.freeze([
+    Object.freeze({
+      label: "Best Stable Cycle",
+      cycleId: stable.cycleId,
+      promptVersion: stable.promptVersion,
+      score: stable.stabilityScore,
+      severity: "stable" as FindingSeverity,
+      detail: `latest ref: ${latest.cycleId}`,
+    }),
+    Object.freeze({
+      label: "Highest Drift Risk",
+      cycleId: highestDrift.cycleId,
+      promptVersion: highestDrift.promptVersion,
+      score: highestDrift.promptDriftRisk,
+      severity: "critical" as FindingSeverity,
+      detail: `drift risk peak`,
+    }),
+    Object.freeze({
+      label: "Best Character Consistency",
+      cycleId: bestCharacter.cycleId,
+      promptVersion: bestCharacter.promptVersion,
+      score: bestCharacter.characterConsistencyScore,
+      severity: "stable" as FindingSeverity,
+      detail: `character lock candidate`,
+    }),
+    Object.freeze({
+      label: "Recommended Retry Direction",
+      cycleId: latest.cycleId,
+      promptVersion: latest.promptVersion,
+      score: latest.stabilityScore,
+      severity: "warning" as FindingSeverity,
+      detail: latest.nextRequestSummary,
+    }),
+  ]);
+}
+
+export function buildContinuityFocus(payload: VisualQaDashboardPreviewRoute): readonly (ContinuityMetric & { cycleId: string })[] {
+  const latest = buildDashboardCycleDisplays(payload).find((cycle) => cycle.isLatest)!;
+  return Object.freeze(
+    CONTINUITY_METRICS_LOOKUP[latest.cycleId].map((metric) =>
+      Object.freeze({ cycleId: latest.cycleId, ...metric })
+    )
+  );
+}
+
+export function buildPromptEvolutionInsights(payload: VisualQaDashboardPreviewRoute): PromptEvolutionInsight {
+  const cycles = buildDashboardCycleDisplays(payload);
+  const latest = cycles.find((cycle) => cycle.isLatest)!;
+  const previous = cycles.find((cycle) => !cycle.isLatest)!;
+
+  return Object.freeze({
+    previousPrompt: previous.promptVersion,
+    latestPrompt: latest.promptVersion,
+    improvementReasons: PROMPT_EVOLUTION_IMPROVEMENTS,
+    regressionReasons: PROMPT_EVOLUTION_REGRESSIONS,
+    retrySteeringRecommendation: "Continue v3-warm-glaze with lighting preservation and soft linework guard.",
+  });
+}
+
+export function buildDecisionMatrix(payload: VisualQaDashboardPreviewRoute): readonly DecisionMatrixRow[] {
+  return Object.freeze(
+    [...payload.rankingPreviewRows]
+      .sort((left, right) => left.displayRank - right.displayRank)
+      .map((row) =>
+        Object.freeze({
+          cycleId: row.cycleReportId,
+          ...DECISION_MATRIX_LOOKUP[row.cycleReportId],
+        })
+      )
+  );
+}
+
+export function buildRetrySteering(): RetrySteering {
+  return RETRY_STEERING_RULES;
+}
+
+export function buildStyleCoreProfile(): StyleCoreProfile {
+  return STYLE_CORE_PROFILE;
+}
+
+export function buildCharacterContinuityBridge(): CharacterContinuityBridge {
+  return CHARACTER_CONTINUITY_BRIDGE;
+}
+
+export function buildStyleCoreDecision(payload: VisualQaDashboardPreviewRoute): StyleCoreDecision {
+  const latest = buildDashboardCycleDisplays(payload).find((cycle) => cycle.isLatest)!;
+
+  return Object.freeze({
+    activeStyleCoreId: STYLE_CORE_PROFILE.styleCoreId,
+    activeStyleCoreName: STYLE_CORE_PROFILE.styleCoreName,
+    preservedTraits: Object.freeze([
+      Object.freeze({ label: "warm glaze lighting", severity: "stable" }),
+      Object.freeze({ label: "soft linework", severity: "stable" }),
+      Object.freeze({ label: "eye spacing preservation", severity: "stable" }),
+      Object.freeze({ label: "emotional softness", severity: "stable" }),
+    ]),
+    detectedDriftTraits: Object.freeze([
+      Object.freeze({ label: "over-detailing risk", severity: "warning" }),
+      Object.freeze({ label: "lighting mismatch", severity: "warning" }),
+    ]),
+    retryPreserveTargets: STYLE_CORE_PROFILE.preservationRules,
+    continuityGuardStatus: latest.statusBand === "stable" ? "stable" : "warning",
+    continuityGuardScore: latest.characterConsistencyScore,
+  });
+}
+
+export function buildRetryGuardRecommendations(): readonly RetryGuardRecommendation[] {
+  return RETRY_GUARD_RECOMMENDATIONS;
+}
+
+export function buildCinematicDnaProfile(): CinematicDnaProfile {
+  return CINEMATIC_DNA_PROFILE;
+}
+
+export function buildDirectorGrammarSteering(): readonly DirectorGrammarSteeringCard[] {
+  return DIRECTOR_GRAMMAR_STEERING;
+}
+
+export function buildCinematicDriftDetection(): readonly CinematicDriftItem[] {
+  return CINEMATIC_DRIFT_GROUPS;
+}
+
+export function buildDatasetIdentity(): DatasetIdentity {
+  return DATASET_IDENTITY;
+}
+
+export function buildCinematicSteeringRecommendations(): readonly CinematicSteeringRecommendation[] {
+  return CINEMATIC_STEERING_RECOMMENDATIONS;
+}
+
+export function buildLongSessionContinuityMemory(): LongSessionContinuityMemory {
+  return LONG_SESSION_CONTINUITY_MEMORY;
+}
+
+function resolveTrendSeverity(score: number): FindingSeverity {
+  if (score >= 0.75) {
+    return "stable";
+  }
+  if (score >= 0.65) {
+    return "warning";
+  }
+  return "critical";
+}
+
+export function buildMultiCycleContinuityTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of MULTI_CYCLE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = MULTI_CYCLE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? MULTI_CYCLE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupMultiCycleTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    MULTI_CYCLE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildDatasetOrchestration(): DatasetOrchestration {
+  return DATASET_ORCHESTRATION;
+}
+
+export function buildDatasetSteeringRecommendations(): readonly DatasetSteeringRecommendation[] {
+  return DATASET_STEERING_RECOMMENDATIONS;
+}
+
+export function buildIdentityPersistence(): readonly IdentityPersistenceMetric[] {
+  return IDENTITY_PERSISTENCE_METRICS;
+}
+
+export function buildNarrativeEmotionalState(): NarrativeEmotionalState {
+  return NARRATIVE_EMOTIONAL_STATE;
+}
+
+export function buildSceneGrammarProfile(): SceneGrammarProfile {
+  return SCENE_GRAMMAR_PROFILE;
+}
+
+export function buildEmotionalDriftDetection(): readonly EmotionalDriftItem[] {
+  return EMOTIONAL_DRIFT_GROUPS;
+}
+
+export function buildEmotionalContinuityTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of EMOTIONAL_CONTINUITY_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = EMOTIONAL_CONTINUITY_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? EMOTIONAL_CONTINUITY_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupEmotionalContinuityTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    EMOTIONAL_CONTINUITY_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildNarrativeSteeringRecommendations(): readonly NarrativeSteeringRecommendation[] {
+  return NARRATIVE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildTemporalSceneMemory(): TemporalSceneMemory {
+  return TEMPORAL_SCENE_MEMORY;
+}
+
+export function buildSequenceContinuity(): SequenceContinuity {
+  return SEQUENCE_CONTINUITY;
+}
+
+export function buildTemporalDriftDetection(): readonly TemporalDriftItem[] {
+  return TEMPORAL_DRIFT_GROUPS;
+}
+
+export function buildSequenceStabilityTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of SEQUENCE_STABILITY_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = SEQUENCE_STABILITY_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? SEQUENCE_STABILITY_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupSequenceStabilityTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    SEQUENCE_STABILITY_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildSequenceSteeringRecommendations(): readonly SequenceSteeringRecommendation[] {
+  return SEQUENCE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicWorldState(): CinematicWorldState {
+  return CINEMATIC_WORLD_STATE;
+}
+
+export function buildEnvironmentalContinuity(): EnvironmentalContinuity {
+  return ENVIRONMENTAL_CONTINUITY;
+}
+
+export function buildWorldStateDriftDetection(): readonly WorldStateDriftItem[] {
+  return WORLD_STATE_DRIFT_GROUPS;
+}
+
+export function buildEnvironmentalPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of ENVIRONMENTAL_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = ENVIRONMENTAL_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? ENVIRONMENTAL_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupEnvironmentalPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    ENVIRONMENTAL_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildEnvironmentalSteeringRecommendations(): readonly EnvironmentalSteeringRecommendation[] {
+  return ENVIRONMENTAL_STEERING_RECOMMENDATIONS;
+}
+
+export function buildUnifiedCinematicIdentity(): UnifiedCinematicIdentity {
+  return UNIFIED_CINEMATIC_IDENTITY;
+}
+
+export function buildCrossLayerContinuityMatrix(): readonly CrossLayerContinuityLink[] {
+  return CROSS_LAYER_CONTINUITY_MATRIX;
+}
+
+export function buildUnifiedDriftDetection(): readonly UnifiedDriftItem[] {
+  return UNIFIED_DRIFT_GROUPS;
+}
+
+export function buildIdentityPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of IDENTITY_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = IDENTITY_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? IDENTITY_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupIdentityPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    IDENTITY_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildUnifiedSteeringRecommendations(): readonly UnifiedSteeringRecommendation[] {
+  return UNIFIED_STEERING_RECOMMENDATIONS;
+}
+
+export function buildMultiProjectCinematicMemory(): MultiProjectCinematicMemory {
+  return MULTI_PROJECT_CINEMATIC_MEMORY;
+}
+
+export function buildProductionOrchestration(): ProductionOrchestration {
+  return PRODUCTION_ORCHESTRATION;
+}
+
+export function buildCrossProjectDriftDetection(): readonly CrossProjectDriftItem[] {
+  return CROSS_PROJECT_DRIFT_GROUPS;
+}
+
+export function buildProductionPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of PRODUCTION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = PRODUCTION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? PRODUCTION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupProductionPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    PRODUCTION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildProductionSteeringRecommendations(): readonly ProductionSteeringRecommendation[] {
+  return PRODUCTION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCanonicalEvidenceIntake(): CanonicalEvidenceIntake {
+  return CANONICAL_EVIDENCE_INTAKE;
+}
+
+export function buildRealEvaluationBridge(): RealEvaluationBridge {
+  return REAL_EVALUATION_BRIDGE;
+}
+
+export function buildEvidenceDriftDetection(): readonly EvidenceDriftItem[] {
+  return EVIDENCE_DRIFT_GROUPS;
+}
+
+export function buildReplayPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REPLAY_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REPLAY_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REPLAY_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupReplayPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REPLAY_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildEvidenceSteeringRecommendations(): readonly EvidenceSteeringRecommendation[] {
+  return EVIDENCE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCanonicalDatasetRegistry(): CanonicalDatasetRegistry {
+  return CANONICAL_DATASET_REGISTRY;
+}
+
+export function buildEvidenceFamilyOrchestration(): EvidenceFamilyOrchestration {
+  return EVIDENCE_FAMILY_ORCHESTRATION;
+}
+
+export function buildRegistryDriftDetection(): readonly RegistryDriftItem[] {
+  return REGISTRY_DRIFT_GROUPS;
+}
+
+export function buildRegistryPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REGISTRY_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REGISTRY_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REGISTRY_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupRegistryPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REGISTRY_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildRegistrySteeringRecommendations(): readonly RegistrySteeringRecommendation[] {
+  return REGISTRY_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCanonicalSessionIntake(): CanonicalSessionIntake {
+  return CANONICAL_SESSION_INTAKE;
+}
+
+export function buildRealGenerationSessionBridge(): RealGenerationSessionBridge {
+  return REAL_GENERATION_SESSION_BRIDGE;
+}
+
+export function buildSessionDriftDetection(): readonly SessionDriftItem[] {
+  return SESSION_DRIFT_GROUPS;
+}
+
+export function buildSessionPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of SESSION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = SESSION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? SESSION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupSessionPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    SESSION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildSessionSteeringRecommendations(): readonly SessionSteeringRecommendation[] {
+  return SESSION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildProviderAdapterReadiness(): ProviderAdapterReadiness {
+  return PROVIDER_ADAPTER_READINESS;
+}
+
+export function buildSessionProviderCompatibility(): SessionProviderCompatibility {
+  return SESSION_PROVIDER_COMPATIBILITY;
+}
+
+export function buildProviderDriftDetection(): readonly ProviderDriftItem[] {
+  return PROVIDER_DRIFT_GROUPS;
+}
+
+export function buildProviderReadinessTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of PROVIDER_READINESS_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = PROVIDER_READINESS_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? PROVIDER_READINESS_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupProviderReadinessTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    PROVIDER_READINESS_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildProviderSteeringRecommendations(): readonly ProviderSteeringRecommendation[] {
+  return PROVIDER_STEERING_RECOMMENDATIONS;
+}
+
+export type SnapshotDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type SnapshotSteerItem = {
+  readonly label: string;
+};
+
+export function formatDriftSnapshotLine(key: string, items: readonly SnapshotDriftItem[]): string {
+  return `${key}:${items.map((item) => `${item.label}:${item.severity}`).join("|")}`;
+}
+
+export function formatTimelineSnapshotLine(key: string, timeline: readonly MultiCycleTrendPoint[]): string {
+  return `${key}:${timeline.map((point) => `${point.dimension}:${point.cycleId}:${formatScore3Dec(point.score)}:${point.trend}`).join("|")}`;
+}
+
+export function formatSteerSnapshotLine(key: string, items: readonly SnapshotSteerItem[]): string {
+  return `${key}:${items.map((item) => item.label).join("+")}`;
+}
+
+export function joinSnapshotLineGroups(groups: readonly (readonly string[])[]): string {
+  return groups.flat().join("\n");
+}
+
+export function formatGrammarBlendSnapshot(blend: DirectorGrammarBlend): string {
+  return [
+    `ghibli:${formatScore3Dec(blend.ghibliBase)}`,
+    `shinkai:${formatScore3Dec(blend.shinkaiLightDistance)}`,
+    `live:${formatScore3Dec(blend.liveActionMiseEnScene)}`,
+  ].join(":");
+}
+
+export function statusBandTone(statusBand: DashboardStatusBand): "green" | "amber" | "red" {
+  if (statusBand === "stable") {
+    return "green";
+  }
+  if (statusBand === "critical") {
+    return "red";
+  }
+  return "amber";
+}
+
+export function statusBandClass(statusBand: DashboardStatusBand | string): string {
+  switch (statusBandTone(statusBand as DashboardStatusBand)) {
+    case "green":
+      return "bg-emerald-100 text-emerald-800 border-emerald-200";
+    case "red":
+      return "bg-red-100 text-red-800 border-red-200";
+    default:
+      return "bg-amber-100 text-amber-800 border-amber-200";
+  }
+}
+
+export function severityTone(severityBand: string): "green" | "amber" | "red" {
+  if (severityBand === "high") {
+    return "red";
+  }
+  if (severityBand === "medium") {
+    return "amber";
+  }
+  return "green";
+}
+
+export function severityBandClass(severityBand: string): string {
+  switch (severityTone(severityBand)) {
+    case "red":
+      return "bg-red-100 text-red-800 border-red-200";
+    case "amber":
+      return "bg-amber-100 text-amber-800 border-amber-200";
+    default:
+      return "bg-emerald-100 text-emerald-800 border-emerald-200";
+  }
+}
+
+export function scoreBarWidth(score: number): string {
+  const clamped = Math.min(1, Math.max(0, score));
+  return `${Math.floor(clamped * 100)}%`;
+}
+
+export function buildDashboardCycleDisplays(payload: VisualQaDashboardPreviewRoute): readonly DashboardCycleDisplay[] {
+  return Object.freeze(
+    [...payload.rankingPreviewRows]
+      .sort((left, right) => left.displayRank - right.displayRank)
+      .map((row) => {
+        const lookup = CYCLE_DISPLAY_LOOKUP[row.cycleReportId];
+        return Object.freeze({
+          cycleId: row.cycleReportId,
+          promptVersion: lookup.promptVersion,
+          styleConsistencyScore: lookup.styleConsistencyScore,
+          characterConsistencyScore: lookup.characterConsistencyScore,
+          emotionalContinuityScore: lookup.emotionalContinuityScore,
+          promptDriftRisk: lookup.promptDriftRisk,
+          overCorrectionRisk: lookup.overCorrectionRisk,
+          nextRequestSummary: lookup.nextRequestSummary,
+          statusBand: row.statusBand as DashboardStatusBand,
+          isLatest: row.displayRank === 1,
+          displayRank: row.displayRank,
+          stabilityScore: row.stabilityScore,
+        });
+      })
+  );
+}
+
+type HeatmapRowGroup = {
+  readonly cycleReportId: string;
+  readonly rows: VisualQaDashboardPreviewRoute["heatmapPreviewRows"];
+};
+
+export function groupHeatmapRows(payload: VisualQaDashboardPreviewRoute): readonly HeatmapRowGroup[] {
+  const grouped = new Map<string, VisualQaDashboardPreviewRoute["heatmapPreviewRows"][number][]>();
+
+  for (const row of payload.heatmapPreviewRows) {
+    const existing = grouped.get(row.cycleReportId) ?? [];
+    existing.push(row);
+    grouped.set(row.cycleReportId, existing);
+  }
+
+  return Object.freeze(
+    [...grouped.entries()]
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([cycleReportId, rows]) =>
+        Object.freeze({
+          cycleReportId,
+          rows: Object.freeze([...rows].sort((left, right) => left.signalKind.localeCompare(right.signalKind))),
+        })
+      )
+  );
+}
