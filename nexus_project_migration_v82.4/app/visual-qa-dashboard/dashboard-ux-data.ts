@@ -868,6 +868,37 @@ export type ResolutionSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicClosureMemory = {
+  readonly cinematicClosureMemoryId: string;
+  readonly activeClosureState: string;
+  readonly emotionalClosureStability: string;
+  readonly endingStateInheritance: string;
+  readonly finalSceneCalmnessPersistence: string;
+  readonly closureContinuityLock: string;
+  readonly cinematicClosureScore: number;
+  readonly closureNormalizationState: string;
+};
+
+export type ClosureTransitionBridge = {
+  readonly closureTransitionBridgeId: string;
+  readonly activeClosureRoute: string;
+  readonly replayLinkedClosureRoutes: readonly string[];
+  readonly continuitySafeClosureRoutes: readonly string[];
+  readonly highDriftClosureRoutes: readonly string[];
+  readonly closureRoutingStrength: number;
+  readonly closurePersistenceScore: number;
+};
+
+export type ClosureDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ClosureSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -2622,6 +2653,79 @@ export const RESOLUTION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce narrative endpoint instability", severity: "warning" }),
 ] as const satisfies readonly ResolutionSteeringRecommendation[]);
 
+export const CINEMATIC_CLOSURE_MEMORY = Object.freeze({
+  cinematicClosureMemoryId: "cinematic-closure-memory-gonegi-v1",
+  activeClosureState: "warm-harbor-final-closure-active",
+  emotionalClosureStability: "soft emotional closure stability preserved across final sequences",
+  endingStateInheritance: "continuity-safe ending-state inheritance locked",
+  finalSceneCalmnessPersistence: "final scene calmness persistence verified",
+  closureContinuityLock: "cinematic closure continuity locked",
+  cinematicClosureScore: 0.828333,
+  closureNormalizationState: "canonical cinematic closure normalization",
+} satisfies CinematicClosureMemory);
+
+export const CLOSURE_TRANSITION_BRIDGE = Object.freeze({
+  closureTransitionBridgeId: "closure-transition-bridge-gonegi-v1",
+  activeClosureRoute: "closure-route-harbor-final-001",
+  replayLinkedClosureRoutes: Object.freeze(["closure-route-harbor-final-001", "closure-route-glaze-calm-002"]),
+  continuitySafeClosureRoutes: Object.freeze(["closure-route-harbor-final-001", "closure-route-glaze-calm-002"]),
+  highDriftClosureRoutes: Object.freeze(["closure-route-detail-push-experiment"]),
+  closureRoutingStrength: 0.821333,
+  closurePersistenceScore: 0.836333,
+} satisfies ClosureTransitionBridge);
+
+export const CLOSURE_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic closure fracture", severity: "critical" }),
+  Object.freeze({ label: "emotional closure instability", severity: "critical" }),
+  Object.freeze({ label: "closure routing divergence", severity: "warning" }),
+  Object.freeze({ label: "ending-state mismatch", severity: "warning" }),
+  Object.freeze({ label: "final scene calmness collapse", severity: "warning" }),
+] as const satisfies readonly ClosureDriftItem[]);
+
+const CLOSURE_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicClosurePersistence: number;
+      emotionalClosureContinuity: number;
+      endingStateInheritanceStability: number;
+      finalSceneCalmnessTrend: number;
+      closureContinuityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicClosurePersistence: 0.297333,
+    emotionalClosureContinuity: 0.604333,
+    endingStateInheritanceStability: 0.591333,
+    finalSceneCalmnessTrend: 0.597333,
+    closureContinuityTrend: 0.589333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicClosurePersistence: 0.828333,
+    emotionalClosureContinuity: 0.823333,
+    endingStateInheritanceStability: 0.816333,
+    finalSceneCalmnessTrend: 0.831333,
+    closureContinuityTrend: 0.824333,
+  }),
+});
+
+export const CLOSURE_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic closure persistence", "cinematicClosurePersistence"],
+  ["emotional closure continuity", "emotionalClosureContinuity"],
+  ["ending-state inheritance stability", "endingStateInheritanceStability"],
+  ["final scene calmness trend", "finalSceneCalmnessTrend"],
+  ["closure continuity trend", "closureContinuityTrend"],
+] as const);
+
+export const CLOSURE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic closure continuity", severity: "stable" }),
+  Object.freeze({ label: "maintain emotional closure stability", severity: "stable" }),
+  Object.freeze({ label: "avoid final scene calmness collapse", severity: "critical" }),
+  Object.freeze({ label: "preserve ending-state inheritance", severity: "stable" }),
+  Object.freeze({ label: "reduce closure divergence pressure", severity: "warning" }),
+] as const satisfies readonly ClosureSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -4280,6 +4384,63 @@ export function groupResolutionPersistenceTimelineByDimension(
 
 export function buildResolutionSteeringRecommendations(): readonly ResolutionSteeringRecommendation[] {
   return RESOLUTION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicClosureMemory(): CinematicClosureMemory {
+  return CINEMATIC_CLOSURE_MEMORY;
+}
+
+export function buildClosureTransitionBridge(): ClosureTransitionBridge {
+  return CLOSURE_TRANSITION_BRIDGE;
+}
+
+export function buildClosureDriftDetection(): readonly ClosureDriftItem[] {
+  return CLOSURE_DRIFT_GROUPS;
+}
+
+export function buildClosurePersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of CLOSURE_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = CLOSURE_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? CLOSURE_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupClosurePersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    CLOSURE_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildClosureSteeringRecommendations(): readonly ClosureSteeringRecommendation[] {
+  return CLOSURE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

@@ -120,6 +120,11 @@ import {
   buildResolutionDriftDetection,
   buildResolutionPersistenceTimeline,
   buildResolutionSteeringRecommendations,
+  buildCinematicClosureMemory,
+  buildClosureTransitionBridge,
+  buildClosureDriftDetection,
+  buildClosurePersistenceTimeline,
+  buildClosureSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -276,6 +281,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const resolutionDriftDetection = buildResolutionDriftDetection();
   const resolutionPersistenceTimeline = buildResolutionPersistenceTimeline(payload);
   const resolutionSteeringRecommendations = buildResolutionSteeringRecommendations();
+  const cinematicClosureMemory = buildCinematicClosureMemory();
+  const closureTransitionBridge = buildClosureTransitionBridge();
+  const closureDriftDetection = buildClosureDriftDetection();
+  const closurePersistenceTimeline = buildClosurePersistenceTimeline(payload);
+  const closureSteeringRecommendations = buildClosureSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -476,6 +486,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("resolutionDrift", resolutionDriftDetection),
       formatTimelineSnapshotLine("resolutionTimeline", resolutionPersistenceTimeline),
       formatSteerSnapshotLine("resolutionSteer", resolutionSteeringRecommendations),
+    ],
+    [
+      `closureMemory:${cinematicClosureMemory.cinematicClosureMemoryId}:${cinematicClosureMemory.activeClosureState}:${formatScore3Dec(cinematicClosureMemory.cinematicClosureScore)}`,
+      `closureBridge:${closureTransitionBridge.closureTransitionBridgeId}:${formatScore3Dec(closureTransitionBridge.closureRoutingStrength)}:${formatScore3Dec(closureTransitionBridge.closurePersistenceScore)}:${closureTransitionBridge.replayLinkedClosureRoutes.join("+")}`,
+      formatDriftSnapshotLine("closureDrift", closureDriftDetection),
+      formatTimelineSnapshotLine("closureTimeline", closurePersistenceTimeline),
+      formatSteerSnapshotLine("closureSteer", closureSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

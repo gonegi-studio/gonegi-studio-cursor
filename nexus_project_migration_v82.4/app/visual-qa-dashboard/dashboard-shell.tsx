@@ -103,6 +103,11 @@ import {
   buildResolutionDriftDetection,
   buildResolutionPersistenceTimeline,
   buildResolutionSteeringRecommendations,
+  buildCinematicClosureMemory,
+  buildClosureTransitionBridge,
+  buildClosureDriftDetection,
+  buildClosurePersistenceTimeline,
+  buildClosureSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -149,6 +154,7 @@ import {
   groupIntentResolutionTimelineByDimension,
   groupDestinationPersistenceTimelineByDimension,
   groupResolutionPersistenceTimelineByDimension,
+  groupClosurePersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -349,6 +355,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const resolutionPersistenceTimeline = buildResolutionPersistenceTimeline(payload);
   const resolutionPersistenceTimelineGroups = groupResolutionPersistenceTimelineByDimension(resolutionPersistenceTimeline);
   const resolutionSteeringRecommendations = buildResolutionSteeringRecommendations();
+  const cinematicClosureMemory = buildCinematicClosureMemory();
+  const closureTransitionBridge = buildClosureTransitionBridge();
+  const closureDriftDetection = buildClosureDriftDetection();
+  const closurePersistenceTimeline = buildClosurePersistenceTimeline(payload);
+  const closurePersistenceTimelineGroups = groupClosurePersistenceTimelineByDimension(closurePersistenceTimeline);
+  const closureSteeringRecommendations = buildClosureSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1494,6 +1506,49 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="resolution-steering" title="Resolution Steering Recommendations">
           <SteeringChipList items={resolutionSteeringRecommendations} dataAttr="resolution-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-closure-memory" title="Cinematic Closure Memory">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-closure-memory-id={cinematicClosureMemory.cinematicClosureMemoryId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Closure Memory ID" value={cinematicClosureMemory.cinematicClosureMemoryId} emphasis />
+              <KeyValueField label="Active Closure State" value={cinematicClosureMemory.activeClosureState} emphasis />
+              <KeyValueField label="Cinematic Closure Score" value={formatScore3Dec(cinematicClosureMemory.cinematicClosureScore)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Closure Stability" value={cinematicClosureMemory.emotionalClosureStability} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Ending-State Inheritance" value={cinematicClosureMemory.endingStateInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Final Scene Calmness Persistence" value={cinematicClosureMemory.finalSceneCalmnessPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Closure Continuity Lock" value={cinematicClosureMemory.closureContinuityLock} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Closure Normalization" value={cinematicClosureMemory.closureNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="closure-transition-bridge" title="Closure Transition Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-closure-transition-bridge-id={closureTransitionBridge.closureTransitionBridgeId}>
+            <p className="text-sm font-black">{closureTransitionBridge.closureTransitionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active closure route · {closureTransitionBridge.activeClosureRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(closureTransitionBridge.closureRoutingStrength)} emphasis />
+              <KeyValueField label="Closure Persistence Score" value={formatScore3Dec(closureTransitionBridge.closurePersistenceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Closure Routes</p><TagList tags={closureTransitionBridge.replayLinkedClosureRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Closure Routes</p><TagList tags={closureTransitionBridge.continuitySafeClosureRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Closure Routes</p><TagList tags={closureTransitionBridge.highDriftClosureRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="closure-drift-detection" title="Closure Drift Detection">
+          <DriftList items={closureDriftDetection} dataAttr="closure-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="closure-persistence-timeline" title="Closure Persistence Timeline">
+          <TimelineTrendGrid groups={closurePersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="closure-steering" title="Closure Steering Recommendations">
+          <SteeringChipList items={closureSteeringRecommendations} dataAttr="closure-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
