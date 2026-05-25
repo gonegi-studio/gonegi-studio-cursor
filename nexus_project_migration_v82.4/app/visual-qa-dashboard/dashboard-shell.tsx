@@ -53,6 +53,16 @@ import {
   buildQueueDriftDetection,
   buildQueuePersistenceTimeline,
   buildQueueSteeringRecommendations,
+  buildReplayPreparationLayer,
+  buildCinematicSequenceReplayBridge,
+  buildReplayPrepDriftDetection,
+  buildReplayPrepPersistenceTimeline,
+  buildReplayPrepSteeringRecommendations,
+  buildReplayEvaluationOrchestration,
+  buildCinematicReplayRoutingBridge,
+  buildReplayEvaluationDriftDetection,
+  buildReplayEvaluationPersistenceTimeline,
+  buildReplayEvaluationSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -89,6 +99,8 @@ import {
   groupProviderReadinessTimelineByDimension,
   groupReplayMappingTimelineByDimension,
   groupQueuePersistenceTimelineByDimension,
+  groupReplayPrepPersistenceTimelineByDimension,
+  groupReplayEvaluationPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -229,6 +241,18 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const queuePersistenceTimeline = buildQueuePersistenceTimeline(payload);
   const queuePersistenceTimelineGroups = groupQueuePersistenceTimelineByDimension(queuePersistenceTimeline);
   const queueSteeringRecommendations = buildQueueSteeringRecommendations();
+  const replayPreparationLayer = buildReplayPreparationLayer();
+  const cinematicSequenceReplayBridge = buildCinematicSequenceReplayBridge();
+  const replayPrepDriftDetection = buildReplayPrepDriftDetection();
+  const replayPrepPersistenceTimeline = buildReplayPrepPersistenceTimeline(payload);
+  const replayPrepPersistenceTimelineGroups = groupReplayPrepPersistenceTimelineByDimension(replayPrepPersistenceTimeline);
+  const replayPrepSteeringRecommendations = buildReplayPrepSteeringRecommendations();
+  const replayEvaluationOrchestration = buildReplayEvaluationOrchestration();
+  const cinematicReplayRoutingBridge = buildCinematicReplayRoutingBridge();
+  const replayEvaluationDriftDetection = buildReplayEvaluationDriftDetection();
+  const replayEvaluationPersistenceTimeline = buildReplayEvaluationPersistenceTimeline(payload);
+  const replayEvaluationPersistenceTimelineGroups = groupReplayEvaluationPersistenceTimelineByDimension(replayEvaluationPersistenceTimeline);
+  const replayEvaluationSteeringRecommendations = buildReplayEvaluationSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -848,6 +872,94 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="queue-steering-recommendations" title="Queue Steering Recommendations">
           <SteeringChipList items={queueSteeringRecommendations} dataAttr="queue-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-preparation-layer" title="Replay Preparation Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-replay-preparation-id={replayPreparationLayer.replayPreparationId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Preparation ID" value={replayPreparationLayer.replayPreparationId} emphasis />
+              <KeyValueField label="Active Replay Session" value={replayPreparationLayer.activeReplaySession} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Lineage Normalization" value={replayPreparationLayer.replayLineageNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay Compatibility" value={replayPreparationLayer.cinematicReplayCompatibility} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Ready Evidence</p><TagList tags={replayPreparationLayer.replayReadyEvidence} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Replay Groups</p><TagList tags={replayPreparationLayer.continuitySafeReplayGroups} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Replay Groups</p><TagList tags={replayPreparationLayer.highDriftReplayGroups} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-sequence-replay-bridge" title="Cinematic Sequence Replay Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-replay-bridge-id={cinematicSequenceReplayBridge.cinematicReplayBridgeId}>
+            <p className="text-sm font-black">{cinematicSequenceReplayBridge.cinematicReplayBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active sequence replay · {cinematicSequenceReplayBridge.activeSequenceReplay}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Sequence Strength" value={formatScore3Dec(cinematicSequenceReplayBridge.replaySequenceStrength)} emphasis />
+              <KeyValueField label="Replay Persistence" value={formatScore3Dec(cinematicSequenceReplayBridge.cinematicReplayPersistence)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Sequences</p><TagList tags={cinematicSequenceReplayBridge.replayLinkedSequences} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Sequences</p><TagList tags={cinematicSequenceReplayBridge.continuitySafeReplaySequences} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Sequences</p><TagList tags={cinematicSequenceReplayBridge.highDriftReplaySequences} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-preparation-drift-detection" title="Replay Drift Detection">
+          <DriftList items={replayPrepDriftDetection} dataAttr="replay-prep-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-preparation-timeline" title="Replay Persistence Timeline">
+          <TimelineTrendGrid groups={replayPrepPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-preparation-steering" title="Replay Steering Recommendations">
+          <SteeringChipList items={replayPrepSteeringRecommendations} dataAttr="replay-prep-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-evaluation-orchestration" title="Replay Evaluation Orchestration">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-replay-evaluation-orchestration-id={replayEvaluationOrchestration.replayEvaluationOrchestrationId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Orchestration ID" value={replayEvaluationOrchestration.replayEvaluationOrchestrationId} emphasis />
+              <KeyValueField label="Active Evaluation Session" value={replayEvaluationOrchestration.activeReplayEvaluationSession} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Normalization State" value={replayEvaluationOrchestration.replayEvaluationNormalizationState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Evaluation Compatibility" value={replayEvaluationOrchestration.cinematicReplayEvaluationCompatibility} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Safe Evaluation Groups</p><TagList tags={replayEvaluationOrchestration.replaySafeEvaluationGroups} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Evaluations</p><TagList tags={replayEvaluationOrchestration.continuitySafeReplayEvaluations} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Evaluations</p><TagList tags={replayEvaluationOrchestration.highDriftReplayEvaluations} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-replay-routing-bridge" title="Cinematic Replay Routing Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-replay-routing-bridge-id={cinematicReplayRoutingBridge.cinematicReplayRoutingBridgeId}>
+            <p className="text-sm font-black">{cinematicReplayRoutingBridge.cinematicReplayRoutingBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active replay route · {cinematicReplayRoutingBridge.activeReplayRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(cinematicReplayRoutingBridge.replayRoutingStrength)} emphasis />
+              <KeyValueField label="Routing Persistence" value={formatScore3Dec(cinematicReplayRoutingBridge.cinematicReplayRoutingPersistence)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Routes</p><TagList tags={cinematicReplayRoutingBridge.replayLinkedRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Routes</p><TagList tags={cinematicReplayRoutingBridge.continuitySafeReplayRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Routes</p><TagList tags={cinematicReplayRoutingBridge.highDriftReplayRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-evaluation-drift-detection" title="Replay Evaluation Drift Detection">
+          <DriftList items={replayEvaluationDriftDetection} dataAttr="replay-evaluation-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-evaluation-persistence-timeline" title="Replay Evaluation Persistence Timeline">
+          <TimelineTrendGrid groups={replayEvaluationPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-evaluation-steering" title="Replay Evaluation Steering Recommendations">
+          <SteeringChipList items={replayEvaluationSteeringRecommendations} dataAttr="replay-evaluation-steer" />
         </DashboardSection>
 
         <section data-section="style-core-profile" className="space-y-4">

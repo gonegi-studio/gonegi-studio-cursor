@@ -70,6 +70,16 @@ import {
   buildQueueDriftDetection,
   buildQueuePersistenceTimeline,
   buildQueueSteeringRecommendations,
+  buildReplayPreparationLayer,
+  buildCinematicSequenceReplayBridge,
+  buildReplayPrepDriftDetection,
+  buildReplayPrepPersistenceTimeline,
+  buildReplayPrepSteeringRecommendations,
+  buildReplayEvaluationOrchestration,
+  buildCinematicReplayRoutingBridge,
+  buildReplayEvaluationDriftDetection,
+  buildReplayEvaluationPersistenceTimeline,
+  buildReplayEvaluationSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -176,6 +186,16 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const queueDriftDetection = buildQueueDriftDetection();
   const queuePersistenceTimeline = buildQueuePersistenceTimeline(payload);
   const queueSteeringRecommendations = buildQueueSteeringRecommendations();
+  const replayPreparationLayer = buildReplayPreparationLayer();
+  const cinematicSequenceReplayBridge = buildCinematicSequenceReplayBridge();
+  const replayPrepDriftDetection = buildReplayPrepDriftDetection();
+  const replayPrepPersistenceTimeline = buildReplayPrepPersistenceTimeline(payload);
+  const replayPrepSteeringRecommendations = buildReplayPrepSteeringRecommendations();
+  const replayEvaluationOrchestration = buildReplayEvaluationOrchestration();
+  const cinematicReplayRoutingBridge = buildCinematicReplayRoutingBridge();
+  const replayEvaluationDriftDetection = buildReplayEvaluationDriftDetection();
+  const replayEvaluationPersistenceTimeline = buildReplayEvaluationPersistenceTimeline(payload);
+  const replayEvaluationSteeringRecommendations = buildReplayEvaluationSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -306,6 +326,20 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("queueDrift", queueDriftDetection),
       formatTimelineSnapshotLine("queueTimeline", queuePersistenceTimeline),
       formatSteerSnapshotLine("queueSteer", queueSteeringRecommendations),
+    ],
+    [
+      `replayPreparation:${replayPreparationLayer.replayPreparationId}:${replayPreparationLayer.activeReplaySession}:${replayPreparationLayer.replayReadyEvidence.join("+")}`,
+      `cinematicReplayBridge:${cinematicSequenceReplayBridge.cinematicReplayBridgeId}:${formatScore3Dec(cinematicSequenceReplayBridge.replaySequenceStrength)}:${formatScore3Dec(cinematicSequenceReplayBridge.cinematicReplayPersistence)}:${cinematicSequenceReplayBridge.replayLinkedSequences.join("+")}`,
+      formatDriftSnapshotLine("replayPrepDrift", replayPrepDriftDetection),
+      formatTimelineSnapshotLine("replayPrepTimeline", replayPrepPersistenceTimeline),
+      formatSteerSnapshotLine("replayPrepSteer", replayPrepSteeringRecommendations),
+    ],
+    [
+      `replayEvaluation:${replayEvaluationOrchestration.replayEvaluationOrchestrationId}:${replayEvaluationOrchestration.activeReplayEvaluationSession}:${replayEvaluationOrchestration.replaySafeEvaluationGroups.join("+")}`,
+      `replayRoutingBridge:${cinematicReplayRoutingBridge.cinematicReplayRoutingBridgeId}:${formatScore3Dec(cinematicReplayRoutingBridge.replayRoutingStrength)}:${formatScore3Dec(cinematicReplayRoutingBridge.cinematicReplayRoutingPersistence)}:${cinematicReplayRoutingBridge.replayLinkedRoutes.join("+")}`,
+      formatDriftSnapshotLine("replayEvaluationDrift", replayEvaluationDriftDetection),
+      formatTimelineSnapshotLine("replayEvaluationTimeline", replayEvaluationPersistenceTimeline),
+      formatSteerSnapshotLine("replayEvaluationSteer", replayEvaluationSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

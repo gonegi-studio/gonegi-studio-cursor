@@ -568,6 +568,66 @@ export type QueueSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type ReplayPreparationLayer = {
+  readonly replayPreparationId: string;
+  readonly activeReplaySession: string;
+  readonly replayReadyEvidence: readonly string[];
+  readonly continuitySafeReplayGroups: readonly string[];
+  readonly highDriftReplayGroups: readonly string[];
+  readonly replayLineageNormalization: string;
+  readonly cinematicReplayCompatibility: string;
+};
+
+export type CinematicSequenceReplayBridge = {
+  readonly cinematicReplayBridgeId: string;
+  readonly activeSequenceReplay: string;
+  readonly replayLinkedSequences: readonly string[];
+  readonly continuitySafeReplaySequences: readonly string[];
+  readonly highDriftReplaySequences: readonly string[];
+  readonly replaySequenceStrength: number;
+  readonly cinematicReplayPersistence: number;
+};
+
+export type ReplayPrepDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ReplayPrepSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ReplayEvaluationOrchestration = {
+  readonly replayEvaluationOrchestrationId: string;
+  readonly activeReplayEvaluationSession: string;
+  readonly replaySafeEvaluationGroups: readonly string[];
+  readonly continuitySafeReplayEvaluations: readonly string[];
+  readonly highDriftReplayEvaluations: readonly string[];
+  readonly replayEvaluationNormalizationState: string;
+  readonly cinematicReplayEvaluationCompatibility: string;
+};
+
+export type CinematicReplayRoutingBridge = {
+  readonly cinematicReplayRoutingBridgeId: string;
+  readonly activeReplayRoute: string;
+  readonly replayLinkedRoutes: readonly string[];
+  readonly continuitySafeReplayRoutes: readonly string[];
+  readonly highDriftReplayRoutes: readonly string[];
+  readonly replayRoutingStrength: number;
+  readonly cinematicReplayRoutingPersistence: number;
+};
+
+export type ReplayEvaluationDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ReplayEvaluationSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -1605,6 +1665,150 @@ export const QUEUE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "preserve evaluation-ready normalization", severity: "stable" }),
   Object.freeze({ label: "reduce queue fragmentation pressure", severity: "warning" }),
 ] as const satisfies readonly QueueSteeringRecommendation[]);
+
+export const REPLAY_PREPARATION_LAYER = Object.freeze({
+  replayPreparationId: "replay-preparation-gonegi-v1",
+  activeReplaySession: "ai-studio-session-safe-001",
+  replayReadyEvidence: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002", "seq-cinematic-harbor-001"]),
+  continuitySafeReplayGroups: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002", "seq-cinematic-harbor-001"]),
+  highDriftReplayGroups: Object.freeze(["gen-detail-push-experiment"]),
+  replayLineageNormalization: "canonical cinematic replay normalization · replay-safe cinematic lineage",
+  cinematicReplayCompatibility: "continuity-compatible replay preparation · replay evaluation staging verified",
+} satisfies ReplayPreparationLayer);
+
+export const CINEMATIC_SEQUENCE_REPLAY_BRIDGE = Object.freeze({
+  cinematicReplayBridgeId: "cinematic-sequence-replay-bridge-gonegi-v1",
+  activeSequenceReplay: "seq-cinematic-harbor-001",
+  replayLinkedSequences: Object.freeze(["seq-cinematic-harbor-001", "seq-warm-glaze-intro-002"]),
+  continuitySafeReplaySequences: Object.freeze(["seq-cinematic-harbor-001", "seq-warm-glaze-intro-002"]),
+  highDriftReplaySequences: Object.freeze(["seq-detail-push-experiment"]),
+  replaySequenceStrength: 0.808333,
+  cinematicReplayPersistence: 0.819333,
+} satisfies CinematicSequenceReplayBridge);
+
+export const REPLAY_PREP_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic replay instability", severity: "critical" }),
+  Object.freeze({ label: "replay sequence fracture", severity: "critical" }),
+  Object.freeze({ label: "continuity replay divergence", severity: "warning" }),
+  Object.freeze({ label: "replay normalization mismatch", severity: "warning" }),
+  Object.freeze({ label: "sequence replay incompatibility", severity: "warning" }),
+] as const satisfies readonly ReplayPrepDriftItem[]);
+
+const REPLAY_PREP_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      replayLineagePersistence: number;
+      cinematicReplayContinuity: number;
+      replayNormalizationTrend: number;
+      sequenceReplayStability: number;
+      replaySafeOrchestrationTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    replayLineagePersistence: 0.328333,
+    cinematicReplayContinuity: 0.611333,
+    replayNormalizationTrend: 0.597333,
+    sequenceReplayStability: 0.605333,
+    replaySafeOrchestrationTrend: 0.594333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    replayLineagePersistence: 0.384333,
+    cinematicReplayContinuity: 0.804333,
+    replayNormalizationTrend: 0.788333,
+    sequenceReplayStability: 0.781333,
+    replaySafeOrchestrationTrend: 0.815333,
+  }),
+});
+
+export const REPLAY_PREP_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["replay lineage persistence", "replayLineagePersistence"],
+  ["cinematic replay continuity", "cinematicReplayContinuity"],
+  ["replay normalization trend", "replayNormalizationTrend"],
+  ["sequence replay stability", "sequenceReplayStability"],
+  ["replay-safe orchestration trend", "replaySafeOrchestrationTrend"],
+] as const);
+
+export const REPLAY_PREP_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve replay-safe cinematic lineage", severity: "stable" }),
+  Object.freeze({ label: "maintain continuity-safe replay sequences", severity: "stable" }),
+  Object.freeze({ label: "avoid high-drift replay inheritance", severity: "critical" }),
+  Object.freeze({ label: "preserve replay normalization stability", severity: "stable" }),
+  Object.freeze({ label: "reduce replay fragmentation pressure", severity: "warning" }),
+] as const satisfies readonly ReplayPrepSteeringRecommendation[]);
+
+export const REPLAY_EVALUATION_ORCHESTRATION = Object.freeze({
+  replayEvaluationOrchestrationId: "replay-evaluation-orchestration-gonegi-v1",
+  activeReplayEvaluationSession: "ai-studio-session-safe-001",
+  replaySafeEvaluationGroups: Object.freeze(["eval-warm-glaze-001", "eval-harbor-haze-002", "eval-cinematic-harbor-001"]),
+  continuitySafeReplayEvaluations: Object.freeze(["eval-warm-glaze-001", "eval-harbor-haze-002", "eval-cinematic-harbor-001"]),
+  highDriftReplayEvaluations: Object.freeze(["eval-detail-push-experiment"]),
+  replayEvaluationNormalizationState: "evaluation-safe replay orchestration · replay-ready cinematic lineage locked",
+  cinematicReplayEvaluationCompatibility: "continuity-safe replay inheritance scoring · deterministic replay evaluation state verified",
+} satisfies ReplayEvaluationOrchestration);
+
+export const CINEMATIC_REPLAY_ROUTING_BRIDGE = Object.freeze({
+  cinematicReplayRoutingBridgeId: "cinematic-replay-routing-bridge-gonegi-v1",
+  activeReplayRoute: "route-cinematic-harbor-eval-001",
+  replayLinkedRoutes: Object.freeze(["route-cinematic-harbor-eval-001", "route-warm-glaze-eval-002"]),
+  continuitySafeReplayRoutes: Object.freeze(["route-cinematic-harbor-eval-001", "route-warm-glaze-eval-002"]),
+  highDriftReplayRoutes: Object.freeze(["route-detail-push-eval-experiment"]),
+  replayRoutingStrength: 0.811333,
+  cinematicReplayRoutingPersistence: 0.822333,
+} satisfies CinematicReplayRoutingBridge);
+
+export const REPLAY_EVALUATION_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "replay evaluation instability", severity: "critical" }),
+  Object.freeze({ label: "replay routing fracture", severity: "critical" }),
+  Object.freeze({ label: "continuity replay mismatch", severity: "warning" }),
+  Object.freeze({ label: "cinematic replay divergence", severity: "warning" }),
+  Object.freeze({ label: "replay orchestration collapse", severity: "critical" }),
+] as const satisfies readonly ReplayEvaluationDriftItem[]);
+
+const REPLAY_EVALUATION_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      replayEvaluationPersistence: number;
+      replayRoutingContinuity: number;
+      replayNormalizationStability: number;
+      cinematicReplayInheritance: number;
+      replayOrchestrationPersistence: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    replayEvaluationPersistence: 0.325333,
+    replayRoutingContinuity: 0.614333,
+    replayNormalizationStability: 0.600333,
+    cinematicReplayInheritance: 0.608333,
+    replayOrchestrationPersistence: 0.597333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    replayEvaluationPersistence: 0.387333,
+    replayRoutingContinuity: 0.807333,
+    replayNormalizationStability: 0.791333,
+    cinematicReplayInheritance: 0.784333,
+    replayOrchestrationPersistence: 0.818333,
+  }),
+});
+
+export const REPLAY_EVALUATION_TREND_DIMENSIONS = Object.freeze([
+  ["replay evaluation persistence", "replayEvaluationPersistence"],
+  ["replay routing continuity", "replayRoutingContinuity"],
+  ["replay normalization stability", "replayNormalizationStability"],
+  ["cinematic replay inheritance", "cinematicReplayInheritance"],
+  ["replay orchestration persistence", "replayOrchestrationPersistence"],
+] as const);
+
+export const REPLAY_EVALUATION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve replay-safe evaluation lineage", severity: "stable" }),
+  Object.freeze({ label: "maintain continuity-safe replay routing", severity: "stable" }),
+  Object.freeze({ label: "avoid high-drift replay inheritance", severity: "critical" }),
+  Object.freeze({ label: "preserve cinematic replay normalization", severity: "stable" }),
+  Object.freeze({ label: "reduce replay orchestration fragmentation", severity: "warning" }),
+] as const satisfies readonly ReplayEvaluationSteeringRecommendation[]);
 
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
@@ -2694,6 +2898,120 @@ export function groupQueuePersistenceTimelineByDimension(
 
 export function buildQueueSteeringRecommendations(): readonly QueueSteeringRecommendation[] {
   return QUEUE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildReplayPreparationLayer(): ReplayPreparationLayer {
+  return REPLAY_PREPARATION_LAYER;
+}
+
+export function buildCinematicSequenceReplayBridge(): CinematicSequenceReplayBridge {
+  return CINEMATIC_SEQUENCE_REPLAY_BRIDGE;
+}
+
+export function buildReplayPrepDriftDetection(): readonly ReplayPrepDriftItem[] {
+  return REPLAY_PREP_DRIFT_GROUPS;
+}
+
+export function buildReplayPrepPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REPLAY_PREP_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REPLAY_PREP_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REPLAY_PREP_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupReplayPrepPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REPLAY_PREP_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildReplayPrepSteeringRecommendations(): readonly ReplayPrepSteeringRecommendation[] {
+  return REPLAY_PREP_STEERING_RECOMMENDATIONS;
+}
+
+export function buildReplayEvaluationOrchestration(): ReplayEvaluationOrchestration {
+  return REPLAY_EVALUATION_ORCHESTRATION;
+}
+
+export function buildCinematicReplayRoutingBridge(): CinematicReplayRoutingBridge {
+  return CINEMATIC_REPLAY_ROUTING_BRIDGE;
+}
+
+export function buildReplayEvaluationDriftDetection(): readonly ReplayEvaluationDriftItem[] {
+  return REPLAY_EVALUATION_DRIFT_GROUPS;
+}
+
+export function buildReplayEvaluationPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REPLAY_EVALUATION_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REPLAY_EVALUATION_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REPLAY_EVALUATION_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupReplayEvaluationPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REPLAY_EVALUATION_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildReplayEvaluationSteeringRecommendations(): readonly ReplayEvaluationSteeringRecommendation[] {
+  return REPLAY_EVALUATION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
