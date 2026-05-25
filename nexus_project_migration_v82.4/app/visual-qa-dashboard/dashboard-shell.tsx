@@ -178,6 +178,11 @@ import {
   buildEmotionalDirectingConsistencyMap,
   buildDirectorIntentPersistenceTimeline,
   buildDirectorIntentSteeringRecommendations,
+  buildCinematicTemporalContinuityLayer,
+  buildChronologyPersistenceBridge,
+  buildMemorySequenceInheritanceMap,
+  buildTemporalContinuityPersistenceTimeline,
+  buildTemporalContinuitySteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -239,6 +244,7 @@ import {
   groupWorldStatePersistenceTimelineByDimension,
   groupEmotionalAtmospherePersistenceTimelineByDimension,
   groupDirectorIntentPersistenceTimelineByDimension,
+  groupTemporalContinuityPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -529,6 +535,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const directorIntentPersistenceTimeline = buildDirectorIntentPersistenceTimeline(payload);
   const directorIntentPersistenceTimelineGroups = groupDirectorIntentPersistenceTimelineByDimension(directorIntentPersistenceTimeline);
   const directorIntentSteeringRecommendations = buildDirectorIntentSteeringRecommendations();
+  const cinematicTemporalContinuityLayer = buildCinematicTemporalContinuityLayer();
+  const chronologyPersistenceBridge = buildChronologyPersistenceBridge();
+  const memorySequenceInheritanceMap = buildMemorySequenceInheritanceMap();
+  const temporalContinuityPersistenceTimeline = buildTemporalContinuityPersistenceTimeline(payload);
+  const temporalContinuityPersistenceTimelineGroups = groupTemporalContinuityPersistenceTimelineByDimension(temporalContinuityPersistenceTimeline);
+  const temporalContinuitySteeringRecommendations = buildTemporalContinuitySteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2544,6 +2556,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="director-intent-steering" title="Director Intent Steering Recommendations">
           <SteeringChipList items={directorIntentSteeringRecommendations} dataAttr="director-intent-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-temporal-continuity-layer" title="Cinematic Temporal Continuity Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-temporal-continuity-layer-id={cinematicTemporalContinuityLayer.cinematicTemporalContinuityLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Temporal Continuity Layer ID" value={cinematicTemporalContinuityLayer.cinematicTemporalContinuityLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicTemporalContinuityLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Temporal Continuity Orchestration Score" value={formatScore3Dec(cinematicTemporalContinuityLayer.temporalContinuityOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Temporal Continuity Orchestration State" value={cinematicTemporalContinuityLayer.activeTemporalContinuityOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Chronology Continuity" value={cinematicTemporalContinuityLayer.cinematicChronologyContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Temporal Persistence Routing" value={cinematicTemporalContinuityLayer.temporalPersistenceRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Memory-Sequence Inheritance" value={cinematicTemporalContinuityLayer.memorySequenceInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Temporal Orchestration" value={cinematicTemporalContinuityLayer.replaySafeTemporalOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Chronology Normalization" value={cinematicTemporalContinuityLayer.chronologyNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Temporal Flow Stabilization" value={cinematicTemporalContinuityLayer.temporalFlowStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Chronology Continuity" value={cinematicTemporalContinuityLayer.emotionalChronologyContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Temporal Consistency" value={cinematicTemporalContinuityLayer.longFormTemporalConsistency} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Temporal Continuity Normalization" value={cinematicTemporalContinuityLayer.temporalContinuityNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="chronology-persistence-bridge" title="Chronology Persistence Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-chronology-persistence-bridge-id={chronologyPersistenceBridge.chronologyPersistenceBridgeId}>
+            <p className="text-sm font-black">{chronologyPersistenceBridge.chronologyPersistenceBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active chronology route · {chronologyPersistenceBridge.activeChronologyRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Chronology Persistence Strength" value={formatScore3Dec(chronologyPersistenceBridge.chronologyPersistenceStrength)} emphasis />
+              <KeyValueField label="Chronology Linkage Score" value={formatScore3Dec(chronologyPersistenceBridge.chronologyLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Chronology Routes</p><TagList tags={chronologyPersistenceBridge.replayLinkedChronologyRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Chronology Routes</p><TagList tags={chronologyPersistenceBridge.continuitySafeChronologyRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Chronology Routes</p><TagList tags={chronologyPersistenceBridge.highDriftChronologyRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="memory-sequence-inheritance-map" title="Memory Sequence Inheritance Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-memory-sequence-inheritance-map-id={memorySequenceInheritanceMap.memorySequenceInheritanceMapId}>
+            <p className="text-sm font-black">{memorySequenceInheritanceMap.memorySequenceInheritanceMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active memory sequence route · {memorySequenceInheritanceMap.activeMemorySequenceRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Memory Sequence Inheritance Score" value={formatScore3Dec(memorySequenceInheritanceMap.memorySequenceInheritanceScore)} emphasis />
+              <KeyValueField label="Temporal Continuity Linkage Score" value={formatScore3Dec(memorySequenceInheritanceMap.temporalContinuityLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Memory Sequence Readiness" value={memorySequenceInheritanceMap.memorySequenceReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Memory Sequence Traits</p><TagList tags={memorySequenceInheritanceMap.readyMemorySequenceTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Memory Sequence Traits</p><TagList tags={memorySequenceInheritanceMap.pendingMemorySequenceTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="temporal-continuity-persistence-timeline" title="Temporal Continuity Persistence Timeline">
+          <TimelineTrendGrid groups={temporalContinuityPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="temporal-continuity-steering" title="Temporal Continuity Steering Recommendations">
+          <SteeringChipList items={temporalContinuitySteeringRecommendations} dataAttr="temporal-continuity-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

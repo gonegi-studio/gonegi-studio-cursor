@@ -1450,6 +1450,47 @@ export type DirectorIntentSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicTemporalContinuityLayer = {
+  readonly cinematicTemporalContinuityLayerId: string;
+  readonly activeTemporalContinuityOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly cinematicChronologyContinuity: string;
+  readonly temporalPersistenceRouting: string;
+  readonly memorySequenceInheritance: string;
+  readonly replaySafeTemporalOrchestration: string;
+  readonly chronologyNormalization: string;
+  readonly temporalFlowStabilization: string;
+  readonly emotionalChronologyContinuity: string;
+  readonly longFormTemporalConsistency: string;
+  readonly temporalContinuityOrchestrationScore: number;
+  readonly temporalContinuityNormalizationState: string;
+};
+
+export type ChronologyPersistenceBridge = {
+  readonly chronologyPersistenceBridgeId: string;
+  readonly activeChronologyRoute: string;
+  readonly replayLinkedChronologyRoutes: readonly string[];
+  readonly continuitySafeChronologyRoutes: readonly string[];
+  readonly highDriftChronologyRoutes: readonly string[];
+  readonly chronologyPersistenceStrength: number;
+  readonly chronologyLinkageScore: number;
+};
+
+export type MemorySequenceInheritanceMap = {
+  readonly memorySequenceInheritanceMapId: string;
+  readonly activeMemorySequenceRoute: string;
+  readonly memorySequenceReadiness: string;
+  readonly readyMemorySequenceTraits: readonly string[];
+  readonly pendingMemorySequenceTraits: readonly string[];
+  readonly memorySequenceInheritanceScore: number;
+  readonly temporalContinuityLinkageScore: number;
+};
+
+export type TemporalContinuitySteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4380,6 +4421,86 @@ export const DIRECTOR_INTENT_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer directing inference until director intent layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly DirectorIntentSteeringRecommendation[]);
 
+export const CINEMATIC_TEMPORAL_CONTINUITY_LAYER = Object.freeze({
+  cinematicTemporalContinuityLayerId: "cinematic-temporal-continuity-layer-gonegi-v1",
+  activeTemporalContinuityOrchestrationState: "25s-pilot-temporal-continuity-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  cinematicChronologyContinuity: "cinematic chronology continuity staged for 25s pilot harbor sample without timeline simulation",
+  temporalPersistenceRouting: "temporal persistence routing indexed for soft beat carry-over and mediterranean chronology honesty",
+  memorySequenceInheritance: "memory-sequence inheritance prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeTemporalOrchestration: "replay-safe temporal orchestration reserved without chronology generation execution",
+  chronologyNormalization: "chronology normalization locked for warm dissolve temporal continuity across pilot beats",
+  temporalFlowStabilization: "temporal flow stabilization verified against ghibli-base harbor chronology profile",
+  emotionalChronologyContinuity: "emotional chronology continuity mapped for soft carry-over harbor temporal warmth",
+  longFormTemporalConsistency: "future long-form temporal consistency staged for ten-video expansion target",
+  temporalContinuityOrchestrationScore: 0.885333,
+  temporalContinuityNormalizationState: "canonical 25s pilot cinematic temporal continuity orchestration normalization",
+} satisfies CinematicTemporalContinuityLayer);
+
+export const CHRONOLOGY_PERSISTENCE_BRIDGE = Object.freeze({
+  chronologyPersistenceBridgeId: "chronology-persistence-bridge-gonegi-v1",
+  activeChronologyRoute: "chronology-route-soft-beat-hold-001",
+  replayLinkedChronologyRoutes: Object.freeze(["chronology-route-soft-beat-hold-001", "chronology-route-harbor-sequence-echo-002"]),
+  continuitySafeChronologyRoutes: Object.freeze(["chronology-route-soft-beat-hold-001", "chronology-route-harbor-sequence-echo-002"]),
+  highDriftChronologyRoutes: Object.freeze(["chronology-route-contrast-push-experiment"]),
+  chronologyPersistenceStrength: 0.881333,
+  chronologyLinkageScore: 0.895333,
+} satisfies ChronologyPersistenceBridge);
+
+export const MEMORY_SEQUENCE_INHERITANCE_MAP = Object.freeze({
+  memorySequenceInheritanceMapId: "memory-sequence-inheritance-map-gonegi-v1",
+  activeMemorySequenceRoute: "memory-sequence-route-harbor-pilot-001",
+  memorySequenceReadiness: "memory-sequence inheritance readiness staged for 25s pilot harbor sample",
+  readyMemorySequenceTraits: Object.freeze(["harbor-opening-sequence", "soft-beat-carry", "warm-chronology-hold"]),
+  pendingMemorySequenceTraits: Object.freeze(["alternate-sequence-experiment", "temporal-push-variant"]),
+  memorySequenceInheritanceScore: 0.878333,
+  temporalContinuityLinkageScore: 0.892333,
+} satisfies MemorySequenceInheritanceMap);
+
+const TEMPORAL_CONTINUITY_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicChronologyContinuityTrend: number;
+      temporalPersistenceRoutingTrend: number;
+      memorySequenceInheritanceTrend: number;
+      chronologyNormalizationTrend: number;
+      longFormTemporalConsistencyTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicChronologyContinuityTrend: 0.346333,
+    temporalPersistenceRoutingTrend: 0.653333,
+    memorySequenceInheritanceTrend: 0.640333,
+    chronologyNormalizationTrend: 0.647333,
+    longFormTemporalConsistencyTrend: 0.639333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicChronologyContinuityTrend: 0.885333,
+    temporalPersistenceRoutingTrend: 0.880333,
+    memorySequenceInheritanceTrend: 0.873333,
+    chronologyNormalizationTrend: 0.888333,
+    longFormTemporalConsistencyTrend: 0.881333,
+  }),
+});
+
+export const TEMPORAL_CONTINUITY_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic chronology continuity trend", "cinematicChronologyContinuityTrend"],
+  ["temporal persistence routing trend", "temporalPersistenceRoutingTrend"],
+  ["memory-sequence inheritance trend", "memorySequenceInheritanceTrend"],
+  ["chronology normalization trend", "chronologyNormalizationTrend"],
+  ["long-form temporal consistency trend", "longFormTemporalConsistencyTrend"],
+] as const);
+
+export const TEMPORAL_CONTINUITY_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot temporal continuity orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain chronology persistence routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified memory sequence routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve chronology normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer temporal inference until temporal continuity layer stabilizes", severity: "warning" }),
+] as const satisfies readonly TemporalContinuitySteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -6893,6 +7014,63 @@ export function groupDirectorIntentPersistenceTimelineByDimension(
 
 export function buildDirectorIntentSteeringRecommendations(): readonly DirectorIntentSteeringRecommendation[] {
   return DIRECTOR_INTENT_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicTemporalContinuityLayer(): CinematicTemporalContinuityLayer {
+  return CINEMATIC_TEMPORAL_CONTINUITY_LAYER;
+}
+
+export function buildChronologyPersistenceBridge(): ChronologyPersistenceBridge {
+  return CHRONOLOGY_PERSISTENCE_BRIDGE;
+}
+
+export function buildMemorySequenceInheritanceMap(): MemorySequenceInheritanceMap {
+  return MEMORY_SEQUENCE_INHERITANCE_MAP;
+}
+
+export function buildTemporalContinuityPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of TEMPORAL_CONTINUITY_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = TEMPORAL_CONTINUITY_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? TEMPORAL_CONTINUITY_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupTemporalContinuityPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    TEMPORAL_CONTINUITY_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildTemporalContinuitySteeringRecommendations(): readonly TemporalContinuitySteeringRecommendation[] {
+  return TEMPORAL_CONTINUITY_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

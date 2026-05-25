@@ -195,6 +195,11 @@ import {
   buildEmotionalDirectingConsistencyMap,
   buildDirectorIntentPersistenceTimeline,
   buildDirectorIntentSteeringRecommendations,
+  buildCinematicTemporalContinuityLayer,
+  buildChronologyPersistenceBridge,
+  buildMemorySequenceInheritanceMap,
+  buildTemporalContinuityPersistenceTimeline,
+  buildTemporalContinuitySteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -426,6 +431,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const emotionalDirectingConsistencyMap = buildEmotionalDirectingConsistencyMap();
   const directorIntentPersistenceTimeline = buildDirectorIntentPersistenceTimeline(payload);
   const directorIntentSteeringRecommendations = buildDirectorIntentSteeringRecommendations();
+  const cinematicTemporalContinuityLayer = buildCinematicTemporalContinuityLayer();
+  const chronologyPersistenceBridge = buildChronologyPersistenceBridge();
+  const memorySequenceInheritanceMap = buildMemorySequenceInheritanceMap();
+  const temporalContinuityPersistenceTimeline = buildTemporalContinuityPersistenceTimeline(payload);
+  const temporalContinuitySteeringRecommendations = buildTemporalContinuitySteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -731,6 +741,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `emotionalDirectingConsistency:${emotionalDirectingConsistencyMap.emotionalDirectingConsistencyMapId}:${formatScore3Dec(emotionalDirectingConsistencyMap.emotionalDirectingConsistencyScore)}:${formatScore3Dec(emotionalDirectingConsistencyMap.directingIntentLinkageScore)}:${emotionalDirectingConsistencyMap.readyDirectingConsistencyTraits.join("+")}`,
       formatTimelineSnapshotLine("directorIntentTimeline", directorIntentPersistenceTimeline),
       formatSteerSnapshotLine("directorIntentSteer", directorIntentSteeringRecommendations),
+    ],
+    [
+      `temporalContinuity:${cinematicTemporalContinuityLayer.cinematicTemporalContinuityLayerId}:${cinematicTemporalContinuityLayer.pilotVideoMode}:${formatScore3Dec(cinematicTemporalContinuityLayer.temporalContinuityOrchestrationScore)}`,
+      `chronologyPersistence:${chronologyPersistenceBridge.chronologyPersistenceBridgeId}:${formatScore3Dec(chronologyPersistenceBridge.chronologyPersistenceStrength)}:${formatScore3Dec(chronologyPersistenceBridge.chronologyLinkageScore)}:${chronologyPersistenceBridge.replayLinkedChronologyRoutes.join("+")}`,
+      `memorySequenceInheritance:${memorySequenceInheritanceMap.memorySequenceInheritanceMapId}:${formatScore3Dec(memorySequenceInheritanceMap.memorySequenceInheritanceScore)}:${formatScore3Dec(memorySequenceInheritanceMap.temporalContinuityLinkageScore)}:${memorySequenceInheritanceMap.readyMemorySequenceTraits.join("+")}`,
+      formatTimelineSnapshotLine("temporalContinuityTimeline", temporalContinuityPersistenceTimeline),
+      formatSteerSnapshotLine("temporalContinuitySteer", temporalContinuitySteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);
