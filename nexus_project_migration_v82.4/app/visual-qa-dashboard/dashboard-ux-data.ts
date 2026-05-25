@@ -899,6 +899,38 @@ export type ClosureSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicAfterglowMemory = {
+  readonly cinematicAfterglowMemoryId: string;
+  readonly activeAfterglowState: string;
+  readonly lingeringEmotionContinuity: string;
+  readonly emotionalAftertastePersistence: string;
+  readonly postSceneCalmnessContinuity: string;
+  readonly cinematicEmotionalResidue: string;
+  readonly endingEchoStability: string;
+  readonly cinematicAfterglowScore: number;
+  readonly afterglowNormalizationState: string;
+};
+
+export type AfterglowTransitionBridge = {
+  readonly afterglowTransitionBridgeId: string;
+  readonly activeAfterglowRoute: string;
+  readonly replayLinkedAfterglowRoutes: readonly string[];
+  readonly continuitySafeAfterglowRoutes: readonly string[];
+  readonly highDriftAfterglowRoutes: readonly string[];
+  readonly afterglowRoutingStrength: number;
+  readonly afterglowPersistenceScore: number;
+};
+
+export type AfterglowDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type AfterglowSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -2726,6 +2758,80 @@ export const CLOSURE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce closure divergence pressure", severity: "warning" }),
 ] as const satisfies readonly ClosureSteeringRecommendation[]);
 
+export const CINEMATIC_AFTERGLOW_MEMORY = Object.freeze({
+  cinematicAfterglowMemoryId: "cinematic-afterglow-memory-gonegi-v1",
+  activeAfterglowState: "warm-harbor-lingering-afterglow-active",
+  lingeringEmotionContinuity: "soft lingering emotion continuity preserved across post-scene hold",
+  emotionalAftertastePersistence: "emotional aftertaste persistence verified across ending echo",
+  postSceneCalmnessContinuity: "post-scene calmness continuity locked after final frame",
+  cinematicEmotionalResidue: "cinematic emotional residue stabilized in warm glaze tone",
+  endingEchoStability: "ending echo stability preserved across harbor final sequences",
+  cinematicAfterglowScore: 0.834333,
+  afterglowNormalizationState: "canonical cinematic afterglow normalization",
+} satisfies CinematicAfterglowMemory);
+
+export const AFTERGLOW_TRANSITION_BRIDGE = Object.freeze({
+  afterglowTransitionBridgeId: "afterglow-transition-bridge-gonegi-v1",
+  activeAfterglowRoute: "afterglow-route-harbor-echo-001",
+  replayLinkedAfterglowRoutes: Object.freeze(["afterglow-route-harbor-echo-001", "afterglow-route-glaze-residue-002"]),
+  continuitySafeAfterglowRoutes: Object.freeze(["afterglow-route-harbor-echo-001", "afterglow-route-glaze-residue-002"]),
+  highDriftAfterglowRoutes: Object.freeze(["afterglow-route-detail-push-experiment"]),
+  afterglowRoutingStrength: 0.827333,
+  afterglowPersistenceScore: 0.841333,
+} satisfies AfterglowTransitionBridge);
+
+export const AFTERGLOW_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic afterglow fracture", severity: "critical" }),
+  Object.freeze({ label: "lingering emotion instability", severity: "critical" }),
+  Object.freeze({ label: "afterglow routing divergence", severity: "warning" }),
+  Object.freeze({ label: "emotional residue mismatch", severity: "warning" }),
+  Object.freeze({ label: "ending echo collapse", severity: "warning" }),
+] as const satisfies readonly AfterglowDriftItem[]);
+
+const AFTERGLOW_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicAfterglowPersistence: number;
+      lingeringEmotionContinuity: number;
+      emotionalAftertasteTrend: number;
+      postSceneCalmnessContinuity: number;
+      endingEchoStabilityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicAfterglowPersistence: 0.301333,
+    lingeringEmotionContinuity: 0.608333,
+    emotionalAftertasteTrend: 0.595333,
+    postSceneCalmnessContinuity: 0.601333,
+    endingEchoStabilityTrend: 0.593333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicAfterglowPersistence: 0.834333,
+    lingeringEmotionContinuity: 0.829333,
+    emotionalAftertasteTrend: 0.822333,
+    postSceneCalmnessContinuity: 0.837333,
+    endingEchoStabilityTrend: 0.830333,
+  }),
+});
+
+export const AFTERGLOW_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic afterglow persistence", "cinematicAfterglowPersistence"],
+  ["lingering emotion continuity", "lingeringEmotionContinuity"],
+  ["emotional aftertaste trend", "emotionalAftertasteTrend"],
+  ["post-scene calmness continuity", "postSceneCalmnessContinuity"],
+  ["ending echo stability trend", "endingEchoStabilityTrend"],
+] as const);
+
+export const AFTERGLOW_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic afterglow continuity", severity: "stable" }),
+  Object.freeze({ label: "maintain lingering emotion stability", severity: "stable" }),
+  Object.freeze({ label: "avoid ending echo collapse", severity: "critical" }),
+  Object.freeze({ label: "preserve emotional aftertaste persistence", severity: "stable" }),
+  Object.freeze({ label: "reduce afterglow divergence pressure", severity: "warning" }),
+] as const satisfies readonly AfterglowSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -4441,6 +4547,63 @@ export function groupClosurePersistenceTimelineByDimension(
 
 export function buildClosureSteeringRecommendations(): readonly ClosureSteeringRecommendation[] {
   return CLOSURE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicAfterglowMemory(): CinematicAfterglowMemory {
+  return CINEMATIC_AFTERGLOW_MEMORY;
+}
+
+export function buildAfterglowTransitionBridge(): AfterglowTransitionBridge {
+  return AFTERGLOW_TRANSITION_BRIDGE;
+}
+
+export function buildAfterglowDriftDetection(): readonly AfterglowDriftItem[] {
+  return AFTERGLOW_DRIFT_GROUPS;
+}
+
+export function buildAfterglowPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of AFTERGLOW_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = AFTERGLOW_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? AFTERGLOW_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupAfterglowPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    AFTERGLOW_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildAfterglowSteeringRecommendations(): readonly AfterglowSteeringRecommendation[] {
+  return AFTERGLOW_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

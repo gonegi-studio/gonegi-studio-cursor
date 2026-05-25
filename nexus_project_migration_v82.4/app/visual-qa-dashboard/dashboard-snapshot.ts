@@ -125,6 +125,11 @@ import {
   buildClosureDriftDetection,
   buildClosurePersistenceTimeline,
   buildClosureSteeringRecommendations,
+  buildCinematicAfterglowMemory,
+  buildAfterglowTransitionBridge,
+  buildAfterglowDriftDetection,
+  buildAfterglowPersistenceTimeline,
+  buildAfterglowSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -286,6 +291,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const closureDriftDetection = buildClosureDriftDetection();
   const closurePersistenceTimeline = buildClosurePersistenceTimeline(payload);
   const closureSteeringRecommendations = buildClosureSteeringRecommendations();
+  const cinematicAfterglowMemory = buildCinematicAfterglowMemory();
+  const afterglowTransitionBridge = buildAfterglowTransitionBridge();
+  const afterglowDriftDetection = buildAfterglowDriftDetection();
+  const afterglowPersistenceTimeline = buildAfterglowPersistenceTimeline(payload);
+  const afterglowSteeringRecommendations = buildAfterglowSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -493,6 +503,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("closureDrift", closureDriftDetection),
       formatTimelineSnapshotLine("closureTimeline", closurePersistenceTimeline),
       formatSteerSnapshotLine("closureSteer", closureSteeringRecommendations),
+    ],
+    [
+      `afterglowMemory:${cinematicAfterglowMemory.cinematicAfterglowMemoryId}:${cinematicAfterglowMemory.activeAfterglowState}:${formatScore3Dec(cinematicAfterglowMemory.cinematicAfterglowScore)}`,
+      `afterglowBridge:${afterglowTransitionBridge.afterglowTransitionBridgeId}:${formatScore3Dec(afterglowTransitionBridge.afterglowRoutingStrength)}:${formatScore3Dec(afterglowTransitionBridge.afterglowPersistenceScore)}:${afterglowTransitionBridge.replayLinkedAfterglowRoutes.join("+")}`,
+      formatDriftSnapshotLine("afterglowDrift", afterglowDriftDetection),
+      formatTimelineSnapshotLine("afterglowTimeline", afterglowPersistenceTimeline),
+      formatSteerSnapshotLine("afterglowSteer", afterglowSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

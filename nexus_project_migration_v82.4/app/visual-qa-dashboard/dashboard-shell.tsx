@@ -108,6 +108,11 @@ import {
   buildClosureDriftDetection,
   buildClosurePersistenceTimeline,
   buildClosureSteeringRecommendations,
+  buildCinematicAfterglowMemory,
+  buildAfterglowTransitionBridge,
+  buildAfterglowDriftDetection,
+  buildAfterglowPersistenceTimeline,
+  buildAfterglowSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -155,6 +160,7 @@ import {
   groupDestinationPersistenceTimelineByDimension,
   groupResolutionPersistenceTimelineByDimension,
   groupClosurePersistenceTimelineByDimension,
+  groupAfterglowPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -361,6 +367,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const closurePersistenceTimeline = buildClosurePersistenceTimeline(payload);
   const closurePersistenceTimelineGroups = groupClosurePersistenceTimelineByDimension(closurePersistenceTimeline);
   const closureSteeringRecommendations = buildClosureSteeringRecommendations();
+  const cinematicAfterglowMemory = buildCinematicAfterglowMemory();
+  const afterglowTransitionBridge = buildAfterglowTransitionBridge();
+  const afterglowDriftDetection = buildAfterglowDriftDetection();
+  const afterglowPersistenceTimeline = buildAfterglowPersistenceTimeline(payload);
+  const afterglowPersistenceTimelineGroups = groupAfterglowPersistenceTimelineByDimension(afterglowPersistenceTimeline);
+  const afterglowSteeringRecommendations = buildAfterglowSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1549,6 +1561,50 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="closure-steering" title="Closure Steering Recommendations">
           <SteeringChipList items={closureSteeringRecommendations} dataAttr="closure-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-afterglow-memory" title="Cinematic Afterglow Memory">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-afterglow-memory-id={cinematicAfterglowMemory.cinematicAfterglowMemoryId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Afterglow Memory ID" value={cinematicAfterglowMemory.cinematicAfterglowMemoryId} emphasis />
+              <KeyValueField label="Active Afterglow State" value={cinematicAfterglowMemory.activeAfterglowState} emphasis />
+              <KeyValueField label="Cinematic Afterglow Score" value={formatScore3Dec(cinematicAfterglowMemory.cinematicAfterglowScore)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Lingering Emotion Continuity" value={cinematicAfterglowMemory.lingeringEmotionContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Aftertaste Persistence" value={cinematicAfterglowMemory.emotionalAftertastePersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Post-Scene Calmness Continuity" value={cinematicAfterglowMemory.postSceneCalmnessContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Emotional Residue" value={cinematicAfterglowMemory.cinematicEmotionalResidue} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Ending Echo Stability" value={cinematicAfterglowMemory.endingEchoStability} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Afterglow Normalization" value={cinematicAfterglowMemory.afterglowNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="afterglow-transition-bridge" title="Afterglow Transition Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-afterglow-transition-bridge-id={afterglowTransitionBridge.afterglowTransitionBridgeId}>
+            <p className="text-sm font-black">{afterglowTransitionBridge.afterglowTransitionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active afterglow route · {afterglowTransitionBridge.activeAfterglowRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(afterglowTransitionBridge.afterglowRoutingStrength)} emphasis />
+              <KeyValueField label="Afterglow Persistence Score" value={formatScore3Dec(afterglowTransitionBridge.afterglowPersistenceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Afterglow Routes</p><TagList tags={afterglowTransitionBridge.replayLinkedAfterglowRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Afterglow Routes</p><TagList tags={afterglowTransitionBridge.continuitySafeAfterglowRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Afterglow Routes</p><TagList tags={afterglowTransitionBridge.highDriftAfterglowRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="afterglow-drift-detection" title="Afterglow Drift Detection">
+          <DriftList items={afterglowDriftDetection} dataAttr="afterglow-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="afterglow-persistence-timeline" title="Afterglow Persistence Timeline">
+          <TimelineTrendGrid groups={afterglowPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="afterglow-steering" title="Afterglow Steering Recommendations">
+          <SteeringChipList items={afterglowSteeringRecommendations} dataAttr="afterglow-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
