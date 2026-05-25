@@ -538,6 +538,36 @@ export type IntakeSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type PendingEvaluationQueue = {
+  readonly pendingEvaluationQueueId: string;
+  readonly activePendingSessions: readonly string[];
+  readonly queuedEvidenceGroups: readonly string[];
+  readonly continuitySafeQueueGroups: readonly string[];
+  readonly highDriftQueueGroups: readonly string[];
+  readonly replayReadyQueueState: string;
+  readonly queueNormalizationState: string;
+};
+
+export type EvaluationStagingBridge = {
+  readonly evaluationStagingBridgeId: string;
+  readonly activeStagingSession: string;
+  readonly replayLinkedQueue: readonly string[];
+  readonly continuityEvaluationQueue: readonly string[];
+  readonly highDriftEvaluationQueue: readonly string[];
+  readonly stagingCompatibilityScore: number;
+  readonly queueReplayStrength: number;
+};
+
+export type QueueDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type QueueSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -1503,6 +1533,78 @@ export const INTAKE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "preserve canonical replay mapping", severity: "stable" }),
   Object.freeze({ label: "reduce normalization divergence pressure", severity: "warning" }),
 ] as const satisfies readonly IntakeSteeringRecommendation[]);
+
+export const PENDING_EVALUATION_QUEUE = Object.freeze({
+  pendingEvaluationQueueId: "pending-evaluation-queue-gonegi-v1",
+  activePendingSessions: Object.freeze(["ai-studio-session-safe-001", "continuity-session-harbor-002"]),
+  queuedEvidenceGroups: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002", "gen-detail-push-experiment"]),
+  continuitySafeQueueGroups: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002"]),
+  highDriftQueueGroups: Object.freeze(["gen-detail-push-experiment"]),
+  replayReadyQueueState: "replay-safe pending intake · evaluation-ready staging locked",
+  queueNormalizationState: "continuity-compatible evaluation staging · provider-neutral queue structure",
+} satisfies PendingEvaluationQueue);
+
+export const EVALUATION_STAGING_BRIDGE = Object.freeze({
+  evaluationStagingBridgeId: "evaluation-staging-bridge-gonegi-v1",
+  activeStagingSession: "ai-studio-session-safe-001",
+  replayLinkedQueue: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002"]),
+  continuityEvaluationQueue: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002"]),
+  highDriftEvaluationQueue: Object.freeze(["gen-detail-push-experiment"]),
+  stagingCompatibilityScore: 0.801333,
+  queueReplayStrength: 0.812333,
+} satisfies EvaluationStagingBridge);
+
+export const QUEUE_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "pending queue fragmentation", severity: "critical" }),
+  Object.freeze({ label: "replay queue instability", severity: "critical" }),
+  Object.freeze({ label: "evaluation staging mismatch", severity: "warning" }),
+  Object.freeze({ label: "continuity queue divergence", severity: "warning" }),
+  Object.freeze({ label: "provider queue incompatibility", severity: "warning" }),
+] as const satisfies readonly QueueDriftItem[]);
+
+const QUEUE_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      pendingQueuePersistence: number;
+      replayQueueContinuity: number;
+      stagingNormalizationTrend: number;
+      continuityQueueStability: number;
+      evaluationReadyTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    pendingQueuePersistence: 0.331333,
+    replayQueueContinuity: 0.608333,
+    stagingNormalizationTrend: 0.594333,
+    continuityQueueStability: 0.602333,
+    evaluationReadyTrend: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    pendingQueuePersistence: 0.381333,
+    replayQueueContinuity: 0.801333,
+    stagingNormalizationTrend: 0.785333,
+    continuityQueueStability: 0.778333,
+    evaluationReadyTrend: 0.812333,
+  }),
+});
+
+export const QUEUE_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["pending queue persistence", "pendingQueuePersistence"],
+  ["replay queue continuity", "replayQueueContinuity"],
+  ["staging normalization trend", "stagingNormalizationTrend"],
+  ["continuity queue stability", "continuityQueueStability"],
+  ["evaluation-ready trend", "evaluationReadyTrend"],
+] as const);
+
+export const QUEUE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve replay-safe intake queue", severity: "stable" }),
+  Object.freeze({ label: "maintain continuity-safe staging", severity: "stable" }),
+  Object.freeze({ label: "avoid high-drift queue inheritance", severity: "critical" }),
+  Object.freeze({ label: "preserve evaluation-ready normalization", severity: "stable" }),
+  Object.freeze({ label: "reduce queue fragmentation pressure", severity: "warning" }),
+] as const satisfies readonly QueueSteeringRecommendation[]);
 
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
@@ -2535,6 +2637,63 @@ export function groupReplayMappingTimelineByDimension(
 
 export function buildIntakeSteeringRecommendations(): readonly IntakeSteeringRecommendation[] {
   return INTAKE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildPendingEvaluationQueue(): PendingEvaluationQueue {
+  return PENDING_EVALUATION_QUEUE;
+}
+
+export function buildEvaluationStagingBridge(): EvaluationStagingBridge {
+  return EVALUATION_STAGING_BRIDGE;
+}
+
+export function buildQueueDriftDetection(): readonly QueueDriftItem[] {
+  return QUEUE_DRIFT_GROUPS;
+}
+
+export function buildQueuePersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of QUEUE_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = QUEUE_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? QUEUE_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupQueuePersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    QUEUE_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildQueueSteeringRecommendations(): readonly QueueSteeringRecommendation[] {
+  return QUEUE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

@@ -65,6 +65,11 @@ import {
   buildIntakeDriftDetection,
   buildReplayMappingTimeline,
   buildIntakeSteeringRecommendations,
+  buildPendingEvaluationQueue,
+  buildEvaluationStagingBridge,
+  buildQueueDriftDetection,
+  buildQueuePersistenceTimeline,
+  buildQueueSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -166,6 +171,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const intakeDriftDetection = buildIntakeDriftDetection();
   const replayMappingTimeline = buildReplayMappingTimeline(payload);
   const intakeSteeringRecommendations = buildIntakeSteeringRecommendations();
+  const pendingEvaluationQueue = buildPendingEvaluationQueue();
+  const evaluationStagingBridge = buildEvaluationStagingBridge();
+  const queueDriftDetection = buildQueueDriftDetection();
+  const queuePersistenceTimeline = buildQueuePersistenceTimeline(payload);
+  const queueSteeringRecommendations = buildQueueSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -289,6 +299,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("intakeDrift", intakeDriftDetection),
       formatTimelineSnapshotLine("replayMappingTimeline", replayMappingTimeline),
       formatSteerSnapshotLine("intakeSteer", intakeSteeringRecommendations),
+    ],
+    [
+      `pendingQueue:${pendingEvaluationQueue.pendingEvaluationQueueId}:${pendingEvaluationQueue.activePendingSessions.join("+")}:${pendingEvaluationQueue.queuedEvidenceGroups.join("+")}`,
+      `evaluationStaging:${evaluationStagingBridge.evaluationStagingBridgeId}:${formatScore3Dec(evaluationStagingBridge.stagingCompatibilityScore)}:${formatScore3Dec(evaluationStagingBridge.queueReplayStrength)}:${evaluationStagingBridge.replayLinkedQueue.join("+")}`,
+      formatDriftSnapshotLine("queueDrift", queueDriftDetection),
+      formatTimelineSnapshotLine("queueTimeline", queuePersistenceTimeline),
+      formatSteerSnapshotLine("queueSteer", queueSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

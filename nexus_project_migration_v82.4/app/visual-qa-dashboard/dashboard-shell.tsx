@@ -48,6 +48,11 @@ import {
   buildIntakeDriftDetection,
   buildReplayMappingTimeline,
   buildIntakeSteeringRecommendations,
+  buildPendingEvaluationQueue,
+  buildEvaluationStagingBridge,
+  buildQueueDriftDetection,
+  buildQueuePersistenceTimeline,
+  buildQueueSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -83,6 +88,7 @@ import {
   groupSessionPersistenceTimelineByDimension,
   groupProviderReadinessTimelineByDimension,
   groupReplayMappingTimelineByDimension,
+  groupQueuePersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -217,6 +223,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const replayMappingTimeline = buildReplayMappingTimeline(payload);
   const replayMappingTimelineGroups = groupReplayMappingTimelineByDimension(replayMappingTimeline);
   const intakeSteeringRecommendations = buildIntakeSteeringRecommendations();
+  const pendingEvaluationQueue = buildPendingEvaluationQueue();
+  const evaluationStagingBridge = buildEvaluationStagingBridge();
+  const queueDriftDetection = buildQueueDriftDetection();
+  const queuePersistenceTimeline = buildQueuePersistenceTimeline(payload);
+  const queuePersistenceTimelineGroups = groupQueuePersistenceTimelineByDimension(queuePersistenceTimeline);
+  const queueSteeringRecommendations = buildQueueSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -792,6 +804,50 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="intake-steering-recommendations" title="Intake Steering Recommendations">
           <SteeringChipList items={intakeSteeringRecommendations} dataAttr="intake-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="pending-evaluation-queue" title="Pending Evaluation Queue">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-pending-evaluation-queue-id={pendingEvaluationQueue.pendingEvaluationQueueId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Queue ID" value={pendingEvaluationQueue.pendingEvaluationQueueId} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Ready State" value={pendingEvaluationQueue.replayReadyQueueState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Normalization State" value={pendingEvaluationQueue.queueNormalizationState} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Active Pending Sessions</p><TagList tags={pendingEvaluationQueue.activePendingSessions} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Queued Evidence Groups</p><TagList tags={pendingEvaluationQueue.queuedEvidenceGroups} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Groups</p><TagList tags={pendingEvaluationQueue.continuitySafeQueueGroups} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Groups</p><TagList tags={pendingEvaluationQueue.highDriftQueueGroups} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="evaluation-staging-bridge" title="Evaluation Staging Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-evaluation-staging-bridge-id={evaluationStagingBridge.evaluationStagingBridgeId}>
+            <p className="text-sm font-black">{evaluationStagingBridge.evaluationStagingBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active staging session · {evaluationStagingBridge.activeStagingSession}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Staging Compatibility" value={formatScore3Dec(evaluationStagingBridge.stagingCompatibilityScore)} emphasis />
+              <KeyValueField label="Queue Replay Strength" value={formatScore3Dec(evaluationStagingBridge.queueReplayStrength)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Queue</p><TagList tags={evaluationStagingBridge.replayLinkedQueue} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity Evaluation Queue</p><TagList tags={evaluationStagingBridge.continuityEvaluationQueue} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Evaluation Queue</p><TagList tags={evaluationStagingBridge.highDriftEvaluationQueue} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="queue-drift-detection" title="Queue Drift Detection">
+          <DriftList items={queueDriftDetection} dataAttr="queue-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="queue-persistence-timeline" title="Queue Persistence Timeline">
+          <TimelineTrendGrid groups={queuePersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="queue-steering-recommendations" title="Queue Steering Recommendations">
+          <SteeringChipList items={queueSteeringRecommendations} dataAttr="queue-steer" />
         </DashboardSection>
 
         <section data-section="style-core-profile" className="space-y-4">
