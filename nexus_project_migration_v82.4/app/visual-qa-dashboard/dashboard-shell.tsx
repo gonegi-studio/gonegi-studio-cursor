@@ -168,6 +168,11 @@ import {
   buildLocationMemoryInheritanceMap,
   buildWorldStatePersistenceTimeline,
   buildWorldStateSteeringRecommendations,
+  buildCinematicEmotionalAtmosphereLayer,
+  buildWarmthPersistenceBridge,
+  buildNostalgicToneInheritanceMap,
+  buildEmotionalAtmospherePersistenceTimeline,
+  buildEmotionalAtmosphereSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -227,6 +232,7 @@ import {
   groupMotionPersistenceTimelineByDimension,
   groupNarrativeRhythmPersistenceTimelineByDimension,
   groupWorldStatePersistenceTimelineByDimension,
+  groupEmotionalAtmospherePersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -505,6 +511,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const worldStatePersistenceTimeline = buildWorldStatePersistenceTimeline(payload);
   const worldStatePersistenceTimelineGroups = groupWorldStatePersistenceTimelineByDimension(worldStatePersistenceTimeline);
   const worldStateSteeringRecommendations = buildWorldStateSteeringRecommendations();
+  const cinematicEmotionalAtmosphereLayer = buildCinematicEmotionalAtmosphereLayer();
+  const warmthPersistenceBridge = buildWarmthPersistenceBridge();
+  const nostalgicToneInheritanceMap = buildNostalgicToneInheritanceMap();
+  const emotionalAtmospherePersistenceTimeline = buildEmotionalAtmospherePersistenceTimeline(payload);
+  const emotionalAtmospherePersistenceTimelineGroups = groupEmotionalAtmospherePersistenceTimelineByDimension(emotionalAtmospherePersistenceTimeline);
+  const emotionalAtmosphereSteeringRecommendations = buildEmotionalAtmosphereSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2396,6 +2408,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="world-state-steering" title="World State Steering Recommendations">
           <SteeringChipList items={worldStateSteeringRecommendations} dataAttr="world-state-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-emotional-atmosphere-layer" title="Cinematic Emotional Atmosphere Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-emotional-atmosphere-layer-id={cinematicEmotionalAtmosphereLayer.cinematicEmotionalAtmosphereLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Emotional Atmosphere Layer ID" value={cinematicEmotionalAtmosphereLayer.cinematicEmotionalAtmosphereLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicEmotionalAtmosphereLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Emotional Atmosphere Orchestration Score" value={formatScore3Dec(cinematicEmotionalAtmosphereLayer.emotionalAtmosphereOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Emotional Atmosphere Orchestration State" value={cinematicEmotionalAtmosphereLayer.activeEmotionalAtmosphereOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Atmosphere Continuity" value={cinematicEmotionalAtmosphereLayer.emotionalAtmosphereContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Warmth Persistence Routing" value={cinematicEmotionalAtmosphereLayer.warmthPersistenceRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Nostalgic/Melancholic Inheritance" value={cinematicEmotionalAtmosphereLayer.nostalgicMelancholicInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Emotional Orchestration" value={cinematicEmotionalAtmosphereLayer.replaySafeEmotionalOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional-Space Normalization" value={cinematicEmotionalAtmosphereLayer.emotionalSpaceNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Atmosphere Stabilization" value={cinematicEmotionalAtmosphereLayer.cinematicAtmosphereStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Tone Persistence" value={cinematicEmotionalAtmosphereLayer.emotionalTonePersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Emotional Continuity" value={cinematicEmotionalAtmosphereLayer.longFormEmotionalContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Atmosphere Normalization" value={cinematicEmotionalAtmosphereLayer.emotionalAtmosphereNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="warmth-persistence-bridge" title="Warmth Persistence Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-warmth-persistence-bridge-id={warmthPersistenceBridge.warmthPersistenceBridgeId}>
+            <p className="text-sm font-black">{warmthPersistenceBridge.warmthPersistenceBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active warmth route · {warmthPersistenceBridge.activeWarmthRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Warmth Persistence Strength" value={formatScore3Dec(warmthPersistenceBridge.warmthPersistenceStrength)} emphasis />
+              <KeyValueField label="Warmth Linkage Score" value={formatScore3Dec(warmthPersistenceBridge.warmthLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Warmth Routes</p><TagList tags={warmthPersistenceBridge.replayLinkedWarmthRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Warmth Routes</p><TagList tags={warmthPersistenceBridge.continuitySafeWarmthRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Warmth Routes</p><TagList tags={warmthPersistenceBridge.highDriftWarmthRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="nostalgic-tone-inheritance-map" title="Nostalgic Tone Inheritance Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-nostalgic-tone-inheritance-map-id={nostalgicToneInheritanceMap.nostalgicToneInheritanceMapId}>
+            <p className="text-sm font-black">{nostalgicToneInheritanceMap.nostalgicToneInheritanceMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active nostalgic route · {nostalgicToneInheritanceMap.activeNostalgicRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Nostalgic Tone Inheritance Score" value={formatScore3Dec(nostalgicToneInheritanceMap.nostalgicToneInheritanceScore)} emphasis />
+              <KeyValueField label="Emotional Space Linkage Score" value={formatScore3Dec(nostalgicToneInheritanceMap.emotionalSpaceLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Nostalgic Tone Readiness" value={nostalgicToneInheritanceMap.nostalgicToneReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Nostalgic Tone Traits</p><TagList tags={nostalgicToneInheritanceMap.readyNostalgicToneTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Nostalgic Tone Traits</p><TagList tags={nostalgicToneInheritanceMap.pendingNostalgicToneTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-atmosphere-persistence-timeline" title="Emotional Atmosphere Persistence Timeline">
+          <TimelineTrendGrid groups={emotionalAtmospherePersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-atmosphere-steering" title="Emotional Atmosphere Steering Recommendations">
+          <SteeringChipList items={emotionalAtmosphereSteeringRecommendations} dataAttr="emotional-atmosphere-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

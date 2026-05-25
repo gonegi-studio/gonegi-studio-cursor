@@ -185,6 +185,11 @@ import {
   buildLocationMemoryInheritanceMap,
   buildWorldStatePersistenceTimeline,
   buildWorldStateSteeringRecommendations,
+  buildCinematicEmotionalAtmosphereLayer,
+  buildWarmthPersistenceBridge,
+  buildNostalgicToneInheritanceMap,
+  buildEmotionalAtmospherePersistenceTimeline,
+  buildEmotionalAtmosphereSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -406,6 +411,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const locationMemoryInheritanceMap = buildLocationMemoryInheritanceMap();
   const worldStatePersistenceTimeline = buildWorldStatePersistenceTimeline(payload);
   const worldStateSteeringRecommendations = buildWorldStateSteeringRecommendations();
+  const cinematicEmotionalAtmosphereLayer = buildCinematicEmotionalAtmosphereLayer();
+  const warmthPersistenceBridge = buildWarmthPersistenceBridge();
+  const nostalgicToneInheritanceMap = buildNostalgicToneInheritanceMap();
+  const emotionalAtmospherePersistenceTimeline = buildEmotionalAtmospherePersistenceTimeline(payload);
+  const emotionalAtmosphereSteeringRecommendations = buildEmotionalAtmosphereSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -697,6 +707,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `locationMemoryInheritance:${locationMemoryInheritanceMap.locationMemoryInheritanceMapId}:${formatScore3Dec(locationMemoryInheritanceMap.locationMemoryInheritanceScore)}:${formatScore3Dec(locationMemoryInheritanceMap.environmentContinuityLinkageScore)}:${locationMemoryInheritanceMap.readyLocationMemoryTraits.join("+")}`,
       formatTimelineSnapshotLine("worldStateTimeline", worldStatePersistenceTimeline),
       formatSteerSnapshotLine("worldStateSteer", worldStateSteeringRecommendations),
+    ],
+    [
+      `emotionalAtmosphere:${cinematicEmotionalAtmosphereLayer.cinematicEmotionalAtmosphereLayerId}:${cinematicEmotionalAtmosphereLayer.pilotVideoMode}:${formatScore3Dec(cinematicEmotionalAtmosphereLayer.emotionalAtmosphereOrchestrationScore)}`,
+      `warmthPersistence:${warmthPersistenceBridge.warmthPersistenceBridgeId}:${formatScore3Dec(warmthPersistenceBridge.warmthPersistenceStrength)}:${formatScore3Dec(warmthPersistenceBridge.warmthLinkageScore)}:${warmthPersistenceBridge.replayLinkedWarmthRoutes.join("+")}`,
+      `nostalgicToneInheritance:${nostalgicToneInheritanceMap.nostalgicToneInheritanceMapId}:${formatScore3Dec(nostalgicToneInheritanceMap.nostalgicToneInheritanceScore)}:${formatScore3Dec(nostalgicToneInheritanceMap.emotionalSpaceLinkageScore)}:${nostalgicToneInheritanceMap.readyNostalgicToneTraits.join("+")}`,
+      formatTimelineSnapshotLine("emotionalAtmosphereTimeline", emotionalAtmospherePersistenceTimeline),
+      formatSteerSnapshotLine("emotionalAtmosphereSteer", emotionalAtmosphereSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

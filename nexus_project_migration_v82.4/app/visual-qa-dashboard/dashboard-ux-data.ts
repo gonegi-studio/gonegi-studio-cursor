@@ -1368,6 +1368,47 @@ export type WorldStateSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicEmotionalAtmosphereLayer = {
+  readonly cinematicEmotionalAtmosphereLayerId: string;
+  readonly activeEmotionalAtmosphereOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly emotionalAtmosphereContinuity: string;
+  readonly warmthPersistenceRouting: string;
+  readonly nostalgicMelancholicInheritance: string;
+  readonly replaySafeEmotionalOrchestration: string;
+  readonly emotionalSpaceNormalization: string;
+  readonly cinematicAtmosphereStabilization: string;
+  readonly emotionalTonePersistence: string;
+  readonly longFormEmotionalContinuity: string;
+  readonly emotionalAtmosphereOrchestrationScore: number;
+  readonly emotionalAtmosphereNormalizationState: string;
+};
+
+export type WarmthPersistenceBridge = {
+  readonly warmthPersistenceBridgeId: string;
+  readonly activeWarmthRoute: string;
+  readonly replayLinkedWarmthRoutes: readonly string[];
+  readonly continuitySafeWarmthRoutes: readonly string[];
+  readonly highDriftWarmthRoutes: readonly string[];
+  readonly warmthPersistenceStrength: number;
+  readonly warmthLinkageScore: number;
+};
+
+export type NostalgicToneInheritanceMap = {
+  readonly nostalgicToneInheritanceMapId: string;
+  readonly activeNostalgicRoute: string;
+  readonly nostalgicToneReadiness: string;
+  readonly readyNostalgicToneTraits: readonly string[];
+  readonly pendingNostalgicToneTraits: readonly string[];
+  readonly nostalgicToneInheritanceScore: number;
+  readonly emotionalSpaceLinkageScore: number;
+};
+
+export type EmotionalAtmosphereSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4138,6 +4179,86 @@ export const WORLD_STATE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer environment generation until world-state layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly WorldStateSteeringRecommendation[]);
 
+export const CINEMATIC_EMOTIONAL_ATMOSPHERE_LAYER = Object.freeze({
+  cinematicEmotionalAtmosphereLayerId: "cinematic-emotional-atmosphere-layer-gonegi-v1",
+  activeEmotionalAtmosphereOrchestrationState: "25s-pilot-emotional-atmosphere-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  emotionalAtmosphereContinuity: "emotional atmosphere continuity staged for 25s pilot harbor warmth without emotion inference",
+  warmthPersistenceRouting: "warmth persistence routing indexed for soft glaze carry-over and mediterranean emotional honesty",
+  nostalgicMelancholicInheritance: "nostalgic/melancholic tone inheritance prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeEmotionalOrchestration: "replay-safe emotional orchestration reserved without sentiment analysis execution",
+  emotionalSpaceNormalization: "emotional-space normalization locked for warm dissolve continuity across pilot beats",
+  cinematicAtmosphereStabilization: "cinematic atmosphere stabilization verified against ghibli-base harbor emotional profile",
+  emotionalTonePersistence: "emotional tone persistence mapped for soft carry-over harbor melancholy warmth",
+  longFormEmotionalContinuity: "future long-form emotional continuity staged for ten-video expansion target",
+  emotionalAtmosphereOrchestrationScore: 0.883333,
+  emotionalAtmosphereNormalizationState: "canonical 25s pilot cinematic emotional atmosphere orchestration normalization",
+} satisfies CinematicEmotionalAtmosphereLayer);
+
+export const WARMTH_PERSISTENCE_BRIDGE = Object.freeze({
+  warmthPersistenceBridgeId: "warmth-persistence-bridge-gonegi-v1",
+  activeWarmthRoute: "warmth-route-soft-glaze-hold-001",
+  replayLinkedWarmthRoutes: Object.freeze(["warmth-route-soft-glaze-hold-001", "warmth-route-harbor-glow-echo-002"]),
+  continuitySafeWarmthRoutes: Object.freeze(["warmth-route-soft-glaze-hold-001", "warmth-route-harbor-glow-echo-002"]),
+  highDriftWarmthRoutes: Object.freeze(["warmth-route-contrast-push-experiment"]),
+  warmthPersistenceStrength: 0.879333,
+  warmthLinkageScore: 0.893333,
+} satisfies WarmthPersistenceBridge);
+
+export const NOSTALGIC_TONE_INHERITANCE_MAP = Object.freeze({
+  nostalgicToneInheritanceMapId: "nostalgic-tone-inheritance-map-gonegi-v1",
+  activeNostalgicRoute: "nostalgic-route-harbor-pilot-001",
+  nostalgicToneReadiness: "nostalgic tone inheritance readiness staged for 25s pilot harbor sample",
+  readyNostalgicToneTraits: Object.freeze(["harbor-melancholy-hold", "warm-nostalgia-glaze", "soft-horizon-longing"]),
+  pendingNostalgicToneTraits: Object.freeze(["alternate-tone-experiment", "emotional-push-variant"]),
+  nostalgicToneInheritanceScore: 0.876333,
+  emotionalSpaceLinkageScore: 0.890333,
+} satisfies NostalgicToneInheritanceMap);
+
+const EMOTIONAL_ATMOSPHERE_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      emotionalAtmosphereContinuityTrend: number;
+      warmthPersistenceRoutingTrend: number;
+      nostalgicMelancholicInheritanceTrend: number;
+      emotionalSpaceNormalizationTrend: number;
+      longFormEmotionalContinuityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    emotionalAtmosphereContinuityTrend: 0.344333,
+    warmthPersistenceRoutingTrend: 0.651333,
+    nostalgicMelancholicInheritanceTrend: 0.638333,
+    emotionalSpaceNormalizationTrend: 0.645333,
+    longFormEmotionalContinuityTrend: 0.637333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    emotionalAtmosphereContinuityTrend: 0.883333,
+    warmthPersistenceRoutingTrend: 0.878333,
+    nostalgicMelancholicInheritanceTrend: 0.871333,
+    emotionalSpaceNormalizationTrend: 0.886333,
+    longFormEmotionalContinuityTrend: 0.879333,
+  }),
+});
+
+export const EMOTIONAL_ATMOSPHERE_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["emotional atmosphere continuity trend", "emotionalAtmosphereContinuityTrend"],
+  ["warmth persistence routing trend", "warmthPersistenceRoutingTrend"],
+  ["nostalgic/melancholic inheritance trend", "nostalgicMelancholicInheritanceTrend"],
+  ["emotional-space normalization trend", "emotionalSpaceNormalizationTrend"],
+  ["long-form emotional continuity trend", "longFormEmotionalContinuityTrend"],
+] as const);
+
+export const EMOTIONAL_ATMOSPHERE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot emotional atmosphere orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain warmth persistence routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified nostalgic tone routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve emotional-space normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer emotion inference until emotional atmosphere layer stabilizes", severity: "warning" }),
+] as const satisfies readonly EmotionalAtmosphereSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -6537,6 +6658,63 @@ export function groupWorldStatePersistenceTimelineByDimension(
 
 export function buildWorldStateSteeringRecommendations(): readonly WorldStateSteeringRecommendation[] {
   return WORLD_STATE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicEmotionalAtmosphereLayer(): CinematicEmotionalAtmosphereLayer {
+  return CINEMATIC_EMOTIONAL_ATMOSPHERE_LAYER;
+}
+
+export function buildWarmthPersistenceBridge(): WarmthPersistenceBridge {
+  return WARMTH_PERSISTENCE_BRIDGE;
+}
+
+export function buildNostalgicToneInheritanceMap(): NostalgicToneInheritanceMap {
+  return NOSTALGIC_TONE_INHERITANCE_MAP;
+}
+
+export function buildEmotionalAtmospherePersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of EMOTIONAL_ATMOSPHERE_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = EMOTIONAL_ATMOSPHERE_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? EMOTIONAL_ATMOSPHERE_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupEmotionalAtmospherePersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    EMOTIONAL_ATMOSPHERE_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildEmotionalAtmosphereSteeringRecommendations(): readonly EmotionalAtmosphereSteeringRecommendation[] {
+  return EMOTIONAL_ATMOSPHERE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
