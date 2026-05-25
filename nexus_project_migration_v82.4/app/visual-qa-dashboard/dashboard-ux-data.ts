@@ -508,6 +508,36 @@ export type ProviderSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type EvaluationIntakeNormalization = {
+  readonly evaluationIntakeNormalizationId: string;
+  readonly linkedGenerationSessionId: string;
+  readonly linkedEvidenceLineageId: string;
+  readonly canonicalReplayMappingState: string;
+  readonly normalizationCompatibilityState: string;
+  readonly continuityEvaluationCompatibility: number;
+  readonly replaySafeNormalization: string;
+};
+
+export type EvidenceSessionLinking = {
+  readonly evidenceSessionLinkId: string;
+  readonly activeEvidenceSession: string;
+  readonly replayLinkedEvidence: readonly string[];
+  readonly continuitySafeSessionLinks: readonly string[];
+  readonly highDriftSessionLinks: readonly string[];
+  readonly lineageCompatibilityScore: number;
+  readonly replayMappingStrength: number;
+};
+
+export type IntakeDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type IntakeSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -1401,6 +1431,78 @@ export const PROVIDER_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "preserve continuity-safe provider path", severity: "stable" }),
   Object.freeze({ label: "reduce adapter divergence pressure", severity: "warning" }),
 ] as const satisfies readonly ProviderSteeringRecommendation[]);
+
+export const EVALUATION_INTAKE_NORMALIZATION = Object.freeze({
+  evaluationIntakeNormalizationId: "evaluation-intake-normalization-gonegi-v1",
+  linkedGenerationSessionId: "ai-studio-session-safe-001",
+  linkedEvidenceLineageId: "lineage-replay-safe-001",
+  canonicalReplayMappingState: "canonical replay linkage verified · replay-safe evidence normalization",
+  normalizationCompatibilityState: "continuity-compatible intake linkage · provider-neutral evaluation mapping",
+  continuityEvaluationCompatibility: 0.801333,
+  replaySafeNormalization: "replay-safe evidence normalization · continuity-safe evaluation lineage",
+} satisfies EvaluationIntakeNormalization);
+
+export const EVIDENCE_SESSION_LINKING = Object.freeze({
+  evidenceSessionLinkId: "evidence-session-link-gonegi-v1",
+  activeEvidenceSession: "ai-studio-session-safe-001",
+  replayLinkedEvidence: Object.freeze(["gen-warm-glaze-001", "gen-harbor-haze-002"]),
+  continuitySafeSessionLinks: Object.freeze(["ai-studio-session-safe-001", "continuity-session-harbor-002"]),
+  highDriftSessionLinks: Object.freeze(["detail-push-session-experiment"]),
+  lineageCompatibilityScore: 0.812333,
+  replayMappingStrength: 0.785333,
+} satisfies EvidenceSessionLinking);
+
+export const INTAKE_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "intake normalization instability", severity: "critical" }),
+  Object.freeze({ label: "replay mapping fracture", severity: "critical" }),
+  Object.freeze({ label: "evidence-session incompatibility", severity: "warning" }),
+  Object.freeze({ label: "continuity linkage divergence", severity: "warning" }),
+  Object.freeze({ label: "provider normalization mismatch", severity: "warning" }),
+] as const satisfies readonly IntakeDriftItem[]);
+
+const REPLAY_MAPPING_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      replayMappingPersistence: number;
+      intakeNormalizationStability: number;
+      evidenceSessionContinuity: number;
+      lineageCompatibilityTrend: number;
+      canonicalLinkageStability: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    replayMappingPersistence: 0.331333,
+    intakeNormalizationStability: 0.608333,
+    evidenceSessionContinuity: 0.594333,
+    lineageCompatibilityTrend: 0.602333,
+    canonicalLinkageStability: 0.591333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    replayMappingPersistence: 0.381333,
+    intakeNormalizationStability: 0.801333,
+    evidenceSessionContinuity: 0.785333,
+    lineageCompatibilityTrend: 0.778333,
+    canonicalLinkageStability: 0.812333,
+  }),
+});
+
+export const REPLAY_MAPPING_TREND_DIMENSIONS = Object.freeze([
+  ["replay mapping persistence", "replayMappingPersistence"],
+  ["intake normalization stability", "intakeNormalizationStability"],
+  ["evidence-session continuity", "evidenceSessionContinuity"],
+  ["lineage compatibility trend", "lineageCompatibilityTrend"],
+  ["canonical linkage stability", "canonicalLinkageStability"],
+] as const);
+
+export const INTAKE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve replay-safe normalization", severity: "stable" }),
+  Object.freeze({ label: "maintain evidence-session continuity", severity: "stable" }),
+  Object.freeze({ label: "avoid high-drift linkage inheritance", severity: "critical" }),
+  Object.freeze({ label: "preserve canonical replay mapping", severity: "stable" }),
+  Object.freeze({ label: "reduce normalization divergence pressure", severity: "warning" }),
+] as const satisfies readonly IntakeSteeringRecommendation[]);
 
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
@@ -2376,6 +2478,63 @@ export function groupProviderReadinessTimelineByDimension(
 
 export function buildProviderSteeringRecommendations(): readonly ProviderSteeringRecommendation[] {
   return PROVIDER_STEERING_RECOMMENDATIONS;
+}
+
+export function buildEvaluationIntakeNormalization(): EvaluationIntakeNormalization {
+  return EVALUATION_INTAKE_NORMALIZATION;
+}
+
+export function buildEvidenceSessionLinking(): EvidenceSessionLinking {
+  return EVIDENCE_SESSION_LINKING;
+}
+
+export function buildIntakeDriftDetection(): readonly IntakeDriftItem[] {
+  return INTAKE_DRIFT_GROUPS;
+}
+
+export function buildReplayMappingTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of REPLAY_MAPPING_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = REPLAY_MAPPING_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? REPLAY_MAPPING_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupReplayMappingTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    REPLAY_MAPPING_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildIntakeSteeringRecommendations(): readonly IntakeSteeringRecommendation[] {
+  return INTAKE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

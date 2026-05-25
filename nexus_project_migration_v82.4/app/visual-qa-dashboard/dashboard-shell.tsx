@@ -43,6 +43,11 @@ import {
   buildProviderDriftDetection,
   buildProviderReadinessTimeline,
   buildProviderSteeringRecommendations,
+  buildEvaluationIntakeNormalization,
+  buildEvidenceSessionLinking,
+  buildIntakeDriftDetection,
+  buildReplayMappingTimeline,
+  buildIntakeSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -77,6 +82,7 @@ import {
   groupReplayPersistenceTimelineByDimension,
   groupSessionPersistenceTimelineByDimension,
   groupProviderReadinessTimelineByDimension,
+  groupReplayMappingTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -101,6 +107,7 @@ import {
   FindingGroup,
   GrammarSteeringCard,
   IdentityPersistenceRow,
+  KeyValueField,
   MetricScoreRow,
   RetryGuardCard,
   RuleBlock,
@@ -204,6 +211,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const providerReadinessTimeline = buildProviderReadinessTimeline(payload);
   const providerReadinessTimelineGroups = groupProviderReadinessTimelineByDimension(providerReadinessTimeline);
   const providerSteeringRecommendations = buildProviderSteeringRecommendations();
+  const evaluationIntakeNormalization = buildEvaluationIntakeNormalization();
+  const evidenceSessionLinking = buildEvidenceSessionLinking();
+  const intakeDriftDetection = buildIntakeDriftDetection();
+  const replayMappingTimeline = buildReplayMappingTimeline(payload);
+  const replayMappingTimelineGroups = groupReplayMappingTimelineByDimension(replayMappingTimeline);
+  const intakeSteeringRecommendations = buildIntakeSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -738,6 +751,48 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
           <SectionTitle>Provider Steering Recommendations</SectionTitle>
           <SteeringChipList items={providerSteeringRecommendations} dataAttr="provider-steer" />
         </section>
+
+        <DashboardSection sectionId="evaluation-intake-normalization" title="Evaluation Intake Normalization">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-evaluation-intake-normalization-id={evaluationIntakeNormalization.evaluationIntakeNormalizationId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Normalization ID" value={evaluationIntakeNormalization.evaluationIntakeNormalizationId} emphasis />
+              <KeyValueField label="Linked Session" value={evaluationIntakeNormalization.linkedGenerationSessionId} emphasis />
+              <KeyValueField label="Evidence Lineage" value={evaluationIntakeNormalization.linkedEvidenceLineageId} emphasis />
+              <KeyValueField label="Continuity Compatibility" value={formatScore3Dec(evaluationIntakeNormalization.continuityEvaluationCompatibility)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Replay Mapping" value={evaluationIntakeNormalization.canonicalReplayMappingState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Normalization State" value={evaluationIntakeNormalization.normalizationCompatibilityState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Normalization" value={evaluationIntakeNormalization.replaySafeNormalization} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="evidence-session-linking" title="Evidence Session Linking">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-evidence-session-link-id={evidenceSessionLinking.evidenceSessionLinkId}>
+            <p className="text-sm font-black">{evidenceSessionLinking.evidenceSessionLinkId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active evidence session · {evidenceSessionLinking.activeEvidenceSession}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Lineage Compatibility" value={formatScore3Dec(evidenceSessionLinking.lineageCompatibilityScore)} emphasis />
+              <KeyValueField label="Replay Mapping Strength" value={formatScore3Dec(evidenceSessionLinking.replayMappingStrength)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Evidence</p><TagList tags={evidenceSessionLinking.replayLinkedEvidence} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Links</p><TagList tags={evidenceSessionLinking.continuitySafeSessionLinks} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Links</p><TagList tags={evidenceSessionLinking.highDriftSessionLinks} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="intake-drift-detection" title="Intake Drift Detection">
+          <DriftList items={intakeDriftDetection} dataAttr="intake-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="replay-mapping-timeline" title="Replay Mapping Timeline">
+          <TimelineTrendGrid groups={replayMappingTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="intake-steering-recommendations" title="Intake Steering Recommendations">
+          <SteeringChipList items={intakeSteeringRecommendations} dataAttr="intake-steer" />
+        </DashboardSection>
 
         <section data-section="style-core-profile" className="space-y-4">
           <SectionTitle>Style Core Profile</SectionTitle>

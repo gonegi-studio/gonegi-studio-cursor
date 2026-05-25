@@ -60,6 +60,11 @@ import {
   buildProviderDriftDetection,
   buildProviderReadinessTimeline,
   buildProviderSteeringRecommendations,
+  buildEvaluationIntakeNormalization,
+  buildEvidenceSessionLinking,
+  buildIntakeDriftDetection,
+  buildReplayMappingTimeline,
+  buildIntakeSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -156,6 +161,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const providerDriftDetection = buildProviderDriftDetection();
   const providerReadinessTimeline = buildProviderReadinessTimeline(payload);
   const providerSteeringRecommendations = buildProviderSteeringRecommendations();
+  const evaluationIntakeNormalization = buildEvaluationIntakeNormalization();
+  const evidenceSessionLinking = buildEvidenceSessionLinking();
+  const intakeDriftDetection = buildIntakeDriftDetection();
+  const replayMappingTimeline = buildReplayMappingTimeline(payload);
+  const intakeSteeringRecommendations = buildIntakeSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -272,6 +282,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("providerDrift", providerDriftDetection),
       formatTimelineSnapshotLine("providerTimeline", providerReadinessTimeline),
       formatSteerSnapshotLine("providerSteer", providerSteeringRecommendations),
+    ],
+    [
+      `intakeNormalization:${evaluationIntakeNormalization.evaluationIntakeNormalizationId}:${evaluationIntakeNormalization.linkedGenerationSessionId}:${evaluationIntakeNormalization.linkedEvidenceLineageId}:${formatScore3Dec(evaluationIntakeNormalization.continuityEvaluationCompatibility)}`,
+      `evidenceSessionLink:${evidenceSessionLinking.evidenceSessionLinkId}:${formatScore3Dec(evidenceSessionLinking.lineageCompatibilityScore)}:${formatScore3Dec(evidenceSessionLinking.replayMappingStrength)}:${evidenceSessionLinking.replayLinkedEvidence.join("+")}`,
+      formatDriftSnapshotLine("intakeDrift", intakeDriftDetection),
+      formatTimelineSnapshotLine("replayMappingTimeline", replayMappingTimeline),
+      formatSteerSnapshotLine("intakeSteer", intakeSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);
