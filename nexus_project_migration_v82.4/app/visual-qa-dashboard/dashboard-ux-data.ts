@@ -1204,6 +1204,47 @@ export type StyleCoreSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CharacterContinuityOrchestrationLayer = {
+  readonly characterContinuityOrchestrationLayerId: string;
+  readonly activeCharacterOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly characterIdentityPersistence: string;
+  readonly silhouetteContinuityReadiness: string;
+  readonly costumeInheritanceNormalization: string;
+  readonly emotionalExpressionContinuity: string;
+  readonly replaySafeCharacterOrchestration: string;
+  readonly cinematicCharacterPersistence: string;
+  readonly longFormConsistencyReadiness: string;
+  readonly imageAppCharacterSteeringCompatibility: string;
+  readonly characterOrchestrationScore: number;
+  readonly characterOrchestrationNormalizationState: string;
+};
+
+export type FaceSilhouetteContinuityBridge = {
+  readonly faceSilhouetteContinuityBridgeId: string;
+  readonly activeSilhouetteRoute: string;
+  readonly replayLinkedSilhouetteRoutes: readonly string[];
+  readonly continuitySafeSilhouetteRoutes: readonly string[];
+  readonly highDriftSilhouetteRoutes: readonly string[];
+  readonly silhouetteContinuityStrength: number;
+  readonly faceSilhouetteLinkageScore: number;
+};
+
+export type CostumeColorInheritanceMap = {
+  readonly costumeColorInheritanceMapId: string;
+  readonly activeCostumeRoute: string;
+  readonly costumeInheritanceReadiness: string;
+  readonly readyCostumeColorTraits: readonly string[];
+  readonly pendingCostumeColorTraits: readonly string[];
+  readonly costumeInheritanceScore: number;
+  readonly colorContinuityLinkageScore: number;
+};
+
+export type CharacterOrchestrationSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -3654,6 +3695,86 @@ export const STYLE_CORE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer style transfer until orchestration layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly StyleCoreSteeringRecommendation[]);
 
+export const CHARACTER_CONTINUITY_ORCHESTRATION_LAYER = Object.freeze({
+  characterContinuityOrchestrationLayerId: "character-continuity-orchestration-layer-gonegi-v1",
+  activeCharacterOrchestrationState: "25s-pilot-character-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  characterIdentityPersistence: "character identity persistence staged for gonegi protagonist profile without generation execution",
+  silhouetteContinuityReadiness: "silhouette continuity readiness indexed for 25s pilot harbor sample",
+  costumeInheritanceNormalization: "costume inheritance normalization locked for mediterranean drape continuity",
+  emotionalExpressionContinuity: "emotional expression continuity prepared for warm gaze baseline inheritance",
+  replaySafeCharacterOrchestration: "replay-safe character orchestration reserved without inference execution",
+  cinematicCharacterPersistence: "cinematic character persistence mapped for long-form consistency handoff",
+  longFormConsistencyReadiness: "future long-form consistency readiness staged for ten-video expansion target",
+  imageAppCharacterSteeringCompatibility: "image-app character steering compatibility prepared without API linkage execution",
+  characterOrchestrationScore: 0.873333,
+  characterOrchestrationNormalizationState: "canonical 25s pilot character continuity orchestration normalization",
+} satisfies CharacterContinuityOrchestrationLayer);
+
+export const FACE_SILHOUETTE_CONTINUITY_BRIDGE = Object.freeze({
+  faceSilhouetteContinuityBridgeId: "face-silhouette-continuity-bridge-gonegi-v1",
+  activeSilhouetteRoute: "silhouette-route-protagonist-hold-001",
+  replayLinkedSilhouetteRoutes: Object.freeze(["silhouette-route-protagonist-hold-001", "silhouette-route-soft-jawline-echo-002"]),
+  continuitySafeSilhouetteRoutes: Object.freeze(["silhouette-route-protagonist-hold-001", "silhouette-route-soft-jawline-echo-002"]),
+  highDriftSilhouetteRoutes: Object.freeze(["silhouette-route-detail-push-experiment"]),
+  silhouetteContinuityStrength: 0.869333,
+  faceSilhouetteLinkageScore: 0.883333,
+} satisfies FaceSilhouetteContinuityBridge);
+
+export const COSTUME_COLOR_INHERITANCE_MAP = Object.freeze({
+  costumeColorInheritanceMapId: "costume-color-inheritance-map-gonegi-v1",
+  activeCostumeRoute: "costume-route-mediterranean-drape-001",
+  costumeInheritanceReadiness: "costume inheritance readiness staged for 25s pilot harbor sample",
+  readyCostumeColorTraits: Object.freeze(["mediterranean-drape", "warm-palette-lock", "soft-linework-costume"]),
+  pendingCostumeColorTraits: Object.freeze(["alternate-costume-experiment", "contrast-push-variant"]),
+  costumeInheritanceScore: 0.866333,
+  colorContinuityLinkageScore: 0.880333,
+} satisfies CostumeColorInheritanceMap);
+
+const EMOTIONAL_EXPRESSION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      characterIdentityPersistenceTrend: number;
+      silhouetteContinuityReadinessTrend: number;
+      costumeInheritanceNormalizationTrend: number;
+      emotionalExpressionContinuityTrend: number;
+      longFormConsistencyReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    characterIdentityPersistenceTrend: 0.334333,
+    silhouetteContinuityReadinessTrend: 0.641333,
+    costumeInheritanceNormalizationTrend: 0.628333,
+    emotionalExpressionContinuityTrend: 0.635333,
+    longFormConsistencyReadinessTrend: 0.627333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    characterIdentityPersistenceTrend: 0.873333,
+    silhouetteContinuityReadinessTrend: 0.868333,
+    costumeInheritanceNormalizationTrend: 0.861333,
+    emotionalExpressionContinuityTrend: 0.876333,
+    longFormConsistencyReadinessTrend: 0.869333,
+  }),
+});
+
+export const EMOTIONAL_EXPRESSION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["character identity persistence trend", "characterIdentityPersistenceTrend"],
+  ["silhouette continuity readiness trend", "silhouetteContinuityReadinessTrend"],
+  ["costume inheritance normalization trend", "costumeInheritanceNormalizationTrend"],
+  ["emotional expression continuity trend", "emotionalExpressionContinuityTrend"],
+  ["long-form consistency readiness trend", "longFormConsistencyReadinessTrend"],
+] as const);
+
+export const CHARACTER_ORCHESTRATION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot character orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain face silhouette continuity readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified costume color routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve emotional expression inheritance linkage", severity: "stable" }),
+  Object.freeze({ label: "defer character generation until orchestration layer stabilizes", severity: "warning" }),
+] as const satisfies readonly CharacterOrchestrationSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -5825,6 +5946,63 @@ export function groupStyleDriftPersistenceTimelineByDimension(
 
 export function buildStyleCoreSteeringRecommendations(): readonly StyleCoreSteeringRecommendation[] {
   return STYLE_CORE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCharacterContinuityOrchestrationLayer(): CharacterContinuityOrchestrationLayer {
+  return CHARACTER_CONTINUITY_ORCHESTRATION_LAYER;
+}
+
+export function buildFaceSilhouetteContinuityBridge(): FaceSilhouetteContinuityBridge {
+  return FACE_SILHOUETTE_CONTINUITY_BRIDGE;
+}
+
+export function buildCostumeColorInheritanceMap(): CostumeColorInheritanceMap {
+  return COSTUME_COLOR_INHERITANCE_MAP;
+}
+
+export function buildEmotionalExpressionPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of EMOTIONAL_EXPRESSION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = EMOTIONAL_EXPRESSION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? EMOTIONAL_EXPRESSION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupEmotionalExpressionPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    EMOTIONAL_EXPRESSION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildCharacterOrchestrationSteeringRecommendations(): readonly CharacterOrchestrationSteeringRecommendation[] {
+  return CHARACTER_ORCHESTRATION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

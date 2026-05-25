@@ -148,6 +148,11 @@ import {
   buildCinematicTextureContinuityMap,
   buildStyleDriftPersistenceTimeline,
   buildStyleCoreSteeringRecommendations,
+  buildCharacterContinuityOrchestrationLayer,
+  buildFaceSilhouetteContinuityBridge,
+  buildCostumeColorInheritanceMap,
+  buildEmotionalExpressionPersistenceTimeline,
+  buildCharacterOrchestrationSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -203,6 +208,7 @@ import {
   groupCompositionPatternTimelineByDimension,
   groupPromptRecipeRoutingTimelineByDimension,
   groupStyleDriftPersistenceTimelineByDimension,
+  groupEmotionalExpressionPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -457,6 +463,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const styleDriftPersistenceTimeline = buildStyleDriftPersistenceTimeline(payload);
   const styleDriftPersistenceTimelineGroups = groupStyleDriftPersistenceTimelineByDimension(styleDriftPersistenceTimeline);
   const styleCoreSteeringRecommendations = buildStyleCoreSteeringRecommendations();
+  const characterContinuityOrchestrationLayer = buildCharacterContinuityOrchestrationLayer();
+  const faceSilhouetteContinuityBridge = buildFaceSilhouetteContinuityBridge();
+  const costumeColorInheritanceMap = buildCostumeColorInheritanceMap();
+  const emotionalExpressionPersistenceTimeline = buildEmotionalExpressionPersistenceTimeline(payload);
+  const emotionalExpressionPersistenceTimelineGroups = groupEmotionalExpressionPersistenceTimelineByDimension(emotionalExpressionPersistenceTimeline);
+  const characterOrchestrationSteeringRecommendations = buildCharacterOrchestrationSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2100,6 +2112,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="style-core-steering" title="Style Core Steering Recommendations">
           <SteeringChipList items={styleCoreSteeringRecommendations} dataAttr="style-core-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="character-continuity-orchestration-layer" title="Character Continuity Orchestration Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-character-continuity-orchestration-layer-id={characterContinuityOrchestrationLayer.characterContinuityOrchestrationLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Orchestration Layer ID" value={characterContinuityOrchestrationLayer.characterContinuityOrchestrationLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={characterContinuityOrchestrationLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Character Orchestration Score" value={formatScore3Dec(characterContinuityOrchestrationLayer.characterOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Character Orchestration State" value={characterContinuityOrchestrationLayer.activeCharacterOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Character Identity Persistence" value={characterContinuityOrchestrationLayer.characterIdentityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Silhouette Continuity Readiness" value={characterContinuityOrchestrationLayer.silhouetteContinuityReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Costume Inheritance Normalization" value={characterContinuityOrchestrationLayer.costumeInheritanceNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Expression Continuity" value={characterContinuityOrchestrationLayer.emotionalExpressionContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Character Orchestration" value={characterContinuityOrchestrationLayer.replaySafeCharacterOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Character Persistence" value={characterContinuityOrchestrationLayer.cinematicCharacterPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Consistency Readiness" value={characterContinuityOrchestrationLayer.longFormConsistencyReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Image App Character Steering Compatibility" value={characterContinuityOrchestrationLayer.imageAppCharacterSteeringCompatibility} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Character Orchestration Normalization" value={characterContinuityOrchestrationLayer.characterOrchestrationNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="face-silhouette-continuity-bridge" title="Face Silhouette Continuity Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-face-silhouette-continuity-bridge-id={faceSilhouetteContinuityBridge.faceSilhouetteContinuityBridgeId}>
+            <p className="text-sm font-black">{faceSilhouetteContinuityBridge.faceSilhouetteContinuityBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active silhouette route · {faceSilhouetteContinuityBridge.activeSilhouetteRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Silhouette Continuity Strength" value={formatScore3Dec(faceSilhouetteContinuityBridge.silhouetteContinuityStrength)} emphasis />
+              <KeyValueField label="Face Silhouette Linkage Score" value={formatScore3Dec(faceSilhouetteContinuityBridge.faceSilhouetteLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Silhouette Routes</p><TagList tags={faceSilhouetteContinuityBridge.replayLinkedSilhouetteRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Silhouette Routes</p><TagList tags={faceSilhouetteContinuityBridge.continuitySafeSilhouetteRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Silhouette Routes</p><TagList tags={faceSilhouetteContinuityBridge.highDriftSilhouetteRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="costume-color-inheritance-map" title="Costume Color Inheritance Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-costume-color-inheritance-map-id={costumeColorInheritanceMap.costumeColorInheritanceMapId}>
+            <p className="text-sm font-black">{costumeColorInheritanceMap.costumeColorInheritanceMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active costume route · {costumeColorInheritanceMap.activeCostumeRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Costume Inheritance Score" value={formatScore3Dec(costumeColorInheritanceMap.costumeInheritanceScore)} emphasis />
+              <KeyValueField label="Color Continuity Linkage Score" value={formatScore3Dec(costumeColorInheritanceMap.colorContinuityLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Costume Inheritance Readiness" value={costumeColorInheritanceMap.costumeInheritanceReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Costume Color Traits</p><TagList tags={costumeColorInheritanceMap.readyCostumeColorTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Costume Color Traits</p><TagList tags={costumeColorInheritanceMap.pendingCostumeColorTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-expression-persistence-timeline" title="Emotional Expression Persistence Timeline">
+          <TimelineTrendGrid groups={emotionalExpressionPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="character-orchestration-steering" title="Character Orchestration Steering Recommendations">
+          <SteeringChipList items={characterOrchestrationSteeringRecommendations} dataAttr="character-orchestration-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
