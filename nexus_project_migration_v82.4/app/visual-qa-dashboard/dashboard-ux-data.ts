@@ -1532,6 +1532,47 @@ export type MultiSceneMemorySteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicLongFormCohesionLayer = {
+  readonly cinematicLongFormCohesionLayerId: string;
+  readonly activeLongFormCohesionOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly longFormCinematicContinuity: string;
+  readonly crossArcInheritancePersistence: string;
+  readonly emotionalConvergenceRouting: string;
+  readonly replaySafeNarrativeOrchestration: string;
+  readonly cohesionNormalization: string;
+  readonly cinematicProgressionStabilization: string;
+  readonly emotionalContinuityPersistence: string;
+  readonly featureLengthCohesionReadiness: string;
+  readonly longFormCohesionOrchestrationScore: number;
+  readonly longFormCohesionNormalizationState: string;
+};
+
+export type CrossArcContinuityBridge = {
+  readonly crossArcContinuityBridgeId: string;
+  readonly activeCrossArcRoute: string;
+  readonly replayLinkedCrossArcRoutes: readonly string[];
+  readonly continuitySafeCrossArcRoutes: readonly string[];
+  readonly highDriftCrossArcRoutes: readonly string[];
+  readonly crossArcContinuityStrength: number;
+  readonly crossArcLinkageScore: number;
+};
+
+export type EmotionalConvergenceMap = {
+  readonly emotionalConvergenceMapId: string;
+  readonly activeConvergenceRoute: string;
+  readonly emotionalConvergenceReadiness: string;
+  readonly readyConvergenceTraits: readonly string[];
+  readonly pendingConvergenceTraits: readonly string[];
+  readonly emotionalConvergenceScore: number;
+  readonly longFormCohesionLinkageScore: number;
+};
+
+export type LongFormCohesionSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4622,6 +4663,86 @@ export const MULTI_SCENE_MEMORY_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer memory graph inference until multi-scene layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly MultiSceneMemorySteeringRecommendation[]);
 
+export const CINEMATIC_LONG_FORM_COHESION_LAYER = Object.freeze({
+  cinematicLongFormCohesionLayerId: "cinematic-long-form-cohesion-layer-gonegi-v1",
+  activeLongFormCohesionOrchestrationState: "25s-pilot-long-form-cohesion-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  longFormCinematicContinuity: "long-form cinematic continuity staged for 25s pilot harbor sample without story generation",
+  crossArcInheritancePersistence: "cross-arc inheritance persistence indexed for soft narrative carry-over and mediterranean arc honesty",
+  emotionalConvergenceRouting: "emotional convergence routing prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeNarrativeOrchestration: "replay-safe narrative orchestration reserved without narrative inference execution",
+  cohesionNormalization: "cohesion normalization locked for warm dissolve cross-arc continuity across pilot beats",
+  cinematicProgressionStabilization: "cinematic progression stabilization verified against ghibli-base harbor long-form profile",
+  emotionalContinuityPersistence: "emotional continuity persistence mapped for soft carry-over harbor narrative warmth",
+  featureLengthCohesionReadiness: "future feature-length cohesion readiness staged for ten-video expansion target",
+  longFormCohesionOrchestrationScore: 0.887333,
+  longFormCohesionNormalizationState: "canonical 25s pilot cinematic long-form cohesion orchestration normalization",
+} satisfies CinematicLongFormCohesionLayer);
+
+export const CROSS_ARC_CONTINUITY_BRIDGE = Object.freeze({
+  crossArcContinuityBridgeId: "cross-arc-continuity-bridge-gonegi-v1",
+  activeCrossArcRoute: "cross-arc-route-soft-narrative-hold-001",
+  replayLinkedCrossArcRoutes: Object.freeze(["cross-arc-route-soft-narrative-hold-001", "cross-arc-route-harbor-arc-echo-002"]),
+  continuitySafeCrossArcRoutes: Object.freeze(["cross-arc-route-soft-narrative-hold-001", "cross-arc-route-harbor-arc-echo-002"]),
+  highDriftCrossArcRoutes: Object.freeze(["cross-arc-route-contrast-push-experiment"]),
+  crossArcContinuityStrength: 0.883333,
+  crossArcLinkageScore: 0.897333,
+} satisfies CrossArcContinuityBridge);
+
+export const EMOTIONAL_CONVERGENCE_MAP = Object.freeze({
+  emotionalConvergenceMapId: "emotional-convergence-map-gonegi-v1",
+  activeConvergenceRoute: "convergence-route-harbor-pilot-001",
+  emotionalConvergenceReadiness: "emotional convergence readiness staged for 25s pilot harbor sample",
+  readyConvergenceTraits: Object.freeze(["harbor-arc-convergence", "soft-narrative-carry", "warm-emotional-merge"]),
+  pendingConvergenceTraits: Object.freeze(["alternate-convergence-experiment", "narrative-push-variant"]),
+  emotionalConvergenceScore: 0.880333,
+  longFormCohesionLinkageScore: 0.894333,
+} satisfies EmotionalConvergenceMap);
+
+const LONG_FORM_COHESION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      longFormCinematicContinuityTrend: number;
+      crossArcInheritancePersistenceTrend: number;
+      emotionalConvergenceRoutingTrend: number;
+      cohesionNormalizationTrend: number;
+      featureLengthCohesionReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    longFormCinematicContinuityTrend: 0.348333,
+    crossArcInheritancePersistenceTrend: 0.655333,
+    emotionalConvergenceRoutingTrend: 0.642333,
+    cohesionNormalizationTrend: 0.649333,
+    featureLengthCohesionReadinessTrend: 0.641333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    longFormCinematicContinuityTrend: 0.887333,
+    crossArcInheritancePersistenceTrend: 0.882333,
+    emotionalConvergenceRoutingTrend: 0.875333,
+    cohesionNormalizationTrend: 0.890333,
+    featureLengthCohesionReadinessTrend: 0.883333,
+  }),
+});
+
+export const LONG_FORM_COHESION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["long-form cinematic continuity trend", "longFormCinematicContinuityTrend"],
+  ["cross-arc inheritance persistence trend", "crossArcInheritancePersistenceTrend"],
+  ["emotional convergence routing trend", "emotionalConvergenceRoutingTrend"],
+  ["cohesion normalization trend", "cohesionNormalizationTrend"],
+  ["feature-length cohesion readiness trend", "featureLengthCohesionReadinessTrend"],
+] as const);
+
+export const LONG_FORM_COHESION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot long-form cohesion orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain cross-arc continuity routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified emotional convergence routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve cohesion normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer narrative inference until long-form cohesion layer stabilizes", severity: "warning" }),
+] as const satisfies readonly LongFormCohesionSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -7249,6 +7370,63 @@ export function groupMultiScenePersistenceTimelineByDimension(
 
 export function buildMultiSceneMemorySteeringRecommendations(): readonly MultiSceneMemorySteeringRecommendation[] {
   return MULTI_SCENE_MEMORY_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicLongFormCohesionLayer(): CinematicLongFormCohesionLayer {
+  return CINEMATIC_LONG_FORM_COHESION_LAYER;
+}
+
+export function buildCrossArcContinuityBridge(): CrossArcContinuityBridge {
+  return CROSS_ARC_CONTINUITY_BRIDGE;
+}
+
+export function buildEmotionalConvergenceMap(): EmotionalConvergenceMap {
+  return EMOTIONAL_CONVERGENCE_MAP;
+}
+
+export function buildLongFormCohesionPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of LONG_FORM_COHESION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = LONG_FORM_COHESION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? LONG_FORM_COHESION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupLongFormCohesionPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    LONG_FORM_COHESION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildLongFormCohesionSteeringRecommendations(): readonly LongFormCohesionSteeringRecommendation[] {
+  return LONG_FORM_COHESION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

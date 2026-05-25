@@ -205,6 +205,11 @@ import {
   buildEmotionalRecallRoutingMap,
   buildMultiScenePersistenceTimeline,
   buildMultiSceneMemorySteeringRecommendations,
+  buildCinematicLongFormCohesionLayer,
+  buildCrossArcContinuityBridge,
+  buildEmotionalConvergenceMap,
+  buildLongFormCohesionPersistenceTimeline,
+  buildLongFormCohesionSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -446,6 +451,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const emotionalRecallRoutingMap = buildEmotionalRecallRoutingMap();
   const multiScenePersistenceTimeline = buildMultiScenePersistenceTimeline(payload);
   const multiSceneMemorySteeringRecommendations = buildMultiSceneMemorySteeringRecommendations();
+  const cinematicLongFormCohesionLayer = buildCinematicLongFormCohesionLayer();
+  const crossArcContinuityBridge = buildCrossArcContinuityBridge();
+  const emotionalConvergenceMap = buildEmotionalConvergenceMap();
+  const longFormCohesionPersistenceTimeline = buildLongFormCohesionPersistenceTimeline(payload);
+  const longFormCohesionSteeringRecommendations = buildLongFormCohesionSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -765,6 +775,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `emotionalRecallRouting:${emotionalRecallRoutingMap.emotionalRecallRoutingMapId}:${formatScore3Dec(emotionalRecallRoutingMap.emotionalRecallRoutingScore)}:${formatScore3Dec(emotionalRecallRoutingMap.multiSceneMemoryLinkageScore)}:${emotionalRecallRoutingMap.readyRecallRoutingTraits.join("+")}`,
       formatTimelineSnapshotLine("multiSceneTimeline", multiScenePersistenceTimeline),
       formatSteerSnapshotLine("multiSceneSteer", multiSceneMemorySteeringRecommendations),
+    ],
+    [
+      `longFormCohesion:${cinematicLongFormCohesionLayer.cinematicLongFormCohesionLayerId}:${cinematicLongFormCohesionLayer.pilotVideoMode}:${formatScore3Dec(cinematicLongFormCohesionLayer.longFormCohesionOrchestrationScore)}`,
+      `crossArcContinuity:${crossArcContinuityBridge.crossArcContinuityBridgeId}:${formatScore3Dec(crossArcContinuityBridge.crossArcContinuityStrength)}:${formatScore3Dec(crossArcContinuityBridge.crossArcLinkageScore)}:${crossArcContinuityBridge.replayLinkedCrossArcRoutes.join("+")}`,
+      `emotionalConvergence:${emotionalConvergenceMap.emotionalConvergenceMapId}:${formatScore3Dec(emotionalConvergenceMap.emotionalConvergenceScore)}:${formatScore3Dec(emotionalConvergenceMap.longFormCohesionLinkageScore)}:${emotionalConvergenceMap.readyConvergenceTraits.join("+")}`,
+      formatTimelineSnapshotLine("longFormTimeline", longFormCohesionPersistenceTimeline),
+      formatSteerSnapshotLine("longFormSteer", longFormCohesionSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

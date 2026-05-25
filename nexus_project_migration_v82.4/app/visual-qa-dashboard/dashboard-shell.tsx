@@ -188,6 +188,11 @@ import {
   buildEmotionalRecallRoutingMap,
   buildMultiScenePersistenceTimeline,
   buildMultiSceneMemorySteeringRecommendations,
+  buildCinematicLongFormCohesionLayer,
+  buildCrossArcContinuityBridge,
+  buildEmotionalConvergenceMap,
+  buildLongFormCohesionPersistenceTimeline,
+  buildLongFormCohesionSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -251,6 +256,7 @@ import {
   groupDirectorIntentPersistenceTimelineByDimension,
   groupTemporalContinuityPersistenceTimelineByDimension,
   groupMultiScenePersistenceTimelineByDimension,
+  groupLongFormCohesionPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -553,6 +559,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const multiScenePersistenceTimeline = buildMultiScenePersistenceTimeline(payload);
   const multiScenePersistenceTimelineGroups = groupMultiScenePersistenceTimelineByDimension(multiScenePersistenceTimeline);
   const multiSceneMemorySteeringRecommendations = buildMultiSceneMemorySteeringRecommendations();
+  const cinematicLongFormCohesionLayer = buildCinematicLongFormCohesionLayer();
+  const crossArcContinuityBridge = buildCrossArcContinuityBridge();
+  const emotionalConvergenceMap = buildEmotionalConvergenceMap();
+  const longFormCohesionPersistenceTimeline = buildLongFormCohesionPersistenceTimeline(payload);
+  const longFormCohesionPersistenceTimelineGroups = groupLongFormCohesionPersistenceTimelineByDimension(longFormCohesionPersistenceTimeline);
+  const longFormCohesionSteeringRecommendations = buildLongFormCohesionSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2692,6 +2704,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="multi-scene-memory-steering" title="Multi-Scene Memory Steering Recommendations">
           <SteeringChipList items={multiSceneMemorySteeringRecommendations} dataAttr="multi-scene-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-long-form-cohesion-layer" title="Cinematic Long-Form Cohesion Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-long-form-cohesion-layer-id={cinematicLongFormCohesionLayer.cinematicLongFormCohesionLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Long-Form Cohesion Layer ID" value={cinematicLongFormCohesionLayer.cinematicLongFormCohesionLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicLongFormCohesionLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Long-Form Cohesion Orchestration Score" value={formatScore3Dec(cinematicLongFormCohesionLayer.longFormCohesionOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Long-Form Cohesion Orchestration State" value={cinematicLongFormCohesionLayer.activeLongFormCohesionOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Cinematic Continuity" value={cinematicLongFormCohesionLayer.longFormCinematicContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cross-Arc Inheritance Persistence" value={cinematicLongFormCohesionLayer.crossArcInheritancePersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Convergence Routing" value={cinematicLongFormCohesionLayer.emotionalConvergenceRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Narrative Orchestration" value={cinematicLongFormCohesionLayer.replaySafeNarrativeOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cohesion Normalization" value={cinematicLongFormCohesionLayer.cohesionNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Progression Stabilization" value={cinematicLongFormCohesionLayer.cinematicProgressionStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Continuity Persistence" value={cinematicLongFormCohesionLayer.emotionalContinuityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Feature-Length Cohesion Readiness" value={cinematicLongFormCohesionLayer.featureLengthCohesionReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Cohesion Normalization" value={cinematicLongFormCohesionLayer.longFormCohesionNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cross-arc-continuity-bridge" title="Cross-Arc Continuity Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cross-arc-continuity-bridge-id={crossArcContinuityBridge.crossArcContinuityBridgeId}>
+            <p className="text-sm font-black">{crossArcContinuityBridge.crossArcContinuityBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active cross-arc route · {crossArcContinuityBridge.activeCrossArcRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Cross-Arc Continuity Strength" value={formatScore3Dec(crossArcContinuityBridge.crossArcContinuityStrength)} emphasis />
+              <KeyValueField label="Cross-Arc Linkage Score" value={formatScore3Dec(crossArcContinuityBridge.crossArcLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Cross-Arc Routes</p><TagList tags={crossArcContinuityBridge.replayLinkedCrossArcRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Cross-Arc Routes</p><TagList tags={crossArcContinuityBridge.continuitySafeCrossArcRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Cross-Arc Routes</p><TagList tags={crossArcContinuityBridge.highDriftCrossArcRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-convergence-map" title="Emotional Convergence Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-emotional-convergence-map-id={emotionalConvergenceMap.emotionalConvergenceMapId}>
+            <p className="text-sm font-black">{emotionalConvergenceMap.emotionalConvergenceMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active convergence route · {emotionalConvergenceMap.activeConvergenceRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Emotional Convergence Score" value={formatScore3Dec(emotionalConvergenceMap.emotionalConvergenceScore)} emphasis />
+              <KeyValueField label="Long-Form Cohesion Linkage Score" value={formatScore3Dec(emotionalConvergenceMap.longFormCohesionLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Convergence Readiness" value={emotionalConvergenceMap.emotionalConvergenceReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Convergence Traits</p><TagList tags={emotionalConvergenceMap.readyConvergenceTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Convergence Traits</p><TagList tags={emotionalConvergenceMap.pendingConvergenceTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="long-form-cohesion-persistence-timeline" title="Long-Form Cohesion Persistence Timeline">
+          <TimelineTrendGrid groups={longFormCohesionPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="long-form-cohesion-steering" title="Long-Form Cohesion Steering Recommendations">
+          <SteeringChipList items={longFormCohesionSteeringRecommendations} dataAttr="long-form-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
