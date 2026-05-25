@@ -115,6 +115,11 @@ import {
   buildDestinationDriftDetection,
   buildDestinationPersistenceTimeline,
   buildDestinationSteeringRecommendations,
+  buildCinematicResolutionPersistence,
+  buildResolutionTransitionBridge,
+  buildResolutionDriftDetection,
+  buildResolutionPersistenceTimeline,
+  buildResolutionSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -266,6 +271,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const destinationDriftDetection = buildDestinationDriftDetection();
   const destinationPersistenceTimeline = buildDestinationPersistenceTimeline(payload);
   const destinationSteeringRecommendations = buildDestinationSteeringRecommendations();
+  const cinematicResolutionPersistence = buildCinematicResolutionPersistence();
+  const resolutionTransitionBridge = buildResolutionTransitionBridge();
+  const resolutionDriftDetection = buildResolutionDriftDetection();
+  const resolutionPersistenceTimeline = buildResolutionPersistenceTimeline(payload);
+  const resolutionSteeringRecommendations = buildResolutionSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -459,6 +469,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("destinationDrift", destinationDriftDetection),
       formatTimelineSnapshotLine("destinationTimeline", destinationPersistenceTimeline),
       formatSteerSnapshotLine("destinationSteer", destinationSteeringRecommendations),
+    ],
+    [
+      `resolutionPersistence:${cinematicResolutionPersistence.cinematicResolutionPersistenceId}:${cinematicResolutionPersistence.activeResolutionState}:${formatScore3Dec(cinematicResolutionPersistence.cinematicResolutionStability)}`,
+      `resolutionBridge:${resolutionTransitionBridge.resolutionTransitionBridgeId}:${formatScore3Dec(resolutionTransitionBridge.resolutionRoutingStrength)}:${formatScore3Dec(resolutionTransitionBridge.resolutionPersistenceScore)}:${resolutionTransitionBridge.replayLinkedResolutionRoutes.join("+")}`,
+      formatDriftSnapshotLine("resolutionDrift", resolutionDriftDetection),
+      formatTimelineSnapshotLine("resolutionTimeline", resolutionPersistenceTimeline),
+      formatSteerSnapshotLine("resolutionSteer", resolutionSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

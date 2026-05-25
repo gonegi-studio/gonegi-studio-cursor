@@ -98,6 +98,11 @@ import {
   buildDestinationDriftDetection,
   buildDestinationPersistenceTimeline,
   buildDestinationSteeringRecommendations,
+  buildCinematicResolutionPersistence,
+  buildResolutionTransitionBridge,
+  buildResolutionDriftDetection,
+  buildResolutionPersistenceTimeline,
+  buildResolutionSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -143,6 +148,7 @@ import {
   groupIntentPersistenceTimelineByDimension,
   groupIntentResolutionTimelineByDimension,
   groupDestinationPersistenceTimelineByDimension,
+  groupResolutionPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -337,6 +343,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const destinationPersistenceTimeline = buildDestinationPersistenceTimeline(payload);
   const destinationPersistenceTimelineGroups = groupDestinationPersistenceTimelineByDimension(destinationPersistenceTimeline);
   const destinationSteeringRecommendations = buildDestinationSteeringRecommendations();
+  const cinematicResolutionPersistence = buildCinematicResolutionPersistence();
+  const resolutionTransitionBridge = buildResolutionTransitionBridge();
+  const resolutionDriftDetection = buildResolutionDriftDetection();
+  const resolutionPersistenceTimeline = buildResolutionPersistenceTimeline(payload);
+  const resolutionPersistenceTimelineGroups = groupResolutionPersistenceTimelineByDimension(resolutionPersistenceTimeline);
+  const resolutionSteeringRecommendations = buildResolutionSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1440,6 +1452,48 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="destination-steering" title="Destination Steering Recommendations">
           <SteeringChipList items={destinationSteeringRecommendations} dataAttr="destination-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-resolution-persistence" title="Cinematic Resolution Persistence Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-resolution-persistence-id={cinematicResolutionPersistence.cinematicResolutionPersistenceId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Resolution Persistence ID" value={cinematicResolutionPersistence.cinematicResolutionPersistenceId} emphasis />
+              <KeyValueField label="Active Resolution State" value={cinematicResolutionPersistence.activeResolutionState} emphasis />
+              <KeyValueField label="Cinematic Resolution Stability" value={formatScore3Dec(cinematicResolutionPersistence.cinematicResolutionStability)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Closure Inheritance" value={cinematicResolutionPersistence.emotionalClosureInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Narrative Resolution Persistence" value={cinematicResolutionPersistence.narrativeResolutionPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Continuity Resolution Lock" value={cinematicResolutionPersistence.continuityResolutionLock} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Resolution Normalization" value={cinematicResolutionPersistence.resolutionNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="resolution-transition-bridge" title="Resolution Transition Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-resolution-transition-bridge-id={resolutionTransitionBridge.resolutionTransitionBridgeId}>
+            <p className="text-sm font-black">{resolutionTransitionBridge.resolutionTransitionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active resolution route · {resolutionTransitionBridge.activeResolutionRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(resolutionTransitionBridge.resolutionRoutingStrength)} emphasis />
+              <KeyValueField label="Resolution Persistence Score" value={formatScore3Dec(resolutionTransitionBridge.resolutionPersistenceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Resolution Routes</p><TagList tags={resolutionTransitionBridge.replayLinkedResolutionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Resolution Routes</p><TagList tags={resolutionTransitionBridge.continuitySafeResolutionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Resolution Routes</p><TagList tags={resolutionTransitionBridge.highDriftResolutionRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="resolution-drift-detection" title="Resolution Drift Detection">
+          <DriftList items={resolutionDriftDetection} dataAttr="resolution-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="resolution-persistence-timeline" title="Resolution Persistence Timeline">
+          <TimelineTrendGrid groups={resolutionPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="resolution-steering" title="Resolution Steering Recommendations">
+          <SteeringChipList items={resolutionSteeringRecommendations} dataAttr="resolution-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

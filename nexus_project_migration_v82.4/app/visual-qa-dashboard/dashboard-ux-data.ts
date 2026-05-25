@@ -838,6 +838,36 @@ export type DestinationSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicResolutionPersistence = {
+  readonly cinematicResolutionPersistenceId: string;
+  readonly activeResolutionState: string;
+  readonly emotionalClosureInheritance: string;
+  readonly narrativeResolutionPersistence: string;
+  readonly continuityResolutionLock: string;
+  readonly cinematicResolutionStability: number;
+  readonly resolutionNormalizationState: string;
+};
+
+export type ResolutionTransitionBridge = {
+  readonly resolutionTransitionBridgeId: string;
+  readonly activeResolutionRoute: string;
+  readonly replayLinkedResolutionRoutes: readonly string[];
+  readonly continuitySafeResolutionRoutes: readonly string[];
+  readonly highDriftResolutionRoutes: readonly string[];
+  readonly resolutionRoutingStrength: number;
+  readonly resolutionPersistenceScore: number;
+};
+
+export type ResolutionDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type ResolutionSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -2521,6 +2551,77 @@ export const DESTINATION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce destination divergence pressure", severity: "warning" }),
 ] as const satisfies readonly DestinationSteeringRecommendation[]);
 
+export const CINEMATIC_RESOLUTION_PERSISTENCE = Object.freeze({
+  cinematicResolutionPersistenceId: "cinematic-resolution-persistence-gonegi-v1",
+  activeResolutionState: "warm-harbor-resolution-stabilization-active",
+  emotionalClosureInheritance: "soft emotional closure inherited across harbor sequences",
+  narrativeResolutionPersistence: "continuity-safe narrative resolution persistence locked",
+  continuityResolutionLock: "cinematic resolution continuity locked",
+  cinematicResolutionStability: 0.827333,
+  resolutionNormalizationState: "canonical cinematic resolution normalization",
+} satisfies CinematicResolutionPersistence);
+
+export const RESOLUTION_TRANSITION_BRIDGE = Object.freeze({
+  resolutionTransitionBridgeId: "resolution-transition-bridge-gonegi-v1",
+  activeResolutionRoute: "resolution-route-harbor-stabilization-001",
+  replayLinkedResolutionRoutes: Object.freeze(["resolution-route-harbor-stabilization-001", "resolution-route-glaze-closure-002"]),
+  continuitySafeResolutionRoutes: Object.freeze(["resolution-route-harbor-stabilization-001", "resolution-route-glaze-closure-002"]),
+  highDriftResolutionRoutes: Object.freeze(["resolution-route-detail-push-experiment"]),
+  resolutionRoutingStrength: 0.822333,
+  resolutionPersistenceScore: 0.834333,
+} satisfies ResolutionTransitionBridge);
+
+export const RESOLUTION_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic resolution fracture", severity: "critical" }),
+  Object.freeze({ label: "emotional closure instability", severity: "critical" }),
+  Object.freeze({ label: "resolution continuity divergence", severity: "warning" }),
+  Object.freeze({ label: "narrative endpoint mismatch", severity: "warning" }),
+  Object.freeze({ label: "resolution transition collapse", severity: "warning" }),
+] as const satisfies readonly ResolutionDriftItem[]);
+
+const RESOLUTION_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicResolutionPersistenceTrend: number;
+      emotionalClosureContinuity: number;
+      resolutionNormalizationTrend: number;
+      narrativeEndpointStability: number;
+      resolutionInheritancePersistence: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicResolutionPersistenceTrend: 0.300333,
+    emotionalClosureContinuity: 0.607333,
+    resolutionNormalizationTrend: 0.594333,
+    narrativeEndpointStability: 0.600333,
+    resolutionInheritancePersistence: 0.592333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicResolutionPersistenceTrend: 0.827333,
+    emotionalClosureContinuity: 0.820333,
+    resolutionNormalizationTrend: 0.813333,
+    narrativeEndpointStability: 0.825333,
+    resolutionInheritancePersistence: 0.818333,
+  }),
+});
+
+export const RESOLUTION_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic resolution persistence", "cinematicResolutionPersistenceTrend"],
+  ["emotional closure continuity", "emotionalClosureContinuity"],
+  ["resolution normalization trend", "resolutionNormalizationTrend"],
+  ["narrative endpoint stability", "narrativeEndpointStability"],
+  ["resolution inheritance persistence", "resolutionInheritancePersistence"],
+] as const);
+
+export const RESOLUTION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic resolution continuity", severity: "stable" }),
+  Object.freeze({ label: "maintain emotional closure stability", severity: "stable" }),
+  Object.freeze({ label: "avoid resolution transition collapse", severity: "critical" }),
+  Object.freeze({ label: "reduce narrative endpoint instability", severity: "warning" }),
+] as const satisfies readonly ResolutionSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -4122,6 +4223,63 @@ export function groupDestinationPersistenceTimelineByDimension(
 
 export function buildDestinationSteeringRecommendations(): readonly DestinationSteeringRecommendation[] {
   return DESTINATION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicResolutionPersistence(): CinematicResolutionPersistence {
+  return CINEMATIC_RESOLUTION_PERSISTENCE;
+}
+
+export function buildResolutionTransitionBridge(): ResolutionTransitionBridge {
+  return RESOLUTION_TRANSITION_BRIDGE;
+}
+
+export function buildResolutionDriftDetection(): readonly ResolutionDriftItem[] {
+  return RESOLUTION_DRIFT_GROUPS;
+}
+
+export function buildResolutionPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of RESOLUTION_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = RESOLUTION_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? RESOLUTION_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupResolutionPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    RESOLUTION_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildResolutionSteeringRecommendations(): readonly ResolutionSteeringRecommendation[] {
+  return RESOLUTION_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
