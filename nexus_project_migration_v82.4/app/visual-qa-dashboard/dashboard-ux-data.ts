@@ -1819,6 +1819,104 @@ export type RealDatasetTransitionSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type DashboardScaleAuditLayer = {
+  readonly dashboardScaleAuditLayerId: string;
+  readonly activeDashboardScaleAuditState: string;
+  readonly pilotVideoMode: string;
+  readonly registryScaleAudit: string;
+  readonly semanticDuplicationAudit: string;
+  readonly snapshotGrowthAudit: string;
+  readonly renderGroupCompressionReadiness: string;
+  readonly dashboardMaintainabilityGuard: string;
+  readonly datasetIngestionGateReadiness: string;
+  readonly compressionGateState: string;
+  readonly dashboardScaleAuditScore: number;
+  readonly dashboardScaleNormalizationState: string;
+};
+
+export type SemanticDuplicationAuditMap = {
+  readonly semanticDuplicationAuditMapId: string;
+  readonly activeDuplicationAuditRoute: string;
+  readonly semanticDuplicationAuditState: string;
+  readonly readyDuplicationFlags: readonly string[];
+  readonly pendingDuplicationFlags: readonly string[];
+  readonly semanticDuplicationAuditScore: number;
+  readonly dashboardScaleAuditLinkageScore: number;
+};
+
+export type SnapshotGrowthAuditMap = {
+  readonly snapshotGrowthAuditMapId: string;
+  readonly activeGrowthAuditRoute: string;
+  readonly snapshotGrowthAuditState: string;
+  readonly readyGrowthSignals: readonly string[];
+  readonly pendingGrowthSignals: readonly string[];
+  readonly snapshotGrowthAuditScore: number;
+  readonly renderGroupCompressionLinkageScore: number;
+};
+
+export type RenderGroupCompressionReadiness = {
+  readonly renderGroupCompressionReadinessId: string;
+  readonly activeCompressionRoute: string;
+  readonly renderGroupCompressionState: string;
+  readonly readyCompressionTraits: readonly string[];
+  readonly pendingCompressionTraits: readonly string[];
+  readonly renderGroupCompressionReadinessScore: number;
+  readonly dashboardScaleLinkageScore: number;
+};
+
+export type DashboardScaleSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type CompressionCandidateMap = {
+  readonly compressionCandidateMapId: string;
+  readonly activeCompressionCandidateRoute: string;
+  readonly compressionCandidateReadiness: string;
+  readonly compressibleRenderGroups: readonly string[];
+  readonly protectedRenderGroups: readonly string[];
+  readonly compressionCandidateScore: number;
+  readonly compressionBoundaryLinkageScore: number;
+};
+
+export type OrchestrationCoreLockMap = {
+  readonly orchestrationCoreLockMapId: string;
+  readonly activeCoreLockRoute: string;
+  readonly orchestrationCoreLockState: string;
+  readonly lockedCoreGroups: readonly string[];
+  readonly deferredCompressionGroups: readonly string[];
+  readonly orchestrationCoreLockScore: number;
+  readonly snapshotDensityLinkageScore: number;
+};
+
+export type SnapshotDensityBoundary = {
+  readonly snapshotDensityBoundaryId: string;
+  readonly activeDensityBoundaryRoute: string;
+  readonly pilotVideoMode: string;
+  readonly currentSectionCountBoundary: string;
+  readonly currentSnapshotLineBoundary: string;
+  readonly maxSnapshotLineBudget: string;
+  readonly densityBoundaryState: string;
+  readonly ingestionPreGateState: string;
+  readonly compressionBoundaryScore: number;
+  readonly compressionBoundaryNormalizationState: string;
+};
+
+export type RenderVirtualizationReadiness = {
+  readonly renderVirtualizationReadinessId: string;
+  readonly activeVirtualizationRoute: string;
+  readonly renderVirtualizationState: string;
+  readonly readyVirtualizationTraits: readonly string[];
+  readonly pendingVirtualizationTraits: readonly string[];
+  readonly renderVirtualizationReadinessScore: number;
+  readonly compressionBoundaryLinkageScore: number;
+};
+
+export type CompressionBoundarySteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -5469,6 +5567,110 @@ export const REAL_DATASET_TRANSITION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer dataset ingestion until real dataset transition layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly RealDatasetTransitionSteeringRecommendation[]);
 
+export const DASHBOARD_SCALE_AUDIT_LAYER = Object.freeze({
+  dashboardScaleAuditLayerId: "dashboard-scale-audit-layer-gonegi-v1",
+  activeDashboardScaleAuditState: "25s-pilot-dashboard-scale-audit-ready",
+  pilotVideoMode: "single-25s",
+  registryScaleAudit: "256 sections registered with continuous orders; scale audit gate active before dataset ingestion",
+  semanticDuplicationAudit: "orchestration layer bridge/map patterns reviewed for semantic overlap without refactor execution",
+  snapshotGrowthAudit: "260 snapshot lines tracked; growth bounded by deterministic metadata only without runtime expansion",
+  renderGroupCompressionReadiness: "render group virtualisation deferred; compression readiness indexed without section merge",
+  dashboardMaintainabilityGuard: "four-file dashboard contract preserved; helper reuse enforced across orchestration phases",
+  datasetIngestionGateReadiness: "dataset ingestion gate held until scale audit stabilizes without video parsing execution",
+  compressionGateState: "compression not required yet; monitor orchestration density before virtualisation design",
+  dashboardScaleAuditScore: 0.894333,
+  dashboardScaleNormalizationState: "canonical 25s pilot dashboard scale compression audit normalization",
+} satisfies DashboardScaleAuditLayer);
+
+export const SEMANTIC_DUPLICATION_AUDIT_MAP = Object.freeze({
+  semanticDuplicationAuditMapId: "semantic-duplication-audit-map-gonegi-v1",
+  activeDuplicationAuditRoute: "duplication-audit-route-orchestration-pattern-001",
+  semanticDuplicationAuditState: "semantic duplication audit staged for layer-bridge-map-steering pattern review without refactor",
+  readyDuplicationFlags: Object.freeze(["layer-bridge-map-pattern-stable", "orchestration-group-naming-consistent", "snapshot-key-uniqueness-verified"]),
+  pendingDuplicationFlags: Object.freeze(["repeated-steering-pattern-density", "timeline-dimension-overlap-watch"]),
+  semanticDuplicationAuditScore: 0.887333,
+  dashboardScaleAuditLinkageScore: 0.901333,
+} satisfies SemanticDuplicationAuditMap);
+
+export const SNAPSHOT_GROWTH_AUDIT_MAP = Object.freeze({
+  snapshotGrowthAuditMapId: "snapshot-growth-audit-map-gonegi-v1",
+  activeGrowthAuditRoute: "growth-audit-route-snapshot-line-001",
+  snapshotGrowthAuditState: "snapshot growth audit staged for deterministic line expansion review without export drift",
+  readyGrowthSignals: Object.freeze(["snapshot-line-count-bounded", "export-sha256-stable", "three-run-identical-verified"]),
+  pendingGrowthSignals: Object.freeze(["section-count-growth-rate", "loc-delta-per-phase"]),
+  snapshotGrowthAuditScore: 0.884333,
+  renderGroupCompressionLinkageScore: 0.898333,
+} satisfies SnapshotGrowthAuditMap);
+
+export const RENDER_GROUP_COMPRESSION_READINESS = Object.freeze({
+  renderGroupCompressionReadinessId: "render-group-compression-readiness-gonegi-v1",
+  activeCompressionRoute: "compression-route-maintainability-guard-001",
+  renderGroupCompressionState: "render group compression readiness staged without runtime virtualisation or section merge",
+  readyCompressionTraits: Object.freeze(["group-virtualisation-candidate-indexed", "audit-only-no-refactor", "maintainability-guard-active"]),
+  pendingCompressionTraits: Object.freeze(["runtime-virtualisation-experiment", "section-merge-candidate"]),
+  renderGroupCompressionReadinessScore: 0.890333,
+  dashboardScaleLinkageScore: 0.899333,
+} satisfies RenderGroupCompressionReadiness);
+
+export const DASHBOARD_SCALE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot dashboard scale audit layer before dataset ingestion", severity: "stable" }),
+  Object.freeze({ label: "monitor semantic duplication across orchestration bridge/map patterns", severity: "stable" }),
+  Object.freeze({ label: "avoid unbounded section growth without scale audit review", severity: "critical" }),
+  Object.freeze({ label: "preserve snapshot growth bounded by deterministic metadata only", severity: "stable" }),
+  Object.freeze({ label: "defer compression refactor until scale audit gate confirms maintainability", severity: "warning" }),
+] as const satisfies readonly DashboardScaleSteeringRecommendation[]);
+
+export const COMPRESSION_CANDIDATE_MAP = Object.freeze({
+  compressionCandidateMapId: "compression-candidate-map-gonegi-v1",
+  activeCompressionCandidateRoute: "compression-candidate-route-orchestration-density-001",
+  compressionCandidateReadiness: "compression candidate groups indexed for future virtualisation without section merge execution",
+  compressibleRenderGroups: Object.freeze(["legacy-steering-density", "duplicate-timeline-dimensions", "ranking-expansion-slots"]),
+  protectedRenderGroups: Object.freeze(["real-dataset-transition-orchestration", "unified-orchestration-stability", "dashboard-scale-audit"]),
+  compressionCandidateScore: 0.888333,
+  compressionBoundaryLinkageScore: 0.902333,
+} satisfies CompressionCandidateMap);
+
+export const ORCHESTRATION_CORE_LOCK_MAP = Object.freeze({
+  orchestrationCoreLockMapId: "orchestration-core-lock-map-gonegi-v1",
+  activeCoreLockRoute: "core-lock-route-pilot-orchestration-001",
+  orchestrationCoreLockState: "orchestration core lock staged for 25s pilot harbor sample without refactor execution",
+  lockedCoreGroups: Object.freeze(["generative-readiness-orchestration", "replay-safe-generation-orchestration", "production-pipeline-orchestration"]),
+  deferredCompressionGroups: Object.freeze(["feature-length-expansion-orchestration", "dashboard-compression-boundary"]),
+  orchestrationCoreLockScore: 0.891333,
+  snapshotDensityLinkageScore: 0.899333,
+} satisfies OrchestrationCoreLockMap);
+
+export const SNAPSHOT_DENSITY_BOUNDARY = Object.freeze({
+  snapshotDensityBoundaryId: "snapshot-density-boundary-gonegi-v1",
+  activeDensityBoundaryRoute: "density-boundary-route-snapshot-line-001",
+  pilotVideoMode: "single-25s",
+  currentSectionCountBoundary: "266 sections registered as pre-ingestion structural ceiling",
+  currentSnapshotLineBoundary: "270 snapshot lines tracked as deterministic density boundary",
+  maxSnapshotLineBudget: "snapshot line budget held until real 25s ingestion gate opens",
+  densityBoundaryState: "density boundary active before dataset ingestion without runtime expansion",
+  ingestionPreGateState: "25s ingestion pre-gate locked until compression boundary stabilizes",
+  compressionBoundaryScore: 0.895333,
+  compressionBoundaryNormalizationState: "canonical 25s pilot dashboard compression boundary normalization",
+} satisfies SnapshotDensityBoundary);
+
+export const RENDER_VIRTUALIZATION_READINESS = Object.freeze({
+  renderVirtualizationReadinessId: "render-virtualization-readiness-gonegi-v1",
+  activeVirtualizationRoute: "virtualization-route-maintainability-guard-001",
+  renderVirtualizationState: "render virtualisation readiness staged without runtime virtualisation implementation",
+  readyVirtualizationTraits: Object.freeze(["group-collapse-candidate-indexed", "boundary-map-only-no-refactor", "core-lock-protected"]),
+  pendingVirtualizationTraits: Object.freeze(["lazy-render-experiment", "section-virtualisation-prototype"]),
+  renderVirtualizationReadinessScore: 0.886333,
+  compressionBoundaryLinkageScore: 0.900333,
+} satisfies RenderVirtualizationReadiness);
+
+export const COMPRESSION_BOUNDARY_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve compression boundary map before 25s dataset ingestion", severity: "stable" }),
+  Object.freeze({ label: "maintain orchestration core lock groups without refactor", severity: "stable" }),
+  Object.freeze({ label: "avoid compressing protected render groups without boundary review", severity: "critical" }),
+  Object.freeze({ label: "preserve snapshot density boundary within deterministic metadata budget", severity: "stable" }),
+  Object.freeze({ label: "defer render virtualisation until compression boundary gate confirms readiness", severity: "warning" }),
+] as const satisfies readonly CompressionBoundarySteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -8495,6 +8697,46 @@ export function groupRealDatasetTransitionPersistenceTimelineByDimension(
 
 export function buildRealDatasetTransitionSteeringRecommendations(): readonly RealDatasetTransitionSteeringRecommendation[] {
   return REAL_DATASET_TRANSITION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildDashboardScaleAuditLayer(): DashboardScaleAuditLayer {
+  return DASHBOARD_SCALE_AUDIT_LAYER;
+}
+
+export function buildSemanticDuplicationAuditMap(): SemanticDuplicationAuditMap {
+  return SEMANTIC_DUPLICATION_AUDIT_MAP;
+}
+
+export function buildSnapshotGrowthAuditMap(): SnapshotGrowthAuditMap {
+  return SNAPSHOT_GROWTH_AUDIT_MAP;
+}
+
+export function buildRenderGroupCompressionReadiness(): RenderGroupCompressionReadiness {
+  return RENDER_GROUP_COMPRESSION_READINESS;
+}
+
+export function buildDashboardScaleSteeringRecommendations(): readonly DashboardScaleSteeringRecommendation[] {
+  return DASHBOARD_SCALE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCompressionCandidateMap(): CompressionCandidateMap {
+  return COMPRESSION_CANDIDATE_MAP;
+}
+
+export function buildOrchestrationCoreLockMap(): OrchestrationCoreLockMap {
+  return ORCHESTRATION_CORE_LOCK_MAP;
+}
+
+export function buildSnapshotDensityBoundary(): SnapshotDensityBoundary {
+  return SNAPSHOT_DENSITY_BOUNDARY;
+}
+
+export function buildRenderVirtualizationReadiness(): RenderVirtualizationReadiness {
+  return RENDER_VIRTUALIZATION_READINESS;
+}
+
+export function buildCompressionBoundarySteeringRecommendations(): readonly CompressionBoundarySteeringRecommendation[] {
+  return COMPRESSION_BOUNDARY_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

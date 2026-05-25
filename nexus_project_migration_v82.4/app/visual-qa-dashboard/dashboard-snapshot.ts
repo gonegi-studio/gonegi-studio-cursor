@@ -240,6 +240,16 @@ import {
   buildCinematicDatasetReadinessMap,
   buildRealDatasetTransitionPersistenceTimeline,
   buildRealDatasetTransitionSteeringRecommendations,
+  buildDashboardScaleAuditLayer,
+  buildSemanticDuplicationAuditMap,
+  buildSnapshotGrowthAuditMap,
+  buildRenderGroupCompressionReadiness,
+  buildDashboardScaleSteeringRecommendations,
+  buildCompressionCandidateMap,
+  buildOrchestrationCoreLockMap,
+  buildSnapshotDensityBoundary,
+  buildRenderVirtualizationReadiness,
+  buildCompressionBoundarySteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -516,6 +526,16 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const cinematicDatasetReadinessMap = buildCinematicDatasetReadinessMap();
   const realDatasetTransitionPersistenceTimeline = buildRealDatasetTransitionPersistenceTimeline(payload);
   const realDatasetTransitionSteeringRecommendations = buildRealDatasetTransitionSteeringRecommendations();
+  const dashboardScaleAuditLayer = buildDashboardScaleAuditLayer();
+  const semanticDuplicationAuditMap = buildSemanticDuplicationAuditMap();
+  const snapshotGrowthAuditMap = buildSnapshotGrowthAuditMap();
+  const renderGroupCompressionReadiness = buildRenderGroupCompressionReadiness();
+  const dashboardScaleSteeringRecommendations = buildDashboardScaleSteeringRecommendations();
+  const compressionCandidateMap = buildCompressionCandidateMap();
+  const orchestrationCoreLockMap = buildOrchestrationCoreLockMap();
+  const snapshotDensityBoundary = buildSnapshotDensityBoundary();
+  const renderVirtualizationReadiness = buildRenderVirtualizationReadiness();
+  const compressionBoundarySteeringRecommendations = buildCompressionBoundarySteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -884,6 +904,20 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `cinematicDatasetReadiness:${cinematicDatasetReadinessMap.cinematicDatasetReadinessMapId}:${formatScore3Dec(cinematicDatasetReadinessMap.cinematicDatasetReadinessScore)}:${formatScore3Dec(cinematicDatasetReadinessMap.realDatasetTransitionLinkageScore)}:${cinematicDatasetReadinessMap.readyDatasetReadinessTraits.join("+")}`,
       formatTimelineSnapshotLine("realDatasetTransitionTimeline", realDatasetTransitionPersistenceTimeline),
       formatSteerSnapshotLine("realDatasetTransitionSteer", realDatasetTransitionSteeringRecommendations),
+    ],
+    [
+      `dashboardScaleAudit:${dashboardScaleAuditLayer.dashboardScaleAuditLayerId}:${dashboardScaleAuditLayer.pilotVideoMode}:${formatScore3Dec(dashboardScaleAuditLayer.dashboardScaleAuditScore)}`,
+      `semanticDuplicationAudit:${semanticDuplicationAuditMap.semanticDuplicationAuditMapId}:${formatScore3Dec(semanticDuplicationAuditMap.semanticDuplicationAuditScore)}:${formatScore3Dec(semanticDuplicationAuditMap.dashboardScaleAuditLinkageScore)}:${semanticDuplicationAuditMap.readyDuplicationFlags.join("+")}`,
+      `snapshotGrowthAudit:${snapshotGrowthAuditMap.snapshotGrowthAuditMapId}:${formatScore3Dec(snapshotGrowthAuditMap.snapshotGrowthAuditScore)}:${formatScore3Dec(snapshotGrowthAuditMap.renderGroupCompressionLinkageScore)}:${snapshotGrowthAuditMap.readyGrowthSignals.join("+")}`,
+      `renderGroupCompression:${renderGroupCompressionReadiness.renderGroupCompressionReadinessId}:${formatScore3Dec(renderGroupCompressionReadiness.renderGroupCompressionReadinessScore)}:${formatScore3Dec(renderGroupCompressionReadiness.dashboardScaleLinkageScore)}:${renderGroupCompressionReadiness.readyCompressionTraits.join("+")}`,
+      formatSteerSnapshotLine("dashboardScaleSteer", dashboardScaleSteeringRecommendations),
+    ],
+    [
+      `compressionCandidateMap:${compressionCandidateMap.compressionCandidateMapId}:${formatScore3Dec(compressionCandidateMap.compressionCandidateScore)}:${formatScore3Dec(compressionCandidateMap.compressionBoundaryLinkageScore)}:${compressionCandidateMap.compressibleRenderGroups.join("+")}`,
+      `orchestrationCoreLock:${orchestrationCoreLockMap.orchestrationCoreLockMapId}:${formatScore3Dec(orchestrationCoreLockMap.orchestrationCoreLockScore)}:${formatScore3Dec(orchestrationCoreLockMap.snapshotDensityLinkageScore)}:${orchestrationCoreLockMap.lockedCoreGroups.join("+")}`,
+      `snapshotDensityBoundary:${snapshotDensityBoundary.snapshotDensityBoundaryId}:${snapshotDensityBoundary.pilotVideoMode}:${formatScore3Dec(snapshotDensityBoundary.compressionBoundaryScore)}`,
+      `renderVirtualizationReadiness:${renderVirtualizationReadiness.renderVirtualizationReadinessId}:${formatScore3Dec(renderVirtualizationReadiness.renderVirtualizationReadinessScore)}:${formatScore3Dec(renderVirtualizationReadiness.compressionBoundaryLinkageScore)}:${renderVirtualizationReadiness.readyVirtualizationTraits.join("+")}`,
+      formatSteerSnapshotLine("compressionBoundarySteer", compressionBoundarySteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

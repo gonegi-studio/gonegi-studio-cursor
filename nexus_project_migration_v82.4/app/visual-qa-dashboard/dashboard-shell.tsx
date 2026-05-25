@@ -223,6 +223,16 @@ import {
   buildCinematicDatasetReadinessMap,
   buildRealDatasetTransitionPersistenceTimeline,
   buildRealDatasetTransitionSteeringRecommendations,
+  buildDashboardScaleAuditLayer,
+  buildSemanticDuplicationAuditMap,
+  buildSnapshotGrowthAuditMap,
+  buildRenderGroupCompressionReadiness,
+  buildDashboardScaleSteeringRecommendations,
+  buildCompressionCandidateMap,
+  buildOrchestrationCoreLockMap,
+  buildSnapshotDensityBoundary,
+  buildRenderVirtualizationReadiness,
+  buildCompressionBoundarySteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -637,6 +647,16 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const realDatasetTransitionPersistenceTimeline = buildRealDatasetTransitionPersistenceTimeline(payload);
   const realDatasetTransitionPersistenceTimelineGroups = groupRealDatasetTransitionPersistenceTimelineByDimension(realDatasetTransitionPersistenceTimeline);
   const realDatasetTransitionSteeringRecommendations = buildRealDatasetTransitionSteeringRecommendations();
+  const dashboardScaleAuditLayer = buildDashboardScaleAuditLayer();
+  const semanticDuplicationAuditMap = buildSemanticDuplicationAuditMap();
+  const snapshotGrowthAuditMap = buildSnapshotGrowthAuditMap();
+  const renderGroupCompressionReadiness = buildRenderGroupCompressionReadiness();
+  const dashboardScaleSteeringRecommendations = buildDashboardScaleSteeringRecommendations();
+  const compressionCandidateMap = buildCompressionCandidateMap();
+  const orchestrationCoreLockMap = buildOrchestrationCoreLockMap();
+  const snapshotDensityBoundary = buildSnapshotDensityBoundary();
+  const renderVirtualizationReadiness = buildRenderVirtualizationReadiness();
+  const compressionBoundarySteeringRecommendations = buildCompressionBoundarySteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -3210,6 +3230,158 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="real-dataset-transition-steering" title="Real Dataset Transition Steering Recommendations">
           <SteeringChipList items={realDatasetTransitionSteeringRecommendations} dataAttr="real-dataset-transition-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="dashboard-scale-audit-layer" title="Dashboard Scale Audit Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-dashboard-scale-audit-layer-id={dashboardScaleAuditLayer.dashboardScaleAuditLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Dashboard Scale Audit Layer ID" value={dashboardScaleAuditLayer.dashboardScaleAuditLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={dashboardScaleAuditLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Dashboard Scale Audit Score" value={formatScore3Dec(dashboardScaleAuditLayer.dashboardScaleAuditScore)} emphasis />
+              <KeyValueField label="Active Dashboard Scale Audit State" value={dashboardScaleAuditLayer.activeDashboardScaleAuditState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Registry Scale Audit" value={dashboardScaleAuditLayer.registryScaleAudit} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Semantic Duplication Audit" value={dashboardScaleAuditLayer.semanticDuplicationAudit} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Snapshot Growth Audit" value={dashboardScaleAuditLayer.snapshotGrowthAudit} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Render Group Compression Readiness" value={dashboardScaleAuditLayer.renderGroupCompressionReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Dashboard Maintainability Guard" value={dashboardScaleAuditLayer.dashboardMaintainabilityGuard} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Dataset Ingestion Gate Readiness" value={dashboardScaleAuditLayer.datasetIngestionGateReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Compression Gate State" value={dashboardScaleAuditLayer.compressionGateState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Dashboard Scale Normalization" value={dashboardScaleAuditLayer.dashboardScaleNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="semantic-duplication-audit-map" title="Semantic Duplication Audit Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-semantic-duplication-audit-map-id={semanticDuplicationAuditMap.semanticDuplicationAuditMapId}>
+            <p className="text-sm font-black">{semanticDuplicationAuditMap.semanticDuplicationAuditMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active duplication audit route · {semanticDuplicationAuditMap.activeDuplicationAuditRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Semantic Duplication Audit Score" value={formatScore3Dec(semanticDuplicationAuditMap.semanticDuplicationAuditScore)} emphasis />
+              <KeyValueField label="Dashboard Scale Audit Linkage Score" value={formatScore3Dec(semanticDuplicationAuditMap.dashboardScaleAuditLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Semantic Duplication Audit State" value={semanticDuplicationAuditMap.semanticDuplicationAuditState} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Duplication Flags</p><TagList tags={semanticDuplicationAuditMap.readyDuplicationFlags} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Duplication Flags</p><TagList tags={semanticDuplicationAuditMap.pendingDuplicationFlags} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="snapshot-growth-audit-map" title="Snapshot Growth Audit Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-snapshot-growth-audit-map-id={snapshotGrowthAuditMap.snapshotGrowthAuditMapId}>
+            <p className="text-sm font-black">{snapshotGrowthAuditMap.snapshotGrowthAuditMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active growth audit route · {snapshotGrowthAuditMap.activeGrowthAuditRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Snapshot Growth Audit Score" value={formatScore3Dec(snapshotGrowthAuditMap.snapshotGrowthAuditScore)} emphasis />
+              <KeyValueField label="Render Group Compression Linkage Score" value={formatScore3Dec(snapshotGrowthAuditMap.renderGroupCompressionLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Snapshot Growth Audit State" value={snapshotGrowthAuditMap.snapshotGrowthAuditState} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Growth Signals</p><TagList tags={snapshotGrowthAuditMap.readyGrowthSignals} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Growth Signals</p><TagList tags={snapshotGrowthAuditMap.pendingGrowthSignals} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="render-group-compression-readiness" title="Render Group Compression Readiness">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-render-group-compression-readiness-id={renderGroupCompressionReadiness.renderGroupCompressionReadinessId}>
+            <p className="text-sm font-black">{renderGroupCompressionReadiness.renderGroupCompressionReadinessId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active compression route · {renderGroupCompressionReadiness.activeCompressionRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Render Group Compression Readiness Score" value={formatScore3Dec(renderGroupCompressionReadiness.renderGroupCompressionReadinessScore)} emphasis />
+              <KeyValueField label="Dashboard Scale Linkage Score" value={formatScore3Dec(renderGroupCompressionReadiness.dashboardScaleLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Render Group Compression State" value={renderGroupCompressionReadiness.renderGroupCompressionState} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Compression Traits</p><TagList tags={renderGroupCompressionReadiness.readyCompressionTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Compression Traits</p><TagList tags={renderGroupCompressionReadiness.pendingCompressionTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="dashboard-scale-steering" title="Dashboard Scale Steering Recommendations">
+          <SteeringChipList items={dashboardScaleSteeringRecommendations} dataAttr="dashboard-scale-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="compression-candidate-map" title="Compression Candidate Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-compression-candidate-map-id={compressionCandidateMap.compressionCandidateMapId}>
+            <p className="text-sm font-black">{compressionCandidateMap.compressionCandidateMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active compression candidate route · {compressionCandidateMap.activeCompressionCandidateRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Compression Candidate Score" value={formatScore3Dec(compressionCandidateMap.compressionCandidateScore)} emphasis />
+              <KeyValueField label="Compression Boundary Linkage Score" value={formatScore3Dec(compressionCandidateMap.compressionBoundaryLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Compression Candidate Readiness" value={compressionCandidateMap.compressionCandidateReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-amber-600">Compressible Render Groups</p><TagList tags={compressionCandidateMap.compressibleRenderGroups} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Protected Render Groups</p><TagList tags={compressionCandidateMap.protectedRenderGroups} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="orchestration-core-lock-map" title="Orchestration Core Lock Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-orchestration-core-lock-map-id={orchestrationCoreLockMap.orchestrationCoreLockMapId}>
+            <p className="text-sm font-black">{orchestrationCoreLockMap.orchestrationCoreLockMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active core lock route · {orchestrationCoreLockMap.activeCoreLockRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Orchestration Core Lock Score" value={formatScore3Dec(orchestrationCoreLockMap.orchestrationCoreLockScore)} emphasis />
+              <KeyValueField label="Snapshot Density Linkage Score" value={formatScore3Dec(orchestrationCoreLockMap.snapshotDensityLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Orchestration Core Lock State" value={orchestrationCoreLockMap.orchestrationCoreLockState} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Locked Core Groups</p><TagList tags={orchestrationCoreLockMap.lockedCoreGroups} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Deferred Compression Groups</p><TagList tags={orchestrationCoreLockMap.deferredCompressionGroups} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="snapshot-density-boundary" title="Snapshot Density Boundary">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-snapshot-density-boundary-id={snapshotDensityBoundary.snapshotDensityBoundaryId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Snapshot Density Boundary ID" value={snapshotDensityBoundary.snapshotDensityBoundaryId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={snapshotDensityBoundary.pilotVideoMode} emphasis />
+              <KeyValueField label="Compression Boundary Score" value={formatScore3Dec(snapshotDensityBoundary.compressionBoundaryScore)} emphasis />
+              <KeyValueField label="Active Density Boundary Route" value={snapshotDensityBoundary.activeDensityBoundaryRoute} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Current Section Count Boundary" value={snapshotDensityBoundary.currentSectionCountBoundary} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Current Snapshot Line Boundary" value={snapshotDensityBoundary.currentSnapshotLineBoundary} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Max Snapshot Line Budget" value={snapshotDensityBoundary.maxSnapshotLineBudget} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Density Boundary State" value={snapshotDensityBoundary.densityBoundaryState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Ingestion Pre-Gate State" value={snapshotDensityBoundary.ingestionPreGateState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Compression Boundary Normalization" value={snapshotDensityBoundary.compressionBoundaryNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="render-virtualization-readiness" title="Render Virtualization Readiness">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-render-virtualization-readiness-id={renderVirtualizationReadiness.renderVirtualizationReadinessId}>
+            <p className="text-sm font-black">{renderVirtualizationReadiness.renderVirtualizationReadinessId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active virtualization route · {renderVirtualizationReadiness.activeVirtualizationRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Render Virtualization Readiness Score" value={formatScore3Dec(renderVirtualizationReadiness.renderVirtualizationReadinessScore)} emphasis />
+              <KeyValueField label="Compression Boundary Linkage Score" value={formatScore3Dec(renderVirtualizationReadiness.compressionBoundaryLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Render Virtualization State" value={renderVirtualizationReadiness.renderVirtualizationState} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Virtualization Traits</p><TagList tags={renderVirtualizationReadiness.readyVirtualizationTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Virtualization Traits</p><TagList tags={renderVirtualizationReadiness.pendingVirtualizationTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="compression-boundary-steering" title="Compression Boundary Steering Recommendations">
+          <SteeringChipList items={compressionBoundarySteeringRecommendations} dataAttr="compression-boundary-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
