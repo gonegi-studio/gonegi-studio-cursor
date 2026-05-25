@@ -44,6 +44,10 @@ export type RealSpawnExecutionGate = {
   spawnStrategy: string;
   resolvedExecutable: string;
   spawnOptionsMetadata: SpawnOptions;
+  controlledTrialEligible: boolean;
+  maxSpawnCount: typeof CONTROLLED_FFMPEG_SPAWN_TRIAL_MAX_SPAWN_COUNT;
+  controlledTrialArgs: typeof CONTROLLED_FFMPEG_SPAWN_TRIAL_ARGS;
+  controlledTrialTimeoutMs: typeof CONTROLLED_FFMPEG_SPAWN_TRIAL_TIMEOUT_MS;
   runtimeQueueMapping: readonly string[];
   items: readonly RealSpawnExecutionItem[];
 };
@@ -52,7 +56,11 @@ export const REAL_SPAWN_EXECUTION_GATE_VERSION = "v1" as const;
 export const REAL_SPAWN_EXECUTION_ENABLED = false as const;
 export const REAL_SPAWN_RESOLVED_EXECUTABLE = "ffmpeg" as const;
 export const REAL_SPAWN_STRATEGY = "child-process-spawn-synchronous-queue-disabled" as const;
-export const REAL_SPAWN_GATE_STATE = "25s-real-spawn-execution-gate-ready-with-spawn-disabled" as const;
+export const REAL_SPAWN_GATE_STATE =
+  "25s-real-spawn-execution-gate-ready-with-controlled-version-trial" as const;
+export const CONTROLLED_FFMPEG_SPAWN_TRIAL_MAX_SPAWN_COUNT = 1 as const;
+export const CONTROLLED_FFMPEG_SPAWN_TRIAL_ARGS = Object.freeze(["-version"] as const);
+export const CONTROLLED_FFMPEG_SPAWN_TRIAL_TIMEOUT_MS = 5000 as const;
 export const REAL_SPAWN_SPAWN_OPTIONS_METADATA = Object.freeze({
   shell: false,
   windowsHide: true,
@@ -134,6 +142,8 @@ export function buildRealSpawnExecutionGate(simulation: DryRunSpawnSimulation): 
 
   const runtimeQueueMapping = Object.freeze(items.map((item) => item.spawnItemId));
 
+  const controlledTrialEligible = items.every((item) => item.executionState === "execution-ready");
+
   return Object.freeze({
     version: REAL_SPAWN_EXECUTION_GATE_VERSION,
     gateId: "real-spawn-execution-gate-gonegi-harbor-25s-v1",
@@ -146,6 +156,10 @@ export function buildRealSpawnExecutionGate(simulation: DryRunSpawnSimulation): 
     spawnStrategy: REAL_SPAWN_STRATEGY,
     resolvedExecutable: REAL_SPAWN_RESOLVED_EXECUTABLE,
     spawnOptionsMetadata: REAL_SPAWN_SPAWN_OPTIONS_METADATA,
+    controlledTrialEligible,
+    maxSpawnCount: CONTROLLED_FFMPEG_SPAWN_TRIAL_MAX_SPAWN_COUNT,
+    controlledTrialArgs: CONTROLLED_FFMPEG_SPAWN_TRIAL_ARGS,
+    controlledTrialTimeoutMs: CONTROLLED_FFMPEG_SPAWN_TRIAL_TIMEOUT_MS,
     runtimeQueueMapping,
     items,
   });
@@ -163,6 +177,10 @@ export const REAL_SPAWN_EXECUTION_GATE_KEY_ORDER = Object.freeze([
   "spawnStrategy",
   "resolvedExecutable",
   "spawnOptionsMetadata",
+  "controlledTrialEligible",
+  "maxSpawnCount",
+  "controlledTrialArgs",
+  "controlledTrialTimeoutMs",
   "runtimeQueueMapping",
   "items",
 ] as const);
@@ -203,6 +221,8 @@ export function serializeRealSpawnExecutionGate(gate: RealSpawnExecutionGate): s
       orderedGate.spawnOptionsMetadata = gate.spawnOptionsMetadata;
     } else if (key === "runtimeQueueMapping") {
       orderedGate.runtimeQueueMapping = [...gate.runtimeQueueMapping];
+    } else if (key === "controlledTrialArgs") {
+      orderedGate.controlledTrialArgs = [...gate.controlledTrialArgs];
     } else {
       orderedGate[key] = gate[key as keyof RealSpawnExecutionGate];
     }
