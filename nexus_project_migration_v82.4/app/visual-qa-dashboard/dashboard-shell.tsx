@@ -183,6 +183,11 @@ import {
   buildMemorySequenceInheritanceMap,
   buildTemporalContinuityPersistenceTimeline,
   buildTemporalContinuitySteeringRecommendations,
+  buildCinematicMultiSceneMemoryLayer,
+  buildCrossSceneInheritanceBridge,
+  buildEmotionalRecallRoutingMap,
+  buildMultiScenePersistenceTimeline,
+  buildMultiSceneMemorySteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -245,6 +250,7 @@ import {
   groupEmotionalAtmospherePersistenceTimelineByDimension,
   groupDirectorIntentPersistenceTimelineByDimension,
   groupTemporalContinuityPersistenceTimelineByDimension,
+  groupMultiScenePersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -541,6 +547,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const temporalContinuityPersistenceTimeline = buildTemporalContinuityPersistenceTimeline(payload);
   const temporalContinuityPersistenceTimelineGroups = groupTemporalContinuityPersistenceTimelineByDimension(temporalContinuityPersistenceTimeline);
   const temporalContinuitySteeringRecommendations = buildTemporalContinuitySteeringRecommendations();
+  const cinematicMultiSceneMemoryLayer = buildCinematicMultiSceneMemoryLayer();
+  const crossSceneInheritanceBridge = buildCrossSceneInheritanceBridge();
+  const emotionalRecallRoutingMap = buildEmotionalRecallRoutingMap();
+  const multiScenePersistenceTimeline = buildMultiScenePersistenceTimeline(payload);
+  const multiScenePersistenceTimelineGroups = groupMultiScenePersistenceTimelineByDimension(multiScenePersistenceTimeline);
+  const multiSceneMemorySteeringRecommendations = buildMultiSceneMemorySteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2618,6 +2630,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="temporal-continuity-steering" title="Temporal Continuity Steering Recommendations">
           <SteeringChipList items={temporalContinuitySteeringRecommendations} dataAttr="temporal-continuity-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-multi-scene-memory-layer" title="Cinematic Multi-Scene Memory Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-multi-scene-memory-layer-id={cinematicMultiSceneMemoryLayer.cinematicMultiSceneMemoryLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Multi-Scene Memory Layer ID" value={cinematicMultiSceneMemoryLayer.cinematicMultiSceneMemoryLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicMultiSceneMemoryLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Multi-Scene Memory Orchestration Score" value={formatScore3Dec(cinematicMultiSceneMemoryLayer.multiSceneMemoryOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Multi-Scene Memory Orchestration State" value={cinematicMultiSceneMemoryLayer.activeMultiSceneMemoryOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Multi-Scene Continuity" value={cinematicMultiSceneMemoryLayer.multiSceneContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cross-Scene Inheritance Persistence" value={cinematicMultiSceneMemoryLayer.crossSceneInheritancePersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Recall Routing" value={cinematicMultiSceneMemoryLayer.emotionalRecallRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Scene Orchestration" value={cinematicMultiSceneMemoryLayer.replaySafeSceneOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Continuity Normalization" value={cinematicMultiSceneMemoryLayer.continuityNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Scene-Memory Stabilization" value={cinematicMultiSceneMemoryLayer.sceneMemoryStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Continuity Persistence" value={cinematicMultiSceneMemoryLayer.emotionalContinuityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Scene Consistency" value={cinematicMultiSceneMemoryLayer.longFormSceneConsistency} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Multi-Scene Memory Normalization" value={cinematicMultiSceneMemoryLayer.multiSceneMemoryNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cross-scene-inheritance-bridge" title="Cross-Scene Inheritance Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cross-scene-inheritance-bridge-id={crossSceneInheritanceBridge.crossSceneInheritanceBridgeId}>
+            <p className="text-sm font-black">{crossSceneInheritanceBridge.crossSceneInheritanceBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active cross-scene route · {crossSceneInheritanceBridge.activeCrossSceneRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Cross-Scene Inheritance Strength" value={formatScore3Dec(crossSceneInheritanceBridge.crossSceneInheritanceStrength)} emphasis />
+              <KeyValueField label="Cross-Scene Linkage Score" value={formatScore3Dec(crossSceneInheritanceBridge.crossSceneLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Cross-Scene Routes</p><TagList tags={crossSceneInheritanceBridge.replayLinkedCrossSceneRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Cross-Scene Routes</p><TagList tags={crossSceneInheritanceBridge.continuitySafeCrossSceneRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Cross-Scene Routes</p><TagList tags={crossSceneInheritanceBridge.highDriftCrossSceneRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-recall-routing-map" title="Emotional Recall Routing Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-emotional-recall-routing-map-id={emotionalRecallRoutingMap.emotionalRecallRoutingMapId}>
+            <p className="text-sm font-black">{emotionalRecallRoutingMap.emotionalRecallRoutingMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active recall route · {emotionalRecallRoutingMap.activeRecallRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Emotional Recall Routing Score" value={formatScore3Dec(emotionalRecallRoutingMap.emotionalRecallRoutingScore)} emphasis />
+              <KeyValueField label="Multi-Scene Memory Linkage Score" value={formatScore3Dec(emotionalRecallRoutingMap.multiSceneMemoryLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Recall Readiness" value={emotionalRecallRoutingMap.emotionalRecallReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Recall Routing Traits</p><TagList tags={emotionalRecallRoutingMap.readyRecallRoutingTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Recall Routing Traits</p><TagList tags={emotionalRecallRoutingMap.pendingRecallRoutingTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="multi-scene-persistence-timeline" title="Multi-Scene Persistence Timeline">
+          <TimelineTrendGrid groups={multiScenePersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="multi-scene-memory-steering" title="Multi-Scene Memory Steering Recommendations">
+          <SteeringChipList items={multiSceneMemorySteeringRecommendations} dataAttr="multi-scene-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

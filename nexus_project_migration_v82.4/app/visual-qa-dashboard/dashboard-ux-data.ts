@@ -1491,6 +1491,47 @@ export type TemporalContinuitySteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicMultiSceneMemoryLayer = {
+  readonly cinematicMultiSceneMemoryLayerId: string;
+  readonly activeMultiSceneMemoryOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly multiSceneContinuity: string;
+  readonly crossSceneInheritancePersistence: string;
+  readonly emotionalRecallRouting: string;
+  readonly replaySafeSceneOrchestration: string;
+  readonly continuityNormalization: string;
+  readonly sceneMemoryStabilization: string;
+  readonly emotionalContinuityPersistence: string;
+  readonly longFormSceneConsistency: string;
+  readonly multiSceneMemoryOrchestrationScore: number;
+  readonly multiSceneMemoryNormalizationState: string;
+};
+
+export type CrossSceneInheritanceBridge = {
+  readonly crossSceneInheritanceBridgeId: string;
+  readonly activeCrossSceneRoute: string;
+  readonly replayLinkedCrossSceneRoutes: readonly string[];
+  readonly continuitySafeCrossSceneRoutes: readonly string[];
+  readonly highDriftCrossSceneRoutes: readonly string[];
+  readonly crossSceneInheritanceStrength: number;
+  readonly crossSceneLinkageScore: number;
+};
+
+export type EmotionalRecallRoutingMap = {
+  readonly emotionalRecallRoutingMapId: string;
+  readonly activeRecallRoute: string;
+  readonly emotionalRecallReadiness: string;
+  readonly readyRecallRoutingTraits: readonly string[];
+  readonly pendingRecallRoutingTraits: readonly string[];
+  readonly emotionalRecallRoutingScore: number;
+  readonly multiSceneMemoryLinkageScore: number;
+};
+
+export type MultiSceneMemorySteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -4501,6 +4542,86 @@ export const TEMPORAL_CONTINUITY_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer temporal inference until temporal continuity layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly TemporalContinuitySteeringRecommendation[]);
 
+export const CINEMATIC_MULTI_SCENE_MEMORY_LAYER = Object.freeze({
+  cinematicMultiSceneMemoryLayerId: "cinematic-multi-scene-memory-layer-gonegi-v1",
+  activeMultiSceneMemoryOrchestrationState: "25s-pilot-multi-scene-memory-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  multiSceneContinuity: "multi-scene continuity staged for 25s pilot harbor sample without memory graph inference",
+  crossSceneInheritancePersistence: "cross-scene inheritance persistence indexed for soft beat carry-over and mediterranean scene honesty",
+  emotionalRecallRouting: "emotional recall routing prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeSceneOrchestration: "replay-safe scene orchestration reserved without scene generation execution",
+  continuityNormalization: "continuity normalization locked for warm dissolve cross-scene continuity across pilot beats",
+  sceneMemoryStabilization: "scene-memory stabilization verified against ghibli-base harbor multi-scene profile",
+  emotionalContinuityPersistence: "emotional continuity persistence mapped for soft carry-over harbor scene warmth",
+  longFormSceneConsistency: "future long-form scene consistency staged for ten-video expansion target",
+  multiSceneMemoryOrchestrationScore: 0.886333,
+  multiSceneMemoryNormalizationState: "canonical 25s pilot cinematic multi-scene memory orchestration normalization",
+} satisfies CinematicMultiSceneMemoryLayer);
+
+export const CROSS_SCENE_INHERITANCE_BRIDGE = Object.freeze({
+  crossSceneInheritanceBridgeId: "cross-scene-inheritance-bridge-gonegi-v1",
+  activeCrossSceneRoute: "cross-scene-route-soft-beat-hold-001",
+  replayLinkedCrossSceneRoutes: Object.freeze(["cross-scene-route-soft-beat-hold-001", "cross-scene-route-harbor-link-echo-002"]),
+  continuitySafeCrossSceneRoutes: Object.freeze(["cross-scene-route-soft-beat-hold-001", "cross-scene-route-harbor-link-echo-002"]),
+  highDriftCrossSceneRoutes: Object.freeze(["cross-scene-route-contrast-push-experiment"]),
+  crossSceneInheritanceStrength: 0.882333,
+  crossSceneLinkageScore: 0.896333,
+} satisfies CrossSceneInheritanceBridge);
+
+export const EMOTIONAL_RECALL_ROUTING_MAP = Object.freeze({
+  emotionalRecallRoutingMapId: "emotional-recall-routing-map-gonegi-v1",
+  activeRecallRoute: "recall-route-harbor-pilot-001",
+  emotionalRecallReadiness: "emotional recall routing readiness staged for 25s pilot harbor sample",
+  readyRecallRoutingTraits: Object.freeze(["harbor-opening-recall", "soft-scene-carry", "warm-emotional-link"]),
+  pendingRecallRoutingTraits: Object.freeze(["alternate-recall-experiment", "scene-push-variant"]),
+  emotionalRecallRoutingScore: 0.879333,
+  multiSceneMemoryLinkageScore: 0.893333,
+} satisfies EmotionalRecallRoutingMap);
+
+const MULTI_SCENE_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      multiSceneContinuityTrend: number;
+      crossSceneInheritancePersistenceTrend: number;
+      emotionalRecallRoutingTrend: number;
+      continuityNormalizationTrend: number;
+      longFormSceneConsistencyTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    multiSceneContinuityTrend: 0.347333,
+    crossSceneInheritancePersistenceTrend: 0.654333,
+    emotionalRecallRoutingTrend: 0.641333,
+    continuityNormalizationTrend: 0.648333,
+    longFormSceneConsistencyTrend: 0.640333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    multiSceneContinuityTrend: 0.886333,
+    crossSceneInheritancePersistenceTrend: 0.881333,
+    emotionalRecallRoutingTrend: 0.874333,
+    continuityNormalizationTrend: 0.889333,
+    longFormSceneConsistencyTrend: 0.882333,
+  }),
+});
+
+export const MULTI_SCENE_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["multi-scene continuity trend", "multiSceneContinuityTrend"],
+  ["cross-scene inheritance persistence trend", "crossSceneInheritancePersistenceTrend"],
+  ["emotional recall routing trend", "emotionalRecallRoutingTrend"],
+  ["continuity normalization trend", "continuityNormalizationTrend"],
+  ["long-form scene consistency trend", "longFormSceneConsistencyTrend"],
+] as const);
+
+export const MULTI_SCENE_MEMORY_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot multi-scene memory orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain cross-scene inheritance routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified emotional recall routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve continuity normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer memory graph inference until multi-scene layer stabilizes", severity: "warning" }),
+] as const satisfies readonly MultiSceneMemorySteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -7071,6 +7192,63 @@ export function groupTemporalContinuityPersistenceTimelineByDimension(
 
 export function buildTemporalContinuitySteeringRecommendations(): readonly TemporalContinuitySteeringRecommendation[] {
   return TEMPORAL_CONTINUITY_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicMultiSceneMemoryLayer(): CinematicMultiSceneMemoryLayer {
+  return CINEMATIC_MULTI_SCENE_MEMORY_LAYER;
+}
+
+export function buildCrossSceneInheritanceBridge(): CrossSceneInheritanceBridge {
+  return CROSS_SCENE_INHERITANCE_BRIDGE;
+}
+
+export function buildEmotionalRecallRoutingMap(): EmotionalRecallRoutingMap {
+  return EMOTIONAL_RECALL_ROUTING_MAP;
+}
+
+export function buildMultiScenePersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of MULTI_SCENE_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = MULTI_SCENE_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? MULTI_SCENE_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupMultiScenePersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    MULTI_SCENE_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildMultiSceneMemorySteeringRecommendations(): readonly MultiSceneMemorySteeringRecommendation[] {
+  return MULTI_SCENE_MEMORY_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
