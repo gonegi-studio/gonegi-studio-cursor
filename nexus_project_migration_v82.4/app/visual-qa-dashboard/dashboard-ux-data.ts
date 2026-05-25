@@ -748,6 +748,37 @@ export type EmotionalMemorySteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicIntentMemory = {
+  readonly cinematicIntentMemoryId: string;
+  readonly activeNarrativeIntent: string;
+  readonly activeCinematicPurpose: string;
+  readonly emotionalDestinationState: string;
+  readonly scenePurposePersistence: string;
+  readonly cinematicIntentLock: string;
+  readonly intentPersistenceScore: number;
+  readonly intentNormalizationState: string;
+};
+
+export type IntentTransitionRoutingBridge = {
+  readonly intentTransitionRoutingBridgeId: string;
+  readonly activeIntentRoute: string;
+  readonly replayLinkedIntentRoutes: readonly string[];
+  readonly continuitySafeIntentRoutes: readonly string[];
+  readonly highDriftIntentRoutes: readonly string[];
+  readonly intentRoutingStrength: number;
+  readonly cinematicIntentPersistence: number;
+};
+
+export type IntentDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type IntentSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -2215,6 +2246,79 @@ export const EMOTIONAL_MEMORY_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce emotional fragmentation pressure", severity: "warning" }),
 ] as const satisfies readonly EmotionalMemorySteeringRecommendation[]);
 
+export const CINEMATIC_INTENT_MEMORY = Object.freeze({
+  cinematicIntentMemoryId: "cinematic-intent-memory-gonegi-v1",
+  activeNarrativeIntent: "gentle emotional recovery through warm harbor continuity",
+  activeCinematicPurpose: "preserve emotional warmth while transitioning spatial atmosphere",
+  emotionalDestinationState: "soft emotional stabilization",
+  scenePurposePersistence: "continuity-safe narrative intent inheritance",
+  cinematicIntentLock: "director-intent continuity locked",
+  intentPersistenceScore: 0.821333,
+  intentNormalizationState: "canonical cinematic intention normalization",
+} satisfies CinematicIntentMemory);
+
+export const INTENT_TRANSITION_ROUTING_BRIDGE = Object.freeze({
+  intentTransitionRoutingBridgeId: "intent-transition-routing-bridge-gonegi-v1",
+  activeIntentRoute: "intent-route-harbor-recovery-001",
+  replayLinkedIntentRoutes: Object.freeze(["intent-route-harbor-recovery-001", "intent-route-glaze-transition-002"]),
+  continuitySafeIntentRoutes: Object.freeze(["intent-route-harbor-recovery-001", "intent-route-glaze-transition-002"]),
+  highDriftIntentRoutes: Object.freeze(["intent-route-detail-push-experiment"]),
+  intentRoutingStrength: 0.820333,
+  cinematicIntentPersistence: 0.833333,
+} satisfies IntentTransitionRoutingBridge);
+
+export const INTENT_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic intention fracture", severity: "critical" }),
+  Object.freeze({ label: "emotional purpose collapse", severity: "critical" }),
+  Object.freeze({ label: "narrative routing divergence", severity: "warning" }),
+  Object.freeze({ label: "transition objective mismatch", severity: "warning" }),
+  Object.freeze({ label: "director intent instability", severity: "warning" }),
+] as const satisfies readonly IntentDriftItem[]);
+
+const INTENT_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicIntentPersistence: number;
+      emotionalDestinationContinuity: number;
+      narrativeRoutingStability: number;
+      cinematicPurposeInheritance: number;
+      directorIntentContinuityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicIntentPersistence: 0.309333,
+    emotionalDestinationContinuity: 0.615333,
+    narrativeRoutingStability: 0.602333,
+    cinematicPurposeInheritance: 0.608333,
+    directorIntentContinuityTrend: 0.600333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicIntentPersistence: 0.821333,
+    emotionalDestinationContinuity: 0.817333,
+    narrativeRoutingStability: 0.810333,
+    cinematicPurposeInheritance: 0.825333,
+    directorIntentContinuityTrend: 0.819333,
+  }),
+});
+
+export const INTENT_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic intent persistence", "cinematicIntentPersistence"],
+  ["emotional destination continuity", "emotionalDestinationContinuity"],
+  ["narrative routing stability", "narrativeRoutingStability"],
+  ["cinematic purpose inheritance", "cinematicPurposeInheritance"],
+  ["director-intent continuity trend", "directorIntentContinuityTrend"],
+] as const);
+
+export const INTENT_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic intention continuity", severity: "stable" }),
+  Object.freeze({ label: "maintain emotional destination stability", severity: "stable" }),
+  Object.freeze({ label: "avoid narrative routing fracture", severity: "critical" }),
+  Object.freeze({ label: "preserve director-intent inheritance", severity: "stable" }),
+  Object.freeze({ label: "reduce cinematic intention divergence", severity: "warning" }),
+] as const satisfies readonly IntentSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -3645,6 +3749,63 @@ export function groupEmotionalMemoryTimelineByDimension(
 
 export function buildEmotionalMemorySteeringRecommendations(): readonly EmotionalMemorySteeringRecommendation[] {
   return EMOTIONAL_MEMORY_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicIntentMemory(): CinematicIntentMemory {
+  return CINEMATIC_INTENT_MEMORY;
+}
+
+export function buildIntentTransitionRoutingBridge(): IntentTransitionRoutingBridge {
+  return INTENT_TRANSITION_ROUTING_BRIDGE;
+}
+
+export function buildIntentDriftDetection(): readonly IntentDriftItem[] {
+  return INTENT_DRIFT_GROUPS;
+}
+
+export function buildIntentPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of INTENT_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = INTENT_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? INTENT_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupIntentPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    INTENT_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildIntentSteeringRecommendations(): readonly IntentSteeringRecommendation[] {
+  return INTENT_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

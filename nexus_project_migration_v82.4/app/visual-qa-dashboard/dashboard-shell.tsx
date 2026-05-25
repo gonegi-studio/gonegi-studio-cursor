@@ -83,6 +83,11 @@ import {
   buildEmotionalMemoryDriftDetection,
   buildEmotionalMemoryTimeline,
   buildEmotionalMemorySteeringRecommendations,
+  buildCinematicIntentMemory,
+  buildIntentTransitionRoutingBridge,
+  buildIntentDriftDetection,
+  buildIntentPersistenceTimeline,
+  buildIntentSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -125,6 +130,7 @@ import {
   groupSequenceStateTimelineByDimension,
   groupGraphPersistenceTimelineByDimension,
   groupEmotionalMemoryTimelineByDimension,
+  groupIntentPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -301,6 +307,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const emotionalMemoryTimeline = buildEmotionalMemoryTimeline(payload);
   const emotionalMemoryTimelineGroups = groupEmotionalMemoryTimelineByDimension(emotionalMemoryTimeline);
   const emotionalMemorySteeringRecommendations = buildEmotionalMemorySteeringRecommendations();
+  const cinematicIntentMemory = buildCinematicIntentMemory();
+  const intentTransitionRoutingBridge = buildIntentTransitionRoutingBridge();
+  const intentDriftDetection = buildIntentDriftDetection();
+  const intentPersistenceTimeline = buildIntentPersistenceTimeline(payload);
+  const intentPersistenceTimelineGroups = groupIntentPersistenceTimelineByDimension(intentPersistenceTimeline);
+  const intentSteeringRecommendations = buildIntentSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1278,6 +1290,49 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="emotional-memory-steering" title="Emotional Memory Steering Recommendations">
           <SteeringChipList items={emotionalMemorySteeringRecommendations} dataAttr="emotional-memory-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-intent-memory" title="Cinematic Intent Memory Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-intent-memory-id={cinematicIntentMemory.cinematicIntentMemoryId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Intent Memory ID" value={cinematicIntentMemory.cinematicIntentMemoryId} emphasis />
+              <KeyValueField label="Active Narrative Intent" value={cinematicIntentMemory.activeNarrativeIntent} emphasis />
+              <KeyValueField label="Intent Persistence Score" value={formatScore3Dec(cinematicIntentMemory.intentPersistenceScore)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Active Cinematic Purpose" value={cinematicIntentMemory.activeCinematicPurpose} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Destination State" value={cinematicIntentMemory.emotionalDestinationState} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Scene Purpose Persistence" value={cinematicIntentMemory.scenePurposePersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Intent Lock" value={cinematicIntentMemory.cinematicIntentLock} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Intent Normalization" value={cinematicIntentMemory.intentNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-transition-routing-bridge" title="Intent Transition Routing Bridge Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-intent-transition-routing-bridge-id={intentTransitionRoutingBridge.intentTransitionRoutingBridgeId}>
+            <p className="text-sm font-black">{intentTransitionRoutingBridge.intentTransitionRoutingBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active intent route · {intentTransitionRoutingBridge.activeIntentRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(intentTransitionRoutingBridge.intentRoutingStrength)} emphasis />
+              <KeyValueField label="Intent Persistence" value={formatScore3Dec(intentTransitionRoutingBridge.cinematicIntentPersistence)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Intent Routes</p><TagList tags={intentTransitionRoutingBridge.replayLinkedIntentRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Intent Routes</p><TagList tags={intentTransitionRoutingBridge.continuitySafeIntentRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Intent Routes</p><TagList tags={intentTransitionRoutingBridge.highDriftIntentRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-drift-detection" title="Intent Drift Detection Map">
+          <DriftList items={intentDriftDetection} dataAttr="intent-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-persistence-timeline" title="Intent Persistence Timeline Map">
+          <TimelineTrendGrid groups={intentPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="intent-steering-recommendations" title="Intent Steering Recommendation Map">
+          <SteeringChipList items={intentSteeringRecommendations} dataAttr="intent-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

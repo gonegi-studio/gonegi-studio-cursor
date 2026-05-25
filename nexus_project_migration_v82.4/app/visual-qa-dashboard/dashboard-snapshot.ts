@@ -100,6 +100,11 @@ import {
   buildEmotionalMemoryDriftDetection,
   buildEmotionalMemoryTimeline,
   buildEmotionalMemorySteeringRecommendations,
+  buildCinematicIntentMemory,
+  buildIntentTransitionRoutingBridge,
+  buildIntentDriftDetection,
+  buildIntentPersistenceTimeline,
+  buildIntentSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -236,6 +241,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const emotionalMemoryDriftDetection = buildEmotionalMemoryDriftDetection();
   const emotionalMemoryTimeline = buildEmotionalMemoryTimeline(payload);
   const emotionalMemorySteeringRecommendations = buildEmotionalMemorySteeringRecommendations();
+  const cinematicIntentMemory = buildCinematicIntentMemory();
+  const intentTransitionRoutingBridge = buildIntentTransitionRoutingBridge();
+  const intentDriftDetection = buildIntentDriftDetection();
+  const intentPersistenceTimeline = buildIntentPersistenceTimeline(payload);
+  const intentSteeringRecommendations = buildIntentSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -408,6 +418,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("emotionalMemoryDrift", emotionalMemoryDriftDetection),
       formatTimelineSnapshotLine("emotionalMemoryTimeline", emotionalMemoryTimeline),
       formatSteerSnapshotLine("emotionalMemorySteer", emotionalMemorySteeringRecommendations),
+    ],
+    [
+      `intentMemory:${cinematicIntentMemory.cinematicIntentMemoryId}:${cinematicIntentMemory.activeNarrativeIntent}:${formatScore3Dec(cinematicIntentMemory.intentPersistenceScore)}`,
+      `intentRoutingBridge:${intentTransitionRoutingBridge.intentTransitionRoutingBridgeId}:${formatScore3Dec(intentTransitionRoutingBridge.intentRoutingStrength)}:${formatScore3Dec(intentTransitionRoutingBridge.cinematicIntentPersistence)}:${intentTransitionRoutingBridge.replayLinkedIntentRoutes.join("+")}`,
+      formatDriftSnapshotLine("intentDrift", intentDriftDetection),
+      formatTimelineSnapshotLine("intentTimeline", intentPersistenceTimeline),
+      formatSteerSnapshotLine("intentSteer", intentSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);
