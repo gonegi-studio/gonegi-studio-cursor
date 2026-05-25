@@ -158,6 +158,11 @@ import {
   buildCinematicPacingRhythmMap,
   buildMotionPersistenceTimeline,
   buildMotionOrchestrationSteeringRecommendations,
+  buildCinematicNarrativeRhythmLayer,
+  buildEmotionalPacingSyncBridge,
+  buildCinematicBeatContinuityMap,
+  buildNarrativeRhythmPersistenceTimeline,
+  buildNarrativeRhythmSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -215,6 +220,7 @@ import {
   groupStyleDriftPersistenceTimelineByDimension,
   groupEmotionalExpressionPersistenceTimelineByDimension,
   groupMotionPersistenceTimelineByDimension,
+  groupNarrativeRhythmPersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -481,6 +487,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const motionPersistenceTimeline = buildMotionPersistenceTimeline(payload);
   const motionPersistenceTimelineGroups = groupMotionPersistenceTimelineByDimension(motionPersistenceTimeline);
   const motionOrchestrationSteeringRecommendations = buildMotionOrchestrationSteeringRecommendations();
+  const cinematicNarrativeRhythmLayer = buildCinematicNarrativeRhythmLayer();
+  const emotionalPacingSyncBridge = buildEmotionalPacingSyncBridge();
+  const cinematicBeatContinuityMap = buildCinematicBeatContinuityMap();
+  const narrativeRhythmPersistenceTimeline = buildNarrativeRhythmPersistenceTimeline(payload);
+  const narrativeRhythmPersistenceTimelineGroups = groupNarrativeRhythmPersistenceTimelineByDimension(narrativeRhythmPersistenceTimeline);
+  const narrativeRhythmSteeringRecommendations = buildNarrativeRhythmSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2248,6 +2260,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="motion-orchestration-steering" title="Motion Orchestration Steering Recommendations">
           <SteeringChipList items={motionOrchestrationSteeringRecommendations} dataAttr="motion-orchestration-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-narrative-rhythm-layer" title="Cinematic Narrative Rhythm Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-narrative-rhythm-layer-id={cinematicNarrativeRhythmLayer.cinematicNarrativeRhythmLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Narrative Rhythm Layer ID" value={cinematicNarrativeRhythmLayer.cinematicNarrativeRhythmLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicNarrativeRhythmLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Narrative Rhythm Score" value={formatScore3Dec(cinematicNarrativeRhythmLayer.narrativeRhythmScore)} emphasis />
+              <KeyValueField label="Active Narrative Rhythm State" value={cinematicNarrativeRhythmLayer.activeNarrativeRhythmState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Narrative Rhythm Continuity" value={cinematicNarrativeRhythmLayer.cinematicNarrativeRhythmContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Pacing Synchronization" value={cinematicNarrativeRhythmLayer.emotionalPacingSynchronization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Transition Cadence Inheritance" value={cinematicNarrativeRhythmLayer.transitionCadenceInheritance} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Narrative Orchestration" value={cinematicNarrativeRhythmLayer.replaySafeNarrativeOrchestration} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Beat Persistence" value={cinematicNarrativeRhythmLayer.cinematicBeatPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Long-Form Rhythm Readiness" value={cinematicNarrativeRhythmLayer.longFormRhythmReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Flow Normalization" value={cinematicNarrativeRhythmLayer.emotionalFlowNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Video Generation Rhythm Compatibility" value={cinematicNarrativeRhythmLayer.videoGenerationRhythmCompatibility} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Narrative Rhythm Normalization" value={cinematicNarrativeRhythmLayer.narrativeRhythmNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-pacing-sync-bridge" title="Emotional Pacing Sync Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-emotional-pacing-sync-bridge-id={emotionalPacingSyncBridge.emotionalPacingSyncBridgeId}>
+            <p className="text-sm font-black">{emotionalPacingSyncBridge.emotionalPacingSyncBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active pacing sync route · {emotionalPacingSyncBridge.activePacingSyncRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Emotional Pacing Sync Strength" value={formatScore3Dec(emotionalPacingSyncBridge.emotionalPacingSyncStrength)} emphasis />
+              <KeyValueField label="Pacing Sync Linkage Score" value={formatScore3Dec(emotionalPacingSyncBridge.pacingSyncLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Pacing Sync Routes</p><TagList tags={emotionalPacingSyncBridge.replayLinkedPacingSyncRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Pacing Sync Routes</p><TagList tags={emotionalPacingSyncBridge.continuitySafePacingSyncRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Pacing Sync Routes</p><TagList tags={emotionalPacingSyncBridge.highDriftPacingSyncRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-beat-continuity-map" title="Cinematic Beat Continuity Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-beat-continuity-map-id={cinematicBeatContinuityMap.cinematicBeatContinuityMapId}>
+            <p className="text-sm font-black">{cinematicBeatContinuityMap.cinematicBeatContinuityMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active beat route · {cinematicBeatContinuityMap.activeBeatRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Cinematic Beat Continuity Score" value={formatScore3Dec(cinematicBeatContinuityMap.cinematicBeatContinuityScore)} emphasis />
+              <KeyValueField label="Beat Rhythm Linkage Score" value={formatScore3Dec(cinematicBeatContinuityMap.beatRhythmLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Beat Continuity Readiness" value={cinematicBeatContinuityMap.beatContinuityReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Beat Continuity Traits</p><TagList tags={cinematicBeatContinuityMap.readyBeatContinuityTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Beat Continuity Traits</p><TagList tags={cinematicBeatContinuityMap.pendingBeatContinuityTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="narrative-rhythm-persistence-timeline" title="Narrative Rhythm Persistence Timeline">
+          <TimelineTrendGrid groups={narrativeRhythmPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="narrative-rhythm-steering" title="Narrative Rhythm Steering Recommendations">
+          <SteeringChipList items={narrativeRhythmSteeringRecommendations} dataAttr="narrative-rhythm-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

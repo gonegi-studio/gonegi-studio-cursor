@@ -175,6 +175,11 @@ import {
   buildCinematicPacingRhythmMap,
   buildMotionPersistenceTimeline,
   buildMotionOrchestrationSteeringRecommendations,
+  buildCinematicNarrativeRhythmLayer,
+  buildEmotionalPacingSyncBridge,
+  buildCinematicBeatContinuityMap,
+  buildNarrativeRhythmPersistenceTimeline,
+  buildNarrativeRhythmSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -386,6 +391,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const cinematicPacingRhythmMap = buildCinematicPacingRhythmMap();
   const motionPersistenceTimeline = buildMotionPersistenceTimeline(payload);
   const motionOrchestrationSteeringRecommendations = buildMotionOrchestrationSteeringRecommendations();
+  const cinematicNarrativeRhythmLayer = buildCinematicNarrativeRhythmLayer();
+  const emotionalPacingSyncBridge = buildEmotionalPacingSyncBridge();
+  const cinematicBeatContinuityMap = buildCinematicBeatContinuityMap();
+  const narrativeRhythmPersistenceTimeline = buildNarrativeRhythmPersistenceTimeline(payload);
+  const narrativeRhythmSteeringRecommendations = buildNarrativeRhythmSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -663,6 +673,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `pacingRhythmMap:${cinematicPacingRhythmMap.cinematicPacingRhythmMapId}:${formatScore3Dec(cinematicPacingRhythmMap.pacingRhythmScore)}:${formatScore3Dec(cinematicPacingRhythmMap.motionRhythmLinkageScore)}:${cinematicPacingRhythmMap.readyPacingRhythmTraits.join("+")}`,
       formatTimelineSnapshotLine("motionPersistenceTimeline", motionPersistenceTimeline),
       formatSteerSnapshotLine("motionOrchestrationSteer", motionOrchestrationSteeringRecommendations),
+    ],
+    [
+      `narrativeRhythm:${cinematicNarrativeRhythmLayer.cinematicNarrativeRhythmLayerId}:${cinematicNarrativeRhythmLayer.pilotVideoMode}:${formatScore3Dec(cinematicNarrativeRhythmLayer.narrativeRhythmScore)}`,
+      `emotionalPacingSync:${emotionalPacingSyncBridge.emotionalPacingSyncBridgeId}:${formatScore3Dec(emotionalPacingSyncBridge.emotionalPacingSyncStrength)}:${formatScore3Dec(emotionalPacingSyncBridge.pacingSyncLinkageScore)}:${emotionalPacingSyncBridge.replayLinkedPacingSyncRoutes.join("+")}`,
+      `cinematicBeatContinuity:${cinematicBeatContinuityMap.cinematicBeatContinuityMapId}:${formatScore3Dec(cinematicBeatContinuityMap.cinematicBeatContinuityScore)}:${formatScore3Dec(cinematicBeatContinuityMap.beatRhythmLinkageScore)}:${cinematicBeatContinuityMap.readyBeatContinuityTraits.join("+")}`,
+      formatTimelineSnapshotLine("narrativeRhythmTimeline", narrativeRhythmPersistenceTimeline),
+      formatSteerSnapshotLine("narrativeRhythmSteer", narrativeRhythmSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);
