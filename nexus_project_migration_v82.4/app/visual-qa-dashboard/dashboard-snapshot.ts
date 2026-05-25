@@ -225,6 +225,11 @@ import {
   buildScalabilityOrchestrationMap,
   buildFeatureLengthPersistenceTimeline,
   buildFeatureLengthExpansionSteeringRecommendations,
+  buildCinematicProductionReadinessLayer,
+  buildRenderFlowStabilizationBridge,
+  buildCinematicAssemblyOrchestrationMap,
+  buildProductionPipelinePersistenceTimeline,
+  buildProductionPipelineSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -486,6 +491,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const scalabilityOrchestrationMap = buildScalabilityOrchestrationMap();
   const featureLengthPersistenceTimeline = buildFeatureLengthPersistenceTimeline(payload);
   const featureLengthExpansionSteeringRecommendations = buildFeatureLengthExpansionSteeringRecommendations();
+  const cinematicProductionReadinessLayer = buildCinematicProductionReadinessLayer();
+  const renderFlowStabilizationBridge = buildRenderFlowStabilizationBridge();
+  const cinematicAssemblyOrchestrationMap = buildCinematicAssemblyOrchestrationMap();
+  const productionPipelinePersistenceTimeline = buildProductionPipelinePersistenceTimeline(payload);
+  const productionPipelineSteeringRecommendations = buildProductionPipelineSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -833,6 +843,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `scalabilityOrchestration:${scalabilityOrchestrationMap.scalabilityOrchestrationMapId}:${formatScore3Dec(scalabilityOrchestrationMap.scalabilityOrchestrationScore)}:${formatScore3Dec(scalabilityOrchestrationMap.featureLengthExpansionLinkageScore)}:${scalabilityOrchestrationMap.readyScalabilityTraits.join("+")}`,
       formatTimelineSnapshotLine("featureLengthTimeline", featureLengthPersistenceTimeline),
       formatSteerSnapshotLine("featureLengthSteer", featureLengthExpansionSteeringRecommendations),
+    ],
+    [
+      `productionReadiness:${cinematicProductionReadinessLayer.cinematicProductionReadinessLayerId}:${cinematicProductionReadinessLayer.pilotVideoMode}:${formatScore3Dec(cinematicProductionReadinessLayer.productionPipelineOrchestrationScore)}`,
+      `renderFlowStabilization:${renderFlowStabilizationBridge.renderFlowStabilizationBridgeId}:${formatScore3Dec(renderFlowStabilizationBridge.renderFlowStabilizationStrength)}:${formatScore3Dec(renderFlowStabilizationBridge.renderFlowLinkageScore)}:${renderFlowStabilizationBridge.replayLinkedRenderFlowRoutes.join("+")}`,
+      `assemblyOrchestration:${cinematicAssemblyOrchestrationMap.cinematicAssemblyOrchestrationMapId}:${formatScore3Dec(cinematicAssemblyOrchestrationMap.assemblyOrchestrationScore)}:${formatScore3Dec(cinematicAssemblyOrchestrationMap.productionPipelineLinkageScore)}:${cinematicAssemblyOrchestrationMap.readyAssemblyTraits.join("+")}`,
+      formatTimelineSnapshotLine("productionPipelineTimeline", productionPipelinePersistenceTimeline),
+      formatSteerSnapshotLine("productionPipelineSteer", productionPipelineSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

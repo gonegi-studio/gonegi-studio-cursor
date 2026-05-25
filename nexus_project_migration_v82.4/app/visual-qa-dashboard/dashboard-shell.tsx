@@ -208,6 +208,11 @@ import {
   buildScalabilityOrchestrationMap,
   buildFeatureLengthPersistenceTimeline,
   buildFeatureLengthExpansionSteeringRecommendations,
+  buildCinematicProductionReadinessLayer,
+  buildRenderFlowStabilizationBridge,
+  buildCinematicAssemblyOrchestrationMap,
+  buildProductionPipelinePersistenceTimeline,
+  buildProductionPipelineSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -275,6 +280,7 @@ import {
   groupGenerativeReadinessPersistenceTimelineByDimension,
   groupReplaySafeGenerationPersistenceTimelineByDimension,
   groupFeatureLengthPersistenceTimelineByDimension,
+  groupProductionPipelinePersistenceTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -601,6 +607,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const featureLengthPersistenceTimeline = buildFeatureLengthPersistenceTimeline(payload);
   const featureLengthPersistenceTimelineGroups = groupFeatureLengthPersistenceTimelineByDimension(featureLengthPersistenceTimeline);
   const featureLengthExpansionSteeringRecommendations = buildFeatureLengthExpansionSteeringRecommendations();
+  const cinematicProductionReadinessLayer = buildCinematicProductionReadinessLayer();
+  const renderFlowStabilizationBridge = buildRenderFlowStabilizationBridge();
+  const cinematicAssemblyOrchestrationMap = buildCinematicAssemblyOrchestrationMap();
+  const productionPipelinePersistenceTimeline = buildProductionPipelinePersistenceTimeline(payload);
+  const productionPipelinePersistenceTimelineGroups = groupProductionPipelinePersistenceTimelineByDimension(productionPipelinePersistenceTimeline);
+  const productionPipelineSteeringRecommendations = buildProductionPipelineSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -2988,6 +3000,68 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="feature-length-expansion-steering" title="Feature-Length Expansion Steering Recommendations">
           <SteeringChipList items={featureLengthExpansionSteeringRecommendations} dataAttr="feature-length-expansion-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-production-readiness-layer" title="Cinematic Production Readiness Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-production-readiness-layer-id={cinematicProductionReadinessLayer.cinematicProductionReadinessLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Production Readiness Layer ID" value={cinematicProductionReadinessLayer.cinematicProductionReadinessLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicProductionReadinessLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Production Pipeline Orchestration Score" value={formatScore3Dec(cinematicProductionReadinessLayer.productionPipelineOrchestrationScore)} emphasis />
+              <KeyValueField label="Active Production Pipeline Orchestration State" value={cinematicProductionReadinessLayer.activeProductionPipelineOrchestrationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Production Continuity" value={cinematicProductionReadinessLayer.cinematicProductionContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Render-Flow Persistence" value={cinematicProductionReadinessLayer.renderFlowPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Assembly Orchestration Continuity" value={cinematicProductionReadinessLayer.assemblyOrchestrationContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Production Routing" value={cinematicProductionReadinessLayer.replaySafeProductionRouting} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Production Normalization" value={cinematicProductionReadinessLayer.productionNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Assembly Stabilization" value={cinematicProductionReadinessLayer.cinematicAssemblyStabilization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional/Style Continuity Persistence" value={cinematicProductionReadinessLayer.emotionalStyleContinuityPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Future Animation Production Readiness" value={cinematicProductionReadinessLayer.futureAnimationProductionReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Production Pipeline Normalization" value={cinematicProductionReadinessLayer.productionPipelineNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="render-flow-stabilization-bridge" title="Render-Flow Stabilization Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-render-flow-stabilization-bridge-id={renderFlowStabilizationBridge.renderFlowStabilizationBridgeId}>
+            <p className="text-sm font-black">{renderFlowStabilizationBridge.renderFlowStabilizationBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active render-flow route · {renderFlowStabilizationBridge.activeRenderFlowRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Render-Flow Stabilization Strength" value={formatScore3Dec(renderFlowStabilizationBridge.renderFlowStabilizationStrength)} emphasis />
+              <KeyValueField label="Render-Flow Linkage Score" value={formatScore3Dec(renderFlowStabilizationBridge.renderFlowLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Render-Flow Routes</p><TagList tags={renderFlowStabilizationBridge.replayLinkedRenderFlowRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Render-Flow Routes</p><TagList tags={renderFlowStabilizationBridge.continuitySafeRenderFlowRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Render-Flow Routes</p><TagList tags={renderFlowStabilizationBridge.highDriftRenderFlowRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-assembly-orchestration-map" title="Cinematic Assembly Orchestration Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-assembly-orchestration-map-id={cinematicAssemblyOrchestrationMap.cinematicAssemblyOrchestrationMapId}>
+            <p className="text-sm font-black">{cinematicAssemblyOrchestrationMap.cinematicAssemblyOrchestrationMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active assembly route · {cinematicAssemblyOrchestrationMap.activeAssemblyRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Assembly Orchestration Score" value={formatScore3Dec(cinematicAssemblyOrchestrationMap.assemblyOrchestrationScore)} emphasis />
+              <KeyValueField label="Production Pipeline Linkage Score" value={formatScore3Dec(cinematicAssemblyOrchestrationMap.productionPipelineLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Assembly Orchestration Readiness" value={cinematicAssemblyOrchestrationMap.assemblyOrchestrationReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Assembly Traits</p><TagList tags={cinematicAssemblyOrchestrationMap.readyAssemblyTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Assembly Traits</p><TagList tags={cinematicAssemblyOrchestrationMap.pendingAssemblyTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="production-pipeline-persistence-timeline" title="Production Pipeline Persistence Timeline">
+          <TimelineTrendGrid groups={productionPipelinePersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="production-pipeline-steering" title="Production Pipeline Steering Recommendations">
+          <SteeringChipList items={productionPipelineSteeringRecommendations} dataAttr="production-pipeline-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

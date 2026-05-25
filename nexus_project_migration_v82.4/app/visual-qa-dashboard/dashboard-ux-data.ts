@@ -1696,6 +1696,47 @@ export type FeatureLengthExpansionSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicProductionReadinessLayer = {
+  readonly cinematicProductionReadinessLayerId: string;
+  readonly activeProductionPipelineOrchestrationState: string;
+  readonly pilotVideoMode: string;
+  readonly cinematicProductionContinuity: string;
+  readonly renderFlowPersistence: string;
+  readonly assemblyOrchestrationContinuity: string;
+  readonly replaySafeProductionRouting: string;
+  readonly productionNormalization: string;
+  readonly cinematicAssemblyStabilization: string;
+  readonly emotionalStyleContinuityPersistence: string;
+  readonly futureAnimationProductionReadiness: string;
+  readonly productionPipelineOrchestrationScore: number;
+  readonly productionPipelineNormalizationState: string;
+};
+
+export type RenderFlowStabilizationBridge = {
+  readonly renderFlowStabilizationBridgeId: string;
+  readonly activeRenderFlowRoute: string;
+  readonly replayLinkedRenderFlowRoutes: readonly string[];
+  readonly continuitySafeRenderFlowRoutes: readonly string[];
+  readonly highDriftRenderFlowRoutes: readonly string[];
+  readonly renderFlowStabilizationStrength: number;
+  readonly renderFlowLinkageScore: number;
+};
+
+export type CinematicAssemblyOrchestrationMap = {
+  readonly cinematicAssemblyOrchestrationMapId: string;
+  readonly activeAssemblyRoute: string;
+  readonly assemblyOrchestrationReadiness: string;
+  readonly readyAssemblyTraits: readonly string[];
+  readonly pendingAssemblyTraits: readonly string[];
+  readonly assemblyOrchestrationScore: number;
+  readonly productionPipelineLinkageScore: number;
+};
+
+export type ProductionPipelineSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -5106,6 +5147,86 @@ export const FEATURE_LENGTH_EXPANSION_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer full animation generation until feature-length layer stabilizes", severity: "warning" }),
 ] as const satisfies readonly FeatureLengthExpansionSteeringRecommendation[]);
 
+export const CINEMATIC_PRODUCTION_READINESS_LAYER = Object.freeze({
+  cinematicProductionReadinessLayerId: "cinematic-production-readiness-layer-gonegi-v1",
+  activeProductionPipelineOrchestrationState: "25s-pilot-production-pipeline-orchestration-ready",
+  pilotVideoMode: "single-25s",
+  cinematicProductionContinuity: "cinematic production continuity staged for 25s pilot harbor sample without render or assembly execution",
+  renderFlowPersistence: "render-flow persistence indexed for warm glaze carry-over and mediterranean production honesty",
+  assemblyOrchestrationContinuity: "assembly orchestration continuity prepared for harbor opening hold and protagonist arrival mid",
+  replaySafeProductionRouting: "replay-safe production routing reserved without render farm or ffmpeg execution",
+  productionNormalization: "production normalization locked for warm dissolve assembly continuity across pilot beats",
+  cinematicAssemblyStabilization: "cinematic assembly stabilization verified against ghibli-base harbor production profile",
+  emotionalStyleContinuityPersistence: "emotional/style continuity persistence mapped for soft carry-over harbor production warmth",
+  futureAnimationProductionReadiness: "future animation production readiness staged for ten-video expansion target without GPU orchestration",
+  productionPipelineOrchestrationScore: 0.891333,
+  productionPipelineNormalizationState: "canonical 25s pilot cinematic production pipeline orchestration normalization",
+} satisfies CinematicProductionReadinessLayer);
+
+export const RENDER_FLOW_STABILIZATION_BRIDGE = Object.freeze({
+  renderFlowStabilizationBridgeId: "render-flow-stabilization-bridge-gonegi-v1",
+  activeRenderFlowRoute: "render-flow-route-warm-glaze-production-001",
+  replayLinkedRenderFlowRoutes: Object.freeze(["render-flow-route-warm-glaze-production-001", "render-flow-route-harbor-assembly-echo-002"]),
+  continuitySafeRenderFlowRoutes: Object.freeze(["render-flow-route-warm-glaze-production-001", "render-flow-route-harbor-assembly-echo-002"]),
+  highDriftRenderFlowRoutes: Object.freeze(["render-flow-route-contrast-push-experiment"]),
+  renderFlowStabilizationStrength: 0.887333,
+  renderFlowLinkageScore: 0.901333,
+} satisfies RenderFlowStabilizationBridge);
+
+export const CINEMATIC_ASSEMBLY_ORCHESTRATION_MAP = Object.freeze({
+  cinematicAssemblyOrchestrationMapId: "cinematic-assembly-orchestration-map-gonegi-v1",
+  activeAssemblyRoute: "assembly-route-harbor-pilot-001",
+  assemblyOrchestrationReadiness: "assembly orchestration readiness staged for 25s pilot harbor sample without video assembly execution",
+  readyAssemblyTraits: Object.freeze(["warm-glaze-assembly-stable", "render-flow-continuity-carry", "soft-linework-assembly-carry"]),
+  pendingAssemblyTraits: Object.freeze(["alternate-assembly-experiment", "render-push-variant"]),
+  assemblyOrchestrationScore: 0.884333,
+  productionPipelineLinkageScore: 0.898333,
+} satisfies CinematicAssemblyOrchestrationMap);
+
+const PRODUCTION_PIPELINE_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicProductionContinuityTrend: number;
+      renderFlowPersistenceTrend: number;
+      assemblyOrchestrationContinuityTrend: number;
+      productionNormalizationTrend: number;
+      futureAnimationProductionReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicProductionContinuityTrend: 0.352333,
+    renderFlowPersistenceTrend: 0.659333,
+    assemblyOrchestrationContinuityTrend: 0.646333,
+    productionNormalizationTrend: 0.653333,
+    futureAnimationProductionReadinessTrend: 0.645333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicProductionContinuityTrend: 0.891333,
+    renderFlowPersistenceTrend: 0.886333,
+    assemblyOrchestrationContinuityTrend: 0.879333,
+    productionNormalizationTrend: 0.894333,
+    futureAnimationProductionReadinessTrend: 0.887333,
+  }),
+});
+
+export const PRODUCTION_PIPELINE_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic production continuity trend", "cinematicProductionContinuityTrend"],
+  ["render-flow persistence trend", "renderFlowPersistenceTrend"],
+  ["assembly orchestration continuity trend", "assemblyOrchestrationContinuityTrend"],
+  ["production normalization trend", "productionNormalizationTrend"],
+  ["future animation production readiness trend", "futureAnimationProductionReadinessTrend"],
+] as const);
+
+export const PRODUCTION_PIPELINE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot production pipeline orchestration layer", severity: "stable" }),
+  Object.freeze({ label: "maintain render-flow stabilization routing readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified cinematic assembly orchestration routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve production normalization linkage", severity: "stable" }),
+  Object.freeze({ label: "defer render and assembly execution until production pipeline layer stabilizes", severity: "warning" }),
+] as const satisfies readonly ProductionPipelineSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -7961,6 +8082,63 @@ export function groupFeatureLengthPersistenceTimelineByDimension(
 
 export function buildFeatureLengthExpansionSteeringRecommendations(): readonly FeatureLengthExpansionSteeringRecommendation[] {
   return FEATURE_LENGTH_EXPANSION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicProductionReadinessLayer(): CinematicProductionReadinessLayer {
+  return CINEMATIC_PRODUCTION_READINESS_LAYER;
+}
+
+export function buildRenderFlowStabilizationBridge(): RenderFlowStabilizationBridge {
+  return RENDER_FLOW_STABILIZATION_BRIDGE;
+}
+
+export function buildCinematicAssemblyOrchestrationMap(): CinematicAssemblyOrchestrationMap {
+  return CINEMATIC_ASSEMBLY_ORCHESTRATION_MAP;
+}
+
+export function buildProductionPipelinePersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of PRODUCTION_PIPELINE_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = PRODUCTION_PIPELINE_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? PRODUCTION_PIPELINE_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupProductionPipelinePersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    PRODUCTION_PIPELINE_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildProductionPipelineSteeringRecommendations(): readonly ProductionPipelineSteeringRecommendation[] {
+  return PRODUCTION_PIPELINE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
