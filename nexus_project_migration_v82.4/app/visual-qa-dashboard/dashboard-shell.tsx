@@ -113,6 +113,16 @@ import {
   buildAfterglowDriftDetection,
   buildAfterglowPersistenceTimeline,
   buildAfterglowSteeringRecommendations,
+  buildCinematicEchoPersistence,
+  buildEchoTransitionBridge,
+  buildEchoDriftDetection,
+  buildEchoPersistenceTimeline,
+  buildEchoSteeringRecommendations,
+  buildRealDatasetIntakeLayer,
+  buildCinematicDnaExtractionBridge,
+  buildImageAppLinkageReadiness,
+  buildDatasetIntakeTimeline,
+  buildDatasetIntakeSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -161,6 +171,8 @@ import {
   groupResolutionPersistenceTimelineByDimension,
   groupClosurePersistenceTimelineByDimension,
   groupAfterglowPersistenceTimelineByDimension,
+  groupEchoPersistenceTimelineByDimension,
+  groupDatasetIntakeTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -373,6 +385,18 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const afterglowPersistenceTimeline = buildAfterglowPersistenceTimeline(payload);
   const afterglowPersistenceTimelineGroups = groupAfterglowPersistenceTimelineByDimension(afterglowPersistenceTimeline);
   const afterglowSteeringRecommendations = buildAfterglowSteeringRecommendations();
+  const cinematicEchoPersistence = buildCinematicEchoPersistence();
+  const echoTransitionBridge = buildEchoTransitionBridge();
+  const echoDriftDetection = buildEchoDriftDetection();
+  const echoPersistenceTimeline = buildEchoPersistenceTimeline(payload);
+  const echoPersistenceTimelineGroups = groupEchoPersistenceTimelineByDimension(echoPersistenceTimeline);
+  const echoSteeringRecommendations = buildEchoSteeringRecommendations();
+  const realDatasetIntakeLayer = buildRealDatasetIntakeLayer();
+  const cinematicDnaExtractionBridge = buildCinematicDnaExtractionBridge();
+  const imageAppLinkageReadiness = buildImageAppLinkageReadiness();
+  const datasetIntakeTimeline = buildDatasetIntakeTimeline(payload);
+  const datasetIntakeTimelineGroups = groupDatasetIntakeTimelineByDimension(datasetIntakeTimeline);
+  const datasetIntakeSteeringRecommendations = buildDatasetIntakeSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1605,6 +1629,110 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="afterglow-steering" title="Afterglow Steering Recommendations">
           <SteeringChipList items={afterglowSteeringRecommendations} dataAttr="afterglow-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-echo-persistence" title="Cinematic Echo Persistence">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-echo-persistence-id={cinematicEchoPersistence.cinematicEchoPersistenceId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Echo Persistence ID" value={cinematicEchoPersistence.cinematicEchoPersistenceId} emphasis />
+              <KeyValueField label="Active Echo State" value={cinematicEchoPersistence.activeEchoState} emphasis />
+              <KeyValueField label="Cinematic Echo Score" value={formatScore3Dec(cinematicEchoPersistence.cinematicEchoScore)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Echo Remnant" value={cinematicEchoPersistence.emotionalEchoRemnant} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Scene Lingering Atmosphere" value={cinematicEchoPersistence.sceneLingeringAtmosphere} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Memory Persistence Flow" value={cinematicEchoPersistence.memoryPersistenceFlow} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Echo Continuity" value={cinematicEchoPersistence.cinematicEchoContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Echo Residue Stability" value={cinematicEchoPersistence.echoResidueStability} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Echo Normalization" value={cinematicEchoPersistence.echoNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="echo-transition-bridge" title="Echo Transition Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-echo-transition-bridge-id={echoTransitionBridge.echoTransitionBridgeId}>
+            <p className="text-sm font-black">{echoTransitionBridge.echoTransitionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active echo route · {echoTransitionBridge.activeEchoRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Routing Strength" value={formatScore3Dec(echoTransitionBridge.echoRoutingStrength)} emphasis />
+              <KeyValueField label="Echo Persistence Score" value={formatScore3Dec(echoTransitionBridge.echoPersistenceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Echo Routes</p><TagList tags={echoTransitionBridge.replayLinkedEchoRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Echo Routes</p><TagList tags={echoTransitionBridge.continuitySafeEchoRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Echo Routes</p><TagList tags={echoTransitionBridge.highDriftEchoRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="echo-drift-detection" title="Echo Drift Detection">
+          <DriftList items={echoDriftDetection} dataAttr="echo-drift" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="echo-persistence-timeline" title="Echo Persistence Timeline">
+          <TimelineTrendGrid groups={echoPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="echo-steering" title="Echo Steering Recommendations">
+          <SteeringChipList items={echoSteeringRecommendations} dataAttr="echo-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="real-dataset-intake-layer" title="Real Dataset Intake Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-real-dataset-intake-layer-id={realDatasetIntakeLayer.realDatasetIntakeLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Intake Layer ID" value={realDatasetIntakeLayer.realDatasetIntakeLayerId} emphasis />
+              <KeyValueField label="Active Intake State" value={realDatasetIntakeLayer.activeIntakeState} emphasis />
+              <KeyValueField label="Real Dataset Intake Score" value={formatScore3Dec(realDatasetIntakeLayer.realDatasetIntakeScore)} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Canonical Video Intake Readiness" value={realDatasetIntakeLayer.canonicalVideoIntakeReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Scene Extraction Preparation" value={realDatasetIntakeLayer.cinematicSceneExtractionPreparation} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Continuity Extraction" value={realDatasetIntakeLayer.emotionalContinuityExtraction} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Style-Core Linkage Readiness" value={realDatasetIntakeLayer.styleCoreLinkageReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Character-Core Compatibility" value={realDatasetIntakeLayer.characterCoreCompatibility} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Dataset Normalization" value={realDatasetIntakeLayer.replaySafeDatasetNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Intake Normalization" value={realDatasetIntakeLayer.intakeNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-dna-extraction-bridge" title="Cinematic DNA Extraction Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-dna-extraction-bridge-id={cinematicDnaExtractionBridge.cinematicDnaExtractionBridgeId}>
+            <p className="text-sm font-black">{cinematicDnaExtractionBridge.cinematicDnaExtractionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active extraction route · {cinematicDnaExtractionBridge.activeExtractionRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="DNA Extraction Strength" value={formatScore3Dec(cinematicDnaExtractionBridge.dnaExtractionStrength)} emphasis />
+              <KeyValueField label="Cinematic DNA Linkage Score" value={formatScore3Dec(cinematicDnaExtractionBridge.cinematicDnaLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Extraction Routes</p><TagList tags={cinematicDnaExtractionBridge.replayLinkedExtractionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Extraction Routes</p><TagList tags={cinematicDnaExtractionBridge.continuitySafeExtractionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Extraction Routes</p><TagList tags={cinematicDnaExtractionBridge.highDriftExtractionRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="image-app-linkage-readiness" title="Image App Linkage Readiness">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-image-app-linkage-readiness-id={imageAppLinkageReadiness.imageAppLinkageReadinessId}>
+            <p className="text-sm font-black">{imageAppLinkageReadiness.imageAppLinkageReadinessId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active linkage state · {imageAppLinkageReadiness.activeLinkageState}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Linkage Readiness Score" value={formatScore3Dec(imageAppLinkageReadiness.linkageReadinessScore)} emphasis />
+              <KeyValueField label="Orchestration Compatibility Score" value={formatScore3Dec(imageAppLinkageReadiness.orchestrationCompatibilityScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Provider-Neutral Preparation" value={imageAppLinkageReadiness.providerNeutralPreparation} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Image App Orchestration Compatibility" value={imageAppLinkageReadiness.imageAppOrchestrationCompatibility} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Linkage Modules</p><TagList tags={imageAppLinkageReadiness.readyLinkageModules} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Linkage Modules</p><TagList tags={imageAppLinkageReadiness.pendingLinkageModules} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="dataset-intake-timeline" title="Dataset Intake Timeline">
+          <TimelineTrendGrid groups={datasetIntakeTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="dataset-intake-steering" title="Dataset Intake Steering Recommendations">
+          <SteeringChipList items={datasetIntakeSteeringRecommendations} dataAttr="dataset-intake-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

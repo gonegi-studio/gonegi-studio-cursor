@@ -130,6 +130,16 @@ import {
   buildAfterglowDriftDetection,
   buildAfterglowPersistenceTimeline,
   buildAfterglowSteeringRecommendations,
+  buildCinematicEchoPersistence,
+  buildEchoTransitionBridge,
+  buildEchoDriftDetection,
+  buildEchoPersistenceTimeline,
+  buildEchoSteeringRecommendations,
+  buildRealDatasetIntakeLayer,
+  buildCinematicDnaExtractionBridge,
+  buildImageAppLinkageReadiness,
+  buildDatasetIntakeTimeline,
+  buildDatasetIntakeSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -296,6 +306,16 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const afterglowDriftDetection = buildAfterglowDriftDetection();
   const afterglowPersistenceTimeline = buildAfterglowPersistenceTimeline(payload);
   const afterglowSteeringRecommendations = buildAfterglowSteeringRecommendations();
+  const cinematicEchoPersistence = buildCinematicEchoPersistence();
+  const echoTransitionBridge = buildEchoTransitionBridge();
+  const echoDriftDetection = buildEchoDriftDetection();
+  const echoPersistenceTimeline = buildEchoPersistenceTimeline(payload);
+  const echoSteeringRecommendations = buildEchoSteeringRecommendations();
+  const realDatasetIntakeLayer = buildRealDatasetIntakeLayer();
+  const cinematicDnaExtractionBridge = buildCinematicDnaExtractionBridge();
+  const imageAppLinkageReadiness = buildImageAppLinkageReadiness();
+  const datasetIntakeTimeline = buildDatasetIntakeTimeline(payload);
+  const datasetIntakeSteeringRecommendations = buildDatasetIntakeSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -510,6 +530,20 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       formatDriftSnapshotLine("afterglowDrift", afterglowDriftDetection),
       formatTimelineSnapshotLine("afterglowTimeline", afterglowPersistenceTimeline),
       formatSteerSnapshotLine("afterglowSteer", afterglowSteeringRecommendations),
+    ],
+    [
+      `echoPersistence:${cinematicEchoPersistence.cinematicEchoPersistenceId}:${cinematicEchoPersistence.activeEchoState}:${formatScore3Dec(cinematicEchoPersistence.cinematicEchoScore)}`,
+      `echoBridge:${echoTransitionBridge.echoTransitionBridgeId}:${formatScore3Dec(echoTransitionBridge.echoRoutingStrength)}:${formatScore3Dec(echoTransitionBridge.echoPersistenceScore)}:${echoTransitionBridge.replayLinkedEchoRoutes.join("+")}`,
+      formatDriftSnapshotLine("echoDrift", echoDriftDetection),
+      formatTimelineSnapshotLine("echoTimeline", echoPersistenceTimeline),
+      formatSteerSnapshotLine("echoSteer", echoSteeringRecommendations),
+    ],
+    [
+      `realDatasetIntake:${realDatasetIntakeLayer.realDatasetIntakeLayerId}:${realDatasetIntakeLayer.activeIntakeState}:${formatScore3Dec(realDatasetIntakeLayer.realDatasetIntakeScore)}`,
+      `cinematicDnaBridge:${cinematicDnaExtractionBridge.cinematicDnaExtractionBridgeId}:${formatScore3Dec(cinematicDnaExtractionBridge.dnaExtractionStrength)}:${formatScore3Dec(cinematicDnaExtractionBridge.cinematicDnaLinkageScore)}:${cinematicDnaExtractionBridge.replayLinkedExtractionRoutes.join("+")}`,
+      `imageAppLinkage:${imageAppLinkageReadiness.imageAppLinkageReadinessId}:${formatScore3Dec(imageAppLinkageReadiness.linkageReadinessScore)}:${formatScore3Dec(imageAppLinkageReadiness.orchestrationCompatibilityScore)}:${imageAppLinkageReadiness.readyLinkageModules.join("+")}`,
+      formatTimelineSnapshotLine("datasetIntakeTimeline", datasetIntakeTimeline),
+      formatSteerSnapshotLine("datasetIntakeSteer", datasetIntakeSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

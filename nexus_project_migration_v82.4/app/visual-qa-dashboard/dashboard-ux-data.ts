@@ -931,6 +931,77 @@ export type AfterglowSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type CinematicEchoPersistence = {
+  readonly cinematicEchoPersistenceId: string;
+  readonly activeEchoState: string;
+  readonly emotionalEchoRemnant: string;
+  readonly sceneLingeringAtmosphere: string;
+  readonly memoryPersistenceFlow: string;
+  readonly cinematicEchoContinuity: string;
+  readonly echoResidueStability: string;
+  readonly cinematicEchoScore: number;
+  readonly echoNormalizationState: string;
+};
+
+export type EchoTransitionBridge = {
+  readonly echoTransitionBridgeId: string;
+  readonly activeEchoRoute: string;
+  readonly replayLinkedEchoRoutes: readonly string[];
+  readonly continuitySafeEchoRoutes: readonly string[];
+  readonly highDriftEchoRoutes: readonly string[];
+  readonly echoRoutingStrength: number;
+  readonly echoPersistenceScore: number;
+};
+
+export type EchoDriftItem = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type EchoSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type RealDatasetIntakeLayer = {
+  readonly realDatasetIntakeLayerId: string;
+  readonly activeIntakeState: string;
+  readonly canonicalVideoIntakeReadiness: string;
+  readonly cinematicSceneExtractionPreparation: string;
+  readonly emotionalContinuityExtraction: string;
+  readonly styleCoreLinkageReadiness: string;
+  readonly characterCoreCompatibility: string;
+  readonly replaySafeDatasetNormalization: string;
+  readonly realDatasetIntakeScore: number;
+  readonly intakeNormalizationState: string;
+};
+
+export type CinematicDnaExtractionBridge = {
+  readonly cinematicDnaExtractionBridgeId: string;
+  readonly activeExtractionRoute: string;
+  readonly replayLinkedExtractionRoutes: readonly string[];
+  readonly continuitySafeExtractionRoutes: readonly string[];
+  readonly highDriftExtractionRoutes: readonly string[];
+  readonly dnaExtractionStrength: number;
+  readonly cinematicDnaLinkageScore: number;
+};
+
+export type ImageAppLinkageReadiness = {
+  readonly imageAppLinkageReadinessId: string;
+  readonly activeLinkageState: string;
+  readonly providerNeutralPreparation: string;
+  readonly imageAppOrchestrationCompatibility: string;
+  readonly readyLinkageModules: readonly string[];
+  readonly pendingLinkageModules: readonly string[];
+  readonly linkageReadinessScore: number;
+  readonly orchestrationCompatibilityScore: number;
+};
+
+export type DatasetIntakeSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -2832,6 +2903,158 @@ export const AFTERGLOW_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce afterglow divergence pressure", severity: "warning" }),
 ] as const satisfies readonly AfterglowSteeringRecommendation[]);
 
+export const CINEMATIC_ECHO_PERSISTENCE = Object.freeze({
+  cinematicEchoPersistenceId: "cinematic-echo-persistence-gonegi-v1",
+  activeEchoState: "warm-harbor-echo-persistence-active",
+  emotionalEchoRemnant: "soft emotional echo remnant preserved across post-closure hold",
+  sceneLingeringAtmosphere: "scene lingering atmosphere continuity locked after final echo",
+  memoryPersistenceFlow: "memory persistence flow verified across harbor echo sequences",
+  cinematicEchoContinuity: "cinematic echo continuity stabilized in warm glaze tone",
+  echoResidueStability: "echo residue stability preserved across lingering sequences",
+  cinematicEchoScore: 0.840333,
+  echoNormalizationState: "canonical cinematic echo persistence normalization",
+} satisfies CinematicEchoPersistence);
+
+export const ECHO_TRANSITION_BRIDGE = Object.freeze({
+  echoTransitionBridgeId: "echo-transition-bridge-gonegi-v1",
+  activeEchoRoute: "echo-route-harbor-lingering-001",
+  replayLinkedEchoRoutes: Object.freeze(["echo-route-harbor-lingering-001", "echo-route-glaze-remnant-002"]),
+  continuitySafeEchoRoutes: Object.freeze(["echo-route-harbor-lingering-001", "echo-route-glaze-remnant-002"]),
+  highDriftEchoRoutes: Object.freeze(["echo-route-detail-push-experiment"]),
+  echoRoutingStrength: 0.833333,
+  echoPersistenceScore: 0.847333,
+} satisfies EchoTransitionBridge);
+
+export const ECHO_DRIFT_GROUPS = Object.freeze([
+  Object.freeze({ label: "cinematic echo fracture", severity: "critical" }),
+  Object.freeze({ label: "emotional echo remnant instability", severity: "critical" }),
+  Object.freeze({ label: "echo routing divergence", severity: "warning" }),
+  Object.freeze({ label: "scene lingering atmosphere mismatch", severity: "warning" }),
+  Object.freeze({ label: "memory persistence flow collapse", severity: "warning" }),
+] as const satisfies readonly EchoDriftItem[]);
+
+const ECHO_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      cinematicEchoPersistence: number;
+      emotionalEchoRemnantTrend: number;
+      sceneLingeringAtmosphereContinuity: number;
+      memoryPersistenceFlowTrend: number;
+      echoResidueStabilityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    cinematicEchoPersistence: 0.305333,
+    emotionalEchoRemnantTrend: 0.612333,
+    sceneLingeringAtmosphereContinuity: 0.599333,
+    memoryPersistenceFlowTrend: 0.605333,
+    echoResidueStabilityTrend: 0.597333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    cinematicEchoPersistence: 0.840333,
+    emotionalEchoRemnantTrend: 0.835333,
+    sceneLingeringAtmosphereContinuity: 0.828333,
+    memoryPersistenceFlowTrend: 0.843333,
+    echoResidueStabilityTrend: 0.836333,
+  }),
+});
+
+export const ECHO_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["cinematic echo persistence", "cinematicEchoPersistence"],
+  ["emotional echo remnant trend", "emotionalEchoRemnantTrend"],
+  ["scene lingering atmosphere continuity", "sceneLingeringAtmosphereContinuity"],
+  ["memory persistence flow trend", "memoryPersistenceFlowTrend"],
+  ["echo residue stability trend", "echoResidueStabilityTrend"],
+] as const);
+
+export const ECHO_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve cinematic echo persistence", severity: "stable" }),
+  Object.freeze({ label: "maintain emotional echo remnant stability", severity: "stable" }),
+  Object.freeze({ label: "avoid memory persistence flow collapse", severity: "critical" }),
+  Object.freeze({ label: "preserve scene lingering atmosphere", severity: "stable" }),
+  Object.freeze({ label: "reduce echo divergence pressure", severity: "warning" }),
+] as const satisfies readonly EchoSteeringRecommendation[]);
+
+export const REAL_DATASET_INTAKE_LAYER = Object.freeze({
+  realDatasetIntakeLayerId: "real-dataset-intake-layer-gonegi-v1",
+  activeIntakeState: "real-video-intake-preparation-active",
+  canonicalVideoIntakeReadiness: "canonical video intake readiness staged before ingestion",
+  cinematicSceneExtractionPreparation: "cinematic scene extraction preparation mapped to dataset schema",
+  emotionalContinuityExtraction: "emotional continuity extraction bridge ready for sample orchestration",
+  styleCoreLinkageReadiness: "style-core linkage readiness verified against warm glaze profile",
+  characterCoreCompatibility: "character-core compatibility locked for gonegi protagonist continuity",
+  replaySafeDatasetNormalization: "replay-safe dataset normalization prepared without provider binding",
+  realDatasetIntakeScore: 0.846333,
+  intakeNormalizationState: "canonical real dataset intake normalization",
+} satisfies RealDatasetIntakeLayer);
+
+export const CINEMATIC_DNA_EXTRACTION_BRIDGE = Object.freeze({
+  cinematicDnaExtractionBridgeId: "cinematic-dna-extraction-bridge-gonegi-v1",
+  activeExtractionRoute: "dna-extraction-route-harbor-sample-001",
+  replayLinkedExtractionRoutes: Object.freeze(["dna-extraction-route-harbor-sample-001", "dna-extraction-route-glaze-scene-002"]),
+  continuitySafeExtractionRoutes: Object.freeze(["dna-extraction-route-harbor-sample-001", "dna-extraction-route-glaze-scene-002"]),
+  highDriftExtractionRoutes: Object.freeze(["dna-extraction-route-unverified-sample"]),
+  dnaExtractionStrength: 0.839333,
+  cinematicDnaLinkageScore: 0.853333,
+} satisfies CinematicDnaExtractionBridge);
+
+export const IMAGE_APP_LINKAGE_READINESS = Object.freeze({
+  imageAppLinkageReadinessId: "image-app-linkage-readiness-gonegi-v1",
+  activeLinkageState: "image-generation-app-orchestration-ready",
+  providerNeutralPreparation: "provider-neutral dataset preparation staged for image app linkage",
+  imageAppOrchestrationCompatibility: "image app orchestration compatibility verified for evaluation flow",
+  readyLinkageModules: Object.freeze(["visual-qa-dashboard", "image-generation-preview", "style-core-bridge"]),
+  pendingLinkageModules: Object.freeze(["real-video-ingestion-slot", "sample-orchestration-queue"]),
+  linkageReadinessScore: 0.842333,
+  orchestrationCompatibilityScore: 0.857333,
+} satisfies ImageAppLinkageReadiness);
+
+const DATASET_INTAKE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      videoIntakeReadinessTrend: number;
+      cinematicDnaExtractionPreparation: number;
+      styleCoreLinkageReadinessTrend: number;
+      imageAppOrchestrationCompatibility: number;
+      datasetNormalizationTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    videoIntakeReadinessTrend: 0.309333,
+    cinematicDnaExtractionPreparation: 0.616333,
+    styleCoreLinkageReadinessTrend: 0.603333,
+    imageAppOrchestrationCompatibility: 0.609333,
+    datasetNormalizationTrend: 0.601333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    videoIntakeReadinessTrend: 0.846333,
+    cinematicDnaExtractionPreparation: 0.841333,
+    styleCoreLinkageReadinessTrend: 0.834333,
+    imageAppOrchestrationCompatibility: 0.849333,
+    datasetNormalizationTrend: 0.842333,
+  }),
+});
+
+export const DATASET_INTAKE_TREND_DIMENSIONS = Object.freeze([
+  ["video intake readiness trend", "videoIntakeReadinessTrend"],
+  ["cinematic dna extraction preparation", "cinematicDnaExtractionPreparation"],
+  ["style-core linkage readiness trend", "styleCoreLinkageReadinessTrend"],
+  ["image app orchestration compatibility", "imageAppOrchestrationCompatibility"],
+  ["dataset normalization trend", "datasetNormalizationTrend"],
+] as const);
+
+export const DATASET_INTAKE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve real dataset intake normalization", severity: "stable" }),
+  Object.freeze({ label: "maintain cinematic DNA extraction readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified sample extraction routes", severity: "critical" }),
+  Object.freeze({ label: "preserve image app orchestration compatibility", severity: "stable" }),
+  Object.freeze({ label: "reduce provider-bound intake divergence", severity: "warning" }),
+] as const satisfies readonly DatasetIntakeSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -4604,6 +4827,120 @@ export function groupAfterglowPersistenceTimelineByDimension(
 
 export function buildAfterglowSteeringRecommendations(): readonly AfterglowSteeringRecommendation[] {
   return AFTERGLOW_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicEchoPersistence(): CinematicEchoPersistence {
+  return CINEMATIC_ECHO_PERSISTENCE;
+}
+
+export function buildEchoTransitionBridge(): EchoTransitionBridge {
+  return ECHO_TRANSITION_BRIDGE;
+}
+
+export function buildEchoDriftDetection(): readonly EchoDriftItem[] {
+  return ECHO_DRIFT_GROUPS;
+}
+
+export function buildEchoPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of ECHO_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = ECHO_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? ECHO_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupEchoPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    ECHO_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildEchoSteeringRecommendations(): readonly EchoSteeringRecommendation[] {
+  return ECHO_STEERING_RECOMMENDATIONS;
+}
+
+export function buildRealDatasetIntakeLayer(): RealDatasetIntakeLayer {
+  return REAL_DATASET_INTAKE_LAYER;
+}
+
+export function buildCinematicDnaExtractionBridge(): CinematicDnaExtractionBridge {
+  return CINEMATIC_DNA_EXTRACTION_BRIDGE;
+}
+
+export function buildImageAppLinkageReadiness(): ImageAppLinkageReadiness {
+  return IMAGE_APP_LINKAGE_READINESS;
+}
+
+export function buildDatasetIntakeTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of DATASET_INTAKE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = DATASET_INTAKE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? DATASET_INTAKE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupDatasetIntakeTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    DATASET_INTAKE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildDatasetIntakeSteeringRecommendations(): readonly DatasetIntakeSteeringRecommendation[] {
+  return DATASET_INTAKE_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
