@@ -155,6 +155,11 @@ import {
   buildLightingStyleInheritanceMap,
   buildCompositionPatternTimeline,
   buildCinematicDnaSteeringRecommendations,
+  buildImageAppLinkageBridge,
+  buildStyleCoreCompatibilityMap,
+  buildCharacterCoreCompatibilityMap,
+  buildPromptRecipeRoutingTimeline,
+  buildImageAppSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -346,6 +351,11 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const lightingStyleInheritanceMap = buildLightingStyleInheritanceMap();
   const compositionPatternTimeline = buildCompositionPatternTimeline(payload);
   const cinematicDnaSteeringRecommendations = buildCinematicDnaSteeringRecommendations();
+  const imageAppLinkageBridge = buildImageAppLinkageBridge();
+  const styleCoreCompatibilityMap = buildStyleCoreCompatibilityMap();
+  const characterCoreCompatibilityMap = buildCharacterCoreCompatibilityMap();
+  const promptRecipeRoutingTimeline = buildPromptRecipeRoutingTimeline(payload);
+  const imageAppSteeringRecommendations = buildImageAppSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -595,6 +605,13 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `lightingInheritance:${lightingStyleInheritanceMap.lightingStyleInheritanceMapId}:${formatScore3Dec(lightingStyleInheritanceMap.styleCoreLinkageScore)}:${formatScore3Dec(lightingStyleInheritanceMap.lightingInheritanceScore)}:${lightingStyleInheritanceMap.readyInheritanceTraits.join("+")}`,
       formatTimelineSnapshotLine("compositionTimeline", compositionPatternTimeline),
       formatSteerSnapshotLine("cinematicDnaSteer", cinematicDnaSteeringRecommendations),
+    ],
+    [
+      `imageAppBridge:${imageAppLinkageBridge.imageAppLinkageBridgeId}:${imageAppLinkageBridge.pilotVideoMode}:${formatScore3Dec(imageAppLinkageBridge.imageAppLinkageBridgeScore)}`,
+      `styleCoreCompatibility:${styleCoreCompatibilityMap.styleCoreCompatibilityMapId}:${formatScore3Dec(styleCoreCompatibilityMap.styleCoreCompatibilityScore)}:${formatScore3Dec(styleCoreCompatibilityMap.generationPresetLinkageScore)}:${styleCoreCompatibilityMap.replayLinkedStyleCoreRoutes.join("+")}`,
+      `characterCoreCompatibility:${characterCoreCompatibilityMap.characterCoreCompatibilityMapId}:${formatScore3Dec(characterCoreCompatibilityMap.characterCoreCompatibilityScore)}:${formatScore3Dec(characterCoreCompatibilityMap.characterContinuityLinkageScore)}:${characterCoreCompatibilityMap.readyCharacterCoreTraits.join("+")}`,
+      formatTimelineSnapshotLine("promptRecipeRouting", promptRecipeRoutingTimeline),
+      formatSteerSnapshotLine("imageAppSteer", imageAppSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

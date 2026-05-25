@@ -138,6 +138,11 @@ import {
   buildLightingStyleInheritanceMap,
   buildCompositionPatternTimeline,
   buildCinematicDnaSteeringRecommendations,
+  buildImageAppLinkageBridge,
+  buildStyleCoreCompatibilityMap,
+  buildCharacterCoreCompatibilityMap,
+  buildPromptRecipeRoutingTimeline,
+  buildImageAppSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -191,6 +196,7 @@ import {
   groupVideoToDatasetNormalizationTimelineByDimension,
   groupSceneIndexPersistenceTimelineByDimension,
   groupCompositionPatternTimelineByDimension,
+  groupPromptRecipeRoutingTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -433,6 +439,12 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const compositionPatternTimeline = buildCompositionPatternTimeline(payload);
   const compositionPatternTimelineGroups = groupCompositionPatternTimelineByDimension(compositionPatternTimeline);
   const cinematicDnaSteeringRecommendations = buildCinematicDnaSteeringRecommendations();
+  const imageAppLinkageBridge = buildImageAppLinkageBridge();
+  const styleCoreCompatibilityMap = buildStyleCoreCompatibilityMap();
+  const characterCoreCompatibilityMap = buildCharacterCoreCompatibilityMap();
+  const promptRecipeRoutingTimeline = buildPromptRecipeRoutingTimeline(payload);
+  const promptRecipeRoutingTimelineGroups = groupPromptRecipeRoutingTimelineByDimension(promptRecipeRoutingTimeline);
+  const imageAppSteeringRecommendations = buildImageAppSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1955,6 +1967,65 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="cinematic-dna-steering" title="Cinematic DNA Steering Recommendations">
           <SteeringChipList items={cinematicDnaSteeringRecommendations} dataAttr="cinematic-dna-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="image-app-linkage-bridge" title="Image App Linkage Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-image-app-linkage-bridge-id={imageAppLinkageBridge.imageAppLinkageBridgeId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Linkage Bridge ID" value={imageAppLinkageBridge.imageAppLinkageBridgeId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={imageAppLinkageBridge.pilotVideoMode} emphasis />
+              <KeyValueField label="Image App Linkage Bridge Score" value={formatScore3Dec(imageAppLinkageBridge.imageAppLinkageBridgeScore)} emphasis />
+              <KeyValueField label="Active Linkage Bridge State" value={imageAppLinkageBridge.activeLinkageBridgeState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Style-Core Linkage" value={imageAppLinkageBridge.styleCoreLinkage} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Character-Core Linkage" value={imageAppLinkageBridge.characterCoreLinkage} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Prompt Recipe Compatibility" value={imageAppLinkageBridge.promptRecipeCompatibility} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Generation Preset Compatibility" value={imageAppLinkageBridge.generationPresetCompatibility} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Orchestration Bridge Readiness" value={imageAppLinkageBridge.orchestrationBridgeReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Linkage Bridge Normalization" value={imageAppLinkageBridge.linkageBridgeNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="style-core-compatibility-map" title="Style Core Compatibility Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-style-core-compatibility-map-id={styleCoreCompatibilityMap.styleCoreCompatibilityMapId}>
+            <p className="text-sm font-black">{styleCoreCompatibilityMap.styleCoreCompatibilityMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active style-core route · {styleCoreCompatibilityMap.activeStyleCoreRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Style-Core Compatibility Score" value={formatScore3Dec(styleCoreCompatibilityMap.styleCoreCompatibilityScore)} emphasis />
+              <KeyValueField label="Generation Preset Linkage Score" value={formatScore3Dec(styleCoreCompatibilityMap.generationPresetLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Style-Core Routes</p><TagList tags={styleCoreCompatibilityMap.replayLinkedStyleCoreRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Style-Core Routes</p><TagList tags={styleCoreCompatibilityMap.continuitySafeStyleCoreRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Style-Core Routes</p><TagList tags={styleCoreCompatibilityMap.highDriftStyleCoreRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="character-core-compatibility-map" title="Character Core Compatibility Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-character-core-compatibility-map-id={characterCoreCompatibilityMap.characterCoreCompatibilityMapId}>
+            <p className="text-sm font-black">{characterCoreCompatibilityMap.characterCoreCompatibilityMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active character-core route · {characterCoreCompatibilityMap.activeCharacterCoreRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Character-Core Compatibility Score" value={formatScore3Dec(characterCoreCompatibilityMap.characterCoreCompatibilityScore)} emphasis />
+              <KeyValueField label="Character Continuity Linkage Score" value={formatScore3Dec(characterCoreCompatibilityMap.characterContinuityLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Character-Core Linkage Readiness" value={characterCoreCompatibilityMap.characterCoreLinkageReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Character-Core Traits</p><TagList tags={characterCoreCompatibilityMap.readyCharacterCoreTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Character-Core Traits</p><TagList tags={characterCoreCompatibilityMap.pendingCharacterCoreTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="prompt-recipe-routing-readiness" title="Prompt Recipe Routing Readiness">
+          <TimelineTrendGrid groups={promptRecipeRoutingTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="image-app-steering-readiness" title="Image App Steering Readiness">
+          <SteeringChipList items={imageAppSteeringRecommendations} dataAttr="image-app-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">

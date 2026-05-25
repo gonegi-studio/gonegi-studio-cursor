@@ -1125,6 +1125,44 @@ export type CinematicDnaSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type ImageAppLinkageBridge = {
+  readonly imageAppLinkageBridgeId: string;
+  readonly activeLinkageBridgeState: string;
+  readonly pilotVideoMode: string;
+  readonly styleCoreLinkage: string;
+  readonly characterCoreLinkage: string;
+  readonly promptRecipeCompatibility: string;
+  readonly generationPresetCompatibility: string;
+  readonly orchestrationBridgeReadiness: string;
+  readonly imageAppLinkageBridgeScore: number;
+  readonly linkageBridgeNormalizationState: string;
+};
+
+export type StyleCoreCompatibilityMap = {
+  readonly styleCoreCompatibilityMapId: string;
+  readonly activeStyleCoreRoute: string;
+  readonly replayLinkedStyleCoreRoutes: readonly string[];
+  readonly continuitySafeStyleCoreRoutes: readonly string[];
+  readonly highDriftStyleCoreRoutes: readonly string[];
+  readonly styleCoreCompatibilityScore: number;
+  readonly generationPresetLinkageScore: number;
+};
+
+export type CharacterCoreCompatibilityMap = {
+  readonly characterCoreCompatibilityMapId: string;
+  readonly activeCharacterCoreRoute: string;
+  readonly characterCoreLinkageReadiness: string;
+  readonly readyCharacterCoreTraits: readonly string[];
+  readonly pendingCharacterCoreTraits: readonly string[];
+  readonly characterCoreCompatibilityScore: number;
+  readonly characterContinuityLinkageScore: number;
+};
+
+export type ImageAppSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -3418,6 +3456,83 @@ export const CINEMATIC_DNA_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "defer DNA embedding until pilot schema stabilizes", severity: "warning" }),
 ] as const satisfies readonly CinematicDnaSteeringRecommendation[]);
 
+export const IMAGE_APP_LINKAGE_BRIDGE = Object.freeze({
+  imageAppLinkageBridgeId: "image-app-linkage-bridge-gonegi-v1",
+  activeLinkageBridgeState: "25s-pilot-image-app-linkage-bridge-ready",
+  pilotVideoMode: "single-25s",
+  styleCoreLinkage: "style-core linkage staged for gonegi warm glaze profile without generation execution",
+  characterCoreLinkage: "character-core linkage prepared for gonegi protagonist profile continuity",
+  promptRecipeCompatibility: "prompt recipe compatibility verified against warm-glaze-balanced preset",
+  generationPresetCompatibility: "generation preset compatibility mapped for provider-neutral orchestration handoff",
+  orchestrationBridgeReadiness: "dashboard orchestration bridge readiness reserved without API linkage execution",
+  imageAppLinkageBridgeScore: 0.867333,
+  linkageBridgeNormalizationState: "canonical 25s pilot image app linkage bridge normalization",
+} satisfies ImageAppLinkageBridge);
+
+export const STYLE_CORE_COMPATIBILITY_MAP = Object.freeze({
+  styleCoreCompatibilityMapId: "style-core-compatibility-map-gonegi-v1",
+  activeStyleCoreRoute: "style-route-warm-glaze-core-001",
+  replayLinkedStyleCoreRoutes: Object.freeze(["style-route-warm-glaze-core-001", "style-route-soft-linework-echo-002"]),
+  continuitySafeStyleCoreRoutes: Object.freeze(["style-route-warm-glaze-core-001", "style-route-soft-linework-echo-002"]),
+  highDriftStyleCoreRoutes: Object.freeze(["style-route-detail-push-experiment"]),
+  styleCoreCompatibilityScore: 0.863333,
+  generationPresetLinkageScore: 0.877333,
+} satisfies StyleCoreCompatibilityMap);
+
+export const CHARACTER_CORE_COMPATIBILITY_MAP = Object.freeze({
+  characterCoreCompatibilityMapId: "character-core-compatibility-map-gonegi-v1",
+  activeCharacterCoreRoute: "character-route-protagonist-v1-001",
+  characterCoreLinkageReadiness: "character-core linkage readiness staged for 25s pilot harbor sample",
+  readyCharacterCoreTraits: Object.freeze(["eye-spacing-lock", "silhouette-consistency", "emotional-softness"]),
+  pendingCharacterCoreTraits: Object.freeze(["detail-push-variant", "expression-experiment-slot"]),
+  characterCoreCompatibilityScore: 0.860333,
+  characterContinuityLinkageScore: 0.874333,
+} satisfies CharacterCoreCompatibilityMap);
+
+const PROMPT_RECIPE_ROUTING_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      styleCoreLinkageTrend: number;
+      characterCoreLinkageTrend: number;
+      promptRecipeCompatibilityTrend: number;
+      generationPresetCompatibilityTrend: number;
+      imageAppSteeringReadinessTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    styleCoreLinkageTrend: 0.328333,
+    characterCoreLinkageTrend: 0.635333,
+    promptRecipeCompatibilityTrend: 0.622333,
+    generationPresetCompatibilityTrend: 0.628333,
+    imageAppSteeringReadinessTrend: 0.620333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    styleCoreLinkageTrend: 0.867333,
+    characterCoreLinkageTrend: 0.862333,
+    promptRecipeCompatibilityTrend: 0.855333,
+    generationPresetCompatibilityTrend: 0.870333,
+    imageAppSteeringReadinessTrend: 0.863333,
+  }),
+});
+
+export const PROMPT_RECIPE_ROUTING_TREND_DIMENSIONS = Object.freeze([
+  ["style-core linkage trend", "styleCoreLinkageTrend"],
+  ["character-core linkage trend", "characterCoreLinkageTrend"],
+  ["prompt recipe compatibility trend", "promptRecipeCompatibilityTrend"],
+  ["generation preset compatibility trend", "generationPresetCompatibilityTrend"],
+  ["image app steering readiness trend", "imageAppSteeringReadinessTrend"],
+] as const);
+
+export const IMAGE_APP_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot image app linkage bridge", severity: "stable" }),
+  Object.freeze({ label: "maintain style-core compatibility readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified prompt recipe routing slots", severity: "critical" }),
+  Object.freeze({ label: "preserve character-core continuity linkage", severity: "stable" }),
+  Object.freeze({ label: "defer API linkage until orchestration bridge stabilizes", severity: "warning" }),
+] as const satisfies readonly ImageAppSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -5475,6 +5590,63 @@ export function groupCompositionPatternTimelineByDimension(
 
 export function buildCinematicDnaSteeringRecommendations(): readonly CinematicDnaSteeringRecommendation[] {
   return CINEMATIC_DNA_STEERING_RECOMMENDATIONS;
+}
+
+export function buildImageAppLinkageBridge(): ImageAppLinkageBridge {
+  return IMAGE_APP_LINKAGE_BRIDGE;
+}
+
+export function buildStyleCoreCompatibilityMap(): StyleCoreCompatibilityMap {
+  return STYLE_CORE_COMPATIBILITY_MAP;
+}
+
+export function buildCharacterCoreCompatibilityMap(): CharacterCoreCompatibilityMap {
+  return CHARACTER_CORE_COMPATIBILITY_MAP;
+}
+
+export function buildPromptRecipeRoutingTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of PROMPT_RECIPE_ROUTING_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = PROMPT_RECIPE_ROUTING_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? PROMPT_RECIPE_ROUTING_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupPromptRecipeRoutingTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    PROMPT_RECIPE_ROUTING_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildImageAppSteeringRecommendations(): readonly ImageAppSteeringRecommendation[] {
+  return IMAGE_APP_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {
