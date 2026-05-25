@@ -140,6 +140,21 @@ import {
   buildImageAppLinkageReadiness,
   buildDatasetIntakeTimeline,
   buildDatasetIntakeSteeringRecommendations,
+  buildRealVideoSampleIntakeSchema,
+  buildVideoSceneSegmentationReadiness,
+  buildCinematicFeatureExtractionReadiness,
+  buildVideoToDatasetNormalizationTimeline,
+  buildVideoSampleSteeringRecommendations,
+  buildPilotSceneSegmentationSchema,
+  buildCinematicShotTransitionBridge,
+  buildEmotionalBeatSegmentation,
+  buildSceneIndexPersistenceTimeline,
+  buildSceneSegmentationSteeringRecommendations,
+  buildCinematicDnaSchemaLayer,
+  buildEmotionalToneExtractionBridge,
+  buildLightingStyleInheritanceMap,
+  buildCompositionPatternTimeline,
+  buildCinematicDnaSteeringRecommendations,
   buildReplayPersistenceTimeline,
   buildRetryGuardRecommendations,
   buildRetrySteering,
@@ -316,6 +331,21 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
   const imageAppLinkageReadiness = buildImageAppLinkageReadiness();
   const datasetIntakeTimeline = buildDatasetIntakeTimeline(payload);
   const datasetIntakeSteeringRecommendations = buildDatasetIntakeSteeringRecommendations();
+  const realVideoSampleIntakeSchema = buildRealVideoSampleIntakeSchema();
+  const videoSceneSegmentationReadiness = buildVideoSceneSegmentationReadiness();
+  const cinematicFeatureExtractionReadiness = buildCinematicFeatureExtractionReadiness();
+  const videoToDatasetNormalizationTimeline = buildVideoToDatasetNormalizationTimeline(payload);
+  const videoSampleSteeringRecommendations = buildVideoSampleSteeringRecommendations();
+  const pilotSceneSegmentationSchema = buildPilotSceneSegmentationSchema();
+  const cinematicShotTransitionBridge = buildCinematicShotTransitionBridge();
+  const emotionalBeatSegmentation = buildEmotionalBeatSegmentation();
+  const sceneIndexPersistenceTimeline = buildSceneIndexPersistenceTimeline(payload);
+  const sceneSegmentationSteeringRecommendations = buildSceneSegmentationSteeringRecommendations();
+  const cinematicDnaSchemaLayer = buildCinematicDnaSchemaLayer();
+  const emotionalToneExtractionBridge = buildEmotionalToneExtractionBridge();
+  const lightingStyleInheritanceMap = buildLightingStyleInheritanceMap();
+  const compositionPatternTimeline = buildCompositionPatternTimeline(payload);
+  const cinematicDnaSteeringRecommendations = buildCinematicDnaSteeringRecommendations();
 
   const ranking = payload.rankingPreviewRows
     .map((row) => `${row.cycleReportId}:${row.displayRank}:${row.statusBand}:${formatScore3Dec(row.stabilityScore)}`)
@@ -544,6 +574,27 @@ export function buildVisualQaDashboardRenderSnapshot(payload: VisualQaDashboardP
       `imageAppLinkage:${imageAppLinkageReadiness.imageAppLinkageReadinessId}:${formatScore3Dec(imageAppLinkageReadiness.linkageReadinessScore)}:${formatScore3Dec(imageAppLinkageReadiness.orchestrationCompatibilityScore)}:${imageAppLinkageReadiness.readyLinkageModules.join("+")}`,
       formatTimelineSnapshotLine("datasetIntakeTimeline", datasetIntakeTimeline),
       formatSteerSnapshotLine("datasetIntakeSteer", datasetIntakeSteeringRecommendations),
+    ],
+    [
+      `realVideoSample:${realVideoSampleIntakeSchema.realVideoSampleIntakeSchemaId}:${realVideoSampleIntakeSchema.canonicalSampleSlotId}:${formatScore3Dec(realVideoSampleIntakeSchema.realVideoSampleScore)}:${realVideoSampleIntakeSchema.pilotVideoMode}:${realVideoSampleIntakeSchema.futureScaleMode}:${realVideoSampleIntakeSchema.sampleDurationSec}:${realVideoSampleIntakeSchema.datasetExpansionTarget}`,
+      `sceneSegmentation:${videoSceneSegmentationReadiness.videoSceneSegmentationReadinessId}:${formatScore3Dec(videoSceneSegmentationReadiness.segmentationReadinessScore)}:${formatScore3Dec(videoSceneSegmentationReadiness.sceneBoundaryScore)}:${videoSceneSegmentationReadiness.preparedSceneSegments.join("+")}`,
+      `featureExtraction:${cinematicFeatureExtractionReadiness.cinematicFeatureExtractionReadinessId}:${formatScore3Dec(cinematicFeatureExtractionReadiness.featureExtractionReadinessScore)}:${formatScore3Dec(cinematicFeatureExtractionReadiness.cinematicFeatureLinkageScore)}:${cinematicFeatureExtractionReadiness.readyFeatureFamilies.join("+")}`,
+      formatTimelineSnapshotLine("videoDatasetNormalization", videoToDatasetNormalizationTimeline),
+      formatSteerSnapshotLine("videoSampleSteer", videoSampleSteeringRecommendations),
+    ],
+    [
+      `sceneSegmentationSchema:${pilotSceneSegmentationSchema.pilotSceneSegmentationSchemaId}:${pilotSceneSegmentationSchema.pilotVideoMode}:${formatScore3Dec(pilotSceneSegmentationSchema.pilotSceneSegmentationScore)}`,
+      `shotTransitionBridge:${cinematicShotTransitionBridge.cinematicShotTransitionBridgeId}:${formatScore3Dec(cinematicShotTransitionBridge.shotTransitionStrength)}:${formatScore3Dec(cinematicShotTransitionBridge.transitionContinuityScore)}:${cinematicShotTransitionBridge.replayLinkedTransitionRoutes.join("+")}`,
+      `emotionalBeatSegmentation:${emotionalBeatSegmentation.emotionalBeatSegmentationId}:${formatScore3Dec(emotionalBeatSegmentation.beatSegmentationScore)}:${formatScore3Dec(emotionalBeatSegmentation.pacingContinuityScore)}:${emotionalBeatSegmentation.indexedEmotionalBeats.join("+")}`,
+      formatTimelineSnapshotLine("sceneIndexTimeline", sceneIndexPersistenceTimeline),
+      formatSteerSnapshotLine("sceneSegmentationSteer", sceneSegmentationSteeringRecommendations),
+    ],
+    [
+      `cinematicDnaSchema:${cinematicDnaSchemaLayer.cinematicDnaSchemaLayerId}:${cinematicDnaSchemaLayer.pilotVideoMode}:${formatScore3Dec(cinematicDnaSchemaLayer.cinematicDnaSchemaScore)}`,
+      `emotionalToneBridge:${emotionalToneExtractionBridge.emotionalToneExtractionBridgeId}:${formatScore3Dec(emotionalToneExtractionBridge.emotionalToneStrength)}:${formatScore3Dec(emotionalToneExtractionBridge.toneExtractionScore)}:${emotionalToneExtractionBridge.replayLinkedToneRoutes.join("+")}`,
+      `lightingInheritance:${lightingStyleInheritanceMap.lightingStyleInheritanceMapId}:${formatScore3Dec(lightingStyleInheritanceMap.styleCoreLinkageScore)}:${formatScore3Dec(lightingStyleInheritanceMap.lightingInheritanceScore)}:${lightingStyleInheritanceMap.readyInheritanceTraits.join("+")}`,
+      formatTimelineSnapshotLine("compositionTimeline", compositionPatternTimeline),
+      formatSteerSnapshotLine("cinematicDnaSteer", cinematicDnaSteeringRecommendations),
     ],
     [VISUAL_QA_DASHBOARD_TREND_SIGNAL_SLOTS.slice(0, payload.routeMetadata.trendSignalCount).join("|")],
   ]);

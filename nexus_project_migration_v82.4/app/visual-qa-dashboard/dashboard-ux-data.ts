@@ -1002,6 +1002,129 @@ export type DatasetIntakeSteeringRecommendation = {
   readonly severity: FindingSeverity;
 };
 
+export type RealVideoSampleIntakeSchema = {
+  readonly realVideoSampleIntakeSchemaId: string;
+  readonly canonicalSampleSlotId: string;
+  readonly activeSampleState: string;
+  readonly pilotVideoMode: string;
+  readonly futureScaleMode: string;
+  readonly sampleDurationSec: number;
+  readonly datasetExpansionTarget: string;
+  readonly canonicalVideoIntakeSchemaVersion: string;
+  readonly singleSampleIntakeReadiness: string;
+  readonly sceneToDatasetBridgeReadiness: string;
+  readonly cinematicDnaLinkageSlot: string;
+  readonly imageAppSteeringSlot: string;
+  readonly realVideoSampleScore: number;
+  readonly sampleSchemaNormalizationState: string;
+};
+
+export type VideoSceneSegmentationReadiness = {
+  readonly videoSceneSegmentationReadinessId: string;
+  readonly activeSegmentationState: string;
+  readonly preparedSceneSegments: readonly string[];
+  readonly continuitySafeSegments: readonly string[];
+  readonly pendingSegmentSlots: readonly string[];
+  readonly segmentationReadinessScore: number;
+  readonly sceneBoundaryScore: number;
+};
+
+export type CinematicFeatureExtractionReadiness = {
+  readonly cinematicFeatureExtractionReadinessId: string;
+  readonly activeExtractionState: string;
+  readonly readyFeatureFamilies: readonly string[];
+  readonly pendingFeatureFamilies: readonly string[];
+  readonly emotionalContinuityExtractionReadiness: string;
+  readonly styleCoreFeatureLinkage: string;
+  readonly featureExtractionReadinessScore: number;
+  readonly cinematicFeatureLinkageScore: number;
+};
+
+export type VideoSampleSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type PilotSceneSegmentationSchema = {
+  readonly pilotSceneSegmentationSchemaId: string;
+  readonly activeSegmentationState: string;
+  readonly pilotVideoMode: string;
+  readonly sceneSegmentationReadiness: string;
+  readonly shotBoundaryContinuity: string;
+  readonly sceneContinuityExtraction: string;
+  readonly cinematicSceneIndexing: string;
+  readonly replaySafeSceneOrdering: string;
+  readonly sceneContinuityNormalization: string;
+  readonly pilotSceneSegmentationScore: number;
+  readonly segmentationSchemaNormalizationState: string;
+};
+
+export type CinematicShotTransitionBridge = {
+  readonly cinematicShotTransitionBridgeId: string;
+  readonly activeTransitionRoute: string;
+  readonly replayLinkedTransitionRoutes: readonly string[];
+  readonly continuitySafeTransitionRoutes: readonly string[];
+  readonly highDriftTransitionRoutes: readonly string[];
+  readonly shotTransitionStrength: number;
+  readonly transitionContinuityScore: number;
+};
+
+export type EmotionalBeatSegmentation = {
+  readonly emotionalBeatSegmentationId: string;
+  readonly activeBeatIndexingState: string;
+  readonly indexedEmotionalBeats: readonly string[];
+  readonly continuitySafeBeats: readonly string[];
+  readonly pendingBeatSlots: readonly string[];
+  readonly emotionalBeatIndexingReadiness: string;
+  readonly cinematicPacingExtraction: string;
+  readonly beatSegmentationScore: number;
+  readonly pacingContinuityScore: number;
+};
+
+export type SceneSegmentationSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
+export type CinematicDnaSchemaLayer = {
+  readonly cinematicDnaSchemaLayerId: string;
+  readonly activeDnaSchemaState: string;
+  readonly pilotVideoMode: string;
+  readonly emotionalWarmthContinuity: string;
+  readonly cinematicFramingPersistence: string;
+  readonly characterContinuityLinkage: string;
+  readonly replaySafeCinematicDnaNormalization: string;
+  readonly styleCoreCompatibilityPreparation: string;
+  readonly imageAppSteeringReadiness: string;
+  readonly cinematicDnaSchemaScore: number;
+  readonly dnaSchemaNormalizationState: string;
+};
+
+export type EmotionalToneExtractionBridge = {
+  readonly emotionalToneExtractionBridgeId: string;
+  readonly activeToneRoute: string;
+  readonly replayLinkedToneRoutes: readonly string[];
+  readonly continuitySafeToneRoutes: readonly string[];
+  readonly highDriftToneRoutes: readonly string[];
+  readonly emotionalToneStrength: number;
+  readonly toneExtractionScore: number;
+};
+
+export type LightingStyleInheritanceMap = {
+  readonly lightingStyleInheritanceMapId: string;
+  readonly activeInheritanceState: string;
+  readonly lightingInheritanceReadiness: string;
+  readonly readyInheritanceTraits: readonly string[];
+  readonly pendingInheritanceTraits: readonly string[];
+  readonly styleCoreLinkageScore: number;
+  readonly lightingInheritanceScore: number;
+};
+
+export type CinematicDnaSteeringRecommendation = {
+  readonly label: string;
+  readonly severity: FindingSeverity;
+};
+
 export const STYLE_CORE_PROFILE = Object.freeze({
   styleCoreId: "gonegi-warm-glaze-core",
   styleCoreName: "Gonegi Warm Glaze Core",
@@ -3055,6 +3178,246 @@ export const DATASET_INTAKE_STEERING_RECOMMENDATIONS = Object.freeze([
   Object.freeze({ label: "reduce provider-bound intake divergence", severity: "warning" }),
 ] as const satisfies readonly DatasetIntakeSteeringRecommendation[]);
 
+export const REAL_VIDEO_SAMPLE_INTAKE_SCHEMA = Object.freeze({
+  realVideoSampleIntakeSchemaId: "real-video-sample-intake-schema-gonegi-v1",
+  canonicalSampleSlotId: "gonegi-harbor-pilot-25s-slot-001",
+  activeSampleState: "25s-pilot-single-video-intake-schema-ready",
+  pilotVideoMode: "single-25s",
+  futureScaleMode: "ten-long-videos",
+  sampleDurationSec: 25,
+  datasetExpansionTarget: "10 long-form videos",
+  canonicalVideoIntakeSchemaVersion: "canonical-video-intake-schema-v1",
+  singleSampleIntakeReadiness: "single 25s pilot video intake slot staged without file processing",
+  sceneToDatasetBridgeReadiness: "scene-to-dataset bridge readiness mapped for 25s harbor pilot flow",
+  cinematicDnaLinkageSlot: "cinematic DNA linkage slot reserved for pilot sample extraction bridge",
+  imageAppSteeringSlot: "image app steering slot reserved for post-pilot evaluation orchestration handoff",
+  realVideoSampleScore: 0.852333,
+  sampleSchemaNormalizationState: "canonical 25s pilot video intake normalization",
+} satisfies RealVideoSampleIntakeSchema);
+
+export const VIDEO_SCENE_SEGMENTATION_READINESS = Object.freeze({
+  videoSceneSegmentationReadinessId: "video-scene-segmentation-readiness-gonegi-v1",
+  activeSegmentationState: "harbor-scene-segmentation-prepared",
+  preparedSceneSegments: Object.freeze(["harbor-opening-hold", "protagonist-arrival-mid", "warm-glaze-final-echo"]),
+  continuitySafeSegments: Object.freeze(["harbor-opening-hold", "protagonist-arrival-mid", "warm-glaze-final-echo"]),
+  pendingSegmentSlots: Object.freeze(["alternate-cut-experiment-slot"]),
+  segmentationReadinessScore: 0.845333,
+  sceneBoundaryScore: 0.859333,
+} satisfies VideoSceneSegmentationReadiness);
+
+export const CINEMATIC_FEATURE_EXTRACTION_READINESS = Object.freeze({
+  cinematicFeatureExtractionReadinessId: "cinematic-feature-extraction-readiness-gonegi-v1",
+  activeExtractionState: "cinematic-feature-extraction-prepared",
+  readyFeatureFamilies: Object.freeze(["emotional-continuity", "style-core-lighting", "character-silhouette"]),
+  pendingFeatureFamilies: Object.freeze(["motion-blur-experiment", "detail-push-variant"]),
+  emotionalContinuityExtractionReadiness: "emotional continuity extraction readiness staged for harbor sample",
+  styleCoreFeatureLinkage: "style-core feature linkage verified against warm glaze profile",
+  featureExtractionReadinessScore: 0.848333,
+  cinematicFeatureLinkageScore: 0.862333,
+} satisfies CinematicFeatureExtractionReadiness);
+
+const VIDEO_DATASET_NORMALIZATION_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      videoSampleIntakeSchemaReadiness: number;
+      sceneSegmentationNormalization: number;
+      cinematicFeatureExtractionNormalization: number;
+      videoToDatasetBridgeTrend: number;
+      imageAppSteeringCompatibilityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    videoSampleIntakeSchemaReadiness: 0.313333,
+    sceneSegmentationNormalization: 0.620333,
+    cinematicFeatureExtractionNormalization: 0.607333,
+    videoToDatasetBridgeTrend: 0.613333,
+    imageAppSteeringCompatibilityTrend: 0.605333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    videoSampleIntakeSchemaReadiness: 0.852333,
+    sceneSegmentationNormalization: 0.847333,
+    cinematicFeatureExtractionNormalization: 0.840333,
+    videoToDatasetBridgeTrend: 0.855333,
+    imageAppSteeringCompatibilityTrend: 0.848333,
+  }),
+});
+
+export const VIDEO_DATASET_NORMALIZATION_TREND_DIMENSIONS = Object.freeze([
+  ["video sample intake schema readiness", "videoSampleIntakeSchemaReadiness"],
+  ["scene segmentation normalization", "sceneSegmentationNormalization"],
+  ["cinematic feature extraction normalization", "cinematicFeatureExtractionNormalization"],
+  ["video-to-dataset bridge trend", "videoToDatasetBridgeTrend"],
+  ["image app steering compatibility trend", "imageAppSteeringCompatibilityTrend"],
+] as const);
+
+export const VIDEO_SAMPLE_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "validate single 25s pilot before long-form expansion", severity: "stable" }),
+  Object.freeze({ label: "maintain scene segmentation readiness for pilot sample", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified sample segment slots", severity: "critical" }),
+  Object.freeze({ label: "preserve cinematic feature extraction linkage", severity: "stable" }),
+  Object.freeze({ label: "defer ten-long-videos scale until pilot schema stabilizes", severity: "warning" }),
+] as const satisfies readonly VideoSampleSteeringRecommendation[]);
+
+export const PILOT_SCENE_SEGMENTATION_SCHEMA = Object.freeze({
+  pilotSceneSegmentationSchemaId: "pilot-scene-segmentation-schema-gonegi-v1",
+  activeSegmentationState: "25s-pilot-scene-segmentation-schema-ready",
+  pilotVideoMode: "single-25s",
+  sceneSegmentationReadiness: "25s pilot scene segmentation readiness staged without frame extraction",
+  shotBoundaryContinuity: "shot boundary continuity prepared for harbor pilot sequence",
+  sceneContinuityExtraction: "scene continuity extraction mapped for single-sample validation",
+  cinematicSceneIndexing: "cinematic scene indexing schema reserved for pilot harbor flow",
+  replaySafeSceneOrdering: "replay-safe scene ordering locked for 25s pilot sample",
+  sceneContinuityNormalization: "sequence-safe segmentation preparation verified",
+  pilotSceneSegmentationScore: 0.858333,
+  segmentationSchemaNormalizationState: "canonical 25s pilot scene segmentation normalization",
+} satisfies PilotSceneSegmentationSchema);
+
+export const CINEMATIC_SHOT_TRANSITION_BRIDGE = Object.freeze({
+  cinematicShotTransitionBridgeId: "cinematic-shot-transition-bridge-gonegi-v1",
+  activeTransitionRoute: "shot-transition-route-harbor-pilot-001",
+  replayLinkedTransitionRoutes: Object.freeze(["shot-transition-route-harbor-pilot-001", "shot-transition-route-glaze-hold-002"]),
+  continuitySafeTransitionRoutes: Object.freeze(["shot-transition-route-harbor-pilot-001", "shot-transition-route-glaze-hold-002"]),
+  highDriftTransitionRoutes: Object.freeze(["shot-transition-route-unverified-cut"]),
+  shotTransitionStrength: 0.851333,
+  transitionContinuityScore: 0.865333,
+} satisfies CinematicShotTransitionBridge);
+
+export const EMOTIONAL_BEAT_SEGMENTATION = Object.freeze({
+  emotionalBeatSegmentationId: "emotional-beat-segmentation-gonegi-v1",
+  activeBeatIndexingState: "25s-pilot-emotional-beat-indexing-prepared",
+  indexedEmotionalBeats: Object.freeze(["harbor-arrival-soft-hold", "protagonist-gaze-beat", "warm-glaze-release-echo"]),
+  continuitySafeBeats: Object.freeze(["harbor-arrival-soft-hold", "protagonist-gaze-beat", "warm-glaze-release-echo"]),
+  pendingBeatSlots: Object.freeze(["alternate-pacing-experiment-beat"]),
+  emotionalBeatIndexingReadiness: "emotional beat indexing readiness staged for 25s pilot sample",
+  cinematicPacingExtraction: "cinematic pacing extraction prepared without inference execution",
+  beatSegmentationScore: 0.854333,
+  pacingContinuityScore: 0.868333,
+} satisfies EmotionalBeatSegmentation);
+
+const SCENE_INDEX_PERSISTENCE_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      sceneSegmentationReadinessTrend: number;
+      shotBoundaryContinuityTrend: number;
+      emotionalBeatIndexingTrend: number;
+      cinematicPacingExtractionTrend: number;
+      sceneContinuityNormalizationTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    sceneSegmentationReadinessTrend: 0.317333,
+    shotBoundaryContinuityTrend: 0.624333,
+    emotionalBeatIndexingTrend: 0.611333,
+    cinematicPacingExtractionTrend: 0.617333,
+    sceneContinuityNormalizationTrend: 0.609333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    sceneSegmentationReadinessTrend: 0.858333,
+    shotBoundaryContinuityTrend: 0.853333,
+    emotionalBeatIndexingTrend: 0.846333,
+    cinematicPacingExtractionTrend: 0.861333,
+    sceneContinuityNormalizationTrend: 0.854333,
+  }),
+});
+
+export const SCENE_INDEX_PERSISTENCE_TREND_DIMENSIONS = Object.freeze([
+  ["scene segmentation readiness trend", "sceneSegmentationReadinessTrend"],
+  ["shot boundary continuity trend", "shotBoundaryContinuityTrend"],
+  ["emotional beat indexing trend", "emotionalBeatIndexingTrend"],
+  ["cinematic pacing extraction trend", "cinematicPacingExtractionTrend"],
+  ["scene continuity normalization trend", "sceneContinuityNormalizationTrend"],
+] as const);
+
+export const SCENE_SEGMENTATION_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot scene segmentation schema", severity: "stable" }),
+  Object.freeze({ label: "maintain shot transition continuity for pilot sample", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified emotional beat slots", severity: "critical" }),
+  Object.freeze({ label: "preserve replay-safe scene ordering", severity: "stable" }),
+  Object.freeze({ label: "defer long-form segmentation until pilot index stabilizes", severity: "warning" }),
+] as const satisfies readonly SceneSegmentationSteeringRecommendation[]);
+
+export const CINEMATIC_DNA_SCHEMA_LAYER = Object.freeze({
+  cinematicDnaSchemaLayerId: "cinematic-dna-schema-layer-gonegi-v1",
+  activeDnaSchemaState: "25s-pilot-cinematic-dna-schema-ready",
+  pilotVideoMode: "single-25s",
+  emotionalWarmthContinuity: "emotional warmth continuity staged for 25s pilot harbor sample",
+  cinematicFramingPersistence: "cinematic framing persistence indexed without inference execution",
+  characterContinuityLinkage: "character continuity linkage prepared for gonegi protagonist profile",
+  replaySafeCinematicDnaNormalization: "replay-safe cinematic DNA normalization locked for pilot flow",
+  styleCoreCompatibilityPreparation: "style-core compatibility preparation verified against warm glaze profile",
+  imageAppSteeringReadiness: "future image-app steering readiness reserved without generation execution",
+  cinematicDnaSchemaScore: 0.864333,
+  dnaSchemaNormalizationState: "canonical 25s pilot cinematic DNA schema normalization",
+} satisfies CinematicDnaSchemaLayer);
+
+export const EMOTIONAL_TONE_EXTRACTION_BRIDGE = Object.freeze({
+  emotionalToneExtractionBridgeId: "emotional-tone-extraction-bridge-gonegi-v1",
+  activeToneRoute: "tone-route-harbor-warm-hold-001",
+  replayLinkedToneRoutes: Object.freeze(["tone-route-harbor-warm-hold-001", "tone-route-glaze-soft-echo-002"]),
+  continuitySafeToneRoutes: Object.freeze(["tone-route-harbor-warm-hold-001", "tone-route-glaze-soft-echo-002"]),
+  highDriftToneRoutes: Object.freeze(["tone-route-unverified-contrast-push"]),
+  emotionalToneStrength: 0.857333,
+  toneExtractionScore: 0.871333,
+} satisfies EmotionalToneExtractionBridge);
+
+export const LIGHTING_STYLE_INHERITANCE_MAP = Object.freeze({
+  lightingStyleInheritanceMapId: "lighting-style-inheritance-map-gonegi-v1",
+  activeInheritanceState: "warm-glaze-lighting-inheritance-prepared",
+  lightingInheritanceReadiness: "lighting inheritance readiness staged for 25s pilot sample",
+  readyInheritanceTraits: Object.freeze(["warm-glaze-diffusion", "mediterranean-palette", "soft-linework"]),
+  pendingInheritanceTraits: Object.freeze(["harsh-contrast-experiment", "detail-push-variant"]),
+  styleCoreLinkageScore: 0.860333,
+  lightingInheritanceScore: 0.874333,
+} satisfies LightingStyleInheritanceMap);
+
+const COMPOSITION_PATTERN_TREND_LOOKUP: Readonly<
+  Record<
+    string,
+    Readonly<{
+      emotionalWarmthContinuityTrend: number;
+      lightingInheritanceReadinessTrend: number;
+      compositionRhythmIndexingTrend: number;
+      cinematicFramingPersistenceTrend: number;
+      styleCoreCompatibilityTrend: number;
+    }>
+  >
+> = Object.freeze({
+  "real-test-cycle-002": Object.freeze({
+    emotionalWarmthContinuityTrend: 0.321333,
+    lightingInheritanceReadinessTrend: 0.628333,
+    compositionRhythmIndexingTrend: 0.615333,
+    cinematicFramingPersistenceTrend: 0.621333,
+    styleCoreCompatibilityTrend: 0.613333,
+  }),
+  "real-test-cycle-001": Object.freeze({
+    emotionalWarmthContinuityTrend: 0.864333,
+    lightingInheritanceReadinessTrend: 0.859333,
+    compositionRhythmIndexingTrend: 0.852333,
+    cinematicFramingPersistenceTrend: 0.867333,
+    styleCoreCompatibilityTrend: 0.860333,
+  }),
+});
+
+export const COMPOSITION_PATTERN_TREND_DIMENSIONS = Object.freeze([
+  ["emotional warmth continuity trend", "emotionalWarmthContinuityTrend"],
+  ["lighting inheritance readiness trend", "lightingInheritanceReadinessTrend"],
+  ["composition rhythm indexing trend", "compositionRhythmIndexingTrend"],
+  ["cinematic framing persistence trend", "cinematicFramingPersistenceTrend"],
+  ["style-core compatibility trend", "styleCoreCompatibilityTrend"],
+] as const);
+
+export const CINEMATIC_DNA_STEERING_RECOMMENDATIONS = Object.freeze([
+  Object.freeze({ label: "preserve 25s pilot cinematic DNA schema", severity: "stable" }),
+  Object.freeze({ label: "maintain emotional tone extraction readiness", severity: "stable" }),
+  Object.freeze({ label: "avoid unverified tone extraction routes", severity: "critical" }),
+  Object.freeze({ label: "preserve lighting style inheritance linkage", severity: "stable" }),
+  Object.freeze({ label: "defer DNA embedding until pilot schema stabilizes", severity: "warning" }),
+] as const satisfies readonly CinematicDnaSteeringRecommendation[]);
+
 const CONTINUITY_METRICS_LOOKUP: Readonly<Record<string, readonly ContinuityMetric[]>> = Object.freeze({
   "real-test-cycle-001": Object.freeze([
     Object.freeze({ label: "eye spacing stability", score: 0.812333, severity: "stable" }),
@@ -4941,6 +5304,177 @@ export function groupDatasetIntakeTimelineByDimension(
 
 export function buildDatasetIntakeSteeringRecommendations(): readonly DatasetIntakeSteeringRecommendation[] {
   return DATASET_INTAKE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildRealVideoSampleIntakeSchema(): RealVideoSampleIntakeSchema {
+  return REAL_VIDEO_SAMPLE_INTAKE_SCHEMA;
+}
+
+export function buildVideoSceneSegmentationReadiness(): VideoSceneSegmentationReadiness {
+  return VIDEO_SCENE_SEGMENTATION_READINESS;
+}
+
+export function buildCinematicFeatureExtractionReadiness(): CinematicFeatureExtractionReadiness {
+  return CINEMATIC_FEATURE_EXTRACTION_READINESS;
+}
+
+export function buildVideoToDatasetNormalizationTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of VIDEO_DATASET_NORMALIZATION_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = VIDEO_DATASET_NORMALIZATION_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? VIDEO_DATASET_NORMALIZATION_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupVideoToDatasetNormalizationTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    VIDEO_DATASET_NORMALIZATION_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildVideoSampleSteeringRecommendations(): readonly VideoSampleSteeringRecommendation[] {
+  return VIDEO_SAMPLE_STEERING_RECOMMENDATIONS;
+}
+
+export function buildPilotSceneSegmentationSchema(): PilotSceneSegmentationSchema {
+  return PILOT_SCENE_SEGMENTATION_SCHEMA;
+}
+
+export function buildCinematicShotTransitionBridge(): CinematicShotTransitionBridge {
+  return CINEMATIC_SHOT_TRANSITION_BRIDGE;
+}
+
+export function buildEmotionalBeatSegmentation(): EmotionalBeatSegmentation {
+  return EMOTIONAL_BEAT_SEGMENTATION;
+}
+
+export function buildSceneIndexPersistenceTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of SCENE_INDEX_PERSISTENCE_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = SCENE_INDEX_PERSISTENCE_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? SCENE_INDEX_PERSISTENCE_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupSceneIndexPersistenceTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    SCENE_INDEX_PERSISTENCE_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildSceneSegmentationSteeringRecommendations(): readonly SceneSegmentationSteeringRecommendation[] {
+  return SCENE_SEGMENTATION_STEERING_RECOMMENDATIONS;
+}
+
+export function buildCinematicDnaSchemaLayer(): CinematicDnaSchemaLayer {
+  return CINEMATIC_DNA_SCHEMA_LAYER;
+}
+
+export function buildEmotionalToneExtractionBridge(): EmotionalToneExtractionBridge {
+  return EMOTIONAL_TONE_EXTRACTION_BRIDGE;
+}
+
+export function buildLightingStyleInheritanceMap(): LightingStyleInheritanceMap {
+  return LIGHTING_STYLE_INHERITANCE_MAP;
+}
+
+export function buildCompositionPatternTimeline(payload: VisualQaDashboardPreviewRoute): readonly MultiCycleTrendPoint[] {
+  const chronological = [...buildDashboardCycleDisplays(payload)].sort((left, right) => right.displayRank - left.displayRank);
+  const points: MultiCycleTrendPoint[] = [];
+
+  for (const [dimension, field] of COMPOSITION_PATTERN_TREND_DIMENSIONS) {
+    chronological.forEach((cycle, index) => {
+      const previous = chronological[index - 1];
+      const lookup = COMPOSITION_PATTERN_TREND_LOOKUP[cycle.cycleId];
+      const score = lookup[field as keyof typeof lookup];
+      const previousScore = previous ? COMPOSITION_PATTERN_TREND_LOOKUP[previous.cycleId][field as keyof typeof lookup] : score;
+      const delta = score - previousScore;
+
+      points.push(
+        Object.freeze({
+          dimension,
+          cycleId: cycle.cycleId,
+          cycleOrder: chronological.length - index,
+          score,
+          trend: delta > 0 ? "up" : delta < 0 ? "down" : "flat",
+          severity: resolveTrendSeverity(score),
+        })
+      );
+    });
+  }
+
+  return Object.freeze(points);
+}
+
+export function groupCompositionPatternTimelineByDimension(
+  timeline: readonly MultiCycleTrendPoint[]
+): readonly { readonly dimension: string; readonly points: readonly MultiCycleTrendPoint[] }[] {
+  return Object.freeze(
+    COMPOSITION_PATTERN_TREND_DIMENSIONS.map(([dimension]) =>
+      Object.freeze({
+        dimension,
+        points: Object.freeze(timeline.filter((point) => point.dimension === dimension)),
+      })
+    )
+  );
+}
+
+export function buildCinematicDnaSteeringRecommendations(): readonly CinematicDnaSteeringRecommendation[] {
+  return CINEMATIC_DNA_STEERING_RECOMMENDATIONS;
 }
 
 export type SnapshotDriftItem = {

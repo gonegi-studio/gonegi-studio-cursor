@@ -123,6 +123,21 @@ import {
   buildImageAppLinkageReadiness,
   buildDatasetIntakeTimeline,
   buildDatasetIntakeSteeringRecommendations,
+  buildRealVideoSampleIntakeSchema,
+  buildVideoSceneSegmentationReadiness,
+  buildCinematicFeatureExtractionReadiness,
+  buildVideoToDatasetNormalizationTimeline,
+  buildVideoSampleSteeringRecommendations,
+  buildPilotSceneSegmentationSchema,
+  buildCinematicShotTransitionBridge,
+  buildEmotionalBeatSegmentation,
+  buildSceneIndexPersistenceTimeline,
+  buildSceneSegmentationSteeringRecommendations,
+  buildCinematicDnaSchemaLayer,
+  buildEmotionalToneExtractionBridge,
+  buildLightingStyleInheritanceMap,
+  buildCompositionPatternTimeline,
+  buildCinematicDnaSteeringRecommendations,
   buildIdentityPersistence,
   buildImageEvaluationIntakes,
   buildIdentityPersistenceTimeline,
@@ -173,6 +188,9 @@ import {
   groupAfterglowPersistenceTimelineByDimension,
   groupEchoPersistenceTimelineByDimension,
   groupDatasetIntakeTimelineByDimension,
+  groupVideoToDatasetNormalizationTimelineByDimension,
+  groupSceneIndexPersistenceTimelineByDimension,
+  groupCompositionPatternTimelineByDimension,
   groupMultiCycleTimelineByDimension,
   groupSequenceStabilityTimelineByDimension,
   buildRankingEvolution,
@@ -397,6 +415,24 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
   const datasetIntakeTimeline = buildDatasetIntakeTimeline(payload);
   const datasetIntakeTimelineGroups = groupDatasetIntakeTimelineByDimension(datasetIntakeTimeline);
   const datasetIntakeSteeringRecommendations = buildDatasetIntakeSteeringRecommendations();
+  const realVideoSampleIntakeSchema = buildRealVideoSampleIntakeSchema();
+  const videoSceneSegmentationReadiness = buildVideoSceneSegmentationReadiness();
+  const cinematicFeatureExtractionReadiness = buildCinematicFeatureExtractionReadiness();
+  const videoToDatasetNormalizationTimeline = buildVideoToDatasetNormalizationTimeline(payload);
+  const videoToDatasetNormalizationTimelineGroups = groupVideoToDatasetNormalizationTimelineByDimension(videoToDatasetNormalizationTimeline);
+  const videoSampleSteeringRecommendations = buildVideoSampleSteeringRecommendations();
+  const pilotSceneSegmentationSchema = buildPilotSceneSegmentationSchema();
+  const cinematicShotTransitionBridge = buildCinematicShotTransitionBridge();
+  const emotionalBeatSegmentation = buildEmotionalBeatSegmentation();
+  const sceneIndexPersistenceTimeline = buildSceneIndexPersistenceTimeline(payload);
+  const sceneIndexPersistenceTimelineGroups = groupSceneIndexPersistenceTimelineByDimension(sceneIndexPersistenceTimeline);
+  const sceneSegmentationSteeringRecommendations = buildSceneSegmentationSteeringRecommendations();
+  const cinematicDnaSchemaLayer = buildCinematicDnaSchemaLayer();
+  const emotionalToneExtractionBridge = buildEmotionalToneExtractionBridge();
+  const lightingStyleInheritanceMap = buildLightingStyleInheritanceMap();
+  const compositionPatternTimeline = buildCompositionPatternTimeline(payload);
+  const compositionPatternTimelineGroups = groupCompositionPatternTimelineByDimension(compositionPatternTimeline);
+  const cinematicDnaSteeringRecommendations = buildCinematicDnaSteeringRecommendations();
   const multiCycleTimelineGroups = groupMultiCycleTimelineByDimension(multiCycleTimeline);
   const heatmapGroups = groupHeatmapRows(payload);
   const continuityFindings = groupFindingsByCategory("continuity");
@@ -1733,6 +1769,192 @@ export function VisualQaDashboardShell({ payload }: VisualQaDashboardShellProps)
 
         <DashboardSection sectionId="dataset-intake-steering" title="Dataset Intake Steering Recommendations">
           <SteeringChipList items={datasetIntakeSteeringRecommendations} dataAttr="dataset-intake-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="real-video-sample-intake-schema" title="Real Video Sample Intake Schema">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-real-video-sample-intake-schema-id={realVideoSampleIntakeSchema.realVideoSampleIntakeSchemaId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Intake Schema ID" value={realVideoSampleIntakeSchema.realVideoSampleIntakeSchemaId} emphasis />
+              <KeyValueField label="Canonical Sample Slot" value={realVideoSampleIntakeSchema.canonicalSampleSlotId} emphasis />
+              <KeyValueField label="Real Video Sample Score" value={formatScore3Dec(realVideoSampleIntakeSchema.realVideoSampleScore)} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={realVideoSampleIntakeSchema.pilotVideoMode} emphasis />
+              <KeyValueField label="Future Scale Mode" value={realVideoSampleIntakeSchema.futureScaleMode} emphasis />
+              <KeyValueField label="Sample Duration (sec)" value={String(realVideoSampleIntakeSchema.sampleDurationSec)} emphasis />
+              <KeyValueField label="Dataset Expansion Target" value={realVideoSampleIntakeSchema.datasetExpansionTarget} emphasis />
+              <KeyValueField label="Active Sample State" value={realVideoSampleIntakeSchema.activeSampleState} emphasis />
+              <KeyValueField label="Schema Version" value={realVideoSampleIntakeSchema.canonicalVideoIntakeSchemaVersion} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Single Sample Intake Readiness" value={realVideoSampleIntakeSchema.singleSampleIntakeReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Scene-to-Dataset Bridge Readiness" value={realVideoSampleIntakeSchema.sceneToDatasetBridgeReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic DNA Linkage Slot" value={realVideoSampleIntakeSchema.cinematicDnaLinkageSlot} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Image App Steering Slot" value={realVideoSampleIntakeSchema.imageAppSteeringSlot} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Sample Schema Normalization" value={realVideoSampleIntakeSchema.sampleSchemaNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="video-scene-segmentation-readiness" title="Video Scene Segmentation Readiness">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-video-scene-segmentation-readiness-id={videoSceneSegmentationReadiness.videoSceneSegmentationReadinessId}>
+            <p className="text-sm font-black">{videoSceneSegmentationReadiness.videoSceneSegmentationReadinessId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active segmentation state · {videoSceneSegmentationReadiness.activeSegmentationState}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Segmentation Readiness Score" value={formatScore3Dec(videoSceneSegmentationReadiness.segmentationReadinessScore)} emphasis />
+              <KeyValueField label="Scene Boundary Score" value={formatScore3Dec(videoSceneSegmentationReadiness.sceneBoundaryScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Prepared Scene Segments</p><TagList tags={videoSceneSegmentationReadiness.preparedSceneSegments} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Segments</p><TagList tags={videoSceneSegmentationReadiness.continuitySafeSegments} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">Pending Segment Slots</p><TagList tags={videoSceneSegmentationReadiness.pendingSegmentSlots} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-feature-extraction-readiness" title="Cinematic Feature Extraction Readiness">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-feature-extraction-readiness-id={cinematicFeatureExtractionReadiness.cinematicFeatureExtractionReadinessId}>
+            <p className="text-sm font-black">{cinematicFeatureExtractionReadiness.cinematicFeatureExtractionReadinessId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active extraction state · {cinematicFeatureExtractionReadiness.activeExtractionState}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Feature Extraction Readiness Score" value={formatScore3Dec(cinematicFeatureExtractionReadiness.featureExtractionReadinessScore)} emphasis />
+              <KeyValueField label="Cinematic Feature Linkage Score" value={formatScore3Dec(cinematicFeatureExtractionReadiness.cinematicFeatureLinkageScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Continuity Extraction Readiness" value={cinematicFeatureExtractionReadiness.emotionalContinuityExtractionReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Style-Core Feature Linkage" value={cinematicFeatureExtractionReadiness.styleCoreFeatureLinkage} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Feature Families</p><TagList tags={cinematicFeatureExtractionReadiness.readyFeatureFamilies} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Feature Families</p><TagList tags={cinematicFeatureExtractionReadiness.pendingFeatureFamilies} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="video-to-dataset-normalization" title="Video-to-Dataset Normalization">
+          <TimelineTrendGrid groups={videoToDatasetNormalizationTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="video-sample-steering" title="Video Sample Steering Recommendations">
+          <SteeringChipList items={videoSampleSteeringRecommendations} dataAttr="video-sample-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="pilot-scene-segmentation-schema" title="Pilot Scene Segmentation Schema">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-pilot-scene-segmentation-schema-id={pilotSceneSegmentationSchema.pilotSceneSegmentationSchemaId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="Segmentation Schema ID" value={pilotSceneSegmentationSchema.pilotSceneSegmentationSchemaId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={pilotSceneSegmentationSchema.pilotVideoMode} emphasis />
+              <KeyValueField label="Pilot Scene Segmentation Score" value={formatScore3Dec(pilotSceneSegmentationSchema.pilotSceneSegmentationScore)} emphasis />
+              <KeyValueField label="Active Segmentation State" value={pilotSceneSegmentationSchema.activeSegmentationState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Scene Segmentation Readiness" value={pilotSceneSegmentationSchema.sceneSegmentationReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Shot Boundary Continuity" value={pilotSceneSegmentationSchema.shotBoundaryContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Scene Continuity Extraction" value={pilotSceneSegmentationSchema.sceneContinuityExtraction} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Scene Indexing" value={pilotSceneSegmentationSchema.cinematicSceneIndexing} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Scene Ordering" value={pilotSceneSegmentationSchema.replaySafeSceneOrdering} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Scene Continuity Normalization" value={pilotSceneSegmentationSchema.sceneContinuityNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Segmentation Schema Normalization" value={pilotSceneSegmentationSchema.segmentationSchemaNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-shot-transition-bridge" title="Cinematic Shot Transition Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-shot-transition-bridge-id={cinematicShotTransitionBridge.cinematicShotTransitionBridgeId}>
+            <p className="text-sm font-black">{cinematicShotTransitionBridge.cinematicShotTransitionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active transition route · {cinematicShotTransitionBridge.activeTransitionRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Shot Transition Strength" value={formatScore3Dec(cinematicShotTransitionBridge.shotTransitionStrength)} emphasis />
+              <KeyValueField label="Transition Continuity Score" value={formatScore3Dec(cinematicShotTransitionBridge.transitionContinuityScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Transition Routes</p><TagList tags={cinematicShotTransitionBridge.replayLinkedTransitionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Transition Routes</p><TagList tags={cinematicShotTransitionBridge.continuitySafeTransitionRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Transition Routes</p><TagList tags={cinematicShotTransitionBridge.highDriftTransitionRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-beat-segmentation" title="Emotional Beat Segmentation">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-emotional-beat-segmentation-id={emotionalBeatSegmentation.emotionalBeatSegmentationId}>
+            <p className="text-sm font-black">{emotionalBeatSegmentation.emotionalBeatSegmentationId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active beat indexing state · {emotionalBeatSegmentation.activeBeatIndexingState}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Beat Segmentation Score" value={formatScore3Dec(emotionalBeatSegmentation.beatSegmentationScore)} emphasis />
+              <KeyValueField label="Pacing Continuity Score" value={formatScore3Dec(emotionalBeatSegmentation.pacingContinuityScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Beat Indexing Readiness" value={emotionalBeatSegmentation.emotionalBeatIndexingReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Pacing Extraction" value={emotionalBeatSegmentation.cinematicPacingExtraction} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Indexed Emotional Beats</p><TagList tags={emotionalBeatSegmentation.indexedEmotionalBeats} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Beats</p><TagList tags={emotionalBeatSegmentation.continuitySafeBeats} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">Pending Beat Slots</p><TagList tags={emotionalBeatSegmentation.pendingBeatSlots} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="scene-index-persistence-timeline" title="Scene Index Persistence Timeline">
+          <TimelineTrendGrid groups={sceneIndexPersistenceTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="scene-segmentation-steering" title="Scene Segmentation Steering Recommendations">
+          <SteeringChipList items={sceneSegmentationSteeringRecommendations} dataAttr="scene-segmentation-steer" />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-dna-schema-layer" title="Cinematic DNA Schema Layer">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-cinematic-dna-schema-layer-id={cinematicDnaSchemaLayer.cinematicDnaSchemaLayerId}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-xs">
+              <KeyValueField label="DNA Schema Layer ID" value={cinematicDnaSchemaLayer.cinematicDnaSchemaLayerId} emphasis />
+              <KeyValueField label="Pilot Video Mode" value={cinematicDnaSchemaLayer.pilotVideoMode} emphasis />
+              <KeyValueField label="Cinematic DNA Schema Score" value={formatScore3Dec(cinematicDnaSchemaLayer.cinematicDnaSchemaScore)} emphasis />
+              <KeyValueField label="Active DNA Schema State" value={cinematicDnaSchemaLayer.activeDnaSchemaState} emphasis />
+              <div className="sm:col-span-2"><KeyValueField label="Emotional Warmth Continuity" value={cinematicDnaSchemaLayer.emotionalWarmthContinuity} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Cinematic Framing Persistence" value={cinematicDnaSchemaLayer.cinematicFramingPersistence} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Character Continuity Linkage" value={cinematicDnaSchemaLayer.characterContinuityLinkage} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Replay-Safe Cinematic DNA Normalization" value={cinematicDnaSchemaLayer.replaySafeCinematicDnaNormalization} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Style-Core Compatibility Preparation" value={cinematicDnaSchemaLayer.styleCoreCompatibilityPreparation} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="Image App Steering Readiness" value={cinematicDnaSchemaLayer.imageAppSteeringReadiness} /></div>
+              <div className="sm:col-span-2"><KeyValueField label="DNA Schema Normalization" value={cinematicDnaSchemaLayer.dnaSchemaNormalizationState} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="emotional-tone-extraction-bridge" title="Emotional Tone Extraction Bridge">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-emotional-tone-extraction-bridge-id={emotionalToneExtractionBridge.emotionalToneExtractionBridgeId}>
+            <p className="text-sm font-black">{emotionalToneExtractionBridge.emotionalToneExtractionBridgeId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active tone route · {emotionalToneExtractionBridge.activeToneRoute}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Emotional Tone Strength" value={formatScore3Dec(emotionalToneExtractionBridge.emotionalToneStrength)} emphasis />
+              <KeyValueField label="Tone Extraction Score" value={formatScore3Dec(emotionalToneExtractionBridge.toneExtractionScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Replay-Linked Tone Routes</p><TagList tags={emotionalToneExtractionBridge.replayLinkedToneRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Continuity-Safe Tone Routes</p><TagList tags={emotionalToneExtractionBridge.continuitySafeToneRoutes} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-red-600">High-Drift Tone Routes</p><TagList tags={emotionalToneExtractionBridge.highDriftToneRoutes} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="lighting-style-inheritance-map" title="Lighting Style Inheritance Map">
+          <article className="rounded-xl border border-stone-200 bg-white p-5" data-lighting-style-inheritance-map-id={lightingStyleInheritanceMap.lightingStyleInheritanceMapId}>
+            <p className="text-sm font-black">{lightingStyleInheritanceMap.lightingStyleInheritanceMapId}</p>
+            <p className="mt-2 text-xs text-stone-600">Active inheritance state · {lightingStyleInheritanceMap.activeInheritanceState}</p>
+            <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-3">
+              <KeyValueField label="Style-Core Linkage Score" value={formatScore3Dec(lightingStyleInheritanceMap.styleCoreLinkageScore)} emphasis />
+              <KeyValueField label="Lighting Inheritance Score" value={formatScore3Dec(lightingStyleInheritanceMap.lightingInheritanceScore)} emphasis />
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="sm:col-span-2"><KeyValueField label="Lighting Inheritance Readiness" value={lightingStyleInheritanceMap.lightingInheritanceReadiness} /></div>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-emerald-600">Ready Inheritance Traits</p><TagList tags={lightingStyleInheritanceMap.readyInheritanceTraits} /></div>
+              <div><p className="mb-1 text-[10px] font-bold uppercase text-stone-400">Pending Inheritance Traits</p><TagList tags={lightingStyleInheritanceMap.pendingInheritanceTraits} /></div>
+            </div>
+          </article>
+        </DashboardSection>
+
+        <DashboardSection sectionId="composition-pattern-timeline" title="Composition Pattern Timeline">
+          <TimelineTrendGrid groups={compositionPatternTimelineGroups} />
+        </DashboardSection>
+
+        <DashboardSection sectionId="cinematic-dna-steering" title="Cinematic DNA Steering Recommendations">
+          <SteeringChipList items={cinematicDnaSteeringRecommendations} dataAttr="cinematic-dna-steer" />
         </DashboardSection>
 
         <section data-section="director-grammar-steering" className="space-y-4">
