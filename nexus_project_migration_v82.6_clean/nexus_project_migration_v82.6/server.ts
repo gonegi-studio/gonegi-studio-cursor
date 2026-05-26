@@ -21,6 +21,11 @@ import {
   buildDatasetCompletionAuditExportDownload,
   buildDatasetCompletionAuditPreview,
 } from "./services/datasetCompletionAudit";
+import {
+  buildPipelineBCertificationBridgeExportDownload,
+  buildPipelineBCertificationBridgePreview,
+  parsePipelineBCertificationEnabled,
+} from "./services/pipelineBCertificationBridge";
 
 async function startServer() {
   const app = express();
@@ -790,6 +795,33 @@ async function startServer() {
     } catch (e) {
       console.error("Dataset completion audit export error:", e);
       return res.status(500).json({ error: "Failed to build dataset completion audit json file export" });
+    }
+  });
+
+  // API: Pipeline B Certification Bridge (PHASE-6 opt-in)
+  app.get("/api/cinematic/pipeline-b-certification-bridge-preview", (req, res) => {
+    try {
+      const enabled = parsePipelineBCertificationEnabled(req.query.enabled);
+      const preview = buildPipelineBCertificationBridgePreview(enabled);
+      return res.json(preview);
+    } catch (e) {
+      console.error("Pipeline B certification bridge preview error:", e);
+      return res.status(500).json({ error: "Failed to build Pipeline B certification bridge preview" });
+    }
+  });
+
+  app.get("/api/cinematic/pipeline-b-certification-bridge-export-json-file", (req, res) => {
+    try {
+      const enabled = parsePipelineBCertificationEnabled(req.query.enabled);
+      const download = buildPipelineBCertificationBridgeExportDownload(enabled);
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Pipeline B certification bridge export error:", e);
+      return res.status(500).json({ error: "Failed to build Pipeline B certification bridge json file export" });
     }
   });
 

@@ -1053,6 +1053,60 @@ export interface DatasetCompletionAuditResult {
   export_checksum: string;
 }
 
+// --- Pipeline B Certification Bridge (PHASE-6 additive extension) ---
+
+export const PIPELINE_B_CERTIFICATION_BRIDGE_VERSION = 'PIPELINE-B-CERTIFICATION-BRIDGE-v1' as const;
+
+export interface PipelineBCertificationCoverage {
+  audit_summary_coverage: number;
+  golden_record_coverage: number;
+  remediation_history_coverage: number;
+  scenes_with_audit_summary: number;
+  scenes_with_golden_record: number;
+  scenes_with_remediation_history: number;
+  total_scenes: number;
+}
+
+export interface PipelineBCertificationBridgeReceipt {
+  scene_id: string;
+  scene_index: number;
+  added_fields: string[];
+  skipped_fields: string[];
+  conflict_fields: string[];
+  bridged_at: string;
+  donor_source: 'lab_import' | 'deterministic_template';
+}
+
+export interface PipelineBCertificationProvenance {
+  bridged_at: string;
+  bridge_version: typeof PIPELINE_B_CERTIFICATION_BRIDGE_VERSION;
+  donor_source: 'lab_import' | 'deterministic_template';
+  scene_index: number;
+}
+
+export interface PipelineBCertificationBridgeResult {
+  schema_version: typeof PIPELINE_B_CERTIFICATION_BRIDGE_VERSION;
+  generated_at: string;
+  enabled: boolean;
+  canonical_export_unchanged: true;
+  coverage_before: PipelineBCertificationCoverage;
+  coverage_after: PipelineBCertificationCoverage;
+  certification_readiness_score: number;
+  certification_readiness_score_before: number;
+  completion_audit_score_before?: number;
+  completion_audit_score_after?: number;
+  completion_audit_score_delta?: number;
+  bridged_scene_count: number;
+  lab_import_records_available: number;
+  bridge_receipts: PipelineBCertificationBridgeReceipt[];
+  bridge_metadata: {
+    bridge_version: typeof PIPELINE_B_CERTIFICATION_BRIDGE_VERSION;
+    mode: 'B_TO_A';
+    opt_in: boolean;
+  };
+  export_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
@@ -1776,6 +1830,8 @@ export interface CinematicExtractionResult {
   temporal_memory_anchor_id?: string;
   /** Per-scene memory density from temporal graph propagation. */
   memory_density_score?: number;
+  /** Pipeline B certification bridge provenance (opt-in post-pass only). */
+  pipeline_b_certification_provenance?: PipelineBCertificationProvenance;
   /** Preserves Pipeline A canonical_dna when both pipelines contribute. */
   canonical_dna_pipeline_a_archive?: CanonicalDNA | Record<string, unknown>;
   /** Preserves Pipeline B canonical_dna when both pipelines contribute. */
