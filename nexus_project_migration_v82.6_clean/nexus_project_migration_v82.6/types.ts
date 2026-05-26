@@ -753,6 +753,113 @@ export interface BridgeCompletenessResult {
   bridge_score: number;
 }
 
+// --- Temporal Cinematic Memory Graph (PHASE-5 additive extension) ---
+
+export const TEMPORAL_MEMORY_GRAPH_VERSION = 'TEMPORAL-MEMORY-GRAPH-v1' as const;
+
+export type TemporalMemoryEdgeKind =
+  | 'emotional_transition'
+  | 'visual_motif'
+  | 'character_memory'
+  | 'environment_memory'
+  | 'cinematic_callback';
+
+export interface TemporalMemoryEdge {
+  edge_id: string;
+  source_node_id: string;
+  target_node_id: string;
+  edge_kind: TemporalMemoryEdgeKind;
+  persistence_strength: number;
+  emotional_decay: number;
+  recurrence_weight: number;
+  narrative_distance: number;
+  temporal_anchor_id: string;
+  callback_strength?: number;
+  propagation_tag?: string;
+}
+
+export interface SceneMemoryNode {
+  node_id: string;
+  scene_id: string;
+  scene_index: number;
+  temporal_anchor_id: string;
+  mood_signature: string;
+  motif_signatures: string[];
+  character_signatures: string[];
+  environment_signature: string;
+  framing_signature: string;
+  color_harmony_signature: string;
+  rhythm_signature: string;
+}
+
+export interface CharacterContinuityState {
+  scene_index: number;
+  scene_id: string;
+  emotional_drift: number;
+  clothing_continuity: number;
+  relationship_evolution: number;
+  trust_accumulation: number;
+  conflict_accumulation: number;
+  companion_attachment: number;
+  protagonist_authority: number;
+}
+
+export interface EnvironmentContinuityState {
+  scene_index: number;
+  scene_id: string;
+  weather_persistence: number;
+  atmospheric_evolution: number;
+  lighting_progression: number;
+  environmental_callback_weight: number;
+  location_state_drift: number;
+}
+
+export interface TemporalMemoryGraphBundle {
+  scene_memory_nodes: SceneMemoryNode[];
+  emotional_transition_edges: TemporalMemoryEdge[];
+  visual_motif_edges: TemporalMemoryEdge[];
+  character_memory_edges: TemporalMemoryEdge[];
+  environment_memory_edges: TemporalMemoryEdge[];
+  cinematic_callback_edges: TemporalMemoryEdge[];
+}
+
+export interface TemporalMemoryContinuitySummary {
+  total_scenes: number;
+  total_edges: number;
+  emotional_propagation_chains: number;
+  motif_recurrence_links: number;
+  character_continuity_links: number;
+  environment_continuity_links: number;
+  cinematic_callback_links: number;
+  average_persistence_strength: number;
+  average_callback_strength: number;
+  character_continuity: CharacterContinuityState[];
+  environment_continuity: EnvironmentContinuityState[];
+}
+
+export interface TemporalMemoryGraphValidation {
+  no_orphan_memory_nodes: boolean;
+  continuity_edge_validity: boolean;
+  motif_recurrence_integrity: boolean;
+  emotional_propagation_consistency: boolean;
+  deterministic_checksum_stable: boolean;
+  no_overwrite_conflicts: boolean;
+  validation_score: number;
+  issues: string[];
+}
+
+export interface TemporalMemoryGraphExport {
+  schema_version: typeof TEMPORAL_MEMORY_GRAPH_VERSION;
+  generated_at: string;
+  temporal_memory_graph: TemporalMemoryGraphBundle;
+  memory_node_index: Record<string, SceneMemoryNode>;
+  callback_index: Record<string, TemporalMemoryEdge[]>;
+  continuity_summary: TemporalMemoryContinuitySummary;
+  memory_density_score: number;
+  validation: TemporalMemoryGraphValidation;
+  export_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
@@ -1472,6 +1579,10 @@ export interface CinematicExtractionResult {
   bridge_mode?: ExportBridgeMode;
   bridge_export_receipt?: BridgeExportReceipt;
   export_bridge_score?: number;
+  /** PHASE-5 temporal memory graph anchor (additive, opt-in enrichment). */
+  temporal_memory_anchor_id?: string;
+  /** Per-scene memory density from temporal graph propagation. */
+  memory_density_score?: number;
   /** Preserves Pipeline A canonical_dna when both pipelines contribute. */
   canonical_dna_pipeline_a_archive?: CanonicalDNA | Record<string, unknown>;
   /** Preserves Pipeline B canonical_dna when both pipelines contribute. */

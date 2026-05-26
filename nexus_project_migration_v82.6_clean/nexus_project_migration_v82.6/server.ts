@@ -12,6 +12,10 @@ import {
   parseExportBridgeMode,
   validateExportDensity,
 } from "./services/datasetHydrationService";
+import {
+  buildTemporalMemoryGraphExportDownload,
+  buildTemporalMemoryGraphPreview,
+} from "./services/temporalMemoryGraph";
 
 async function startServer() {
   const app = express();
@@ -720,6 +724,31 @@ async function startServer() {
         error: "Failed to compile runtime recovery diagnostics report",
         message: e.message 
       });
+    }
+  });
+
+  // API: Temporal Cinematic Memory Graph (PHASE-5)
+  app.get("/api/cinematic/temporal-memory-graph-preview", (_req, res) => {
+    try {
+      const preview = buildTemporalMemoryGraphPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Temporal memory graph preview error:", e);
+      return res.status(500).json({ error: "Failed to build temporal memory graph preview" });
+    }
+  });
+
+  app.get("/api/cinematic/temporal-memory-graph-export-json-file", (_req, res) => {
+    try {
+      const download = buildTemporalMemoryGraphExportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Temporal memory graph export error:", e);
+      return res.status(500).json({ error: "Failed to build temporal memory graph json file export" });
     }
   });
 
