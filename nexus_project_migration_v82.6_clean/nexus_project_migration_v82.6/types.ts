@@ -1459,6 +1459,7 @@ export interface CinematicExtractionResult {
   graphs_extraction?: Record<string, unknown>;
   raw_caches_extraction?: Record<string, unknown>;
   pipeline_bridge_provenance?: PipelineBridgeProvenance;
+  pipeline_bridge_receipt?: BridgeReceipt;
   /** Preserves Pipeline A canonical_dna when both pipelines contribute. */
   canonical_dna_pipeline_a_archive?: CanonicalDNA | Record<string, unknown>;
   /** Preserves Pipeline B canonical_dna when both pipelines contribute. */

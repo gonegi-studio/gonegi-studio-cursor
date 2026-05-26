@@ -23,6 +23,17 @@ export interface BridgePipelineOptions {
   /** Optional Pipeline A extractor context — builds donor A-fields when no full donor is available. */
   pipelineAContext?: PipelineAExtractorContext;
   dryRun?: boolean;
+  /**
+   * When false, skips dense_latent_trajectories unless enableFullDensityBridge is true.
+   * Lab import defaults to false to avoid IDB density inflation.
+   */
+  preserveDensity?: boolean;
+  /** Explicit full-density bridge — allows dense_latent_trajectories even when preserveDensity is false. */
+  enableFullDensityBridge?: boolean;
+  /** Skips visual_atoms / relationship_graph union (lab import preserves existing B graph data). */
+  skipArrayUnion?: boolean;
+  /** Opt-in lab import bridge — consumed by useLabState; documented for provenance only when passed. */
+  enablePipelineBridgeOnImport?: boolean;
 }
 
 export interface BridgePipelineResult {
@@ -330,11 +341,23 @@ function applyArrayUnions(
   }
 }
 
+interface ApplyAtoBOptions {
+  preserveDensity?: boolean;
+  enableFullDensityBridge?: boolean;
+}
+
+function shouldIncludeDenseTrajectories(options: ApplyAtoBOptions): boolean {
+  if (options.enableFullDensityBridge) return true;
+  if (options.preserveDensity === false) return false;
+  return true;
+}
+
 function applyAtoB(
   target: CinematicExtractionResult,
   donor: CinematicExtractionResult,
   receipt: BridgeReceipt,
-  pipelineAFields: string[]
+  pipelineAFields: string[],
+  applyOptions: ApplyAtoBOptions = {}
 ): void {
   for (const field of A_TO_B_ROOT_FIELDS) {
     copyEmptyField(target, donor, field, receipt, pipelineAFields);
@@ -343,7 +366,11 @@ function applyAtoB(
     copyEmptyField(target, donor, field, receipt, pipelineAFields);
   }
 
-  applyDenseLatentTrajectories(target, donor, receipt, pipelineAFields);
+  if (shouldIncludeDenseTrajectories(applyOptions)) {
+    applyDenseLatentTrajectories(target, donor, receipt, pipelineAFields);
+  } else {
+    receipt.skipped_fields.push('latent_steering.dense_latent_trajectories:preserve_density');
+  }
 
   if (!isEmptyValue(donor.canonical_dna) && !isEmptyValue(target.canonical_dna)) {
     archiveDualVariant(target, donor, 'canonical_dna', receipt, 'A_TO_B');
@@ -413,7 +440,14 @@ export function bridgePipelineRecord(
 
   let effectiveDonor = options.donor;
   if (options.pipelineAContext) {
-    const aSnapshot = buildPipelineADonorSnapshot(options.pipelineAContext);
+    const includeDense = shouldIncludeDenseTrajectories({
+      preserveDensity: options.preserveDensity,
+      enableFullDensityBridge: options.enableFullDensityBridge,
+    });
+    const aSnapshot = buildPipelineADonorSnapshot({
+      ...options.pipelineAContext,
+      includeDenseTrajectories: includeDense,
+    });
     effectiveDonor = {
       ...aSnapshot,
       ...(options.donor ?? {}),
@@ -440,17 +474,33 @@ export function bridgePipelineRecord(
 
   const working = dryRun ? cloneRecord(record) : record;
 
-  const runAtoB = mode === 'A_TO_B' || mode === 'BIDIRECTIONAL' || mode === 'DRY_RUN';
-  const runBtoA = mode === 'B_TO_A' || mode === 'BIDIRECTIONAL' || mode === 'DRY_RUN';
+  /** Lab import: B_TO_A + pipelineAContext enriches a Pipeline B record with A memory/telemetry only. */
+  const labImportAEnrich = mode === 'B_TO_A' && !!options.pipelineAContext;
+
+  const runAtoB =
+    mode === 'A_TO_B' || mode === 'BIDIRECTIONAL' || mode === 'DRY_RUN' || labImportAEnrich;
+  const runBtoA =
+    (mode === 'B_TO_A' || mode === 'BIDIRECTIONAL' || mode === 'DRY_RUN') && !labImportAEnrich;
+
+  const applyAOptions: ApplyAtoBOptions = {
+    preserveDensity: options.preserveDensity,
+    enableFullDensityBridge: options.enableFullDensityBridge,
+  };
 
   if (runAtoB) {
-    applyAtoB(working, donor, receipt, pipelineAFields);
+    applyAtoB(working, donor, receipt, pipelineAFields, applyAOptions);
   }
   if (runBtoA) {
     applyBtoA(working, donor, receipt, pipelineBFields);
   }
 
-  applyArrayUnions(working, donor, receipt, runAtoB ? pipelineAFields : pipelineBFields);
+  const skipUnion = options.skipArrayUnion === true || labImportAEnrich;
+  if (!skipUnion) {
+    applyArrayUnions(working, donor, receipt, runAtoB ? pipelineAFields : pipelineBFields);
+  } else {
+    receipt.skipped_fields.push('visual_atoms:skip_array_union');
+    receipt.skipped_fields.push('relationship_graph:skip_array_union');
+  }
 
   const provenance: PipelineBridgeProvenance = {
     pipeline_a_fields: pipelineAFields,
@@ -461,6 +511,7 @@ export function bridgePipelineRecord(
   };
 
   working.pipeline_bridge_provenance = provenance;
+  working.pipeline_bridge_receipt = receipt;
 
   if (dryRun) {
     return { record, receipt, provenance };
@@ -488,4 +539,58 @@ export function validateBridgeCompleteness(
   const bridge_score = Math.round((weights / 6) * 1000) / 1000;
 
   return { ...checks, bridge_score };
+}
+
+/**
+ * Lab import post-pass — enriches a normalized Pipeline B record with A memory/telemetry.
+ * Preserves existing audit_summary, golden_record, visual_atoms, and relationship_graph.
+ */
+export function applyLabImportBridge(
+  record: CinematicExtractionResult,
+  importIndex: number,
+  options: Pick<
+    BridgePipelineOptions,
+    'preserveDensity' | 'enableFullDensityBridge' | 'enablePipelineBridgeOnImport'
+  > = {}
+): BridgePipelineResult {
+  const preservedAudit = record.audit_summary;
+  const preservedGolden = record.golden_record;
+  const preservedAtoms = record.visual_atoms?.length
+    ? cloneRecord(record.visual_atoms)
+    : record.visual_atoms;
+  const preservedGraph = record.relationship_graph?.length
+    ? cloneRecord(record.relationship_graph)
+    : record.relationship_graph;
+
+  const seed = (importIndex % 27) + 1;
+  const bridgeResult = bridgePipelineRecord(record, {
+    mode: 'B_TO_A',
+    pipelineAContext: {
+      seed,
+      sceneId: record.id,
+      index: importIndex,
+      totalDms: 250,
+      totalFrames: 100,
+    },
+    preserveDensity: options.preserveDensity ?? false,
+    enableFullDensityBridge: options.enableFullDensityBridge ?? false,
+    skipArrayUnion: true,
+    enablePipelineBridgeOnImport: options.enablePipelineBridgeOnImport ?? true,
+  });
+
+  if (preservedAudit !== undefined) {
+    bridgeResult.record.audit_summary = preservedAudit;
+  }
+  if (preservedGolden !== undefined) {
+    bridgeResult.record.golden_record = preservedGolden;
+  }
+  if (preservedAtoms && preservedAtoms.length > 0) {
+    bridgeResult.record.visual_atoms = preservedAtoms;
+  }
+  if (preservedGraph && preservedGraph.length > 0) {
+    bridgeResult.record.relationship_graph = preservedGraph;
+  }
+
+  bridgeResult.record.pipeline_bridge_receipt = bridgeResult.receipt;
+  return bridgeResult;
 }

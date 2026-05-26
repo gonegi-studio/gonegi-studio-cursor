@@ -52,6 +52,8 @@ export interface PipelineAExtractorContext {
   totalFrames?: number;
   directorTitle?: string;
   directorName?: string;
+  /** When false, skips dense_latent_trajectories generation (lab import bridge). */
+  includeDenseTrajectories?: boolean;
 }
 
 export interface PipelineTelemetryBundle {
@@ -542,6 +544,7 @@ export function buildPipelineADonorSnapshot(
   const memory = extractPipelineMemoryBundle(seed);
   const telemetry = extractPipelineTelemetryBundle(seed);
   const namespaces = extractExtractionNamespaces(context);
+  const includeDense = context.includeDenseTrajectories !== false;
 
   return {
     visual_atoms: extractRichVisualAtoms(sceneId, seed),
@@ -549,7 +552,9 @@ export function buildPipelineADonorSnapshot(
     latent_steering: {
       vectors: { semantic_16d: {} },
       engine_adapters: {},
-      dense_latent_trajectories: extractDenseLatentTrajectories(seed, totalDms, totalFrames),
+      ...(includeDense
+        ? { dense_latent_trajectories: extractDenseLatentTrajectories(seed, totalDms, totalFrames) }
+        : {}),
     },
     ...memory,
     ...telemetry,
