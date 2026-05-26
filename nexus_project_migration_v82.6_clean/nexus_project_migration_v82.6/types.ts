@@ -1413,6 +1413,80 @@ export interface ExpansionReadinessGateResult {
   gate_checksum: string;
 }
 
+// --- SEQ-002 In-Memory Expansion Simulation (PHASE-11 readonly) ---
+
+export const SEQ002_EXPANSION_SIMULATION_VERSION = 'SEQ002-EXPANSION-SIMULATION-v1' as const;
+
+export interface Seq002SimulationStep {
+  step_key: string;
+  label: string;
+  passed: boolean;
+  score: number;
+  detail: string;
+}
+
+export interface MergeConflictPrediction {
+  conflict_id: string;
+  severity: 'critical' | 'moderate' | 'informational';
+  dimension: string;
+  message: string;
+}
+
+export interface Seq002ContinuityBridge {
+  from_sequence_id: string;
+  to_sequence_id: string;
+  anchor_terminal_scene_id: string;
+  seq002_opening_scene_id: string;
+  bridge_stable: boolean;
+  timestamp_continuity: boolean;
+  temporal_edge_appended: boolean;
+}
+
+export interface Seq002SimulationReport {
+  anchor_sequence_id: string;
+  expansion_sequence_id: string;
+  anchor_scene_count: number;
+  simulated_scene_count: number;
+  continuity_bridge: Seq002ContinuityBridge;
+  simulation_steps: Seq002SimulationStep[];
+  merged_in_memory_scene_count: number;
+  density_preservation: {
+    structural_density_maintained: boolean;
+    contract_field_coverage: number;
+    canonical_export_unchanged: true;
+  };
+  in_memory_only: true;
+  no_real_ingestion: true;
+}
+
+export interface Seq002ExpansionSimulationResult {
+  schema_version: typeof SEQ002_EXPANSION_SIMULATION_VERSION;
+  generated_at: string;
+  readonly_simulation: true;
+  production_lock_ref: {
+    production_dataset_candidate_id: string;
+    deterministic_lock_checksum: string;
+  };
+  expansion_gate_ref: {
+    gate_checksum: string;
+    expansion_readiness_verdict: ExpansionReadinessVerdict;
+  };
+  seq002_simulation_report: Seq002SimulationReport;
+  predicted_merge_score: number;
+  continuity_risk_score: number;
+  conflict_list: MergeConflictPrediction[];
+  recommended_ingestion_policy: string;
+  validation: {
+    deterministic_simulation_checksum_stable: boolean;
+    readonly_simulation: true;
+    in_memory_only: true;
+    no_dataset_mutation: true;
+    no_real_ingestion: true;
+    no_provider_calls: true;
+  };
+  simulation_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

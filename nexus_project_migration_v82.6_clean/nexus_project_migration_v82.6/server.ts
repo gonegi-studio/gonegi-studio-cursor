@@ -34,6 +34,7 @@ import { buildProductionCertificationLockPreview } from "./services/productionCe
 import { buildRenderOrchestrationDryRunPreview } from "./services/renderOrchestrationDryRun";
 import { buildMultiSequenceExpansionBlueprintPreview } from "./services/multiSequenceExpansionBlueprint";
 import { buildExpansionReadinessGatePreview } from "./services/expansionReadinessGate";
+import { buildSeq002ExpansionSimulationPreview } from "./services/seq002ExpansionSimulation";
 
 async function startServer() {
   const app = express();
@@ -899,6 +900,17 @@ async function startServer() {
     } catch (e) {
       console.error("Expansion readiness gate preview error:", e);
       return res.status(500).json({ error: "Failed to build expansion readiness gate preview" });
+    }
+  });
+
+  // API: SEQ-002 In-Memory Expansion Simulation (PHASE-11 readonly)
+  app.get("/api/cinematic/seq002-expansion-simulation-preview", (_req, res) => {
+    try {
+      const preview = buildSeq002ExpansionSimulationPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("SEQ-002 expansion simulation preview error:", e);
+      return res.status(500).json({ error: "Failed to build SEQ-002 expansion simulation preview" });
     }
   });
 
