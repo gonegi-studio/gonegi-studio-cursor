@@ -1673,6 +1673,50 @@ export interface Seq002CandidateFixtureBuilderResult {
   fixture_checksum: string;
 }
 
+// --- SEQ-002 Ingestion Dry-Run (PHASE-15 readonly in-memory) ---
+
+export const SEQ002_INGESTION_DRY_RUN_VERSION = 'SEQ002-INGESTION-DRY-RUN-v1' as const;
+
+export interface IngestionDryRunStep {
+  step_key: string;
+  label: string;
+  passed: boolean;
+  score: number;
+  detail: string;
+}
+
+export interface IngestionDryRunReport {
+  anchor_scene_count: number;
+  candidate_scene_count: number;
+  merged_in_memory_scene_count: number;
+  candidate_source_file: string | null;
+  validator_pass_ref: boolean;
+  validator_checksum_ref: string;
+  simulation_steps: IngestionDryRunStep[];
+  canonical_export_unchanged: true;
+  in_memory_only: true;
+}
+
+export interface Seq002IngestionDryRunResult {
+  schema_version: typeof SEQ002_INGESTION_DRY_RUN_VERSION;
+  generated_at: string;
+  readonly_dry_run: true;
+  ingestion_dry_run_report: IngestionDryRunReport;
+  predicted_scene_count: number;
+  predicted_quality_score: number;
+  predicted_orchestration_score: number;
+  merge_conflicts: MergeConflictPrediction[];
+  approved_for_real_ingestion: boolean;
+  validation: {
+    deterministic_dry_run_checksum_stable: boolean;
+    readonly_dry_run: true;
+    in_memory_only: true;
+    no_canonical_export_mutation: true;
+    no_provider_calls: true;
+  };
+  dry_run_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

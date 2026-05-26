@@ -37,6 +37,7 @@ import { buildExpansionReadinessGatePreview } from "./services/expansionReadines
 import { buildSeq002ExpansionSimulationPreview } from "./services/seq002ExpansionSimulation";
 import { buildLabImportIngestionContractPreview } from "./services/labImportIngestionContract";
 import { buildSeq002CandidateImportValidatorPreview } from "./services/seq002CandidateImportValidator";
+import { buildSeq002IngestionDryRunPreview } from "./services/seq002IngestionDryRun";
 
 async function startServer() {
   const app = express();
@@ -935,6 +936,17 @@ async function startServer() {
     } catch (e) {
       console.error("SEQ-002 candidate import validator preview error:", e);
       return res.status(500).json({ error: "Failed to build SEQ-002 candidate import validator preview" });
+    }
+  });
+
+  // API: SEQ-002 Ingestion Dry-Run (PHASE-15 readonly in-memory)
+  app.get("/api/cinematic/seq002-ingestion-dry-run-preview", (_req, res) => {
+    try {
+      const preview = buildSeq002IngestionDryRunPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("SEQ-002 ingestion dry-run preview error:", e);
+      return res.status(500).json({ error: "Failed to build SEQ-002 ingestion dry-run preview" });
     }
   });
 
