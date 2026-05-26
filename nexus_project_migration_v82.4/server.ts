@@ -23,6 +23,7 @@ import { buildMusicDramaPreview } from "./services/cinematic/music-drama-preview
 import { buildGenerationJobManifestPreview } from "./services/cinematic/generation-job-manifest-preview.ts";
 import { buildPilotIntakePreview } from "./services/cinematic/pilot-intake-schema.ts";
 import { buildRendererHandoffPreview } from "./services/cinematic/renderer-handoff-export.ts";
+import { buildDatasetExportPreview } from "./services/cinematic/dataset-export-package.ts";
 import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
@@ -341,6 +342,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Renderer Handoff Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic renderer handoff preview" });
+    }
+  });
+
+  // API: Dataset export preview (Phase-84D readonly external dataset test JSON)
+  app.get("/api/cinematic/dataset-export-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildDatasetExportPreview()));
+    } catch (e) {
+      console.error("Cinematic Dataset Export Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic dataset export preview" });
     }
   });
 
