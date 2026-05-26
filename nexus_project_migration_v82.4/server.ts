@@ -36,6 +36,7 @@ import { buildRealTemporalDatasetQualityAuditPreview } from "./services/cinemati
 import { buildRealTemporalDedupedDatasetQualityLockPreview } from "./services/cinematic/real-temporal-deduped-dataset-quality-lock.ts";
 import { buildRealTemporalDedupedCompletionSnapshotPreview } from "./services/cinematic/real-temporal-deduped-completion-snapshot.ts";
 import { buildRealCinematicMemoryContinuityPreview } from "./services/cinematic/real-cinematic-memory-continuity.ts";
+import { buildRealCinematicMemoryDatasetExportDownload } from "./services/cinematic/real-cinematic-memory-dataset-export.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
@@ -498,6 +499,24 @@ async function startServer() {
       console.error("Cinematic Real Temporal Dataset Quality Audit Preview Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic real temporal dataset quality audit preview",
+      });
+    }
+  });
+
+  // API: Real cinematic memory dataset export json file (Phase-95C cinematic memory dataset export)
+  app.get("/api/cinematic/real-cinematic-memory-dataset-export-json-file", (req, res) => {
+    try {
+      const download = runWithRuntimeReadonlyGuard(() =>
+        buildRealCinematicMemoryDatasetExportDownload()
+      );
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Cinematic Real Cinematic Memory Dataset Export JSON File Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real cinematic memory dataset export json file",
       });
     }
   });
