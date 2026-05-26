@@ -8,11 +8,20 @@ import {
   PipelineBridgeProvenance,
   VisualAtom,
 } from '../types';
+import {
+  buildPipelineADonorSnapshot,
+  type PipelineAExtractorContext,
+} from './pipelineAExtractors';
+
+export type { PipelineAExtractorContext };
+export { buildPipelineADonorSnapshot };
 
 export interface BridgePipelineOptions {
   mode?: PipelineBridgeMode;
   /** Record from the other pipeline to pull additive fields from. */
   donor?: CinematicExtractionResult;
+  /** Optional Pipeline A extractor context — builds donor A-fields when no full donor is available. */
+  pipelineAContext?: PipelineAExtractorContext;
   dryRun?: boolean;
 }
 
@@ -401,7 +410,17 @@ export function bridgePipelineRecord(
 ): BridgePipelineResult {
   const mode: PipelineBridgeMode = options.mode ?? 'BIDIRECTIONAL';
   const dryRun = mode === 'DRY_RUN' || options.dryRun === true;
-  const donor = options.donor;
+
+  let effectiveDonor = options.donor;
+  if (options.pipelineAContext) {
+    const aSnapshot = buildPipelineADonorSnapshot(options.pipelineAContext);
+    effectiveDonor = {
+      ...aSnapshot,
+      ...(options.donor ?? {}),
+    } as CinematicExtractionResult;
+  }
+
+  const donor = effectiveDonor;
 
   const receipt = createBridgeReceipt(mode, dryRun);
   const pipelineAFields: string[] = [];
