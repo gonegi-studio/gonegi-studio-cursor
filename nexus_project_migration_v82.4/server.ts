@@ -29,6 +29,7 @@ import { buildRealImageAppInputPreview } from "./services/cinematic/real-image-a
 import { buildRealImageAppJsonFileDownload } from "./services/cinematic/real-image-app-json-file-export.ts";
 import { buildRealV826CinematicDnaExportDownload } from "./services/cinematic/real-v826-cinematic-dna-export-adapter.ts";
 import { buildRealV826DenseCinematicDnaExportDownload } from "./services/cinematic/real-v826-dense-cinematic-dna-export-adapter.ts";
+import { buildRealV826UltraDenseCinematicDnaExportDownload } from "./services/cinematic/real-v826-ultra-dense-cinematic-dna-export-adapter.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
@@ -443,6 +444,24 @@ async function startServer() {
       console.error("Cinematic Real v826 Dense Cinematic DNA Export JSON File Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic real v826 dense cinematic dna export json file",
+      });
+    }
+  });
+
+  // API: Real v82.6 ultra-dense cinematic dna export json file (Phase-93E ultra-dense dataset expansion)
+  app.get("/api/cinematic/real-v826-ultra-dense-cinematic-dna-export-json-file", (req, res) => {
+    try {
+      const download = runWithRuntimeReadonlyGuard(() =>
+        buildRealV826UltraDenseCinematicDnaExportDownload()
+      );
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Cinematic Real v826 Ultra Dense Cinematic DNA Export JSON File Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real v826 ultra dense cinematic dna export json file",
       });
     }
   });
