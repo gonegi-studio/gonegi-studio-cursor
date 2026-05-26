@@ -30,6 +30,8 @@ import {
   buildVideoGroundedQualityAuditExportDownload,
   buildVideoGroundedQualityAuditPreview,
 } from "./services/videoGroundedQualityAudit";
+import { buildProductionCertificationLockPreview } from "./services/productionCertificationLock";
+import { buildRenderOrchestrationDryRunPreview } from "./services/renderOrchestrationDryRun";
 
 async function startServer() {
   const app = express();
@@ -851,6 +853,28 @@ async function startServer() {
     } catch (e) {
       console.error("Video grounded quality audit export error:", e);
       return res.status(500).json({ error: "Failed to build video grounded quality audit json file export" });
+    }
+  });
+
+  // API: Production Certification Lock (PHASE-8 readonly)
+  app.get("/api/cinematic/production-certification-lock-preview", (_req, res) => {
+    try {
+      const preview = buildProductionCertificationLockPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Production certification lock preview error:", e);
+      return res.status(500).json({ error: "Failed to build production certification lock preview" });
+    }
+  });
+
+  // API: Render Orchestration Dry-Run (PHASE-8 readonly simulation)
+  app.get("/api/cinematic/render-orchestration-dry-run-preview", (_req, res) => {
+    try {
+      const preview = buildRenderOrchestrationDryRunPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Render orchestration dry-run preview error:", e);
+      return res.status(500).json({ error: "Failed to build render orchestration dry-run preview" });
     }
   });
 

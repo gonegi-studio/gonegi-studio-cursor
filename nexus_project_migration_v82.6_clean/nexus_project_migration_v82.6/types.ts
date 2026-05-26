@@ -1169,6 +1169,92 @@ export interface VideoGroundedQualityAuditResult {
   export_checksum: string;
 }
 
+// --- Production Certification Lock (PHASE-8 readonly) ---
+
+export const PRODUCTION_CERTIFICATION_LOCK_VERSION = 'PRODUCTION-CERTIFICATION-LOCK-v1' as const;
+
+export type OrchestrationReadinessLevel =
+  | 'not_ready'
+  | 'partial'
+  | 'certified'
+  | 'production_locked';
+
+export interface FrozenFingerprintLock {
+  export_fingerprint: string;
+  quality_audit_fingerprint: string;
+  bridge_certification_fingerprint: string;
+  temporal_graph_fingerprint: string;
+  locked_at: string;
+  canonical_export_unchanged: true;
+  scene_count: number;
+  canonical_export_size_bytes: number;
+}
+
+export interface ProductionCertificationLockResult {
+  schema_version: typeof PRODUCTION_CERTIFICATION_LOCK_VERSION;
+  generated_at: string;
+  readonly_lock: true;
+  production_certification_lock: FrozenFingerprintLock;
+  production_dataset_candidate_id: string;
+  orchestration_readiness: OrchestrationReadinessLevel;
+  quality_score_ref: number;
+  video_readiness_verdict_ref: VideoProductionReadinessVerdict;
+  validation: {
+    deterministic_lock_checksum_stable: boolean;
+    readonly_lock: true;
+    no_dataset_mutation: true;
+    all_fingerprints_present: boolean;
+  };
+  deterministic_lock_checksum: string;
+}
+
+// --- Render Orchestration Dry-Run (PHASE-8 readonly simulation) ---
+
+export const RENDER_ORCHESTRATION_DRY_RUN_VERSION = 'RENDER-ORCHESTRATION-DRY-RUN-v1' as const;
+
+export interface OrchestrationDryRunStep {
+  step_key: string;
+  label: string;
+  transitions_passed: number;
+  transitions_total: number;
+  stability_score: number;
+}
+
+export interface OrchestrationDryRunTransition {
+  from_scene_id: string;
+  to_scene_id: string;
+  stable: boolean;
+  failure_reasons: string[];
+}
+
+export interface OrchestrationDryRunReport {
+  scene_count: number;
+  transition_count: number;
+  steps: OrchestrationDryRunStep[];
+  unstable_transitions: OrchestrationDryRunTransition[];
+  simulated_duration_seconds: number;
+  no_provider_calls: true;
+  no_gpu_execution: true;
+  no_image_generation: true;
+}
+
+export interface RenderOrchestrationDryRunResult {
+  schema_version: typeof RENDER_ORCHESTRATION_DRY_RUN_VERSION;
+  generated_at: string;
+  readonly_simulation: true;
+  production_dataset_candidate_id: string;
+  orchestration_dry_run_report: OrchestrationDryRunReport;
+  continuity_failure_count: number;
+  scene_transition_stability: number;
+  orchestration_score: number;
+  validation: {
+    deterministic_checksum_stable: boolean;
+    readonly_simulation: true;
+    no_dataset_mutation: true;
+  };
+  export_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
