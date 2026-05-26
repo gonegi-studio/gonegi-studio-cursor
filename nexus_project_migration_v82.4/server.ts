@@ -27,6 +27,7 @@ import { buildDatasetExportPreview } from "./services/cinematic/dataset-export-p
 import { buildImageAppFinalInputPreview } from "./services/cinematic/image-app-final-input-package.ts";
 import { buildRealImageAppInputPreview } from "./services/cinematic/real-image-app-input-package.ts";
 import { buildRealImageAppJsonFileDownload } from "./services/cinematic/real-image-app-json-file-export.ts";
+import { buildRealV826CinematicDnaExportDownload } from "./services/cinematic/real-v826-cinematic-dna-export-adapter.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
@@ -407,6 +408,22 @@ async function startServer() {
       console.error("Cinematic Real Image App Input JSON File Export Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic real image app input json file export",
+      });
+    }
+  });
+
+  // API: Real v82.6 cinematic dna export json file (Phase-93D readonly legacy image app upload JSON)
+  app.get("/api/cinematic/real-v826-cinematic-dna-export-json-file", (req, res) => {
+    try {
+      const download = runWithRuntimeReadonlyGuard(() => buildRealV826CinematicDnaExportDownload());
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Cinematic Real v826 Cinematic DNA Export JSON File Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real v826 cinematic dna export json file",
       });
     }
   });
