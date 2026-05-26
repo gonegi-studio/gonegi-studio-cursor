@@ -1255,6 +1255,119 @@ export interface RenderOrchestrationDryRunResult {
   export_checksum: string;
 }
 
+// --- Multi-Sequence Expansion Blueprint (PHASE-9 readonly) ---
+
+export const MULTI_SEQUENCE_EXPANSION_BLUEPRINT_VERSION =
+  'MULTI-SEQUENCE-EXPANSION-BLUEPRINT-v1' as const;
+
+export interface SequenceIdDefinition {
+  sequence_id: string;
+  sequence_index: number;
+  role: 'anchor' | 'expansion' | 'bridge';
+  parent_candidate_id: string;
+  benchmark_ref: string;
+  scene_window: { min: number; max: number };
+  duration_seconds: number;
+  scene_count_ref?: number;
+}
+
+export interface CrossSequenceContinuityRule {
+  rule_id: string;
+  dimension: string;
+  required_signal: string;
+  merge_strategy: string;
+  gate_threshold: number;
+}
+
+export interface MemoryCarryoverSpec {
+  carryover_key: string;
+  source_layer: string;
+  target_layer: string;
+  propagation_mode: 'inherit' | 'blend' | 'reset_with_anchor';
+  minimum_coverage: number;
+}
+
+export interface ProductionLockInheritance {
+  parent_dataset_candidate_id: string;
+  parent_lock_checksum: string;
+  parent_orchestration_readiness: OrchestrationReadinessLevel;
+  inherited_fingerprints: {
+    export_fingerprint: string;
+    quality_audit_fingerprint: string;
+    bridge_certification_fingerprint: string;
+    temporal_graph_fingerprint: string;
+  };
+  inheritance_mode: 'append_only';
+  lock_epoch_ref: string;
+}
+
+export interface ExpansionSafetyGate {
+  gate_id: string;
+  label: string;
+  required: boolean;
+  pass_condition: string;
+  current_status: 'pass' | 'blocked' | 'warn';
+}
+
+export interface ExpansionBlueprint {
+  anchor_sequence: SequenceIdDefinition;
+  planned_sequences: SequenceIdDefinition[];
+  cross_sequence_continuity_rules: CrossSequenceContinuityRule[];
+  character_memory_carryover: MemoryCarryoverSpec[];
+  environment_memory_carryover: MemoryCarryoverSpec[];
+  emotional_arc_carryover: MemoryCarryoverSpec[];
+  production_lock_inheritance: ProductionLockInheritance;
+  expansion_safety_gates: ExpansionSafetyGate[];
+}
+
+export interface NextSequenceRequirement {
+  requirement_id: string;
+  category: string;
+  description: string;
+  mandatory: boolean;
+}
+
+export interface ReusableDatasetContract {
+  contract_id: string;
+  schema_version: string;
+  parent_candidate_id: string;
+  required_fields: string[];
+  optional_bridge_fields: string[];
+  density_preservation: true;
+  readonly_expansion: true;
+}
+
+export interface SequenceMergePolicy {
+  policy_id: string;
+  merge_mode: 'additive_append' | 'temporal_chain' | 'parallel_arc';
+  fingerprint_revalidation_required: true;
+  canonical_export_mutation: false;
+  rules: string[];
+}
+
+export interface MultiSequenceExpansionBlueprintResult {
+  schema_version: typeof MULTI_SEQUENCE_EXPANSION_BLUEPRINT_VERSION;
+  generated_at: string;
+  readonly_blueprint: true;
+  production_lock_ref: {
+    production_dataset_candidate_id: string;
+    deterministic_lock_checksum: string;
+    orchestration_readiness: OrchestrationReadinessLevel;
+  };
+  expansion_blueprint: ExpansionBlueprint;
+  next_sequence_requirements: NextSequenceRequirement[];
+  reusable_dataset_contract: ReusableDatasetContract;
+  sequence_merge_policy: SequenceMergePolicy;
+  validation: {
+    deterministic_blueprint_checksum_stable: boolean;
+    readonly_blueprint: true;
+    no_dataset_mutation: true;
+    no_video_ingestion: true;
+    no_provider_calls: true;
+  };
+  blueprint_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

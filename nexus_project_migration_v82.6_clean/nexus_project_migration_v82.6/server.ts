@@ -32,6 +32,7 @@ import {
 } from "./services/videoGroundedQualityAudit";
 import { buildProductionCertificationLockPreview } from "./services/productionCertificationLock";
 import { buildRenderOrchestrationDryRunPreview } from "./services/renderOrchestrationDryRun";
+import { buildMultiSequenceExpansionBlueprintPreview } from "./services/multiSequenceExpansionBlueprint";
 
 async function startServer() {
   const app = express();
@@ -875,6 +876,17 @@ async function startServer() {
     } catch (e) {
       console.error("Render orchestration dry-run preview error:", e);
       return res.status(500).json({ error: "Failed to build render orchestration dry-run preview" });
+    }
+  });
+
+  // API: Multi-Sequence Expansion Blueprint (PHASE-9 readonly)
+  app.get("/api/cinematic/multi-sequence-expansion-blueprint-preview", (_req, res) => {
+    try {
+      const preview = buildMultiSequenceExpansionBlueprintPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Multi-sequence expansion blueprint preview error:", e);
+      return res.status(500).json({ error: "Failed to build multi-sequence expansion blueprint preview" });
     }
   });
 
