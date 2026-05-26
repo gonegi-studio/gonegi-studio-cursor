@@ -27,6 +27,7 @@ import { buildDatasetExportPreview } from "./services/cinematic/dataset-export-p
 import { buildImageAppFinalInputPreview } from "./services/cinematic/image-app-final-input-package.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
+import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
 import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
@@ -390,6 +391,18 @@ async function startServer() {
       console.error("Cinematic Reference Conditioned Image Input Preview Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic reference conditioned image input preview",
+      });
+    }
+  });
+
+  // API: Image test batch preview (Phase-89B readonly AI Studio batch paste test JSON)
+  app.get("/api/cinematic/image-test-batch-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildImageTestBatchPreview()));
+    } catch (e) {
+      console.error("Cinematic Image Test Batch Preview Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic image test batch preview",
       });
     }
   });

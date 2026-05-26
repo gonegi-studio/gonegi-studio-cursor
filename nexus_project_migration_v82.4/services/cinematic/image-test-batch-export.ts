@@ -1,6 +1,10 @@
 import crypto from "crypto";
 import type { ReferenceAnchorBlockedUsage } from "./reference-anchor-usage-policy.ts";
-import type { ReferenceConditionedImageInputPreview } from "./reference-conditioned-image-input.ts";
+import { REFERENCE_ANCHOR_BLOCKED_USAGE_CATALOG } from "./reference-anchor-usage-policy.ts";
+import {
+  buildReferenceConditionedImageInputPreview,
+  type ReferenceConditionedImageInputPreview,
+} from "./reference-conditioned-image-input.ts";
 
 export type ImageTestBatchExportSafety = {
   directAssetReuse: false;
@@ -191,4 +195,85 @@ export function computeImageTestBatchExportFingerprint(
 
 export function resetImageTestBatchExportCacheForVerification(): void {
   cachedImageTestBatchExport = null;
+}
+
+export const IMAGE_TEST_BATCH_EXPORT_PREVIEW_FINGERPRINT =
+  "366dfd9dab0d751de7851aca0ff0db0f1eee02eb4fc2353471af27ff60cbc103" as const;
+
+export type ImageTestBatchPreviewItemCounts = {
+  totalItemCount: number;
+  batchItemCount: number;
+};
+
+export type ImageTestBatchPreviewSafetyItem = {
+  queueOrder: number;
+  directAssetReuse: false;
+  blockedUsage: readonly ReferenceAnchorBlockedUsage[];
+};
+
+export type ImageTestBatchPreviewSafetySummary = {
+  blockedUsageCatalog: readonly ReferenceAnchorBlockedUsage[];
+  enforcedItemCount: number;
+  directAssetReuseBlocked: boolean;
+  items: readonly ImageTestBatchPreviewSafetyItem[];
+};
+
+export type ImageTestBatchPreview = {
+  imageTestBatchExport: ReturnType<typeof JSON.parse>;
+  fingerprint: string;
+  itemCounts: ImageTestBatchPreviewItemCounts;
+  safetySummary: ImageTestBatchPreviewSafetySummary;
+};
+
+function aggregateSafetySummary(
+  batchExport: ImageTestBatchExport
+): ImageTestBatchPreviewSafetySummary {
+  return Object.freeze({
+    blockedUsageCatalog: REFERENCE_ANCHOR_BLOCKED_USAGE_CATALOG,
+    enforcedItemCount: batchExport.itemCount,
+    directAssetReuseBlocked: true,
+    items: Object.freeze(
+      [...batchExport.items]
+        .sort((a, b) => a.queueOrder - b.queueOrder)
+        .map((item) =>
+          Object.freeze({
+            queueOrder: item.queueOrder,
+            directAssetReuse: false as const,
+            blockedUsage: item.safety.blockedUsage,
+          })
+        )
+    ),
+  });
+}
+
+export function buildImageTestBatchPreviewFromBatch(
+  batchExport: ImageTestBatchExport
+): ImageTestBatchPreview {
+  const fingerprint = computeImageTestBatchExportFingerprint(batchExport);
+  const safetySummary = aggregateSafetySummary(batchExport);
+
+  return Object.freeze({
+    imageTestBatchExport: JSON.parse(serializeImageTestBatchExport(batchExport)),
+    fingerprint,
+    itemCounts: Object.freeze({
+      totalItemCount: batchExport.itemCount,
+      batchItemCount: batchExport.itemCount,
+    }),
+    safetySummary,
+  });
+}
+
+export function buildImageTestBatchPreview(): ImageTestBatchPreview {
+  return buildImageTestBatchPreviewFromBatch(
+    buildImageTestBatchExport(buildReferenceConditionedImageInputPreview())
+  );
+}
+
+export function serializeImageTestBatchPreview(preview: ImageTestBatchPreview): string {
+  return JSON.stringify({
+    imageTestBatchExport: preview.imageTestBatchExport,
+    fingerprint: preview.fingerprint,
+    itemCounts: preview.itemCounts,
+    safetySummary: preview.safetySummary,
+  });
 }
