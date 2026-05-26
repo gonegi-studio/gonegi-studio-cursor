@@ -16,6 +16,7 @@ import {
   buildTemporalMemoryGraphExportDownload,
   buildTemporalMemoryGraphPreview,
 } from "./services/temporalMemoryGraph";
+import { buildMasterCoreDNAAdapterPreview } from "./services/masterCoreDNAAdapter";
 
 async function startServer() {
   const app = express();
@@ -749,6 +750,17 @@ async function startServer() {
     } catch (e) {
       console.error("Temporal memory graph export error:", e);
       return res.status(500).json({ error: "Failed to build temporal memory graph json file export" });
+    }
+  });
+
+  // API: MasterCore DNA Injection Adapter (PHASE-6)
+  app.get("/api/cinematic/master-core-dna-adapter-preview", (_req, res) => {
+    try {
+      const preview = buildMasterCoreDNAAdapterPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("MasterCore DNA adapter preview error:", e);
+      return res.status(500).json({ error: "Failed to build MasterCore DNA adapter preview" });
     }
   });
 

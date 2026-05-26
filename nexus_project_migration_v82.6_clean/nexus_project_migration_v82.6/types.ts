@@ -860,6 +860,137 @@ export interface TemporalMemoryGraphExport {
   export_checksum: string;
 }
 
+// --- MasterCore DNA Injection Adapter (PHASE-6 additive extension) ---
+
+export const MASTER_CORE_DNA_ADAPTER_VERSION = 'MASTER-CORE-DNA-ADAPTER-v1' as const;
+
+export interface MasterCoreStyleCoreInput {
+  styleKey?: string;
+  materialKey?: string;
+  lightingKey?: string;
+  brushworkKey?: string;
+  paletteKey?: string;
+  styleAnchor?: string;
+  styleStrength?: number;
+}
+
+export interface MasterCoreStyleCoreMetrics {
+  contrast_norm?: number;
+  warmth_norm?: number;
+  brushwork_density?: number;
+  palette_coherence?: number;
+  material_fidelity?: number;
+  lighting_consistency?: number;
+}
+
+export interface MasterCoreRenderRules {
+  global?: string;
+  character?: string;
+  environment?: string;
+  composition?: string;
+  [key: string]: string | undefined;
+}
+
+export interface MasterCoreAssetEntry {
+  asset_id: string;
+  asset_kind?: 'master_image' | 'elite_image' | 'npc_image' | 'reference' | 'style_anchor';
+  character_id?: string;
+  label?: string;
+  uri?: string;
+  fingerprint?: string;
+}
+
+export interface MasterCoreDNASnapshot {
+  schema_version?: string;
+  characterBook?: CharacterBook;
+  environmentDNA?: CharacterBook['environmentDNA'];
+  styleCore?: MasterCoreStyleCoreInput;
+  render_rules?: MasterCoreRenderRules | string;
+  masterAssetLibrary?: MasterCoreAssetEntry[];
+  global_height_scale?: string;
+  styleCoreMetrics?: MasterCoreStyleCoreMetrics;
+  master_image_id?: string;
+  styleAnchor?: string;
+  characters?: CharacterEntry[];
+  subCharacters?: SubCharacterEntry[];
+}
+
+export interface MasterCoreProfile {
+  adapter_version: typeof MASTER_CORE_DNA_ADAPTER_VERSION;
+  book_version?: string;
+  global_height_scale?: string;
+  style_anchor?: string;
+  master_image_id?: string;
+  character_count: number;
+  sub_character_count: number;
+  environment_slot_count: number;
+  style_core_id: string;
+  render_rule_keys: string[];
+  asset_count: number;
+}
+
+export interface CharacterDNAIndexEntry {
+  index_key: string;
+  character_id: string;
+  name: string;
+  type: string;
+  visual_dna: string;
+  grid_position?: string;
+  slot_index?: number;
+  dna_details?: CharacterDNA;
+  master_image_id?: string;
+  elite_image_id?: string;
+  source: 'character' | 'sub_character';
+}
+
+export interface EnvironmentDNAIndexEntry {
+  slot_key: string;
+  dna_text: string;
+  fingerprint: string;
+}
+
+export interface StyleCoreProfileOutput {
+  style_core_id: string;
+  styleKey: string;
+  materialKey: string;
+  lightingKey: string;
+  brushworkKey: string;
+  paletteKey?: string;
+  styleAnchor?: string;
+  styleStrength?: number;
+  metrics?: MasterCoreStyleCoreMetrics;
+}
+
+export interface MasterAssetIndexEntry {
+  asset_id: string;
+  asset_kind: MasterCoreAssetEntry['asset_kind'];
+  character_id?: string;
+  label?: string;
+  fingerprint: string;
+  source: 'library' | 'character_book' | 'character_entry';
+}
+
+export interface MasterCoreDNAAdapterDetection {
+  characters_detected: number;
+  sub_characters_detected: number;
+  environment_dna_detected: boolean;
+  style_core_detected: boolean;
+  master_image_asset_detected: boolean;
+  render_rules_detected: boolean;
+}
+
+export interface MasterCoreDNAAdapterResult {
+  schema_version: typeof MASTER_CORE_DNA_ADAPTER_VERSION;
+  generated_at: string;
+  master_core_profile: MasterCoreProfile;
+  character_dna_index: Record<string, CharacterDNAIndexEntry>;
+  environment_dna_index: Record<string, EnvironmentDNAIndexEntry>;
+  style_core_profile: StyleCoreProfileOutput;
+  master_asset_index: Record<string, MasterAssetIndexEntry>;
+  detection: MasterCoreDNAAdapterDetection;
+  export_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
