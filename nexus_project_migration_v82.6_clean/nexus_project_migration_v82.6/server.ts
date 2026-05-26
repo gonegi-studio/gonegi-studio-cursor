@@ -33,6 +33,7 @@ import {
 import { buildProductionCertificationLockPreview } from "./services/productionCertificationLock";
 import { buildRenderOrchestrationDryRunPreview } from "./services/renderOrchestrationDryRun";
 import { buildMultiSequenceExpansionBlueprintPreview } from "./services/multiSequenceExpansionBlueprint";
+import { buildExpansionReadinessGatePreview } from "./services/expansionReadinessGate";
 
 async function startServer() {
   const app = express();
@@ -887,6 +888,17 @@ async function startServer() {
     } catch (e) {
       console.error("Multi-sequence expansion blueprint preview error:", e);
       return res.status(500).json({ error: "Failed to build multi-sequence expansion blueprint preview" });
+    }
+  });
+
+  // API: Expansion Readiness Gate (PHASE-10 readonly)
+  app.get("/api/cinematic/expansion-readiness-gate-preview", (_req, res) => {
+    try {
+      const preview = buildExpansionReadinessGatePreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Expansion readiness gate preview error:", e);
+      return res.status(500).json({ error: "Failed to build expansion readiness gate preview" });
     }
   });
 

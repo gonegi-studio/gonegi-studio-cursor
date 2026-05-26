@@ -1368,6 +1368,51 @@ export interface MultiSequenceExpansionBlueprintResult {
   blueprint_checksum: string;
 }
 
+// --- Expansion Readiness Gate (PHASE-10 readonly) ---
+
+export const EXPANSION_READINESS_GATE_VERSION = 'EXPANSION-READINESS-GATE-v1' as const;
+
+export type ExpansionReadinessVerdict = 'blocked' | 'conditional' | 'approved';
+
+export interface ExpansionReadinessCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface ExpansionReadinessIssue {
+  issue_id: string;
+  severity: 'blocking' | 'warning';
+  check_key: string;
+  message: string;
+}
+
+export interface ExpansionReadinessGateResult {
+  schema_version: typeof EXPANSION_READINESS_GATE_VERSION;
+  generated_at: string;
+  readonly_gate: true;
+  production_lock_ref: {
+    production_dataset_candidate_id: string;
+    deterministic_lock_checksum: string;
+    orchestration_readiness: OrchestrationReadinessLevel;
+  };
+  blueprint_checksum_ref: string;
+  checks: ExpansionReadinessCheck[];
+  expansion_readiness_verdict: ExpansionReadinessVerdict;
+  blocking_issues: ExpansionReadinessIssue[];
+  warnings: ExpansionReadinessIssue[];
+  approved_next_action: string;
+  validation: {
+    deterministic_gate_checksum_stable: boolean;
+    readonly_gate: true;
+    no_dataset_mutation: true;
+    no_video_ingestion: true;
+    no_provider_calls: true;
+  };
+  gate_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
