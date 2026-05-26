@@ -24,6 +24,7 @@ import { buildGenerationJobManifestPreview } from "./services/cinematic/generati
 import { buildPilotIntakePreview } from "./services/cinematic/pilot-intake-schema.ts";
 import { buildRendererHandoffPreview } from "./services/cinematic/renderer-handoff-export.ts";
 import { buildDatasetExportPreview } from "./services/cinematic/dataset-export-package.ts";
+import { buildImageAppFinalInputPreview } from "./services/cinematic/image-app-final-input-package.ts";
 import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
@@ -352,6 +353,16 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Dataset Export Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic dataset export preview" });
+    }
+  });
+
+  // API: Image app final input preview (Phase-85E readonly AI Studio paste test JSON)
+  app.get("/api/cinematic/image-app-final-input-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildImageAppFinalInputPreview()));
+    } catch (e) {
+      console.error("Cinematic Image App Final Input Preview Error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic image app final input preview" });
     }
   });
 
