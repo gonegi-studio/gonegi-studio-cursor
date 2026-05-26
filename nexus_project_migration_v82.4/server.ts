@@ -25,6 +25,7 @@ import { buildPilotIntakePreview } from "./services/cinematic/pilot-intake-schem
 import { buildRendererHandoffPreview } from "./services/cinematic/renderer-handoff-export.ts";
 import { buildDatasetExportPreview } from "./services/cinematic/dataset-export-package.ts";
 import { buildImageAppFinalInputPreview } from "./services/cinematic/image-app-final-input-package.ts";
+import { buildRealImageAppInputPreview } from "./services/cinematic/real-image-app-input-package.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
@@ -377,6 +378,18 @@ async function startServer() {
       console.error("Cinematic Regeneration Image App Input Preview Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic regeneration image app input preview",
+      });
+    }
+  });
+
+  // API: Real image app input preview (Phase-93B readonly real 25s frame paste test JSON)
+  app.get("/api/cinematic/real-image-app-input-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildRealImageAppInputPreview()));
+    } catch (e) {
+      console.error("Cinematic Real Image App Input Preview Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real image app input preview",
       });
     }
   });

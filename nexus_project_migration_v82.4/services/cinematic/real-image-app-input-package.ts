@@ -1,4 +1,9 @@
 import crypto from "crypto";
+import {
+  REAL_VIDEO_INTAKE_DURATION_SECONDS,
+  REAL_VIDEO_INTAKE_SOURCE_FILENAME,
+  REAL_VIDEO_INTAKE_SOURCE_PATH,
+} from "./real-video-intake-manifest.ts";
 import type { RealFrameEvidenceRegistry } from "./real-frame-evidence-registry.ts";
 import {
   REAL_FRAME_EVIDENCE_REGISTRY_MAX_FRAME_COUNT,
@@ -332,4 +337,163 @@ export function computeRealImageAppInputPackageFingerprint(
 
 export function resetRealImageAppInputPackageCacheForVerification(): void {
   cachedRealImageAppInputPackage = null;
+}
+
+export type RealImageAppInputPreviewSourceVideo = {
+  intakeVideoId: string;
+  sourceFilename: string;
+  sourcePath: string;
+  sourceFingerprint: string;
+  durationSeconds: number;
+};
+
+export type RealImageAppInputPreviewFrameSummaryItem = {
+  queueOrder: number;
+  timestampSeconds: string;
+  frameEvidenceId: string;
+  frameFingerprint: string;
+  dramaFunction: RealMusicDramaFunction;
+};
+
+export type RealImageAppInputPreviewFrameSummary = {
+  registeredFrameCount: number;
+  totalFrameCount: number;
+  items: readonly RealImageAppInputPreviewFrameSummaryItem[];
+};
+
+export type RealImageAppInputPreviewItemCounts = {
+  totalItemCount: number;
+  realFrameItemCount: number;
+};
+
+export type RealImageAppInputPreview = {
+  realImageAppInputPackage: ReturnType<typeof JSON.parse>;
+  fingerprint: string;
+  itemCounts: RealImageAppInputPreviewItemCounts;
+  sourceVideo: RealImageAppInputPreviewSourceVideo;
+  frameSummary: RealImageAppInputPreviewFrameSummary;
+};
+
+const REAL_IMAGE_APP_INPUT_PREVIEW_SOURCE_VIDEO = Object.freeze({
+  intakeVideoId: "e92a616bbf01faa74869501f3417deceb4d45a98691f8bd3ba94457b08c5c01e",
+  sourceFilename: REAL_VIDEO_INTAKE_SOURCE_FILENAME,
+  sourcePath: REAL_VIDEO_INTAKE_SOURCE_PATH,
+  sourceFingerprint: "f8a4ee70f724e98f23c4298843b77bff67bc2b3fb9602c538f327803b89f6c95",
+  durationSeconds: REAL_VIDEO_INTAKE_DURATION_SECONDS,
+});
+
+const REAL_IMAGE_APP_INPUT_PREVIEW_PACKAGE_ITEMS = Object.freeze([
+  Object.freeze({
+    queueOrder: 0,
+    timestampSeconds: "4.000",
+    frameEvidenceId: "7e189df8dcc54b3df7f564fd110287c7550a16e91daf4c175a081d839947c840",
+    frameFingerprint: "dc1897a6da9d1a6c22136adee75bd33850c6a17b0e55952a686f5bf55fdfe1cf",
+    sceneId: "8e7597571c017bd6cc217dcfe28c4a5b22bb41a075bcef4345627cc05cbc8b96",
+    dramaFunction: "real-frame-establish" as const,
+    emotionTone: "nostalgic-calm" as const,
+    rhythmPhase: "rhythm-rise" as const,
+    suggestedMusicEnergy: "gentle-build" as const,
+    imageAppInputJson:
+      '{"version":"v1","inputKind":"real-frame","queueOrder":0,"timestampSeconds":"4.000","frameEvidenceId":"7e189df8dcc54b3df7f564fd110287c7550a16e91daf4c175a081d839947c840","frameFingerprint":"dc1897a6da9d1a6c22136adee75bd33850c6a17b0e55952a686f5bf55fdfe1cf","sceneId":"8e7597571c017bd6cc217dcfe28c4a5b22bb41a075bcef4345627cc05cbc8b96","dramaFunction":"real-frame-establish","emotionTone":"nostalgic-calm","rhythmPhase":"rhythm-rise","suggestedMusicEnergy":"gentle-build"}',
+  }),
+  Object.freeze({
+    queueOrder: 1,
+    timestampSeconds: "12.500",
+    frameEvidenceId: "a3471640884c2fb405fbf3dcf2b26c0c9e4aad8bd33579946c6e78864496edd0",
+    frameFingerprint: "722c7a2b9f1553090e36489d7ab05d8c8a4a77d77ddd849743881e86ed4fc3a6",
+    sceneId: "b9d97ca88ae9032808f559ba5b5be11af8d640ee5079e0801cf5cc8a753d611c",
+    dramaFunction: "real-frame-bridge" as const,
+    emotionTone: "adventurous-soft" as const,
+    rhythmPhase: "rhythm-hold" as const,
+    suggestedMusicEnergy: "steady-flow" as const,
+    imageAppInputJson:
+      '{"version":"v1","inputKind":"real-frame","queueOrder":1,"timestampSeconds":"12.500","frameEvidenceId":"a3471640884c2fb405fbf3dcf2b26c0c9e4aad8bd33579946c6e78864496edd0","frameFingerprint":"722c7a2b9f1553090e36489d7ab05d8c8a4a77d77ddd849743881e86ed4fc3a6","sceneId":"b9d97ca88ae9032808f559ba5b5be11af8d640ee5079e0801cf5cc8a753d611c","dramaFunction":"real-frame-bridge","emotionTone":"adventurous-soft","rhythmPhase":"rhythm-hold","suggestedMusicEnergy":"steady-flow"}',
+  }),
+  Object.freeze({
+    queueOrder: 2,
+    timestampSeconds: "21.000",
+    frameEvidenceId: "5c927d40f7fa21456abbf719fbe94b0ed4f327a21834cd1592d6abccbfddbc0f",
+    frameFingerprint: "3d4baa927d1f951b86ecbb035383a3652be0ff1fc17e2985853256c7916c2e6f",
+    sceneId: "240fc4afcd85411046216d6562c444578e767a10c8d5e8567c3e34221652c156",
+    dramaFunction: "real-frame-resolve" as const,
+    emotionTone: "peaceful-wonder" as const,
+    rhythmPhase: "rhythm-release" as const,
+    suggestedMusicEnergy: "soft-resolve" as const,
+    imageAppInputJson:
+      '{"version":"v1","inputKind":"real-frame","queueOrder":2,"timestampSeconds":"21.000","frameEvidenceId":"5c927d40f7fa21456abbf719fbe94b0ed4f327a21834cd1592d6abccbfddbc0f","frameFingerprint":"3d4baa927d1f951b86ecbb035383a3652be0ff1fc17e2985853256c7916c2e6f","sceneId":"240fc4afcd85411046216d6562c444578e767a10c8d5e8567c3e34221652c156","dramaFunction":"real-frame-resolve","emotionTone":"peaceful-wonder","rhythmPhase":"rhythm-release","suggestedMusicEnergy":"soft-resolve"}',
+  }),
+] as const);
+
+export const REAL_IMAGE_APP_INPUT_PREVIEW_PACKAGE = Object.freeze({
+  version: REAL_IMAGE_APP_INPUT_PACKAGE_VERSION,
+  realInputPackageId: "618939dcba28ec2a28eef71aa0b538064448678abb17c3ab8af1b648c87d0f96",
+  scenePlanId: "12b2644bbc83e42c4a41f2c43225a45a1a18584afa22190c70615529c36731c9",
+  scenePlanFingerprint: "adafff20f2628f1ea692a4d9c1b83706cb25e256147e54cc36ea862b2038406d",
+  frameEvidenceRegistryId: "838269ddee7871f89b1a81caabdb83dcc4a52eab819b3be43d59ae4caa879ab3",
+  frameEvidenceRegistryFingerprint: "a6cd6d98131cf185f1cb7994f9f89a951815ebd193e5901c6fb555348c87d6d1",
+  packageVersion: REAL_IMAGE_APP_INPUT_PACKAGE_KIND_VERSION,
+  activePackageState: REAL_IMAGE_APP_INPUT_PACKAGE_STATE,
+  packageStatus: "package-complete" as const,
+  itemCount: REAL_IMAGE_APP_INPUT_PACKAGE_ITEM_COUNT,
+  items: REAL_IMAGE_APP_INPUT_PREVIEW_PACKAGE_ITEMS,
+  generationExecuted: false as const,
+  providerCallExecuted: false as const,
+});
+
+export const REAL_IMAGE_APP_INPUT_PREVIEW_FINGERPRINT =
+  "28bf383ee1e706e34233d3e7b82fbe6c3031b53501d4c5e44e57a2ebb4fc391a" as const;
+
+function buildFrameSummary(
+  inputPackage: RealImageAppInputPackage
+): RealImageAppInputPreviewFrameSummary {
+  const orderedItems = [...inputPackage.items].sort((a, b) => a.queueOrder - b.queueOrder);
+
+  return Object.freeze({
+    registeredFrameCount: orderedItems.length,
+    totalFrameCount: REAL_IMAGE_APP_INPUT_PACKAGE_ITEM_COUNT,
+    items: Object.freeze(
+      orderedItems.map((item) =>
+        Object.freeze({
+          queueOrder: item.queueOrder,
+          timestampSeconds: item.timestampSeconds,
+          frameEvidenceId: item.frameEvidenceId,
+          frameFingerprint: item.frameFingerprint,
+          dramaFunction: item.dramaFunction,
+        })
+      )
+    ),
+  });
+}
+
+export function buildRealImageAppInputPreviewFromPackage(
+  inputPackage: RealImageAppInputPackage
+): RealImageAppInputPreview {
+  const fingerprint = computeRealImageAppInputPackageFingerprint(inputPackage);
+
+  return Object.freeze({
+    realImageAppInputPackage: JSON.parse(serializeRealImageAppInputPackage(inputPackage)),
+    fingerprint,
+    itemCounts: Object.freeze({
+      totalItemCount: inputPackage.itemCount,
+      realFrameItemCount: inputPackage.itemCount,
+    }),
+    sourceVideo: REAL_IMAGE_APP_INPUT_PREVIEW_SOURCE_VIDEO,
+    frameSummary: buildFrameSummary(inputPackage),
+  });
+}
+
+export function buildRealImageAppInputPreview(): RealImageAppInputPreview {
+  return buildRealImageAppInputPreviewFromPackage(
+    REAL_IMAGE_APP_INPUT_PREVIEW_PACKAGE as RealImageAppInputPackage
+  );
+}
+
+export function serializeRealImageAppInputPreview(preview: RealImageAppInputPreview): string {
+  return JSON.stringify({
+    realImageAppInputPackage: preview.realImageAppInputPackage,
+    fingerprint: preview.fingerprint,
+    itemCounts: preview.itemCounts,
+    sourceVideo: preview.sourceVideo,
+    frameSummary: preview.frameSummary,
+  });
 }
