@@ -1107,6 +1107,68 @@ export interface PipelineBCertificationBridgeResult {
   export_checksum: string;
 }
 
+// --- Video Grounded Quality Audit — Kiki 25s benchmark (PHASE-7 readonly) ---
+
+export const VIDEO_GROUNDED_QUALITY_AUDIT_VERSION = 'VIDEO-GROUNDED-QUALITY-AUDIT-v1' as const;
+
+export type VideoProductionReadinessVerdict =
+  | 'insufficient'
+  | 'partial'
+  | 'strong'
+  | 'video_ready';
+
+export interface VideoGroundedQualityDimension {
+  key: string;
+  label: string;
+  score: number;
+  passed: boolean;
+  detail: string;
+}
+
+export interface VideoGroundedQualityGap {
+  gap_id: string;
+  severity: 'critical' | 'moderate' | 'informational';
+  message: string;
+  dimension_key: string;
+}
+
+export interface Kiki25sBenchmarkReference {
+  reference_title: string;
+  target_scene_window_min: number;
+  target_scene_window_max: number;
+  target_duration_seconds: number;
+  actual_scene_count: number;
+  within_scene_window: boolean;
+}
+
+export interface VideoGroundedQualityAuditInputs {
+  canonical_scene_count: number;
+  certification_enriched_scene_count: number;
+  scenes_with_temporal_bridge: number;
+  scenes_with_visual_atoms: number;
+  scenes_with_relationship_graph: number;
+  certification_readiness_score: number;
+}
+
+export interface VideoGroundedQualityAuditResult {
+  schema_version: typeof VIDEO_GROUNDED_QUALITY_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  kiki_25s_benchmark: Kiki25sBenchmarkReference;
+  audit_inputs: VideoGroundedQualityAuditInputs;
+  dimensions: VideoGroundedQualityDimension[];
+  quality_score: number;
+  production_readiness_verdict: VideoProductionReadinessVerdict;
+  gaps: VideoGroundedQualityGap[];
+  next_recommended_phase: string;
+  validation: {
+    deterministic_checksum_stable: boolean;
+    readonly_audit: true;
+    no_dataset_mutation: true;
+  };
+  export_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
