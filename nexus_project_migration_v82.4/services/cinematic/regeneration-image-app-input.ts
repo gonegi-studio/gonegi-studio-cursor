@@ -231,3 +231,112 @@ export function computeRegenerationImageAppInputFingerprint(
 export function resetRegenerationImageAppInputCacheForVerification(): void {
   cachedRegenerationImageAppInput = null;
 }
+
+const REGENERATION_IMAGE_APP_INPUT_PREVIEW_ITEMS = Object.freeze([
+  Object.freeze({
+    regenerationInputId: "9d8c477490a8ee27adde29fc14663b2e33dbb00b6c9a20fb2ce6356f668f66e4",
+    queueOrder: 1,
+    segmentId: "segment-002",
+    regenerationRequestId: "f4e83decf9a0330e0fec00ab436e13c5ed9c7a07894e748d6dae4b40d86a1d74",
+    continuityAnchor: "continuity-anchor-segment-002",
+    promptAdjustmentHint: "maintain-prompt-anchor-adjust-character-style",
+    priority: "high" as const,
+    imageAppInputJson:
+      '{"version":"v1","inputKind":"regeneration","queueOrder":1,"segmentId":"segment-002","regenerationRequestId":"f4e83decf9a0330e0fec00ab436e13c5ed9c7a07894e748d6dae4b40d86a1d74","continuityAnchor":"continuity-anchor-segment-002","promptAdjustmentHint":"maintain-prompt-anchor-adjust-character-style","priority":"high","generatedEvidenceId":"b86db7405dae673539ffd8346cf1e34978d5f8f32db31457a4eafa29be2997d1","reason":"manual-character-style-continuity-review-required"}',
+    inputItemFingerprint: "a53100bacb85a75f63dc3fe62bd1b0433303e49ab5f86fc2a42bb423804b012c",
+  }),
+  Object.freeze({
+    regenerationInputId: "c3a58933dadc18e8954aaa23b277619dc90854e076b416635cf4c5eb4e336f2a",
+    queueOrder: 2,
+    segmentId: "segment-003",
+    regenerationRequestId: "f36f1400013f6d1fddf528667991bb15dc0856f30e70f78b35ee3798502b1f19",
+    continuityAnchor: "continuity-anchor-segment-003",
+    promptAdjustmentHint: "hold-prompt-until-prior-queue-resolved",
+    priority: "deferred" as const,
+    imageAppInputJson:
+      '{"version":"v1","inputKind":"regeneration","queueOrder":2,"segmentId":"segment-003","regenerationRequestId":"f36f1400013f6d1fddf528667991bb15dc0856f30e70f78b35ee3798502b1f19","continuityAnchor":"continuity-anchor-segment-003","promptAdjustmentHint":"hold-prompt-until-prior-queue-resolved","priority":"deferred","generatedEvidenceId":"61f9835175e9a8026af062fc1d6db985deed2d56c0e9fa63c0bc930989a5d707","reason":"manual-review-blocked-pending-prior-queue"}',
+    inputItemFingerprint: "65b53005fc32a6f50943452f7b7d4a0cf1f230e6e0a16f04c04cd38231e63795",
+  }),
+] as const);
+
+export const REGENERATION_IMAGE_APP_INPUT_PREVIEW_INPUT = Object.freeze({
+  version: REGENERATION_IMAGE_APP_INPUT_VERSION,
+  inputId: REGENERATION_IMAGE_APP_INPUT_ID,
+  requestId: "image-regeneration-request-gonegi-harbor-25s-v1",
+  imageRegenerationRequestFingerprint:
+    "5470791889f5fcbd6ca4cbc5bcab77d032f53ee025cbb0bf942f7390ed017e49",
+  sourceFingerprint: "3397ecf7c62f94a60c8b05d175db34404150c707b3e8b3525acfdd5eae659589",
+  inputVersion: REGENERATION_IMAGE_APP_INPUT_KIND_VERSION,
+  activeInputState: REGENERATION_IMAGE_APP_INPUT_STATE,
+  totalRegenerationInputCount: 2,
+  items: REGENERATION_IMAGE_APP_INPUT_PREVIEW_ITEMS,
+});
+
+export const REGENERATION_IMAGE_APP_INPUT_PREVIEW_FINGERPRINT =
+  "019add3c5f73e3005cef246a09da48bcef87824f66388db5d0b356fb9caba3f9" as const;
+
+export type RegenerationImageAppInputPreviewItemCounts = {
+  totalItemCount: number;
+  regenerationInputCount: number;
+};
+
+export type RegenerationImageAppInputPreviewPriority = {
+  queueOrder: number;
+  priority: RegenerationPriority;
+};
+
+export type RegenerationImageAppInputPreview = {
+  regenerationImageAppInput: ReturnType<typeof JSON.parse>;
+  fingerprint: string;
+  itemCounts: RegenerationImageAppInputPreviewItemCounts;
+  priorities: readonly RegenerationImageAppInputPreviewPriority[];
+};
+
+function partitionRegenerationInputPriorities(
+  input: RegenerationImageAppInput
+): readonly RegenerationImageAppInputPreviewPriority[] {
+  return Object.freeze(
+    [...input.items]
+      .sort((a, b) => a.queueOrder - b.queueOrder)
+      .map((item) =>
+        Object.freeze({
+          queueOrder: item.queueOrder,
+          priority: item.priority,
+        })
+      )
+  );
+}
+
+export function buildRegenerationImageAppInputPreviewFromInput(
+  regenerationImageAppInput: RegenerationImageAppInput
+): RegenerationImageAppInputPreview {
+  const fingerprint = computeRegenerationImageAppInputFingerprint(regenerationImageAppInput);
+  const priorities = partitionRegenerationInputPriorities(regenerationImageAppInput);
+
+  return Object.freeze({
+    regenerationImageAppInput: JSON.parse(
+      serializeRegenerationImageAppInput(regenerationImageAppInput)
+    ),
+    fingerprint,
+    itemCounts: Object.freeze({
+      totalItemCount: regenerationImageAppInput.totalRegenerationInputCount,
+      regenerationInputCount: regenerationImageAppInput.totalRegenerationInputCount,
+    }),
+    priorities,
+  });
+}
+
+export function buildRegenerationImageAppInputPreview(): RegenerationImageAppInputPreview {
+  return buildRegenerationImageAppInputPreviewFromInput(REGENERATION_IMAGE_APP_INPUT_PREVIEW_INPUT);
+}
+
+export function serializeRegenerationImageAppInputPreview(
+  preview: RegenerationImageAppInputPreview
+): string {
+  return JSON.stringify({
+    regenerationImageAppInput: preview.regenerationImageAppInput,
+    fingerprint: preview.fingerprint,
+    itemCounts: preview.itemCounts,
+    priorities: preview.priorities,
+  });
+}

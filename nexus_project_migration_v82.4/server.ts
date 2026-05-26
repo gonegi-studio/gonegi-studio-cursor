@@ -25,6 +25,7 @@ import { buildPilotIntakePreview } from "./services/cinematic/pilot-intake-schem
 import { buildRendererHandoffPreview } from "./services/cinematic/renderer-handoff-export.ts";
 import { buildDatasetExportPreview } from "./services/cinematic/dataset-export-package.ts";
 import { buildImageAppFinalInputPreview } from "./services/cinematic/image-app-final-input-package.ts";
+import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
@@ -363,6 +364,18 @@ async function startServer() {
     } catch (e) {
       console.error("Cinematic Image App Final Input Preview Error:", e);
       return res.status(500).json({ error: "Failed to build cinematic image app final input preview" });
+    }
+  });
+
+  // API: Regeneration image app input preview (Phase-86F readonly AI Studio regeneration test JSON)
+  app.get("/api/cinematic/regeneration-image-app-input-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildRegenerationImageAppInputPreview()));
+    } catch (e) {
+      console.error("Cinematic Regeneration Image App Input Preview Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic regeneration image app input preview",
+      });
     }
   });
 
