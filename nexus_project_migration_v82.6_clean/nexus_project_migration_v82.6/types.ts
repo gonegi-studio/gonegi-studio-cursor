@@ -1717,6 +1717,65 @@ export interface Seq002IngestionDryRunResult {
   dry_run_checksum: string;
 }
 
+// --- Real SEQ-002 In-Memory Ingestion (PHASE-16 runtime merge, no export overwrite) ---
+
+export const REAL_SEQ002_INGESTION_VERSION = 'REAL-SEQ002-INGESTION-v1' as const;
+
+export interface RealIngestionStep {
+  step_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface MergedLockCandidate {
+  parent_production_dataset_candidate_id: string;
+  parent_orchestration_readiness: OrchestrationReadinessLevel;
+  merged_production_dataset_candidate_id: string;
+  merged_orchestration_readiness: OrchestrationReadinessLevel;
+  lock_inheritance: 'preserved' | 'degraded' | 'blocked';
+  parent_lock_checksum_ref: string;
+}
+
+export interface RealIngestionReport {
+  anchor_scene_count: number;
+  seq002_scene_count: number;
+  active_scene_count: number;
+  candidate_source_file: string | null;
+  dry_run_approval_ref: boolean;
+  dry_run_checksum_ref: string;
+  ingestion_steps: RealIngestionStep[];
+  temporal_chain_merged: boolean;
+  certification_preserved: boolean;
+  continuity_preserved: boolean;
+  production_lock_inherited: boolean;
+  canonical_export_unchanged: true;
+  in_memory_only: true;
+  destructive_merge: false;
+}
+
+export interface RealSeq002IngestionResult {
+  schema_version: typeof REAL_SEQ002_INGESTION_VERSION;
+  generated_at: string;
+  readonly_ingestion: true;
+  real_ingestion_report: RealIngestionReport;
+  active_scene_count: number;
+  merged_quality_score: number;
+  merged_orchestration_score: number;
+  merged_lock_candidate: MergedLockCandidate;
+  validation: {
+    deterministic_ingestion_checksum_stable: boolean;
+    readonly_ingestion: true;
+    in_memory_only: true;
+    no_canonical_export_mutation: true;
+    no_overwrite: true;
+    no_destructive_merge: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+  };
+  ingestion_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

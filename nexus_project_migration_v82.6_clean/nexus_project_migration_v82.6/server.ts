@@ -38,6 +38,7 @@ import { buildSeq002ExpansionSimulationPreview } from "./services/seq002Expansio
 import { buildLabImportIngestionContractPreview } from "./services/labImportIngestionContract";
 import { buildSeq002CandidateImportValidatorPreview } from "./services/seq002CandidateImportValidator";
 import { buildSeq002IngestionDryRunPreview } from "./services/seq002IngestionDryRun";
+import { buildRealSeq002IngestionPreview } from "./services/realSeq002Ingestion";
 
 async function startServer() {
   const app = express();
@@ -947,6 +948,17 @@ async function startServer() {
     } catch (e) {
       console.error("SEQ-002 ingestion dry-run preview error:", e);
       return res.status(500).json({ error: "Failed to build SEQ-002 ingestion dry-run preview" });
+    }
+  });
+
+  // API: Real SEQ-002 In-Memory Ingestion (PHASE-16 runtime merge, no export overwrite)
+  app.get("/api/cinematic/real-seq002-ingestion-preview", (_req, res) => {
+    try {
+      const preview = buildRealSeq002IngestionPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Real SEQ-002 ingestion preview error:", e);
+      return res.status(500).json({ error: "Failed to build real SEQ-002 ingestion preview" });
     }
   });
 
