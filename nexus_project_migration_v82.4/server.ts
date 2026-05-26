@@ -35,6 +35,7 @@ import { buildRealV826TemporalDedupedCinematicDnaExportDownload } from "./servic
 import { buildRealTemporalDatasetQualityAuditPreview } from "./services/cinematic/real-temporal-dataset-quality-audit.ts";
 import { buildRealTemporalDedupedDatasetQualityLockPreview } from "./services/cinematic/real-temporal-deduped-dataset-quality-lock.ts";
 import { buildRealTemporalDedupedCompletionSnapshotPreview } from "./services/cinematic/real-temporal-deduped-completion-snapshot.ts";
+import { buildRealCinematicMemoryContinuityPreview } from "./services/cinematic/real-cinematic-memory-continuity.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
@@ -497,6 +498,18 @@ async function startServer() {
       console.error("Cinematic Real Temporal Dataset Quality Audit Preview Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic real temporal dataset quality audit preview",
+      });
+    }
+  });
+
+  // API: Real cinematic memory continuity preview (Phase-95B sequence cinematic memory carryover)
+  app.get("/api/cinematic/real-cinematic-memory-continuity-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildRealCinematicMemoryContinuityPreview()));
+    } catch (e) {
+      console.error("Cinematic Real Cinematic Memory Continuity Preview Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real cinematic memory continuity preview",
       });
     }
   });
