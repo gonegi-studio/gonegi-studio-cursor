@@ -26,6 +26,7 @@ import { buildRendererHandoffPreview } from "./services/cinematic/renderer-hando
 import { buildDatasetExportPreview } from "./services/cinematic/dataset-export-package.ts";
 import { buildImageAppFinalInputPreview } from "./services/cinematic/image-app-final-input-package.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
+import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildGeneratorAdapterPreview } from "./services/cinematic/generator-adapter-preview.ts";
 import { buildScenePromptExportPreview } from "./services/cinematic/scene-prompt-export-preview.ts";
 import { runWithRuntimeReadonlyGuard } from "./services/runtime/runtime-guard.ts";
@@ -375,6 +376,20 @@ async function startServer() {
       console.error("Cinematic Regeneration Image App Input Preview Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic regeneration image app input preview",
+      });
+    }
+  });
+
+  // API: Reference conditioned image input preview (Phase-88F readonly AI Studio paste test JSON)
+  app.get("/api/cinematic/reference-conditioned-image-input-preview", (req, res) => {
+    try {
+      return res.json(
+        runWithRuntimeReadonlyGuard(() => buildReferenceConditionedImageInputPreview())
+      );
+    } catch (e) {
+      console.error("Cinematic Reference Conditioned Image Input Preview Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic reference conditioned image input preview",
       });
     }
   });
