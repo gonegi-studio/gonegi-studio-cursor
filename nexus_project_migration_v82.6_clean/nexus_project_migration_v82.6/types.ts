@@ -1591,6 +1591,55 @@ export interface LabImportIngestionContractResult {
   contract_checksum: string;
 }
 
+// --- SEQ-002 Candidate Import Validator (PHASE-13 readonly) ---
+
+export const SEQ002_CANDIDATE_IMPORT_VALIDATOR_VERSION =
+  'SEQ002-CANDIDATE-IMPORT-VALIDATOR-v1' as const;
+
+export type CandidateValidationVerdict = 'pass' | 'fail';
+
+export interface CandidateValidationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface CandidateValidationReport {
+  candidate_source_file: string | null;
+  candidate_file_found: boolean;
+  candidate_scene_count: number;
+  contract_id: string;
+  contract_checksum_ref: string;
+  checks: CandidateValidationCheck[];
+  field_coverage: Record<string, number>;
+}
+
+export interface RepairSuggestion {
+  suggestion_id: string;
+  check_key: string;
+  message: string;
+}
+
+export interface Seq002CandidateImportValidatorResult {
+  schema_version: typeof SEQ002_CANDIDATE_IMPORT_VALIDATOR_VERSION;
+  generated_at: string;
+  readonly_validation: true;
+  candidate_validation_report: CandidateValidationReport;
+  validation_verdict: CandidateValidationVerdict;
+  rejection_reasons: string[];
+  repair_suggestions: RepairSuggestion[];
+  approved_for_ingestion: boolean;
+  validation: {
+    deterministic_validator_checksum_stable: boolean;
+    readonly_validation: true;
+    no_ingestion_executed: true;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+  };
+  validator_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

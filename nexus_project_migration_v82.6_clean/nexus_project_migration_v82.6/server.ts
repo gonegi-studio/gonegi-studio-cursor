@@ -36,6 +36,7 @@ import { buildMultiSequenceExpansionBlueprintPreview } from "./services/multiSeq
 import { buildExpansionReadinessGatePreview } from "./services/expansionReadinessGate";
 import { buildSeq002ExpansionSimulationPreview } from "./services/seq002ExpansionSimulation";
 import { buildLabImportIngestionContractPreview } from "./services/labImportIngestionContract";
+import { buildSeq002CandidateImportValidatorPreview } from "./services/seq002CandidateImportValidator";
 
 async function startServer() {
   const app = express();
@@ -923,6 +924,17 @@ async function startServer() {
     } catch (e) {
       console.error("Lab import ingestion contract preview error:", e);
       return res.status(500).json({ error: "Failed to build lab import ingestion contract preview" });
+    }
+  });
+
+  // API: SEQ-002 Candidate Import Validator (PHASE-13 readonly)
+  app.get("/api/cinematic/seq002-candidate-import-validator-preview", (_req, res) => {
+    try {
+      const preview = buildSeq002CandidateImportValidatorPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("SEQ-002 candidate import validator preview error:", e);
+      return res.status(500).json({ error: "Failed to build SEQ-002 candidate import validator preview" });
     }
   });
 
