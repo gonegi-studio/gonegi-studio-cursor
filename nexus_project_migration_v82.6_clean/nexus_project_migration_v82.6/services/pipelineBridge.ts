@@ -1,7 +1,9 @@
 import {
   BridgeCompletenessResult,
+  BridgeExportReceipt,
   BridgeReceipt,
   CinematicExtractionResult,
+  ExportBridgeMode,
   GroundedValue,
   PIPELINE_BRIDGE_VERSION,
   PipelineBridgeMode,
@@ -34,6 +36,10 @@ export interface BridgePipelineOptions {
   skipArrayUnion?: boolean;
   /** Opt-in lab import bridge — consumed by useLabState; documented for provenance only when passed. */
   enablePipelineBridgeOnImport?: boolean;
+  /** Fixed ISO timestamp for deterministic server export bridge receipts. */
+  bridgedAt?: string;
+  /** Server export bridge mode — attached to provenance when set. */
+  exportBridgeMode?: ExportBridgeMode;
 }
 
 export interface BridgePipelineResult {
@@ -413,7 +419,8 @@ export function createBridgeReceipt(
   added: string[] = [],
   skipped: string[] = [],
   conflicts: string[] = [],
-  archived: string[] = []
+  archived: string[] = [],
+  bridgedAt?: string
 ): BridgeReceipt {
   return {
     added_fields: [...added],
@@ -422,9 +429,15 @@ export function createBridgeReceipt(
     archived_fields: [...archived],
     dry_run: dryRun,
     mode,
-    bridged_at: new Date().toISOString(),
+    bridged_at: bridgedAt ?? new Date().toISOString(),
     bridge_version: PIPELINE_BRIDGE_VERSION,
   };
+}
+
+/** Deterministic export-bridge timestamp keyed by scene index. */
+export function deterministicExportBridgeTimestamp(sceneIndex: number): string {
+  const slot = String(sceneIndex + 1).padStart(2, '0');
+  return `2026-05-26T00:00:${slot}.000Z`;
 }
 
 /**
@@ -456,7 +469,7 @@ export function bridgePipelineRecord(
 
   const donor = effectiveDonor;
 
-  const receipt = createBridgeReceipt(mode, dryRun);
+  const receipt = createBridgeReceipt(mode, dryRun, [], [], [], [], options.bridgedAt);
   const pipelineAFields: string[] = [];
   const pipelineBFields: string[] = [];
 
@@ -508,6 +521,7 @@ export function bridgePipelineRecord(
     bridged_at: receipt.bridged_at,
     bridge_version: PIPELINE_BRIDGE_VERSION,
     mode,
+    ...(options.exportBridgeMode ? { bridge_mode: options.exportBridgeMode } : {}),
   };
 
   working.pipeline_bridge_provenance = provenance;
@@ -593,4 +607,113 @@ export function applyLabImportBridge(
 
   bridgeResult.record.pipeline_bridge_receipt = bridgeResult.receipt;
   return bridgeResult;
+}
+
+export interface ServerExportBridgeResult {
+  record: CinematicExtractionResult;
+  receipt: BridgeExportReceipt;
+  provenance: PipelineBridgeProvenance;
+  export_bridge_score: number;
+}
+
+/**
+ * Server export post-pass — opt-in bridge enrichment for Pipeline A export records.
+ * Preserves populated visual_atoms and relationship_graph; never overwrites non-empty fields.
+ */
+export function applyServerExportBridge(
+  record: CinematicExtractionResult,
+  sceneIndex: number,
+  mode: ExportBridgeMode
+): ServerExportBridgeResult {
+  if (mode === 'OFF') {
+    const score = validateBridgeCompleteness(record).bridge_score;
+    return {
+      record,
+      receipt: {
+        added_fields: [],
+        skipped_fields: ['export_bridge:off'],
+        conflict_fields: [],
+        archived_fields: [],
+        dry_run: false,
+        mode: 'A_TO_B',
+        bridged_at: deterministicExportBridgeTimestamp(sceneIndex),
+        bridge_version: PIPELINE_BRIDGE_VERSION,
+        export_bridge_mode: 'OFF',
+        scene_index: sceneIndex,
+      },
+      provenance: {
+        pipeline_a_fields: [],
+        pipeline_b_fields: [],
+        bridged_at: deterministicExportBridgeTimestamp(sceneIndex),
+        bridge_version: PIPELINE_BRIDGE_VERSION,
+        mode: 'A_TO_B',
+        bridge_mode: 'OFF',
+      },
+      export_bridge_score: score,
+    };
+  }
+
+  const memoryOnly = mode === 'MEMORY_ONLY';
+  const preservedAtoms = record.visual_atoms?.length
+    ? cloneRecord(record.visual_atoms)
+    : record.visual_atoms;
+  const preservedGraph = record.relationship_graph?.length
+    ? cloneRecord(record.relationship_graph)
+    : record.relationship_graph;
+
+  const bridgedAt = deterministicExportBridgeTimestamp(sceneIndex);
+  const bridgeResult = bridgePipelineRecord(record, {
+    mode: 'A_TO_B',
+    pipelineAContext: {
+      seed: sceneIndex,
+      sceneId: record.id,
+      index: sceneIndex,
+      totalDms: 250,
+      totalFrames: 100,
+      includeDenseTrajectories: !memoryOnly,
+      deterministicTimestamp: bridgedAt,
+    },
+    preserveDensity: memoryOnly,
+    enableFullDensityBridge: mode === 'FULL_DENSITY',
+    skipArrayUnion: memoryOnly,
+    bridgedAt,
+    exportBridgeMode: mode,
+  });
+
+  if (preservedAtoms && preservedAtoms.length > 0) {
+    bridgeResult.record.visual_atoms = preservedAtoms;
+  }
+  if (preservedGraph && preservedGraph.length > 0) {
+    bridgeResult.record.relationship_graph = preservedGraph;
+  }
+
+  const export_bridge_score = validateBridgeCompleteness(bridgeResult.record).bridge_score;
+  const bridge_export_receipt: BridgeExportReceipt = {
+    ...bridgeResult.receipt,
+    export_bridge_mode: mode,
+    scene_index: sceneIndex,
+  };
+
+  bridgeResult.record.bridge_mode = mode;
+  bridgeResult.record.bridge_export_receipt = bridge_export_receipt;
+  bridgeResult.record.export_bridge_score = export_bridge_score;
+  bridgeResult.record.pipeline_bridge_receipt = bridgeResult.receipt;
+
+  return {
+    record: bridgeResult.record,
+    receipt: bridge_export_receipt,
+    provenance: bridgeResult.provenance,
+    export_bridge_score,
+  };
+}
+
+export function applyServerExportBridgePostPass(
+  dataset: CinematicExtractionResult[],
+  mode: ExportBridgeMode
+): CinematicExtractionResult[] {
+  if (mode === 'OFF') {
+    return dataset;
+  }
+
+  return dataset.map((record, sceneIndex) => applyServerExportBridge(record, sceneIndex, mode).record);
 }

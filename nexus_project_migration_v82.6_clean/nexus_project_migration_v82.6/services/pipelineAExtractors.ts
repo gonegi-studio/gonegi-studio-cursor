@@ -54,6 +54,8 @@ export interface PipelineAExtractorContext {
   directorName?: string;
   /** When false, skips dense_latent_trajectories generation (lab import bridge). */
   includeDenseTrajectories?: boolean;
+  /** Fixed timestamp for deterministic export-bridge donor snapshots. */
+  deterministicTimestamp?: string;
 }
 
 export interface PipelineTelemetryBundle {
@@ -286,7 +288,7 @@ export function extractExtractionNamespaces(
 
   const completion_snapshot_states = {
     snapshot_id: `SNAP-${seed}`,
-    timestamp: new Date().toISOString(),
+    timestamp: context.deterministicTimestamp ?? new Date().toISOString(),
     hash: `SHA256-SNAP-MIGRATION-${seed}`,
   };
 

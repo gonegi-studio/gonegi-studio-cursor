@@ -716,12 +716,15 @@ export interface PipelineExtractionBundle {
   raw_caches_extraction?: Record<string, unknown>;
 }
 
+export type ExportBridgeMode = 'OFF' | 'MEMORY_ONLY' | 'FULL_DENSITY';
+
 export interface PipelineBridgeProvenance {
   pipeline_a_fields: string[];
   pipeline_b_fields: string[];
   bridged_at: string;
   bridge_version: typeof PIPELINE_BRIDGE_VERSION;
   mode?: PipelineBridgeMode;
+  bridge_mode?: ExportBridgeMode;
 }
 
 export interface BridgeReceipt {
@@ -733,6 +736,11 @@ export interface BridgeReceipt {
   mode: PipelineBridgeMode;
   bridged_at: string;
   bridge_version: typeof PIPELINE_BRIDGE_VERSION;
+}
+
+export interface BridgeExportReceipt extends BridgeReceipt {
+  export_bridge_mode: ExportBridgeMode;
+  scene_index: number;
 }
 
 export interface BridgeCompletenessResult {
@@ -1460,6 +1468,10 @@ export interface CinematicExtractionResult {
   raw_caches_extraction?: Record<string, unknown>;
   pipeline_bridge_provenance?: PipelineBridgeProvenance;
   pipeline_bridge_receipt?: BridgeReceipt;
+  /** Server export bridge mode metadata (opt-in post-pass only). */
+  bridge_mode?: ExportBridgeMode;
+  bridge_export_receipt?: BridgeExportReceipt;
+  export_bridge_score?: number;
   /** Preserves Pipeline A canonical_dna when both pipelines contribute. */
   canonical_dna_pipeline_a_archive?: CanonicalDNA | Record<string, unknown>;
   /** Preserves Pipeline B canonical_dna when both pipelines contribute. */

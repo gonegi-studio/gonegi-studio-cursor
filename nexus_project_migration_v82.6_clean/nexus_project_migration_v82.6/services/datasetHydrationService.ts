@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { CinematicExtractionResult } from "../types";
+import { CinematicExtractionResult, ExportBridgeMode } from "../types";
 import { MENDES_1917_SCENE } from "../data/mendesScene";
 import { LUMET_12_ANGRY_MEN_SCENE } from "../data/lumetScene";
 import {
@@ -12,6 +12,40 @@ import {
   extractRichVisualAtoms,
   PIPELINE_A_DIRECTORS,
 } from "./pipelineAExtractors";
+import { applyServerExportBridgePostPass } from "./pipelineBridge";
+
+export interface ComposeRecursiveDatasetOptions {
+  exportBridgeMode?: ExportBridgeMode;
+}
+
+export interface ServerExportBuildResult {
+  dataset: CinematicExtractionResult[];
+  exportBridgeMode: ExportBridgeMode;
+  /** When false, bridged export stays in-memory only (no at-rest JSON rewrite). */
+  writeToRest: boolean;
+}
+
+export function parseExportBridgeMode(value: unknown): ExportBridgeMode {
+  if (value === 'MEMORY_ONLY' || value === 'FULL_DENSITY') {
+    return value;
+  }
+  return 'OFF';
+}
+
+/**
+ * Server export builder — composes dataset and optionally applies bridge post-pass.
+ * Default OFF preserves legacy export bytes; bridge modes stay in-memory unless explicitly written.
+ */
+export function buildServerExportDataset(
+  exportBridgeMode: ExportBridgeMode = 'OFF'
+): ServerExportBuildResult {
+  const dataset = composeRecursiveDataset({ exportBridgeMode });
+  return {
+    dataset,
+    exportBridgeMode,
+    writeToRest: exportBridgeMode === 'OFF',
+  };
+}
 
 /**
  * Hydrates a single scene recursively to provide non-empty visual_atoms,
@@ -325,7 +359,10 @@ export function hydrateSceneRecursively(scene: CinematicExtractionResult, index:
  * Composes the primary, large high-fidelity cinematic workflow dataset.
  * Combines Mendes, Lumet plus standard structured templates to reach target export size.
  */
-export function composeRecursiveDataset(): CinematicExtractionResult[] {
+export function composeRecursiveDataset(
+  options: ComposeRecursiveDatasetOptions = {}
+): CinematicExtractionResult[] {
+  const exportBridgeMode = options.exportBridgeMode ?? 'OFF';
   const dataset: CinematicExtractionResult[] = [];
   
   // Clean bases
@@ -358,7 +395,7 @@ export function composeRecursiveDataset(): CinematicExtractionResult[] {
     dataset.push(hydrated);
   }
 
-  return dataset;
+  return applyServerExportBridgePostPass(dataset, exportBridgeMode);
 }
 
 /**
