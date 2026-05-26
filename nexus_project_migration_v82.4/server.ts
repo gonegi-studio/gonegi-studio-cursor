@@ -31,6 +31,7 @@ import { buildRealV826CinematicDnaExportDownload } from "./services/cinematic/re
 import { buildRealV826DenseCinematicDnaExportDownload } from "./services/cinematic/real-v826-dense-cinematic-dna-export-adapter.ts";
 import { buildRealV826UltraDenseCinematicDnaExportDownload } from "./services/cinematic/real-v826-ultra-dense-cinematic-dna-export-adapter.ts";
 import { buildRealV826TemporalCinematicDnaExportDownload } from "./services/cinematic/real-v826-temporal-cinematic-dna-export-adapter.ts";
+import { buildRealTemporalDatasetQualityAuditPreview } from "./services/cinematic/real-temporal-dataset-quality-audit.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
@@ -481,6 +482,18 @@ async function startServer() {
       console.error("Cinematic Real v826 Temporal Cinematic DNA Export JSON File Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic real v826 temporal cinematic dna export json file",
+      });
+    }
+  });
+
+  // API: Real temporal dataset quality audit preview (Phase-94B readonly temporal export quality audit JSON)
+  app.get("/api/cinematic/real-temporal-dataset-quality-audit-preview", (req, res) => {
+    try {
+      return res.json(runWithRuntimeReadonlyGuard(() => buildRealTemporalDatasetQualityAuditPreview()));
+    } catch (e) {
+      console.error("Cinematic Real Temporal Dataset Quality Audit Preview Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real temporal dataset quality audit preview",
       });
     }
   });
