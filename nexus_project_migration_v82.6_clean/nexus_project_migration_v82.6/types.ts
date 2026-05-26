@@ -1776,6 +1776,62 @@ export interface RealSeq002IngestionResult {
   ingestion_checksum: string;
 }
 
+// --- Runtime Dataset Re-Certification (PHASE-17 readonly, 33-scene active runtime) ---
+
+export const RUNTIME_DATASET_RECERTIFICATION_VERSION =
+  'RUNTIME-DATASET-RECERTIFICATION-v1' as const;
+
+export interface RuntimeRecertificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  score: number;
+  detail: string;
+}
+
+export interface RuntimeLockCandidate {
+  phase16_merged_candidate_id_ref: string;
+  runtime_production_dataset_candidate_id: string;
+  runtime_orchestration_readiness: OrchestrationReadinessLevel;
+  lock_inheritance: 'preserved' | 'degraded' | 'blocked';
+  parent_lock_checksum_ref: string;
+  phase16_lock_inheritance_ref: MergedLockCandidate['lock_inheritance'];
+}
+
+export interface RuntimeRecertificationReport {
+  active_scene_count: number;
+  anchor_scene_count: number;
+  seq002_scene_count: number;
+  phase16_ingestion_checksum_ref: string;
+  inherited_lock_candidate_ref: string;
+  temporal_graph_checksum_ref: string;
+  recertification_checks: RuntimeRecertificationCheck[];
+  all_checks_passed: boolean;
+  canonical_export_unchanged: true;
+  in_memory_only: true;
+}
+
+export interface RuntimeDatasetRecertificationResult {
+  schema_version: typeof RUNTIME_DATASET_RECERTIFICATION_VERSION;
+  generated_at: string;
+  readonly_recertification: true;
+  runtime_recertification_report: RuntimeRecertificationReport;
+  runtime_quality_score: number;
+  runtime_orchestration_score: number;
+  runtime_production_readiness: VideoProductionReadinessVerdict;
+  runtime_lock_candidate: RuntimeLockCandidate;
+  runtime_dataset_fingerprint: string;
+  validation: {
+    deterministic_recertification_checksum_stable: boolean;
+    readonly_recertification: true;
+    in_memory_only: true;
+    no_canonical_export_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+  };
+  recertification_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

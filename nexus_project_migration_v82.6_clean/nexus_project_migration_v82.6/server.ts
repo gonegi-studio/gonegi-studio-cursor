@@ -39,6 +39,10 @@ import { buildLabImportIngestionContractPreview } from "./services/labImportInge
 import { buildSeq002CandidateImportValidatorPreview } from "./services/seq002CandidateImportValidator";
 import { buildSeq002IngestionDryRunPreview } from "./services/seq002IngestionDryRun";
 import { buildRealSeq002IngestionPreview } from "./services/realSeq002Ingestion";
+import {
+  buildRuntimeDatasetRecertificationExportDownload,
+  buildRuntimeDatasetRecertificationPreview,
+} from "./services/runtimeDatasetRecertification";
 
 async function startServer() {
   const app = express();
@@ -959,6 +963,31 @@ async function startServer() {
     } catch (e) {
       console.error("Real SEQ-002 ingestion preview error:", e);
       return res.status(500).json({ error: "Failed to build real SEQ-002 ingestion preview" });
+    }
+  });
+
+  // API: Runtime Dataset Re-Certification (PHASE-17 readonly, 33-scene active runtime)
+  app.get("/api/cinematic/runtime-dataset-recertification-preview", (_req, res) => {
+    try {
+      const preview = buildRuntimeDatasetRecertificationPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Runtime dataset recertification preview error:", e);
+      return res.status(500).json({ error: "Failed to build runtime dataset recertification preview" });
+    }
+  });
+
+  app.get("/api/cinematic/runtime-dataset-recertification-export-json-file", (_req, res) => {
+    try {
+      const download = buildRuntimeDatasetRecertificationExportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Runtime dataset recertification export error:", e);
+      return res.status(500).json({ error: "Failed to build runtime dataset recertification json file export" });
     }
   });
 
