@@ -151,3 +151,11 @@ export function resetRealVideoIntakeManifestCacheForVerification(): void {
 export function resolveRealVideoIntakeSourceAbsolutePath(): string {
   return resolveAbsolutePath(REAL_VIDEO_INTAKE_SOURCE_PATH);
 }
+
+export function resolveRealVideoIntakeSourceFileSizeBytes(): number {
+  const absolutePath = resolveRealVideoIntakeSourceAbsolutePath();
+  if (!fs.existsSync(absolutePath)) {
+    throw new Error("Real video intake source file must exist at canonical path");
+  }
+  return fs.statSync(absolutePath).size;
+}
