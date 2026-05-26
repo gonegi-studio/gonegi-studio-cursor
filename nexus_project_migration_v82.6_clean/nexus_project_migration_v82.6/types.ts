@@ -991,6 +991,68 @@ export interface MasterCoreDNAAdapterResult {
   export_checksum: string;
 }
 
+// --- Dataset Completion Audit (PHASE-5 readonly extension) ---
+
+export const DATASET_COMPLETION_AUDIT_VERSION = 'DATASET-COMPLETION-AUDIT-v1' as const;
+
+export type DatasetProductionReadiness =
+  | 'insufficient'
+  | 'partial'
+  | 'strong'
+  | 'feature_ready';
+
+export interface DatasetCompletionAuditDimension {
+  key: string;
+  label: string;
+  score: number;
+  passed: boolean;
+  detail: string;
+}
+
+export interface DatasetCompletionAuditGap {
+  gap_id: string;
+  severity: 'critical' | 'moderate' | 'informational';
+  message: string;
+  dimension_key: string;
+}
+
+export interface DatasetCompletionAuditCanonicalExport {
+  source_file: string;
+  scene_count: number;
+  size_bytes: number;
+  size_mb: number;
+  export_checksum: string;
+}
+
+export interface DatasetCompletionAuditBridgeMetadata {
+  scenes_with_bridge_provenance: number;
+  scenes_with_bridge_receipt: number;
+  scenes_with_export_bridge: number;
+  scenes_with_pipeline_a_memory: number;
+  scenes_with_pipeline_b_audit: number;
+  average_bridge_score: number;
+  bridge_mode_distribution: Record<string, number>;
+}
+
+export interface DatasetCompletionAuditResult {
+  schema_version: typeof DATASET_COMPLETION_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  canonical_export: DatasetCompletionAuditCanonicalExport;
+  optional_bridge_metadata: DatasetCompletionAuditBridgeMetadata;
+  dimensions: DatasetCompletionAuditDimension[];
+  completion_score: number;
+  gaps: DatasetCompletionAuditGap[];
+  next_recommended_phase: string;
+  production_readiness: DatasetProductionReadiness;
+  validation: {
+    deterministic_checksum_stable: boolean;
+    readonly_audit: true;
+    no_dataset_mutation: true;
+  };
+  export_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

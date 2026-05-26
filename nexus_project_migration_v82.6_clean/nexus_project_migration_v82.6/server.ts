@@ -17,6 +17,10 @@ import {
   buildTemporalMemoryGraphPreview,
 } from "./services/temporalMemoryGraph";
 import { buildMasterCoreDNAAdapterPreview } from "./services/masterCoreDNAAdapter";
+import {
+  buildDatasetCompletionAuditExportDownload,
+  buildDatasetCompletionAuditPreview,
+} from "./services/datasetCompletionAudit";
 
 async function startServer() {
   const app = express();
@@ -761,6 +765,31 @@ async function startServer() {
     } catch (e) {
       console.error("MasterCore DNA adapter preview error:", e);
       return res.status(500).json({ error: "Failed to build MasterCore DNA adapter preview" });
+    }
+  });
+
+  // API: Dataset Completion Audit (PHASE-5 readonly)
+  app.get("/api/cinematic/dataset-completion-audit-preview", (_req, res) => {
+    try {
+      const preview = buildDatasetCompletionAuditPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Dataset completion audit preview error:", e);
+      return res.status(500).json({ error: "Failed to build dataset completion audit preview" });
+    }
+  });
+
+  app.get("/api/cinematic/dataset-completion-audit-export-json-file", (_req, res) => {
+    try {
+      const download = buildDatasetCompletionAuditExportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Dataset completion audit export error:", e);
+      return res.status(500).json({ error: "Failed to build dataset completion audit json file export" });
     }
   });
 
