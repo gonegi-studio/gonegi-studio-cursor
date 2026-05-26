@@ -1487,6 +1487,110 @@ export interface Seq002ExpansionSimulationResult {
   simulation_checksum: string;
 }
 
+// --- Lab Import Ingestion Contract (PHASE-12 readonly) ---
+
+export const LAB_IMPORT_INGESTION_CONTRACT_VERSION = 'LAB-IMPORT-INGESTION-CONTRACT-v1' as const;
+
+export interface AcceptedInputShape {
+  format: 'json_array' | 'json_single';
+  record_type: 'CinematicExtractionResult';
+  target_sequence_id: string;
+  candidate_file_paths: string[];
+  min_scenes_per_import: number;
+  max_scenes_per_import: number;
+  encoding: 'utf8';
+}
+
+export interface RequiredTimestampRules {
+  opening_scene_must_chain_from_anchor: true;
+  v_timestamp_start_gte_anchor_terminal_end: true;
+  monotonic_within_import: true;
+  v_timestamp_end_gt_start: true;
+  anchor_terminal_scene_id_ref: string;
+}
+
+export interface IngestionCarryoverRequirement {
+  requirement_key: string;
+  layer: string;
+  minimum_coverage: number;
+  mandatory: boolean;
+}
+
+export interface BridgeModeRequirement {
+  pipeline_bridge_mode: 'B_TO_A';
+  certification_bridge_enabled: true;
+  merge_policy: 'temporal_chain';
+  export_bridge_mode: 'OFF';
+  in_memory_only_until_audit_pass: true;
+}
+
+export interface IngestionContract {
+  contract_id: string;
+  schema_version: typeof LAB_IMPORT_INGESTION_CONTRACT_VERSION;
+  parent_dataset_candidate_id: string;
+  target_sequence_id: string;
+  accepted_input_shape: AcceptedInputShape;
+  required_scene_fields: string[];
+  required_timestamps: RequiredTimestampRules;
+  character_carryover_requirements: IngestionCarryoverRequirement[];
+  environment_carryover_requirements: IngestionCarryoverRequirement[];
+  bridge_mode_requirement: BridgeModeRequirement;
+  density_preservation: true;
+  canonical_export_mutation: false;
+}
+
+export interface ValidationOrderStep {
+  step_index: number;
+  phase_ref: string;
+  service_or_route: string;
+  pass_condition: string;
+}
+
+export interface IngestionRejectionRule {
+  rule_id: string;
+  trigger: string;
+  severity: 'hard_reject' | 'soft_reject';
+  message: string;
+}
+
+export interface ApprovedImportPath {
+  path_id: string;
+  label: string;
+  steps: string[];
+  endpoint_refs: string[];
+}
+
+export interface LabImportIngestionContractResult {
+  schema_version: typeof LAB_IMPORT_INGESTION_CONTRACT_VERSION;
+  generated_at: string;
+  readonly_contract: true;
+  production_lock_ref: {
+    production_dataset_candidate_id: string;
+    deterministic_lock_checksum: string;
+  };
+  seq002_simulation_ref: {
+    simulation_checksum: string;
+    predicted_merge_score: number;
+    recommended_ingestion_policy: string;
+  };
+  expansion_gate_ref: {
+    gate_checksum: string;
+    expansion_readiness_verdict: ExpansionReadinessVerdict;
+  };
+  ingestion_contract: IngestionContract;
+  required_validation_order: ValidationOrderStep[];
+  rejection_rules: IngestionRejectionRule[];
+  approved_import_path: ApprovedImportPath;
+  validation: {
+    deterministic_contract_checksum_stable: boolean;
+    readonly_contract: true;
+    no_ingestion_executed: true;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+  };
+  contract_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

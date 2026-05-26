@@ -35,6 +35,7 @@ import { buildRenderOrchestrationDryRunPreview } from "./services/renderOrchestr
 import { buildMultiSequenceExpansionBlueprintPreview } from "./services/multiSequenceExpansionBlueprint";
 import { buildExpansionReadinessGatePreview } from "./services/expansionReadinessGate";
 import { buildSeq002ExpansionSimulationPreview } from "./services/seq002ExpansionSimulation";
+import { buildLabImportIngestionContractPreview } from "./services/labImportIngestionContract";
 
 async function startServer() {
   const app = express();
@@ -911,6 +912,17 @@ async function startServer() {
     } catch (e) {
       console.error("SEQ-002 expansion simulation preview error:", e);
       return res.status(500).json({ error: "Failed to build SEQ-002 expansion simulation preview" });
+    }
+  });
+
+  // API: Lab Import Ingestion Contract (PHASE-12 readonly)
+  app.get("/api/cinematic/lab-import-ingestion-contract-preview", (_req, res) => {
+    try {
+      const preview = buildLabImportIngestionContractPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Lab import ingestion contract preview error:", e);
+      return res.status(500).json({ error: "Failed to build lab import ingestion contract preview" });
     }
   });
 
