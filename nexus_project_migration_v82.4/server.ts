@@ -31,6 +31,7 @@ import { buildRealV826CinematicDnaExportDownload } from "./services/cinematic/re
 import { buildRealV826DenseCinematicDnaExportDownload } from "./services/cinematic/real-v826-dense-cinematic-dna-export-adapter.ts";
 import { buildRealV826UltraDenseCinematicDnaExportDownload } from "./services/cinematic/real-v826-ultra-dense-cinematic-dna-export-adapter.ts";
 import { buildRealV826TemporalCinematicDnaExportDownload } from "./services/cinematic/real-v826-temporal-cinematic-dna-export-adapter.ts";
+import { buildRealV826TemporalDedupedCinematicDnaExportDownload } from "./services/cinematic/real-v826-temporal-deduped-cinematic-dna-export-adapter.ts";
 import { buildRealTemporalDatasetQualityAuditPreview } from "./services/cinematic/real-temporal-dataset-quality-audit.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
@@ -494,6 +495,24 @@ async function startServer() {
       console.error("Cinematic Real Temporal Dataset Quality Audit Preview Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic real temporal dataset quality audit preview",
+      });
+    }
+  });
+
+  // API: Real v82.6 temporal deduped cinematic dna export json file (Phase-94C temporal edge semantic deduplication)
+  app.get("/api/cinematic/real-v826-temporal-deduped-cinematic-dna-export-json-file", (req, res) => {
+    try {
+      const download = runWithRuntimeReadonlyGuard(() =>
+        buildRealV826TemporalDedupedCinematicDnaExportDownload()
+      );
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Cinematic Real v826 Temporal Deduped Cinematic DNA Export JSON File Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real v826 temporal deduped cinematic dna export json file",
       });
     }
   });
