@@ -1640,6 +1640,39 @@ export interface Seq002CandidateImportValidatorResult {
   validator_checksum: string;
 }
 
+// --- SEQ-002 Candidate Fixture Builder (PHASE-14 deterministic fixture) ---
+
+export const SEQ002_CANDIDATE_FIXTURE_BUILDER_VERSION =
+  'SEQ002-CANDIDATE-FIXTURE-BUILDER-v1' as const;
+
+export interface Seq002FixtureBuildReport {
+  output_file: string;
+  scene_count: number;
+  anchor_terminal_scene_id: string;
+  sequence_id: string;
+  fixture_scene_ids: string[];
+  pipeline_b_audit_coverage: number;
+  pipeline_b_golden_coverage: number;
+  canonical_export_unchanged: true;
+  fixture_only: true;
+}
+
+export interface Seq002CandidateFixtureBuilderResult {
+  schema_version: typeof SEQ002_CANDIDATE_FIXTURE_BUILDER_VERSION;
+  generated_at: string;
+  fixture_build_report: Seq002FixtureBuildReport;
+  validator_verdict_after_build: CandidateValidationVerdict;
+  approved_for_ingestion_after_build: boolean;
+  validation: {
+    deterministic_fixture_checksum_stable: boolean;
+    fixture_only: true;
+    no_canonical_export_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+  };
+  fixture_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

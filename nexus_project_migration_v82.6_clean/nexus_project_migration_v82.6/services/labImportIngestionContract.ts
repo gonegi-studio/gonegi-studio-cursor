@@ -24,9 +24,31 @@ const LAB_IMPORT_CANDIDATE_FILES = [
   'storage/pipeline_b_import.json',
 ] as const;
 
-const CARRYOVER_COVERAGE = 0.85;
+export const SEQ002_CANDIDATE_FIXTURE_OUTPUT_FILE = 'data/pipeline_b_lab_records.json';
+export const SEQ002_TARGET_SEQUENCE_ID = 'SEQ-002';
+
+export const SEQ002_REQUIRED_SCENE_FIELDS = [
+  'id',
+  'scene_indexing',
+  'visual_atoms',
+  'relationship_graph',
+  'scene_state',
+  'director_dna',
+  'sequence_graph',
+  'generative_layer',
+  'production_v72',
+  'production_v82',
+  'temporal_bridge',
+  'character_persistence',
+  'emotional_carryover',
+  'camera_rhythm_memory',
+  'canonical_dna',
+  'latent_steering',
+] as const;
+
 const MIN_SCENES = 1;
 const MAX_SCENES = KIKI_25S_BENCHMARK.target_scene_window_max;
+const CARRYOVER_COVERAGE = 0.85;
 
 function digest(parts: string[]): string {
   return crypto.createHash('sha256').update(parts.join('|')).digest('hex');
