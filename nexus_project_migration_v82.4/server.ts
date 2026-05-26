@@ -34,6 +34,7 @@ import { buildRealV826TemporalCinematicDnaExportDownload } from "./services/cine
 import { buildRealV826TemporalDedupedCinematicDnaExportDownload } from "./services/cinematic/real-v826-temporal-deduped-cinematic-dna-export-adapter.ts";
 import { buildRealTemporalDatasetQualityAuditPreview } from "./services/cinematic/real-temporal-dataset-quality-audit.ts";
 import { buildRealTemporalDedupedDatasetQualityLockPreview } from "./services/cinematic/real-temporal-deduped-dataset-quality-lock.ts";
+import { buildRealTemporalDedupedCompletionSnapshotPreview } from "./services/cinematic/real-temporal-deduped-completion-snapshot.ts";
 import { buildRegenerationImageAppInputPreview } from "./services/cinematic/regeneration-image-app-input.ts";
 import { buildReferenceConditionedImageInputPreview } from "./services/cinematic/reference-conditioned-image-input.ts";
 import { buildImageTestBatchPreview } from "./services/cinematic/image-test-batch-export.ts";
@@ -496,6 +497,20 @@ async function startServer() {
       console.error("Cinematic Real Temporal Dataset Quality Audit Preview Error:", e);
       return res.status(500).json({
         error: "Failed to build cinematic real temporal dataset quality audit preview",
+      });
+    }
+  });
+
+  // API: Real temporal deduped completion snapshot preview (Phase-94E quality-locked dataset completion snapshot)
+  app.get("/api/cinematic/real-temporal-deduped-completion-snapshot-preview", (req, res) => {
+    try {
+      return res.json(
+        runWithRuntimeReadonlyGuard(() => buildRealTemporalDedupedCompletionSnapshotPreview())
+      );
+    } catch (e) {
+      console.error("Cinematic Real Temporal Deduped Completion Snapshot Preview Error:", e);
+      return res.status(500).json({
+        error: "Failed to build cinematic real temporal deduped completion snapshot preview",
       });
     }
   });
