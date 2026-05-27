@@ -140,6 +140,10 @@ import {
   buildSynthesizedLongformDatasetQualityAuditJsonFile,
   buildSynthesizedLongformDatasetQualityAuditPreview,
 } from "./services/synthesizedLongformDatasetQualityAudit";
+import {
+  buildSynthesizedDatasetProductionLockJsonFile,
+  buildSynthesizedDatasetProductionLockPreview,
+} from "./services/synthesizedDatasetProductionLock";
 
 async function startServer() {
   const app = express();
@@ -1689,6 +1693,29 @@ async function startServer() {
     } catch (e) {
       console.error("Synthesized longform quality json file error:", e);
       return res.status(500).json({ error: "Failed to build synthesized longform quality json file" });
+    }
+  });
+
+  app.get("/api/cinematic/synthesized-dataset-production-lock-preview", (_req, res) => {
+    try {
+      return res.json(buildSynthesizedDatasetProductionLockPreview());
+    } catch (e) {
+      console.error("Synthesized dataset production lock preview error:", e);
+      return res.status(500).json({ error: "Failed to build synthesized dataset production lock preview" });
+    }
+  });
+
+  app.get("/api/cinematic/synthesized-dataset-production-lock-json-file", (_req, res) => {
+    try {
+      const download = buildSynthesizedDatasetProductionLockJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Synthesized dataset production lock json file error:", e);
+      return res.status(500).json({ error: "Failed to build synthesized dataset production lock json file" });
     }
   });
 

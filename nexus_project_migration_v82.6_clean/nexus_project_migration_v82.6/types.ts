@@ -3939,6 +3939,58 @@ export interface SynthesizedLongformDatasetQualityAuditResult {
   };
 }
 
+// --- Synthesized Dataset Production Lock (PHASE-26C readonly lock on 120-scene synthesis) ---
+
+export const SYNTHESIZED_DATASET_PRODUCTION_LOCK_VERSION =
+  'SYNTHESIZED-DATASET-PRODUCTION-LOCK-v1' as const;
+
+export interface SynthesizedProductionLockCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface SynthesizedProductionLock {
+  locked_synthesized_dataset_id: string;
+  synthesized_dataset_checksum_ref: string;
+  synthesis_checksum_ref: string;
+  synthesized_audit_checksum_ref: string;
+  locked_at: string;
+  scene_count: 120;
+  source_runtime_fingerprint_ref: string;
+  continuity_graph_checksum_ref: string;
+  canonical_export_unchanged: true;
+  parent_canonical_size_bytes: number;
+  readonly_lock: true;
+  additive_synthesis_only: true;
+}
+
+export interface SynthesizedDatasetProductionLockResult {
+  schema_version: typeof SYNTHESIZED_DATASET_PRODUCTION_LOCK_VERSION;
+  generated_at: string;
+  readonly_lock: true;
+  synthesized_production_lock: SynthesizedProductionLock;
+  locked_synthesized_dataset_id: string;
+  synthesized_release_verdict: OrchestrationReadinessLevel;
+  lock_verification_checks: SynthesizedProductionLockCheck[];
+  production_lock_checksum: string;
+  synthesis_checksum_ref: string;
+  synthesized_audit_checksum_ref: string;
+  validation: {
+    deterministic_production_lock_checksum_stable: boolean;
+    readonly_lock: true;
+    synthesized_release_production_locked: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    all_lock_checks_passed: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
