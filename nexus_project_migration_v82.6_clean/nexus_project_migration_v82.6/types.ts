@@ -3249,6 +3249,71 @@ export interface LongformFatigueRiskReducerAuditResult {
   };
 }
 
+// --- Final Dataset Completion Certification (PHASE-24D integrated completion gate) ---
+
+export const FINAL_DATASET_COMPLETION_CERTIFICATION_VERSION =
+  'FINAL-DATASET-COMPLETION-CERTIFICATION-v1' as const;
+
+export type CompletionVerdict = 'certified_complete' | 'certified_conditional' | 'not_certified';
+
+export type ImageGenerationApproval = 'approved' | 'conditional' | 'blocked';
+
+export type NextPhaseRecommendation =
+  | 'proceed_external_image_generation'
+  | 'proceed_with_fatigue_mitigation_plan'
+  | 'resolve_structural_gaps'
+  | 'resolve_semantic_gaps'
+  | 'hold_until_blocking_issues_cleared';
+
+export interface FinalDatasetCompletionCertificate {
+  certificate_id: string;
+  certified_at: string;
+  export_candidate_id: string;
+  locked_export_id: string;
+  scene_count: number;
+  structural_integrity_verdict: FinalDatasetIntegrityVerdict;
+  semantic_verdict: FinalSemanticVerdict;
+  longform_generation_readiness: LongformGenerationReadiness;
+  fatigue_risk_acknowledged: true;
+  fatigue_causes_documented: number;
+  production_lock_valid: boolean;
+  structural_audit_checksum_ref: string;
+  semantic_audit_checksum_ref: string;
+  fatigue_reducer_audit_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  readonly_certification: true;
+}
+
+export interface CompletionCertificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface FinalDatasetCompletionCertificationResult {
+  schema_version: typeof FINAL_DATASET_COMPLETION_CERTIFICATION_VERSION;
+  generated_at: string;
+  readonly_certification: true;
+  final_dataset_completion_certificate: FinalDatasetCompletionCertificate;
+  completion_verdict: CompletionVerdict;
+  approved_for_image_generation: ImageGenerationApproval;
+  remaining_advisories: string[];
+  next_phase_recommendation: NextPhaseRecommendation;
+  completion_certification_checks: CompletionCertificationCheck[];
+  final_certificate_checksum: string;
+  validation: {
+    deterministic_certificate_checksum_stable: boolean;
+    readonly_certification: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

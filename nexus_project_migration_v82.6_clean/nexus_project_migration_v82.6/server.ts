@@ -112,6 +112,10 @@ import {
   buildLongformFatigueRiskReducerAuditJsonFile,
   buildLongformFatigueRiskReducerAuditPreview,
 } from "./services/longformFatigueRiskReducerAudit";
+import {
+  buildFinalDatasetCompletionCertificationJsonFile,
+  buildFinalDatasetCompletionCertificationPreview,
+} from "./services/finalDatasetCompletionCertification";
 
 async function startServer() {
   const app = express();
@@ -1494,6 +1498,31 @@ async function startServer() {
     } catch (e) {
       console.error("Longform fatigue risk reducer json file error:", e);
       return res.status(500).json({ error: "Failed to build longform fatigue risk reducer json file" });
+    }
+  });
+
+  // API: Final Dataset Completion Certification (PHASE-24D integrated completion gate)
+  app.get("/api/cinematic/final-dataset-completion-certification-preview", (_req, res) => {
+    try {
+      const preview = buildFinalDatasetCompletionCertificationPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Final dataset completion certification preview error:", e);
+      return res.status(500).json({ error: "Failed to build final dataset completion certification preview" });
+    }
+  });
+
+  app.get("/api/cinematic/final-dataset-completion-certification-json-file", (_req, res) => {
+    try {
+      const download = buildFinalDatasetCompletionCertificationJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Final dataset completion certification json file error:", e);
+      return res.status(500).json({ error: "Failed to build final dataset completion certification json file" });
     }
   });
 
