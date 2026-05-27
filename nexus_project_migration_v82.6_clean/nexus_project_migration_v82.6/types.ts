@@ -2719,6 +2719,67 @@ export interface FinalDatasetExportVerifierResult {
   };
 }
 
+// --- Generated Image Feedback Analyzer (PHASE-23A post-generation analysis foundation) ---
+
+export const GENERATED_IMAGE_FEEDBACK_ANALYZER_VERSION =
+  'GENERATED-IMAGE-FEEDBACK-ANALYZER-v1' as const;
+
+export type GeneratedImageFeedbackEngine = 'midjourney' | 'flux';
+
+export interface GeneratedImageDriftHotspot {
+  hotspot_id: string;
+  category: 'identity' | 'environment' | 'style' | 'temporal' | 'prompt_fidelity';
+  severity: 'low' | 'moderate' | 'high';
+  signal: string;
+  detail: string;
+}
+
+export interface GeneratedImageFeedbackReport {
+  scene_id: string;
+  engine: GeneratedImageFeedbackEngine;
+  identity_drift_score: number;
+  environment_drift_score: number;
+  style_drift_score: number;
+  temporal_drift_score: number;
+  prompt_fidelity_score: number;
+  overall_alignment_score: number;
+  drift_hotspots: GeneratedImageDriftHotspot[];
+  recommended_manual_adjustments: string[];
+  feedback_checksum: string;
+  simulated_result_fingerprint: string;
+}
+
+export interface GeneratedImageFeedbackVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface GeneratedImageFeedbackAnalyzerResult {
+  schema_version: typeof GENERATED_IMAGE_FEEDBACK_ANALYZER_VERSION;
+  generated_at: string;
+  readonly_analysis: true;
+  render_input_pack_checksum_ref: string;
+  identity_lock_checksum_ref: string;
+  style_core_ref: string;
+  scene_id: string;
+  generation_results_analyzed: number;
+  feedback_reports: GeneratedImageFeedbackReport[];
+  analysis_verification_checks: GeneratedImageFeedbackVerificationCheck[];
+  analyzer_checksum: string;
+  validation: {
+    deterministic_analyzer_checksum_stable: boolean;
+    readonly_analysis: true;
+    no_prompt_rewrite: true;
+    no_auto_correction: true;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+    no_runtime_mutation: true;
+    no_canonical_export_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

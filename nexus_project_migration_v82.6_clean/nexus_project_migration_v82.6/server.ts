@@ -84,6 +84,10 @@ import {
   buildRealRenderInputPackPreview,
 } from "./services/realRenderInputPackExport";
 import { buildFinalDatasetExportVerifierPreview } from "./services/finalDatasetExportVerifier";
+import {
+  buildGeneratedImageFeedbackJsonFile,
+  buildGeneratedImageFeedbackPreview,
+} from "./services/generatedImageFeedbackAnalyzer";
 
 async function startServer() {
   const app = express();
@@ -1291,6 +1295,31 @@ async function startServer() {
     } catch (e) {
       console.error("Final dataset export verifier preview error:", e);
       return res.status(500).json({ error: "Failed to build final dataset export verifier preview" });
+    }
+  });
+
+  // API: Generated Image Feedback Analyzer (PHASE-23A post-generation analysis)
+  app.get("/api/cinematic/generated-image-feedback-preview", (_req, res) => {
+    try {
+      const preview = buildGeneratedImageFeedbackPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Generated image feedback preview error:", e);
+      return res.status(500).json({ error: "Failed to build generated image feedback preview" });
+    }
+  });
+
+  app.get("/api/cinematic/generated-image-feedback-json-file", (_req, res) => {
+    try {
+      const download = buildGeneratedImageFeedbackJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Generated image feedback json file error:", e);
+      return res.status(500).json({ error: "Failed to build generated image feedback json file" });
     }
   });
 
