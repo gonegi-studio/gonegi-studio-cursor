@@ -100,6 +100,10 @@ import {
   buildCorrectionDeltaAuditJsonFile,
   buildCorrectionDeltaAuditPreview,
 } from "./services/correctionDeltaAudit";
+import {
+  buildFinalDatasetStructuralIntegrityAuditJsonFile,
+  buildFinalDatasetStructuralIntegrityAuditPreview,
+} from "./services/finalDatasetStructuralIntegrityAudit";
 
 async function startServer() {
   const app = express();
@@ -1407,6 +1411,31 @@ async function startServer() {
     } catch (e) {
       console.error("Correction delta audit json file error:", e);
       return res.status(500).json({ error: "Failed to build correction delta audit json file" });
+    }
+  });
+
+  // API: Final Dataset Structural Integrity Audit (PHASE-24A longform completeness gate)
+  app.get("/api/cinematic/final-dataset-structural-integrity-preview", (_req, res) => {
+    try {
+      const preview = buildFinalDatasetStructuralIntegrityAuditPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Final dataset structural integrity preview error:", e);
+      return res.status(500).json({ error: "Failed to build final dataset structural integrity preview" });
+    }
+  });
+
+  app.get("/api/cinematic/final-dataset-structural-integrity-json-file", (_req, res) => {
+    try {
+      const download = buildFinalDatasetStructuralIntegrityAuditJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Final dataset structural integrity json file error:", e);
+      return res.status(500).json({ error: "Failed to build final dataset structural integrity json file" });
     }
   });
 

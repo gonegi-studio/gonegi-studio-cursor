@@ -3020,6 +3020,71 @@ export interface CorrectionDeltaAuditResult {
   };
 }
 
+// --- Final Dataset Structural Integrity Audit (PHASE-24A longform completeness gate) ---
+
+export const FINAL_DATASET_STRUCTURAL_INTEGRITY_AUDIT_VERSION =
+  'FINAL-DATASET-STRUCTURAL-INTEGRITY-AUDIT-v1' as const;
+
+export type FinalDatasetIntegrityVerdict = 'structurally_complete' | 'structurally_incomplete';
+
+export interface FinalDatasetStructuralGap {
+  gap_id: string;
+  severity: 'critical' | 'moderate';
+  check_key: string;
+  scene_id?: string;
+  message: string;
+}
+
+export interface FinalDatasetBlockingIssue {
+  issue_id: string;
+  severity: 'critical';
+  check_key: string;
+  scene_id?: string;
+  message: string;
+}
+
+export interface FinalDatasetStructuralIntegrityCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+  scenes_affected?: number;
+}
+
+export interface FinalDatasetStructuralIntegrityAuditResult {
+  schema_version: typeof FINAL_DATASET_STRUCTURAL_INTEGRITY_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  export_candidate_id: string;
+  locked_export_id: string;
+  export_candidate_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  export_candidate_json_fingerprint_ref: string;
+  production_lock_json_fingerprint_ref: string;
+  identity_lock_checksum_ref: string;
+  engine_adapter_pack_checksum_ref: string;
+  scene_count: number;
+  final_dataset_integrity_verdict: FinalDatasetIntegrityVerdict;
+  gap_list: FinalDatasetStructuralGap[];
+  blocking_issues: FinalDatasetBlockingIssue[];
+  structural_integrity_checks: FinalDatasetStructuralIntegrityCheck[];
+  export_route_refs: {
+    export_candidate_json_file: string;
+    production_lock_json_file: string;
+  };
+  structural_integrity_audit_checksum: string;
+  validation: {
+    deterministic_structural_integrity_checksum_stable: boolean;
+    readonly_audit: true;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_prompt_rewrite: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
