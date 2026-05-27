@@ -2948,6 +2948,78 @@ export interface CorrectedRenderInputPackResult {
   };
 }
 
+// --- Correction Delta Audit (PHASE-23D second-pass safety verification) ---
+
+export const CORRECTION_DELTA_AUDIT_VERSION = 'CORRECTION-DELTA-AUDIT-v1' as const;
+
+export type SecondPassReadinessVerdict = 'ready' | 'blocked';
+
+export type CorrectionDeltaRiskSeverity = 'critical' | 'moderate' | 'low';
+
+export interface CorrectionDeltaRisk {
+  risk_id: string;
+  severity: CorrectionDeltaRiskSeverity;
+  category: string;
+  signal: string;
+  detail: string;
+}
+
+export interface CorrectionDeltaCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  score: number;
+  detail: string;
+}
+
+export interface CorrectionDeltaReport {
+  scene_id: string;
+  original_render_pack_checksum_ref: string;
+  corrected_render_pack_checksum_ref: string;
+  manual_correction_pack_checksum_ref: string;
+  checks: CorrectionDeltaCheck[];
+  checks_passed: number;
+  checks_total: number;
+}
+
+export interface ApprovedCorrectedEngineInput {
+  engine: 'midjourney' | 'flux';
+  approved: boolean;
+  scene_id: string;
+  original_prompt: string;
+  corrected_prompt: string;
+  copy_paste_payload: string;
+  continuity_seed: string;
+  approval_reason: string;
+}
+
+export interface CorrectionDeltaAuditResult {
+  schema_version: typeof CORRECTION_DELTA_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  render_input_pack_checksum_ref: string;
+  corrected_render_input_pack_checksum_ref: string;
+  manual_correction_pack_checksum_ref: string;
+  scene_id: string;
+  correction_delta_report: CorrectionDeltaReport;
+  delta_safety_score: number;
+  second_pass_readiness_verdict: SecondPassReadinessVerdict;
+  blocked_risks: CorrectionDeltaRisk[];
+  approved_corrected_inputs: ApprovedCorrectedEngineInput[];
+  audit_verification_checks: CorrectionDeltaCheck[];
+  correction_delta_audit_checksum: string;
+  validation: {
+    deterministic_audit_checksum_stable: boolean;
+    readonly_audit: true;
+    no_prompt_rewrite: true;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

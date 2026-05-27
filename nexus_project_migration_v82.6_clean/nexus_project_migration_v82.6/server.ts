@@ -96,6 +96,10 @@ import {
   buildCorrectedRenderInputPackJsonFile,
   buildCorrectedRenderInputPackPreview,
 } from "./services/correctedRenderInputPack";
+import {
+  buildCorrectionDeltaAuditJsonFile,
+  buildCorrectionDeltaAuditPreview,
+} from "./services/correctionDeltaAudit";
 
 async function startServer() {
   const app = express();
@@ -1378,6 +1382,31 @@ async function startServer() {
     } catch (e) {
       console.error("Corrected render input pack json file error:", e);
       return res.status(500).json({ error: "Failed to build corrected render input pack json file" });
+    }
+  });
+
+  // API: Correction Delta Audit (PHASE-23D second-pass safety verification)
+  app.get("/api/cinematic/correction-delta-audit-preview", (_req, res) => {
+    try {
+      const preview = buildCorrectionDeltaAuditPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Correction delta audit preview error:", e);
+      return res.status(500).json({ error: "Failed to build correction delta audit preview" });
+    }
+  });
+
+  app.get("/api/cinematic/correction-delta-audit-json-file", (_req, res) => {
+    try {
+      const download = buildCorrectionDeltaAuditJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Correction delta audit json file error:", e);
+      return res.status(500).json({ error: "Failed to build correction delta audit json file" });
     }
   });
 
