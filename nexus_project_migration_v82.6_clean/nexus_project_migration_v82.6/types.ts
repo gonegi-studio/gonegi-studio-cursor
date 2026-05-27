@@ -3438,6 +3438,159 @@ export interface LongformRhythmDiversificationPlannerResult {
   };
 }
 
+// --- Longform Fatigue Mitigation Blueprint (PHASE-25B planning-only expansion mitigation) ---
+
+export const LONGFORM_FATIGUE_MITIGATION_BLUEPRINT_VERSION =
+  'LONGFORM-FATIGUE-MITIGATION-BLUEPRINT-v1' as const;
+
+export interface MitigationPolicyBase {
+  policy_id: string;
+  policy_name: string;
+  planning_only: true;
+  no_dataset_mutation: true;
+  rules: string[];
+  target_scene_ids: string[];
+  severity_threshold: 'high' | 'moderate' | 'low';
+}
+
+export interface MotifSpacingPolicy extends MitigationPolicyBase {
+  min_scenes_between_motif_recurrence: number;
+  max_motif_cluster_size: number;
+}
+
+export interface EmotionalRestBeatPolicy extends MitigationPolicyBase {
+  rest_beat_after_high_intensity_scenes: number;
+  max_consecutive_high_intensity: number;
+  target_rest_intensity_max: number;
+}
+
+export interface FramingAlternationPolicy extends MitigationPolicyBase {
+  alternate_shot_scales: string[];
+  max_same_framing_streak: number;
+}
+
+export interface ColorTemperatureModulationPolicy extends MitigationPolicyBase {
+  warm_cool_alternation_interval: number;
+  max_palette_cluster_scenes: number;
+}
+
+export interface EnvironmentOnlyBeatPolicy extends MitigationPolicyBase {
+  environment_only_beat_interval: number;
+  min_environment_token_richness: number;
+}
+
+export interface CompanionPresenceSpacingPolicy extends MitigationPolicyBase {
+  max_companion_dense_block: number;
+  solitude_spacing_interval: number;
+}
+
+export interface CallbackThrottlingPolicy extends MitigationPolicyBase {
+  max_callbacks_per_sequence_block: number;
+  min_scenes_between_callbacks: number;
+}
+
+export interface MemoryLoadBalancingPolicy extends MitigationPolicyBase {
+  max_edges_per_memory_node: number;
+  batch_isolation_threshold: number;
+}
+
+export interface FatigueMitigationBlueprint {
+  blueprint_id: string;
+  planner_checksum_ref: string;
+  fatigue_reducer_checksum_ref: string;
+  expansion_blueprint_ref: string;
+  motif_spacing_policy: MotifSpacingPolicy;
+  emotional_rest_beat_policy: EmotionalRestBeatPolicy;
+  framing_alternation_policy: FramingAlternationPolicy;
+  color_temperature_modulation_policy: ColorTemperatureModulationPolicy;
+  environment_only_beat_policy: EnvironmentOnlyBeatPolicy;
+  companion_presence_spacing_policy: CompanionPresenceSpacingPolicy;
+  callback_throttling_policy: CallbackThrottlingPolicy;
+  memory_load_balancing_policy: MemoryLoadBalancingPolicy;
+  planning_only: true;
+}
+
+export interface SequenceLevelRhythmPolicy {
+  sequence_id: string;
+  rhythm_guidance: string[];
+  rest_beat_frequency: number;
+  callback_budget: number;
+  framing_alternation_required: true;
+}
+
+export interface SceneInsertionRecommendation {
+  recommendation_id: string;
+  insertion_type: 'rest_beat' | 'environment_only' | 'reflective_pause' | 'framing_break';
+  after_scene_id: string;
+  before_scene_id?: string;
+  planning_rationale: string;
+  planning_only: true;
+}
+
+export interface CallbackThrottleRule {
+  rule_id: string;
+  scope: 'sequence' | 'act' | 'global';
+  max_callbacks: number;
+  min_spacing_scenes: number;
+  detail: string;
+}
+
+export interface EmotionalWaveTarget {
+  target_id: string;
+  scene_range: string;
+  target_intensity_band: 'rest' | 'moderate' | 'peak';
+  target_value: number;
+}
+
+export interface VisualVariationTarget {
+  target_id: string;
+  dimension: 'framing' | 'color_temperature' | 'lighting' | 'atmosphere';
+  target_signal: string;
+  affected_scene_ids: string[];
+}
+
+export interface PostMitigationFatigueProjection {
+  baseline_at_60: number;
+  baseline_at_90: number;
+  baseline_at_120: number;
+  post_mitigation_at_60: number;
+  post_mitigation_at_90: number;
+  post_mitigation_at_120: number;
+  fatigue_improvement_at_120: number;
+}
+
+export interface LongformFatigueMitigationBlueprintResult {
+  schema_version: typeof LONGFORM_FATIGUE_MITIGATION_BLUEPRINT_VERSION;
+  generated_at: string;
+  readonly_planning: true;
+  planner_checksum_ref: string;
+  fatigue_reducer_checksum_ref: string;
+  temporal_graph_checksum_ref: string;
+  expansion_blueprint_ref: string;
+  scene_count: number;
+  fatigue_mitigation_blueprint: FatigueMitigationBlueprint;
+  sequence_level_rhythm_policy: SequenceLevelRhythmPolicy[];
+  scene_insertion_recommendations: SceneInsertionRecommendation[];
+  callback_throttle_rules: CallbackThrottleRule[];
+  emotional_wave_targets: EmotionalWaveTarget[];
+  visual_variation_targets: VisualVariationTarget[];
+  projected_post_mitigation_fatigue: PostMitigationFatigueProjection;
+  projected_longform_readiness_after_mitigation: ProjectedLongformReadiness;
+  mitigation_blueprint_checksum: string;
+  validation: {
+    deterministic_mitigation_blueprint_checksum_stable: boolean;
+    readonly_planning: true;
+    projected_fatigue_improved: boolean;
+    readiness_120_improved: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
