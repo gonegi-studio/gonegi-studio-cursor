@@ -4787,6 +4787,194 @@ export interface ImageRendererMigrationIngestionResult {
   };
 }
 
+// --- Controlled Generation Pack Export (PHASE-29A AI Studio prompt-pack orchestration) ---
+
+export const CONTROLLED_GENERATION_PACK_EXPORT_VERSION =
+  'CONTROLLED-GENERATION-PACK-EXPORT-v1' as const;
+
+export interface ControlledGenerationCharacterAnchorEntry {
+  slot_id: string;
+  name: string;
+  visual_dna: string;
+  anchor_fingerprint: string;
+  role: 'protagonist' | 'companion' | 'guardian' | 'fauna';
+}
+
+export interface ControlledGenerationCharacterAnchorBundle {
+  gonegi_slot_id: string;
+  dana_companion_slot_id: string;
+  anchor_entries: ControlledGenerationCharacterAnchorEntry[];
+  gonegi_facial_identity_preserved: true;
+  dana_facial_identity_preserved: true;
+  vitreous_elegance_protocol: string;
+  ams_laws: string[];
+}
+
+export interface ControlledGenerationEnvironmentAnchorBundle {
+  primary_environment_slot: string;
+  environment_dna_text: string;
+  slot_fingerprints: Record<string, string>;
+  continuity_dna_ref: string;
+}
+
+export interface ControlledGenerationRenderStateBundle {
+  denoise: number;
+  steps: number;
+  cfg: number;
+  sampler: string;
+  aspect_ratio: string;
+  model_hash: string;
+  continuity_seed: string;
+  legacy_render_state_ref?: string;
+}
+
+export interface ControlledGenerationPromptPack {
+  positive_prompt: string;
+  compressed_style_laws: string;
+  character_anchor_block: string;
+  environment_continuity_block: string;
+  emotional_density_block: string;
+}
+
+export interface ControlledGenerationNegativePromptPack {
+  negative_prompt: string;
+  drift_suppression_block: string;
+}
+
+export interface AiStudioRenderRecipe {
+  engine: 'ai_studio';
+  copy_paste_prompt: string;
+  copy_paste_negative: string;
+  copy_paste_json: string;
+  quota_policy: 'free_daily';
+  aspect_ratio: string;
+  seed: number;
+  cfg: number;
+}
+
+export interface ControlledGenerationVisualConstraint {
+  constraint_key: string;
+  label: string;
+  threshold: number;
+  enforcement: 'hard' | 'soft';
+}
+
+export interface ControlledGenerationQaTarget {
+  target_key: string;
+  label: string;
+  metric: string;
+  pass_threshold: number;
+  failure_signal: string;
+}
+
+export interface ControlledGenerationPackEntry {
+  scene_id: string;
+  scene_fingerprint: string;
+  style_law_fingerprint: string;
+  character_anchor_bundle: ControlledGenerationCharacterAnchorBundle;
+  environment_anchor_bundle: ControlledGenerationEnvironmentAnchorBundle;
+  render_state_bundle: ControlledGenerationRenderStateBundle;
+  generation_prompt_pack: ControlledGenerationPromptPack;
+  negative_prompt_pack: ControlledGenerationNegativePromptPack;
+  ai_studio_render_recipe: AiStudioRenderRecipe;
+  expected_visual_constraints: ControlledGenerationVisualConstraint[];
+  qa_validation_targets: ControlledGenerationQaTarget[];
+  generation_session_id: string;
+  readiness_score: number;
+  rank: number;
+}
+
+export interface ControlledGenerationPackRegistryEntry {
+  pack_id: string;
+  scene_id: string;
+  generation_session_id: string;
+  pack_fingerprint: string;
+  export_ready: boolean;
+  readiness_score: number;
+  rank: number;
+}
+
+export interface AiStudioGenerationExportEntry {
+  session_id: string;
+  scene_id: string;
+  rank: number;
+  ai_studio_payload: {
+    prompt: string;
+    negative_prompt: string;
+    seed: number;
+    cfg: number;
+    aspect_ratio: string;
+    sampler: string;
+    model_hash: string;
+  };
+  cursor_qa_reconnect_token: string;
+}
+
+export interface GenerationPromptPackReport {
+  total_packs: number;
+  packs_with_full_style_laws: number;
+  packs_with_character_anchors: number;
+  packs_with_environment_continuity: number;
+  style_law_preservation_ratio: number;
+  character_anchor_preservation_ratio: number;
+  environment_continuity_ratio: number;
+  prompt_assembly_checks_passed: number;
+  prompt_assembly_checks_total: number;
+}
+
+export interface ControlledGenerationCandidateEntry {
+  rank: number;
+  scene_id: string;
+  readiness_score: number;
+  continuity_conflict_score: number;
+  selection_rationale: string;
+}
+
+export interface ControlledGenerationCandidateReport {
+  selected_count: number;
+  selection_source: 'generation_readiness_gate';
+  low_risk_only: true;
+  candidates: ControlledGenerationCandidateEntry[];
+}
+
+export interface GenerationQaTargetRegistry {
+  global_targets: ControlledGenerationQaTarget[];
+  per_pack_targets: Record<string, ControlledGenerationQaTarget[]>;
+}
+
+export interface ControlledGenerationPackExportResult {
+  schema_version: typeof CONTROLLED_GENERATION_PACK_EXPORT_VERSION;
+  generated_at: string;
+  readonly_export: true;
+  production_lock_checksum_ref: string;
+  generation_readiness_checksum_ref: string;
+  legacy_ingestion_checksum_ref: string;
+  migration_ingestion_checksum_ref: string;
+  controlled_generation_packs: ControlledGenerationPackEntry[];
+  controlled_generation_pack_registry: ControlledGenerationPackRegistryEntry[];
+  ai_studio_generation_export: AiStudioGenerationExportEntry[];
+  generation_prompt_pack_report: GenerationPromptPackReport;
+  controlled_generation_candidate_report: ControlledGenerationCandidateReport;
+  generation_qa_target_registry: GenerationQaTargetRegistry;
+  pack_export_checksum: string;
+  export_json_path: 'exports/controlled-generation-pack.json';
+  validation: {
+    deterministic_pack_checksum_stable: boolean;
+    readonly_export: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    legacy_ingestion_unchanged: boolean;
+    migration_ingestion_unchanged: boolean;
+    prompt_packs_generated: boolean;
+    ai_studio_export_valid: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

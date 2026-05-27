@@ -166,6 +166,10 @@ import {
   buildLegacyGenerationAssetIngestionPreview,
 } from "./services/cinematic/legacyGenerationAssetIngestion";
 import {
+  buildControlledGenerationPackExportJsonFile,
+  buildControlledGenerationPackExportPreview,
+} from "./services/cinematic/controlledGenerationPackExport";
+import {
   buildGenerationReadinessGateJsonFile,
   buildGenerationReadinessGatePreview,
 } from "./services/cinematic/generationReadinessGate";
@@ -1963,6 +1967,30 @@ async function startServer() {
     } catch (e) {
       console.error("Image renderer migration json file error:", e);
       return res.status(500).json({ error: "Failed to build image renderer migration json file" });
+    }
+  });
+
+  app.get("/api/cinematic/controlled-generation-pack-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildControlledGenerationPackExportPreview());
+    } catch (e) {
+      console.error("Controlled generation pack preview error:", e);
+      return res.status(500).json({ error: "Failed to build controlled generation pack preview" });
+    }
+  });
+
+  app.get("/api/cinematic/controlled-generation-pack-json-file", (_req, res) => {
+    try {
+      const download = buildControlledGenerationPackExportJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Controlled generation pack json file error:", e);
+      return res.status(500).json({ error: "Failed to build controlled generation pack json file" });
     }
   });
 
