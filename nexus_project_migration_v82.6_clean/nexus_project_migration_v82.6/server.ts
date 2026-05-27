@@ -132,6 +132,10 @@ import {
   buildLongformReadinessRecertificationJsonFile,
   buildLongformReadinessRecertificationPreview,
 } from "./services/longformReadinessRecertification";
+import {
+  buildRealLongformDatasetSynthesisJsonFile,
+  buildRealLongformDatasetSynthesisPreview,
+} from "./services/realLongformDatasetSynthesis";
 
 async function startServer() {
   const app = express();
@@ -1635,6 +1639,29 @@ async function startServer() {
     } catch (e) {
       console.error("Longform readiness recertification json file error:", e);
       return res.status(500).json({ error: "Failed to build longform readiness recertification json file" });
+    }
+  });
+
+  app.get("/api/cinematic/real-longform-synthesis-preview", (_req, res) => {
+    try {
+      return res.json(buildRealLongformDatasetSynthesisPreview());
+    } catch (e) {
+      console.error("Real longform synthesis preview error:", e);
+      return res.status(500).json({ error: "Failed to build real longform synthesis preview" });
+    }
+  });
+
+  app.get("/api/cinematic/real-longform-synthesis-json-file", (_req, res) => {
+    try {
+      const download = buildRealLongformDatasetSynthesisJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Real longform synthesis json file error:", e);
+      return res.status(500).json({ error: "Failed to build real longform synthesis json file" });
     }
   });
 

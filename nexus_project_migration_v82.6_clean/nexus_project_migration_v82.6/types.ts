@@ -3745,6 +3745,133 @@ export interface LongformReadinessRecertificationResult {
   };
 }
 
+// --- Real Longform Dataset Synthesis (PHASE-26A additive longform expansion artifact) ---
+
+export const REAL_LONGFORM_DATASET_SYNTHESIS_VERSION =
+  'REAL-LONGFORM-DATASET-SYNTHESIS-v1' as const;
+
+export type SynthesizedLongformTier = 60 | 90 | 120;
+
+export type SynthesizedSceneKind =
+  | 'source_preserved'
+  | 'expansion_cycle'
+  | 'rest_beat'
+  | 'environment_only'
+  | 'framing_variation';
+
+export interface SynthesizedSceneMetadata {
+  scene_id: string;
+  synthesis_kind: SynthesizedSceneKind;
+  source_scene_ref?: string;
+  mitigation_policies_applied: string[];
+  synth_index: number;
+}
+
+export interface SynthesizedLongformDataset {
+  tier: SynthesizedLongformTier;
+  dataset_id: string;
+  scene_count: number;
+  scenes: CinematicExtractionResult[];
+  scene_metadata: SynthesizedSceneMetadata[];
+  expanded_continuity_graph: TemporalMemoryGraphBundle;
+  continuity_graph_checksum: string;
+  source_runtime_fingerprint_ref: string;
+  additive_synthesis_only: true;
+}
+
+export interface SynthesisFatigueScores {
+  at_60: number;
+  at_90: number;
+  at_120: number;
+}
+
+export interface SynthesisContinuityScores {
+  at_60: number;
+  at_90: number;
+  at_120: number;
+}
+
+export interface SynthesisOrchestrationScores {
+  at_60: number;
+  at_90: number;
+  at_120: number;
+}
+
+export interface SynthesisIntegrityCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface SynthesisIntegrityReport {
+  report_id: string;
+  source_scene_count: number;
+  synthesized_tiers: SynthesizedLongformTier[];
+  policies_applied: string[];
+  source_preserved_count: number;
+  expansion_scene_count: number;
+  rest_beat_insertions: number;
+  environment_only_insertions: number;
+  framing_alternations: number;
+  callback_throttle_applied: true;
+  memory_load_balancing_applied: true;
+  integrity_checks: SynthesisIntegrityCheck[];
+  integrity_checks_passed: number;
+  integrity_checks_total: number;
+}
+
+export interface SynthesisBlockingIssue {
+  issue_id: string;
+  severity: 'blocking' | 'advisory';
+  signal: string;
+  detail: string;
+}
+
+export interface SynthesizedDatasetChecksums {
+  at_60: string;
+  at_90: string;
+  at_120: string;
+}
+
+export interface RealLongformDatasetSynthesisResult {
+  schema_version: typeof REAL_LONGFORM_DATASET_SYNTHESIS_VERSION;
+  generated_at: string;
+  readonly_synthesis: true;
+  export_candidate_checksum_ref: string;
+  mitigation_blueprint_checksum_ref: string;
+  stability_simulation_checksum_ref: string;
+  temporal_graph_checksum_ref: string;
+  expansion_blueprint_ref: string;
+  runtime_orchestration_metadata_ref: string;
+  synthesized_60_scene_dataset: SynthesizedLongformDataset;
+  synthesized_90_scene_dataset: SynthesizedLongformDataset;
+  synthesized_120_scene_dataset: SynthesizedLongformDataset;
+  synthesis_integrity_report: SynthesisIntegrityReport;
+  synthesis_fatigue_scores: SynthesisFatigueScores;
+  synthesis_continuity_scores: SynthesisContinuityScores;
+  synthesis_orchestration_scores: SynthesisOrchestrationScores;
+  synthesis_blocking_issues: SynthesisBlockingIssue[];
+  synthesized_dataset_checksums: SynthesizedDatasetChecksums;
+  synthesis_checksum: string;
+  validation: {
+    deterministic_synthesis_checksum_stable: boolean;
+    readonly_synthesis: true;
+    synthesized_datasets_generated: boolean;
+    fatigue_scores_acceptable: boolean;
+    continuity_preserved: boolean;
+    orchestration_stable: boolean;
+    no_blocking_issues: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
