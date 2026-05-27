@@ -2288,6 +2288,99 @@ export interface PromptCompressionEngineResult {
   };
 }
 
+// --- Identity Lock Continuity Engine (PHASE-21D pre-generation identity persistence) ---
+
+export const IDENTITY_LOCK_CONTINUITY_ENGINE_VERSION =
+  'IDENTITY-LOCK-CONTINUITY-ENGINE-v1' as const;
+
+export interface CharacterIdentityLock {
+  character_id: string;
+  face_topology: string;
+  silhouette: string;
+  eye_spacing: string;
+  hair_rhythm: string;
+  cloth_geometry: string;
+  color_persistence: string;
+  accessory_persistence: string;
+  lock_strength: number;
+}
+
+export interface EnvironmentIdentityLock {
+  city_topology: string;
+  architecture_rhythm: string;
+  lighting_continuity: string;
+  atmosphere_continuity: string;
+  weather_persistence: string;
+  material_response: string;
+  lock_strength: number;
+}
+
+export interface TemporalVisualPersistence {
+  visual_carryover: number;
+  framing_continuity: number;
+  color_continuity: number;
+  camera_rhythm_continuity: number;
+  emotional_visual_continuity: number;
+}
+
+export interface LockedImageGenerationPackage extends CompressedImagePackage {
+  continuity_seed: string;
+  character_identity_lock: CharacterIdentityLock[];
+  environment_identity_lock: EnvironmentIdentityLock;
+  temporal_visual_persistence: TemporalVisualPersistence;
+  continuity_strength_score: number;
+}
+
+export interface ContinuitySeedGraphNode {
+  scene_id: string;
+  scene_index: number;
+  sequence_id: string;
+  continuity_seed: string;
+  previous_seed_ref?: string;
+  carryover_weight: number;
+  temporal_anchor_id: string;
+}
+
+export interface ContinuitySeedGraph {
+  sequence_base_seeds: Record<string, string>;
+  nodes: ContinuitySeedGraphNode[];
+  edge_count: number;
+}
+
+export interface IdentityLockVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface IdentityLockContinuityEngineResult {
+  schema_version: typeof IDENTITY_LOCK_CONTINUITY_ENGINE_VERSION;
+  generated_at: string;
+  readonly_identity_lock: true;
+  compression_checksum_ref: string;
+  stabilization_verdict_ref: string;
+  temporal_graph_checksum_ref: string;
+  scene_count: number;
+  locked_image_generation_packages: LockedImageGenerationPackage[];
+  continuity_chain_integrity: boolean;
+  identity_stability_score: number;
+  temporal_visual_stability: number;
+  continuity_seed_graph: ContinuitySeedGraph;
+  identity_lock_verification_checks: IdentityLockVerificationCheck[];
+  identity_lock_checksum: string;
+  validation: {
+    deterministic_identity_lock_checksum_stable: boolean;
+    readonly_identity_lock: true;
+    no_prompt_corruption: true;
+    no_identity_drift: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

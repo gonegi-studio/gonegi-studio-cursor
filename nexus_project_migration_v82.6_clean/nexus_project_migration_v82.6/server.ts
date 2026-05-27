@@ -67,6 +67,10 @@ import {
   buildPromptCompressionJsonFile,
   buildPromptCompressionPreview,
 } from "./services/promptCompressionEngine";
+import {
+  buildIdentityLockContinuityJsonFile,
+  buildIdentityLockContinuityPreview,
+} from "./services/identityLockContinuityEngine";
 
 async function startServer() {
   const app = express();
@@ -1162,6 +1166,31 @@ async function startServer() {
     } catch (e) {
       console.error("Prompt compression json file error:", e);
       return res.status(500).json({ error: "Failed to build prompt compression json file" });
+    }
+  });
+
+  // API: Identity Lock Continuity Engine (PHASE-21D pre-generation identity persistence)
+  app.get("/api/cinematic/identity-lock-preview", (_req, res) => {
+    try {
+      const preview = buildIdentityLockContinuityPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Identity lock continuity preview error:", e);
+      return res.status(500).json({ error: "Failed to build identity lock continuity preview" });
+    }
+  });
+
+  app.get("/api/cinematic/identity-lock-json-file", (_req, res) => {
+    try {
+      const download = buildIdentityLockContinuityJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Identity lock continuity json file error:", e);
+      return res.status(500).json({ error: "Failed to build identity lock continuity json file" });
     }
   });
 
