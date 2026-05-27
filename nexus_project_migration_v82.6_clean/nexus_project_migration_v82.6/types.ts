@@ -3872,6 +3872,73 @@ export interface RealLongformDatasetSynthesisResult {
   };
 }
 
+// --- Synthesized Longform Dataset Quality Audit (PHASE-26B actual synthesis audit) ---
+
+export const SYNTHESIZED_LONGFORM_DATASET_QUALITY_AUDIT_VERSION =
+  'SYNTHESIZED-LONGFORM-DATASET-QUALITY-AUDIT-v1' as const;
+
+export type SynthesizedExpansionDimensionKey =
+  | 'expansion_semantic_quality'
+  | 'expansion_continuity_realism'
+  | 'longform_pacing_quality'
+  | 'expansion_orchestration_quality'
+  | 'expansion_usefulness';
+
+export type FinalSynthesizedDatasetVerdict =
+  | 'synthesized_ready'
+  | 'synthesized_conditional'
+  | 'synthesized_not_ready';
+
+export interface SynthesizedAuditDimensionScore {
+  dimension_key: SynthesizedExpansionDimensionKey;
+  label: string;
+  score: number;
+  detail: string;
+}
+
+export interface SynthesizedQualityAuditCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface SynthesizedLongformDatasetQualityAuditResult {
+  schema_version: typeof SYNTHESIZED_LONGFORM_DATASET_QUALITY_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  synthesis_checksum_ref: string;
+  mitigation_blueprint_checksum_ref: string;
+  temporal_graph_checksum_ref: string;
+  audited_tiers: SynthesizedLongformTier[];
+  expansion_scene_count: number;
+  synthesized_quality_score: number;
+  synthesized_continuity_score: number;
+  synthesized_orchestration_score: number;
+  synthesized_fatigue_score: number;
+  weak_synthesized_scene_ids: string[];
+  filler_scene_ids: string[];
+  strongest_expansion_dimensions: SynthesizedExpansionDimensionKey[];
+  weakest_expansion_dimensions: SynthesizedExpansionDimensionKey[];
+  dimension_scores: SynthesizedAuditDimensionScore[];
+  audit_checks: SynthesizedQualityAuditCheck[];
+  final_synthesized_dataset_verdict: FinalSynthesizedDatasetVerdict;
+  synthesized_audit_checksum: string;
+  validation: {
+    deterministic_audit_checksum_stable: boolean;
+    readonly_audit: true;
+    synthesized_scenes_audited: boolean;
+    filler_detection_executed: boolean;
+    continuity_realism_evaluated: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
