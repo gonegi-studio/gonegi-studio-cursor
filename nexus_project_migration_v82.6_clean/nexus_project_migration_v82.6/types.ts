@@ -2004,6 +2004,52 @@ export interface LongformDatasetExportCandidateResult {
   };
 }
 
+// --- Longform Dataset Production Lock (PHASE-20 readonly lock on export candidate) ---
+
+export const LONGFORM_DATASET_PRODUCTION_LOCK_VERSION =
+  'LONGFORM-DATASET-PRODUCTION-LOCK-v1' as const;
+
+export interface LongformProductionLockCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface LongformProductionLock {
+  export_candidate_checksum_ref: string;
+  runtime_dataset_fingerprint: string;
+  runtime_lock_candidate_id: string;
+  locked_export_id: string;
+  locked_at: string;
+  runtime_scene_count: number;
+  canonical_export_unchanged: true;
+  parent_canonical_size_bytes: number;
+  recertification_checksum_ref: string;
+  stabilization_checksum_ref: string;
+  provenance_chain_length: number;
+}
+
+export interface LongformDatasetProductionLockResult {
+  schema_version: typeof LONGFORM_DATASET_PRODUCTION_LOCK_VERSION;
+  generated_at: string;
+  readonly_lock: true;
+  lock_verification_checks: LongformProductionLockCheck[];
+  longform_production_lock: LongformProductionLock;
+  locked_export_id: string;
+  production_lock_checksum: string;
+  release_readiness_verdict: OrchestrationReadinessLevel;
+  export_candidate_id_ref: string;
+  validation: {
+    deterministic_production_lock_checksum_stable: boolean;
+    readonly_lock: true;
+    no_canonical_export_mutation: true;
+    no_runtime_export_rewrite: true;
+    no_provider_calls: true;
+    all_lock_checks_passed: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
