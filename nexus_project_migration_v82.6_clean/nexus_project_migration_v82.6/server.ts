@@ -88,6 +88,10 @@ import {
   buildGeneratedImageFeedbackJsonFile,
   buildGeneratedImageFeedbackPreview,
 } from "./services/generatedImageFeedbackAnalyzer";
+import {
+  buildManualCorrectionPackJsonFile,
+  buildManualCorrectionPackPreview,
+} from "./services/manualCorrectionPackBuilder";
 
 async function startServer() {
   const app = express();
@@ -1320,6 +1324,31 @@ async function startServer() {
     } catch (e) {
       console.error("Generated image feedback json file error:", e);
       return res.status(500).json({ error: "Failed to build generated image feedback json file" });
+    }
+  });
+
+  // API: Manual Correction Pack Builder (PHASE-23B human-applicable correction suggestions)
+  app.get("/api/cinematic/manual-correction-pack-preview", (_req, res) => {
+    try {
+      const preview = buildManualCorrectionPackPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Manual correction pack preview error:", e);
+      return res.status(500).json({ error: "Failed to build manual correction pack preview" });
+    }
+  });
+
+  app.get("/api/cinematic/manual-correction-pack-json-file", (_req, res) => {
+    try {
+      const download = buildManualCorrectionPackJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Manual correction pack json file error:", e);
+      return res.status(500).json({ error: "Failed to build manual correction pack json file" });
     }
   });
 

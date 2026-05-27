@@ -2780,6 +2780,70 @@ export interface GeneratedImageFeedbackAnalyzerResult {
   };
 }
 
+// --- Manual Correction Pack Builder (PHASE-23B human-applicable correction suggestions) ---
+
+export const MANUAL_CORRECTION_PACK_BUILDER_VERSION = 'MANUAL-CORRECTION-PACK-BUILDER-v1' as const;
+
+export type PromptDeltaSuggestionType = 'prepend' | 'append' | 'emphasis' | 'parameter';
+
+export interface SafePromptDeltaSuggestion {
+  suggestion_id: string;
+  category: 'identity' | 'environment' | 'style' | 'temporal' | 'prompt_fidelity';
+  delta_type: PromptDeltaSuggestionType;
+  suggested_text: string;
+  rationale: string;
+  target_engine: 'midjourney' | 'flux' | 'both';
+  severity: 'low' | 'moderate' | 'high';
+}
+
+export interface ManualCorrectionPack {
+  scene_id: string;
+  original_compressed_prompt: string;
+  original_negative_prompt: string;
+  continuity_seed: string;
+  style_core_ref: string;
+  production_lock_ref: string;
+  identity_lock_checksum_ref: string;
+  feedback_analyzer_checksum_ref: string;
+  render_input_pack_checksum_ref: string;
+  engines_analyzed: string[];
+  overall_alignment_average: number;
+  suggestions_only: true;
+}
+
+export interface ManualCorrectionPackVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface ManualCorrectionPackBuilderResult {
+  schema_version: typeof MANUAL_CORRECTION_PACK_BUILDER_VERSION;
+  generated_at: string;
+  readonly_suggestions: true;
+  manual_correction_pack: ManualCorrectionPack;
+  identity_correction_notes: string[];
+  environment_correction_notes: string[];
+  style_correction_notes: string[];
+  temporal_correction_notes: string[];
+  prompt_fidelity_notes: string[];
+  safe_prompt_delta_suggestions: SafePromptDeltaSuggestion[];
+  correction_pack_verification_checks: ManualCorrectionPackVerificationCheck[];
+  correction_pack_checksum: string;
+  validation: {
+    deterministic_correction_pack_checksum_stable: boolean;
+    readonly_suggestions: true;
+    original_prompt_unchanged: true;
+    no_auto_prompt_rewrite: true;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
