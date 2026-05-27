@@ -4416,6 +4416,141 @@ export interface FingerprintSeparabilityReinforcementResult {
   };
 }
 
+// --- Legacy Generation Asset Ingestion (PHASE-28A readonly schema normalization) ---
+
+export const LEGACY_GENERATION_ASSET_INGESTION_VERSION =
+  'LEGACY-GENERATION-ASSET-INGESTION-v1' as const;
+
+export type LegacyGenerationAssetKind =
+  | 'image_recipe'
+  | 'image_metadata'
+  | 'video_recipe'
+  | 'asm_motion_analysis'
+  | 'style_core'
+  | 'character_book'
+  | 'environment_dna'
+  | 'render_rules';
+
+export interface LegacyGenerationAssetRegistryEntry {
+  asset_id: string;
+  asset_kind: LegacyGenerationAssetKind;
+  source_path: string;
+  source_origin: 'canonical_fixture' | 'runtime_vault' | 'synthesized_preview';
+  normalized: true;
+  asset_fingerprint: string;
+}
+
+export interface LegacyNormalizedImageAsset {
+  asset_id: string;
+  asset_kind: 'image_recipe' | 'image_metadata';
+  prompt: string;
+  negative_prompt: string;
+  seed: number | string;
+  cfg?: number;
+  sampler?: string;
+  model_hash?: string;
+  denoise?: number;
+  aspect_ratio?: string;
+  render_rules_ref?: string;
+  style_metrics?: Record<string, number>;
+  scene_id?: string;
+  style_core_ref?: string;
+  continuity_seed?: string;
+}
+
+export interface LegacyNormalizedVideoAsset {
+  asset_id: string;
+  asset_kind: 'video_recipe' | 'asm_motion_analysis';
+  motion_bucket?: number;
+  scheduler?: string;
+  timeline?: string;
+  motion_peak?: number;
+  physics_logic?: Record<string, number>;
+  material_dna?: Record<string, number | string>;
+  quality_metrics?: Record<string, number>;
+  prompt?: string;
+  negative_prompt?: string;
+  seed?: number;
+  cfg?: number;
+  aspect_ratio?: string;
+  source_engine?: string;
+}
+
+export interface LegacyNormalizedStyleAsset {
+  asset_id: string;
+  asset_kind: 'style_core' | 'character_book' | 'environment_dna' | 'render_rules';
+  style_core?: MasterCoreStyleCoreInput;
+  style_core_metrics?: MasterCoreStyleCoreMetrics;
+  character_book_version?: string;
+  character_count?: number;
+  environment_slot_count?: number;
+  render_rules?: MasterCoreRenderRules;
+}
+
+export type LegacyNormalizedGenerationAsset =
+  | LegacyNormalizedImageAsset
+  | LegacyNormalizedVideoAsset
+  | LegacyNormalizedStyleAsset;
+
+export interface LegacyAssetFingerprintIndex {
+  generation_fingerprint: string;
+  render_fingerprint: string;
+  motion_fingerprint: string;
+  material_fingerprint: string;
+  style_law_fingerprint: string;
+  character_anchor_map: Record<string, string>;
+  environment_anchor_map: Record<string, string>;
+}
+
+export interface LegacyGenerationSchemaReport {
+  total_assets_ingested: number;
+  image_assets: number;
+  video_assets: number;
+  style_assets: number;
+  schema_fields_mapped: number;
+  mapping_coverage_ratio: number;
+  normalization_complete: true;
+  readonly_ingestion: true;
+}
+
+export interface LegacyGenerationQaBridgeReport {
+  scene_linkage_ready: boolean;
+  generation_fingerprint_ready: boolean;
+  visual_qa_loop_ready: boolean;
+  image_generation_ready: boolean;
+  video_generation_ready: boolean;
+  evidence_grounded_graph_ready: boolean;
+  bridge_checks_passed: number;
+  bridge_checks_total: number;
+}
+
+export interface LegacyGenerationAssetIngestionResult {
+  schema_version: typeof LEGACY_GENERATION_ASSET_INGESTION_VERSION;
+  generated_at: string;
+  readonly_ingestion: true;
+  production_lock_checksum_ref: string;
+  fingerprint_reinforcement_checksum_ref: string;
+  legacy_generation_asset_registry: LegacyGenerationAssetRegistryEntry[];
+  normalized_generation_assets: LegacyNormalizedGenerationAsset[];
+  generation_schema_report: LegacyGenerationSchemaReport;
+  asset_fingerprint_index: LegacyAssetFingerprintIndex;
+  generation_qa_bridge_report: LegacyGenerationQaBridgeReport;
+  ingestion_checksum: string;
+  export_json_path: 'exports/legacy-generation-assets.json';
+  validation: {
+    deterministic_ingestion_checksum_stable: boolean;
+    readonly_ingestion: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    asset_mapping_coverage_generated: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

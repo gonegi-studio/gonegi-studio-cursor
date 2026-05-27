@@ -1,0 +1,258 @@
+{
+  "schema_version": "LEGACY-GENERATION-ASSET-INGESTION-v1",
+  "generated_at": "2026-05-27T21:00:00.000Z",
+  "readonly_ingestion": true,
+  "production_lock_checksum_ref": "f34e446527458eb1f19cb80abb325ed23c37a7c7c13592159ccebc1cf73491d6",
+  "fingerprint_reinforcement_checksum_ref": "32013d3a7114c96a184a4c06ad5695ff0911bb6002816b5d466c0dead9be9762",
+  "legacy_generation_asset_registry": [
+    {
+      "asset_id": "LEGACY-IMAGE-RECIPE-2896635671E5",
+      "asset_kind": "image_recipe",
+      "source_path": "synthesized:realRenderInputPackExport",
+      "source_origin": "synthesized_preview",
+      "normalized": true,
+      "asset_fingerprint": "3733d851ca7024a952b3adb5220755f2c950846e4ed7ebe80518f6dee55ce0e2"
+    },
+    {
+      "asset_id": "LEGACY-IMAGE-METADATA-5D03ED4BA014",
+      "asset_kind": "image_metadata",
+      "source_path": "synthesized:generatedImageFeedbackAnalyzer",
+      "source_origin": "synthesized_preview",
+      "normalized": true,
+      "asset_fingerprint": "eb107839ec175fe0b46adc73e3b5a34ae6c157d92610aa250f2aed95cf98973d"
+    },
+    {
+      "asset_id": "LEGACY-VIDEO-RECIPE-AC2C3E6228C6",
+      "asset_kind": "video_recipe",
+      "source_path": "fixtures:legacyGenerationAssetIngestion.fixtures",
+      "source_origin": "canonical_fixture",
+      "normalized": true,
+      "asset_fingerprint": "e6d3ae420a0f6ec7dd7c9b36aaf9f19aca99c6d1e3e21b6a4f806e439a6bddc5"
+    },
+    {
+      "asset_id": "LEGACY-ASM-MOTION-ANALYSIS-55DCDAD2BFD7",
+      "asset_kind": "asm_motion_analysis",
+      "source_path": "fixtures:legacyGenerationAssetIngestion.fixtures",
+      "source_origin": "canonical_fixture",
+      "normalized": true,
+      "asset_fingerprint": "ef3cece62eed029a5ba1b07746db0863158dcbfea6edb99702992b396f1e5251"
+    },
+    {
+      "asset_id": "LEGACY-STYLE-CORE-E84B3BFDB403",
+      "asset_kind": "style_core",
+      "source_path": "synthesized:masterCoreDNAAdapterPreview",
+      "source_origin": "synthesized_preview",
+      "normalized": true,
+      "asset_fingerprint": "95e01cd95a195ea4d19d46ad41e6497b05df306e2713e5a8f746e6a7a7568410"
+    },
+    {
+      "asset_id": "LEGACY-CHARACTER-BOOK-81F5842731CA",
+      "asset_kind": "character_book",
+      "source_path": "synthesized:masterCoreDNAAdapterPreview",
+      "source_origin": "synthesized_preview",
+      "normalized": true,
+      "asset_fingerprint": "4377986b870ff4ee6ecdcdaff9daa516c242dd81b81c33f190bd8bb871754f50"
+    },
+    {
+      "asset_id": "LEGACY-ENVIRONMENT-DNA-34BAB4872BB1",
+      "asset_kind": "environment_dna",
+      "source_path": "synthesized:masterCoreDNAAdapterPreview",
+      "source_origin": "synthesized_preview",
+      "normalized": true,
+      "asset_fingerprint": "682d0f46a4eadccb65d573a8364801aef274ed0feb719d7bc2437e94ffd91e2c"
+    },
+    {
+      "asset_id": "LEGACY-RENDER-RULES-602EAF3038F9",
+      "asset_kind": "render_rules",
+      "source_path": "synthesized:masterCoreDNAAdapterPreview",
+      "source_origin": "canonical_fixture",
+      "normalized": true,
+      "asset_fingerprint": "f24df8aef99b35aea505c85d23f14f1b1a2429f85387f3fc7a0d874e43dab624"
+    }
+  ],
+  "normalized_generation_assets": [
+    {
+      "asset_id": "LEGACY-IMAGE-RECIPE-SCENE-PROD-001-ALCOTT",
+      "asset_kind": "image_recipe",
+      "prompt": "in a, ., . of is . :, . :, . :, . : . :, harbor_reflection, rain_sheen. ( 0). 0.925466. NULL. :, . / : . :, . : (, ha). : . [Gonegi Main[slot_1-1]:Rounded small cat silhouette, harbor coat slate duster, ] env:dawn/924bb151d3c0 anchor:TEMPORAL-ANCHOR-001 style:7ede7e98b15230bc lock:a339f78b3507cbe1",
+      "negative_prompt": "continuity drift, duplicate subjects, anatomy instability, environment inconsistency, temporal inconsistency",
+      "seed": 517088906,
+      "cfg": 7,
+      "sampler": "euler_a",
+      "model_hash": "ghibli_v3_final_prod_4k",
+      "denoise": 0.7,
+      "aspect_ratio": "16:9",
+      "render_rules_ref": "7ede7e98b15230bc7872ee2ca9368eef9065e506d18bab7551ab917941be79ed",
+      "style_metrics": {
+        "stylize": 250,
+        "guidance": 3.5,
+        "steps": 28
+      },
+      "scene_id": "SCENE-PROD-001-ALCOTT",
+      "style_core_ref": "7ede7e98b15230bc7872ee2ca9368eef9065e506d18bab7551ab917941be79ed",
+      "continuity_seed": "9ed22688812912b7"
+    },
+    {
+      "asset_id": "LEGACY-IMAGE-METADATA-SCENE-PROD-001-ALCOTT",
+      "asset_kind": "image_metadata",
+      "prompt": "in a, ., . of is . :, . :, . :, . : . :, harbor_reflection, rain_sheen. ( 0). 0.925466. NULL. :, . / : . :, . : (, ha). : . [Gonegi Main[slot_1-1]:Rounded small cat silhouette, harbor coat slate duster, ] env:dawn/924bb151d3c0 anchor:TEMPORAL-ANCHOR-001 style:7ede7e98b15230bc lock:a339f78b3507cbe1",
+      "negative_prompt": "continuity drift, duplicate subjects, anatomy instability, environment inconsistency, temporal inconsistency",
+      "seed": "9ed22688812912b7",
+      "scene_id": "SCENE-PROD-001-ALCOTT",
+      "style_core_ref": "7ede7e98b15230bc7872ee2ca9368eef9065e506d18bab7551ab917941be79ed",
+      "continuity_seed": "9ed22688812912b7",
+      "style_metrics": {
+        "style_drift_score": 0.06336,
+        "identity_drift_score": 0.030776,
+        "environment_drift_score": 0.02,
+        "temporal_drift_score": 0.074075,
+        "style_core_alignment_score": 0
+      }
+    },
+    {
+      "asset_id": "LEGACY-VIDEO-RECIPE-LEGACY-VIDEO-GONEGI-V1",
+      "asset_kind": "video_recipe",
+      "prompt": "Gonegi harbor dusk walk, warm gouache cel-shading, Mediterranean chronicle continuity, soft hand-painted animation.",
+      "negative_prompt": "text, watermark, logo, photoreal, harsh contrast, modern UI",
+      "seed": 428157,
+      "cfg": 7.5,
+      "motion_bucket": 127,
+      "scheduler": "Euler a",
+      "aspect_ratio": "16:9",
+      "source_engine": "Veo"
+    },
+    {
+      "asset_id": "LEGACY-ASM-LEGACY-VIDEO-GONEGI-V1",
+      "asset_kind": "asm_motion_analysis",
+      "timeline": "0-4s establish harbor; 4-8s companion motion crest; 8-12s rest cadence release",
+      "motion_peak": 0.82,
+      "physics_logic": {
+        "wind_force": 0.34,
+        "gravity_scale": 1,
+        "air_resistance": 0.05
+      },
+      "material_dna": {
+        "gouache_viscosity": 0.85,
+        "brush_grain_density": 0.52,
+        "edge_sharpness": 0.74,
+        "aesthetic": "80s Ghibli Nostalgia"
+      },
+      "quality_metrics": {
+        "total": 0.91,
+        "eye_gloss": 0.88,
+        "mask_fixation": 0.86
+      },
+      "source_engine": "Veo"
+    },
+    {
+      "asset_id": "LEGACY-STYLE-CORE-CANONICAL",
+      "asset_kind": "style_core",
+      "style_core": {
+        "styleKey": "gonegi-warm-cinematic",
+        "materialKey": "glass-glaze-soft",
+        "lightingKey": "warm-harbor-golden",
+        "brushworkKey": "soft-handpainted-animation",
+        "paletteKey": "warm-harbor-evening",
+        "styleAnchor": "Ghibli Mediterranean Chronicles v5.1",
+        "styleStrength": 0.992351
+      },
+      "style_core_metrics": {
+        "contrast_norm": 0.84,
+        "warmth_norm": 0.91,
+        "brushwork_density": 0.88,
+        "palette_coherence": 0.992351,
+        "material_fidelity": 0.93,
+        "lighting_consistency": 0.89
+      }
+    },
+    {
+      "asset_id": "LEGACY-CHARACTER-BOOK-CANONICAL",
+      "asset_kind": "character_book",
+      "character_book_version": "5.1",
+      "character_count": 14
+    },
+    {
+      "asset_id": "LEGACY-ENVIRONMENT-DNA-CANONICAL",
+      "asset_kind": "environment_dna",
+      "environment_slot_count": 9
+    },
+    {
+      "asset_id": "LEGACY-RENDER-RULES-CANONICAL",
+      "asset_kind": "render_rules",
+      "render_rules": {
+        "global": "Preserve opaque gouache, visible brush grain, and warm harbor palette across all renders.",
+        "character": "Maintain Gonegi silhouette, amber gaze lock, and identity-stable face topology.",
+        "environment": "Harbor Mediterranean atmosphere with cel-shadow depth and painterly sky gradient.",
+        "composition": "Rule-of-thirds subject placement with foreground-midground-background layering."
+      }
+    }
+  ],
+  "generation_schema_report": {
+    "total_assets_ingested": 8,
+    "image_assets": 2,
+    "video_assets": 2,
+    "style_assets": 4,
+    "schema_fields_mapped": 56,
+    "mapping_coverage_ratio": 1,
+    "normalization_complete": true,
+    "readonly_ingestion": true
+  },
+  "asset_fingerprint_index": {
+    "generation_fingerprint": "d6c3231a1d1fbf62b9016455cec5cd646b74d9998f2e79032474045172ec84f5",
+    "render_fingerprint": "d93746dd7d681514b8d1795a4e93e0f5648a5ac4b63e696f0dfc41557d9e18dd",
+    "motion_fingerprint": "eb607bcd7f699ed7bd65b6ab7799a7ccbf5f091e81a00e2cd0ec8970fb59aad2",
+    "material_fingerprint": "86c448aa1bf4f03b6438e102ca6d936d7e3c97e8dc613f38bb78f90b7edb79ba",
+    "style_law_fingerprint": "054d2930432d17aab979ed0308f31c98a61beed7993bd3fcecd6161415db6a61",
+    "character_anchor_map": {
+      "slot_1-1": "f8bbbec0535a3516016dae1009c8b59cce224bf148f2a415cb3e3ee1ffcfecef",
+      "slot_1-2": "1269278daa0a8683ebd3f9193be558dd685262b796bf216b19b6bd032416f0c9",
+      "slot_1-3": "7071bf408fdbc8cce3009ea2ddc07ec9a0319e60118b079779f3e7e216095d99",
+      "slot_1-4": "3b5eb88a90b7d693462c4732c1f1ac4df0bc17ec2e4bc4ec13915dea8e432a22",
+      "slot_1-5": "36a9199c7d3377fcb893178d106a7d29512596bd947da5c76ba665f6eff32859",
+      "slot_1-6": "729abc621e952988cb9c164fd7e137ed1ee6c4d5f3ed2ad75229ec7decbd6462",
+      "slot_2-1": "5a9d42eac3087765fe7d9eff4eabba9ffb32b293614324c78458a8003c734460",
+      "slot_2-2": "adf5ac9f6b9d2f6d250be2f6d14a6d5aedb38777ce54b032bf000ecbb3118e36",
+      "slot_2-3": "5a8020c8de728c9df9af6113d1a1c2d9450dd456a3b2c1d5b96392eb3178a3fe",
+      "slot_2-4": "a2cd8dee5fc192e99ef7d0851c82149d99916438be4263c3dcef56492b00f05a",
+      "slot_2-5": "76a37f522a6659b807e4e2456b3a05a148fa573eea8366ca20daf8e01cef58f2",
+      "slot_2-6-1": "69696db2c1ba398605f6d1ea7855d57d94ca3da5f458bf97c8a506721ef2ee7d",
+      "slot_2-6-2": "ba9ef23bde4f84735f5f3faba66cf94c874685b7847d309da65d69d1592175b5",
+      "npc_harbor_keeper": "bb38401fa13cbe8ef71756fa3be39b5cbc9e3703355f00fe91417f84befa88f9"
+    },
+    "environment_anchor_map": {
+      "dawn": "924bb151d3c0146df246a5f078f1d83c2ec530429f7fa35c145bd0e832b18173",
+      "morning": "e3529c85e580b7b36bac30446ef9e994eefdf3ddac3eadebaa8e6131956d5544",
+      "afternoon": "4d1eccbf3320cd760c4cc4c9d88d11416fa079670232d1d363e1be084f99febd",
+      "late_afternoon": "21d8a46900867a3c171fa1a5beecf29ddfbd486775ce4f0d3e7a8c74934797ef",
+      "sunset": "06414d1d8f108d12022c9005fda5f77947d60b69b4a520f4d7eccb9389bf5695",
+      "night": "d7cdf213709bbb5f8105bdc314ef220852a83757c4293b98e1f5262110d1cdff",
+      "dream": "3c6aba5db6d5daa58ba8c1420f9dea2ddad946fb838cc1b9021b33add7467618",
+      "spiritual": "e684b81a9019979d6546affcf554275582f13f9bff0b84caff90f84e96ed13ec",
+      "global": "6ee5630a47f2559de0d07a20800013fcba6fd34bf5e441ea0c947e6aced059e6"
+    }
+  },
+  "generation_qa_bridge_report": {
+    "scene_linkage_ready": true,
+    "generation_fingerprint_ready": true,
+    "visual_qa_loop_ready": true,
+    "image_generation_ready": true,
+    "video_generation_ready": true,
+    "evidence_grounded_graph_ready": true,
+    "bridge_checks_passed": 8,
+    "bridge_checks_total": 8
+  },
+  "export_json_path": "exports/legacy-generation-assets.json",
+  "validation": {
+    "deterministic_ingestion_checksum_stable": true,
+    "readonly_ingestion": true,
+    "no_dataset_mutation": true,
+    "no_prompt_rewrite": true,
+    "no_image_generation": true,
+    "no_provider_calls": true,
+    "no_canonical_export_mutation": true,
+    "no_runtime_dataset_mutation": true,
+    "production_lock_unchanged": true,
+    "asset_mapping_coverage_generated": true
+  },
+  "ingestion_checksum": "c5a0fe2266ae39497b8fe545a10995f116cbb1f9a1e122c219b896283acedd2d"
+}

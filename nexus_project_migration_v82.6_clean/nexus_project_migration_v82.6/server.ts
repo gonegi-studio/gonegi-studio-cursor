@@ -161,6 +161,10 @@ import {
   buildFingerprintSeparabilityReinforcementJsonFile,
   buildFingerprintSeparabilityReinforcementPreview,
 } from "./services/cinematic/fingerprintSeparabilityReinforcement";
+import {
+  buildLegacyGenerationAssetIngestionJsonFile,
+  buildLegacyGenerationAssetIngestionPreview,
+} from "./services/cinematic/legacyGenerationAssetIngestion";
 
 function isApiPath(pathname: string): boolean {
   return pathname === "/api" || pathname.startsWith("/api/");
@@ -1879,6 +1883,30 @@ async function startServer() {
     } catch (e) {
       console.error("Fingerprint separability json file error:", e);
       return res.status(500).json({ error: "Failed to build fingerprint separability json file" });
+    }
+  });
+
+  app.get("/api/cinematic/legacy-generation-assets-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildLegacyGenerationAssetIngestionPreview());
+    } catch (e) {
+      console.error("Legacy generation assets preview error:", e);
+      return res.status(500).json({ error: "Failed to build legacy generation assets preview" });
+    }
+  });
+
+  app.get("/api/cinematic/legacy-generation-assets-json-file", (_req, res) => {
+    try {
+      const download = buildLegacyGenerationAssetIngestionJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Legacy generation assets json file error:", e);
+      return res.status(500).json({ error: "Failed to build legacy generation assets json file" });
     }
   });
 
