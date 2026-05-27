@@ -124,6 +124,10 @@ import {
   buildLongformFatigueMitigationBlueprintJsonFile,
   buildLongformFatigueMitigationBlueprintPreview,
 } from "./services/longformFatigueMitigationBlueprint";
+import {
+  buildMitigationStabilitySimulationJsonFile,
+  buildMitigationStabilitySimulationPreview,
+} from "./services/mitigationStabilitySimulation";
 
 async function startServer() {
   const app = express();
@@ -1581,6 +1585,29 @@ async function startServer() {
     } catch (e) {
       console.error("Longform fatigue mitigation blueprint json file error:", e);
       return res.status(500).json({ error: "Failed to build longform fatigue mitigation blueprint json file" });
+    }
+  });
+
+  app.get("/api/cinematic/mitigation-stability-simulation-preview", (_req, res) => {
+    try {
+      return res.json(buildMitigationStabilitySimulationPreview());
+    } catch (e) {
+      console.error("Mitigation stability simulation preview error:", e);
+      return res.status(500).json({ error: "Failed to build mitigation stability simulation preview" });
+    }
+  });
+
+  app.get("/api/cinematic/mitigation-stability-simulation-json-file", (_req, res) => {
+    try {
+      const download = buildMitigationStabilitySimulationJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Mitigation stability simulation json file error:", e);
+      return res.status(500).json({ error: "Failed to build mitigation stability simulation json file" });
     }
   });
 

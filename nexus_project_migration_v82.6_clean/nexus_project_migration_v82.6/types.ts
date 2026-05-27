@@ -3591,6 +3591,101 @@ export interface LongformFatigueMitigationBlueprintResult {
   };
 }
 
+// --- Mitigation Stability Simulation (PHASE-25C virtual mitigation continuity gate) ---
+
+export const MITIGATION_STABILITY_SIMULATION_VERSION = 'MITIGATION-STABILITY-SIMULATION-v1' as const;
+
+export type MitigationSimulationDimensionKey =
+  | 'motif_spacing'
+  | 'emotional_rest_beat'
+  | 'framing_alternation'
+  | 'callback_throttling'
+  | 'memory_load_balancing'
+  | 'longform_continuity';
+
+export interface MitigationSimulationDimension {
+  dimension_key: MitigationSimulationDimensionKey;
+  label: string;
+  simulated_impact_score: number;
+  continuity_delta: number;
+  detail: string;
+}
+
+export interface MitigationSimulationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface MitigationSideEffect {
+  effect_id: string;
+  severity: 'low' | 'moderate';
+  category: MitigationSimulationDimensionKey;
+  signal: string;
+  detail: string;
+}
+
+export interface RuntimeLockCompatibility {
+  compatible: true;
+  production_lock_ref: string;
+  export_candidate_checksum_ref: string;
+  lock_inheritance_preserved: true;
+  simulation_only: true;
+  detail: string;
+}
+
+export interface MitigationSimulationReport {
+  simulation_id: string;
+  mitigation_blueprint_checksum_ref: string;
+  temporal_graph_checksum_ref: string;
+  stabilization_verdict_ref: string;
+  dimensions: MitigationSimulationDimension[];
+  simulation_checks: MitigationSimulationCheck[];
+  checks_passed: number;
+  checks_total: number;
+}
+
+export interface PostMitigationProjectionSimulation {
+  fatigue_at_60: number;
+  fatigue_at_90: number;
+  fatigue_at_120: number;
+  readiness_at_120: ProjectedLongformReadinessLevel;
+  continuity_preserved: true;
+  orchestration_stable: true;
+}
+
+export interface MitigationStabilitySimulationResult {
+  schema_version: typeof MITIGATION_STABILITY_SIMULATION_VERSION;
+  generated_at: string;
+  readonly_simulation: true;
+  mitigation_blueprint_checksum_ref: string;
+  export_candidate_checksum_ref: string;
+  identity_lock_checksum_ref: string;
+  expansion_blueprint_ref: string;
+  scene_count: number;
+  mitigation_simulation_report: MitigationSimulationReport;
+  continuity_preservation_score: number;
+  temporal_integrity_score: number;
+  orchestration_stability_score: number;
+  mitigation_side_effects: MitigationSideEffect[];
+  runtime_lock_compatibility: RuntimeLockCompatibility;
+  post_mitigation_projection: PostMitigationProjectionSimulation;
+  simulation_checksum: string;
+  validation: {
+    deterministic_simulation_checksum_stable: boolean;
+    readonly_simulation: true;
+    continuity_preserved: boolean;
+    orchestration_stable: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
