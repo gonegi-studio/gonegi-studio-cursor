@@ -2222,6 +2222,72 @@ export interface ImagePackageReadinessAuditResult {
   };
 }
 
+// --- Prompt Compression Engine (PHASE-21C engine-neutral packaging) ---
+
+export const PROMPT_COMPRESSION_ENGINE_VERSION = 'PROMPT-COMPRESSION-ENGINE-v1' as const;
+
+export interface CompressedImagePackage {
+  scene_id: string;
+  sequence_id: string;
+  cinematic_prompt: string;
+  negative_prompt: string;
+  original_prompt_length: number;
+  compressed_prompt_length: number;
+  compression_steps: string[];
+  visual_identity: RuntimeImageGenerationVisualIdentity;
+  camera_profile: RuntimeImageGenerationCameraProfile;
+  lighting_profile: RuntimeImageGenerationLightingProfile;
+  emotional_profile: RuntimeImageGenerationEmotionalProfile;
+  continuity_memory: RuntimeImageGenerationContinuityMemory;
+  temporal_anchor_id: string;
+  style_core_ref: string;
+  character_refs: RuntimeImageGenerationCharacterRef[];
+  environment_ref: RuntimeImageGenerationEnvironmentRef;
+  production_lock_ref: string;
+  runtime_dataset_fingerprint: string;
+}
+
+export interface PromptCompressionVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface PromptCompressionEngineResult {
+  schema_version: typeof PROMPT_COMPRESSION_ENGINE_VERSION;
+  generated_at: string;
+  readonly_compression: true;
+  compiler_checksum_ref: string;
+  audit_checksum_ref: string;
+  readiness_verdict_ref: ImagePackageReadinessVerdict;
+  scene_count: number;
+  compressed_image_packages: CompressedImagePackage[];
+  compression_ratio: number;
+  token_savings_estimate: number;
+  preserved_identity_score: number;
+  engine_neutral_package_checksum: string;
+  compression_stats: {
+    original_total_length: number;
+    compressed_total_length: number;
+    original_avg_length: number;
+    compressed_avg_length: number;
+    avg_length_reduction_pct: number;
+  };
+  compression_verification_checks: PromptCompressionVerificationCheck[];
+  validation: {
+    deterministic_compression_checksum_stable: boolean;
+    readonly_compression: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_prompt_hallucination: true;
+    readiness_still_pass: boolean;
+    avg_prompt_length_reduced: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

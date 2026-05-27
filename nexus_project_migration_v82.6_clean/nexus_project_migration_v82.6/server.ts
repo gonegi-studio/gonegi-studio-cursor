@@ -63,6 +63,10 @@ import {
   buildImagePackageReadinessAuditJsonFile,
   buildImagePackageReadinessAuditPreview,
 } from "./services/imagePackageReadinessAudit";
+import {
+  buildPromptCompressionJsonFile,
+  buildPromptCompressionPreview,
+} from "./services/promptCompressionEngine";
 
 async function startServer() {
   const app = express();
@@ -1133,6 +1137,31 @@ async function startServer() {
     } catch (e) {
       console.error("Image package readiness audit json file error:", e);
       return res.status(500).json({ error: "Failed to build image package readiness audit json file" });
+    }
+  });
+
+  // API: Prompt Compression Engine (PHASE-21C engine-neutral packaging)
+  app.get("/api/cinematic/prompt-compression-preview", (_req, res) => {
+    try {
+      const preview = buildPromptCompressionPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Prompt compression preview error:", e);
+      return res.status(500).json({ error: "Failed to build prompt compression preview" });
+    }
+  });
+
+  app.get("/api/cinematic/prompt-compression-json-file", (_req, res) => {
+    try {
+      const download = buildPromptCompressionJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Prompt compression json file error:", e);
+      return res.status(500).json({ error: "Failed to build prompt compression json file" });
     }
   });
 
