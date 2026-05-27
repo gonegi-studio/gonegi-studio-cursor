@@ -4107,6 +4107,132 @@ export interface ChatgptReviewBundleExportResult {
   };
 }
 
+// --- Synthesized Shot Fingerprint Layer (PHASE-27A readonly deterministic enrichment) ---
+
+export const SYNTHESIZED_SHOT_FINGERPRINT_LAYER_VERSION =
+  'SYNTHESIZED-SHOT-FINGERPRINT-LAYER-v1' as const;
+
+export const SHOT_FINGERPRINT_VERSION = 'SHOT-FP-v1' as const;
+
+export type ShotFingerprintCadenceClass = 'slow' | 'moderate' | 'brisk' | 'dynamic';
+export type ShotFingerprintEmotionWaveClass = 'flat' | 'rising' | 'crest' | 'release' | 'oscillating';
+export type ShotFingerprintAtmosphereClass =
+  | 'warm'
+  | 'cool'
+  | 'neutral'
+  | 'high_contrast'
+  | 'muted';
+export type ShotFingerprintContinuityRole =
+  | 'source'
+  | 'bridge'
+  | 'anchor'
+  | 'callback'
+  | 'transition';
+export type ShotFingerprintCallbackDensityClass = 'sparse' | 'moderate' | 'dense';
+export type FingerprintCollisionSeverity = 'none' | 'low' | 'moderate' | 'high';
+
+export interface SynthesizedSceneShotFingerprint {
+  fingerprint_id: string;
+  scene_id: string;
+  framing_fingerprint: string;
+  motion_fingerprint: string;
+  emotion_fingerprint: string;
+  visual_fingerprint: string;
+  narrative_fingerprint: string;
+  framing_complexity_score: number;
+  motion_cadence_class: ShotFingerprintCadenceClass;
+  trajectory_signature: string;
+  emotion_wave_class: ShotFingerprintEmotionWaveClass;
+  rest_beat_presence: boolean;
+  palette_signature: string;
+  atmosphere_class: ShotFingerprintAtmosphereClass;
+  continuity_role: ShotFingerprintContinuityRole;
+  callback_density_class: ShotFingerprintCallbackDensityClass;
+  compact_fingerprint: string;
+  shot_fingerprint_hash: string;
+  shot_uniqueness_score: number;
+  fingerprint_version: typeof SHOT_FINGERPRINT_VERSION;
+  source_fields: string[];
+}
+
+export interface ShotFingerprintCoverageReport {
+  total_scenes: number;
+  fingerprints_generated: number;
+  coverage_ratio: number;
+  prior_fingerprint_coverage: number;
+  prior_fingerprint_coverage_ratio: number;
+  enrichment_only: true;
+  readonly_enrichment: true;
+}
+
+export interface ShotFingerprintQualityReport {
+  average_framing_complexity: number;
+  average_uniqueness_score: number;
+  motion_cadence_distribution: Record<ShotFingerprintCadenceClass, number>;
+  emotion_wave_distribution: Record<ShotFingerprintEmotionWaveClass, number>;
+  atmosphere_class_distribution: Record<ShotFingerprintAtmosphereClass, number>;
+  continuity_role_distribution: Record<ShotFingerprintContinuityRole, number>;
+  quality_score: number;
+}
+
+export interface FingerprintCollisionGroup {
+  group_id: string;
+  compact_fingerprint: string;
+  scene_ids: string[];
+  collision_severity: FingerprintCollisionSeverity;
+  collision_reason: string;
+}
+
+export interface FingerprintHighSimilarityCluster {
+  cluster_id: string;
+  compact_prefix: string;
+  scene_ids: string[];
+  similarity_signal: string;
+}
+
+export interface FingerprintCollisionReport {
+  fingerprint_collision_groups: FingerprintCollisionGroup[];
+  high_similarity_clusters: FingerprintHighSimilarityCluster[];
+  exact_collision_count: number;
+  high_similarity_cluster_count: number;
+  collision_analysis_readonly: true;
+}
+
+export interface SynthesizedShotFingerprintExport {
+  dataset_id: string;
+  locked_synthesized_dataset_id: string;
+  scene_count: 120;
+  synthesis_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  continuity_graph_checksum_ref: string;
+  scene_fingerprints: SynthesizedSceneShotFingerprint[];
+}
+
+export interface SynthesizedShotFingerprintLayerResult {
+  schema_version: typeof SYNTHESIZED_SHOT_FINGERPRINT_LAYER_VERSION;
+  generated_at: string;
+  readonly_enrichment: true;
+  synthesized_shot_fingerprint_export: SynthesizedShotFingerprintExport;
+  shot_fingerprint_coverage_report: ShotFingerprintCoverageReport;
+  shot_fingerprint_quality_report: ShotFingerprintQualityReport;
+  fingerprint_collision_report: FingerprintCollisionReport;
+  fingerprint_checksum: string;
+  export_json_path: 'exports/synthesized-shot-fingerprint.json';
+  validation: {
+    deterministic_fingerprint_checksum_stable: boolean;
+    readonly_enrichment: true;
+    shot_fingerprint_coverage_120_of_120: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    collision_analysis_generated: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
