@@ -4551,6 +4551,126 @@ export interface LegacyGenerationAssetIngestionResult {
   };
 }
 
+// --- Generation Readiness Gate (PHASE-28B readonly pre-generation safety validation) ---
+
+export const GENERATION_READINESS_GATE_VERSION = 'GENERATION-READINESS-GATE-v1' as const;
+
+export type GenerationCandidateRiskTier = 'low' | 'moderate' | 'high';
+
+export interface GenerationReadinessCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  score: number;
+  detail: string;
+}
+
+export interface GenerationReadinessReport {
+  total_scenes: number;
+  readiness_score: number;
+  pipeline_linkage_stable: boolean;
+  character_grounding_stable: boolean;
+  style_grounding_stable: boolean;
+  first_controlled_generation_safe: boolean;
+  readiness_checks: GenerationReadinessCheck[];
+  readiness_checks_passed: number;
+  readiness_checks_total: number;
+}
+
+export interface SceneGenerationBindingEntry {
+  scene_id: string;
+  fingerprint_id: string;
+  shot_fingerprint_hash: string;
+  reinforced_compact_fingerprint: string;
+  generation_fingerprint_ref: string;
+  binding_score: number;
+  linkage_ready: boolean;
+}
+
+export interface SceneGenerationBindingReport {
+  total_scenes: number;
+  bound_scenes: number;
+  binding_coverage_ratio: number;
+  average_binding_score: number;
+  scene_bindings: SceneGenerationBindingEntry[];
+}
+
+export interface CharacterConsistencyRiskEntry {
+  scene_id: string;
+  risk_score: number;
+  risk_tier: GenerationCandidateRiskTier;
+  anchor_signals: string[];
+}
+
+export interface CharacterConsistencyRiskReport {
+  anchor_coverage_ratio: number;
+  character_anchor_count: number;
+  at_risk_scene_count: number;
+  average_risk_score: number;
+  risk_entries: CharacterConsistencyRiskEntry[];
+}
+
+export interface StyleCoreBindingReport {
+  style_core_id: string;
+  binding_integrity_score: number;
+  render_rules_compatible: boolean;
+  environment_slots_mapped: number;
+  style_law_fingerprint_ref: string;
+  style_keys_bound: string[];
+}
+
+export interface GenerationCandidateRegistryEntry {
+  scene_id: string;
+  fingerprint_id: string;
+  readiness_score: number;
+  risk_tier: GenerationCandidateRiskTier;
+  separability_score: number;
+  shot_uniqueness_score: number;
+  emotional_stability_score: number;
+  character_anchor_score: number;
+  environment_alignment_score: number;
+  style_alignment_score: number;
+  generation_binding_score: number;
+}
+
+export interface FirstGenerationCandidate {
+  rank: number;
+  scene_id: string;
+  readiness_score: number;
+  risk_tier: GenerationCandidateRiskTier;
+  selection_rationale: string;
+  recommended_for_phase_29a: boolean;
+}
+
+export interface GenerationReadinessGateResult {
+  schema_version: typeof GENERATION_READINESS_GATE_VERSION;
+  generated_at: string;
+  readonly_validation: true;
+  production_lock_checksum_ref: string;
+  legacy_ingestion_checksum_ref: string;
+  fingerprint_reinforcement_checksum_ref: string;
+  generation_readiness_report: GenerationReadinessReport;
+  scene_generation_binding_report: SceneGenerationBindingReport;
+  character_consistency_risk_report: CharacterConsistencyRiskReport;
+  style_core_binding_report: StyleCoreBindingReport;
+  generation_candidate_registry: GenerationCandidateRegistryEntry[];
+  first_generation_candidate_list: FirstGenerationCandidate[];
+  readiness_gate_checksum: string;
+  export_json_path: 'exports/generation-readiness.json';
+  validation: {
+    deterministic_readiness_checksum_stable: boolean;
+    readonly_validation: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    readiness_scores_generated: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

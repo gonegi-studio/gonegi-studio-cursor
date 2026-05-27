@@ -165,6 +165,10 @@ import {
   buildLegacyGenerationAssetIngestionJsonFile,
   buildLegacyGenerationAssetIngestionPreview,
 } from "./services/cinematic/legacyGenerationAssetIngestion";
+import {
+  buildGenerationReadinessGateJsonFile,
+  buildGenerationReadinessGatePreview,
+} from "./services/cinematic/generationReadinessGate";
 
 function isApiPath(pathname: string): boolean {
   return pathname === "/api" || pathname.startsWith("/api/");
@@ -1907,6 +1911,30 @@ async function startServer() {
     } catch (e) {
       console.error("Legacy generation assets json file error:", e);
       return res.status(500).json({ error: "Failed to build legacy generation assets json file" });
+    }
+  });
+
+  app.get("/api/cinematic/generation-readiness-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildGenerationReadinessGatePreview());
+    } catch (e) {
+      console.error("Generation readiness preview error:", e);
+      return res.status(500).json({ error: "Failed to build generation readiness preview" });
+    }
+  });
+
+  app.get("/api/cinematic/generation-readiness-json-file", (_req, res) => {
+    try {
+      const download = buildGenerationReadinessGateJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Generation readiness json file error:", e);
+      return res.status(500).json({ error: "Failed to build generation readiness json file" });
     }
   });
 
