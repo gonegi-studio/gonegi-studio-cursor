@@ -75,6 +75,10 @@ import {
   buildEngineAdapterExportPackJsonFile,
   buildEngineAdapterExportPackPreview,
 } from "./services/engineAdapterExportPack";
+import {
+  buildSingleSceneGenerationTestPreview,
+  SingleSceneGenerationTestOptions,
+} from "./services/singleSceneGenerationTest";
 
 async function startServer() {
   const app = express();
@@ -1220,6 +1224,24 @@ async function startServer() {
     } catch (e) {
       console.error("Engine adapter export pack json file error:", e);
       return res.status(500).json({ error: "Failed to build engine adapter export pack json file" });
+    }
+  });
+
+  // API: Single Scene Generation Test (PHASE-22A controlled test generation)
+  app.get("/api/cinematic/single-scene-generation-test-preview", (req, res) => {
+    try {
+      const options: SingleSceneGenerationTestOptions = {};
+      if (typeof req.query.scene_id === "string" && req.query.scene_id.length > 0) {
+        options.scene_id = req.query.scene_id;
+      }
+      if (req.query.engine === "midjourney_pack" || req.query.engine === "flux_pack") {
+        options.engine = req.query.engine;
+      }
+      const preview = buildSingleSceneGenerationTestPreview(options);
+      return res.json(preview);
+    } catch (e) {
+      console.error("Single scene generation test preview error:", e);
+      return res.status(500).json({ error: "Failed to build single scene generation test preview" });
     }
   });
 

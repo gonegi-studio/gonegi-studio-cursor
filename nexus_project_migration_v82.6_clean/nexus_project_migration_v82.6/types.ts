@@ -2493,6 +2493,82 @@ export interface EngineAdapterExportPackResult {
   };
 }
 
+// --- Single Scene Generation Test (PHASE-22A controlled test generation) ---
+
+export const SINGLE_SCENE_GENERATION_TEST_VERSION = 'SINGLE-SCENE-GENERATION-TEST-v1' as const;
+
+export type SingleSceneTestEngine = 'midjourney_pack' | 'flux_pack';
+
+export type SingleSceneGenerationTestStatus =
+  | 'test_pass'
+  | 'test_conditional'
+  | 'test_fail'
+  | 'test_skipped';
+
+export interface SingleSceneGenerationEngineResult {
+  scene_id: string;
+  engine: SingleSceneTestEngine;
+  generation_test_status: SingleSceneGenerationTestStatus;
+  identity_match_score: number;
+  environment_match_score: number;
+  style_alignment_score: number;
+  continuity_alignment_score: number;
+  render_notes: string;
+  recommended_adjustments: string[];
+  simulated_render_fingerprint: string;
+  continuity_seed_used: string;
+  render_index: number;
+  prompt_fidelity_score: number;
+  face_consistency_score: number;
+  lighting_consistency_score: number;
+  continuity_lock_adherence: number;
+}
+
+export interface SingleSceneCandidateScore {
+  scene_id: string;
+  composite_score: number;
+  emotional_stability: number;
+  camera_motion_fit: number;
+  environment_visibility: number;
+  character_visibility: number;
+  crowd_density_inverse: number;
+}
+
+export interface SingleSceneGenerationVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface SingleSceneGenerationTestResult {
+  schema_version: typeof SINGLE_SCENE_GENERATION_TEST_VERSION;
+  generated_at: string;
+  readonly_test: true;
+  export_pack_checksum_ref: string;
+  selected_scene_id: string;
+  selected_scene_rationale: string;
+  candidate_scores: SingleSceneCandidateScore[];
+  engines_tested: SingleSceneTestEngine[];
+  render_count: number;
+  max_render_count: number;
+  engine_results: SingleSceneGenerationEngineResult[];
+  generation_test_verification_checks: SingleSceneGenerationVerificationCheck[];
+  test_checksum: string;
+  validation: {
+    deterministic_test_checksum_stable: boolean;
+    readonly_test: true;
+    single_scene_only: true;
+    no_provider_calls: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_automatic_retries: true;
+    simulated_test_generation_only: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
