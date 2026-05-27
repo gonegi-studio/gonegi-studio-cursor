@@ -55,6 +55,10 @@ import {
   buildLongformDatasetProductionLockJsonFile,
   buildLongformDatasetProductionLockPreview,
 } from "./services/longformDatasetProductionLock";
+import {
+  buildRuntimeImageGenerationCompilerJsonFile,
+  buildRuntimeImageGenerationCompilerPreview,
+} from "./services/runtimeImageGenerationCompiler";
 
 async function startServer() {
   const app = express();
@@ -1075,6 +1079,31 @@ async function startServer() {
     } catch (e) {
       console.error("Longform dataset production lock json file error:", e);
       return res.status(500).json({ error: "Failed to build longform dataset production lock json file" });
+    }
+  });
+
+  // API: Runtime Image Generation Compiler (PHASE-21A foundation — deterministic packages only)
+  app.get("/api/cinematic/runtime-image-generation-preview", (_req, res) => {
+    try {
+      const preview = buildRuntimeImageGenerationCompilerPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Runtime image generation compiler preview error:", e);
+      return res.status(500).json({ error: "Failed to build runtime image generation compiler preview" });
+    }
+  });
+
+  app.get("/api/cinematic/runtime-image-generation-json-file", (_req, res) => {
+    try {
+      const download = buildRuntimeImageGenerationCompilerJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Runtime image generation compiler json file error:", e);
+      return res.status(500).json({ error: "Failed to build runtime image generation compiler json file" });
     }
   });
 

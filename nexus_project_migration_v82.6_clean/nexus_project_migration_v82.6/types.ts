@@ -2050,6 +2050,121 @@ export interface LongformDatasetProductionLockResult {
   };
 }
 
+// --- Runtime Image Generation Compiler (PHASE-21A foundation — deterministic packages only) ---
+
+export const RUNTIME_IMAGE_GENERATION_COMPILER_VERSION =
+  'RUNTIME-IMAGE-GENERATION-COMPILER-v1' as const;
+
+export interface RuntimeImageGenerationCharacterRef {
+  character_id: string;
+  index_key: string;
+  name: string;
+  visual_dna_ref: string;
+  source_layer: 'relationship_graph' | 'visual_atoms' | 'memory_node' | 'character_persistence';
+}
+
+export interface RuntimeImageGenerationEnvironmentRef {
+  slot_key: string;
+  fingerprint: string;
+  dna_text_ref: string;
+}
+
+export interface RuntimeImageGenerationVisualIdentity {
+  atom_labels: string[];
+  composition_hash?: string;
+  palette_hash?: string;
+  framing_signatures: string[];
+  depth_layers: string[];
+}
+
+export interface RuntimeImageGenerationCameraProfile {
+  focal_length_mm?: number | null;
+  aperture_f_stop?: number | null;
+  sensor_alias?: string | null;
+  cinematography_tokens: string[];
+  camera_motion_summary: string;
+  framing: string[];
+}
+
+export interface RuntimeImageGenerationLightingProfile {
+  lighting_type?: string;
+  naturalism_index?: number | null;
+  shadow_density?: number | null;
+  color_temperature_k?: number | null;
+  lighting_direction?: string | null;
+  environment_tokens: string[];
+}
+
+export interface RuntimeImageGenerationEmotionalProfile {
+  dominant_emotions: string[];
+  mood_signature?: string;
+  relationship_state_memory?: string | null;
+  emotional_carryover_intensity?: number | null;
+  emotion_tokens: string[];
+}
+
+export interface RuntimeImageGenerationContinuityMemory {
+  temporal_anchor_id: string;
+  continuity_lock_status?: string;
+  active_memory_references: string[];
+  character_signatures: string[];
+  motif_signatures: string[];
+  relationship_wording: string[];
+  temporal_continuity_wording: string[];
+}
+
+export interface RuntimeImageGenerationPackage {
+  scene_id: string;
+  sequence_id: string;
+  cinematic_prompt: string;
+  negative_prompt: string;
+  visual_identity: RuntimeImageGenerationVisualIdentity;
+  camera_profile: RuntimeImageGenerationCameraProfile;
+  lighting_profile: RuntimeImageGenerationLightingProfile;
+  emotional_profile: RuntimeImageGenerationEmotionalProfile;
+  continuity_memory: RuntimeImageGenerationContinuityMemory;
+  temporal_anchor_id: string;
+  style_core_ref: string;
+  character_refs: RuntimeImageGenerationCharacterRef[];
+  environment_ref: RuntimeImageGenerationEnvironmentRef;
+  production_lock_ref: string;
+  runtime_dataset_fingerprint: string;
+}
+
+export interface RuntimeImageGenerationCompilerCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface RuntimeImageGenerationCompilerResult {
+  schema_version: typeof RUNTIME_IMAGE_GENERATION_COMPILER_VERSION;
+  generated_at: string;
+  readonly_compiler: true;
+  production_lock_ref: string;
+  locked_export_id: string;
+  runtime_dataset_fingerprint: string;
+  temporal_graph_checksum_ref: string;
+  stabilization_verdict: string;
+  style_core_ref: string;
+  scene_count: number;
+  scene_packages: RuntimeImageGenerationPackage[];
+  compiler_verification_checks: RuntimeImageGenerationCompilerCheck[];
+  compiler_checksum: string;
+  validation: {
+    deterministic_compiler_checksum_stable: boolean;
+    readonly_compiler: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_engine_adapters: true;
+    all_scenes_compiled: boolean;
+    all_prompts_generated: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
