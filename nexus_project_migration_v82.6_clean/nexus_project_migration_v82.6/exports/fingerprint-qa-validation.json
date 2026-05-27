@@ -1,0 +1,6099 @@
+{
+  "schema_version": "FINGERPRINT-QA-VALIDATION-v1",
+  "generated_at": "2026-05-27T19:00:00.000Z",
+  "readonly_validation": true,
+  "fingerprint_checksum_ref": "0b71fa7b05bc934e77f61ba50e3d494a917c44b1338095ffc63d3094ed6ab4c0",
+  "production_lock_checksum_ref": "f34e446527458eb1f19cb80abb325ed23c37a7c7c13592159ccebc1cf73491d6",
+  "fingerprint_retrieval_report": {
+    "total_scenes": 120,
+    "nearest_neighbor_similarity_mean": 0.612125,
+    "nearest_neighbor_similarity_max": 0.805,
+    "continuity_neighbor_similarity_mean": 0.108697,
+    "distant_neighbor_similarity_mean": 0.069292,
+    "emotional_cadence_cluster_count": 4,
+    "framing_repetition_groups": 22,
+    "atmosphere_repetition_groups": 2,
+    "retrieval_stability_score": 0.75515,
+    "exact_compact_duplicate_count": 0,
+    "qa_checks": [
+      {
+        "check_key": "nearest_fingerprint_similarity",
+        "label": "Nearest Fingerprint Similarity",
+        "passed": false,
+        "score": 0.387875,
+        "detail": "Mean nearest-neighbor similarity 0.612125 (max 0.805)"
+      },
+      {
+        "check_key": "continuity_neighbor_consistency",
+        "label": "Continuity Neighbor Consistency",
+        "passed": true,
+        "score": 1,
+        "detail": "Sequential neighbor mean 0.108697 vs distant mean 0.069292"
+      },
+      {
+        "check_key": "emotional_cadence_clustering",
+        "label": "Emotional Cadence Clustering",
+        "passed": true,
+        "score": 0.8,
+        "detail": "4 multi-scene emotion-wave clusters detected"
+      },
+      {
+        "check_key": "framing_repetition_detection",
+        "label": "Framing Repetition Detection",
+        "passed": true,
+        "score": 1,
+        "detail": "22 framing repetition group(s) measured (readonly)"
+      },
+      {
+        "check_key": "atmosphere_repetition_detection",
+        "label": "Atmosphere Repetition Detection",
+        "passed": true,
+        "score": 0.2,
+        "detail": "2 atmosphere repetition group(s) measured (readonly)"
+      },
+      {
+        "check_key": "retrieval_stability_scoring",
+        "label": "Retrieval Stability Scoring",
+        "passed": false,
+        "score": 0.75515,
+        "detail": "Retrieval stability score 0.75515"
+      },
+      {
+        "check_key": "fingerprint_separability",
+        "label": "Fingerprint Separability",
+        "passed": true,
+        "score": 0.195,
+        "detail": "Exact compact duplicate groups 0; max nearest similarity 0.805"
+      },
+      {
+        "check_key": "visual_qa_grounding_ready",
+        "label": "Visual QA Grounding Ready",
+        "passed": false,
+        "score": 0.571512,
+        "detail": "Fingerprints stable, separable, and retrieval-safe for future visual QA grounding"
+      }
+    ],
+    "qa_checks_passed": 5,
+    "qa_checks_total": 8,
+    "visual_qa_ready": false,
+    "retrieval_safe": false,
+    "separable": true,
+    "stable": false
+  },
+  "fingerprint_similarity_matrix": {
+    "scene_count": 120,
+    "pairwise_similarity_mean": 0.076546,
+    "pairwise_similarity_min": 0,
+    "pairwise_similarity_max": 0.805,
+    "nearest_neighbor_rows": [
+      {
+        "scene_id": "SYN-LF120-001",
+        "fingerprint_id": "FP-8ABFCE976B0FDC37",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-100",
+            "fingerprint_id": "FP-28C2E4C753EF2A46",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-034",
+            "fingerprint_id": "FP-A90D219A565B2783",
+            "similarity": 0.345,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-067",
+            "fingerprint_id": "FP-E35CD1FF88CEB157",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-017",
+            "fingerprint_id": "FP-312D6E2C7F9E3969",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-050",
+            "fingerprint_id": "FP-52D6199E957426EF",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-002",
+        "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-035",
+            "fingerprint_id": "FP-725883FE5791A672",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-068",
+            "fingerprint_id": "FP-F9BA5EF674CA757A",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-101",
+            "fingerprint_id": "FP-C9DDE59260188497",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-003",
+        "fingerprint_id": "FP-AFE238D721798FA0",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-102",
+            "fingerprint_id": "FP-A215042DE631E366",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-069",
+            "fingerprint_id": "FP-5625A16F4B5AB6AB",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-025",
+            "fingerprint_id": "FP-25EEE9F63FFFF4F8",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-004",
+        "fingerprint_id": "FP-909CE2B8777A334B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-037",
+            "fingerprint_id": "FP-3AE17203FB93E87B",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-070",
+            "fingerprint_id": "FP-94C58A2A4DAED2E5",
+            "similarity": 0.365,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-103",
+            "fingerprint_id": "FP-DD488496C2C0999E",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-020",
+            "fingerprint_id": "FP-D031E014DBD78D30",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-026",
+            "fingerprint_id": "FP-71E962674914FD62",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-005",
+        "fingerprint_id": "FP-CC6ADC71460C1194",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-104",
+            "fingerprint_id": "FP-D550FD26A55E9381",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-071",
+            "fingerprint_id": "FP-970B606F1A2AAA1E",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-060",
+            "fingerprint_id": "FP-003D6ABB18347E12",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-006",
+        "fingerprint_id": "FP-9B4C68D372F45264",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-039",
+            "fingerprint_id": "FP-E2F90CF6A055765F",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-072",
+            "fingerprint_id": "FP-0B2E031DA6990238",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-105",
+            "fingerprint_id": "FP-F9742CFA7B7AD5FB",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-012",
+            "fingerprint_id": "FP-DD9B5AEF39D7C733",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-014",
+            "fingerprint_id": "FP-3E3BE37334504C21",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-007",
+        "fingerprint_id": "FP-1F937C8A3C20474B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-106",
+            "fingerprint_id": "FP-27D7F92C0E82A7BE",
+            "similarity": 0.345,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-073",
+            "fingerprint_id": "FP-F014053675437B65",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-013",
+            "fingerprint_id": "FP-519891CF052B9351",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-021",
+            "fingerprint_id": "FP-646752E34CB01610",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.345
+      },
+      {
+        "scene_id": "SYN-LF120-008",
+        "fingerprint_id": "FP-2E6C29B49AC59B94",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-041",
+            "fingerprint_id": "FP-6B31DF88E9888694",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-074",
+            "fingerprint_id": "FP-144CC2C7DF864695",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-107",
+            "fingerprint_id": "FP-B118C78665FD4855",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-009",
+        "fingerprint_id": "FP-887495878293F661",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-108",
+            "fingerprint_id": "FP-BDFC0003D9F6ADE9",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-075",
+            "fingerprint_id": "FP-C582CBAF5D7D1C1B",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-025",
+            "fingerprint_id": "FP-25EEE9F63FFFF4F8",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-010",
+        "fingerprint_id": "FP-A2C7BC56A052626D",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-043",
+            "fingerprint_id": "FP-7BF4EDFB55D3823E",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-076",
+            "fingerprint_id": "FP-86DDF0EC45709D88",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-109",
+            "fingerprint_id": "FP-24C2A7CAB04242E3",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-011",
+        "fingerprint_id": "FP-676A6F8E4B4F5112",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-110",
+            "fingerprint_id": "FP-EB770FC8062E53D8",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-044",
+            "fingerprint_id": "FP-2A752A43F8C6C1B5",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-077",
+            "fingerprint_id": "FP-70743DCF100F9B08",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-005",
+            "fingerprint_id": "FP-CC6ADC71460C1194",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-019",
+            "fingerprint_id": "FP-0ADBE1CA1FF4CD98",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-012",
+        "fingerprint_id": "FP-DD9B5AEF39D7C733",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-045",
+            "fingerprint_id": "FP-A64F53378B317104",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-078",
+            "fingerprint_id": "FP-DF5E5C0C41BCBA8C",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-111",
+            "fingerprint_id": "FP-FB4D4FD745094225",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-013",
+        "fingerprint_id": "FP-519891CF052B9351",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-112",
+            "fingerprint_id": "FP-5C207702B50B08D9",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-046",
+            "fingerprint_id": "FP-091F5AFCC6543D69",
+            "similarity": 0.345,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-079",
+            "fingerprint_id": "FP-85F0A822453D75E3",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-021",
+            "fingerprint_id": "FP-646752E34CB01610",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-014",
+        "fingerprint_id": "FP-3E3BE37334504C21",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-080",
+            "fingerprint_id": "FP-9478580658D9D8BB",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-047",
+            "fingerprint_id": "FP-BA767C444C74FEC5",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-113",
+            "fingerprint_id": "FP-1DA267141B69B031",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-015",
+        "fingerprint_id": "FP-67FD7A92968B9CB2",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-048",
+            "fingerprint_id": "FP-C5FF99EC71C6EC56",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-114",
+            "fingerprint_id": "FP-412F16ABCB0896FF",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-081",
+            "fingerprint_id": "FP-5A8E4505118A13F2",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.095,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-018",
+            "fingerprint_id": "FP-C563F70DA3687C42",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-016",
+        "fingerprint_id": "FP-FEC9C037120076E2",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-082",
+            "fingerprint_id": "FP-3243EB2646D0C84B",
+            "similarity": 0.34,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-115",
+            "fingerprint_id": "FP-785396DDB9D6AA42",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-018",
+            "fingerprint_id": "FP-C563F70DA3687C42",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-084",
+            "fingerprint_id": "FP-4903E5D9ABFE186B",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.34
+      },
+      {
+        "scene_id": "SYN-LF120-017",
+        "fingerprint_id": "FP-312D6E2C7F9E3969",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-050",
+            "fingerprint_id": "FP-52D6199E957426EF",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-116",
+            "fingerprint_id": "FP-390CF479C3AB412C",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-083",
+            "fingerprint_id": "FP-068A1E37AE926D71",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-001",
+            "fingerprint_id": "FP-8ABFCE976B0FDC37",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-018",
+        "fingerprint_id": "FP-C563F70DA3687C42",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-084",
+            "fingerprint_id": "FP-4903E5D9ABFE186B",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-051",
+            "fingerprint_id": "FP-D48DEDB109A1D953",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-117",
+            "fingerprint_id": "FP-30A859BAB35C8A0F",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-019",
+        "fingerprint_id": "FP-0ADBE1CA1FF4CD98",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-052",
+            "fingerprint_id": "FP-C39D427466D25F74",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-118",
+            "fingerprint_id": "FP-27D1D7EC0A24FDE3",
+            "similarity": 0.32,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-085",
+            "fingerprint_id": "FP-6632367CF2AC008E",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-005",
+            "fingerprint_id": "FP-CC6ADC71460C1194",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-011",
+            "fingerprint_id": "FP-676A6F8E4B4F5112",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-020",
+        "fingerprint_id": "FP-D031E014DBD78D30",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-086",
+            "fingerprint_id": "FP-6C06368E47D72D5B",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-119",
+            "fingerprint_id": "FP-CAEE7FA7633E9FD4",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-026",
+            "fingerprint_id": "FP-71E962674914FD62",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-021",
+        "fingerprint_id": "FP-646752E34CB01610",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-054",
+            "fingerprint_id": "FP-20796B320A905458",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-120",
+            "fingerprint_id": "FP-E3508655696CA958",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-087",
+            "fingerprint_id": "FP-951717CBC9EDFF2F",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-013",
+            "fingerprint_id": "FP-519891CF052B9351",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-022",
+        "fingerprint_id": "FP-8B4392082EEC7F93",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-088",
+            "fingerprint_id": "FP-1316D703B9B0BC84",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-055",
+            "fingerprint_id": "FP-47B2CB7CCB70E9AD",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.09,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-023",
+        "fingerprint_id": "FP-28E504A2A41ED0C8",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-056",
+            "fingerprint_id": "FP-5A90E1021C8814B4",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-089",
+            "fingerprint_id": "FP-4B58D204190A5039",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.09,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-011",
+            "fingerprint_id": "FP-676A6F8E4B4F5112",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-024",
+        "fingerprint_id": "FP-F1FEF55263F0CE9B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-090",
+            "fingerprint_id": "FP-FE8E52DBCA365E06",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-057",
+            "fingerprint_id": "FP-482D1191142DC2A5",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-025",
+        "fingerprint_id": "FP-25EEE9F63FFFF4F8",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-058",
+            "fingerprint_id": "FP-6BBDCB89998C4375",
+            "similarity": 0.345,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-091",
+            "fingerprint_id": "FP-E7235040F18B2E8D",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-102",
+            "fingerprint_id": "FP-A215042DE631E366",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.345
+      },
+      {
+        "scene_id": "SYN-LF120-026",
+        "fingerprint_id": "FP-71E962674914FD62",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-092",
+            "fingerprint_id": "FP-24B839B5CB51DDF5",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-059",
+            "fingerprint_id": "FP-3A79908C7F3BB77B",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-020",
+            "fingerprint_id": "FP-D031E014DBD78D30",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-037",
+            "fingerprint_id": "FP-3AE17203FB93E87B",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-027",
+        "fingerprint_id": "FP-47DF5598F6135F0F",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-060",
+            "fingerprint_id": "FP-003D6ABB18347E12",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.485,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.485,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-031",
+            "fingerprint_id": "FP-D731C309EAEE9D02",
+            "similarity": 0.485,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-028",
+        "fingerprint_id": "FP-994456BDE635DAFA",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.485,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.485,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-031",
+            "fingerprint_id": "FP-D731C309EAEE9D02",
+            "similarity": 0.485,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-032",
+            "fingerprint_id": "FP-C468362685B5E2E3",
+            "similarity": 0.485,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.485
+      },
+      {
+        "scene_id": "SYN-LF120-029",
+        "fingerprint_id": "FP-9F09BBE1218478E6",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-062",
+            "fingerprint_id": "FP-DB06EA90C4E1BBB7",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.485,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.485,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-031",
+            "fingerprint_id": "FP-D731C309EAEE9D02",
+            "similarity": 0.485,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-030",
+        "fingerprint_id": "FP-1FB45DC44AECD3AF",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-096",
+            "fingerprint_id": "FP-6BBE0F98AD8962B4",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.485,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.485,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-031",
+            "fingerprint_id": "FP-D731C309EAEE9D02",
+            "similarity": 0.485,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-031",
+        "fingerprint_id": "FP-D731C309EAEE9D02",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-064",
+            "fingerprint_id": "FP-EDB90702D00C584E",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.485,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.485,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.485,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-032",
+        "fingerprint_id": "FP-C468362685B5E2E3",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-098",
+            "fingerprint_id": "FP-BCC06AF3A262C2BC",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.485,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.485,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.485,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-033",
+        "fingerprint_id": "FP-A9090B6DD0D73967",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-066",
+            "fingerprint_id": "FP-40D74238FFF60D9B",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.485,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.485,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.485,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-034",
+        "fingerprint_id": "FP-A90D219A565B2783",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-001",
+            "fingerprint_id": "FP-8ABFCE976B0FDC37",
+            "similarity": 0.345,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-067",
+            "fingerprint_id": "FP-E35CD1FF88CEB157",
+            "similarity": 0.215,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-100",
+            "fingerprint_id": "FP-28C2E4C753EF2A46",
+            "similarity": 0.195,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-083",
+            "fingerprint_id": "FP-068A1E37AE926D71",
+            "similarity": 0.07,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-058",
+            "fingerprint_id": "FP-6BBDCB89998C4375",
+            "similarity": 0.065,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.345
+      },
+      {
+        "scene_id": "SYN-LF120-035",
+        "fingerprint_id": "FP-725883FE5791A672",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-068",
+            "fingerprint_id": "FP-F9BA5EF674CA757A",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-101",
+            "fingerprint_id": "FP-C9DDE59260188497",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-036",
+        "fingerprint_id": "FP-88F07C9AA04526CA",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-069",
+            "fingerprint_id": "FP-5625A16F4B5AB6AB",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-102",
+            "fingerprint_id": "FP-A215042DE631E366",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-057",
+            "fingerprint_id": "FP-482D1191142DC2A5",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-037",
+        "fingerprint_id": "FP-3AE17203FB93E87B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-103",
+            "fingerprint_id": "FP-DD488496C2C0999E",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-070",
+            "fingerprint_id": "FP-94C58A2A4DAED2E5",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-020",
+            "fingerprint_id": "FP-D031E014DBD78D30",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-026",
+            "fingerprint_id": "FP-71E962674914FD62",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-038",
+        "fingerprint_id": "FP-6ACCCB8D974B92D5",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-071",
+            "fingerprint_id": "FP-970B606F1A2AAA1E",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-005",
+            "fingerprint_id": "FP-CC6ADC71460C1194",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-104",
+            "fingerprint_id": "FP-D550FD26A55E9381",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-059",
+            "fingerprint_id": "FP-3A79908C7F3BB77B",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-039",
+        "fingerprint_id": "FP-E2F90CF6A055765F",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-072",
+            "fingerprint_id": "FP-0B2E031DA6990238",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-105",
+            "fingerprint_id": "FP-F9742CFA7B7AD5FB",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-012",
+            "fingerprint_id": "FP-DD9B5AEF39D7C733",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-014",
+            "fingerprint_id": "FP-3E3BE37334504C21",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-040",
+        "fingerprint_id": "FP-D9940EA73E234D42",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-073",
+            "fingerprint_id": "FP-F014053675437B65",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-106",
+            "fingerprint_id": "FP-27D7F92C0E82A7BE",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-079",
+            "fingerprint_id": "FP-85F0A822453D75E3",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-087",
+            "fingerprint_id": "FP-951717CBC9EDFF2F",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-041",
+        "fingerprint_id": "FP-6B31DF88E9888694",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-074",
+            "fingerprint_id": "FP-144CC2C7DF864695",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-107",
+            "fingerprint_id": "FP-B118C78665FD4855",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-042",
+        "fingerprint_id": "FP-512D64B2195AB393",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-075",
+            "fingerprint_id": "FP-C582CBAF5D7D1C1B",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-108",
+            "fingerprint_id": "FP-BDFC0003D9F6ADE9",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-057",
+            "fingerprint_id": "FP-482D1191142DC2A5",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-043",
+        "fingerprint_id": "FP-7BF4EDFB55D3823E",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-076",
+            "fingerprint_id": "FP-86DDF0EC45709D88",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-109",
+            "fingerprint_id": "FP-24C2A7CAB04242E3",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-044",
+        "fingerprint_id": "FP-2A752A43F8C6C1B5",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-077",
+            "fingerprint_id": "FP-70743DCF100F9B08",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-011",
+            "fingerprint_id": "FP-676A6F8E4B4F5112",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-110",
+            "fingerprint_id": "FP-EB770FC8062E53D8",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-045",
+        "fingerprint_id": "FP-A64F53378B317104",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-012",
+            "fingerprint_id": "FP-DD9B5AEF39D7C733",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-078",
+            "fingerprint_id": "FP-DF5E5C0C41BCBA8C",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-111",
+            "fingerprint_id": "FP-FB4D4FD745094225",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-046",
+        "fingerprint_id": "FP-091F5AFCC6543D69",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-013",
+            "fingerprint_id": "FP-519891CF052B9351",
+            "similarity": 0.345,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-079",
+            "fingerprint_id": "FP-85F0A822453D75E3",
+            "similarity": 0.215,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-112",
+            "fingerprint_id": "FP-5C207702B50B08D9",
+            "similarity": 0.195,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-106",
+            "fingerprint_id": "FP-27D7F92C0E82A7BE",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.345
+      },
+      {
+        "scene_id": "SYN-LF120-047",
+        "fingerprint_id": "FP-BA767C444C74FEC5",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-113",
+            "fingerprint_id": "FP-1DA267141B69B031",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-014",
+            "fingerprint_id": "FP-3E3BE37334504C21",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-080",
+            "fingerprint_id": "FP-9478580658D9D8BB",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-048",
+        "fingerprint_id": "FP-C5FF99EC71C6EC56",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-114",
+            "fingerprint_id": "FP-412F16ABCB0896FF",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-081",
+            "fingerprint_id": "FP-5A8E4505118A13F2",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.095,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-018",
+            "fingerprint_id": "FP-C563F70DA3687C42",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-049",
+        "fingerprint_id": "FP-38B3C49CA1344E34",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-115",
+            "fingerprint_id": "FP-785396DDB9D6AA42",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-082",
+            "fingerprint_id": "FP-3243EB2646D0C84B",
+            "similarity": 0.19,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-051",
+            "fingerprint_id": "FP-D48DEDB109A1D953",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-081",
+            "fingerprint_id": "FP-5A8E4505118A13F2",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-050",
+        "fingerprint_id": "FP-52D6199E957426EF",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-017",
+            "fingerprint_id": "FP-312D6E2C7F9E3969",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-116",
+            "fingerprint_id": "FP-390CF479C3AB412C",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-083",
+            "fingerprint_id": "FP-068A1E37AE926D71",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-001",
+            "fingerprint_id": "FP-8ABFCE976B0FDC37",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-051",
+        "fingerprint_id": "FP-D48DEDB109A1D953",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-117",
+            "fingerprint_id": "FP-30A859BAB35C8A0F",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-018",
+            "fingerprint_id": "FP-C563F70DA3687C42",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-084",
+            "fingerprint_id": "FP-4903E5D9ABFE186B",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-081",
+            "fingerprint_id": "FP-5A8E4505118A13F2",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-052",
+        "fingerprint_id": "FP-C39D427466D25F74",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-019",
+            "fingerprint_id": "FP-0ADBE1CA1FF4CD98",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-085",
+            "fingerprint_id": "FP-6632367CF2AC008E",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-118",
+            "fingerprint_id": "FP-27D1D7EC0A24FDE3",
+            "similarity": 0.17,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-005",
+            "fingerprint_id": "FP-CC6ADC71460C1194",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-011",
+            "fingerprint_id": "FP-676A6F8E4B4F5112",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-053",
+        "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-119",
+            "fingerprint_id": "FP-CAEE7FA7633E9FD4",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-020",
+            "fingerprint_id": "FP-D031E014DBD78D30",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-086",
+            "fingerprint_id": "FP-6C06368E47D72D5B",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-059",
+            "fingerprint_id": "FP-3A79908C7F3BB77B",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-054",
+        "fingerprint_id": "FP-20796B320A905458",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-021",
+            "fingerprint_id": "FP-646752E34CB01610",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-120",
+            "fingerprint_id": "FP-E3508655696CA958",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-087",
+            "fingerprint_id": "FP-951717CBC9EDFF2F",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-013",
+            "fingerprint_id": "FP-519891CF052B9351",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-055",
+        "fingerprint_id": "FP-47B2CB7CCB70E9AD",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-022",
+            "fingerprint_id": "FP-8B4392082EEC7F93",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-088",
+            "fingerprint_id": "FP-1316D703B9B0BC84",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.09,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-056",
+        "fingerprint_id": "FP-5A90E1021C8814B4",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-023",
+            "fingerprint_id": "FP-28E504A2A41ED0C8",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-089",
+            "fingerprint_id": "FP-4B58D204190A5039",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.09,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-011",
+            "fingerprint_id": "FP-676A6F8E4B4F5112",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-057",
+        "fingerprint_id": "FP-482D1191142DC2A5",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-024",
+            "fingerprint_id": "FP-F1FEF55263F0CE9B",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-090",
+            "fingerprint_id": "FP-FE8E52DBCA365E06",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-069",
+            "fingerprint_id": "FP-5625A16F4B5AB6AB",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-058",
+        "fingerprint_id": "FP-6BBDCB89998C4375",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-025",
+            "fingerprint_id": "FP-25EEE9F63FFFF4F8",
+            "similarity": 0.345,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-091",
+            "fingerprint_id": "FP-E7235040F18B2E8D",
+            "similarity": 0.215,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-082",
+            "fingerprint_id": "FP-3243EB2646D0C84B",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.095,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.345
+      },
+      {
+        "scene_id": "SYN-LF120-059",
+        "fingerprint_id": "FP-3A79908C7F3BB77B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-026",
+            "fingerprint_id": "FP-71E962674914FD62",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-092",
+            "fingerprint_id": "FP-24B839B5CB51DDF5",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-061",
+            "fingerprint_id": "FP-EB7B3045B35ACB0D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-060",
+        "fingerprint_id": "FP-003D6ABB18347E12",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-096",
+            "fingerprint_id": "FP-6BBE0F98AD8962B4",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.335,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.335,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-061",
+        "fingerprint_id": "FP-EB7B3045B35ACB0D",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-063",
+            "fingerprint_id": "FP-22CA291935EDF77B",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-065",
+            "fingerprint_id": "FP-8A87811424FAF5AB",
+            "similarity": 0.805,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-093",
+            "fingerprint_id": "FP-54A7D17C78879963",
+            "similarity": 0.805,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-095",
+            "fingerprint_id": "FP-FFF2F14A9C30B74B",
+            "similarity": 0.805,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-097",
+            "fingerprint_id": "FP-DE4E0224AFB610F2",
+            "similarity": 0.805,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-062",
+        "fingerprint_id": "FP-DB06EA90C4E1BBB7",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-098",
+            "fingerprint_id": "FP-BCC06AF3A262C2BC",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.335,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.335,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-063",
+        "fingerprint_id": "FP-22CA291935EDF77B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-061",
+            "fingerprint_id": "FP-EB7B3045B35ACB0D",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-065",
+            "fingerprint_id": "FP-8A87811424FAF5AB",
+            "similarity": 0.805,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-093",
+            "fingerprint_id": "FP-54A7D17C78879963",
+            "similarity": 0.805,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-095",
+            "fingerprint_id": "FP-FFF2F14A9C30B74B",
+            "similarity": 0.805,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-097",
+            "fingerprint_id": "FP-DE4E0224AFB610F2",
+            "similarity": 0.805,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-064",
+        "fingerprint_id": "FP-EDB90702D00C584E",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-031",
+            "fingerprint_id": "FP-D731C309EAEE9D02",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.335,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.335,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-065",
+        "fingerprint_id": "FP-8A87811424FAF5AB",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-061",
+            "fingerprint_id": "FP-EB7B3045B35ACB0D",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-063",
+            "fingerprint_id": "FP-22CA291935EDF77B",
+            "similarity": 0.805,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-093",
+            "fingerprint_id": "FP-54A7D17C78879963",
+            "similarity": 0.805,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-095",
+            "fingerprint_id": "FP-FFF2F14A9C30B74B",
+            "similarity": 0.805,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-097",
+            "fingerprint_id": "FP-DE4E0224AFB610F2",
+            "similarity": 0.805,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-066",
+        "fingerprint_id": "FP-40D74238FFF60D9B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-033",
+            "fingerprint_id": "FP-A9090B6DD0D73967",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.335,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.335,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-067",
+        "fingerprint_id": "FP-E35CD1FF88CEB157",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-001",
+            "fingerprint_id": "FP-8ABFCE976B0FDC37",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-100",
+            "fingerprint_id": "FP-28C2E4C753EF2A46",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-034",
+            "fingerprint_id": "FP-A90D219A565B2783",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-083",
+            "fingerprint_id": "FP-068A1E37AE926D71",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.065,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-068",
+        "fingerprint_id": "FP-F9BA5EF674CA757A",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-035",
+            "fingerprint_id": "FP-725883FE5791A672",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-101",
+            "fingerprint_id": "FP-C9DDE59260188497",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-069",
+        "fingerprint_id": "FP-5625A16F4B5AB6AB",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-102",
+            "fingerprint_id": "FP-A215042DE631E366",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-057",
+            "fingerprint_id": "FP-482D1191142DC2A5",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-070",
+        "fingerprint_id": "FP-94C58A2A4DAED2E5",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.365,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-037",
+            "fingerprint_id": "FP-3AE17203FB93E87B",
+            "similarity": 0.215,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-103",
+            "fingerprint_id": "FP-DD488496C2C0999E",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-094",
+            "fingerprint_id": "FP-ABF3F86326C15413",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-118",
+            "fingerprint_id": "FP-27D1D7EC0A24FDE3",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.365
+      },
+      {
+        "scene_id": "SYN-LF120-071",
+        "fingerprint_id": "FP-970B606F1A2AAA1E",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-005",
+            "fingerprint_id": "FP-CC6ADC71460C1194",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-104",
+            "fingerprint_id": "FP-D550FD26A55E9381",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-059",
+            "fingerprint_id": "FP-3A79908C7F3BB77B",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-072",
+        "fingerprint_id": "FP-0B2E031DA6990238",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-039",
+            "fingerprint_id": "FP-E2F90CF6A055765F",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-105",
+            "fingerprint_id": "FP-F9742CFA7B7AD5FB",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-012",
+            "fingerprint_id": "FP-DD9B5AEF39D7C733",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-014",
+            "fingerprint_id": "FP-3E3BE37334504C21",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-073",
+        "fingerprint_id": "FP-F014053675437B65",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-106",
+            "fingerprint_id": "FP-27D7F92C0E82A7BE",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-079",
+            "fingerprint_id": "FP-85F0A822453D75E3",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-087",
+            "fingerprint_id": "FP-951717CBC9EDFF2F",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-074",
+        "fingerprint_id": "FP-144CC2C7DF864695",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-041",
+            "fingerprint_id": "FP-6B31DF88E9888694",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-107",
+            "fingerprint_id": "FP-B118C78665FD4855",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-075",
+        "fingerprint_id": "FP-C582CBAF5D7D1C1B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-108",
+            "fingerprint_id": "FP-BDFC0003D9F6ADE9",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-057",
+            "fingerprint_id": "FP-482D1191142DC2A5",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-076",
+        "fingerprint_id": "FP-86DDF0EC45709D88",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-043",
+            "fingerprint_id": "FP-7BF4EDFB55D3823E",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-109",
+            "fingerprint_id": "FP-24C2A7CAB04242E3",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-077",
+        "fingerprint_id": "FP-70743DCF100F9B08",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-044",
+            "fingerprint_id": "FP-2A752A43F8C6C1B5",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-011",
+            "fingerprint_id": "FP-676A6F8E4B4F5112",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-110",
+            "fingerprint_id": "FP-EB770FC8062E53D8",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-078",
+        "fingerprint_id": "FP-DF5E5C0C41BCBA8C",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-012",
+            "fingerprint_id": "FP-DD9B5AEF39D7C733",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-045",
+            "fingerprint_id": "FP-A64F53378B317104",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-111",
+            "fingerprint_id": "FP-FB4D4FD745094225",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-079",
+        "fingerprint_id": "FP-85F0A822453D75E3",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-013",
+            "fingerprint_id": "FP-519891CF052B9351",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-112",
+            "fingerprint_id": "FP-5C207702B50B08D9",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-046",
+            "fingerprint_id": "FP-091F5AFCC6543D69",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-073",
+            "fingerprint_id": "FP-F014053675437B65",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-080",
+        "fingerprint_id": "FP-9478580658D9D8BB",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-014",
+            "fingerprint_id": "FP-3E3BE37334504C21",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-047",
+            "fingerprint_id": "FP-BA767C444C74FEC5",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-113",
+            "fingerprint_id": "FP-1DA267141B69B031",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-081",
+        "fingerprint_id": "FP-5A8E4505118A13F2",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-048",
+            "fingerprint_id": "FP-C5FF99EC71C6EC56",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-114",
+            "fingerprint_id": "FP-412F16ABCB0896FF",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-051",
+            "fingerprint_id": "FP-D48DEDB109A1D953",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-082",
+        "fingerprint_id": "FP-3243EB2646D0C84B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.34,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.19,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-115",
+            "fingerprint_id": "FP-785396DDB9D6AA42",
+            "similarity": 0.19,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-058",
+            "fingerprint_id": "FP-6BBDCB89998C4375",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.34
+      },
+      {
+        "scene_id": "SYN-LF120-083",
+        "fingerprint_id": "FP-068A1E37AE926D71",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-017",
+            "fingerprint_id": "FP-312D6E2C7F9E3969",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-050",
+            "fingerprint_id": "FP-52D6199E957426EF",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-116",
+            "fingerprint_id": "FP-390CF479C3AB412C",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-051",
+            "fingerprint_id": "FP-D48DEDB109A1D953",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-084",
+        "fingerprint_id": "FP-4903E5D9ABFE186B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-018",
+            "fingerprint_id": "FP-C563F70DA3687C42",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-051",
+            "fingerprint_id": "FP-D48DEDB109A1D953",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-117",
+            "fingerprint_id": "FP-30A859BAB35C8A0F",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-085",
+        "fingerprint_id": "FP-6632367CF2AC008E",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-019",
+            "fingerprint_id": "FP-0ADBE1CA1FF4CD98",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-052",
+            "fingerprint_id": "FP-C39D427466D25F74",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-118",
+            "fingerprint_id": "FP-27D1D7EC0A24FDE3",
+            "similarity": 0.19,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-044",
+            "fingerprint_id": "FP-2A752A43F8C6C1B5",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-086",
+        "fingerprint_id": "FP-6C06368E47D72D5B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-020",
+            "fingerprint_id": "FP-D031E014DBD78D30",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-119",
+            "fingerprint_id": "FP-CAEE7FA7633E9FD4",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-026",
+            "fingerprint_id": "FP-71E962674914FD62",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-087",
+        "fingerprint_id": "FP-951717CBC9EDFF2F",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-021",
+            "fingerprint_id": "FP-646752E34CB01610",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-054",
+            "fingerprint_id": "FP-20796B320A905458",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-120",
+            "fingerprint_id": "FP-E3508655696CA958",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-073",
+            "fingerprint_id": "FP-F014053675437B65",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-088",
+        "fingerprint_id": "FP-1316D703B9B0BC84",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-022",
+            "fingerprint_id": "FP-8B4392082EEC7F93",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-055",
+            "fingerprint_id": "FP-47B2CB7CCB70E9AD",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.09,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-089",
+        "fingerprint_id": "FP-4B58D204190A5039",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-023",
+            "fingerprint_id": "FP-28E504A2A41ED0C8",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-056",
+            "fingerprint_id": "FP-5A90E1021C8814B4",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.09,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-044",
+            "fingerprint_id": "FP-2A752A43F8C6C1B5",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-090",
+        "fingerprint_id": "FP-FE8E52DBCA365E06",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-024",
+            "fingerprint_id": "FP-F1FEF55263F0CE9B",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-057",
+            "fingerprint_id": "FP-482D1191142DC2A5",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-091",
+        "fingerprint_id": "FP-E7235040F18B2E8D",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-025",
+            "fingerprint_id": "FP-25EEE9F63FFFF4F8",
+            "similarity": 0.315,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-058",
+            "fingerprint_id": "FP-6BBDCB89998C4375",
+            "similarity": 0.215,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-057",
+            "fingerprint_id": "FP-482D1191142DC2A5",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.315
+      },
+      {
+        "scene_id": "SYN-LF120-092",
+        "fingerprint_id": "FP-24B839B5CB51DDF5",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-026",
+            "fingerprint_id": "FP-71E962674914FD62",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-059",
+            "fingerprint_id": "FP-3A79908C7F3BB77B",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.115,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-020",
+            "fingerprint_id": "FP-D031E014DBD78D30",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-037",
+            "fingerprint_id": "FP-3AE17203FB93E87B",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-093",
+        "fingerprint_id": "FP-54A7D17C78879963",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-061",
+            "fingerprint_id": "FP-EB7B3045B35ACB0D",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-063",
+            "fingerprint_id": "FP-22CA291935EDF77B",
+            "similarity": 0.805,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-065",
+            "fingerprint_id": "FP-8A87811424FAF5AB",
+            "similarity": 0.805,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-095",
+            "fingerprint_id": "FP-FFF2F14A9C30B74B",
+            "similarity": 0.805,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-097",
+            "fingerprint_id": "FP-DE4E0224AFB610F2",
+            "similarity": 0.805,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-094",
+        "fingerprint_id": "FP-ABF3F86326C15413",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.345,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.345,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.345,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.345,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-031",
+            "fingerprint_id": "FP-D731C309EAEE9D02",
+            "similarity": 0.345,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.345
+      },
+      {
+        "scene_id": "SYN-LF120-095",
+        "fingerprint_id": "FP-FFF2F14A9C30B74B",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-061",
+            "fingerprint_id": "FP-EB7B3045B35ACB0D",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-063",
+            "fingerprint_id": "FP-22CA291935EDF77B",
+            "similarity": 0.805,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-065",
+            "fingerprint_id": "FP-8A87811424FAF5AB",
+            "similarity": 0.805,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-093",
+            "fingerprint_id": "FP-54A7D17C78879963",
+            "similarity": 0.805,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-097",
+            "fingerprint_id": "FP-DE4E0224AFB610F2",
+            "similarity": 0.805,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-096",
+        "fingerprint_id": "FP-6BBE0F98AD8962B4",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-030",
+            "fingerprint_id": "FP-1FB45DC44AECD3AF",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-060",
+            "fingerprint_id": "FP-003D6ABB18347E12",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.335,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.335,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-097",
+        "fingerprint_id": "FP-DE4E0224AFB610F2",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-061",
+            "fingerprint_id": "FP-EB7B3045B35ACB0D",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-063",
+            "fingerprint_id": "FP-22CA291935EDF77B",
+            "similarity": 0.805,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-065",
+            "fingerprint_id": "FP-8A87811424FAF5AB",
+            "similarity": 0.805,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-093",
+            "fingerprint_id": "FP-54A7D17C78879963",
+            "similarity": 0.805,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-095",
+            "fingerprint_id": "FP-FFF2F14A9C30B74B",
+            "similarity": 0.805,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-098",
+        "fingerprint_id": "FP-BCC06AF3A262C2BC",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-032",
+            "fingerprint_id": "FP-C468362685B5E2E3",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-062",
+            "fingerprint_id": "FP-DB06EA90C4E1BBB7",
+            "similarity": 0.485,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-028",
+            "fingerprint_id": "FP-994456BDE635DAFA",
+            "similarity": 0.335,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-029",
+            "fingerprint_id": "FP-9F09BBE1218478E6",
+            "similarity": 0.335,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-099",
+        "fingerprint_id": "FP-F3060377A340ACCE",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-061",
+            "fingerprint_id": "FP-EB7B3045B35ACB0D",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-063",
+            "fingerprint_id": "FP-22CA291935EDF77B",
+            "similarity": 0.805,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-065",
+            "fingerprint_id": "FP-8A87811424FAF5AB",
+            "similarity": 0.805,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-093",
+            "fingerprint_id": "FP-54A7D17C78879963",
+            "similarity": 0.805,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-095",
+            "fingerprint_id": "FP-FFF2F14A9C30B74B",
+            "similarity": 0.805,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-100",
+        "fingerprint_id": "FP-28C2E4C753EF2A46",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-001",
+            "fingerprint_id": "FP-8ABFCE976B0FDC37",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-067",
+            "fingerprint_id": "FP-E35CD1FF88CEB157",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-034",
+            "fingerprint_id": "FP-A90D219A565B2783",
+            "similarity": 0.195,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-017",
+            "fingerprint_id": "FP-312D6E2C7F9E3969",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-050",
+            "fingerprint_id": "FP-52D6199E957426EF",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-101",
+        "fingerprint_id": "FP-C9DDE59260188497",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-002",
+            "fingerprint_id": "FP-3DFFAFFE57DCE75C",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-035",
+            "fingerprint_id": "FP-725883FE5791A672",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-068",
+            "fingerprint_id": "FP-F9BA5EF674CA757A",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-102",
+        "fingerprint_id": "FP-A215042DE631E366",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-069",
+            "fingerprint_id": "FP-5625A16F4B5AB6AB",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-025",
+            "fingerprint_id": "FP-25EEE9F63FFFF4F8",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-103",
+        "fingerprint_id": "FP-DD488496C2C0999E",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-004",
+            "fingerprint_id": "FP-909CE2B8777A334B",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-037",
+            "fingerprint_id": "FP-3AE17203FB93E87B",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-070",
+            "fingerprint_id": "FP-94C58A2A4DAED2E5",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-104",
+        "fingerprint_id": "FP-D550FD26A55E9381",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-005",
+            "fingerprint_id": "FP-CC6ADC71460C1194",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-071",
+            "fingerprint_id": "FP-970B606F1A2AAA1E",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-027",
+            "fingerprint_id": "FP-47DF5598F6135F0F",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-060",
+            "fingerprint_id": "FP-003D6ABB18347E12",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-105",
+        "fingerprint_id": "FP-F9742CFA7B7AD5FB",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-006",
+            "fingerprint_id": "FP-9B4C68D372F45264",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-039",
+            "fingerprint_id": "FP-E2F90CF6A055765F",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-072",
+            "fingerprint_id": "FP-0B2E031DA6990238",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-047",
+            "fingerprint_id": "FP-BA767C444C74FEC5",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-106",
+        "fingerprint_id": "FP-27D7F92C0E82A7BE",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.345,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.215,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-073",
+            "fingerprint_id": "FP-F014053675437B65",
+            "similarity": 0.215,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-046",
+            "fingerprint_id": "FP-091F5AFCC6543D69",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-079",
+            "fingerprint_id": "FP-85F0A822453D75E3",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.345
+      },
+      {
+        "scene_id": "SYN-LF120-107",
+        "fingerprint_id": "FP-B118C78665FD4855",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-008",
+            "fingerprint_id": "FP-2E6C29B49AC59B94",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-041",
+            "fingerprint_id": "FP-6B31DF88E9888694",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-074",
+            "fingerprint_id": "FP-144CC2C7DF864695",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-108",
+        "fingerprint_id": "FP-BDFC0003D9F6ADE9",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-009",
+            "fingerprint_id": "FP-887495878293F661",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-075",
+            "fingerprint_id": "FP-C582CBAF5D7D1C1B",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-003",
+            "fingerprint_id": "FP-AFE238D721798FA0",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-025",
+            "fingerprint_id": "FP-25EEE9F63FFFF4F8",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-109",
+        "fingerprint_id": "FP-24C2A7CAB04242E3",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-010",
+            "fingerprint_id": "FP-A2C7BC56A052626D",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-043",
+            "fingerprint_id": "FP-7BF4EDFB55D3823E",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-076",
+            "fingerprint_id": "FP-86DDF0EC45709D88",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-036",
+            "fingerprint_id": "FP-88F07C9AA04526CA",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-042",
+            "fingerprint_id": "FP-512D64B2195AB393",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-110",
+        "fingerprint_id": "FP-EB770FC8062E53D8",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-011",
+            "fingerprint_id": "FP-676A6F8E4B4F5112",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-044",
+            "fingerprint_id": "FP-2A752A43F8C6C1B5",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-077",
+            "fingerprint_id": "FP-70743DCF100F9B08",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-005",
+            "fingerprint_id": "FP-CC6ADC71460C1194",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-019",
+            "fingerprint_id": "FP-0ADBE1CA1FF4CD98",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-111",
+        "fingerprint_id": "FP-FB4D4FD745094225",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-012",
+            "fingerprint_id": "FP-DD9B5AEF39D7C733",
+            "similarity": 0.335,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-045",
+            "fingerprint_id": "FP-A64F53378B317104",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-078",
+            "fingerprint_id": "FP-DF5E5C0C41BCBA8C",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-044",
+            "fingerprint_id": "FP-2A752A43F8C6C1B5",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.335
+      },
+      {
+        "scene_id": "SYN-LF120-112",
+        "fingerprint_id": "FP-5C207702B50B08D9",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-013",
+            "fingerprint_id": "FP-519891CF052B9351",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-079",
+            "fingerprint_id": "FP-85F0A822453D75E3",
+            "similarity": 0.315,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-046",
+            "fingerprint_id": "FP-091F5AFCC6543D69",
+            "similarity": 0.195,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-021",
+            "fingerprint_id": "FP-646752E34CB01610",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-113",
+        "fingerprint_id": "FP-1DA267141B69B031",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-047",
+            "fingerprint_id": "FP-BA767C444C74FEC5",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-014",
+            "fingerprint_id": "FP-3E3BE37334504C21",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-080",
+            "fingerprint_id": "FP-9478580658D9D8BB",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-040",
+            "fingerprint_id": "FP-D9940EA73E234D42",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-114",
+        "fingerprint_id": "FP-412F16ABCB0896FF",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-048",
+            "fingerprint_id": "FP-C5FF99EC71C6EC56",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-081",
+            "fingerprint_id": "FP-5A8E4505118A13F2",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.095,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-018",
+            "fingerprint_id": "FP-C563F70DA3687C42",
+            "similarity": 0.095,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-115",
+        "fingerprint_id": "FP-785396DDB9D6AA42",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-016",
+            "fingerprint_id": "FP-FEC9C037120076E2",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-082",
+            "fingerprint_id": "FP-3243EB2646D0C84B",
+            "similarity": 0.19,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-051",
+            "fingerprint_id": "FP-D48DEDB109A1D953",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-081",
+            "fingerprint_id": "FP-5A8E4505118A13F2",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-116",
+        "fingerprint_id": "FP-390CF479C3AB412C",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-017",
+            "fingerprint_id": "FP-312D6E2C7F9E3969",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-050",
+            "fingerprint_id": "FP-52D6199E957426EF",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-083",
+            "fingerprint_id": "FP-068A1E37AE926D71",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-001",
+            "fingerprint_id": "FP-8ABFCE976B0FDC37",
+            "similarity": 0.09,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-015",
+            "fingerprint_id": "FP-67FD7A92968B9CB2",
+            "similarity": 0.09,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      },
+      {
+        "scene_id": "SYN-LF120-117",
+        "fingerprint_id": "FP-30A859BAB35C8A0F",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-051",
+            "fingerprint_id": "FP-D48DEDB109A1D953",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-018",
+            "fingerprint_id": "FP-C563F70DA3687C42",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-084",
+            "fingerprint_id": "FP-4903E5D9ABFE186B",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-049",
+            "fingerprint_id": "FP-38B3C49CA1344E34",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-081",
+            "fingerprint_id": "FP-5A8E4505118A13F2",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-118",
+        "fingerprint_id": "FP-27D1D7EC0A24FDE3",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-019",
+            "fingerprint_id": "FP-0ADBE1CA1FF4CD98",
+            "similarity": 0.32,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-085",
+            "fingerprint_id": "FP-6632367CF2AC008E",
+            "similarity": 0.19,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-052",
+            "fingerprint_id": "FP-C39D427466D25F74",
+            "similarity": 0.17,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-070",
+            "fingerprint_id": "FP-94C58A2A4DAED2E5",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-094",
+            "fingerprint_id": "FP-ABF3F86326C15413",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.32
+      },
+      {
+        "scene_id": "SYN-LF120-119",
+        "fingerprint_id": "FP-CAEE7FA7633E9FD4",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-053",
+            "fingerprint_id": "FP-B2B1ED0BD50FBA99",
+            "similarity": 0.805,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-020",
+            "fingerprint_id": "FP-D031E014DBD78D30",
+            "similarity": 0.335,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-086",
+            "fingerprint_id": "FP-6C06368E47D72D5B",
+            "similarity": 0.335,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-038",
+            "fingerprint_id": "FP-6ACCCB8D974B92D5",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-059",
+            "fingerprint_id": "FP-3A79908C7F3BB77B",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.805
+      },
+      {
+        "scene_id": "SYN-LF120-120",
+        "fingerprint_id": "FP-E3508655696CA958",
+        "nearest_neighbors": [
+          {
+            "scene_id": "SYN-LF120-021",
+            "fingerprint_id": "FP-646752E34CB01610",
+            "similarity": 0.655,
+            "rank": 1
+          },
+          {
+            "scene_id": "SYN-LF120-054",
+            "fingerprint_id": "FP-20796B320A905458",
+            "similarity": 0.655,
+            "rank": 2
+          },
+          {
+            "scene_id": "SYN-LF120-087",
+            "fingerprint_id": "FP-951717CBC9EDFF2F",
+            "similarity": 0.315,
+            "rank": 3
+          },
+          {
+            "scene_id": "SYN-LF120-007",
+            "fingerprint_id": "FP-1F937C8A3C20474B",
+            "similarity": 0.115,
+            "rank": 4
+          },
+          {
+            "scene_id": "SYN-LF120-013",
+            "fingerprint_id": "FP-519891CF052B9351",
+            "similarity": 0.115,
+            "rank": 5
+          }
+        ],
+        "nearest_similarity": 0.655
+      }
+    ]
+  },
+  "fingerprint_cluster_summary": {
+    "total_clusters": 105,
+    "clusters": [
+      {
+        "cluster_id": "CLUSTER-001",
+        "cluster_key": "01b891cf4aa5a629",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-003",
+          "SYN-LF120-102"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-002",
+        "cluster_key": "01b891cff8624a6e",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-036",
+          "SYN-LF120-069"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-003",
+        "cluster_key": "03efc7751e31b567",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-055"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-004",
+        "cluster_key": "03efc775cdf04e8d",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-022",
+          "SYN-LF120-088"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-005",
+        "cluster_key": "0e46ab4e4882c2e0",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-021",
+          "SYN-LF120-054",
+          "SYN-LF120-120"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-006",
+        "cluster_key": "0e46ab4ef618a911",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-087"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-007",
+        "cluster_key": "15874e294a573fbe",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-105"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-008",
+        "cluster_key": "15874e29ccca4d27",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-006",
+          "SYN-LF120-039",
+          "SYN-LF120-072"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-009",
+        "cluster_key": "20058b0361cba52e",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-001",
+          "SYN-LF120-100"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-010",
+        "cluster_key": "20058b03af906924",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-034"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-011",
+        "cluster_key": "20058b03b1302ae3",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-067"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-012",
+        "cluster_key": "214868b97cca8a98",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-011",
+          "SYN-LF120-110"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-013",
+        "cluster_key": "214868b9a1f7a84b",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-044",
+          "SYN-LF120-077"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-014",
+        "cluster_key": "2e8e7cdb175be63f",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-004",
+          "SYN-LF120-037"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-015",
+        "cluster_key": "2e8e7cdb51b08433",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-070"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-016",
+        "cluster_key": "2e8e7cdbe86c8b96",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-103"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-017",
+        "cluster_key": "3948c78805b2536a",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-020",
+          "SYN-LF120-086"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-018",
+        "cluster_key": "3948c788c8968e88",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-053",
+          "SYN-LF120-119"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-019",
+        "cluster_key": "40e15fd90caf4ca0",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-111"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-020",
+        "cluster_key": "40e15fd93ef44fc6",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-012",
+          "SYN-LF120-045",
+          "SYN-LF120-078"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-021",
+        "cluster_key": "491d745b9db27080",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-059"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-022",
+        "cluster_key": "491d745bb56ec3fb",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-026",
+          "SYN-LF120-092"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-023",
+        "cluster_key": "56f759005289520a",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-079"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-024",
+        "cluster_key": "56f759005722ff9e",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-013",
+          "SYN-LF120-112"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-025",
+        "cluster_key": "56f75900750c044b",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-046"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-026",
+        "cluster_key": "5d80bdc4492af963",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-024",
+          "SYN-LF120-090"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-027",
+        "cluster_key": "5d80bdc4feaa13a1",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-057"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-028",
+        "cluster_key": "637e94df1f68b69e",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-029",
+          "SYN-LF120-062"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-029",
+        "cluster_key": "637e94df32163d7a",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-030",
+          "SYN-LF120-096"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-030",
+        "cluster_key": "637e94df39c8ef61",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-032",
+          "SYN-LF120-098"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-031",
+        "cluster_key": "637e94df6277336b",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-028"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-032",
+        "cluster_key": "637e94dfaca9caff",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-027",
+          "SYN-LF120-060"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-033",
+        "cluster_key": "637e94dfb232b766",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-031",
+          "SYN-LF120-064"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-034",
+        "cluster_key": "637e94dfdf5dc72f",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-033",
+          "SYN-LF120-066"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-035",
+        "cluster_key": "637e94dfeddd69cc",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-061",
+          "SYN-LF120-063",
+          "SYN-LF120-065",
+          "SYN-LF120-093",
+          "SYN-LF120-095",
+          "SYN-LF120-097",
+          "SYN-LF120-099"
+        ],
+        "scene_count": 7,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-036",
+        "cluster_key": "637e94dff0d4660d",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-094"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-037",
+        "cluster_key": "64ae3d033040424e",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-085"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-038",
+        "cluster_key": "64ae3d03fa14c030",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-118"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-039",
+        "cluster_key": "64ae3d03fe76cbd0",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-019",
+          "SYN-LF120-052"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-040",
+        "cluster_key": "66c9ced86d549972",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-025"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-041",
+        "cluster_key": "66c9ced896fce15c",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-091"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-042",
+        "cluster_key": "66c9ced8b61c48fa",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-058"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-043",
+        "cluster_key": "6d702c1eca43c8bd",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-005",
+          "SYN-LF120-104"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-044",
+        "cluster_key": "6d702c1ef411d1d9",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-038",
+          "SYN-LF120-071"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-045",
+        "cluster_key": "6e4744a257f61f21",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-023",
+          "SYN-LF120-056"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-046",
+        "cluster_key": "6e4744a2afc12a8b",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-089"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-047",
+        "cluster_key": "729c7e490d6dbc87",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-107"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-048",
+        "cluster_key": "729c7e49d0d46857",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-008",
+          "SYN-LF120-041",
+          "SYN-LF120-074"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-049",
+        "cluster_key": "826217100293fda5",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-101"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-050",
+        "cluster_key": "826217108e387fe3",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-002",
+          "SYN-LF120-035",
+          "SYN-LF120-068"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.705
+      },
+      {
+        "cluster_id": "CLUSTER-051",
+        "cluster_key": "8ed5b74088da53ff",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-083"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-052",
+        "cluster_key": "8ed5b740d332c903",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-017",
+          "SYN-LF120-050",
+          "SYN-LF120-116"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-053",
+        "cluster_key": "9efbf306a6825f9f",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-009",
+          "SYN-LF120-108"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-054",
+        "cluster_key": "9efbf306c4d04d08",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-042",
+          "SYN-LF120-075"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-055",
+        "cluster_key": "a47538db208455c7",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-010",
+          "SYN-LF120-043",
+          "SYN-LF120-076"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-056",
+        "cluster_key": "a47538db873da0dd",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-109"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-057",
+        "cluster_key": "af1fda785323965c",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-081"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-058",
+        "cluster_key": "af1fda78deaab668",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-015",
+          "SYN-LF120-048",
+          "SYN-LF120-114"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-059",
+        "cluster_key": "af655abd183c7ebe",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-016"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-060",
+        "cluster_key": "af655abdc31a8c13",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-082"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-061",
+        "cluster_key": "af655abdc4ae5f50",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-049",
+          "SYN-LF120-115"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-062",
+        "cluster_key": "c1279526cb72331e",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-007"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-063",
+        "cluster_key": "c1279526de1cca2f",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-040",
+          "SYN-LF120-073"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-064",
+        "cluster_key": "c1279526ed69df65",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-106"
+        ],
+        "scene_count": 1,
+        "intra_cluster_similarity_mean": 1
+      },
+      {
+        "cluster_id": "CLUSTER-065",
+        "cluster_key": "cc760229d4342847",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-047",
+          "SYN-LF120-113"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-066",
+        "cluster_key": "cc760229eb44ea4b",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-014",
+          "SYN-LF120-080"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-067",
+        "cluster_key": "e258d443d0d1fe1d",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-018",
+          "SYN-LF120-084"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.655
+      },
+      {
+        "cluster_id": "CLUSTER-068",
+        "cluster_key": "e258d443ec4d1675",
+        "cluster_kind": "compact_prefix",
+        "scene_ids": [
+          "SYN-LF120-051",
+          "SYN-LF120-117"
+        ],
+        "scene_count": 2,
+        "intra_cluster_similarity_mean": 0.805
+      },
+      {
+        "cluster_id": "CLUSTER-069",
+        "cluster_key": "crest",
+        "cluster_kind": "emotion_wave",
+        "scene_ids": [
+          "SYN-LF120-011",
+          "SYN-LF120-023",
+          "SYN-LF120-044",
+          "SYN-LF120-056",
+          "SYN-LF120-077",
+          "SYN-LF120-089",
+          "SYN-LF120-110"
+        ],
+        "scene_count": 7,
+        "intra_cluster_similarity_mean": 0.230714
+      },
+      {
+        "cluster_id": "CLUSTER-070",
+        "cluster_key": "flat",
+        "cluster_kind": "emotion_wave",
+        "scene_ids": [
+          "SYN-LF120-001",
+          "SYN-LF120-006",
+          "SYN-LF120-012",
+          "SYN-LF120-034",
+          "SYN-LF120-039",
+          "SYN-LF120-045",
+          "SYN-LF120-067",
+          "SYN-LF120-072",
+          "SYN-LF120-078",
+          "SYN-LF120-100",
+          "SYN-LF120-105",
+          "SYN-LF120-111"
+        ],
+        "scene_count": 12,
+        "intra_cluster_similarity_mean": 0.162121
+      },
+      {
+        "cluster_id": "CLUSTER-071",
+        "cluster_key": "release",
+        "cluster_kind": "emotion_wave",
+        "scene_ids": [
+          "SYN-LF120-014",
+          "SYN-LF120-015",
+          "SYN-LF120-016",
+          "SYN-LF120-017",
+          "SYN-LF120-018",
+          "SYN-LF120-019",
+          "SYN-LF120-047",
+          "SYN-LF120-048",
+          "SYN-LF120-049",
+          "SYN-LF120-050",
+          "SYN-LF120-051",
+          "SYN-LF120-052",
+          "SYN-LF120-080",
+          "SYN-LF120-081",
+          "SYN-LF120-083",
+          "SYN-LF120-084",
+          "SYN-LF120-085",
+          "SYN-LF120-113",
+          "SYN-LF120-114",
+          "SYN-LF120-115",
+          "SYN-LF120-116",
+          "SYN-LF120-117"
+        ],
+        "scene_count": 22,
+        "intra_cluster_similarity_mean": 0.12342
+      },
+      {
+        "cluster_id": "CLUSTER-072",
+        "cluster_key": "rising",
+        "cluster_kind": "emotion_wave",
+        "scene_ids": [
+          "SYN-LF120-002",
+          "SYN-LF120-003",
+          "SYN-LF120-004",
+          "SYN-LF120-005",
+          "SYN-LF120-007",
+          "SYN-LF120-008",
+          "SYN-LF120-009",
+          "SYN-LF120-010",
+          "SYN-LF120-013",
+          "SYN-LF120-020",
+          "SYN-LF120-021",
+          "SYN-LF120-022",
+          "SYN-LF120-024",
+          "SYN-LF120-025",
+          "SYN-LF120-026",
+          "SYN-LF120-027",
+          "SYN-LF120-028",
+          "SYN-LF120-029",
+          "SYN-LF120-030",
+          "SYN-LF120-031",
+          "SYN-LF120-032",
+          "SYN-LF120-033",
+          "SYN-LF120-035",
+          "SYN-LF120-036",
+          "SYN-LF120-037",
+          "SYN-LF120-038",
+          "SYN-LF120-040",
+          "SYN-LF120-041",
+          "SYN-LF120-042",
+          "SYN-LF120-043",
+          "SYN-LF120-046",
+          "SYN-LF120-053",
+          "SYN-LF120-054",
+          "SYN-LF120-055",
+          "SYN-LF120-057",
+          "SYN-LF120-058",
+          "SYN-LF120-059",
+          "SYN-LF120-060",
+          "SYN-LF120-061",
+          "SYN-LF120-062",
+          "SYN-LF120-063",
+          "SYN-LF120-064",
+          "SYN-LF120-065",
+          "SYN-LF120-066",
+          "SYN-LF120-068",
+          "SYN-LF120-069",
+          "SYN-LF120-070",
+          "SYN-LF120-071",
+          "SYN-LF120-073",
+          "SYN-LF120-074",
+          "SYN-LF120-075",
+          "SYN-LF120-076",
+          "SYN-LF120-079",
+          "SYN-LF120-082",
+          "SYN-LF120-086",
+          "SYN-LF120-087",
+          "SYN-LF120-088",
+          "SYN-LF120-090",
+          "SYN-LF120-091",
+          "SYN-LF120-092",
+          "SYN-LF120-093",
+          "SYN-LF120-094",
+          "SYN-LF120-095",
+          "SYN-LF120-096",
+          "SYN-LF120-097",
+          "SYN-LF120-098",
+          "SYN-LF120-099",
+          "SYN-LF120-101",
+          "SYN-LF120-102",
+          "SYN-LF120-103",
+          "SYN-LF120-104",
+          "SYN-LF120-106",
+          "SYN-LF120-107",
+          "SYN-LF120-108",
+          "SYN-LF120-109",
+          "SYN-LF120-112",
+          "SYN-LF120-118",
+          "SYN-LF120-119",
+          "SYN-LF120-120"
+        ],
+        "scene_count": 79,
+        "intra_cluster_similarity_mean": 0.105313
+      },
+      {
+        "cluster_id": "CLUSTER-073",
+        "cluster_key": "cool",
+        "cluster_kind": "atmosphere",
+        "scene_ids": [
+          "SYN-LF120-001",
+          "SYN-LF120-002",
+          "SYN-LF120-003",
+          "SYN-LF120-008",
+          "SYN-LF120-009",
+          "SYN-LF120-010",
+          "SYN-LF120-015",
+          "SYN-LF120-016",
+          "SYN-LF120-017",
+          "SYN-LF120-018",
+          "SYN-LF120-023",
+          "SYN-LF120-024",
+          "SYN-LF120-025",
+          "SYN-LF120-034",
+          "SYN-LF120-035",
+          "SYN-LF120-036",
+          "SYN-LF120-041",
+          "SYN-LF120-042",
+          "SYN-LF120-043",
+          "SYN-LF120-048",
+          "SYN-LF120-049",
+          "SYN-LF120-050",
+          "SYN-LF120-051",
+          "SYN-LF120-056",
+          "SYN-LF120-057",
+          "SYN-LF120-058",
+          "SYN-LF120-067",
+          "SYN-LF120-068",
+          "SYN-LF120-069",
+          "SYN-LF120-074",
+          "SYN-LF120-075",
+          "SYN-LF120-076",
+          "SYN-LF120-081",
+          "SYN-LF120-082",
+          "SYN-LF120-083",
+          "SYN-LF120-084",
+          "SYN-LF120-089",
+          "SYN-LF120-090",
+          "SYN-LF120-091",
+          "SYN-LF120-100",
+          "SYN-LF120-101",
+          "SYN-LF120-102",
+          "SYN-LF120-107",
+          "SYN-LF120-108",
+          "SYN-LF120-109",
+          "SYN-LF120-114",
+          "SYN-LF120-115",
+          "SYN-LF120-116",
+          "SYN-LF120-117"
+        ],
+        "scene_count": 49,
+        "intra_cluster_similarity_mean": 0.094171
+      },
+      {
+        "cluster_id": "CLUSTER-074",
+        "cluster_key": "high_contrast",
+        "cluster_kind": "atmosphere",
+        "scene_ids": [
+          "SYN-LF120-006",
+          "SYN-LF120-007",
+          "SYN-LF120-013",
+          "SYN-LF120-014",
+          "SYN-LF120-021",
+          "SYN-LF120-039",
+          "SYN-LF120-040",
+          "SYN-LF120-046",
+          "SYN-LF120-047",
+          "SYN-LF120-054",
+          "SYN-LF120-072",
+          "SYN-LF120-073",
+          "SYN-LF120-079",
+          "SYN-LF120-080",
+          "SYN-LF120-087",
+          "SYN-LF120-105",
+          "SYN-LF120-106",
+          "SYN-LF120-112",
+          "SYN-LF120-113",
+          "SYN-LF120-120"
+        ],
+        "scene_count": 20,
+        "intra_cluster_similarity_mean": 0.132579
+      },
+      {
+        "cluster_id": "CLUSTER-075",
+        "cluster_key": "neutral",
+        "cluster_kind": "atmosphere",
+        "scene_ids": [
+          "SYN-LF120-004",
+          "SYN-LF120-005",
+          "SYN-LF120-011",
+          "SYN-LF120-012",
+          "SYN-LF120-019",
+          "SYN-LF120-020",
+          "SYN-LF120-026",
+          "SYN-LF120-027",
+          "SYN-LF120-028",
+          "SYN-LF120-029",
+          "SYN-LF120-030",
+          "SYN-LF120-031",
+          "SYN-LF120-032",
+          "SYN-LF120-033",
+          "SYN-LF120-037",
+          "SYN-LF120-038",
+          "SYN-LF120-044",
+          "SYN-LF120-045",
+          "SYN-LF120-052",
+          "SYN-LF120-053",
+          "SYN-LF120-059",
+          "SYN-LF120-060",
+          "SYN-LF120-061",
+          "SYN-LF120-062",
+          "SYN-LF120-063",
+          "SYN-LF120-064",
+          "SYN-LF120-065",
+          "SYN-LF120-066",
+          "SYN-LF120-070",
+          "SYN-LF120-071",
+          "SYN-LF120-077",
+          "SYN-LF120-078",
+          "SYN-LF120-085",
+          "SYN-LF120-086",
+          "SYN-LF120-092",
+          "SYN-LF120-093",
+          "SYN-LF120-094",
+          "SYN-LF120-095",
+          "SYN-LF120-096",
+          "SYN-LF120-097",
+          "SYN-LF120-098",
+          "SYN-LF120-099",
+          "SYN-LF120-103",
+          "SYN-LF120-104",
+          "SYN-LF120-110",
+          "SYN-LF120-111",
+          "SYN-LF120-118",
+          "SYN-LF120-119"
+        ],
+        "scene_count": 48,
+        "intra_cluster_similarity_mean": 0.14832
+      },
+      {
+        "cluster_id": "CLUSTER-076",
+        "cluster_key": "warm",
+        "cluster_kind": "atmosphere",
+        "scene_ids": [
+          "SYN-LF120-022",
+          "SYN-LF120-055",
+          "SYN-LF120-088"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.441667
+      },
+      {
+        "cluster_id": "CLUSTER-077",
+        "cluster_key": "01b891cf",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-003",
+          "SYN-LF120-036",
+          "SYN-LF120-069",
+          "SYN-LF120-102"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.453333
+      },
+      {
+        "cluster_id": "CLUSTER-078",
+        "cluster_key": "03efc775",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-022",
+          "SYN-LF120-055",
+          "SYN-LF120-088"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.441667
+      },
+      {
+        "cluster_id": "CLUSTER-079",
+        "cluster_key": "0e46ab4e",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-021",
+          "SYN-LF120-054",
+          "SYN-LF120-087",
+          "SYN-LF120-120"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.485
+      },
+      {
+        "cluster_id": "CLUSTER-080",
+        "cluster_key": "15874e29",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-006",
+          "SYN-LF120-039",
+          "SYN-LF120-072",
+          "SYN-LF120-105"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.495
+      },
+      {
+        "cluster_id": "CLUSTER-081",
+        "cluster_key": "20058b03",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-001",
+          "SYN-LF120-034",
+          "SYN-LF120-067",
+          "SYN-LF120-100"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.34
+      },
+      {
+        "cluster_id": "CLUSTER-082",
+        "cluster_key": "214868b9",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-011",
+          "SYN-LF120-044",
+          "SYN-LF120-077",
+          "SYN-LF120-110"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.453333
+      },
+      {
+        "cluster_id": "CLUSTER-083",
+        "cluster_key": "2e8e7cdb",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-004",
+          "SYN-LF120-037",
+          "SYN-LF120-070",
+          "SYN-LF120-103"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.353333
+      },
+      {
+        "cluster_id": "CLUSTER-084",
+        "cluster_key": "3948c788",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-020",
+          "SYN-LF120-053",
+          "SYN-LF120-086",
+          "SYN-LF120-119"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.466667
+      },
+      {
+        "cluster_id": "CLUSTER-085",
+        "cluster_key": "40e15fd9",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-012",
+          "SYN-LF120-045",
+          "SYN-LF120-078",
+          "SYN-LF120-111"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.495
+      },
+      {
+        "cluster_id": "CLUSTER-086",
+        "cluster_key": "491d745b",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-026",
+          "SYN-LF120-059",
+          "SYN-LF120-092"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.441667
+      },
+      {
+        "cluster_id": "CLUSTER-087",
+        "cluster_key": "56f75900",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-013",
+          "SYN-LF120-046",
+          "SYN-LF120-079",
+          "SYN-LF120-112"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.34
+      },
+      {
+        "cluster_id": "CLUSTER-088",
+        "cluster_key": "5d80bdc4",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-024",
+          "SYN-LF120-057",
+          "SYN-LF120-090"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.441667
+      },
+      {
+        "cluster_id": "CLUSTER-089",
+        "cluster_key": "637e94df",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-027",
+          "SYN-LF120-028",
+          "SYN-LF120-029",
+          "SYN-LF120-030",
+          "SYN-LF120-031",
+          "SYN-LF120-032",
+          "SYN-LF120-033",
+          "SYN-LF120-060",
+          "SYN-LF120-061",
+          "SYN-LF120-062",
+          "SYN-LF120-063",
+          "SYN-LF120-064",
+          "SYN-LF120-065",
+          "SYN-LF120-066",
+          "SYN-LF120-093",
+          "SYN-LF120-094",
+          "SYN-LF120-095",
+          "SYN-LF120-096",
+          "SYN-LF120-097",
+          "SYN-LF120-098",
+          "SYN-LF120-099"
+        ],
+        "scene_count": 21,
+        "intra_cluster_similarity_mean": 0.391238
+      },
+      {
+        "cluster_id": "CLUSTER-090",
+        "cluster_key": "64ae3d03",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-019",
+          "SYN-LF120-052",
+          "SYN-LF120-085",
+          "SYN-LF120-118"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.3275
+      },
+      {
+        "cluster_id": "CLUSTER-091",
+        "cluster_key": "66c9ced8",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-025",
+          "SYN-LF120-058",
+          "SYN-LF120-091"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.291667
+      },
+      {
+        "cluster_id": "CLUSTER-092",
+        "cluster_key": "6d702c1e",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-005",
+          "SYN-LF120-038",
+          "SYN-LF120-071",
+          "SYN-LF120-104"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.453333
+      },
+      {
+        "cluster_id": "CLUSTER-093",
+        "cluster_key": "6e4744a2",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-023",
+          "SYN-LF120-056",
+          "SYN-LF120-089"
+        ],
+        "scene_count": 3,
+        "intra_cluster_similarity_mean": 0.428333
+      },
+      {
+        "cluster_id": "CLUSTER-094",
+        "cluster_key": "729c7e49",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-008",
+          "SYN-LF120-041",
+          "SYN-LF120-074",
+          "SYN-LF120-107"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.495
+      },
+      {
+        "cluster_id": "CLUSTER-095",
+        "cluster_key": "82621710",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-002",
+          "SYN-LF120-035",
+          "SYN-LF120-068",
+          "SYN-LF120-101"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.52
+      },
+      {
+        "cluster_id": "CLUSTER-096",
+        "cluster_key": "8ed5b740",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-017",
+          "SYN-LF120-050",
+          "SYN-LF120-083",
+          "SYN-LF120-116"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.485
+      },
+      {
+        "cluster_id": "CLUSTER-097",
+        "cluster_key": "9efbf306",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-009",
+          "SYN-LF120-042",
+          "SYN-LF120-075",
+          "SYN-LF120-108"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.453333
+      },
+      {
+        "cluster_id": "CLUSTER-098",
+        "cluster_key": "a47538db",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-010",
+          "SYN-LF120-043",
+          "SYN-LF120-076",
+          "SYN-LF120-109"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.495
+      },
+      {
+        "cluster_id": "CLUSTER-099",
+        "cluster_key": "af1fda78",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-015",
+          "SYN-LF120-048",
+          "SYN-LF120-081",
+          "SYN-LF120-114"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.485
+      },
+      {
+        "cluster_id": "CLUSTER-100",
+        "cluster_key": "af655abd",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-016",
+          "SYN-LF120-049",
+          "SYN-LF120-082",
+          "SYN-LF120-115"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.365833
+      },
+      {
+        "cluster_id": "CLUSTER-101",
+        "cluster_key": "c1279526",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-007",
+          "SYN-LF120-040",
+          "SYN-LF120-073",
+          "SYN-LF120-106"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.368333
+      },
+      {
+        "cluster_id": "CLUSTER-102",
+        "cluster_key": "cc760229",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-014",
+          "SYN-LF120-047",
+          "SYN-LF120-080",
+          "SYN-LF120-113"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.466667
+      },
+      {
+        "cluster_id": "CLUSTER-103",
+        "cluster_key": "e258d443",
+        "cluster_kind": "framing",
+        "scene_ids": [
+          "SYN-LF120-018",
+          "SYN-LF120-051",
+          "SYN-LF120-084",
+          "SYN-LF120-117"
+        ],
+        "scene_count": 4,
+        "intra_cluster_similarity_mean": 0.466667
+      },
+      {
+        "cluster_id": "CLUSTER-104",
+        "cluster_key": "brisk",
+        "cluster_kind": "motion_cadence",
+        "scene_ids": [
+          "SYN-LF120-001",
+          "SYN-LF120-017",
+          "SYN-LF120-034",
+          "SYN-LF120-050",
+          "SYN-LF120-067",
+          "SYN-LF120-083",
+          "SYN-LF120-100",
+          "SYN-LF120-116"
+        ],
+        "scene_count": 8,
+        "intra_cluster_similarity_mean": 0.216071
+      },
+      {
+        "cluster_id": "CLUSTER-105",
+        "cluster_key": "dynamic",
+        "cluster_kind": "motion_cadence",
+        "scene_ids": [
+          "SYN-LF120-002",
+          "SYN-LF120-003",
+          "SYN-LF120-004",
+          "SYN-LF120-005",
+          "SYN-LF120-006",
+          "SYN-LF120-007",
+          "SYN-LF120-008",
+          "SYN-LF120-009",
+          "SYN-LF120-010",
+          "SYN-LF120-011",
+          "SYN-LF120-012",
+          "SYN-LF120-013",
+          "SYN-LF120-014",
+          "SYN-LF120-015",
+          "SYN-LF120-016",
+          "SYN-LF120-018",
+          "SYN-LF120-019",
+          "SYN-LF120-020",
+          "SYN-LF120-021",
+          "SYN-LF120-022",
+          "SYN-LF120-023",
+          "SYN-LF120-024",
+          "SYN-LF120-025",
+          "SYN-LF120-026",
+          "SYN-LF120-027",
+          "SYN-LF120-028",
+          "SYN-LF120-029",
+          "SYN-LF120-030",
+          "SYN-LF120-031",
+          "SYN-LF120-032",
+          "SYN-LF120-033",
+          "SYN-LF120-035",
+          "SYN-LF120-036",
+          "SYN-LF120-037",
+          "SYN-LF120-038",
+          "SYN-LF120-039",
+          "SYN-LF120-040",
+          "SYN-LF120-041",
+          "SYN-LF120-042",
+          "SYN-LF120-043",
+          "SYN-LF120-044",
+          "SYN-LF120-045",
+          "SYN-LF120-046",
+          "SYN-LF120-047",
+          "SYN-LF120-048",
+          "SYN-LF120-049",
+          "SYN-LF120-051",
+          "SYN-LF120-052",
+          "SYN-LF120-053",
+          "SYN-LF120-054",
+          "SYN-LF120-055",
+          "SYN-LF120-056",
+          "SYN-LF120-057",
+          "SYN-LF120-058",
+          "SYN-LF120-059",
+          "SYN-LF120-060",
+          "SYN-LF120-061",
+          "SYN-LF120-062",
+          "SYN-LF120-063",
+          "SYN-LF120-064",
+          "SYN-LF120-065",
+          "SYN-LF120-066",
+          "SYN-LF120-068",
+          "SYN-LF120-069",
+          "SYN-LF120-070",
+          "SYN-LF120-071",
+          "SYN-LF120-072",
+          "SYN-LF120-073",
+          "SYN-LF120-074",
+          "SYN-LF120-075",
+          "SYN-LF120-076",
+          "SYN-LF120-077",
+          "SYN-LF120-078",
+          "SYN-LF120-079",
+          "SYN-LF120-080",
+          "SYN-LF120-081",
+          "SYN-LF120-082",
+          "SYN-LF120-084",
+          "SYN-LF120-085",
+          "SYN-LF120-086",
+          "SYN-LF120-087",
+          "SYN-LF120-088",
+          "SYN-LF120-089",
+          "SYN-LF120-090",
+          "SYN-LF120-091",
+          "SYN-LF120-092",
+          "SYN-LF120-093",
+          "SYN-LF120-094",
+          "SYN-LF120-095",
+          "SYN-LF120-096",
+          "SYN-LF120-097",
+          "SYN-LF120-098",
+          "SYN-LF120-099",
+          "SYN-LF120-101",
+          "SYN-LF120-102",
+          "SYN-LF120-103",
+          "SYN-LF120-104",
+          "SYN-LF120-105",
+          "SYN-LF120-106",
+          "SYN-LF120-107",
+          "SYN-LF120-108",
+          "SYN-LF120-109",
+          "SYN-LF120-110",
+          "SYN-LF120-111",
+          "SYN-LF120-112",
+          "SYN-LF120-113",
+          "SYN-LF120-114",
+          "SYN-LF120-115",
+          "SYN-LF120-117",
+          "SYN-LF120-118",
+          "SYN-LF120-119",
+          "SYN-LF120-120"
+        ],
+        "scene_count": 112,
+        "intra_cluster_similarity_mean": 0.082759
+      }
+    ],
+    "largest_cluster_size": 112,
+    "singleton_cluster_count": 29
+  },
+  "retrieval_precision_score": 0.446008,
+  "continuity_alignment_score": 1,
+  "export_json_path": "exports/fingerprint-qa-validation.json",
+  "validation": {
+    "deterministic_validation_checksum_stable": true,
+    "readonly_validation": true,
+    "no_dataset_mutation": true,
+    "no_prompt_rewrite": true,
+    "no_image_generation": true,
+    "no_provider_calls": true,
+    "no_canonical_export_mutation": true,
+    "no_runtime_dataset_mutation": true,
+    "production_lock_unchanged": true,
+    "fingerprint_layer_unchanged": true
+  },
+  "validation_checksum": "606f0727d582235ee16da87c64a5a98936f87c56cd695eb217b5289b44df2ec4"
+}

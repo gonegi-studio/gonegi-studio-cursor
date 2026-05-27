@@ -153,6 +153,10 @@ import {
   buildSynthesizedShotFingerprintLayerJsonFile,
   buildSynthesizedShotFingerprintLayerPreview,
 } from "./services/cinematic/synthesizedShotFingerprintLayer";
+import {
+  buildFingerprintQaValidationJsonFile,
+  buildFingerprintQaValidationPreview,
+} from "./services/cinematic/fingerprintQaValidation";
 
 function isApiPath(pathname: string): boolean {
   return pathname === "/api" || pathname.startsWith("/api/");
@@ -1823,6 +1827,30 @@ async function startServer() {
     } catch (e) {
       console.error("Synthesized shot fingerprint json file error:", e);
       return res.status(500).json({ error: "Failed to build synthesized shot fingerprint json file" });
+    }
+  });
+
+  app.get("/api/cinematic/fingerprint-qa-validation-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildFingerprintQaValidationPreview());
+    } catch (e) {
+      console.error("Fingerprint QA validation preview error:", e);
+      return res.status(500).json({ error: "Failed to build fingerprint QA validation preview" });
+    }
+  });
+
+  app.get("/api/cinematic/fingerprint-qa-validation-json-file", (_req, res) => {
+    try {
+      const download = buildFingerprintQaValidationJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Fingerprint QA validation json file error:", e);
+      return res.status(500).json({ error: "Failed to build fingerprint QA validation json file" });
     }
   });
 

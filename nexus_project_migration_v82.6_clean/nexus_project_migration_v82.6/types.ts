@@ -4233,6 +4233,103 @@ export interface SynthesizedShotFingerprintLayerResult {
   };
 }
 
+// --- Fingerprint QA Validation (PHASE-27B readonly retrieval + continuity validation) ---
+
+export const FINGERPRINT_QA_VALIDATION_VERSION = 'FINGERPRINT-QA-VALIDATION-v1' as const;
+
+export interface FingerprintNearestNeighbor {
+  scene_id: string;
+  fingerprint_id: string;
+  similarity: number;
+  rank: number;
+}
+
+export interface FingerprintSimilarityRow {
+  scene_id: string;
+  fingerprint_id: string;
+  nearest_neighbors: FingerprintNearestNeighbor[];
+  nearest_similarity: number;
+}
+
+export interface FingerprintSimilarityMatrix {
+  scene_count: number;
+  pairwise_similarity_mean: number;
+  pairwise_similarity_min: number;
+  pairwise_similarity_max: number;
+  nearest_neighbor_rows: FingerprintSimilarityRow[];
+}
+
+export interface FingerprintClusterSummaryEntry {
+  cluster_id: string;
+  cluster_key: string;
+  cluster_kind: 'compact_prefix' | 'emotion_wave' | 'atmosphere' | 'framing' | 'motion_cadence';
+  scene_ids: string[];
+  scene_count: number;
+  intra_cluster_similarity_mean: number;
+}
+
+export interface FingerprintClusterSummary {
+  total_clusters: number;
+  clusters: FingerprintClusterSummaryEntry[];
+  largest_cluster_size: number;
+  singleton_cluster_count: number;
+}
+
+export interface FingerprintQaCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  score: number;
+  detail: string;
+}
+
+export interface FingerprintRetrievalReport {
+  total_scenes: number;
+  nearest_neighbor_similarity_mean: number;
+  nearest_neighbor_similarity_max: number;
+  continuity_neighbor_similarity_mean: number;
+  distant_neighbor_similarity_mean: number;
+  emotional_cadence_cluster_count: number;
+  framing_repetition_groups: number;
+  atmosphere_repetition_groups: number;
+  retrieval_stability_score: number;
+  exact_compact_duplicate_count: number;
+  qa_checks: FingerprintQaCheck[];
+  qa_checks_passed: number;
+  qa_checks_total: number;
+  visual_qa_ready: boolean;
+  retrieval_safe: boolean;
+  separable: boolean;
+  stable: boolean;
+}
+
+export interface FingerprintQaValidationResult {
+  schema_version: typeof FINGERPRINT_QA_VALIDATION_VERSION;
+  generated_at: string;
+  readonly_validation: true;
+  fingerprint_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  fingerprint_retrieval_report: FingerprintRetrievalReport;
+  fingerprint_similarity_matrix: FingerprintSimilarityMatrix;
+  fingerprint_cluster_summary: FingerprintClusterSummary;
+  retrieval_precision_score: number;
+  continuity_alignment_score: number;
+  validation_checksum: string;
+  export_json_path: 'exports/fingerprint-qa-validation.json';
+  validation: {
+    deterministic_validation_checksum_stable: boolean;
+    readonly_validation: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    fingerprint_layer_unchanged: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
