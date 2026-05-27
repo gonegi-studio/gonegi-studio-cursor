@@ -43,6 +43,10 @@ import {
   buildRuntimeDatasetRecertificationExportDownload,
   buildRuntimeDatasetRecertificationPreview,
 } from "./services/runtimeDatasetRecertification";
+import {
+  buildRuntimeTemporalChainStabilizationExportDownload,
+  buildRuntimeTemporalChainStabilizationPreview,
+} from "./services/runtimeTemporalChainStabilizer";
 
 async function startServer() {
   const app = express();
@@ -988,6 +992,31 @@ async function startServer() {
     } catch (e) {
       console.error("Runtime dataset recertification export error:", e);
       return res.status(500).json({ error: "Failed to build runtime dataset recertification json file export" });
+    }
+  });
+
+  // API: Runtime Temporal Chain Stabilization (PHASE-18 readonly longform analyzer)
+  app.get("/api/cinematic/runtime-temporal-chain-stabilization-preview", (_req, res) => {
+    try {
+      const preview = buildRuntimeTemporalChainStabilizationPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Runtime temporal chain stabilization preview error:", e);
+      return res.status(500).json({ error: "Failed to build runtime temporal chain stabilization preview" });
+    }
+  });
+
+  app.get("/api/cinematic/runtime-temporal-chain-stabilization-export-json-file", (_req, res) => {
+    try {
+      const download = buildRuntimeTemporalChainStabilizationExportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Runtime temporal chain stabilization export error:", e);
+      return res.status(500).json({ error: "Failed to build runtime temporal chain stabilization json file export" });
     }
   });
 

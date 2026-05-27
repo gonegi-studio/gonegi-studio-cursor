@@ -1832,6 +1832,122 @@ export interface RuntimeDatasetRecertificationResult {
   recertification_checksum: string;
 }
 
+// --- Runtime Temporal Chain Stabilization (PHASE-18 readonly longform analyzer) ---
+
+export const RUNTIME_TEMPORAL_CHAIN_STABILIZER_VERSION =
+  'RUNTIME-TEMPORAL-CHAIN-STABILIZER-v1' as const;
+
+export type RuntimeChainVerdict = 'stable' | 'warning' | 'unstable';
+
+export interface EmotionalDecayMapEntry {
+  scene_index: number;
+  scene_id: string;
+  emotional_decay: number;
+  carryover_intensity: number;
+}
+
+export interface TemporalDriftAnalysis {
+  temporal_drift_score: number;
+  temporal_anchor_stability: number;
+  recursive_memory_integrity: number;
+  continuity_decay: number;
+  callback_fragmentation: number;
+  memory_anchor_divergence: number;
+}
+
+export interface EmotionalEntropyAnalysis {
+  emotional_entropy_score: number;
+  emotion_chain_stability: number;
+  emotional_decay_map: EmotionalDecayMapEntry[];
+  abrupt_discontinuities: number;
+  unresolved_emotional_chains: number;
+  emotional_loop_instability: number;
+}
+
+export interface CallbackSaturationAnalysis {
+  callback_saturation_score: number;
+  motif_repetition_density: number;
+  cinematic_callback_balance: number;
+  framing_repetition_density: number;
+  color_callback_oversaturation: number;
+  rhythm_callback_collisions: number;
+}
+
+export interface RecursiveMemoryLoadAnalysis {
+  recursive_load_score: number;
+  memory_graph_pressure: number;
+  edge_density_risk: number;
+  accumulated_continuity_burden: number;
+  graph_recursion_depth: number;
+}
+
+export interface TemporalGrowthProjection {
+  target_scene_count: number;
+  projected_stability: number;
+  projected_temporal_drift: number;
+  projected_emotional_entropy: number;
+  projected_callback_saturation: number;
+  projected_edge_density: number;
+}
+
+export interface LongformRuntimeStability {
+  predicted_50_scene_stability: number;
+  predicted_75_scene_stability: number;
+  predicted_120_scene_stability: number;
+  projections: TemporalGrowthProjection[];
+}
+
+export interface RuntimeChainSafetyGates {
+  temporal_drift_max: number;
+  emotional_entropy_max: number;
+  callback_saturation_max: number;
+  edge_density_max: number;
+  longform_stability_min: number;
+}
+
+export interface RuntimeTemporalStabilizationReport {
+  active_scene_count: number;
+  runtime_dataset_fingerprint_ref: string;
+  runtime_recertification_checksum_ref: string;
+  runtime_lock_inheritance_ref: RuntimeLockCandidate['lock_inheritance'];
+  temporal_graph_checksum_ref: string;
+  temporal_drift: TemporalDriftAnalysis;
+  emotional_entropy: EmotionalEntropyAnalysis;
+  callback_saturation: CallbackSaturationAnalysis;
+  recursive_memory_load: RecursiveMemoryLoadAnalysis;
+  longform_stability: LongformRuntimeStability;
+  safety_gates: RuntimeChainSafetyGates;
+  runtime_chain_verdict: RuntimeChainVerdict;
+  canonical_export_unchanged: true;
+  runtime_dataset_unchanged: true;
+  readonly_analysis: true;
+}
+
+export interface RuntimeTemporalChainStabilizationResult {
+  schema_version: typeof RUNTIME_TEMPORAL_CHAIN_STABILIZER_VERSION;
+  generated_at: string;
+  readonly_stabilization: true;
+  runtime_temporal_stabilization_report: RuntimeTemporalStabilizationReport;
+  temporal_drift_score: number;
+  emotional_entropy_score: number;
+  callback_saturation_score: number;
+  recursive_load_score: number;
+  runtime_chain_verdict: RuntimeChainVerdict;
+  predicted_120_scene_stability: number;
+  validation: {
+    deterministic_stabilization_checksum_stable: boolean;
+    readonly_stabilization: true;
+    in_memory_only: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    no_graph_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    runtime_lock_inheritance_preserved: boolean;
+  };
+  stabilization_checksum: string;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
