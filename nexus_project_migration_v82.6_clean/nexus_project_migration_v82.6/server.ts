@@ -144,6 +144,11 @@ import {
   buildSynthesizedDatasetProductionLockJsonFile,
   buildSynthesizedDatasetProductionLockPreview,
 } from "./services/synthesizedDatasetProductionLock";
+import {
+  buildChatgptReviewBundleExportJsonFile,
+  buildChatgptReviewBundleExportPreview,
+  buildChatgptReviewBundleMarkdownFile,
+} from "./services/chatgptReviewBundleExport";
 
 function isApiPath(pathname: string): boolean {
   return pathname === "/api" || pathname.startsWith("/api/");
@@ -1752,6 +1757,44 @@ async function startServer() {
     } catch (e) {
       console.error("Synthesized dataset production lock json file error:", e);
       return res.status(500).json({ error: "Failed to build synthesized dataset production lock json file" });
+    }
+  });
+
+  app.get("/api/cinematic/chatgpt-review-bundle-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildChatgptReviewBundleExportPreview());
+    } catch (e) {
+      console.error("ChatGPT review bundle preview error:", e);
+      return res.status(500).json({ error: "Failed to build ChatGPT review bundle preview" });
+    }
+  });
+
+  app.get("/api/cinematic/chatgpt-review-bundle-json-file", (_req, res) => {
+    try {
+      const download = buildChatgptReviewBundleExportJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("ChatGPT review bundle json file error:", e);
+      return res.status(500).json({ error: "Failed to build ChatGPT review bundle json file" });
+    }
+  });
+
+  app.get("/api/cinematic/chatgpt-review-bundle-markdown-file", (_req, res) => {
+    try {
+      const download = buildChatgptReviewBundleMarkdownFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("ChatGPT review bundle markdown file error:", e);
+      return res.status(500).json({ error: "Failed to build ChatGPT review bundle markdown file" });
     }
   });
 

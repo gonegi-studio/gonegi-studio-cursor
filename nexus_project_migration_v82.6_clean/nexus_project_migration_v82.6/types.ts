@@ -3991,6 +3991,122 @@ export interface SynthesizedDatasetProductionLockResult {
   };
 }
 
+// --- ChatGPT Review Bundle Export (PHASE-26F lightweight external review artifact) ---
+
+export const CHATGPT_REVIEW_BUNDLE_EXPORT_VERSION = 'CHATGPT-REVIEW-BUNDLE-EXPORT-v1' as const;
+
+export interface ChatgptReviewBundleChecksums {
+  synthesis_checksum_ref: string;
+  synthesized_dataset_checksum_ref: string;
+  synthesized_audit_checksum_ref: string;
+  production_lock_checksum_ref: string;
+}
+
+export interface ChatgptReviewProductionLockSummary {
+  locked_synthesized_dataset_id: string;
+  synthesized_release_verdict: OrchestrationReadinessLevel;
+  production_lock_checksum_ref: string;
+  scene_count: 120;
+  lock_checks_passed: number;
+  lock_checks_total: number;
+  all_lock_checks_passed: boolean;
+}
+
+export interface ChatgptReviewQualityAuditSummary {
+  final_synthesized_dataset_verdict: FinalSynthesizedDatasetVerdict;
+  synthesized_quality_score: number;
+  synthesized_continuity_score: number;
+  synthesized_orchestration_score: number;
+  synthesized_fatigue_score: number;
+  strongest_expansion_dimensions: SynthesizedExpansionDimensionKey[];
+  weakest_expansion_dimensions: SynthesizedExpansionDimensionKey[];
+  audit_checks_passed: number;
+  audit_checks_total: number;
+}
+
+export interface ChatgptReviewFieldCoverageRow {
+  field_key: string;
+  populated_scenes: number;
+  coverage_ratio: number;
+}
+
+export interface ChatgptReviewContinuityGraphSummary {
+  memory_node_count: number;
+  emotional_transition_edges: number;
+  visual_motif_edges: number;
+  character_memory_edges: number;
+  environment_memory_edges: number;
+  cinematic_callback_edges: number;
+  total_edges: number;
+  continuity_graph_checksum: string;
+}
+
+export interface ChatgptReviewSceneSummary {
+  scene_id: string;
+  synth_index: number;
+  synthesis_kind: SynthesizedSceneKind;
+  source_scene_ref?: string;
+  shot_purpose: string[];
+  emotion_tokens: string[];
+  narrative_tokens: string[];
+  cinematography_tokens: string[];
+  snapshot_reason?: string;
+}
+
+export interface ChatgptReviewBlockingIssue {
+  issue_id: string;
+  source: 'synthesis' | 'quality_audit' | 'production_lock';
+  severity: 'blocking' | 'advisory';
+  signal: string;
+  detail: string;
+}
+
+export interface ChatgptReviewBundlePayload {
+  dataset_id: string;
+  scene_count: 120;
+  checksums: ChatgptReviewBundleChecksums;
+  production_lock_summary: ChatgptReviewProductionLockSummary;
+  quality_audit_summary: ChatgptReviewQualityAuditSummary;
+  first_three_scenes_full: Record<string, unknown>[];
+  middle_three_scenes_full: Record<string, unknown>[];
+  last_three_scenes_full: Record<string, unknown>[];
+  weak_scene_ids: string[];
+  filler_scene_ids: string[];
+  continuity_graph_summary: ChatgptReviewContinuityGraphSummary;
+  fatigue_metrics: SynthesisFatigueScores;
+  orchestration_metrics: SynthesisOrchestrationScores;
+  field_coverage_table: ChatgptReviewFieldCoverageRow[];
+  scene_id_list_120: string[];
+  sampled_scene_summaries: ChatgptReviewSceneSummary[];
+  detected_gaps: string[];
+  blocking_issues: ChatgptReviewBlockingIssue[];
+  bundle_checksum: string;
+}
+
+export interface ChatgptReviewBundleExportResult {
+  schema_version: typeof CHATGPT_REVIEW_BUNDLE_EXPORT_VERSION;
+  generated_at: string;
+  readonly_export: true;
+  review_bundle: ChatgptReviewBundlePayload;
+  bundle_byte_size: number;
+  bundle_under_10mb: true;
+  export_json_path: 'exports/chatgpt-review-bundle.json';
+  export_markdown_path: 'exports/chatgpt-review-bundle.md';
+  bundle_checksum: string;
+  validation: {
+    deterministic_bundle_checksum_stable: boolean;
+    readonly_export: true;
+    bundle_under_10mb: boolean;
+    includes_review_evidence: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
