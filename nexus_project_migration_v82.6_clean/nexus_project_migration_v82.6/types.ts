@@ -3162,6 +3162,93 @@ export interface FinalDatasetSemanticQualityAuditResult {
   };
 }
 
+// --- Longform Fatigue Risk Reducer Audit (PHASE-24C non-mutating fatigue mitigation plan) ---
+
+export const LONGFORM_FATIGUE_RISK_REDUCER_AUDIT_VERSION =
+  'LONGFORM-FATIGUE-RISK-REDUCER-AUDIT-v1' as const;
+
+export type FatigueRiskCauseCategory =
+  | 'repeated_motif'
+  | 'repeated_emotion'
+  | 'repeated_framing'
+  | 'repeated_color'
+  | 'callback_oversaturation'
+  | 'memory_overload';
+
+export interface FatigueRiskCause {
+  cause_id: string;
+  category: FatigueRiskCauseCategory;
+  severity: 'high' | 'moderate' | 'low';
+  signal: string;
+  occurrence_count: number;
+  affected_scene_ids: string[];
+  detail: string;
+}
+
+export interface FatigueVariationCandidate {
+  candidate_id: string;
+  category: FatigueRiskCauseCategory;
+  target_cluster: string;
+  suggested_variation: string;
+  rationale: string;
+  affected_scene_ids: string[];
+  safe_manual_only: true;
+}
+
+export interface FatigueReductionPlanStep {
+  step_id: string;
+  priority: number;
+  category: FatigueRiskCauseCategory;
+  action: string;
+  target_scenes: string[];
+  non_mutating: true;
+}
+
+export interface FatigueReductionPlan {
+  plan_id: string;
+  baseline_fatigue_risk_score: number;
+  semantic_audit_checksum_ref: string;
+  target_fatigue_reduction_estimate: number;
+  steps: FatigueReductionPlanStep[];
+  causes_addressed: number;
+}
+
+export interface FatigueReducerBlockingIssue {
+  issue_id: string;
+  severity: 'critical';
+  category: FatigueRiskCauseCategory | 'audit_integrity';
+  message: string;
+}
+
+export interface LongformFatigueRiskReducerAuditResult {
+  schema_version: typeof LONGFORM_FATIGUE_RISK_REDUCER_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  export_candidate_checksum_ref: string;
+  semantic_audit_checksum_ref: string;
+  temporal_graph_checksum_ref: string;
+  scene_count: number;
+  fatigue_risk_causes: FatigueRiskCause[];
+  fatigue_reduction_plan: FatigueReductionPlan;
+  motif_diversification_candidates: FatigueVariationCandidate[];
+  emotion_variation_candidates: FatigueVariationCandidate[];
+  framing_variation_candidates: FatigueVariationCandidate[];
+  color_variation_candidates: FatigueVariationCandidate[];
+  safe_non_mutating_recommendations: string[];
+  reducer_blocking_issues: FatigueReducerBlockingIssue[];
+  fatigue_reducer_audit_checksum: string;
+  validation: {
+    deterministic_fatigue_reducer_checksum_stable: boolean;
+    readonly_audit: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

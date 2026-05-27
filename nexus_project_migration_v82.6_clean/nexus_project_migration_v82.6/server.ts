@@ -108,6 +108,10 @@ import {
   buildFinalDatasetSemanticQualityAuditJsonFile,
   buildFinalDatasetSemanticQualityAuditPreview,
 } from "./services/finalDatasetSemanticQualityAudit";
+import {
+  buildLongformFatigueRiskReducerAuditJsonFile,
+  buildLongformFatigueRiskReducerAuditPreview,
+} from "./services/longformFatigueRiskReducerAudit";
 
 async function startServer() {
   const app = express();
@@ -1465,6 +1469,31 @@ async function startServer() {
     } catch (e) {
       console.error("Final dataset semantic quality json file error:", e);
       return res.status(500).json({ error: "Failed to build final dataset semantic quality json file" });
+    }
+  });
+
+  // API: Longform Fatigue Risk Reducer Audit (PHASE-24C non-mutating fatigue mitigation plan)
+  app.get("/api/cinematic/longform-fatigue-risk-reducer-preview", (_req, res) => {
+    try {
+      const preview = buildLongformFatigueRiskReducerAuditPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Longform fatigue risk reducer preview error:", e);
+      return res.status(500).json({ error: "Failed to build longform fatigue risk reducer preview" });
+    }
+  });
+
+  app.get("/api/cinematic/longform-fatigue-risk-reducer-json-file", (_req, res) => {
+    try {
+      const download = buildLongformFatigueRiskReducerAuditJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Longform fatigue risk reducer json file error:", e);
+      return res.status(500).json({ error: "Failed to build longform fatigue risk reducer json file" });
     }
   });
 
