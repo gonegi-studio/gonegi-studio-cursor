@@ -2381,6 +2381,118 @@ export interface IdentityLockContinuityEngineResult {
   };
 }
 
+// --- Engine Adapter Export Pack (PHASE-21E readonly multi-engine format export) ---
+
+export const ENGINE_ADAPTER_EXPORT_PACK_VERSION = 'ENGINE-ADAPTER-EXPORT-PACK-v1' as const;
+
+export type EngineAdapterFormatKey =
+  | 'image_app_unified'
+  | 'midjourney_pack'
+  | 'flux_pack'
+  | 'sdxl_pack'
+  | 'runway_reference_pack';
+
+export interface EngineAdapterExportCoreFields {
+  scene_id: string;
+  sequence_id: string;
+  compressed_prompt: string;
+  negative_prompt: string;
+  identity_lock: CharacterIdentityLock[];
+  continuity_seed: string;
+  style_core_ref: string;
+  environment_lock: EnvironmentIdentityLock;
+  production_lock_ref: string;
+}
+
+export interface ImageAppUnifiedEntry extends EngineAdapterExportCoreFields {
+  format: 'image_app_unified';
+  temporal_anchor_id: string;
+  continuity_strength_score: number;
+  runtime_dataset_fingerprint: string;
+}
+
+export interface MidjourneyPackEntry extends EngineAdapterExportCoreFields {
+  format: 'midjourney_pack';
+  engine_prompt: string;
+  engine_parameters: {
+    aspect_ratio: string;
+    stylize: number;
+    seed: string;
+    style_mode: string;
+  };
+}
+
+export interface FluxPackEntry extends EngineAdapterExportCoreFields {
+  format: 'flux_pack';
+  engine_prompt: string;
+  engine_parameters: {
+    seed: number;
+    guidance: number;
+    steps: number;
+  };
+}
+
+export interface SdxlPackEntry extends EngineAdapterExportCoreFields {
+  format: 'sdxl_pack';
+  engine_prompt: string;
+  engine_parameters: {
+    seed: number;
+    cfg_scale: number;
+    sampler: string;
+  };
+}
+
+export interface RunwayReferencePackEntry extends EngineAdapterExportCoreFields {
+  format: 'runway_reference_pack';
+  engine_prompt: string;
+  reference_metadata: {
+    motion_hint: string;
+    camera_profile_summary: string;
+    continuity_seed_ref: string;
+  };
+}
+
+export interface EngineAdapterFormatPack<T> {
+  format_key: EngineAdapterFormatKey;
+  scene_count: number;
+  entries: T[];
+  pack_checksum: string;
+}
+
+export interface EngineAdapterExportVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface EngineAdapterExportPackResult {
+  schema_version: typeof ENGINE_ADAPTER_EXPORT_PACK_VERSION;
+  generated_at: string;
+  readonly_export: true;
+  identity_lock_checksum_ref: string;
+  scene_count: number;
+  export_formats: {
+    image_app_unified: EngineAdapterFormatPack<ImageAppUnifiedEntry>;
+    midjourney_pack: EngineAdapterFormatPack<MidjourneyPackEntry>;
+    flux_pack: EngineAdapterFormatPack<FluxPackEntry>;
+    sdxl_pack: EngineAdapterFormatPack<SdxlPackEntry>;
+    runway_reference_pack: EngineAdapterFormatPack<RunwayReferencePackEntry>;
+  };
+  export_pack_verification_checks: EngineAdapterExportVerificationCheck[];
+  export_pack_checksum: string;
+  validation: {
+    deterministic_export_checksum_stable: boolean;
+    readonly_export: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    all_formats_exported: boolean;
+    identity_locks_preserved: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
