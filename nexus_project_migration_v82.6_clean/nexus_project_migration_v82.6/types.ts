@@ -2667,6 +2667,58 @@ export interface RealRenderInputPackExportResult {
   };
 }
 
+// --- Final Dataset Export Verifier (PHASE-22C longform completion gate) ---
+
+export const FINAL_DATASET_EXPORT_VERIFIER_VERSION = 'FINAL-DATASET-EXPORT-VERIFIER-v1' as const;
+
+export type FinalDatasetExportVerdict = 'complete' | 'incomplete';
+
+export interface FinalDatasetExportGap {
+  gap_id: string;
+  severity: 'critical' | 'moderate';
+  check_key: string;
+  message: string;
+}
+
+export interface FinalDatasetExportVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface FinalDatasetExportVerifierResult {
+  schema_version: typeof FINAL_DATASET_EXPORT_VERIFIER_VERSION;
+  generated_at: string;
+  readonly_verifier: true;
+  export_candidate_id: string;
+  locked_export_id: string;
+  export_candidate_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  export_candidate_json_fingerprint_ref: string;
+  production_lock_json_fingerprint_ref: string;
+  identity_lock_checksum_ref: string;
+  engine_adapter_pack_checksum_ref: string;
+  scene_count: number;
+  final_verdict: FinalDatasetExportVerdict;
+  gap_list: FinalDatasetExportGap[];
+  verification_checks: FinalDatasetExportVerificationCheck[];
+  export_route_refs: {
+    export_candidate_json_file: string;
+    production_lock_json_file: string;
+  };
+  verifier_checksum: string;
+  validation: {
+    deterministic_verifier_checksum_stable: boolean;
+    readonly_verifier: true;
+    no_dataset_rewrite: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

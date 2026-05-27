@@ -83,6 +83,7 @@ import {
   buildRealRenderInputPackJsonFile,
   buildRealRenderInputPackPreview,
 } from "./services/realRenderInputPackExport";
+import { buildFinalDatasetExportVerifierPreview } from "./services/finalDatasetExportVerifier";
 
 async function startServer() {
   const app = express();
@@ -1279,6 +1280,17 @@ async function startServer() {
     } catch (e) {
       console.error("Real render input pack json file error:", e);
       return res.status(500).json({ error: "Failed to build real render input pack json file" });
+    }
+  });
+
+  // API: Final Dataset Export Verifier (PHASE-22C longform completion gate)
+  app.get("/api/cinematic/final-dataset-export-verifier-preview", (_req, res) => {
+    try {
+      const preview = buildFinalDatasetExportVerifierPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Final dataset export verifier preview error:", e);
+      return res.status(500).json({ error: "Failed to build final dataset export verifier preview" });
     }
   });
 
