@@ -145,6 +145,39 @@ import {
   buildSynthesizedDatasetProductionLockPreview,
 } from "./services/synthesizedDatasetProductionLock";
 
+function isApiPath(pathname: string): boolean {
+  return pathname === "/api" || pathname.startsWith("/api/");
+}
+
+function registerUnmatchedApiJsonHandler(app: express.Application): void {
+  app.use((req, res, next) => {
+    if (!isApiPath(req.path)) {
+      return next();
+    }
+    res.status(404).json({
+      error: "API route not found",
+      method: req.method,
+      path: req.originalUrl,
+    });
+  });
+}
+
+function bypassApiPaths(handler: express.RequestHandler): express.RequestHandler {
+  return (req, res, next) => {
+    if (isApiPath(req.path)) {
+      if (res.headersSent) {
+        return;
+      }
+      return res.status(404).json({
+        error: "API route not found",
+        method: req.method,
+        path: req.originalUrl,
+      });
+    }
+    return handler(req, res, next);
+  };
+}
+
 async function startServer() {
   const app = express();
   const PORT = 3000;
@@ -1652,6 +1685,7 @@ async function startServer() {
 
   app.get("/api/cinematic/real-longform-synthesis-preview", (_req, res) => {
     try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
       return res.json(buildRealLongformDatasetSynthesisPreview());
     } catch (e) {
       console.error("Real longform synthesis preview error:", e);
@@ -1675,6 +1709,7 @@ async function startServer() {
 
   app.get("/api/cinematic/synthesized-longform-quality-preview", (_req, res) => {
     try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
       return res.json(buildSynthesizedLongformDatasetQualityAuditPreview());
     } catch (e) {
       console.error("Synthesized longform quality preview error:", e);
@@ -1698,6 +1733,7 @@ async function startServer() {
 
   app.get("/api/cinematic/synthesized-dataset-production-lock-preview", (_req, res) => {
     try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
       return res.json(buildSynthesizedDatasetProductionLockPreview());
     } catch (e) {
       console.error("Synthesized dataset production lock preview error:", e);
@@ -1719,17 +1755,27 @@ async function startServer() {
     }
   });
 
+  // Unmatched /api/* must return JSON — never fall through to Vite/SPA HTML fallback.
+  registerUnmatchedApiJsonHandler(app);
+
   // Vite 미들웨어 설정
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
-    app.use(vite.middlewares);
+    app.use(bypassApiPaths(vite.middlewares));
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
+    app.use(bypassApiPaths(express.static(distPath)));
     app.get("*", (req, res) => {
+      if (isApiPath(req.path)) {
+        return res.status(404).json({
+          error: "API route not found",
+          method: req.method,
+          path: req.originalUrl,
+        });
+      }
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
