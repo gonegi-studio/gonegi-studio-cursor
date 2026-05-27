@@ -1,0 +1,222 @@
+{
+  "schema_version": "MasterCore_DNA_Snapshot",
+  "masterCore_version": "17.5",
+  "characterBook": {
+    "version": "17.5",
+    "master_image_id": "master-image-gonegi-book-v1",
+    "global_height_scale": "1.0 gonegi_height_unit",
+    "styleAnchor": "Ghibli Mediterranean Chronicles v17.5",
+    "characters": [
+      {
+        "id": "slot_1-1",
+        "name": "Gonegi Main",
+        "visual_dna": "Rounded small cat silhouette, harbor coat slate duster, amber gaze lock, soft hand-painted fur grain, vitreous eye highlight integrity.",
+        "type": "human",
+        "grid_position": "1-1",
+        "slot_index": 0,
+        "dna_details": {
+          "core_identity": "protagonist",
+          "outfit": "harbor coat slate duster",
+          "gaze_logic": {
+            "focus_intensity": 0.96,
+            "default_target": "companion"
+          },
+          "aura_fidelity": 0.98
+        },
+        "elite_image_id": "elite-image-gonegi-main-v1"
+      },
+      {
+        "id": "slot_1-2",
+        "name": "Harbor Elder",
+        "visual_dna": "Elder harbor witness, wool cardigan silhouette, lantern-warm rim light, muted amber palette, identity-stable Ghibli face topology.",
+        "type": "human",
+        "grid_position": "1-2",
+        "slot_index": 1
+      },
+      {
+        "id": "slot_1-3",
+        "name": "Market Keeper",
+        "visual_dna": "Market keeper with terracotta apron, sun-worn hands, warm ochre skin tones, soft gouache cel-shadow on face planes.",
+        "type": "human",
+        "grid_position": "1-3",
+        "slot_index": 2
+      },
+      {
+        "id": "slot_1-4",
+        "name": "Dock Worker",
+        "visual_dna": "Dock worker with rope-coil posture, navy work shirt, weathered Mediterranean tan, stable cheekbone and jaw anchor geometry.",
+        "type": "human",
+        "grid_position": "1-4",
+        "slot_index": 3
+      },
+      {
+        "id": "slot_1-5",
+        "name": "Village Child",
+        "visual_dna": "Village child with linen dress, barefoot stance, bright curious gaze, hand-painted youth face with soft cel-shadow balance.",
+        "type": "human",
+        "grid_position": "1-5",
+        "slot_index": 4
+      },
+      {
+        "id": "slot_1-6",
+        "name": "Choir Singer",
+        "visual_dna": "Choir singer with folded hymn book, pearl-gray shawl, gentle downward gaze, vitreous highlight on eyes under warm chapel light.",
+        "type": "human",
+        "grid_position": "1-6",
+        "slot_index": 5
+      },
+      {
+        "id": "slot_2-1",
+        "name": "Dana",
+        "visual_dna": "Dana companion portrait anchor, warm olive gaze with vitreous amber highlights, soft auburn braid rhythm, Mediterranean youth face topology, hand-painted Ghibli cel-shading, identity-stable cheek and eye spacing.",
+        "type": "human",
+        "grid_position": "2-1",
+        "slot_index": 6,
+        "dna_details": {
+          "core_identity": "companion",
+          "outfit": "seafoam linen wrap and harbor shawl",
+          "gaze_logic": {
+            "focus_intensity": 0.94,
+            "default_target": "protagonist"
+          },
+          "aura_fidelity": 0.97
+        },
+        "elite_image_id": "elite-image-dana-companion-v1"
+      },
+      {
+        "id": "slot_2-2",
+        "name": "Fisher Captain",
+        "visual_dna": "Fisher captain with salt-stiff coat, rope-burned palms, sun-creased brow, harbor amber palette with strong silhouette read.",
+        "type": "human",
+        "grid_position": "2-2",
+        "slot_index": 7
+      },
+      {
+        "id": "slot_2-3",
+        "name": "Cafe Owner",
+        "visual_dna": "Cafe owner with rolled sleeves, espresso-stained apron, welcoming half-smile, warm interior rim light on facial planes.",
+        "type": "human",
+        "grid_position": "2-3",
+        "slot_index": 8
+      },
+      {
+        "id": "slot_2-4",
+        "name": "Letter Carrier",
+        "visual_dna": "Letter carrier with canvas satchel, brisk walking rhythm, wind-touched hair, crisp cel-shadow under Mediterranean noon light.",
+        "type": "human",
+        "grid_position": "2-4",
+        "slot_index": 9
+      },
+      {
+        "id": "slot_2-5",
+        "name": "Night Watch",
+        "visual_dna": "Night watch with oil lantern, long coat drape, cool navy rim light, charcoal shadow occlusion with flat cel-shading integrity.",
+        "type": "human",
+        "grid_position": "2-5",
+        "slot_index": 10
+      },
+      {
+        "id": "slot_2-6-1",
+        "name": "Harbor Cat",
+        "visual_dna": "Harbor cat fauna anchor, compact feline silhouette, amber slit-pupil gloss, painterly fur grain with organic line weight.",
+        "type": "animal",
+        "grid_position": "2-6-1",
+        "slot_index": 11
+      },
+      {
+        "id": "slot_2-6-2",
+        "name": "Seagull Pair",
+        "visual_dna": "Seagull pair fauna anchor, wing-span rhythm, white-blue gouache feather planes, painterly motion blur on wing tips.",
+        "type": "animal",
+        "grid_position": "2-6-2",
+        "slot_index": 12
+      }
+    ],
+    "subCharacters": [
+      {
+        "id": "npc_harbor_keeper",
+        "name": "Harbor Keeper",
+        "description": "Background witness with warm tungsten rim light.",
+        "visual_dna": "Elderly harbor keeper, wool cardigan, lantern glow, muted amber palette.",
+        "image_id": "npc-image-harbor-keeper-v1"
+      }
+    ],
+    "environmentDNA": {
+      "dawn": "Time & Light: Pre-dawn transitioning to early sunrise. Low-angle cool mist drifting from the sea with layered lavender haze (#E6E6FA). Shadows: Deep purple (#4B0082) and indigo (#1A1A1A) shadows applied strictly to occlusion areas. Sky & Clouds: Pale Blue sky (#E0FFFF) with massive white cumulonimbus clouds. Clouds feature Thistle (#D8BFD8) paint layering and cold rim light highlights in #F0F8FF. Atmosphere: Intense atmospheric perspective with heavy, visible hand-painted brush strokes and opaque gouache layering on distant elements.",
+      "morning": "Time & Light: Early Morning. High-angle crisp golden sunlight (#FFFACD) casting defined, sharp-edged deep indigo (#1A1A1A) 2D cel-shadows. Sky & Clouds: Vibrant sky-blue gradient (#00BFFF). Towering white cumulonimbus clouds feature a fresh golden rim light (#EEE8AA) on top edges, with light lavender (#E6E6FA) paint layering. Atmosphere: Clear and cool air. Distance is depicted through atmospheric golden-blue haze using simplified opaque gouache shapes.",
+      "afternoon": "Time & Light: Warm sunlight (#FFFACD) casting distinct, sharp-edged 2D cel-shadows on all surfaces. Sky & Clouds: Deep indigo to sky-blue gradient (#0047AB). White clouds feature ivory highlights (#FFFFF0) only on the top edges. Atmosphere: Opaque gouache layering with prominent, textured brushstrokes. Subtle celluloid film grain and organic dust particles visible in the bright light.",
+      "late_afternoon": "Time & Light: Long-slanted deep golden-ochre light (#DAA520) casting elongated, sharp-edged deep indigo (#1A1A1A) and violet (#4B0082) 2D cel-shadows. Sky & Clouds: Sky transitioning from deep gold (#DAA520) to a burning amber glow (#FFBF00) at the horizon. Towering clouds feature amber rim light (#FFBF00) on top edges. Atmosphere: Thick atmospheric amber-blue haze using simplified opaque gouache shapes with heavy lavender (#E6E6FA) paint layering for density.",
+      "sunset": "Time & Light: Sunset transitioning to dusk. Low-angle deep warm sunset light (#FFB347) casting elongated, sharp-edged deep violet (#480082) and indigo (#1A1A1A) 2D cel-shadows. Sky & Clouds: Sky in #FFB347 (Orange-Amber) transitioning to #8A2BE2 (Violet). Clouds feature a peach-apricot rim light (#FBCEB1) on fiery edges. Atmosphere: Rich atmospheric apricot-blue haze. Light transitions are rendered through distinct, thick paint layers.",
+      "night": "Time & Light: Deep midnight-blue moonlight (#191970) vs. Warm orange glow (#FF8C00). Rim Lighting (Crucial): Apply a cool navy-blue rim light (#000080) on the opposite side of the orange glow to define character silhouettes and separate them from the dark background. Shadows: Intense ambient occlusion with sharp-edged deep indigo shadows to maintain 2D flat-shading integrity.",
+      "dream": "Time & Light: The \"Magic Hour\" where reality and fantasy blur. Low-angle, hyper-saturated golden sunset light (#FFB347). Over-exaggerated shimmering gold sparkles (Glint/Yunsul) on the sea surface. Shadows: Elongated, sharp-edged deep violet (#480082) and indigo (#1A1A1A) 2D cel-shadows. Shadows contain subtle purple tints instead of pure black. Sky & Clouds: Sky in #FFB347 (Orange-Amber) transitioning to deep #8A2BE2 (Violet). Clouds feature fiery peach-apricot rim light (#FBCEB1). Atmosphere: Rich atmospheric apricot-blue haze that slightly softens object boundaries. Floating microscopic golden dust particles are visible in the air, rendered with opaque gouache dabs to emphasize the \"Dream\" state.",
+      "spiritual": "Primary Light (Sea Phosphorescence): Light originates from below. Ethereal blue phosphorescence (#00FA9A to #1E90FF) rising from the sea, illuminating the white stone walls of the village from the bottom up (Inverted Lighting). Secondary Light (Celestial & Spiritual): A vast, dense Milky Way and silver moonlight (#E6E6FA) serve as a delicate Rim Light for rooftops and character silhouettes. Small, floating spiritual light orbs (Spiritual Orbs) drift through the alleys. Sky & Atmosphere: Deep, transparent Indigo-blue (#191970) night sky. The horizon acts as a mirror, reflecting the starry sky into the glowing sea. Perfect, soundless stillness rendered through high-contrast but calm color palettes. Shadows: Subtle and multi-directional due to the rising phosphorescence and floating orbs. Strictly 2D flat-shading with deep indigo-black (#1A1A1A) core shadows to maintain physical mass.",
+      "global": "[Location]: A picturesque Mediterranean harbor town with weathered white stone and terracotta roofs. [Mood]: Nostalgic and melancholic, with real-time light reflections on the emerald sea surface, creating a living, breathing world."
+    },
+    "globalEnvironmentDNA": "[Location]: A picturesque Mediterranean harbor town with weathered white stone and terracotta roofs. [Mood]: Nostalgic and melancholic, with real-time light reflections on the emerald sea surface, creating a living, breathing world."
+  },
+  "environmentDNA": {
+    "dawn": "Time & Light: Pre-dawn transitioning to early sunrise. Low-angle cool mist drifting from the sea with layered lavender haze (#E6E6FA). Shadows: Deep purple (#4B0082) and indigo (#1A1A1A) shadows applied strictly to occlusion areas. Sky & Clouds: Pale Blue sky (#E0FFFF) with massive white cumulonimbus clouds. Clouds feature Thistle (#D8BFD8) paint layering and cold rim light highlights in #F0F8FF. Atmosphere: Intense atmospheric perspective with heavy, visible hand-painted brush strokes and opaque gouache layering on distant elements.",
+    "morning": "Time & Light: Early Morning. High-angle crisp golden sunlight (#FFFACD) casting defined, sharp-edged deep indigo (#1A1A1A) 2D cel-shadows. Sky & Clouds: Vibrant sky-blue gradient (#00BFFF). Towering white cumulonimbus clouds feature a fresh golden rim light (#EEE8AA) on top edges, with light lavender (#E6E6FA) paint layering. Atmosphere: Clear and cool air. Distance is depicted through atmospheric golden-blue haze using simplified opaque gouache shapes.",
+    "afternoon": "Time & Light: Warm sunlight (#FFFACD) casting distinct, sharp-edged 2D cel-shadows on all surfaces. Sky & Clouds: Deep indigo to sky-blue gradient (#0047AB). White clouds feature ivory highlights (#FFFFF0) only on the top edges. Atmosphere: Opaque gouache layering with prominent, textured brushstrokes. Subtle celluloid film grain and organic dust particles visible in the bright light.",
+    "late_afternoon": "Time & Light: Long-slanted deep golden-ochre light (#DAA520) casting elongated, sharp-edged deep indigo (#1A1A1A) and violet (#4B0082) 2D cel-shadows. Sky & Clouds: Sky transitioning from deep gold (#DAA520) to a burning amber glow (#FFBF00) at the horizon. Towering clouds feature amber rim light (#FFBF00) on top edges. Atmosphere: Thick atmospheric amber-blue haze using simplified opaque gouache shapes with heavy lavender (#E6E6FA) paint layering for density.",
+    "sunset": "Time & Light: Sunset transitioning to dusk. Low-angle deep warm sunset light (#FFB347) casting elongated, sharp-edged deep violet (#480082) and indigo (#1A1A1A) 2D cel-shadows. Sky & Clouds: Sky in #FFB347 (Orange-Amber) transitioning to #8A2BE2 (Violet). Clouds feature a peach-apricot rim light (#FBCEB1) on fiery edges. Atmosphere: Rich atmospheric apricot-blue haze. Light transitions are rendered through distinct, thick paint layers.",
+    "night": "Time & Light: Deep midnight-blue moonlight (#191970) vs. Warm orange glow (#FF8C00). Rim Lighting (Crucial): Apply a cool navy-blue rim light (#000080) on the opposite side of the orange glow to define character silhouettes and separate them from the dark background. Shadows: Intense ambient occlusion with sharp-edged deep indigo shadows to maintain 2D flat-shading integrity.",
+    "dream": "Time & Light: The \"Magic Hour\" where reality and fantasy blur. Low-angle, hyper-saturated golden sunset light (#FFB347). Over-exaggerated shimmering gold sparkles (Glint/Yunsul) on the sea surface. Shadows: Elongated, sharp-edged deep violet (#480082) and indigo (#1A1A1A) 2D cel-shadows. Shadows contain subtle purple tints instead of pure black. Sky & Clouds: Sky in #FFB347 (Orange-Amber) transitioning to deep #8A2BE2 (Violet). Clouds feature fiery peach-apricot rim light (#FBCEB1). Atmosphere: Rich atmospheric apricot-blue haze that slightly softens object boundaries. Floating microscopic golden dust particles are visible in the air, rendered with opaque gouache dabs to emphasize the \"Dream\" state.",
+    "spiritual": "Primary Light (Sea Phosphorescence): Light originates from below. Ethereal blue phosphorescence (#00FA9A to #1E90FF) rising from the sea, illuminating the white stone walls of the village from the bottom up (Inverted Lighting). Secondary Light (Celestial & Spiritual): A vast, dense Milky Way and silver moonlight (#E6E6FA) serve as a delicate Rim Light for rooftops and character silhouettes. Small, floating spiritual light orbs (Spiritual Orbs) drift through the alleys. Sky & Atmosphere: Deep, transparent Indigo-blue (#191970) night sky. The horizon acts as a mirror, reflecting the starry sky into the glowing sea. Perfect, soundless stillness rendered through high-contrast but calm color palettes. Shadows: Subtle and multi-directional due to the rising phosphorescence and floating orbs. Strictly 2D flat-shading with deep indigo-black (#1A1A1A) core shadows to maintain physical mass.",
+    "global": "[Location]: A picturesque Mediterranean harbor town with weathered white stone and terracotta roofs. [Mood]: Nostalgic and melancholic, with real-time light reflections on the emerald sea surface, creating a living, breathing world."
+  },
+  "styleCore": {
+    "styleKey": "gonegi-warm-cinematic",
+    "materialKey": "glass-glaze-soft",
+    "lightingKey": "warm-harbor-golden",
+    "brushworkKey": "soft-handpainted-animation",
+    "paletteKey": "warm-harbor-evening",
+    "styleAnchor": "Ghibli Mediterranean Chronicles v17.5",
+    "styleStrength": 0.992351
+  },
+  "render_rules": {
+    "global": "Classic 1980s Studio Ghibli hand-painted style with opaque gouache, visible brushstrokes, and emotional resonance.",
+    "character": "Preserve face topology lock and outfit continuity across scenes. Image anchor overrides prompt compression.",
+    "environment": "Apply time-of-day ENV DNA slot without overwriting scene physics.",
+    "composition": "Golden ratio framing with atmospheric perspective depth planes.",
+    "vitreous_elegance": "Vitreous Elegance Protocol: glass-glaze-soft eye highlight integrity, vitreous cel-shadow balance, mask fixation stable across frames, facial anchor laws must not be compressed away",
+    "mediterranean_reality": "Mediterranean Reality Foundation: picturesque harbor town with weathered white stone and terracotta roofs, nostalgic melancholic mood, emerald sea reflections, 1980s-1990s Studio Ghibli hand-drawn cel-animation, 0.4mm pencil line-art stability"
+  },
+  "masterAssetLibrary": [
+    {
+      "asset_id": "master-image-gonegi-book-v1",
+      "asset_kind": "master_image",
+      "label": "Gonegi Master Book Image",
+      "character_id": "slot_1-1"
+    },
+    {
+      "asset_id": "elite-image-gonegi-main-v1",
+      "asset_kind": "elite_image",
+      "label": "Gonegi Elite Image Anchor",
+      "character_id": "slot_1-1"
+    },
+    {
+      "asset_id": "elite-image-dana-companion-v1",
+      "asset_kind": "elite_image",
+      "label": "Dana Elite Image Anchor",
+      "character_id": "slot_2-1"
+    },
+    {
+      "asset_id": "style-anchor-ghibli-med-v175",
+      "asset_kind": "style_anchor",
+      "label": "Ghibli Mediterranean Style Anchor v17.5"
+    }
+  ],
+  "global_height_scale": "1.0 gonegi_height_unit",
+  "styleCoreMetrics": {
+    "contrast_norm": 0.84,
+    "warmth_norm": 0.91,
+    "brushwork_density": 0.88,
+    "palette_coherence": 0.992351,
+    "material_fidelity": 0.93,
+    "lighting_consistency": 0.89
+  },
+  "master_image_id": "master-image-gonegi-book-v1",
+  "styleAnchor": "Ghibli Mediterranean Chronicles v17.5",
+  "character_anchor_priority": "image_anchor_over_prompt"
+}

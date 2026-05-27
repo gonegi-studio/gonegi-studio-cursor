@@ -902,6 +902,7 @@ export interface MasterCoreAssetEntry {
 
 export interface MasterCoreDNASnapshot {
   schema_version?: string;
+  masterCore_version?: string;
   characterBook?: CharacterBook;
   environmentDNA?: CharacterBook['environmentDNA'];
   styleCore?: MasterCoreStyleCoreInput;
@@ -911,6 +912,7 @@ export interface MasterCoreDNASnapshot {
   styleCoreMetrics?: MasterCoreStyleCoreMetrics;
   master_image_id?: string;
   styleAnchor?: string;
+  character_anchor_priority?: 'image_anchor_over_prompt' | string;
   characters?: CharacterEntry[];
   subCharacters?: SubCharacterEntry[];
 }
@@ -4972,6 +4974,137 @@ export interface ControlledGenerationPackExportResult {
     migration_ingestion_unchanged: boolean;
     prompt_packs_generated: boolean;
     ai_studio_export_valid: boolean;
+  };
+}
+
+// --- AI Studio Controlled JSON Rebuild (PHASE-29B MasterCore v17.5 upload alignment) ---
+
+export const AI_STUDIO_CONTROLLED_JSON_REBUILD_VERSION =
+  'AI-STUDIO-CONTROLLED-JSON-REBUILD-v1' as const;
+
+export interface MasterStyleCoreRefs {
+  vitreous_elegance_protocol_ref: string;
+  mediterranean_reality_foundation_ref: string;
+  ams_laws_ref: string;
+  style_core_manifest_ref: string;
+  vitreous_elegance_protocol: string;
+  mediterranean_reality_foundation: string;
+  ams_laws: string[];
+}
+
+export interface CharacterGridAnchorRef {
+  slot_id: string;
+  grid_position: string;
+  name: string;
+  visual_dna: string;
+  image_anchor_ref?: string;
+  anchor_fingerprint: string;
+  role: 'protagonist' | 'companion' | 'support' | 'fauna';
+}
+
+export interface AiStudioControlledUploadScenePack {
+  generation_session_id: string;
+  scene_id: string;
+  scene_fingerprint: string;
+  prompt: string;
+  negative_prompt: string;
+  seed: number;
+  cfg: number;
+  sampler: string;
+  aspect_ratio: string;
+  quota_policy: 'free_daily';
+  masterCore_version: string;
+  styleCore: MasterCoreStyleCoreInput;
+  styleCoreMetrics?: MasterCoreStyleCoreMetrics;
+  render_rules: MasterCoreRenderRules;
+  environmentDNA: NonNullable<CharacterBook['environmentDNA']>;
+  selected_environment_slot: string;
+  master_style_core_refs: MasterStyleCoreRefs;
+  characterBook: CharacterBook;
+  character_anchor_priority: 'image_anchor_over_prompt';
+  character_grid_anchor_refs: CharacterGridAnchorRef[];
+  global_height_scale: string;
+  qa_reconnect_token: string;
+}
+
+export interface AiStudioScenePackRegistryEntry {
+  pack_id: string;
+  generation_session_id: string;
+  scene_id: string;
+  upload_ready: boolean;
+  mastercore_aligned: boolean;
+  character_anchor_integrity_pass: boolean;
+}
+
+export interface MasterCoreAlignmentCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface MasterCoreAlignmentReport {
+  masterCore_version: string;
+  snapshot_source: string;
+  style_core_manifest_loaded: boolean;
+  vitreous_elegance_preserved: boolean;
+  mediterranean_reality_preserved: boolean;
+  ams_laws_preserved: boolean;
+  alignment_checks: MasterCoreAlignmentCheck[];
+  alignment_checks_passed: number;
+  alignment_checks_total: number;
+}
+
+export interface CharacterAnchorIntegrityReport {
+  grid_slot_count: number;
+  expected_grid_slot_count: 13;
+  gonegi_facial_identity_preserved: boolean;
+  dana_facial_identity_preserved: boolean;
+  generic_guardian_slots_detected: number;
+  image_anchor_refs_present: number;
+  character_anchor_priority: 'image_anchor_over_prompt';
+  integrity_checks_passed: number;
+  integrity_checks_total: number;
+}
+
+export interface StyleEnvBindingReport {
+  environment_slots_present: number;
+  selected_environment_slots: string[];
+  style_core_keys_bound: string[];
+  render_rules_keys_bound: string[];
+  style_env_binding_score: number;
+  binding_checks_passed: number;
+  binding_checks_total: number;
+}
+
+export interface AiStudioControlledJsonRebuildResult {
+  schema_version: typeof AI_STUDIO_CONTROLLED_JSON_REBUILD_VERSION;
+  generated_at: string;
+  readonly_rebuild: true;
+  production_lock_checksum_ref: string;
+  controlled_pack_checksum_ref: string;
+  mastercore_snapshot_ref: string;
+  ai_studio_controlled_upload_json: AiStudioControlledUploadScenePack[];
+  ai_studio_scene_pack_registry: AiStudioScenePackRegistryEntry[];
+  mastercore_alignment_report: MasterCoreAlignmentReport;
+  character_anchor_integrity_report: CharacterAnchorIntegrityReport;
+  style_env_binding_report: StyleEnvBindingReport;
+  controlled_json_rebuild_checksum: string;
+  export_json_path: 'exports/ai-studio-controlled-json.json';
+  validation: {
+    deterministic_rebuild_checksum_stable: boolean;
+    readonly_rebuild: true;
+    no_dataset_mutation: true;
+    no_character_rewrite: true;
+    no_stylecore_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    controlled_pack_unchanged: boolean;
+    json_upload_format_valid: boolean;
+    scene_packs_generated: boolean;
   };
 }
 
