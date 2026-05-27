@@ -3085,6 +3085,83 @@ export interface FinalDatasetStructuralIntegrityAuditResult {
   };
 }
 
+// --- Final Dataset Semantic Quality Audit (PHASE-24B longform semantic readiness gate) ---
+
+export const FINAL_DATASET_SEMANTIC_QUALITY_AUDIT_VERSION =
+  'FINAL-DATASET-SEMANTIC-QUALITY-AUDIT-v1' as const;
+
+export type FinalSemanticVerdict = 'semantically_ready' | 'semantically_insufficient';
+
+export type LongformGenerationReadiness = 'ready' | 'conditional' | 'not_ready';
+
+export type SemanticAuditDimensionKey =
+  | 'scene_semantic_density'
+  | 'character_semantic_continuity'
+  | 'environment_semantic_continuity'
+  | 'temporal_narrative_coherence'
+  | 'visual_generation_usefulness'
+  | 'longform_fatigue_risk';
+
+export interface SemanticDimensionScore {
+  dimension_key: SemanticAuditDimensionKey;
+  label: string;
+  score: number;
+  inverse_risk: boolean;
+}
+
+export interface SemanticQualityGap {
+  gap_id: string;
+  severity: 'critical' | 'moderate' | 'low';
+  dimension_key: SemanticAuditDimensionKey;
+  scene_id?: string;
+  message: string;
+}
+
+export interface SemanticBlockingIssue {
+  issue_id: string;
+  severity: 'critical';
+  dimension_key: SemanticAuditDimensionKey;
+  scene_id?: string;
+  message: string;
+}
+
+export interface FinalDatasetSemanticQualityAuditResult {
+  schema_version: typeof FINAL_DATASET_SEMANTIC_QUALITY_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  export_candidate_id: string;
+  locked_export_id: string;
+  export_candidate_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  temporal_graph_checksum_ref: string;
+  identity_lock_checksum_ref: string;
+  stabilization_verdict_ref: string;
+  scene_count: number;
+  semantic_quality_score: number;
+  semantic_density_score: number;
+  continuity_realism_score: number;
+  longform_generation_readiness: LongformGenerationReadiness;
+  fatigue_risk_score: number;
+  weak_scene_ids: string[];
+  semantic_gap_list: SemanticQualityGap[];
+  semantic_blocking_issues: SemanticBlockingIssue[];
+  dimension_scores: SemanticDimensionScore[];
+  strongest_dimensions: SemanticAuditDimensionKey[];
+  weakest_dimensions: SemanticAuditDimensionKey[];
+  final_semantic_verdict: FinalSemanticVerdict;
+  semantic_audit_checksum: string;
+  validation: {
+    deterministic_semantic_audit_checksum_stable: boolean;
+    readonly_audit: true;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_prompt_rewrite: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

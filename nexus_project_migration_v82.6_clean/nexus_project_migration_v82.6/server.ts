@@ -104,6 +104,10 @@ import {
   buildFinalDatasetStructuralIntegrityAuditJsonFile,
   buildFinalDatasetStructuralIntegrityAuditPreview,
 } from "./services/finalDatasetStructuralIntegrityAudit";
+import {
+  buildFinalDatasetSemanticQualityAuditJsonFile,
+  buildFinalDatasetSemanticQualityAuditPreview,
+} from "./services/finalDatasetSemanticQualityAudit";
 
 async function startServer() {
   const app = express();
@@ -1436,6 +1440,31 @@ async function startServer() {
     } catch (e) {
       console.error("Final dataset structural integrity json file error:", e);
       return res.status(500).json({ error: "Failed to build final dataset structural integrity json file" });
+    }
+  });
+
+  // API: Final Dataset Semantic Quality Audit (PHASE-24B longform semantic readiness gate)
+  app.get("/api/cinematic/final-dataset-semantic-quality-preview", (_req, res) => {
+    try {
+      const preview = buildFinalDatasetSemanticQualityAuditPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Final dataset semantic quality preview error:", e);
+      return res.status(500).json({ error: "Failed to build final dataset semantic quality preview" });
+    }
+  });
+
+  app.get("/api/cinematic/final-dataset-semantic-quality-json-file", (_req, res) => {
+    try {
+      const download = buildFinalDatasetSemanticQualityAuditJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Final dataset semantic quality json file error:", e);
+      return res.status(500).json({ error: "Failed to build final dataset semantic quality json file" });
     }
   });
 
