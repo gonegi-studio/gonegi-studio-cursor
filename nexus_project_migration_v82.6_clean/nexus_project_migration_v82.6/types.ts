@@ -3686,6 +3686,65 @@ export interface MitigationStabilitySimulationResult {
   };
 }
 
+// --- Longform Readiness Re-Certification (PHASE-25D post-mitigation readiness gate) ---
+
+export const LONGFORM_READINESS_RECERTIFICATION_VERSION =
+  'LONGFORM-READINESS-RECERTIFICATION-v1' as const;
+
+export type FinalReadinessVerdict = 'ready' | 'conditional' | 'not_ready';
+
+export interface ReadinessRecertificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface LongformReadinessCertificate {
+  certificate_id: string;
+  certified_at: string;
+  prior_completion_verdict: CompletionVerdict;
+  prior_completion_certificate_checksum_ref: string;
+  rhythm_planner_checksum_ref: string;
+  mitigation_blueprint_checksum_ref: string;
+  stability_simulation_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  export_candidate_id: string;
+  scene_count: number;
+  structural_integrity_verdict: string;
+  semantic_verdict: string;
+  post_mitigation_fatigue_at_120: number;
+  readiness_at_120_scenes: ProjectedLongformReadinessLevel;
+  continuity_preservation_score: number;
+  orchestration_stability_score: number;
+  readonly_recertification: true;
+}
+
+export interface LongformReadinessRecertificationResult {
+  schema_version: typeof LONGFORM_READINESS_RECERTIFICATION_VERSION;
+  generated_at: string;
+  readonly_recertification: true;
+  longform_readiness_certificate: LongformReadinessCertificate;
+  final_readiness_verdict: FinalReadinessVerdict;
+  approved_for_image_generation: ImageGenerationApproval;
+  remaining_advisories: string[];
+  recertification_checks: ReadinessRecertificationCheck[];
+  checks_passed: number;
+  checks_total: number;
+  certificate_checksum: string;
+  validation: {
+    deterministic_certificate_checksum_stable: boolean;
+    readonly_recertification: true;
+    final_readiness_ready: boolean;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

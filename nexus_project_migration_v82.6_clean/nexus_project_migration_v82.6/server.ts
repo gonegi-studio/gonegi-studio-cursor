@@ -128,6 +128,10 @@ import {
   buildMitigationStabilitySimulationJsonFile,
   buildMitigationStabilitySimulationPreview,
 } from "./services/mitigationStabilitySimulation";
+import {
+  buildLongformReadinessRecertificationJsonFile,
+  buildLongformReadinessRecertificationPreview,
+} from "./services/longformReadinessRecertification";
 
 async function startServer() {
   const app = express();
@@ -1608,6 +1612,29 @@ async function startServer() {
     } catch (e) {
       console.error("Mitigation stability simulation json file error:", e);
       return res.status(500).json({ error: "Failed to build mitigation stability simulation json file" });
+    }
+  });
+
+  app.get("/api/cinematic/longform-readiness-recertification-preview", (_req, res) => {
+    try {
+      return res.json(buildLongformReadinessRecertificationPreview());
+    } catch (e) {
+      console.error("Longform readiness recertification preview error:", e);
+      return res.status(500).json({ error: "Failed to build longform readiness recertification preview" });
+    }
+  });
+
+  app.get("/api/cinematic/longform-readiness-recertification-json-file", (_req, res) => {
+    try {
+      const download = buildLongformReadinessRecertificationJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Longform readiness recertification json file error:", e);
+      return res.status(500).json({ error: "Failed to build longform readiness recertification json file" });
     }
   });
 
