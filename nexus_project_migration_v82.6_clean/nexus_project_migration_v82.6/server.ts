@@ -47,6 +47,10 @@ import {
   buildRuntimeTemporalChainStabilizationExportDownload,
   buildRuntimeTemporalChainStabilizationPreview,
 } from "./services/runtimeTemporalChainStabilizer";
+import {
+  buildLongformDatasetExportCandidateJsonFile,
+  buildLongformDatasetExportCandidatePreview,
+} from "./services/longformDatasetExportCandidate";
 
 async function startServer() {
   const app = express();
@@ -1017,6 +1021,31 @@ async function startServer() {
     } catch (e) {
       console.error("Runtime temporal chain stabilization export error:", e);
       return res.status(500).json({ error: "Failed to build runtime temporal chain stabilization json file export" });
+    }
+  });
+
+  // API: Longform Dataset Export Candidate (PHASE-19 runtime export packaging)
+  app.get("/api/cinematic/longform-dataset-export-candidate-preview", (_req, res) => {
+    try {
+      const preview = buildLongformDatasetExportCandidatePreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Longform dataset export candidate preview error:", e);
+      return res.status(500).json({ error: "Failed to build longform dataset export candidate preview" });
+    }
+  });
+
+  app.get("/api/cinematic/longform-dataset-export-candidate-json-file", (_req, res) => {
+    try {
+      const download = buildLongformDatasetExportCandidateJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Longform dataset export candidate json file error:", e);
+      return res.status(500).json({ error: "Failed to build longform dataset export candidate json file" });
     }
   });
 

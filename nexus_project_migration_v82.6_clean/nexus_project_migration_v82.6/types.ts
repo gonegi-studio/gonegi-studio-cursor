@@ -1948,6 +1948,62 @@ export interface RuntimeTemporalChainStabilizationResult {
   stabilization_checksum: string;
 }
 
+// --- Longform Dataset Export Candidate (PHASE-19 runtime export packaging) ---
+
+export const LONGFORM_DATASET_EXPORT_CANDIDATE_VERSION =
+  'LONGFORM-DATASET-EXPORT-CANDIDATE-v1' as const;
+
+export interface ProvenanceChainLink {
+  phase_key: string;
+  phase_label: string;
+  artifact_ref: string;
+  checksum_ref: string;
+}
+
+export interface SequenceExpansionMetadata {
+  anchor_sequence_id: string;
+  expansion_sequence_id: string;
+  anchor_scene_count: number;
+  expansion_scene_count: number;
+  active_scene_count: number;
+  merge_policy_id: string;
+  expansion_contract_id: string;
+  candidate_source_file: string | null;
+  longform_projection_120_stability: number;
+  runtime_chain_verdict: RuntimeChainVerdict;
+}
+
+export interface LongformExportCandidatePackage {
+  runtime_scene_count: number;
+  runtime_dataset: CinematicExtractionResult[];
+  runtime_lock_candidate: RuntimeLockCandidate;
+  runtime_recertification_report: RuntimeRecertificationReport;
+  runtime_temporal_stabilization_report: RuntimeTemporalStabilizationReport;
+  sequence_expansion_metadata: SequenceExpansionMetadata;
+  provenance_chain: ProvenanceChainLink[];
+  canonical_export_unchanged: true;
+  runtime_export_only: true;
+}
+
+export interface LongformDatasetExportCandidateResult {
+  schema_version: typeof LONGFORM_DATASET_EXPORT_CANDIDATE_VERSION;
+  generated_at: string;
+  readonly_export_candidate: true;
+  longform_export_candidate_package: LongformExportCandidatePackage;
+  export_candidate_id: string;
+  runtime_dataset_fingerprint: string;
+  export_checksum: string;
+  validation: {
+    deterministic_export_checksum_stable: boolean;
+    readonly_export_candidate: true;
+    runtime_export_only: true;
+    no_canonical_export_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    runtime_lock_inheritance_preserved: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
