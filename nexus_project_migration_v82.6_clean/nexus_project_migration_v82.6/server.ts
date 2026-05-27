@@ -170,6 +170,10 @@ import {
   buildAiStudioControlledJsonRebuildPreview,
 } from "./services/cinematic/aiStudioControlledJsonRebuild";
 import {
+  buildMinimalRenderCommandExportPreview,
+  buildMinimalRenderCommandJsonFile,
+} from "./services/cinematic/minimalRenderCommandExport";
+import {
   buildControlledGenerationPackExportJsonFile,
   buildControlledGenerationPackExportPreview,
 } from "./services/cinematic/controlledGenerationPackExport";
@@ -2019,6 +2023,30 @@ async function startServer() {
     } catch (e) {
       console.error("AI Studio controlled json file error:", e);
       return res.status(500).json({ error: "Failed to build AI Studio controlled json file" });
+    }
+  });
+
+  app.get("/api/cinematic/minimal-render-command-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildMinimalRenderCommandExportPreview());
+    } catch (e) {
+      console.error("Minimal render command preview error:", e);
+      return res.status(500).json({ error: "Failed to build minimal render command preview" });
+    }
+  });
+
+  app.get("/api/cinematic/minimal-render-command-json-file", (_req, res) => {
+    try {
+      const download = buildMinimalRenderCommandJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Minimal render command json file error:", e);
+      return res.status(500).json({ error: "Failed to build minimal render command json file" });
     }
   });
 

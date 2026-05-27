@@ -5108,6 +5108,76 @@ export interface AiStudioControlledJsonRebuildResult {
   };
 }
 
+// --- Minimal Render Command Export (PHASE-29C lightweight AI Studio single-image test) ---
+
+export const MINIMAL_RENDER_COMMAND_VERSION = 'MINIMAL-RENDER-COMMAND-v1' as const;
+
+/** AI Studio parser-compatible primary upload shape (root fields). */
+export interface MinimalRenderCommandUploadPayload {
+  ai_studio_render_recipe: {
+    copy_paste_prompt: string;
+    copy_paste_negative: string;
+  };
+  cfg: number;
+  sampler: string;
+  aspect_ratio: '16:9';
+  seed: number;
+  scene_id: string;
+  generation_session_id: string;
+  qa_reconnect_token: string;
+}
+
+export interface MinimalRenderCommandEntry {
+  command_id: string;
+  generation_session_id: string;
+  scene_id: string;
+  prompt_delta: string;
+  negative_delta: string;
+  selected_env_slot: string;
+  selected_style_core_ids: string[];
+  required_character_slots: string[];
+  character_anchor_priority: 'image_anchor_over_prompt';
+  seed: number;
+  aspect_ratio: '16:9';
+  qa_reconnect_token: string;
+}
+
+export interface MinimalRenderCommandExportMetadata {
+  schema_version: typeof MINIMAL_RENDER_COMMAND_VERSION;
+  source_pack_ref: 'PHASE-29B';
+  render_mode: 'single_scene_test';
+  render_count: 1;
+  generated_at: string;
+  readonly_export: true;
+  controlled_json_rebuild_checksum_ref: string;
+  controlled_pack_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  commands: [MinimalRenderCommandEntry];
+  minimal_render_command_checksum: string;
+  export_json_path: 'exports/minimal-render-command.json';
+  validation: {
+    deterministic_command_checksum_stable: boolean;
+    readonly_export: true;
+    render_count_locked: boolean;
+    single_command_only: boolean;
+    ai_studio_parser_compatible: boolean;
+    has_copy_paste_prompt: boolean;
+    has_copy_paste_negative: boolean;
+    no_mastercore_payload_duplication: boolean;
+    no_dataset_mutation: boolean;
+    no_image_generation: boolean;
+    no_provider_calls: boolean;
+    no_canonical_export_mutation: boolean;
+    no_runtime_dataset_mutation: boolean;
+    production_lock_unchanged: boolean;
+    phase_29b_unchanged: boolean;
+  };
+}
+
+export interface MinimalRenderCommandExportResult extends MinimalRenderCommandUploadPayload {
+  export_metadata: MinimalRenderCommandExportMetadata;
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
