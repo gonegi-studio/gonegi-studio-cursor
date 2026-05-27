@@ -2569,6 +2569,104 @@ export interface SingleSceneGenerationTestResult {
   };
 }
 
+// --- Real Render Input Pack Export (PHASE-22B external engine copy-ready export) ---
+
+export const REAL_RENDER_INPUT_PACK_EXPORT_VERSION = 'REAL-RENDER-INPUT-PACK-EXPORT-v1' as const;
+
+export interface SelectedSceneRenderPack {
+  scene_id: string;
+  sequence_id: string;
+  compressed_prompt: string;
+  negative_prompt: string;
+  continuity_seed: string;
+  style_core_ref: string;
+  production_lock_ref: string;
+  identity_lock: CharacterIdentityLock[];
+  environment_lock: EnvironmentIdentityLock;
+  temporal_anchor_id: string;
+  continuity_strength_score: number;
+  phase_22a_test_status: SingleSceneGenerationTestStatus;
+  export_ready: true;
+}
+
+export interface MidjourneyRenderInput {
+  engine: 'midjourney';
+  scene_id: string;
+  prompt: string;
+  negative_prompt: string;
+  copy_paste_command: string;
+  parameters: {
+    aspect_ratio: string;
+    stylize: number;
+    seed: string;
+    style_mode: string;
+  };
+  identity_lock_included: true;
+  continuity_seed_included: true;
+}
+
+export interface FluxRenderInput {
+  engine: 'flux';
+  scene_id: string;
+  prompt: string;
+  negative_prompt: string;
+  copy_paste_json: string;
+  parameters: {
+    seed: number;
+    guidance: number;
+    steps: number;
+  };
+  identity_lock_included: true;
+  continuity_seed_included: true;
+}
+
+export interface RealRenderSettings {
+  selected_scene_id: string;
+  engines: ('midjourney' | 'flux')[];
+  max_renders: number;
+  deterministic_seed_policy: 'continuity_seed_from_phase_21d';
+  single_scene_only: true;
+  external_generation_required: true;
+}
+
+export interface RealRenderInputVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface RealRenderInputPackExportResult {
+  schema_version: typeof REAL_RENDER_INPUT_PACK_EXPORT_VERSION;
+  generated_at: string;
+  readonly_export: true;
+  phase_22a_test_checksum_ref: string;
+  export_pack_checksum_ref: string;
+  identity_lock_checksum_ref: string;
+  selected_scene_id: string;
+  selected_scene_rationale: string;
+  selected_scene_render_pack: SelectedSceneRenderPack;
+  midjourney_input: MidjourneyRenderInput;
+  flux_input: FluxRenderInput;
+  render_settings: RealRenderSettings;
+  verification_notes: string[];
+  export_verification_checks: RealRenderInputVerificationCheck[];
+  render_input_pack_checksum: string;
+  validation: {
+    deterministic_export_checksum_stable: boolean;
+    readonly_export: true;
+    export_only: true;
+    single_scene_only: true;
+    no_provider_calls: true;
+    no_in_app_image_generation: true;
+    prompt_copy_ready: boolean;
+    identity_lock_included: boolean;
+    seed_included: boolean;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

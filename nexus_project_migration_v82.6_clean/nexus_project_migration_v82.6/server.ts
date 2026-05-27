@@ -79,6 +79,10 @@ import {
   buildSingleSceneGenerationTestPreview,
   SingleSceneGenerationTestOptions,
 } from "./services/singleSceneGenerationTest";
+import {
+  buildRealRenderInputPackJsonFile,
+  buildRealRenderInputPackPreview,
+} from "./services/realRenderInputPackExport";
 
 async function startServer() {
   const app = express();
@@ -1242,6 +1246,39 @@ async function startServer() {
     } catch (e) {
       console.error("Single scene generation test preview error:", e);
       return res.status(500).json({ error: "Failed to build single scene generation test preview" });
+    }
+  });
+
+  // API: Real Render Input Pack Export (PHASE-22B external engine copy-ready export)
+  app.get("/api/cinematic/real-render-input-pack-preview", (req, res) => {
+    try {
+      const options: SingleSceneGenerationTestOptions = {};
+      if (typeof req.query.scene_id === "string" && req.query.scene_id.length > 0) {
+        options.scene_id = req.query.scene_id;
+      }
+      const preview = buildRealRenderInputPackPreview(options);
+      return res.json(preview);
+    } catch (e) {
+      console.error("Real render input pack preview error:", e);
+      return res.status(500).json({ error: "Failed to build real render input pack preview" });
+    }
+  });
+
+  app.get("/api/cinematic/real-render-input-pack-json-file", (req, res) => {
+    try {
+      const options: SingleSceneGenerationTestOptions = {};
+      if (typeof req.query.scene_id === "string" && req.query.scene_id.length > 0) {
+        options.scene_id = req.query.scene_id;
+      }
+      const download = buildRealRenderInputPackJsonFile(options);
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Real render input pack json file error:", e);
+      return res.status(500).json({ error: "Failed to build real render input pack json file" });
     }
   });
 
