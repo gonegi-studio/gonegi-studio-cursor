@@ -116,6 +116,10 @@ import {
   buildFinalDatasetCompletionCertificationJsonFile,
   buildFinalDatasetCompletionCertificationPreview,
 } from "./services/finalDatasetCompletionCertification";
+import {
+  buildLongformRhythmDiversificationPlannerJsonFile,
+  buildLongformRhythmDiversificationPlannerPreview,
+} from "./services/longformRhythmDiversificationPlanner";
 
 async function startServer() {
   const app = express();
@@ -1523,6 +1527,31 @@ async function startServer() {
     } catch (e) {
       console.error("Final dataset completion certification json file error:", e);
       return res.status(500).json({ error: "Failed to build final dataset completion certification json file" });
+    }
+  });
+
+  // API: Longform Rhythm Diversification Planner (PHASE-25A planning-only fatigue mitigation)
+  app.get("/api/cinematic/longform-rhythm-diversification-preview", (_req, res) => {
+    try {
+      const preview = buildLongformRhythmDiversificationPlannerPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Longform rhythm diversification preview error:", e);
+      return res.status(500).json({ error: "Failed to build longform rhythm diversification preview" });
+    }
+  });
+
+  app.get("/api/cinematic/longform-rhythm-diversification-json-file", (_req, res) => {
+    try {
+      const download = buildLongformRhythmDiversificationPlannerJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Longform rhythm diversification json file error:", e);
+      return res.status(500).json({ error: "Failed to build longform rhythm diversification json file" });
     }
   });
 

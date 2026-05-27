@@ -3314,6 +3314,130 @@ export interface FinalDatasetCompletionCertificationResult {
   };
 }
 
+// --- Longform Rhythm Diversification Planner (PHASE-25A planning-only fatigue mitigation) ---
+
+export const LONGFORM_RHYTHM_DIVERSIFICATION_PLANNER_VERSION =
+  'LONGFORM-RHYTHM-DIVERSIFICATION-PLANNER-v1' as const;
+
+export type RhythmDiversificationCategory =
+  | 'emotional'
+  | 'cinematic'
+  | 'visual'
+  | 'narrative'
+  | 'orchestration';
+
+export type FatigueAccumulationTrend = 'rising' | 'stable' | 'mitigated_with_plan';
+
+export type ProjectedLongformReadinessLevel = 'ready' | 'conditional' | 'at_risk';
+
+export interface RhythmMapPoint {
+  scene_index: number;
+  scene_id: string;
+  signal: string;
+  intensity: number;
+  rhythm_note: string;
+}
+
+export interface RhythmDiversificationPlanStep {
+  step_id: string;
+  category: RhythmDiversificationCategory;
+  priority: number;
+  action: string;
+  target_scene_ids: string[];
+  planning_only: true;
+}
+
+export interface RhythmDiversificationPlan {
+  plan_id: string;
+  semantic_audit_checksum_ref: string;
+  fatigue_reducer_audit_checksum_ref: string;
+  expansion_blueprint_ref: string;
+  steps: RhythmDiversificationPlanStep[];
+  planning_only: true;
+}
+
+export interface DiversificationHotspot {
+  hotspot_id: string;
+  category: RhythmDiversificationCategory;
+  severity: 'high' | 'moderate' | 'low';
+  signal: string;
+  affected_scene_ids: string[];
+  detail: string;
+}
+
+export interface SafeDiversificationCandidate {
+  candidate_id: string;
+  category: RhythmDiversificationCategory;
+  target_signal: string;
+  suggested_planning_action: string;
+  rationale: string;
+  affected_scene_ids: string[];
+  planning_only: true;
+}
+
+export interface SceneCountFatigueProjection {
+  target_scene_count: number;
+  projected_fatigue_score: number;
+  projected_stability: number;
+  projected_readiness: ProjectedLongformReadinessLevel;
+}
+
+export interface FatigueReductionProjection {
+  baseline_fatigue_score: number;
+  scene_projections: SceneCountFatigueProjection[];
+  fatigue_accumulation_trend: FatigueAccumulationTrend;
+  continuity_stability_under_diversification: number;
+  diversification_mitigation_estimate: number;
+}
+
+export interface ProjectedFatigueScores {
+  current_scene_count: number;
+  current_fatigue_score: number;
+  at_60_scenes: number;
+  at_90_scenes: number;
+  at_120_scenes: number;
+}
+
+export interface ProjectedLongformReadiness {
+  at_60_scenes: ProjectedLongformReadinessLevel;
+  at_90_scenes: ProjectedLongformReadinessLevel;
+  at_120_scenes: ProjectedLongformReadinessLevel;
+  orchestration_verdict: string;
+}
+
+export interface LongformRhythmDiversificationPlannerResult {
+  schema_version: typeof LONGFORM_RHYTHM_DIVERSIFICATION_PLANNER_VERSION;
+  generated_at: string;
+  readonly_planning: true;
+  export_candidate_checksum_ref: string;
+  semantic_audit_checksum_ref: string;
+  fatigue_reducer_audit_checksum_ref: string;
+  temporal_graph_checksum_ref: string;
+  identity_lock_checksum_ref: string;
+  scene_count: number;
+  rhythm_diversification_plan: RhythmDiversificationPlan;
+  emotional_wave_map: RhythmMapPoint[];
+  cinematic_rhythm_map: RhythmMapPoint[];
+  visual_rhythm_map: RhythmMapPoint[];
+  narrative_rhythm_map: RhythmMapPoint[];
+  fatigue_reduction_projection: FatigueReductionProjection;
+  diversification_hotspots: DiversificationHotspot[];
+  safe_diversification_candidates: SafeDiversificationCandidate[];
+  projected_fatigue_scores: ProjectedFatigueScores;
+  projected_longform_readiness: ProjectedLongformReadiness;
+  planner_checksum: string;
+  validation: {
+    deterministic_planner_checksum_stable: boolean;
+    readonly_planning: true;
+    no_dataset_mutation: true;
+    no_prompt_mutation: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
