@@ -92,6 +92,10 @@ import {
   buildManualCorrectionPackJsonFile,
   buildManualCorrectionPackPreview,
 } from "./services/manualCorrectionPackBuilder";
+import {
+  buildCorrectedRenderInputPackJsonFile,
+  buildCorrectedRenderInputPackPreview,
+} from "./services/correctedRenderInputPack";
 
 async function startServer() {
   const app = express();
@@ -1349,6 +1353,31 @@ async function startServer() {
     } catch (e) {
       console.error("Manual correction pack json file error:", e);
       return res.status(500).json({ error: "Failed to build manual correction pack json file" });
+    }
+  });
+
+  // API: Corrected Render Input Pack (PHASE-23C second-pass render export)
+  app.get("/api/cinematic/corrected-render-input-pack-preview", (_req, res) => {
+    try {
+      const preview = buildCorrectedRenderInputPackPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Corrected render input pack preview error:", e);
+      return res.status(500).json({ error: "Failed to build corrected render input pack preview" });
+    }
+  });
+
+  app.get("/api/cinematic/corrected-render-input-pack-json-file", (_req, res) => {
+    try {
+      const download = buildCorrectedRenderInputPackJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Corrected render input pack json file error:", e);
+      return res.status(500).json({ error: "Failed to build corrected render input pack json file" });
     }
   });
 

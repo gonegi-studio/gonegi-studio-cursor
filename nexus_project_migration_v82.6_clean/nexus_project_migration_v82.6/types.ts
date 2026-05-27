@@ -2844,6 +2844,110 @@ export interface ManualCorrectionPackBuilderResult {
   };
 }
 
+// --- Corrected Render Input Pack (PHASE-23C second-pass render export) ---
+
+export const CORRECTED_RENDER_INPUT_PACK_VERSION = 'CORRECTED-RENDER-INPUT-PACK-v1' as const;
+
+export type AppliedDeltaApplication =
+  | 'prompt_prepend'
+  | 'prompt_append'
+  | 'prompt_emphasis'
+  | 'parameter_only';
+
+export interface AppliedManualDelta {
+  suggestion_id: string;
+  category: SafePromptDeltaSuggestion['category'];
+  delta_type: PromptDeltaSuggestionType;
+  applied_text: string;
+  target_engine: 'midjourney' | 'flux' | 'both';
+  application: AppliedDeltaApplication;
+  rationale: string;
+}
+
+export interface CorrectionSafetyReport {
+  original_prompt_preserved: true;
+  corrected_prompt_is_separate_field: true;
+  no_auto_rewrite_of_original: true;
+  deltas_applied_count: number;
+  prompt_text_delta_count: number;
+  parameter_only_delta_count: number;
+  safety_verdict: 'safe_for_second_pass';
+  safety_notes: string[];
+  blocked_operations: string[];
+}
+
+export interface CorrectedSceneRenderPack extends SelectedSceneRenderPack {
+  original_compressed_prompt: string;
+  corrected_compressed_prompt: string;
+  original_negative_prompt: string;
+  corrected_negative_prompt: string;
+  correction_pass: 2;
+  manual_correction_pack_checksum_ref: string;
+  render_input_pack_checksum_ref: string;
+}
+
+export interface CorrectedMidjourneyRenderInput {
+  engine: 'midjourney';
+  scene_id: string;
+  prompt: string;
+  corrected_prompt: string;
+  negative_prompt: string;
+  corrected_negative_prompt: string;
+  copy_paste_command: string;
+  corrected_copy_paste_command: string;
+  parameters: MidjourneyRenderInput['parameters'];
+  identity_lock_included: true;
+  continuity_seed_included: true;
+}
+
+export interface CorrectedFluxRenderInput {
+  engine: 'flux';
+  scene_id: string;
+  prompt: string;
+  corrected_prompt: string;
+  negative_prompt: string;
+  corrected_negative_prompt: string;
+  copy_paste_json: string;
+  corrected_copy_paste_json: string;
+  parameters: FluxRenderInput['parameters'];
+  identity_lock_included: true;
+  continuity_seed_included: true;
+}
+
+export interface CorrectedRenderInputVerificationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface CorrectedRenderInputPackResult {
+  schema_version: typeof CORRECTED_RENDER_INPUT_PACK_VERSION;
+  generated_at: string;
+  readonly_second_pass_export: true;
+  render_input_pack_checksum_ref: string;
+  manual_correction_pack_checksum_ref: string;
+  selected_scene_id: string;
+  corrected_render_input_pack: CorrectedSceneRenderPack;
+  corrected_midjourney_input: CorrectedMidjourneyRenderInput;
+  corrected_flux_input: CorrectedFluxRenderInput;
+  applied_manual_deltas: AppliedManualDelta[];
+  correction_safety_report: CorrectionSafetyReport;
+  corrected_export_verification_checks: CorrectedRenderInputVerificationCheck[];
+  corrected_render_input_pack_checksum: string;
+  validation: {
+    deterministic_corrected_pack_checksum_stable: boolean;
+    readonly_second_pass_export: true;
+    original_prompt_unchanged: true;
+    corrected_prompt_exists: boolean;
+    no_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
