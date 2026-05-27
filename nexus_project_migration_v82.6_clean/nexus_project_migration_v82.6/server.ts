@@ -157,6 +157,10 @@ import {
   buildFingerprintQaValidationJsonFile,
   buildFingerprintQaValidationPreview,
 } from "./services/cinematic/fingerprintQaValidation";
+import {
+  buildFingerprintSeparabilityReinforcementJsonFile,
+  buildFingerprintSeparabilityReinforcementPreview,
+} from "./services/cinematic/fingerprintSeparabilityReinforcement";
 
 function isApiPath(pathname: string): boolean {
   return pathname === "/api" || pathname.startsWith("/api/");
@@ -1851,6 +1855,30 @@ async function startServer() {
     } catch (e) {
       console.error("Fingerprint QA validation json file error:", e);
       return res.status(500).json({ error: "Failed to build fingerprint QA validation json file" });
+    }
+  });
+
+  app.get("/api/cinematic/fingerprint-separability-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildFingerprintSeparabilityReinforcementPreview());
+    } catch (e) {
+      console.error("Fingerprint separability preview error:", e);
+      return res.status(500).json({ error: "Failed to build fingerprint separability preview" });
+    }
+  });
+
+  app.get("/api/cinematic/fingerprint-separability-json-file", (_req, res) => {
+    try {
+      const download = buildFingerprintSeparabilityReinforcementJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Fingerprint separability json file error:", e);
+      return res.status(500).json({ error: "Failed to build fingerprint separability json file" });
     }
   });
 

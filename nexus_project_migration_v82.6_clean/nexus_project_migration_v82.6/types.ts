@@ -4330,6 +4330,92 @@ export interface FingerprintQaValidationResult {
   };
 }
 
+// --- Fingerprint Separability Reinforcement (PHASE-27C readonly additive differentiation) ---
+
+export const FINGERPRINT_SEPARABILITY_REINFORCEMENT_VERSION =
+  'FINGERPRINT-SEPARABILITY-REINFORCEMENT-v1' as const;
+
+export interface ReinforcedSceneFingerprint {
+  scene_id: string;
+  fingerprint_id: string;
+  original_compact_fingerprint: string;
+  reinforced_compact_fingerprint: string;
+  separability_score: number;
+  rarity_signature: string;
+  cadence_uniqueness: number;
+  motif_uniqueness: number;
+}
+
+export interface FingerprintHighSimilarityPair {
+  pair_id: string;
+  scene_id_a: string;
+  scene_id_b: string;
+  reinforced_similarity: number;
+  baseline_similarity: number;
+  similarity_signal: string;
+}
+
+export interface FingerprintSeparabilityReport {
+  total_scenes: number;
+  reinforced_fingerprints_generated: number;
+  average_separability_score: number;
+  average_cadence_uniqueness: number;
+  average_motif_uniqueness: number;
+  exact_reinforced_collision_count: number;
+  nearest_neighbor_similarity_mean: number;
+  nearest_neighbor_similarity_max: number;
+  reinforced_retrieval_precision_score: number;
+  cluster_distinctiveness_score: number;
+  reinforcement_readonly: true;
+}
+
+export interface FingerprintRetrievalGainReport {
+  baseline_retrieval_precision_score: number;
+  reinforced_retrieval_precision_score: number;
+  retrieval_precision_delta: number;
+  retrieval_precision_improved: boolean;
+  nearest_neighbor_similarity_mean_before: number;
+  nearest_neighbor_similarity_mean_after: number;
+  nearest_neighbor_separation_gain: number;
+  nearest_neighbor_similarity_max_before: number;
+  nearest_neighbor_similarity_max_after: number;
+  cluster_distinctiveness_before: number;
+  cluster_distinctiveness_after: number;
+  cluster_distinctiveness_gain: number;
+  exact_collision_count_before: number;
+  exact_collision_count_after: number;
+}
+
+export interface FingerprintSeparabilityReinforcementResult {
+  schema_version: typeof FINGERPRINT_SEPARABILITY_REINFORCEMENT_VERSION;
+  generated_at: string;
+  readonly_reinforcement: true;
+  fingerprint_checksum_ref: string;
+  qa_validation_checksum_ref: string;
+  production_lock_checksum_ref: string;
+  reinforced_scene_fingerprints: ReinforcedSceneFingerprint[];
+  fingerprint_separability_report: FingerprintSeparabilityReport;
+  reinforced_similarity_matrix: FingerprintSimilarityMatrix;
+  high_similarity_pairs: FingerprintHighSimilarityPair[];
+  retrieval_gain_report: FingerprintRetrievalGainReport;
+  reinforcement_checksum: string;
+  export_json_path: 'exports/fingerprint-separability-reinforcement.json';
+  validation: {
+    deterministic_reinforcement_checksum_stable: boolean;
+    readonly_reinforcement: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    fingerprint_layer_unchanged: boolean;
+    exact_collision_zero: boolean;
+    retrieval_precision_improved: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';
