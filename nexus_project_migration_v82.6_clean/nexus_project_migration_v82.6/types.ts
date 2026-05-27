@@ -2165,6 +2165,63 @@ export interface RuntimeImageGenerationCompilerResult {
   };
 }
 
+// --- Image Package Readiness Audit (PHASE-21B readonly pre-generation gate) ---
+
+export const IMAGE_PACKAGE_READINESS_AUDIT_VERSION =
+  'IMAGE-PACKAGE-READINESS-AUDIT-v1' as const;
+
+export type ImagePackageReadinessVerdict = 'ready' | 'conditional' | 'not_ready';
+
+export interface ImagePackageReadinessGap {
+  gap_id: string;
+  severity: 'critical' | 'moderate' | 'informational';
+  check_key: string;
+  message: string;
+  scene_id?: string;
+}
+
+export interface ImagePackageReadinessCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  score: number;
+  detail: string;
+}
+
+export interface ImagePackageReadinessAuditResult {
+  schema_version: typeof IMAGE_PACKAGE_READINESS_AUDIT_VERSION;
+  generated_at: string;
+  readonly_audit: true;
+  compiler_checksum_ref: string;
+  production_lock_ref: string;
+  runtime_dataset_fingerprint: string;
+  scene_count: number;
+  checks: ImagePackageReadinessCheck[];
+  image_package_readiness_score: number;
+  readiness_verdict: ImagePackageReadinessVerdict;
+  gap_list: ImagePackageReadinessGap[];
+  risky_scene_ids: string[];
+  next_recommended_phase: string;
+  prompt_length_stats: {
+    min: number;
+    max: number;
+    avg: number;
+    within_range_count: number;
+    acceptable_min: number;
+    acceptable_max: number;
+  };
+  audit_checksum: string;
+  validation: {
+    deterministic_audit_checksum_stable: boolean;
+    readonly_audit: true;
+    no_prompt_rewrite: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    no_provider_calls: true;
+    no_image_generation: true;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

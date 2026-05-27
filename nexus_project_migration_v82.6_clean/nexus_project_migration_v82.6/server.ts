@@ -59,6 +59,10 @@ import {
   buildRuntimeImageGenerationCompilerJsonFile,
   buildRuntimeImageGenerationCompilerPreview,
 } from "./services/runtimeImageGenerationCompiler";
+import {
+  buildImagePackageReadinessAuditJsonFile,
+  buildImagePackageReadinessAuditPreview,
+} from "./services/imagePackageReadinessAudit";
 
 async function startServer() {
   const app = express();
@@ -1104,6 +1108,31 @@ async function startServer() {
     } catch (e) {
       console.error("Runtime image generation compiler json file error:", e);
       return res.status(500).json({ error: "Failed to build runtime image generation compiler json file" });
+    }
+  });
+
+  // API: Image Package Readiness Audit (PHASE-21B readonly pre-generation gate)
+  app.get("/api/cinematic/image-package-readiness-audit-preview", (_req, res) => {
+    try {
+      const preview = buildImagePackageReadinessAuditPreview();
+      return res.json(preview);
+    } catch (e) {
+      console.error("Image package readiness audit preview error:", e);
+      return res.status(500).json({ error: "Failed to build image package readiness audit preview" });
+    }
+  });
+
+  app.get("/api/cinematic/image-package-readiness-audit-json-file", (_req, res) => {
+    try {
+      const download = buildImagePackageReadinessAuditJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Image package readiness audit json file error:", e);
+      return res.status(500).json({ error: "Failed to build image package readiness audit json file" });
     }
   });
 
