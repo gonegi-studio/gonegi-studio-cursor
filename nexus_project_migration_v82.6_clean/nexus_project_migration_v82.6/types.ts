@@ -4671,6 +4671,122 @@ export interface GenerationReadinessGateResult {
   };
 }
 
+// --- Image Renderer Migration Ingestion (PHASE-28C readonly Cursor migration package layer) ---
+
+export const IMAGE_RENDERER_MIGRATION_INGESTION_VERSION =
+  'IMAGE-RENDERER-MIGRATION-INGESTION-v1' as const;
+
+export type ImageRendererMigrationSourceKind =
+  | 'package_disk'
+  | 'package_zip_extracted'
+  | 'canonical_fixture';
+
+export interface ImageRendererMigrationRegistryEntry {
+  registry_id: string;
+  asset_kind: string;
+  source_path: string;
+  canonical: boolean;
+  mirror_only: boolean;
+  asset_fingerprint: string;
+}
+
+export interface ImageRendererSchemaValidationCheck {
+  check_key: string;
+  label: string;
+  passed: boolean;
+  detail: string;
+}
+
+export interface ImageRendererSchemaValidationReport {
+  package_root: string;
+  source_kind: ImageRendererMigrationSourceKind;
+  required_folders_present: string[];
+  required_folders_missing: string[];
+  json_schemas_parsed: number;
+  json_schema_parse_failures: number;
+  style_core_preserved: boolean;
+  character_dna_preserved: boolean;
+  environment_dna_preserved: boolean;
+  render_states_present: boolean;
+  prompt_assemblies_present: boolean;
+  quality_history_present: boolean;
+  sample_assets_count: number;
+  qa_records_count: number;
+  duplicate_session_registry_handled: boolean;
+  validation_checks: ImageRendererSchemaValidationCheck[];
+  validation_checks_passed: number;
+  validation_checks_total: number;
+}
+
+export interface ImageRendererSessionLinkageEntry {
+  session_id: string;
+  scene_intent_ref: string;
+  prompt_recipe_ref: string;
+  render_state_ref: string;
+  output_asset_ref: string;
+  qa_feedback_ref: string;
+  linkage_complete: boolean;
+}
+
+export interface ImageRendererSessionLinkageReport {
+  canonical_registry_path: string;
+  mirror_registry_paths: string[];
+  total_sessions: number;
+  linked_sessions: number;
+  session_linkage_coverage_ratio: number;
+  session_linkages: ImageRendererSessionLinkageEntry[];
+}
+
+export interface ImageRendererStyleCharacterBridge {
+  style_law_fingerprint: string;
+  style_core_ref: string;
+  character_anchor_registry: Record<string, string>;
+  environment_anchor_registry: Record<string, string>;
+  prompt_recipe_registry: Record<string, string>;
+  render_state_registry: Record<string, string>;
+  qa_feedback_registry: Record<string, string>;
+  generation_session_registry_ref: string;
+}
+
+export interface ImageRendererCursorReadinessReport {
+  migration_readiness_verdict: 'ready' | 'conditional' | 'not_ready';
+  cursor_bridge_ready: boolean;
+  scene_intent_to_qa_chain_ready: boolean;
+  legacy_ingestion_preserved: boolean;
+  readiness_score: number;
+  bridge_checks_passed: number;
+  bridge_checks_total: number;
+}
+
+export interface ImageRendererMigrationIngestionResult {
+  schema_version: typeof IMAGE_RENDERER_MIGRATION_INGESTION_VERSION;
+  generated_at: string;
+  readonly_ingestion: true;
+  production_lock_checksum_ref: string;
+  legacy_ingestion_checksum_ref: string;
+  generation_readiness_checksum_ref: string;
+  image_renderer_migration_registry: ImageRendererMigrationRegistryEntry[];
+  image_renderer_schema_validation_report: ImageRendererSchemaValidationReport;
+  image_renderer_session_linkage_report: ImageRendererSessionLinkageReport;
+  image_renderer_style_character_bridge: ImageRendererStyleCharacterBridge;
+  image_renderer_cursor_readiness_report: ImageRendererCursorReadinessReport;
+  migration_ingestion_checksum: string;
+  export_json_path: 'exports/image-renderer-migration.json';
+  validation: {
+    deterministic_migration_checksum_stable: boolean;
+    readonly_ingestion: true;
+    no_dataset_mutation: true;
+    no_prompt_rewrite: true;
+    no_image_generation: true;
+    no_provider_calls: true;
+    no_canonical_export_mutation: true;
+    no_runtime_dataset_mutation: true;
+    production_lock_unchanged: boolean;
+    legacy_ingestion_unchanged: boolean;
+    migration_readiness_verdict_pass: boolean;
+  };
+}
+
 export interface GoldenRecord {
   record_id: string;
   certified_by: 'human' | 'audit_engine';

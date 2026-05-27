@@ -169,6 +169,10 @@ import {
   buildGenerationReadinessGateJsonFile,
   buildGenerationReadinessGatePreview,
 } from "./services/cinematic/generationReadinessGate";
+import {
+  buildImageRendererMigrationIngestionJsonFile,
+  buildImageRendererMigrationIngestionPreview,
+} from "./services/cinematic/imageRendererMigrationIngestion";
 
 function isApiPath(pathname: string): boolean {
   return pathname === "/api" || pathname.startsWith("/api/");
@@ -1935,6 +1939,30 @@ async function startServer() {
     } catch (e) {
       console.error("Generation readiness json file error:", e);
       return res.status(500).json({ error: "Failed to build generation readiness json file" });
+    }
+  });
+
+  app.get("/api/cinematic/image-renderer-migration-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildImageRendererMigrationIngestionPreview());
+    } catch (e) {
+      console.error("Image renderer migration preview error:", e);
+      return res.status(500).json({ error: "Failed to build image renderer migration preview" });
+    }
+  });
+
+  app.get("/api/cinematic/image-renderer-migration-json-file", (_req, res) => {
+    try {
+      const download = buildImageRendererMigrationIngestionJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Image renderer migration json file error:", e);
+      return res.status(500).json({ error: "Failed to build image renderer migration json file" });
     }
   });
 
