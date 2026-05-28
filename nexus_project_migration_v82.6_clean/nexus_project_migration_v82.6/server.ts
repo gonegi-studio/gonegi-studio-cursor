@@ -176,6 +176,7 @@ import {
 } from "./services/cinematic/minimalRenderCommandExport";
 import { buildSequencePromptQualityAuditPreview } from "./services/cinematic/sequencePromptQualityAudit";
 import { buildRealRenderValidationAuditPreview } from "./services/realRenderValidationAudit";
+import { buildSingleCanvasIdentityPreview } from "./services/singleCanvasIdentityPreview";
 import {
   buildCanonicalCharacterPackExportPreview,
   buildCanonicalCharacterPackJsonFile,
@@ -2076,6 +2077,20 @@ async function startServer() {
     } catch (e) {
       console.error("Real render validation preview error:", e);
       return res.status(500).json({ error: "Failed to build real render validation preview" });
+    }
+  });
+
+  app.get("/api/cinematic/single-canvas-identity-preview", (req, res) => {
+    try {
+      const controlledPrompt =
+        typeof req.query.prompt === "string"
+          ? req.query.prompt
+          : "Gonegi and Dana walk along the harbor terrace at golden hour.";
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildSingleCanvasIdentityPreview(controlledPrompt));
+    } catch (e) {
+      console.error("Single canvas identity preview error:", e);
+      return res.status(500).json({ error: "Failed to build single canvas identity preview" });
     }
   });
 
