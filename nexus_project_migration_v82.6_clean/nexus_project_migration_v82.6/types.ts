@@ -5267,10 +5267,10 @@ export interface MusicDramaBindingAnalysis {
 
 // --- Runtime Identity Compiler (PHASE-31A ultra compact) ---
 
-export const RUNTIME_PROMPT_COMPILER_VERSION = '33E' as const;
+export const RUNTIME_PROMPT_COMPILER_VERSION = '33F' as const;
 export const RUNTIME_IMAGE_ANCHOR_EXPORT_VERSION = '31B' as const;
 export const RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION = '32D' as const;
-export const RUNTIME_CHARACTER_FIRST_EXPORT_VERSION = '33E' as const;
+export const RUNTIME_CHARACTER_FIRST_EXPORT_VERSION = '33F' as const;
 export const SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION = '32E' as const;
 
 export type SequencePromptQualityVerdict = 'PASS' | 'WARN' | 'FAIL';
@@ -5552,10 +5552,19 @@ export interface MinimalRenderCommandUploadPayload {
   qa_reconnect_token: string;
 }
 
+export interface CharacterAnchorDnaDebug {
+  source: 'character_anchor.index.json';
+  loaded_slots: string[];
+  name_slot_map: Record<string, string>;
+  mismatches: string[];
+  loaded_visual_dna_excerpt: Record<string, string>;
+}
+
 export interface MinimalRenderCommandExportResult extends MinimalRenderCommandUploadPayload {
   execution_contract?: MinimalRenderExecutionContract;
   unified_asset_registry?: UnifiedAssetRegistry;
   export_metadata: MinimalRenderCommandExportMetadata;
+  dna_debug?: CharacterAnchorDnaDebug;
 }
 
 export interface MinimalRenderCommandEntry {
@@ -5580,7 +5589,7 @@ export interface InjectedCharacterDnaEntry {
 }
 
 export interface CharacterAnchorDnaPreview {
-  dna_source: 'anchor_slot_json';
+  dna_source: 'character_anchor.index.json';
   injected_character_dna: InjectedCharacterDnaEntry[];
 }
 

@@ -2,11 +2,13 @@ import type { CharacterBook, CharacterAnchorDnaPreview, GhibliAnchor } from '../
 import { PromptBridge, preserveLockedCharacterNames } from './promptBridge';
 import { selectMasterAssets } from './selectMasterAssets';
 import {
+  type CharacterAnchorDnaDebug,
   detectCharactersInPromptWithAnchorDna,
   validateAnchorDnaForCharacters,
+  validateCompiledPromptDnaContent,
 } from './loadCharacterAnchorDNA';
 
-export const SINGLE_CANVAS_CONTROLLED_VERSION = 'PHASE-33E-v1' as const;
+export const SINGLE_CANVAS_CONTROLLED_VERSION = 'PHASE-33F-v1' as const;
 
 export interface SingleCanvasIdentityDebug {
   detected_characters: string[];
@@ -16,7 +18,7 @@ export interface SingleCanvasIdentityDebug {
   readiness: 'READY' | 'NOT_READY';
   blocked_reason?: string;
   preserved_name_tokens: string[];
-  dna_source?: 'anchor_slot_json';
+  dna_source?: 'character_anchor.index.json';
   injected_character_dna?: CharacterAnchorDnaPreview['injected_character_dna'];
   identity_before_style?: boolean;
 }
@@ -29,6 +31,7 @@ export interface SingleCanvasControlledGenerationResult {
   bridged_prompt?: string;
   refined_prompt?: string;
   debug: SingleCanvasIdentityDebug;
+  dna_debug?: CharacterAnchorDnaDebug;
   character_anchor_dna_preview?: CharacterAnchorDnaPreview;
 }
 
@@ -51,8 +54,11 @@ export function buildSingleCanvasControlledGeneration(
     return {
       version: SINGLE_CANVAS_CONTROLLED_VERSION,
       readiness: 'NOT_READY',
-      blocked_reason: `PHASE-33E character_dna.json missing for: ${dnaGate.missing.join(', ')}`,
+      blocked_reason:
+        dnaGate.blocked_reason ??
+        `PHASE-33F character anchor DNA NOT_READY for: ${dnaGate.missing.join(', ')}`,
       controlled_prompt: input.controlledPrompt,
+      dna_debug: dnaGate.dna_debug,
       debug: {
         detected_characters: anchorDetected.map((r) => r.name),
         injected_elite_image_ids: [],
@@ -60,7 +66,7 @@ export function buildSingleCanvasControlledGeneration(
         used_prompt_bridge: false,
         readiness: 'NOT_READY',
         preserved_name_tokens: [],
-        dna_source: 'anchor_slot_json',
+        dna_source: 'character_anchor.index.json',
         injected_character_dna: anchorDetected.map((record) => ({
           name: record.name,
           slot_id: record.slot_id,
@@ -79,8 +85,7 @@ export function buildSingleCanvasControlledGeneration(
   const styleIndex = assetSelection.reference_order.findIndex((e) => e.kind === 'style');
   const identityIndex = assetSelection.reference_order.findIndex((e) => e.kind === 'identity');
   const identity_before_style =
-    identityIndex >= 0 &&
-    (styleIndex < 0 || identityIndex < styleIndex);
+    identityIndex >= 0 && (styleIndex < 0 || identityIndex < styleIndex);
 
   const baseDebug: SingleCanvasIdentityDebug = {
     detected_characters: assetSelection.detected_characters,
@@ -90,7 +95,7 @@ export function buildSingleCanvasControlledGeneration(
     readiness: assetSelection.readiness,
     blocked_reason: assetSelection.blocked_reason,
     preserved_name_tokens: [],
-    dna_source: 'anchor_slot_json',
+    dna_source: 'character_anchor.index.json',
     injected_character_dna: dnaGate.records.map((record) => ({
       name: record.name,
       slot_id: record.slot_id,
@@ -105,9 +110,10 @@ export function buildSingleCanvasControlledGeneration(
       readiness: 'NOT_READY',
       blocked_reason: assetSelection.blocked_reason,
       controlled_prompt: input.controlledPrompt,
+      dna_debug: dnaGate.dna_debug,
       debug: baseDebug,
       character_anchor_dna_preview: {
-        dna_source: 'anchor_slot_json',
+        dna_source: 'character_anchor.index.json',
         injected_character_dna: baseDebug.injected_character_dna ?? [],
       },
     };
@@ -129,13 +135,32 @@ export function buildSingleCanvasControlledGeneration(
   const envPos = bridgeResult.bridged_prompt.indexOf('[ENVIRONMENT]');
   const firstStyleEnv =
     stylePos >= 0 ? stylePos : envPos >= 0 ? envPos : Number.MAX_SAFE_INTEGER;
-  const gonegiPos = bridgeResult.bridged_prompt.indexOf('Gonegi facial topology');
-  const danaPos = bridgeResult.bridged_prompt.indexOf('Dana facial topology');
+  const gonegiPos = bridgeResult.bridged_prompt.indexOf('Pazu-lookalike');
+  const danaPos = bridgeResult.bridged_prompt.indexOf('oceanic blue');
   const identity_before_style_prompt =
-    gonegiPos >= 0 &&
-    danaPos >= 0 &&
-    gonegiPos < firstStyleEnv &&
-    danaPos < firstStyleEnv;
+    gonegiPos >= 0 && danaPos >= 0 && gonegiPos < firstStyleEnv && danaPos < firstStyleEnv;
+
+  const promptDna = validateCompiledPromptDnaContent(
+    bridgeResult.bridged_prompt,
+    dnaGate.records
+  );
+  if (!promptDna.ready) {
+    return {
+      version: SINGLE_CANVAS_CONTROLLED_VERSION,
+      readiness: 'NOT_READY',
+      blocked_reason: promptDna.blocked_reason,
+      controlled_prompt: input.controlledPrompt,
+      bridged_prompt: bridgeResult.bridged_prompt,
+      dna_debug: dnaGate.dna_debug,
+      debug: {
+        ...baseDebug,
+        used_prompt_bridge: true,
+        readiness: 'NOT_READY',
+        blocked_reason: promptDna.blocked_reason,
+      },
+      character_anchor_dna_preview: bridgeResult.character_anchor_dna_preview,
+    };
+  }
 
   return {
     version: SINGLE_CANVAS_CONTROLLED_VERSION,
@@ -143,6 +168,7 @@ export function buildSingleCanvasControlledGeneration(
     controlled_prompt: input.controlledPrompt,
     bridged_prompt: bridgeResult.bridged_prompt,
     refined_prompt,
+    dna_debug: dnaGate.dna_debug,
     character_anchor_dna_preview: bridgeResult.character_anchor_dna_preview,
     debug: {
       detected_characters: bridgeResult.detected_characters,
@@ -151,7 +177,7 @@ export function buildSingleCanvasControlledGeneration(
       used_prompt_bridge: true,
       readiness: 'READY',
       preserved_name_tokens: bridgeResult.preserved_name_tokens,
-      dna_source: 'anchor_slot_json',
+      dna_source: 'character_anchor.index.json',
       injected_character_dna: bridgeResult.character_anchor_dna_preview.injected_character_dna,
       identity_before_style: identity_before_style && identity_before_style_prompt,
     },

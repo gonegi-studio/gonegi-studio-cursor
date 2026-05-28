@@ -21,8 +21,10 @@ import { CHARACTER_DOMINANCE_LOCK } from './identityCompressionEngine';
 import {
   assertCanonicalAnchorDnaReady,
   buildCharacterDnaLockSection,
+  detectCharactersInPromptWithAnchorDna,
   formatFullAnchorCharacterCoreSection,
   getCharacterAnchorDNABySlot,
+  validateCompiledPromptDnaContent,
 } from './loadCharacterAnchorDNA';
 import {
   assertForbiddenTokensAbsent,
@@ -341,14 +343,20 @@ export function compileRuntimePrompt(input: RuntimePromptCompileInput): Compiled
   ]);
 
   if (!assertSceneIsolationClean(compiled_prompt) || !assertForbiddenTokensAbsent(compiled_prompt)) {
-    throw new Error('PHASE-33E runtime prompt compiler failed isolation or conflict checks');
+    throw new Error('PHASE-33F runtime prompt compiler failed isolation or conflict checks');
+  }
+
+  const anchorDnaRecords = detectCharactersInPromptWithAnchorDna(compiled_prompt);
+  const dnaContent = validateCompiledPromptDnaContent(compiled_prompt, anchorDnaRecords);
+  if (!dnaContent.ready) {
+    throw new Error(dnaContent.blocked_reason ?? 'PHASE-33F compiled prompt DNA content NOT_READY');
   }
 
   if (
     compiled_prompt.includes('image latent anchors override') ||
     compiled_prompt.includes('PRIMARY CHARACTER IDENTITY SOURCE: character_image_anchors')
   ) {
-    throw new Error('PHASE-33E compiler must not emit deprecated image-anchor dominance wording');
+    throw new Error('PHASE-33F compiler must not emit deprecated image-anchor dominance wording');
   }
 
   const compile_fingerprint = digest([
@@ -397,8 +405,17 @@ export function assertCompiledPromptIntegrity(compiled: CompiledRenderPrompt): b
     prompt.includes('[IDENTITY_LOCK]') &&
     prompt.includes('[CHARACTER_DNA_LOCK]') &&
     prompt.includes('character_dna.json are IMMUTABLE') &&
-    prompt.includes('Gonegi facial topology') &&
-    prompt.includes('Dana facial topology') &&
+    prompt.includes('Pazu-lookalike') &&
+    prompt.includes('sun-kissed tan') &&
+    prompt.includes('suspenders') &&
+    prompt.includes('oceanic blue') &&
+    prompt.includes('low twin ponytails') &&
+    prompt.includes('Pale Cornflower Blue') &&
+    !prompt.includes('warm olive gaze') &&
+    !prompt.includes('seafoam linen wrap') &&
+    !prompt.includes('harbor shawl') &&
+    !prompt.includes('Gonegi facial topology') &&
+    !prompt.includes('Dana facial topology') &&
     prompt.includes('[CHARACTER_PRIORITY]') &&
     prompt.includes('[LOD_PROTOCOL]') &&
     /Gonegi/i.test(prompt) &&

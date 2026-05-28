@@ -12,7 +12,7 @@ import {
   validateAnchorDnaForCharacters,
 } from './loadCharacterAnchorDNA';
 
-export const SELECT_MASTER_ASSETS_VERSION = 'PHASE-33E-v1' as const;
+export const SELECT_MASTER_ASSETS_VERSION = 'PHASE-33F-v1' as const;
 
 export type MasterAssetReadiness = 'READY' | 'NOT_READY';
 
@@ -87,7 +87,9 @@ export function selectMasterAssets(input: SelectMasterAssetsInput): SelectMaster
   if (!dnaValidation.ready) {
     return {
       readiness: 'NOT_READY',
-      blocked_reason: `PHASE-33E character_dna.json missing for: ${dnaValidation.missing.join(', ')}`,
+      blocked_reason:
+        dnaValidation.blocked_reason ??
+        `PHASE-33F character anchor DNA NOT_READY for: ${dnaValidation.missing.join(', ')}`,
       detected_characters: detected,
       injected_elite_image_ids: [],
       reference_order: [],

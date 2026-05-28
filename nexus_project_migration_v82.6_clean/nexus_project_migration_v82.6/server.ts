@@ -2050,10 +2050,18 @@ async function startServer() {
     }
   });
 
-  app.get("/api/cinematic/minimal-render-command-json-file", (_req, res) => {
+  app.get("/api/cinematic/minimal-render-command-json-file", (req, res) => {
     try {
       resetMinimalRenderCommandExportCache();
       const download = buildMinimalRenderCommandJsonFile();
+      const includeDnaDebug = req.query.dna_debug === "1";
+      if (includeDnaDebug) {
+        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        return res.json({
+          ...JSON.parse(download.body),
+          dna_debug: download.dna_debug,
+        });
+      }
       res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
       res.setHeader("Content-Type", download.contentType);
       res.setHeader("X-Export-Filename", download.filename);

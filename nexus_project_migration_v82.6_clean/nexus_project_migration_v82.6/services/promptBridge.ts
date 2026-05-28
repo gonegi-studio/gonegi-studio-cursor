@@ -14,7 +14,7 @@ import {
 const MUSIC_DRAMA_BINDING_MODEL =
   'characterBook.characters[slot_id].elite_image_id + visual_dna lookup + environmentDNA[slot] verbatim + styleAnchor verbatim';
 
-export const PROMPT_BRIDGE_VERSION = 'PHASE-33E-v1' as const;
+export const PROMPT_BRIDGE_VERSION = 'PHASE-33F-v1' as const;
 
 export const IDENTITY_LAW_BLOCK = `### [IDENTITY LAW]
 Absolute fidelity to Ref Image #1 / active elite character refs.
@@ -169,7 +169,7 @@ export class PromptBridge {
       detected_characters: detected,
       preserved_name_tokens: detectCharactersInPromptWithAnchorDna(preserved).map((r) => r.name),
       character_anchor_dna_preview: {
-        dna_source: 'anchor_slot_json',
+        dna_source: 'character_anchor.index.json',
         injected_character_dna: anchorRecords.map((record) => ({
           name: record.name,
           slot_id: record.slot_id,

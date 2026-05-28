@@ -34,9 +34,11 @@ import {
 } from '../runtimePromptCompiler';
 import { assertSceneIsolationClean } from '../sceneIsolationGuard';
 import {
+  buildCharacterAnchorDnaDebug,
   buildInjectedCharacterDnaPreview,
   getCharacterAnchorDNABySlot,
   resetCharacterAnchorDNAMapCache,
+  validateCompiledPromptDnaContent,
 } from '../loadCharacterAnchorDNA';
 import { buildSynthesizedDatasetProductionLockPreview } from '../synthesizedDatasetProductionLock';
 import { buildAiStudioControlledJsonRebuildPreview } from './aiStudioControlledJsonRebuild';
@@ -274,7 +276,7 @@ function assertRendererJsonFileBody(body: string): void {
     throw new Error('PHASE-31A json-file missing compiled_prompt');
   }
   if (parsed.compiler_version !== RUNTIME_CHARACTER_FIRST_EXPORT_VERSION) {
-    throw new Error('PHASE-33E json-file compiler_version must be 33E');
+    throw new Error(`PHASE-33F json-file compiler_version must be ${RUNTIME_CHARACTER_FIRST_EXPORT_VERSION}`);
   }
   if (!Array.isArray(parsed.character_reference_triggers) || parsed.character_reference_triggers.length === 0) {
     throw new Error('PHASE-33A json-file missing character_reference_triggers');
@@ -367,6 +369,11 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
   const character_anchor_dna_preview = buildInjectedCharacterDnaPreview(anchorDnaRecords);
   const compilerDeterministic = verifyCompilerDeterminism(compileInput, 5);
   const integrityOk = assertCompiledPromptIntegrity(compiled);
+  const dna_debug = buildCharacterAnchorDnaDebug();
+  const dnaContent = validateCompiledPromptDnaContent(compiledPrompt, anchorDnaRecords);
+  if (!dnaContent.ready) {
+    throw new Error(dnaContent.blocked_reason ?? 'PHASE-33F minimal render DNA content NOT_READY');
+  }
 
   const uploadSerialized = JSON.stringify(uploadPayload);
   const noDuplication = assertNoMasterCoreDuplication(uploadSerialized);
@@ -425,21 +432,21 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
       production_lock_unchanged: false,
       phase_29b_unchanged: false,
       anchor_slot_dna_active:
-        compiledPrompt.includes('Gonegi facial topology') &&
-        compiledPrompt.includes('Dana facial topology') &&
+        compiledPrompt.includes('Pazu-lookalike') &&
+        compiledPrompt.includes('oceanic blue') &&
         compiledPrompt.includes('[CHARACTER_DNA_LOCK]'),
       identity_before_style:
-        compiledPrompt.includes('Gonegi facial topology') &&
-        compiledPrompt.includes('Dana facial topology') &&
-        compiledPrompt.indexOf('Gonegi facial topology') < firstStyleEnv &&
-        compiledPrompt.indexOf('Dana facial topology') < firstStyleEnv,
+        compiledPrompt.includes('Pazu-lookalike') &&
+        compiledPrompt.includes('oceanic blue') &&
+        compiledPrompt.indexOf('Pazu-lookalike') < firstStyleEnv &&
+        compiledPrompt.indexOf('oceanic blue') < firstStyleEnv,
     },
   };
 
   assertCharacterImageAnchorsSlotMapped(character_image_anchors, uploadPayload.character_bindings);
 
   if (!integrityOk || !compilerDeterministic || !uploadDeterministic || !anchorsPresent || !fingerprintStable) {
-    throw new Error('PHASE-33E character-first export failed integrity or determinism checks');
+    throw new Error('PHASE-33F character-first export failed integrity or determinism checks');
   }
 
   const controlledPackAfter = buildControlledGenerationPackExportPreview();
@@ -483,6 +490,7 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
     execution_contract,
     unified_asset_registry,
     export_metadata,
+    dna_debug,
   };
 
   writeExportArtifact(result);
@@ -502,6 +510,7 @@ export function buildMinimalRenderCommandJsonFile(): {
   contentType: string;
   body: string;
   exportFingerprint: string;
+  dna_debug: ReturnType<typeof buildCharacterAnchorDnaDebug>;
 } {
   resetMinimalRenderCommandExportCache();
   const preview = buildMinimalRenderCommandExport();
@@ -514,6 +523,7 @@ export function buildMinimalRenderCommandJsonFile(): {
     contentType: 'application/json',
     body,
     exportFingerprint: crypto.createHash('sha256').update(body).digest('hex'),
+    dna_debug: buildCharacterAnchorDnaDebug(),
   };
 }
 

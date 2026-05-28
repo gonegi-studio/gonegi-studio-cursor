@@ -42,7 +42,7 @@ export function resolveCharacterIdentity(slotId: string): ResolvedCharacterIdent
 
   const bookEntry = resolveCharacterBookEntry(slotId);
   throw new Error(
-    `PHASE-33E missing character_dna.json for slot ${slotId} (${slotBinding.character_name}); book visual_dna fallback disabled`
+    `PHASE-33F missing character_dna.json for slot ${slotId} (${slotBinding.character_name}); book visual_dna fallback disabled`
   );
 }
 
