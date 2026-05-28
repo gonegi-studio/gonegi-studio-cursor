@@ -3,8 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import {
   CharacterImageAnchor,
+  CharacterReferenceTrigger,
   MINIMAL_RENDER_COMMAND_VERSION,
-  RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+  RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
   MinimalRenderCommandEntry,
   MinimalRenderCommandExportMetadata,
   MinimalRenderCommandExportResult,
@@ -110,6 +111,21 @@ function buildCharacterImageAnchorsForExport(): CharacterImageAnchor[] {
   );
 }
 
+function buildCharacterReferenceTriggers(
+  anchors: CharacterImageAnchor[],
+  bindings: ReturnType<typeof compileRuntimePrompt>['character_bindings']
+): CharacterReferenceTrigger[] {
+  const nameBySlot = new Map(bindings.map((b) => [b.slot_id, b.character_name]));
+  return [...anchors]
+    .sort((a, b) => a.slot_id.localeCompare(b.slot_id))
+    .map((anchor) => ({
+      slot_id: anchor.slot_id,
+      character_name: (nameBySlot.get(anchor.slot_id) ?? anchor.slot_id).replace(/\s+Main$/i, ''),
+      elite_image_id: anchor.elite_image_id,
+      indexeddb_ref: anchor.indexeddb_ref,
+    }));
+}
+
 export function buildCanonicalRuntimePromptCompileInput(): RuntimePromptCompileInput {
   return buildCompileInput(buildCharacterImageAnchorsForExport());
 }
@@ -168,10 +184,14 @@ function buildCanonicalUploadPayload(
   );
 
   return {
-    compiler_version: RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+    compiler_version: RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
     compiled_prompt: compiled.compiled_prompt,
     compiled_negative_prompt: compiled.compiled_negative_prompt,
     character_image_anchors,
+    character_reference_triggers: buildCharacterReferenceTriggers(
+      character_image_anchors,
+      compiled.character_bindings
+    ),
     character_bindings: compiled.character_bindings,
     style_bindings: compiled.style_bindings,
     env_bindings: compiled.env_bindings,
@@ -199,9 +219,9 @@ const FORBIDDEN_JSON_FILE_ROOT_KEYS = ['execution_contract', 'unified_asset_regi
 export function toMinimalRenderCommandUploadPayload(
   result: MinimalRenderCommandExportResult
 ): MinimalRenderCommandUploadPayload {
-  if (result.compiler_version !== RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION) {
+  if (result.compiler_version !== RUNTIME_CHARACTER_FIRST_EXPORT_VERSION) {
     throw new Error(
-      `minimal-render-command json-file requires compiler_version ${RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION}`
+      `minimal-render-command json-file requires compiler_version ${RUNTIME_CHARACTER_FIRST_EXPORT_VERSION}`
     );
   }
   if (!result.compiled_prompt?.length) {
@@ -212,10 +232,11 @@ export function toMinimalRenderCommandUploadPayload(
   }
 
   return {
-    compiler_version: RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+    compiler_version: RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
     compiled_prompt: result.compiled_prompt,
     compiled_negative_prompt: result.compiled_negative_prompt,
     character_image_anchors: result.character_image_anchors,
+    character_reference_triggers: result.character_reference_triggers,
     character_bindings: result.character_bindings,
     style_bindings: result.style_bindings,
     env_bindings: result.env_bindings,
@@ -247,8 +268,15 @@ function assertRendererJsonFileBody(body: string): void {
   if (!parsed.compiled_prompt || typeof parsed.compiled_prompt !== 'string') {
     throw new Error('PHASE-31A json-file missing compiled_prompt');
   }
-  if (parsed.compiler_version !== RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION) {
-    throw new Error('PHASE-32D json-file compiler_version must be 32D');
+  if (parsed.compiler_version !== RUNTIME_CHARACTER_FIRST_EXPORT_VERSION) {
+    throw new Error('PHASE-33A json-file compiler_version must be 33A');
+  }
+  if (!Array.isArray(parsed.character_reference_triggers) || parsed.character_reference_triggers.length === 0) {
+    throw new Error('PHASE-33A json-file missing character_reference_triggers');
+  }
+  const prompt = parsed.compiled_prompt as string;
+  if (!prompt.startsWith('[CHARACTER_CORE]')) {
+    throw new Error('PHASE-33A json-file compiled_prompt must start with CHARACTER_CORE');
   }
   const anchors = parsed.character_image_anchors;
   if (!Array.isArray(anchors) || !assertCharacterImageAnchorsPresent(anchors as CharacterImageAnchor[])) {
@@ -352,14 +380,18 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
       has_copy_paste_negative: uploadPayload.compiled_negative_prompt.length > 0,
       compiled_prompt_present: compiledPrompt.length > 0,
       runtime_compiler_active:
-        uploadPayload.compiler_version === RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+        uploadPayload.compiler_version === RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
+      character_first_prompt_active: compiledPrompt.startsWith('[CHARACTER_CORE]'),
+      elite_reference_triggers_in_prompt:
+        compiledPrompt.includes('elite-image-gonegi-main-v1') &&
+        compiledPrompt.includes('elite-image-dana-companion-v1'),
       transition_bindings_present: uploadPayload.transition_bindings.length > 0,
       shot_bindings_present: uploadPayload.shot_bindings.length > 0,
       motion_bindings_present: uploadPayload.motion_bindings.length > 0,
       cinematic_sequence_deterministic: compilerDeterministic && uploadDeterministic,
       compiler_deterministic: compilerDeterministic && uploadDeterministic,
-      gonegi_identity_in_compiled_prompt: /Canonical Character: Gonegi/i.test(compiledPrompt),
-      dana_identity_in_compiled_prompt: compiledPrompt.includes('Canonical Character: Dana'),
+      gonegi_identity_in_compiled_prompt: /\bGonegi\b/i.test(compiledPrompt),
+      dana_identity_in_compiled_prompt: /\bDana\b/i.test(compiledPrompt),
       scene_isolation_clean: assertSceneIsolationClean(compiledPrompt),
       character_image_anchors_present: anchorsPresent,
       image_anchor_fingerprint_stable: fingerprintStable,
@@ -383,7 +415,7 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
   assertCharacterImageAnchorsSlotMapped(character_image_anchors, uploadPayload.character_bindings);
 
   if (!integrityOk || !compilerDeterministic || !uploadDeterministic || !anchorsPresent || !fingerprintStable) {
-    throw new Error('PHASE-32D cinematic sequence export failed integrity or determinism checks');
+    throw new Error('PHASE-33A character-first export failed integrity or determinism checks');
   }
 
   const controlledPackAfter = buildControlledGenerationPackExportPreview();

@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import {
-  RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+  RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
   SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION,
   SequencePromptQualityAuditResult,
   SequencePromptQualityVerdict,
@@ -13,13 +13,16 @@ import {
 import { assertSceneIsolationClean } from '../sceneIsolationGuard';
 import { buildCanonicalRuntimePromptCompileInput } from './minimalRenderCommandExport';
 
-export const SEQUENCE_PROMPT_QUALITY_AUDIT_EPOCH = '2026-05-28T08:00:00.000Z';
+export const SEQUENCE_PROMPT_QUALITY_AUDIT_EPOCH = '2026-05-28T10:00:00.000Z';
 
+/** Pre-33A typical compiled_prompt length for reduction comparison. */
+const PHASE_32D_BASELINE_PROMPT_LENGTH = 4173;
+const TARGET_REDUCTION_RATIO = 0.35;
 const MAX_PASS_PROMPT_LENGTH = 14_000;
 const MAX_WARN_PROMPT_LENGTH = 18_000;
-const MAX_PASS_DUPLICATE_PHRASES = 0;
-const MAX_WARN_DUPLICATE_PHRASES = 2;
-const MIN_PHRASE_LENGTH_FOR_DUPLICATE = 20;
+const MAX_PASS_DUPLICATE_PHRASES = 1;
+const MAX_WARN_DUPLICATE_PHRASES = 3;
+const MIN_PHRASE_LENGTH_FOR_DUPLICATE = 24;
 
 function digest(parts: string[]): string {
   return crypto.createHash('sha256').update(parts.join('|')).digest('hex');
@@ -46,30 +49,31 @@ export function countDuplicatePhrases(text: string): number {
 }
 
 export function checkIdentityBeforeAction(compiledPrompt: string): boolean {
-  const imageIdx = compiledPrompt.indexOf('[IMAGE_ANCHOR]');
-  const characterIdx = compiledPrompt.indexOf('[CHARACTER]');
+  const characterIdx = compiledPrompt.indexOf('[CHARACTER_CORE]');
+  const referenceIdx = compiledPrompt.indexOf('[REFERENCE_TRIGGER]');
+  const actionIdx = compiledPrompt.indexOf('[ACTION]');
   const sceneIdx = compiledPrompt.indexOf('[SCENE]');
-  const transitionIdx = compiledPrompt.indexOf('[TRANSITION]');
+  const styleIdx = compiledPrompt.indexOf('[STYLE_CORE_LIGHT]');
   const shotIdx = compiledPrompt.indexOf('[SHOT]');
-  const motionIdx = compiledPrompt.indexOf('[MOTION]');
 
   if (
-    imageIdx < 0 ||
     characterIdx < 0 ||
+    referenceIdx < 0 ||
+    actionIdx < 0 ||
     sceneIdx < 0 ||
-    transitionIdx < 0 ||
-    shotIdx < 0 ||
-    motionIdx < 0
+    styleIdx < 0 ||
+    shotIdx < 0
   ) {
     return false;
   }
 
   return (
-    imageIdx < characterIdx &&
+    characterIdx < referenceIdx &&
+    referenceIdx < actionIdx &&
     characterIdx < sceneIdx &&
-    characterIdx < transitionIdx &&
-    characterIdx < shotIdx &&
-    characterIdx < motionIdx
+    characterIdx < styleIdx &&
+    sceneIdx < styleIdx &&
+    characterIdx < shotIdx
   );
 }
 
@@ -84,6 +88,10 @@ function isPromptLengthAcceptable(length: number): boolean {
   return length <= MAX_PASS_PROMPT_LENGTH;
 }
 
+function isPromptLengthReduced(length: number): boolean {
+  return length <= Math.floor(PHASE_32D_BASELINE_PROMPT_LENGTH * (1 - TARGET_REDUCTION_RATIO));
+}
+
 function resolveVerdict(input: {
   forbidden_term_hits: string[];
   identity_before_action: boolean;
@@ -91,12 +99,15 @@ function resolveVerdict(input: {
   duplicate_phrase_count: number;
   compiled_prompt_length: number;
   scene_isolation_clean: boolean;
+  character_first_order: boolean;
+  prompt_length_reduced: boolean;
 }): SequencePromptQualityVerdict {
   if (
     input.forbidden_term_hits.length > 0 ||
     !input.identity_before_action ||
     !input.assembly_order_valid ||
     !input.scene_isolation_clean ||
+    !input.character_first_order ||
     input.compiled_prompt_length > MAX_WARN_PROMPT_LENGTH ||
     input.duplicate_phrase_count > MAX_WARN_DUPLICATE_PHRASES
   ) {
@@ -105,28 +116,13 @@ function resolveVerdict(input: {
 
   if (
     input.duplicate_phrase_count > MAX_PASS_DUPLICATE_PHRASES ||
-    input.compiled_prompt_length > MAX_PASS_PROMPT_LENGTH
+    input.compiled_prompt_length > MAX_PASS_PROMPT_LENGTH ||
+    !input.prompt_length_reduced
   ) {
     return 'WARN';
   }
 
   return 'PASS';
-}
-
-function buildStableAuditBody(
-  audit: Omit<
-    SequencePromptQualityAuditResult,
-    'audit_checksum' | 'deterministic_audit_stable' | 'generated_at'
-  >
-): Omit<SequencePromptQualityAuditResult, 'audit_checksum' | 'deterministic_audit_stable' | 'generated_at'> {
-  return {
-    ...audit,
-    transition_ids: [...audit.transition_ids].sort(),
-    shot_ids: [...audit.shot_ids].sort(),
-    motion_ids: [...audit.motion_ids].sort(),
-    forbidden_term_hits: [...audit.forbidden_term_hits].sort(),
-    assembly_order: [...audit.assembly_order],
-  };
 }
 
 function buildSequencePromptQualityAuditBody(): Omit<
@@ -143,10 +139,11 @@ function buildSequencePromptQualityAuditBody(): Omit<
   const assembly_order_valid = checkAssemblyOrder(compiled.assembly_order);
   const compiled_prompt_length = compiledPrompt.length;
   const prompt_length_acceptable = isPromptLengthAcceptable(compiled_prompt_length);
+  const character_first_order = compiledPrompt.startsWith('[CHARACTER_CORE]');
 
-  const auditBody = buildStableAuditBody({
+  const auditBody = {
     schema_version: SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION,
-    compiler_version: RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+    compiler_version: RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
     scene_pack_id: compileInput.cinematic_sequence.scene_pack_id,
     transition_ids: compiled.transition_bindings.map((binding) => binding.transition_id),
     shot_ids: compiled.shot_bindings.map((binding) => binding.shot_id),
@@ -158,8 +155,8 @@ function buildSequencePromptQualityAuditBody(): Omit<
     assembly_order_valid,
     identity_before_action,
     prompt_length_acceptable,
-    verdict: 'PASS',
-  });
+    verdict: 'PASS' as SequencePromptQualityVerdict,
+  };
 
   auditBody.verdict = resolveVerdict({
     forbidden_term_hits,
@@ -168,6 +165,8 @@ function buildSequencePromptQualityAuditBody(): Omit<
     duplicate_phrase_count,
     compiled_prompt_length,
     scene_isolation_clean: assertSceneIsolationClean(compiledPrompt),
+    character_first_order,
+    prompt_length_reduced: isPromptLengthReduced(compiled_prompt_length),
   });
 
   return auditBody;

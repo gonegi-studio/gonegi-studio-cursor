@@ -3,7 +3,7 @@ import {
   REAL_RENDER_VALIDATION_AUDIT_VERSION,
   RealRenderReadinessVerdict,
   RealRenderValidationAuditResult,
-  RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+  RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
 } from '../types';
 import {
   assertCharacterImageAnchorsPresent,
@@ -89,7 +89,9 @@ function buildRealRenderValidationAuditBody(): Omit<
 
   const identity_anchor_present =
     assertCharacterImageAnchorsPresent(payload.character_image_anchors) &&
-    identity_slot_mapping_valid;
+    identity_slot_mapping_valid &&
+    payload.compiled_prompt.startsWith('[CHARACTER_CORE]') &&
+    payload.compiled_prompt.includes('CharacterBook auto-reference injection active');
 
   const scene_pack_binding_present =
     payload.scene_pack_binding?.scene_pack_id === CANONICAL_SEQUENCE_SCENE_PACK_ID;
@@ -131,7 +133,7 @@ function buildRealRenderValidationAuditBody(): Omit<
     render_count: RENDER_COUNT,
     batch_generation: false,
     lora_training: false,
-    compiler_version: RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION,
+    compiler_version: RUNTIME_CHARACTER_FIRST_EXPORT_VERSION,
     scene_pack_id: payload.scene_pack_binding.scene_pack_id,
     transition_ids,
     shot_ids,

@@ -5267,9 +5267,10 @@ export interface MusicDramaBindingAnalysis {
 
 // --- Runtime Identity Compiler (PHASE-31A ultra compact) ---
 
-export const RUNTIME_PROMPT_COMPILER_VERSION = '31A' as const;
+export const RUNTIME_PROMPT_COMPILER_VERSION = '33A' as const;
 export const RUNTIME_IMAGE_ANCHOR_EXPORT_VERSION = '31B' as const;
 export const RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION = '32D' as const;
+export const RUNTIME_CHARACTER_FIRST_EXPORT_VERSION = '33A' as const;
 export const SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION = '32E' as const;
 
 export type SequencePromptQualityVerdict = 'PASS' | 'WARN' | 'FAIL';
@@ -5445,6 +5446,13 @@ export interface CharacterImageAnchor {
   identity_priority: 'image_anchor_primary';
 }
 
+export interface CharacterReferenceTrigger {
+  slot_id: string;
+  character_name: string;
+  elite_image_id: string;
+  indexeddb_ref: string;
+}
+
 export interface ResolvedIdentityCores {
   face_core: string;
   hair_core: string;
@@ -5517,12 +5525,13 @@ export interface RuntimePromptCompileInput {
   motion?: string[];
 }
 
-/** Renderer-facing upload shape (AI Studio consumes compiled_prompt + image anchors). */
+/** Renderer-facing upload shape (AI Studio consumes compiled_prompt + reference triggers). */
 export interface MinimalRenderCommandUploadPayload {
-  compiler_version: typeof RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION;
+  compiler_version: typeof RUNTIME_CHARACTER_FIRST_EXPORT_VERSION;
   compiled_prompt: string;
   compiled_negative_prompt: string;
   character_image_anchors: CharacterImageAnchor[];
+  character_reference_triggers: CharacterReferenceTrigger[];
   character_bindings: CompiledCharacterBinding[];
   style_bindings: CompiledStyleBinding[];
   env_bindings: CompiledEnvBinding[];
@@ -5590,6 +5599,8 @@ export interface MinimalRenderCommandExportMetadata {
     compiler_deterministic: boolean;
     gonegi_identity_in_compiled_prompt: boolean;
     dana_identity_in_compiled_prompt: boolean;
+    character_first_prompt_active?: boolean;
+    elite_reference_triggers_in_prompt?: boolean;
     scene_isolation_clean: boolean;
     character_image_anchors_present: boolean;
     image_anchor_fingerprint_stable: boolean;
