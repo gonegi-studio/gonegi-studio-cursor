@@ -5270,6 +5270,29 @@ export interface MusicDramaBindingAnalysis {
 export const RUNTIME_PROMPT_COMPILER_VERSION = '31A' as const;
 export const RUNTIME_IMAGE_ANCHOR_EXPORT_VERSION = '31B' as const;
 export const RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION = '32D' as const;
+export const SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION = '32E' as const;
+
+export type SequencePromptQualityVerdict = 'PASS' | 'WARN' | 'FAIL';
+
+export interface SequencePromptQualityAuditResult {
+  schema_version: typeof SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION;
+  compiler_version: string;
+  scene_pack_id: string;
+  transition_ids: string[];
+  shot_ids: string[];
+  motion_ids: string[];
+  compiled_prompt_length: number;
+  duplicate_phrase_count: number;
+  forbidden_term_hits: string[];
+  assembly_order: string[];
+  assembly_order_valid: boolean;
+  identity_before_action: boolean;
+  prompt_length_acceptable: boolean;
+  verdict: SequencePromptQualityVerdict;
+  audit_checksum: string;
+  deterministic_audit_stable: boolean;
+  generated_at: string;
+}
 
 // --- Cinematic Sequence Engine (PHASE-32B~32D) ---
 

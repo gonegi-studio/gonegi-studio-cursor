@@ -39,6 +39,20 @@ import {
 
 const SECTION_JOINER = '. ';
 
+export const CANONICAL_RUNTIME_ASSEMBLY_ORDER = [
+  'image_anchor',
+  'character',
+  'style',
+  'env',
+  'scene_pack',
+  'scene',
+  'transition',
+  'shot',
+  'motion',
+  'camera_supplement',
+  'negative',
+] as const;
+
 function digest(parts: string[]): string {
   return crypto.createHash('sha256').update(parts.join('|')).digest('hex');
 }
@@ -332,19 +346,7 @@ export function compileRuntimePrompt(input: RuntimePromptCompileInput): Compiled
     shot_bindings: shotBlock.bindings,
     motion_bindings: motionBlock.bindings,
     compile_fingerprint,
-    assembly_order: [
-      'image_anchor',
-      'character',
-      'style',
-      'env',
-      'scene_pack',
-      'scene',
-      'transition',
-      'shot',
-      'motion',
-      'camera_supplement',
-      'negative',
-    ],
+    assembly_order: [...CANONICAL_RUNTIME_ASSEMBLY_ORDER],
   };
 }
 

@@ -109,6 +109,10 @@ function buildCharacterImageAnchorsForExport(): CharacterImageAnchor[] {
   );
 }
 
+export function buildCanonicalRuntimePromptCompileInput(): RuntimePromptCompileInput {
+  return buildCompileInput(buildCharacterImageAnchorsForExport());
+}
+
 function buildCompileInput(character_image_anchors: CharacterImageAnchor[]): RuntimePromptCompileInput {
   return {
     scene_id: CANONICAL_CHARACTER_TEST_SCENE_ID,

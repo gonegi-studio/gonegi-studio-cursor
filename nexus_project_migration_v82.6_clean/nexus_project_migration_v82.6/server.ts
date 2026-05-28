@@ -172,7 +172,14 @@ import {
 import {
   buildMinimalRenderCommandExportPreview,
   buildMinimalRenderCommandJsonFile,
+  resetMinimalRenderCommandExportCache,
 } from "./services/cinematic/minimalRenderCommandExport";
+import { buildSequencePromptQualityAuditPreview } from "./services/cinematic/sequencePromptQualityAudit";
+import {
+  buildCanonicalCharacterPackExportPreview,
+  buildCanonicalCharacterPackJsonFile,
+} from "./services/cinematic/canonicalCharacterPackExport";
+import { buildMusicDramaBindingAnalysis } from "./services/cinematic/musicDramaAssetBinding";
 import {
   buildControlledGenerationPackExportJsonFile,
   buildControlledGenerationPackExportPreview,
@@ -2038,6 +2045,7 @@ async function startServer() {
 
   app.get("/api/cinematic/minimal-render-command-json-file", (_req, res) => {
     try {
+      resetMinimalRenderCommandExportCache();
       const download = buildMinimalRenderCommandJsonFile();
       res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
       res.setHeader("Content-Type", download.contentType);
@@ -2047,6 +2055,50 @@ async function startServer() {
     } catch (e) {
       console.error("Minimal render command json file error:", e);
       return res.status(500).json({ error: "Failed to build minimal render command json file" });
+    }
+  });
+
+  app.get("/api/cinematic/sequence-prompt-quality-audit-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildSequencePromptQualityAuditPreview());
+    } catch (e) {
+      console.error("Sequence prompt quality audit preview error:", e);
+      return res.status(500).json({ error: "Failed to build sequence prompt quality audit preview" });
+    }
+  });
+
+  app.get("/api/cinematic/music-drama-binding-analysis", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildMusicDramaBindingAnalysis());
+    } catch (e) {
+      console.error("Music Drama binding analysis error:", e);
+      return res.status(500).json({ error: "Failed to build Music Drama binding analysis" });
+    }
+  });
+
+  app.get("/api/cinematic/canonical-character-pack-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildCanonicalCharacterPackExportPreview());
+    } catch (e) {
+      console.error("Canonical character pack preview error:", e);
+      return res.status(500).json({ error: "Failed to build canonical character pack preview" });
+    }
+  });
+
+  app.get("/api/cinematic/canonical-character-pack-json-file", (_req, res) => {
+    try {
+      const download = buildCanonicalCharacterPackJsonFile();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Canonical character pack json file error:", e);
+      return res.status(500).json({ error: "Failed to build canonical character pack json file" });
     }
   });
 
