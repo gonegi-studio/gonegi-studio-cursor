@@ -178,6 +178,11 @@ import { buildSequencePromptQualityAuditPreview } from "./services/cinematic/seq
 import { buildRealRenderValidationAuditPreview } from "./services/realRenderValidationAudit";
 import { buildSingleCanvasIdentityPreview } from "./services/singleCanvasIdentityPreview";
 import {
+  buildCinematicRoutesPreview,
+  logCinematicRoutesOnStartup,
+  verifyDevResetCinematicRoutes,
+} from "./services/cinematic/cinematicRouteRegistry";
+import {
   buildCanonicalCharacterPackExportPreview,
   buildCanonicalCharacterPackJsonFile,
 } from "./services/cinematic/canonicalCharacterPackExport";
@@ -2080,6 +2085,7 @@ async function startServer() {
     }
   });
 
+  // PHASE-33C: SingleCanvas identity-stable controlled generation preview
   app.get("/api/cinematic/single-canvas-identity-preview", (req, res) => {
     try {
       const controlledPrompt =
@@ -2091,6 +2097,17 @@ async function startServer() {
     } catch (e) {
       console.error("Single canvas identity preview error:", e);
       return res.status(500).json({ error: "Failed to build single canvas identity preview" });
+    }
+  });
+
+  // PHASE-33D: Cinematic route registry visibility (introspected from Express stack)
+  app.get("/api/cinematic/routes-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildCinematicRoutesPreview(app));
+    } catch (e) {
+      console.error("Cinematic routes preview error:", e);
+      return res.status(500).json({ error: "Failed to build cinematic routes preview" });
     }
   });
 
@@ -2155,6 +2172,21 @@ async function startServer() {
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`🚀 Engine running on http://localhost:${PORT}`);
+    logCinematicRoutesOnStartup(app);
+
+    void (async () => {
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      const verification = await verifyDevResetCinematicRoutes(PORT);
+      for (const result of verification.results) {
+        const label = result.ok ? "OK" : "FAIL";
+        console.log(`[dev-reset verify] ${result.path} → ${result.status} ${label}`);
+      }
+      if (!verification.ok) {
+        console.error("[dev-reset verify] Required cinematic routes did not all return HTTP 200");
+      } else {
+        console.log("[dev-reset verify] routes-preview + single-canvas-identity-preview → 200");
+      }
+    })();
   });
 }
 
