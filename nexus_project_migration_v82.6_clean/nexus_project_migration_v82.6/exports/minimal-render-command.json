@@ -1,13 +1,155 @@
 {
+  "compiler_version": "32D",
+  "compiled_prompt": "[IMAGE_ANCHOR]., PRIMARY CHARACTER IDENTITY SOURCE: character_image_anchors., image latent anchors override text-only identity; text supplements anchors only., slot slot_1-1 elite elite-image-gonegi-main-v1 fingerprint d3e6f0b910ce9694 embedding emb_eae03e47592e latent c20e0f00713e971e., slot slot_1-2 elite elite-image-dana-companion-v1 fingerprint 0d791fe71c078f95 embedding emb_c89b144007b1 latent 966e3ec677a3578b. [CHARACTER]., Canonical Character: Gonegi., soulful determined boy protagonist, large grounded expressive amber-gaze eyes, classic Ghibli boy face topology, messy matte jet-black hair, compact youthful Mediterranean boy silhouette, harbor coat slate duster, off-white henley shirt, deep navy trousers, dark suspenders, gentle Ghibli realism, vitreous eye highlight integrity, Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors., supplement-only text; primary identity elite-image-gonegi-main-v1 (d3e6f0b910ce)., Canonical Character: Dana., Mediterranean youth companion, warm olive gaze, vitreous amber highlights, identity-stable cheek and eye spacing, soft auburn braid rhythm, Mediterranean youth companion silhouette, seafoam linen wrap and harbor shawl, hand-painted Ghibli cel-shading, soft friendship cadence, Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors., supplement-only text; primary identity elite-image-dana-companion-v1 (0d791fe71c07). [STYLE]., Ghibli Mediterranean Chronicles v17.5., style_core_ids:atmospheric_light_core, mediterranean_civilization_core., Vitreous Elegance Protocol: glass-glaze-soft eye highlight integrity, vitreous cel-shadow balance, mask fixation stable across frames, facial anchor laws must not be compressed away., Mediterranean Reality Foundation: picturesque harbor town with weathered white stone and terracotta roofs, nostalgic melancholic mood, emerald sea reflections, 1980s-1990s Studio Ghibli hand-drawn cel-animation, 0.4mm pencil line-art stability., AMS-01: opaque gouache layering with visible brush grain friction., AMS-02: flat cel-shadow balance without bloom collapse., AMS-03: hand-painted animation line weight 0.4mm stable pencil line-art., AMS-04: warm harbor palette coherence without background modernization., opaque gouache cel-shading, hand-painted 1980s Studio Ghibli animation. [ENV] environment_slot:late_afternoon., Time & Light: Long-slanted deep golden-ochre light (#DAA520) casting elongated, sharp-edged deep indigo (#1A1A1A) and violet (#4B0082) 2D cel-shadows., Sky & Clouds: Sky transitioning from deep gold (#DAA520) to a burning amber glow (#FFBF00) at the horizon., Towering clouds feature amber rim light (#FFBF00) on top edges., Atmosphere: Thick atmospheric amber-blue haze using simplified opaque gouache shapes with heavy lavender (#E6E6FA) paint layering for density.. [SCENE_PACK]., pack:walking_travel-harbor-terrace-001., tone:hopeful companionship., action:companions walk together along harbor terrace with shared pace., camera:lateral tracking with stable horizon., continuity:travel_bridge. [SCENE] Gonegi and Dana walking together on a sun-warmed Mediterranean harbor village terrace, terracotta roofs, turquoise sea below, warm golden friendship cadence.. [TRANSITION]., id:walking_to_running., from:synchronized walking., to:shared travel momentum., companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match. [SHOT]., id:side_tracking., framing:medium lateral two-shot., lens:parallel tracking plane., motion:side tracking with stable horizon., distance:mid., role:travel companionship., axis lock, no jump cut, pace match. [MOTION]., bridge:hope_forward_motion., emotion:hope., body:forward walk with open posture., pace:steady synchronized cadence., eyes:warm forward gaze with companion awareness., space:close friendship spacing., uplifting travel continuity. [CAMERA_SUPPLEMENT]., 16:9 cinematic frame., EyeLevelImmersion., gentle friendship framing., slow walking cadence., warm golden harbor light",
+  "compiled_negative_prompt": "3d face, 3d render, AMS violation, army, background modernization, battlefield, beautiful woman, conflicting age, conflicting outfit, disconnected cuts, emotion flattening, eye highlight loss, face drift, fantasy prince, generic anime girl, generic fantasy faces, generic ghibli boy, generic ghibli girl, generic handsome man, hand anatomy distortion, harsh contrast, identity collapse, invented face, lighting instability, logo, modern UI, photoreal, photoreal face, plastic skin, random camera jump, realistic man, rifle, slideshow cut, small anime boy, soldier, soldiers, style collapse, text, text-only identity regeneration, trench, trenches, unknown generic characters, war, war scene, warrior, warriors, watermark, ww1, wwi, young girl",
+  "character_image_anchors": [
+    {
+      "slot_id": "slot_1-1",
+      "elite_image_id": "elite-image-gonegi-main-v1",
+      "image_embedding_id": "emb_eae03e47592e",
+      "image_fingerprint": "d3e6f0b910ce9694db69005ec364ad9dada444eaf067046642f7f0f1b3a275d5",
+      "image_base64_preview": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+      "image_latent_ref": "c20e0f00713e971e56320b2ce0b6aca89f35b346c923da742e49ad352c7f9fbb",
+      "indexeddb_ref": "idb:GhibliMasterpieceDB.images.elite-image-gonegi-main-v1",
+      "image_source_path": "imports/character_image_anchors/slot_1-1/elite-image-gonegi-main-v1.png",
+      "preview_truncated": false,
+      "identity_priority": "image_anchor_primary"
+    },
+    {
+      "slot_id": "slot_1-2",
+      "elite_image_id": "elite-image-dana-companion-v1",
+      "image_embedding_id": "emb_c89b144007b1",
+      "image_fingerprint": "0d791fe71c078f9527a73f20d2d2141a180d9e65f387b6383845bc15dcd42a2d",
+      "image_base64_preview": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "image_latent_ref": "966e3ec677a3578be13deaf6eb57ef17ff5fe4f6d0b4580e359944dd7ecac812",
+      "indexeddb_ref": "idb:GhibliMasterpieceDB.images.elite-image-dana-companion-v1",
+      "image_source_path": "imports/character_image_anchors/slot_1-2/elite-image-dana-companion-v1.png",
+      "preview_truncated": false,
+      "identity_priority": "image_anchor_primary"
+    }
+  ],
+  "character_bindings": [
+    {
+      "slot_id": "slot_1-1",
+      "character_name": "Gonegi",
+      "runtime_compressed_identity": "Canonical Character: Gonegi., soulful determined 11-year-old boy protagonist, large grounded expressive amber-gaze eyes, classic Ghibli boy face topology, messy matte jet-black hair, compact youthful Mediterranean boy silhouette, harbor coat slate duster, off-white henley shirt, deep navy trousers, dark suspenders, gentle Ghibli realism, vitreous eye highlight integrity, Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors.",
+      "image_anchor_ref": "elite-image-gonegi-main-v1",
+      "embedding_id": "e12d34df468f83a679bd2ee10a91c8604e56a5776019ebcc455be3b2a1b47d44",
+      "lock_flags": {
+        "face_lock": true,
+        "outfit_lock": true,
+        "silhouette_lock": true
+      },
+      "source_visual_dna_ref": "app:characterBook.characters.slot_1-1.visual_dna",
+      "resolved_identity": {
+        "face_core": "large grounded expressive amber-gaze eyes, classic Ghibli boy face topology",
+        "hair_core": "messy matte jet-black hair",
+        "silhouette_core": "compact youthful Mediterranean boy silhouette",
+        "outfit_core": "harbor coat slate duster, off-white henley shirt, deep navy trousers, dark suspenders",
+        "age_core": "soulful determined 11-year-old boy protagonist",
+        "style_core": "gentle Ghibli realism, vitreous eye highlight integrity",
+        "identity_lock": "Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors."
+      }
+    },
+    {
+      "slot_id": "slot_1-2",
+      "character_name": "Dana",
+      "runtime_compressed_identity": "Canonical Character: Dana., Mediterranean youth companion, warm olive gaze, vitreous amber highlights, identity-stable cheek and eye spacing, soft auburn braid rhythm, Mediterranean youth companion silhouette, seafoam linen wrap and harbor shawl, hand-painted Ghibli cel-shading, soft friendship cadence, Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors.",
+      "image_anchor_ref": "elite-image-dana-companion-v1",
+      "embedding_id": "2a80e2a91f1ea39942985139db49f6af48a71e2ca3f15d6f55b2c2fcb42cb187",
+      "lock_flags": {
+        "face_lock": true,
+        "outfit_lock": true,
+        "silhouette_lock": true
+      },
+      "source_visual_dna_ref": "app:characterBook.characters.slot_1-2.visual_dna",
+      "resolved_identity": {
+        "face_core": "warm olive gaze, vitreous amber highlights, identity-stable cheek and eye spacing",
+        "hair_core": "soft auburn braid rhythm",
+        "silhouette_core": "Mediterranean youth companion silhouette",
+        "outfit_core": "seafoam linen wrap and harbor shawl",
+        "age_core": "Mediterranean youth companion",
+        "style_core": "hand-painted Ghibli cel-shading, soft friendship cadence",
+        "identity_lock": "Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors."
+      }
+    }
+  ],
+  "style_bindings": [
+    {
+      "style_core_id": "atmospheric_light_core",
+      "style_key": "gonegi-warm-cinematic",
+      "material_key": "glass-glaze-soft",
+      "lighting_key": "warm-harbor-golden",
+      "brushwork_key": "soft-handpainted-animation",
+      "palette_key": "warm-harbor-evening"
+    },
+    {
+      "style_core_id": "mediterranean_civilization_core",
+      "style_key": "gonegi-warm-cinematic",
+      "material_key": "glass-glaze-soft",
+      "lighting_key": "warm-harbor-golden",
+      "brushwork_key": "soft-handpainted-animation",
+      "palette_key": "warm-harbor-evening"
+    }
+  ],
+  "env_bindings": [
+    {
+      "env_slot": "late_afternoon",
+      "env_dna_excerpt": "Time & Light: Long-slanted deep golden-ochre light (#DAA520) casting elongated, sharp-edged deep indigo (#1A1A1A) and violet (#4B0082) 2D cel-shadows. Sky & Clouds: Sky transitioning from deep gold (#DAA520) to a burning amber glow (#FFBF00) at the horizon. Towering clouds feature amber rim light (#FFBF00) on top edges. Atmosphere: Thick atmospheric amber-blue haze using simplified opaque gouache shapes with heavy lavender (#E6E6FA) paint layering for density.",
+      "env_dna_ref": "app:characterBook.environmentDNA.late_afternoon"
+    }
+  ],
+  "scene_pack_binding": {
+    "scene_pack_id": "walking_travel-harbor-terrace-001",
+    "category": "walking_travel",
+    "emotional_tone": "hopeful companionship",
+    "action_core": "companions walk together along harbor terrace with shared pace",
+    "continuity_role": "travel_bridge",
+    "fingerprint_seed": "walking-harbor-v1"
+  },
+  "transition_bindings": [
+    {
+      "transition_id": "walking_to_running",
+      "from_state": "synchronized walking",
+      "to_state": "shared travel momentum",
+      "emotional_bridge": "companionship sustains through motion continuity",
+      "motion_bridge": "maintain matched pace without abrupt speed jump",
+      "camera_shift": "lateral tracking axis locked",
+      "lighting_shift": "stable golden hour continuity",
+      "pacing_shift": "hold gentle cadence",
+      "continuity_glue": "companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match"
+    }
+  ],
+  "shot_bindings": [
+    {
+      "shot_id": "side_tracking",
+      "framing": "medium lateral two-shot",
+      "lens_behavior": "parallel tracking plane",
+      "camera_motion": "side tracking with stable horizon",
+      "subject_distance": "mid",
+      "cinematic_role": "travel companionship"
+    }
+  ],
+  "motion_bindings": [
+    {
+      "bridge_id": "hope_forward_motion",
+      "emotion": "hope",
+      "body_motion": "forward walk with open posture",
+      "pacing_behavior": "steady synchronized cadence",
+      "eye_behavior": "warm forward gaze with companion awareness",
+      "spatial_behavior": "close friendship spacing",
+      "cinematic_effect": "uplifting travel continuity"
+    }
+  ],
   "ai_studio_render_recipe": {
-    "copy_paste_prompt": "Soldiers in British WWI uniforms navigate a winding, narrow trench. The camera tracks smoothly with them, capturing the visceral mud and the frantic energy. The sense of unbroken flow is paradoxical with the claustrophobic walls.. SmoothTracking, SteadicamNavigation, EyeLevelImmersion. emotion_wave:flat, motion_cadence:brisk, atmosphere:cool, FranticEnergy, LoomingDread. motion_cadence:brisk. env_slot:morning. style_core_ids:glass-glaze-soft, gonegi-warm-cinematic, soft-handpainted-animation, warm-harbor-evening, warm-harbor-golden. character_slots:slot_1-1,slot_2-1. character_anchor_priority:image_anchor_over_prompt. opaque gouache cel-shading, hand-painted Studio Ghibli animation",
-    "copy_paste_negative": "text, watermark, logo, photoreal, harsh contrast, modern UI, 3d render, plastic skin, style collapse, face drift, eye highlight loss, style collapse, AMS violation, emotion flattening, background modernization, lighting instability, hand anatomy distortion"
+    "copy_paste_prompt": "[IMAGE_ANCHOR]., PRIMARY CHARACTER IDENTITY SOURCE: character_image_anchors., image latent anchors override text-only identity; text supplements anchors only., slot slot_1-1 elite elite-image-gonegi-main-v1 fingerprint d3e6f0b910ce9694 embedding emb_eae03e47592e latent c20e0f00713e971e., slot slot_1-2 elite elite-image-dana-companion-v1 fingerprint 0d791fe71c078f95 embedding emb_c89b144007b1 latent 966e3ec677a3578b. [CHARACTER]., Canonical Character: Gonegi., soulful determined boy protagonist, large grounded expressive amber-gaze eyes, classic Ghibli boy face topology, messy matte jet-black hair, compact youthful Mediterranean boy silhouette, harbor coat slate duster, off-white henley shirt, deep navy trousers, dark suspenders, gentle Ghibli realism, vitreous eye highlight integrity, Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors., supplement-only text; primary identity elite-image-gonegi-main-v1 (d3e6f0b910ce)., Canonical Character: Dana., Mediterranean youth companion, warm olive gaze, vitreous amber highlights, identity-stable cheek and eye spacing, soft auburn braid rhythm, Mediterranean youth companion silhouette, seafoam linen wrap and harbor shawl, hand-painted Ghibli cel-shading, soft friendship cadence, Supplement-only identity text; PRIMARY CHARACTER IDENTITY SOURCE is character_image_anchors., supplement-only text; primary identity elite-image-dana-companion-v1 (0d791fe71c07). [STYLE]., Ghibli Mediterranean Chronicles v17.5., style_core_ids:atmospheric_light_core, mediterranean_civilization_core., Vitreous Elegance Protocol: glass-glaze-soft eye highlight integrity, vitreous cel-shadow balance, mask fixation stable across frames, facial anchor laws must not be compressed away., Mediterranean Reality Foundation: picturesque harbor town with weathered white stone and terracotta roofs, nostalgic melancholic mood, emerald sea reflections, 1980s-1990s Studio Ghibli hand-drawn cel-animation, 0.4mm pencil line-art stability., AMS-01: opaque gouache layering with visible brush grain friction., AMS-02: flat cel-shadow balance without bloom collapse., AMS-03: hand-painted animation line weight 0.4mm stable pencil line-art., AMS-04: warm harbor palette coherence without background modernization., opaque gouache cel-shading, hand-painted 1980s Studio Ghibli animation. [ENV] environment_slot:late_afternoon., Time & Light: Long-slanted deep golden-ochre light (#DAA520) casting elongated, sharp-edged deep indigo (#1A1A1A) and violet (#4B0082) 2D cel-shadows., Sky & Clouds: Sky transitioning from deep gold (#DAA520) to a burning amber glow (#FFBF00) at the horizon., Towering clouds feature amber rim light (#FFBF00) on top edges., Atmosphere: Thick atmospheric amber-blue haze using simplified opaque gouache shapes with heavy lavender (#E6E6FA) paint layering for density.. [SCENE_PACK]., pack:walking_travel-harbor-terrace-001., tone:hopeful companionship., action:companions walk together along harbor terrace with shared pace., camera:lateral tracking with stable horizon., continuity:travel_bridge. [SCENE] Gonegi and Dana walking together on a sun-warmed Mediterranean harbor village terrace, terracotta roofs, turquoise sea below, warm golden friendship cadence.. [TRANSITION]., id:walking_to_running., from:synchronized walking., to:shared travel momentum., companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match. [SHOT]., id:side_tracking., framing:medium lateral two-shot., lens:parallel tracking plane., motion:side tracking with stable horizon., distance:mid., role:travel companionship., axis lock, no jump cut, pace match. [MOTION]., bridge:hope_forward_motion., emotion:hope., body:forward walk with open posture., pace:steady synchronized cadence., eyes:warm forward gaze with companion awareness., space:close friendship spacing., uplifting travel continuity. [CAMERA_SUPPLEMENT]., 16:9 cinematic frame., EyeLevelImmersion., gentle friendship framing., slow walking cadence., warm golden harbor light",
+    "copy_paste_negative": "3d face, 3d render, AMS violation, army, background modernization, battlefield, beautiful woman, conflicting age, conflicting outfit, disconnected cuts, emotion flattening, eye highlight loss, face drift, fantasy prince, generic anime girl, generic fantasy faces, generic ghibli boy, generic ghibli girl, generic handsome man, hand anatomy distortion, harsh contrast, identity collapse, invented face, lighting instability, logo, modern UI, photoreal, photoreal face, plastic skin, random camera jump, realistic man, rifle, slideshow cut, small anime boy, soldier, soldiers, style collapse, text, text-only identity regeneration, trench, trenches, unknown generic characters, war, war scene, warrior, warriors, watermark, ww1, wwi, young girl"
   },
   "cfg": 7.5,
   "sampler": "euler_a",
   "aspect_ratio": "16:9",
-  "seed": 563497,
-  "scene_id": "SYN-LF120-067",
-  "generation_session_id": "CTRL-GEN-SES-001",
-  "qa_reconnect_token": "9ca651dcbb2dc269ef034fb4f7f21af23103b97ab07d7399efcf9a7e4581b8ee"
+  "seed": 179378,
+  "scene_id": "GONEGI-CHAR-TEST-001",
+  "generation_session_id": "MRC-CANON-SES-001",
+  "qa_reconnect_token": "b9c022ed9ddf69331f08cb0745c3221be6056c8746d9d5ffbfc2c8e8816bb793"
 }

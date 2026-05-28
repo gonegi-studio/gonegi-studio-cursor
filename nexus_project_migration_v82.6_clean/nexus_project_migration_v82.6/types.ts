@@ -5112,8 +5112,370 @@ export interface AiStudioControlledJsonRebuildResult {
 
 export const MINIMAL_RENDER_COMMAND_VERSION = 'MINIMAL-RENDER-COMMAND-v1' as const;
 
-/** AI Studio parser-compatible primary upload shape (root fields). */
+// --- Character Reference Assets (PHASE-30A image-based identity lock) ---
+
+export const CHARACTER_REFERENCE_ASSETS_VERSION = 'CHAR-REF-ASSETS-v1' as const;
+
+export type CharacterReferenceLockKind = 'face_lock' | 'outfit_lock' | 'silhouette_lock';
+
+export interface CharacterReferenceLockFlags {
+  face_lock: boolean;
+  outfit_lock: boolean;
+  silhouette_lock: boolean;
+}
+
+export interface CharacterReferenceAssetBinding {
+  slot_id: string;
+  character_name: string;
+  image_anchor_ref: string;
+  reference_image_path: string;
+  reference_image_exists: boolean;
+  embedding_id: string;
+  lock_flags: CharacterReferenceLockFlags;
+  anchor_fingerprint: string;
+}
+
+export interface CharacterReferenceAssetsRegistry {
+  schema_version: typeof CHARACTER_REFERENCE_ASSETS_VERSION;
+  import_root: 'imports/character_reference_assets';
+  bindings: CharacterReferenceAssetBinding[];
+  reference_assets_available: boolean;
+}
+
+export interface CharacterReferenceBindingUpload {
+  slot_id: string;
+  character_name: string;
+  reference_image_path: string;
+  embedding_id: string;
+  lock_flags: CharacterReferenceLockFlags;
+}
+
+export interface CharacterFaceSimilarityScaffoldEntry {
+  slot_id: string;
+  character_name: string;
+  canonical_reference_fingerprint: string;
+  canonical_embedding_id: string;
+  generated_face_fingerprint: string | null;
+  similarity_score: number | null;
+  similarity_threshold: number;
+  validation_status: 'scaffold_ready' | 'pending_generation' | 'pass' | 'fail';
+  lock_flags: CharacterReferenceLockFlags;
+}
+
+export interface CharacterAnchorSimilarityValidationScaffold {
+  schema_version: 'CHAR-ANCHOR-SIM-v1';
+  comparison_mode: 'generated_face_vs_canonical_reference';
+  entries: CharacterFaceSimilarityScaffoldEntry[];
+  scaffold_ready: boolean;
+}
+
+export const CANONICAL_CHARACTER_PACK_VERSION = 'CANONICAL-CHAR-PACK-v1' as const;
+
+export interface CanonicalCharacterPackExportResult {
+  schema_version: typeof CANONICAL_CHARACTER_PACK_VERSION;
+  generated_at: string;
+  readonly_export: true;
+  character_reference_assets: CharacterReferenceAssetsRegistry;
+  slot_bindings: CharacterReferenceAssetBinding[];
+  similarity_validation_scaffold: CharacterAnchorSimilarityValidationScaffold;
+  controlled_json_rebuild_checksum_ref: string;
+  canonical_character_pack_checksum: string;
+  export_json_path: 'exports/canonical-character-pack.json';
+  validation: {
+    readonly_export: true;
+    gonegi_slot_bound: boolean;
+    dana_slot_bound: boolean;
+    reference_paths_declared: boolean;
+    embedding_ids_present: boolean;
+    lock_flags_present: boolean;
+    no_dataset_mutation: boolean;
+    no_image_generation: boolean;
+    no_provider_calls: boolean;
+    phase_29b_unchanged: boolean;
+  };
+}
+
+// --- Unified Asset Registry & Execution Contract (PHASE-30B Music Drama binding) ---
+
+export const UNIFIED_ASSET_REGISTRY_VERSION = 'UNIFIED-ASSET-REGISTRY-v1' as const;
+
+export interface UnifiedAssetSlotBinding {
+  slot_id: string;
+  character_name: string;
+  grid_position: string;
+  image_anchor_ref: string | null;
+  anchor_fingerprint: string;
+  app_visual_dna_ref: string;
+  embedding_id: string;
+  lock_flags: CharacterReferenceLockFlags;
+}
+
+export interface UnifiedAssetRegistry {
+  registry_version: typeof UNIFIED_ASSET_REGISTRY_VERSION;
+  binding_model: string;
+  character_dna_master_ref: string;
+  master_style_core_ref: string;
+  env_dna_master_ref: string;
+  slot_bindings: UnifiedAssetSlotBinding[];
+  env_slots_available: string[];
+  style_anchor_ref: string;
+  activate_app_slot_anchors: true;
+}
+
+export interface MinimalRenderExecutionContract {
+  character_source: 'app_character_dna_master';
+  style_source: 'app_master_style_core';
+  env_source: 'app_env_dna';
+  character_anchor_priority: 'app_slot_image_over_prompt';
+  scene_prompt_priority: 'after_asset_binding';
+  scene_id: string;
+  generation_session_id: string;
+  selected_env_slot: string;
+  app_character_slots: Array<{
+    slot_id: string;
+    character_name: string;
+    image_anchor_ref: string | null;
+    app_visual_dna_ref: string;
+    embedding_id: string;
+    lock_flags: CharacterReferenceLockFlags;
+  }>;
+  style_binding: {
+    style_source: 'app_master_style_core';
+    style_anchor_ref: string;
+    master_style_core_manifest_ref: string;
+  };
+  env_binding: {
+    env_source: 'app_env_dna';
+    selected_env_slot: string;
+    env_dna_ref: string;
+  };
+}
+
+export interface MusicDramaBindingAnalysis {
+  binding_model: string;
+  character_dna_source: string;
+  image_anchor_source: string;
+  environment_source: string;
+  style_source: string;
+  scene_prompt_composition: string[];
+  character_anchor_priority: 'app_slot_image_over_prompt';
+  video_engine_recipe_fields: string[];
+  grid_anchor_count: number;
+  gonegi_slot_present: boolean;
+  dana_slot_present: boolean;
+}
+
+// --- Runtime Identity Compiler (PHASE-31A ultra compact) ---
+
+export const RUNTIME_PROMPT_COMPILER_VERSION = '31A' as const;
+export const RUNTIME_IMAGE_ANCHOR_EXPORT_VERSION = '31B' as const;
+export const RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION = '32D' as const;
+
+// --- Cinematic Sequence Engine (PHASE-32B~32D) ---
+
+export interface ScenePackDefinition {
+  scene_pack_id: string;
+  category: string;
+  emotional_tone: string;
+  action_core: string;
+  camera_behavior: string;
+  continuity_role: string;
+  env_recommendation: string[];
+  transition_out_hint: string[];
+  fingerprint_seed: string;
+  negative_guard: string[];
+}
+
+export interface TransitionDnaDefinition {
+  transition_id: string;
+  from_state: string;
+  to_state: string;
+  emotional_bridge: string;
+  motion_bridge: string;
+  camera_shift: string;
+  lighting_shift: string;
+  pacing_shift: string;
+  continuity_keywords: string[];
+}
+
+export interface ShotFingerprintDefinition {
+  shot_id: string;
+  framing: string;
+  lens_behavior: string;
+  camera_motion: string;
+  subject_distance: string;
+  cinematic_role: string;
+  continuity_bias: string[];
+}
+
+export interface EmotionMotionBridgeDefinition {
+  bridge_id: string;
+  emotion: string;
+  body_motion: string;
+  pacing_behavior: string;
+  eye_behavior: string;
+  spatial_behavior: string;
+  cinematic_effect: string;
+}
+
+export interface CinematicSequenceCompileInput {
+  scene_pack_id: string;
+  transition_id: string;
+  shot_id: string;
+  emotion_motion_bridge_id: string;
+}
+
+export interface CompiledScenePackBinding {
+  scene_pack_id: string;
+  category: string;
+  emotional_tone: string;
+  action_core: string;
+  continuity_role: string;
+  fingerprint_seed: string;
+}
+
+export interface CompiledTransitionBinding {
+  transition_id: string;
+  from_state: string;
+  to_state: string;
+  emotional_bridge: string;
+  motion_bridge: string;
+  camera_shift: string;
+  lighting_shift: string;
+  pacing_shift: string;
+  continuity_glue: string;
+}
+
+export interface CompiledShotBinding {
+  shot_id: string;
+  framing: string;
+  lens_behavior: string;
+  camera_motion: string;
+  subject_distance: string;
+  cinematic_role: string;
+}
+
+export interface CompiledMotionBinding {
+  bridge_id: string;
+  emotion: string;
+  body_motion: string;
+  pacing_behavior: string;
+  eye_behavior: string;
+  spatial_behavior: string;
+  cinematic_effect: string;
+}
+
+export interface ResolvedImageAnchor {
+  slot_id: string;
+  elite_image_id: string;
+  image_fingerprint: string;
+  image_base64_preview: string;
+  image_embedding_id: string;
+  image_latent_ref: string;
+  image_source_path: string;
+  image_anchor_available: boolean;
+  preview_truncated: boolean;
+  indexeddb_ref: string;
+}
+
+export interface CharacterImageAnchor {
+  slot_id: string;
+  elite_image_id: string;
+  image_embedding_id: string;
+  image_fingerprint: string;
+  image_base64_preview: string;
+  image_latent_ref: string;
+  indexeddb_ref: string;
+  image_source_path: string;
+  preview_truncated: boolean;
+  identity_priority: 'image_anchor_primary';
+}
+
+export interface ResolvedIdentityCores {
+  face_core: string;
+  hair_core: string;
+  silhouette_core: string;
+  outfit_core: string;
+  age_core: string;
+  style_core: string;
+  identity_lock: string;
+}
+
+export interface ResolvedCharacterIdentity extends ResolvedIdentityCores {
+  id: string;
+  name: string;
+  compressed_identity: string;
+  image_anchor_ref: string | null;
+  source_visual_dna_ref: string;
+}
+
+export interface CompiledCharacterBinding {
+  slot_id: string;
+  character_name: string;
+  runtime_compressed_identity: string;
+  image_anchor_ref: string | null;
+  embedding_id: string;
+  lock_flags: CharacterReferenceLockFlags;
+  source_visual_dna_ref: string;
+  resolved_identity: ResolvedIdentityCores;
+}
+
+export interface CompiledStyleBinding {
+  style_core_id: string;
+  style_key?: string;
+  material_key?: string;
+  lighting_key?: string;
+  brushwork_key?: string;
+  palette_key?: string;
+}
+
+export interface CompiledEnvBinding {
+  env_slot: string;
+  env_dna_excerpt: string;
+  env_dna_ref: string;
+}
+
+export interface CompiledRenderPrompt {
+  compiler_version: typeof RUNTIME_PROMPT_COMPILER_VERSION;
+  compiled_prompt: string;
+  compiled_negative_prompt: string;
+  character_bindings: CompiledCharacterBinding[];
+  style_bindings: CompiledStyleBinding[];
+  env_bindings: CompiledEnvBinding[];
+  scene_pack_binding: CompiledScenePackBinding;
+  transition_bindings: CompiledTransitionBinding[];
+  shot_bindings: CompiledShotBinding[];
+  motion_bindings: CompiledMotionBinding[];
+  compile_fingerprint: string;
+  assembly_order: string[];
+}
+
+export interface RuntimePromptCompileInput {
+  scene_id: string;
+  scene_action: string;
+  env_slot: string;
+  style_core_ids: string[];
+  required_character_slots: string[];
+  base_negative_prompt: string;
+  character_image_anchors: CharacterImageAnchor[];
+  cinematic_sequence: CinematicSequenceCompileInput;
+  camera?: string[];
+  motion?: string[];
+}
+
+/** Renderer-facing upload shape (AI Studio consumes compiled_prompt + image anchors). */
 export interface MinimalRenderCommandUploadPayload {
+  compiler_version: typeof RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION;
+  compiled_prompt: string;
+  compiled_negative_prompt: string;
+  character_image_anchors: CharacterImageAnchor[];
+  character_bindings: CompiledCharacterBinding[];
+  style_bindings: CompiledStyleBinding[];
+  env_bindings: CompiledEnvBinding[];
+  scene_pack_binding: CompiledScenePackBinding;
+  transition_bindings: CompiledTransitionBinding[];
+  shot_bindings: CompiledShotBinding[];
+  motion_bindings: CompiledMotionBinding[];
   ai_studio_render_recipe: {
     copy_paste_prompt: string;
     copy_paste_negative: string;
@@ -5125,6 +5487,12 @@ export interface MinimalRenderCommandUploadPayload {
   scene_id: string;
   generation_session_id: string;
   qa_reconnect_token: string;
+}
+
+export interface MinimalRenderCommandExportResult extends MinimalRenderCommandUploadPayload {
+  execution_contract?: MinimalRenderExecutionContract;
+  unified_asset_registry?: UnifiedAssetRegistry;
+  export_metadata: MinimalRenderCommandExportMetadata;
 }
 
 export interface MinimalRenderCommandEntry {
@@ -5163,6 +5531,21 @@ export interface MinimalRenderCommandExportMetadata {
     ai_studio_parser_compatible: boolean;
     has_copy_paste_prompt: boolean;
     has_copy_paste_negative: boolean;
+    compiled_prompt_present: boolean;
+    runtime_compiler_active: boolean;
+    compiler_deterministic: boolean;
+    gonegi_identity_in_compiled_prompt: boolean;
+    dana_identity_in_compiled_prompt: boolean;
+    scene_isolation_clean: boolean;
+    character_image_anchors_present: boolean;
+    image_anchor_fingerprint_stable: boolean;
+    transition_bindings_present: boolean;
+    shot_bindings_present: boolean;
+    motion_bindings_present: boolean;
+    cinematic_sequence_deterministic: boolean;
+    execution_contract_present?: boolean;
+    unified_asset_registry_present?: boolean;
+    app_slot_anchors_active: boolean;
     no_mastercore_payload_duplication: boolean;
     no_dataset_mutation: boolean;
     no_image_generation: boolean;
@@ -5172,10 +5555,6 @@ export interface MinimalRenderCommandExportMetadata {
     production_lock_unchanged: boolean;
     phase_29b_unchanged: boolean;
   };
-}
-
-export interface MinimalRenderCommandExportResult extends MinimalRenderCommandUploadPayload {
-  export_metadata: MinimalRenderCommandExportMetadata;
 }
 
 export interface GoldenRecord {
