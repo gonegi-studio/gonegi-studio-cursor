@@ -51,7 +51,8 @@ const RENDER_COUNT = 1 as const;
 const DEFAULT_CFG = 7.5;
 const DEFAULT_SAMPLER = 'euler_a';
 
-const CANONICAL_CHARACTER_TEST_SCENE_ID = 'GONEGI-CHAR-TEST-001';
+export const CANONICAL_HARBOR_WALK_SCENE_ID = 'GONEGI-CHAR-TEST-001';
+const CANONICAL_CHARACTER_TEST_SCENE_ID = CANONICAL_HARBOR_WALK_SCENE_ID;
 const CANONICAL_CHARACTER_TEST_SESSION_ID = 'MRC-CANON-SES-001';
 const CANONICAL_ENV_SLOT = 'late_afternoon';
 
@@ -111,6 +112,13 @@ function buildCharacterImageAnchorsForExport(): CharacterImageAnchor[] {
 
 export function buildCanonicalRuntimePromptCompileInput(): RuntimePromptCompileInput {
   return buildCompileInput(buildCharacterImageAnchorsForExport());
+}
+
+/** Canonical one-scene harbor walk upload payload (no batch / no provider calls). */
+export function buildCanonicalMinimalRenderUploadPayload(): MinimalRenderCommandUploadPayload {
+  const character_image_anchors = buildCharacterImageAnchorsForExport();
+  const compiled = compileRuntimePrompt(buildCompileInput(character_image_anchors));
+  return buildCanonicalUploadPayload(compiled, character_image_anchors);
 }
 
 function buildCompileInput(character_image_anchors: CharacterImageAnchor[]): RuntimePromptCompileInput {

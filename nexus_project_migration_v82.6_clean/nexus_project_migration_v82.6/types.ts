@@ -5274,6 +5274,37 @@ export const SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION = '32E' as const;
 
 export type SequencePromptQualityVerdict = 'PASS' | 'WARN' | 'FAIL';
 
+export const REAL_RENDER_VALIDATION_AUDIT_VERSION = '32F' as const;
+
+export type RealRenderReadinessVerdict = 'READY' | 'NOT_READY' | 'CONDITIONAL';
+
+export interface RealRenderValidationAuditResult {
+  schema_version: typeof REAL_RENDER_VALIDATION_AUDIT_VERSION;
+  render_mode: 'single_scene_harbor_walk';
+  scene_id: string;
+  render_count: 1;
+  batch_generation: false;
+  lora_training: false;
+  compiler_version: string;
+  scene_pack_id: string;
+  transition_ids: string[];
+  shot_ids: string[];
+  motion_ids: string[];
+  identity_anchor_present: boolean;
+  scene_pack_binding_present: boolean;
+  transition_bindings_present: boolean;
+  shot_bindings_present: boolean;
+  motion_bindings_present: boolean;
+  prompt_size_acceptable: boolean;
+  compiled_prompt_length: number;
+  forbidden_term_hits: string[];
+  canonical_harbor_sequence_only: boolean;
+  render_readiness_verdict: RealRenderReadinessVerdict;
+  audit_checksum: string;
+  deterministic_audit_stable: boolean;
+  generated_at: string;
+}
+
 export interface SequencePromptQualityAuditResult {
   schema_version: typeof SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION;
   compiler_version: string;

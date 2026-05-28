@@ -175,6 +175,7 @@ import {
   resetMinimalRenderCommandExportCache,
 } from "./services/cinematic/minimalRenderCommandExport";
 import { buildSequencePromptQualityAuditPreview } from "./services/cinematic/sequencePromptQualityAudit";
+import { buildRealRenderValidationAuditPreview } from "./services/realRenderValidationAudit";
 import {
   buildCanonicalCharacterPackExportPreview,
   buildCanonicalCharacterPackJsonFile,
@@ -2065,6 +2066,16 @@ async function startServer() {
     } catch (e) {
       console.error("Sequence prompt quality audit preview error:", e);
       return res.status(500).json({ error: "Failed to build sequence prompt quality audit preview" });
+    }
+  });
+
+  app.get("/api/cinematic/real-render-validation-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildRealRenderValidationAuditPreview());
+    } catch (e) {
+      console.error("Real render validation preview error:", e);
+      return res.status(500).json({ error: "Failed to build real render validation preview" });
     }
   });
 
