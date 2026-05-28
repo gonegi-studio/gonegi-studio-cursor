@@ -1,18 +1,20 @@
-import type { CharacterBook } from '../types';
+import type { CharacterBook, CharacterAnchorDnaPreview } from '../types';
 import {
   matchesCanonicalCharacterName,
   type CanonicalCharacterName,
 } from './characterSlotMap';
 import {
-  compressCharacterIdentity,
-  formatCharacterCoreLine,
-  formatCompressedIdentityBlock,
-} from './identityCompressionEngine';
+  buildCharacterDnaLockSection,
+  detectCharactersInPromptWithAnchorDna,
+  formatFullAnchorCharacterCoreSection,
+  type CharacterAnchorDNARecord,
+} from './loadCharacterAnchorDNA';
+
 /** Client-safe copy of Music Drama binding model (see musicDramaAssetBinding.ts). */
 const MUSIC_DRAMA_BINDING_MODEL =
   'characterBook.characters[slot_id].elite_image_id + visual_dna lookup + environmentDNA[slot] verbatim + styleAnchor verbatim';
 
-export const PROMPT_BRIDGE_VERSION = 'PHASE-33C-v1' as const;
+export const PROMPT_BRIDGE_VERSION = 'PHASE-33E-v1' as const;
 
 export const IDENTITY_LAW_BLOCK = `### [IDENTITY LAW]
 Absolute fidelity to Ref Image #1 / active elite character refs.
@@ -23,8 +25,6 @@ NO style ref accessory leaking.
 NO 3D shading.
 CLEAN FACES.
 preserve ink-line facial masks.`;
-
-const LOCKED_CHARACTER_NAMES: CanonicalCharacterName[] = ['Gonegi', 'Dana'];
 
 const GENERIC_NOUN_PATTERNS: Array<{ pattern: RegExp; character: CanonicalCharacterName }> = [
   { pattern: /\b(the\s+)?(young\s+)?boy\b/gi, character: 'Gonegi' },
@@ -47,6 +47,7 @@ export interface PromptBridgeInput {
   controlledPrompt: string;
   characterBook: CharacterBook;
   identityRefs: PromptBridgeIdentityRef[];
+  anchorDnaRecords?: CharacterAnchorDNARecord[];
   styleAnchor?: string;
   environmentDna?: string;
 }
@@ -58,19 +59,20 @@ export interface PromptBridgeResult {
   binding_model: string;
   identity_law_injected: true;
   firewall_injected: true;
-  detected_characters: CanonicalCharacterName[];
-  preserved_name_tokens: CanonicalCharacterName[];
+  character_dna_lock_injected: true;
+  detected_characters: string[];
+  preserved_name_tokens: string[];
+  character_anchor_dna_preview: CharacterAnchorDnaPreview;
 }
 
 export function detectNamedCharactersInPrompt(prompt: string): CanonicalCharacterName[] {
-  const detected: CanonicalCharacterName[] = [];
-  for (const name of LOCKED_CHARACTER_NAMES) {
-    const re = new RegExp(`\\b${name}\\b`, 'i');
-    if (re.test(prompt)) {
-      detected.push(name);
-    }
-  }
-  return detected;
+  const detected = detectCharactersInPromptWithAnchorDna(prompt);
+  return detected
+    .map((record) => record.name)
+    .filter((name): name is CanonicalCharacterName =>
+      matchesCanonicalCharacterName(name, 'Gonegi') ||
+      matchesCanonicalCharacterName(name, 'Dana')
+    );
 }
 
 /** Restore canonical names when a refiner replaced them with generic nouns. */
@@ -78,15 +80,22 @@ export function preserveLockedCharacterNames(
   refinedText: string,
   originalPrompt: string
 ): string {
-  const required = detectNamedCharactersInPrompt(originalPrompt);
+  const required = detectCharactersInPromptWithAnchorDna(originalPrompt).map((r) => r.name);
   if (required.length === 0) return refinedText;
 
   let output = refinedText;
   for (const name of required) {
-    const token = new RegExp(`\\b${name}\\b`, 'i');
+    const token = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
     if (token.test(output)) continue;
 
-    const replacements = GENERIC_NOUN_PATTERNS.filter((entry) => entry.character === name);
+    const canonical: CanonicalCharacterName | null = matchesCanonicalCharacterName(name, 'Gonegi')
+      ? 'Gonegi'
+      : matchesCanonicalCharacterName(name, 'Dana')
+        ? 'Dana'
+        : null;
+
+    if (!canonical) continue;
+    const replacements = GENERIC_NOUN_PATTERNS.filter((entry) => entry.character === canonical);
     for (const { pattern } of replacements) {
       if (pattern.test(output)) {
         output = output.replace(pattern, name);
@@ -96,41 +105,12 @@ export function preserveLockedCharacterNames(
   }
 
   for (const name of required) {
-    if (!new RegExp(`\\b${name}\\b`, 'i').test(output)) {
+    if (!new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(output)) {
       output = `${name} — ${output}`;
     }
   }
 
   return output;
-}
-
-function toResolvedIdentity(
-  ref: PromptBridgeIdentityRef,
-  book: CharacterBook
-) {
-  const entry =
-    book.characters?.find((c) => matchesCanonicalCharacterName(c.name, ref.character_name)) ??
-    book.characters?.find((c) => ref.slot_id.endsWith(c.grid_position ?? ''));
-  const compressed = compressCharacterIdentity(
-    ref.slot_id,
-    ref.character_name,
-    entry?.visual_dna ?? ''
-  );
-  return {
-    id: ref.slot_id,
-    name: ref.character_name,
-    ...compressed,
-    image_anchor_ref: ref.elite_image_id,
-    source_visual_dna_ref: `app:characterBook.characters.${ref.slot_id}.visual_dna`,
-  };
-}
-
-function buildCharacterCoreBlock(identityRefs: PromptBridgeIdentityRef[], book: CharacterBook): string {
-  const lines = identityRefs.map((ref) => formatCharacterCoreLine(toResolvedIdentity(ref, book)));
-  const identityBlocks = identityRefs.map((ref) =>
-    formatCompressedIdentityBlock(toResolvedIdentity(ref, book))
-  );
-  return ['[CHARACTER_CORE]', ...lines, ...identityBlocks].join('\n');
 }
 
 function buildReferenceTriggerBlock(identityRefs: PromptBridgeIdentityRef[]): string {
@@ -143,11 +123,18 @@ function buildReferenceTriggerBlock(identityRefs: PromptBridgeIdentityRef[]): st
 
 export class PromptBridge {
   static bridge(input: PromptBridgeInput): PromptBridgeResult {
-    const detected = detectNamedCharactersInPrompt(input.controlledPrompt);
+    const anchorRecords =
+      input.anchorDnaRecords ??
+      detectCharactersInPromptWithAnchorDna(input.controlledPrompt).filter((record) =>
+        input.identityRefs.some((ref) => ref.slot_id === record.slot_id)
+      );
+
+    const detected = anchorRecords.map((record) => record.name);
     const preserved = preserveLockedCharacterNames(input.controlledPrompt, input.controlledPrompt);
 
-    const characterCore = buildCharacterCoreBlock(input.identityRefs, input.characterBook);
+    const characterCore = formatFullAnchorCharacterCoreSection(anchorRecords);
     const referenceTriggers = buildReferenceTriggerBlock(input.identityRefs);
+    const characterDnaLock = buildCharacterDnaLockSection();
 
     const envBlock = input.environmentDna
       ? `[ENVIRONMENT]: ${input.environmentDna}`
@@ -161,6 +148,7 @@ export class PromptBridge {
       referenceTriggers,
       IDENTITY_LAW_BLOCK,
       FIREWALL_BLOCK,
+      characterDnaLock,
       '[CHARACTER_PRIORITY]: identity_refs_before_style_refs; style_refs cannot override face or outfit',
       `[SCENE ACTION]: ${preserved}`,
       envBlock,
@@ -177,8 +165,17 @@ export class PromptBridge {
       binding_model: MUSIC_DRAMA_BINDING_MODEL,
       identity_law_injected: true,
       firewall_injected: true,
+      character_dna_lock_injected: true,
       detected_characters: detected,
-      preserved_name_tokens: detectNamedCharactersInPrompt(preserved),
+      preserved_name_tokens: detectCharactersInPromptWithAnchorDna(preserved).map((r) => r.name),
+      character_anchor_dna_preview: {
+        dna_source: 'anchor_slot_json',
+        injected_character_dna: anchorRecords.map((record) => ({
+          name: record.name,
+          slot_id: record.slot_id,
+          dna_loaded: true,
+        })),
+      },
     };
   }
 }

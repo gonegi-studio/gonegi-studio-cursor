@@ -7,8 +7,12 @@ import {
   type CanonicalCharacterName,
 } from './characterSlotMap';
 import { detectNamedCharactersInPrompt, type PromptBridgeIdentityRef } from './promptBridge';
+import {
+  detectCharactersInPromptWithAnchorDna,
+  validateAnchorDnaForCharacters,
+} from './loadCharacterAnchorDNA';
 
-export const SELECT_MASTER_ASSETS_VERSION = 'PHASE-33C-v1' as const;
+export const SELECT_MASTER_ASSETS_VERSION = 'PHASE-33E-v1' as const;
 
 export type MasterAssetReadiness = 'READY' | 'NOT_READY';
 
@@ -61,16 +65,59 @@ function resolveIdentityRef(
 }
 
 export function selectMasterAssets(input: SelectMasterAssetsInput): SelectMasterAssetsResult {
+  const anchorDetected = detectCharactersInPromptWithAnchorDna(input.controlledPrompt);
   const detected = detectNamedCharactersInPrompt(input.controlledPrompt);
   const identity_refs: PromptBridgeIdentityRef[] = [];
   const missingElite: CanonicalCharacterName[] = [];
   let refIndex = 1;
 
-  const required: CanonicalCharacterName[] =
-    detected.length > 0 ? detected : [];
+  const requiredNames =
+    anchorDetected.length > 0
+      ? anchorDetected.map((record) => record.name)
+      : detected;
 
-  for (const name of required) {
-    const slotId = name === 'Gonegi' ? GONEGI_SLOT_ID : DANA_SLOT_ID;
+  const dnaValidation = validateAnchorDnaForCharacters(
+    requiredNames.map((name) => ({
+      name,
+      slot_id:
+        name === 'Gonegi' ? GONEGI_SLOT_ID : name === 'Dana' ? DANA_SLOT_ID : undefined,
+    }))
+  );
+
+  if (!dnaValidation.ready) {
+    return {
+      readiness: 'NOT_READY',
+      blocked_reason: `PHASE-33E character_dna.json missing for: ${dnaValidation.missing.join(', ')}`,
+      detected_characters: detected,
+      injected_elite_image_ids: [],
+      reference_order: [],
+      identity_refs: [],
+      style_ref_ids: [],
+      used_prompt_bridge: false,
+    };
+  }
+
+  const targets =
+    anchorDetected.length > 0
+      ? anchorDetected
+          .filter((record) => record.name === 'Gonegi' || record.name === 'Dana')
+          .map((record) => ({
+            name: record.name as CanonicalCharacterName,
+            slotId:
+              record.slot_id === GONEGI_SLOT_ID || record.slot_id === DANA_SLOT_ID
+                ? record.slot_id
+                : record.name === 'Gonegi'
+                  ? GONEGI_SLOT_ID
+                  : DANA_SLOT_ID,
+          }))
+      : requiredNames
+          .filter((name): name is CanonicalCharacterName => name === 'Gonegi' || name === 'Dana')
+          .map((name) => ({
+            name,
+            slotId: name === 'Gonegi' ? GONEGI_SLOT_ID : DANA_SLOT_ID,
+          }));
+
+  for (const { name, slotId } of targets) {
     const ref = resolveIdentityRef(input.characterBook, name, slotId, refIndex);
     if (ref) {
       identity_refs.push(ref);

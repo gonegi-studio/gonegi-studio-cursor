@@ -5267,10 +5267,10 @@ export interface MusicDramaBindingAnalysis {
 
 // --- Runtime Identity Compiler (PHASE-31A ultra compact) ---
 
-export const RUNTIME_PROMPT_COMPILER_VERSION = '33A' as const;
+export const RUNTIME_PROMPT_COMPILER_VERSION = '33E' as const;
 export const RUNTIME_IMAGE_ANCHOR_EXPORT_VERSION = '31B' as const;
 export const RUNTIME_CINEMATIC_SEQUENCE_EXPORT_VERSION = '32D' as const;
-export const RUNTIME_CHARACTER_FIRST_EXPORT_VERSION = '33A' as const;
+export const RUNTIME_CHARACTER_FIRST_EXPORT_VERSION = '33E' as const;
 export const SEQUENCE_PROMPT_QUALITY_AUDIT_VERSION = '32E' as const;
 
 export type SequencePromptQualityVerdict = 'PASS' | 'WARN' | 'FAIL';
@@ -5573,10 +5573,22 @@ export interface MinimalRenderCommandEntry {
   qa_reconnect_token: string;
 }
 
+export interface InjectedCharacterDnaEntry {
+  name: string;
+  slot_id: string;
+  dna_loaded: boolean;
+}
+
+export interface CharacterAnchorDnaPreview {
+  dna_source: 'anchor_slot_json';
+  injected_character_dna: InjectedCharacterDnaEntry[];
+}
+
 export interface MinimalRenderCommandExportMetadata {
   schema_version: typeof MINIMAL_RENDER_COMMAND_VERSION;
   source_pack_ref: 'PHASE-29B';
   render_mode: 'single_scene_test';
+  character_anchor_dna_preview?: CharacterAnchorDnaPreview;
   render_count: 1;
   generated_at: string;
   readonly_export: true;
@@ -5619,6 +5631,8 @@ export interface MinimalRenderCommandExportMetadata {
     no_runtime_dataset_mutation: boolean;
     production_lock_unchanged: boolean;
     phase_29b_unchanged: boolean;
+    anchor_slot_dna_active?: boolean;
+    identity_before_style?: boolean;
   };
 }
 

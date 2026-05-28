@@ -17,10 +17,13 @@ import { MEDITERRANEAN_CHRONICLES_DATA } from '../src/data/jsonData';
 import { buildAiStudioControlledJsonRebuildPreview } from './cinematic/aiStudioControlledJsonRebuild';
 import { buildUnifiedAssetRegistry } from './cinematic/musicDramaAssetBinding';
 import { toCompiledMotionBinding, resolveEmotionMotionBridge } from './emotionMotionBridgeResolver';
+import { CHARACTER_DOMINANCE_LOCK } from './identityCompressionEngine';
 import {
-  CHARACTER_DOMINANCE_LOCK,
-  formatCharacterCoreLine,
-} from './identityCompressionEngine';
+  assertCanonicalAnchorDnaReady,
+  buildCharacterDnaLockSection,
+  formatFullAnchorCharacterCoreSection,
+  getCharacterAnchorDNABySlot,
+} from './loadCharacterAnchorDNA';
 import {
   assertForbiddenTokensAbsent,
   buildCompiledNegativePrompt,
@@ -44,6 +47,7 @@ export const CANONICAL_RUNTIME_ASSEMBLY_ORDER = [
   'character_core',
   'reference_trigger',
   'identity_lock',
+  'character_dna_lock',
   'action',
   'scene',
   'style_core_light',
@@ -66,22 +70,27 @@ function buildCharacterCoreSection(
   section: string;
   bindings: CompiledCharacterBinding[];
 } {
+  assertCanonicalAnchorDnaReady(slotIds);
+
   const identities = resolveCharacterIdentities(slotIds);
   const registry = buildUnifiedAssetRegistry(slotIds);
   const anchorBySlot = new Map(anchors.map((a) => [a.slot_id, a]));
-  const lines = ['[CHARACTER_CORE]'];
-  const bindings: CompiledCharacterBinding[] = [];
+  const anchorRecords = slotIds
+    .map((slotId) => getCharacterAnchorDNABySlot(slotId))
+    .filter((record): record is NonNullable<typeof record> => record != null);
 
-  for (const identity of identities) {
+  const bindings: CompiledCharacterBinding[] = identities.map((identity) => {
     const slotBinding = registry.slot_bindings.find((b) => b.slot_id === identity.id);
     const imageAnchor = anchorBySlot.get(identity.id);
-    const coreLine = formatCharacterCoreLine(identity);
-    lines.push(coreLine);
+    const anchorDna = getCharacterAnchorDNABySlot(identity.id);
+    const runtimeIdentity = anchorDna
+      ? `${anchorDna.name}: ${anchorDna.visual_dna}`
+      : identity.compressed_identity;
 
-    bindings.push({
+    return {
       slot_id: identity.id,
       character_name: identity.name,
-      runtime_compressed_identity: coreLine,
+      runtime_compressed_identity: runtimeIdentity,
       image_anchor_ref: imageAnchor?.elite_image_id ?? identity.image_anchor_ref,
       embedding_id: slotBinding?.embedding_id ?? digest(['emb', identity.id]),
       lock_flags: slotBinding?.lock_flags ?? {
@@ -89,7 +98,7 @@ function buildCharacterCoreSection(
         outfit_lock: true,
         silhouette_lock: true,
       },
-      source_visual_dna_ref: identity.source_visual_dna_ref,
+      source_visual_dna_ref: anchorDna?.source_path ?? identity.source_visual_dna_ref,
       resolved_identity: {
         face_core: identity.face_core,
         hair_core: identity.hair_core,
@@ -99,10 +108,11 @@ function buildCharacterCoreSection(
         style_core: identity.style_core,
         identity_lock: identity.identity_lock,
       },
-    });
-  }
+    };
+  });
 
-  return { section: cleanPromptSection(lines.join(SECTION_JOINER)), bindings };
+  const section = cleanPromptSection(formatFullAnchorCharacterCoreSection(anchorRecords));
+  return { section, bindings };
 }
 
 function buildReferenceTriggerSection(anchors: CharacterImageAnchor[]): string {
@@ -295,6 +305,7 @@ export function compileRuntimePrompt(input: RuntimePromptCompileInput): Compiled
   const characterBlock = buildCharacterCoreSection(slotIds, input.character_image_anchors);
   const referenceTrigger = buildReferenceTriggerSection(input.character_image_anchors);
   const identityLock = buildIdentityLockSection();
+  const characterDnaLock = cleanPromptSection(buildCharacterDnaLockSection());
   const actionBlock = buildActionSection(sequence.scene_pack_id);
   const sceneBlock = buildSceneSection(input.scene_action);
   const styleBlock = buildStyleCoreLightSection(styleCoreIds);
@@ -308,6 +319,7 @@ export function compileRuntimePrompt(input: RuntimePromptCompileInput): Compiled
     characterBlock.section,
     referenceTrigger,
     identityLock,
+    characterDnaLock,
     actionBlock.section,
     sceneBlock,
     styleBlock.section,
@@ -329,14 +341,14 @@ export function compileRuntimePrompt(input: RuntimePromptCompileInput): Compiled
   ]);
 
   if (!assertSceneIsolationClean(compiled_prompt) || !assertForbiddenTokensAbsent(compiled_prompt)) {
-    throw new Error('PHASE-33A runtime prompt compiler failed isolation or conflict checks');
+    throw new Error('PHASE-33E runtime prompt compiler failed isolation or conflict checks');
   }
 
   if (
     compiled_prompt.includes('image latent anchors override') ||
     compiled_prompt.includes('PRIMARY CHARACTER IDENTITY SOURCE: character_image_anchors')
   ) {
-    throw new Error('PHASE-33A compiler must not emit deprecated image-anchor dominance wording');
+    throw new Error('PHASE-33E compiler must not emit deprecated image-anchor dominance wording');
   }
 
   const compile_fingerprint = digest([
@@ -383,6 +395,10 @@ export function assertCompiledPromptIntegrity(compiled: CompiledRenderPrompt): b
     prompt.includes('elite-image-gonegi-main-v1') &&
     prompt.includes('elite-image-dana-companion-v1') &&
     prompt.includes('[IDENTITY_LOCK]') &&
+    prompt.includes('[CHARACTER_DNA_LOCK]') &&
+    prompt.includes('character_dna.json are IMMUTABLE') &&
+    prompt.includes('Gonegi facial topology') &&
+    prompt.includes('Dana facial topology') &&
     prompt.includes('[CHARACTER_PRIORITY]') &&
     prompt.includes('[LOD_PROTOCOL]') &&
     /Gonegi/i.test(prompt) &&

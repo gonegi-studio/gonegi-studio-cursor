@@ -33,6 +33,11 @@ import {
   verifyCompilerDeterminism,
 } from '../runtimePromptCompiler';
 import { assertSceneIsolationClean } from '../sceneIsolationGuard';
+import {
+  buildInjectedCharacterDnaPreview,
+  getCharacterAnchorDNABySlot,
+  resetCharacterAnchorDNAMapCache,
+} from '../loadCharacterAnchorDNA';
 import { buildSynthesizedDatasetProductionLockPreview } from '../synthesizedDatasetProductionLock';
 import { buildAiStudioControlledJsonRebuildPreview } from './aiStudioControlledJsonRebuild';
 import { buildControlledGenerationPackExportPreview } from './controlledGenerationPackExport';
@@ -269,7 +274,7 @@ function assertRendererJsonFileBody(body: string): void {
     throw new Error('PHASE-31A json-file missing compiled_prompt');
   }
   if (parsed.compiler_version !== RUNTIME_CHARACTER_FIRST_EXPORT_VERSION) {
-    throw new Error('PHASE-33A json-file compiler_version must be 33A');
+    throw new Error('PHASE-33E json-file compiler_version must be 33E');
   }
   if (!Array.isArray(parsed.character_reference_triggers) || parsed.character_reference_triggers.length === 0) {
     throw new Error('PHASE-33A json-file missing character_reference_triggers');
@@ -320,6 +325,7 @@ function writeExportArtifact(result: MinimalRenderCommandExportResult): void {
 }
 
 export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportResult {
+  resetCharacterAnchorDNAMapCache();
   const productionLock = buildSynthesizedDatasetProductionLockPreview();
   const controlledPackBefore = buildControlledGenerationPackExportPreview();
   const studioRebuildBefore = buildAiStudioControlledJsonRebuildPreview();
@@ -351,6 +357,14 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
     uploadPayload.compiled_negative_prompt
   );
   const compiledPrompt = uploadPayload.compiled_prompt;
+  const styleIdx = compiledPrompt.indexOf('[STYLE_CORE_LIGHT]');
+  const envIdx = compiledPrompt.indexOf('[ENV_LIGHT]');
+  const firstStyleEnv =
+    styleIdx >= 0 ? styleIdx : envIdx >= 0 ? envIdx : Number.MAX_SAFE_INTEGER;
+  const anchorDnaRecords = [...CANONICAL_TEST_CHARACTER_SLOTS]
+    .map((slotId) => getCharacterAnchorDNABySlot(slotId))
+    .filter((record): record is NonNullable<typeof record> => record != null);
+  const character_anchor_dna_preview = buildInjectedCharacterDnaPreview(anchorDnaRecords);
   const compilerDeterministic = verifyCompilerDeterminism(compileInput, 5);
   const integrityOk = assertCompiledPromptIntegrity(compiled);
 
@@ -370,6 +384,7 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
     commands: [commandMetadata],
     minimal_render_command_checksum: '',
     export_json_path: MINIMAL_RENDER_COMMAND_EXPORT_PATH,
+    character_anchor_dna_preview,
     validation: {
       deterministic_command_checksum_stable: true,
       readonly_export: true,
@@ -409,13 +424,22 @@ export function buildMinimalRenderCommandExport(): MinimalRenderCommandExportRes
       no_runtime_dataset_mutation: false,
       production_lock_unchanged: false,
       phase_29b_unchanged: false,
+      anchor_slot_dna_active:
+        compiledPrompt.includes('Gonegi facial topology') &&
+        compiledPrompt.includes('Dana facial topology') &&
+        compiledPrompt.includes('[CHARACTER_DNA_LOCK]'),
+      identity_before_style:
+        compiledPrompt.includes('Gonegi facial topology') &&
+        compiledPrompt.includes('Dana facial topology') &&
+        compiledPrompt.indexOf('Gonegi facial topology') < firstStyleEnv &&
+        compiledPrompt.indexOf('Dana facial topology') < firstStyleEnv,
     },
   };
 
   assertCharacterImageAnchorsSlotMapped(character_image_anchors, uploadPayload.character_bindings);
 
   if (!integrityOk || !compilerDeterministic || !uploadDeterministic || !anchorsPresent || !fingerprintStable) {
-    throw new Error('PHASE-33A character-first export failed integrity or determinism checks');
+    throw new Error('PHASE-33E character-first export failed integrity or determinism checks');
   }
 
   const controlledPackAfter = buildControlledGenerationPackExportPreview();
