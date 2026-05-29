@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/richCinematicSignal.schema.json",
+  "title": "RichCinematicSignalDataset",
+  "description": "PHASE-35B rich cinematic grammar preservation layer (no render/runtime payloads).",
+  "type": "object",
+  "required": ["schema_version", "phase", "source_dataset", "generated_at", "scene_count", "signals"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string", "const": "PHASE-35B-v1" },
+    "phase": { "type": "string", "const": "PHASE-35B" },
+    "source_dataset": {
+      "type": "object",
+      "required": ["file", "size_bytes", "scene_count"],
+      "properties": {
+        "file": { "type": "string" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "scene_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "scene_count": { "type": "integer", "minimum": 0 },
+    "conversion_checksum": { "type": "string" },
+    "size_audit": { "$ref": "#/definitions/RichCueSizeAudit" },
+    "signals": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/RichCueSceneSignal" }
+    }
+  },
+  "definitions": {
+    "RichCueSizeAudit": {
+      "type": "object",
+      "required": [
+        "compact_cue_bytes",
+        "rich_layer_bytes",
+        "combined_bytes",
+        "increase_ratio",
+        "increase_percent",
+        "within_budget"
+      ],
+      "properties": {
+        "compact_cue_bytes": { "type": "integer" },
+        "rich_layer_bytes": { "type": "integer" },
+        "combined_bytes": { "type": "integer" },
+        "increase_ratio": { "type": "number" },
+        "increase_percent": { "type": "number" },
+        "max_increase_ratio": { "type": "number", "const": 0.25 },
+        "within_budget": { "type": "boolean" }
+      }
+    },
+    "RichCueSceneSignal": {
+      "type": "object",
+      "required": ["scene_id", "scene_index", "rich_cinematic_signals"],
+      "properties": {
+        "scene_id": { "type": "string" },
+        "scene_index": { "type": "integer", "minimum": 0 },
+        "rich_cinematic_signals": { "$ref": "#/definitions/RichCinematicSignals" }
+      }
+    },
+    "RichCinematicSignals": {
+      "type": "object",
+      "required": [
+        "camera_momentum",
+        "emotional_carryover",
+        "montage_rhythm",
+        "scene_energy_waveform",
+        "spatial_continuity",
+        "motion_bridge"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "camera_momentum": {
+          "type": "object",
+          "required": ["direction", "intensity_curve", "stability"],
+          "properties": {
+            "direction": { "type": "string" },
+            "intensity_curve": { "type": "string" },
+            "stability": { "type": "string" },
+            "velocity_norm": { "type": "number" }
+          }
+        },
+        "emotional_carryover": {
+          "type": "object",
+          "required": ["from_previous_scene", "transition_mode", "carry_strength"],
+          "properties": {
+            "from_previous_scene": { "type": "string" },
+            "transition_mode": { "type": "string" },
+            "carry_strength": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "montage_rhythm": {
+          "type": "object",
+          "required": ["tempo", "cut_density", "visual_breathing_room"],
+          "properties": {
+            "tempo": { "type": "string" },
+            "cut_density": { "type": "string" },
+            "visual_breathing_room": { "type": "string" }
+          }
+        },
+        "scene_energy_waveform": {
+          "type": "object",
+          "required": ["start_energy", "peak_energy", "end_energy"],
+          "properties": {
+            "start_energy": { "type": "number" },
+            "peak_energy": { "type": "number" },
+            "end_energy": { "type": "number" }
+          }
+        },
+        "spatial_continuity": {
+          "type": "object",
+          "required": ["camera_axis_lock", "environmental_anchor", "screen_direction"],
+          "properties": {
+            "camera_axis_lock": { "type": "boolean" },
+            "environmental_anchor": { "type": "string" },
+            "screen_direction": { "type": "string" }
+          }
+        },
+        "motion_bridge": {
+          "type": "object",
+          "required": ["hair_motion", "coat_motion", "walking_sync"],
+          "properties": {
+            "hair_motion": { "type": "string" },
+            "coat_motion": { "type": "string" },
+            "walking_sync": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

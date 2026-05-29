@@ -14,7 +14,7 @@ import {
 const MUSIC_DRAMA_BINDING_MODEL =
   'characterBook.characters[slot_id].elite_image_id + visual_dna lookup + environmentDNA[slot] verbatim + styleAnchor verbatim';
 
-export const PROMPT_BRIDGE_VERSION = 'PHASE-33F-v1' as const;
+export const PROMPT_BRIDGE_VERSION = 'PHASE-35B-v1' as const;
 
 export const IDENTITY_LAW_BLOCK = `### [IDENTITY LAW]
 Absolute fidelity to Ref Image #1 / active elite character refs.
@@ -50,6 +50,8 @@ export interface PromptBridgeInput {
   anchorDnaRecords?: CharacterAnchorDNARecord[];
   styleAnchor?: string;
   environmentDna?: string;
+  /** PHASE-35B: compact cue + rich signal modulation (grammar only, no render payloads). */
+  cinematicModulation?: string;
 }
 
 export interface PromptBridgeResult {
@@ -63,6 +65,8 @@ export interface PromptBridgeResult {
   detected_characters: string[];
   preserved_name_tokens: string[];
   character_anchor_dna_preview: CharacterAnchorDnaPreview;
+  cinematic_modulation_injected: boolean;
+  cinematic_modulation_chars: number;
 }
 
 export function detectNamedCharactersInPrompt(prompt: string): CanonicalCharacterName[] {
@@ -135,6 +139,10 @@ export class PromptBridge {
     const characterCore = formatFullAnchorCharacterCoreSection(anchorRecords);
     const referenceTriggers = buildReferenceTriggerBlock(input.identityRefs);
     const characterDnaLock = buildCharacterDnaLockSection();
+    const modulation = input.cinematicModulation?.trim() ?? '';
+    const cinematicModulationBlock = modulation
+      ? `[CINEMATIC_MODULATION]: ${modulation}`
+      : '';
 
     const envBlock = input.environmentDna
       ? `[ENVIRONMENT]: ${input.environmentDna}`
@@ -149,6 +157,7 @@ export class PromptBridge {
       IDENTITY_LAW_BLOCK,
       FIREWALL_BLOCK,
       characterDnaLock,
+      cinematicModulationBlock,
       '[CHARACTER_PRIORITY]: identity_refs_before_style_refs; style_refs cannot override face or outfit',
       `[SCENE ACTION]: ${preserved}`,
       envBlock,
@@ -176,6 +185,8 @@ export class PromptBridge {
           dna_loaded: true,
         })),
       },
+      cinematic_modulation_injected: modulation.length > 0,
+      cinematic_modulation_chars: modulation.length,
     };
   }
 }

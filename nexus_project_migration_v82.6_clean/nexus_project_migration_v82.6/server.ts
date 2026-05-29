@@ -172,8 +172,26 @@ import {
 import {
   buildMinimalRenderCommandExportPreview,
   buildMinimalRenderCommandJsonFile,
+  buildMinimalRenderCommandJsonFileFailurePayload,
   resetMinimalRenderCommandExportCache,
 } from "./services/cinematic/minimalRenderCommandExport";
+import {
+  buildCompactCueDatasetExportDownload,
+  buildCompactCueDatasetPreview,
+} from "./services/cinematic/buildCompactCueDataset";
+import {
+  buildRichCueSignalExportDownload,
+  buildRichCueSignalPreview,
+} from "./services/cinematic/buildRichCueSignals";
+import { buildContinuityValidationPreview } from "./services/cinematic/buildContinuityValidationReport";
+import {
+  buildCueQualityGatePreview,
+  buildCueQualityReportDownload,
+} from "./services/cinematic/buildCueQualityGate";
+import {
+  buildTopRiskPairReviewPreview,
+  buildTopRiskPairReviewReportDownload,
+} from "./services/cinematic/buildTopRiskPairReview";
 import { buildSequencePromptQualityAuditPreview } from "./services/cinematic/sequencePromptQualityAudit";
 import { buildRealRenderValidationAuditPreview } from "./services/realRenderValidationAudit";
 import { buildSingleCanvasIdentityPreview } from "./services/singleCanvasIdentityPreview";
@@ -2040,6 +2058,121 @@ async function startServer() {
     }
   });
 
+  // PHASE-35A: Compact cinematic cue conversion (grammar-only; no render pipeline wiring)
+  app.get("/api/cinematic/compact-cue-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildCompactCueDatasetPreview());
+    } catch (e) {
+      console.error("Compact cue preview error:", e);
+      return res.status(500).json({ error: "Failed to build compact cue preview" });
+    }
+  });
+
+  app.get("/api/cinematic/compact-cue-export", (_req, res) => {
+    try {
+      const download = buildCompactCueDatasetExportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Compact cue export error:", e);
+      return res.status(500).json({ error: "Failed to build compact cue export" });
+    }
+  });
+
+  // PHASE-35B: Rich cinematic signal preservation layer (grammar-only)
+  app.get("/api/cinematic/rich-cue-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildRichCueSignalPreview());
+    } catch (e) {
+      console.error("Rich cue preview error:", e);
+      return res.status(500).json({ error: "Failed to build rich cue preview" });
+    }
+  });
+
+  app.get("/api/cinematic/rich-cue-export", (_req, res) => {
+    try {
+      const download = buildRichCueSignalExportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Rich cue export error:", e);
+      return res.status(500).json({ error: "Failed to build rich cue export" });
+    }
+  });
+
+  // PHASE-35C: Continuity validation (35A vs 35A+35B, no render/LLM scoring)
+  app.get("/api/cinematic/continuity-validation-preview", (req, res) => {
+    try {
+      const testPrompt =
+        typeof req.query.prompt === "string"
+          ? req.query.prompt
+          : undefined;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildContinuityValidationPreview(testPrompt));
+    } catch (e) {
+      console.error("Continuity validation preview error:", e);
+      return res.status(500).json({ error: "Failed to build continuity validation preview" });
+    }
+  });
+
+  // PHASE-35D: Per-pair cue quality gate and weak scene pair detection (diagnosis only)
+  app.get("/api/cinematic/cue-quality-gate-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildCueQualityGatePreview());
+    } catch (e) {
+      console.error("Cue quality gate preview error:", e);
+      return res.status(500).json({ error: "Failed to build cue quality gate preview" });
+    }
+  });
+
+  app.get("/api/cinematic/cue-quality-report", (_req, res) => {
+    try {
+      const download = buildCueQualityReportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Cue quality report export error:", e);
+      return res.status(500).json({ error: "Failed to build cue quality report" });
+    }
+  });
+
+  // PHASE-35E: Detailed top-risk pair review (diagnosis only, no auto-fix)
+  app.get("/api/cinematic/top-risk-pair-review-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildTopRiskPairReviewPreview());
+    } catch (e) {
+      console.error("Top risk pair review preview error:", e);
+      return res.status(500).json({ error: "Failed to build top risk pair review preview" });
+    }
+  });
+
+  app.get("/api/cinematic/top-risk-pair-review-report", (_req, res) => {
+    try {
+      const download = buildTopRiskPairReviewReportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Top risk pair review report export error:", e);
+      return res.status(500).json({ error: "Failed to build top risk pair review report" });
+    }
+  });
+
   app.get("/api/cinematic/minimal-render-command-preview", (_req, res) => {
     try {
       res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -2069,7 +2202,8 @@ async function startServer() {
       return res.send(download.body);
     } catch (e) {
       console.error("Minimal render command json file error:", e);
-      return res.status(500).json({ error: "Failed to build minimal render command json file" });
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.status(500).json(buildMinimalRenderCommandJsonFileFailurePayload(e));
     }
   });
 

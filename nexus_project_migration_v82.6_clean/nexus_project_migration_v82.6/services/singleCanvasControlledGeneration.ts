@@ -7,8 +7,12 @@ import {
   validateAnchorDnaForCharacters,
   validateCompiledPromptDnaContent,
 } from './loadCharacterAnchorDNA';
+import {
+  ESTIMATED_BRIDGED_PROMPT_BASELINE,
+  resolveSceneContinuityForPrompt,
+} from './sceneContinuityResolver';
 
-export const SINGLE_CANVAS_CONTROLLED_VERSION = 'PHASE-33F-v1' as const;
+export const SINGLE_CANVAS_CONTROLLED_VERSION = 'PHASE-35B-v1' as const;
 
 export interface SingleCanvasIdentityDebug {
   detected_characters: string[];
@@ -21,6 +25,8 @@ export interface SingleCanvasIdentityDebug {
   dna_source?: 'character_anchor.index.json';
   injected_character_dna?: CharacterAnchorDnaPreview['injected_character_dna'];
   identity_before_style?: boolean;
+  cinematic_modulation_injected?: boolean;
+  scene_continuity_checks?: ReturnType<typeof resolveSceneContinuityForPrompt>['continuity_checks'];
 }
 
 export interface SingleCanvasControlledGenerationResult {
@@ -119,6 +125,10 @@ export function buildSingleCanvasControlledGeneration(
     };
   }
 
+  const continuity = resolveSceneContinuityForPrompt(input.controlledPrompt, {
+    baselinePromptLength: ESTIMATED_BRIDGED_PROMPT_BASELINE,
+  });
+
   const bridgeResult = PromptBridge.bridge({
     controlledPrompt: input.controlledPrompt,
     characterBook: input.characterBook,
@@ -126,6 +136,7 @@ export function buildSingleCanvasControlledGeneration(
     anchorDnaRecords: dnaGate.records,
     styleAnchor: input.characterBook.styleAnchor,
     environmentDna: input.characterBook.environmentDNA?.global,
+    cinematicModulation: continuity.modulation,
   });
 
   const refinedRaw = input.refinedPrompt ?? input.controlledPrompt;
@@ -180,6 +191,8 @@ export function buildSingleCanvasControlledGeneration(
       dna_source: 'character_anchor.index.json',
       injected_character_dna: bridgeResult.character_anchor_dna_preview.injected_character_dna,
       identity_before_style: identity_before_style && identity_before_style_prompt,
+      cinematic_modulation_injected: bridgeResult.cinematic_modulation_injected,
+      scene_continuity_checks: continuity.continuity_checks,
     },
   };
 }

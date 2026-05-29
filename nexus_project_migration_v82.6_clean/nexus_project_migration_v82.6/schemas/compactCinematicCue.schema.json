@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/compactCinematicCue.schema.json",
+  "title": "CompactCinematicCueDataset",
+  "description": "PHASE-35A cue-only cinematic grammar layer (no render/runtime/engine payloads).",
+  "type": "object",
+  "required": ["schema_version", "phase", "source_dataset", "generated_at", "scene_count", "cues"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string", "const": "PHASE-35A-v1" },
+    "phase": { "type": "string", "const": "PHASE-35A" },
+    "source_dataset": {
+      "type": "object",
+      "required": ["file", "size_bytes", "scene_count"],
+      "properties": {
+        "file": { "type": "string" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "scene_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "scene_count": { "type": "integer", "minimum": 0 },
+    "conversion_checksum": { "type": "string" },
+    "cues": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/CompactCinematicCue" }
+    }
+  },
+  "definitions": {
+    "CompactCinematicCue": {
+      "type": "object",
+      "required": [
+        "scene_id",
+        "scene_index",
+        "scene_pack_id",
+        "beat_order",
+        "shot_purpose",
+        "narrative_intent",
+        "shot_fingerprint",
+        "camera_motion",
+        "lens_language",
+        "focus_behavior",
+        "blocking_pattern",
+        "transition_dna",
+        "editing_pacing",
+        "pacing_waveform",
+        "tempo_signature",
+        "emotion_motion_bridge",
+        "emotion_curve",
+        "carryover_intensity",
+        "emotional_decay_tau",
+        "continuity_graph",
+        "motif_graph",
+        "relationship_graph_compressed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scene_id": { "type": "string" },
+        "scene_index": { "type": "integer", "minimum": 0 },
+        "scene_pack_id": { "type": "string" },
+        "beat_order": { "type": "integer", "minimum": 0 },
+        "shot_purpose": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "narrative_intent": { "type": "string" },
+        "shot_fingerprint": {
+          "type": "object",
+          "properties": {
+            "composition_hash": { "type": "string" },
+            "lighting_hash": { "type": "string" },
+            "motion_hash": { "type": "string" },
+            "palette_hash": { "type": "string" }
+          }
+        },
+        "camera_motion": { "type": "object" },
+        "lens_language": { "type": "object" },
+        "focus_behavior": { "type": "object" },
+        "blocking_pattern": { "type": "object" },
+        "transition_dna": { "type": "object" },
+        "editing_pacing": { "type": "object" },
+        "pacing_waveform": {
+          "type": "array",
+          "items": { "type": "number" }
+        },
+        "tempo_signature": { "type": "string" },
+        "emotion_motion_bridge": { "type": "object" },
+        "emotion_curve": { "type": "object" },
+        "carryover_intensity": { "type": "number" },
+        "emotional_decay_tau": { "type": ["number", "null"] },
+        "continuity_graph": { "type": "object" },
+        "motif_graph": { "type": "object" },
+        "relationship_graph_compressed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["subject"],
+            "properties": {
+              "subject": { "type": "string" },
+              "predicate": { "type": "string" },
+              "object": { "type": "string" },
+              "relation": { "type": "string" },
+              "target": { "type": "string" },
+              "weight": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

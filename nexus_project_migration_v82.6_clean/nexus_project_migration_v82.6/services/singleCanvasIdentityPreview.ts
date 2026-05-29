@@ -8,6 +8,8 @@ import {
   detectCharactersInPromptWithAnchorDna,
   validateCompiledPromptDnaContent,
 } from './loadCharacterAnchorDNA';
+import { buildRichCueSignalPreview } from './cinematic/buildRichCueSignals';
+import { resolveSceneContinuityForPrompt } from './sceneContinuityResolver';
 
 export function buildSingleCanvasIdentityPreview(controlledPrompt?: string) {
   const snapshot = buildMasterCoreV175Snapshot();
@@ -32,8 +34,17 @@ export function buildSingleCanvasIdentityPreview(controlledPrompt?: string) {
     ? validateCompiledPromptDnaContent(bridged, dnaRecords)
     : { ready: false, blocked_reason: 'bridged prompt missing' };
 
+  const continuity = resolveSceneContinuityForPrompt(prompt);
+  const bridged35b = pipeline.bridged_prompt ?? '';
+  const bridged35aOnly = bridged35b.replace(/\n?\[CINEMATIC_MODULATION\]:[^\n]*/g, '').trim();
+
+  const promptInflation =
+    bridged35aOnly.length > 0
+      ? Number(((bridged35b.length - bridged35aOnly.length) / bridged35aOnly.length).toFixed(4))
+      : 0;
+
   return {
-    phase: 'PHASE-33F',
+    phase: 'PHASE-35B',
     compiler_version: RUNTIME_PROMPT_COMPILER_VERSION,
     controlled_prompt: prompt,
     pipeline,
@@ -65,6 +76,15 @@ export function buildSingleCanvasIdentityPreview(controlledPrompt?: string) {
       identity_before_style: pipeline.debug.identity_before_style === true,
       used_prompt_bridge: pipeline.debug.used_prompt_bridge,
       dna_source: pipeline.debug.dna_source ?? 'character_anchor.index.json',
+    },
+    rich_cue_layer: buildRichCueSignalPreview(),
+    scene_continuity: continuity,
+    comparison_35a_vs_35b: {
+      prompt_length_35a_only: bridged35aOnly.length,
+      prompt_length_35a_plus_35b: bridged35b.length,
+      prompt_inflation_ratio: promptInflation,
+      within_15_percent_budget: promptInflation <= 0.15,
+      cinematic_modulation_injected: bridged35b.includes('[CINEMATIC_MODULATION]'),
     },
   };
 }
