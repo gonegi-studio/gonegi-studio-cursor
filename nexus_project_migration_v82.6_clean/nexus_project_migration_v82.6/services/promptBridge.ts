@@ -14,7 +14,9 @@ import {
 const MUSIC_DRAMA_BINDING_MODEL =
   'characterBook.characters[slot_id].elite_image_id + visual_dna lookup + environmentDNA[slot] verbatim + styleAnchor verbatim';
 
-export const PROMPT_BRIDGE_VERSION = 'PHASE-35B-v1' as const;
+import type { RuntimeCinematicContext } from './cinematic/buildRuntimeCueBridge';
+
+export const PROMPT_BRIDGE_VERSION = 'PHASE-36A-v1' as const;
 
 export const IDENTITY_LAW_BLOCK = `### [IDENTITY LAW]
 Absolute fidelity to Ref Image #1 / active elite character refs.
@@ -50,8 +52,10 @@ export interface PromptBridgeInput {
   anchorDnaRecords?: CharacterAnchorDNARecord[];
   styleAnchor?: string;
   environmentDna?: string;
-  /** PHASE-35B: compact cue + rich signal modulation (grammar only, no render payloads). */
+  /** PHASE-35B/36A: compact cue + rich signal modulation (grammar only, no render payloads). */
   cinematicModulation?: string;
+  /** PHASE-36A: runtime bridge context (modulation source; does not alter character DNA). */
+  runtimeCinematicContext?: RuntimeCinematicContext;
 }
 
 export interface PromptBridgeResult {
@@ -67,6 +71,7 @@ export interface PromptBridgeResult {
   character_anchor_dna_preview: CharacterAnchorDnaPreview;
   cinematic_modulation_injected: boolean;
   cinematic_modulation_chars: number;
+  runtime_cinematic_context_attached: boolean;
 }
 
 export function detectNamedCharactersInPrompt(prompt: string): CanonicalCharacterName[] {
@@ -140,6 +145,7 @@ export class PromptBridge {
     const referenceTriggers = buildReferenceTriggerBlock(input.identityRefs);
     const characterDnaLock = buildCharacterDnaLockSection();
     const modulation = input.cinematicModulation?.trim() ?? '';
+    const runtimeContextAttached = Boolean(input.runtimeCinematicContext);
     const cinematicModulationBlock = modulation
       ? `[CINEMATIC_MODULATION]: ${modulation}`
       : '';
@@ -187,6 +193,7 @@ export class PromptBridge {
       },
       cinematic_modulation_injected: modulation.length > 0,
       cinematic_modulation_chars: modulation.length,
+      runtime_cinematic_context_attached: runtimeContextAttached,
     };
   }
 }

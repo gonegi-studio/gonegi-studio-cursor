@@ -192,6 +192,17 @@ import {
   buildTopRiskPairReviewPreview,
   buildTopRiskPairReviewReportDownload,
 } from "./services/cinematic/buildTopRiskPairReview";
+import {
+  buildManualReviewDashboardPreview,
+  buildManualReviewDashboardReportDownload,
+} from "./services/cinematic/buildManualReviewDashboard";
+import { buildRuntimeCueBridgePreview } from "./services/cinematic/buildRuntimeCueBridge";
+import { buildMusicDramaRuntimePreview } from "./services/cinematic/musicDramaRuntimeBridge";
+import {
+  buildRenderSafetyPreview,
+  buildRenderSafetyReportDownload,
+} from "./services/cinematic/renderSafetyGate";
+import { buildOneSceneRenderDryRunPreview } from "./services/cinematic/oneSceneRenderDryRun";
 import { buildSequencePromptQualityAuditPreview } from "./services/cinematic/sequencePromptQualityAudit";
 import { buildRealRenderValidationAuditPreview } from "./services/realRenderValidationAudit";
 import { buildSingleCanvasIdentityPreview } from "./services/singleCanvasIdentityPreview";
@@ -2170,6 +2181,95 @@ async function startServer() {
     } catch (e) {
       console.error("Top risk pair review report export error:", e);
       return res.status(500).json({ error: "Failed to build top risk pair review report" });
+    }
+  });
+
+  // PHASE-35F: Human manual review dashboard (top 10 risk pairs, diagnosis only)
+  app.get("/api/cinematic/manual-review-dashboard-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildManualReviewDashboardPreview());
+    } catch (e) {
+      console.error("Manual review dashboard preview error:", e);
+      return res.status(500).json({ error: "Failed to build manual review dashboard preview" });
+    }
+  });
+
+  app.get("/api/cinematic/manual-review-dashboard-report", (_req, res) => {
+    try {
+      const download = buildManualReviewDashboardReportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Markdown-Filename", download.markdownFilename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Manual review dashboard report export error:", e);
+      return res.status(500).json({ error: "Failed to build manual review dashboard report" });
+    }
+  });
+
+  // PHASE-36A: Runtime cue bridge — compact/rich cues → PromptBridge modulation path
+  app.get("/api/cinematic/runtime-cue-bridge-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildRuntimeCueBridgePreview());
+    } catch (e) {
+      console.error("Runtime cue bridge preview error:", e);
+      return res.status(500).json({ error: "Failed to build runtime cue bridge preview" });
+    }
+  });
+
+  // PHASE-36B: MusicDrama slot → runtime cue bridge → PromptBridge wiring preview
+  app.get("/api/cinematic/music-drama-runtime-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildMusicDramaRuntimePreview());
+    } catch (e) {
+      console.error("Music Drama runtime preview error:", e);
+      return res.status(500).json({ error: "Failed to build Music Drama runtime preview" });
+    }
+  });
+
+  // PHASE-36C: Pre-render safety gate (READY / NOT_READY before PromptBridge)
+  app.get("/api/cinematic/render-safety-preview", (_req, res) => {
+    try {
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildRenderSafetyPreview());
+    } catch (e) {
+      console.error("Render safety preview error:", e);
+      return res.status(500).json({ error: "Failed to build render safety preview" });
+    }
+  });
+
+  app.get("/api/cinematic/render-safety-report", (_req, res) => {
+    try {
+      const download = buildRenderSafetyReportDownload();
+      res.setHeader("Content-Disposition", `attachment; filename="${download.filename}"`);
+      res.setHeader("Content-Type", download.contentType);
+      res.setHeader("X-Export-Filename", download.filename);
+      res.setHeader("X-Export-Fingerprint", download.exportFingerprint);
+      return res.send(download.body);
+    } catch (e) {
+      console.error("Render safety report export error:", e);
+      return res.status(500).json({ error: "Failed to build render safety report" });
+    }
+  });
+
+  // PHASE-36D: One-scene render dry run (stops before generateOptimizedImage)
+  app.get("/api/cinematic/one-scene-render-dry-run-preview", (req, res) => {
+    try {
+      const promptParam = req.query.prompt;
+      const prompt =
+        typeof promptParam === "string" && promptParam.trim().length > 0
+          ? promptParam
+          : undefined;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(buildOneSceneRenderDryRunPreview(prompt));
+    } catch (e) {
+      console.error("One scene render dry run preview error:", e);
+      return res.status(500).json({ error: "Failed to build one scene render dry run preview" });
     }
   });
 
