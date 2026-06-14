@@ -1,0 +1,105 @@
+{
+  "motion_plan_id": "motion_plan_olive_hill_wonder_6s_v1",
+  "phase": "PHASE-21-MOTION-PLAN-BUILDER-001",
+  "source_keyframe_plan_id": "keyframe_plan_olive_hill_wonder_6s_v1",
+  "source_video_shot_state_id": "video_olive_hill_wonder_6s_v1",
+  "motion_segments": [
+    {
+      "segment_id": "motion_plan_olive_hill_wonder_6s_v1_seg_0_to_1",
+      "from_keyframe": 0,
+      "to_keyframe": 1,
+      "duration_seconds": 3,
+      "camera_motion": {
+        "motion_category": "pan",
+        "from_shot_type": "close",
+        "to_shot_type": "close",
+        "motion_progress_delta": 0.5,
+        "identity_safe": true,
+        "speed": "moderate"
+      },
+      "character_motion": [
+        {
+          "character_id": "dana",
+          "motion_category": "idle",
+          "from_position": "scene_anchor",
+          "to_position": "scene_anchor",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "wonder",
+        "emotion_id": "wonder",
+        "intensity_start": 0.65,
+        "intensity_end": 0.7
+      },
+      "environment_motion": {
+        "motion_category": "foliage",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "olive_hill_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:dana",
+          "character_reference:Dana",
+          "protected_characters:dana"
+        ],
+        "location_locks": [
+          "location_id:olive_hill_01"
+        ],
+        "composition_locks": []
+      }
+    },
+    {
+      "segment_id": "motion_plan_olive_hill_wonder_6s_v1_seg_1_to_2",
+      "from_keyframe": 1,
+      "to_keyframe": 2,
+      "duration_seconds": 3,
+      "camera_motion": {
+        "motion_category": "pan",
+        "from_shot_type": "close",
+        "to_shot_type": "close",
+        "motion_progress_delta": 0.5,
+        "identity_safe": true,
+        "speed": "moderate"
+      },
+      "character_motion": [
+        {
+          "character_id": "dana",
+          "motion_category": "look",
+          "from_position": "scene_anchor",
+          "to_position": "scene_anchor",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "wonder",
+        "emotion_id": "wonder",
+        "intensity_start": 0.7,
+        "intensity_end": 0.75
+      },
+      "environment_motion": {
+        "motion_category": "foliage",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "olive_hill_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:dana",
+          "character_reference:Dana",
+          "protected_characters:dana"
+        ],
+        "location_locks": [
+          "location_id:olive_hill_01"
+        ],
+        "composition_locks": []
+      }
+    }
+  ],
+  "built_at": "2026-06-05T04:10:51.748Z"
+}

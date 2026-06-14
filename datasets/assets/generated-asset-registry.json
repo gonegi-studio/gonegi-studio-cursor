@@ -1,0 +1,35 @@
+{
+  "registry_id": "generated-asset-registry-v1",
+  "asset_type": "generated_asset_registry",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-001",
+  "module": "GENERATED_ASSET_REGISTRY_V1",
+  "purpose": "Central registry for all generated production assets with type-indexed traceability.",
+  "upstream_checkpoint": "REAL_FEATURE_PRODUCTION_READY",
+  "asset_type_count": 5,
+  "asset_types": [
+    "prompt",
+    "image",
+    "video",
+    "edit",
+    "final_output"
+  ],
+  "asset_registry_integrity": "PASS",
+  "required_asset_fields": [
+    "asset_id",
+    "asset_type",
+    "trace_id",
+    "source_stage",
+    "created_at",
+    "integrity_status"
+  ],
+  "stage_mapping": {
+    "prompt": "prompt",
+    "image": "image",
+    "video": "video",
+    "edit": "edit",
+    "final_output": "final_output"
+  },
+  "trace_spec_ref": "datasets/generation/generation-trace-specification.json",
+  "compiled_prompt_ref": "exports/generation/compiled-prompt.json"
+}

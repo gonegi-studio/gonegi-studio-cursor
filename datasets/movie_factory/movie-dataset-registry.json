@@ -1,0 +1,74 @@
+{
+  "registry_id": "movie-factory-registry-v1",
+  "phase": "PHASE-MOVIE-DATASET-FACTORY-001",
+  "system_id": "MOVIE_DATASET_FACTORY_SYSTEM_V1",
+  "generated_at": "2026-06-10T07:53:08.860Z",
+  "factory_registry_version": "v1",
+  "movie_count": 5,
+  "production_ready_count": 1,
+  "template_ready_count": 4,
+  "entries": [
+    {
+      "movie_id": "titanic",
+      "movie_name": "Titanic",
+      "dataset_version": "v1",
+      "dataset_status": "production_ready",
+      "dataset_path": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json",
+      "factory_dataset_path": "datasets/movie_factory/outputs/titanic-standardized-dataset.json",
+      "validation_status": "PASS",
+      "scene_count": 300,
+      "quality_scores": {
+        "scene_geometry_score": 0.9539,
+        "semantic_anchor_score": 0.981,
+        "temporal_score": 0.9519,
+        "motion_score": 0.9736,
+        "generic_harbor_regression_count": 0,
+        "world_identity_lock": "PASS"
+      }
+    },
+    {
+      "movie_id": "your_name",
+      "movie_name": "Your Name",
+      "dataset_version": "v0",
+      "dataset_status": "template_ready",
+      "dataset_path": "exports/movie_datasets/your_name/your_name_movie_reconstruction_bundle.json",
+      "factory_dataset_path": null,
+      "validation_status": "PENDING",
+      "scene_count": 0,
+      "quality_scores": null
+    },
+    {
+      "movie_id": "spirited_away",
+      "movie_name": "Spirited Away",
+      "dataset_version": "v0",
+      "dataset_status": "template_ready",
+      "dataset_path": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json",
+      "factory_dataset_path": null,
+      "validation_status": "PENDING",
+      "scene_count": 0,
+      "quality_scores": null
+    },
+    {
+      "movie_id": "castle_in_the_sky",
+      "movie_name": "Castle in the Sky",
+      "dataset_version": "v0",
+      "dataset_status": "template_ready",
+      "dataset_path": "exports/movie_datasets/castle_in_the_sky/castle_in_the_sky_movie_reconstruction_bundle.json",
+      "factory_dataset_path": null,
+      "validation_status": "PENDING",
+      "scene_count": 0,
+      "quality_scores": null
+    },
+    {
+      "movie_id": "howls_moving_castle",
+      "movie_name": "Howl's Moving Castle",
+      "dataset_version": "v0",
+      "dataset_status": "template_ready",
+      "dataset_path": "exports/movie_datasets/howls_moving_castle/howls_moving_castle_movie_reconstruction_bundle.json",
+      "factory_dataset_path": null,
+      "validation_status": "PENDING",
+      "scene_count": 0,
+      "quality_scores": null
+    }
+  ]
+}

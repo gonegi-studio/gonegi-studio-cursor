@@ -1,0 +1,91 @@
+{
+  "rules_id": "generation-metadata-verification-rules-v4",
+  "phase": "PHASE-TITANIC-UPLOAD-INTEGRATION-001",
+  "validation_id": "APP_DATASET_CONSUMPTION_VALIDATION_V2",
+  "generated_at": "2026-06-10T06:22:45.625Z",
+  "rules": {
+    "loaded": {
+      "definition": "File was uploaded and parsed by target app package loader.",
+      "required": true
+    },
+    "consumed": {
+      "definition": "System was used in prompt or generation assembly pipeline.",
+      "required": true
+    },
+    "evidence": {
+      "definition": "Measurable proof that dataset fields entered prompt/generation assembly.",
+      "required_fields": [
+        "prompt_tokens_used",
+        "dna_fields_referenced",
+        "constraint_hits",
+        "source_file",
+        "generation_trace_id"
+      ],
+      "required": true
+    },
+    "influence_score": {
+      "definition": "Estimated visible/effective impact on output quality and identity.",
+      "range": {
+        "min": 0,
+        "max": 1
+      },
+      "influence_failure_threshold": 0.5,
+      "required": true
+    }
+  },
+  "validation_chain": [
+    "Dataset Exists",
+    "Exported",
+    "Loaded",
+    "Consumed",
+    "Evidence Verified",
+    "Influenced Output",
+    "Output Preservation Verified"
+  ],
+  "pass_requires": {
+    "critical_consumption_ratio_eq_1": true,
+    "critical_influence_ratio_gte_0_90": true,
+    "character_identity_preservation_gte_0_90": true,
+    "location_identity_preservation_gte_0_90": true,
+    "lighting_identity_preservation_gte_0_90": true,
+    "no_influence_failures": true
+  },
+  "movie_reconstruction_rules": {
+    "movie_reconstruction": {
+      "required_fields": [
+        "dataset_name",
+        "loaded",
+        "consumed",
+        "influenced_output",
+        "scene_id",
+        "camera_pattern_id",
+        "blocking_pattern_id",
+        "composition_pattern_id",
+        "semantic_anchor_id",
+        "prop_coordinate_id",
+        "depth_profile_id"
+      ],
+      "required": true
+    },
+    "evidence": {
+      "required_fields": [
+        "camera_fields_used",
+        "blocking_fields_used",
+        "composition_fields_used",
+        "semantic_anchor_fields_used",
+        "prop_coordinate_fields_used",
+        "depth_fields_used"
+      ],
+      "required": true
+    },
+    "output_influence": {
+      "required_fields": [
+        "movie_geometry_preservation_score",
+        "semantic_anchor_preservation_score",
+        "world_translation_score",
+        "generic_harbor_regression_detected"
+      ],
+      "required": true
+    }
+  }
+}

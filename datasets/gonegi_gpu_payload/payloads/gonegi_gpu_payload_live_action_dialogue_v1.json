@@ -1,0 +1,272 @@
+{
+  "gonegi_gpu_payload_id": "gonegi_gpu_payload_live_action_dialogue_v1",
+  "phase": "PHASE-SOURCE-VIDEO-017-GONEGI_MOTION_TO_GPU_PAYLOAD_COMPILER_V2",
+  "source_motion_plan_id": "gonegi_motion_live_action_dialogue_v1",
+  "source_keyframe_plan_id": "gonegi_keyframe_live_action_dialogue_v1",
+  "source_video_state_id": "gonegi_video_state_live_action_dialogue_v1",
+  "duration_seconds": 33,
+  "fps_target": 24,
+  "resolution": "1280x720",
+  "aspect_ratio": "16:9",
+  "identity_locks": [
+    "identity:character_identity:dana",
+    "character_reference:Dana",
+    "identity_lock:preserve_dana_silhouette",
+    "identity:character_identity:gonegi",
+    "character_reference:Gonegi",
+    "identity_lock:preserve_gonegi_silhouette",
+    "identity:character_identity:gamja",
+    "character_reference:Gamja",
+    "identity_lock:preserve_gamja_silhouette",
+    "identity:character_identity:aengdu",
+    "character_reference:Aengdu",
+    "identity_lock:preserve_aengdu_silhouette"
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity:character_identity:dana",
+      "character_reference:Dana",
+      "identity_lock:preserve_dana_silhouette",
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette",
+      "identity:character_identity:aengdu",
+      "character_reference:Aengdu",
+      "identity_lock:preserve_aengdu_silhouette"
+    ],
+    "location_locks": [
+      "location_id:family_dining_room_01",
+      "location_lock:period-parlor",
+      "walkable-zone:parlor-rug-zone"
+    ],
+    "composition_locks": [
+      "prop_anchor:sketchbook_01",
+      "prop_anchor:hearth_practical_01",
+      "composition_lock:master-two-shot",
+      "prop_anchor:writing_desk_letter",
+      "prop_anchor:fireplace_practical"
+    ]
+  },
+  "translation_trace": {
+    "translation_id": "gonegi-master-world-translation-v1",
+    "source_world_type": "live_action_period_domestic",
+    "target_world_identity": "GONEGI_MEDITERRANEAN",
+    "applied_dimensions": [
+      "character_translation",
+      "location_translation",
+      "prop_translation",
+      "emotion_translation",
+      "relationship_translation",
+      "environment_translation"
+    ],
+    "location_mapping": {
+      "period-parlor": "family_dining_room_01"
+    },
+    "prop_mappings": {
+      "writing_desk_letter": "sketchbook_01",
+      "fireplace_practical": "hearth_practical_01"
+    },
+    "emotion_mapping": {
+      "tenderness": "reunion"
+    },
+    "video_state_translation": {
+      "translator_phase": "PHASE-SOURCE-VIDEO-014-GONEGI_STATE_TO_VIDEO_STATE_TRANSLATOR_V1",
+      "defaults_id": "video-state-defaults-v1",
+      "blend_id": "gonegi-master-director-blend-v1",
+      "director_family": "LIVE_ACTION"
+    },
+    "keyframe_plan_translation": {
+      "compiler_phase": "PHASE-SOURCE-VIDEO-015-VIDEO_STATE_TO_KEYFRAME_COMPILER_V2",
+      "defaults_id": "video-state-defaults-v1",
+      "reference_schema": "datasets/keyframe_plan/keyframe-plan.schema.json"
+    },
+    "motion_plan_translation": {
+      "compiler_phase": "PHASE-SOURCE-VIDEO-016-GONEGI_KEYFRAME_TO_MOTION_COMPILER_V2",
+      "reference_schema": "datasets/motion_plan/motion-plan.schema.json",
+      "blend_id": "gonegi-master-director-blend-v1"
+    },
+    "gpu_payload_translation": {
+      "compiler_phase": "PHASE-SOURCE-VIDEO-017-GONEGI_MOTION_TO_GPU_PAYLOAD_COMPILER_V2",
+      "reference_schema": "datasets/gpu_payload/gpu-render-payload.schema.json",
+      "render_mode": "preparation_stub_v1"
+    }
+  },
+  "replacement_trace": {
+    "contract_id": "gonegi-master-character-replacement-v1",
+    "replacements_applied": [
+      {
+        "source_role": "sister_a",
+        "target_character_id": "dana",
+        "replacement_id": "replacement_sister_a_v1"
+      },
+      {
+        "source_role": "sister_b",
+        "target_character_id": "gonegi",
+        "replacement_id": "replacement_sister_b_v1"
+      }
+    ],
+    "companions_injected": [
+      "gamja",
+      "aengdu"
+    ]
+  },
+  "keyframes": [
+    {
+      "keyframe_index": 0,
+      "timestamp": 0,
+      "keyframe_role": "start",
+      "gonegi_state_ref": "gonegi_state_live_action_dialogue_v1",
+      "shot_type": "master-two-shot",
+      "emotion_id": "reunion",
+      "emotion_intensity": 0.6
+    },
+    {
+      "keyframe_index": 1,
+      "timestamp": 5.5,
+      "keyframe_role": "early_transition",
+      "gonegi_state_ref": "gonegi_state_live_action_dialogue_v1",
+      "shot_type": "master-two-shot",
+      "emotion_id": "reunion",
+      "emotion_intensity": 0.625
+    },
+    {
+      "keyframe_index": 2,
+      "timestamp": 11,
+      "keyframe_role": "early_transition",
+      "gonegi_state_ref": "gonegi_state_live_action_dialogue_v1",
+      "shot_type": "master-two-shot",
+      "emotion_id": "reunion",
+      "emotion_intensity": 0.65
+    },
+    {
+      "keyframe_index": 3,
+      "timestamp": 16.5,
+      "keyframe_role": "midpoint",
+      "gonegi_state_ref": "gonegi_state_live_action_dialogue_v1",
+      "shot_type": "master-two-shot",
+      "emotion_id": "reunion",
+      "emotion_intensity": 0.675
+    },
+    {
+      "keyframe_index": 4,
+      "timestamp": 22,
+      "keyframe_role": "late_transition",
+      "gonegi_state_ref": "gonegi_state_live_action_dialogue_v1",
+      "shot_type": "master-two-shot",
+      "emotion_id": "reunion",
+      "emotion_intensity": 0.7
+    },
+    {
+      "keyframe_index": 5,
+      "timestamp": 27.5,
+      "keyframe_role": "late_transition",
+      "gonegi_state_ref": "gonegi_state_live_action_dialogue_v1",
+      "shot_type": "master-two-shot",
+      "emotion_id": "reunion",
+      "emotion_intensity": 0.725
+    },
+    {
+      "keyframe_index": 6,
+      "timestamp": 33,
+      "keyframe_role": "end",
+      "gonegi_state_ref": "gonegi_state_live_action_dialogue_v1",
+      "shot_type": "master-two-shot",
+      "emotion_id": "reunion",
+      "emotion_intensity": 0.75
+    }
+  ],
+  "motion_segments": [
+    {
+      "segment_id": "gonegi_motion_live_action_dialogue_v1_seg_0_to_1",
+      "from_keyframe": 0,
+      "to_keyframe": 1,
+      "from_timestamp": 0,
+      "to_timestamp": 5.5,
+      "duration_seconds": 5.5,
+      "camera_motion_category": "push_in",
+      "emotion_motion_category": "reunion",
+      "environment_motion_category": "ambient"
+    },
+    {
+      "segment_id": "gonegi_motion_live_action_dialogue_v1_seg_1_to_2",
+      "from_keyframe": 1,
+      "to_keyframe": 2,
+      "from_timestamp": 5.5,
+      "to_timestamp": 11,
+      "duration_seconds": 5.5,
+      "camera_motion_category": "push_in",
+      "emotion_motion_category": "reunion",
+      "environment_motion_category": "ambient"
+    },
+    {
+      "segment_id": "gonegi_motion_live_action_dialogue_v1_seg_2_to_3",
+      "from_keyframe": 2,
+      "to_keyframe": 3,
+      "from_timestamp": 11,
+      "to_timestamp": 16.5,
+      "duration_seconds": 5.5,
+      "camera_motion_category": "push_in",
+      "emotion_motion_category": "reunion",
+      "environment_motion_category": "ambient"
+    },
+    {
+      "segment_id": "gonegi_motion_live_action_dialogue_v1_seg_3_to_4",
+      "from_keyframe": 3,
+      "to_keyframe": 4,
+      "from_timestamp": 16.5,
+      "to_timestamp": 22,
+      "duration_seconds": 5.5,
+      "camera_motion_category": "push_in",
+      "emotion_motion_category": "reunion",
+      "environment_motion_category": "ambient"
+    },
+    {
+      "segment_id": "gonegi_motion_live_action_dialogue_v1_seg_4_to_5",
+      "from_keyframe": 4,
+      "to_keyframe": 5,
+      "from_timestamp": 22,
+      "to_timestamp": 27.5,
+      "duration_seconds": 5.5,
+      "camera_motion_category": "push_in",
+      "emotion_motion_category": "reunion",
+      "environment_motion_category": "ambient"
+    },
+    {
+      "segment_id": "gonegi_motion_live_action_dialogue_v1_seg_5_to_6",
+      "from_keyframe": 5,
+      "to_keyframe": 6,
+      "from_timestamp": 27.5,
+      "to_timestamp": 33,
+      "duration_seconds": 5.5,
+      "camera_motion_category": "push_in",
+      "emotion_motion_category": "reunion",
+      "environment_motion_category": "ambient"
+    }
+  ],
+  "render_mode": "preparation_stub_v1",
+  "provider_hint": {
+    "recommended_provider_id": "deferred_remote_stub_v1",
+    "provider_activation": false,
+    "runtime_target": "deferred",
+    "selection_basis": "preparation_only_design_phase_no_provider_activation"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "preparation_only": true,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "gonegi_gpu_payload",
+    "production_registry": false,
+    "draft_status": "gonegi_gpu_payload_compiled_v1"
+  },
+  "compiled_at": "2026-06-05T10:46:11.239Z"
+}

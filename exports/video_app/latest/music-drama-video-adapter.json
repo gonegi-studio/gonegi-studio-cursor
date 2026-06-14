@@ -1,0 +1,235 @@
+{
+  "adapter_type": "music_drama_video_adapter",
+  "adapter_metadata": {
+    "adapter_name": "music-drama-video-adapter",
+    "adapter_version": "v1",
+    "phase": "PHASE-MDG-012",
+    "generated_at": "2026-06-02T04:10:16.722Z",
+    "source_package": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+    "target_app": "video_app",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "integrity_score": 1,
+    "ep01_ready": true
+  },
+  "core_video_references": [
+    {
+      "section_name": "beat_structure",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#beat_structure",
+      "item_count": 6
+    },
+    {
+      "section_name": "emotional_transitions",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#emotional_transitions",
+      "item_count": 12
+    },
+    {
+      "section_name": "sequence_assembly",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly",
+      "item_count": 6
+    },
+    {
+      "section_name": "shot_patterns",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#shot_patterns",
+      "item_count": 8
+    },
+    {
+      "section_name": "scene_archetypes",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#scene_archetypes",
+      "item_count": 8
+    },
+    {
+      "section_name": "daily_life_behavior",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#daily_life_behavior",
+      "item_count": 16
+    }
+  ],
+  "sequence_continuity_profile": {
+    "emotional_continuity": {
+      "supported": true,
+      "tracked_field": "persistent_emotion",
+      "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+    },
+    "companion_continuity": {
+      "supported": true,
+      "tracked_field": "persistent_companion",
+      "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+    },
+    "location_continuity": {
+      "supported": true,
+      "tracked_field": "persistent_location_anchor",
+      "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+    },
+    "motif_continuity": {
+      "supported": true,
+      "policy": "Repeat compatible motifs across expanded scenes; max visible motifs governed by density limits.",
+      "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_3_scene_count_expansion_rule"
+    },
+    "time_cluster_continuity": {
+      "supported": true,
+      "tracked_field": "persistent_time_cluster",
+      "policy": "Time atmosphere must stay compatible with datasets/time/time-setting-library-v1.json",
+      "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+    },
+    "sequence_expansion": {
+      "supported": true,
+      "base_beat_count": 6,
+      "supported_sequence_sizes": [
+        6,
+        10,
+        15,
+        30
+      ],
+      "expansion_method": {
+        "base_beat_count": 6,
+        "allowed_expansions": [
+          10,
+          15,
+          30
+        ],
+        "rules": [
+          "Do not invent new emotional jumps.",
+          "Repeat compatible motifs across expanded scenes.",
+          "Preserve continuity companion across adjacent scenes.",
+          "Preserve protagonist readability in every expanded slot.",
+          "Expansion inserts intermediate scenes between beats using allowed emotional transitions only.",
+          "Each expanded scene must complete the full assembly pipeline in section_1 order."
+        ],
+        "expansion_method": "subdivide beats with compatible daily-life behaviors and matching shot/archetype pairs from existing grammar libraries"
+      }
+    },
+    "tracked_fields": [
+      "persistent_companion",
+      "persistent_object",
+      "persistent_location_anchor",
+      "persistent_emotion",
+      "persistent_time_cluster"
+    ]
+  },
+  "beat_flow_contract": {
+    "beat_order": [
+      "intro",
+      "verse",
+      "pre_chorus",
+      "chorus",
+      "bridge",
+      "outro"
+    ],
+    "beat_order_preserved": true,
+    "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#beat_structure.section_1_beat_types",
+    "beat_profiles_source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#beat_structure.section_2_beat_profiles"
+  },
+  "emotional_transition_contract": {
+    "transition_integrity_required": true,
+    "contract_emotions": [
+      "peace",
+      "comfort",
+      "curiosity",
+      "wonder",
+      "hope",
+      "memory",
+      "acceptance"
+    ],
+    "contract_emotions_present": true,
+    "transition_pathways_source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#emotional_transitions.section_2_transition_pathways",
+    "policy": "Expanded sequences may use allowed emotional transitions only; do not invent new emotional jumps."
+  },
+  "companion_continuity_contract": {
+    "companion_continuity_required": true,
+    "pairs": [
+      {
+        "owner_character": "gonegi",
+        "companion_animal": "gamja",
+        "rule": "If Gonegi appears, Gamja should appear unless physically impossible."
+      },
+      {
+        "owner_character": "dana",
+        "companion_animal": "aengdu",
+        "rule": "If Dana appears, Aengdu should appear unless physically impossible."
+      }
+    ],
+    "pairs_valid": true,
+    "ep01_note": "Gamja persists across EP01; Aengdu reserved for post-EP01 Dana scenes.",
+    "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#animal_behavior.section_1_primary_companion_layer"
+  },
+  "density_governance": {
+    "named_extras_max": 2,
+    "crowd_groups_max": 1,
+    "background_animals_max": 2,
+    "visible_motifs_max": 3,
+    "crowd_role": "background only",
+    "protagonist_readability": "required",
+    "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_6_density_control"
+  },
+  "rkb_001_video_rules": {
+    "test_id": "RKB-001",
+    "source": "datasets/render_feedback/RKB-001.json",
+    "character_readability_first": {
+      "enabled": true,
+      "policy": "Protagonist readability required in every expanded sequence slot."
+    },
+    "crowd_caution": {
+      "enabled": true,
+      "policy": "Limit crowd groups; crowd remains background support only.",
+      "mitigation": {
+        "blanket_body_merge": "Prefer simple bedding in domestic_bedroom_peace and night_rest beats",
+        "dense_market_crowd": "EP01 default sequence excludes market_edge_background; max one crowd group",
+        "complex_hand_poses": "Keep visible actions simple in behavior selection",
+        "overcrowded_animal_crowd": "Apply section_6 density_control on every assembled scene"
+      }
+    },
+    "market_caution": {
+      "enabled": true,
+      "policy": "Avoid dense market crowd patterns during early video sequence testing."
+    },
+    "environment_consistency": {
+      "enabled": true,
+      "policy": "Mediterranean harbor atmosphere and time clusters must align with time-setting-library references."
+    },
+    "companion_continuity": {
+      "enabled": true,
+      "policy": "Primary companions persist across adjacent scenes unless explicitly departed."
+    },
+    "stable_emotional_progression": {
+      "enabled": true,
+      "policy": "Emotional flow must follow allowed transition pathways; no abrupt unmapped emotional jumps.",
+      "transition_integrity_required": true
+    },
+    "protection_rules_source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_7_rkb_protection_rules"
+  },
+  "compatibility_declaration": {
+    "merge_policy": "reference_only",
+    "references": [
+      {
+        "asset_id": "character_simple_v1",
+        "reference_path": "datasets/character/character-simple-v1.json",
+        "role": "character identity for visible cast continuity across sequence slots"
+      },
+      {
+        "asset_id": "time_setting_library_v1",
+        "reference_path": "datasets/time/time-setting-library-v1.json",
+        "role": "time cluster and atmospheric continuity across scenes"
+      },
+      {
+        "asset_id": "living_world_core_v1_package",
+        "reference_path": "exports/shared/latest/living-world-core-v1-package.json",
+        "role": "ambient world grammar reference for sequence enrichment"
+      },
+      {
+        "asset_id": "music_drama_grammar_core_v1_package",
+        "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+        "role": "authoritative Music Drama grammar core consumed by this adapter"
+      }
+    ]
+  },
+  "video_usage_rules": [
+    "consume grammar references for Music Drama sequence continuity planning only",
+    "do not generate scenarios directly from adapter",
+    "do not generate prompts directly from adapter",
+    "do not generate videos directly from adapter",
+    "do not override Character DNA",
+    "do not override Style Core",
+    "do not override Living World Core",
+    "do not merge adapter payload with external datasets"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "validation_id": "SPIRITED_AWAY_IMAGE_RECONSTRUCTION_VALIDATION_V1",
+  "phase": "PHASE-SPIRITED-AWAY-IMAGE-VALIDATION-001",
+  "generated_at": "2026-06-10T10:28:30.548Z",
+  "base_dataset": "latest_v5",
+  "movie_dataset": "spirited_away",
+  "metrics": {
+    "scene_recognition_score": 0.99,
+    "geometry_preservation_score": 0.98,
+    "semantic_anchor_score": 0.98,
+    "gonegi_identity_score": 0.94,
+    "generic_harbor_count": 0
+  },
+  "quality_gates": {
+    "scene_recognition_score_gte_0_90": true,
+    "geometry_preservation_score_gte_0_90": true,
+    "semantic_anchor_score_gte_0_95": true,
+    "gonegi_identity_score_gte_0_90": true,
+    "generic_harbor_count_eq_0": true,
+    "character_dna_expanded_all": true,
+    "movie_dataset_swap_valid": true,
+    "world_identity_lock_pass": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-005",
+  "test_id": "RKB-005",
+  "test_name": "LIGHTING_VALIDATION",
+  "test_date": "2026-06-03",
+  "comparison_baselines": [
+    "RKB-003",
+    "RKB-004"
+  ],
+  "input_assets": {
+    "lighting_anchor_library": "datasets/lighting/lighting-anchor-library-v1.json",
+    "lighting_anchor_adapter": "exports/image_app/adapters/lighting-anchor-adapter.json",
+    "test_batch": "exports/image_app/test_batches/rkb-005-lighting-validation-test-batch.json",
+    "scorecard": "datasets/render_feedback/RKB-005_SCORECARD.json"
+  },
+  "generation_count": 80,
+  "adapter_consumption_verdict": "PASS",
+  "success_condition_met": true,
+  "final_verdict": "PASS_RKB_005_LIGHTING_VALIDATION",
+  "next_phase": "SHOT-GRAMMAR-001 CINEMATIC_COVERAGE_GRAMMAR"
+}

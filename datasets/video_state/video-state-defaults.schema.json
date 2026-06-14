@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/video_state/video-state-defaults.schema.json",
+  "title": "VideoStateDefaults",
+  "description": "Compiled video state defaults from director grammar blend for PHASE-SOURCE-VIDEO-007",
+  "type": "object",
+  "required": [
+    "defaults_id",
+    "phase",
+    "source_blend_id",
+    "visual_style_defaults",
+    "camera_defaults",
+    "lighting_defaults",
+    "blocking_defaults",
+    "emotion_defaults",
+    "motion_defaults",
+    "environment_defaults",
+    "identity_safety_defaults",
+    "downstream_defaults",
+    "family_provenance",
+    "schema_refs",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "defaults_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-007-SOURCE_VIDEO_GRAMMAR_TO_VIDEO_STATE_COMPILER_V1"
+    },
+    "source_blend_id": { "type": "string", "minLength": 1 },
+    "visual_style_defaults": { "$ref": "#/$defs/grammar_defaults_block" },
+    "camera_defaults": { "$ref": "#/$defs/camera_defaults_block" },
+    "lighting_defaults": { "$ref": "#/$defs/lighting_defaults_block" },
+    "blocking_defaults": { "$ref": "#/$defs/blocking_defaults_block" },
+    "emotion_defaults": { "$ref": "#/$defs/emotion_defaults_block" },
+    "motion_defaults": { "$ref": "#/$defs/motion_defaults_block" },
+    "environment_defaults": { "$ref": "#/$defs/environment_defaults_block" },
+    "identity_safety_defaults": { "$ref": "#/$defs/identity_safety_defaults" },
+    "downstream_defaults": { "$ref": "#/$defs/downstream_defaults" },
+    "family_provenance": { "$ref": "#/$defs/family_provenance" },
+    "schema_refs": { "$ref": "#/$defs/schema_refs" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "compiled_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "grammar_defaults_block": {
+      "type": "object",
+      "required": ["summary", "patterns", "constraints", "source_family", "source_grammar_id"],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+        "source_grammar_id": { "type": "string" },
+        "render_style_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "camera_defaults_block": {
+      "type": "object",
+      "required": [
+        "summary",
+        "patterns",
+        "constraints",
+        "source_family",
+        "source_grammar_id",
+        "motion_type_default",
+        "speed_default",
+        "identity_safe_default"
+      ],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string", "enum": ["SHINKAI"] },
+        "source_grammar_id": { "type": "string" },
+        "motion_type_default": { "type": "string" },
+        "speed_default": { "type": "string", "enum": ["static", "slow", "moderate", "fast"] },
+        "identity_safe_default": { "type": "boolean", "const": true },
+        "shot_type_sequence": { "type": "array", "items": { "type": "string" } },
+        "camera_height_default": { "type": "string" }
+      }
+    },
+    "lighting_defaults_block": {
+      "type": "object",
+      "required": ["summary", "patterns", "constraints", "source_family", "source_grammar_id", "lighting_mood_default"],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string", "enum": ["SHINKAI"] },
+        "source_grammar_id": { "type": "string" },
+        "lighting_mood_default": { "type": "string" },
+        "time_of_day_bias": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "blocking_defaults_block": {
+      "type": "object",
+      "required": ["summary", "patterns", "constraints", "source_family", "source_grammar_id", "ensemble_geometry_default"],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string", "enum": ["LIVE_ACTION"] },
+        "source_grammar_id": { "type": "string" },
+        "ensemble_geometry_default": { "type": "string" },
+        "relationship_implied": { "type": "boolean", "const": true }
+      }
+    },
+    "emotion_defaults_block": {
+      "type": "object",
+      "required": [
+        "summary",
+        "patterns",
+        "constraints",
+        "source_family",
+        "source_grammar_id",
+        "emotion_id_default",
+        "arc_type_default"
+      ],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string", "enum": ["GHIBLI"] },
+        "source_grammar_id": { "type": "string" },
+        "emotion_id_default": { "type": "string" },
+        "arc_type_default": { "type": "string" },
+        "intensity_start_default": { "type": "number", "minimum": 0, "maximum": 1 },
+        "intensity_end_default": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "motion_defaults_block": {
+      "type": "object",
+      "required": [
+        "summary",
+        "patterns",
+        "constraints",
+        "source_family",
+        "source_grammar_id",
+        "camera_motion_category_default",
+        "character_motion_category_default",
+        "environment_motion_category_default"
+      ],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string", "enum": ["MORI"] },
+        "source_grammar_id": { "type": "string" },
+        "camera_motion_category_default": { "type": "string" },
+        "character_motion_category_default": { "type": "string" },
+        "environment_motion_category_default": { "type": "string" },
+        "emotion_motion_category_default": { "type": "string" }
+      }
+    },
+    "environment_defaults_block": {
+      "type": "object",
+      "required": [
+        "summary",
+        "patterns",
+        "constraints",
+        "source_family",
+        "source_grammar_id",
+        "location_lock_preserved_default"
+      ],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string", "enum": ["GHIBLI"] },
+        "source_grammar_id": { "type": "string" },
+        "location_lock_preserved_default": { "type": "boolean", "const": true },
+        "ambient_elements_default": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "identity_safety_defaults": {
+      "type": "object",
+      "required": [
+        "identity_priority_first",
+        "character_first_blocking",
+        "identity_lock_required",
+        "identity_safe_camera_default",
+        "protected_world_identity",
+        "priority_rules"
+      ],
+      "properties": {
+        "identity_priority_first": { "type": "boolean", "const": true },
+        "character_first_blocking": { "type": "boolean", "const": true },
+        "identity_lock_required": { "type": "boolean", "const": true },
+        "identity_safe_camera_default": { "type": "boolean", "const": true },
+        "protected_world_identity": { "type": "string", "const": "GONEGI_MEDITERRANEAN" },
+        "priority_rules": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      }
+    },
+    "downstream_defaults": {
+      "type": "object",
+      "required": ["video_shot_state", "keyframe_plan", "motion_plan", "gpu_payload"],
+      "properties": {
+        "video_shot_state": { "$ref": "#/$defs/video_shot_state_defaults" },
+        "keyframe_plan": { "$ref": "#/$defs/keyframe_plan_defaults" },
+        "motion_plan": { "$ref": "#/$defs/motion_plan_defaults" },
+        "gpu_payload": { "$ref": "#/$defs/gpu_payload_defaults" }
+      }
+    },
+    "video_shot_state_defaults": {
+      "type": "object",
+      "required": ["fps_target", "keyframe_count_basis", "render_intent"],
+      "properties": {
+        "fps_target": { "type": "number", "enum": [24] },
+        "keyframe_count_basis": { "type": "string" },
+        "render_intent": {
+          "type": "object",
+          "required": ["preparation_only", "gpu_execution", "target_pipeline", "next_phase"],
+          "properties": {
+            "preparation_only": { "type": "boolean", "const": true },
+            "gpu_execution": { "type": "boolean", "const": false },
+            "target_pipeline": { "type": "string" },
+            "next_phase": { "type": "string" }
+          }
+        }
+      }
+    },
+    "keyframe_plan_defaults": {
+      "type": "object",
+      "required": ["min_keyframes", "keyframe_roles", "identity_safe_default"],
+      "properties": {
+        "min_keyframes": { "type": "integer", "minimum": 3 },
+        "keyframe_roles": { "type": "array", "items": { "type": "string" } },
+        "identity_safe_default": { "type": "boolean", "const": true },
+        "beat_phase_default": { "type": "string" }
+      }
+    },
+    "motion_plan_defaults": {
+      "type": "object",
+      "required": ["min_segments", "identity_lock_preserved_default", "location_lock_preserved_default"],
+      "properties": {
+        "min_segments": { "type": "integer", "minimum": 1 },
+        "identity_lock_preserved_default": { "type": "boolean", "const": true },
+        "location_lock_preserved_default": { "type": "boolean", "const": true },
+        "speed_default": { "type": "string" }
+      }
+    },
+    "gpu_payload_defaults": {
+      "type": "object",
+      "required": ["render_mode", "resolution", "aspect_ratio", "execution_flags"],
+      "properties": {
+        "render_mode": { "type": "string" },
+        "resolution": { "type": "string" },
+        "aspect_ratio": { "type": "string" },
+        "render_constraints": { "type": "array", "items": { "type": "string" } },
+        "negative_constraints": { "type": "array", "items": { "type": "string" } },
+        "execution_flags": {
+          "type": "object",
+          "required": ["gpu_execution", "preparation_only", "external_call_allowed"],
+          "properties": {
+            "gpu_execution": { "type": "boolean", "const": false },
+            "preparation_only": { "type": "boolean", "const": true },
+            "external_call_allowed": { "type": "boolean", "const": false }
+          }
+        }
+      }
+    },
+    "family_provenance": {
+      "type": "object",
+      "required": [
+        "visual_style",
+        "camera",
+        "lighting",
+        "blocking",
+        "emotion",
+        "motion",
+        "environment"
+      ],
+      "properties": {
+        "visual_style": { "type": "string", "enum": ["GHIBLI"] },
+        "camera": { "type": "string", "enum": ["SHINKAI"] },
+        "lighting": { "type": "string", "enum": ["SHINKAI"] },
+        "blocking": { "type": "string", "enum": ["LIVE_ACTION"] },
+        "emotion": { "type": "string", "enum": ["GHIBLI"] },
+        "motion": { "type": "string", "enum": ["MORI"] },
+        "environment": { "type": "string", "enum": ["GHIBLI"] }
+      }
+    },
+    "schema_refs": {
+      "type": "object",
+      "required": [
+        "video_shot_state_schema",
+        "keyframe_plan_schema",
+        "motion_plan_schema"
+      ],
+      "properties": {
+        "video_shot_state_schema": { "type": "string" },
+        "keyframe_plan_schema": { "type": "string" },
+        "motion_plan_schema": { "type": "string" }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "external_call_allowed", "frame_extraction", "ocr", "generation"],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "readiness_id": "medium-film-production-readiness-v1",
+  "phase": "PHASE-L3-MEDIUM-005",
+  "generated_at": "2026-06-08T11:52:09.973Z",
+  "production_readiness_score": 94,
+  "production_readiness_status": "MEDIUM_FILM_PRODUCTION_READY",
+  "production_readiness_score_min": 90,
+  "pass_rules": {
+    "critical_continuity_break_count": 0,
+    "callback_resolution_ratio_min": 0.9,
+    "coverage_collapse_count": 0,
+    "dependency_integrity": "PASS",
+    "orphan_scene_count": 0,
+    "orphan_shot_count": 0,
+    "production_readiness_score_min": 90
+  },
+  "pass_rules_met": true,
+  "validation_metrics": {
+    "continuity_dimension_count": 11,
+    "continuity_break_count": 263,
+    "critical_continuity_break_count": 0,
+    "callback_resolution_ratio": 1,
+    "coverage_collapse_count": 0,
+    "dependency_integrity": "PASS",
+    "orphan_scene_count": 0,
+    "orphan_shot_count": 0
+  },
+  "audits": {
+    "continuity_audit_ref": "exports/medium_film_production_validation/medium-film-continuity-audit.json",
+    "callback_audit_ref": "exports/medium_film_production_validation/medium-film-callback-audit.json",
+    "coverage_audit_ref": "exports/medium_film_production_validation/medium-film-coverage-audit.json"
+  },
+  "upstream_refs": {
+    "shot_sequence_ref": "exports/medium_film_shot_assembly/medium-film-shot-sequence.json",
+    "shot_registry_ref": "exports/medium_film_shot_assembly/medium-film-shot-registry.json",
+    "shot_dependency_graph_ref": "exports/medium_film_shot_assembly/medium-film-shot-dependency-graph.json",
+    "shot_continuity_map_ref": "exports/medium_film_shot_assembly/medium-film-shot-continuity-map.json",
+    "shot_coverage_map_ref": "exports/medium_film_shot_assembly/medium-film-shot-coverage-map.json"
+  },
+  "validation_ready": true
+}

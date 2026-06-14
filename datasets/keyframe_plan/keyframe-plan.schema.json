@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/keyframe_plan/keyframe-plan.schema.json",
+  "title": "KeyframePlan",
+  "description": "Deterministic keyframe plan for PHASE-20 KEYFRAME_PLAN_BUILDER_V1",
+  "type": "object",
+  "required": [
+    "keyframe_plan_id",
+    "phase",
+    "source_video_shot_state_id",
+    "source_scene_state_id",
+    "duration_seconds",
+    "fps_target",
+    "keyframes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "keyframe_plan_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-20-KEYFRAME-PLAN-BUILDER-001" },
+    "source_video_shot_state_id": { "type": "string", "minLength": 1 },
+    "source_scene_state_id": { "type": "string", "minLength": 1 },
+    "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+    "fps_target": { "type": "number", "enum": [12, 24, 25, 30] },
+    "keyframes": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/keyframe" }
+    },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "keyframe": {
+      "type": "object",
+      "required": [
+        "keyframe_index",
+        "timestamp",
+        "keyframe_role",
+        "scene_state_ref",
+        "camera_state",
+        "character_state",
+        "emotion_state",
+        "composition_state",
+        "location_state",
+        "identity_state",
+        "continuity_locks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "keyframe_index": { "type": "integer", "minimum": 0 },
+        "timestamp": { "type": "number", "minimum": 0 },
+        "keyframe_role": {
+          "type": "string",
+          "enum": ["start", "transition", "midpoint", "end"]
+        },
+        "scene_state_ref": { "type": "string" },
+        "camera_state": { "$ref": "#/$defs/camera_state" },
+        "character_state": { "$ref": "#/$defs/character_state" },
+        "emotion_state": { "$ref": "#/$defs/emotion_state" },
+        "composition_state": { "$ref": "#/$defs/composition_state" },
+        "location_state": { "$ref": "#/$defs/location_state" },
+        "identity_state": { "$ref": "#/$defs/identity_state" },
+        "continuity_locks": { "$ref": "#/$defs/continuity_locks" }
+      }
+    },
+    "camera_state": {
+      "type": "object",
+      "required": ["shot_type", "motion_progress", "motion_type", "identity_safe"],
+      "properties": {
+        "shot_type": { "type": "string" },
+        "motion_progress": { "type": "number", "minimum": 0, "maximum": 1 },
+        "motion_type": { "type": "string" },
+        "camera_position": { "type": "string" },
+        "camera_height": { "type": "string" },
+        "identity_safe": { "type": "boolean" }
+      }
+    },
+    "character_state": {
+      "type": "object",
+      "required": ["active_character_ids", "positions", "beat_phase"],
+      "properties": {
+        "active_character_ids": { "type": "array", "items": { "type": "string" } },
+        "positions": { "type": "object", "additionalProperties": { "type": "string" } },
+        "beat_phase": { "type": "string" }
+      }
+    },
+    "emotion_state": {
+      "type": "object",
+      "required": ["emotion_id", "intensity", "arc_type"],
+      "properties": {
+        "emotion_id": { "type": "string" },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "arc_type": { "type": "string" }
+      }
+    },
+    "composition_state": {
+      "type": "object",
+      "required": ["composition_id", "prop_anchor_ids", "character_positions"],
+      "properties": {
+        "composition_id": { "type": "string" },
+        "prop_anchor_ids": { "type": "array", "items": { "type": "string" } },
+        "character_positions": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    },
+    "location_state": {
+      "type": "object",
+      "required": ["location_id", "location_lock_preserved"],
+      "properties": {
+        "location_id": { "type": "string" },
+        "layout_lock_id": { "type": "string" },
+        "outdoor_layout_id": { "type": "string" },
+        "location_lock_preserved": { "type": "boolean" }
+      }
+    },
+    "identity_state": {
+      "type": "object",
+      "required": ["protected_character_ids", "identity_lock_tokens"],
+      "properties": {
+        "protected_character_ids": { "type": "array", "items": { "type": "string" } },
+        "identity_lock_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks", "composition_locks"],
+      "properties": {
+        "identity_locks": { "type": "array", "items": { "type": "string" } },
+        "location_locks": { "type": "array", "items": { "type": "string" } },
+        "composition_locks": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

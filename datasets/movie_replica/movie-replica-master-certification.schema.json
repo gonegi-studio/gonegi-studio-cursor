@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-replica-master-certification.schema.json",
+  "title": "MovieReplicaMasterCertification",
+  "description": "Master certification record confirming all movie replica pipeline stages for PHASE-MOVIE-REPLICA-010",
+  "type": "object",
+  "required": [
+    "certification_id",
+    "movie_id",
+    "dataset_status",
+    "scene_graph_status",
+    "trajectory_status",
+    "keyframe_status",
+    "frame_generation_status",
+    "frame_sequence_status",
+    "integrity_status",
+    "production_package_status",
+    "master_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "certification_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "dataset_status": { "type": "boolean" },
+    "scene_graph_status": { "type": "boolean" },
+    "trajectory_status": { "type": "boolean" },
+    "frame_generation_status": { "type": "boolean" },
+    "frame_sequence_status": { "type": "boolean" },
+    "keyframe_status": { "type": "boolean" },
+    "integrity_status": { "type": "boolean" },
+    "production_package_status": { "type": "boolean" },
+    "master_status": { "type": "boolean" },
+    "certification_version": { "type": "string", "minLength": 1 },
+    "production_package_ref": { "type": "string", "minLength": 1 },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "certified_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

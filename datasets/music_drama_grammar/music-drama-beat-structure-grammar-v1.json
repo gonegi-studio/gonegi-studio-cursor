@@ -1,0 +1,280 @@
+{
+  "asset_type": "music_drama_beat_structure_grammar",
+  "asset_version": "v1",
+  "grammar_id": "music-drama-beat-structure-grammar-v1",
+  "phase": "PHASE-MDG-007",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Connect emotional transitions to musical structure for Music Drama. Beat grammar only — no generated scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false,
+    "modifies_living_world_core": false
+  },
+  "read_only_sources": {
+    "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+    "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+    "visual_motif_grammar": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+    "emotional_transition_grammar": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+    "render_feedback": "datasets/render_feedback/RKB-001.json"
+  },
+  "section_1_beat_types": {
+    "beat_type_count": 6,
+    "beat_types": [
+      "intro",
+      "verse",
+      "pre_chorus",
+      "chorus",
+      "bridge",
+      "outro"
+    ]
+  },
+  "section_2_beat_profiles": {
+    "profiles": [
+      {
+        "beat_id": "intro",
+        "label": "Intro",
+        "emotion_density": "LOW",
+        "visual_density": "LOW",
+        "motif_density": "LOW",
+        "behavior_density": "LOW",
+        "crowd_density": "NONE",
+        "camera_energy": "LOW"
+      },
+      {
+        "beat_id": "verse",
+        "label": "Verse",
+        "emotion_density": "LOW",
+        "visual_density": "MEDIUM",
+        "motif_density": "LOW",
+        "behavior_density": "MEDIUM",
+        "crowd_density": "LOW",
+        "camera_energy": "LOW"
+      },
+      {
+        "beat_id": "pre_chorus",
+        "label": "Pre-Chorus",
+        "emotion_density": "MEDIUM",
+        "visual_density": "MEDIUM",
+        "motif_density": "MEDIUM",
+        "behavior_density": "MEDIUM",
+        "crowd_density": "LOW",
+        "camera_energy": "MEDIUM"
+      },
+      {
+        "beat_id": "chorus",
+        "label": "Chorus",
+        "emotion_density": "MEDIUM",
+        "visual_density": "MEDIUM",
+        "motif_density": "MEDIUM",
+        "behavior_density": "MEDIUM",
+        "crowd_density": "LOW",
+        "camera_energy": "MEDIUM"
+      },
+      {
+        "beat_id": "bridge",
+        "label": "Bridge",
+        "emotion_density": "MEDIUM",
+        "visual_density": "LOW",
+        "motif_density": "LOW",
+        "behavior_density": "LOW",
+        "crowd_density": "NONE",
+        "camera_energy": "LOW"
+      },
+      {
+        "beat_id": "outro",
+        "label": "Outro",
+        "emotion_density": "LOW",
+        "visual_density": "LOW",
+        "motif_density": "LOW",
+        "behavior_density": "LOW",
+        "crowd_density": "NONE",
+        "camera_energy": "LOW"
+      }
+    ]
+  },
+  "section_3_emotional_bridges": {
+    "emotional_bridge_count": 6,
+    "bridges": [
+      {
+        "beat_id": "intro",
+        "emotional_target": "peace",
+        "linked_emotion_id": "peace",
+        "ep01_compatible": true
+      },
+      {
+        "beat_id": "verse",
+        "emotional_target": "curiosity",
+        "linked_emotion_id": "curiosity",
+        "ep01_compatible": true
+      },
+      {
+        "beat_id": "pre_chorus",
+        "emotional_target": "wonder",
+        "linked_emotion_id": "wonder",
+        "ep01_compatible": true
+      },
+      {
+        "beat_id": "chorus",
+        "emotional_target": "hope",
+        "linked_emotion_id": "hope",
+        "ep01_compatible": true
+      },
+      {
+        "beat_id": "bridge",
+        "emotional_target": "reflection",
+        "linked_emotion_id": "peace",
+        "emotional_register": "quiet_reflection",
+        "primary_motif_id": "reflection",
+        "ep01_compatible": true
+      },
+      {
+        "beat_id": "outro",
+        "emotional_target": "acceptance",
+        "linked_emotion_id": "acceptance",
+        "ep01_emotion_override": "peace",
+        "ep01_compatible": true
+      }
+    ]
+  },
+  "section_4_motif_usage": {
+    "motif_rule_count": 6,
+    "rules": [
+      {
+        "beat_id": "intro",
+        "motif_count_min": 1,
+        "motif_count_max": 1
+      },
+      {
+        "beat_id": "verse",
+        "motif_count_min": 1,
+        "motif_count_max": 2
+      },
+      {
+        "beat_id": "pre_chorus",
+        "motif_count_min": 2,
+        "motif_count_max": 2
+      },
+      {
+        "beat_id": "chorus",
+        "motif_count_min": 2,
+        "motif_count_max": 3
+      },
+      {
+        "beat_id": "bridge",
+        "motif_count_min": 1,
+        "motif_count_max": 2
+      },
+      {
+        "beat_id": "outro",
+        "motif_count_min": 1,
+        "motif_count_max": 1
+      }
+    ],
+    "global_max_visible_motifs": 3,
+    "alignment": "visual-motif-grammar-v1 section_6_motif_density_law"
+  },
+  "section_5_behavior_intensity": {
+    "behavior_rule_count": 6,
+    "intensity_scale": ["LOW", "MEDIUM", "HIGH"],
+    "rules": [
+      {
+        "beat_id": "intro",
+        "behavior_intensity": "LOW"
+      },
+      {
+        "beat_id": "verse",
+        "behavior_intensity": "MEDIUM"
+      },
+      {
+        "beat_id": "pre_chorus",
+        "behavior_intensity": "MEDIUM"
+      },
+      {
+        "beat_id": "chorus",
+        "behavior_intensity": "MEDIUM"
+      },
+      {
+        "beat_id": "bridge",
+        "behavior_intensity": "LOW"
+      },
+      {
+        "beat_id": "outro",
+        "behavior_intensity": "LOW"
+      }
+    ]
+  },
+  "section_6_ep01_profile": {
+    "episode_id": "EP01",
+    "title": "늘 그래왔듯이",
+    "beat_behavior_map": [
+      {
+        "beat_id": "intro",
+        "behavior_id": "wake_up",
+        "linked_emotion_id": "peace"
+      },
+      {
+        "beat_id": "verse",
+        "behavior_id": "family_breakfast",
+        "linked_emotion_id": "comfort"
+      },
+      {
+        "beat_id": "pre_chorus",
+        "behavior_id": "harbor_watch",
+        "linked_emotion_id": "curiosity"
+      },
+      {
+        "beat_id": "chorus",
+        "behavior_id": "hilltop_lunch",
+        "linked_emotion_id": "hope"
+      },
+      {
+        "beat_id": "bridge",
+        "behavior_id": "window_reflection",
+        "linked_emotion_id": "peace",
+        "emotional_register": "quiet_reflection"
+      },
+      {
+        "beat_id": "outro",
+        "behavior_id": "night_rest",
+        "linked_emotion_id": "peace"
+      }
+    ],
+    "forbidden_ep01_beats_emotions": [
+      "longing",
+      "separation",
+      "loss",
+      "reunion"
+    ]
+  },
+  "section_7_rkb_integration": {
+    "test_id": "RKB-001",
+    "maintained_principles": [
+      "character readability",
+      "crowd caution",
+      "companion continuity",
+      "stable atmosphere"
+    ],
+    "alignment": {
+      "crowd_density_caps": "chorus and verse remain LOW crowd density for EP01",
+      "companion_continuity": "all EP01 beat behaviors support gamja continuity_companions",
+      "motif_density_cap": 3,
+      "character_readability": "camera_energy LOW-MEDIUM only; protagonist remains frame anchor"
+    },
+    "rkb_scores_reflected": {
+      "character_consistency": 9.5,
+      "environment_consistency": 9.0,
+      "style_consistency": 9.0,
+      "overall_result": "SUCCESS"
+    }
+  },
+  "beat_sequence_order": [
+    "intro",
+    "verse",
+    "pre_chorus",
+    "chorus",
+    "bridge",
+    "outro"
+  ]
+}

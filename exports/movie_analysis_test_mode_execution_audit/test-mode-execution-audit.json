@@ -1,0 +1,141 @@
+{
+  "audit_id": "test-mode-execution-audit-v1",
+  "phase": "PHASE-LEVEL3-011-TEST_MODE_EXECUTION_AUDIT_V1",
+  "generated_at": "2026-06-07T07:31:26.626Z",
+  "production_engine_master_certification_artifact_path": "exports/movie_analysis_production_engine_master_certification/production-engine-master-certification.json",
+  "test_mode_execution_package_artifact_path": "exports/movie_analysis_test_mode_execution_package/test-mode-execution-package.json",
+  "audit_checks": [
+    {
+      "check_id": "master_certification_verified",
+      "check_label": "Master Certification Verified",
+      "status": "PASS"
+    },
+    {
+      "check_id": "test_execution_ready",
+      "check_label": "Test Execution Ready",
+      "status": "PASS"
+    },
+    {
+      "check_id": "production_execution_blocked",
+      "check_label": "Production Execution Blocked",
+      "status": "PASS"
+    },
+    {
+      "check_id": "external_call_blocked",
+      "check_label": "External Call Blocked",
+      "status": "PASS"
+    },
+    {
+      "check_id": "gpu_execution_blocked",
+      "check_label": "GPU Execution Blocked",
+      "status": "PASS"
+    },
+    {
+      "check_id": "runtime_not_executed",
+      "check_label": "Runtime Not Executed",
+      "status": "PASS"
+    },
+    {
+      "check_id": "mock_output_only",
+      "check_label": "Mock Output Only",
+      "status": "PASS"
+    },
+    {
+      "check_id": "real_generation",
+      "check_label": "Real Generation Disabled",
+      "status": "PASS"
+    },
+    {
+      "check_id": "traceability_preserved",
+      "check_label": "Traceability Preserved",
+      "status": "PASS"
+    },
+    {
+      "check_id": "memory_bindings_preserved",
+      "check_label": "Memory Bindings Preserved",
+      "status": "PASS"
+    },
+    {
+      "check_id": "safe_create_policy_preserved",
+      "check_label": "Safe Create Policy Preserved",
+      "status": "PASS"
+    }
+  ],
+  "test_package_audits": [
+    {
+      "test_package_id": "test_mode_package_mv_v1",
+      "test_mode": true,
+      "production_mode": false,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "mock_output_only": true,
+      "real_generation": false,
+      "mock_execution_plan_ready": "PASS",
+      "traceability_integrity": "PASS",
+      "package_audit_ready": "PASS"
+    },
+    {
+      "test_package_id": "test_mode_package_short_film_v1",
+      "test_mode": true,
+      "production_mode": false,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "mock_output_only": true,
+      "real_generation": false,
+      "mock_execution_plan_ready": "PASS",
+      "traceability_integrity": "PASS",
+      "package_audit_ready": "PASS"
+    },
+    {
+      "test_package_id": "test_mode_package_episode_v1",
+      "test_mode": true,
+      "production_mode": false,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "mock_output_only": true,
+      "real_generation": false,
+      "mock_execution_plan_ready": "PASS",
+      "traceability_integrity": "PASS",
+      "package_audit_ready": "PASS"
+    },
+    {
+      "test_package_id": "test_mode_package_scene_sequence_v1",
+      "test_mode": true,
+      "production_mode": false,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "mock_output_only": true,
+      "real_generation": false,
+      "mock_execution_plan_ready": "PASS",
+      "traceability_integrity": "PASS",
+      "package_audit_ready": "PASS"
+    }
+  ],
+  "mock_output_only": true,
+  "real_generation": false,
+  "runtime_not_executed": true,
+  "traceability_preserved": true,
+  "memory_bindings_preserved": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/movie_analysis_production_engine_master_certification/production-engine-master-certification.json",
+      "exports/movie_analysis_test_mode_execution_package/test-mode-execution-package.json",
+      "exports/movie_analysis_production_runtime_certification/production-runtime-certification.json",
+      "exports/movie_analysis_production_engine_foundation/production-engine-foundation.json"
+    ],
+    "write_paths": [
+      "reports/movie_analysis_test_mode_execution_audit",
+      "exports/movie_analysis_test_mode_execution_audit",
+      "reports/movie_analysis_test_mode_execution_audit/movie-analysis-test-mode-execution-audit-report.json",
+      "reports/movie_analysis_test_mode_execution_audit/MOVIE_ANALYSIS_TEST_MODE_EXECUTION_AUDIT.md",
+      "exports/movie_analysis_test_mode_execution_audit/movie-analysis-test-mode-execution-audit-manifest.json",
+      "exports/movie_analysis_test_mode_execution_audit/test-mode-execution-audit.json"
+    ],
+    "upstream_artifacts_unchanged": true
+  },
+  "audit_complete": true,
+  "test_mode_ready": true,
+  "execution_simulation_ready": true,
+  "production_still_blocked": true
+}

@@ -1,0 +1,127 @@
+{
+  "hardening_id": "mv-high-priority-resolution-audit-hardening-v1",
+  "phase": "PHASE-DIGITAL-STUDIO-021A-MV_HIGH_PRIORITY_RESOLUTION_AUDIT_HARDENING_V1",
+  "generated_at": "2026-06-08T00:19:21.465Z",
+  "source_audit_ref": "exports/mv_high_priority_resolution_audit/mv-high-priority-resolution-audit.json",
+  "audit_id": "mv-high-priority-resolution-audit-v1",
+  "high_priority_items": [
+    "DATASET_REFS_EMPTY",
+    "PRODUCTION_MODE_BLOCKED",
+    "REAL_GENERATION_BLOCKED"
+  ],
+  "high_priority_category_breakdown": {
+    "consistency": 1,
+    "operational": 2
+  },
+  "resolution_target_phase": {
+    "DATASET_REFS_EMPTY": "DS_022",
+    "PRODUCTION_MODE_BLOCKED": "DS_022",
+    "REAL_GENERATION_BLOCKED": "DS_022"
+  },
+  "production_ready_dependency": {
+    "required": true,
+    "dependent_blocker_codes": [
+      "DATASET_REFS_EMPTY",
+      "PRODUCTION_MODE_BLOCKED",
+      "REAL_GENERATION_BLOCKED"
+    ]
+  },
+  "high_priority_item_ids": [
+    "dataset_refs_empty_story_mv_generation_plan_v1",
+    "production_mode_blocked",
+    "real_generation_blocked"
+  ],
+  "resolution_owner": {
+    "DATASET_REFS_EMPTY": "mv_dataset_consistency_owner",
+    "PRODUCTION_MODE_BLOCKED": "mv_production_ops_owner",
+    "REAL_GENERATION_BLOCKED": "mv_generation_ops_owner"
+  },
+  "acceptance_criteria": {
+    "DATASET_REFS_EMPTY": "story_mv dataset_refs populated with at least one valid dataset path and trace_integrity remains PASS",
+    "PRODUCTION_MODE_BLOCKED": "production_mode_blocked flag cleared under gated production scope with safety certification preserved",
+    "REAL_GENERATION_BLOCKED": "real_generation_blocked lifted with controlled generation scope and quality gates active"
+  },
+  "high_priority_resolution_count": 3,
+  "resolved_high_priority_count": 0,
+  "remaining_high_priority_count": 3,
+  "current_readiness_tier": "TEST_READY",
+  "target_readiness_tier": "PRODUCTION_READY",
+  "next_stage_gate_label": "DS_022_ENTRY",
+  "traceability_chain": [
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "instrumental_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "instrumental_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "instrumental_mv_scene_assembly_v1",
+      "mv_blueprint_id": "instrumental_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/instrumental-mv-archetype-library-v1.json",
+        "datasets/mv/instrumental-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "ballad_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "ballad_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "ballad_mv_scene_assembly_v1",
+      "mv_blueprint_id": "ballad_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/ballad-mv-archetype-library-v1.json",
+        "datasets/mv/ballad-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "story_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "story_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "story_mv_scene_assembly_v1",
+      "mv_blueprint_id": "story_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_short_film_v1",
+      "dataset_refs": [],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "music_drama_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "music_drama_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "music_drama_mv_scene_assembly_v1",
+      "mv_blueprint_id": "music_drama_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_episode_v1",
+      "dataset_refs": [
+        "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    }
+  ],
+  "execution_scope": "test_mode_only",
+  "traceability_preserved": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/mv_high_priority_resolution_audit/mv-high-priority-resolution-audit.json",
+      "exports/mv_high_priority_resolution_audit/mv-high-priority-resolution-audit-manifest.json"
+    ],
+    "write_paths": [
+      "reports/mv_high_priority_resolution_audit_hardening",
+      "exports/mv_high_priority_resolution_audit_hardening",
+      "reports/mv_high_priority_resolution_audit_hardening/mv-high-priority-resolution-audit-hardening-report.json",
+      "reports/mv_high_priority_resolution_audit_hardening/MV_HIGH_PRIORITY_RESOLUTION_AUDIT_HARDENING.md",
+      "exports/mv_high_priority_resolution_audit_hardening/mv-high-priority-resolution-audit-hardening-manifest.json",
+      "exports/mv_high_priority_resolution_audit_hardening/mv-high-priority-resolution-audit-hardening.json"
+    ],
+    "high_priority_audit_hardening_artifact_write_scope": "exports/mv_high_priority_resolution_audit_hardening/",
+    "upstream_artifacts_unchanged": true
+  },
+  "hardening_complete": true,
+  "next_stage_ready": true
+}

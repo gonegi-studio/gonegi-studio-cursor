@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/video_runtime/video-runtime-interface.schema.json",
+  "title": "VideoRuntimeInterface",
+  "description": "Design-only runtime interface between GPU payloads and future video generation for PHASE-23",
+  "type": "object",
+  "required": [
+    "runtime_interface_id",
+    "phase",
+    "source_gpu_payload_id",
+    "runtime_target",
+    "handshake",
+    "submission_contract",
+    "local_adapter",
+    "remote_adapter",
+    "payload_summary",
+    "execution_flags",
+    "readiness"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "runtime_interface_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-23-VIDEO-RUNTIME-INTERFACE-DESIGN-001" },
+    "source_gpu_payload_id": { "type": "string", "minLength": 1 },
+    "runtime_target": {
+      "type": "string",
+      "enum": ["local_stub", "remote_stub", "deferred"]
+    },
+    "handshake": { "$ref": "#/$defs/handshake" },
+    "submission_contract": { "$ref": "#/$defs/submission_contract" },
+    "local_adapter": { "$ref": "#/$defs/local_adapter" },
+    "remote_adapter": { "$ref": "#/$defs/remote_adapter" },
+    "payload_summary": { "$ref": "#/$defs/payload_summary" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "readiness": { "type": "string", "const": "design_only" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": ["gpu_execution", "preparation_only", "external_call_allowed"],
+      "additionalProperties": false,
+      "properties": {
+        "gpu_execution": { "type": "boolean", "const": false },
+        "preparation_only": { "type": "boolean", "const": true },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "handshake": {
+      "type": "object",
+      "required": [
+        "payload_schema_version",
+        "required_lock_categories",
+        "preflight_checks",
+        "identity_lock_count"
+      ],
+      "properties": {
+        "payload_schema_version": { "type": "string" },
+        "required_lock_categories": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "preflight_checks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "identity_lock_count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "submission_contract": {
+      "type": "object",
+      "required": [
+        "method",
+        "input_artifact_path",
+        "output_artifact_placeholder",
+        "timeout_seconds",
+        "submission_allowed"
+      ],
+      "properties": {
+        "method": { "type": "string", "const": "submit_render_job_stub" },
+        "input_artifact_path": { "type": "string" },
+        "output_artifact_placeholder": { "type": "string" },
+        "timeout_seconds": { "type": "number", "minimum": 1 },
+        "submission_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "local_adapter": {
+      "type": "object",
+      "required": ["adapter_id", "runtime_kind", "executable", "status"],
+      "properties": {
+        "adapter_id": { "type": "string" },
+        "runtime_kind": { "type": "string", "const": "local_gpu_stub" },
+        "executable": { "type": "null" },
+        "status": { "type": "string", "const": "not_wired" },
+        "notes": { "type": "string" }
+      }
+    },
+    "remote_adapter": {
+      "type": "object",
+      "required": ["adapter_id", "runtime_kind", "endpoint", "status"],
+      "properties": {
+        "adapter_id": { "type": "string" },
+        "runtime_kind": { "type": "string", "const": "remote_api_stub" },
+        "endpoint": { "type": "null" },
+        "status": { "type": "string", "const": "not_wired" },
+        "notes": { "type": "string" }
+      }
+    },
+    "payload_summary": {
+      "type": "object",
+      "required": [
+        "duration_seconds",
+        "fps_target",
+        "resolution",
+        "keyframe_count",
+        "motion_segment_count"
+      ],
+      "properties": {
+        "duration_seconds": { "type": "number" },
+        "fps_target": { "type": "number" },
+        "resolution": { "type": "string" },
+        "aspect_ratio": { "type": "string" },
+        "keyframe_count": { "type": "integer" },
+        "motion_segment_count": { "type": "integer" },
+        "source_scene_state_id": { "type": "string" }
+      }
+    }
+  }
+}

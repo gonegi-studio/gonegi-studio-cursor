@@ -1,0 +1,161 @@
+{
+  "bundle_id": "dialogue-bundle-v5",
+  "dataset_type": "production",
+  "production_grade": true,
+  "placeholder": false,
+  "materialized": true,
+  "dialogue_patterns": [
+    {
+      "pattern_id": "reveal_legacy_callback",
+      "template": "memory_reveal_confession",
+      "sample": {
+        "dialogue_id": "dlg-harbor-001",
+        "character_id": "dana",
+        "scene_id": "scene_harbor_dock_014",
+        "speaker": "Dana",
+        "dialogue_text": "The harbor remembers what we tried to forget.",
+        "emotion": "melancholic_resolve",
+        "intent": "reveal_legacy_callback",
+        "speaking_style": "Dana_style",
+        "relationship_context": {
+          "relationship_id": "dana_gonegi_siblings",
+          "participant_ids": [
+            "dana",
+            "gonegi"
+          ],
+          "relationship_arc_ref": "relationship_arc",
+          "relationship_state": "unresolved_promise",
+          "intimacy_level": 0.72
+        },
+        "memory_context": {
+          "callback_id": "harbor_keeper_legacy",
+          "memory_horizon_ref": "exports/temporal_memory/temporal-memory-specification.json",
+          "world_state_ref": "harbor_dock",
+          "recall_strength": 0.88,
+          "timeline_era": "present"
+        },
+        "pause_points": [
+          {
+            "index": 2,
+            "duration_ms": 320,
+            "reason": "emotional_weight"
+          },
+          {
+            "index": 7,
+            "duration_ms": 180,
+            "reason": "breath_before_reveal"
+          }
+        ],
+        "emphasis_points": [
+          {
+            "index": 1,
+            "word": "harbor",
+            "weight": 0.9
+          },
+          {
+            "index": 6,
+            "word": "forget",
+            "weight": 0.85
+          }
+        ],
+        "duration_estimate": 4.2
+      }
+    },
+    {
+      "pattern_id": "emotional_confession",
+      "template": "vulnerable_direct_address",
+      "emotion": "melancholic_resolve"
+    }
+  ],
+  "character_speaking_styles": {
+    "Dana_style": {
+      "pace": "measured",
+      "pause_weight": "high",
+      "emphasis_style": "word_weighted"
+    },
+    "Gonagi_style": {
+      "pace": "steady",
+      "pause_weight": "medium",
+      "emphasis_style": "breath_paced"
+    }
+  },
+  "emotion_dialogue_rules": {
+    "melancholic_resolve": {
+      "pause_multiplier": 1.2,
+      "emphasis_on_nouns": true
+    },
+    "hopeful_reunion": {
+      "pace_acceleration": 0.15,
+      "smile_curve": "rising_warm"
+    }
+  },
+  "relationship_dialogue_rules": {
+    "unresolved_promise": {
+      "intimacy_level_range": [
+        0.6,
+        0.85
+      ],
+      "gaze_rule": "lingering_then_avert"
+    }
+  },
+  "lipsync_rules": {
+    "timing": {
+      "duration_estimate": 4.2,
+      "pause_points": [
+        {
+          "index": 2,
+          "duration_ms": 320,
+          "reason": "emotional_weight"
+        },
+        {
+          "index": 7,
+          "duration_ms": 180,
+          "reason": "breath_before_reveal"
+        }
+      ],
+      "emphasis_points": [
+        {
+          "index": 1,
+          "word": "harbor",
+          "weight": 0.9
+        },
+        {
+          "index": 6,
+          "word": "forget",
+          "weight": 0.85
+        }
+      ],
+      "speaking_style_profile": {
+        "pace": "deliberate_reflective",
+        "pause_tendency": "medium",
+        "emphasis_pattern": "weighted_pause_before_key_word"
+      }
+    },
+    "pause_points": [
+      {
+        "index": 2,
+        "duration_ms": 320,
+        "reason": "emotional_weight"
+      },
+      {
+        "index": 7,
+        "duration_ms": 180,
+        "reason": "breath_before_reveal"
+      }
+    ],
+    "emphasis_points": [
+      {
+        "index": 1,
+        "word": "harbor",
+        "weight": 0.9
+      },
+      {
+        "index": 6,
+        "word": "forget",
+        "weight": 0.85
+      }
+    ],
+    "duration_estimate": 4.2
+  },
+  "record_count": 6
+}

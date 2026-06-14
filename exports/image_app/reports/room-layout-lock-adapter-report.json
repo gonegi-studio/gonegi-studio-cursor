@@ -1,0 +1,37 @@
+{
+  "report_type": "room_layout_lock_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-RLL-001",
+  "generated_at": "2026-06-03T11:32:43.149Z",
+  "layout_count": 6,
+  "target_layout_count": 6,
+  "duplicate_ids": 0,
+  "runtime_fields_exported": {
+    "layout_id": true,
+    "layout_tokens": true,
+    "render_payload": true,
+    "tokens_injected": true
+  },
+  "validation_target": "RKB-011 ROOM_LAYOUT_CONTINUITY_VALIDATION",
+  "json_parse_result": "valid",
+  "validation": {
+    "all_target_layouts_present": true,
+    "duplicate_ids_zero": true,
+    "required_fields_complete": true,
+    "adapter_chain_complete": true,
+    "adapter_synced_to_latest": true,
+    "runtime_verification_exported": true,
+    "locations_resolve": true,
+    "forbidden_rules_include_core_four": true,
+    "tokens_injected": true
+  },
+  "export_path": "exports/image_app/adapters/room-layout-lock-adapter.json",
+  "report_path": "exports/image_app/reports/room-layout-lock-adapter-report.json",
+  "library_path": "datasets/location/room-layout-lock-library-v1.json",
+  "index_path": "datasets/location/room-layout-lock-index-v1.json",
+  "final_verdict": "PASS_ROOM_LAYOUT_LOCK_SYSTEM_V1",
+  "violations": [],
+  "next_phases": [
+    "PHASE-RKB-011 ROOM_LAYOUT_CONTINUITY_VALIDATION"
+  ]
+}

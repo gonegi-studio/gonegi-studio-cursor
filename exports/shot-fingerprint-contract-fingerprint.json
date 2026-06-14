@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "SHOT-FINGERPRINT-CONTRACT-FINGERPRINT-v1",
+  "librarySchemaVersion": "SHOT-FINGERPRINT-INDEX-v1",
+  "fingerprintIds": [
+    "wide_establishing",
+    "medium_emotional",
+    "side_tracking",
+    "rear_follow",
+    "overhead_isolation",
+    "window_reflection",
+    "close_hand_detail",
+    "silhouette_distance"
+  ],
+  "categories": {
+    "wide_establishing": "establish geography",
+    "medium_emotional": "emotional dialogue hold",
+    "side_tracking": "travel companionship",
+    "rear_follow": "departure or pursuit",
+    "overhead_isolation": "isolation emphasis",
+    "window_reflection": "inner emotion mirror",
+    "close_hand_detail": "gesture beat",
+    "silhouette_distance": "emotional distance"
+  },
+  "requiredFields": [
+    "shot_id",
+    "framing",
+    "lens_behavior",
+    "camera_motion",
+    "subject_distance",
+    "cinematic_role",
+    "continuity_bias"
+  ],
+  "indexStructure": [
+    {
+      "fingerprint_id": "wide_establishing",
+      "path": "shot_fingerprint/wide_establishing.json"
+    },
+    {
+      "fingerprint_id": "medium_emotional",
+      "path": "shot_fingerprint/medium_emotional.json"
+    },
+    {
+      "fingerprint_id": "side_tracking",
+      "path": "shot_fingerprint/side_tracking.json"
+    },
+    {
+      "fingerprint_id": "rear_follow",
+      "path": "shot_fingerprint/rear_follow.json"
+    },
+    {
+      "fingerprint_id": "overhead_isolation",
+      "path": "shot_fingerprint/overhead_isolation.json"
+    },
+    {
+      "fingerprint_id": "window_reflection",
+      "path": "shot_fingerprint/window_reflection.json"
+    },
+    {
+      "fingerprint_id": "close_hand_detail",
+      "path": "shot_fingerprint/close_hand_detail.json"
+    },
+    {
+      "fingerprint_id": "silhouette_distance",
+      "path": "shot_fingerprint/silhouette_distance.json"
+    }
+  ],
+  "frozenAt": "2026-05-30T00:00:00.000Z"
+}

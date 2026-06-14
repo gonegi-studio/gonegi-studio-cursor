@@ -1,0 +1,809 @@
+{
+  "package_id": "temporal-preservation-binding-package-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-007",
+  "system_id": "TEMPORAL_PRESERVATION_BINDING_V1",
+  "generated_at": "2026-06-13T23:01:12.022Z",
+  "temporal_memory_binding": {
+    "binding_id": "Unique temporal memory binding record identifier.",
+    "source_video_id": "Canonical numerical DNA source identifier.",
+    "timeline_id": "Timeline slot identifier from TEMPORAL_MEMORY_SPECIFICATION.",
+    "source_scene": "Source scene identifier bound to timeline slot.",
+    "source_shot": "Source shot identifier bound to timeline slot.",
+    "memory_signature": "Hash of scene_transition_memory state at timeline position."
+  },
+  "edit_rhythm_binding": {
+    "binding_id": "Unique edit rhythm binding record identifier.",
+    "source_video_id": "Numerical DNA source video identifier.",
+    "edit_point_index": "Zero-based index into edit_rhythm edit_points array.",
+    "timestamp_ms": "Edit point timestamp in milliseconds.",
+    "shot_duration_ms": "Bound shot duration in milliseconds.",
+    "cut_type": "Edit cut enum: hard_cut | dissolve | fade.",
+    "rhythm_bucket": "Tempo bucket enum: slow | medium | fast.",
+    "edit_rhythm_signature": "Hash of edit_rhythm edit_points bound to timeline slot."
+  },
+  "shot_boundary_continuity_binding": {
+    "binding_id": "Unique shot boundary continuity binding record identifier.",
+    "source_video_id": "Numerical DNA source video identifier.",
+    "timeline_id": "Parent timeline_id for continuity slot.",
+    "source_shot": "Current shot identifier.",
+    "next_shot": "Following shot identifier in sequence.",
+    "continuity_anchor": "Primary anchor preserved across boundary.",
+    "boundary_type": "Boundary classification: hard_cut | dissolve | fade.",
+    "continuity_signature": "Hash of shot_boundary_continuity anchors across adjacent shots."
+  },
+  "causal_transition_chain_binding": {
+    "binding_id": "Unique causal transition chain binding record identifier.",
+    "source_video_id": "Numerical DNA source video identifier.",
+    "transition_ids": "Ordered list of transition_id references.",
+    "chain_length": "Count of transitions in causal chain."
+  },
+  "temporal_traceability_binding": {
+    "binding_id": "Unique temporal traceability binding record identifier.",
+    "source_video_id": "Numerical DNA source identifier.",
+    "timeline_id": "Bound timeline slot identifier.",
+    "numerical_dna_edit_rhythm_ref": "Path to edit_rhythm subsystem in source_video_numerical_dna_full.",
+    "numerical_dna_motion_vectors_ref": "Path to motion_vectors subsystem in source_video_numerical_dna_full.",
+    "conditioning_map_ref": "Path to conditioning-map-export-bundle source entry.",
+    "temporal_memory_spec_ref": "Path to TEMPORAL_MEMORY_SPECIFICATION.json.",
+    "traceability_signature": "Deterministic hash binding all lineage fields."
+  },
+  "temporal_binding_defined": true,
+  "sources": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "source_group": "ghibli",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_ghibli_01",
+        "source_video_id": "GHIBLI_01",
+        "timeline_id": "timeline_ghibli_01_001",
+        "source_scene": "scene_001",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_10a80adeebd8c9b1"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_ghibli_01",
+        "source_video_id": "GHIBLI_01",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 4521,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "medium",
+        "edit_rhythm_signature": "edit_d4e977ba0e7a2d19"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_ghibli_01",
+        "source_video_id": "GHIBLI_01",
+        "timeline_id": "timeline_ghibli_01_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_ecfebe93158cb1fd"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_ghibli_01",
+        "source_video_id": "GHIBLI_01",
+        "transition_ids": [
+          "transition_ghibli_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_ghibli_01",
+        "source_video_id": "GHIBLI_01",
+        "timeline_id": "timeline_ghibli_01_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_01/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_01/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_01",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_7be41b98f76d74d8"
+      }
+    },
+    {
+      "source_video_id": "GHIBLI_02",
+      "source_group": "ghibli",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_ghibli_02",
+        "source_video_id": "GHIBLI_02",
+        "timeline_id": "timeline_ghibli_02_001",
+        "source_scene": "scene_002",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_4ad5cb4e74d29b70"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_ghibli_02",
+        "source_video_id": "GHIBLI_02",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 4376,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "fast",
+        "edit_rhythm_signature": "edit_2eb6c0f511269278"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_ghibli_02",
+        "source_video_id": "GHIBLI_02",
+        "timeline_id": "timeline_ghibli_02_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_9a1410b5e3711db6"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_ghibli_02",
+        "source_video_id": "GHIBLI_02",
+        "transition_ids": [
+          "transition_ghibli_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_ghibli_02",
+        "source_video_id": "GHIBLI_02",
+        "timeline_id": "timeline_ghibli_02_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_02/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_02/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_02",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_c6313e5fd978b9d2"
+      }
+    },
+    {
+      "source_video_id": "GHIBLI_03",
+      "source_group": "ghibli",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_ghibli_03",
+        "source_video_id": "GHIBLI_03",
+        "timeline_id": "timeline_ghibli_03_001",
+        "source_scene": "scene_003",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_356d8a8f229734e8"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_ghibli_03",
+        "source_video_id": "GHIBLI_03",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 2853,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "slow",
+        "edit_rhythm_signature": "edit_47e192f6617f047d"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_ghibli_03",
+        "source_video_id": "GHIBLI_03",
+        "timeline_id": "timeline_ghibli_03_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_a0155f34caec47b0"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_ghibli_03",
+        "source_video_id": "GHIBLI_03",
+        "transition_ids": [
+          "transition_ghibli_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_ghibli_03",
+        "source_video_id": "GHIBLI_03",
+        "timeline_id": "timeline_ghibli_03_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_03/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_03/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_03",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_7bb9448b7dfbee07"
+      }
+    },
+    {
+      "source_video_id": "GHIBLI_04",
+      "source_group": "ghibli",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_ghibli_04",
+        "source_video_id": "GHIBLI_04",
+        "timeline_id": "timeline_ghibli_04_001",
+        "source_scene": "scene_004",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_63c431c0d0b32534"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_ghibli_04",
+        "source_video_id": "GHIBLI_04",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5899,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "slow",
+        "edit_rhythm_signature": "edit_f1e7b71418fdd334"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_ghibli_04",
+        "source_video_id": "GHIBLI_04",
+        "timeline_id": "timeline_ghibli_04_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_5bb585705828912f"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_ghibli_04",
+        "source_video_id": "GHIBLI_04",
+        "transition_ids": [
+          "transition_ghibli_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_ghibli_04",
+        "source_video_id": "GHIBLI_04",
+        "timeline_id": "timeline_ghibli_04_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_04/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_04/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_04",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_ca78ba4aa51a7c6f"
+      }
+    },
+    {
+      "source_video_id": "GHIBLI_05",
+      "source_group": "ghibli",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_ghibli_05",
+        "source_video_id": "GHIBLI_05",
+        "timeline_id": "timeline_ghibli_05_001",
+        "source_scene": "scene_005",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_44f67444b27a0bd8"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_ghibli_05",
+        "source_video_id": "GHIBLI_05",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5547,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "fast",
+        "edit_rhythm_signature": "edit_76818e09f355d271"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_ghibli_05",
+        "source_video_id": "GHIBLI_05",
+        "timeline_id": "timeline_ghibli_05_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_abea8e756e0dbd9b"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_ghibli_05",
+        "source_video_id": "GHIBLI_05",
+        "transition_ids": [
+          "transition_ghibli_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_ghibli_05",
+        "source_video_id": "GHIBLI_05",
+        "timeline_id": "timeline_ghibli_05_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_05/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_05/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_05",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_743ac322f4ad83a1"
+      }
+    },
+    {
+      "source_video_id": "GHIBLI_06",
+      "source_group": "ghibli",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_ghibli_06",
+        "source_video_id": "GHIBLI_06",
+        "timeline_id": "timeline_ghibli_06_001",
+        "source_scene": "scene_006",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_48778fd3df360957"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_ghibli_06",
+        "source_video_id": "GHIBLI_06",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5064,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "medium",
+        "edit_rhythm_signature": "edit_e9fa3fe5c4e5a719"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_ghibli_06",
+        "source_video_id": "GHIBLI_06",
+        "timeline_id": "timeline_ghibli_06_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_81a4b7603b3cbac4"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_ghibli_06",
+        "source_video_id": "GHIBLI_06",
+        "transition_ids": [
+          "transition_ghibli_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_ghibli_06",
+        "source_video_id": "GHIBLI_06",
+        "timeline_id": "timeline_ghibli_06_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_06/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_06/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_06",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_6e803463e90bd315"
+      }
+    },
+    {
+      "source_video_id": "GHIBLI_07",
+      "source_group": "ghibli",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_ghibli_07",
+        "source_video_id": "GHIBLI_07",
+        "timeline_id": "timeline_ghibli_07_001",
+        "source_scene": "scene_007",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_0ae9dda2bef8330e"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_ghibli_07",
+        "source_video_id": "GHIBLI_07",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5654,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "medium",
+        "edit_rhythm_signature": "edit_d8d74ee336df58cd"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_ghibli_07",
+        "source_video_id": "GHIBLI_07",
+        "timeline_id": "timeline_ghibli_07_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_ebcc1cc47a8b9ea4"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_ghibli_07",
+        "source_video_id": "GHIBLI_07",
+        "transition_ids": [
+          "transition_ghibli_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_ghibli_07",
+        "source_video_id": "GHIBLI_07",
+        "timeline_id": "timeline_ghibli_07_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_07/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/GHIBLI_07/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_07",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_8d14fdb76679a946"
+      }
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "source_group": "shinkai",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_shinkai_01",
+        "source_video_id": "SHINKAI_01",
+        "timeline_id": "timeline_shinkai_01_001",
+        "source_scene": "scene_008",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_a2f76d78f324a225"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_shinkai_01",
+        "source_video_id": "SHINKAI_01",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 2406,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "slow",
+        "edit_rhythm_signature": "edit_a5e8d3a55c3b0bfe"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_shinkai_01",
+        "source_video_id": "SHINKAI_01",
+        "timeline_id": "timeline_shinkai_01_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_08472149d3d74d08"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_shinkai_01",
+        "source_video_id": "SHINKAI_01",
+        "transition_ids": [
+          "transition_shinkai_01_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_shinkai_01",
+        "source_video_id": "SHINKAI_01",
+        "timeline_id": "timeline_shinkai_01_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/SHINKAI_01/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/SHINKAI_01/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#SHINKAI_01",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_b144601ef0ef82d4"
+      }
+    },
+    {
+      "source_video_id": "SHINKAI_02",
+      "source_group": "shinkai",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_shinkai_02",
+        "source_video_id": "SHINKAI_02",
+        "timeline_id": "timeline_shinkai_02_001",
+        "source_scene": "scene_009",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_34d417336f2a0957"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_shinkai_02",
+        "source_video_id": "SHINKAI_02",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5915,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "medium",
+        "edit_rhythm_signature": "edit_d5d2a631a8551012"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_shinkai_02",
+        "source_video_id": "SHINKAI_02",
+        "timeline_id": "timeline_shinkai_02_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_18bf3276c47d85ee"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_shinkai_02",
+        "source_video_id": "SHINKAI_02",
+        "transition_ids": [
+          "transition_shinkai_02_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_shinkai_02",
+        "source_video_id": "SHINKAI_02",
+        "timeline_id": "timeline_shinkai_02_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/SHINKAI_02/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/SHINKAI_02/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#SHINKAI_02",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_53d51d3ffc3c2e9e"
+      }
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_group": "live_action",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_little_women_01",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "timeline_id": "timeline_little_women_01_001",
+        "source_scene": "scene_010",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_3ef80e0ef00c0978"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_little_women_01",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5229,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "slow",
+        "edit_rhythm_signature": "edit_7860ce689ff98610"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_little_women_01",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "timeline_id": "timeline_little_women_01_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "blocking_layout",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_1726578ed1c33f8a"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_little_women_01",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "transition_ids": [
+          "transition_little_women_01_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_little_women_01",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "timeline_id": "timeline_little_women_01_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/LITTLE_WOMEN_01/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/LITTLE_WOMEN_01/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#LITTLE_WOMEN_01",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_cee712f716952552"
+      }
+    },
+    {
+      "source_video_id": "MORI_01",
+      "source_group": "mori",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_mori_01",
+        "source_video_id": "MORI_01",
+        "timeline_id": "timeline_mori_01_001",
+        "source_scene": "scene_011",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_3c5b0943352b86e4"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_mori_01",
+        "source_video_id": "MORI_01",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 3562,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "fast",
+        "edit_rhythm_signature": "edit_0cc56ec7aa3013ef"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_mori_01",
+        "source_video_id": "MORI_01",
+        "timeline_id": "timeline_mori_01_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "camera_inertia",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_9554d1356f990a80"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_mori_01",
+        "source_video_id": "MORI_01",
+        "transition_ids": [
+          "transition_mori_01_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_mori_01",
+        "source_video_id": "MORI_01",
+        "timeline_id": "timeline_mori_01_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/MORI_01/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/MORI_01/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_01",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_54cd755d45a727c5"
+      }
+    },
+    {
+      "source_video_id": "MORI_02",
+      "source_group": "mori",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_mori_02",
+        "source_video_id": "MORI_02",
+        "timeline_id": "timeline_mori_02_001",
+        "source_scene": "scene_012",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_a0568d33167c2149"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_mori_02",
+        "source_video_id": "MORI_02",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 2446,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "fast",
+        "edit_rhythm_signature": "edit_7ecb3f20848f6e13"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_mori_02",
+        "source_video_id": "MORI_02",
+        "timeline_id": "timeline_mori_02_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "camera_inertia",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_4457e46e19299603"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_mori_02",
+        "source_video_id": "MORI_02",
+        "transition_ids": [
+          "transition_mori_02_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_mori_02",
+        "source_video_id": "MORI_02",
+        "timeline_id": "timeline_mori_02_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/MORI_02/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/MORI_02/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_02",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_c4ee8f57f15a5ed6"
+      }
+    },
+    {
+      "source_video_id": "MORI_03",
+      "source_group": "mori",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_mori_03",
+        "source_video_id": "MORI_03",
+        "timeline_id": "timeline_mori_03_001",
+        "source_scene": "scene_013",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_dbf79db4e2ef3ab5"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_mori_03",
+        "source_video_id": "MORI_03",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5471,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "fast",
+        "edit_rhythm_signature": "edit_35d0afba7896c3c2"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_mori_03",
+        "source_video_id": "MORI_03",
+        "timeline_id": "timeline_mori_03_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "camera_inertia",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_8d1473827ad296ba"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_mori_03",
+        "source_video_id": "MORI_03",
+        "transition_ids": [
+          "transition_mori_03_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_mori_03",
+        "source_video_id": "MORI_03",
+        "timeline_id": "timeline_mori_03_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/MORI_03/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/MORI_03/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_03",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_d0faff9f436adfa5"
+      }
+    },
+    {
+      "source_video_id": "MORI_04",
+      "source_group": "mori",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_mori_04",
+        "source_video_id": "MORI_04",
+        "timeline_id": "timeline_mori_04_001",
+        "source_scene": "scene_014",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_808565fb116854b7"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_mori_04",
+        "source_video_id": "MORI_04",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 3912,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "medium",
+        "edit_rhythm_signature": "edit_7bef3dc5a5f119e1"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_mori_04",
+        "source_video_id": "MORI_04",
+        "timeline_id": "timeline_mori_04_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "camera_inertia",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_88a30e2e60d5b84c"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_mori_04",
+        "source_video_id": "MORI_04",
+        "transition_ids": [
+          "transition_mori_04_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_mori_04",
+        "source_video_id": "MORI_04",
+        "timeline_id": "timeline_mori_04_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/MORI_04/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/MORI_04/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_04",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_00cd10cbe404323a"
+      }
+    },
+    {
+      "source_video_id": "MORI_05",
+      "source_group": "mori",
+      "temporal_memory_binding": {
+        "binding_id": "tmb_mori_05",
+        "source_video_id": "MORI_05",
+        "timeline_id": "timeline_mori_05_001",
+        "source_scene": "scene_015",
+        "source_shot": "shot_001",
+        "memory_signature": "memory_5249d8d70a5865b3"
+      },
+      "edit_rhythm_binding": {
+        "binding_id": "erb_mori_05",
+        "source_video_id": "MORI_05",
+        "edit_point_index": 0,
+        "timestamp_ms": 0,
+        "shot_duration_ms": 5289,
+        "cut_type": "hard_cut",
+        "rhythm_bucket": "slow",
+        "edit_rhythm_signature": "edit_a66e0fbf7d084b12"
+      },
+      "shot_boundary_continuity_binding": {
+        "binding_id": "sbc_mori_05",
+        "source_video_id": "MORI_05",
+        "timeline_id": "timeline_mori_05_001",
+        "source_shot": "shot_001",
+        "next_shot": "shot_002",
+        "continuity_anchor": "camera_inertia",
+        "boundary_type": "hard_cut",
+        "continuity_signature": "continuity_2a1461d98c23fe31"
+      },
+      "causal_transition_chain_binding": {
+        "binding_id": "ctc_mori_05",
+        "source_video_id": "MORI_05",
+        "transition_ids": [
+          "transition_mori_05_001_002"
+        ],
+        "chain_length": 1
+      },
+      "temporal_traceability_binding": {
+        "binding_id": "ttb_mori_05",
+        "source_video_id": "MORI_05",
+        "timeline_id": "timeline_mori_05_001",
+        "numerical_dna_edit_rhythm_ref": "exports/source_video_numerical_dna_full/sources/MORI_05/edit_rhythm.json",
+        "numerical_dna_motion_vectors_ref": "exports/source_video_numerical_dna_full/sources/MORI_05/motion_vectors.json",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_05",
+        "temporal_memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+        "traceability_signature": "trace_7b84cefdc7775e17"
+      }
+    }
+  ],
+  "coverage": {
+    "total_sources": 15,
+    "bound_sources": 15,
+    "coverage_ratio": 1
+  },
+  "traceability_coverage": 1
+}

@@ -1,0 +1,110 @@
+{
+  "report_id": "movie-geometry-semantic-dna-system-report-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-DATASET-001",
+  "system_id": "MOVIE_GEOMETRY_AND_SEMANTIC_DNA_SYSTEM_V2",
+  "generated_at": "2026-06-10T05:46:14.936Z",
+  "final_verdict": "PASS_MOVIE_GEOMETRY_AND_SEMANTIC_DNA_SYSTEM_V2",
+  "semantic_system_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "canonical_upload_pass": true,
+      "movie_coordinate_pass": true,
+      "semantic_anchor_library_exists": true,
+      "semantic_preservation_layer_exists": true,
+      "world_translation_rules_exists": true
+    }
+  },
+  "validation_summary": {
+    "semantic_anchor_count": 8,
+    "anchor_type_count": 5,
+    "anchor_types_covered": 5,
+    "titanic_anchor_count": 4,
+    "titanic_bow_meaning_preserved": true,
+    "semantic_preservation_layer_valid": true,
+    "world_translation_rules_valid": true,
+    "movie_geometry_dominates_structure": true,
+    "gonegi_world_dominates_appearance": true,
+    "semantic_meaning_preservation_enabled": true,
+    "titanic_source_id": "TITANIC_02",
+    "gpu_execution": false,
+    "video_generation": false,
+    "next_order": "PHASE-VIDEO-SHORT-TEST-001",
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "issues": [],
+  "task_10_semantic_anchor_library": {
+    "path": "datasets/movie_reconstruction/semantic_anchor_library.json",
+    "anchor_count": 8,
+    "anchor_type_coverage": [
+      {
+        "anchor_type": "iconic_pose",
+        "covered": true
+      },
+      {
+        "anchor_type": "iconic_camera",
+        "covered": true
+      },
+      {
+        "anchor_type": "iconic_transition",
+        "covered": true
+      },
+      {
+        "anchor_type": "iconic_environment",
+        "covered": true
+      },
+      {
+        "anchor_type": "iconic_blocking",
+        "covered": true
+      }
+    ],
+    "titanic_anchors": [
+      {
+        "anchor_id": "titanic_bow_pose",
+        "present": true
+      },
+      {
+        "anchor_id": "titanic_staircase_encounter",
+        "present": true
+      },
+      {
+        "anchor_id": "titanic_farewell_pose",
+        "present": true
+      },
+      {
+        "anchor_id": "titanic_sunset_rail_pose",
+        "present": true
+      }
+    ]
+  },
+  "task_11_semantic_preservation_layer": {
+    "path": "datasets/movie_reconstruction/semantic-preservation-layer.json",
+    "pipeline_stages": 5,
+    "preserves": [
+      "camera",
+      "blocking",
+      "composition",
+      "environment",
+      "semantic_meaning"
+    ],
+    "reference_example": "titanic_bow_scene_gonegi_translation"
+  },
+  "task_12_world_translation_rules": {
+    "path": "datasets/movie_reconstruction/world-translation-rules.json",
+    "dominance_rule": "Movie Geometry dominates structure. Gonegi World dominates appearance.",
+    "required_outcome": "Titanic Scene Reconstructed Inside Gonegi World",
+    "forbidden_outcomes": [
+      "Titanic Copy",
+      "Generic Harbor Scene"
+    ]
+  },
+  "production_readiness_gates": {
+    "semantic_anchor_library_complete": true,
+    "semantic_preservation_layer_defined": true,
+    "world_translation_rules_defined": true,
+    "titanic_bow_meaning_preserved": true
+  },
+  "next_pipeline": [
+    "PHASE-VIDEO-SHORT-TEST-001"
+  ]
+}

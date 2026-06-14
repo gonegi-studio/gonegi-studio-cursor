@@ -1,0 +1,37 @@
+{
+  "spec_id": "temporal-memory-specification-v1",
+  "asset_type": "temporal_memory_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-003",
+  "purpose": "Temporal memory consistency validation bridging video consistency to long-horizon narrative memory recall.",
+  "upstream_checkpoint": "PASS_VIDEO_CONSISTENCY_VALIDATION_SYSTEM_V1",
+  "video_consistency_spec_ref": "datasets/consistency/video-consistency-specification.json",
+  "memory_dimension_count": 10,
+  "memory_dimensions": [
+    "character_memory",
+    "location_memory",
+    "relationship_memory",
+    "prop_memory",
+    "costume_memory",
+    "world_state_memory",
+    "theme_memory",
+    "callback_memory",
+    "legacy_callback_memory",
+    "timeline_memory"
+  ],
+  "evaluation_scope": {
+    "validation_mode": "temporal_memory_consistency",
+    "memory_horizon_spec_ref": "datasets/consistency/memory-horizon-specification.json",
+    "callback_memory_spec_ref": "datasets/consistency/callback-memory-specification.json",
+    "world_state_memory_spec_ref": "datasets/consistency/world-state-memory-specification.json",
+    "timeline_memory_spec_ref": "datasets/consistency/timeline-memory-specification.json"
+  },
+  "studio_continuity_alignment": {
+    "feature_film_continuity_depth": 14,
+    "memory_callback_arc": "callback_memory",
+    "legacy_callback_arc": "legacy_callback_memory",
+    "world_state_arc": "world_state_memory",
+    "theme_arc": "theme_memory",
+    "timeline_arc": "timeline_memory"
+  }
+}

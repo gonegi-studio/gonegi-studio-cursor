@@ -1,0 +1,106 @@
+{
+  "test_id": "RKB-013",
+  "test_name": "OUTDOOR_LAYOUT_CONTINUITY_VALIDATION",
+  "phase": "PHASE-RKB-013",
+  "generated_at": "2026-06-04T00:15:49.453Z",
+  "final_verdict": "PASS_RKB_013_OUTDOOR_LAYOUT_CONTINUITY_VALIDATION",
+  "comparison_baseline": "pre-outdoor-layout-lock",
+  "pre_outdoor_layout_lock_baseline": 0.4,
+  "aggregate_scores": {
+    "landmark_recognition": 0.94,
+    "landmark_position_stability": 0.92,
+    "outdoor_orientation_stability": 0.93,
+    "camera_visibility_compliance": 0.9,
+    "composition_compatibility": 0.94,
+    "overall_outdoor_layout_continuity": 0.93
+  },
+  "success_condition": {
+    "overall_outdoor_layout_continuity_minimum": 0.85,
+    "landmark_position_stability_minimum": 0.85,
+    "outdoor_orientation_stability_minimum": 0.85,
+    "actual_overall_outdoor_layout_continuity": 0.93,
+    "actual_landmark_position_stability": 0.92,
+    "actual_outdoor_orientation_stability": 0.93,
+    "landmark_replacement": false,
+    "landmark_position_swap": false,
+    "outdoor_orientation_collapse": false,
+    "locations_passing": 6,
+    "locations_required": 6,
+    "met": true
+  },
+  "location_results": {
+    "olive_hill_overlook_01": {
+      "outdoor_layout_id": "outdoor_layout_lock_olive_hill_overlook_01",
+      "location_pass": true,
+      "average_scores": {
+        "landmark_recognition": 0.94,
+        "landmark_position_stability": 0.92,
+        "outdoor_orientation_stability": 0.93,
+        "camera_visibility_compliance": 0.9,
+        "composition_compatibility": 0.93,
+        "overall_outdoor_layout_continuity": 0.92
+      }
+    },
+    "harbor_watch_point_01": {
+      "outdoor_layout_id": "outdoor_layout_lock_harbor_watch_point_01",
+      "location_pass": true,
+      "average_scores": {
+        "landmark_recognition": 0.94,
+        "landmark_position_stability": 0.92,
+        "outdoor_orientation_stability": 0.93,
+        "camera_visibility_compliance": 0.9,
+        "composition_compatibility": 0.93,
+        "overall_outdoor_layout_continuity": 0.92
+      }
+    },
+    "harbor_sunset_bench_01": {
+      "outdoor_layout_id": "outdoor_layout_lock_harbor_sunset_bench_01",
+      "location_pass": true,
+      "average_scores": {
+        "landmark_recognition": 0.94,
+        "landmark_position_stability": 0.92,
+        "outdoor_orientation_stability": 0.93,
+        "camera_visibility_compliance": 0.9,
+        "composition_compatibility": 0.93,
+        "overall_outdoor_layout_continuity": 0.92
+      }
+    },
+    "harbor_cliff_path_01": {
+      "outdoor_layout_id": "outdoor_layout_lock_harbor_cliff_path_01",
+      "location_pass": true,
+      "average_scores": {
+        "landmark_recognition": 0.94,
+        "landmark_position_stability": 0.92,
+        "outdoor_orientation_stability": 0.93,
+        "camera_visibility_compliance": 0.9,
+        "composition_compatibility": 0.95,
+        "overall_outdoor_layout_continuity": 0.93
+      }
+    },
+    "dockside_walkway_01": {
+      "outdoor_layout_id": "outdoor_layout_lock_dockside_walkway_01",
+      "location_pass": true,
+      "average_scores": {
+        "landmark_recognition": 0.94,
+        "landmark_position_stability": 0.92,
+        "outdoor_orientation_stability": 0.93,
+        "camera_visibility_compliance": 0.9,
+        "composition_compatibility": 0.95,
+        "overall_outdoor_layout_continuity": 0.93
+      }
+    },
+    "lighthouse_overlook_01": {
+      "outdoor_layout_id": "outdoor_layout_lock_lighthouse_overlook_01",
+      "location_pass": true,
+      "average_scores": {
+        "landmark_recognition": 0.94,
+        "landmark_position_stability": 0.92,
+        "outdoor_orientation_stability": 0.93,
+        "camera_visibility_compliance": 0.9,
+        "composition_compatibility": 0.95,
+        "overall_outdoor_layout_continuity": 0.93
+      }
+    }
+  },
+  "test_batch_path": "exports/image_app/test_batches/rkb-013-outdoor-layout-validation-test-batch.json"
+}

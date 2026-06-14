@@ -1,0 +1,44 @@
+{
+  "contract_id": "director-grammar-blend-contract-v1",
+  "phase": "PHASE-SOURCE-VIDEO-006-DIRECTOR_GRAMMAR_BLEND_CONTRACT_V1",
+  "contract_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "blend_id": "gonegi-master-director-blend-v1",
+  "canonical_blend": {
+    "visual_style": "GHIBLI",
+    "camera_grammar": "SHINKAI",
+    "lighting_grammar": "SHINKAI",
+    "blocking_grammar": "LIVE_ACTION",
+    "emotion_grammar": "GHIBLI",
+    "motion_grammar": "MORI",
+    "environment_grammar": "GHIBLI"
+  },
+  "family_assignment": {
+    "base_style_family": "GHIBLI",
+    "camera_family": "SHINKAI",
+    "lighting_family": "SHINKAI",
+    "blocking_family": "LIVE_ACTION",
+    "emotion_family": "GHIBLI",
+    "motion_family": "MORI",
+    "environment_family": "GHIBLI"
+  },
+  "priority_order": [
+    "identity_priority",
+    "visual_style",
+    "emotion_grammar",
+    "blocking_grammar",
+    "camera_grammar",
+    "lighting_grammar",
+    "motion_grammar",
+    "environment_grammar"
+  ],
+  "conflict_resolution_rules": [
+    "identity_priority_always_wins",
+    "contract_family_assignment_is_authoritative",
+    "no_cyclic_family_override",
+    "preserve_character_first_contract",
+    "mediterranean_world_identity_locked"
+  ],
+  "identity_priority_rank": 1,
+  "minimum_compatibility_score": 0.85
+}

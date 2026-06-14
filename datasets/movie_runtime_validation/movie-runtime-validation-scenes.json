@@ -1,0 +1,238 @@
+{
+  "validation_id": "MULTI_MOVIE_RUNTIME_VALIDATION_V1",
+  "phase": "PHASE-MULTI-MOVIE-RUNTIME-001",
+  "generated_at": "2026-06-10T10:41:58.262Z",
+  "base_dataset": "latest_v5",
+  "tested_movie_datasets": [
+    "titanic",
+    "spirited_away"
+  ],
+  "runtime_test_action": {
+    "action_id": "paired_threshold_crossing",
+    "action_description": "two companions approach a narrative threshold together with shared emotional intent",
+    "character_ids": [
+      "CHAR-gonagi",
+      "CHAR-dana"
+    ],
+    "location_anchor": "GONEGI_MEDITERRANEAN",
+    "lighting_profile": "gonegi_mediterranean_golden_hour",
+    "blocking_intent": "paired_forward_crossing"
+  },
+  "swap_policy": "movie_dataset_only",
+  "identity_frozen_block": {
+    "world_identity": {
+      "world_identity_source": "latest_v5",
+      "target_world_identity": "GONEGI_MEDITERRANEAN",
+      "world_identity_lock": {
+        "gonegi_world_dominance": 0.72,
+        "movie_dataset_dominance": 0.28,
+        "world_identity_source_locked": "latest_v5",
+        "movie_world_override_forbidden": true,
+        "status": "PASS"
+      },
+      "movie_world_override_forbidden": true,
+      "identity_lock_rules": {
+        "identity_score_minimum": 0.95,
+        "character_anchor_lock": true,
+        "location_anchor_lock": true,
+        "lighting_anchor_lock": true
+      }
+    },
+    "character_dna": {
+      "CHAR_gonagi": {
+        "character_id": "CHAR-gonagi",
+        "name": "Gonegi",
+        "korean_name": "고네기",
+        "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+        "companion_lock": "Gamja",
+        "identity_law": {
+          "priority_order": [
+            "elite-image-main visual reference",
+            "canonical_visual_dna",
+            "face_hair_outfit_silhouette locks",
+            "style/env/scene rules"
+          ],
+          "reference_required": true,
+          "allow_runtime_rewrite": false,
+          "allow_poetic_compression": false,
+          "allow_generic_substitution": false
+        },
+        "source": "latest_v5"
+      },
+      "CHAR_dana": {
+        "character_id": "CHAR-dana",
+        "name": "Dana",
+        "korean_name": "다나",
+        "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+        "companion_lock": "Aengdu",
+        "identity_law": {
+          "priority_order": [
+            "elite-image-main visual reference",
+            "canonical_visual_dna",
+            "face_hair_outfit_silhouette locks",
+            "style/env/scene rules"
+          ],
+          "reference_required": true,
+          "allow_runtime_rewrite": false,
+          "allow_poetic_compression": false,
+          "allow_generic_substitution": false
+        },
+        "source": "latest_v5"
+      },
+      "character_anchor_lock": true,
+      "names_only_forbidden": true
+    },
+    "location_identity": {
+      "location_anchor": "GONEGI_MEDITERRANEAN",
+      "location_source": "latest_v5",
+      "bundle_ref": "exports/image_app/latest_v5/location_dna_bundle.json",
+      "bundle_id": "location-dna-bundle-v5",
+      "location_anchor_lock": true
+    },
+    "lighting_identity": {
+      "lighting_profile": "gonegi_mediterranean_golden_hour",
+      "lighting_source": "latest_v5",
+      "bundle_ref": "exports/image_app/latest_v5/lighting_dna_bundle.json",
+      "bundle_id": "lighting-dna-bundle-v5",
+      "lighting_anchor_lock": true
+    },
+    "identity_hash": "identity_0538977213"
+  },
+  "runtime_compositions": [
+    {
+      "composition_id": "runtime_comp_titanic",
+      "movie_dataset": "titanic",
+      "frozen_identity_hash": "identity_0538977213",
+      "movie_grammar": {
+        "geometry": {
+          "scene_id": "scene_titanic_dense_bow_deck_0012",
+          "scene_category": "bow_deck",
+          "geometry_source": "movie_dataset",
+          "movie_id": "titanic"
+        },
+        "camera": {
+          "camera_id": "titanic_cam_dense_0012",
+          "camera_source": "movie_dataset"
+        },
+        "blocking": {
+          "blocking_id": "titanic_blk_dense_0012",
+          "blocking_source": "movie_dataset"
+        },
+        "composition": {
+          "composition_id": "titanic_comp_dense_0012",
+          "composition_source": "movie_dataset"
+        },
+        "semantic": {
+          "semantic_anchor_ids": [
+            "titanic_bow_wide_camera",
+            "titanic_bow_wide_camera"
+          ],
+          "emotion_state": "awe, liberation",
+          "semantic_source": "movie_dataset"
+        },
+        "grammar_signature": [
+          "titanic_cam_dense_0012",
+          "titanic_blk_dense_0012",
+          "titanic_comp_dense_0012",
+          "bow_deck",
+          "titanic_bow_wide_camera",
+          "titanic_bow_wide_camera"
+        ]
+      },
+      "prompt_block": {
+        "prompt_id": "runtime_swap_titanic",
+        "composed_runtime_spec_length": 519,
+        "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+      }
+    },
+    {
+      "composition_id": "runtime_comp_spirited_away",
+      "movie_dataset": "spirited_away",
+      "frozen_identity_hash": "identity_0538977213",
+      "movie_grammar": {
+        "geometry": {
+          "scene_id": "scene_spirited_away_bridge_crossing_0002",
+          "scene_category": "bridge_crossing",
+          "environment_type": "train_memory_plane",
+          "geometry_source": "movie_dataset",
+          "movie_id": "spirited_away"
+        },
+        "camera": {
+          "camera_id": "spirited_cam_0002",
+          "camera_source": "movie_dataset"
+        },
+        "blocking": {
+          "blocking_id": "spirited_blk_0002",
+          "blocking_source": "movie_dataset"
+        },
+        "composition": {
+          "composition_id": "spirited_comp_0002",
+          "composition_source": "movie_dataset"
+        },
+        "semantic": {
+          "semantic_anchor_ids": [
+            "bridge_crossing",
+            "river_spirit_departure"
+          ],
+          "emotion_state": "awe, fear, determination",
+          "semantic_source": "movie_dataset"
+        },
+        "grammar_signature": [
+          "spirited_cam_0002",
+          "spirited_blk_0002",
+          "spirited_comp_0002",
+          "bridge_crossing",
+          "bridge_crossing",
+          "river_spirit_departure"
+        ]
+      },
+      "prompt_block": {
+        "prompt_id": "runtime_swap_spirited_away",
+        "composed_runtime_spec_length": 507,
+        "required_output_label": "Spirited Away Scene Reconstructed Inside Gonegi World"
+      }
+    }
+  ],
+  "swap_scenarios": [
+    {
+      "scenario_id": "swap_titanic_to_spirited_away",
+      "from_movie": "titanic",
+      "to_movie": "spirited_away",
+      "swap_only": "movie_dataset",
+      "identity_unchanged": true,
+      "grammar_changed": true,
+      "geometry_changed": true,
+      "camera_changed": true,
+      "blocking_changed": true,
+      "composition_changed": true,
+      "semantic_changed": true,
+      "contamination_detected": false,
+      "swap_success": true,
+      "scores": {
+        "world_identity_preservation": 0.98,
+        "character_identity_preservation": 0.98,
+        "movie_signature_separation": 1
+      }
+    },
+    {
+      "scenario_id": "swap_spirited_away_to_titanic",
+      "from_movie": "spirited_away",
+      "to_movie": "titanic",
+      "swap_only": "movie_dataset",
+      "identity_unchanged": true,
+      "grammar_changed": true,
+      "geometry_changed": true,
+      "camera_changed": true,
+      "blocking_changed": true,
+      "composition_changed": true,
+      "semantic_changed": true,
+      "contamination_detected": false,
+      "swap_success": true,
+      "scores": {
+        "world_identity_preservation": 0.98,
+        "character_identity_preservation": 0.98,
+        "movie_signature_separation": 1
+      }
+    }
+  ]
+}

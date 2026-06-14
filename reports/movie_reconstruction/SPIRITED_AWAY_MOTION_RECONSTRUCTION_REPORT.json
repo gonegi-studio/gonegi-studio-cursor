@@ -1,0 +1,76 @@
+{
+  "report_id": "spirited-away-motion-reconstruction-report-v1",
+  "phase": "PHASE-SPIRITED-AWAY-MOTION-GRAMMAR-001",
+  "system_id": "SPIRITED_AWAY_MOTION_RECONSTRUCTION_V1",
+  "generated_at": "2026-06-10T10:23:21.889Z",
+  "final_verdict": "PASS_SPIRITED_AWAY_MOTION_RECONSTRUCTION_V1",
+  "motion_system_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "shot_reconstruction_pass": true,
+      "temporal_reconstruction_pass": true,
+      "scene_registry_exists": true,
+      "shot_transition_registry_exists": true,
+      "movie_bundle_exists": true,
+      "runtime_composition_exists": true
+    }
+  },
+  "validation_summary": {
+    "scene_count": 300,
+    "motion_count": 300,
+    "camera_motion_count": 300,
+    "subject_motion_count": 600,
+    "environment_motion_count": 300,
+    "continuity_count": 2399,
+    "motion_grammar_coverage": 1,
+    "camera_motion_score": 0.974,
+    "subject_motion_score": 0.972,
+    "environment_motion_score": 0.973,
+    "motion_continuity_score": 0.9701,
+    "semantic_anchor_binding_rate": 1,
+    "generic_harbor_regression_count": 0,
+    "movie_dataset_swap_valid": true,
+    "world_identity_lock": "PASS",
+    "video_reconstruction_status": "READY",
+    "gpu_execution": false,
+    "policy": "SAFE_CREATE_ONLY",
+    "next_order": "PHASE-SPIRITED-AWAY-IMAGE-VALIDATION-001"
+  },
+  "issues": [],
+  "reconstruction_pipeline": [
+    "Spirited Away Scene",
+    "Shot",
+    "Temporal",
+    "Motion",
+    "Video Reconstruction Ready"
+  ],
+  "dataset_paths": {
+    "motion_dir": "datasets/movie_reconstruction/spirited_away_motion",
+    "motion_grammar_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-grammar-registry.json",
+    "camera_motion_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-camera-motion-registry.json",
+    "subject_motion_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-subject-motion-registry.json",
+    "environment_motion_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-environment-motion-registry.json",
+    "motion_continuity_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-continuity-registry.json",
+    "motion_adapter": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-adapter.json"
+  },
+  "quality_gates": {
+    "motion_grammar_coverage_eq_1_0": true,
+    "camera_motion_score_gte_0_95": true,
+    "subject_motion_score_gte_0_95": true,
+    "environment_motion_score_gte_0_95": true,
+    "motion_continuity_score_gte_0_95": true,
+    "semantic_anchor_binding_rate_gte_0_95": true,
+    "movie_dataset_swap_valid": true,
+    "world_identity_lock_pass": true,
+    "generic_harbor_regression_eq_0": true
+  },
+  "success_condition": {
+    "spirited_away_motion_flow": "READY",
+    "video_reconstruction": "READY",
+    "single_movie_dataset": true
+  },
+  "next_pipeline": [
+    "PHASE-SPIRITED-AWAY-IMAGE-VALIDATION-001"
+  ]
+}

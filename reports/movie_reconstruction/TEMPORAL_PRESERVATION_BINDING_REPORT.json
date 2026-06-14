@@ -1,0 +1,58 @@
+{
+  "report_id": "temporal_preservation_binding_mqcylv4m",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-007",
+  "system_id": "TEMPORAL_PRESERVATION_BINDING_V1",
+  "generated_at": "2026-06-13T23:01:12.022Z",
+  "final_verdict": "PASS_TEMPORAL_PRESERVATION_BINDING_V1",
+  "status": "TEMPORAL_PRESERVATION_BINDINGS_DEFINED",
+  "validation_passed": true,
+  "temporal_bindings_defined": true,
+  "temporal_binding_defined": true,
+  "temporal_memory_binding": true,
+  "edit_rhythm_binding": true,
+  "shot_boundary_continuity_binding": true,
+  "causal_transition_chain_binding": true,
+  "temporal_traceability_binding": true,
+  "coverage_ratio": 1,
+  "temporal_preservation_solved": false,
+  "runtime_implemented": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "implemented_bindings": [
+    "temporal_memory_binding",
+    "edit_rhythm_binding",
+    "shot_boundary_continuity_binding",
+    "causal_transition_chain_binding",
+    "temporal_traceability_binding"
+  ],
+  "traceability_coverage": 1,
+  "remaining_gaps": [
+    "video_conditioning_backend runtime not implemented",
+    "GPU edit rhythm enforcement deferred",
+    "shot_boundary_continuity frame interpolation deferred",
+    "temporal_preservation preservation_score=0.28 unresolved at runtime",
+    "Binding Defined != Temporal Preservation Solved"
+  ],
+  "checks": {
+    "temporal_binding_defined": true,
+    "temporal_memory_binding": true,
+    "edit_rhythm_binding": true,
+    "shot_boundary_continuity_binding": true,
+    "causal_transition_chain_binding": true,
+    "temporal_traceability_binding": true,
+    "coverage_ratio_is_one": true,
+    "traceability_coverage_complete": true,
+    "temporal_preservation_solved_false": true,
+    "runtime_implemented_false": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "binding_only": true,
+    "runtime_implementation_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

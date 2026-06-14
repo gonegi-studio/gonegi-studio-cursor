@@ -1,0 +1,21 @@
+{
+  "spec_id": "lipsync-ingestion-specification-v1",
+  "asset_type": "lipsync_ingestion_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-DIALOGUE-001",
+  "module": "DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "purpose": "Ingest dialogue lines with relationship and memory context for lipsync timing generation.",
+  "upstream_checkpoint": "PASS_PROMPT_EVALUATION_SYSTEM_V1",
+  "ingestion_flow": [
+    "dialogue_input",
+    "relationship_context_binding",
+    "memory_context_binding",
+    "timing_extraction",
+    "lipsync_output"
+  ],
+  "dialogue_spec_ref": "datasets/dialogue/dialogue-specification.json",
+  "continuity_spec_ref": "datasets/dialogue/dialogue-continuity-specification.json",
+  "timing_spec_ref": "datasets/dialogue/lipsync-timing-specification.json",
+  "sample_dialogue_ref": "datasets/dialogue/sample-dialogue-entry.json",
+  "lipsync_ingestion_integrity": "PASS"
+}

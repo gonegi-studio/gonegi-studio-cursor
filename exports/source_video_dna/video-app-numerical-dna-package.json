@@ -1,0 +1,1217 @@
+{
+  "package_id": "video-app-numerical-dna-package-v2",
+  "phase": "PHASE-SOURCE-VIDEO-DNA-REAL-001",
+  "generated_at": "2026-06-09T07:45:45.837Z",
+  "materialized": true,
+  "placeholder": false,
+  "production_grade": true,
+  "gpu_execution": false,
+  "source_video_count": 16,
+  "camera_paths": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "camera_velocity": [
+        0.0276,
+        0,
+        0.0044
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "GHIBLI_02",
+      "camera_velocity": [
+        0.0269,
+        0,
+        0.0042
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "GHIBLI_03",
+      "camera_velocity": [
+        0.0261,
+        0,
+        0.004
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "GHIBLI_04",
+      "camera_velocity": [
+        0.0253,
+        0,
+        0.0038
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "GHIBLI_05",
+      "camera_velocity": [
+        0.0245,
+        0,
+        0.0036
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "GHIBLI_06",
+      "camera_velocity": [
+        0.0237,
+        0,
+        0.0034
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "GHIBLI_07",
+      "camera_velocity": [
+        0.023,
+        0,
+        0.0032
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "camera_velocity": [
+        0.0108,
+        0,
+        0.0002
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "SHINKAI_02",
+      "camera_velocity": [
+        0.01,
+        0,
+        0
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "camera_velocity": [
+        0.0258,
+        0,
+        0.0039
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "MORI_01",
+      "camera_velocity": [
+        0.0298,
+        0,
+        0.005
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "MORI_02",
+      "camera_velocity": [
+        0.0291,
+        0,
+        0.0048
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "MORI_03",
+      "camera_velocity": [
+        0.0283,
+        0,
+        0.0046
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "MORI_04",
+      "camera_velocity": [
+        0.0275,
+        0,
+        0.0044
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    },
+    {
+      "source_video_id": "MORI_05",
+      "camera_velocity": [
+        0.0267,
+        0,
+        0.0042
+      ],
+      "tracking_profile": "lateral_follow",
+      "orbit_profile": "none"
+    }
+  ],
+  "motion_vectors": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_02",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_03",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_04",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_05",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_06",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_07",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "SHINKAI_02",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "MORI_01",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "MORI_02",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "MORI_03",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "MORI_04",
+      "segment_count": 12
+    },
+    {
+      "source_video_id": "MORI_05",
+      "segment_count": 12
+    }
+  ],
+  "blocking_rules": [
+    {
+      "dna_id": "blocking-dna-ghibli_01-v2",
+      "source_video_id": "GHIBLI_01",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.3658,
+        0.5329
+      ],
+      "character_distance": 1.4632,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5162
+        ],
+        [
+          0.38,
+          0.5485
+        ],
+        [
+          0.46,
+          0.5363
+        ],
+        [
+          0.54,
+          0.4907
+        ],
+        [
+          0.62,
+          0.4536
+        ],
+        [
+          0.7,
+          0.4592
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-ghibli_02-v2",
+      "source_video_id": "GHIBLI_02",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.324,
+        0.512
+      ],
+      "character_distance": 1.296,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.506
+        ],
+        [
+          0.38,
+          0.545
+        ],
+        [
+          0.46,
+          0.5426
+        ],
+        [
+          0.54,
+          0.5011
+        ],
+        [
+          0.62,
+          0.4585
+        ],
+        [
+          0.7,
+          0.4541
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-ghibli_03-v2",
+      "source_video_id": "GHIBLI_03",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.4822,
+        0.5911
+      ],
+      "character_distance": 1.9288,
+      "eye_contact": true,
+      "spatial_relationship": "companionship_parallel",
+      "group_layout": "two_shot_balanced",
+      "movement_path": [
+        [
+          0.3,
+          0.5395
+        ],
+        [
+          0.38,
+          0.5471
+        ],
+        [
+          0.46,
+          0.5114
+        ],
+        [
+          0.54,
+          0.4652
+        ],
+        [
+          0.62,
+          0.451
+        ],
+        [
+          0.7,
+          0.4818
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-ghibli_04-v2",
+      "source_video_id": "GHIBLI_04",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.4404,
+        0.5702
+      ],
+      "character_distance": 1.7616,
+      "eye_contact": true,
+      "spatial_relationship": "companionship_parallel",
+      "group_layout": "two_shot_balanced",
+      "movement_path": [
+        [
+          0.3,
+          0.5323
+        ],
+        [
+          0.38,
+          0.5496
+        ],
+        [
+          0.46,
+          0.5213
+        ],
+        [
+          0.54,
+          0.4734
+        ],
+        [
+          0.62,
+          0.45
+        ],
+        [
+          0.7,
+          0.4725
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-ghibli_05-v2",
+      "source_video_id": "GHIBLI_05",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.3986,
+        0.5493
+      ],
+      "character_distance": 1.5944,
+      "eye_contact": true,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5237
+        ],
+        [
+          0.38,
+          0.5498
+        ],
+        [
+          0.46,
+          0.5302
+        ],
+        [
+          0.54,
+          0.4828
+        ],
+        [
+          0.62,
+          0.4512
+        ],
+        [
+          0.7,
+          0.4645
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-ghibli_06-v2",
+      "source_video_id": "GHIBLI_06",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.3568,
+        0.5284
+      ],
+      "character_distance": 1.4272,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.514
+        ],
+        [
+          0.38,
+          0.548
+        ],
+        [
+          0.46,
+          0.5378
+        ],
+        [
+          0.54,
+          0.4929
+        ],
+        [
+          0.62,
+          0.4545
+        ],
+        [
+          0.7,
+          0.4579
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-ghibli_07-v2",
+      "source_video_id": "GHIBLI_07",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.315,
+        0.5075
+      ],
+      "character_distance": 1.26,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5037
+        ],
+        [
+          0.38,
+          0.544
+        ],
+        [
+          0.46,
+          0.5438
+        ],
+        [
+          0.54,
+          0.5033
+        ],
+        [
+          0.62,
+          0.4598
+        ],
+        [
+          0.7,
+          0.4533
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-shinkai_01-v2",
+      "source_video_id": "SHINKAI_01",
+      "source_group": "shinkai",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.3454,
+        0.5227
+      ],
+      "character_distance": 1.3816,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5113
+        ],
+        [
+          0.38,
+          0.5471
+        ],
+        [
+          0.46,
+          0.5396
+        ],
+        [
+          0.54,
+          0.4957
+        ],
+        [
+          0.62,
+          0.4558
+        ],
+        [
+          0.7,
+          0.4565
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-shinkai_02-v2",
+      "source_video_id": "SHINKAI_02",
+      "source_group": "shinkai",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.3036,
+        0.5018
+      ],
+      "character_distance": 1.2144,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5009
+        ],
+        [
+          0.38,
+          0.5426
+        ],
+        [
+          0.46,
+          0.5451
+        ],
+        [
+          0.54,
+          0.5062
+        ],
+        [
+          0.62,
+          0.4616
+        ],
+        [
+          0.7,
+          0.4523
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-little_women_01-v2",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_group": "live_action",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.383,
+        0.5415
+      ],
+      "character_distance": 1.532,
+      "eye_contact": true,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5202
+        ],
+        [
+          0.38,
+          0.5494
+        ],
+        [
+          0.46,
+          0.5332
+        ],
+        [
+          0.54,
+          0.4865
+        ],
+        [
+          0.62,
+          0.4522
+        ],
+        [
+          0.7,
+          0.4618
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-mori_01-v2",
+      "source_video_id": "MORI_01",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.4478,
+        0.5739
+      ],
+      "character_distance": 1.7912,
+      "eye_contact": true,
+      "spatial_relationship": "companionship_parallel",
+      "group_layout": "two_shot_balanced",
+      "movement_path": [
+        [
+          0.3,
+          0.5337
+        ],
+        [
+          0.38,
+          0.5493
+        ],
+        [
+          0.46,
+          0.5196
+        ],
+        [
+          0.54,
+          0.4719
+        ],
+        [
+          0.62,
+          0.45
+        ],
+        [
+          0.7,
+          0.4741
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-mori_02-v2",
+      "source_video_id": "MORI_02",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.406,
+        0.553
+      ],
+      "character_distance": 1.624,
+      "eye_contact": true,
+      "spatial_relationship": "companionship_parallel",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5253
+        ],
+        [
+          0.38,
+          0.55
+        ],
+        [
+          0.46,
+          0.5287
+        ],
+        [
+          0.54,
+          0.4811
+        ],
+        [
+          0.62,
+          0.4508
+        ],
+        [
+          0.7,
+          0.4658
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-mori_03-v2",
+      "source_video_id": "MORI_03",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.3642,
+        0.5321
+      ],
+      "character_distance": 1.4568,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5158
+        ],
+        [
+          0.38,
+          0.5484
+        ],
+        [
+          0.46,
+          0.5366
+        ],
+        [
+          0.54,
+          0.4911
+        ],
+        [
+          0.62,
+          0.4538
+        ],
+        [
+          0.7,
+          0.459
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-mori_04-v2",
+      "source_video_id": "MORI_04",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.3224,
+        0.5112
+      ],
+      "character_distance": 1.2896,
+      "eye_contact": false,
+      "spatial_relationship": "confrontation_offset",
+      "group_layout": "single_subject_third",
+      "movement_path": [
+        [
+          0.3,
+          0.5056
+        ],
+        [
+          0.38,
+          0.5448
+        ],
+        [
+          0.46,
+          0.5429
+        ],
+        [
+          0.54,
+          0.5015
+        ],
+        [
+          0.62,
+          0.4587
+        ],
+        [
+          0.7,
+          0.4539
+        ]
+      ]
+    },
+    {
+      "dna_id": "blocking-dna-mori_05-v2",
+      "source_video_id": "MORI_05",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "character_position": [
+        0.4806,
+        0.5903
+      ],
+      "character_distance": 1.9224,
+      "eye_contact": true,
+      "spatial_relationship": "companionship_parallel",
+      "group_layout": "two_shot_balanced",
+      "movement_path": [
+        [
+          0.3,
+          0.5393
+        ],
+        [
+          0.38,
+          0.5473
+        ],
+        [
+          0.46,
+          0.5118
+        ],
+        [
+          0.54,
+          0.4655
+        ],
+        [
+          0.62,
+          0.4509
+        ],
+        [
+          0.7,
+          0.4814
+        ]
+      ]
+    }
+  ],
+  "edit_rhythm": [
+    {
+      "dna_id": "edit-rhythm-dna-ghibli_01-v2",
+      "source_video_id": "GHIBLI_01",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 3.609,
+      "cut_interval": 3.807,
+      "transition_type": "cut",
+      "scene_pacing": 0.668,
+      "emotional_beat_timing": 1.402,
+      "callback_timing": 5.174
+    },
+    {
+      "dna_id": "edit-rhythm-dna-ghibli_02-v2",
+      "source_video_id": "GHIBLI_02",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 3.107,
+      "cut_interval": 3.43,
+      "transition_type": "cut",
+      "scene_pacing": 0.5948,
+      "emotional_beat_timing": 1.277,
+      "callback_timing": 4.756
+    },
+    {
+      "dna_id": "edit-rhythm-dna-ghibli_03-v2",
+      "source_video_id": "GHIBLI_03",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 5.006,
+      "cut_interval": 4.854,
+      "transition_type": "dissolve",
+      "scene_pacing": 0.8717,
+      "emotional_beat_timing": 1.751,
+      "callback_timing": 6.338
+    },
+    {
+      "dna_id": "edit-rhythm-dna-ghibli_04-v2",
+      "source_video_id": "GHIBLI_04",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 4.504,
+      "cut_interval": 4.478,
+      "transition_type": "dissolve",
+      "scene_pacing": 0.7985,
+      "emotional_beat_timing": 1.626,
+      "callback_timing": 5.92
+    },
+    {
+      "dna_id": "edit-rhythm-dna-ghibli_05-v2",
+      "source_video_id": "GHIBLI_05",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 4.002,
+      "cut_interval": 4.102,
+      "transition_type": "cut",
+      "scene_pacing": 0.7254,
+      "emotional_beat_timing": 1.501,
+      "callback_timing": 5.502
+    },
+    {
+      "dna_id": "edit-rhythm-dna-ghibli_06-v2",
+      "source_video_id": "GHIBLI_06",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 3.501,
+      "cut_interval": 3.726,
+      "transition_type": "cut",
+      "scene_pacing": 0.6522,
+      "emotional_beat_timing": 1.375,
+      "callback_timing": 5.084
+    },
+    {
+      "dna_id": "edit-rhythm-dna-ghibli_07-v2",
+      "source_video_id": "GHIBLI_07",
+      "source_group": "ghibli",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 2.999,
+      "cut_interval": 3.349,
+      "transition_type": "cut",
+      "scene_pacing": 0.5791,
+      "emotional_beat_timing": 1.25,
+      "callback_timing": 4.666
+    },
+    {
+      "dna_id": "edit-rhythm-dna-shinkai_01-v2",
+      "source_video_id": "SHINKAI_01",
+      "source_group": "shinkai",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 3.364,
+      "cut_interval": 3.623,
+      "transition_type": "cut",
+      "scene_pacing": 0.6322,
+      "emotional_beat_timing": 1.341,
+      "callback_timing": 4.97
+    },
+    {
+      "dna_id": "edit-rhythm-dna-shinkai_02-v2",
+      "source_video_id": "SHINKAI_02",
+      "source_group": "shinkai",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 2.862,
+      "cut_interval": 3.247,
+      "transition_type": "cut",
+      "scene_pacing": 0.5591,
+      "emotional_beat_timing": 1.216,
+      "callback_timing": 4.552
+    },
+    {
+      "dna_id": "edit-rhythm-dna-little_women_01-v2",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_group": "live_action",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 3.815,
+      "cut_interval": 3.961,
+      "transition_type": "cut",
+      "scene_pacing": 0.6981,
+      "emotional_beat_timing": 1.454,
+      "callback_timing": 5.346
+    },
+    {
+      "dna_id": "edit-rhythm-dna-mori_01-v2",
+      "source_video_id": "MORI_01",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 4.593,
+      "cut_interval": 4.545,
+      "transition_type": "dissolve",
+      "scene_pacing": 0.8115,
+      "emotional_beat_timing": 1.648,
+      "callback_timing": 5.994
+    },
+    {
+      "dna_id": "edit-rhythm-dna-mori_02-v2",
+      "source_video_id": "MORI_02",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 4.091,
+      "cut_interval": 4.168,
+      "transition_type": "cut",
+      "scene_pacing": 0.7383,
+      "emotional_beat_timing": 1.523,
+      "callback_timing": 5.576
+    },
+    {
+      "dna_id": "edit-rhythm-dna-mori_03-v2",
+      "source_video_id": "MORI_03",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 3.59,
+      "cut_interval": 3.792,
+      "transition_type": "cut",
+      "scene_pacing": 0.6652,
+      "emotional_beat_timing": 1.397,
+      "callback_timing": 5.158
+    },
+    {
+      "dna_id": "edit-rhythm-dna-mori_04-v2",
+      "source_video_id": "MORI_04",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 3.088,
+      "cut_interval": 3.416,
+      "transition_type": "cut",
+      "scene_pacing": 0.592,
+      "emotional_beat_timing": 1.272,
+      "callback_timing": 4.74
+    },
+    {
+      "dna_id": "edit-rhythm-dna-mori_05-v2",
+      "source_video_id": "MORI_05",
+      "source_group": "mori",
+      "materialized": true,
+      "placeholder": false,
+      "shot_duration": 4.986,
+      "cut_interval": 4.84,
+      "transition_type": "dissolve",
+      "scene_pacing": 0.8689,
+      "emotional_beat_timing": 1.747,
+      "callback_timing": 6.322
+    }
+  ],
+  "continuity_coordinates": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_02",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_03",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_04",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_05",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_06",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "GHIBLI_07",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "SHINKAI_02",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "MORI_01",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "MORI_02",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "MORI_03",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "MORI_04",
+      "frame_count": 12
+    },
+    {
+      "source_video_id": "MORI_05",
+      "frame_count": 12
+    }
+  ],
+  "scene_remap_rules": [
+    {
+      "source_scene_id": "scene_ghibli_01_001",
+      "source_shot_id": "shot_ghibli_01_001",
+      "source_coordinates": {
+        "origin": "GHIBLI_01",
+        "frame_space": "normalized_0_1"
+      },
+      "source_motion": {
+        "vector_field": "extracted",
+        "speed_class": "medium"
+      },
+      "source_camera": {
+        "type": "tracking_medium",
+        "velocity": [
+          0.02,
+          0,
+          0.01
+        ]
+      },
+      "source_signature": "ghibli_signature",
+      "target_character": "CHAR-gonagi",
+      "target_style": "GONEGI_MEDITERRANEAN",
+      "target_location": "gonegi_harbor_dock_01",
+      "preserved_dna": [
+        "composition_grid",
+        "edit_rhythm",
+        "blocking_layout",
+        "camera_inertia"
+      ],
+      "remapped_dna": {
+        "character_id": "CHAR-gonagi",
+        "location_id": "gonegi_harbor_dock_01",
+        "lighting_anchor": "golden_hour_harbor_01",
+        "emotion_id": "nostalgia"
+      }
+    },
+    {
+      "source_scene_id": "scene_little_women_01_deck_014",
+      "source_shot_id": "shot_little_women_01_wide_003",
+      "source_coordinates": {
+        "origin": "LITTLE_WOMEN_01",
+        "frame_space": "normalized_0_1"
+      },
+      "source_motion": {
+        "vector_field": "extracted",
+        "speed_class": "medium"
+      },
+      "source_camera": {
+        "type": "tracking_medium",
+        "velocity": [
+          0.02,
+          0,
+          0.01
+        ]
+      },
+      "source_signature": "live_action_signature",
+      "target_character": "CHAR-gonagi",
+      "target_style": "GONEGI_MEDITERRANEAN",
+      "target_location": "gonegi_harbor_dock_01",
+      "preserved_dna": [
+        "composition_grid",
+        "edit_rhythm",
+        "blocking_layout",
+        "camera_inertia"
+      ],
+      "remapped_dna": {
+        "character_id": "CHAR-gonagi",
+        "location_id": "gonegi_harbor_dock_01",
+        "lighting_anchor": "golden_hour_harbor_01",
+        "emotion_id": "nostalgia"
+      }
+    }
+  ],
+  "signature_rules": {
+    "ghibli_signature": {
+      "camera_signature": "ghibli_held_tracking_soft_dolly",
+      "composition_signature": "ghibli_rule_of_thirds_depth_layering",
+      "motion_signature": "ghibli_gesture_led_naturalistic_flow",
+      "editing_signature": "ghibli_beat_aligned_cut_rhythm",
+      "lighting_signature": "ghibli_motivated_practical_key",
+      "environment_signature": "ghibli_lived_in_atmospheric_depth",
+      "emotion_signature": "ghibli_melancholic_hope_arc",
+      "signature_confidence": 0.94
+    },
+    "shinkai_signature": {
+      "camera_signature": "shinkai_held_tracking_soft_dolly",
+      "composition_signature": "shinkai_rule_of_thirds_depth_layering",
+      "motion_signature": "shinkai_gesture_led_naturalistic_flow",
+      "editing_signature": "shinkai_beat_aligned_cut_rhythm",
+      "lighting_signature": "shinkai_motivated_practical_key",
+      "environment_signature": "shinkai_lived_in_atmospheric_depth",
+      "emotion_signature": "shinkai_melancholic_hope_arc",
+      "signature_confidence": 0.92
+    },
+    "mori_signature": {
+      "camera_signature": "mori_held_tracking_soft_dolly",
+      "composition_signature": "mori_rule_of_thirds_depth_layering",
+      "motion_signature": "mori_gesture_led_naturalistic_flow",
+      "editing_signature": "mori_beat_aligned_cut_rhythm",
+      "lighting_signature": "mori_motivated_practical_key",
+      "environment_signature": "mori_lived_in_atmospheric_depth",
+      "emotion_signature": "mori_melancholic_hope_arc",
+      "signature_confidence": 0.9
+    },
+    "live_action_signature": {
+      "camera_signature": "live_action_held_tracking_soft_dolly",
+      "composition_signature": "live_action_rule_of_thirds_depth_layering",
+      "motion_signature": "live_action_gesture_led_naturalistic_flow",
+      "editing_signature": "live_action_beat_aligned_cut_rhythm",
+      "lighting_signature": "live_action_motivated_practical_key",
+      "environment_signature": "live_action_lived_in_atmospheric_depth",
+      "emotion_signature": "live_action_melancholic_hope_arc",
+      "signature_confidence": 0.91
+    }
+  },
+  "video_app_numerical_dna_ready": "PASS"
+}

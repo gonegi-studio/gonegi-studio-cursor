@@ -1,0 +1,33 @@
+{
+  "manifest_id": "movie-analysis-release-manifest-v1",
+  "phase": "PHASE-SOURCE-VIDEO-050-MOVIE_ANALYSIS_RELEASE_PACKAGE_V1",
+  "generated_at": "2026-06-06T01:49:18.942Z",
+  "release_package_path": "exports/movie_analysis_release/movie-analysis-release-package.json",
+  "release_report_path": "exports/movie_analysis_release/movie-analysis-release-report.json",
+  "upload_bundle_dir": "exports/movie_analysis_upload_bundle",
+  "quality_gate_report_path": "reports/movie-analysis-upload-bundle-quality-gate-report.json",
+  "upload_bundle_linked": true,
+  "source_count": 4,
+  "assets": [
+    {
+      "asset_id": "image_upload",
+      "path": "exports/movie_analysis_upload_bundle/movie-analysis-image-upload.json",
+      "role": "image_app_upload"
+    },
+    {
+      "asset_id": "video_upload",
+      "path": "exports/movie_analysis_upload_bundle/movie-analysis-video-upload.json",
+      "role": "video_app_upload"
+    },
+    {
+      "asset_id": "upload_manifest",
+      "path": "exports/movie_analysis_upload_bundle/movie-analysis-upload-manifest.json",
+      "role": "upload_bundle_manifest"
+    },
+    {
+      "asset_id": "quality_gate_report",
+      "path": "reports/movie-analysis-upload-bundle-quality-gate-report.json",
+      "role": "quality_gate_verdict"
+    }
+  ]
+}

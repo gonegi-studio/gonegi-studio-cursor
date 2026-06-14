@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/director_grammar/director-grammar.schema.json",
+  "title": "DirectorGrammarProfile",
+  "description": "Design-level director grammar extracted from canonical source videos for PHASE-SOURCE-VIDEO-003",
+  "type": "object",
+  "required": [
+    "grammar_id",
+    "phase",
+    "source_family",
+    "source_video_ids",
+    "visual_style",
+    "camera_grammar",
+    "lighting_grammar",
+    "blocking_grammar",
+    "emotion_grammar",
+    "environment_grammar",
+    "motion_grammar",
+    "transition_grammar",
+    "use_case",
+    "design_only",
+    "gpu_execution"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "grammar_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-003-DIRECTOR_GRAMMAR_EXTRACTION_V1" },
+    "source_family": {
+      "type": "string",
+      "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"]
+    },
+    "source_video_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "visual_style": { "$ref": "#/$defs/grammar_block" },
+    "camera_grammar": { "$ref": "#/$defs/grammar_block" },
+    "lighting_grammar": { "$ref": "#/$defs/grammar_block" },
+    "blocking_grammar": { "$ref": "#/$defs/grammar_block" },
+    "emotion_grammar": { "$ref": "#/$defs/grammar_block" },
+    "environment_grammar": { "$ref": "#/$defs/grammar_block" },
+    "motion_grammar": { "$ref": "#/$defs/grammar_block" },
+    "transition_grammar": { "$ref": "#/$defs/grammar_block" },
+    "use_case": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "design_only": { "type": "boolean", "const": true },
+    "gpu_execution": { "type": "boolean", "const": false },
+    "extracted_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "grammar_block": {
+      "type": "object",
+      "required": ["summary", "patterns", "constraints"],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "constraints": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

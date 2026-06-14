@@ -1,0 +1,88 @@
+{
+  "gonegi_runtime_job_id": "gonegi_runtime_job_mori_emotion_flow_v1",
+  "phase": "PHASE-SOURCE-VIDEO-019-GONEGI_RUNTIME_STUB_EXECUTION_V2",
+  "runtime_interface_id": "gonegi_runtime_mori_emotion_flow_v1",
+  "source_gpu_payload_id": "gonegi_gpu_payload_mori_emotion_flow_v1",
+  "provider_id": "provider_stub_remote_api",
+  "job_state": "SIMULATED_COMPLETE",
+  "validation_steps": [
+    {
+      "step": "job_queued",
+      "job_state": "QUEUED",
+      "passed": true,
+      "notes": "Stub job gonegi_runtime_job_mori_emotion_flow_v1 enqueued for gonegi_runtime_mori_emotion_flow_v1"
+    },
+    {
+      "step": "runtime_interface_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "payload_alignment_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "identity_lock_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "continuity_lock_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "provider_safety_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "simulated_queue_ready",
+      "job_state": "READY",
+      "passed": true,
+      "notes": "Simulated queue slot reserved for gonegi_gpu_payload_mori_emotion_flow_v1"
+    },
+    {
+      "step": "simulated_render_execution",
+      "job_state": "SIMULATED_RUNNING",
+      "passed": true,
+      "notes": "Simulating 25s @ 24fps without GPU or provider activation"
+    },
+    {
+      "step": "job_completion",
+      "job_state": "SIMULATED_COMPLETE",
+      "passed": true,
+      "notes": "Output placeholder: renders/gonegi_stub/gonegi_gpu_payload_mori_emotion_flow_v1.mp4.not_generated"
+    }
+  ],
+  "identity_lock_result": "PASS",
+  "continuity_lock_result": "PASS",
+  "payload_alignment_result": "PASS",
+  "provider_safety_result": "PASS",
+  "simulated_output": {
+    "output_path": "renders/gonegi_stub/gonegi_gpu_payload_mori_emotion_flow_v1.mp4.not_generated",
+    "format": "mp4_placeholder",
+    "generated": false,
+    "duration_seconds": 25,
+    "fps_target": 24,
+    "simulation_notes": "Design-only stub execution completed without GPU, generation, or provider activation"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "provider_activation": false,
+    "simulation_only": true,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "gonegi_runtime_job",
+    "production_registry": false,
+    "draft_status": "gonegi_runtime_job_simulated_v1"
+  },
+  "executed_at": "2026-06-05T11:13:41.795Z"
+}

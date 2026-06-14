@@ -1,0 +1,43 @@
+{
+  "registry_id": "scene-state-registry-v1",
+  "phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "registry_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "schema_path": "datasets/state/scene-state.schema.json",
+  "priority_contract_path": "datasets/state/scene-state-priority-contract.json",
+  "state_storage_dir": "datasets/state/scene-states",
+  "scene_states": [
+    {
+      "scene_state_id": "scene_gonegi_bedroom_reading_v1",
+      "state_path": "datasets/state/scene-states/scene_gonegi_bedroom_reading_v1.json",
+      "status": "registered",
+      "primary_character_id": "gonegi",
+      "location_id": "gonegi_bedroom_01",
+      "composition_id": "gonegi_bedroom_reading"
+    },
+    {
+      "scene_state_id": "scene_gonegi_dana_harbor_reunion_v1",
+      "state_path": "datasets/state/scene-states/scene_gonegi_dana_harbor_reunion_v1.json",
+      "status": "registered",
+      "primary_character_id": "gonegi",
+      "location_id": "harbor_watch_point_01",
+      "composition_id": null
+    },
+    {
+      "scene_state_id": "scene_olive_hill_overlook_wonder_v1",
+      "state_path": "datasets/state/scene-states/scene_olive_hill_overlook_wonder_v1.json",
+      "status": "registered",
+      "primary_character_id": "dana",
+      "location_id": "olive_hill_01",
+      "composition_id": null
+    }
+  ],
+  "transition_edges": [
+    {
+      "from_scene_state_id": "scene_gonegi_bedroom_reading_v1",
+      "to_scene_state_id": "scene_olive_hill_overlook_wonder_v1",
+      "transition_type": "location_change",
+      "continuity_safe": true
+    }
+  ]
+}

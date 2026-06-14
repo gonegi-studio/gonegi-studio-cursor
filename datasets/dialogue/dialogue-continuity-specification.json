@@ -1,0 +1,51 @@
+{
+  "spec_id": "dialogue-continuity-specification-v1",
+  "asset_type": "dialogue_continuity_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-DIALOGUE-001",
+  "module": "DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "purpose": "Continuity dimensions for dialogue voice, emotion, relationship, timeline, memory, and style across scenes.",
+  "upstream_checkpoint": "PASS_PROMPT_EVALUATION_SYSTEM_V1",
+  "continuity_dimension_count": 6,
+  "continuity_dimensions": [
+    "character_voice_consistency",
+    "emotion_consistency",
+    "relationship_consistency",
+    "timeline_consistency",
+    "memory_consistency",
+    "dialogue_style_consistency"
+  ],
+  "dialogue_style_consistency": "PASS",
+  "dialogue_style_examples": [
+    "Gonagi_style",
+    "Dana_style",
+    "Pietro_style",
+    "Bardo_style"
+  ],
+  "dialogue_continuity_integrity": "PASS",
+  "story_engine_ref": "reports/story_engine/STORY_TO_BLUEPRINT_ENGINE_REPORT.json",
+  "relationship_arc_ref": "datasets/story/arc-extraction-specification.json",
+  "temporal_memory_ref": "exports/temporal_memory/temporal-memory-specification.json",
+  "style_profiles": {
+    "Gonagi_style": {
+      "pace": "measured_warm",
+      "pause_tendency": "low",
+      "emphasis_pattern": "soft_rise"
+    },
+    "Dana_style": {
+      "pace": "deliberate_reflective",
+      "pause_tendency": "medium",
+      "emphasis_pattern": "weighted_pause_before_key_word"
+    },
+    "Pietro_style": {
+      "pace": "quick_animated",
+      "pause_tendency": "low",
+      "emphasis_pattern": "rhythmic_burst"
+    },
+    "Bardo_style": {
+      "pace": "slow_gravel",
+      "pause_tendency": "high",
+      "emphasis_pattern": "trailing_emphasis"
+    }
+  }
+}

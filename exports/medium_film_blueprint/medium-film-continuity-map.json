@@ -1,0 +1,977 @@
+{
+  "map_id": "medium-film-continuity-map-v1",
+  "phase": "PHASE-L3-MEDIUM-002",
+  "continuity_v2_dimensions": 11,
+  "dimension_list": [
+    "character_arc",
+    "location_arc",
+    "lighting_arc",
+    "relationship_arc",
+    "timeline_arc",
+    "memory_callback_arc",
+    "subplot_arc",
+    "parallel_arc",
+    "multi_callback_arc",
+    "relationship_network",
+    "world_arc"
+  ],
+  "archetypes": [
+    {
+      "medium_film_archetype_id": "harbor_saga_medium",
+      "continuity_v2": {
+        "character_arc": {
+          "dimension": "character_arc",
+          "ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana",
+              "marco",
+              "elena"
+            ],
+            "stages": [
+              "content_harbor_life",
+              "reluctant_departure",
+              "isolated_journey",
+              "community_memory",
+              "changed_return",
+              "networked_acceptance"
+            ]
+          },
+          "requirements": [
+            "ensemble_dna_registry_for_4_principals"
+          ]
+        },
+        "location_arc": {
+          "dimension": "location_arc",
+          "ref": {
+            "location_flow": [
+              "gonegi_harbor_dock_01",
+              "gonegi_coastal_path_01",
+              "gonegi_street_lane_01",
+              "family_bakery_kitchen_01",
+              "dana_window_corner_01",
+              "gonegi_harbor_dock_01"
+            ],
+            "reentry_locations": [
+              "gonegi_harbor_dock_01",
+              "dana_window_corner_01",
+              "harbor_bench"
+            ]
+          },
+          "requirements": [
+            "harbor_geometry_stable_across_650_scenes"
+          ]
+        },
+        "lighting_arc": {
+          "dimension": "lighting_arc",
+          "ref": {
+            "lighting_flow": [
+              "morning_harbor_dock",
+              "evening_harbor_dock",
+              "autumn_harbor_return"
+            ],
+            "seasonal_palettes": [
+              "spring_harbor",
+              "summer_harbor",
+              "autumn_harbor"
+            ]
+          },
+          "requirements": [
+            "seasonal_palette_rotation_per_timeline_marker"
+          ]
+        },
+        "relationship_arc": {
+          "dimension": "relationship_arc",
+          "ref": {
+            "primary_pair": "gonegi_dana",
+            "stages": [
+              "growing_affection",
+              "quiet_distance",
+              "memory_weight",
+              "hopeful_future"
+            ]
+          },
+          "requirements": [
+            "network_edge_state_tracked_per_act"
+          ]
+        },
+        "timeline_arc": {
+          "dimension": "timeline_arc",
+          "ref": {
+            "arc_type": "multi_year_saga",
+            "long_range_dependencies": [
+              {
+                "from_scene": 40,
+                "to_scene": 520,
+                "dependency_type": "letter_delay"
+              },
+              {
+                "from_scene": 85,
+                "to_scene": 580,
+                "dependency_type": "harbor_bench_callback"
+              }
+            ],
+            "timeline_markers": [
+              "year_one_spring",
+              "year_two_summer",
+              "year_three_autumn"
+            ]
+          },
+          "requirements": [
+            "long_range_dependency_gap_minimum_80_scenes"
+          ]
+        },
+        "memory_callback_arc": {
+          "dimension": "memory_callback_arc",
+          "ref": [
+            {
+              "anchor_id": "harbor_bench",
+              "callback_seed": 40,
+              "callback_resolution": 580,
+              "callback_completion_state": "seeded"
+            },
+            {
+              "anchor_id": "letter_fragment",
+              "callback_seed": 75,
+              "callback_resolution": 490,
+              "callback_completion_state": "seeded"
+            }
+          ],
+          "requirements": [
+            "multi_layer_callback_alignment_required"
+          ]
+        },
+        "subplot_arc": {
+          "dimension": "subplot_arc",
+          "ref": {
+            "subplots": [
+              {
+                "subplot_id": "marco_fishing_line",
+                "beats": [
+                  "net_repair",
+                  "storm_loss",
+                  "community_rebuild"
+                ],
+                "scene_range": "60-400"
+              },
+              {
+                "subplot_id": "bakery_expansion",
+                "beats": [
+                  "winter_shortage",
+                  "spring_reopening",
+                  "festival_bread"
+                ],
+                "scene_range": "100-550"
+              }
+            ]
+          },
+          "requirements": [
+            "subplot_beats_must_not_break_primary_timeline"
+          ]
+        },
+        "parallel_arc": {
+          "dimension": "parallel_arc",
+          "ref": {
+            "parallel_tracks": [
+              {
+                "track_id": "departure_track",
+                "arc_ref": "departure_main",
+                "scene_range": "1-650"
+              },
+              {
+                "track_id": "community_track",
+                "arc_ref": "community_harbor",
+                "scene_range": "20-620"
+              }
+            ]
+          },
+          "requirements": [
+            "interleave_interval_maintained_across_flows"
+          ]
+        },
+        "multi_callback_arc": {
+          "dimension": "multi_callback_arc",
+          "ref": {
+            "callback_layers": [
+              {
+                "layer_id": "object_layer",
+                "anchors": [
+                  "harbor_bench",
+                  "letter_fragment",
+                  "mooring_lines"
+                ],
+                "foreshadow_payoff_pairs": [
+                  {
+                    "foreshadow_scene": 40,
+                    "payoff_scene": 580,
+                    "anchor_id": "harbor_bench"
+                  },
+                  {
+                    "foreshadow_scene": 75,
+                    "payoff_scene": 490,
+                    "anchor_id": "letter_fragment"
+                  }
+                ]
+              },
+              {
+                "layer_id": "relationship_layer",
+                "anchors": [
+                  "shared_window",
+                  "harbor_bench_gaze"
+                ],
+                "foreshadow_payoff_pairs": [
+                  {
+                    "foreshadow_scene": 120,
+                    "payoff_scene": 600,
+                    "anchor_id": "shared_window"
+                  }
+                ]
+              }
+            ]
+          },
+          "requirements": []
+        },
+        "relationship_network": {
+          "dimension": "relationship_network",
+          "ref": {
+            "nodes": [
+              "gonegi",
+              "dana",
+              "marco",
+              "elena"
+            ],
+            "edges": [
+              {
+                "from": "gonegi",
+                "to": "dana",
+                "relationship_type": "romantic_bond"
+              },
+              {
+                "from": "gonegi",
+                "to": "marco",
+                "relationship_type": "harbor_ally"
+              },
+              {
+                "from": "dana",
+                "to": "elena",
+                "relationship_type": "family_neighbor"
+              },
+              {
+                "from": "marco",
+                "to": "elena",
+                "relationship_type": "community_peer"
+              }
+            ],
+            "evolution_stages": [
+              "isolated_pairs",
+              "community_mesh",
+              "departure_fracture",
+              "reunion_network"
+            ]
+          },
+          "requirements": [
+            "edge_evolution_monotonic_per_stage"
+          ]
+        },
+        "world_arc": {
+          "dimension": "world_arc",
+          "ref": {
+            "character_continuity": [
+              "ensemble_dna_registry_for_4_principals"
+            ],
+            "location_continuity": [
+              "harbor_geometry_stable_across_650_scenes"
+            ],
+            "lighting_continuity": [
+              "seasonal_palette_rotation_per_timeline_marker"
+            ],
+            "relationship_continuity": [
+              "network_edge_state_tracked_per_act"
+            ],
+            "timeline_continuity": [
+              "long_range_dependency_gap_minimum_80_scenes"
+            ],
+            "memory_callback_continuity": [
+              "multi_layer_callback_alignment_required"
+            ],
+            "subplot_continuity": [
+              "subplot_beats_must_not_break_primary_timeline"
+            ],
+            "parallel_continuity": [
+              "interleave_interval_maintained_across_flows"
+            ],
+            "relationship_network_continuity": [
+              "edge_evolution_monotonic_per_stage"
+            ]
+          },
+          "requirements": []
+        }
+      },
+      "continuity_requirements": {
+        "character_continuity": [
+          "ensemble_dna_registry_for_4_principals"
+        ],
+        "location_continuity": [
+          "harbor_geometry_stable_across_650_scenes"
+        ],
+        "lighting_continuity": [
+          "seasonal_palette_rotation_per_timeline_marker"
+        ],
+        "relationship_continuity": [
+          "network_edge_state_tracked_per_act"
+        ],
+        "timeline_continuity": [
+          "long_range_dependency_gap_minimum_80_scenes"
+        ],
+        "memory_callback_continuity": [
+          "multi_layer_callback_alignment_required"
+        ],
+        "subplot_continuity": [
+          "subplot_beats_must_not_break_primary_timeline"
+        ],
+        "parallel_continuity": [
+          "interleave_interval_maintained_across_flows"
+        ],
+        "relationship_network_continuity": [
+          "edge_evolution_monotonic_per_stage"
+        ]
+      }
+    },
+    {
+      "medium_film_archetype_id": "mediterranean_chronicle_medium",
+      "continuity_v2": {
+        "character_arc": {
+          "dimension": "character_arc",
+          "ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana",
+              "marco",
+              "elena"
+            ],
+            "stages": [
+              "winter_observer",
+              "spring_participant",
+              "summer_connector",
+              "autumn_elder",
+              "winter_chronicler"
+            ]
+          },
+          "requirements": [
+            "aging_progression_per_decade_block_only"
+          ]
+        },
+        "location_arc": {
+          "dimension": "location_arc",
+          "ref": {
+            "location_flow": [
+              "family_bakery_kitchen_01",
+              "gonegi_harbor_dock_01",
+              "gonegi_olive_hill_01",
+              "gonegi_street_lane_01",
+              "family_bakery_kitchen_01"
+            ],
+            "reentry_locations": [
+              "family_bakery_kitchen_01",
+              "gonegi_harbor_dock_01",
+              "gonegi_olive_hill_01"
+            ]
+          },
+          "requirements": [
+            "seasonal_variant_registry_for_5_core_locations"
+          ]
+        },
+        "lighting_arc": {
+          "dimension": "lighting_arc",
+          "ref": {
+            "lighting_flow": [
+              "winter_bakery_interior",
+              "summer_festival_lane",
+              "autumn_olive_hill"
+            ],
+            "seasonal_palettes": [
+              "winter",
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          },
+          "requirements": [
+            "decade_palette_blocks_with_montage_variants"
+          ]
+        },
+        "relationship_arc": {
+          "dimension": "relationship_arc",
+          "ref": {
+            "primary_pair": "gonegi_dana",
+            "stages": [
+              "community_bond",
+              "seasonal_distance",
+              "festival_reunion",
+              "chronicler_partnership"
+            ]
+          },
+          "requirements": [
+            "network_evolution_stage_per_season_block"
+          ]
+        },
+        "timeline_arc": {
+          "dimension": "timeline_arc",
+          "ref": {
+            "arc_type": "decade_chronicle",
+            "long_range_dependencies": [
+              {
+                "from_scene": 50,
+                "to_scene": 920,
+                "dependency_type": "bakery_window_callback"
+              },
+              {
+                "from_scene": 200,
+                "to_scene": 780,
+                "dependency_type": "olive_tree_farewell"
+              }
+            ],
+            "timeline_markers": [
+              "decade_winter",
+              "decade_summer",
+              "decade_autumn"
+            ]
+          },
+          "requirements": [
+            "decade_marker_at_every_200_scene_boundary"
+          ]
+        },
+        "memory_callback_arc": {
+          "dimension": "memory_callback_arc",
+          "ref": [
+            {
+              "anchor_id": "bakery_window",
+              "callback_seed": 50,
+              "callback_resolution": 920,
+              "callback_completion_state": "seeded"
+            },
+            {
+              "anchor_id": "olive_tree",
+              "callback_seed": 200,
+              "callback_resolution": 780,
+              "callback_completion_state": "seeded"
+            },
+            {
+              "anchor_id": "festival_lantern",
+              "callback_seed": 350,
+              "callback_resolution": 960,
+              "callback_completion_state": "seeded"
+            }
+          ],
+          "requirements": [
+            "ritual_layer_callbacks_independent_of_place_layer"
+          ]
+        },
+        "subplot_arc": {
+          "dimension": "subplot_arc",
+          "ref": {
+            "subplots": [
+              {
+                "subplot_id": "olive_harvest_line",
+                "beats": [
+                  "pruning",
+                  "storm",
+                  "harvest_festival"
+                ],
+                "scene_range": "150-700"
+              },
+              {
+                "subplot_id": "harbor_trade_line",
+                "beats": [
+                  "winter_closure",
+                  "spring_trade",
+                  "summer_peak"
+                ],
+                "scene_range": "200-850"
+              }
+            ]
+          },
+          "requirements": [
+            "harvest_and_trade_subplots_interleave_without_collision"
+          ]
+        },
+        "parallel_arc": {
+          "dimension": "parallel_arc",
+          "ref": {
+            "parallel_tracks": [
+              {
+                "track_id": "seasonal_track",
+                "arc_ref": "seasonal_cycle_main",
+                "scene_range": "1-1000"
+              },
+              {
+                "track_id": "festival_track",
+                "arc_ref": "festival_lineage",
+                "scene_range": "80-950"
+              }
+            ]
+          },
+          "requirements": [
+            "cyclical_flow_and_ritual_flow_phase_locked"
+          ]
+        },
+        "multi_callback_arc": {
+          "dimension": "multi_callback_arc",
+          "ref": {
+            "callback_layers": [
+              {
+                "layer_id": "place_layer",
+                "anchors": [
+                  "bakery_window",
+                  "olive_tree",
+                  "festival_lantern"
+                ],
+                "foreshadow_payoff_pairs": [
+                  {
+                    "foreshadow_scene": 50,
+                    "payoff_scene": 920,
+                    "anchor_id": "bakery_window"
+                  },
+                  {
+                    "foreshadow_scene": 200,
+                    "payoff_scene": 780,
+                    "anchor_id": "olive_tree"
+                  }
+                ]
+              },
+              {
+                "layer_id": "ritual_layer",
+                "anchors": [
+                  "festival_lantern",
+                  "lantern_procession"
+                ],
+                "foreshadow_payoff_pairs": [
+                  {
+                    "foreshadow_scene": 350,
+                    "payoff_scene": 960,
+                    "anchor_id": "festival_lantern"
+                  }
+                ]
+              }
+            ]
+          },
+          "requirements": []
+        },
+        "relationship_network": {
+          "dimension": "relationship_network",
+          "ref": {
+            "nodes": [
+              "gonegi",
+              "dana",
+              "marco",
+              "elena"
+            ],
+            "edges": [
+              {
+                "from": "gonegi",
+                "to": "dana",
+                "relationship_type": "life_partner"
+              },
+              {
+                "from": "gonegi",
+                "to": "marco",
+                "relationship_type": "trade_ally"
+              },
+              {
+                "from": "elena",
+                "to": "dana",
+                "relationship_type": "ritual_kin"
+              },
+              {
+                "from": "marco",
+                "to": "elena",
+                "relationship_type": "festival_partner"
+              }
+            ],
+            "evolution_stages": [
+              "winter_cluster",
+              "summer_expansion",
+              "autumn_consolidation",
+              "decade_network"
+            ]
+          },
+          "requirements": [
+            "edge_weight_tracked_across_evolution_stages"
+          ]
+        },
+        "world_arc": {
+          "dimension": "world_arc",
+          "ref": {
+            "character_continuity": [
+              "aging_progression_per_decade_block_only"
+            ],
+            "location_continuity": [
+              "seasonal_variant_registry_for_5_core_locations"
+            ],
+            "lighting_continuity": [
+              "decade_palette_blocks_with_montage_variants"
+            ],
+            "relationship_continuity": [
+              "network_evolution_stage_per_season_block"
+            ],
+            "timeline_continuity": [
+              "decade_marker_at_every_200_scene_boundary"
+            ],
+            "memory_callback_continuity": [
+              "ritual_layer_callbacks_independent_of_place_layer"
+            ],
+            "subplot_continuity": [
+              "harvest_and_trade_subplots_interleave_without_collision"
+            ],
+            "parallel_continuity": [
+              "cyclical_flow_and_ritual_flow_phase_locked"
+            ],
+            "relationship_network_continuity": [
+              "edge_weight_tracked_across_evolution_stages"
+            ]
+          },
+          "requirements": []
+        }
+      },
+      "continuity_requirements": {
+        "character_continuity": [
+          "aging_progression_per_decade_block_only"
+        ],
+        "location_continuity": [
+          "seasonal_variant_registry_for_5_core_locations"
+        ],
+        "lighting_continuity": [
+          "decade_palette_blocks_with_montage_variants"
+        ],
+        "relationship_continuity": [
+          "network_evolution_stage_per_season_block"
+        ],
+        "timeline_continuity": [
+          "decade_marker_at_every_200_scene_boundary"
+        ],
+        "memory_callback_continuity": [
+          "ritual_layer_callbacks_independent_of_place_layer"
+        ],
+        "subplot_continuity": [
+          "harvest_and_trade_subplots_interleave_without_collision"
+        ],
+        "parallel_continuity": [
+          "cyclical_flow_and_ritual_flow_phase_locked"
+        ],
+        "relationship_network_continuity": [
+          "edge_weight_tracked_across_evolution_stages"
+        ]
+      }
+    },
+    {
+      "medium_film_archetype_id": "correspondence_saga_medium",
+      "continuity_v2": {
+        "character_arc": {
+          "dimension": "character_arc",
+          "ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana"
+            ],
+            "stages": [
+              "strangers",
+              "tentative_connection",
+              "shared_routine",
+              "quiet_distance",
+              "parallel_lives",
+              "hopeful_reunion"
+            ]
+          },
+          "requirements": [
+            "dual_protagonist_dna_locked_entire_saga"
+          ]
+        },
+        "location_arc": {
+          "dimension": "location_arc",
+          "ref": {
+            "location_flow": [
+              "gonegi_street_lane_01",
+              "family_bakery_kitchen_01",
+              "dana_window_corner_01",
+              "gonegi_harbor_dock_01",
+              "dana_window_corner_01"
+            ],
+            "reentry_locations": [
+              "dana_window_corner_01",
+              "gonegi_street_lane_01"
+            ]
+          },
+          "requirements": [
+            "window_corner_geometry_identical_all_reentries"
+          ]
+        },
+        "lighting_arc": {
+          "dimension": "lighting_arc",
+          "ref": {
+            "lighting_flow": [
+              "sunrise_bakery_window",
+              "evening_lane",
+              "autumn_window_return"
+            ],
+            "seasonal_palettes": [
+              "spring_correspondence",
+              "summer_silence",
+              "autumn_return"
+            ]
+          },
+          "requirements": [
+            "correspondence_palette_mirrors_first_meeting_on_reunion"
+          ]
+        },
+        "relationship_arc": {
+          "dimension": "relationship_arc",
+          "ref": {
+            "primary_pair": "gonegi_dana",
+            "stages": [
+              "first_meeting",
+              "growing_affection",
+              "quiet_distance",
+              "hopeful_future"
+            ]
+          },
+          "requirements": [
+            "parallel_flow_pairs_timeline_by_memory_anchor"
+          ]
+        },
+        "timeline_arc": {
+          "dimension": "timeline_arc",
+          "ref": {
+            "arc_type": "multi_decade_correspondence",
+            "long_range_dependencies": [
+              {
+                "from_scene": 25,
+                "to_scene": 420,
+                "dependency_type": "book_exchange_callback"
+              },
+              {
+                "from_scene": 90,
+                "to_scene": 380,
+                "dependency_type": "letter_fragment_delay"
+              }
+            ],
+            "timeline_markers": [
+              "decade_one",
+              "decade_two",
+              "decade_three"
+            ]
+          },
+          "requirements": [
+            "decade_marker_every_120_scenes"
+          ]
+        },
+        "memory_callback_arc": {
+          "dimension": "memory_callback_arc",
+          "ref": [
+            {
+              "anchor_id": "book_exchange",
+              "callback_seed": 25,
+              "callback_resolution": 420,
+              "callback_completion_state": "seeded"
+            },
+            {
+              "anchor_id": "letter_fragment",
+              "callback_seed": 90,
+              "callback_resolution": 380,
+              "callback_completion_state": "seeded"
+            },
+            {
+              "anchor_id": "shared_window",
+              "callback_seed": 150,
+              "callback_resolution": 450,
+              "callback_completion_state": "seeded"
+            }
+          ],
+          "requirements": [
+            "gaze_layer_independent_of_object_layer"
+          ]
+        },
+        "subplot_arc": {
+          "dimension": "subplot_arc",
+          "ref": {
+            "subplots": [
+              {
+                "subplot_id": "bakery_letters_line",
+                "beats": [
+                  "post_arrival",
+                  "sorting_ritual",
+                  "delayed_delivery"
+                ],
+                "scene_range": "40-350"
+              },
+              {
+                "subplot_id": "harbor_travel_line",
+                "beats": [
+                  "departure_letter",
+                  "distant_harbor",
+                  "return_envelope"
+                ],
+                "scene_range": "100-400"
+              }
+            ]
+          },
+          "requirements": [
+            "bakery_and_harbor_subplots_converge_at_letter_return"
+          ]
+        },
+        "parallel_arc": {
+          "dimension": "parallel_arc",
+          "ref": {
+            "parallel_tracks": [
+              {
+                "track_id": "correspondence_track",
+                "arc_ref": "correspondence_main",
+                "scene_range": "1-500"
+              },
+              {
+                "track_id": "dual_lives_track",
+                "arc_ref": "parallel_lives",
+                "scene_range": "30-480"
+              }
+            ]
+          },
+          "requirements": [
+            "gonegi_and_dana_flows_interleave_every_6_scenes"
+          ]
+        },
+        "multi_callback_arc": {
+          "dimension": "multi_callback_arc",
+          "ref": {
+            "callback_layers": [
+              {
+                "layer_id": "object_layer",
+                "anchors": [
+                  "book_exchange",
+                  "letter_fragment"
+                ],
+                "foreshadow_payoff_pairs": [
+                  {
+                    "foreshadow_scene": 25,
+                    "payoff_scene": 420,
+                    "anchor_id": "book_exchange"
+                  },
+                  {
+                    "foreshadow_scene": 90,
+                    "payoff_scene": 380,
+                    "anchor_id": "letter_fragment"
+                  }
+                ]
+              },
+              {
+                "layer_id": "gaze_layer",
+                "anchors": [
+                  "shared_window",
+                  "lane_crossing"
+                ],
+                "foreshadow_payoff_pairs": [
+                  {
+                    "foreshadow_scene": 150,
+                    "payoff_scene": 450,
+                    "anchor_id": "shared_window"
+                  }
+                ]
+              }
+            ]
+          },
+          "requirements": []
+        },
+        "relationship_network": {
+          "dimension": "relationship_network",
+          "ref": {
+            "nodes": [
+              "gonegi",
+              "dana"
+            ],
+            "edges": [
+              {
+                "from": "gonegi",
+                "to": "dana",
+                "relationship_type": "correspondence_bond"
+              },
+              {
+                "from": "dana",
+                "to": "gonegi",
+                "relationship_type": "memory_holder"
+              }
+            ],
+            "evolution_stages": [
+              "stranger_nodes",
+              "connected_pair",
+              "distant_parallel",
+              "reunited_network"
+            ]
+          },
+          "requirements": [
+            "bidirectional_edge_symmetry_preserved"
+          ]
+        },
+        "world_arc": {
+          "dimension": "world_arc",
+          "ref": {
+            "character_continuity": [
+              "dual_protagonist_dna_locked_entire_saga"
+            ],
+            "location_continuity": [
+              "window_corner_geometry_identical_all_reentries"
+            ],
+            "lighting_continuity": [
+              "correspondence_palette_mirrors_first_meeting_on_reunion"
+            ],
+            "relationship_continuity": [
+              "parallel_flow_pairs_timeline_by_memory_anchor"
+            ],
+            "timeline_continuity": [
+              "decade_marker_every_120_scenes"
+            ],
+            "memory_callback_continuity": [
+              "gaze_layer_independent_of_object_layer"
+            ],
+            "subplot_continuity": [
+              "bakery_and_harbor_subplots_converge_at_letter_return"
+            ],
+            "parallel_continuity": [
+              "gonegi_and_dana_flows_interleave_every_6_scenes"
+            ],
+            "relationship_network_continuity": [
+              "bidirectional_edge_symmetry_preserved"
+            ]
+          },
+          "requirements": []
+        }
+      },
+      "continuity_requirements": {
+        "character_continuity": [
+          "dual_protagonist_dna_locked_entire_saga"
+        ],
+        "location_continuity": [
+          "window_corner_geometry_identical_all_reentries"
+        ],
+        "lighting_continuity": [
+          "correspondence_palette_mirrors_first_meeting_on_reunion"
+        ],
+        "relationship_continuity": [
+          "parallel_flow_pairs_timeline_by_memory_anchor"
+        ],
+        "timeline_continuity": [
+          "decade_marker_every_120_scenes"
+        ],
+        "memory_callback_continuity": [
+          "gaze_layer_independent_of_object_layer"
+        ],
+        "subplot_continuity": [
+          "bakery_and_harbor_subplots_converge_at_letter_return"
+        ],
+        "parallel_continuity": [
+          "gonegi_and_dana_flows_interleave_every_6_scenes"
+        ],
+        "relationship_network_continuity": [
+          "bidirectional_edge_symmetry_preserved"
+        ]
+      }
+    }
+  ]
+}

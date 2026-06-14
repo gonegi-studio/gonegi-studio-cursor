@@ -1,0 +1,50 @@
+{
+  "library_id": "failure-pattern-library-v1",
+  "asset_type": "failure_pattern_library",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-001",
+  "module": "DATASET_EVOLUTION_SYSTEM_V1",
+  "purpose": "Catalogued failure patterns for root-cause analysis and dataset evolution.",
+  "failure_pattern_integrity": "PASS",
+  "pattern_count": 5,
+  "patterns": [
+    {
+      "pattern_id": "fp-generation-prompt-drift",
+      "failure_type": "generation_failure",
+      "root_cause": "prompt_compiler_input_mismatch",
+      "signal": "shot_to_prompt_integrity_degraded",
+      "severity": "high"
+    },
+    {
+      "pattern_id": "fp-consistency-identity-break",
+      "failure_type": "consistency_failure",
+      "root_cause": "identity_dimension_score_below_minimum",
+      "signal": "character_identity_drift",
+      "severity": "critical"
+    },
+    {
+      "pattern_id": "fp-memory-callback-loss",
+      "failure_type": "memory_failure",
+      "root_cause": "callback_chain_horizon_exceeded",
+      "signal": "callback_memory_recall_degraded",
+      "severity": "high"
+    },
+    {
+      "pattern_id": "fp-pipeline-handoff-break",
+      "failure_type": "pipeline_failure",
+      "root_cause": "stage_transition_traceability_gap",
+      "signal": "handoff_integrity_degraded",
+      "severity": "critical"
+    },
+    {
+      "pattern_id": "fp-render-output-corrupt",
+      "failure_type": "render_failure",
+      "root_cause": "video_trace_to_final_output_mismatch",
+      "signal": "final_output_integrity_degraded",
+      "severity": "high"
+    }
+  ],
+  "export_id": "failure-pattern-library-export-v1",
+  "generated_at": "2026-06-08T23:51:35.784Z",
+  "dataset_ref": "datasets/evolution/failure-pattern-library.json"
+}

@@ -1,0 +1,310 @@
+{
+  "gonegi_video_state_id": "gonegi_video_state_live_action_dialogue_v1",
+  "phase": "PHASE-SOURCE-VIDEO-014-GONEGI_STATE_TO_VIDEO_STATE_TRANSLATOR_V1",
+  "gonegi_state_id": "gonegi_state_live_action_dialogue_v1",
+  "source_video_id": "LITTLE_WOMEN_01",
+  "director_family": "LIVE_ACTION",
+  "director_blend_ref": "gonegi-master-director-blend-v1",
+  "video_defaults_ref": "video-state-defaults-v1",
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "dana",
+      "gonegi",
+      "gamja",
+      "aengdu"
+    ],
+    "identity_lock_tokens": [
+      "identity:character_identity:dana",
+      "character_reference:Dana",
+      "identity_lock:preserve_dana_silhouette",
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette",
+      "identity:character_identity:aengdu",
+      "character_reference:Aengdu",
+      "identity_lock:preserve_aengdu_silhouette"
+    ],
+    "location_lock_tokens": [
+      "location_id:family_dining_room_01",
+      "layout_lock:hearth-center"
+    ],
+    "composition_lock_tokens": [
+      "prop_anchor:sketchbook_01",
+      "prop_anchor:hearth_practical_01"
+    ]
+  },
+  "character_state": {
+    "active_character_ids": [
+      "dana",
+      "gonegi",
+      "gamja",
+      "aengdu"
+    ],
+    "primary_character_id": "dana",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:dana",
+      "character:gonegi",
+      "character:gamja",
+      "character:aengdu"
+    ],
+    "companion_injected": [
+      "gamja",
+      "aengdu"
+    ]
+  },
+  "emotion_state": {
+    "emotion_id": "reunion",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.7,
+    "acting_visibility_weight": "medium",
+    "source_emotion_id": "tenderness"
+  },
+  "relationship_state": {
+    "relationship_id": "siblings",
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "dana",
+      "gonegi",
+      "gamja",
+      "aengdu"
+    ],
+    "distance_behavior": "sister-dialogue-pair",
+    "gaze_pattern": "gonegi / dana",
+    "blocking_primary_focus": "sister-dialogue-pair"
+  },
+  "camera_state": {
+    "shot_type": "master-two-shot",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "parlor-master-left",
+    "camera_height": "eye-level",
+    "camera_direction": "hearth-ensemble",
+    "motion_vectors": [
+      "gesture-open-hand"
+    ]
+  },
+  "composition_state": {
+    "composition_id": "gonegi_composition_gonegi_state_live_action_dialogue_v1",
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [
+      "sketchbook_01",
+      "hearth_practical_01"
+    ],
+    "character_positions": {
+      "dana": "hearth-chair-left",
+      "gonegi": "hearth-chair-right",
+      "gamja": "hearth-chair-right_companion_near",
+      "aengdu": "hearth-chair-left_companion_near"
+    },
+    "depth_layers": [
+      {
+        "layer_index": 0,
+        "layer_role": "foreground",
+        "content_hint": "side-table-props"
+      },
+      {
+        "layer_index": 1,
+        "layer_role": "midground",
+        "content_hint": "seated-ensemble"
+      },
+      {
+        "layer_index": 2,
+        "layer_role": "background",
+        "content_hint": "hearth-window-wall"
+      }
+    ],
+    "negative_space": "window-wall-left"
+  },
+  "location_state": {
+    "location_id": "family_dining_room_01",
+    "location_name": "period-parlor",
+    "location_type": "period-parlor",
+    "domain": "gonegi_state_draft",
+    "location_source": "datasets/location/location-dna-index-v1.json",
+    "layout_lock_id": "layout_lock:family_dining_room_01",
+    "walkable_zone": "parlor-rug-zone",
+    "source_location_type": "period-parlor"
+  },
+  "lighting_state": {
+    "lighting_id": "gonegi_lighting_gonegi_state_live_action_dialogue_v1",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "direction": "window-side-key",
+    "intensity": "fireplace-warm-fill"
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "day",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": [
+      "side-table-props",
+      "seated-ensemble",
+      "hearth-window-wall"
+    ],
+    "ambient_motion": []
+  },
+  "video_parameters": {
+    "duration_seconds": 33,
+    "fps_target": 24,
+    "keyframe_count": 66,
+    "camera_motion": {
+      "motion_type": "slow_push_on_revelation",
+      "path_description": "gesture-open-hand",
+      "speed": "slow",
+      "identity_safe": true,
+      "shot_type_source": "master-two-shot"
+    },
+    "character_motion": [
+      {
+        "character_id": "dana",
+        "motion_type": "walk",
+        "path_description": "Character motion preserving identity locks for dana",
+        "identity_lock_preserved": true,
+        "start_position": "hearth-chair-left",
+        "end_position": "hearth-chair-left"
+      },
+      {
+        "character_id": "gonegi",
+        "motion_type": "walk",
+        "path_description": "Character motion preserving identity locks for gonegi",
+        "identity_lock_preserved": true,
+        "start_position": "hearth-chair-right",
+        "end_position": "hearth-chair-right"
+      },
+      {
+        "character_id": "gamja",
+        "motion_type": "companion_reaction",
+        "path_description": "Minor supportive motion without crossing primary character foreground",
+        "identity_lock_preserved": true,
+        "start_position": "hearth-chair-right_companion_near",
+        "end_position": "hearth-chair-right_companion_near"
+      },
+      {
+        "character_id": "aengdu",
+        "motion_type": "companion_reaction",
+        "path_description": "Minor supportive motion without crossing primary character foreground",
+        "identity_lock_preserved": true,
+        "start_position": "hearth-chair-left_companion_near",
+        "end_position": "hearth-chair-left_companion_near"
+      }
+    ],
+    "emotion_motion": {
+      "emotion_id": "reunion",
+      "arc_type": "steady_hope",
+      "intensity_start": 0.6,
+      "intensity_end": 0.75
+    },
+    "environment_motion": {
+      "motion_type": "ambient",
+      "path_description": "Background atmosphere only; no landmark relocation or layout mutation",
+      "location_lock_preserved": true,
+      "elements": [
+        "family_dining_room_01",
+        "mediterranean-harbor",
+        "village-street-life"
+      ]
+    },
+    "visual_style_tokens": [
+      "hand-painted-warmth",
+      "mediterranean-pastoral",
+      "domestic-intimacy",
+      "readable-environmental-storytelling"
+    ],
+    "lighting_mood": "twilight_color_separation",
+    "blocking_geometry": "hearth-circle",
+    "family_provenance": {
+      "visual_style": "GHIBLI",
+      "camera": "SHINKAI",
+      "lighting": "SHINKAI",
+      "blocking": "LIVE_ACTION",
+      "emotion": "GHIBLI",
+      "motion": "MORI",
+      "environment": "GHIBLI"
+    },
+    "render_intent": {
+      "preparation_only": true,
+      "gpu_execution": false,
+      "target_pipeline": "gonegi_state_to_video_state_translator_v1",
+      "next_phase": "PHASE-SOURCE-VIDEO-015-VIDEO_STATE_TO_KEYFRAME_COMPILER_V2"
+    }
+  },
+  "translation_trace": {
+    "translation_id": "gonegi-master-world-translation-v1",
+    "source_world_type": "live_action_period_domestic",
+    "target_world_identity": "GONEGI_MEDITERRANEAN",
+    "applied_dimensions": [
+      "character_translation",
+      "location_translation",
+      "prop_translation",
+      "emotion_translation",
+      "relationship_translation",
+      "environment_translation"
+    ],
+    "location_mapping": {
+      "period-parlor": "family_dining_room_01"
+    },
+    "prop_mappings": {
+      "writing_desk_letter": "sketchbook_01",
+      "fireplace_practical": "hearth_practical_01"
+    },
+    "emotion_mapping": {
+      "tenderness": "reunion"
+    },
+    "video_state_translation": {
+      "translator_phase": "PHASE-SOURCE-VIDEO-014-GONEGI_STATE_TO_VIDEO_STATE_TRANSLATOR_V1",
+      "defaults_id": "video-state-defaults-v1",
+      "blend_id": "gonegi-master-director-blend-v1",
+      "director_family": "LIVE_ACTION"
+    }
+  },
+  "continuity_locks": {
+    "identity_locks": [
+      "identity:character_identity:dana",
+      "character_reference:Dana",
+      "identity_lock:preserve_dana_silhouette",
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette",
+      "identity:character_identity:aengdu",
+      "character_reference:Aengdu",
+      "identity_lock:preserve_aengdu_silhouette"
+    ],
+    "location_locks": [
+      "location_id:family_dining_room_01",
+      "location_lock:period-parlor",
+      "walkable-zone:parlor-rug-zone"
+    ],
+    "composition_locks": [
+      "prop_anchor:sketchbook_01",
+      "prop_anchor:hearth_practical_01",
+      "composition_lock:master-two-shot",
+      "prop_anchor:writing_desk_letter",
+      "prop_anchor:fireplace_practical"
+    ]
+  },
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "gonegi_video_state",
+    "production_registry": false,
+    "draft_status": "gonegi_video_state_translated_v1"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "translated_at": "2026-06-05T10:21:05.260Z"
+}

@@ -1,0 +1,24 @@
+{
+  "spec_id": "image-app-rebuild-specification-v1",
+  "asset_type": "image_app_rebuild_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-EXPORT-REBUILD-001",
+  "module": "APP_DATASET_SYNCHRONIZATION_V1",
+  "purpose": "Rebuild Image App latest_v2 bundle with full engine stack integration.",
+  "upstream_checkpoint": "PASS_REAL_PRODUCTION_TEST_PREPARATION_V1",
+  "target_path": "exports/image_app/latest_v2",
+  "integrated_systems": [
+    "story_engine",
+    "prompt_compiler",
+    "generation_qa",
+    "prompt_evaluation",
+    "temporal_memory",
+    "dialogue_lipsync",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution"
+  ],
+  "image_app_sync_integrity": "PASS",
+  "upload_package_ref": "datasets/export_sync/image-app-upload-package-v2.json"
+}

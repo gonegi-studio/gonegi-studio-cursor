@@ -1,0 +1,2321 @@
+{
+  "block_id": "video-generation-rules-v5",
+  "canonical_upload_standard": "app-upload-standard-v1",
+  "canonical_filename_locked": true,
+  "materialized_from": "exports/video_app/latest_v5/video_generation_bundle.json",
+  "materialized_at": "2026-06-10T02:30:15.441Z",
+  "schema_version": "v1",
+  "target_app": "video_app",
+  "materialized": true,
+  "production_grade": true,
+  "video_generation_rules": {
+    "music_drama_adapter": {
+      "adapter_type": "music_drama_video_adapter",
+      "adapter_metadata": {
+        "adapter_name": "music-drama-video-adapter",
+        "adapter_version": "v1",
+        "phase": "PHASE-MDG-012",
+        "generated_at": "2026-06-02T04:10:16.722Z",
+        "source_package": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+        "target_app": "video_app",
+        "world_identity": "GONEGI_MEDITERRANEAN",
+        "world_type": "early-1900s mediterranean harbor town",
+        "integrity_score": 1,
+        "ep01_ready": true
+      },
+      "core_video_references": [
+        {
+          "section_name": "beat_structure",
+          "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#beat_structure",
+          "item_count": 6
+        },
+        {
+          "section_name": "emotional_transitions",
+          "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#emotional_transitions",
+          "item_count": 12
+        },
+        {
+          "section_name": "sequence_assembly",
+          "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly",
+          "item_count": 6
+        },
+        {
+          "section_name": "shot_patterns",
+          "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#shot_patterns",
+          "item_count": 8
+        },
+        {
+          "section_name": "scene_archetypes",
+          "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#scene_archetypes",
+          "item_count": 8
+        },
+        {
+          "section_name": "daily_life_behavior",
+          "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#daily_life_behavior",
+          "item_count": 16
+        }
+      ],
+      "sequence_continuity_profile": {
+        "emotional_continuity": {
+          "supported": true,
+          "tracked_field": "persistent_emotion",
+          "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+        },
+        "companion_continuity": {
+          "supported": true,
+          "tracked_field": "persistent_companion",
+          "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+        },
+        "location_continuity": {
+          "supported": true,
+          "tracked_field": "persistent_location_anchor",
+          "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+        },
+        "motif_continuity": {
+          "supported": true,
+          "policy": "Repeat compatible motifs across expanded scenes; max visible motifs governed by density limits.",
+          "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_3_scene_count_expansion_rule"
+        },
+        "time_cluster_continuity": {
+          "supported": true,
+          "tracked_field": "persistent_time_cluster",
+          "policy": "Time atmosphere must stay compatible with datasets/time/time-setting-library-v1.json",
+          "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_4_continuity_state_transfer"
+        },
+        "sequence_expansion": {
+          "supported": true,
+          "base_beat_count": 6,
+          "supported_sequence_sizes": [
+            6,
+            10,
+            15,
+            30
+          ],
+          "expansion_method": {
+            "base_beat_count": 6,
+            "allowed_expansions": [
+              10,
+              15,
+              30
+            ],
+            "rules": [
+              "Do not invent new emotional jumps.",
+              "Repeat compatible motifs across expanded scenes.",
+              "Preserve continuity companion across adjacent scenes.",
+              "Preserve protagonist readability in every expanded slot.",
+              "Expansion inserts intermediate scenes between beats using allowed emotional transitions only.",
+              "Each expanded scene must complete the full assembly pipeline in section_1 order."
+            ],
+            "expansion_method": "subdivide beats with compatible daily-life behaviors and matching shot/archetype pairs from existing grammar libraries"
+          }
+        },
+        "tracked_fields": [
+          "persistent_companion",
+          "persistent_object",
+          "persistent_location_anchor",
+          "persistent_emotion",
+          "persistent_time_cluster"
+        ]
+      },
+      "beat_flow_contract": {
+        "beat_order": [
+          "intro",
+          "verse",
+          "pre_chorus",
+          "chorus",
+          "bridge",
+          "outro"
+        ],
+        "beat_order_preserved": true,
+        "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#beat_structure.section_1_beat_types",
+        "beat_profiles_source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#beat_structure.section_2_beat_profiles"
+      },
+      "emotional_transition_contract": {
+        "transition_integrity_required": true,
+        "contract_emotions": [
+          "peace",
+          "comfort",
+          "curiosity",
+          "wonder",
+          "hope",
+          "memory",
+          "acceptance"
+        ],
+        "contract_emotions_present": true,
+        "transition_pathways_source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#emotional_transitions.section_2_transition_pathways",
+        "policy": "Expanded sequences may use allowed emotional transitions only; do not invent new emotional jumps."
+      },
+      "companion_continuity_contract": {
+        "companion_continuity_required": true,
+        "pairs": [
+          {
+            "owner_character": "gonegi",
+            "companion_animal": "gamja",
+            "rule": "If Gonegi appears, Gamja should appear unless physically impossible."
+          },
+          {
+            "owner_character": "dana",
+            "companion_animal": "aengdu",
+            "rule": "If Dana appears, Aengdu should appear unless physically impossible."
+          }
+        ],
+        "pairs_valid": true,
+        "ep01_note": "Gamja persists across EP01; Aengdu reserved for post-EP01 Dana scenes.",
+        "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#animal_behavior.section_1_primary_companion_layer"
+      },
+      "density_governance": {
+        "named_extras_max": 2,
+        "crowd_groups_max": 1,
+        "background_animals_max": 2,
+        "visible_motifs_max": 3,
+        "crowd_role": "background only",
+        "protagonist_readability": "required",
+        "source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_6_density_control"
+      },
+      "rkb_001_video_rules": {
+        "test_id": "RKB-001",
+        "source": "datasets/render_feedback/RKB-001.json",
+        "character_readability_first": {
+          "enabled": true,
+          "policy": "Protagonist readability required in every expanded sequence slot."
+        },
+        "crowd_caution": {
+          "enabled": true,
+          "policy": "Limit crowd groups; crowd remains background support only.",
+          "mitigation": {
+            "blanket_body_merge": "Prefer simple bedding in domestic_bedroom_peace and night_rest beats",
+            "dense_market_crowd": "EP01 default sequence excludes market_edge_background; max one crowd group",
+            "complex_hand_poses": "Keep visible actions simple in behavior selection",
+            "overcrowded_animal_crowd": "Apply section_6 density_control on every assembled scene"
+          }
+        },
+        "market_caution": {
+          "enabled": true,
+          "policy": "Avoid dense market crowd patterns during early video sequence testing."
+        },
+        "environment_consistency": {
+          "enabled": true,
+          "policy": "Mediterranean harbor atmosphere and time clusters must align with time-setting-library references."
+        },
+        "companion_continuity": {
+          "enabled": true,
+          "policy": "Primary companions persist across adjacent scenes unless explicitly departed."
+        },
+        "stable_emotional_progression": {
+          "enabled": true,
+          "policy": "Emotional flow must follow allowed transition pathways; no abrupt unmapped emotional jumps.",
+          "transition_integrity_required": true
+        },
+        "protection_rules_source": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly.section_7_rkb_protection_rules"
+      },
+      "compatibility_declaration": {
+        "merge_policy": "reference_only",
+        "references": [
+          {
+            "asset_id": "character_simple_v1",
+            "reference_path": "datasets/character/character-simple-v1.json",
+            "role": "character identity for visible cast continuity across sequence slots"
+          },
+          {
+            "asset_id": "time_setting_library_v1",
+            "reference_path": "datasets/time/time-setting-library-v1.json",
+            "role": "time cluster and atmospheric continuity across scenes"
+          },
+          {
+            "asset_id": "living_world_core_v1_package",
+            "reference_path": "exports/shared/latest/living-world-core-v1-package.json",
+            "role": "ambient world grammar reference for sequence enrichment"
+          },
+          {
+            "asset_id": "music_drama_grammar_core_v1_package",
+            "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+            "role": "authoritative Music Drama grammar core consumed by this adapter"
+          }
+        ]
+      },
+      "video_usage_rules": [
+        "consume grammar references for Music Drama sequence continuity planning only",
+        "do not generate scenarios directly from adapter",
+        "do not generate prompts directly from adapter",
+        "do not generate videos directly from adapter",
+        "do not override Character DNA",
+        "do not override Style Core",
+        "do not override Living World Core",
+        "do not merge adapter payload with external datasets"
+      ]
+    },
+    "video_brain_dataset": {
+      "dataset_type": "video_brain_dataset",
+      "dataset_version": "106A",
+      "app_targets": [
+        "Video App",
+        "Music Drama Studio"
+      ],
+      "temporal": {
+        "video_dataset": {
+          "export_metadata": {
+            "schema_version": "VIDEO-DATASET-EXPORT-PHASE-61-v1",
+            "export_type": "video_dataset",
+            "active_export": "video_dataset",
+            "source_layer": "video_dataset_layer",
+            "image_dataset_export_separate": true,
+            "image_dataset_export_path": "exports/image-dataset-export.json",
+            "export_json_path": "exports/video-dataset-export.json",
+            "builder_schema_version": "VIDEO-DATASET-BUILDER-PREVIEW-v1",
+            "phase": "PHASE-61",
+            "generated_at": "2026-05-30T01:17:37.025Z",
+            "scene_count": 16
+          },
+          "dataset_index": [
+            {
+              "index": 0,
+              "scene_id": "VDS-close-hand-hope-sadness",
+              "runtime_source": "ASM-close-hand-hope-sadness",
+              "shot_id": "close_hand_detail",
+              "transition_id": "hope_to_sadness"
+            },
+            {
+              "index": 1,
+              "scene_id": "VDS-close-hand-sadness-hope",
+              "runtime_source": "ASM-close-hand-sadness-hope",
+              "shot_id": "close_hand_detail",
+              "transition_id": "sadness_to_hope"
+            },
+            {
+              "index": 2,
+              "scene_id": "VDS-medium-emotional-confession",
+              "runtime_source": "ASM-medium-emotional-confession",
+              "shot_id": "medium_emotional",
+              "transition_id": "silence_to_confession"
+            },
+            {
+              "index": 3,
+              "scene_id": "VDS-medium-emotional-hope-sadness",
+              "runtime_source": "ASM-medium-emotional-hope-sadness",
+              "shot_id": "medium_emotional",
+              "transition_id": "hope_to_sadness"
+            },
+            {
+              "index": 4,
+              "scene_id": "VDS-overhead-isolation-hope-sadness",
+              "runtime_source": "ASM-overhead-isolation-hope-sadness",
+              "shot_id": "overhead_isolation",
+              "transition_id": "hope_to_sadness"
+            },
+            {
+              "index": 5,
+              "scene_id": "VDS-overhead-isolation-sunset",
+              "runtime_source": "ASM-overhead-isolation-sunset",
+              "shot_id": "overhead_isolation",
+              "transition_id": "sunset_to_night"
+            },
+            {
+              "index": 6,
+              "scene_id": "VDS-rear-follow-reunion",
+              "runtime_source": "ASM-rear-follow-reunion",
+              "shot_id": "rear_follow",
+              "transition_id": "separation_to_reunion"
+            },
+            {
+              "index": 7,
+              "scene_id": "VDS-rear-follow-walking",
+              "runtime_source": "ASM-rear-follow-walking",
+              "shot_id": "rear_follow",
+              "transition_id": "walking_to_running"
+            },
+            {
+              "index": 8,
+              "scene_id": "VDS-side-tracking-reunion",
+              "runtime_source": "ASM-side-tracking-reunion",
+              "shot_id": "side_tracking",
+              "transition_id": "separation_to_reunion"
+            },
+            {
+              "index": 9,
+              "scene_id": "VDS-side-tracking-walking",
+              "runtime_source": "ASM-side-tracking-walking",
+              "shot_id": "side_tracking",
+              "transition_id": "walking_to_running"
+            },
+            {
+              "index": 10,
+              "scene_id": "VDS-silhouette-reunion",
+              "runtime_source": "ASM-silhouette-reunion",
+              "shot_id": "silhouette_distance",
+              "transition_id": "separation_to_reunion"
+            },
+            {
+              "index": 11,
+              "scene_id": "VDS-silhouette-sunset",
+              "runtime_source": "ASM-silhouette-sunset",
+              "shot_id": "silhouette_distance",
+              "transition_id": "sunset_to_night"
+            },
+            {
+              "index": 12,
+              "scene_id": "VDS-wide-establishing-rain",
+              "runtime_source": "ASM-wide-establishing-rain",
+              "shot_id": "wide_establishing",
+              "transition_id": "rain_to_clear"
+            },
+            {
+              "index": 13,
+              "scene_id": "VDS-wide-establishing-sunset",
+              "runtime_source": "ASM-wide-establishing-sunset",
+              "shot_id": "wide_establishing",
+              "transition_id": "sunset_to_night"
+            },
+            {
+              "index": 14,
+              "scene_id": "VDS-window-reflection-confession",
+              "runtime_source": "ASM-window-reflection-confession",
+              "shot_id": "window_reflection",
+              "transition_id": "silence_to_confession"
+            },
+            {
+              "index": 15,
+              "scene_id": "VDS-window-reflection-hope",
+              "runtime_source": "ASM-window-reflection-hope",
+              "shot_id": "window_reflection",
+              "transition_id": "sadness_to_hope"
+            }
+          ],
+          "scene_records": [
+            {
+              "scene_id": "VDS-close-hand-hope-sadness",
+              "shot_binding": {
+                "shot_id": "close_hand_detail",
+                "framing": "close hand detail",
+                "lens_behavior": "macro emotional gesture",
+                "camera_motion": "minimal hold",
+                "subject_distance": "close",
+                "cinematic_role": "gesture beat"
+              },
+              "transition_binding": {
+                "transition_id": "hope_to_sadness",
+                "from_state": "open forward cadence",
+                "to_state": "inward restrained cadence",
+                "emotional_bridge": "hope folds into tender sadness",
+                "motion_bridge": "shoulders lower, stride shortens",
+                "camera_shift": "medium hold tightens slightly",
+                "lighting_shift": "warm key softens, shadow depth increases",
+                "pacing_shift": "decelerate half beat",
+                "continuity_glue": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity"
+              },
+              "continuity_glue": {
+                "glue": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity",
+                "transition_id": "hope_to_sadness"
+              },
+              "runtime_source": "ASM-close-hand-hope-sadness"
+            },
+            {
+              "scene_id": "VDS-close-hand-sadness-hope",
+              "shot_binding": {
+                "shot_id": "close_hand_detail",
+                "framing": "close hand detail",
+                "lens_behavior": "macro emotional gesture",
+                "camera_motion": "minimal hold",
+                "subject_distance": "close",
+                "cinematic_role": "gesture beat"
+              },
+              "transition_binding": {
+                "transition_id": "sadness_to_hope",
+                "from_state": "inward restrained cadence",
+                "to_state": "open forward cadence",
+                "emotional_bridge": "sadness lifts into gentle hope",
+                "motion_bridge": "chin lifts, stride lengthens",
+                "camera_shift": "subtle push-in then stable tracking",
+                "lighting_shift": "shadow depth eases, warm rim returns",
+                "pacing_shift": "accelerate half beat",
+                "continuity_glue": "sadness lifts into gentle hope, chin lifts, stride lengthens, subtle push-in then stable tracking, shadow depth eases, warm rim returns, accelerate half beat, eyeline continuity, friendship spacing"
+              },
+              "continuity_glue": {
+                "glue": "sadness lifts into gentle hope, chin lifts, stride lengthens, subtle push-in then stable tracking, shadow depth eases, warm rim returns, accelerate half beat, eyeline continuity, friendship spacing",
+                "transition_id": "sadness_to_hope"
+              },
+              "runtime_source": "ASM-close-hand-sadness-hope"
+            },
+            {
+              "scene_id": "VDS-medium-emotional-confession",
+              "shot_binding": {
+                "shot_id": "medium_emotional",
+                "framing": "medium two-shot",
+                "lens_behavior": "gentle focus falloff",
+                "camera_motion": "micro push-in on beat",
+                "subject_distance": "mid",
+                "cinematic_role": "emotional dialogue hold"
+              },
+              "transition_binding": {
+                "transition_id": "silence_to_confession",
+                "from_state": "held silence",
+                "to_state": "spoken emotional release",
+                "emotional_bridge": "silence breaks into vulnerable confession",
+                "motion_bridge": "minimal gesture expands into expressive hands",
+                "camera_shift": "static medium to soft push-in",
+                "lighting_shift": "stable intimate key",
+                "pacing_shift": "pause then single forward beat",
+                "continuity_glue": "silence breaks into vulnerable confession, minimal gesture expands into expressive hands, static medium to soft push-in, stable intimate key, pause then single forward beat, framing continuity, spatial intimacy"
+              },
+              "continuity_glue": {
+                "glue": "silence breaks into vulnerable confession, minimal gesture expands into expressive hands, static medium to soft push-in, stable intimate key, pause then single forward beat, framing continuity, spatial intimacy",
+                "transition_id": "silence_to_confession"
+              },
+              "runtime_source": "ASM-medium-emotional-confession"
+            },
+            {
+              "scene_id": "VDS-medium-emotional-hope-sadness",
+              "shot_binding": {
+                "shot_id": "medium_emotional",
+                "framing": "medium two-shot",
+                "lens_behavior": "gentle focus falloff",
+                "camera_motion": "micro push-in on beat",
+                "subject_distance": "mid",
+                "cinematic_role": "emotional dialogue hold"
+              },
+              "transition_binding": {
+                "transition_id": "hope_to_sadness",
+                "from_state": "open forward cadence",
+                "to_state": "inward restrained cadence",
+                "emotional_bridge": "hope folds into tender sadness",
+                "motion_bridge": "shoulders lower, stride shortens",
+                "camera_shift": "medium hold tightens slightly",
+                "lighting_shift": "warm key softens, shadow depth increases",
+                "pacing_shift": "decelerate half beat",
+                "continuity_glue": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity"
+              },
+              "continuity_glue": {
+                "glue": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity",
+                "transition_id": "hope_to_sadness"
+              },
+              "runtime_source": "ASM-medium-emotional-hope-sadness"
+            },
+            {
+              "scene_id": "VDS-overhead-isolation-hope-sadness",
+              "shot_binding": {
+                "shot_id": "overhead_isolation",
+                "framing": "high overhead",
+                "lens_behavior": "graphic composition read",
+                "camera_motion": "slow vertical settle",
+                "subject_distance": "far",
+                "cinematic_role": "isolation emphasis"
+              },
+              "transition_binding": {
+                "transition_id": "hope_to_sadness",
+                "from_state": "open forward cadence",
+                "to_state": "inward restrained cadence",
+                "emotional_bridge": "hope folds into tender sadness",
+                "motion_bridge": "shoulders lower, stride shortens",
+                "camera_shift": "medium hold tightens slightly",
+                "lighting_shift": "warm key softens, shadow depth increases",
+                "pacing_shift": "decelerate half beat",
+                "continuity_glue": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity"
+              },
+              "continuity_glue": {
+                "glue": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity",
+                "transition_id": "hope_to_sadness"
+              },
+              "runtime_source": "ASM-overhead-isolation-hope-sadness"
+            },
+            {
+              "scene_id": "VDS-overhead-isolation-sunset",
+              "shot_binding": {
+                "shot_id": "overhead_isolation",
+                "framing": "high overhead",
+                "lens_behavior": "graphic composition read",
+                "camera_motion": "slow vertical settle",
+                "subject_distance": "far",
+                "cinematic_role": "isolation emphasis"
+              },
+              "transition_binding": {
+                "transition_id": "sunset_to_night",
+                "from_state": "warm sunset harbor",
+                "to_state": "cool night harbor",
+                "emotional_bridge": "nostalgia deepens into quiet resolve",
+                "motion_bridge": "pace slows with shorter steps",
+                "camera_shift": "wider hold then gentle settle",
+                "lighting_shift": "golden ochre to indigo violet rim",
+                "pacing_shift": "decelerate one beat",
+                "continuity_glue": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift"
+              },
+              "continuity_glue": {
+                "glue": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift",
+                "transition_id": "sunset_to_night"
+              },
+              "runtime_source": "ASM-overhead-isolation-sunset"
+            },
+            {
+              "scene_id": "VDS-rear-follow-reunion",
+              "shot_binding": {
+                "shot_id": "rear_follow",
+                "framing": "rear follow medium",
+                "lens_behavior": "shallow depth on subject",
+                "camera_motion": "rear tracking dolly cadence",
+                "subject_distance": "mid-close",
+                "cinematic_role": "departure or pursuit"
+              },
+              "transition_binding": {
+                "transition_id": "separation_to_reunion",
+                "from_state": "parting distance",
+                "to_state": "closing distance",
+                "emotional_bridge": "separation resolves into reunion warmth",
+                "motion_bridge": "paths converge with recognition pause",
+                "camera_shift": "rear follow to medium reunion frame",
+                "lighting_shift": "consistent warm key on faces",
+                "pacing_shift": "decelerate into hold on reunion",
+                "continuity_glue": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match"
+              },
+              "continuity_glue": {
+                "glue": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match",
+                "transition_id": "separation_to_reunion"
+              },
+              "runtime_source": "ASM-rear-follow-reunion"
+            },
+            {
+              "scene_id": "VDS-rear-follow-walking",
+              "shot_binding": {
+                "shot_id": "rear_follow",
+                "framing": "rear follow medium",
+                "lens_behavior": "shallow depth on subject",
+                "camera_motion": "rear tracking dolly cadence",
+                "subject_distance": "mid-close",
+                "cinematic_role": "departure or pursuit"
+              },
+              "transition_binding": {
+                "transition_id": "walking_to_running",
+                "from_state": "synchronized walking",
+                "to_state": "shared travel momentum",
+                "emotional_bridge": "companionship sustains through motion continuity",
+                "motion_bridge": "maintain matched pace without abrupt speed jump",
+                "camera_shift": "lateral tracking axis locked",
+                "lighting_shift": "stable golden hour continuity",
+                "pacing_shift": "hold gentle cadence",
+                "continuity_glue": "companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match"
+              },
+              "continuity_glue": {
+                "glue": "companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match",
+                "transition_id": "walking_to_running"
+              },
+              "runtime_source": "ASM-rear-follow-walking"
+            },
+            {
+              "scene_id": "VDS-side-tracking-reunion",
+              "shot_binding": {
+                "shot_id": "side_tracking",
+                "framing": "medium lateral two-shot",
+                "lens_behavior": "parallel tracking plane",
+                "camera_motion": "side tracking with stable horizon",
+                "subject_distance": "mid",
+                "cinematic_role": "travel companionship"
+              },
+              "transition_binding": {
+                "transition_id": "separation_to_reunion",
+                "from_state": "parting distance",
+                "to_state": "closing distance",
+                "emotional_bridge": "separation resolves into reunion warmth",
+                "motion_bridge": "paths converge with recognition pause",
+                "camera_shift": "rear follow to medium reunion frame",
+                "lighting_shift": "consistent warm key on faces",
+                "pacing_shift": "decelerate into hold on reunion",
+                "continuity_glue": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match"
+              },
+              "continuity_glue": {
+                "glue": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match",
+                "transition_id": "separation_to_reunion"
+              },
+              "runtime_source": "ASM-side-tracking-reunion"
+            },
+            {
+              "scene_id": "VDS-side-tracking-walking",
+              "shot_binding": {
+                "shot_id": "side_tracking",
+                "framing": "medium lateral two-shot",
+                "lens_behavior": "parallel tracking plane",
+                "camera_motion": "side tracking with stable horizon",
+                "subject_distance": "mid",
+                "cinematic_role": "travel companionship"
+              },
+              "transition_binding": {
+                "transition_id": "walking_to_running",
+                "from_state": "synchronized walking",
+                "to_state": "shared travel momentum",
+                "emotional_bridge": "companionship sustains through motion continuity",
+                "motion_bridge": "maintain matched pace without abrupt speed jump",
+                "camera_shift": "lateral tracking axis locked",
+                "lighting_shift": "stable golden hour continuity",
+                "pacing_shift": "hold gentle cadence",
+                "continuity_glue": "companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match"
+              },
+              "continuity_glue": {
+                "glue": "companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match",
+                "transition_id": "walking_to_running"
+              },
+              "runtime_source": "ASM-side-tracking-walking"
+            },
+            {
+              "scene_id": "VDS-silhouette-reunion",
+              "shot_binding": {
+                "shot_id": "silhouette_distance",
+                "framing": "silhouette long shot",
+                "lens_behavior": "rim light separation",
+                "camera_motion": "slow pullback",
+                "subject_distance": "far",
+                "cinematic_role": "emotional distance"
+              },
+              "transition_binding": {
+                "transition_id": "separation_to_reunion",
+                "from_state": "parting distance",
+                "to_state": "closing distance",
+                "emotional_bridge": "separation resolves into reunion warmth",
+                "motion_bridge": "paths converge with recognition pause",
+                "camera_shift": "rear follow to medium reunion frame",
+                "lighting_shift": "consistent warm key on faces",
+                "pacing_shift": "decelerate into hold on reunion",
+                "continuity_glue": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match"
+              },
+              "continuity_glue": {
+                "glue": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match",
+                "transition_id": "separation_to_reunion"
+              },
+              "runtime_source": "ASM-silhouette-reunion"
+            },
+            {
+              "scene_id": "VDS-silhouette-sunset",
+              "shot_binding": {
+                "shot_id": "silhouette_distance",
+                "framing": "silhouette long shot",
+                "lens_behavior": "rim light separation",
+                "camera_motion": "slow pullback",
+                "subject_distance": "far",
+                "cinematic_role": "emotional distance"
+              },
+              "transition_binding": {
+                "transition_id": "sunset_to_night",
+                "from_state": "warm sunset harbor",
+                "to_state": "cool night harbor",
+                "emotional_bridge": "nostalgia deepens into quiet resolve",
+                "motion_bridge": "pace slows with shorter steps",
+                "camera_shift": "wider hold then gentle settle",
+                "lighting_shift": "golden ochre to indigo violet rim",
+                "pacing_shift": "decelerate one beat",
+                "continuity_glue": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift"
+              },
+              "continuity_glue": {
+                "glue": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift",
+                "transition_id": "sunset_to_night"
+              },
+              "runtime_source": "ASM-silhouette-sunset"
+            },
+            {
+              "scene_id": "VDS-wide-establishing-rain",
+              "shot_binding": {
+                "shot_id": "wide_establishing",
+                "framing": "wide establishing",
+                "lens_behavior": "deep focus harbor planes",
+                "camera_motion": "slow panoramic settle",
+                "subject_distance": "far to mid",
+                "cinematic_role": "establish geography"
+              },
+              "transition_binding": {
+                "transition_id": "rain_to_clear",
+                "from_state": "rain sheen street",
+                "to_state": "clear reflective stone",
+                "emotional_bridge": "tension releases into cautious hope",
+                "motion_bridge": "umbrella lowers, stride opens",
+                "camera_shift": "same axis tracking maintained",
+                "lighting_shift": "diffuse gray to warm bounce return",
+                "pacing_shift": "hold then lighten",
+                "continuity_glue": "tension releases into cautious hope, umbrella lowers, stride opens, same axis tracking maintained, diffuse gray to warm bounce return, hold then lighten, ground reflection match, weather continuity"
+              },
+              "continuity_glue": {
+                "glue": "tension releases into cautious hope, umbrella lowers, stride opens, same axis tracking maintained, diffuse gray to warm bounce return, hold then lighten, ground reflection match, weather continuity",
+                "transition_id": "rain_to_clear"
+              },
+              "runtime_source": "ASM-wide-establishing-rain"
+            },
+            {
+              "scene_id": "VDS-wide-establishing-sunset",
+              "shot_binding": {
+                "shot_id": "wide_establishing",
+                "framing": "wide establishing",
+                "lens_behavior": "deep focus harbor planes",
+                "camera_motion": "slow panoramic settle",
+                "subject_distance": "far to mid",
+                "cinematic_role": "establish geography"
+              },
+              "transition_binding": {
+                "transition_id": "sunset_to_night",
+                "from_state": "warm sunset harbor",
+                "to_state": "cool night harbor",
+                "emotional_bridge": "nostalgia deepens into quiet resolve",
+                "motion_bridge": "pace slows with shorter steps",
+                "camera_shift": "wider hold then gentle settle",
+                "lighting_shift": "golden ochre to indigo violet rim",
+                "pacing_shift": "decelerate one beat",
+                "continuity_glue": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift"
+              },
+              "continuity_glue": {
+                "glue": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift",
+                "transition_id": "sunset_to_night"
+              },
+              "runtime_source": "ASM-wide-establishing-sunset"
+            },
+            {
+              "scene_id": "VDS-window-reflection-confession",
+              "shot_binding": {
+                "shot_id": "window_reflection",
+                "framing": "interior window medium",
+                "lens_behavior": "reflection layer readable",
+                "camera_motion": "static with breath drift",
+                "subject_distance": "mid-close",
+                "cinematic_role": "inner emotion mirror"
+              },
+              "transition_binding": {
+                "transition_id": "silence_to_confession",
+                "from_state": "held silence",
+                "to_state": "spoken emotional release",
+                "emotional_bridge": "silence breaks into vulnerable confession",
+                "motion_bridge": "minimal gesture expands into expressive hands",
+                "camera_shift": "static medium to soft push-in",
+                "lighting_shift": "stable intimate key",
+                "pacing_shift": "pause then single forward beat",
+                "continuity_glue": "silence breaks into vulnerable confession, minimal gesture expands into expressive hands, static medium to soft push-in, stable intimate key, pause then single forward beat, framing continuity, spatial intimacy"
+              },
+              "continuity_glue": {
+                "glue": "silence breaks into vulnerable confession, minimal gesture expands into expressive hands, static medium to soft push-in, stable intimate key, pause then single forward beat, framing continuity, spatial intimacy",
+                "transition_id": "silence_to_confession"
+              },
+              "runtime_source": "ASM-window-reflection-confession"
+            },
+            {
+              "scene_id": "VDS-window-reflection-hope",
+              "shot_binding": {
+                "shot_id": "window_reflection",
+                "framing": "interior window medium",
+                "lens_behavior": "reflection layer readable",
+                "camera_motion": "static with breath drift",
+                "subject_distance": "mid-close",
+                "cinematic_role": "inner emotion mirror"
+              },
+              "transition_binding": {
+                "transition_id": "sadness_to_hope",
+                "from_state": "inward restrained cadence",
+                "to_state": "open forward cadence",
+                "emotional_bridge": "sadness lifts into gentle hope",
+                "motion_bridge": "chin lifts, stride lengthens",
+                "camera_shift": "subtle push-in then stable tracking",
+                "lighting_shift": "shadow depth eases, warm rim returns",
+                "pacing_shift": "accelerate half beat",
+                "continuity_glue": "sadness lifts into gentle hope, chin lifts, stride lengthens, subtle push-in then stable tracking, shadow depth eases, warm rim returns, accelerate half beat, eyeline continuity, friendship spacing"
+              },
+              "continuity_glue": {
+                "glue": "sadness lifts into gentle hope, chin lifts, stride lengthens, subtle push-in then stable tracking, shadow depth eases, warm rim returns, accelerate half beat, eyeline continuity, friendship spacing",
+                "transition_id": "sadness_to_hope"
+              },
+              "runtime_source": "ASM-window-reflection-hope"
+            }
+          ]
+        }
+      },
+      "continuity": {
+        "character": {
+          "layer_version": "CHARACTER-CONTINUITY-PHASE-87-v1",
+          "seed_count": 2,
+          "song_master_id": "song_master_01",
+          "required_fields": [
+            "continuity_id",
+            "character_id",
+            "identity_anchor",
+            "facial_anchor",
+            "body_anchor",
+            "hair_anchor",
+            "clothing_anchor",
+            "behavior_anchor",
+            "relationship_anchor",
+            "scene_references",
+            "continuity_score"
+          ],
+          "pipeline_chain": [
+            "song_master",
+            "emotion_timeline",
+            "narrative_beat",
+            "storyboard_scene",
+            "image_prompt_pack",
+            "video_prompt_pack",
+            "prompt_pack_pair",
+            "character_continuity"
+          ],
+          "character_dna_profiles": [
+            {
+              "character_id": "CHAR-gonagi",
+              "character_name": "Gonagi",
+              "display_name_ko": "고네기",
+              "primary_behavior_id": "protection",
+              "primary_emotion_id": "care",
+              "relationship_roles": [
+                "guardian_child",
+                "mentor_student",
+                "lost_lovers",
+                "reunion_after_loss",
+                "rival_to_ally",
+                "stranger_kindness"
+              ]
+            },
+            {
+              "character_id": "CHAR-dana",
+              "character_name": "Dana",
+              "display_name_ko": "다나",
+              "primary_behavior_id": "hope",
+              "primary_emotion_id": "optimism",
+              "relationship_roles": [
+                "guardian_child",
+                "mentor_student",
+                "lost_lovers",
+                "reunion_after_loss",
+                "silent_friends",
+                "family_separation"
+              ]
+            }
+          ],
+          "seed_character_continuity": [
+            {
+              "continuity_id": "CCN-CHAR-gonagi",
+              "character_id": "CHAR-gonagi",
+              "identity_anchor": [
+                "CHAR-gonagi",
+                "고네기",
+                "gonagi-protagonist",
+                "guardian-mentor-lead",
+                "song_master_01-lead-male"
+              ],
+              "facial_anchor": [
+                "warm steady eyes",
+                "soft protective gaze",
+                "calm jaw line",
+                "subtle worry brow when caring"
+              ],
+              "body_anchor": [
+                "upright guardian posture",
+                "broad protective shoulder line",
+                "measured deliberate movement",
+                "hand-ready protective stance"
+              ],
+              "hair_anchor": [
+                "dark warm brown hair",
+                "consistent left side part",
+                "medium length neat cut",
+                "no style drift between scenes"
+              ],
+              "clothing_anchor": [
+                "muted earth-tone long coat",
+                "layered practical casual wear",
+                "soft scarf or collar detail",
+                "consistent footwear silhouette"
+              ],
+              "behavior_anchor": [
+                "behavior-dna:protection",
+                "emotion-dna:care",
+                "soft protective concern",
+                "body block stance",
+                "flanking escort pace",
+                "covering companion",
+                "protection",
+                "care"
+              ],
+              "relationship_anchor": [
+                "relationship-dna:guardian_child",
+                "protective care anchored in hopeful waiting",
+                "guardian scan to child check",
+                "close protective proximity",
+                "relationship-dna:mentor_student",
+                "careful guidance nurturing optimistic growth",
+                "evaluative mentor look",
+                "slightly forward mentor lead",
+                "relationship-dna:lost_lovers",
+                "parting ache sustained by enduring connection memory",
+                "lingering backward look",
+                "widening departure gap",
+                "relationship-dna:reunion_after_loss",
+                "connection restored through hopeful return",
+                "disbelief recognition look",
+                "recognition distance collapse",
+                "relationship-dna:rival_to_ally",
+                "uncertainty transforms into shared resolve",
+                "challenge stare down",
+                "confrontational spacing",
+                "relationship-dna:stranger_kindness",
+                "unexpected care opening brief connection",
+                "cautious first look",
+                "initial stranger gap"
+              ],
+              "scene_references": [
+                "PAIR-SBD-song_master_01-01",
+                "PAIR-SBD-song_master_01-02",
+                "PAIR-SBD-song_master_01-03",
+                "PAIR-SBD-song_master_01-04",
+                "PAIR-SBD-song_master_01-05",
+                "PAIR-SBD-song_master_01-06",
+                "PAIR-SBD-song_master_01-07",
+                "PAIR-SBD-song_master_01-08",
+                "PAIR-SBD-song_master_01-09",
+                "PAIR-SBD-song_master_01-10",
+                "PAIR-SBD-song_master_01-11",
+                "PAIR-SBD-song_master_01-12",
+                "PAIR-SBD-song_master_01-13",
+                "PAIR-SBD-song_master_01-14",
+                "PAIR-SBD-song_master_01-15",
+                "PAIR-SBD-song_master_01-16"
+              ],
+              "continuity_score": 100
+            },
+            {
+              "continuity_id": "CCN-CHAR-dana",
+              "character_id": "CHAR-dana",
+              "identity_anchor": [
+                "CHAR-dana",
+                "다나",
+                "gonagi-companion-lead",
+                "song_master_01-lead-female"
+              ],
+              "facial_anchor": [
+                "expressive gentle eyes",
+                "open hopeful expression baseline",
+                "soft rounded face shape",
+                "emotion-readable micro expressions"
+              ],
+              "body_anchor": [
+                "slightly smaller frame than Gonagi",
+                "open forward-leaning posture",
+                "light agile movement cadence",
+                "companion-proximity spacing habit"
+              ],
+              "hair_anchor": [
+                "dark chestnut shoulder-length hair",
+                "consistent side-swept bangs",
+                "natural loose wave texture",
+                "no length drift between scenes"
+              ],
+              "clothing_anchor": [
+                "soft pastel layered outfit",
+                "practical daily-life skirt or pants",
+                "light jacket matching season tone",
+                "consistent bag or accessory prop"
+              ],
+              "behavior_anchor": [
+                "behavior-dna:hope",
+                "emotion-dna:optimism",
+                "gentle upward smile",
+                "upright posture",
+                "lightened stride",
+                "encouraging nod",
+                "hope",
+                "optimism"
+              ],
+              "relationship_anchor": [
+                "relationship-dna:guardian_child",
+                "protective care anchored in hopeful waiting",
+                "guardian scan to child check",
+                "close protective proximity",
+                "relationship-dna:mentor_student",
+                "careful guidance nurturing optimistic growth",
+                "evaluative mentor look",
+                "slightly forward mentor lead",
+                "relationship-dna:lost_lovers",
+                "parting ache sustained by enduring connection memory",
+                "lingering backward look",
+                "widening departure gap",
+                "relationship-dna:reunion_after_loss",
+                "connection restored through hopeful return",
+                "disbelief recognition look",
+                "recognition distance collapse",
+                "relationship-dna:silent_friends",
+                "quiet isolation bridged by unspoken connection",
+                "averted companion glance",
+                "parallel walk spacing",
+                "relationship-dna:family_separation",
+                "parting grief deepened by familial isolation",
+                "doorway backward look",
+                "threshold departure gap"
+              ],
+              "scene_references": [
+                "PAIR-SBD-song_master_01-01",
+                "PAIR-SBD-song_master_01-02",
+                "PAIR-SBD-song_master_01-03",
+                "PAIR-SBD-song_master_01-04",
+                "PAIR-SBD-song_master_01-05",
+                "PAIR-SBD-song_master_01-06",
+                "PAIR-SBD-song_master_01-07",
+                "PAIR-SBD-song_master_01-08",
+                "PAIR-SBD-song_master_01-09",
+                "PAIR-SBD-song_master_01-10",
+                "PAIR-SBD-song_master_01-11",
+                "PAIR-SBD-song_master_01-12",
+                "PAIR-SBD-song_master_01-13",
+                "PAIR-SBD-song_master_01-14",
+                "PAIR-SBD-song_master_01-15",
+                "PAIR-SBD-song_master_01-16"
+              ],
+              "continuity_score": 100
+            }
+          ]
+        },
+        "location": {
+          "layer_version": "LOCATION-CONTINUITY-PHASE-88-v1",
+          "seed_count": 8,
+          "song_master_id": "song_master_01",
+          "required_fields": [
+            "location_id",
+            "location_name",
+            "environment_anchor",
+            "architecture_anchor",
+            "lighting_anchor",
+            "weather_anchor",
+            "color_anchor",
+            "scene_references",
+            "continuity_score"
+          ],
+          "pipeline_chain": [
+            "song_master",
+            "emotion_timeline",
+            "narrative_beat",
+            "storyboard_scene",
+            "image_prompt_pack",
+            "video_prompt_pack",
+            "prompt_pack_pair",
+            "location_continuity"
+          ],
+          "seed_location_continuity": [
+            {
+              "location_id": "LOC-home",
+              "location_name": "Gonagi Home",
+              "environment_anchor": [
+                "LOC-home",
+                "domestic interior-exterior threshold",
+                "daily-life lived-in warmth",
+                "window light and entry path continuity"
+              ],
+              "architecture_anchor": [
+                "modest two-story residential facade",
+                "wooden doorframe with familiar scratch mark",
+                "interior window seat nook",
+                "kitchen-living open plan sightline"
+              ],
+              "lighting_anchor": [
+                "warm interior practical lights",
+                "late afternoon window key",
+                "soft evening return glow"
+              ],
+              "weather_anchor": [
+                "rain visible through windows",
+                "calm interior sheltered from exterior",
+                "season-stable domestic atmosphere"
+              ],
+              "color_anchor": [
+                "muted cream walls",
+                "warm wood tones",
+                "soft pastel domestic accents"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-01",
+                "pair:PAIR-SBD-song_master_01-02",
+                "pair:PAIR-SBD-song_master_01-03",
+                "pair:PAIR-SBD-song_master_01-04",
+                "pair:PAIR-SBD-song_master_01-05",
+                "pair:PAIR-SBD-song_master_01-07",
+                "pair:PAIR-SBD-song_master_01-09",
+                "pair:PAIR-SBD-song_master_01-10",
+                "pair:PAIR-SBD-song_master_01-11",
+                "pair:PAIR-SBD-song_master_01-14",
+                "pair:PAIR-SBD-song_master_01-15",
+                "pair:PAIR-SBD-song_master_01-16",
+                "storyboard:SBD-song_master_01-01",
+                "storyboard:SBD-song_master_01-02",
+                "storyboard:SBD-song_master_01-03",
+                "storyboard:SBD-song_master_01-04",
+                "storyboard:SBD-song_master_01-05",
+                "storyboard:SBD-song_master_01-07",
+                "storyboard:SBD-song_master_01-09",
+                "storyboard:SBD-song_master_01-10",
+                "storyboard:SBD-song_master_01-11",
+                "storyboard:SBD-song_master_01-14",
+                "storyboard:SBD-song_master_01-15",
+                "storyboard:SBD-song_master_01-16"
+              ],
+              "continuity_score": 75
+            },
+            {
+              "location_id": "LOC-station",
+              "location_name": "Harbor Transit Station",
+              "environment_anchor": [
+                "LOC-station",
+                "transit arrival-departure rhythm",
+                "public waiting platform energy",
+                "route signage and timetable continuity"
+              ],
+              "architecture_anchor": [
+                "covered platform canopy structure",
+                "arrival board frame geometry",
+                "bench row and ticket gate alignment",
+                "train carriage door sightline"
+              ],
+              "lighting_anchor": [
+                "platform fluorescent mixed with sunset spill",
+                "headlight approach glow",
+                "waiting area soft fill"
+              ],
+              "weather_anchor": [
+                "open-air platform breeze",
+                "occasional drizzle on canopy edge",
+                "evening cool-down after sunset"
+              ],
+              "color_anchor": [
+                "steel grey platform tones",
+                "warm amber arrival lights",
+                "deep blue evening sky bleed"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-01",
+                "pair:PAIR-SBD-song_master_01-04",
+                "pair:PAIR-SBD-song_master_01-12",
+                "pair:PAIR-SBD-song_master_01-13",
+                "storyboard:SBD-song_master_01-01",
+                "storyboard:SBD-song_master_01-04",
+                "storyboard:SBD-song_master_01-12",
+                "storyboard:SBD-song_master_01-13"
+              ],
+              "continuity_score": 25
+            },
+            {
+              "location_id": "LOC-bridge",
+              "location_name": "Sunset Crossing Bridge",
+              "environment_anchor": [
+                "LOC-bridge",
+                "river-span transitional path",
+                "horizon-forward crossing space",
+                "water reflection continuity below"
+              ],
+              "architecture_anchor": [
+                "suspension cable rhythm",
+                "guardrail line perspective",
+                "mid-span walkway geometry",
+                "distant city silhouette backdrop"
+              ],
+              "lighting_anchor": [
+                "golden hour rim on railing",
+                "long shadow stretch across deck",
+                "warm sky gradient key"
+              ],
+              "weather_anchor": [
+                "light wind across open span",
+                "clear sunset visibility",
+                "stable crossing conditions"
+              ],
+              "color_anchor": [
+                "amber sunset wash",
+                "cool river blue below",
+                "warm stone deck tones"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-06",
+                "storyboard:SBD-song_master_01-06"
+              ],
+              "continuity_score": 6
+            },
+            {
+              "location_id": "LOC-street",
+              "location_name": "Neighborhood Street Grid",
+              "environment_anchor": [
+                "LOC-street",
+                "urban pedestrian flow path",
+                "crosswalk and market edge continuity",
+                "daily commute surface texture"
+              ],
+              "architecture_anchor": [
+                "shopfront row repetition",
+                "crosswalk signal pole placement",
+                "bike lane edge marking",
+                "market stall canopy line"
+              ],
+              "lighting_anchor": [
+                "street-level mixed daylight",
+                "storefront bounce fill",
+                "late afternoon long shadows"
+              ],
+              "weather_anchor": [
+                "post-rain reflective pavement",
+                "open sidewalk breeze",
+                "market-hour ambient bustle"
+              ],
+              "color_anchor": [
+                "warm storefront signage hues",
+                "grey pavement baseline",
+                "green crosswalk accent stripes"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-07",
+                "pair:PAIR-SBD-song_master_01-08",
+                "pair:PAIR-SBD-song_master_01-11",
+                "storyboard:SBD-song_master_01-07",
+                "storyboard:SBD-song_master_01-08",
+                "storyboard:SBD-song_master_01-11"
+              ],
+              "continuity_score": 19
+            },
+            {
+              "location_id": "LOC-school",
+              "location_name": "Campus Walkway",
+              "environment_anchor": [
+                "LOC-school",
+                "institutional youth pathway",
+                "mentor-student practice corridor",
+                "campus gate to courtyard flow"
+              ],
+              "architecture_anchor": [
+                "school gate arch frame",
+                "flagpole and banner line",
+                "courtyard hedge boundary",
+                "classroom wing sightline"
+              ],
+              "lighting_anchor": [
+                "morning campus side light",
+                "open courtyard fill",
+                "neutral institutional key"
+              ],
+              "weather_anchor": [
+                "clear school-day sky",
+                "light campus wind on banners",
+                "stable academic-hour calm"
+              ],
+              "color_anchor": [
+                "school uniform neutral palette",
+                "green courtyard planting",
+                "white concrete walkway base"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-08",
+                "pair:PAIR-SBD-song_master_01-14",
+                "storyboard:SBD-song_master_01-08",
+                "storyboard:SBD-song_master_01-14"
+              ],
+              "continuity_score": 13
+            },
+            {
+              "location_id": "LOC-shore",
+              "location_name": "Harbor Shoreline",
+              "environment_anchor": [
+                "LOC-shore",
+                "coastal reunion approach path",
+                "wave-edge rhythmic shoreline",
+                "open horizon reunion space"
+              ],
+              "architecture_anchor": [
+                "wooden pier edge geometry",
+                "breakwater stone line",
+                "shore path railing continuity",
+                "distant lighthouse silhouette"
+              ],
+              "lighting_anchor": [
+                "low sun glint on water",
+                "warm rim on shoreline figures",
+                "soft reflective fill from sea"
+              ],
+              "weather_anchor": [
+                "coastal breeze on clothing",
+                "gentle wave motion constant",
+                "post-sunset cooling air"
+              ],
+              "color_anchor": [
+                "sea blue-green gradient",
+                "warm sand and stone tones",
+                "sunset amber horizon band"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-12",
+                "storyboard:SBD-song_master_01-12"
+              ],
+              "continuity_score": 6
+            },
+            {
+              "location_id": "LOC-rooftop",
+              "location_name": "Apartment Rooftop",
+              "environment_anchor": [
+                "LOC-rooftop",
+                "elevated farewell vista point",
+                "skyline contemplation space",
+                "wind-exposed departure overlook"
+              ],
+              "architecture_anchor": [
+                "parapet wall height continuity",
+                "water tank and antenna silhouette",
+                "rooftop access door frame",
+                "city grid depth planes"
+              ],
+              "lighting_anchor": [
+                "skyline haze backlight",
+                "cool elevated ambient fill",
+                "distant city light pricks at dusk"
+              ],
+              "weather_anchor": [
+                "strong rooftop wind ripple",
+                "open-air exposure",
+                "clear dusk visibility"
+              ],
+              "color_anchor": [
+                "cool blue-grey rooftop concrete",
+                "warm distant city glow",
+                "deep violet dusk sky"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-13",
+                "storyboard:SBD-song_master_01-13"
+              ],
+              "continuity_score": 6
+            },
+            {
+              "location_id": "LOC-forest",
+              "location_name": "Night Forest Clearing",
+              "environment_anchor": [
+                "LOC-forest",
+                "tree-lined quiet clearing",
+                "star-gazing open canopy gap",
+                "redemption ritual night space"
+              ],
+              "architecture_anchor": [
+                "natural tree ring boundary",
+                "forest path entry sightline",
+                "low stone seating circle",
+                "branch frame overhead geometry"
+              ],
+              "lighting_anchor": [
+                "star field ambient glow",
+                "soft moonless night fill",
+                "subtle ground-level practical light"
+              ],
+              "weather_anchor": [
+                "still night air",
+                "leaf rustle micro movement",
+                "clear star visibility"
+              ],
+              "color_anchor": [
+                "deep forest green shadows",
+                "cool night blue-black sky",
+                "muted earth floor tones"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-15",
+                "storyboard:SBD-song_master_01-15"
+              ],
+              "continuity_score": 6
+            }
+          ]
+        },
+        "world": {
+          "layer_version": "WORLD-CONTINUITY-PHASE-89-v1",
+          "seed_count": 1,
+          "song_master_id": "song_master_01",
+          "required_fields": [
+            "world_id",
+            "song_master_id",
+            "character_continuity_ids",
+            "location_continuity_ids",
+            "world_tone",
+            "recurring_motifs",
+            "time_of_day_pattern",
+            "weather_pattern",
+            "emotional_world_arc",
+            "scene_references",
+            "continuity_score"
+          ],
+          "pipeline_chain": [
+            "song_master",
+            "emotion_timeline",
+            "narrative_beat",
+            "storyboard_scene",
+            "image_prompt_pack",
+            "video_prompt_pack",
+            "prompt_pack_pair",
+            "character_continuity",
+            "location_continuity",
+            "world_continuity"
+          ],
+          "seed_world_continuity": [
+            {
+              "world_id": "WORLD-song_master_01",
+              "song_master_id": "song_master_01",
+              "character_continuity_ids": [
+                "CCN-CHAR-gonagi",
+                "CCN-CHAR-dana"
+              ],
+              "location_continuity_ids": [
+                "LOC-home",
+                "LOC-station",
+                "LOC-bridge",
+                "LOC-street",
+                "LOC-school",
+                "LOC-shore",
+                "LOC-rooftop",
+                "LOC-forest"
+              ],
+              "world_tone": [
+                "cinematic music video realism",
+                "gonagi visual continuity",
+                "intimate daily-life emotional scale",
+                "photorealistic anime-realism blend",
+                "guardian-companion bond atmosphere"
+              ],
+              "recurring_motifs": [
+                "motif:waiting-to-reunion",
+                "motif:window-reflection-memory",
+                "motif:transit-departure-return",
+                "motif:rain-to-clear-healing",
+                "motif:sunset-bridge-hope",
+                "motif:protective-presence",
+                "motif:daily-life-anchor-ritual",
+                "motif:gonagi-dana-bond-thread"
+              ],
+              "time_of_day_pattern": [
+                "dawn: morning_routine and journey departure",
+                "day: school street and market activity",
+                "golden-hour: bridge sunset and shore reunion",
+                "dusk: station waiting and rooftop farewell",
+                "night: forest star-gazing redemption"
+              ],
+              "weather_pattern": [
+                "clear-anticipation open sky",
+                "rain-longing interior shelter",
+                "post-rain reflective pavement",
+                "sunset-warm horizon gradient",
+                "night-still forest air"
+              ],
+              "emotional_world_arc": [
+                "arc:primary-emotion:anticipation",
+                "arc:primary-relationship:guardian_child",
+                "arc:0-30s:MVG-intro-waiting:anticipation",
+                "arc:30-75s:MVG-verse-loneliness:isolation",
+                "arc:75-105s:MVG-prechorus-hope:optimism",
+                "arc:105-150s:MVG-chorus-protection:care",
+                "arc:150-180s:MVG-bridge-farewell:parting",
+                "arc:180-210s:MVG-outro-parting:parting"
+              ],
+              "scene_references": [
+                "pair:PAIR-SBD-song_master_01-01",
+                "pair:PAIR-SBD-song_master_01-02",
+                "pair:PAIR-SBD-song_master_01-03",
+                "pair:PAIR-SBD-song_master_01-04",
+                "pair:PAIR-SBD-song_master_01-05",
+                "pair:PAIR-SBD-song_master_01-06",
+                "pair:PAIR-SBD-song_master_01-07",
+                "pair:PAIR-SBD-song_master_01-08",
+                "pair:PAIR-SBD-song_master_01-09",
+                "pair:PAIR-SBD-song_master_01-10",
+                "pair:PAIR-SBD-song_master_01-11",
+                "pair:PAIR-SBD-song_master_01-12",
+                "pair:PAIR-SBD-song_master_01-13",
+                "pair:PAIR-SBD-song_master_01-14",
+                "pair:PAIR-SBD-song_master_01-15",
+                "pair:PAIR-SBD-song_master_01-16",
+                "scene-order:1",
+                "scene-order:10",
+                "scene-order:11",
+                "scene-order:12",
+                "scene-order:13",
+                "scene-order:14",
+                "scene-order:15",
+                "scene-order:16",
+                "scene-order:2",
+                "scene-order:3",
+                "scene-order:4",
+                "scene-order:5",
+                "scene-order:6",
+                "scene-order:7",
+                "scene-order:8",
+                "scene-order:9",
+                "storyboard:SBD-song_master_01-01",
+                "storyboard:SBD-song_master_01-02",
+                "storyboard:SBD-song_master_01-03",
+                "storyboard:SBD-song_master_01-04",
+                "storyboard:SBD-song_master_01-05",
+                "storyboard:SBD-song_master_01-06",
+                "storyboard:SBD-song_master_01-07",
+                "storyboard:SBD-song_master_01-08",
+                "storyboard:SBD-song_master_01-09",
+                "storyboard:SBD-song_master_01-10",
+                "storyboard:SBD-song_master_01-11",
+                "storyboard:SBD-song_master_01-12",
+                "storyboard:SBD-song_master_01-13",
+                "storyboard:SBD-song_master_01-14",
+                "storyboard:SBD-song_master_01-15",
+                "storyboard:SBD-song_master_01-16"
+              ],
+              "continuity_score": 73
+            }
+          ]
+        }
+      },
+      "runtime": {
+        "fingerprints": {
+          "runtime-assembly-fingerprint": {
+            "schemaVersion": "RUNTIME-ASSEMBLY-FINGERPRINT-v1",
+            "sceneAssemblyIds": [
+              "ASM-close-hand-hope-sadness",
+              "ASM-close-hand-sadness-hope",
+              "ASM-medium-emotional-confession",
+              "ASM-medium-emotional-hope-sadness",
+              "ASM-overhead-isolation-hope-sadness",
+              "ASM-overhead-isolation-sunset",
+              "ASM-rear-follow-reunion",
+              "ASM-rear-follow-walking",
+              "ASM-side-tracking-reunion",
+              "ASM-side-tracking-walking",
+              "ASM-silhouette-reunion",
+              "ASM-silhouette-sunset",
+              "ASM-wide-establishing-rain",
+              "ASM-wide-establishing-sunset",
+              "ASM-window-reflection-confession",
+              "ASM-window-reflection-hope"
+            ],
+            "resolverReferences": {
+              "ASM-wide-establishing-sunset": "RES-wide-establishing-sunset",
+              "ASM-wide-establishing-rain": "RES-wide-establishing-rain",
+              "ASM-medium-emotional-confession": "RES-medium-emotional-confession",
+              "ASM-medium-emotional-hope-sadness": "RES-medium-emotional-hope-sadness",
+              "ASM-side-tracking-walking": "RES-side-tracking-walking",
+              "ASM-side-tracking-reunion": "RES-side-tracking-reunion",
+              "ASM-rear-follow-reunion": "RES-rear-follow-reunion",
+              "ASM-rear-follow-walking": "RES-rear-follow-walking",
+              "ASM-overhead-isolation-hope-sadness": "RES-overhead-isolation-hope-sadness",
+              "ASM-overhead-isolation-sunset": "RES-overhead-isolation-sunset",
+              "ASM-window-reflection-confession": "RES-window-reflection-confession",
+              "ASM-window-reflection-hope": "RES-window-reflection-hope",
+              "ASM-close-hand-hope-sadness": "RES-close-hand-hope-sadness",
+              "ASM-close-hand-sadness-hope": "RES-close-hand-sadness-hope",
+              "ASM-silhouette-reunion": "RES-silhouette-reunion",
+              "ASM-silhouette-sunset": "RES-silhouette-sunset"
+            },
+            "shotBindings": {
+              "ASM-wide-establishing-sunset": "wide_establishing",
+              "ASM-wide-establishing-rain": "wide_establishing",
+              "ASM-medium-emotional-confession": "medium_emotional",
+              "ASM-medium-emotional-hope-sadness": "medium_emotional",
+              "ASM-side-tracking-walking": "side_tracking",
+              "ASM-side-tracking-reunion": "side_tracking",
+              "ASM-rear-follow-reunion": "rear_follow",
+              "ASM-rear-follow-walking": "rear_follow",
+              "ASM-overhead-isolation-hope-sadness": "overhead_isolation",
+              "ASM-overhead-isolation-sunset": "overhead_isolation",
+              "ASM-window-reflection-confession": "window_reflection",
+              "ASM-window-reflection-hope": "window_reflection",
+              "ASM-close-hand-hope-sadness": "close_hand_detail",
+              "ASM-close-hand-sadness-hope": "close_hand_detail",
+              "ASM-silhouette-reunion": "silhouette_distance",
+              "ASM-silhouette-sunset": "silhouette_distance"
+            },
+            "transitionBindings": {
+              "ASM-wide-establishing-sunset": "sunset_to_night",
+              "ASM-wide-establishing-rain": "rain_to_clear",
+              "ASM-medium-emotional-confession": "silence_to_confession",
+              "ASM-medium-emotional-hope-sadness": "hope_to_sadness",
+              "ASM-side-tracking-walking": "walking_to_running",
+              "ASM-side-tracking-reunion": "separation_to_reunion",
+              "ASM-rear-follow-reunion": "separation_to_reunion",
+              "ASM-rear-follow-walking": "walking_to_running",
+              "ASM-overhead-isolation-hope-sadness": "hope_to_sadness",
+              "ASM-overhead-isolation-sunset": "sunset_to_night",
+              "ASM-window-reflection-confession": "silence_to_confession",
+              "ASM-window-reflection-hope": "sadness_to_hope",
+              "ASM-close-hand-hope-sadness": "hope_to_sadness",
+              "ASM-close-hand-sadness-hope": "sadness_to_hope",
+              "ASM-silhouette-reunion": "separation_to_reunion",
+              "ASM-silhouette-sunset": "sunset_to_night"
+            },
+            "continuityGlue": {
+              "ASM-wide-establishing-sunset": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift",
+              "ASM-wide-establishing-rain": "tension releases into cautious hope, umbrella lowers, stride opens, same axis tracking maintained, diffuse gray to warm bounce return, hold then lighten, ground reflection match, weather continuity",
+              "ASM-medium-emotional-confession": "silence breaks into vulnerable confession, minimal gesture expands into expressive hands, static medium to soft push-in, stable intimate key, pause then single forward beat, framing continuity, spatial intimacy",
+              "ASM-medium-emotional-hope-sadness": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity",
+              "ASM-side-tracking-walking": "companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match",
+              "ASM-side-tracking-reunion": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match",
+              "ASM-rear-follow-reunion": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match",
+              "ASM-rear-follow-walking": "companionship sustains through motion continuity, maintain matched pace without abrupt speed jump, lateral tracking axis locked, stable golden hour continuity, hold gentle cadence, axis continuity, horizon lock, pace match",
+              "ASM-overhead-isolation-hope-sadness": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity",
+              "ASM-overhead-isolation-sunset": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift",
+              "ASM-window-reflection-confession": "silence breaks into vulnerable confession, minimal gesture expands into expressive hands, static medium to soft push-in, stable intimate key, pause then single forward beat, framing continuity, spatial intimacy",
+              "ASM-window-reflection-hope": "sadness lifts into gentle hope, chin lifts, stride lengthens, subtle push-in then stable tracking, shadow depth eases, warm rim returns, accelerate half beat, eyeline continuity, friendship spacing",
+              "ASM-close-hand-hope-sadness": "hope folds into tender sadness, shoulders lower, stride shortens, medium hold tightens slightly, warm key softens, shadow depth increases, decelerate half beat, eyeline continuity, spacing continuity",
+              "ASM-close-hand-sadness-hope": "sadness lifts into gentle hope, chin lifts, stride lengthens, subtle push-in then stable tracking, shadow depth eases, warm rim returns, accelerate half beat, eyeline continuity, friendship spacing",
+              "ASM-silhouette-reunion": "separation resolves into reunion warmth, paths converge with recognition pause, rear follow to medium reunion frame, consistent warm key on faces, decelerate into hold on reunion, distance continuity, eyeline match",
+              "ASM-silhouette-sunset": "nostalgia deepens into quiet resolve, pace slows with shorter steps, wider hold then gentle settle, golden ochre to indigo violet rim, decelerate one beat, horizon lock, lighting continuity, palette drift"
+            },
+            "outputContractSchemaVersion": "RUNTIME-OUTPUT-CONTRACT-FINGERPRINT-v1",
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          },
+          "runtime-contract-fingerprint": {
+            "schemaVersion": "RUNTIME-CONTRACT-FINGERPRINT-v1",
+            "boundary": "STAGE-8→STAGE-9",
+            "stageIds": [
+              "STAGE-8",
+              "STAGE-9"
+            ],
+            "contractIds": [
+              "consumer_integration",
+              "gpu_integration"
+            ],
+            "dependencyGraph": {
+              "STAGE-8": "STAGE-7",
+              "STAGE-9": "STAGE-8"
+            },
+            "plannedInputs": {
+              "STAGE-8": [
+                "image_dataset_export",
+                "video_dataset_export"
+              ],
+              "STAGE-9": [
+                "video_dataset_export",
+                "gpu_render_plan"
+              ]
+            },
+            "plannedOutputs": {
+              "STAGE-8": [
+                "image_app_v17_handoff",
+                "video_app_v82_6_handoff"
+              ],
+              "STAGE-9": [
+                "gpu_pipeline_handoff",
+                "future_gpu_pipeline_ref"
+              ]
+            },
+            "consumerContract": {
+              "stage_id": "STAGE-8",
+              "contract_id": "consumer_integration",
+              "depends_on": "STAGE-7",
+              "next_stage_hint": "STAGE-9",
+              "planned_inputs": [
+                "consumer_input_plan_stub",
+                "image_app_v17_reference_stub",
+                "video_app_v82_6_reference_stub",
+                "export_boundary_reference_stub"
+              ],
+              "planned_outputs": [
+                "image_app_handoff_plan_stub",
+                "video_app_handoff_plan_stub",
+                "consumer_boundary_report_stub",
+                "consumer_integration_bundle_stub"
+              ]
+            },
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          },
+          "runtime-output-contract-fingerprint": {
+            "schemaVersion": "RUNTIME-OUTPUT-CONTRACT-FINGERPRINT-v1",
+            "outputSchema": {
+              "topLevel": [
+                "compiled_shot_binding",
+                "compiled_transition_binding",
+                "continuity_glue"
+              ],
+              "compiled_shot_binding": [
+                "shot_id",
+                "framing",
+                "lens_behavior",
+                "camera_motion",
+                "subject_distance",
+                "cinematic_role"
+              ],
+              "compiled_transition_binding": [
+                "transition_id",
+                "from_state",
+                "to_state",
+                "emotional_bridge",
+                "motion_bridge",
+                "camera_shift",
+                "lighting_shift",
+                "pacing_shift",
+                "continuity_glue"
+              ],
+              "consumer_wrapper": [
+                "shot_bindings",
+                "transition_bindings",
+                "continuity_glue",
+                "consumer_handoff_ref"
+              ]
+            },
+            "requiredFields": [
+              "shot_bindings",
+              "transition_bindings",
+              "continuity_glue",
+              "consumer_handoff_ref"
+            ],
+            "consumerCompatibility": {
+              "consumerLayer": "video_runtime_consumer",
+              "handoffTargets": [
+                "image_app_v17_handoff",
+                "video_app_v82_6_handoff"
+              ],
+              "resolverFieldCoverage": {
+                "compiled_shot_binding": [
+                  "shot_id",
+                  "framing",
+                  "lens_behavior",
+                  "camera_motion",
+                  "subject_distance",
+                  "cinematic_role"
+                ],
+                "compiled_transition_binding": [
+                  "transition_id",
+                  "from_state",
+                  "to_state",
+                  "emotional_bridge",
+                  "motion_bridge",
+                  "camera_shift",
+                  "lighting_shift",
+                  "pacing_shift",
+                  "continuity_glue"
+                ],
+                "continuity_glue": [
+                  "continuity_glue"
+                ]
+              }
+            },
+            "outputDependencyGraph": {
+              "runtime_output": [
+                "runtime_resolver",
+                "video_runtime_consumer"
+              ],
+              "runtime_resolver": [
+                "selection_rules",
+                "cross_links"
+              ],
+              "video_runtime_consumer": [
+                "STAGE-8-consumer_integration"
+              ]
+            },
+            "outputMappingIds": [
+              "OUT-close-hand-hope-sadness",
+              "OUT-close-hand-sadness-hope",
+              "OUT-medium-emotional-confession",
+              "OUT-medium-emotional-hope-sadness",
+              "OUT-overhead-isolation-hope-sadness",
+              "OUT-overhead-isolation-sunset",
+              "OUT-rear-follow-reunion",
+              "OUT-rear-follow-walking",
+              "OUT-side-tracking-reunion",
+              "OUT-side-tracking-walking",
+              "OUT-silhouette-reunion",
+              "OUT-silhouette-sunset",
+              "OUT-wide-establishing-rain",
+              "OUT-wide-establishing-sunset",
+              "OUT-window-reflection-confession",
+              "OUT-window-reflection-hope"
+            ],
+            "resolverMappingReferences": [
+              "RES-close-hand-hope-sadness",
+              "RES-close-hand-sadness-hope",
+              "RES-medium-emotional-confession",
+              "RES-medium-emotional-hope-sadness",
+              "RES-overhead-isolation-hope-sadness",
+              "RES-overhead-isolation-sunset",
+              "RES-rear-follow-reunion",
+              "RES-rear-follow-walking",
+              "RES-side-tracking-reunion",
+              "RES-side-tracking-walking",
+              "RES-silhouette-reunion",
+              "RES-silhouette-sunset",
+              "RES-wide-establishing-rain",
+              "RES-wide-establishing-sunset",
+              "RES-window-reflection-confession",
+              "RES-window-reflection-hope"
+            ],
+            "resolverContractSchemaVersion": "RUNTIME-RESOLVER-CONTRACT-FINGERPRINT-v1",
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          },
+          "runtime-resolver-contract-fingerprint": {
+            "schemaVersion": "RUNTIME-RESOLVER-CONTRACT-FINGERPRINT-v1",
+            "resolverInputs": [
+              "shot_id",
+              "transition_id",
+              "rule_id"
+            ],
+            "resolverOutputs": {
+              "topLevel": [
+                "compiled_shot_binding",
+                "compiled_transition_binding",
+                "continuity_glue"
+              ],
+              "compiled_shot_binding": [
+                "shot_id",
+                "framing",
+                "lens_behavior",
+                "camera_motion",
+                "subject_distance",
+                "cinematic_role"
+              ],
+              "compiled_transition_binding": [
+                "transition_id",
+                "from_state",
+                "to_state",
+                "emotional_bridge",
+                "motion_bridge",
+                "camera_shift",
+                "lighting_shift",
+                "pacing_shift",
+                "continuity_glue"
+              ]
+            },
+            "selectionRuleReferences": [
+              "SEL-close-hand-hope-sadness",
+              "SEL-close-hand-sadness-hope",
+              "SEL-medium-emotional-confession",
+              "SEL-medium-emotional-hope-sadness",
+              "SEL-overhead-isolation-hope-sadness",
+              "SEL-overhead-isolation-sunset",
+              "SEL-rear-follow-reunion",
+              "SEL-rear-follow-walking",
+              "SEL-side-tracking-reunion",
+              "SEL-side-tracking-walking",
+              "SEL-silhouette-reunion",
+              "SEL-silhouette-sunset",
+              "SEL-wide-establishing-rain",
+              "SEL-wide-establishing-sunset",
+              "SEL-window-reflection-confession",
+              "SEL-window-reflection-hope"
+            ],
+            "crossLinkReferences": [
+              "close_hand_detail::hope_to_sadness",
+              "close_hand_detail::sadness_to_hope",
+              "medium_emotional::hope_to_sadness",
+              "medium_emotional::silence_to_confession",
+              "overhead_isolation::hope_to_sadness",
+              "overhead_isolation::sunset_to_night",
+              "rear_follow::separation_to_reunion",
+              "rear_follow::walking_to_running",
+              "side_tracking::separation_to_reunion",
+              "side_tracking::walking_to_running",
+              "silhouette_distance::separation_to_reunion",
+              "silhouette_distance::sunset_to_night",
+              "wide_establishing::rain_to_clear",
+              "wide_establishing::sunset_to_night",
+              "window_reflection::sadness_to_hope",
+              "window_reflection::silence_to_confession"
+            ],
+            "dependencyGraph": {
+              "runtime_resolver": [
+                "selection_rules",
+                "cross_links",
+                "shot_fingerprint_library",
+                "transition_dna_library"
+              ],
+              "selection_rules": [
+                "cross_links"
+              ],
+              "cross_links": [
+                "shot_fingerprint_library",
+                "transition_dna_library"
+              ],
+              "shot_fingerprint_library": [],
+              "transition_dna_library": []
+            },
+            "mappingIds": [
+              "RES-close-hand-hope-sadness",
+              "RES-close-hand-sadness-hope",
+              "RES-medium-emotional-confession",
+              "RES-medium-emotional-hope-sadness",
+              "RES-overhead-isolation-hope-sadness",
+              "RES-overhead-isolation-sunset",
+              "RES-rear-follow-reunion",
+              "RES-rear-follow-walking",
+              "RES-side-tracking-reunion",
+              "RES-side-tracking-walking",
+              "RES-silhouette-reunion",
+              "RES-silhouette-sunset",
+              "RES-wide-establishing-rain",
+              "RES-wide-establishing-sunset",
+              "RES-window-reflection-confession",
+              "RES-window-reflection-hope"
+            ],
+            "selectionRuleSchemaVersion": "RUNTIME-SELECTION-RULE-FINGERPRINT-v1",
+            "crossLinkSchemaVersion": "RUNTIME-LIBRARY-CROSS-LINK-FINGERPRINT-v1",
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          },
+          "runtime-selection-rule-fingerprint": {
+            "schemaVersion": "RUNTIME-SELECTION-RULE-FINGERPRINT-v1",
+            "ruleIds": [
+              "SEL-close-hand-hope-sadness",
+              "SEL-close-hand-sadness-hope",
+              "SEL-medium-emotional-confession",
+              "SEL-medium-emotional-hope-sadness",
+              "SEL-overhead-isolation-hope-sadness",
+              "SEL-overhead-isolation-sunset",
+              "SEL-rear-follow-reunion",
+              "SEL-rear-follow-walking",
+              "SEL-side-tracking-reunion",
+              "SEL-side-tracking-walking",
+              "SEL-silhouette-reunion",
+              "SEL-silhouette-sunset",
+              "SEL-wide-establishing-rain",
+              "SEL-wide-establishing-sunset",
+              "SEL-window-reflection-confession",
+              "SEL-window-reflection-hope"
+            ],
+            "rulePriorities": {
+              "SEL-close-hand-hope-sadness": 1,
+              "SEL-close-hand-sadness-hope": 2,
+              "SEL-medium-emotional-confession": 1,
+              "SEL-medium-emotional-hope-sadness": 2,
+              "SEL-overhead-isolation-hope-sadness": 1,
+              "SEL-overhead-isolation-sunset": 2,
+              "SEL-rear-follow-reunion": 1,
+              "SEL-rear-follow-walking": 2,
+              "SEL-side-tracking-reunion": 2,
+              "SEL-side-tracking-walking": 1,
+              "SEL-silhouette-reunion": 1,
+              "SEL-silhouette-sunset": 2,
+              "SEL-wide-establishing-rain": 2,
+              "SEL-wide-establishing-sunset": 1,
+              "SEL-window-reflection-confession": 1,
+              "SEL-window-reflection-hope": 2
+            },
+            "shotReferences": {
+              "SEL-close-hand-hope-sadness": "close_hand_detail",
+              "SEL-close-hand-sadness-hope": "close_hand_detail",
+              "SEL-medium-emotional-confession": "medium_emotional",
+              "SEL-medium-emotional-hope-sadness": "medium_emotional",
+              "SEL-overhead-isolation-hope-sadness": "overhead_isolation",
+              "SEL-overhead-isolation-sunset": "overhead_isolation",
+              "SEL-rear-follow-reunion": "rear_follow",
+              "SEL-rear-follow-walking": "rear_follow",
+              "SEL-side-tracking-reunion": "side_tracking",
+              "SEL-side-tracking-walking": "side_tracking",
+              "SEL-silhouette-reunion": "silhouette_distance",
+              "SEL-silhouette-sunset": "silhouette_distance",
+              "SEL-wide-establishing-rain": "wide_establishing",
+              "SEL-wide-establishing-sunset": "wide_establishing",
+              "SEL-window-reflection-confession": "window_reflection",
+              "SEL-window-reflection-hope": "window_reflection"
+            },
+            "transitionReferences": {
+              "SEL-close-hand-hope-sadness": "hope_to_sadness",
+              "SEL-close-hand-sadness-hope": "sadness_to_hope",
+              "SEL-medium-emotional-confession": "silence_to_confession",
+              "SEL-medium-emotional-hope-sadness": "hope_to_sadness",
+              "SEL-overhead-isolation-hope-sadness": "hope_to_sadness",
+              "SEL-overhead-isolation-sunset": "sunset_to_night",
+              "SEL-rear-follow-reunion": "separation_to_reunion",
+              "SEL-rear-follow-walking": "walking_to_running",
+              "SEL-side-tracking-reunion": "separation_to_reunion",
+              "SEL-side-tracking-walking": "walking_to_running",
+              "SEL-silhouette-reunion": "separation_to_reunion",
+              "SEL-silhouette-sunset": "sunset_to_night",
+              "SEL-wide-establishing-rain": "rain_to_clear",
+              "SEL-wide-establishing-sunset": "sunset_to_night",
+              "SEL-window-reflection-confession": "silence_to_confession",
+              "SEL-window-reflection-hope": "sadness_to_hope"
+            },
+            "crossLinkSchemaVersion": "RUNTIME-LIBRARY-CROSS-LINK-FINGERPRINT-v1",
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          },
+          "runtime-library-cross-link-fingerprint": {
+            "schemaVersion": "RUNTIME-LIBRARY-CROSS-LINK-FINGERPRINT-v1",
+            "shotIds": [
+              "close_hand_detail",
+              "medium_emotional",
+              "overhead_isolation",
+              "rear_follow",
+              "side_tracking",
+              "silhouette_distance",
+              "wide_establishing",
+              "window_reflection"
+            ],
+            "transitionIds": [
+              "hope_to_sadness",
+              "rain_to_clear",
+              "sadness_to_hope",
+              "separation_to_reunion",
+              "silence_to_confession",
+              "sunset_to_night",
+              "walking_to_running"
+            ],
+            "crossLinks": [
+              {
+                "shot_id": "close_hand_detail",
+                "transition_id": "hope_to_sadness"
+              },
+              {
+                "shot_id": "close_hand_detail",
+                "transition_id": "sadness_to_hope"
+              },
+              {
+                "shot_id": "medium_emotional",
+                "transition_id": "hope_to_sadness"
+              },
+              {
+                "shot_id": "medium_emotional",
+                "transition_id": "silence_to_confession"
+              },
+              {
+                "shot_id": "overhead_isolation",
+                "transition_id": "hope_to_sadness"
+              },
+              {
+                "shot_id": "overhead_isolation",
+                "transition_id": "sunset_to_night"
+              },
+              {
+                "shot_id": "rear_follow",
+                "transition_id": "separation_to_reunion"
+              },
+              {
+                "shot_id": "rear_follow",
+                "transition_id": "walking_to_running"
+              },
+              {
+                "shot_id": "side_tracking",
+                "transition_id": "separation_to_reunion"
+              },
+              {
+                "shot_id": "side_tracking",
+                "transition_id": "walking_to_running"
+              },
+              {
+                "shot_id": "silhouette_distance",
+                "transition_id": "separation_to_reunion"
+              },
+              {
+                "shot_id": "silhouette_distance",
+                "transition_id": "sunset_to_night"
+              },
+              {
+                "shot_id": "wide_establishing",
+                "transition_id": "rain_to_clear"
+              },
+              {
+                "shot_id": "wide_establishing",
+                "transition_id": "sunset_to_night"
+              },
+              {
+                "shot_id": "window_reflection",
+                "transition_id": "sadness_to_hope"
+              },
+              {
+                "shot_id": "window_reflection",
+                "transition_id": "silence_to_confession"
+              }
+            ],
+            "categoryMappings": {
+              "departure or pursuit": [
+                "separation resolves into reunion warmth",
+                "companionship sustains through motion continuity"
+              ],
+              "emotional dialogue hold": [
+                "hope folds into tender sadness",
+                "silence breaks into vulnerable confession",
+                "sadness lifts into gentle hope"
+              ],
+              "emotional distance": [
+                "separation resolves into reunion warmth",
+                "nostalgia deepens into quiet resolve"
+              ],
+              "establish geography": [
+                "nostalgia deepens into quiet resolve",
+                "tension releases into cautious hope"
+              ],
+              "gesture beat": [
+                "hope folds into tender sadness",
+                "sadness lifts into gentle hope"
+              ],
+              "inner emotion mirror": [
+                "silence breaks into vulnerable confession",
+                "sadness lifts into gentle hope"
+              ],
+              "isolation emphasis": [
+                "hope folds into tender sadness",
+                "nostalgia deepens into quiet resolve"
+              ],
+              "travel companionship": [
+                "companionship sustains through motion continuity",
+                "separation resolves into reunion warmth"
+              ]
+            },
+            "schemaVersions": {
+              "shotFingerprint": "SHOT-FINGERPRINT-INDEX-v1",
+              "transitionDna": "TRANSITION-DNA-INDEX-v1",
+              "shotFingerprintContract": "SHOT-FINGERPRINT-CONTRACT-FINGERPRINT-v1",
+              "transitionDnaContract": "TRANSITION-DNA-CONTRACT-FINGERPRINT-v1"
+            },
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          },
+          "shot-fingerprint-contract-fingerprint": {
+            "schemaVersion": "SHOT-FINGERPRINT-CONTRACT-FINGERPRINT-v1",
+            "librarySchemaVersion": "SHOT-FINGERPRINT-INDEX-v1",
+            "fingerprintIds": [
+              "wide_establishing",
+              "medium_emotional",
+              "side_tracking",
+              "rear_follow",
+              "overhead_isolation",
+              "window_reflection",
+              "close_hand_detail",
+              "silhouette_distance"
+            ],
+            "categories": {
+              "wide_establishing": "establish geography",
+              "medium_emotional": "emotional dialogue hold",
+              "side_tracking": "travel companionship",
+              "rear_follow": "departure or pursuit",
+              "overhead_isolation": "isolation emphasis",
+              "window_reflection": "inner emotion mirror",
+              "close_hand_detail": "gesture beat",
+              "silhouette_distance": "emotional distance"
+            },
+            "requiredFields": [
+              "shot_id",
+              "framing",
+              "lens_behavior",
+              "camera_motion",
+              "subject_distance",
+              "cinematic_role",
+              "continuity_bias"
+            ],
+            "indexStructure": [
+              {
+                "fingerprint_id": "wide_establishing",
+                "path": "shot_fingerprint/wide_establishing.json"
+              },
+              {
+                "fingerprint_id": "medium_emotional",
+                "path": "shot_fingerprint/medium_emotional.json"
+              },
+              {
+                "fingerprint_id": "side_tracking",
+                "path": "shot_fingerprint/side_tracking.json"
+              },
+              {
+                "fingerprint_id": "rear_follow",
+                "path": "shot_fingerprint/rear_follow.json"
+              },
+              {
+                "fingerprint_id": "overhead_isolation",
+                "path": "shot_fingerprint/overhead_isolation.json"
+              },
+              {
+                "fingerprint_id": "window_reflection",
+                "path": "shot_fingerprint/window_reflection.json"
+              },
+              {
+                "fingerprint_id": "close_hand_detail",
+                "path": "shot_fingerprint/close_hand_detail.json"
+              },
+              {
+                "fingerprint_id": "silhouette_distance",
+                "path": "shot_fingerprint/silhouette_distance.json"
+              }
+            ],
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          },
+          "transition-dna-contract-fingerprint": {
+            "schemaVersion": "TRANSITION-DNA-CONTRACT-FINGERPRINT-v1",
+            "librarySchemaVersion": "TRANSITION-DNA-INDEX-v1",
+            "transitionIds": [
+              "sunset_to_night",
+              "rain_to_clear",
+              "hope_to_sadness",
+              "sadness_to_hope",
+              "walking_to_running",
+              "separation_to_reunion",
+              "silence_to_confession"
+            ],
+            "categories": {
+              "sunset_to_night": "nostalgia deepens into quiet resolve",
+              "rain_to_clear": "tension releases into cautious hope",
+              "hope_to_sadness": "hope folds into tender sadness",
+              "sadness_to_hope": "sadness lifts into gentle hope",
+              "walking_to_running": "companionship sustains through motion continuity",
+              "separation_to_reunion": "separation resolves into reunion warmth",
+              "silence_to_confession": "silence breaks into vulnerable confession"
+            },
+            "requiredFields": [
+              "transition_id",
+              "from_state",
+              "to_state",
+              "emotional_bridge",
+              "motion_bridge",
+              "camera_shift",
+              "lighting_shift",
+              "pacing_shift",
+              "continuity_keywords"
+            ],
+            "indexStructure": [
+              {
+                "transition_id": "sunset_to_night",
+                "path": "transition_dna/sunset_to_night.json"
+              },
+              {
+                "transition_id": "rain_to_clear",
+                "path": "transition_dna/rain_to_clear.json"
+              },
+              {
+                "transition_id": "hope_to_sadness",
+                "path": "transition_dna/hope_to_sadness.json"
+              },
+              {
+                "transition_id": "sadness_to_hope",
+                "path": "transition_dna/sadness_to_hope.json"
+              },
+              {
+                "transition_id": "walking_to_running",
+                "path": "transition_dna/walking_to_running.json"
+              },
+              {
+                "transition_id": "separation_to_reunion",
+                "path": "transition_dna/separation_to_reunion.json"
+              },
+              {
+                "transition_id": "silence_to_confession",
+                "path": "transition_dna/silence_to_confession.json"
+              }
+            ],
+            "frozenAt": "2026-05-30T00:00:00.000Z"
+          }
+        }
+      }
+    },
+    "production_execution": {
+      "report_id": "production-execution-pipeline-report-v1",
+      "phase": "PHASE-L2-CONSISTENCY-004",
+      "generated_at": "2026-06-08T23:22:51.879Z",
+      "final_verdict": "PASS_PRODUCTION_EXECUTION_PIPELINE_V1",
+      "status": "REAL_FEATURE_PRODUCTION_READY",
+      "precheck": {
+        "temporal_memory_validation_ready": true,
+        "pass_temporal_memory_validation_system_v1": true,
+        "precheck_passed": true,
+        "issues": []
+      },
+      "policy": {
+        "all_previous_outputs_read_only": true,
+        "write_policy": "SAFE_CREATE_ONLY"
+      },
+      "pipeline_summary": {
+        "stage_count": 8,
+        "handoff_integrity": "PASS",
+        "stage_transition_integrity": "PASS",
+        "traceability_dimension_count": 8,
+        "failure_dimension_count": 5,
+        "execution_scale_count": 4,
+        "production_traceability_integrity": "PASS",
+        "pipeline_recovery_integrity": "PASS",
+        "threshold_integrity": "PASS",
+        "consistency_traceability_integrity": "PASS"
+      },
+      "outputs": {
+        "execution_spec_path": "exports/production_pipeline/production-execution-specification.json",
+        "stage_spec_path": "exports/production_pipeline/production-stage-specification.json",
+        "handoff_spec_path": "exports/production_pipeline/production-handoff-specification.json",
+        "traceability_spec_path": "exports/production_pipeline/production-traceability-specification.json",
+        "failure_spec_path": "exports/production_pipeline/production-failure-specification.json",
+        "readiness_thresholds_path": "exports/production_pipeline/production-readiness-thresholds.json",
+        "execution_scale_spec_path": "exports/production_pipeline/execution-scale-specification.json"
+      },
+      "issues": [],
+      "real_feature_production_ready": true
+    }
+  },
+  "source_block_id": "video-generation-bundle-v5"
+}

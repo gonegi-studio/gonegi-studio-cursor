@@ -1,0 +1,61 @@
+{
+  "report_id": "environment_identity_gpu_readiness_mqd0dwfd",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005A",
+  "system_id": "ENVIRONMENT_IDENTITY_GPU_VALIDATION_V1",
+  "generated_at": "2026-06-13T23:50:59.689Z",
+  "final_verdict": "PASS_ENVIRONMENT_IDENTITY_GPU_VALIDATION_V1",
+  "status": "ENVIRONMENT_GPU_VALIDATION_DEFINED",
+  "validation_passed": true,
+  "environment_validation_defined": true,
+  "same_environment_criteria_defined": true,
+  "similar_environment_criteria_defined": true,
+  "drift_levels_defined": true,
+  "failure_criteria_defined": true,
+  "reference_bank_recall_rules_defined": true,
+  "dataset_plan_defined": true,
+  "expected_pass_rate_defined": true,
+  "readiness_defined": true,
+  "environment_identity_validated": false,
+  "gpu_validation_executed": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "validation_ready": true,
+  "execution_ready": false,
+  "blocking_factors": [
+    "gpu_execution disabled in validation definition phase",
+    "environment_identity_map reserved_v1 with no populated payload",
+    "IP-Adapter environment reference nodes not connected",
+    "anchor_images are metadata placeholders only",
+    "Validation Defined != Validation Executed"
+  ],
+  "highest_risk_area": "reference_drift on hard-tier titanic_staircase_001 cases",
+  "expected_pass_rate": {
+    "easy": 0.85,
+    "medium": 0.55,
+    "hard": 0.15
+  },
+  "checks": {
+    "environment_validation_defined": true,
+    "same_environment_criteria_defined": true,
+    "similar_environment_criteria_defined": true,
+    "drift_levels_defined": true,
+    "failure_criteria_defined": true,
+    "reference_bank_recall_rules_defined": true,
+    "dataset_plan_defined": true,
+    "expected_pass_rate_defined": true,
+    "readiness_defined": true,
+    "hard_tier_present": true,
+    "execution_ready_false": true,
+    "environment_identity_validated_false": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "validation_definition_only": true,
+    "gpu_execution": false,
+    "image_generation": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

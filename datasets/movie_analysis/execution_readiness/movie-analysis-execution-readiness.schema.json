@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/execution_readiness/movie-analysis-execution-readiness.schema.json",
+  "title": "MovieAnalysisExecutionReadinessPlan",
+  "description": "Planning-only execution readiness design for PHASE-SOURCE-VIDEO-037",
+  "type": "object",
+  "required": [
+    "execution_readiness_id",
+    "phase",
+    "generation_blueprint_id",
+    "source_video_id",
+    "scene_readiness",
+    "character_readiness",
+    "camera_readiness",
+    "emotion_readiness",
+    "transition_readiness",
+    "continuity_readiness",
+    "runtime_readiness",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "execution_readiness_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-037-MOVIE_ANALYSIS_EXECUTION_READINESS_DESIGN_V1"
+    },
+    "generation_blueprint_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "scene_readiness": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/readiness_element" }
+    },
+    "character_readiness": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/readiness_element" }
+    },
+    "camera_readiness": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/readiness_element" }
+    },
+    "emotion_readiness": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/readiness_element" }
+    },
+    "transition_readiness": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/readiness_element" }
+    },
+    "continuity_readiness": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/readiness_element" }
+    },
+    "runtime_readiness": {
+      "type": "object",
+      "required": [
+        "estimated_only",
+        "execution_readiness_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_ready",
+        "purpose"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "estimated_only": { "type": "boolean", "const": true },
+        "execution_readiness_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_ready": { "type": "boolean", "const": false },
+        "purpose": {
+          "type": "string",
+          "const": "future_execution_readiness_preparation"
+        }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "execution_readiness_only",
+        "estimated_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "execution_readiness_only": { "type": "boolean", "const": true },
+        "estimated_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "readiness_element": {
+      "type": "object",
+      "required": [
+        "element_id",
+        "source_blueprint_element_ids",
+        "estimated_readiness_value",
+        "execution_readiness_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "element_id": { "type": "string" },
+        "source_blueprint_element_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "estimated_readiness_value": { "type": "string", "minLength": 1 },
+        "execution_readiness_only": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

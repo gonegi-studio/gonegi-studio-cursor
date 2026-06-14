@@ -1,0 +1,36 @@
+{
+  "registry_id": "movie-replica-registry-v1",
+  "phase": "PHASE-MOVIE-REPLICA-001",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_replica/movie-replica.schema.json",
+  "character_replacement_contract_ref": "datasets/character_replacement/gonegi-master-character-replacement-v1.json",
+  "purpose": "Transform analyzed movie reconstruction bundles into structure-only replica datasets for character replacement and future video reconstruction",
+  "pipeline": [
+    "original_movie",
+    "analysis",
+    "replica_dataset",
+    "character_replacement",
+    "future_video_reconstruction"
+  ],
+  "replica_datasets": [
+    {
+      "movie_id": "titanic",
+      "dataset_id": "titanic-movie-replica-dataset-v1",
+      "dataset_path": "datasets/movie_replica/titanic/titanic-movie-replica-dataset.json",
+      "source_bundle_path": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json",
+      "scene_replica_count": 300,
+      "status": "built"
+    },
+    {
+      "movie_id": "spirited_away",
+      "dataset_id": "spirited_away-movie-replica-dataset-v1",
+      "dataset_path": "datasets/movie_replica/spirited_away/spirited-away-movie-replica-dataset.json",
+      "source_bundle_path": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json",
+      "scene_replica_count": 300,
+      "status": "built"
+    }
+  ],
+  "generated_at": "2026-06-13T01:41:13.520Z",
+  "source_movie_registry_ref": "exports/movie_datasets/movie-dataset-registry.json",
+  "execution_policy": "SAFE_CREATE_ONLY"
+}

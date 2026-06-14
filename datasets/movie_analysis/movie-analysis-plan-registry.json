@@ -1,0 +1,48 @@
+{
+  "registry_id": "movie-analysis-plan-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/movie-analysis-plan.schema.json",
+  "final_set_path": "datasets/source_video/source-video-final-set.json",
+  "director_grammar_registry_path": "datasets/director_grammar/director-grammar-registry.json",
+  "promotion_gate_report_path": "reports/gonegi-pipeline-promotion-gate-report.json",
+  "storage_dir": "datasets/movie_analysis/plans",
+  "analysis_plans": [
+    {
+      "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+      "plan_path": "datasets/movie_analysis/plans/analysis_plan_ghibli_01_v1.json",
+      "source_video_id": "GHIBLI_01",
+      "director_family": "GHIBLI",
+      "director_grammar_ref": "director_grammar_ghibli_v1",
+      "promotion_gate_status": "ALLOW_WITH_WARNING",
+      "status": "designed"
+    },
+    {
+      "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+      "plan_path": "datasets/movie_analysis/plans/analysis_plan_shinkai_01_v1.json",
+      "source_video_id": "SHINKAI_01",
+      "director_family": "SHINKAI",
+      "director_grammar_ref": "director_grammar_shinkai_v1",
+      "promotion_gate_status": "ALLOW_WITH_WARNING",
+      "status": "designed"
+    },
+    {
+      "analysis_plan_id": "analysis_plan_little_women_01_v1",
+      "plan_path": "datasets/movie_analysis/plans/analysis_plan_little_women_01_v1.json",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "director_family": "LIVE_ACTION",
+      "director_grammar_ref": "director_grammar_live_action_v1",
+      "promotion_gate_status": "ALLOW_WITH_WARNING",
+      "status": "designed"
+    },
+    {
+      "analysis_plan_id": "analysis_plan_mori_01_v1",
+      "plan_path": "datasets/movie_analysis/plans/analysis_plan_mori_01_v1.json",
+      "source_video_id": "MORI_01",
+      "director_family": "MORI",
+      "director_grammar_ref": "director_grammar_mori_v1",
+      "promotion_gate_status": "ALLOW_WITH_WARNING",
+      "status": "designed"
+    }
+  ]
+}

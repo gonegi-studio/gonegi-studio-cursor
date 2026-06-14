@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video_mapping/source-video-scene-state-map.schema.json",
+  "title": "SourceVideoSceneStateMap",
+  "description": "Mapping contract from movie scene coordinates to scene state drafts for PHASE-SOURCE-VIDEO-005",
+  "type": "object",
+  "required": [
+    "mapping_id",
+    "phase",
+    "source_coordinate_id",
+    "target_scene_state_id",
+    "source_video_id",
+    "director_grammar_refs",
+    "coordinate_to_state_map",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "mapping_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-005-SOURCE_VIDEO_TO_SCENE_STATE_MAPPING_V1" },
+    "source_coordinate_id": { "type": "string", "minLength": 1 },
+    "target_scene_state_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "director_grammar_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "coordinate_to_state_map": { "$ref": "#/$defs/coordinate_to_state_map" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "mapped_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "frame_extraction", "external_call_allowed"],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "coordinate_to_state_map": {
+      "type": "object",
+      "required": [
+        "camera_coordinate",
+        "character_coordinates",
+        "prop_coordinates",
+        "location_coordinates",
+        "lighting_coordinates",
+        "motion_vectors",
+        "blocking_map",
+        "depth_layers",
+        "continuity_locks"
+      ],
+      "properties": {
+        "camera_coordinate": { "type": "string", "const": "camera_state" },
+        "character_coordinates": { "type": "string", "const": "character_state" },
+        "prop_coordinates": { "type": "string", "const": "composition_state" },
+        "location_coordinates": { "type": "string", "const": "location_state" },
+        "lighting_coordinates": { "type": "string", "const": "lighting_state" },
+        "motion_vectors": {
+          "type": "array",
+          "items": { "type": "string" },
+          "contains": { "enum": ["camera_state", "environment_state"] }
+        },
+        "blocking_map": {
+          "type": "array",
+          "items": { "type": "string" },
+          "contains": { "enum": ["relationship_state", "composition_state"] }
+        },
+        "depth_layers": { "type": "string", "const": "composition_state" },
+        "continuity_locks": { "type": "string", "const": "identity_state" }
+      }
+    }
+  }
+}

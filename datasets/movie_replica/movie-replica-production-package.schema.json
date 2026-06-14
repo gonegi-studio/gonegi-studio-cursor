@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-replica-production-package.schema.json",
+  "title": "MovieReplicaProductionPackage",
+  "description": "Production-ready export package bundling the full movie replica pipeline for PHASE-MOVIE-REPLICA-009 image/video app handoff",
+  "type": "object",
+  "required": [
+    "package_id",
+    "movie_id",
+    "replica_dataset_ref",
+    "scene_graph_ref",
+    "trajectory_ref",
+    "keyframe_ref",
+    "frame_generation_ref",
+    "frame_sequence_ref",
+    "integrity_ref",
+    "package_version",
+    "production_ready"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "package_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "replica_dataset_ref": { "type": "string", "minLength": 1 },
+    "scene_graph_ref": { "type": "string", "minLength": 1 },
+    "trajectory_ref": { "type": "string", "minLength": 1 },
+    "keyframe_ref": { "type": "string", "minLength": 1 },
+    "frame_generation_ref": { "type": "string", "minLength": 1 },
+    "frame_sequence_ref": { "type": "string", "minLength": 1 },
+    "integrity_ref": { "type": "string", "minLength": 1 },
+    "character_replacement_ref": { "type": "string" },
+    "package_version": { "type": "string", "minLength": 1 },
+    "production_ready": { "type": "boolean" },
+    "integrity_score_avg": { "type": "number", "minimum": 0, "maximum": 1 },
+    "target_apps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2
+    },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

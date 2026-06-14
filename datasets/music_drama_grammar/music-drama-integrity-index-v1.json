@@ -1,0 +1,123 @@
+{
+  "asset_type": "music_drama_integrity_index",
+  "asset_version": "v1",
+  "index_id": "music-drama-integrity-index-v1",
+  "phase": "PHASE-MDG-009",
+  "audit_timestamp": "2026-06-02T00:00:00.000Z",
+  "section_1_file_coverage_audit": {
+    "required_file_count": 10,
+    "total_json_file_count": 17,
+    "all_required_present": true,
+    "all_parse_valid": true,
+    "required_files": [
+      {
+        "file": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/music-drama-beat-structure-grammar-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      },
+      {
+        "file": "datasets/music_drama_grammar/music-drama-sequence-assembly-grammar-v1.json",
+        "version_readable": true,
+        "parse_valid": true
+      }
+    ]
+  },
+  "section_2_reference_graph_audit": {
+    "broken_reference_count": 0,
+    "duplicate_id_domains": [],
+    "reference_checks": [
+      "beat->emotion",
+      "beat->behavior",
+      "behavior->archetype",
+      "behavior->shot",
+      "emotion->motif",
+      "sequence->beat",
+      "sequence->emotion",
+      "sequence->motif",
+      "shot<->archetype symmetry"
+    ],
+    "broken_references": []
+  },
+  "section_3_ep01_consistency_audit": {
+    "violation_count": 0,
+    "violations": [],
+    "checks": {
+      "dana_absent_from_cast": true,
+      "aengdu_absent_from_ep01_sequence": true,
+      "gamja_continuity_maintained": true,
+      "ep01_motif_rules_maintained": true,
+      "ep01_emotional_profile_maintained": true
+    }
+  },
+  "section_4_density_governance_audit": {
+    "conflict_count": 0,
+    "conflicts": [],
+    "unified_limits": {
+      "max_named_extras": 2,
+      "max_crowd_groups": 1,
+      "max_background_animals": 2,
+      "max_visible_motifs": 3
+    },
+    "layers_aligned": true
+  },
+  "section_5_rkb_alignment_audit": {
+    "missing_encoding": [],
+    "all_encoded": true,
+    "checks": {
+      "field_separation": true,
+      "crowd_caution": true,
+      "companion_continuity": true,
+      "readability": true,
+      "sequence_field_sep": true,
+      "sequence_rkb": true
+    }
+  },
+  "section_6_integrity_score": {
+    "file_integrity_score": 1,
+    "reference_integrity_score": 1,
+    "ep01_integrity_score": 1,
+    "density_integrity_score": 1,
+    "overall_integrity_score": 1
+  },
+  "final_verdict": "PASS_MUSIC_DRAMA_INTEGRITY_INDEX_V1"
+}

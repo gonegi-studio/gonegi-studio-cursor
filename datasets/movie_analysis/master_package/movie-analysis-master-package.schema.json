@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/master_package/movie-analysis-master-package.schema.json",
+  "title": "MovieAnalysisMasterPackagePlan",
+  "description": "Planning-only master package index for PHASE-SOURCE-VIDEO-039",
+  "type": "object",
+  "required": [
+    "master_package_id",
+    "phase",
+    "source_video_id",
+    "analysis_plan_id",
+    "dry_run_id",
+    "frame_sampling_id",
+    "scene_detection_id",
+    "coordinate_extraction_id",
+    "gonegi_state_mapping_id",
+    "video_state_compilation_id",
+    "keyframe_preparation_id",
+    "motion_plan_id",
+    "temporal_flow_id",
+    "sequence_assembly_id",
+    "video_blueprint_id",
+    "runtime_package_id",
+    "generation_package_id",
+    "generation_blueprint_id",
+    "execution_readiness_id",
+    "final_runtime_bundle_id",
+    "package_trace",
+    "readiness_summary",
+    "safety_summary",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "master_package_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-039-MOVIE_ANALYSIS_MASTER_PACKAGE_DESIGN_V1"
+    },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "analysis_plan_id": { "type": "string", "minLength": 1 },
+    "dry_run_id": { "type": "string", "minLength": 1 },
+    "frame_sampling_id": { "type": "string", "minLength": 1 },
+    "scene_detection_id": { "type": "string", "minLength": 1 },
+    "coordinate_extraction_id": { "type": "string", "minLength": 1 },
+    "gonegi_state_mapping_id": { "type": "string", "minLength": 1 },
+    "video_state_compilation_id": { "type": "string", "minLength": 1 },
+    "keyframe_preparation_id": { "type": "string", "minLength": 1 },
+    "motion_plan_id": { "type": "string", "minLength": 1 },
+    "temporal_flow_id": { "type": "string", "minLength": 1 },
+    "sequence_assembly_id": { "type": "string", "minLength": 1 },
+    "video_blueprint_id": { "type": "string", "minLength": 1 },
+    "runtime_package_id": { "type": "string", "minLength": 1 },
+    "generation_package_id": { "type": "string", "minLength": 1 },
+    "generation_blueprint_id": { "type": "string", "minLength": 1 },
+    "execution_readiness_id": { "type": "string", "minLength": 1 },
+    "final_runtime_bundle_id": { "type": "string", "minLength": 1 },
+    "package_trace": {
+      "type": "array",
+      "minItems": 17,
+      "items": { "$ref": "#/$defs/trace_entry" }
+    },
+    "readiness_summary": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "master_package_only",
+        "chain_complete",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_ready",
+        "purpose"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "master_package_only": { "type": "boolean", "const": true },
+        "chain_complete": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_ready": { "type": "boolean", "const": false },
+        "purpose": {
+          "type": "string",
+          "const": "movie_analysis_master_package_index"
+        }
+      }
+    },
+    "safety_summary": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "master_package_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed",
+        "no_execution",
+        "no_rendering",
+        "no_inference"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "master_package_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "no_execution": { "type": "boolean", "const": true },
+        "no_rendering": { "type": "boolean", "const": true },
+        "no_inference": { "type": "boolean", "const": true }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "master_package_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "master_package_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "trace_entry": {
+      "type": "object",
+      "required": ["step", "phase", "plan_type", "plan_id", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "step": { "type": "integer", "minimum": 1 },
+        "phase": { "type": "string", "minLength": 1 },
+        "plan_type": { "type": "string", "minLength": 1 },
+        "plan_id": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "const": "designed" }
+      }
+    }
+  }
+}

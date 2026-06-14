@@ -1,0 +1,208 @@
+{
+  "asset_type": "music_drama_scenario_writing_rulebook",
+  "asset_version": "v1.1",
+  "rulebook_id": "music-drama-scenario-writing-rulebook-v1",
+  "phase": "PHASE-SCENARIO-RULEBOOK-A-v1.1",
+  "purpose": "Formal Music Drama Scenario writing rules derived from successful manual image tests. Teaches Cursor how scenarios must be written before any automatic generation is attempted.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_datasets": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false
+  },
+  "input_dependencies": {
+    "character_library": "datasets/character/character-simple-v1.json",
+    "time_setting_library": "datasets/time/time-setting-library-v1.json",
+    "living_world_core": "exports/shared/latest/living-world-core-v1-package.json",
+    "living_world_image_adapter": "exports/image_app/latest/living-world-image-adapter.json"
+  },
+  "rule_section_count": 12,
+  "rules": {
+    "field_separation_law": {
+      "law_id": "field_separation_law",
+      "summary": "Scenario and character fields carry strictly separated visual responsibilities.",
+      "scenario_field_must_contain": [
+        "location",
+        "atmosphere",
+        "visible environment",
+        "visible actions",
+        "scene context"
+      ],
+      "character_field_must_contain": [
+        "visible main characters",
+        "visible supporting characters",
+        "visible extras",
+        "visible crowd groups",
+        "visible animals",
+        "visual descriptions only"
+      ],
+      "forbidden_in_character_field": [
+        "location descriptions",
+        "story narration",
+        "action sentences",
+        "camera instructions",
+        "lighting descriptions",
+        "absent characters"
+      ]
+    },
+    "absent_character_law": {
+      "law_id": "absent_character_law",
+      "summary": "Character absence is expressed only through omission, never through explicit exclusion language.",
+      "never_write_examples": [
+        "No Dana",
+        "Dana absent",
+        "without Dana"
+      ],
+      "required_behavior": "Any exclusion must be performed through omission only."
+    },
+    "active_character_law": {
+      "law_id": "active_character_law",
+      "summary": "Every visible entity must appear in the character field; invisible entities must never appear.",
+      "visible_entities_must_appear_in_character_field": [
+        "main characters",
+        "supporting characters",
+        "animals",
+        "named extras",
+        "crowd groups"
+      ],
+      "forbidden": "Invisible entities must never appear."
+    },
+    "character_description_law": {
+      "law_id": "character_description_law",
+      "summary": "Character field carries static visual identity only.",
+      "character_field_must_contain": [
+        "identity",
+        "age (if known)",
+        "appearance",
+        "clothing",
+        "key visual traits"
+      ],
+      "forbidden_in_character_field": [
+        "actions",
+        "emotions",
+        "scene descriptions"
+      ]
+    },
+    "scenario_style_law": {
+      "law_id": "scenario_style_law",
+      "summary": "Scenario field must read as a single cinematic still-image moment compatible with Music Drama pacing.",
+      "scenario_field_must_be": [
+        "cinematic",
+        "visual",
+        "music-drama compatible",
+        "one primary location",
+        "one primary action",
+        "emotionally readable"
+      ],
+      "avoid": [
+        "plot summaries",
+        "exposition",
+        "internal monologue",
+        "excessive action stacking"
+      ]
+    },
+    "crowd_density_law": {
+      "law_id": "crowd_density_law",
+      "summary": "Initial manual image tests require restrained crowd composition so protagonists remain visually dominant.",
+      "initial_image_test_limits": {
+        "max_named_extras": 2,
+        "max_crowd_groups": 1
+      },
+      "requirements": [
+        "crowd remains background support",
+        "crowd never competes with protagonist"
+      ]
+    },
+    "animal_law": {
+      "law_id": "animal_law",
+      "summary": "Only visibly present animals may appear, with restrained count for image stability.",
+      "limits": {
+        "max_animals": "1~2"
+      },
+      "requirements": [
+        "companion animals listed explicitly",
+        "only visible animals included"
+      ]
+    },
+    "continuity_state_law": {
+      "law_id": "continuity_state_law",
+      "summary": "Persistent states must remain consistent across adjacent scenes unless the scenario explicitly removes them.",
+      "track": [
+        "persistent_object",
+        "persistent_companion",
+        "persistent_weather",
+        "persistent_emotion"
+      ],
+      "examples": [
+        {
+          "case": "persistent_object",
+          "rule": "If Gonegi carries toast in Scene 5, toast should remain visible in Scene 6 unless removed by scenario."
+        },
+        {
+          "case": "persistent_companion",
+          "rule": "If Gamja accompanies Gonegi, Gamja should remain present until departure is explicitly described."
+        }
+      ]
+    },
+    "time_lighting_consistency_law": {
+      "law_id": "time_lighting_consistency_law",
+      "summary": "Scenario atmosphere must remain consistent with datasets/time/time-setting-library-v1.json.",
+      "reference_library": "datasets/time/time-setting-library-v1.json",
+      "examples": {
+        "sunrise": [
+          "warm low-angle light",
+          "long shadows",
+          "morning atmosphere"
+        ],
+        "sunset": [
+          "warm fading light",
+          "evening atmosphere"
+        ],
+        "rain": [
+          "cloud cover",
+          "wet surfaces",
+          "reduced visibility"
+        ]
+      },
+      "requirement": "Time state and atmosphere must not contradict each other."
+    },
+    "visual_anchor_law": {
+      "law_id": "visual_anchor_law",
+      "summary": "Recurring visual anchors improve image consistency across Music Drama scenes.",
+      "encouraged_recurring_anchors": [
+        "bakery window",
+        "harbor bench",
+        "olive tree",
+        "fishing pier",
+        "stone staircase"
+      ],
+      "purpose": "Anchors help image consistency."
+    },
+    "successful_test_observations": {
+      "law_id": "successful_test_observations",
+      "summary": "Manual image test findings that informed this rulebook.",
+      "pass_findings": [
+        "character consistency improved",
+        "Gonegi stable",
+        "Gamja stable",
+        "scenario/character separation effective"
+      ],
+      "known_issues": [
+        "blanket/body merge artifacts",
+        "crowd deformation",
+        "dense market scenes"
+      ]
+    },
+    "future_generator_requirements": {
+      "law_id": "future_generator_requirements",
+      "summary": "Automatic scenario generation may begin only after rulebook compliance is proven.",
+      "automatic_generation_may_begin_only_after": [
+        "rulebook exists",
+        "manual scenario validation passes",
+        "image tests completed",
+        "rule compliance verified"
+      ]
+    }
+  }
+}

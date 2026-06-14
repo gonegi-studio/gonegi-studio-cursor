@@ -1,0 +1,127 @@
+{
+  "sampling_plan_id": "frame_sampling_ghibli_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-024-MOVIE_ANALYSIS_FRAME_SAMPLING_DESIGN_V1",
+  "source_video_id": "GHIBLI_01",
+  "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+  "dry_run_id": "dry_run_ghibli_01_v1",
+  "sampling_strategy": "UNIFORM_INTERVAL",
+  "target_frame_count": 12,
+  "sampling_points": [
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_001",
+      "timestamp_seconds": 48,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_002",
+      "timestamp_seconds": 50.18,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_003",
+      "timestamp_seconds": 52.36,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_004",
+      "timestamp_seconds": 54.55,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_005",
+      "timestamp_seconds": 56.73,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_006",
+      "timestamp_seconds": 58.91,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_007",
+      "timestamp_seconds": 61.09,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_008",
+      "timestamp_seconds": 63.27,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_009",
+      "timestamp_seconds": 65.45,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_010",
+      "timestamp_seconds": 67.64,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_011",
+      "timestamp_seconds": 69.82,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    },
+    {
+      "point_id": "frame_sampling_ghibli_01_v1_sp_012",
+      "timestamp_seconds": 72,
+      "point_role": "uniform_interval",
+      "reads_frame": false,
+      "saves_image": false,
+      "candidate_type": "timestamp_candidate"
+    }
+  ],
+  "coverage_goal": {
+    "segment_span_seconds": 24,
+    "coverage_percent": 100,
+    "purpose": "future_scene_detection_preparation"
+  },
+  "identity_safety": {
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "timestamp_only": true,
+    "no_image_assets": true
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "designed_at": "2026-06-05T22:33:14.384Z"
+}

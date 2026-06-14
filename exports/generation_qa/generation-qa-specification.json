@@ -1,0 +1,21 @@
+{
+  "spec_id": "generation-qa-specification-v1",
+  "asset_type": "generation_qa_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-QA-001",
+  "module": "GENERATION_QA_AND_ERROR_CONTEXT_SYSTEM_V1",
+  "purpose": "Unified generation QA validation and structured error context for assembly-to-generation handoff.",
+  "upstream_checkpoint": "PASS_STORY_TO_BLUEPRINT_ENGINE_V1",
+  "qa_flow": [
+    "assembly_artifact",
+    "generation_target",
+    "qa_validation",
+    "error_context"
+  ],
+  "generation_qa_integrity": "PASS",
+  "error_context_integrity": "PASS",
+  "compiled_prompt_ref": "exports/generation/compiled-prompt.json",
+  "error_context_spec_ref": "datasets/generation_qa/error-context-specification.json",
+  "export_id": "generation-qa-specification-export-v1",
+  "generated_at": "2026-06-09T01:41:14.441Z"
+}

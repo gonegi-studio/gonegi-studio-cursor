@@ -1,0 +1,326 @@
+{
+  "certification_id": "mv-production-runtime-certification-v1",
+  "phase": "PHASE-DIGITAL-STUDIO-007-MV_PRODUCTION_RUNTIME_CERTIFICATION_V1",
+  "generated_at": "2026-06-07T12:07:46.824Z",
+  "source_runtime_ref": "exports/mv_production_runtime_engine/mv-production-runtime-engine.json",
+  "runtime_engine_id": "mv-production-runtime-engine-v1",
+  "runtime_mode": "test_mode_only",
+  "test_mode_allowed": true,
+  "real_generation_blocked": true,
+  "runtime_not_executed": true,
+  "external_call_allowed": false,
+  "gpu_execution_allowed": false,
+  "runtime_certification_results": [
+    {
+      "source_runtime_ref": "exports/mv_production_runtime_engine/mv-production-runtime-engine.json",
+      "runtime_certification_id": "instrumental_mv_runtime_certification_v1",
+      "mv_runtime_id": "instrumental_mv_runtime_plan_v1",
+      "mv_type": "instrumental_mv",
+      "runtime_mode": "test_mode_only",
+      "test_mode_allowed": true,
+      "real_generation_blocked": true,
+      "runtime_not_executed": true,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "failure_recovery_plan": {
+        "plan_id": "instrumental_mv_failure_recovery_plan_v1",
+        "step_count": 4,
+        "steps": [
+          {
+            "step_id": "RECOVERY-IMAGE-STALL",
+            "failure_class": "image_runtime_stall",
+            "recovery_action": "requeue_image_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-VIDEO-STALL",
+            "failure_class": "video_runtime_stall",
+            "recovery_action": "requeue_video_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-CONSISTENCY-BREAK",
+            "failure_class": "consistency_break",
+            "recovery_action": "hold_unit_and_flag_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-QUALITY-GATE-FAIL",
+            "failure_class": "quality_gate_fail",
+            "recovery_action": "skip_execution_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          }
+        ],
+        "recovery_ready": true
+      },
+      "traceability_chain": {
+        "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+        "generation_plan_id": "instrumental_mv_generation_plan_v1",
+        "mv_shot_assembly_id": "instrumental_mv_shot_assembly_v1",
+        "mv_scene_assembly_id": "instrumental_mv_scene_assembly_v1",
+        "mv_blueprint_id": "instrumental_mv_blueprint_v1",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_runtime_id": "production_runtime_mv_v1",
+        "dataset_refs": [
+          "datasets/mv/instrumental-mv-archetype-library-v1.json",
+          "datasets/mv/instrumental-mv-archetype-index-v1.json"
+        ],
+        "trace_integrity": "PASS"
+      },
+      "certification_checks": {
+        "runtime_consumed": "PASS",
+        "runtime_certified": "PASS",
+        "execution_queue_valid": "PASS",
+        "failure_recovery_ready": "PASS",
+        "music_sync_preserved": "PASS",
+        "mv_type_preserved": "PASS"
+      },
+      "plan_certified": "PASS"
+    },
+    {
+      "source_runtime_ref": "exports/mv_production_runtime_engine/mv-production-runtime-engine.json",
+      "runtime_certification_id": "ballad_mv_runtime_certification_v1",
+      "mv_runtime_id": "ballad_mv_runtime_plan_v1",
+      "mv_type": "ballad_mv",
+      "runtime_mode": "test_mode_only",
+      "test_mode_allowed": true,
+      "real_generation_blocked": true,
+      "runtime_not_executed": true,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "failure_recovery_plan": {
+        "plan_id": "ballad_mv_failure_recovery_plan_v1",
+        "step_count": 4,
+        "steps": [
+          {
+            "step_id": "RECOVERY-IMAGE-STALL",
+            "failure_class": "image_runtime_stall",
+            "recovery_action": "requeue_image_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-VIDEO-STALL",
+            "failure_class": "video_runtime_stall",
+            "recovery_action": "requeue_video_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-CONSISTENCY-BREAK",
+            "failure_class": "consistency_break",
+            "recovery_action": "hold_unit_and_flag_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-QUALITY-GATE-FAIL",
+            "failure_class": "quality_gate_fail",
+            "recovery_action": "skip_execution_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          }
+        ],
+        "recovery_ready": true
+      },
+      "traceability_chain": {
+        "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+        "generation_plan_id": "ballad_mv_generation_plan_v1",
+        "mv_shot_assembly_id": "ballad_mv_shot_assembly_v1",
+        "mv_scene_assembly_id": "ballad_mv_scene_assembly_v1",
+        "mv_blueprint_id": "ballad_mv_blueprint_v1",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_runtime_id": "production_runtime_mv_v1",
+        "dataset_refs": [
+          "datasets/mv/ballad-mv-archetype-library-v1.json",
+          "datasets/mv/ballad-mv-archetype-index-v1.json"
+        ],
+        "trace_integrity": "PASS"
+      },
+      "certification_checks": {
+        "runtime_consumed": "PASS",
+        "runtime_certified": "PASS",
+        "execution_queue_valid": "PASS",
+        "failure_recovery_ready": "PASS",
+        "music_sync_preserved": "PASS",
+        "mv_type_preserved": "PASS"
+      },
+      "plan_certified": "PASS"
+    },
+    {
+      "source_runtime_ref": "exports/mv_production_runtime_engine/mv-production-runtime-engine.json",
+      "runtime_certification_id": "story_mv_runtime_certification_v1",
+      "mv_runtime_id": "story_mv_runtime_plan_v1",
+      "mv_type": "story_mv",
+      "runtime_mode": "test_mode_only",
+      "test_mode_allowed": true,
+      "real_generation_blocked": true,
+      "runtime_not_executed": true,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "failure_recovery_plan": {
+        "plan_id": "story_mv_failure_recovery_plan_v1",
+        "step_count": 4,
+        "steps": [
+          {
+            "step_id": "RECOVERY-IMAGE-STALL",
+            "failure_class": "image_runtime_stall",
+            "recovery_action": "requeue_image_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-VIDEO-STALL",
+            "failure_class": "video_runtime_stall",
+            "recovery_action": "requeue_video_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-CONSISTENCY-BREAK",
+            "failure_class": "consistency_break",
+            "recovery_action": "hold_unit_and_flag_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-QUALITY-GATE-FAIL",
+            "failure_class": "quality_gate_fail",
+            "recovery_action": "skip_execution_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          }
+        ],
+        "recovery_ready": true
+      },
+      "traceability_chain": {
+        "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+        "generation_plan_id": "story_mv_generation_plan_v1",
+        "mv_shot_assembly_id": "story_mv_shot_assembly_v1",
+        "mv_scene_assembly_id": "story_mv_scene_assembly_v1",
+        "mv_blueprint_id": "story_mv_blueprint_v1",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_runtime_id": "production_runtime_short_film_v1",
+        "dataset_refs": [],
+        "trace_integrity": "PASS"
+      },
+      "certification_checks": {
+        "runtime_consumed": "PASS",
+        "runtime_certified": "PASS",
+        "execution_queue_valid": "PASS",
+        "failure_recovery_ready": "PASS",
+        "music_sync_preserved": "PASS",
+        "mv_type_preserved": "PASS"
+      },
+      "plan_certified": "PASS"
+    },
+    {
+      "source_runtime_ref": "exports/mv_production_runtime_engine/mv-production-runtime-engine.json",
+      "runtime_certification_id": "music_drama_mv_runtime_certification_v1",
+      "mv_runtime_id": "music_drama_mv_runtime_plan_v1",
+      "mv_type": "music_drama_mv",
+      "runtime_mode": "test_mode_only",
+      "test_mode_allowed": true,
+      "real_generation_blocked": true,
+      "runtime_not_executed": true,
+      "external_call_allowed": false,
+      "gpu_execution_allowed": false,
+      "failure_recovery_plan": {
+        "plan_id": "music_drama_mv_failure_recovery_plan_v1",
+        "step_count": 4,
+        "steps": [
+          {
+            "step_id": "RECOVERY-IMAGE-STALL",
+            "failure_class": "image_runtime_stall",
+            "recovery_action": "requeue_image_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-VIDEO-STALL",
+            "failure_class": "video_runtime_stall",
+            "recovery_action": "requeue_video_unit_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-CONSISTENCY-BREAK",
+            "failure_class": "consistency_break",
+            "recovery_action": "hold_unit_and_flag_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          },
+          {
+            "step_id": "RECOVERY-QUALITY-GATE-FAIL",
+            "failure_class": "quality_gate_fail",
+            "recovery_action": "skip_execution_test_mode",
+            "max_retries": 0,
+            "recovery_ready": "PASS"
+          }
+        ],
+        "recovery_ready": true
+      },
+      "traceability_chain": {
+        "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+        "generation_plan_id": "music_drama_mv_generation_plan_v1",
+        "mv_shot_assembly_id": "music_drama_mv_shot_assembly_v1",
+        "mv_scene_assembly_id": "music_drama_mv_scene_assembly_v1",
+        "mv_blueprint_id": "music_drama_mv_blueprint_v1",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_runtime_id": "production_runtime_episode_v1",
+        "dataset_refs": [
+          "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+          "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+          "datasets/music_drama_grammar/music-drama-grammar-v1.json"
+        ],
+        "trace_integrity": "PASS"
+      },
+      "certification_checks": {
+        "runtime_consumed": "PASS",
+        "runtime_certified": "PASS",
+        "execution_queue_valid": "PASS",
+        "failure_recovery_ready": "PASS",
+        "music_sync_preserved": "PASS",
+        "mv_type_preserved": "PASS"
+      },
+      "plan_certified": "PASS"
+    }
+  ],
+  "safety_flags": {
+    "runtime_mode": "test_mode_only",
+    "generation": false,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "no_execution": true,
+    "no_rendering": true,
+    "test_mode_allowed": true,
+    "production_mode_blocked": true
+  },
+  "runtime_consumed": true,
+  "production_mode_blocked": true,
+  "traceability_preserved": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/mv_production_runtime_engine/mv-production-runtime-engine.json"
+    ],
+    "write_paths": [
+      "reports/mv_production_runtime_certification",
+      "exports/mv_production_runtime_certification",
+      "reports/mv_production_runtime_certification/mv-production-runtime-certification-report.json",
+      "reports/mv_production_runtime_certification/MV_PRODUCTION_RUNTIME_CERTIFICATION.md",
+      "exports/mv_production_runtime_certification/mv-production-runtime-certification-manifest.json",
+      "exports/mv_production_runtime_certification/mv-production-runtime-certification.json"
+    ],
+    "runtime_certification_artifact_write_scope": "exports/mv_production_runtime_certification/",
+    "upstream_artifacts_unchanged": true
+  },
+  "certification_complete": true
+}

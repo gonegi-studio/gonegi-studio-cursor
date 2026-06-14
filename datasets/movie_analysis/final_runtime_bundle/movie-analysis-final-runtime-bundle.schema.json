@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/final_runtime_bundle/movie-analysis-final-runtime-bundle.schema.json",
+  "title": "MovieAnalysisFinalRuntimeBundlePlan",
+  "description": "Planning-only final runtime bundle design for PHASE-SOURCE-VIDEO-038",
+  "type": "object",
+  "required": [
+    "final_runtime_bundle_id",
+    "phase",
+    "execution_readiness_id",
+    "source_video_id",
+    "scene_bundle",
+    "character_bundle",
+    "camera_bundle",
+    "emotion_bundle",
+    "transition_bundle",
+    "continuity_bundle",
+    "runtime_bundle",
+    "safety_bundle",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "final_runtime_bundle_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-038-MOVIE_ANALYSIS_FINAL_RUNTIME_BUNDLE_DESIGN_V1"
+    },
+    "execution_readiness_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "scene_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "character_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "camera_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "emotion_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "transition_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "continuity_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "runtime_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "safety_bundle": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle_element" }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "final_runtime_bundle_only",
+        "estimated_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "final_runtime_bundle_only": { "type": "boolean", "const": true },
+        "estimated_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "bundle_element": {
+      "type": "object",
+      "required": [
+        "element_id",
+        "source_readiness_element_ids",
+        "estimated_bundle_value",
+        "final_runtime_bundle_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "element_id": { "type": "string" },
+        "source_readiness_element_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "estimated_bundle_value": { "type": "string", "minLength": 1 },
+        "final_runtime_bundle_only": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

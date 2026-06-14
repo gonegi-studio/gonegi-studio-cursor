@@ -1,0 +1,64 @@
+{
+  "release_id": "movie-analysis-release-package-v1",
+  "release_version": "v1",
+  "phase": "PHASE-SOURCE-VIDEO-050-MOVIE_ANALYSIS_RELEASE_PACKAGE_V1",
+  "released_at": "2026-06-06T01:49:18.946Z",
+  "source_count": 4,
+  "dataset_id": "movie-analysis-dataset-v1",
+  "dataset_version": "v1",
+  "upload_bundle_dir": "exports/movie_analysis_upload_bundle",
+  "quality_gate_report_path": "reports/movie-analysis-upload-bundle-quality-gate-report.json",
+  "consumer_targets": [
+    "image_app",
+    "video_app"
+  ],
+  "image_upload_path": "exports/movie_analysis_upload_bundle/movie-analysis-image-upload.json",
+  "video_upload_path": "exports/movie_analysis_upload_bundle/movie-analysis-video-upload.json",
+  "upload_manifest_path": "exports/movie_analysis_upload_bundle/movie-analysis-upload-manifest.json",
+  "sources": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "source_video_path": "imports/source_videos/active/ghibli/GHIBLI_01.mp4",
+      "master_package_id": "master_package_ghibli_01_v1",
+      "image_upload_ready": true,
+      "video_upload_ready": true
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_video_path": "imports/source_videos/active/live_action/LITTLE_WOMEN_01.mp4",
+      "master_package_id": "master_package_little_women_01_v1",
+      "image_upload_ready": true,
+      "video_upload_ready": true
+    },
+    {
+      "source_video_id": "MORI_01",
+      "source_video_path": "imports/source_videos/active/mori/MORI_01.mp4",
+      "master_package_id": "master_package_mori_01_v1",
+      "image_upload_ready": true,
+      "video_upload_ready": true
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "source_video_path": "imports/source_videos/active/shinkai/SHINKAI_01.mp4",
+      "master_package_id": "master_package_shinkai_01_v1",
+      "image_upload_ready": true,
+      "video_upload_ready": true
+    }
+  ],
+  "release_readiness": {
+    "image_upload_ready": true,
+    "video_upload_ready": true,
+    "quality_gate_passed": true,
+    "safety_flags_preserved": true,
+    "version_ready": true
+  },
+  "safety_summary": {
+    "planning_only": true,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_call_allowed": false
+  }
+}

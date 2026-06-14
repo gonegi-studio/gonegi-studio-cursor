@@ -1,0 +1,311 @@
+{
+  "test_id": "RKB-010",
+  "test_name": "PROP_CONTINUITY_VALIDATION",
+  "phase": "PHASE-RKB-010",
+  "generated_at": "2026-06-03T11:29:01.426Z",
+  "comparison_baseline": "pre-prop-anchor",
+  "precheck": {
+    "prop_anchor_verdict": "PASS_PROP_ANCHOR_SYSTEM_V1",
+    "latest_adapter_present": true,
+    "production_baseline_present": true,
+    "pass": true
+  },
+  "test_matrix": {
+    "locations": 4,
+    "generations_per_location": 5,
+    "total_renders": 20
+  },
+  "adapter_consumption_check": {
+    "total_renders": 20,
+    "pass_count": 20,
+    "fail_count": 0,
+    "verdict": "PASS"
+  },
+  "locations": [
+    {
+      "location_id": "gonegi_bedroom_01",
+      "location_label": "Location A",
+      "indoor_anchor_id": "indoor_anchor_gonegi_bedroom_01",
+      "prop_anchor_ids": [
+        "ship_model_01",
+        "wildflower_vase_01",
+        "aged_wood_chair_01"
+      ],
+      "generation_count": 5,
+      "adapter_consumption_pass_count": 5,
+      "prop_results": [
+        {
+          "prop_anchor_id": "ship_model_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "wildflower_vase_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "aged_wood_chair_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ],
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "catastrophic_render_count": 0,
+      "location_pass": true
+    },
+    {
+      "location_id": "dana_window_corner_01",
+      "location_label": "Location B",
+      "indoor_anchor_id": "indoor_anchor_dana_window_corner_01",
+      "prop_anchor_ids": [
+        "reading_chair_01",
+        "geranium_pot_01",
+        "teacup_01",
+        "sketchbook_01"
+      ],
+      "generation_count": 5,
+      "adapter_consumption_pass_count": 5,
+      "prop_results": [
+        {
+          "prop_anchor_id": "reading_chair_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "geranium_pot_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "teacup_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "sketchbook_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ],
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "catastrophic_render_count": 0,
+      "location_pass": true
+    },
+    {
+      "location_id": "family_bakery_dining_01",
+      "location_label": "Location C",
+      "indoor_anchor_id": "indoor_anchor_family_bakery_dining_01",
+      "prop_anchor_ids": [
+        "bread_basket_01",
+        "pine_table_01"
+      ],
+      "generation_count": 5,
+      "adapter_consumption_pass_count": 5,
+      "prop_results": [
+        {
+          "prop_anchor_id": "bread_basket_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "pine_table_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ],
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "catastrophic_render_count": 0,
+      "location_pass": true
+    },
+    {
+      "location_id": "family_bakery_kitchen_01",
+      "location_label": "Location D",
+      "indoor_anchor_id": "indoor_anchor_family_bakery_kitchen_01",
+      "prop_anchor_ids": [
+        "brick_oven_01",
+        "copper_kettle_01",
+        "rolling_pin_01"
+      ],
+      "generation_count": 5,
+      "adapter_consumption_pass_count": 5,
+      "prop_results": [
+        {
+          "prop_anchor_id": "brick_oven_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "copper_kettle_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "rolling_pin_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ],
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "catastrophic_render_count": 0,
+      "location_pass": true
+    }
+  ],
+  "aggregate_scores": {
+    "shape_stability": 0.94,
+    "material_stability": 0.93,
+    "color_stability": 0.92,
+    "recognition_stability": 0.91,
+    "visibility_stability": 0.9,
+    "overall_prop_continuity": 0.92,
+    "room_recognition": 0.96
+  },
+  "success_condition": {
+    "shape_stability_minimum": 0.85,
+    "material_stability_minimum": 0.85,
+    "color_stability_minimum": 0.85,
+    "recognition_stability_minimum": 0.85,
+    "overall_prop_continuity_minimum": 0.85,
+    "actual_shape_stability": 0.94,
+    "actual_material_stability": 0.93,
+    "actual_color_stability": 0.92,
+    "actual_recognition_stability": 0.91,
+    "actual_overall_prop_continuity": 0.92,
+    "catastrophic_prop_replacement": false,
+    "major_color_drift": false,
+    "major_shape_drift": false,
+    "locations_passing": 4,
+    "locations_required": 4,
+    "met": true
+  },
+  "final_verdict": "PASS_RKB_010_PROP_CONTINUITY_VALIDATION",
+  "next_phase": "ROOM_LAYOUT_LOCK_SYSTEM_V1"
+}

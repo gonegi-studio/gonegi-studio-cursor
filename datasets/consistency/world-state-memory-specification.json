@@ -1,0 +1,29 @@
+{
+  "world_state_memory_spec_id": "world-state-memory-specification-v1",
+  "asset_type": "world_state_memory_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-003",
+  "purpose": "World-state memory validation dimensions for macro narrative persistence.",
+  "world_state_memory_dimension_count": 3,
+  "world_state_memory_dimensions": [
+    "world_state_persistence",
+    "world_state_transition",
+    "world_state_recall"
+  ],
+  "dimension_definitions": {
+    "world_state_persistence": {
+      "description": "Macro world-state stages remain stable across scenes within the same act horizon.",
+      "evaluation_signals": ["stage_persistence_score", "community_state_coherence", "location_transformation_tracking"]
+    },
+    "world_state_transition": {
+      "description": "World-state transitions occur at declared act boundaries with traceable cause.",
+      "evaluation_signals": ["transition_boundary_alignment", "act_state_handoff", "transformation_causality"]
+    },
+    "world_state_recall": {
+      "description": "Prior world-state anchors are correctly recalled after long narrative gaps.",
+      "evaluation_signals": ["state_anchor_recall_rate", "horizon_recall_integrity", "world_arc_linkage"]
+    }
+  },
+  "linked_memory_dimension": "world_state_memory",
+  "temporal_memory_spec_ref": "datasets/consistency/temporal-memory-specification.json"
+}

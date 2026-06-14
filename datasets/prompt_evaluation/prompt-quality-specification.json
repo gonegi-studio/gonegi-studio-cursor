@@ -1,0 +1,47 @@
+{
+  "spec_id": "prompt-quality-specification-v1",
+  "asset_type": "prompt_quality_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-QA-002",
+  "module": "PROMPT_EVALUATION_SYSTEM_V1",
+  "purpose": "Quality audit dimensions for compiled prompt evaluation before generation.",
+  "upstream_checkpoint": "PASS_GENERATION_QA_AND_ERROR_CONTEXT_SYSTEM_V1",
+  "quality_dimension_count": 11,
+  "quality_dimensions": [
+    "identity_clarity",
+    "identity_consistency",
+    "location_clarity",
+    "location_consistency",
+    "lighting_clarity",
+    "style_clarity",
+    "composition_clarity",
+    "camera_clarity",
+    "motion_clarity",
+    "continuity_clarity",
+    "memory_clarity"
+  ],
+  "prompt_quality_integrity": "PASS",
+  "evaluation_flow": [
+    "compiled_prompt",
+    "quality_audit",
+    "risk_detection",
+    "generation_readiness_score"
+  ],
+  "compiled_prompt_ref": "exports/generation/compiled-prompt.json",
+  "dimension_weights": {
+    "identity_clarity": 0.1,
+    "identity_consistency": 0.1,
+    "location_clarity": 0.08,
+    "location_consistency": 0.08,
+    "lighting_clarity": 0.07,
+    "style_clarity": 0.07,
+    "composition_clarity": 0.08,
+    "camera_clarity": 0.08,
+    "motion_clarity": 0.07,
+    "continuity_clarity": 0.12,
+    "memory_clarity": 0.15
+  },
+  "minimum_quality_score": 0.8,
+  "target_quality_score": 0.9,
+  "production_quality_score": 0.95
+}

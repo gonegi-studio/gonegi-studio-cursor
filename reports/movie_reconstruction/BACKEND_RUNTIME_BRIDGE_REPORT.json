@@ -1,0 +1,165 @@
+{
+  "report_id": "backend_runtime_bridge_mqcb6rag",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-006A",
+  "system_id": "BACKEND_RUNTIME_BRIDGE_V1",
+  "generated_at": "2026-06-13T12:05:36.040Z",
+  "final_verdict": "PASS_BACKEND_RUNTIME_BRIDGE_V1",
+  "status": "BACKEND_RUNTIME_BRIDGE_DEFINED",
+  "validation_passed": true,
+  "runtime_bridge_defined": true,
+  "execution_path_defined": true,
+  "fallback_path_defined": true,
+  "traceability_defined": true,
+  "bridge_mode_defined": true,
+  "runtime_capability_level_defined": true,
+  "runtime_connected": false,
+  "backend_executed": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "analysis": {
+    "contract_runtime_binding": "conditioning-map-export contract v1.0 binds to runtime_bridge_contract; maps route through adapter_runtime_binding before any backend target selection.",
+    "adapter_runtime_binding": "controlnet_adapter and comfyui_adapter translate export maps to backend-specific slots; comfyui_adapter is recommended primary adapter per translation validation.",
+    "fallback_runtime_binding": "When adapter or backend binding fails, fallback_runtime_binding activates ConditionedPromptBuilder with NOT_PRODUCTION_REPLICA — architecture validated, not executed.",
+    "runtime_bridge_traceability": "traceability_signature links source_contract, adapter, and runtime_target with runtime_degradation_path for audit without GPU execution.",
+    "runtime_capability_assessment": "Per-backend runtime_capability_level reports what CAN connect at architecture level; identity and temporal domains remain false until GPU validation phase."
+  },
+  "runtime_bridge_contract": {
+    "contract_id": "backend_runtime_bridge_contract_v1",
+    "contract_version": "1.0",
+    "source_ingestion_ref": "reports/movie_reconstruction/IMAGE_APP_INGESTION_SPECIFICATION.json",
+    "source_bundle": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json",
+    "bridge_mode": "architecture_validation_only — validates Can Connect?, not Can Reconstruct Movies?",
+    "runtime_connected": "false — bridge architecture defined only; no live backend socket opened.",
+    "backend_executed": "false — no GPU raster generation or inference in this phase.",
+    "adapter_gate": "Maps must pass adapter_runtime_binding before runtime_target assignment."
+  },
+  "runtime_execution_path": {
+    "path_id": "primary_runtime_execution_v1",
+    "steps": "conditioning-map-export-bundle → adapter_runtime_binding → runtime_bridge → runtime_target (controlnet_backend | comfyui_backend).",
+    "primary_adapter": "comfyui_adapter",
+    "secondary_adapter": "controlnet_adapter",
+    "consumer": "image_app via IMAGE_APP_INGESTION_SPECIFICATION runtime_bridge.",
+    "execution_deferred": "true — path defined for connection readiness; execution blocked until GPU validation."
+  },
+  "runtime_fallback_path": {
+    "path_id": "fallback_runtime_execution_v1",
+    "trigger": "adapter_runtime_binding failure or runtime_target unavailable.",
+    "compiler": "ConditionedPromptBuilder",
+    "output_flag": "NOT_PRODUCTION_REPLICA",
+    "degradation_chain": "comfyui_adapter → fallback_text_path → ConditionedPromptBuilder",
+    "preserves": "Narrative text constraints and scene_remap gonegi_scene_id."
+  },
+  "runtime_traceability_format": {
+    "traceability_id": "Unique runtime bridge traceability record identifier.",
+    "source_contract": "Source contract path (conditioning-map-export or image_app ingestion contract).",
+    "adapter": "Adapter enum: controlnet_adapter | comfyui_adapter | future_video_adapter.",
+    "runtime_target": "Backend target enum: controlnet_backend | comfyui_backend | future_video_backend.",
+    "traceability_signature": "Deterministic hash binding source_contract, adapter, and runtime_target.",
+    "runtime_degradation_path": "Ordered adapter and fallback steps when runtime degrades."
+  },
+  "runtime_capability_format": {
+    "runtime_target": "Backend target identifier.",
+    "runtime_capability_level": "Per-domain boolean capability map at architecture validation time.",
+    "layout": "ControlNet-class layout map connectable.",
+    "depth": "Depth-conditioned map connectable.",
+    "pose": "Pose-conditioned map connectable.",
+    "blocking": "Regional blocking map connectable.",
+    "environment_identity": "Environment reference bank IP-Adapter path connectable.",
+    "object_identity": "Object reference bank IP-Adapter path connectable.",
+    "temporal_preservation": "Temporal memory and video backend connectable.",
+    "assessment_note": "Capability true means architecture supports connection; false means blocked or deferred — not a reconstruction readiness score."
+  },
+  "primary_runtime_path": [
+    "source_video_numerical_dna_full",
+    "conditioning-map-export-bundle",
+    "adapter_runtime_binding.comfyui_adapter",
+    "backend_runtime_bridge",
+    "runtime_target.controlnet_backend | runtime_target.comfyui_backend"
+  ],
+  "fallback_runtime_path": [
+    "adapter_runtime_binding failure detection",
+    "comfyui_adapter",
+    "fallback_text_path",
+    "ConditionedPromptBuilder",
+    "NOT_PRODUCTION_REPLICA"
+  ],
+  "supported_backends": [
+    "controlnet_backend",
+    "comfyui_backend",
+    "future_video_backend"
+  ],
+  "runtime_limitations": [
+    "No GPU execution in this phase — architecture validation only.",
+    "environment_identity and object_identity require IP-Adapter nodes not yet connected.",
+    "temporal_preservation requires future_video_backend deferred per architecture decision.",
+    "raster control maps not generated — metadata binding only.",
+    "runtime_connected=false — bridge defined but not live-connected to backend.",
+    "Backend Connected != Movie Reconstruction Ready."
+  ],
+  "bridge_mode": "architecture_validation_only",
+  "runtime_targets": [
+    {
+      "runtime_target": "controlnet_backend",
+      "adapter": "controlnet_adapter",
+      "runtime_capability_level": {
+        "layout": true,
+        "depth": true,
+        "pose": true,
+        "blocking": true,
+        "environment_identity": false,
+        "object_identity": false,
+        "temporal_preservation": false
+      }
+    },
+    {
+      "runtime_target": "comfyui_backend",
+      "adapter": "comfyui_adapter",
+      "runtime_capability_level": {
+        "layout": true,
+        "depth": true,
+        "pose": true,
+        "blocking": true,
+        "environment_identity": false,
+        "object_identity": false,
+        "temporal_preservation": false
+      }
+    },
+    {
+      "runtime_target": "future_video_backend",
+      "adapter": "future_video_adapter",
+      "runtime_capability_level": {
+        "layout": false,
+        "depth": false,
+        "pose": false,
+        "blocking": false,
+        "environment_identity": false,
+        "object_identity": false,
+        "temporal_preservation": false
+      }
+    }
+  ],
+  "checks": {
+    "runtime_bridge_defined": true,
+    "execution_path_defined": true,
+    "fallback_path_defined": true,
+    "traceability_defined": true,
+    "bridge_mode_defined": true,
+    "runtime_capability_level_defined": true,
+    "controlnet_example_present": true,
+    "runtime_connected_false": true,
+    "backend_executed_false": true,
+    "conditioning_ready_false": true,
+    "movie_reconstruction_ready_false": true,
+    "gpu_ready_false": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "architecture_validation_only": true,
+    "implementation_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

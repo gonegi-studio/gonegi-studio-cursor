@@ -1,0 +1,59 @@
+{
+  "foundation_id": "feature-film-foundation-v1",
+  "phase": "PHASE-L3-FEATURE-001",
+  "generated_at": "2026-06-08T12:04:38.293Z",
+  "foundation_status": "FEATURE_FILM_FOUNDATION_READY",
+  "medium_film_expansion_baseline": "MEDIUM_FILM_PRODUCTION_READY",
+  "archetype_count": 3,
+  "archetypes": [
+    {
+      "feature_film_archetype_id": "harbor_saga_feature",
+      "medium_film_source_ref": "harbor_saga_medium",
+      "scene_count_range": "1200-1800",
+      "theme": "Generational harbor saga spanning decades with legacy callbacks and world-state transformation"
+    },
+    {
+      "feature_film_archetype_id": "mediterranean_epoch_feature",
+      "medium_film_source_ref": "mediterranean_chronicle_medium",
+      "scene_count_range": "1500-2500",
+      "theme": "Century-spanning Mediterranean epoch with parallel seasonal, ritual, and civic transformation threads"
+    },
+    {
+      "feature_film_archetype_id": "correspondence_ledger_feature",
+      "medium_film_source_ref": "correspondence_saga_medium",
+      "scene_count_range": "1000-1600",
+      "theme": "Multi-decade correspondence ledger with parallel lives, layered memory, and legacy letter chains"
+    }
+  ],
+  "scale_rules": {
+    "scene_range": "1000-3000",
+    "shot_range": "4000-24000",
+    "act_range": "3-5",
+    "callback_depth": "3-5",
+    "continuity_depth": 14
+  },
+  "continuity_dimensions": [
+    "character_arc",
+    "location_arc",
+    "lighting_arc",
+    "relationship_arc",
+    "timeline_arc",
+    "memory_callback_arc",
+    "subplot_arc",
+    "parallel_arc",
+    "multi_callback_arc",
+    "relationship_network",
+    "world_arc",
+    "world_state_arc",
+    "theme_arc",
+    "legacy_callback_arc"
+  ],
+  "dependency_dimensions": 11,
+  "traceability": {
+    "medium_film_library": "datasets/medium_film/medium-film-archetype-library-v1.json",
+    "medium_film_production_readiness": "exports/medium_film_production_validation/medium-film-production-readiness.json",
+    "medium_film_continuity_spec": "exports/medium_film_foundation/long-form-continuity-specification-v2.json",
+    "feature_library": "datasets/feature_film/feature-film-archetype-library.json",
+    "feature_index": "datasets/feature_film/feature-film-archetype-index.json"
+  }
+}

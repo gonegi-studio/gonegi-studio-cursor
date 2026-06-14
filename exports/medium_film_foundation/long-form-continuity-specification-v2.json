@@ -1,0 +1,110 @@
+{
+  "spec_id": "long-form-continuity-specification-v2",
+  "phase": "PHASE-L3-MEDIUM-001",
+  "version": "v2",
+  "purpose": "Medium film continuity specification extending Short Film v1 to 300-1000 scenes with parallel arcs, subplots, multi-layer callbacks, and relationship networks.",
+  "short_film_spec_ref": "exports/short_film_foundation/long-form-continuity-specification.json",
+  "mv_baseline_scene_range": "10-50",
+  "short_film_scene_range": "50-300",
+  "medium_film_scene_range": "300-1000",
+  "min_scene_count": 300,
+  "max_scene_count": 1000,
+  "preserved_dimensions": [
+    "character_arc",
+    "location_arc",
+    "lighting_arc",
+    "relationship_arc",
+    "timeline_arc",
+    "memory_callback_arc"
+  ],
+  "v2_dimensions": [
+    "subplot_arc",
+    "parallel_arc",
+    "multi_callback_arc",
+    "relationship_network"
+  ],
+  "dimensions": {
+    "character_arc": {
+      "definition": "Visual DNA, wardrobe, and behavioral grammar remain stable across 300-1000 scenes with multi-group ensemble support.",
+      "preserved_from": "short_film_v1",
+      "medium_film_expansion": "Character groups expand to parallel narrative flows with independent arc stages per group."
+    },
+    "location_arc": {
+      "definition": "Location geometry and seasonal variants remain traceable across decade-scale timeline blocks.",
+      "preserved_from": "short_film_v1",
+      "medium_film_expansion": "Location reentry registry scales to multi-subplot location rotation with parallel flow interleaving."
+    },
+    "lighting_arc": {
+      "definition": "Lighting DNA palettes maintain consistency across seasonal and decade timeline markers.",
+      "preserved_from": "short_film_v1",
+      "medium_film_expansion": "Parallel tracks may use desynchronized palette blocks within registered variant catalog."
+    },
+    "relationship_arc": {
+      "definition": "Primary pair relationship stages progress within network evolution constraints.",
+      "preserved_from": "short_film_v1",
+      "medium_film_expansion": "Relationship arc integrates with relationship_network edge evolution stages."
+    },
+    "timeline_arc": {
+      "definition": "Timeline markers and long-range dependencies maintain causal ordering across 300-1000 scenes.",
+      "preserved_from": "short_film_v1",
+      "medium_film_expansion": "Long-range timeline dependencies minimum gap 80 scenes with parallel flow phase locking."
+    },
+    "memory_callback_arc": {
+      "definition": "Memory callback seeds and resolutions traceable across extended scene ranges.",
+      "preserved_from": "short_film_v1",
+      "medium_film_expansion": "Memory callbacks delegate to multi_callback_arc layers for object and relationship tiers."
+    },
+    "subplot_arc": {
+      "definition": "Independent subplot beats interleave with primary arcs without breaking timeline continuity.",
+      "enforcement_rules": [
+        "subplot_id_required_per_subplot_block",
+        "subplot_scene_range_must_not_overlap_primary_climax_block",
+        "subplot_beats_must_resolve_before_primary_resolution"
+      ],
+      "medium_film_requirement": "Multiple Story Arcs"
+    },
+    "parallel_arc": {
+      "definition": "Parallel narrative tracks maintain interleave intervals and independent arc references.",
+      "enforcement_rules": [
+        "parallel_track_minimum_2_per_archetype",
+        "interleave_interval_documented_per_flow",
+        "parallel_tracks_must_converge_at_resolution_block"
+      ],
+      "medium_film_requirement": "Parallel Narrative Flows"
+    },
+    "multi_callback_arc": {
+      "definition": "Multi-layer callback structure with independent object, relationship, and ritual tiers.",
+      "enforcement_rules": [
+        "callback_layer_minimum_2_per_archetype",
+        "foreshadow_payoff_gap_minimum_80_scenes",
+        "layer_independence_maintained_across_parallel_flows"
+      ],
+      "medium_film_requirement": "Multi-Layer Callback Structure"
+    },
+    "relationship_network": {
+      "definition": "Relationship network nodes and edges evolve through documented stages across character groups.",
+      "enforcement_rules": [
+        "network_nodes_registered_per_character_group",
+        "edge_evolution_monotonic_within_stage_index",
+        "network_convergence_required_at_finale_block"
+      ],
+      "medium_film_requirement": "Relationship Network Evolution"
+    }
+  },
+  "medium_film_requirements": [
+    "Multiple Story Arcs",
+    "Parallel Narrative Flows",
+    "Multiple Character Groups",
+    "Multi-Layer Callback Structure",
+    "Long-Range Timeline Dependencies",
+    "Relationship Network Evolution"
+  ],
+  "cross_dimension_requirements": [
+    "all_preserved_short_film_arc_dimensions_required_per_archetype",
+    "all_v2_arc_dimensions_required_per_archetype",
+    "parallel_arc_must_align_with_parallel_narrative_flows",
+    "multi_callback_arc_must_align_with_memory_callback_arc",
+    "relationship_network_must_align_with_character_groups",
+    "subplot_arc_must_not_break_timeline_long_range_dependencies"
+  ]
+}

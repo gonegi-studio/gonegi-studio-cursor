@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video_numerical_dna/source-video-numerical-dna.schema.json",
+  "title": "SourceVideoNumericalDnaFoundation",
+  "description": "Metadata-only foundation schema for PHASE-SOURCE-VIDEO-DNA-REAL-001. No real numerical extraction.",
+  "type": "object",
+  "required": [
+    "foundation_id",
+    "phase",
+    "system_id",
+    "version",
+    "metadata_only",
+    "placeholder_only",
+    "numerical_dna_complete",
+    "movie_reconstruction_ready",
+    "gpu_ready",
+    "coverage",
+    "source_records",
+    "extractor_placeholders",
+    "generated_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "foundation_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-DNA-REAL-001" },
+    "system_id": { "type": "string", "const": "SOURCE_VIDEO_NUMERICAL_DNA_FOUNDATION_V1" },
+    "version": { "type": "string", "const": "foundation_v1" },
+    "metadata_only": { "type": "boolean", "const": true },
+    "placeholder_only": { "type": "boolean", "const": true },
+    "numerical_dna_complete": { "type": "boolean", "const": false },
+    "movie_reconstruction_ready": { "type": "boolean", "const": false },
+    "gpu_ready": { "type": "boolean", "const": false },
+    "schema_path": {
+      "type": "string",
+      "const": "datasets/source_video_numerical_dna/source-video-numerical-dna.schema.json"
+    },
+    "registry_path": {
+      "type": "string",
+      "const": "datasets/source_video_numerical_dna/source-video-numerical-dna-registry.json"
+    },
+    "coverage": { "$ref": "#/$defs/coverage_summary" },
+    "source_records": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": { "$ref": "#/$defs/source_record" }
+    },
+    "extractor_placeholders": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": { "$ref": "#/$defs/extractor_placeholder" }
+    },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "coverage_summary": {
+      "type": "object",
+      "required": ["ghibli", "shinkai", "live_action", "mori", "total", "missing_records"],
+      "additionalProperties": false,
+      "properties": {
+        "ghibli": { "type": "integer", "const": 7 },
+        "shinkai": { "type": "integer", "const": 2 },
+        "live_action": { "type": "integer", "const": 1 },
+        "mori": { "type": "integer", "const": 5 },
+        "total": { "type": "integer", "const": 15 },
+        "missing_records": { "type": "integer", "const": 0 }
+      }
+    },
+    "source_record": {
+      "type": "object",
+      "required": [
+        "source_video_id",
+        "source_group",
+        "registry_status",
+        "extraction_status",
+        "metadata_only",
+        "placeholder_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_video_id": { "type": "string", "minLength": 1 },
+        "source_group": {
+          "type": "string",
+          "enum": ["ghibli", "shinkai", "live_action", "mori"]
+        },
+        "registry_status": { "type": "string", "enum": ["registered"] },
+        "extraction_status": { "type": "string", "enum": ["placeholder_only"] },
+        "metadata_only": { "type": "boolean", "const": true },
+        "placeholder_only": { "type": "boolean", "const": true },
+        "primary_source": { "type": "boolean" }
+      }
+    },
+    "extractor_placeholder": {
+      "type": "object",
+      "required": [
+        "extractor_id",
+        "builder_module",
+        "placeholder_only",
+        "real_extraction_enabled",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "extractor_id": {
+          "type": "string",
+          "enum": [
+            "frame_coordinates",
+            "composition_coordinates",
+            "camera_path",
+            "blocking_data",
+            "motion_vectors",
+            "edit_rhythm",
+            "scene_remap"
+          ]
+        },
+        "builder_module": { "type": "string", "minLength": 1 },
+        "placeholder_only": { "type": "boolean", "const": true },
+        "real_extraction_enabled": { "type": "boolean", "const": false },
+        "status": { "type": "string", "enum": ["foundation_ready"] }
+      }
+    }
+  }
+}

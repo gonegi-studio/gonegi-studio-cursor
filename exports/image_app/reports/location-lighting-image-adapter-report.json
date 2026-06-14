@@ -1,0 +1,38 @@
+{
+  "report_type": "location_lighting_image_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-LTD-003",
+  "generated_at": "2026-06-03T04:28:56.294Z",
+  "location_count": 67,
+  "lighting_count": 43,
+  "pairing_count": 35,
+  "duplicate_ids": 0,
+  "json_parse_result": "valid",
+  "validation": {
+    "location_count_imported": true,
+    "lighting_count_imported": true,
+    "pairings_imported": true,
+    "location_identity_enabled": true,
+    "same_place_multi_shot_support": true,
+    "lighting_identity_enabled": true,
+    "same_time_multi_shot_support": true,
+    "duplicate_pairing_keys": 0,
+    "invalid_location_refs": 0,
+    "invalid_lighting_refs": 0,
+    "json_parse_valid": true
+  },
+  "export_path": "exports/image_app/latest/location-lighting-image-adapter.json",
+  "report_path": "exports/image_app/reports/location-lighting-image-adapter-report.json",
+  "file_size_bytes": 11164,
+  "final_verdict": "PASS_LOCATION_LIGHTING_IMAGE_ADAPTER_V1",
+  "next_phase": "PHASE-IMG-003 Location + Lighting Validation Test",
+  "constraints_honored": {
+    "no_scenarios": true,
+    "no_prompts": true,
+    "no_character_dna_modification": true,
+    "no_mdg_modification": true,
+    "no_location_dna_modification": true,
+    "no_lighting_dna_modification": true,
+    "adapter_layer_only": true
+  }
+}

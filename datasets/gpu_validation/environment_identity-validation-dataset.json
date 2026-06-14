@@ -1,0 +1,46 @@
+{
+  "dataset_id": "environment_identity-validation-dataset-v1",
+  "validation_channel": "environment_identity",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-003",
+  "dataset_size": 60,
+  "target_batch_size": 50,
+  "difficulty_tiers": [
+    "easy",
+    "medium",
+    "hard"
+  ],
+  "binding_ref": "exports/movie_reconstruction_environment_identity/environment-identity-binding-package.json",
+  "measurement_methods": [
+    "reference_bank_match_score",
+    "environment_traceability_score"
+  ],
+  "pass_thresholds": {
+    "reference_bank_match_score": 0.98,
+    "environment_traceability_score": 0.95,
+    "hard_tier_pass_threshold": 0.92
+  },
+  "failure_examples": [
+    "different_staircase",
+    "missing_railing",
+    "hallucinated_architecture"
+  ],
+  "sample_seeds": [
+    {
+      "sample_id": "env_easy_001",
+      "difficulty_tier": "easy",
+      "source_ref": "titanic_staircase_001"
+    },
+    {
+      "sample_id": "env_med_001",
+      "difficulty_tier": "medium",
+      "source_ref": "ghibli_kitchen_001"
+    },
+    {
+      "sample_id": "env_hard_001",
+      "difficulty_tier": "hard",
+      "source_ref": "mori_forest_clearing_001"
+    }
+  ],
+  "gpu_execution": false,
+  "dataset_only": true
+}

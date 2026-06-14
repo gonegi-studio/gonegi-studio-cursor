@@ -1,0 +1,257 @@
+{
+  "video_state_compilation_id": "video_state_compilation_ghibli_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-028-MOVIE_ANALYSIS_VIDEO_STATE_COMPILATION_DESIGN_V1",
+  "source_video_id": "GHIBLI_01",
+  "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+  "dry_run_id": "dry_run_ghibli_01_v1",
+  "sampling_plan_id": "frame_sampling_ghibli_01_v1",
+  "scene_detection_id": "scene_detection_ghibli_01_v1",
+  "coordinate_extraction_id": "coordinate_extraction_ghibli_01_v1",
+  "gonegi_state_mapping_id": "gonegi_state_mapping_ghibli_01_v1",
+  "video_state_candidate_count": 12,
+  "compilation_strategy": "SCENE_STATE_COMPILATION_CANDIDATE",
+  "gonegi_states": [
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_001",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_001",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_static"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_002",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_002",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_pan"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_003",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_003",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_close"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_004",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_004",
+      "state_category": "transition_state",
+      "estimated_state_value": "estimated_gonegi_transition_cut"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_005",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_005",
+      "state_category": "character_state",
+      "estimated_state_value": "estimated_gonegi_character_identity"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_006",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_006",
+      "state_category": "relationship_state",
+      "estimated_state_value": "estimated_gonegi_relation_solo"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_007",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_007",
+      "state_category": "environment_state",
+      "estimated_state_value": "estimated_gonegi_environment"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_008",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_008",
+      "state_category": "lighting_state",
+      "estimated_state_value": "estimated_gonegi_light_hard"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_009",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_009",
+      "state_category": "emotion_state",
+      "estimated_state_value": "estimated_gonegi_emotion_warm"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_010",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_010",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_static"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_011",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_011",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_pan"
+    },
+    {
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_012",
+      "source_coordinate_id": "coordinate_extraction_ghibli_01_v1_cc_012",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_close"
+    }
+  ],
+  "video_states": [
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_001",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_001",
+      "video_state_category": "camera_continuity_state",
+      "estimated_video_state_value": "estimated_video_camera_continuity",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_002",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_002",
+      "video_state_category": "camera_continuity_state",
+      "estimated_video_state_value": "estimated_video_camera_angle",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_003",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_003",
+      "video_state_category": "camera_continuity_state",
+      "estimated_video_state_value": "estimated_video_camera_framing",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_004",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_004",
+      "video_state_category": "transition_state",
+      "estimated_video_state_value": "estimated_video_transition_cut",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_005",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_005",
+      "video_state_category": "character_continuity_state",
+      "estimated_video_state_value": "estimated_video_identity_lock",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_006",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_006",
+      "video_state_category": "character_continuity_state",
+      "estimated_video_state_value": "estimated_video_character_pose",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_007",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_007",
+      "video_state_category": "environment_continuity_state",
+      "estimated_video_state_value": "estimated_video_environment_continuity",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_008",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_008",
+      "video_state_category": "lighting_continuity_state",
+      "estimated_video_state_value": "estimated_video_light_soft",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_009",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_009",
+      "video_state_category": "emotion_continuity_state",
+      "estimated_video_state_value": "estimated_video_emotion_tense",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_010",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_010",
+      "video_state_category": "camera_continuity_state",
+      "estimated_video_state_value": "estimated_video_camera_continuity",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_011",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_011",
+      "video_state_category": "camera_continuity_state",
+      "estimated_video_state_value": "estimated_video_camera_angle",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "video_state_id": "video_state_compilation_ghibli_01_v1_vs_012",
+      "gonegi_state_id": "gonegi_state_mapping_ghibli_01_v1_gs_012",
+      "video_state_category": "camera_continuity_state",
+      "estimated_video_state_value": "estimated_video_camera_framing",
+      "executes_video_state": false,
+      "creates_keyframe": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_video_state_candidate",
+      "estimated_only": true
+    }
+  ],
+  "video_state_categories": [
+    "scene_state",
+    "character_continuity_state",
+    "camera_continuity_state",
+    "motion_intent_state",
+    "lighting_continuity_state",
+    "emotion_continuity_state",
+    "environment_continuity_state",
+    "transition_state",
+    "runtime_readiness_state"
+  ],
+  "identity_safety": {
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "estimated_only": true,
+    "no_state_execution": true
+  },
+  "continuity_safety": {
+    "continuity_lock_required": true,
+    "character_first_contract": true,
+    "estimated_only": true,
+    "no_keyframe_creation": true
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "video_state_compilation_only": true,
+    "state_execution": false,
+    "runtime_payload": false,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "coordinate_extraction": false,
+    "frame_extraction": false,
+    "scene_extraction": false,
+    "ocr": false
+  },
+  "designed_at": "2026-06-05T22:48:41.479Z"
+}

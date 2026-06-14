@@ -1,0 +1,30 @@
+{
+  "spec_id": "video-app-rebuild-specification-v2",
+  "asset_type": "video_app_rebuild_specification",
+  "asset_version": "v2",
+  "phase": "PHASE-EXPORT-REBUILD-002",
+  "module": "SOURCE_VIDEO_TO_APP_DATASET_REBUILD_V1",
+  "purpose": "Generate actual video generation dataset from source video analysis and engine stack.",
+  "target_path": "exports/video_app/latest_v3",
+  "integrated_systems": [
+    "temporal_memory",
+    "dialogue_lipsync",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution",
+    "movie_analysis"
+  ],
+  "required_output_blocks": [
+    "video_style_dna",
+    "motion_dna",
+    "camera_dna",
+    "scene_transition_dna",
+    "temporal_memory_bundle",
+    "dialogue_lipsync_bundle",
+    "continuity_bundle",
+    "video_generation_bundle"
+  ],
+  "video_app_dataset_integrity": "PASS",
+  "upload_package_ref": "datasets/export_rebuild/video-app-upload-package-v3.json"
+}

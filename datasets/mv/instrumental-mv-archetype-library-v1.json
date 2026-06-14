@@ -1,0 +1,613 @@
+{
+  "asset_type": "instrumental_mv_archetype_library",
+  "asset_version": "v1",
+  "library_id": "instrumental-mv-archetype-library-v1",
+  "phase": "PHASE-MV-DATASET-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Production-oriented instrumental MV archetypes. No lyrics, no dialogue, no complex story dependency. Image sequence first, video-compatible.",
+  "scope": {
+    "generates_lyrics": false,
+    "generates_dialogue": false,
+    "requires_story_arc": false,
+    "target_output": "instrumental_mv_image_sequence",
+    "duration_target_minutes": "1-3"
+  },
+  "integrated_systems": {
+    "character_dna": "exports/character-continuity-preview.json",
+    "location_dna": "exports/location-continuity-preview.json",
+    "indoor_anchor": "exports/image_app/adapters/indoor-location-anchor-adapter.json",
+    "lighting_anchor": "exports/image_app/adapters/lighting-anchor-adapter.json",
+    "shot_grammar": "exports/image_app/adapters/shot-grammar-adapter.json",
+    "emotion_acting": "exports/image_app/adapters/emotion-acting-adapter.json"
+  },
+  "validation_prerequisites": [
+    "PASS_RKB_004_INDOOR_LOCATION_VALIDATION",
+    "PASS_RKB_005_LIGHTING_VALIDATION",
+    "PASS_RKB_006_COVERAGE_VALIDATION",
+    "PASS_RKB_007_EMOTION_ACTING_VALIDATION"
+  ],
+  "validation_target": {
+    "test_id": "RKB-008",
+    "test_name": "INSTRUMENTAL_MV_PIPELINE_VALIDATION",
+    "next_phase": "BALLAD_MV_DATASET_V1"
+  },
+  "archetype_count": 8,
+  "archetypes": [
+    {
+      "mv_archetype_id": "harbor_morning_walk",
+      "theme": "Quiet harbor awakening under clear morning light",
+      "emotion_flow": ["hope", "wonder", "determination", "gratitude"],
+      "location_flow": ["gonegi_harbor_dock_01", "gonegi_harbor_dock_01", "gonegi_coastal_path_01", "gonegi_harbor_dock_01"],
+      "lighting_flow": ["midday_harbor_clear_01", "midday_harbor_clear_01", "midday_harbor_clear_01", "golden_hour_harbor_01"],
+      "coverage_flow": [
+        "coverage_pattern_02_environmental_close",
+        "coverage_pattern_02_environmental_close",
+        "coverage_pattern_04_tracking_detail_close",
+        "coverage_pattern_02_environmental_close"
+      ],
+      "character_focus": ["gonegi", "gonegi", "gonegi", "gonegi"],
+      "environmental_focus": ["dock_water", "mooring_lines", "coastal_path", "harbor_horizon"],
+      "scene_count_range": "4-6",
+      "recommended_duration": "90s-120s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "establish harbor morning stillness",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "midday_harbor_clear_01",
+          "lighting_dna_id": "morning_harbor_dock",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "hope",
+          "scene_archetype": "harbor_work",
+          "action_type": "walk"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "notice light on water",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "midday_harbor_clear_01",
+          "lighting_dna_id": "morning_harbor_dock",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "wonder",
+          "scene_archetype": "harbor_work",
+          "action_type": "observe"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "walk the coastal path with purpose",
+          "character_id": "gonegi",
+          "location_id": "gonegi_coastal_path_01",
+          "lighting_anchor_id": "midday_harbor_clear_01",
+          "lighting_dna_id": "morning_harbor_dock",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "determination",
+          "scene_archetype": "movement_arrival",
+          "action_type": "walk"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "pause with quiet thanks at the dock",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "gratitude",
+          "scene_archetype": "harbor_work",
+          "action_type": "react"
+        }
+      ]
+    },
+    {
+      "mv_archetype_id": "olive_hill_daydream",
+      "theme": "Afternoon drift on the olive hill",
+      "emotion_flow": ["wonder", "nostalgia", "hope", "gratitude"],
+      "location_flow": ["gonegi_olive_hill_01", "gonegi_olive_hill_01", "gonegi_olive_hill_01", "gonegi_olive_hill_01"],
+      "lighting_flow": ["afternoon_olive_hill_01", "afternoon_olive_hill_01", "afternoon_olive_hill_01", "golden_hour_harbor_01"],
+      "coverage_flow": [
+        "coverage_pattern_02_environmental_close",
+        "coverage_pattern_03_pov_insert_chain",
+        "coverage_pattern_01_establishing_insert_reaction",
+        "coverage_pattern_02_environmental_close"
+      ],
+      "character_focus": ["gonegi", "gonegi", "gonegi", "gonegi"],
+      "environmental_focus": ["olive_canopy", "stone_terrace", "distant_sea", "hill_wind"],
+      "scene_count_range": "4-6",
+      "recommended_duration": "90s-150s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "wide read of hill and sky",
+          "character_id": "gonegi",
+          "location_id": "gonegi_olive_hill_01",
+          "lighting_anchor_id": "afternoon_olive_hill_01",
+          "lighting_dna_id": "afternoon_olive_hill",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "wonder",
+          "scene_archetype": "hill_afternoon",
+          "action_type": "observe"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "subjective memory on the terrace",
+          "character_id": "gonegi",
+          "location_id": "gonegi_olive_hill_01",
+          "lighting_anchor_id": "afternoon_olive_hill_01",
+          "lighting_dna_id": "afternoon_olive_hill",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "nostalgia",
+          "scene_archetype": "discovery_moment",
+          "action_type": "gaze"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "hopeful breath before descent",
+          "character_id": "gonegi",
+          "location_id": "gonegi_olive_hill_01",
+          "lighting_anchor_id": "afternoon_olive_hill_01",
+          "lighting_dna_id": "afternoon_olive_hill",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "hope",
+          "scene_archetype": "hill_afternoon",
+          "action_type": "react"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "grateful wide release",
+          "character_id": "gonegi",
+          "location_id": "gonegi_olive_hill_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "gratitude",
+          "scene_archetype": "hill_afternoon",
+          "action_type": "observe"
+        }
+      ]
+    },
+    {
+      "mv_archetype_id": "bakery_daily_life",
+      "theme": "Morning rhythm of bakery work without words",
+      "emotion_flow": ["hope", "determination", "gratitude", "wonder"],
+      "location_flow": [
+        "family_bakery_kitchen_01",
+        "family_bakery_kitchen_01",
+        "family_bakery_dining_01",
+        "family_bakery_kitchen_01"
+      ],
+      "lighting_flow": [
+        "morning_bakery_glow_01",
+        "morning_bakery_glow_01",
+        "morning_bakery_glow_01",
+        "morning_bakery_glow_01"
+      ],
+      "coverage_flow": [
+        "coverage_pattern_04_tracking_detail_close",
+        "coverage_pattern_04_tracking_detail_close",
+        "coverage_pattern_01_establishing_insert_reaction",
+        "coverage_pattern_03_pov_insert_chain"
+      ],
+      "character_focus": ["gonegi", "gonegi", "gonegi", "dana"],
+      "environmental_focus": ["flour_dust", "oven_glow", "shared_table", "window_steam"],
+      "scene_count_range": "4-8",
+      "recommended_duration": "120s-180s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "enter kitchen with morning energy",
+          "character_id": "gonegi",
+          "location_id": "family_bakery_kitchen_01",
+          "lighting_anchor_id": "morning_bakery_glow_01",
+          "lighting_dna_id": "morning_bakery_kitchen",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "hope",
+          "scene_archetype": "movement_arrival",
+          "action_type": "walk"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "knead and shape with focus",
+          "character_id": "gonegi",
+          "location_id": "family_bakery_kitchen_01",
+          "lighting_anchor_id": "morning_bakery_glow_01",
+          "lighting_dna_id": "morning_bakery_kitchen",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "determination",
+          "scene_archetype": "bakery_opening",
+          "action_type": "work"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "shared pause at the table",
+          "character_id": "gonegi",
+          "location_id": "family_bakery_dining_01",
+          "lighting_anchor_id": "morning_bakery_glow_01",
+          "lighting_dna_id": "morning_bakery_kitchen",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "gratitude",
+          "scene_archetype": "bakery_opening",
+          "action_type": "observe"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "dana notices steam at the window",
+          "character_id": "dana",
+          "location_id": "family_bakery_kitchen_01",
+          "lighting_anchor_id": "morning_bakery_glow_01",
+          "lighting_dna_id": "morning_bakery_kitchen",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "wonder",
+          "scene_archetype": "window_gaze",
+          "action_type": "gaze"
+        }
+      ]
+    },
+    {
+      "mv_archetype_id": "window_memory_montage",
+      "theme": "Interior window light and soft memory montage",
+      "emotion_flow": ["nostalgia", "loneliness", "hope", "wonder"],
+      "location_flow": [
+        "gonegi_window_corner_01",
+        "dana_window_corner_01",
+        "gonegi_window_corner_01",
+        "dana_window_corner_01"
+      ],
+      "lighting_flow": [
+        "sunrise_window_soft_01",
+        "sunset_window_warm_01",
+        "sunrise_window_soft_01",
+        "sunset_window_warm_01"
+      ],
+      "coverage_flow": [
+        "coverage_pattern_03_pov_insert_chain",
+        "coverage_pattern_01_establishing_insert_reaction",
+        "coverage_pattern_03_pov_insert_chain",
+        "coverage_pattern_03_pov_insert_chain"
+      ],
+      "character_focus": ["gonegi", "dana", "gonegi", "dana"],
+      "environmental_focus": ["shutter_light", "glass_reflection", "curtain_fold", "sill_object"],
+      "scene_count_range": "4-7",
+      "recommended_duration": "60s-120s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "gonegi memory at sunrise window",
+          "character_id": "gonegi",
+          "location_id": "gonegi_window_corner_01",
+          "lighting_anchor_id": "sunrise_window_soft_01",
+          "lighting_dna_id": "sunrise_bakery_window",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "nostalgia",
+          "scene_archetype": "window_gaze",
+          "action_type": "gaze"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "dana alone at warm sunset window",
+          "character_id": "dana",
+          "location_id": "dana_window_corner_01",
+          "lighting_anchor_id": "sunset_window_warm_01",
+          "lighting_dna_id": "golden_hour_bakery_lane",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "loneliness",
+          "scene_archetype": "interior_awakening",
+          "action_type": "observe"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "gonegi hope returns with light",
+          "character_id": "gonegi",
+          "location_id": "gonegi_window_corner_01",
+          "lighting_anchor_id": "sunrise_window_soft_01",
+          "lighting_dna_id": "sunrise_bakery_window",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "hope",
+          "scene_archetype": "window_gaze",
+          "action_type": "discover"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "dana wonder at lane glow",
+          "character_id": "dana",
+          "location_id": "dana_window_corner_01",
+          "lighting_anchor_id": "sunset_window_warm_01",
+          "lighting_dna_id": "golden_hour_bakery_lane",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "wonder",
+          "scene_archetype": "window_gaze",
+          "action_type": "gaze"
+        }
+      ]
+    },
+    {
+      "mv_archetype_id": "harbor_sunset_reflection",
+      "theme": "Golden hour harbor stillness and parting light",
+      "emotion_flow": ["nostalgia", "farewell", "gratitude", "hope"],
+      "location_flow": ["gonegi_harbor_dock_01", "gonegi_harbor_dock_01", "gonegi_harbor_dock_01", "gonegi_coastal_path_01"],
+      "lighting_flow": ["golden_hour_harbor_01", "golden_hour_harbor_01", "golden_hour_harbor_01", "blue_hour_street_01"],
+      "coverage_flow": [
+        "coverage_pattern_02_environmental_close",
+        "coverage_pattern_02_environmental_close",
+        "coverage_pattern_03_pov_insert_chain",
+        "coverage_pattern_04_tracking_detail_close"
+      ],
+      "character_focus": ["gonegi", "gonegi", "gonegi", "gonegi"],
+      "environmental_focus": ["sunset_water", "rope_shadow", "lamp_glow", "path_fade"],
+      "scene_count_range": "4-6",
+      "recommended_duration": "90s-150s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "remember the dock at golden hour",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "nostalgia",
+          "scene_archetype": "harbor_work",
+          "action_type": "observe"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "farewell gesture toward the horizon",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "farewell",
+          "scene_archetype": "harbor_work",
+          "action_type": "walk"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "grateful look at mooring lines",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "gratitude",
+          "scene_archetype": "discovery_moment",
+          "action_type": "gaze"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "hopeful walk into blue hour path",
+          "character_id": "gonegi",
+          "location_id": "gonegi_coastal_path_01",
+          "lighting_anchor_id": "blue_hour_street_01",
+          "lighting_dna_id": "early_evening_village",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "hope",
+          "scene_archetype": "movement_arrival",
+          "action_type": "walk"
+        }
+      ]
+    },
+    {
+      "mv_archetype_id": "rainy_street_observation",
+      "theme": "Blue hour village street observation without narrative dialogue",
+      "emotion_flow": ["loneliness", "nostalgia", "wonder", "determination"],
+      "location_flow": ["gonegi_street_lane_01", "gonegi_street_lane_01", "gonegi_street_lane_01", "gonegi_street_lane_01"],
+      "lighting_flow": ["blue_hour_street_01", "blue_hour_street_01", "blue_hour_street_01", "night_lamp_interior_01"],
+      "coverage_flow": [
+        "coverage_pattern_02_environmental_close",
+        "coverage_pattern_03_pov_insert_chain",
+        "coverage_pattern_01_establishing_insert_reaction",
+        "coverage_pattern_04_tracking_detail_close"
+      ],
+      "character_focus": ["dana", "dana", "gonegi", "gonegi"],
+      "environmental_focus": ["wet_cobblestone", "awning_drip", "shop_glow", "lamp_pool"],
+      "scene_count_range": "4-6",
+      "recommended_duration": "60s-120s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "dana under umbrella stillness",
+          "character_id": "dana",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "blue_hour_street_01",
+          "lighting_dna_id": "early_evening_village",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "loneliness",
+          "scene_archetype": "street_evening",
+          "action_type": "observe"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "memory in shop window reflection",
+          "character_id": "dana",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "blue_hour_street_01",
+          "lighting_dna_id": "early_evening_village",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "nostalgia",
+          "scene_archetype": "discovery_moment",
+          "action_type": "gaze"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "gonegi notices lantern glow",
+          "character_id": "gonegi",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "blue_hour_street_01",
+          "lighting_dna_id": "early_evening_village",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "wonder",
+          "scene_archetype": "street_evening",
+          "action_type": "discover"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "determined step toward warm interior",
+          "character_id": "gonegi",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "night_lamp_interior_01",
+          "lighting_dna_id": "night_bakery",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "determination",
+          "scene_archetype": "movement_arrival",
+          "action_type": "walk"
+        }
+      ]
+    },
+    {
+      "mv_archetype_id": "festival_preparation",
+      "theme": "Village energy building toward a quiet celebration",
+      "emotion_flow": ["determination", "hope", "reunion", "gratitude"],
+      "location_flow": [
+        "family_bakery_kitchen_01",
+        "family_bakery_dining_01",
+        "family_bakery_dining_01",
+        "gonegi_street_lane_01"
+      ],
+      "lighting_flow": [
+        "morning_bakery_glow_01",
+        "morning_bakery_glow_01",
+        "golden_hour_harbor_01",
+        "golden_hour_harbor_01"
+      ],
+      "coverage_flow": [
+        "coverage_pattern_04_tracking_detail_close",
+        "coverage_pattern_01_establishing_insert_reaction",
+        "coverage_pattern_04_tracking_detail_close",
+        "coverage_pattern_02_environmental_close"
+      ],
+      "character_focus": ["gonegi", "gonegi", "dana", "gonegi"],
+      "environmental_focus": ["prep_table", "shared_meal", "family_gesture", "street_banner"],
+      "scene_count_range": "4-8",
+      "recommended_duration": "120s-180s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "prep work before the gathering",
+          "character_id": "gonegi",
+          "location_id": "family_bakery_kitchen_01",
+          "lighting_anchor_id": "morning_bakery_glow_01",
+          "lighting_dna_id": "morning_bakery_kitchen",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "determination",
+          "scene_archetype": "bakery_opening",
+          "action_type": "work"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "hopeful table setting",
+          "character_id": "gonegi",
+          "location_id": "family_bakery_dining_01",
+          "lighting_anchor_id": "morning_bakery_glow_01",
+          "lighting_dna_id": "morning_bakery_kitchen",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "hope",
+          "scene_archetype": "bakery_opening",
+          "action_type": "observe"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "reunion at the table",
+          "character_id": "dana",
+          "location_id": "family_bakery_dining_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "reunion",
+          "scene_archetype": "movement_arrival",
+          "action_type": "arrive"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "grateful wide on the lane",
+          "character_id": "gonegi",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "gratitude",
+          "scene_archetype": "street_evening",
+          "action_type": "react"
+        }
+      ]
+    },
+    {
+      "mv_archetype_id": "seaside_evening_journey",
+      "theme": "Coastal path into evening sea light",
+      "emotion_flow": ["wonder", "farewell", "nostalgia", "hope"],
+      "location_flow": [
+        "gonegi_coastal_path_01",
+        "gonegi_harbor_dock_01",
+        "gonegi_harbor_dock_01",
+        "gonegi_olive_hill_01"
+      ],
+      "lighting_flow": [
+        "golden_hour_harbor_01",
+        "golden_hour_harbor_01",
+        "blue_hour_street_01",
+        "afternoon_olive_hill_01"
+      ],
+      "coverage_flow": [
+        "coverage_pattern_04_tracking_detail_close",
+        "coverage_pattern_02_environmental_close",
+        "coverage_pattern_03_pov_insert_chain",
+        "coverage_pattern_02_environmental_close"
+      ],
+      "character_focus": ["gonegi", "gonegi", "gonegi", "gonegi"],
+      "environmental_focus": ["path_edge", "tide_line", "distant_boat", "hill_silhouette"],
+      "scene_count_range": "4-7",
+      "recommended_duration": "90s-180s",
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "scene_goal": "walk the coastal edge at golden hour",
+          "character_id": "gonegi",
+          "location_id": "gonegi_coastal_path_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "wonder",
+          "scene_archetype": "movement_arrival",
+          "action_type": "walk"
+        },
+        {
+          "scene_index": 2,
+          "scene_goal": "farewell to the harbor line",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "golden_hour_harbor",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "farewell",
+          "scene_archetype": "harbor_work",
+          "action_type": "walk"
+        },
+        {
+          "scene_index": 3,
+          "scene_goal": "nostalgic pov on water",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "blue_hour_street_01",
+          "lighting_dna_id": "early_evening_village",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "nostalgia",
+          "scene_archetype": "window_gaze",
+          "action_type": "gaze"
+        },
+        {
+          "scene_index": 4,
+          "scene_goal": "hopeful hill silhouette close",
+          "character_id": "gonegi",
+          "location_id": "gonegi_olive_hill_01",
+          "lighting_anchor_id": "afternoon_olive_hill_01",
+          "lighting_dna_id": "afternoon_olive_hill",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "hope",
+          "scene_archetype": "hill_afternoon",
+          "action_type": "observe"
+        }
+      ]
+    }
+  ]
+}

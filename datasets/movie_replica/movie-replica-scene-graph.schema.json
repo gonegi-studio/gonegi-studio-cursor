@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-replica-scene-graph.schema.json",
+  "title": "MovieReplicaRuntimeSceneGraph",
+  "description": "Runtime scene graph derived from movie replica datasets for PHASE-MOVIE-REPLICA-002 character-replacement readiness",
+  "type": "object",
+  "required": [
+    "runtime_id",
+    "movie_id",
+    "scene_id",
+    "character_nodes",
+    "prop_nodes",
+    "environment_nodes",
+    "camera_nodes",
+    "spatial_edges",
+    "semantic_edges",
+    "timeline_edges"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "runtime_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "replica_id": { "type": "string" },
+    "character_nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/character_node" },
+      "minItems": 1
+    },
+    "prop_nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/prop_node" }
+    },
+    "environment_nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/environment_node" },
+      "minItems": 1
+    },
+    "camera_nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/camera_node" },
+      "minItems": 1
+    },
+    "spatial_edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/spatial_edge" },
+      "minItems": 1
+    },
+    "semantic_edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/semantic_edge" }
+    },
+    "timeline_edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/timeline_edge" },
+      "minItems": 1
+    },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    },
+    "character_node": {
+      "type": "object",
+      "required": ["node_id", "character_id", "node_role"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "character_id": { "type": "string" },
+        "node_role": { "type": "string" },
+        "pose_id": { "type": "string" },
+        "position": { "type": ["array", "null"] },
+        "depth_layer": { "type": "string" },
+        "replacement_ready": { "type": "boolean" },
+        "identity_contract_ref": { "type": "string" }
+      }
+    },
+    "prop_node": {
+      "type": "object",
+      "required": ["node_id", "prop_id"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "prop_id": { "type": "string" },
+        "position": { "type": ["array", "null"] },
+        "depth_layer": { "type": "string" },
+        "interaction_state": { "type": "string" }
+      }
+    },
+    "environment_node": {
+      "type": "object",
+      "required": ["node_id", "environment_type"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "environment_type": { "type": "string" },
+        "scene_category": { "type": "string" },
+        "structure_markers": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "camera_node": {
+      "type": "object",
+      "required": ["node_id", "camera_id"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "camera_id": { "type": "string" },
+        "shot_type": { "type": "string" },
+        "trajectory_id": { "type": "string" },
+        "start_position": { "type": ["array", "null"] },
+        "end_position": { "type": ["array", "null"] },
+        "movement_type": { "type": "string" }
+      }
+    },
+    "spatial_edge": {
+      "type": "object",
+      "required": ["edge_id", "source_node_id", "target_node_id", "edge_type"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "target_node_id": { "type": "string" },
+        "edge_type": { "type": "string" },
+        "distance_hint": { "type": "string" }
+      }
+    },
+    "semantic_edge": {
+      "type": "object",
+      "required": ["edge_id", "source_node_id", "anchor_id", "semantic_role"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "anchor_id": { "type": "string" },
+        "semantic_role": { "type": "string" },
+        "emotion": { "type": "string" },
+        "interaction_type": { "type": "string" }
+      }
+    },
+    "timeline_edge": {
+      "type": "object",
+      "required": ["edge_id", "source_ref", "target_ref", "edge_type"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source_ref": { "type": "string" },
+        "target_ref": { "type": "string" },
+        "edge_type": { "type": "string" },
+        "shot_order": { "type": "integer" },
+        "duration": { "type": "number" },
+        "timestamp_start": { "type": "number" },
+        "timestamp_end": { "type": "number" }
+      }
+    }
+  }
+}

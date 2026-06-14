@@ -1,0 +1,47 @@
+{
+  "report_id": "image_app_map_ingestion_mqcaq2f7",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-006",
+  "system_id": "IMAGE_APP_MAP_INGESTION_V1",
+  "generated_at": "2026-06-13T11:52:37.315Z",
+  "final_verdict": "PASS_IMAGE_APP_MAP_INGESTION_V1",
+  "status": "IMAGE_APP_MAP_INGESTION_DEFINED",
+  "validation_passed": true,
+  "image_app_map_ingestion_defined": true,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "ingestion_contract_defined": true,
+  "binding_rules_defined": true,
+  "translation_path_defined": true,
+  "fallback_text_path_defined": true,
+  "runtime_bridge_defined": true,
+  "supported_input_count": 12,
+  "unsupported_input_count": 7,
+  "checks": {
+    "ingestion_contract_defined": true,
+    "binding_rules_defined": true,
+    "translation_path_defined": true,
+    "fallback_text_path_defined": true,
+    "runtime_bridge_defined": true,
+    "map_binding_format_defined": true,
+    "reference_bank_binding_defined": true,
+    "temporal_binding_defined": true,
+    "adapter_binding_defined": true,
+    "fallback_behavior_matches": true
+  },
+  "issues": [
+    {
+      "code": "ADAPTER_MISMATCH",
+      "message": "Expected recommended_adapter=comfyui_adapter in adapter translation validation",
+      "severity": "warning"
+    }
+  ],
+  "execution_flags": {
+    "ingestion_only": true,
+    "implementation_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

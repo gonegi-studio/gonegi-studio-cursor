@@ -1,0 +1,31 @@
+{
+  "registry_id": "movie-reconstruction-conditioning-architecture-registry-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-003",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_ARCHITECTURE_DECISION_V1",
+  "version": "architecture_decision_v1",
+  "decision_only": true,
+  "implementation_deferred": true,
+  "metadata_only": true,
+  "conditioning_architecture_decided": true,
+  "conditioning_implemented": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "design_report_ref": "reports/movie_reconstruction/MOVIE_RECONSTRUCTION_CONDITIONING_DESIGN_REPORT.json",
+  "backend_requirements_ref": "reports/movie_reconstruction/CONDITIONING_BACKEND_REQUIREMENTS_REPORT.json",
+  "backend_options_evaluated": [
+    "ControlNet",
+    "Depth-conditioned diffusion",
+    "Pose-conditioned diffusion",
+    "Regional prompting",
+    "IP-Adapter",
+    "Video conditioning backend"
+  ],
+  "execution_flags": {
+    "decision_only": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

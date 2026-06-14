@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/video_runtime/runtime-job.schema.json",
+  "title": "VideoRuntimeJob",
+  "description": "Simulated runtime job record for PHASE-24 stub execution",
+  "type": "object",
+  "required": [
+    "job_id",
+    "runtime_interface_id",
+    "gpu_payload_id",
+    "job_state",
+    "validation_result",
+    "identity_lock_status",
+    "continuity_lock_status",
+    "completion_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "job_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-24-VIDEO-RUNTIME-STUB-EXECUTION-001" },
+    "runtime_interface_id": { "type": "string", "minLength": 1 },
+    "gpu_payload_id": { "type": "string", "minLength": 1 },
+    "job_state": {
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "VALIDATING",
+        "READY",
+        "SIMULATED_RUNNING",
+        "SIMULATED_COMPLETE",
+        "SIMULATED_FAILED"
+      ]
+    },
+    "validation_result": { "$ref": "#/$defs/validation_result" },
+    "identity_lock_status": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "continuity_lock_status": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "completion_status": {
+      "type": "string",
+      "enum": ["PENDING", "COMPLETE", "FAILED"]
+    },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "simulation_trace": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/simulation_step" }
+    },
+    "output_placeholder": { "type": "string" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": ["gpu_execution", "simulation_only", "external_call_allowed"],
+      "additionalProperties": false,
+      "properties": {
+        "gpu_execution": { "type": "boolean", "const": false },
+        "simulation_only": { "type": "boolean", "const": true },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "validation_result": {
+      "type": "object",
+      "required": [
+        "runtime_initialized",
+        "payload_valid",
+        "identity_lock_valid",
+        "motion_valid",
+        "render_queue_created",
+        "passed"
+      ],
+      "properties": {
+        "runtime_initialized": { "type": "boolean" },
+        "payload_valid": { "type": "boolean" },
+        "identity_lock_valid": { "type": "boolean" },
+        "motion_valid": { "type": "boolean" },
+        "render_queue_created": { "type": "boolean" },
+        "passed": { "type": "boolean" },
+        "issues": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "simulation_step": {
+      "type": "object",
+      "required": ["step", "job_state", "passed"],
+      "properties": {
+        "step": { "type": "string" },
+        "job_state": { "type": "string" },
+        "passed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

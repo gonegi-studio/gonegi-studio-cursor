@@ -1,0 +1,58 @@
+{
+  "layer_id": "image-production-layer-v4",
+  "phase": "PHASE-EXPORT-REBUILD-003",
+  "generated_at": "2026-06-09T06:33:31.771Z",
+  "base": "exports/image_app/latest_v3",
+  "reference": "exports/image_app/latest",
+  "production_adapters": [
+    {
+      "adapter_id": "instrumental-mv-adapter",
+      "reference_path": "exports/image_app/latest/instrumental-mv-adapter.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "ballad-mv-adapter",
+      "reference_path": "exports/image_app/latest/ballad-mv-adapter.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "emotion-acting-adapter",
+      "reference_path": "exports/image_app/latest/emotion-acting-adapter.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "shot-grammar-adapter",
+      "reference_path": "exports/image_app/latest/shot-grammar-adapter.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "indoor-location-anchor-adapter",
+      "reference_path": "exports/image_app/latest/indoor-location-anchor-adapter.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "lighting-anchor-adapter",
+      "reference_path": "exports/image_app/latest/lighting-anchor-adapter.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "living-world-core-v1-package",
+      "reference_path": "exports/image_app/latest/living-world-core-v1-package.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "music-drama-image-adapter",
+      "reference_path": "exports/image_app/latest/music-drama-image-adapter.json",
+      "bound": true
+    },
+    {
+      "adapter_id": "location-lighting-image-adapter",
+      "reference_path": "exports/image_app/latest/location-lighting-image-adapter.json",
+      "bound": true
+    }
+  ],
+  "mv_dataset_sync": "PASS",
+  "living_world_sync": "PASS",
+  "location_anchor_sync": "PASS",
+  "lighting_anchor_sync": "PASS"
+}

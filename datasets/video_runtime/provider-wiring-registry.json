@@ -1,0 +1,43 @@
+{
+  "registry_id": "provider-wiring-registry-v1",
+  "phase": "PHASE-27-VIDEO-PROVIDER-WIRING-DESIGN-001",
+  "registry_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "schema_path": "datasets/video_runtime/provider-wiring.schema.json",
+  "provider_registry_path": "datasets/video_runtime/provider-registry.json",
+  "runtime_requirements_path": "datasets/video_runtime/runtime-requirements.json",
+  "preflight_report_path": "reports/local-gpu-runtime-preflight-report.json",
+  "design_storage_dir": "datasets/video_runtime/wiring-designs",
+  "wiring_designs": [
+    {
+      "wiring_id": "wiring_local_comfyui_design_v1",
+      "provider_id": "provider_stub_local_comfyui",
+      "design_path": "datasets/video_runtime/wiring-designs/wiring_local_comfyui_design_v1.json",
+      "status": "designed"
+    },
+    {
+      "wiring_id": "wiring_local_wan_design_v1",
+      "provider_id": "provider_stub_local_wan",
+      "design_path": "datasets/video_runtime/wiring-designs/wiring_local_wan_design_v1.json",
+      "status": "designed"
+    },
+    {
+      "wiring_id": "wiring_local_animatediff_design_v1",
+      "provider_id": "provider_stub_local_animatediff",
+      "design_path": "datasets/video_runtime/wiring-designs/wiring_local_animatediff_design_v1.json",
+      "status": "designed"
+    },
+    {
+      "wiring_id": "wiring_remote_gpu_design_v1",
+      "provider_id": "provider_stub_remote_api",
+      "design_path": "datasets/video_runtime/wiring-designs/wiring_remote_gpu_design_v1.json",
+      "status": "designed"
+    },
+    {
+      "wiring_id": "wiring_remote_api_design_v1",
+      "provider_id": "provider_stub_remote_api",
+      "design_path": "datasets/video_runtime/wiring-designs/wiring_remote_api_design_v1.json",
+      "status": "designed"
+    }
+  ]
+}

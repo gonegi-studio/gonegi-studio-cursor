@@ -1,0 +1,46 @@
+{
+  "dataset_id": "object_identity-validation-dataset-v1",
+  "validation_channel": "object_identity",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-003",
+  "dataset_size": 48,
+  "target_batch_size": 40,
+  "difficulty_tiers": [
+    "easy",
+    "medium",
+    "hard"
+  ],
+  "binding_ref": "exports/movie_reconstruction_object_identity/object-identity-binding-package.json",
+  "measurement_methods": [
+    "identity_signature_match_score",
+    "variation_tolerance_band_score"
+  ],
+  "pass_thresholds": {
+    "identity_signature_match_score": 0.97,
+    "variation_tolerance_band_score": 0.9,
+    "hard_tier_pass_threshold": 0.85
+  },
+  "failure_examples": [
+    "wrong_prop_variant",
+    "identity_embedding_drift",
+    "role_weight_ignored"
+  ],
+  "sample_seeds": [
+    {
+      "sample_id": "obj_easy_001",
+      "difficulty_tier": "easy",
+      "source_ref": "suitcase_001"
+    },
+    {
+      "sample_id": "obj_med_001",
+      "difficulty_tier": "medium",
+      "source_ref": "lantern_001"
+    },
+    {
+      "sample_id": "obj_hard_001",
+      "difficulty_tier": "hard",
+      "source_ref": "chair_014"
+    }
+  ],
+  "gpu_execution": false,
+  "dataset_only": true
+}

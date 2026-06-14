@@ -1,0 +1,221 @@
+{
+  "test_id": "RKB-012",
+  "test_name": "SCENE_COMPOSITION_CONTINUITY_VALIDATION",
+  "phase": "PHASE-RKB-012",
+  "generated_at": "2026-06-03T11:44:11.305Z",
+  "comparison_baseline": "pre-scene-composition-lock",
+  "precheck": {
+    "scene_composition_verdict": "PASS_SCENE_ASSET_COMPOSITION_SYSTEM_V1",
+    "rkb_011_verdict": "PASS_RKB_011_ROOM_LAYOUT_CONTINUITY_VALIDATION",
+    "latest_adapter_present": true,
+    "production_baseline_present": true,
+    "pass": true
+  },
+  "test_matrix": {
+    "compositions": 8,
+    "generations_per_composition": 4,
+    "total_renders": 32
+  },
+  "adapter_consumption_check": {
+    "total_renders": 32,
+    "pass_count": 32,
+    "fail_count": 0,
+    "verdict": "PASS"
+  },
+  "compositions": [
+    {
+      "composition_id": "gonegi_bedroom_reading",
+      "location_id": "gonegi_bedroom_01",
+      "layout_id": "layout_lock_gonegi_bedroom_01",
+      "prop_anchor_ids": [
+        "wildflower_vase_01",
+        "ship_model_01",
+        "aged_wood_chair_01",
+        "sketchbook_01"
+      ],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    },
+    {
+      "composition_id": "gonegi_window_reflection",
+      "location_id": "gonegi_window_corner_01",
+      "layout_id": "layout_lock_gonegi_window_corner_01",
+      "prop_anchor_ids": [
+        "wildflower_vase_01",
+        "ship_model_01",
+        "aged_wood_chair_01",
+        "sketchbook_01",
+        "teacup_01"
+      ],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    },
+    {
+      "composition_id": "dana_window_reading",
+      "location_id": "dana_window_corner_01",
+      "layout_id": "layout_lock_dana_window_corner_01",
+      "prop_anchor_ids": [
+        "reading_chair_01",
+        "geranium_pot_01",
+        "teacup_01",
+        "sketchbook_01"
+      ],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    },
+    {
+      "composition_id": "bakery_breakfast",
+      "location_id": "family_bakery_dining_01",
+      "layout_id": "layout_lock_family_bakery_dining_01",
+      "prop_anchor_ids": [
+        "bread_basket_01",
+        "pine_table_01",
+        "teacup_01",
+        "clay_jug_01"
+      ],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    },
+    {
+      "composition_id": "bakery_evening_cleanup",
+      "location_id": "family_bakery_kitchen_01",
+      "layout_id": "layout_lock_family_bakery_kitchen_01",
+      "prop_anchor_ids": [
+        "brick_oven_01",
+        "copper_kettle_01",
+        "rolling_pin_01",
+        "pine_table_01"
+      ],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    },
+    {
+      "composition_id": "olive_hill_rest",
+      "location_id": "gonegi_olive_hill_01",
+      "layout_id": "layout_outdoor_olive_hill_rest_01",
+      "prop_anchor_ids": [],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    },
+    {
+      "composition_id": "harbor_watch_point",
+      "location_id": "harbor_watch_point_01",
+      "layout_id": "layout_outdoor_harbor_watch_01",
+      "prop_anchor_ids": [],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    },
+    {
+      "composition_id": "harbor_sunset_bench",
+      "location_id": "harbor_watch_point_01",
+      "layout_id": "layout_outdoor_harbor_watch_01",
+      "prop_anchor_ids": [],
+      "generation_count": 4,
+      "adapter_consumption_pass_count": 4,
+      "average_scores": {
+        "composition_recognition": 0.94,
+        "character_position_stability": 0.93,
+        "camera_direction_stability": 0.92,
+        "camera_height_stability": 0.91,
+        "required_asset_visibility": 0.92,
+        "overall_composition_continuity": 0.92
+      },
+      "catastrophic_render_count": 0,
+      "composition_pass": true
+    }
+  ],
+  "aggregate_scores": {
+    "composition_recognition": 0.94,
+    "character_position_stability": 0.93,
+    "camera_direction_stability": 0.92,
+    "camera_height_stability": 0.91,
+    "required_asset_visibility": 0.92,
+    "overall_composition_continuity": 0.92
+  },
+  "success_condition": {
+    "overall_composition_continuity_minimum": 0.85,
+    "character_position_stability_minimum": 0.85,
+    "required_asset_visibility_minimum": 0.85,
+    "actual_overall_composition_continuity": 0.92,
+    "actual_character_position_stability": 0.93,
+    "actual_required_asset_visibility": 0.92,
+    "composition_reversal": false,
+    "character_position_swap": false,
+    "required_anchor_disappearance": false,
+    "compositions_passing": 8,
+    "compositions_required": 8,
+    "met": true
+  },
+  "final_verdict": "PASS_RKB_012_SCENE_COMPOSITION_CONTINUITY_VALIDATION",
+  "next_phase": "MDS-003_MICRO_PRODUCTION_RETEST_WITH_COMPOSITION"
+}

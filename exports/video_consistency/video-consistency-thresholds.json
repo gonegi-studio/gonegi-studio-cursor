@@ -1,0 +1,34 @@
+{
+  "thresholds_id": "video-consistency-thresholds-v1",
+  "asset_type": "video_consistency_thresholds",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-002",
+  "purpose": "Pass/fail and production-grade score thresholds for video consistency validation.",
+  "minimum_score": 0.8,
+  "target_score": 0.9,
+  "production_score": 0.95,
+  "threshold_order_valid": true,
+  "image_thresholds_ref": "datasets/consistency/image-consistency-thresholds.json",
+  "dimension_floor_scores": {
+    "character_identity": 0.82,
+    "location_identity": 0.8,
+    "lighting_identity": 0.78,
+    "costume_identity": 0.8,
+    "prop_identity": 0.76,
+    "style_identity": 0.8,
+    "composition_identity": 0.78,
+    "camera_identity": 0.78,
+    "motion_identity": 0.8,
+    "transition_identity": 0.78
+  },
+  "sequence_failure_policy": {
+    "reject_below_minimum": true,
+    "flag_between_minimum_and_target": true,
+    "accept_at_or_above_target": true,
+    "production_grade_at_or_above_production_score": true
+  },
+  "export_id": "video-consistency-thresholds-export-v1",
+  "generated_at": "2026-06-08T23:03:47.223Z",
+  "dataset_ref": "datasets/consistency/video-consistency-thresholds.json",
+  "threshold_integrity": "PASS"
+}

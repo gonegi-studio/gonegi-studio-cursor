@@ -1,0 +1,350 @@
+{
+  "layer_version": "LOCATION-CONTINUITY-PHASE-88-v1",
+  "seed_count": 8,
+  "song_master_id": "song_master_01",
+  "required_fields": [
+    "location_id",
+    "location_name",
+    "environment_anchor",
+    "architecture_anchor",
+    "lighting_anchor",
+    "weather_anchor",
+    "color_anchor",
+    "scene_references",
+    "continuity_score"
+  ],
+  "pipeline_chain": [
+    "song_master",
+    "emotion_timeline",
+    "narrative_beat",
+    "storyboard_scene",
+    "image_prompt_pack",
+    "video_prompt_pack",
+    "prompt_pack_pair",
+    "location_continuity"
+  ],
+  "seed_location_continuity": [
+    {
+      "location_id": "LOC-home",
+      "location_name": "Gonagi Home",
+      "environment_anchor": [
+        "LOC-home",
+        "domestic interior-exterior threshold",
+        "daily-life lived-in warmth",
+        "window light and entry path continuity"
+      ],
+      "architecture_anchor": [
+        "modest two-story residential facade",
+        "wooden doorframe with familiar scratch mark",
+        "interior window seat nook",
+        "kitchen-living open plan sightline"
+      ],
+      "lighting_anchor": [
+        "warm interior practical lights",
+        "late afternoon window key",
+        "soft evening return glow"
+      ],
+      "weather_anchor": [
+        "rain visible through windows",
+        "calm interior sheltered from exterior",
+        "season-stable domestic atmosphere"
+      ],
+      "color_anchor": [
+        "muted cream walls",
+        "warm wood tones",
+        "soft pastel domestic accents"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-01",
+        "pair:PAIR-SBD-song_master_01-02",
+        "pair:PAIR-SBD-song_master_01-03",
+        "pair:PAIR-SBD-song_master_01-04",
+        "pair:PAIR-SBD-song_master_01-05",
+        "pair:PAIR-SBD-song_master_01-07",
+        "pair:PAIR-SBD-song_master_01-09",
+        "pair:PAIR-SBD-song_master_01-10",
+        "pair:PAIR-SBD-song_master_01-11",
+        "pair:PAIR-SBD-song_master_01-14",
+        "pair:PAIR-SBD-song_master_01-15",
+        "pair:PAIR-SBD-song_master_01-16",
+        "storyboard:SBD-song_master_01-01",
+        "storyboard:SBD-song_master_01-02",
+        "storyboard:SBD-song_master_01-03",
+        "storyboard:SBD-song_master_01-04",
+        "storyboard:SBD-song_master_01-05",
+        "storyboard:SBD-song_master_01-07",
+        "storyboard:SBD-song_master_01-09",
+        "storyboard:SBD-song_master_01-10",
+        "storyboard:SBD-song_master_01-11",
+        "storyboard:SBD-song_master_01-14",
+        "storyboard:SBD-song_master_01-15",
+        "storyboard:SBD-song_master_01-16"
+      ],
+      "continuity_score": 75
+    },
+    {
+      "location_id": "LOC-station",
+      "location_name": "Harbor Transit Station",
+      "environment_anchor": [
+        "LOC-station",
+        "transit arrival-departure rhythm",
+        "public waiting platform energy",
+        "route signage and timetable continuity"
+      ],
+      "architecture_anchor": [
+        "covered platform canopy structure",
+        "arrival board frame geometry",
+        "bench row and ticket gate alignment",
+        "train carriage door sightline"
+      ],
+      "lighting_anchor": [
+        "platform fluorescent mixed with sunset spill",
+        "headlight approach glow",
+        "waiting area soft fill"
+      ],
+      "weather_anchor": [
+        "open-air platform breeze",
+        "occasional drizzle on canopy edge",
+        "evening cool-down after sunset"
+      ],
+      "color_anchor": [
+        "steel grey platform tones",
+        "warm amber arrival lights",
+        "deep blue evening sky bleed"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-01",
+        "pair:PAIR-SBD-song_master_01-04",
+        "pair:PAIR-SBD-song_master_01-12",
+        "pair:PAIR-SBD-song_master_01-13",
+        "storyboard:SBD-song_master_01-01",
+        "storyboard:SBD-song_master_01-04",
+        "storyboard:SBD-song_master_01-12",
+        "storyboard:SBD-song_master_01-13"
+      ],
+      "continuity_score": 25
+    },
+    {
+      "location_id": "LOC-bridge",
+      "location_name": "Sunset Crossing Bridge",
+      "environment_anchor": [
+        "LOC-bridge",
+        "river-span transitional path",
+        "horizon-forward crossing space",
+        "water reflection continuity below"
+      ],
+      "architecture_anchor": [
+        "suspension cable rhythm",
+        "guardrail line perspective",
+        "mid-span walkway geometry",
+        "distant city silhouette backdrop"
+      ],
+      "lighting_anchor": [
+        "golden hour rim on railing",
+        "long shadow stretch across deck",
+        "warm sky gradient key"
+      ],
+      "weather_anchor": [
+        "light wind across open span",
+        "clear sunset visibility",
+        "stable crossing conditions"
+      ],
+      "color_anchor": [
+        "amber sunset wash",
+        "cool river blue below",
+        "warm stone deck tones"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-06",
+        "storyboard:SBD-song_master_01-06"
+      ],
+      "continuity_score": 6
+    },
+    {
+      "location_id": "LOC-street",
+      "location_name": "Neighborhood Street Grid",
+      "environment_anchor": [
+        "LOC-street",
+        "urban pedestrian flow path",
+        "crosswalk and market edge continuity",
+        "daily commute surface texture"
+      ],
+      "architecture_anchor": [
+        "shopfront row repetition",
+        "crosswalk signal pole placement",
+        "bike lane edge marking",
+        "market stall canopy line"
+      ],
+      "lighting_anchor": [
+        "street-level mixed daylight",
+        "storefront bounce fill",
+        "late afternoon long shadows"
+      ],
+      "weather_anchor": [
+        "post-rain reflective pavement",
+        "open sidewalk breeze",
+        "market-hour ambient bustle"
+      ],
+      "color_anchor": [
+        "warm storefront signage hues",
+        "grey pavement baseline",
+        "green crosswalk accent stripes"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-07",
+        "pair:PAIR-SBD-song_master_01-08",
+        "pair:PAIR-SBD-song_master_01-11",
+        "storyboard:SBD-song_master_01-07",
+        "storyboard:SBD-song_master_01-08",
+        "storyboard:SBD-song_master_01-11"
+      ],
+      "continuity_score": 19
+    },
+    {
+      "location_id": "LOC-school",
+      "location_name": "Campus Walkway",
+      "environment_anchor": [
+        "LOC-school",
+        "institutional youth pathway",
+        "mentor-student practice corridor",
+        "campus gate to courtyard flow"
+      ],
+      "architecture_anchor": [
+        "school gate arch frame",
+        "flagpole and banner line",
+        "courtyard hedge boundary",
+        "classroom wing sightline"
+      ],
+      "lighting_anchor": [
+        "morning campus side light",
+        "open courtyard fill",
+        "neutral institutional key"
+      ],
+      "weather_anchor": [
+        "clear school-day sky",
+        "light campus wind on banners",
+        "stable academic-hour calm"
+      ],
+      "color_anchor": [
+        "school uniform neutral palette",
+        "green courtyard planting",
+        "white concrete walkway base"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-08",
+        "pair:PAIR-SBD-song_master_01-14",
+        "storyboard:SBD-song_master_01-08",
+        "storyboard:SBD-song_master_01-14"
+      ],
+      "continuity_score": 13
+    },
+    {
+      "location_id": "LOC-shore",
+      "location_name": "Harbor Shoreline",
+      "environment_anchor": [
+        "LOC-shore",
+        "coastal reunion approach path",
+        "wave-edge rhythmic shoreline",
+        "open horizon reunion space"
+      ],
+      "architecture_anchor": [
+        "wooden pier edge geometry",
+        "breakwater stone line",
+        "shore path railing continuity",
+        "distant lighthouse silhouette"
+      ],
+      "lighting_anchor": [
+        "low sun glint on water",
+        "warm rim on shoreline figures",
+        "soft reflective fill from sea"
+      ],
+      "weather_anchor": [
+        "coastal breeze on clothing",
+        "gentle wave motion constant",
+        "post-sunset cooling air"
+      ],
+      "color_anchor": [
+        "sea blue-green gradient",
+        "warm sand and stone tones",
+        "sunset amber horizon band"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-12",
+        "storyboard:SBD-song_master_01-12"
+      ],
+      "continuity_score": 6
+    },
+    {
+      "location_id": "LOC-rooftop",
+      "location_name": "Apartment Rooftop",
+      "environment_anchor": [
+        "LOC-rooftop",
+        "elevated farewell vista point",
+        "skyline contemplation space",
+        "wind-exposed departure overlook"
+      ],
+      "architecture_anchor": [
+        "parapet wall height continuity",
+        "water tank and antenna silhouette",
+        "rooftop access door frame",
+        "city grid depth planes"
+      ],
+      "lighting_anchor": [
+        "skyline haze backlight",
+        "cool elevated ambient fill",
+        "distant city light pricks at dusk"
+      ],
+      "weather_anchor": [
+        "strong rooftop wind ripple",
+        "open-air exposure",
+        "clear dusk visibility"
+      ],
+      "color_anchor": [
+        "cool blue-grey rooftop concrete",
+        "warm distant city glow",
+        "deep violet dusk sky"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-13",
+        "storyboard:SBD-song_master_01-13"
+      ],
+      "continuity_score": 6
+    },
+    {
+      "location_id": "LOC-forest",
+      "location_name": "Night Forest Clearing",
+      "environment_anchor": [
+        "LOC-forest",
+        "tree-lined quiet clearing",
+        "star-gazing open canopy gap",
+        "redemption ritual night space"
+      ],
+      "architecture_anchor": [
+        "natural tree ring boundary",
+        "forest path entry sightline",
+        "low stone seating circle",
+        "branch frame overhead geometry"
+      ],
+      "lighting_anchor": [
+        "star field ambient glow",
+        "soft moonless night fill",
+        "subtle ground-level practical light"
+      ],
+      "weather_anchor": [
+        "still night air",
+        "leaf rustle micro movement",
+        "clear star visibility"
+      ],
+      "color_anchor": [
+        "deep forest green shadows",
+        "cool night blue-black sky",
+        "muted earth floor tones"
+      ],
+      "scene_references": [
+        "pair:PAIR-SBD-song_master_01-15",
+        "storyboard:SBD-song_master_01-15"
+      ],
+      "continuity_score": 6
+    }
+  ]
+}

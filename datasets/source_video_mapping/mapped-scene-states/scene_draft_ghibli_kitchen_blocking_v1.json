@@ -1,0 +1,144 @@
+{
+  "scene_state_id": "scene_draft_ghibli_kitchen_blocking_v1",
+  "mapping_phase": "PHASE-SOURCE-VIDEO-005-SOURCE_VIDEO_TO_SCENE_STATE_MAPPING_V1",
+  "draft_status": "mapped_draft",
+  "source_mapping_id": "map_ghibli_kitchen_to_scene_state_v1",
+  "source_coordinate_id": "movie_coord_ghibli_kitchen_blocking_v1",
+  "source_video_id": "GHIBLI_01",
+  "director_grammar_refs": [
+    "director_grammar_ghibli_v1"
+  ],
+  "phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "character_state": {
+    "active_character_ids": [
+      "protagonist_a",
+      "protagonist_b"
+    ],
+    "primary_character_id": "protagonist_a",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:protagonist_a",
+      "character:protagonist_b"
+    ]
+  },
+  "location_state": {
+    "location_id": "draft_domestic_kitchen_ghibli",
+    "location_name": "domestic-kitchen",
+    "location_type": "domestic-kitchen",
+    "domain": "source_video_mapping_draft",
+    "location_source": "datasets/location/location-dna-index-v1.json",
+    "layout_lock_id": "layout_lock:hearth-center",
+    "walkable_zone": "kitchen-floor-tile"
+  },
+  "lighting_state": {
+    "lighting_id": "draft_lighting_movie_coord_ghibli_kitchen_blocking_v1",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "direction": "window-left",
+    "intensity": "hearth-warm-fill"
+  },
+  "emotion_state": {
+    "emotion_id": "warmth",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.7,
+    "acting_visibility_weight": "medium"
+  },
+  "relationship_state": {
+    "relationship_id": "companionship",
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "protagonist_a",
+      "protagonist_b"
+    ],
+    "distance_behavior": "counter-exchange",
+    "gaze_pattern": "hearth / protagonist_a",
+    "blocking_primary_focus": "counter-exchange"
+  },
+  "camera_state": {
+    "shot_type": "two-shot-medium",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "kitchen-entry-third",
+    "camera_height": "eye-level",
+    "camera_direction": "hearth-center",
+    "motion_vectors": [
+      "counter-reach-to-teapot"
+    ]
+  },
+  "composition_state": {
+    "composition_id": "draft_composition_movie_coord_ghibli_kitchen_blocking_v1",
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [
+      "tea_pot",
+      "window_sill_herbs"
+    ],
+    "character_positions": {
+      "protagonist_a": "counter-left-third",
+      "protagonist_b": "counter-right-third"
+    },
+    "depth_layers": [
+      {
+        "layer_index": 0,
+        "layer_role": "foreground",
+        "content_hint": "counter-props"
+      },
+      {
+        "layer_index": 1,
+        "layer_role": "midground",
+        "content_hint": "character-pair"
+      },
+      {
+        "layer_index": 2,
+        "layer_role": "background",
+        "content_hint": "window-hearth-wall"
+      }
+    ],
+    "negative_space": "window-background"
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "morning",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": [
+      "counter-props",
+      "character-pair",
+      "window-hearth-wall"
+    ],
+    "ambient_motion": []
+  },
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "protagonist_a",
+      "protagonist_b"
+    ],
+    "identity_lock_tokens": [
+      "identity_anchor:protagonist_a_face_v1",
+      "identity_anchor:protagonist_b_face_v1",
+      "identity_lock:preserve_face_geometry"
+    ],
+    "location_lock_tokens": [
+      "location_lock:domestic-kitchen",
+      "walkable-zone:kitchen-floor-tile"
+    ],
+    "composition_lock_tokens": [
+      "composition_lock:two-shot-balance",
+      "prop_anchor:tea_pot",
+      "prop_anchor:window_sill_herbs"
+    ]
+  },
+  "source_refs": {
+    "source_video_id": "GHIBLI_01",
+    "source_coordinate_id": "movie_coord_ghibli_kitchen_blocking_v1",
+    "mapping_id": "map_ghibli_kitchen_to_scene_state_v1",
+    "scene_state_schema": "datasets/state/scene-state.schema.json",
+    "timestamp_start": "48",
+    "timestamp_end": "72"
+  },
+  "design_only": true,
+  "gpu_execution": false,
+  "built_at": "2026-06-05T06:47:56.961Z"
+}

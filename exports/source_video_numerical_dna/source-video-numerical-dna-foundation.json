@@ -1,0 +1,208 @@
+{
+  "foundation_id": "source-video-numerical-dna-foundation-v1",
+  "phase": "PHASE-SOURCE-VIDEO-DNA-REAL-001",
+  "system_id": "SOURCE_VIDEO_NUMERICAL_DNA_FOUNDATION_V1",
+  "version": "foundation_v1",
+  "metadata_only": true,
+  "placeholder_only": true,
+  "numerical_dna_complete": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "schema_path": "datasets/source_video_numerical_dna/source-video-numerical-dna.schema.json",
+  "registry_path": "datasets/source_video_numerical_dna/source-video-numerical-dna-registry.json",
+  "coverage": {
+    "ghibli": 7,
+    "shinkai": 2,
+    "live_action": 1,
+    "mori": 5,
+    "total": 15,
+    "missing_records": 0
+  },
+  "source_records": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "source_group": "ghibli",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true,
+      "primary_source": true
+    },
+    {
+      "source_video_id": "GHIBLI_02",
+      "source_group": "ghibli",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "GHIBLI_03",
+      "source_group": "ghibli",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "GHIBLI_04",
+      "source_group": "ghibli",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "GHIBLI_05",
+      "source_group": "ghibli",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "GHIBLI_06",
+      "source_group": "ghibli",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "GHIBLI_07",
+      "source_group": "ghibli",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "source_group": "shinkai",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true,
+      "primary_source": true
+    },
+    {
+      "source_video_id": "SHINKAI_02",
+      "source_group": "shinkai",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_group": "live_action",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true,
+      "primary_source": true
+    },
+    {
+      "source_video_id": "MORI_01",
+      "source_group": "mori",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true,
+      "primary_source": true
+    },
+    {
+      "source_video_id": "MORI_02",
+      "source_group": "mori",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "MORI_03",
+      "source_group": "mori",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "MORI_04",
+      "source_group": "mori",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    },
+    {
+      "source_video_id": "MORI_05",
+      "source_group": "mori",
+      "registry_status": "registered",
+      "extraction_status": "placeholder_only",
+      "metadata_only": true,
+      "placeholder_only": true
+    }
+  ],
+  "extractor_placeholders": [
+    {
+      "extractor_id": "frame_coordinates",
+      "builder_module": "services/sourceVideoNumericalDna/frameCoordinateExtraction.ts",
+      "placeholder_only": true,
+      "real_extraction_enabled": false,
+      "status": "foundation_ready"
+    },
+    {
+      "extractor_id": "composition_coordinates",
+      "builder_module": "services/sourceVideoNumericalDna/compositionCoordinateExtraction.ts",
+      "placeholder_only": true,
+      "real_extraction_enabled": false,
+      "status": "foundation_ready"
+    },
+    {
+      "extractor_id": "camera_path",
+      "builder_module": "services/sourceVideoNumericalDna/cameraPathExtraction.ts",
+      "placeholder_only": true,
+      "real_extraction_enabled": false,
+      "status": "foundation_ready"
+    },
+    {
+      "extractor_id": "blocking_data",
+      "builder_module": "services/sourceVideoNumericalDna/blockingExtraction.ts",
+      "placeholder_only": true,
+      "real_extraction_enabled": false,
+      "status": "foundation_ready"
+    },
+    {
+      "extractor_id": "motion_vectors",
+      "builder_module": "services/sourceVideoNumericalDna/motionVectorExtraction.ts",
+      "placeholder_only": true,
+      "real_extraction_enabled": false,
+      "status": "foundation_ready"
+    },
+    {
+      "extractor_id": "edit_rhythm",
+      "builder_module": "services/sourceVideoNumericalDna/editRhythmExtraction.ts",
+      "placeholder_only": true,
+      "real_extraction_enabled": false,
+      "status": "foundation_ready"
+    },
+    {
+      "extractor_id": "scene_remap",
+      "builder_module": "services/sourceVideoNumericalDna/sceneRemapEngine.ts",
+      "placeholder_only": true,
+      "real_extraction_enabled": false,
+      "status": "foundation_ready"
+    }
+  ],
+  "execution_flags": {
+    "metadata_only": true,
+    "placeholder_only": true,
+    "gpu_execution": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  },
+  "generated_at": "2026-06-13T06:51:34.113Z"
+}

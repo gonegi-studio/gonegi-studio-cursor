@@ -1,0 +1,74 @@
+{
+  "density_id": "feature-shot-density-by-scene-type-v1",
+  "phase": "PHASE-L3-FEATURE-004",
+  "generated_at": "2026-06-08T22:28:46.152Z",
+  "density_categories": [
+    "dialogue",
+    "action",
+    "montage",
+    "callback",
+    "climax"
+  ],
+  "rules": {
+    "dialogue": {
+      "min_shots": 3,
+      "max_shots": 5,
+      "target_density": 4
+    },
+    "action": {
+      "min_shots": 4,
+      "max_shots": 6,
+      "target_density": 5
+    },
+    "montage": {
+      "min_shots": 2,
+      "max_shots": 4,
+      "target_density": 3
+    },
+    "callback": {
+      "min_shots": 4,
+      "max_shots": 6,
+      "target_density": 5
+    },
+    "climax": {
+      "min_shots": 5,
+      "max_shots": 7,
+      "target_density": 6
+    }
+  },
+  "archetypes": [
+    {
+      "feature_film_archetype_id": "harbor_saga_feature",
+      "shot_count": 6599,
+      "distribution": {
+        "dialogue": 3968,
+        "action": 2056,
+        "montage": 333,
+        "callback": 50,
+        "climax": 192
+      }
+    },
+    {
+      "feature_film_archetype_id": "mediterranean_epoch_feature",
+      "shot_count": 8913,
+      "distribution": {
+        "dialogue": 5096,
+        "action": 3193,
+        "montage": 420,
+        "callback": 30,
+        "climax": 174
+      }
+    },
+    {
+      "feature_film_archetype_id": "correspondence_ledger_feature",
+      "shot_count": 5659,
+      "distribution": {
+        "dialogue": 3568,
+        "action": 1511,
+        "montage": 294,
+        "callback": 40,
+        "climax": 246
+      }
+    }
+  ]
+}

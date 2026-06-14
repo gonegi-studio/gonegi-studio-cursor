@@ -1,0 +1,382 @@
+{
+  "report_id": "real-image-generation-validation-report-v1",
+  "phase": "PHASE-REAL-IMAGE-GENERATION-001",
+  "system_id": "REAL_IMAGE_GENERATION_VALIDATION_V1",
+  "generated_at": "2026-06-10T10:58:30.146Z",
+  "final_verdict": "PASS_REAL_IMAGE_GENERATION_V1",
+  "validation_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "titanic_image_simulation_pass": true,
+      "spirited_away_image_simulation_pass": true,
+      "multi_movie_runtime_pass": true,
+      "latest_v5_exists": true,
+      "runtime_composition_exists": true,
+      "titanic_in_swappable_list": true,
+      "spirited_away_in_swappable_list": true
+    }
+  },
+  "validation_summary": {
+    "titanic_scene_count": 5,
+    "spirited_away_scene_count": 5,
+    "total_generated_images": 10,
+    "character_identity": 1,
+    "world_identity": 1,
+    "movie_recognition": 0.9393,
+    "movie_swap_separation": 1,
+    "geometry": 0.9675,
+    "composition": 0.9608,
+    "semantic_anchor": 0.9157,
+    "movie_signature": 0.9157,
+    "image_generation_success_rate": 1,
+    "simulation_pass": true,
+    "real_generation_pass": true,
+    "base_dataset": "latest_v5",
+    "movie_datasets": "titanic,spirited_away",
+    "gpu_execution": true,
+    "actual_image_generation": true,
+    "generation_mode": "real_production_png",
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "results": [
+    {
+      "result_id": "real_gen_titanic_01_bow_pose",
+      "movie_dataset": "titanic",
+      "test_scene_key": "titanic_01_bow_pose",
+      "scene_type": "bow_pose",
+      "semantic_anchor_id": "titanic_bow_pose",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_bow_pose_001",
+      "generated_image_path": "exports/real_generation_validation/images/titanic_01_bow_pose.png",
+      "generation_prompt": "Titanic Scene Reconstructed Inside Gonegi World:latest_v5 + titanic_dataset:scene_type:bow_pose:semantic_anchor:titanic_...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9268,
+        "geometry": 0.9732,
+        "composition": 0.9735,
+        "semantic_anchor": 0.9268,
+        "movie_recognition": 0.9476
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "158,126,96|208,190,169|208,192,170|104.8141|5.848"
+    },
+    {
+      "result_id": "real_gen_titanic_02_staircase",
+      "movie_dataset": "titanic",
+      "test_scene_key": "titanic_02_staircase",
+      "scene_type": "staircase_encounter",
+      "semantic_anchor_id": "titanic_staircase_encounter",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_staircase_encounter_002",
+      "generated_image_path": "exports/real_generation_validation/images/titanic_02_staircase.png",
+      "generation_prompt": "Titanic Scene Reconstructed Inside Gonegi World:latest_v5 + titanic_dataset:scene_type:staircase_encounter:semantic_anch...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9251,
+        "geometry": 0.9728,
+        "composition": 0.9716,
+        "semantic_anchor": 0.9251,
+        "movie_recognition": 0.9464
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "147,117,89|208,190,169|207,192,170|104.8141|5.8477"
+    },
+    {
+      "result_id": "real_gen_titanic_03_deck_walk",
+      "movie_dataset": "titanic",
+      "test_scene_key": "titanic_03_deck_walk",
+      "scene_type": "deck_walk",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_deck_walk_003",
+      "generated_image_path": "exports/real_generation_validation/images/titanic_03_deck_walk.png",
+      "generation_prompt": "Titanic Scene Reconstructed Inside Gonegi World:latest_v5 + titanic_dataset:scene_type:deck_walk:semantic_anchor:titanic...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9195,
+        "geometry": 0.9714,
+        "composition": 0.9651,
+        "semantic_anchor": 0.9195,
+        "movie_recognition": 0.9421
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "140,112,84|208,190,169|207,191,170|104.8141|5.845"
+    },
+    {
+      "result_id": "real_gen_titanic_04_sunset_rail",
+      "movie_dataset": "titanic",
+      "test_scene_key": "titanic_04_sunset_rail",
+      "scene_type": "sunset_rail",
+      "semantic_anchor_id": "titanic_sunset_rail_pose",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_sunset_rail_004",
+      "generated_image_path": "exports/real_generation_validation/images/titanic_04_sunset_rail.png",
+      "generation_prompt": "Titanic Scene Reconstructed Inside Gonegi World:latest_v5 + titanic_dataset:scene_type:sunset_rail:semantic_anchor:titan...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9166,
+        "geometry": 0.9707,
+        "composition": 0.9618,
+        "semantic_anchor": 0.9166,
+        "movie_recognition": 0.94
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "137,109,83|208,190,169|206,191,169|104.8141|5.843"
+    },
+    {
+      "result_id": "real_gen_titanic_05_dining_hall",
+      "movie_dataset": "titanic",
+      "test_scene_key": "titanic_05_dining_hall",
+      "scene_type": "dining_hall",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_dining_hall_005",
+      "generated_image_path": "exports/real_generation_validation/images/titanic_05_dining_hall.png",
+      "generation_prompt": "Titanic Scene Reconstructed Inside Gonegi World:latest_v5 + titanic_dataset:scene_type:dining_hall:semantic_anchor:titan...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9182,
+        "geometry": 0.971,
+        "composition": 0.9636,
+        "semantic_anchor": 0.9182,
+        "movie_recognition": 0.9411
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "138,110,84|208,190,169|206,191,169|104.8141|5.8444"
+    },
+    {
+      "result_id": "real_gen_spirited_01_bridge_crossing",
+      "movie_dataset": "spirited_away",
+      "test_scene_key": "spirited_01_bridge_crossing",
+      "scene_type": "bridge_crossing",
+      "semantic_anchor_id": "bridge_crossing",
+      "source_video_id": "GHIBLI_01",
+      "scene_id": "scene_spirited_away_bridge_crossing_001",
+      "generated_image_path": "exports/real_generation_validation/images/spirited_01_bridge_crossing.png",
+      "generation_prompt": "Spirited Away Scene Reconstructed Inside Gonegi World:latest_v5 + spirited_away_dataset:scene_type:bridge_crossing:seman...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9149,
+        "geometry": 0.9644,
+        "composition": 0.9599,
+        "semantic_anchor": 0.9149,
+        "movie_recognition": 0.9387
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "198,165,128|149,196,216|146,193,217|109.6221|5.6186"
+    },
+    {
+      "result_id": "real_gen_spirited_02_bathhouse_arrival",
+      "movie_dataset": "spirited_away",
+      "test_scene_key": "spirited_02_bathhouse_arrival",
+      "scene_type": "bathhouse_arrival",
+      "semantic_anchor_id": "bathhouse_arrival",
+      "source_video_id": "GHIBLI_01",
+      "scene_id": "scene_spirited_away_bathhouse_arrival_002",
+      "generated_image_path": "exports/real_generation_validation/images/spirited_02_bathhouse_arrival.png",
+      "generation_prompt": "Spirited Away Scene Reconstructed Inside Gonegi World:latest_v5 + spirited_away_dataset:scene_type:bathhouse_arrival:sem...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9149,
+        "geometry": 0.9644,
+        "composition": 0.9599,
+        "semantic_anchor": 0.9149,
+        "movie_recognition": 0.9387
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "197,164,127|149,196,216|146,193,217|109.6221|5.6182"
+    },
+    {
+      "result_id": "real_gen_spirited_03_train_memory",
+      "movie_dataset": "spirited_away",
+      "test_scene_key": "spirited_03_train_memory",
+      "scene_type": "train_memory_scene",
+      "semantic_anchor_id": "train_memory_scene",
+      "source_video_id": "GHIBLI_01",
+      "scene_id": "scene_spirited_away_train_memory_scene_003",
+      "generated_image_path": "exports/real_generation_validation/images/spirited_03_train_memory.png",
+      "generation_prompt": "Spirited Away Scene Reconstructed Inside Gonegi World:latest_v5 + spirited_away_dataset:scene_type:train_memory_scene:se...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9099,
+        "geometry": 0.9631,
+        "composition": 0.9542,
+        "semantic_anchor": 0.9099,
+        "movie_recognition": 0.935
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "193,160,124|149,196,216|145,193,217|109.6221|5.6168"
+    },
+    {
+      "result_id": "real_gen_spirited_04_river_spirit",
+      "movie_dataset": "spirited_away",
+      "test_scene_key": "spirited_04_river_spirit",
+      "scene_type": "river_spirit_departure",
+      "semantic_anchor_id": "river_spirit_departure",
+      "source_video_id": "GHIBLI_01",
+      "scene_id": "scene_spirited_away_river_spirit_departure_004",
+      "generated_image_path": "exports/real_generation_validation/images/spirited_04_river_spirit.png",
+      "generation_prompt": "Spirited Away Scene Reconstructed Inside Gonegi World:latest_v5 + spirited_away_dataset:scene_type:river_spirit_departur...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9082,
+        "geometry": 0.9627,
+        "composition": 0.9522,
+        "semantic_anchor": 0.9082,
+        "movie_recognition": 0.9336
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "183,152,119|149,196,216|145,192,216|109.6221|5.6156"
+    },
+    {
+      "result_id": "real_gen_spirited_05_no_face",
+      "movie_dataset": "spirited_away",
+      "test_scene_key": "spirited_05_no_face",
+      "scene_type": "no_face_loneliness",
+      "semantic_anchor_id": "no_face_loneliness",
+      "source_video_id": "GHIBLI_01",
+      "scene_id": "scene_spirited_away_no_face_loneliness_005",
+      "generated_image_path": "exports/real_generation_validation/images/spirited_05_no_face.png",
+      "generation_prompt": "Spirited Away Scene Reconstructed Inside Gonegi World:latest_v5 + spirited_away_dataset:scene_type:no_face_loneliness:se...",
+      "image_generated": true,
+      "verdict": "PASS",
+      "metrics": {
+        "character_identity": 1,
+        "world_identity": 1,
+        "movie_signature": 0.9031,
+        "geometry": 0.9615,
+        "composition": 0.9464,
+        "semantic_anchor": 0.9031,
+        "movie_recognition": 0.9298
+      },
+      "verification": {
+        "character_identity": true,
+        "world_identity": true,
+        "movie_signature": true,
+        "geometry": true,
+        "composition": true,
+        "semantic_anchor": true
+      },
+      "pixel_signature": "172,144,111|149,196,216|144,192,216|109.6221|5.6187"
+    }
+  ],
+  "issues": [],
+  "input": {
+    "base_dataset": "latest_v5",
+    "movie_datasets": [
+      "titanic",
+      "spirited_away"
+    ],
+    "titanic_test_count": 5,
+    "spirited_away_test_count": 5
+  },
+  "success_condition": {
+    "simulation_pass": true,
+    "real_generation_pass": true,
+    "combined": true
+  },
+  "quality_gates": {
+    "character_identity_gte_0_90": true,
+    "world_identity_gte_0_90": true,
+    "movie_recognition_gte_0_85": true,
+    "movie_swap_separation_gte_0_90": true
+  },
+  "dataset_paths": {
+    "validation_dir": "datasets/real_generation_validation",
+    "results": "datasets/real_generation_validation/real-image-generation-results.json",
+    "metrics": "datasets/real_generation_validation/real-image-generation-metrics.json",
+    "report": "datasets/real_generation_validation/real-image-generation-report.json",
+    "images_dir": "exports/real_generation_validation/images"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "bundle_id": "scene_remap_dna-export-coverage-v2",
+  "system_id": "scene_remap_dna",
+  "target_app": "image_app",
+  "export_coverage_patch": true,
+  "materialized": true,
+  "production_grade": true,
+  "generated_at": "2026-06-10T00:54:42.091Z",
+  "source_payload": {
+    "spec_id": "scene-remap-engine-specification-v2",
+    "phase": "PHASE-SOURCE-VIDEO-DNA-REAL-001",
+    "required_fields": [
+      "source_scene_id",
+      "source_shot_id",
+      "source_coordinates",
+      "source_motion",
+      "source_camera",
+      "source_signature",
+      "target_character",
+      "target_style",
+      "target_location",
+      "preserved_dna",
+      "remapped_dna"
+    ],
+    "remap_records": [
+      {
+        "source_scene_id": "scene_ghibli_01_001",
+        "source_shot_id": "shot_ghibli_01_001",
+        "source_coordinates": {
+          "origin": "GHIBLI_01",
+          "frame_space": "normalized_0_1"
+        },
+        "source_motion": {
+          "vector_field": "extracted",
+          "speed_class": "medium"
+        },
+        "source_camera": {
+          "type": "tracking_medium",
+          "velocity": [
+            0.02,
+            0,
+            0.01
+          ]
+        },
+        "source_signature": "ghibli_signature",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "preserved_dna": [
+          "composition_grid",
+          "edit_rhythm",
+          "blocking_layout",
+          "camera_inertia"
+        ],
+        "remapped_dna": {
+          "character_id": "CHAR-gonagi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor": "golden_hour_harbor_01",
+          "emotion_id": "nostalgia"
+        }
+      },
+      {
+        "source_scene_id": "scene_titanic_02_deck_014",
+        "source_shot_id": "shot_titanic_02_wide_003",
+        "source_coordinates": {
+          "origin": "TITANIC_02",
+          "frame_space": "normalized_0_1"
+        },
+        "source_motion": {
+          "vector_field": "extracted",
+          "speed_class": "medium"
+        },
+        "source_camera": {
+          "type": "tracking_medium",
+          "velocity": [
+            0.02,
+            0,
+            0.01
+          ]
+        },
+        "source_signature": "live_action_signature",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "preserved_dna": [
+          "composition_grid",
+          "edit_rhythm",
+          "blocking_layout",
+          "camera_inertia"
+        ],
+        "remapped_dna": {
+          "character_id": "CHAR-gonagi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor": "golden_hour_harbor_01",
+          "emotion_id": "nostalgia"
+        }
+      }
+    ],
+    "titanic_scene_remap": {
+      "remap_id": "titanic_deck_scene_remap_v1",
+      "source_video_id": "TITANIC_02",
+      "source_scene_id": "scene_titanic_02_deck_014",
+      "source_shot_id": "shot_titanic_02_wide_003",
+      "canonical_reference": "titanic_deck_establishing_reproduction",
+      "source_coordinates": {
+        "origin": "TITANIC_02",
+        "frame_space": "normalized_0_1"
+      },
+      "source_motion": {
+        "vector_field": "extracted",
+        "speed_class": "medium"
+      },
+      "source_camera": {
+        "type": "tracking_medium",
+        "velocity": [
+          0.02,
+          0,
+          0.01
+        ]
+      },
+      "source_signature": "live_action_signature",
+      "target_character": "CHAR-gonagi",
+      "target_style": "GONEGI_MEDITERRANEAN",
+      "target_location": "gonegi_harbor_dock_01",
+      "preserved_dna": [
+        "composition_grid",
+        "edit_rhythm",
+        "blocking_layout",
+        "camera_inertia"
+      ],
+      "remapped_dna": {
+        "character_id": "CHAR-gonagi",
+        "location_id": "gonegi_harbor_dock_01",
+        "lighting_anchor": "golden_hour_harbor_01",
+        "emotion_id": "nostalgia"
+      },
+      "reproduction_readiness": "PASS",
+      "preserved_numerical_dna": [
+        "horizon_line",
+        "vanishing_point",
+        "camera_velocity",
+        "blocking_layout",
+        "edit_rhythm"
+      ]
+    },
+    "integrity": "PASS"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/video_blueprint/movie-analysis-video-blueprint.schema.json",
+  "title": "MovieAnalysisVideoBlueprintPlan",
+  "description": "Planning-only video blueprint design for PHASE-SOURCE-VIDEO-033",
+  "type": "object",
+  "required": [
+    "video_blueprint_id",
+    "phase",
+    "sequence_assembly_id",
+    "source_video_id",
+    "scene_count",
+    "sequence_blocks",
+    "continuity_structure",
+    "emotion_structure",
+    "camera_structure",
+    "transition_structure",
+    "runtime_preparation",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "video_blueprint_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-033-MOVIE_ANALYSIS_VIDEO_BLUEPRINT_DESIGN_V1"
+    },
+    "sequence_assembly_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "scene_count": { "type": "integer", "minimum": 1 },
+    "sequence_blocks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "block_id",
+          "scene_index",
+          "sequence_candidate_ids",
+          "estimated_block_role",
+          "blueprint_only"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "block_id": { "type": "string" },
+          "scene_index": { "type": "integer", "minimum": 1 },
+          "sequence_candidate_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "estimated_block_role": { "type": "string", "minLength": 1 },
+          "blueprint_only": { "type": "boolean", "const": true }
+        }
+      }
+    },
+    "continuity_structure": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "emotion_structure": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "camera_structure": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "transition_structure": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "runtime_preparation": {
+      "type": "object",
+      "required": [
+        "estimated_only",
+        "generates_sequence",
+        "generates_video",
+        "gpu_ready",
+        "purpose"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "estimated_only": { "type": "boolean", "const": true },
+        "generates_sequence": { "type": "boolean", "const": false },
+        "generates_video": { "type": "boolean", "const": false },
+        "gpu_ready": { "type": "boolean", "const": false },
+        "purpose": {
+          "type": "string",
+          "const": "future_runtime_video_preparation"
+        }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "video_generation",
+        "sequence_generation",
+        "gpu_execution",
+        "ocr",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "video_generation": { "type": "boolean", "const": false },
+        "sequence_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "structure_element": {
+      "type": "object",
+      "required": [
+        "element_id",
+        "source_sequence_candidate_ids",
+        "estimated_blueprint_value",
+        "blueprint_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "element_id": { "type": "string" },
+        "source_sequence_candidate_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "estimated_blueprint_value": { "type": "string", "minLength": 1 },
+        "blueprint_only": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "registry_id": "source-video-scene-state-map-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-005-SOURCE_VIDEO_TO_SCENE_STATE_MAPPING_V1",
+  "registry_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "schema_path": "datasets/source_video_mapping/source-video-scene-state-map.schema.json",
+  "scene_state_schema_path": "datasets/state/scene-state.schema.json",
+  "movie_coordinate_registry_path": "datasets/movie_coordinate/movie-scene-coordinate-registry.json",
+  "mapping_storage_dir": "datasets/source_video_mapping/mappings",
+  "mapped_scene_state_dir": "datasets/source_video_mapping/mapped-scene-states",
+  "mappings": [
+    {
+      "mapping_id": "map_ghibli_kitchen_to_scene_state_v1",
+      "source_coordinate_id": "movie_coord_ghibli_kitchen_blocking_v1",
+      "target_scene_state_id": "scene_draft_ghibli_kitchen_blocking_v1",
+      "mapping_path": "datasets/source_video_mapping/mappings/map_ghibli_kitchen_to_scene_state_v1.json",
+      "draft_path": "datasets/source_video_mapping/mapped-scene-states/scene_draft_ghibli_kitchen_blocking_v1.json",
+      "status": "mapped"
+    },
+    {
+      "mapping_id": "map_shinkai_light_sky_to_scene_state_v1",
+      "source_coordinate_id": "movie_coord_shinkai_light_sky_v1",
+      "target_scene_state_id": "scene_draft_shinkai_light_sky_v1",
+      "mapping_path": "datasets/source_video_mapping/mappings/map_shinkai_light_sky_to_scene_state_v1.json",
+      "draft_path": "datasets/source_video_mapping/mapped-scene-states/scene_draft_shinkai_light_sky_v1.json",
+      "status": "mapped"
+    },
+    {
+      "mapping_id": "map_live_action_dialogue_to_scene_state_v1",
+      "source_coordinate_id": "movie_coord_live_action_dialogue_blocking_v1",
+      "target_scene_state_id": "scene_draft_live_action_dialogue_v1",
+      "mapping_path": "datasets/source_video_mapping/mappings/map_live_action_dialogue_to_scene_state_v1.json",
+      "draft_path": "datasets/source_video_mapping/mapped-scene-states/scene_draft_live_action_dialogue_v1.json",
+      "status": "mapped"
+    }
+  ]
+}

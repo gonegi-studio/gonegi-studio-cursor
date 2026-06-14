@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "IMAGE-VIDEO-DEPENDENCY-FINGERPRINT-PHASE-65-v1",
+  "imageDatasetReferences": [
+    {
+      "from": "image_dataset",
+      "to": "exports/image-dataset-export.json",
+      "reference_type": "direct"
+    },
+    {
+      "from": "video_dataset",
+      "to": "exports/image-dataset-export.json",
+      "reference_type": "direct"
+    },
+    {
+      "from": "video_handoff",
+      "to": "exports/image-dataset-export.json",
+      "reference_type": "boundary"
+    }
+  ],
+  "imageHandoffReferences": [
+    {
+      "from": "image_handoff",
+      "to": "exports/image-dataset-export.json",
+      "reference_type": "pipeline"
+    }
+  ],
+  "videoDatasetReferences": [
+    {
+      "from": "image_dataset",
+      "to": "exports/video-dataset-export.json",
+      "reference_type": "boundary"
+    },
+    {
+      "from": "image_handoff",
+      "to": "exports/video-dataset-export.json",
+      "reference_type": "pipeline"
+    },
+    {
+      "from": "video_handoff",
+      "to": "exports/video-dataset-export.json",
+      "reference_type": "direct"
+    }
+  ],
+  "dependencyGraph": {
+    "image_dataset": [
+      "image_handoff"
+    ],
+    "image_handoff": [
+      "video_dataset"
+    ],
+    "video_dataset": [
+      "image_dataset"
+    ],
+    "video_handoff": [
+      "video_dataset"
+    ]
+  },
+  "frozenAt": "2026-05-30T01:38:55.056Z"
+}

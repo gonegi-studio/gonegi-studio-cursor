@@ -1,0 +1,26 @@
+{
+  "package_id": "image-app-upload-package-v4",
+  "phase": "PHASE-EXPORT-REBUILD-003",
+  "generated_at": "2026-06-09T06:33:31.785Z",
+  "package_type": "production_dataset",
+  "manifest_only": false,
+  "production_grade": true,
+  "gpu_execution": false,
+  "base": "exports/image_app/latest_v3",
+  "target": "exports/image_app/latest_v4",
+  "production_layer_ref": "exports/image_app/latest_v4/image-production-layer.json",
+  "output_blocks": [
+    "character_dna_bundle",
+    "location_dna_bundle",
+    "lighting_dna_bundle",
+    "environment_dna_bundle",
+    "style_dna_bundle",
+    "story_blueprint_bundle",
+    "prompt_generation_bundle",
+    "memory_bundle",
+    "dialogue_bundle",
+    "generation_rule_bundle",
+    "mv_production_bundle"
+  ],
+  "upload_package_v4_integrity": "PASS"
+}

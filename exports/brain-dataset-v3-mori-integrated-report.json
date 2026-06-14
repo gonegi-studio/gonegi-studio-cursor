@@ -1,0 +1,82 @@
+{
+  "auditTimestamp": "2026-05-31T05:01:47.972Z",
+  "final_verdict": "PASS_FOR_IMAGE_APP_V3_TEST",
+  "dataset_type": "brain_dataset_v3",
+  "dataset_version": "104B",
+  "source_inputs": {
+    "rebalanced_v2": "exports/brain-dataset-v2-rebalanced.json",
+    "rebalanced_v2_report": "exports/brain-dataset-v2-rebalanced-report.json",
+    "mori_catalog": "exports/mori-grammar-catalog.json",
+    "mori_catalog_report": "exports/mori-grammar-catalog-report.json"
+  },
+  "pre_merge_counts": {
+    "camera": 22,
+    "acting": 20,
+    "daily_life": 32,
+    "location": 21,
+    "object_interaction": 21,
+    "extra_actor": 8,
+    "animal": 8
+  },
+  "post_merge_counts": {
+    "camera": 33,
+    "acting": 29,
+    "daily_life": 55,
+    "location": 33,
+    "object_interaction": 38,
+    "extra_actor": 16,
+    "animal": 15
+  },
+  "added_counts": {
+    "camera": 11,
+    "acting": 9,
+    "daily_life": 23,
+    "location": 12,
+    "object_interaction": 17,
+    "extra_actor": 8,
+    "animal": 7
+  },
+  "deduped_counts": {
+    "camera": 1,
+    "acting": 1,
+    "daily_life": 0,
+    "location": 0,
+    "object_interaction": 0,
+    "extra_actor": 0,
+    "animal": 0
+  },
+  "mori_contribution_ratio": {
+    "camera": 0.3333,
+    "acting": 0.3103,
+    "daily_life": 0.4182,
+    "location": 0.3636,
+    "object_interaction": 0.4474,
+    "extra_actor": 0.5,
+    "animal": 0.4667
+  },
+  "idle_cluster_warning": {
+    "idle_daily_life_count": 5,
+    "productive_daily_life_count": 22,
+    "idle_ratio": 0.0909
+  },
+  "animal_extra_actor_growth": {
+    "extra_actor_pre": 8,
+    "extra_actor_post": 16,
+    "animal_pre": 8,
+    "animal_post": 15
+  },
+  "forbidden_field_scan": {
+    "passed": true,
+    "hits": []
+  },
+  "violations": [],
+  "audit_codes": [],
+  "quality_targets": {
+    "camera": 28,
+    "acting": 28,
+    "daily_life": 50,
+    "object_interaction": 35,
+    "extra_actor": 12,
+    "animal": 12
+  }
+}

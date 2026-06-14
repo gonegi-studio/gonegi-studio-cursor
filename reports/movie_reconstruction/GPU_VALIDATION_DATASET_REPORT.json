@@ -1,0 +1,172 @@
+{
+  "report_id": "gpu_validation_dataset_mqczs1er",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-003",
+  "system_id": "GPU_VALIDATION_DATASET_V1",
+  "generated_at": "2026-06-13T23:33:59.715Z",
+  "final_verdict": "PASS_GPU_VALIDATION_DATASET_V1",
+  "status": "GPU_VALIDATION_DATASETS_DEFINED",
+  "validation_passed": true,
+  "validation_datasets_defined": true,
+  "measurement_methods_linked": true,
+  "pass_thresholds_defined": true,
+  "difficulty_tiers_defined": true,
+  "failure_examples_defined": true,
+  "execution_plan_defined": true,
+  "channel_priority_defined": true,
+  "gpu_validation_executed": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "channels": [
+    {
+      "validation_channel": "environment_identity",
+      "dataset_path": "datasets/gpu_validation/environment_identity-validation-dataset.json",
+      "dataset_size": 60,
+      "target_batch_size": 50,
+      "measurement_methods": [
+        "reference_bank_match_score",
+        "environment_traceability_score"
+      ],
+      "pass_thresholds": {
+        "reference_bank_match_score": 0.98,
+        "environment_traceability_score": 0.95,
+        "hard_tier_pass_threshold": 0.92
+      },
+      "difficulty_tiers": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "failure_examples": [
+        "different_staircase",
+        "missing_railing",
+        "hallucinated_architecture"
+      ],
+      "primary_movie_reconstruction_target": true
+    },
+    {
+      "validation_channel": "object_identity",
+      "dataset_path": "datasets/gpu_validation/object_identity-validation-dataset.json",
+      "dataset_size": 48,
+      "target_batch_size": 40,
+      "measurement_methods": [
+        "identity_signature_match_score",
+        "variation_tolerance_band_score"
+      ],
+      "pass_thresholds": {
+        "identity_signature_match_score": 0.97,
+        "variation_tolerance_band_score": 0.9,
+        "hard_tier_pass_threshold": 0.85
+      },
+      "difficulty_tiers": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "failure_examples": [
+        "wrong_prop_variant",
+        "identity_embedding_drift",
+        "role_weight_ignored"
+      ],
+      "primary_movie_reconstruction_target": false
+    },
+    {
+      "validation_channel": "temporal_preservation",
+      "dataset_path": "datasets/gpu_validation/temporal_preservation-validation-dataset.json",
+      "dataset_size": 36,
+      "target_batch_size": 30,
+      "measurement_methods": [
+        "edit_rhythm_alignment_score",
+        "continuity_signature_score"
+      ],
+      "pass_thresholds": {
+        "edit_rhythm_alignment_score": 0.9,
+        "continuity_signature_score": 0.88,
+        "hard_tier_pass_threshold": 0.82
+      },
+      "difficulty_tiers": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "failure_examples": [
+        "edit_rhythm_desync",
+        "shot_boundary_jump",
+        "causal_transition_break"
+      ],
+      "primary_movie_reconstruction_target": false
+    },
+    {
+      "validation_channel": "camera_continuity",
+      "dataset_path": "datasets/gpu_validation/camera_continuity-validation-dataset.json",
+      "dataset_size": 30,
+      "target_batch_size": 25,
+      "measurement_methods": [
+        "motion_vector_delta_score",
+        "eyeline_vector_stability_score"
+      ],
+      "pass_thresholds": {
+        "motion_vector_delta_score": 0.85,
+        "eyeline_vector_stability_score": 0.82,
+        "hard_tier_pass_threshold": 0.75
+      },
+      "difficulty_tiers": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "failure_examples": [
+        "camera_inertia_break",
+        "eyeline_vector_jump",
+        "motion_smoothing_failure"
+      ],
+      "primary_movie_reconstruction_target": false
+    },
+    {
+      "validation_channel": "multi_scene_consistency",
+      "dataset_path": "datasets/gpu_validation/multi_scene_consistency-validation-dataset.json",
+      "dataset_size": 42,
+      "target_batch_size": 35,
+      "measurement_methods": [
+        "anchor_persistence_score",
+        "scene_remap_lineage_score"
+      ],
+      "pass_thresholds": {
+        "anchor_persistence_score": 0.85,
+        "scene_remap_lineage_score": 0.9,
+        "hard_tier_pass_threshold": 0.8
+      },
+      "difficulty_tiers": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "failure_examples": [
+        "anchor_position_drift",
+        "scene_remap_lineage_break",
+        "cross_scene_memory_loss"
+      ],
+      "primary_movie_reconstruction_target": false
+    }
+  ],
+  "checks": {
+    "validation_datasets_defined": true,
+    "measurement_methods_linked": true,
+    "pass_thresholds_defined": true,
+    "difficulty_tiers_defined": true,
+    "failure_examples_defined": true,
+    "execution_plan_defined": true,
+    "channel_priority_defined": true,
+    "environment_dataset_example_present": true,
+    "gpu_validation_executed_false": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "dataset_only": true,
+    "gpu_execution": false,
+    "image_generation": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

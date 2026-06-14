@@ -1,0 +1,86 @@
+{
+  "report_id": "gpu_validation_integration_mqd0vv0k",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005D",
+  "system_id": "GPU_VALIDATION_INTEGRATION_V1",
+  "generated_at": "2026-06-14T00:04:57.668Z",
+  "validation_integration_defined": true,
+  "analysis": {
+    "environment_validation_protocol": "environment-identity-gpu-validation-protocol-v1 defined=true; first-priority channel with same_environment=0.98 and reference_bank recall rules.",
+    "temporal_validation_protocol": "temporal-preservation-gpu-validation-protocol-v1 defined=true; second-priority channel with same_timeline=0.95 and causal_transition_chain highest risk.",
+    "object_validation_protocol": "object-identity-gpu-validation-protocol-v1 defined=true; third-priority channel with same_object=0.97 and hero_prop=0.98 role threshold."
+  },
+  "integrated_validation_contract": {
+    "contract_id": "gpu_validation_integration_v1",
+    "contract_version": "1.0",
+    "scope": "Integration definition only — Integrated Validation Defined != Integrated Validation Executed.",
+    "environment_protocol_ref": "reports/movie_reconstruction/ENVIRONMENT_IDENTITY_GPU_VALIDATION_PROTOCOL.json",
+    "temporal_protocol_ref": "reports/movie_reconstruction/TEMPORAL_PRESERVATION_GPU_VALIDATION_PROTOCOL.json",
+    "object_protocol_ref": "reports/movie_reconstruction/OBJECT_IDENTITY_GPU_VALIDATION_PROTOCOL.json",
+    "campaign_ref": "reports/movie_reconstruction/GPU_VALIDATION_CAMPAIGN_REPORT.json",
+    "dataset_manifest_ref": "datasets/gpu_validation/gpu-validation-dataset-manifest.json",
+    "gpu_execution": "false — integration protocol and execution sequence only; execution deferred.",
+    "evidence_layer_note": "Evidence Layer Ready != Evidence Collected."
+  },
+  "cross_channel_dependencies": {
+    "temporal_preservation": [
+      "environment_identity"
+    ],
+    "object_identity": [
+      "environment_identity",
+      "temporal_preservation"
+    ]
+  },
+  "cross_channel_failure_rules": {
+    "environment_blocks_all": "environment_identity stage failure blocks temporal_preservation and object_identity stages.",
+    "temporal_blocks_object": "temporal_preservation stage failure blocks object_identity stage until exit_criteria met.",
+    "object_requires_prior_pass": "object_identity entry requires environment_identity and temporal_preservation exit_criteria pass.",
+    "cross_channel_drift_cascade": "environment reference_drift degrades temporal continuity_signature stability; temporal edit_rhythm_desync degrades object anchor persistence.",
+    "integrated_validation_note": "Integrated Validation Defined != Integrated Validation Executed."
+  },
+  "validation_priority_order": [
+    "environment_identity",
+    "temporal_preservation",
+    "object_identity"
+  ],
+  "validation_channels": [
+    "environment_identity",
+    "temporal_preservation",
+    "object_identity"
+  ],
+  "channel_dependencies": {
+    "environment_identity": [],
+    "temporal_preservation": [
+      "environment_identity"
+    ],
+    "object_identity": [
+      "environment_identity",
+      "temporal_preservation"
+    ]
+  },
+  "channel_priorities": {
+    "environment_identity": 1,
+    "temporal_preservation": 2,
+    "object_identity": 3
+  },
+  "cross_channel_failure_rules_list": [
+    "environment_blocks_all",
+    "temporal_blocks_object",
+    "object_requires_prior_pass",
+    "cross_channel_drift_cascade",
+    "integrated_validation_note"
+  ],
+  "channel_abort_rules": {
+    "environment_identity": {
+      "abort_below": 0.3,
+      "note": "Batch pass rate below 0.30 aborts campaign; blocks all subsequent channels."
+    },
+    "temporal_preservation": {
+      "abort_below": 0.35,
+      "note": "Batch pass rate below 0.35 aborts temporal stage; blocks object_identity."
+    },
+    "object_identity": {
+      "abort_below": 0.4,
+      "note": "Batch pass rate below 0.40 aborts object stage; triggers campaign recovery audit."
+    }
+  }
+}

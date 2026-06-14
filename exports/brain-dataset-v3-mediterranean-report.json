@@ -1,0 +1,72 @@
+{
+  "auditTimestamp": "2026-05-31T05:22:04.782Z",
+  "final_verdict": "PASS_FOR_GONEGI_WORLD_TEST",
+  "sovereignty_version": "104D",
+  "source_package": "exports/brain-dataset-v3-mori-integrated.json",
+  "world_identity": {
+    "world_era": "early-1900s",
+    "world_region": "mediterranean-harbor-town",
+    "world_sovereignty": "GONEGI_MEDITERRANEAN",
+    "world_anchor": "mediterranean-harbor-town",
+    "dominant_biomes": [
+      "mediterranean-harbor",
+      "mediterranean-village",
+      "mediterranean-domestic-life",
+      "mediterranean-woodland"
+    ]
+  },
+  "world_balance": {
+    "mediterranean_harbor": 0.1212,
+    "mediterranean_village": 0.4545,
+    "mediterranean_domestic_life": 0.3333,
+    "mediterranean_woodland": 0.0909
+  },
+  "world_constraints": {
+    "era_lock": "early-1900s",
+    "region_lock": "mediterranean-harbor-town",
+    "normalize_cottage_forest_to_mediterranean": true,
+    "preserve_all_behavior_libraries": true,
+    "forbidden_world_tokens": [
+      "subway",
+      "airport",
+      "skyscraper",
+      "neon_city",
+      "cyberpunk",
+      "torii",
+      "tatami",
+      "forest-floor",
+      "woodland-path"
+    ],
+    "protected_harbor_identity": true
+  },
+  "normalization_stats": {
+    "location_patterns_normalized": 15,
+    "daily_life_touchpoints_normalized": 20,
+    "cottage_forest_tokens_replaced": 9
+  },
+  "grammar_pattern_counts": {
+    "camera": 33,
+    "acting": 29,
+    "daily_life": 55,
+    "location": 33,
+    "object_interaction": 38,
+    "extra_actor": 16,
+    "animal": 15
+  },
+  "harbor_location_count": 4,
+  "behavior_library_preserved": {
+    "camera": true,
+    "acting": true,
+    "object_interaction": true,
+    "extra_actor": true,
+    "animal": true,
+    "daily_life_activity_count": true
+  },
+  "remaining_cottage_forest_tokens": [],
+  "forbidden_field_scan": {
+    "passed": true,
+    "hits": []
+  },
+  "violations": [],
+  "audit_codes": []
+}

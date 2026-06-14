@@ -1,0 +1,36 @@
+{
+  "spec_id": "image-app-rebuild-specification-v2",
+  "asset_type": "image_app_rebuild_specification",
+  "asset_version": "v2",
+  "phase": "PHASE-EXPORT-REBUILD-002",
+  "module": "SOURCE_VIDEO_TO_APP_DATASET_REBUILD_V1",
+  "purpose": "Generate actual image generation dataset from source video analysis and engine stack.",
+  "target_path": "exports/image_app/latest_v3",
+  "integrated_systems": [
+    "story_engine",
+    "prompt_compiler",
+    "generation_qa",
+    "prompt_evaluation",
+    "temporal_memory",
+    "dialogue_lipsync",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution",
+    "movie_analysis"
+  ],
+  "required_output_blocks": [
+    "character_dna_bundle",
+    "location_dna_bundle",
+    "lighting_dna_bundle",
+    "environment_dna_bundle",
+    "style_dna_bundle",
+    "story_blueprint_bundle",
+    "prompt_generation_bundle",
+    "memory_bundle",
+    "dialogue_bundle",
+    "generation_rule_bundle"
+  ],
+  "image_app_dataset_integrity": "PASS",
+  "upload_package_ref": "datasets/export_rebuild/image-app-upload-package-v3.json"
+}

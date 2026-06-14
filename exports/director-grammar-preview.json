@@ -1,0 +1,658 @@
+{
+  "layer_version": "DIRECTOR-GRAMMAR-PHASE-99-v1",
+  "seed_count": 15,
+  "song_master_id": "song_master_01",
+  "required_fields": [
+    "director_grammar_id",
+    "storyboard_id",
+    "bundle_id",
+    "scene_order",
+    "directorial_intent",
+    "camera_reason",
+    "blocking_reason",
+    "silence_or_action",
+    "emotional_subtext",
+    "cut_purpose",
+    "visual_motif_usage",
+    "anti_flat_scene_rules",
+    "keywords"
+  ],
+  "anti_flat_scene_rules_base": [
+    "no-exposition-tableau-without-subtext",
+    "no-decoration-only-composition",
+    "require-character-need-for-every-frame",
+    "no-static-mirror-without-emotional-pressure",
+    "require-directorial-contrast-or-release",
+    "no-ai-studio-generation"
+  ],
+  "upstream_references": {
+    "story_driven_export_id": "SDIE-song_master_01",
+    "story_driven_export_path": "exports/story-driven-image-app-export.json",
+    "narrative_quality_gate_version": "NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+    "narrative_quality_gate_report_path": "exports/narrative-quality-gate-report.json"
+  },
+  "pipeline_chain": [
+    "narrative_quality_gate",
+    "story_driven_image_app_export",
+    "five_shot_bundle",
+    "image_acting_camera_grammar",
+    "director_grammar"
+  ],
+  "seed_director_grammar": [
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-01",
+      "storyboard_id": "SBD-song_master_01-01",
+      "bundle_id": "FSB-song_master_01-01",
+      "scene_order": 1,
+      "directorial_intent": "Direct establish beat for waiting as a master-shot moment: wait with restrained anticipation while tracking arrival cues Anchor the drama in station_waiting without flattening it into exposition.",
+      "camera_reason": "high three-quarter establishing angle at far to mid establishing because the frame must serve establish grammar while preserving off-lens intimacy (off-camera toward arrival board and track gap). Movement hint: slow panoramic settle.",
+      "blocking_reason": "subject left-third facing platform depth Environment use (gloved hand rests on platform bench back) justifies placement; posture slight forward lean at rest not parade rest prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through weight shift idle at platform edge and hands clasped loosely holding ticket edge; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under waiting, the scene hides establish_emotional_patience while the audience reads guardian-companion bond tension through station_waiting.",
+      "cut_purpose": "Open the bundle geography and emotional contract before dialogue or action accelerates",
+      "visual_motif_usage": [
+        "motif:waiting-to-reunion",
+        "motif:daily-life-anchor-ritual",
+        "anchor:station_waiting"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:establish",
+        "scene-order:1",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-01",
+        "bundle-role:establish",
+        "acting-camera:IAC-SBD-song_master_01-01",
+        "storyboard:SBD-song_master_01-01",
+        "beat:waiting",
+        "payload:SDGP-SBD-song_master_01-01"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-02",
+      "storyboard_id": "SBD-song_master_01-02",
+      "bundle_id": "FSB-song_master_01-01",
+      "scene_order": 2,
+      "directorial_intent": "Direct observe beat for memory as a master-shot moment: process memory isolation through object handling Anchor the drama in photo_viewing without flattening it into exposition.",
+      "camera_reason": "top-down graphic isolation angle at far overhead distance because the frame must serve observe grammar while preserving off-lens intimacy (downward at photo corner not lens). Movement hint: slow vertical settle.",
+      "blocking_reason": "subject center-low at writing desk Environment use (letter paper and photo album actively held) justifies placement; posture curved spine over desk not upright pose prevents a static tableau reading.",
+      "silence_or_action": "Hold controlled silence in collapsed inward while seated with album open; let thumb traces photo edge with pen nearby carry the beat without dialogue.",
+      "emotional_subtext": "Under memory, the scene hides surface_past_emotional_echo while the audience reads guardian-companion bond tension through photo_viewing.",
+      "cut_purpose": "Hold observational distance so the audience reads private feeling before intervention",
+      "visual_motif_usage": [
+        "motif:window-reflection-memory",
+        "motif:protective-presence",
+        "anchor:photo_viewing"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:observe",
+        "scene-order:2",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-01",
+        "bundle-role:observe",
+        "acting-camera:IAC-SBD-song_master_01-02",
+        "storyboard:SBD-song_master_01-02",
+        "beat:memory",
+        "payload:SDGP-SBD-song_master_01-02"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-03",
+      "storyboard_id": "SBD-song_master_01-03",
+      "bundle_id": "FSB-song_master_01-01",
+      "scene_order": 3,
+      "directorial_intent": "Direct emotional_change beat for discovery as a master-shot moment: hesitate during quiet shared routine with unspoken tension Anchor the drama in bench_sitting without flattening it into exposition.",
+      "camera_reason": "eye-level intimate angle at mid two-shot distance because the frame must serve emotional_change grammar while preserving off-lens intimacy (averted toward companion side not camera). Movement hint: micro push-in on beat.",
+      "blocking_reason": "two-seat gap on park bench diagonal Environment use (book pages and bench slat contact) justifies placement; posture seated asymmetry with knee angled away prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through recoiled posture on bench with book half-open and self-touch collar while holding book spine; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under discovery, the scene hides introduce_relational_discovery while the audience reads guardian-companion bond tension through bench_sitting.",
+      "cut_purpose": "Turn the scene axis when unspoken tension must become visible relational shift",
+      "visual_motif_usage": [
+        "motif:gonagi-dana-bond-thread",
+        "motif:daily-life-anchor-ritual",
+        "anchor:bench_sitting"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:emotional_change",
+        "scene-order:3",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-01",
+        "bundle-role:emotional_change",
+        "acting-camera:IAC-SBD-song_master_01-03",
+        "storyboard:SBD-song_master_01-03",
+        "beat:discovery",
+        "payload:SDGP-SBD-song_master_01-03"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-04",
+      "storyboard_id": "SBD-song_master_01-04",
+      "bundle_id": "FSB-song_master_01-01",
+      "scene_order": 4,
+      "directorial_intent": "Direct interaction beat for distance as a master-shot moment: pause at departure threshold before emotional distance widens Anchor the drama in doorway_pause without flattening it into exposition.",
+      "camera_reason": "backlit long low angle at far silhouette distance because the frame must serve interaction grammar while preserving off-lens intimacy (over shoulder toward interior light not lens). Movement hint: slow pullback.",
+      "blocking_reason": "subject framed in doorway vertical split Environment use (doorframe touch and luggage handle use) justifies placement; posture threshold pause with hip angled out prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through turned away half-step at doorway and hand on doorframe with bag strap grip; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under distance, the scene hides mark_relational_separation while the audience reads guardian-companion bond tension through doorway_pause.",
+      "cut_purpose": "Compress blocking into contact or refusal so the music-drama beat lands physically",
+      "visual_motif_usage": [
+        "motif:transit-departure-return",
+        "motif:protective-presence",
+        "anchor:doorway_pause"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:interaction",
+        "scene-order:4",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-01",
+        "bundle-role:interaction",
+        "acting-camera:IAC-SBD-song_master_01-04",
+        "storyboard:SBD-song_master_01-04",
+        "beat:distance",
+        "payload:SDGP-SBD-song_master_01-04"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-05",
+      "storyboard_id": "SBD-song_master_01-05",
+      "bundle_id": "FSB-song_master_01-01",
+      "scene_order": 5,
+      "directorial_intent": "Direct transition beat for longing as a master-shot moment: hold longing while rain streaks frame absent bond Anchor the drama in rain_watching without flattening it into exposition.",
+      "camera_reason": "interior reflection layered angle at mid-close reflection distance because the frame must serve transition grammar while preserving off-lens intimacy (through window reflection toward street not lens). Movement hint: static with breath drift.",
+      "blocking_reason": "subject right-third with window layer Environment use (palm near condensation on glass) justifies placement; posture seated curl toward glass pane prevents a static tableau reading.",
+      "silence_or_action": "Hold controlled silence in stationary weight shift at window seat; let finger fidget on window ledge carry the beat without dialogue.",
+      "emotional_subtext": "Under longing, the scene hides sustain_absence_tension while the audience reads guardian-companion bond tension through rain_watching.",
+      "cut_purpose": "Release the bundle with a directed handoff that primes the next location or finale",
+      "visual_motif_usage": [
+        "motif:rain-to-clear-healing",
+        "motif:window-reflection-memory",
+        "anchor:rain_watching"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:transition",
+        "scene-order:5",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-01",
+        "bundle-role:transition",
+        "acting-camera:IAC-SBD-song_master_01-05",
+        "storyboard:SBD-song_master_01-05",
+        "beat:longing",
+        "payload:SDGP-SBD-song_master_01-05"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-06",
+      "storyboard_id": "SBD-song_master_01-06",
+      "bundle_id": "FSB-song_master_01-02",
+      "scene_order": 6,
+      "directorial_intent": "Direct establish beat for hope as a master-shot moment: convert grief residue into hopeful forward movement Anchor the drama in sunset_watching without flattening it into exposition.",
+      "camera_reason": "eye-level intimate angle at mid two-shot distance because the frame must serve establish grammar while preserving off-lens intimacy (toward horizon line off-camera right). Movement hint: micro push-in on beat.",
+      "blocking_reason": "subject on bridge third-line toward vanishing point Environment use (hand slides along bridge railing) justifies placement; posture walking momentum with open chest prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through lightened stride mid-bridge crossing and open palm gesture at railing; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under hope, the scene hides lift_emotional_trajectory while the audience reads guardian-companion bond tension through sunset_watching.",
+      "cut_purpose": "Open the bundle geography and emotional contract before dialogue or action accelerates",
+      "visual_motif_usage": [
+        "motif:sunset-bridge-hope",
+        "motif:transit-departure-return",
+        "anchor:sunset_watching"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:establish",
+        "scene-order:6",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-02",
+        "bundle-role:establish",
+        "acting-camera:IAC-SBD-song_master_01-06",
+        "storyboard:SBD-song_master_01-06",
+        "beat:hope",
+        "payload:SDGP-SBD-song_master_01-06"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-07",
+      "storyboard_id": "SBD-song_master_01-07",
+      "bundle_id": "FSB-song_master_01-02",
+      "scene_order": 7,
+      "directorial_intent": "Direct observe beat for journey as a master-shot moment: begin optimistic journey from morning routine into motion Anchor the drama in morning_routine without flattening it into exposition.",
+      "camera_reason": "lateral profile tracking angle at mid lateral distance because the frame must serve observe grammar while preserving off-lens intimacy (down-forward along bike path not camera). Movement hint: side tracking with stable horizon.",
+      "blocking_reason": "diagonal street entry with bike foreground Environment use (bicycle handlebar and basket actively used) justifies placement; posture one-foot on pedal launch posture prevents a static tableau reading.",
+      "silence_or_action": "Hold controlled silence in light bounce readiness mounting bicycle; let grip on handlebar with morning item in basket carry the beat without dialogue.",
+      "emotional_subtext": "Under journey, the scene hides advance_plot_momentum while the audience reads guardian-companion bond tension through morning_routine.",
+      "cut_purpose": "Hold observational distance so the audience reads private feeling before intervention",
+      "visual_motif_usage": [
+        "motif:transit-departure-return",
+        "motif:daily-life-anchor-ritual",
+        "anchor:morning_routine"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:observe",
+        "scene-order:7",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-02",
+        "bundle-role:observe",
+        "acting-camera:IAC-SBD-song_master_01-07",
+        "storyboard:SBD-song_master_01-07",
+        "beat:journey",
+        "payload:SDGP-SBD-song_master_01-07"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-08",
+      "storyboard_id": "SBD-song_master_01-08",
+      "bundle_id": "FSB-song_master_01-02",
+      "scene_order": 8,
+      "directorial_intent": "Direct emotional_change beat for conflict as a master-shot moment: align rival tension into shared resolve under crossing pressure Anchor the drama in street_crossing without flattening it into exposition.",
+      "camera_reason": "lateral profile tracking angle at mid lateral distance because the frame must serve emotional_change grammar while preserving off-lens intimacy (side-evaluate toward companion not lens). Movement hint: side tracking with stable horizon.",
+      "blocking_reason": "two-subject stagger at crosswalk zebra Environment use (foot on crosswalk stripe and signal pole proximity) justifies placement; posture squared shoulders in mid-step not attention pose prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through purposeful stride frozen at crosswalk edge and half-raised hand signaling pause; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under conflict, the scene hides escalate_relational_tension while the audience reads guardian-companion bond tension through street_crossing.",
+      "cut_purpose": "Turn the scene axis when unspoken tension must become visible relational shift",
+      "visual_motif_usage": [
+        "motif:gonagi-dana-bond-thread",
+        "motif:protective-presence",
+        "anchor:street_crossing"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:emotional_change",
+        "scene-order:8",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-02",
+        "bundle-role:emotional_change",
+        "acting-camera:IAC-SBD-song_master_01-08",
+        "storyboard:SBD-song_master_01-08",
+        "beat:conflict",
+        "payload:SDGP-SBD-song_master_01-08"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-09",
+      "storyboard_id": "SBD-song_master_01-09",
+      "bundle_id": "FSB-song_master_01-02",
+      "scene_order": 9,
+      "directorial_intent": "Direct interaction beat for sacrifice as a master-shot moment: interrupt domestic chore with resolve to leave for duty Anchor the drama in doorway_pause without flattening it into exposition.",
+      "camera_reason": "backlit long low angle at far silhouette distance because the frame must serve interaction grammar while preserving off-lens intimacy (downcast toward laundry basket then door angle not lens). Movement hint: slow pullback.",
+      "blocking_reason": "subject between laundry foreground and door midground Environment use (laundry fabric and doorframe both engaged) justifies placement; posture twisted torso between tasks not static stand prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through frozen mid-step between laundry and doorway and fabric fold paused in one hand; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under sacrifice, the scene hides commit_to_costly_choice while the audience reads guardian-companion bond tension through doorway_pause.",
+      "cut_purpose": "Compress blocking into contact or refusal so the music-drama beat lands physically",
+      "visual_motif_usage": [
+        "motif:transit-departure-return",
+        "motif:protective-presence",
+        "anchor:doorway_pause"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:interaction",
+        "scene-order:9",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-02",
+        "bundle-role:interaction",
+        "acting-camera:IAC-SBD-song_master_01-09",
+        "storyboard:SBD-song_master_01-09",
+        "beat:sacrifice",
+        "payload:SDGP-SBD-song_master_01-09"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-10",
+      "storyboard_id": "SBD-song_master_01-10",
+      "bundle_id": "FSB-song_master_01-02",
+      "scene_order": 10,
+      "directorial_intent": "Direct transition beat for healing as a master-shot moment: offer small care gesture that begins emotional healing Anchor the drama in tea_drinking without flattening it into exposition.",
+      "camera_reason": "high three-quarter establishing angle at far to mid establishing because the frame must serve transition grammar while preserving off-lens intimacy (down-soft toward pet not camera). Movement hint: slow panoramic settle.",
+      "blocking_reason": "subject low-left with pet and cup triangle Environment use (tea steam and pet fur touch active) justifies placement; posture crouched care posture with protective lean prevents a static tableau reading.",
+      "silence_or_action": "Hold controlled silence in flanking escort pace while kneeling for pet care; let offering hand with tea cup in other hand carry the beat without dialogue.",
+      "emotional_subtext": "Under healing, the scene hides restore_vulnerability_balance while the audience reads guardian-companion bond tension through tea_drinking.",
+      "cut_purpose": "Release the bundle with a directed handoff that primes the next location or finale",
+      "visual_motif_usage": [
+        "motif:rain-to-clear-healing",
+        "motif:protective-presence",
+        "anchor:tea_drinking"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:transition",
+        "scene-order:10",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-02",
+        "bundle-role:transition",
+        "acting-camera:IAC-SBD-song_master_01-10",
+        "storyboard:SBD-song_master_01-10",
+        "beat:healing",
+        "payload:SDGP-SBD-song_master_01-10"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-11",
+      "storyboard_id": "SBD-song_master_01-11",
+      "bundle_id": "FSB-song_master_01-03",
+      "scene_order": 11,
+      "directorial_intent": "Direct establish beat for forgiveness as a master-shot moment: reopen trust through shared public market moment Anchor the drama in market_visit without flattening it into exposition.",
+      "camera_reason": "eye-level intimate angle at mid two-shot distance because the frame must serve establish grammar while preserving off-lens intimacy (toward stall vendor hand exchange not lens). Movement hint: micro push-in on beat.",
+      "blocking_reason": "subject at stall counter diagonal depth Environment use (market produce and headphone cable actively touched) justifies placement; posture asymmetric step with shoulder opening prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through forward lean open while reaching for market item and reach outward with music player in pocket bump; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under forgiveness, the scene hides repair_relational_fracture while the audience reads guardian-companion bond tension through market_visit.",
+      "cut_purpose": "Open the bundle geography and emotional contract before dialogue or action accelerates",
+      "visual_motif_usage": [
+        "motif:gonagi-dana-bond-thread",
+        "motif:daily-life-anchor-ritual",
+        "anchor:market_visit"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:establish",
+        "scene-order:11",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-03",
+        "bundle-role:establish",
+        "acting-camera:IAC-SBD-song_master_01-11",
+        "storyboard:SBD-song_master_01-11",
+        "beat:forgiveness",
+        "payload:SDGP-SBD-song_master_01-11"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-12",
+      "storyboard_id": "SBD-song_master_01-12",
+      "bundle_id": "FSB-song_master_01-03",
+      "scene_order": 12,
+      "directorial_intent": "Direct observe beat for reunion as a master-shot moment: transform waiting into reunion contact at arrival point Anchor the drama in station_waiting without flattening it into exposition.",
+      "camera_reason": "lateral profile tracking angle at mid lateral distance because the frame must serve observe grammar while preserving off-lens intimacy (recognition lock toward approaching figure not lens). Movement hint: side tracking with stable horizon.",
+      "blocking_reason": "converging subjects on shore path thirds Environment use (shore foam edge and platform rail touched while moving) justifies placement; posture running-to-walk settle with open arms prevents a static tableau reading.",
+      "silence_or_action": "Hold controlled silence in accelerated approach breaking into matched pace; let hand clasp initiation mid-stride carry the beat without dialogue.",
+      "emotional_subtext": "Under reunion, the scene hides resolve_absence_arc while the audience reads guardian-companion bond tension through station_waiting.",
+      "cut_purpose": "Hold observational distance so the audience reads private feeling before intervention",
+      "visual_motif_usage": [
+        "motif:waiting-to-reunion",
+        "motif:gonagi-dana-bond-thread",
+        "anchor:station_waiting"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:observe",
+        "scene-order:12",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-03",
+        "bundle-role:observe",
+        "acting-camera:IAC-SBD-song_master_01-12",
+        "storyboard:SBD-song_master_01-12",
+        "beat:reunion",
+        "payload:SDGP-SBD-song_master_01-12"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-13",
+      "storyboard_id": "SBD-song_master_01-13",
+      "bundle_id": "FSB-song_master_01-03",
+      "scene_order": 13,
+      "directorial_intent": "Direct emotional_change beat for departure as a master-shot moment: frame bittersweet departure from elevated vantage Anchor the drama in bus_waiting without flattening it into exposition.",
+      "camera_reason": "backlit long low angle at far silhouette distance because the frame must serve emotional_change grammar while preserving off-lens intimacy (upward skyline scan not camera lens). Movement hint: slow pullback.",
+      "blocking_reason": "subject small against skyline upper third Environment use (parapet stone and bus stop sign below referenced) justifies placement; posture wind-braced lean back not rigid stand prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through slow retreat steps at rooftop parapet and reluctant hand release from parapet stone; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under departure, the scene hides close_chapter_with_parting while the audience reads guardian-companion bond tension through bus_waiting.",
+      "cut_purpose": "Turn the scene axis when unspoken tension must become visible relational shift",
+      "visual_motif_usage": [
+        "motif:transit-departure-return",
+        "motif:sunset-bridge-hope",
+        "anchor:bus_waiting"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:emotional_change",
+        "scene-order:13",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-03",
+        "bundle-role:emotional_change",
+        "acting-camera:IAC-SBD-song_master_01-13",
+        "storyboard:SBD-song_master_01-13",
+        "beat:departure",
+        "payload:SDGP-SBD-song_master_01-13"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-14",
+      "storyboard_id": "SBD-song_master_01-14",
+      "bundle_id": "FSB-song_master_01-03",
+      "scene_order": 14,
+      "directorial_intent": "Direct interaction beat for growth as a master-shot moment: practice mentor guidance during daily school walk Anchor the drama in school_walk without flattening it into exposition.",
+      "camera_reason": "eye-level intimate angle at mid two-shot distance because the frame must serve interaction grammar while preserving off-lens intimacy (evaluative side glance toward student not lens). Movement hint: micro push-in on beat.",
+      "blocking_reason": "mentor-student stagger on campus walk line Environment use (school gate arch and cooking towel prop in use) justifies placement; posture walking instruction half-step behind not attention pose prevents a static tableau reading.",
+      "silence_or_action": "Drive visible action through slightly forward mentor lead on campus path and hand on shoulder guide with cooking apron fold; silence only where gaze withholds speech.",
+      "emotional_subtext": "Under growth, the scene hides develop_character_capacity while the audience reads guardian-companion bond tension through school_walk.",
+      "cut_purpose": "Compress blocking into contact or refusal so the music-drama beat lands physically",
+      "visual_motif_usage": [
+        "motif:protective-presence",
+        "motif:daily-life-anchor-ritual",
+        "anchor:school_walk"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:interaction",
+        "scene-order:14",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-03",
+        "bundle-role:interaction",
+        "acting-camera:IAC-SBD-song_master_01-14",
+        "storyboard:SBD-song_master_01-14",
+        "beat:growth",
+        "payload:SDGP-SBD-song_master_01-14"
+      ]
+    },
+    {
+      "director_grammar_id": "DGR-SBD-song_master_01-15",
+      "storyboard_id": "SBD-song_master_01-15",
+      "bundle_id": "FSB-song_master_01-03",
+      "scene_order": 15,
+      "directorial_intent": "Direct transition beat for redemption as a master-shot moment: perform quiet nightly ritual before redemptive reunion Anchor the drama in flower_watering without flattening it into exposition.",
+      "camera_reason": "backlit long low angle at far silhouette distance because the frame must serve transition grammar while preserving off-lens intimacy (upward to star field not camera). Movement hint: slow pullback.",
+      "blocking_reason": "subject low center with flower pot foreground Environment use (water stream arc and planter soil actively used) justifies placement; posture kneeling ritual posture with curved back prevents a static tableau reading.",
+      "silence_or_action": "Hold controlled silence in kneeling flower care with upward star gaze; let watering can tilt with tentative reach carry the beat without dialogue.",
+      "emotional_subtext": "Under redemption, the scene hides restore_moral_emotional_balance while the audience reads guardian-companion bond tension through flower_watering.",
+      "cut_purpose": "Release the bundle with a directed handoff that primes the next location or finale",
+      "visual_motif_usage": [
+        "motif:rain-to-clear-healing",
+        "motif:waiting-to-reunion",
+        "anchor:flower_watering"
+      ],
+      "anti_flat_scene_rules": [
+        "no-exposition-tableau-without-subtext",
+        "no-decoration-only-composition",
+        "require-character-need-for-every-frame",
+        "no-static-mirror-without-emotional-pressure",
+        "require-directorial-contrast-or-release",
+        "no-ai-studio-generation",
+        "bundle-role:transition",
+        "scene-order:15",
+        "require-motif-or-contrast-anchor",
+        "no-flat-master-shot-without-directorial-pressure"
+      ],
+      "keywords": [
+        "director-grammar",
+        "song_master_01",
+        "story-driven-export:SDIE-song_master_01",
+        "narrative-quality-gate:NARRATIVE-QUALITY-GATE-PHASE-98-v1",
+        "bundle:FSB-song_master_01-03",
+        "bundle-role:transition",
+        "acting-camera:IAC-SBD-song_master_01-15",
+        "storyboard:SBD-song_master_01-15",
+        "beat:redemption",
+        "payload:SDGP-SBD-song_master_01-15"
+      ]
+    }
+  ]
+}

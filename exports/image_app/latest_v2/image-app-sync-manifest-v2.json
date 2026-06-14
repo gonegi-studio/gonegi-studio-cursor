@@ -1,0 +1,92 @@
+{
+  "manifest_id": "image-app-sync-manifest-v2",
+  "phase": "PHASE-EXPORT-REBUILD-001",
+  "generated_at": "2026-06-09T02:43:05.154Z",
+  "target": "exports/image_app/latest_v2",
+  "gpu_execution": false,
+  "integrated_systems": [
+    "story_engine",
+    "prompt_compiler",
+    "generation_qa",
+    "prompt_evaluation",
+    "temporal_memory",
+    "dialogue_lipsync",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution"
+  ],
+  "sync_sources": {
+    "story_engine": {
+      "refs": [
+        "reports/story_engine/STORY_TO_BLUEPRINT_ENGINE_REPORT.json",
+        "exports/story_engine/story-blueprint-mapping-specification.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "prompt_compiler": {
+      "refs": [
+        "exports/generation/compiled-prompt.json",
+        "exports/generation/prompt-compiler-specification.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "generation_qa": {
+      "refs": [
+        "reports/generation_qa/GENERATION_QA_AND_ERROR_CONTEXT_REPORT.json",
+        "exports/generation_qa/generation-qa-specification.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "prompt_evaluation": {
+      "refs": [
+        "reports/prompt_evaluation/PROMPT_EVALUATION_SYSTEM_REPORT.json",
+        "exports/prompt_evaluation/prompt-scorecard.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "temporal_memory": {
+      "refs": [
+        "reports/temporal_memory/TEMPORAL_MEMORY_VALIDATION_REPORT.json",
+        "exports/temporal_memory/temporal-memory-specification.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "dialogue_lipsync": {
+      "refs": [
+        "reports/dialogue_lipsync/DIALOGUE_LIPSYNC_SYSTEM_REPORT.json",
+        "exports/dialogue_lipsync/dialogue-specification.json",
+        "exports/dialogue_lipsync/lipsync-dialogue-output.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "generation_trace": {
+      "refs": [
+        "exports/generation/generation-trace-specification.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "dataset_evolution": {
+      "refs": [
+        "exports/evolution/dataset-evolution-specification.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "asset_registry": {
+      "refs": [
+        "exports/assets/generated-asset-registry.json"
+      ],
+      "sync_status": "PASS"
+    },
+    "production_execution": {
+      "refs": [
+        "reports/production_pipeline/PRODUCTION_EXECUTION_PIPELINE_REPORT.json",
+        "exports/production_pipeline/production-stage-specification.json"
+      ],
+      "sync_status": "PASS"
+    }
+  },
+  "image_app_sync_integrity": "PASS",
+  "legacy_path": "exports/image_app/latest",
+  "synchronization_note": "Engine stack refs bound; legacy latest preserved read-only"
+}

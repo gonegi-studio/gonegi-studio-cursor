@@ -1,0 +1,24 @@
+{
+  "report_id": "gpu_authorization_precheck_mqd1vfpx",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-006D",
+  "system_id": "EVIDENCE_LAYER_READINESS_REVIEW_V1",
+  "generated_at": "2026-06-14T00:32:37.461Z",
+  "gpu_precheck_defined": true,
+  "gpu_execution_allowed": false,
+  "evidence_sufficient": false,
+  "authorization_ready": false,
+  "required_next_steps": [
+    "Execute environment_identity evidence collection batch",
+    "Execute temporal_preservation evidence collection batch",
+    "Execute object_identity evidence collection batch",
+    "Run cross-channel evidence validation against sufficiency rules",
+    "Re-run GPU_AUTHORIZATION_PRECHECK after evidence validation PASS"
+  ],
+  "authorization_failure_reasons": [
+    "environment_evidence_not_collected",
+    "temporal_evidence_not_collected",
+    "object_evidence_not_collected",
+    "evidence_not_validated",
+    "gpu_execution_disabled_in_definition_phases"
+  ]
+}

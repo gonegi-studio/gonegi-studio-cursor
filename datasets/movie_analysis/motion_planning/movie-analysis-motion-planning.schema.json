@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/motion_planning/movie-analysis-motion-planning.schema.json",
+  "title": "MovieAnalysisMotionPlanningPlan",
+  "description": "Planning-only motion planning design for PHASE-SOURCE-VIDEO-030",
+  "type": "object",
+  "required": [
+    "motion_plan_id",
+    "phase",
+    "source_video_id",
+    "keyframe_preparation_id",
+    "motion_candidate_count",
+    "planning_strategy",
+    "motion_candidates",
+    "motion_categories",
+    "coverage_goal",
+    "identity_safety",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "motion_plan_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-030-MOVIE_ANALYSIS_MOTION_PLANNING_DESIGN_V1"
+    },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "keyframe_preparation_id": { "type": "string", "minLength": 1 },
+    "motion_candidate_count": { "type": "integer", "minimum": 1 },
+    "planning_strategy": {
+      "type": "string",
+      "enum": [
+        "CAMERA_MOTION_PLAN",
+        "CHARACTER_MOTION_PLAN",
+        "EMOTION_FLOW_PLAN",
+        "TRANSITION_FLOW_PLAN"
+      ]
+    },
+    "motion_candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "motion_candidate_id",
+          "keyframe_candidate_id",
+          "motion_category",
+          "estimated_motion_value",
+          "generates_motion",
+          "generates_video",
+          "generates_keyframe",
+          "candidate_type",
+          "estimated_only"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "motion_candidate_id": { "type": "string" },
+          "keyframe_candidate_id": { "type": "string" },
+          "motion_category": {
+            "type": "string",
+            "enum": [
+              "camera_motion",
+              "character_motion",
+              "crowd_motion",
+              "animal_motion",
+              "environment_motion",
+              "emotion_flow",
+              "transition_flow",
+              "timing_flow",
+              "continuity_flow"
+            ]
+          },
+          "estimated_motion_value": { "type": "string", "minLength": 1 },
+          "generates_motion": { "type": "boolean", "const": false },
+          "generates_video": { "type": "boolean", "const": false },
+          "generates_keyframe": { "type": "boolean", "const": false },
+          "candidate_type": {
+            "type": "string",
+            "const": "estimated_motion_candidate"
+          },
+          "estimated_only": { "type": "boolean", "const": true }
+        }
+      }
+    },
+    "motion_categories": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "camera_motion",
+          "character_motion",
+          "crowd_motion",
+          "animal_motion",
+          "environment_motion",
+          "emotion_flow",
+          "transition_flow",
+          "timing_flow",
+          "continuity_flow"
+        ]
+      }
+    },
+    "coverage_goal": {
+      "type": "object",
+      "required": ["segment_span_seconds", "coverage_percent", "purpose"],
+      "additionalProperties": false,
+      "properties": {
+        "segment_span_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "coverage_percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "purpose": {
+          "type": "string",
+          "const": "future_video_generation_preparation"
+        }
+      }
+    },
+    "identity_safety": {
+      "type": "object",
+      "required": [
+        "identity_lock_required",
+        "character_first_contract",
+        "estimated_only",
+        "no_motion_generation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "identity_lock_required": { "type": "boolean", "const": true },
+        "character_first_contract": { "type": "boolean", "const": true },
+        "estimated_only": { "type": "boolean", "const": true },
+        "no_motion_generation": { "type": "boolean", "const": true }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "motion_planning_only",
+        "motion_generation",
+        "video_generation",
+        "keyframe_generation",
+        "ocr",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "motion_planning_only": { "type": "boolean", "const": true },
+        "motion_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "keyframe_generation": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  }
+}

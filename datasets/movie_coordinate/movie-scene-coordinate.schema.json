@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_coordinate/movie-scene-coordinate.schema.json",
+  "title": "MovieSceneCoordinate",
+  "description": "Design-level spatial coordinate template for movie scene decomposition in PHASE-SOURCE-VIDEO-004",
+  "type": "object",
+  "required": [
+    "coordinate_id",
+    "phase",
+    "source_video_id",
+    "scene_index",
+    "timestamp_start",
+    "timestamp_end",
+    "camera_coordinate",
+    "character_coordinates",
+    "prop_coordinates",
+    "location_coordinates",
+    "lighting_coordinates",
+    "motion_vectors",
+    "blocking_map",
+    "depth_layers",
+    "continuity_locks",
+    "director_grammar_refs",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "coordinate_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-004-MOVIE_SCENE_COORDINATE_SYSTEM_V1" },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "scene_index": { "type": "integer", "minimum": 0 },
+    "timestamp_start": { "type": "number", "minimum": 0 },
+    "timestamp_end": { "type": "number", "minimum": 0 },
+    "camera_coordinate": { "$ref": "#/$defs/camera_coordinate" },
+    "character_coordinates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/character_coordinate" },
+      "minItems": 1
+    },
+    "prop_coordinates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/prop_coordinate" }
+    },
+    "location_coordinates": { "$ref": "#/$defs/location_coordinate" },
+    "lighting_coordinates": { "$ref": "#/$defs/lighting_coordinate" },
+    "motion_vectors": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/motion_vector" }
+    },
+    "blocking_map": { "$ref": "#/$defs/blocking_map" },
+    "depth_layers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/depth_layer" },
+      "minItems": 1
+    },
+    "continuity_locks": { "$ref": "#/$defs/continuity_locks" },
+    "director_grammar_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "template_kind": { "type": "string", "const": "design_template" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "frame_extraction",
+        "external_call_allowed"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "camera_coordinate": {
+      "type": "object",
+      "required": ["position", "facing", "height", "fov_hint", "shot_type"],
+      "properties": {
+        "position": { "type": "string" },
+        "facing": { "type": "string" },
+        "height": { "type": "string" },
+        "fov_hint": { "type": "string" },
+        "shot_type": { "type": "string" }
+      }
+    },
+    "character_coordinate": {
+      "type": "object",
+      "required": ["character_ref", "position", "facing", "posture", "identity_anchor"],
+      "properties": {
+        "character_ref": { "type": "string" },
+        "position": { "type": "string" },
+        "facing": { "type": "string" },
+        "posture": { "type": "string" },
+        "identity_anchor": { "type": "string" }
+      }
+    },
+    "prop_coordinate": {
+      "type": "object",
+      "required": ["prop_id", "position", "interaction_state"],
+      "properties": {
+        "prop_id": { "type": "string" },
+        "position": { "type": "string" },
+        "interaction_state": { "type": "string" }
+      }
+    },
+    "location_coordinate": {
+      "type": "object",
+      "required": ["space_type", "anchor_point", "walkable_zone"],
+      "properties": {
+        "space_type": { "type": "string" },
+        "anchor_point": { "type": "string" },
+        "walkable_zone": { "type": "string" }
+      }
+    },
+    "lighting_coordinate": {
+      "type": "object",
+      "required": ["key_direction", "fill_level", "color_temperature"],
+      "properties": {
+        "key_direction": { "type": "string" },
+        "fill_level": { "type": "string" },
+        "color_temperature": { "type": "string" }
+      }
+    },
+    "motion_vector": {
+      "type": "object",
+      "required": ["subject_ref", "vector", "duration_hint"],
+      "properties": {
+        "subject_ref": { "type": "string" },
+        "vector": { "type": "string" },
+        "duration_hint": { "type": "string" }
+      }
+    },
+    "blocking_map": {
+      "type": "object",
+      "required": ["primary_focus", "secondary_focus", "negative_space"],
+      "properties": {
+        "primary_focus": { "type": "string" },
+        "secondary_focus": { "type": "string" },
+        "negative_space": { "type": "string" }
+      }
+    },
+    "depth_layer": {
+      "type": "object",
+      "required": ["layer_index", "layer_role", "content_hint"],
+      "properties": {
+        "layer_index": { "type": "integer" },
+        "layer_role": { "type": "string" },
+        "content_hint": { "type": "string" }
+      }
+    },
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks", "composition_locks"],
+      "properties": {
+        "identity_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "location_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "composition_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

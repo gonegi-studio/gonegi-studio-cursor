@@ -1,0 +1,59 @@
+{
+  "report_id": "gpu_validation_risk_mqd01exu",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-004",
+  "system_id": "GPU_VALIDATION_CAMPAIGN_V1",
+  "generated_at": "2026-06-13T23:41:17.154Z",
+  "highest_risk_channel": "environment_identity",
+  "expected_failure_modes": [
+    {
+      "channel": "environment_identity",
+      "failure_modes": [
+        "reference_drift",
+        "geometry_mismatch",
+        "style_overrides_identity"
+      ],
+      "risk_severity": "CRITICAL",
+      "recovery_strategy": "similar_environment → fallback_environment → campaign abort if hard-tier fails twice"
+    },
+    {
+      "channel": "temporal_preservation",
+      "failure_modes": [
+        "edit_rhythm_desync",
+        "shot_boundary_discontinuity"
+      ],
+      "risk_severity": "CRITICAL",
+      "recovery_strategy": "comfyui_adapter fallback → block object_identity stage"
+    },
+    {
+      "channel": "object_identity",
+      "failure_modes": [
+        "identity_embedding_drift",
+        "role_weight_ignored"
+      ],
+      "risk_severity": "HIGH",
+      "recovery_strategy": "similar_object → loose_class_match → defer hero_prop lock"
+    },
+    {
+      "channel": "camera_continuity",
+      "failure_modes": [
+        "camera_inertia_break"
+      ],
+      "risk_severity": "MEDIUM",
+      "recovery_strategy": "reduced_motion_smoothing → logged warning continuation"
+    },
+    {
+      "channel": "multi_scene_consistency",
+      "failure_modes": [
+        "cross_scene_memory_loss"
+      ],
+      "risk_severity": "HIGH",
+      "recovery_strategy": "partial_scene_memory → fallback_environment"
+    }
+  ],
+  "campaign_abort_conditions": [
+    "environment_identity hard-tier pass_rate < 0.5 after two retries",
+    "temporal_preservation pass_rate < 0.6 blocking movie reconstruction feasibility",
+    "gpu_execution_allowed=false at campaign start",
+    "Campaign Defined != Campaign Executed violation detected"
+  ]
+}

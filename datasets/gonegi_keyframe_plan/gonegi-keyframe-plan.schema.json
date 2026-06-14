@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/gonegi_keyframe_plan/gonegi-keyframe-plan.schema.json",
+  "title": "GonegiKeyframePlan",
+  "description": "Deterministic keyframe plan compiled from Gonegi video states for PHASE-SOURCE-VIDEO-015",
+  "type": "object",
+  "required": [
+    "gonegi_keyframe_plan_id",
+    "phase",
+    "source_gonegi_video_state_id",
+    "gonegi_state_id",
+    "duration_seconds",
+    "fps_target",
+    "keyframe_count",
+    "keyframes",
+    "identity_locks",
+    "continuity_locks",
+    "translation_trace",
+    "replacement_trace",
+    "director_blend_ref",
+    "video_defaults_ref",
+    "production_status",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "gonegi_keyframe_plan_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-015-VIDEO_STATE_TO_KEYFRAME_COMPILER_V2"
+    },
+    "source_gonegi_video_state_id": { "type": "string", "minLength": 1 },
+    "gonegi_state_id": { "type": "string", "minLength": 1 },
+    "duration_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 120 },
+    "fps_target": { "type": "number", "enum": [12, 24, 25, 30] },
+    "keyframe_count": { "type": "integer", "minimum": 5, "maximum": 7 },
+    "keyframes": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 7,
+      "items": { "$ref": "#/$defs/keyframe" }
+    },
+    "identity_locks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "continuity_locks": { "$ref": "#/$defs/continuity_locks" },
+    "translation_trace": { "$ref": "#/$defs/translation_trace" },
+    "replacement_trace": { "$ref": "#/$defs/replacement_trace" },
+    "director_blend_ref": { "type": "string" },
+    "video_defaults_ref": { "type": "string" },
+    "production_status": { "$ref": "#/$defs/production_status" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "compiled_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "keyframe": {
+      "type": "object",
+      "required": [
+        "keyframe_index",
+        "timestamp",
+        "keyframe_role",
+        "gonegi_state_ref",
+        "camera_state",
+        "character_state",
+        "emotion_state",
+        "composition_state",
+        "location_state",
+        "identity_state",
+        "continuity_locks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "keyframe_index": { "type": "integer", "minimum": 0 },
+        "timestamp": { "type": "number", "minimum": 0 },
+        "keyframe_role": {
+          "type": "string",
+          "enum": ["start", "early_transition", "midpoint", "late_transition", "end"]
+        },
+        "gonegi_state_ref": { "type": "string" },
+        "camera_state": { "$ref": "#/$defs/camera_state" },
+        "character_state": { "$ref": "#/$defs/character_state" },
+        "emotion_state": { "$ref": "#/$defs/emotion_state" },
+        "composition_state": { "$ref": "#/$defs/composition_state" },
+        "location_state": { "$ref": "#/$defs/location_state" },
+        "identity_state": { "$ref": "#/$defs/identity_state" },
+        "continuity_locks": { "$ref": "#/$defs/continuity_locks" }
+      }
+    },
+    "camera_state": {
+      "type": "object",
+      "required": ["shot_type", "motion_progress", "motion_type", "identity_safe"],
+      "properties": {
+        "shot_type": { "type": "string" },
+        "motion_progress": { "type": "number", "minimum": 0, "maximum": 1 },
+        "motion_type": { "type": "string" },
+        "camera_position": { "type": "string" },
+        "camera_height": { "type": "string" },
+        "identity_safe": { "type": "boolean" }
+      }
+    },
+    "character_state": {
+      "type": "object",
+      "required": ["active_character_ids", "positions", "beat_phase"],
+      "properties": {
+        "active_character_ids": { "type": "array", "items": { "type": "string" } },
+        "positions": { "type": "object" },
+        "beat_phase": { "type": "string" }
+      }
+    },
+    "emotion_state": {
+      "type": "object",
+      "required": ["emotion_id", "intensity", "arc_type"],
+      "properties": {
+        "emotion_id": { "type": "string" },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "arc_type": { "type": "string" }
+      }
+    },
+    "composition_state": {
+      "type": "object",
+      "required": ["composition_id", "prop_anchor_ids", "character_positions"],
+      "properties": {
+        "composition_id": { "type": "string" },
+        "prop_anchor_ids": { "type": "array", "items": { "type": "string" } },
+        "character_positions": { "type": "object" }
+      }
+    },
+    "location_state": {
+      "type": "object",
+      "required": ["location_id", "location_lock_preserved"],
+      "properties": {
+        "location_id": { "type": "string" },
+        "layout_lock_id": { "type": "string" },
+        "location_lock_preserved": { "type": "boolean" }
+      }
+    },
+    "identity_state": {
+      "type": "object",
+      "required": ["protected_character_ids", "identity_lock_tokens"],
+      "properties": {
+        "protected_character_ids": { "type": "array", "items": { "type": "string" } },
+        "identity_lock_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks"],
+      "properties": {
+        "identity_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "location_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "composition_locks": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "translation_trace": {
+      "type": "object",
+      "required": ["translation_id", "source_world_type", "target_world_identity", "applied_dimensions"],
+      "properties": {
+        "translation_id": { "type": "string" },
+        "source_world_type": { "type": "string" },
+        "target_world_identity": { "type": "string" },
+        "applied_dimensions": { "type": "array", "items": { "type": "string" } },
+        "location_mapping": { "type": "object" },
+        "prop_mappings": { "type": "object" },
+        "emotion_mapping": { "type": "object" },
+        "video_state_translation": { "type": "object" },
+        "keyframe_plan_translation": { "type": "object" }
+      }
+    },
+    "replacement_trace": {
+      "type": "object",
+      "required": ["contract_id", "replacements_applied", "companions_injected"],
+      "properties": {
+        "contract_id": { "type": "string" },
+        "replacements_applied": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source_role", "target_character_id"],
+            "properties": {
+              "source_role": { "type": "string" },
+              "target_character_id": { "type": "string" },
+              "replacement_id": { "type": "string" }
+            }
+          }
+        },
+        "companions_injected": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "production_status": {
+      "type": "object",
+      "required": ["isolated", "storage_domain", "production_registry"],
+      "properties": {
+        "isolated": { "type": "boolean", "const": true },
+        "storage_domain": { "type": "string", "const": "gonegi_keyframe_plan" },
+        "production_registry": { "type": "boolean", "const": false },
+        "draft_status": { "type": "string", "const": "gonegi_keyframe_plan_compiled_v1" }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "external_call_allowed", "frame_extraction", "ocr", "generation"],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

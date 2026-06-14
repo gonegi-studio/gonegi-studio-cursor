@@ -1,0 +1,26 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-006",
+  "test_id": "RKB-006",
+  "test_name": "COVERAGE_VALIDATION",
+  "test_date": "2026-06-03",
+  "comparison_baselines": [
+    "RKB-004",
+    "RKB-005",
+    "pre-SHOT-GRAMMAR"
+  ],
+  "input_assets": {
+    "coverage_grammar_library": "datasets/shot/coverage-grammar-library-v1.json",
+    "shot_grammar_adapter": "exports/image_app/adapters/shot-grammar-adapter.json",
+    "shot_grammar_latest_adapter": "exports/image_app/latest/shot-grammar-adapter.json",
+    "test_batch": "exports/image_app/test_batches/rkb-006-coverage-validation-test-batch.json",
+    "scorecard": "datasets/render_feedback/RKB-006_SCORECARD.json"
+  },
+  "generation_count": 40,
+  "adapter_consumption_verdict": "PASS",
+  "medium_chain_reduction_met": true,
+  "success_condition_met": true,
+  "final_verdict": "PASS_RKB_006_COVERAGE_VALIDATION",
+  "next_phase": "EDA-001 EMOTION_ACTING_DNA_V1"
+}

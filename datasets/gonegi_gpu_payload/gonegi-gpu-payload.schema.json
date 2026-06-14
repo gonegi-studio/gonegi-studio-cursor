@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/gonegi_gpu_payload/gonegi-gpu-payload.schema.json",
+  "title": "GonegiGpuPayload",
+  "description": "GPU render payload draft compiled from Gonegi motion plans for PHASE-SOURCE-VIDEO-017",
+  "type": "object",
+  "required": [
+    "gonegi_gpu_payload_id",
+    "phase",
+    "source_motion_plan_id",
+    "source_keyframe_plan_id",
+    "source_video_state_id",
+    "duration_seconds",
+    "fps_target",
+    "resolution",
+    "aspect_ratio",
+    "identity_locks",
+    "continuity_locks",
+    "translation_trace",
+    "replacement_trace",
+    "keyframes",
+    "motion_segments",
+    "render_mode",
+    "provider_hint",
+    "execution_flags",
+    "production_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "gonegi_gpu_payload_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-017-GONEGI_MOTION_TO_GPU_PAYLOAD_COMPILER_V2"
+    },
+    "source_motion_plan_id": { "type": "string", "minLength": 1 },
+    "source_keyframe_plan_id": { "type": "string", "minLength": 1 },
+    "source_video_state_id": { "type": "string", "minLength": 1 },
+    "duration_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 120 },
+    "fps_target": { "type": "number", "enum": [12, 24, 25, 30] },
+    "resolution": { "type": "string" },
+    "aspect_ratio": { "type": "string" },
+    "identity_locks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "continuity_locks": { "$ref": "#/$defs/continuity_locks" },
+    "translation_trace": { "$ref": "#/$defs/translation_trace" },
+    "replacement_trace": { "$ref": "#/$defs/replacement_trace" },
+    "keyframes": {
+      "type": "array",
+      "minItems": 5,
+      "items": { "$ref": "#/$defs/keyframe_ref" }
+    },
+    "motion_segments": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/motion_segment_ref" }
+    },
+    "render_mode": { "type": "string" },
+    "provider_hint": { "$ref": "#/$defs/provider_hint" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "production_status": { "$ref": "#/$defs/production_status" },
+    "compiled_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks"],
+      "properties": {
+        "identity_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "location_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "composition_locks": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "translation_trace": {
+      "type": "object",
+      "required": ["translation_id", "source_world_type", "target_world_identity", "applied_dimensions"],
+      "properties": {
+        "translation_id": { "type": "string" },
+        "source_world_type": { "type": "string" },
+        "target_world_identity": { "type": "string" },
+        "applied_dimensions": { "type": "array", "items": { "type": "string" } },
+        "location_mapping": { "type": "object" },
+        "prop_mappings": { "type": "object" },
+        "emotion_mapping": { "type": "object" },
+        "video_state_translation": { "type": "object" },
+        "keyframe_plan_translation": { "type": "object" },
+        "motion_plan_translation": { "type": "object" },
+        "gpu_payload_translation": { "type": "object" }
+      }
+    },
+    "replacement_trace": {
+      "type": "object",
+      "required": ["contract_id", "replacements_applied", "companions_injected"],
+      "properties": {
+        "contract_id": { "type": "string" },
+        "replacements_applied": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source_role", "target_character_id"],
+            "properties": {
+              "source_role": { "type": "string" },
+              "target_character_id": { "type": "string" },
+              "replacement_id": { "type": "string" }
+            }
+          }
+        },
+        "companions_injected": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "keyframe_ref": {
+      "type": "object",
+      "required": [
+        "keyframe_index",
+        "timestamp",
+        "keyframe_role",
+        "gonegi_state_ref",
+        "shot_type",
+        "emotion_id",
+        "emotion_intensity"
+      ],
+      "properties": {
+        "keyframe_index": { "type": "integer", "minimum": 0 },
+        "timestamp": { "type": "number", "minimum": 0 },
+        "keyframe_role": { "type": "string" },
+        "gonegi_state_ref": { "type": "string" },
+        "shot_type": { "type": "string" },
+        "emotion_id": { "type": "string" },
+        "emotion_intensity": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "motion_segment_ref": {
+      "type": "object",
+      "required": [
+        "segment_id",
+        "from_keyframe",
+        "to_keyframe",
+        "from_timestamp",
+        "to_timestamp",
+        "duration_seconds",
+        "camera_motion_category",
+        "emotion_motion_category",
+        "environment_motion_category"
+      ],
+      "properties": {
+        "segment_id": { "type": "string" },
+        "from_keyframe": { "type": "integer", "minimum": 0 },
+        "to_keyframe": { "type": "integer", "minimum": 0 },
+        "from_timestamp": { "type": "number", "minimum": 0 },
+        "to_timestamp": { "type": "number", "minimum": 0 },
+        "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "camera_motion_category": { "type": "string" },
+        "emotion_motion_category": { "type": "string" },
+        "environment_motion_category": { "type": "string" }
+      }
+    },
+    "provider_hint": {
+      "type": "object",
+      "required": [
+        "recommended_provider_id",
+        "provider_activation",
+        "runtime_target",
+        "selection_basis"
+      ],
+      "properties": {
+        "recommended_provider_id": { "type": "string" },
+        "provider_activation": { "type": "boolean", "const": false },
+        "runtime_target": { "type": "string", "enum": ["deferred", "local_stub", "remote_stub"] },
+        "selection_basis": { "type": "string" }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "preparation_only",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "preparation_only": { "type": "boolean", "const": true },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    },
+    "production_status": {
+      "type": "object",
+      "required": ["isolated", "storage_domain", "production_registry"],
+      "properties": {
+        "isolated": { "type": "boolean", "const": true },
+        "storage_domain": { "type": "string", "const": "gonegi_gpu_payload" },
+        "production_registry": { "type": "boolean", "const": false },
+        "draft_status": { "type": "string", "const": "gonegi_gpu_payload_compiled_v1" }
+      }
+    }
+  }
+}

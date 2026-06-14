@@ -1,0 +1,46 @@
+{
+  "dataset_id": "multi_scene_consistency-validation-dataset-v1",
+  "validation_channel": "multi_scene_consistency",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-003",
+  "dataset_size": 42,
+  "target_batch_size": 35,
+  "difficulty_tiers": [
+    "easy",
+    "medium",
+    "hard"
+  ],
+  "binding_ref": "exports/movie_reconstruction_environment_identity/environment-identity-binding-package.json",
+  "measurement_methods": [
+    "anchor_persistence_score",
+    "scene_remap_lineage_score"
+  ],
+  "pass_thresholds": {
+    "anchor_persistence_score": 0.85,
+    "scene_remap_lineage_score": 0.9,
+    "hard_tier_pass_threshold": 0.8
+  },
+  "failure_examples": [
+    "anchor_position_drift",
+    "scene_remap_lineage_break",
+    "cross_scene_memory_loss"
+  ],
+  "sample_seeds": [
+    {
+      "sample_id": "msc_easy_001",
+      "difficulty_tier": "easy",
+      "source_ref": "gonegi_harbor_dock_001"
+    },
+    {
+      "sample_id": "msc_med_001",
+      "difficulty_tier": "medium",
+      "source_ref": "scene_transition_chain"
+    },
+    {
+      "sample_id": "msc_hard_001",
+      "difficulty_tier": "hard",
+      "source_ref": "multi_scene_anchor_drift"
+    }
+  ],
+  "gpu_execution": false,
+  "dataset_only": true
+}

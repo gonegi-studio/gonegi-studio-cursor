@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-character-replacement-validation.schema.json",
+  "title": "MovieCharacterReplacementValidation",
+  "description": "Character replacement integrity validation record for PHASE-MOVIE-REPLICA-006 replica preservation checks",
+  "type": "object",
+  "required": [
+    "validation_id",
+    "movie_id",
+    "scene_id",
+    "original_character",
+    "replacement_character",
+    "replacement_map",
+    "identity_preservation_score",
+    "scene_preservation_score",
+    "camera_preservation_score",
+    "blocking_preservation_score"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "validation_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "original_character": { "type": "string", "minLength": 1 },
+    "replacement_character": { "type": "string", "minLength": 1 },
+    "replacement_map": { "$ref": "#/$defs/replacement_map" },
+    "identity_preservation_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "scene_preservation_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "camera_preservation_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "blocking_preservation_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    },
+    "replacement_map": {
+      "type": "object",
+      "required": ["world_identity", "contract_ref", "mapping_count", "mappings"],
+      "properties": {
+        "world_identity": { "type": "string" },
+        "contract_ref": { "type": "string" },
+        "mapping_count": { "type": "integer", "minimum": 1 },
+        "mappings": {
+          "type": "array",
+          "items": { "type": "object" },
+          "minItems": 1
+        },
+        "replacement_ready": { "type": "boolean" }
+      }
+    }
+  }
+}

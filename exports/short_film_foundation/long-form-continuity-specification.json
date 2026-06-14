@@ -1,0 +1,66 @@
+{
+  "spec_id": "long-form-continuity-specification-v1",
+  "phase": "PHASE-L3-001",
+  "version": "v1",
+  "purpose": "Long-form continuity requirements for Short Film Studio production spanning 50-300 scenes.",
+  "mv_baseline_scene_range": "10-50",
+  "short_film_scene_range": "50-300",
+  "dimensions": {
+    "character_continuity": {
+      "definition": "Visual DNA, wardrobe progression, and behavioral grammar remain stable across all scene blocks and act reentries.",
+      "enforcement_rules": [
+        "character_dna_registry_required_before_scene_1",
+        "wardrobe_state_documented_per_timeline_marker",
+        "reentry_scenes_must_match_reference_fingerprint_hash",
+        "ensemble_cast_limited_to_pre_registered_principals"
+      ],
+      "mv_to_short_film_expansion": "MV single-character focus expands to multi-act wardrobe and aging progression with reentry verification every 25 scenes."
+    },
+    "location_continuity": {
+      "definition": "Location geometry, prop placement, and seasonal variants remain traceable across act boundaries and callbacks.",
+      "enforcement_rules": [
+        "location_dna_registry_required_for_all_location_flow_entries",
+        "reentry_locations_must_use_identical_geometry_hash",
+        "seasonal_prop_variants_pre_registered_per_act",
+        "background_activity_level_tracks_timeline_marker"
+      ],
+      "mv_to_short_film_expansion": "MV location_flow arrays expand to act-scoped location arcs with mandatory reentry location registry and seasonal state variants."
+    },
+    "lighting_continuity": {
+      "definition": "Lighting DNA anchors maintain perceptual consistency within timeline blocks and memory montage variants.",
+      "enforcement_rules": [
+        "lighting_dna_id_required_on_every_scene_blueprint",
+        "act_opener_lighting_must_match_established_dna_for_location",
+        "memory_montage_uses_registered_desaturated_variants_only",
+        "golden_hour_progression_tracks_single_day_scenes"
+      ],
+      "mv_to_short_film_expansion": "MV lighting_flow per archetype expands to act-level lighting palettes with emotional_turning_point overrides and montage variant catalog."
+    },
+    "relationship_continuity": {
+      "definition": "Relationship stage, physical proximity, and eyeline grammar progress monotonically within arc constraints.",
+      "enforcement_rules": [
+        "relationship_stage_required_on_character_pair_scenes",
+        "physical_distance_maps_to_relationship_stage_index",
+        "eyeline_rules_from_emotion_acting_adapter_preserved",
+        "unresolved_threads_documented_at_act_boundaries"
+      ],
+      "mv_to_short_film_expansion": "Ballad MV relationship_arc segments expand to full character_arc stages spanning 50-300 scenes with parallel timeline pairing."
+    },
+    "timeline_continuity": {
+      "definition": "Explicit timeline markers, season progression, and callback timing maintain causal ordering across acts.",
+      "enforcement_rules": [
+        "timeline_marker_required_on_every_scene_blueprint",
+        "act_boundary_must_include_explicit_time_jump_or_season_shift",
+        "callback_scene_references_must_point_to_earlier_established_scene",
+        "foreshadow_payoff_minimum_gap_20_scenes"
+      ],
+      "mv_to_short_film_expansion": "MV narrative_beats expand to act_structure scene ranges with inciting_incident, midpoint, climax, and resolution scene anchors."
+    }
+  },
+  "cross_dimension_requirements": [
+    "continuity_requirements_block_required_on_every_short_film_archetype",
+    "callback_system_foreshadow_payoff_pairs_must_align_with_timeline_continuity",
+    "character_reentry_must_trigger_location_and_lighting_continuity_recheck",
+    "relationship_stage_transitions_must_align_with_emotional_arc_turning_points"
+  ]
+}

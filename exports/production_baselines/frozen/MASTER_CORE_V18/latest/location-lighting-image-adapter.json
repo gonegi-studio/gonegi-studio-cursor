@@ -1,0 +1,334 @@
+{
+  "adapter_type": "location_lighting_image_adapter",
+  "adapter_metadata": {
+    "adapter_name": "location-lighting-image-adapter",
+    "adapter_version": "v1",
+    "phase": "PHASE-LTD-003",
+    "generated_at": "2026-06-03T04:28:56.294Z",
+    "target_app": "image_app",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town"
+  },
+  "section_1_location_adapter": {
+    "location_count": 67,
+    "domain_count": 6,
+    "indexed_locations": 67,
+    "location_identity_enabled": true,
+    "same_place_multi_shot_support": true,
+    "library_reference": "datasets/location/location-dna-library-v1.json",
+    "index_reference": "datasets/location/location-dna-index-v1.json",
+    "identity_law_source": "datasets/location/location-dna-library-v1.json#section_5_location_identity_law",
+    "consumption_mode": "reference_only"
+  },
+  "section_2_lighting_adapter": {
+    "lighting_count": 43,
+    "lighting_pairing_count": 35,
+    "lighting_identity_enabled": true,
+    "same_time_multi_shot_support": true,
+    "library_reference": "datasets/lighting/lighting-dna-library-v1.json",
+    "index_reference": "datasets/lighting/lighting-dna-index-v1.json",
+    "identity_bundle_fields": [
+      "key_light_color",
+      "shadow_color",
+      "sky_color",
+      "ambient_color",
+      "contrast_profile",
+      "reflection_behavior",
+      "atmosphere",
+      "sun_angle",
+      "time_period"
+    ],
+    "consumption_mode": "reference_only"
+  },
+  "section_3_location_lighting_pairs": {
+    "pairing_policy": "When a shot uses location_id, bind default_lighting_id from pairings unless narrative time explicitly advances.",
+    "pairing_count": 35,
+    "pairings": [
+      {
+        "location_id": "gonegi_bedroom_01",
+        "lighting_id": "sunrise_bakery_bedroom",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_window_corner_01",
+        "lighting_id": "sunrise_bakery_window",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_window_corner_01",
+        "lighting_id": "blue_hour_window_corner",
+        "pairing_role": "alternate_ep01_bridge"
+      },
+      {
+        "location_id": "family_bakery_kitchen_01",
+        "lighting_id": "morning_bakery_kitchen",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "family_bakery_kitchen_01",
+        "lighting_id": "night_bakery",
+        "pairing_role": "alternate_night"
+      },
+      {
+        "location_id": "harbor_main_dock_01",
+        "lighting_id": "morning_harbor_dock",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_stairway_01",
+        "lighting_id": "morning_harbor_street",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_harbor_road_01",
+        "lighting_id": "morning_harbor_street",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "village_market_01",
+        "lighting_id": "late_morning_market",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_square_01",
+        "lighting_id": "late_morning_market",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "olive_hill_lunch_spot_01",
+        "lighting_id": "afternoon_olive_hill",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "olive_hill_01",
+        "lighting_id": "afternoon_olive_hill",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "coastal_path_01",
+        "lighting_id": "afternoon_coastal_path",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "stone_path_to_harbor_01",
+        "lighting_id": "afternoon_coastal_path",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "harbor_watch_point_01",
+        "lighting_id": "golden_hour_harbor",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "cliff_overlook_01",
+        "lighting_id": "golden_hour_cliff",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "olive_hill_lunch_spot_01",
+        "lighting_id": "golden_hour_wind_grass",
+        "pairing_role": "alternate_ep01_chorus"
+      },
+      {
+        "location_id": "wind_grass_field_01",
+        "lighting_id": "golden_hour_wind_grass",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "olive_hill_01",
+        "lighting_id": "sunset_hill",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_watch_point_01",
+        "lighting_id": "sunset_sea_horizon",
+        "pairing_role": "alternate_sunset"
+      },
+      {
+        "location_id": "village_main_street_01",
+        "lighting_id": "early_evening_village",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_evening_lantern_alley_01",
+        "lighting_id": "evening_lantern_alley",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "family_bakery_front_01",
+        "lighting_id": "night_bakery",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_rooftop_01",
+        "lighting_id": "deep_night_rooftop",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_fish_market_01",
+        "lighting_id": "morning_fish_market",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_boatyard_01",
+        "lighting_id": "afternoon_harbor_boatyard",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_alley_01",
+        "lighting_id": "afternoon_village_alley",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_bakery_lane_01",
+        "lighting_id": "golden_hour_bakery_lane",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_rooftop_01",
+        "lighting_id": "golden_hour_rooftop_gonegi",
+        "pairing_role": "alternate_golden"
+      },
+      {
+        "location_id": "harbor_small_pier_01",
+        "lighting_id": "blue_hour_harbor_pier",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_seawall_01",
+        "lighting_id": "after_rain_harbor_seawall",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_square_01",
+        "lighting_id": "light_rain_village_square",
+        "pairing_role": "alternate_weather"
+      },
+      {
+        "location_id": "harbor_main_dock_01",
+        "lighting_id": "sea_fog_harbor_dock",
+        "pairing_role": "alternate_weather"
+      },
+      {
+        "location_id": "dana_garden_01",
+        "lighting_id": "dana_garden_morning",
+        "pairing_role": "primary_post_ep01"
+      },
+      {
+        "location_id": "shared_harbor_meeting_bench_01",
+        "lighting_id": "reunion_golden_bench",
+        "pairing_role": "primary_future"
+      }
+    ],
+    "examples": [
+      {
+        "location_id": "gonegi_bedroom_01",
+        "lighting_id": "sunrise_bakery_bedroom"
+      },
+      {
+        "location_id": "family_bakery_kitchen_01",
+        "lighting_id": "morning_bakery_kitchen"
+      },
+      {
+        "location_id": "harbor_main_dock_01",
+        "lighting_id": "morning_harbor_dock"
+      },
+      {
+        "location_id": "olive_hill_lunch_spot_01",
+        "lighting_id": "afternoon_olive_hill"
+      }
+    ]
+  },
+  "section_4_image_app_contract": {
+    "supported_fields": [
+      "location_id",
+      "lighting_id"
+    ],
+    "supported_capabilities": {
+      "location_identity": true,
+      "lighting_identity": true,
+      "multi_shot_continuity": true,
+      "camera_view_variation": true,
+      "same_place_sequence": true,
+      "same_time_sequence": true
+    },
+    "usage_rules": [
+      "Image App may bind location_id and lighting_id as reference keys only",
+      "Resolve location anchors from location-dna-library-v1 by location_id",
+      "Resolve lighting color bundle from lighting-dna-library-v1 by lighting_id",
+      "For same_place_sequence reuse identical location_id across consecutive shots",
+      "For same_time_sequence reuse identical lighting_id across consecutive shots",
+      "camera_view_variation allowed without changing location_id or lighting_id",
+      "do not generate scenarios or prompts from this adapter",
+      "do not merge or overwrite music-drama-image-adapter or living-world adapters"
+    ],
+    "field_separation_preserved": true,
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "generates_images": false
+  },
+  "section_5_rkb_002_integration": {
+    "test_id": "RKB-002",
+    "source": "datasets/render_feedback/RKB-002.json",
+    "mitigations": {
+      "location_drift": {
+        "enabled": true,
+        "policy": "Bind location_id and reuse visual, architectural, and color anchors for same_place_sequence.",
+        "source": "datasets/location/location-dna-library-v1.json#section_6_rkb_002_integration"
+      },
+      "lighting_drift": {
+        "enabled": true,
+        "policy": "Bind lighting_id and reuse full color and contrast bundle for same_time_sequence.",
+        "source": "datasets/lighting/lighting-dna-library-v1.json#section_5_rkb_002_integration"
+      },
+      "scene_mutation": {
+        "enabled": true,
+        "policy": "Lock persistent_objects and architectural_anchors when location_id unchanged."
+      },
+      "environment_consistency": {
+        "enabled": true,
+        "policy": "Align terrain_anchors and recommended_time_profiles with paired lighting time_period."
+      }
+    },
+    "same_place_multi_shot_requirement": true,
+    "same_time_multi_shot_requirement": true
+  },
+  "section_6_compatibility_declaration": {
+    "merge_policy": "reference_only",
+    "no_merge": true,
+    "no_overwrite": true,
+    "no_source_modification": true,
+    "references": [
+      {
+        "asset_id": "music_drama_image_adapter",
+        "reference_path": "exports/image_app/latest/music-drama-image-adapter.json",
+        "role": "Music Drama grammar and field-separation layer for Image App"
+      },
+      {
+        "asset_id": "living_world_image_adapter",
+        "reference_path": "exports/image_app/latest/living-world-image-adapter.json",
+        "role": "Ambient world enrichment alongside location-lighting binding"
+      },
+      {
+        "asset_id": "living_world_core_v1_package",
+        "reference_path": "exports/shared/latest/living-world-core-v1-package.json",
+        "role": "World grammar reference for atmosphere and crowd enrichment"
+      },
+      {
+        "asset_id": "music_drama_grammar_core_v1_package",
+        "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+        "role": "Beat, emotion, motif, and sequence grammar authority"
+      },
+      {
+        "asset_id": "location_dna_library_v1",
+        "reference_path": "datasets/location/location-dna-library-v1.json",
+        "role": "Authoritative location identity source"
+      },
+      {
+        "asset_id": "lighting_dna_library_v1",
+        "reference_path": "datasets/lighting/lighting-dna-library-v1.json",
+        "role": "Authoritative lighting identity source"
+      }
+    ]
+  }
+}

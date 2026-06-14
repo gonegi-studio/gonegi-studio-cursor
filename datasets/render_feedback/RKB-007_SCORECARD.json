@@ -1,0 +1,263 @@
+{
+  "test_id": "RKB-007",
+  "test_name": "EMOTION_ACTING_VALIDATION",
+  "phase": "PHASE-RKB-007",
+  "generated_at": "2026-06-03T07:17:29.137Z",
+  "comparison_baselines": [
+    "RKB-006",
+    "pre-EDA"
+  ],
+  "precheck": {
+    "eda_001_verdict": "PASS_EMOTION_ACTING_DNA_V1",
+    "rkb_006_verdict": "PASS_RKB_006_COVERAGE_VALIDATION",
+    "latest_adapter_present": true,
+    "pass": true
+  },
+  "adapter_consumption_check": {
+    "total_shots": 80,
+    "pass_count": 80,
+    "fail_count": 0,
+    "verdict": "PASS"
+  },
+  "emotions": [
+    {
+      "emotion_id": "hope",
+      "emotion_name": "Hope",
+      "character_id": "gonegi",
+      "location_id": "family_bakery_kitchen_01",
+      "lighting_anchor_id": "morning_bakery_glow_01",
+      "scene_goal": "morning hope before opening the bakery",
+      "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    },
+    {
+      "emotion_id": "wonder",
+      "emotion_name": "Wonder",
+      "character_id": "dana",
+      "location_id": "dana_window_corner_01",
+      "lighting_anchor_id": "sunrise_window_soft_01",
+      "scene_goal": "discover light through the window",
+      "coverage_id": "coverage_pattern_03_pov_insert_chain",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    },
+    {
+      "emotion_id": "gratitude",
+      "emotion_name": "Gratitude",
+      "character_id": "gonegi",
+      "location_id": "family_bakery_dining_01",
+      "lighting_anchor_id": "morning_bakery_glow_01",
+      "scene_goal": "quiet thanks at the shared table",
+      "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    },
+    {
+      "emotion_id": "nostalgia",
+      "emotion_name": "Nostalgia",
+      "character_id": "gonegi",
+      "location_id": "gonegi_window_corner_01",
+      "lighting_anchor_id": "sunset_window_warm_01",
+      "scene_goal": "memory held at the window nook",
+      "coverage_id": "coverage_pattern_03_pov_insert_chain",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    },
+    {
+      "emotion_id": "determination",
+      "emotion_name": "Determination",
+      "character_id": "gonegi",
+      "location_id": "gonegi_harbor_dock_01",
+      "lighting_anchor_id": "midday_harbor_clear_01",
+      "scene_goal": "focused dock work under clear light",
+      "coverage_id": "coverage_pattern_02_environmental_close",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    },
+    {
+      "emotion_id": "loneliness",
+      "emotion_name": "Loneliness",
+      "character_id": "dana",
+      "location_id": "dana_bedroom_01",
+      "lighting_anchor_id": "night_lamp_interior_01",
+      "scene_goal": "alone in the quiet bedroom",
+      "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    },
+    {
+      "emotion_id": "reunion",
+      "emotion_name": "Reunion",
+      "character_id": "gonegi",
+      "location_id": "family_bakery_dining_01",
+      "lighting_anchor_id": "golden_hour_harbor_01",
+      "scene_goal": "meet again at the family table",
+      "coverage_id": "coverage_pattern_04_tracking_detail_close",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    },
+    {
+      "emotion_id": "farewell",
+      "emotion_name": "Farewell",
+      "character_id": "gonegi",
+      "location_id": "gonegi_harbor_dock_01",
+      "lighting_anchor_id": "golden_hour_harbor_01",
+      "scene_goal": "parting at the harbor edge",
+      "coverage_id": "coverage_pattern_02_environmental_close",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "emotion_recognition": "PASS",
+        "eye_behavior_consistency": "PASS",
+        "body_language_consistency": "PASS",
+        "forbidden_behavior_compliance": "PASS",
+        "shot_integration": "PASS"
+      },
+      "metrics_pre_eda": {
+        "emotion_readability": 0.24
+      },
+      "metrics_rkb_007": {
+        "emotion_readability": 0.97
+      },
+      "delta_vs_pre_eda": 0.73,
+      "forbidden_violation_count": 0,
+      "shot_integration_high_visibility_count": 7,
+      "emotion_pass": true
+    }
+  ],
+  "success_condition": {
+    "required_pass_emotions": 6,
+    "actual_pass_emotions": 8,
+    "met": true
+  },
+  "aggregate_readability": {
+    "pre_eda": 0.24,
+    "rkb_007": 0.97,
+    "improvement": 0.73
+  },
+  "forbidden_behavior_summary": {
+    "total_violations": 0,
+    "suppressed": true
+  },
+  "final_verdict": "PASS_RKB_007_EMOTION_ACTING_VALIDATION"
+}

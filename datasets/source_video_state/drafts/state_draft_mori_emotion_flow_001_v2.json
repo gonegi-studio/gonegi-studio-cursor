@@ -1,0 +1,184 @@
+{
+  "state_draft_id": "state_draft_mori_emotion_flow_001_v2",
+  "phase": "PHASE-SOURCE-VIDEO-010-SOURCE_VIDEO_COORDINATE_TO_STATE_COMPILER_V2",
+  "scene_state_phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "source_coordinate_record_id": "coord_mori_emotion_flow_001_v1",
+  "source_segment_id": "segment_mori_emotion_flow_001_v1",
+  "source_video_id": "MORI_01",
+  "director_family": "MORI",
+  "director_blend_ref": "gonegi-master-director-blend-v1",
+  "video_state_defaults_ref": "video-state-defaults-v1",
+  "director_grammar_refs": [
+    "director_grammar_mori_v1"
+  ],
+  "scene_state_mapping_ref": null,
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "walker_companion"
+    ],
+    "identity_lock_tokens": [
+      "identity_anchor:walker_companion_mori_v1",
+      "identity_lock:preserve_face_geometry",
+      "identity_lock:preserve_woodland_costume_silhouette"
+    ],
+    "location_lock_tokens": [
+      "location_lock:woodland-path",
+      "walkable-zone:forest-trail-dirt"
+    ],
+    "composition_lock_tokens": [
+      "composition_lock:path-leading-line",
+      "prop_anchor:forage_basket"
+    ]
+  },
+  "character_state": {
+    "active_character_ids": [
+      "walker_companion"
+    ],
+    "primary_character_id": "walker_companion",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:walker_companion"
+    ]
+  },
+  "emotion_state": {
+    "emotion_id": "craft_contentment",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.7,
+    "acting_visibility_weight": "medium"
+  },
+  "relationship_state": {
+    "relationship_id": "companion_walk",
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "walker_companion"
+    ],
+    "distance_behavior": "walker-path-relationship",
+    "gaze_pattern": "trail-ahead",
+    "blocking_primary_focus": "walker-path-relationship"
+  },
+  "camera_state": {
+    "shot_type": "forest-path-wide",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "forest-path-mid",
+    "camera_height": "human-scale-eye",
+    "camera_direction": "trail-ahead",
+    "motion_vectors": [
+      "path-walk-steady",
+      "gentle-sway"
+    ]
+  },
+  "composition_state": {
+    "composition_id": "draft_composition_coord_mori_emotion_flow_001_v1",
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [
+      "forage_basket"
+    ],
+    "character_positions": {
+      "walker_companion": "path-center-left"
+    },
+    "depth_layers": [
+      {
+        "layer_index": 0,
+        "layer_role": "foreground",
+        "content_hint": "path-texture-forage-basket"
+      },
+      {
+        "layer_index": 1,
+        "layer_role": "midground",
+        "content_hint": "walker-companion-figure"
+      },
+      {
+        "layer_index": 2,
+        "layer_role": "background",
+        "content_hint": "woodland-canopy-depth"
+      }
+    ],
+    "negative_space": "forest-depth-right"
+  },
+  "location_state": {
+    "location_id": "draft_woodland_path_mori_v2",
+    "location_name": "woodland-path",
+    "location_type": "woodland-path",
+    "domain": "source_video_state_draft",
+    "location_source": "datasets/location/location-dna-index-v1.json",
+    "layout_lock_id": "layout_lock:trail-bend",
+    "walkable_zone": "forest-trail-dirt"
+  },
+  "lighting_state": {
+    "lighting_id": "draft_lighting_coord_mori_emotion_flow_001_v1",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "direction": "canopy-dappled-overhead",
+    "intensity": "forest-floor-bounce"
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "day",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": [
+      "path-texture-forage-basket",
+      "walker-companion-figure",
+      "woodland-canopy-depth"
+    ],
+    "ambient_motion": [
+      "gentle-sway"
+    ]
+  },
+  "coordinate_trace": {
+    "coordinate_record_id": "coord_mori_emotion_flow_001_v1",
+    "segment_id": "segment_mori_emotion_flow_001_v1",
+    "source_video_id": "MORI_01",
+    "source_template_ref": null,
+    "scene_state_mapping_ref": null,
+    "timestamp_start": 20,
+    "timestamp_end": 45,
+    "layer_map": {
+      "camera_coordinate": "camera_state",
+      "character_coordinate": "character_state",
+      "prop_coordinate": "composition_state",
+      "location_coordinate": "location_state",
+      "lighting_coordinate": "lighting_state",
+      "motion_coordinate": "camera_state,environment_state",
+      "blocking_coordinate": "relationship_state,composition_state",
+      "depth_coordinate": "composition_state",
+      "continuity_locks": "identity_state"
+    },
+    "scene_state_schema": "datasets/state/scene-state.schema.json",
+    "director_blend_contract": "director-grammar-blend-contract-v1"
+  },
+  "continuity_locks": {
+    "identity_locks": [
+      "identity_anchor:walker_companion_mori_v1",
+      "identity_lock:preserve_face_geometry",
+      "identity_lock:preserve_woodland_costume_silhouette"
+    ],
+    "location_locks": [
+      "location_lock:woodland-path",
+      "walkable-zone:forest-trail-dirt"
+    ],
+    "composition_locks": [
+      "composition_lock:path-leading-line",
+      "prop_anchor:forage_basket"
+    ]
+  },
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "source_video_state",
+    "production_registry": false,
+    "draft_status": "coordinate_compiled_v2"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "compiled_at": "2026-06-05T07:37:53.521Z"
+}

@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-trajectory-replay.schema.json",
+  "title": "MovieTrajectoryReplayGraph",
+  "description": "Trajectory replay graph derived from runtime scene graphs for PHASE-MOVIE-REPLICA-003 motion reconstruction readiness",
+  "type": "object",
+  "required": [
+    "replay_id",
+    "movie_id",
+    "scene_id",
+    "character_trajectory",
+    "camera_trajectory",
+    "prop_trajectory",
+    "timeline_segments",
+    "keyframe_sequence",
+    "motion_segments"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "replay_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "runtime_id": { "type": "string" },
+    "replica_id": { "type": "string" },
+    "character_trajectory": { "$ref": "#/$defs/character_trajectory" },
+    "camera_trajectory": { "$ref": "#/$defs/camera_trajectory" },
+    "prop_trajectory": { "$ref": "#/$defs/prop_trajectory" },
+    "timeline_segments": { "$ref": "#/$defs/timeline_segments" },
+    "keyframe_sequence": { "$ref": "#/$defs/keyframe_sequence" },
+    "motion_segments": { "$ref": "#/$defs/motion_segments" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    },
+    "character_trajectory": {
+      "type": "object",
+      "required": ["trajectory_count", "trajectories"],
+      "properties": {
+        "trajectory_count": { "type": "integer", "minimum": 0 },
+        "trajectories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/character_trajectory_entry" }
+        }
+      }
+    },
+    "character_trajectory_entry": {
+      "type": "object",
+      "required": ["trajectory_id", "character_id", "waypoints"],
+      "properties": {
+        "trajectory_id": { "type": "string" },
+        "character_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "waypoints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/waypoint" },
+          "minItems": 1
+        }
+      }
+    },
+    "camera_trajectory": {
+      "type": "object",
+      "required": ["trajectory_count", "trajectories"],
+      "properties": {
+        "trajectory_count": { "type": "integer", "minimum": 0 },
+        "trajectories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/camera_trajectory_entry" },
+          "minItems": 1
+        }
+      }
+    },
+    "camera_trajectory_entry": {
+      "type": "object",
+      "required": ["trajectory_id", "camera_id", "movement_type"],
+      "properties": {
+        "trajectory_id": { "type": "string" },
+        "camera_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "start_position": { "type": ["array", "null"] },
+        "end_position": { "type": ["array", "null"] },
+        "movement_type": { "type": "string" },
+        "shot_type": { "type": "string" }
+      }
+    },
+    "prop_trajectory": {
+      "type": "object",
+      "required": ["trajectory_count", "trajectories"],
+      "properties": {
+        "trajectory_count": { "type": "integer", "minimum": 0 },
+        "trajectories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/prop_trajectory_entry" }
+        }
+      }
+    },
+    "prop_trajectory_entry": {
+      "type": "object",
+      "required": ["trajectory_id", "prop_id"],
+      "properties": {
+        "trajectory_id": { "type": "string" },
+        "prop_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "position": { "type": ["array", "null"] },
+        "depth_layer": { "type": "string" }
+      }
+    },
+    "timeline_segments": {
+      "type": "object",
+      "required": ["segment_count", "segments"],
+      "properties": {
+        "segment_count": { "type": "integer", "minimum": 0 },
+        "segments": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/timeline_segment" },
+          "minItems": 1
+        }
+      }
+    },
+    "timeline_segment": {
+      "type": "object",
+      "required": ["segment_id", "source_ref", "target_ref", "edge_type"],
+      "properties": {
+        "segment_id": { "type": "string" },
+        "source_ref": { "type": "string" },
+        "target_ref": { "type": "string" },
+        "edge_type": { "type": "string" },
+        "shot_order": { "type": "integer" },
+        "duration": { "type": ["number", "null"] },
+        "timestamp_start": { "type": ["number", "null"] },
+        "timestamp_end": { "type": ["number", "null"] }
+      }
+    },
+    "keyframe_sequence": {
+      "type": "object",
+      "required": ["keyframe_count", "keyframes"],
+      "properties": {
+        "keyframe_count": { "type": "integer", "minimum": 0 },
+        "keyframes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/keyframe" },
+          "minItems": 1
+        }
+      }
+    },
+    "keyframe": {
+      "type": "object",
+      "required": ["keyframe_id", "timeline_ref", "shot_order"],
+      "properties": {
+        "keyframe_id": { "type": "string" },
+        "timeline_ref": { "type": "string" },
+        "shot_order": { "type": "integer" },
+        "timestamp_start": { "type": ["number", "null"] },
+        "timestamp_end": { "type": ["number", "null"] },
+        "duration": { "type": ["number", "null"] },
+        "keyframe_role": { "type": "string" }
+      }
+    },
+    "motion_segments": {
+      "type": "object",
+      "required": ["segment_count", "segments"],
+      "properties": {
+        "segment_count": { "type": "integer", "minimum": 0 },
+        "segments": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/motion_segment" },
+          "minItems": 1
+        }
+      }
+    },
+    "motion_segment": {
+      "type": "object",
+      "required": ["motion_segment_id", "timeline_ref", "character_motions", "camera_motion"],
+      "properties": {
+        "motion_segment_id": { "type": "string" },
+        "timeline_ref": { "type": "string" },
+        "duration": { "type": ["number", "null"] },
+        "character_motions": { "type": "array", "items": { "type": "object" } },
+        "camera_motion": { "type": "object" },
+        "motion_type": { "type": "string" }
+      }
+    },
+    "waypoint": {
+      "type": "object",
+      "required": ["waypoint_index", "motion_state"],
+      "properties": {
+        "waypoint_index": { "type": "integer" },
+        "motion_state": { "type": "string" },
+        "position": { "type": ["array", "null"] },
+        "interaction_motion": { "type": "string" },
+        "timestamp_hint": { "type": ["number", "null"] }
+      }
+    }
+  }
+}

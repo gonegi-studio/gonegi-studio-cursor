@@ -1,0 +1,37 @@
+{
+  "report_type": "prop_anchor_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-PROP-ANCHOR-001",
+  "generated_at": "2026-06-03T11:17:15.714Z",
+  "prop_anchor_count": 14,
+  "target_prop_count": 14,
+  "duplicate_ids": 0,
+  "runtime_fields_exported": {
+    "prop_anchor_ids": true,
+    "prop_tokens": true,
+    "render_payload": true,
+    "tokens_injected": true
+  },
+  "validation_target": "RKB-010 PROP_CONTINUITY_VALIDATION",
+  "json_parse_result": "valid",
+  "validation": {
+    "all_target_props_present": true,
+    "duplicate_ids_zero": true,
+    "required_fields_complete": true,
+    "adapter_chain_complete": true,
+    "adapter_synced_to_latest": true,
+    "runtime_verification_exported": true,
+    "locations_resolve": true,
+    "forbidden_rules_include_core_four": true,
+    "tokens_injected": true
+  },
+  "export_path": "exports/image_app/adapters/prop-anchor-adapter.json",
+  "report_path": "exports/image_app/reports/prop-anchor-adapter-report.json",
+  "library_path": "datasets/props/prop-anchor-library-v1.json",
+  "index_path": "datasets/props/prop-anchor-index-v1.json",
+  "final_verdict": "PASS_PROP_ANCHOR_SYSTEM_V1",
+  "violations": [],
+  "next_phases": [
+    "PHASE-RKB-010 PROP_CONTINUITY_VALIDATION"
+  ]
+}

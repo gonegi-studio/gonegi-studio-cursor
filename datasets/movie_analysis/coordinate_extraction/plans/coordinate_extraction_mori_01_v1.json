@@ -1,0 +1,177 @@
+{
+  "coordinate_extraction_id": "coordinate_extraction_mori_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-026-MOVIE_ANALYSIS_COORDINATE_EXTRACTION_DESIGN_V1",
+  "source_video_id": "MORI_01",
+  "analysis_plan_id": "analysis_plan_mori_01_v1",
+  "dry_run_id": "dry_run_mori_01_v1",
+  "sampling_plan_id": "frame_sampling_mori_01_v1",
+  "scene_detection_id": "scene_detection_mori_01_v1",
+  "coordinate_candidate_count": 12,
+  "coordinate_extraction_strategy": "CAMERA_MOTION_CANDIDATE",
+  "coordinate_candidates": [
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_001",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_001",
+      "coordinate_type": "camera_motion",
+      "estimated_value": "estimated_static",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_002",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_001",
+      "coordinate_type": "camera_angle",
+      "estimated_value": "estimated_low",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_003",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_001",
+      "coordinate_type": "shot_scale",
+      "estimated_value": "estimated_close",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_004",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_002",
+      "coordinate_type": "transition_hint",
+      "estimated_value": "estimated_cut",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_005",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_002",
+      "coordinate_type": "subject_position",
+      "estimated_value": "estimated_left_third",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_006",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_002",
+      "coordinate_type": "blocking",
+      "estimated_value": "estimated_group",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_007",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_003",
+      "coordinate_type": "location_anchor",
+      "estimated_value": "estimated_interior",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_008",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_003",
+      "coordinate_type": "lighting_state",
+      "estimated_value": "estimated_hard",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_009",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_003",
+      "coordinate_type": "emotion_state",
+      "estimated_value": "estimated_warm",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_010",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_004",
+      "coordinate_type": "camera_motion",
+      "estimated_value": "estimated_static",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_011",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_004",
+      "coordinate_type": "camera_angle",
+      "estimated_value": "estimated_low",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "coordinate_extraction_mori_01_v1_cc_012",
+      "scene_candidate_id": "scene_detection_mori_01_v1_sc_004",
+      "coordinate_type": "shot_scale",
+      "estimated_value": "estimated_close",
+      "reads_frame": false,
+      "extracts_coordinate": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_coordinate_candidate",
+      "estimated_only": true
+    }
+  ],
+  "coordinate_types": [
+    "shot_scale",
+    "camera_angle",
+    "camera_motion",
+    "subject_position",
+    "blocking",
+    "location_anchor",
+    "lighting_state",
+    "emotion_state",
+    "transition_hint"
+  ],
+  "coverage_goal": {
+    "segment_span_seconds": 25,
+    "coverage_percent": 100,
+    "purpose": "future_gonegi_state_mapping_preparation"
+  },
+  "identity_safety": {
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "estimated_only": true,
+    "no_coordinate_extraction": true
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "coordinate_extraction": false,
+    "frame_extraction": false,
+    "scene_extraction": false,
+    "ocr": false
+  },
+  "designed_at": "2026-06-05T22:41:35.204Z"
+}

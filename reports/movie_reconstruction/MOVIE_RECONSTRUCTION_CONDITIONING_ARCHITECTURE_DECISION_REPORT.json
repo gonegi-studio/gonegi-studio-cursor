@@ -1,0 +1,62 @@
+{
+  "report_id": "movie_reconstruction_conditioning_architecture_mqc2gyr0",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-003",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_ARCHITECTURE_DECISION_V1",
+  "generated_at": "2026-06-13T08:01:35.724Z",
+  "final_verdict": "PASS_MOVIE_RECONSTRUCTION_CONDITIONING_ARCHITECTURE_DECISION_V1",
+  "status": "MOVIE_RECONSTRUCTION_CONDITIONING_ARCHITECTURE_DECIDED",
+  "validation_passed": true,
+  "decision_only": true,
+  "conditioning_architecture_decided": true,
+  "conditioning_implemented": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "selected_architecture": "Hybrid Extension",
+  "selected_architecture_defined": true,
+  "backend_stack_defined": true,
+  "migration_strategy_defined": true,
+  "current_app_compatible": false,
+  "requires_new_backend": true,
+  "rejected_architectures": [
+    "Text-Only Extension",
+    "Single-ControlNet Only",
+    "External API Gateway",
+    "Video-First Monolith"
+  ],
+  "selection_reason": "Hybrid Extension preserves the existing text spatial compiler (ConditionedPromptBuilder) as the narrative and constraint layer while adding a parallel ControlNet-class map backend for layout, depth, and pose fidelity. IP-Adapter and regional prompting cover identity and environment anchors. Video conditioning is deferred until the image stack is GPU-validated. This aligns with audit findings (6 PARTIAL, 1 METADATA_ONLY), design requirements (D-016, D-017, TD-C003), and avoids text-only or single-control dead ends.",
+  "critical_risks": [
+    "Image App text-only import contract requires parallel map-ingestion API extension",
+    "Multi-control weight tuning may cause conditioning conflicts without orchestration layer",
+    "Pose map extraction pipeline not yet implemented (METADATA_ONLY)",
+    "GPU validation deferred; architecture decision not validated at runtime",
+    "Video conditioning backend complexity may exceed initial team capacity if not deferred"
+  ],
+  "migration_strategy": "Phase 1: Extend agent-stability-layer with conditioning request schema and map artifact exporters without modifying Image App ACTIVE imports. Phase 2: Add parallel conditioning-backend adapter service consuming numerical DNA + spatial graph bundles. Phase 3: Integrate minimum backend stack (ControlNet + depth + pose + regional + IP-Adapter) behind feature flag. Phase 4: Extend Image App import contract or add sibling map-ingestion endpoint. Phase 5: GPU validation phase. Phase 6: Integrate deferred video conditioning backend for temporal continuity.",
+  "backend_stack": [
+    "ControlNet (layout + multi-control orchestration)",
+    "Depth-conditioned diffusion",
+    "Pose-conditioned diffusion",
+    "Regional prompting",
+    "IP-Adapter"
+  ],
+  "checks": {
+    "selected_architecture_defined": true,
+    "backend_stack_defined": true,
+    "migration_strategy_defined": true,
+    "decision_matrix_exists": true,
+    "implementation_roadmap_exists": true,
+    "current_app_compatible": false,
+    "requires_new_backend": true,
+    "all_options_evaluated": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "decision_only": true,
+    "implementation_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

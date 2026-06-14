@@ -1,0 +1,161 @@
+{
+  "sequence_assembly_id": "sequence_assembly_shinkai_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-032-MOVIE_ANALYSIS_SEQUENCE_ASSEMBLY_DESIGN_V1",
+  "source_video_id": "SHINKAI_01",
+  "temporal_flow_id": "temporal_flow_shinkai_01_v1",
+  "sequence_candidate_count": 12,
+  "assembly_strategy": "EMOTION_SEQUENCE_PLAN",
+  "sequence_candidates": [
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_001",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_001",
+      "sequence_category": "emotion_chain",
+      "estimated_sequence_value": "estimated_sequence_emotion_rise",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_002",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_002",
+      "sequence_category": "environment_chain",
+      "estimated_sequence_value": "estimated_sequence_environment_shift",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_003",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_003",
+      "sequence_category": "environment_chain",
+      "estimated_sequence_value": "estimated_sequence_environment_bridge",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_004",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_004",
+      "sequence_category": "character_chain",
+      "estimated_sequence_value": "estimated_sequence_character_arc",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_005",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_005",
+      "sequence_category": "camera_chain",
+      "estimated_sequence_value": "estimated_sequence_camera_hold",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_006",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_006",
+      "sequence_category": "camera_chain",
+      "estimated_sequence_value": "estimated_sequence_camera_shift",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_007",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_007",
+      "sequence_category": "camera_chain",
+      "estimated_sequence_value": "estimated_sequence_camera_bridge",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_008",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_008",
+      "sequence_category": "character_chain",
+      "estimated_sequence_value": "estimated_sequence_character_hold",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_009",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_009",
+      "sequence_category": "transition_chain",
+      "estimated_sequence_value": "estimated_sequence_transition_match",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_010",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_010",
+      "sequence_category": "emotion_chain",
+      "estimated_sequence_value": "estimated_sequence_emotion_rise",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_011",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_011",
+      "sequence_category": "environment_chain",
+      "estimated_sequence_value": "estimated_sequence_environment_shift",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    },
+    {
+      "sequence_candidate_id": "sequence_assembly_shinkai_01_v1_sc_012",
+      "temporal_candidate_id": "temporal_flow_shinkai_01_v1_tf_012",
+      "sequence_category": "environment_chain",
+      "estimated_sequence_value": "estimated_sequence_environment_bridge",
+      "generates_sequence": false,
+      "generates_video": false,
+      "candidate_type": "estimated_sequence_candidate",
+      "estimated_only": true
+    }
+  ],
+  "sequence_categories": [
+    "sequence_chain",
+    "continuity_chain",
+    "emotion_chain",
+    "camera_chain",
+    "environment_chain",
+    "character_chain",
+    "crowd_chain",
+    "transition_chain",
+    "timing_chain"
+  ],
+  "coverage_goal": {
+    "segment_span_seconds": 26,
+    "coverage_percent": 100,
+    "purpose": "future_video_sequence_preparation"
+  },
+  "identity_safety": {
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "estimated_only": true,
+    "no_sequence_generation": true
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "sequence_assembly_only": true,
+    "sequence_generation": false,
+    "video_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false
+  },
+  "designed_at": "2026-06-05T23:31:21.368Z"
+}

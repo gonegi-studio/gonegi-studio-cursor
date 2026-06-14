@@ -1,0 +1,54 @@
+{
+  "registry_id": "movie-analysis-frame-sampling-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-024-MOVIE_ANALYSIS_FRAME_SAMPLING_DESIGN_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/frame_sampling/movie-analysis-frame-sampling.schema.json",
+  "dry_run_registry_path": "datasets/movie_analysis/dry_run/movie-analysis-dry-run-registry.json",
+  "storage_dir": "datasets/movie_analysis/frame_sampling/plans",
+  "sampling_plans": [
+    {
+      "sampling_plan_id": "frame_sampling_ghibli_01_v1",
+      "plan_path": "datasets/movie_analysis/frame_sampling/plans/frame_sampling_ghibli_01_v1.json",
+      "source_video_id": "GHIBLI_01",
+      "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+      "dry_run_id": "dry_run_ghibli_01_v1",
+      "sampling_strategy": "UNIFORM_INTERVAL",
+      "target_frame_count": 12,
+      "sampling_point_count": 12,
+      "status": "designed"
+    },
+    {
+      "sampling_plan_id": "frame_sampling_shinkai_01_v1",
+      "plan_path": "datasets/movie_analysis/frame_sampling/plans/frame_sampling_shinkai_01_v1.json",
+      "source_video_id": "SHINKAI_01",
+      "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+      "dry_run_id": "dry_run_shinkai_01_v1",
+      "sampling_strategy": "START_MIDDLE_END",
+      "target_frame_count": 12,
+      "sampling_point_count": 12,
+      "status": "designed"
+    },
+    {
+      "sampling_plan_id": "frame_sampling_little_women_01_v1",
+      "plan_path": "datasets/movie_analysis/frame_sampling/plans/frame_sampling_little_women_01_v1.json",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "analysis_plan_id": "analysis_plan_little_women_01_v1",
+      "dry_run_id": "dry_run_little_women_01_v1",
+      "sampling_strategy": "TRANSITION_CANDIDATE",
+      "target_frame_count": 16,
+      "sampling_point_count": 16,
+      "status": "designed"
+    },
+    {
+      "sampling_plan_id": "frame_sampling_mori_01_v1",
+      "plan_path": "datasets/movie_analysis/frame_sampling/plans/frame_sampling_mori_01_v1.json",
+      "source_video_id": "MORI_01",
+      "analysis_plan_id": "analysis_plan_mori_01_v1",
+      "dry_run_id": "dry_run_mori_01_v1",
+      "sampling_strategy": "EMOTION_PEAK_CANDIDATE",
+      "target_frame_count": 12,
+      "sampling_point_count": 12,
+      "status": "designed"
+    }
+  ]
+}

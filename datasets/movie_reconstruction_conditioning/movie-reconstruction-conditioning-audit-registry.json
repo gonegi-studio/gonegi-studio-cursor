@@ -1,0 +1,29 @@
+{
+  "registry_id": "movie-reconstruction-conditioning-audit-registry-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-001",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_AUDIT_V1",
+  "version": "conditioning_audit_v1",
+  "audit_only": true,
+  "implementation_deferred": true,
+  "metadata_only": true,
+  "numerical_dna_readiness_ref": "reports/source_video_numerical_dna/NUMERICAL_DNA_READINESS_REPORT.json",
+  "spatial_conditioning_ref": "reports/movie_spatial/SPATIAL_GRAPH_CONDITIONING_REPORT.json",
+  "subsystems": [
+    "layout_map",
+    "depth_map",
+    "pose_map",
+    "blocking_map",
+    "object_identity",
+    "environment_identity",
+    "conditioning_backend"
+  ],
+  "required_support_level": "FULL",
+  "movie_reconstruction_target": "pixel_level_conditioning_pipeline",
+  "execution_flags": {
+    "audit_only": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

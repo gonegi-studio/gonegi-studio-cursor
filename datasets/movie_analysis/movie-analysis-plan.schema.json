@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/movie-analysis-plan.schema.json",
+  "title": "MovieAnalysisPlan",
+  "description": "Design-only movie analysis plan for PHASE-SOURCE-VIDEO-022",
+  "type": "object",
+  "required": [
+    "analysis_plan_id",
+    "phase",
+    "source_video_id",
+    "source_video_path",
+    "director_family",
+    "director_grammar_ref",
+    "analysis_mode",
+    "target_outputs",
+    "segment_detection_strategy",
+    "coordinate_detection_strategy",
+    "identity_safety_strategy",
+    "promotion_gate_status",
+    "execution_flags",
+    "built_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "analysis_plan_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1"
+    },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "source_video_path": { "type": "string", "minLength": 1 },
+    "director_family": {
+      "type": "string",
+      "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"]
+    },
+    "director_grammar_ref": { "type": "string", "minLength": 1 },
+    "analysis_mode": {
+      "type": "string",
+      "const": "design_only"
+    },
+    "target_outputs": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "scene_segment_candidates",
+          "coordinate_extraction_candidates",
+          "gonegi_pipeline_alignment"
+        ]
+      }
+    },
+    "segment_detection_strategy": {
+      "type": "object",
+      "required": ["strategy_id", "method", "design_notes", "candidate_count_target"],
+      "additionalProperties": false,
+      "properties": {
+        "strategy_id": { "type": "string" },
+        "method": {
+          "type": "string",
+          "enum": ["grammar_timestamp_heuristic", "dialogue_boundary_heuristic", "emotion_arc_heuristic"]
+        },
+        "design_notes": { "type": "string" },
+        "candidate_count_target": { "type": "integer", "minimum": 1 },
+        "downstream_segment_ref": { "type": ["string", "null"] }
+      }
+    },
+    "coordinate_detection_strategy": {
+      "type": "object",
+      "required": ["strategy_id", "method", "design_notes", "layer_targets"],
+      "additionalProperties": false,
+      "properties": {
+        "strategy_id": { "type": "string" },
+        "method": {
+          "type": "string",
+          "enum": ["grammar_layer_projection", "blocking_geometry_projection", "lighting_vector_projection"]
+        },
+        "design_notes": { "type": "string" },
+        "layer_targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "downstream_coordinate_ref": { "type": ["string", "null"] }
+      }
+    },
+    "identity_safety_strategy": {
+      "type": "object",
+      "required": [
+        "strategy_id",
+        "identity_lock_required",
+        "character_first_contract",
+        "promotion_gate_warnings_preserved",
+        "downstream_pipeline"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "strategy_id": { "type": "string" },
+        "identity_lock_required": { "type": "boolean", "const": true },
+        "character_first_contract": { "type": "boolean", "const": true },
+        "promotion_gate_warnings_preserved": { "type": "boolean" },
+        "downstream_pipeline": {
+          "type": "string",
+          "const": "gonegi_isolated"
+        }
+      }
+    },
+    "promotion_gate_status": {
+      "type": "string",
+      "enum": ["BLOCKED", "ALLOW_WITH_WARNING", "ALLOW"]
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    },
+    "built_at": { "type": "string", "format": "date-time" }
+  }
+}

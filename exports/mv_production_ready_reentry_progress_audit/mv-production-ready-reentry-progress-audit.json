@@ -1,0 +1,95 @@
+{
+  "reentry_progress_audit_id": "mv-production-ready-reentry-progress-audit-v1",
+  "phase": "PHASE-DIGITAL-STUDIO-024C-MV_PRODUCTION_READY_REENTRY_PROGRESS_AUDIT_V1",
+  "generated_at": "2026-06-08T05:14:23.891Z",
+  "source_completion_gate_ref": "exports/mv_production_ready_reentry_completion_gate/mv-production-ready-reentry-completion-gate.json",
+  "reentry_completion_gate_id": "mv-production-ready-reentry-completion-gate-v1",
+  "source_reentry_tracking_ref": "exports/mv_production_ready_reentry_tracking/mv-production-ready-reentry-tracking.json",
+  "total_high_priority_count": 3,
+  "resolved_high_priority_count": 0,
+  "remaining_high_priority_count": 3,
+  "reentry_progress_percent": 0,
+  "reentry_progress_status": "NOT_STARTED",
+  "next_reentry_gate_label": "DS_023_REENTRY",
+  "reentry_completion_ready": false,
+  "current_readiness_tier": "TEST_READY",
+  "target_readiness_tier": "PRODUCTION_READY",
+  "traceability_chain": [
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "instrumental_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "instrumental_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "instrumental_mv_scene_assembly_v1",
+      "mv_blueprint_id": "instrumental_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/instrumental-mv-archetype-library-v1.json",
+        "datasets/mv/instrumental-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "ballad_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "ballad_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "ballad_mv_scene_assembly_v1",
+      "mv_blueprint_id": "ballad_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/ballad-mv-archetype-library-v1.json",
+        "datasets/mv/ballad-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "story_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "story_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "story_mv_scene_assembly_v1",
+      "mv_blueprint_id": "story_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_short_film_v1",
+      "dataset_refs": [],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "music_drama_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "music_drama_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "music_drama_mv_scene_assembly_v1",
+      "mv_blueprint_id": "music_drama_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_episode_v1",
+      "dataset_refs": [
+        "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    }
+  ],
+  "execution_scope": "test_mode_only",
+  "traceability_preserved": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/mv_production_ready_reentry_completion_gate/mv-production-ready-reentry-completion-gate.json",
+      "exports/mv_production_ready_reentry_completion_gate/mv-production-ready-reentry-completion-gate-manifest.json",
+      "exports/mv_production_ready_reentry_tracking/mv-production-ready-reentry-tracking.json"
+    ],
+    "write_paths": [
+      "reports/mv_production_ready_reentry_progress_audit",
+      "exports/mv_production_ready_reentry_progress_audit",
+      "reports/mv_production_ready_reentry_progress_audit/mv-production-ready-reentry-progress-audit-report.json",
+      "reports/mv_production_ready_reentry_progress_audit/MV_PRODUCTION_READY_REENTRY_PROGRESS_AUDIT.md",
+      "exports/mv_production_ready_reentry_progress_audit/mv-production-ready-reentry-progress-audit-manifest.json",
+      "exports/mv_production_ready_reentry_progress_audit/mv-production-ready-reentry-progress-audit.json"
+    ],
+    "reentry_progress_audit_artifact_write_scope": "exports/mv_production_ready_reentry_progress_audit/",
+    "upstream_artifacts_unchanged": true
+  },
+  "reentry_progress_audit_complete": true,
+  "next_stage_ready": true
+}

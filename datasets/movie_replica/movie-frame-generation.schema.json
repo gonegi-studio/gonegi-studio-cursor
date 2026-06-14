@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-frame-generation.schema.json",
+  "title": "MovieFrameGenerationUnit",
+  "description": "Frame generation queue unit derived from keyframe reconstruction plans for PHASE-MOVIE-REPLICA-005 production orchestration",
+  "type": "object",
+  "required": [
+    "generation_id",
+    "movie_id",
+    "scene_id",
+    "keyframe_id",
+    "generation_order",
+    "batch_id",
+    "camera_state",
+    "character_state",
+    "environment_state",
+    "replacement_map",
+    "generation_priority"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "generation_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "keyframe_id": { "type": "string", "minLength": 1 },
+    "plan_id": { "type": "string" },
+    "generation_order": { "type": "integer", "minimum": 1 },
+    "batch_id": { "type": "string", "minLength": 1 },
+    "camera_state": { "type": "object" },
+    "character_state": { "type": "object" },
+    "environment_state": { "type": "object" },
+    "replacement_map": { "$ref": "#/$defs/replacement_map" },
+    "generation_priority": { "type": "integer", "minimum": 1 },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    },
+    "replacement_map": {
+      "type": "object",
+      "required": ["world_identity", "contract_ref", "mapping_count", "mappings"],
+      "properties": {
+        "world_identity": { "type": "string" },
+        "contract_ref": { "type": "string" },
+        "mapping_count": { "type": "integer", "minimum": 1 },
+        "mappings": {
+          "type": "array",
+          "items": { "type": "object" },
+          "minItems": 1
+        },
+        "replacement_ready": { "type": "boolean" }
+      }
+    }
+  }
+}

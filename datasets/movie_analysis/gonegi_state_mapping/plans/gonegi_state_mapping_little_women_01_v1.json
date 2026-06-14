@@ -1,0 +1,332 @@
+{
+  "gonegi_state_mapping_id": "gonegi_state_mapping_little_women_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-027-MOVIE_ANALYSIS_GONEGI_STATE_MAPPING_DESIGN_V1",
+  "source_video_id": "LITTLE_WOMEN_01",
+  "analysis_plan_id": "analysis_plan_little_women_01_v1",
+  "dry_run_id": "dry_run_little_women_01_v1",
+  "sampling_plan_id": "frame_sampling_little_women_01_v1",
+  "scene_detection_id": "scene_detection_little_women_01_v1",
+  "coordinate_extraction_id": "coordinate_extraction_little_women_01_v1",
+  "state_candidate_count": 18,
+  "mapping_strategy": "CHARACTER_REPLACEMENT_CANDIDATE",
+  "source_coordinates": [
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_001",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_001",
+      "coordinate_type": "blocking",
+      "estimated_value": "estimated_single_subject"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_002",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_001",
+      "coordinate_type": "subject_position",
+      "estimated_value": "estimated_left_third"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_003",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_001",
+      "coordinate_type": "shot_scale",
+      "estimated_value": "estimated_close"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_004",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_002",
+      "coordinate_type": "camera_angle",
+      "estimated_value": "estimated_eye_level"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_005",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_002",
+      "coordinate_type": "camera_motion",
+      "estimated_value": "estimated_pan"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_006",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_002",
+      "coordinate_type": "location_anchor",
+      "estimated_value": "estimated_transitional"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_007",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_003",
+      "coordinate_type": "lighting_state",
+      "estimated_value": "estimated_soft"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_008",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_003",
+      "coordinate_type": "emotion_state",
+      "estimated_value": "estimated_tense"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_009",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_003",
+      "coordinate_type": "transition_hint",
+      "estimated_value": "estimated_match_cut"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_010",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_004",
+      "coordinate_type": "blocking",
+      "estimated_value": "estimated_single_subject"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_011",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_004",
+      "coordinate_type": "subject_position",
+      "estimated_value": "estimated_left_third"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_012",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_004",
+      "coordinate_type": "shot_scale",
+      "estimated_value": "estimated_close"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_013",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_005",
+      "coordinate_type": "camera_angle",
+      "estimated_value": "estimated_eye_level"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_014",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_005",
+      "coordinate_type": "camera_motion",
+      "estimated_value": "estimated_pan"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_015",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_005",
+      "coordinate_type": "location_anchor",
+      "estimated_value": "estimated_transitional"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_016",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_006",
+      "coordinate_type": "lighting_state",
+      "estimated_value": "estimated_soft"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_017",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_006",
+      "coordinate_type": "emotion_state",
+      "estimated_value": "estimated_tense"
+    },
+    {
+      "coordinate_candidate_id": "coordinate_extraction_little_women_01_v1_cc_018",
+      "scene_candidate_id": "scene_detection_little_women_01_v1_sc_006",
+      "coordinate_type": "transition_hint",
+      "estimated_value": "estimated_match_cut"
+    }
+  ],
+  "gonegi_states": [
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_001",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_001",
+      "state_category": "relationship_state",
+      "estimated_state_value": "estimated_gonegi_relation_pair",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_002",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_002",
+      "state_category": "character_state",
+      "estimated_state_value": "estimated_gonegi_character_identity",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_003",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_003",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_close",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_004",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_004",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_static",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_005",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_005",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_pan",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_006",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_006",
+      "state_category": "environment_state",
+      "estimated_state_value": "estimated_gonegi_set",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_007",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_007",
+      "state_category": "lighting_state",
+      "estimated_state_value": "estimated_gonegi_light_soft",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_008",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_008",
+      "state_category": "emotion_state",
+      "estimated_state_value": "estimated_gonegi_emotion_tense",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_009",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_009",
+      "state_category": "transition_state",
+      "estimated_state_value": "estimated_gonegi_transition_match",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_010",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_010",
+      "state_category": "relationship_state",
+      "estimated_state_value": "estimated_gonegi_relation_pair",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_011",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_011",
+      "state_category": "character_state",
+      "estimated_state_value": "estimated_gonegi_character_identity",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_012",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_012",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_close",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_013",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_013",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_static",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_014",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_014",
+      "state_category": "camera_state",
+      "estimated_state_value": "estimated_gonegi_camera_pan",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_015",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_015",
+      "state_category": "environment_state",
+      "estimated_state_value": "estimated_gonegi_set",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_016",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_016",
+      "state_category": "lighting_state",
+      "estimated_state_value": "estimated_gonegi_light_soft",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_017",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_017",
+      "state_category": "emotion_state",
+      "estimated_state_value": "estimated_gonegi_emotion_tense",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    },
+    {
+      "state_id": "gonegi_state_mapping_little_women_01_v1_gs_018",
+      "source_coordinate_id": "coordinate_extraction_little_women_01_v1_cc_018",
+      "state_category": "transition_state",
+      "estimated_state_value": "estimated_gonegi_transition_match",
+      "executes_state": false,
+      "creates_runtime_payload": false,
+      "candidate_type": "estimated_gonegi_state_candidate",
+      "estimated_only": true
+    }
+  ],
+  "state_categories": [
+    "environment_state",
+    "character_state",
+    "emotion_state",
+    "camera_state",
+    "lighting_state",
+    "relationship_state",
+    "crowd_state",
+    "animal_state",
+    "transition_state"
+  ],
+  "identity_safety": {
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "estimated_only": true,
+    "no_state_execution": true
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "state_mapping_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "coordinate_extraction": false,
+    "frame_extraction": false,
+    "scene_extraction": false,
+    "ocr": false
+  },
+  "designed_at": "2026-06-05T22:45:16.348Z"
+}

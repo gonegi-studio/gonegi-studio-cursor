@@ -1,0 +1,83 @@
+{
+  "report_type": "daily_life_behavior_library_audit",
+  "report_version": "v1",
+  "phase": "PHASE-MDG-002",
+  "audit_timestamp": "2026-06-02T00:00:00.000Z",
+  "library_path": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+  "final_verdict": "PASS_DAILY_LIFE_BEHAVIOR_LIBRARY_V1",
+  "dependency_check": {
+    "master_story": {
+      "path": "datasets/story/music-drama-master-story-v1.json",
+      "status": "present"
+    },
+    "scenario_rulebook": {
+      "path": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+      "status": "present"
+    },
+    "music_drama_grammar": {
+      "path": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "status": "present"
+    },
+    "shot_patterns": {
+      "path": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "status": "present"
+    },
+    "scene_archetypes": {
+      "path": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+      "status": "present"
+    },
+    "render_feedback": {
+      "path": "datasets/render_feedback/RKB-001.json",
+      "status": "present"
+    },
+    "result": "PASS_ALL_DEPENDENCIES_PRESENT"
+  },
+  "validation_summary": {
+    "behavior_count": 16,
+    "behavior_count_minimum_met": true,
+    "emotional_register_count": 5,
+    "duplicate_behavior_id": false,
+    "ep01_compatible_all": true,
+    "invalid_shot_pattern_refs": 0,
+    "invalid_archetype_refs": 0,
+    "all_behaviors_have_shot_pattern": true,
+    "all_behaviors_have_archetype": true
+  },
+  "emotional_registers_used": [
+    "peaceful_daily_life",
+    "family_comfort",
+    "small_freedom",
+    "quiet_reflection",
+    "warm_belonging"
+  ],
+  "required_behaviors_present": [
+    "wake_up",
+    "morning_greeting",
+    "family_breakfast",
+    "bakery_help",
+    "walk_with_gamja",
+    "harbor_watch",
+    "market_passage",
+    "fishing_break",
+    "hilltop_lunch",
+    "tree_rest",
+    "ball_play_with_gamja",
+    "afternoon_wandering",
+    "sunset_return",
+    "family_dinner",
+    "window_reflection",
+    "night_rest"
+  ],
+  "rkb_integration_check": {
+    "scenario_character_separation_reflected": true,
+    "gamja_continuity_reflected": true,
+    "crowd_density_limits_reflected": true,
+    "market_crowd_caution_reflected": true,
+    "domestic_object_caution_reflected": true
+  },
+  "export_paths": {
+    "library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+    "report": "datasets/music_drama_grammar/daily-life-behavior-library-report.json"
+  },
+  "next_phase": "PHASE-MDG-003 Community & Crowd Behavior Grammar"
+}

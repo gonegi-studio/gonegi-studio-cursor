@@ -1,0 +1,87 @@
+{
+  "dry_run_id": "dry_run_shinkai_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-023-MOVIE_ANALYSIS_DRY_RUN_PLANNER_V1",
+  "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+  "source_video_id": "SHINKAI_01",
+  "dry_run_steps": [
+    {
+      "step_id": "load_analysis_plan",
+      "step_order": 1,
+      "action": "Load analysis plan analysis_plan_shinkai_01_v1 from registry without reading video frames",
+      "reads_frames": false,
+      "status": "simulated_pass",
+      "output_ref": "analysis_plan_shinkai_01_v1"
+    },
+    {
+      "step_id": "validate_source_video_metadata",
+      "step_order": 2,
+      "action": "Validate source video SHINKAI_01 metadata from final set (path only, no decode)",
+      "reads_frames": false,
+      "status": "simulated_pass",
+      "output_ref": "imports/source_videos/active/shinkai/SHINKAI_01.mp4"
+    },
+    {
+      "step_id": "estimate_segment_candidates",
+      "step_order": 3,
+      "action": "Estimate segment candidates via grammar_timestamp_heuristic heuristic",
+      "reads_frames": false,
+      "status": "planned",
+      "output_ref": "segment_shinkai_sky_light_001_v1"
+    },
+    {
+      "step_id": "estimate_coordinate_candidates",
+      "step_order": 4,
+      "action": "Estimate coordinate candidates via lighting_vector_projection projection",
+      "reads_frames": false,
+      "status": "planned",
+      "output_ref": "coord_shinkai_sky_light_001_v1"
+    },
+    {
+      "step_id": "identity_safety_validation",
+      "step_order": 5,
+      "action": "Validate identity locks and character-first contract without frame analysis",
+      "reads_frames": false,
+      "status": "simulated_pass",
+      "output_ref": "analysis_plan_shinkai_01_v1_identity_safety"
+    },
+    {
+      "step_id": "runtime_safety_validation",
+      "step_order": 6,
+      "action": "Confirm planning-only execution flags (no GPU, OCR, frame extraction, external calls)",
+      "reads_frames": false,
+      "status": "simulated_pass",
+      "output_ref": null
+    }
+  ],
+  "estimated_segment_count": 1,
+  "estimated_coordinate_count": 3,
+  "analysis_risk": {
+    "risk_score": 32,
+    "risk_level": "MODERATE",
+    "promotion_gate_status": "ALLOW_WITH_WARNING",
+    "watch_slot_count": 6
+  },
+  "identity_safety_checks": {
+    "identity_lock_required": "PASS",
+    "character_first_contract": "PASS",
+    "promotion_warning_preserved": "PASS",
+    "downstream_pipeline_isolated": "PASS"
+  },
+  "runtime_safety_checks": {
+    "frame_extraction": false,
+    "ocr": false,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "planning_only": true
+  },
+  "promotion_warning_preserved": true,
+  "execution_flags": {
+    "planning_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "planned_at": "2026-06-05T12:28:24.876Z"
+}

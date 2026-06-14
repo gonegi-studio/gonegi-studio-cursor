@@ -1,0 +1,28 @@
+{
+  "compiled_prompt_id": "compiled-prompt-v1",
+  "module": "PROMPT_COMPILER_V1",
+  "generated_at": "2026-06-08T23:51:35.778Z",
+  "prompt_version": "v1.0.0",
+  "prompt_seed": "gpu-prep-001-seed",
+  "prompt_trace_id": "prompt-trace-gpu-prep-001",
+  "compiler_rule_version": "prompt-compiler-v1.0.0",
+  "compilation_formula": "shot * dna * continuity * memory -> generation_prompt",
+  "input_refs": {
+    "shot": "exports/feature_film_shot_assembly/feature-film-shot-registry.json",
+    "dna": "exports/image_consistency/image-consistency-specification.json",
+    "continuity": "exports/production_pipeline/production-traceability-specification.json",
+    "memory": "exports/temporal_memory/temporal-memory-specification.json"
+  },
+  "shot_to_prompt_integrity": "PASS",
+  "prompt_traceability_integrity": "PASS",
+  "generation_prompt": {
+    "template": "compiled_generation_prompt_v1",
+    "inputs_bound": [
+      "shot",
+      "dna",
+      "continuity",
+      "memory"
+    ],
+    "trace_chain_ref": "exports/generation/generation-trace-specification.json"
+  }
+}

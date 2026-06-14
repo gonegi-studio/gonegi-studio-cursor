@@ -1,0 +1,110 @@
+{
+  "spec_id": "feature-continuity-specification-v1",
+  "asset_type": "feature_continuity_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L3-FEATURE-001",
+  "purpose": "Feature film continuity specification extending Medium Film Continuity V2 to 1000-3000 scenes with world state, theme, and legacy callback dimensions.",
+  "medium_film_spec_ref": "exports/medium_film_foundation/long-form-continuity-specification-v2.json",
+  "medium_film_scene_range": "300-1000",
+  "feature_film_scene_range": "1000-3000",
+  "continuity_depth": 14,
+  "inherited_dimensions": [
+    "character_arc",
+    "location_arc",
+    "lighting_arc",
+    "relationship_arc",
+    "timeline_arc",
+    "memory_callback_arc",
+    "subplot_arc",
+    "parallel_arc",
+    "multi_callback_arc",
+    "relationship_network",
+    "world_arc"
+  ],
+  "feature_dimensions": [
+    "world_state_arc",
+    "theme_arc",
+    "legacy_callback_arc"
+  ],
+  "dimensions": {
+    "character_arc": {
+      "definition": "Ensemble character DNA stable across 1000-3000 scenes with multi-generation cast rotation.",
+      "preserved_from": "medium_film_v2"
+    },
+    "location_arc": {
+      "definition": "Location geometry and transformation registry across century-scale narrative blocks.",
+      "preserved_from": "medium_film_v2"
+    },
+    "lighting_arc": {
+      "definition": "Lighting DNA palettes with era-variant catalog across feature-length timeline.",
+      "preserved_from": "medium_film_v2"
+    },
+    "relationship_arc": {
+      "definition": "Primary and secondary relationship stages within expanded network evolution.",
+      "preserved_from": "medium_film_v2"
+    },
+    "timeline_arc": {
+      "definition": "Multi-decade timeline markers with long-range dependencies minimum gap 120 scenes.",
+      "preserved_from": "medium_film_v2"
+    },
+    "memory_callback_arc": {
+      "definition": "Memory callback seeds and resolutions across extended foreshadow-payoff spans.",
+      "preserved_from": "medium_film_v2"
+    },
+    "subplot_arc": {
+      "definition": "Multiple independent subplot threads interleaving without breaking primary timeline.",
+      "preserved_from": "medium_film_v2"
+    },
+    "parallel_arc": {
+      "definition": "Three or more parallel narrative tracks with documented interleave intervals.",
+      "preserved_from": "medium_film_v2"
+    },
+    "multi_callback_arc": {
+      "definition": "Multi-layer callback structure with 3-5 independent tiers.",
+      "preserved_from": "medium_film_v2"
+    },
+    "relationship_network": {
+      "definition": "Relationship network nodes and edges evolve through multi-act stage progression.",
+      "preserved_from": "medium_film_v2"
+    },
+    "world_arc": {
+      "definition": "World state stages and location transformations across feature narrative span.",
+      "preserved_from": "medium_film_v2"
+    },
+    "world_state_arc": {
+      "definition": "Macro world-state evolution (political, cultural, environmental) tracked per act block.",
+      "feature_film_requirement": "World State Evolution",
+      "enforcement_rules": [
+        "world_state_stage_required_per_act",
+        "world_state_transitions_must_align_with_timeline_markers",
+        "location_transformations_must_reference_world_state_stage"
+      ]
+    },
+    "theme_arc": {
+      "definition": "Thematic through-line progression with act-level theme beats and symbolic recurrence.",
+      "feature_film_requirement": "Thematic Through-Line",
+      "enforcement_rules": [
+        "theme_beat_required_per_act",
+        "theme_symbol_recurrence_minimum_3_per_archetype",
+        "theme_resolution_required_in_finale_act"
+      ]
+    },
+    "legacy_callback_arc": {
+      "definition": "Cross-generational and cross-era callback chains linking ancestral anchors to present payoff.",
+      "feature_film_requirement": "Legacy Callback Chains",
+      "enforcement_rules": [
+        "legacy_anchor_minimum_2_per_archetype",
+        "legacy_callback_span_minimum_200_scenes",
+        "legacy_payoff_must_align_with_theme_arc_finale"
+      ]
+    }
+  },
+  "cross_dimension_requirements": [
+    "all_inherited_medium_dimensions_required_per_archetype",
+    "all_feature_dimensions_required_per_archetype",
+    "world_state_arc_must_align_with_world_arc",
+    "theme_arc_must_align_with_story_arcs",
+    "legacy_callback_arc_must_extend_memory_callback_arc",
+    "parallel_arc_minimum_3_tracks_per_archetype"
+  ]
+}

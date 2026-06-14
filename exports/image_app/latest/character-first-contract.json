@@ -1,0 +1,53 @@
+{
+  "contract_type": "character_first_image_app_contract",
+  "contract_version": "v1",
+  "phase": "PHASE-16-IDENTITY-SAFE-REBUILD-001",
+  "dataset_reference": "exports/image_app/adapters/outdoor-layout-lock-adapter-v2.json",
+  "purpose": "Ensure environment and layout guidance never override locked character identity in Image App renders.",
+  "priority_order": [
+    "character_identity",
+    "character_reference",
+    "character_continuity",
+    "location_continuity",
+    "environment_details"
+  ],
+  "priority_tokens": [
+    "character-priority:character_identity",
+    "character-priority:character_reference",
+    "character-priority:character_continuity",
+    "character-priority:location_continuity",
+    "character-priority:environment_details"
+  ],
+  "rules": {
+    "environment_may_never_override": [
+      "character face",
+      "character silhouette",
+      "character clothing",
+      "character species",
+      "character pose intent"
+    ],
+    "landmark_enforcement_forbidden": true,
+    "camera_visibility_enforcement_forbidden": true,
+    "fail_if_ignored_enforcement_forbidden": true
+  },
+  "soft_guidance_prefixes": [
+    "camera-preference:",
+    "landmark-preference:",
+    "environment-supporting-elements:"
+  ],
+  "retained_outdoor_lock_prefixes": [
+    "outdoor-layout-lock:",
+    "outdoor-orientation:",
+    "landmark-position:"
+  ],
+  "removed_harmful_prefixes": [
+    "camera-visibility:",
+    "landmark-visibility:must_show_",
+    "walkable-zone:"
+  ],
+  "injection_policy": {
+    "layer": "location_continuity_anchors",
+    "character_tokens_inject_first": true,
+    "environment_tokens_soft_only": true
+  }
+}

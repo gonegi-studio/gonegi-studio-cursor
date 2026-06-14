@@ -1,0 +1,459 @@
+{
+  "library_id": "scene-remap-validation-library-v2",
+  "phase": "PHASE-TITANIC-REMAP-TEST-001",
+  "generated_at": "2026-06-09T11:02:52.933Z",
+  "validation_count": 12,
+  "director_group_counts": {
+    "ghibli": 4,
+    "shinkai": 3,
+    "mori": 3,
+    "live_action": 2
+  },
+  "coverage_types": [
+    "wide_shot",
+    "medium_shot",
+    "close_up",
+    "tracking_shot",
+    "dialogue_scene",
+    "environment_scene",
+    "crowd_scene",
+    "emotion_scene",
+    "transition_scene"
+  ],
+  "coverage_satisfied": true,
+  "scenes": [
+    {
+      "validation_id": "remap_ghibli_01_env_wide",
+      "source_id": "GHIBLI_01",
+      "scene_id": "scene_ghibli_01_env_001",
+      "director_group": "ghibli",
+      "signature_type": "ghibli_signature",
+      "camera_profile": "gentle_dolly_wide_establishing",
+      "blocking_profile": "environment_led_sparse_blocking",
+      "editing_profile": "lyrical_hold_with_breath_pause",
+      "motion_profile": "ambient_secondary_motion",
+      "environment_motion_profile": "foliage_water_micro_life",
+      "style_profile": "handcrafted_warm_watercolor",
+      "remap_package": {
+        "validation_id": "remap_ghibli_01_env_wide",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_ghibli_01_env_001",
+        "source_id": "GHIBLI_01",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_ghibli_02_dialogue_med",
+      "source_id": "GHIBLI_02",
+      "scene_id": "scene_ghibli_02_dialogue_003",
+      "director_group": "ghibli",
+      "signature_type": "ghibli_signature",
+      "camera_profile": "medium_two_shot_soft_push",
+      "blocking_profile": "conversational_triangle_blocking",
+      "editing_profile": "dialogue_rhythm_with_reaction_insert",
+      "motion_profile": "gesture_led_character_motion",
+      "environment_motion_profile": "interior_practical_ambient",
+      "style_profile": "warm_interior_handcrafted",
+      "remap_package": {
+        "validation_id": "remap_ghibli_02_dialogue_med",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_ghibli_02_dialogue_003",
+        "source_id": "GHIBLI_02",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_ghibli_03_emotion_close",
+      "source_id": "GHIBLI_03",
+      "scene_id": "scene_ghibli_03_emotion_005",
+      "director_group": "ghibli",
+      "signature_type": "ghibli_signature",
+      "camera_profile": "closeup_hold_with_micro_drift",
+      "blocking_profile": "single_subject_emotional_isolation",
+      "editing_profile": "extended_hold_emotional_beat",
+      "motion_profile": "subtle_facial_micro_motion",
+      "environment_motion_profile": "soft_background_bokeh_motion",
+      "style_profile": "melancholic_warm_palette",
+      "remap_package": {
+        "validation_id": "remap_ghibli_03_emotion_close",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_ghibli_03_emotion_005",
+        "source_id": "GHIBLI_03",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_ghibli_04_tracking_trans",
+      "source_id": "GHIBLI_04",
+      "scene_id": "scene_ghibli_04_transition_007",
+      "director_group": "ghibli",
+      "signature_type": "ghibli_signature",
+      "camera_profile": "lateral_tracking_with_parallax",
+      "blocking_profile": "walk_and_talk_path_blocking",
+      "editing_profile": "transition_bridge_with_match_move",
+      "motion_profile": "coordinated_walk_cycle_motion",
+      "environment_motion_profile": "parallax_layered_environment",
+      "style_profile": "travel_sequence_watercolor",
+      "remap_package": {
+        "validation_id": "remap_ghibli_04_tracking_trans",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_ghibli_04_transition_007",
+        "source_id": "GHIBLI_04",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_shinkai_01_env_wide",
+      "source_id": "SHINKAI_01",
+      "scene_id": "scene_shinkai_01_sky_002",
+      "director_group": "shinkai",
+      "signature_type": "shinkai_signature",
+      "camera_profile": "sky_dominant_wide_push",
+      "blocking_profile": "silhouette_against_skyline",
+      "editing_profile": "contemplative_hold_light_transition",
+      "motion_profile": "particle_weather_reactive",
+      "environment_motion_profile": "volumetric_haze_sky_layers",
+      "style_profile": "hyper_detail_luminous_atmosphere",
+      "remap_package": {
+        "validation_id": "remap_shinkai_01_env_wide",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_shinkai_01_sky_002",
+        "source_id": "SHINKAI_01",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_shinkai_01_crowd_med",
+      "source_id": "SHINKAI_01",
+      "scene_id": "scene_shinkai_01_crowd_004",
+      "director_group": "shinkai",
+      "signature_type": "shinkai_signature",
+      "camera_profile": "medium_crowd_depth_stack",
+      "blocking_profile": "crowd_flow_with_hero_anchor",
+      "editing_profile": "rhythmic_crowd_cut_pattern",
+      "motion_profile": "crowd_drift_with_hero_stillness",
+      "environment_motion_profile": "urban_particle_reflection_motion",
+      "style_profile": "city_glow_reflection_emphasis",
+      "remap_package": {
+        "validation_id": "remap_shinkai_01_crowd_med",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_shinkai_01_crowd_004",
+        "source_id": "SHINKAI_01",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_shinkai_02_emotion_close",
+      "source_id": "SHINKAI_02",
+      "scene_id": "scene_shinkai_02_emotion_006",
+      "director_group": "shinkai",
+      "signature_type": "shinkai_signature",
+      "camera_profile": "closeup_backlit_rim_hold",
+      "blocking_profile": "intimate_two_frame_separation",
+      "editing_profile": "longing_hold_with_light_flicker",
+      "motion_profile": "micro_breath_and_blink_motion",
+      "environment_motion_profile": "rain_reflection_micro_motion",
+      "style_profile": "high_contrast_emotional_bloom",
+      "remap_package": {
+        "validation_id": "remap_shinkai_02_emotion_close",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_shinkai_02_emotion_006",
+        "source_id": "SHINKAI_02",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_mori_01_dialogue_med",
+      "source_id": "MORI_01",
+      "scene_id": "scene_mori_01_dialogue_002",
+      "director_group": "mori",
+      "signature_type": "mori_signature",
+      "camera_profile": "patient_observational_medium",
+      "blocking_profile": "naturalistic_conversation_spacing",
+      "editing_profile": "documentary_dialogue_rhythm",
+      "motion_profile": "micro_expression_idle_motion",
+      "environment_motion_profile": "quiet_domestic_ambient",
+      "style_profile": "neutral_available_light_realism",
+      "remap_package": {
+        "validation_id": "remap_mori_01_dialogue_med",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_mori_01_dialogue_002",
+        "source_id": "MORI_01",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_mori_02_emotion_close",
+      "source_id": "MORI_02",
+      "scene_id": "scene_mori_02_emotion_004",
+      "director_group": "mori",
+      "signature_type": "mori_signature",
+      "camera_profile": "static_closeup_patience_hold",
+      "blocking_profile": "minimal_single_subject_blocking",
+      "editing_profile": "long_take_emotional_restraint",
+      "motion_profile": "micro_expression_density_led",
+      "environment_motion_profile": "subtle_interior_texture_motion",
+      "style_profile": "understated_domestic_truth",
+      "remap_package": {
+        "validation_id": "remap_mori_02_emotion_close",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_mori_02_emotion_004",
+        "source_id": "MORI_02",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_mori_03_env_static",
+      "source_id": "MORI_03",
+      "scene_id": "scene_mori_03_env_001",
+      "director_group": "mori",
+      "signature_type": "mori_signature",
+      "camera_profile": "wide_static_observational",
+      "blocking_profile": "behavioral_distance_blocking",
+      "editing_profile": "minimal_cut_environmental_patience",
+      "motion_profile": "natural_idle_environmental_motion",
+      "environment_motion_profile": "low_key_ambient_life",
+      "style_profile": "observational_realism_neutral",
+      "remap_package": {
+        "validation_id": "remap_mori_03_env_static",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_mori_03_env_001",
+        "source_id": "MORI_03",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_titanic_deck_wide",
+      "source_id": "LITTLE_WOMEN_01",
+      "scene_id": "scene_little_women_01_deck_014",
+      "director_group": "live_action",
+      "signature_type": "live_action_signature",
+      "camera_profile": "physical_lens_tracking_wide",
+      "blocking_profile": "deck_establishing_human_geometry",
+      "editing_profile": "classical_continuity_establishing",
+      "motion_profile": "grounded_weight_transfer_walk",
+      "environment_motion_profile": "harbor_wind_deck_ambient",
+      "style_profile": "practical_light_live_action_to_gonegi",
+      "remap_package": {
+        "validation_id": "remap_titanic_deck_wide",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_little_women_01_deck_014",
+        "source_id": "LITTLE_WOMEN_01",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    },
+    {
+      "validation_id": "remap_little_women_dialogue_med",
+      "source_id": "LITTLE_WOMEN_01",
+      "scene_id": "scene_little_women_01_interior_007",
+      "director_group": "live_action",
+      "signature_type": "live_action_signature",
+      "camera_profile": "medium_handheld_dialogue_coverage",
+      "blocking_profile": "domestic_intimacy_blocking",
+      "editing_profile": "invisible_cut_dialogue_rhythm",
+      "motion_profile": "naturalistic_performance_motion",
+      "environment_motion_profile": "interior_practical_ambient_motion",
+      "style_profile": "social_realism_gonegi_conversion",
+      "remap_package": {
+        "validation_id": "remap_little_women_dialogue_med",
+        "pipeline": [
+          "original_scene",
+          "gonegi_character_replacement",
+          "gonegi_style_conversion"
+        ],
+        "preserved_elements": [
+          "camera",
+          "blocking",
+          "motion",
+          "editing",
+          "timing",
+          "composition",
+          "environment_motion"
+        ],
+        "source_scene_id": "scene_little_women_01_interior_007",
+        "source_id": "LITTLE_WOMEN_01",
+        "target_character": "CHAR-gonagi",
+        "target_style": "GONEGI_MEDITERRANEAN",
+        "target_location": "gonegi_harbor_dock_01",
+        "remap_status": "simulated_validation"
+      }
+    }
+  ],
+  "integrity": "PASS"
+}

@@ -1,0 +1,141 @@
+{
+  "scene_state_id": "scene_draft_shinkai_light_sky_v1",
+  "mapping_phase": "PHASE-SOURCE-VIDEO-005-SOURCE_VIDEO_TO_SCENE_STATE_MAPPING_V1",
+  "draft_status": "mapped_draft",
+  "source_mapping_id": "map_shinkai_light_sky_to_scene_state_v1",
+  "source_coordinate_id": "movie_coord_shinkai_light_sky_v1",
+  "source_video_id": "SHINKAI_01",
+  "director_grammar_refs": [
+    "director_grammar_shinkai_v1"
+  ],
+  "phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "character_state": {
+    "active_character_ids": [
+      "solitary_figure"
+    ],
+    "primary_character_id": "solitary_figure",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:solitary_figure"
+    ]
+  },
+  "location_state": {
+    "location_id": "draft_elevated_overlook_shinkai",
+    "location_name": "elevated-overlook",
+    "location_type": "elevated-overlook",
+    "domain": "source_video_mapping_draft",
+    "location_source": "datasets/location/location-dna-index-v1.json",
+    "layout_lock_id": "layout_lock:horizon-line",
+    "walkable_zone": "overlook-platform"
+  },
+  "lighting_state": {
+    "lighting_id": "draft_lighting_movie_coord_shinkai_light_sky_v1",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "direction": "sunset-backlight",
+    "intensity": "sky-gradient-fill"
+  },
+  "emotion_state": {
+    "emotion_id": "longing",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.7,
+    "acting_visibility_weight": "medium"
+  },
+  "relationship_state": {
+    "relationship_id": "solitary_contemplation",
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "solitary_figure"
+    ],
+    "distance_behavior": "figure-sky-silhouette",
+    "gaze_pattern": "horizon",
+    "blocking_primary_focus": "figure-sky-silhouette"
+  },
+  "camera_state": {
+    "shot_type": "sky-dominant-wide",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "overlook-rail-center",
+    "camera_height": "chest-level",
+    "camera_direction": "horizon-sky",
+    "motion_vectors": [
+      "slow-lateral-drift",
+      "minimal-head-turn"
+    ]
+  },
+  "composition_state": {
+    "composition_id": "draft_composition_movie_coord_shinkai_light_sky_v1",
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [
+      "transit_ticket"
+    ],
+    "character_positions": {
+      "solitary_figure": "rail-left-third"
+    },
+    "depth_layers": [
+      {
+        "layer_index": 0,
+        "layer_role": "foreground",
+        "content_hint": "rail-figure-silhouette"
+      },
+      {
+        "layer_index": 1,
+        "layer_role": "midground",
+        "content_hint": "city-depth-layer"
+      },
+      {
+        "layer_index": 2,
+        "layer_role": "background",
+        "content_hint": "sky-gradient-clouds"
+      }
+    ],
+    "negative_space": "upper-sky-dominant"
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "golden_hour",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": [
+      "rail-figure-silhouette",
+      "city-depth-layer",
+      "sky-gradient-clouds"
+    ],
+    "ambient_motion": [
+      "slow-lateral-drift",
+      "minimal-head-turn"
+    ]
+  },
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "solitary_figure"
+    ],
+    "identity_lock_tokens": [
+      "identity_anchor:solitary_figure_silhouette_v1",
+      "identity_lock:preserve_silhouette_read"
+    ],
+    "location_lock_tokens": [
+      "location_lock:elevated-overlook",
+      "walkable-zone:overlook-platform"
+    ],
+    "composition_lock_tokens": [
+      "composition_lock:sky-negative-space",
+      "composition_lock:horizon-third",
+      "prop_anchor:transit_ticket"
+    ]
+  },
+  "source_refs": {
+    "source_video_id": "SHINKAI_01",
+    "source_coordinate_id": "movie_coord_shinkai_light_sky_v1",
+    "mapping_id": "map_shinkai_light_sky_to_scene_state_v1",
+    "scene_state_schema": "datasets/state/scene-state.schema.json",
+    "timestamp_start": "12",
+    "timestamp_end": "38"
+  },
+  "design_only": true,
+  "gpu_execution": false,
+  "built_at": "2026-06-05T06:47:56.962Z"
+}

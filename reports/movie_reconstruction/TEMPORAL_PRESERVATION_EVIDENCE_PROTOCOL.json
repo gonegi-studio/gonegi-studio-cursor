@@ -1,0 +1,125 @@
+{
+  "protocol_id": "temporal-preservation-evidence-protocol-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-006B",
+  "system_id": "TEMPORAL_PRESERVATION_EVIDENCE_V1",
+  "generated_at": "2026-06-14T00:24:24.825Z",
+  "evidence_defined": true,
+  "analysis": {
+    "temporal_validation_protocol": "TEMPORAL_PRESERVATION_GPU_VALIDATION_PROTOCOL defines same_timeline=0.95, causal_transition_chain highest risk, and transition recall rules; evidence collection binds measurable scores without GPU execution.",
+    "temporal_dataset_plan": "TEMPORAL_PRESERVATION_GPU_VALIDATION_DATASET_PLAN provides easy/medium/hard case seeds; evidence dataset extends with stress_batch and long_horizon_batch for callback memory validation.",
+    "temporal_memory_binding": "Timeline slots bind memory_signature and edit_rhythm_signature per source; evidence records recall temporal memory against timeline_id without frame generation.",
+    "causal_transition_chain_binding": "Ordered causal_transition records with causal_reason and continuity_anchor; causal_failure_examples govern evidence rejection on chain break.",
+    "temporal_traceability_binding": "traceability_signature binds numerical DNA edit_rhythm and motion_vectors refs to conditioning map export paths for batch audit."
+  },
+  "temporal_evidence_contract": {
+    "contract_id": "temporal_preservation_evidence_v1",
+    "contract_version": "1.0",
+    "scope": "Evidence definition only — Evidence Defined != Evidence Collected.",
+    "validation_protocol_ref": "reports/movie_reconstruction/TEMPORAL_PRESERVATION_GPU_VALIDATION_PROTOCOL.json",
+    "dataset_plan_ref": "reports/movie_reconstruction/TEMPORAL_PRESERVATION_GPU_VALIDATION_DATASET_PLAN.json",
+    "binding_ref": "exports/movie_reconstruction_temporal_preservation/temporal-preservation-binding-package.json",
+    "memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+    "gpu_execution": "false — evidence protocol and dataset only; collection deferred.",
+    "gpu_authorization": "false — evidence_sufficient_for_gpu_authorization must remain false until execution phase.",
+    "assessment_note": "Evidence Collected != Temporal Validated; Temporal Validated != Movie Reconstruction Ready."
+  },
+  "temporal_measurement_rules": {
+    "edit_rhythm_alignment_score": "Cut point alignment against edit_rhythm_signature from numerical DNA full export.",
+    "continuity_signature_score": "Shot boundary continuity anchor stability across adjacent timeline slots.",
+    "causal_chain_score": "causal_transition_chain traversal completeness with causal_reason match.",
+    "temporal_traceability_score": "Traceability signature match against conditioning_map_ref and memory spec path.",
+    "memory_signature_match": "Hash equality on timeline_id temporal memory recall path.",
+    "measurement_note": "All measurements are schema-defined; no GPU frame comparison in this phase."
+  },
+  "temporal_scoring_rules": {
+    "composite_evidence_score": "weighted_sum(edit_rhythm_alignment_score * 0.30, continuity_signature_score * 0.25, causal_chain_score * 0.30, traceability_score * 0.15)",
+    "pass_threshold": "composite_evidence_score >= 0.95 required for same-timeline evidence tier.",
+    "causal_chain_weight": "causal_chain_score weighted highest due to causal_transition_chain highest risk area.",
+    "false_positive_penalty": "Scores above pass_threshold on broken_timeline cases trigger false_positive audit.",
+    "false_negative_tolerance": "same_timeline_with_edit_variation permitted within strict_timeline band [0.90, 0.95)."
+  },
+  "temporal_evidence_levels": [
+    {
+      "level_id": "same_timeline",
+      "min_timeline_score": 0.95,
+      "note": "Definitive timeline evidence; composite score >= 0.95 with causal_chain_score >= 0.90."
+    },
+    {
+      "level_id": "strict_timeline",
+      "min_timeline_score": 0.9,
+      "note": "Strict band; sufficient for edit rhythm tuning review but not timeline lock."
+    },
+    {
+      "level_id": "similar_timeline",
+      "min_timeline_score": 0.75,
+      "note": "Similar timeline band; logged for degradation path only."
+    },
+    {
+      "level_id": "broken_timeline",
+      "min_timeline_score": 0,
+      "note": "Below broken_timeline threshold; evidence record rejected."
+    }
+  ],
+  "temporal_traceability_rules": {
+    "traceability_signature": "Must bind timeline_id, causal_transition_chain_ref, memory_signature, and temporal_memory_spec_ref.",
+    "continuity_anchor_integrity": "continuity_signature must resolve across adjacent shot bindings.",
+    "batch_audit_path": "Evidence records written to TEMPORAL_PRESERVATION_EVIDENCE_DATASET.json batches for offline review.",
+    "cross_ref_integrity": "causal_transition_chain_ref must resolve to binding package entry; mismatch triggers traceability failure.",
+    "evidence_layer_note": "Evidence Defined != Evidence Collected."
+  },
+  "temporal_degradation_levels": {
+    "strict_timeline": 0.95,
+    "minor_drift": 0.85,
+    "moderate_drift": 0.7,
+    "critical_drift": 0.5,
+    "timeline_break": 0.3
+  },
+  "measurement_method": [
+    "edit_rhythm_alignment_score",
+    "continuity_signature_score",
+    "causal_chain_score",
+    "temporal_traceability_score"
+  ],
+  "pass_threshold": 0.95,
+  "evidence_score": {
+    "composite_formula": "0.30 * edit_rhythm_alignment_score + 0.25 * continuity_signature_score + 0.30 * causal_chain_score + 0.15 * traceability_score",
+    "edit_rhythm_alignment_weight": 0.3,
+    "continuity_signature_weight": 0.25,
+    "causal_chain_weight": 0.3,
+    "traceability_weight": 0.15
+  },
+  "failure_examples": [
+    "edit_rhythm_desync",
+    "shot_boundary_discontinuity",
+    "causal_chain_break",
+    "timeline_reset",
+    "character_position_jump"
+  ],
+  "causal_failure_examples": [
+    "missing_cause",
+    "incorrect_effect",
+    "reordered_event",
+    "timeline_inversion"
+  ],
+  "false_positive_examples": [
+    "correct_rhythm_wrong_causal_order",
+    "continuity_stable_but_wrong_transition_cause",
+    "edit_aligned_but_timeline_reset"
+  ],
+  "false_negative_examples": [
+    "same_timeline_with_edit_variation",
+    "continuity_preserved_with_lighting_jump",
+    "causal_chain_intact_with_minor_rhythm_shift"
+  ],
+  "transition_recall_rules": {
+    "required_timeline_slots": 5,
+    "minimum_continuity_chain_match": 3,
+    "recall_method": "Traverse causal_transition_chain from transition_id; count continuity_anchor matches >= minimum_continuity_chain_match across required_timeline_slots per batch."
+  },
+  "example_evidence_record": {
+    "timeline_id": "timeline_titanic_014_015",
+    "causal_transition_chain_ref": "transition_014_015",
+    "memory_signature": "temp_mem_sig_a1b2c3d4",
+    "traceability_score": 0.96
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/cinematic_dna_integration/movie-analysis-cinematic-dna-integration.schema.json",
+  "title": "MovieAnalysisCinematicDnaIntegration",
+  "description": "Generation adapter integration layer for cinematic DNA PHASE-SOURCE-VIDEO-054",
+  "type": "object",
+  "required": [
+    "integration_set_id",
+    "integration_version",
+    "phase",
+    "integrated_at",
+    "source_count",
+    "cinematic_dna_set_id",
+    "entries",
+    "safety_summary"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "integration_set_id": { "type": "string", "minLength": 1 },
+    "integration_version": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-054-MOVIE_ANALYSIS_CINEMATIC_DNA_INTEGRATION_V1"
+    },
+    "integrated_at": { "type": "string", "minLength": 1 },
+    "source_count": { "type": "integer", "minimum": 1 },
+    "cinematic_dna_set_id": { "type": "string", "minLength": 1 },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/CinematicDnaIntegrationEntry" }
+    },
+    "safety_summary": { "$ref": "#/$defs/IntegrationSafetySummary" }
+  },
+  "$defs": {
+    "AdapterTarget": {
+      "type": "string",
+      "enum": [
+        "scene_generation_adapter",
+        "camera_generation_adapter",
+        "emotion_generation_adapter",
+        "transition_generation_adapter",
+        "continuity_generation_adapter"
+      ]
+    },
+    "DnaAdapterMapping": {
+      "type": "object",
+      "required": [
+        "adapter_target",
+        "cinematic_dna_id",
+        "pattern_ids",
+        "pattern_signatures",
+        "pattern_count",
+        "mapping_ready",
+        "integration_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "adapter_target": { "$ref": "#/$defs/AdapterTarget" },
+        "cinematic_dna_id": { "type": "string", "minLength": 1 },
+        "pattern_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "pattern_signatures": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "pattern_count": { "type": "integer", "minimum": 1 },
+        "mapping_ready": { "type": "boolean", "const": true },
+        "integration_only": { "type": "boolean", "const": true }
+      }
+    },
+    "IntegrationSafety": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "integration_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "integration_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "ImageAppUsageMapping": {
+      "type": "object",
+      "required": [
+        "consumer_target",
+        "emotion_generation_adapter",
+        "character_pattern_refs",
+        "integration_ready"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "consumer_target": { "type": "string", "const": "image_app" },
+        "emotion_generation_adapter": { "type": "boolean" },
+        "character_pattern_refs": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "integration_ready": { "type": "boolean", "const": true }
+      }
+    },
+    "VideoAppUsageMapping": {
+      "type": "object",
+      "required": [
+        "consumer_target",
+        "scene_generation_adapter",
+        "camera_generation_adapter",
+        "transition_generation_adapter",
+        "continuity_generation_adapter",
+        "integration_ready"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "consumer_target": { "type": "string", "const": "video_app" },
+        "scene_generation_adapter": { "type": "boolean" },
+        "camera_generation_adapter": { "type": "boolean" },
+        "transition_generation_adapter": { "type": "boolean" },
+        "continuity_generation_adapter": { "type": "boolean" },
+        "integration_ready": { "type": "boolean", "const": true }
+      }
+    },
+    "CinematicDnaIntegrationEntry": {
+      "type": "object",
+      "required": [
+        "integration_id",
+        "source_video_id",
+        "cinematic_dna_id",
+        "scene_dna_mapping",
+        "camera_dna_mapping",
+        "emotion_dna_mapping",
+        "transition_dna_mapping",
+        "continuity_dna_mapping",
+        "image_app_usage_mapping",
+        "video_app_usage_mapping",
+        "reusability_score",
+        "integration_readiness",
+        "safety"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "integration_id": { "type": "string", "minLength": 1 },
+        "source_video_id": { "type": "string", "minLength": 1 },
+        "cinematic_dna_id": { "type": "string", "minLength": 1 },
+        "scene_dna_mapping": { "$ref": "#/$defs/DnaAdapterMapping" },
+        "camera_dna_mapping": { "$ref": "#/$defs/DnaAdapterMapping" },
+        "emotion_dna_mapping": { "$ref": "#/$defs/DnaAdapterMapping" },
+        "transition_dna_mapping": { "$ref": "#/$defs/DnaAdapterMapping" },
+        "continuity_dna_mapping": { "$ref": "#/$defs/DnaAdapterMapping" },
+        "image_app_usage_mapping": { "$ref": "#/$defs/ImageAppUsageMapping" },
+        "video_app_usage_mapping": { "$ref": "#/$defs/VideoAppUsageMapping" },
+        "reusability_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "integration_readiness": { "type": "string", "enum": ["READY", "NOT_READY"] },
+        "safety": { "$ref": "#/$defs/IntegrationSafety" }
+      }
+    },
+    "IntegrationSafetySummary": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "integration_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "integration_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

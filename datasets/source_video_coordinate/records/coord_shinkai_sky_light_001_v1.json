@@ -1,0 +1,133 @@
+{
+  "coordinate_record_id": "coord_shinkai_sky_light_001_v1",
+  "phase": "PHASE-SOURCE-VIDEO-009-SOURCE_VIDEO_SEGMENT_TO_COORDINATE_COMPILER_V1",
+  "segment_id": "segment_shinkai_sky_light_001_v1",
+  "source_video_id": "SHINKAI_01",
+  "director_family": "SHINKAI",
+  "camera_coordinate": {
+    "position": "overlook-rail-center",
+    "facing": "horizon-sky",
+    "height": "chest-level",
+    "fov_hint": "wide-expansive",
+    "shot_type": "sky-dominant-wide",
+    "context_summary": "Sky-dominant establishing with slow-push on revelation",
+    "context_tokens": [
+      "sky-dominant establishing frames",
+      "rail-and-window framing",
+      "sunset-gradient backlight",
+      "rain-street reflection pools",
+      "blue-hour interior contrast"
+    ]
+  },
+  "character_coordinate": [
+    {
+      "character_ref": "solitary_figure",
+      "position": "rail-left-third",
+      "facing": "horizon",
+      "posture": "standing-contemplative",
+      "identity_anchor": "identity_anchor:solitary_figure_silhouette_v1"
+    }
+  ],
+  "prop_coordinate": [
+    {
+      "prop_id": "transit_ticket",
+      "position": "hand-hold-foreground",
+      "interaction_state": "grip-tight"
+    }
+  ],
+  "location_coordinate": {
+    "space_type": "elevated-overlook",
+    "anchor_point": "horizon-line",
+    "walkable_zone": "overlook-platform",
+    "context_summary": "Elevated overlook with sky-dominant horizon geometry",
+    "context_tokens": [
+      "elevated-overlook",
+      "rain-platform",
+      "figure-at-rail",
+      "bench-separated-pair",
+      "sunset-gradient backlight"
+    ]
+  },
+  "lighting_coordinate": {
+    "key_direction": "sunset-backlight",
+    "fill_level": "sky-gradient-fill",
+    "color_temperature": "golden-to-blue-shift",
+    "context_summary": "Sunset-gradient backlight and cloud-break god-rays",
+    "context_tokens": [
+      "sunset-gradient backlight",
+      "rain-street reflection pools",
+      "blue-hour interior contrast"
+    ]
+  },
+  "motion_coordinate": [
+    {
+      "subject_ref": "cloud_layer",
+      "vector": "slow-lateral-drift",
+      "duration_hint": "ambient-continuous"
+    },
+    {
+      "subject_ref": "solitary_figure",
+      "vector": "minimal-head-turn",
+      "duration_hint": "emotional-hold"
+    }
+  ],
+  "blocking_coordinate": {
+    "primary_focus": "figure-sky-silhouette",
+    "secondary_focus": "horizon-gradient",
+    "negative_space": "upper-sky-dominant",
+    "context_summary": "Solitary contemplative figure at rail or window",
+    "context_tokens": [
+      "figure-at-rail",
+      "bench-separated-pair",
+      "longing-through-distance",
+      "hope-in-sky-break",
+      "sunset-gradient backlight"
+    ]
+  },
+  "depth_coordinate": [
+    {
+      "layer_index": 0,
+      "layer_role": "foreground",
+      "content_hint": "rail-figure-silhouette"
+    },
+    {
+      "layer_index": 1,
+      "layer_role": "midground",
+      "content_hint": "city-depth-layer"
+    },
+    {
+      "layer_index": 2,
+      "layer_role": "background",
+      "content_hint": "sky-gradient-clouds"
+    }
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity_anchor:solitary_figure_silhouette_v1",
+      "identity_lock:preserve_silhouette_read"
+    ],
+    "location_locks": [
+      "location_lock:elevated-overlook",
+      "walkable-zone:overlook-platform"
+    ],
+    "composition_locks": [
+      "composition_lock:sky-negative-space",
+      "composition_lock:horizon-third",
+      "prop_anchor:transit_ticket"
+    ]
+  },
+  "grammar_refs": [
+    "director_grammar_shinkai_v1"
+  ],
+  "scene_state_mapping_ref": "map_shinkai_light_sky_to_scene_state_v1",
+  "source_template_ref": "movie_coord_shinkai_light_sky_v1",
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "compiled_at": "2026-06-05T07:29:17.866Z"
+}

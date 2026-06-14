@@ -1,0 +1,29 @@
+{
+  "registry_id": "movie-reconstruction-conditioning-adapters-registry-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005",
+  "system_id": "CONDITIONING_BACKEND_ADAPTER_V1",
+  "version": "adapter_design_v1",
+  "design_only": true,
+  "adapter_validation_deferred": true,
+  "backend_execution_deferred": true,
+  "backend_adapters_designed": true,
+  "adapter_translation_validated": false,
+  "backend_implemented": false,
+  "conditioning_ready": false,
+  "gpu_ready": false,
+  "input_contract_ref": "datasets/movie_reconstruction_conditioning_map_export/conditioning-map-export-contract.json",
+  "input_contract_version": "1.0",
+  "map_export_bundle_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json",
+  "adapters": [
+    "controlnet_adapter",
+    "comfyui_adapter",
+    "future_video_adapter"
+  ],
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

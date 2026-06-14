@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video/source-video-final-set.schema.json",
+  "title": "SourceVideoFinalSet",
+  "description": "Canonical locked source video library for PHASE-SOURCE-VIDEO-002",
+  "type": "object",
+  "required": [
+    "final_set_id",
+    "phase",
+    "finalized_at",
+    "import_root",
+    "active_count",
+    "archive_count",
+    "total_locked_videos",
+    "category_counts",
+    "videos"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "final_set_id": { "type": "string" },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-002-SOURCE_VIDEO_SET_FINALIZATION_V1" },
+    "finalized_at": { "type": "string", "format": "date-time" },
+    "import_root": { "type": "string" },
+    "active_count": { "type": "integer", "const": 15 },
+    "archive_count": { "type": "integer", "const": 1 },
+    "total_locked_videos": { "type": "integer", "const": 16 },
+    "category_counts": { "$ref": "#/$defs/category_counts" },
+    "videos": {
+      "type": "array",
+      "minItems": 16,
+      "items": { "$ref": "#/$defs/video_entry" }
+    },
+    "read_only": { "type": "boolean", "const": true },
+    "gpu_execution": { "type": "boolean", "const": false }
+  },
+  "$defs": {
+    "category_counts": {
+      "type": "object",
+      "required": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI", "ARCHIVE"],
+      "properties": {
+        "GHIBLI": { "type": "integer", "const": 7 },
+        "SHINKAI": { "type": "integer", "const": 2 },
+        "LIVE_ACTION": { "type": "integer", "const": 1 },
+        "MORI": { "type": "integer", "const": 5 },
+        "ARCHIVE": { "type": "integer", "const": 1 }
+      }
+    },
+    "video_entry": {
+      "type": "object",
+      "required": [
+        "source_video_id",
+        "category",
+        "tier",
+        "filename",
+        "import_path",
+        "file_present",
+        "file_size_bytes"
+      ],
+      "properties": {
+        "source_video_id": { "type": "string" },
+        "category": {
+          "type": "string",
+          "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI", "ARCHIVE"]
+        },
+        "tier": { "type": "string", "enum": ["active", "archive"] },
+        "filename": { "type": "string" },
+        "import_path": { "type": "string" },
+        "file_present": { "type": "boolean" },
+        "file_size_bytes": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

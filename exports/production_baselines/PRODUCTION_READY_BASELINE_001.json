@@ -1,0 +1,67 @@
+{
+  "baseline_id": "PRODUCTION_READY_BASELINE_001",
+  "baseline_version": "v1",
+  "created_at": "2026-06-03T07:41:44.331Z",
+  "source_phase": "PHASE-MDS-002",
+  "source_verdict": "PASS_MDS_002_FULL_LENGTH_MV_PRODUCTION_TEST",
+  "frozen_core": "MASTER_CORE_V18",
+  "frozen_core_manifest": "exports/production_baselines/frozen/MASTER_CORE_V18/MASTER_CORE_V18_MANIFEST.json",
+  "purpose": "First stable production baseline for future music videos and short films after full-length MV validation",
+  "upload_set": [
+    "cinematic-dna-library-import.json",
+    "image-app-brain-ingestion-package.json",
+    "living-world-core-v1-package.json",
+    "living-world-image-adapter.json",
+    "music-drama-image-adapter.json",
+    "location-lighting-image-adapter.json",
+    "indoor-location-anchor-adapter.json",
+    "lighting-anchor-adapter.json",
+    "shot-grammar-adapter.json",
+    "emotion-acting-adapter.json",
+    "instrumental-mv-adapter.json",
+    "ballad-mv-adapter.json"
+  ],
+  "production_capabilities": {
+    "short_ballad_mv": {
+      "validated_by": "MDS-001",
+      "max_scenes_reference": 12
+    },
+    "full_length_instrumental_mv": {
+      "validated_by": "MDS-002",
+      "scene_count": 30,
+      "archetypes": [
+        "harbor_morning_walk",
+        "rainy_street_observation",
+        "seaside_evening_journey"
+      ]
+    },
+    "full_length_ballad_mv": {
+      "validated_by": "MDS-002",
+      "scene_count": 48,
+      "progression": [
+        "first_meeting",
+        "shared_daily_life",
+        "growing_affection",
+        "quiet_distance",
+        "farewell_day",
+        "memory_after_parting",
+        "reunion_after_time",
+        "hopeful_future"
+      ],
+      "includes_reunion_arc": true
+    }
+  },
+  "stability_thresholds": {
+    "character_stability_min": 0.9,
+    "location_stability_min": 0.9,
+    "emotion_readability_min": 0.9,
+    "narrative_continuity_min": 0.85,
+    "catastrophic_drift_edge_max": 0.55
+  },
+  "packages": {
+    "mds_001_short_ballad": "exports/image_app/test_batches/mds-001-ballad-mv-production-package.json",
+    "mds_002_instrumental": "exports/image_app/test_batches/mds-002-instrumental-full-length-package.json",
+    "mds_002_ballad": "exports/image_app/test_batches/mds-002-ballad-full-length-package.json"
+  },
+  "next_phase": "SHORT_FILM_DATASET_V1"
+}

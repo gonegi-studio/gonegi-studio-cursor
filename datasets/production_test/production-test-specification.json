@@ -1,0 +1,20 @@
+{
+  "spec_id": "production-test-specification-v1",
+  "asset_type": "production_test_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-002",
+  "module": "REAL_PRODUCTION_TEST_PREPARATION_V1",
+  "purpose": "Prepare real production test execution across identity, dialogue, lipsync, memory, and GPU readiness stack.",
+  "upstream_checkpoint": "PASS_DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "preparation_flow": [
+    "stack_readiness_audit",
+    "production_test_scorecard",
+    "failure_recovery_catalogue",
+    "gpu_readiness_checklist",
+    "real_production_test_ready"
+  ],
+  "production_test_integrity": "PASS",
+  "scorecard_ref": "datasets/production_test/production-test-scorecard.json",
+  "failure_library_ref": "datasets/production_test/production-test-failure-library.json",
+  "gpu_readiness_checklist_ref": "datasets/production_test/gpu-readiness-checklist.json"
+}

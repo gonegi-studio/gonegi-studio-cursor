@@ -1,0 +1,40 @@
+{
+  "spec_id": "app-dataset-synchronization-specification-v1",
+  "asset_type": "app_dataset_synchronization_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-EXPORT-REBUILD-001",
+  "module": "APP_DATASET_SYNCHRONIZATION_V1",
+  "purpose": "Synchronize completed engine stack into Image App and Video App datasets before GPU production testing.",
+  "upstream_checkpoint": "PASS_REAL_PRODUCTION_TEST_PREPARATION_V1",
+  "policy": {
+    "safe_create_only": true,
+    "existing_exports_read_only": true,
+    "gpu_execution": false,
+    "mutation_of_engine_stack": false
+  },
+  "sync_systems": [
+    "story_engine",
+    "prompt_compiler",
+    "generation_qa",
+    "prompt_evaluation",
+    "temporal_memory",
+    "dialogue_lipsync",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution"
+  ],
+  "sync_targets": [
+    "image_app",
+    "video_app"
+  ],
+  "sync_target_paths": {
+    "image_app": "exports/image_app/latest_v2",
+    "video_app": "exports/video_app/latest_v2"
+  },
+  "legacy_export_paths": {
+    "image_app": "exports/image_app/latest",
+    "video_app": "exports/video_app/latest"
+  },
+  "synchronization_integrity": "PASS"
+}

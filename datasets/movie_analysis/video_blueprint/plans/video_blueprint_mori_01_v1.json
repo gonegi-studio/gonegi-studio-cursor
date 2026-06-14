@@ -1,0 +1,213 @@
+{
+  "video_blueprint_id": "video_blueprint_mori_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-033-MOVIE_ANALYSIS_VIDEO_BLUEPRINT_DESIGN_V1",
+  "sequence_assembly_id": "sequence_assembly_mori_01_v1",
+  "source_video_id": "MORI_01",
+  "scene_count": 4,
+  "sequence_blocks": [
+    {
+      "block_id": "video_blueprint_mori_01_v1_sb_001",
+      "scene_index": 1,
+      "sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_001",
+        "sequence_assembly_mori_01_v1_sc_002",
+        "sequence_assembly_mori_01_v1_sc_003"
+      ],
+      "estimated_block_role": "estimated_block_open",
+      "blueprint_only": true
+    },
+    {
+      "block_id": "video_blueprint_mori_01_v1_sb_002",
+      "scene_index": 2,
+      "sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_004",
+        "sequence_assembly_mori_01_v1_sc_005",
+        "sequence_assembly_mori_01_v1_sc_006"
+      ],
+      "estimated_block_role": "estimated_block_develop",
+      "blueprint_only": true
+    },
+    {
+      "block_id": "video_blueprint_mori_01_v1_sb_003",
+      "scene_index": 3,
+      "sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_007",
+        "sequence_assembly_mori_01_v1_sc_008",
+        "sequence_assembly_mori_01_v1_sc_009"
+      ],
+      "estimated_block_role": "estimated_block_peak",
+      "blueprint_only": true
+    },
+    {
+      "block_id": "video_blueprint_mori_01_v1_sb_004",
+      "scene_index": 4,
+      "sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_010",
+        "sequence_assembly_mori_01_v1_sc_011",
+        "sequence_assembly_mori_01_v1_sc_012"
+      ],
+      "estimated_block_role": "estimated_block_resolve",
+      "blueprint_only": true
+    }
+  ],
+  "continuity_structure": [
+    {
+      "element_id": "video_blueprint_mori_01_v1_continuity_001",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_005",
+        "sequence_assembly_mori_01_v1_sc_006",
+        "sequence_assembly_mori_01_v1_sc_007",
+        "sequence_assembly_mori_01_v1_sc_008"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_continuity_layout",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_continuity_002",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_005"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_continuity_character_hold",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_continuity_003",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_006"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_continuity_character_bridge",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_continuity_004",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_007"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_continuity_environment_hold",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_continuity_005",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_008"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_continuity_environment_shift",
+      "blueprint_only": true
+    }
+  ],
+  "emotion_structure": [
+    {
+      "element_id": "video_blueprint_mori_01_v1_emotion_001",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_009"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_emotion_layout",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_emotion_002",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_009"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_emotion_emotion_release",
+      "blueprint_only": true
+    }
+  ],
+  "camera_structure": [
+    {
+      "element_id": "video_blueprint_mori_01_v1_camera_001",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_001",
+        "sequence_assembly_mori_01_v1_sc_002",
+        "sequence_assembly_mori_01_v1_sc_003",
+        "sequence_assembly_mori_01_v1_sc_010",
+        "sequence_assembly_mori_01_v1_sc_011",
+        "sequence_assembly_mori_01_v1_sc_012"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_camera_layout",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_camera_002",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_001"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_camera_camera_bridge",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_camera_003",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_002"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_camera_camera_hold",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_camera_004",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_003"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_camera_camera_shift",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_camera_005",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_010"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_camera_camera_bridge",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_camera_006",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_011"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_camera_camera_hold",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_camera_007",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_012"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_camera_camera_shift",
+      "blueprint_only": true
+    }
+  ],
+  "transition_structure": [
+    {
+      "element_id": "video_blueprint_mori_01_v1_transition_001",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_004"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_transition_layout",
+      "blueprint_only": true
+    },
+    {
+      "element_id": "video_blueprint_mori_01_v1_transition_002",
+      "source_sequence_candidate_ids": [
+        "sequence_assembly_mori_01_v1_sc_004"
+      ],
+      "estimated_blueprint_value": "estimated_blueprint_transition_transition_cut",
+      "blueprint_only": true
+    }
+  ],
+  "runtime_preparation": {
+    "estimated_only": true,
+    "generates_sequence": false,
+    "generates_video": false,
+    "gpu_ready": false,
+    "purpose": "future_runtime_video_preparation"
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "video_generation": false,
+    "sequence_generation": false,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_call_allowed": false
+  },
+  "designed_at": "2026-06-05T23:34:00.389Z"
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/director_blend/director-grammar-blend.schema.json",
+  "title": "DirectorGrammarBlend",
+  "description": "Deterministic blend profile combining director grammars for PHASE-SOURCE-VIDEO-006",
+  "type": "object",
+  "required": [
+    "blend_id",
+    "phase",
+    "base_style_family",
+    "camera_family",
+    "lighting_family",
+    "blocking_family",
+    "emotion_family",
+    "motion_family",
+    "environment_family",
+    "priority_order",
+    "conflict_resolution",
+    "compatibility_score",
+    "source_grammar_refs",
+    "blended_grammar",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "blend_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-006-DIRECTOR_GRAMMAR_BLEND_CONTRACT_V1" },
+    "base_style_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+    "camera_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+    "lighting_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+    "blocking_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+    "emotion_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+    "motion_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+    "environment_family": { "type": "string", "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"] },
+    "priority_order": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "conflict_resolution": { "$ref": "#/$defs/conflict_resolution" },
+    "compatibility_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "source_grammar_refs": { "$ref": "#/$defs/source_grammar_refs" },
+    "blended_grammar": { "$ref": "#/$defs/blended_grammar" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "external_call_allowed"],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "grammar_block": {
+      "type": "object",
+      "required": ["summary", "patterns", "constraints", "source_family", "source_grammar_id"],
+      "properties": {
+        "summary": { "type": "string" },
+        "patterns": { "type": "array", "items": { "type": "string" } },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "source_family": { "type": "string" },
+        "source_grammar_id": { "type": "string" }
+      }
+    },
+    "source_grammar_refs": {
+      "type": "object",
+      "required": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"],
+      "properties": {
+        "GHIBLI": { "type": "string" },
+        "SHINKAI": { "type": "string" },
+        "LIVE_ACTION": { "type": "string" },
+        "MORI": { "type": "string" }
+      }
+    },
+    "blended_grammar": {
+      "type": "object",
+      "required": [
+        "visual_style",
+        "camera_grammar",
+        "lighting_grammar",
+        "blocking_grammar",
+        "emotion_grammar",
+        "motion_grammar",
+        "environment_grammar"
+      ],
+      "properties": {
+        "visual_style": { "$ref": "#/$defs/grammar_block" },
+        "camera_grammar": { "$ref": "#/$defs/grammar_block" },
+        "lighting_grammar": { "$ref": "#/$defs/grammar_block" },
+        "blocking_grammar": { "$ref": "#/$defs/grammar_block" },
+        "emotion_grammar": { "$ref": "#/$defs/grammar_block" },
+        "motion_grammar": { "$ref": "#/$defs/grammar_block" },
+        "environment_grammar": { "$ref": "#/$defs/grammar_block" }
+      }
+    },
+    "conflict_resolution": {
+      "type": "object",
+      "required": ["strategy", "resolved_conflicts", "unresolved_conflicts"],
+      "properties": {
+        "strategy": { "type": "string", "const": "contract_priority_wins" },
+        "resolved_conflicts": { "type": "integer", "minimum": 0 },
+        "unresolved_conflicts": { "type": "integer", "const": 0 },
+        "rules": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

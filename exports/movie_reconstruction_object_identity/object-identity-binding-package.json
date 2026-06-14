@@ -1,0 +1,1603 @@
+{
+  "package_id": "object-identity-binding-package-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-009",
+  "system_id": "OBJECT_IDENTITY_BINDING_V1",
+  "generated_at": "2026-06-13T23:12:09.987Z",
+  "object_reference_bank_binding": {
+    "binding_id": "Unique object reference bank binding record identifier.",
+    "object_id": "Canonical object identifier from reference bank.",
+    "reference_bank_id": "Reference bank slot identifier (obj_ref_NNN).",
+    "source_video_id": "Canonical numerical DNA source identifier.",
+    "identity_signature": "Hash of object identity anchors and identity_level from reference bank entry."
+  },
+  "object_anchor_binding": {
+    "binding_id": "Unique object anchor binding record identifier.",
+    "object_id": "Parent object identifier.",
+    "anchor_id": "Canonical object anchor label.",
+    "anchor_kind": "Anchor classification enum from object_anchor_format.",
+    "normalized_position": "Vec3 [x,y,z] in screen-normalized space.",
+    "importance": "Anchor persistence weight in [0,1]."
+  },
+  "object_memory_binding": {
+    "binding_id": "Unique object memory binding record identifier.",
+    "object_id": "Parent object identifier.",
+    "scene_id": "Scene identifier binding memory entry to spatial graph scene.",
+    "memory_signature": "Hash of object_anchors persisted across shots.",
+    "object_anchor_reuse": "Boolean flag indicating anchor reused from reference bank entry.",
+    "identity_level": "Identity lock enum: strict | medium | loose.",
+    "persistence_score": "Cross-shot object anchor stability score in [0,1]."
+  },
+  "object_traceability_binding": {
+    "binding_id": "Unique object traceability binding record identifier.",
+    "object_id": "Target object_id in reference bank.",
+    "source_video_id": "Canonical numerical DNA source identifier.",
+    "conditioning_map_ref": "Path to conditioning-map-export-bundle source entry.",
+    "object_spec_ref": "Path to OBJECT_REFERENCE_BANK_SPECIFICATION.json.",
+    "identity_embedding_ref": "Reserved IP-Adapter identity embedding path (metadata placeholder).",
+    "traceability_signature": "Deterministic hash binding all lineage fields."
+  },
+  "object_retrieval_binding": {
+    "binding_id": "Unique object retrieval binding record identifier.",
+    "object_id": "Target object identifier for retrieval.",
+    "strategy_id": "Retrieval strategy identifier (object_retrieval_v1).",
+    "primary_key": "Primary retrieval key field name.",
+    "fallback_keys": "Ordered fallback key fields for retrieval."
+  },
+  "object_variation_tolerance_binding": {
+    "binding_id": "Unique object variation tolerance binding record identifier.",
+    "object_id": "Target object identifier.",
+    "identity_level": "Identity lock enum: strict | medium | loose.",
+    "variation_tolerance": "Allowed identity drift score in [0,1].",
+    "lock_strength": "Derived IP-Adapter lock_strength = 1.0 - variation_tolerance."
+  },
+  "object_similarity_binding": {
+    "binding_id": "Unique object similarity binding record identifier.",
+    "object_id": "Target object identifier for similarity matching.",
+    "identity_signature": "Identity signature hash used for similarity comparison.",
+    "similarity_threshold": "Minimum score to treat objects as similar (not identical).",
+    "same_object_threshold": "Minimum score required for same-object identity lock.",
+    "matching_features": "Feature list used in similarity rank (anchor_kind, importance, identity_signature)."
+  },
+  "object_role_binding": {
+    "binding_id": "Unique object role binding record identifier.",
+    "object_id": "Target object identifier.",
+    "object_role": "Narrative role enum: hero_prop | background_furniture | scene_prop | environment_prop.",
+    "role_weight": "Narrative lock weight derived from object role priority.",
+    "narrative_lock": "Boolean flag indicating role requires narrative-preserving identity lock."
+  },
+  "object_binding_defined": true,
+  "similarity_matching_strategy": {
+    "strategy_id": "object_similarity_v1",
+    "primary_match": "exact object_id",
+    "secondary_match": "identity_signature hash equality",
+    "tertiary_match": "anchor_descriptors kind+importance cosine rank",
+    "similarity_threshold": 0.82,
+    "same_object_threshold": 0.97,
+    "note": "Similar Object != Same Object — scores below same_object_threshold must not be treated as identity lock."
+  },
+  "variation_tolerance_strategy": {
+    "strategy_id": "object_variation_tolerance_v1",
+    "strict_band": "[0, 0.10]",
+    "medium_band": "[0.10, 0.30]",
+    "loose_band": "[0.30, 1.0]",
+    "lock_strength_formula": "1.0 - variation_tolerance",
+    "note": "Variation Tolerance must be evaluated separately from identity — lock_strength derives from tolerance band, not similarity score."
+  },
+  "role_binding_strategy": {
+    "strategy_id": "object_role_v1",
+    "roles": [
+      "hero_prop",
+      "background_furniture",
+      "scene_prop",
+      "environment_prop"
+    ],
+    "role_priority": "hero_prop > scene_prop > environment_prop > background_furniture",
+    "note": "Object Role must be evaluated separately from similarity — role governs narrative lock weight, not visual match score."
+  },
+  "entries": [
+    {
+      "object_id": "suitcase_001",
+      "source_video_id": "TITANIC_02",
+      "source_group": "Titanic",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_suitcase_001",
+        "object_id": "suitcase_001",
+        "reference_bank_id": "obj_ref_001",
+        "source_video_id": "TITANIC_02",
+        "identity_signature": "identity_3e3e890b41c331f8"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_suitcase_001_suitcase_body_01",
+        "object_id": "suitcase_001",
+        "anchor_id": "suitcase_body_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.38,
+          0.72,
+          0.68
+        ],
+        "importance": 0.96
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_suitcase_001",
+        "object_id": "suitcase_001",
+        "scene_id": "scene_suitcase-001",
+        "memory_signature": "memory_93359f75f46982f1",
+        "object_anchor_reuse": true,
+        "identity_level": "strict",
+        "persistence_score": 0.94
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_suitcase_001_titanic_02",
+        "object_id": "suitcase_001",
+        "source_video_id": "TITANIC_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#TITANIC_02",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/suitcase_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_0ea16314d8eba725"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_suitcase_001",
+        "object_id": "suitcase_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_level": "strict",
+        "variation_tolerance": 0.05,
+        "lock_strength": 0.95
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_signature": "identity_3e3e890b41c331f8",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_suitcase_001",
+        "object_id": "suitcase_001",
+        "object_role": "hero_prop",
+        "role_weight": 0.95,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "chair_014",
+      "source_video_id": "TITANIC_02",
+      "source_group": "Titanic",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_chair_014",
+        "object_id": "chair_014",
+        "reference_bank_id": "obj_ref_002",
+        "source_video_id": "TITANIC_02",
+        "identity_signature": "identity_a6ccc0023fdd4af4"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_chair_014_deck_chair_01",
+        "object_id": "chair_014",
+        "anchor_id": "deck_chair_01",
+        "anchor_kind": "furniture",
+        "normalized_position": [
+          0.62,
+          0.78,
+          0.55
+        ],
+        "importance": 0.7
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_chair_014",
+        "object_id": "chair_014",
+        "scene_id": "scene_chair-014",
+        "memory_signature": "memory_2406f2defc1a6f8b",
+        "object_anchor_reuse": true,
+        "identity_level": "loose",
+        "persistence_score": 0.86
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_chair_014_titanic_02",
+        "object_id": "chair_014",
+        "source_video_id": "TITANIC_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#TITANIC_02",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/chair_014/identity_embedding.placeholder",
+        "traceability_signature": "trace_deb2678715277912"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_chair_014",
+        "object_id": "chair_014",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_chair_014",
+        "object_id": "chair_014",
+        "identity_level": "loose",
+        "variation_tolerance": 0.4,
+        "lock_strength": 0.6
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_chair_014",
+        "object_id": "chair_014",
+        "identity_signature": "identity_a6ccc0023fdd4af4",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_chair_014",
+        "object_id": "chair_014",
+        "object_role": "background_furniture",
+        "role_weight": 0.55,
+        "narrative_lock": false
+      }
+    },
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_01",
+      "source_group": "Spirited Away",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_01",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_c1ad3961dcbe37d1",
+        "object_anchor_reuse": true,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_01",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_01",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_ea01e8399a064780"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "wooden_crate_001",
+      "source_video_id": "MORI_01",
+      "source_group": "Mori",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "reference_bank_id": "obj_ref_004",
+        "source_video_id": "MORI_01",
+        "identity_signature": "identity_b9828c8d17c2d6d7"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_wooden_crate_001_forest_crate_01",
+        "object_id": "wooden_crate_001",
+        "anchor_id": "forest_crate_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.55,
+          0.82,
+          0.48
+        ],
+        "importance": 0.78
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "scene_id": "scene_wooden-crate-001",
+        "memory_signature": "memory_d753a12a79924ea1",
+        "object_anchor_reuse": true,
+        "identity_level": "medium",
+        "persistence_score": 0.88
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_wooden_crate_001_mori_01",
+        "object_id": "wooden_crate_001",
+        "source_video_id": "MORI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_01",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/wooden_crate_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_a01f1c4e224aa26e"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.25,
+        "lock_strength": 0.75
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_signature": "identity_b9828c8d17c2d6d7",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "object_role": "environment_prop",
+        "role_weight": 0.75,
+        "narrative_lock": false
+      }
+    }
+  ],
+  "source_bindings": [
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_01",
+      "source_group": "ghibli",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_01",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_c1ad3961dcbe37d1",
+        "object_anchor_reuse": true,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_01",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_01",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_ea01e8399a064780"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_02",
+      "source_group": "ghibli",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_02",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_d07d33f0a375a3b4",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_02",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_02",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_1bce9a2fb8414fa0"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_03",
+      "source_group": "ghibli",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_03",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_e0246ea2f0b092a5",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_03",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_03",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_03",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_f484bb27047bb58a"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_04",
+      "source_group": "ghibli",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_04",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_c6284ae73db14059",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_04",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_04",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_04",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_0d8024db60ba409c"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_05",
+      "source_group": "ghibli",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_05",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_f38cd351b61d71d7",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_05",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_05",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_05",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_cd0404c7a12c7eef"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_06",
+      "source_group": "ghibli",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_06",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_c7f646bed4649cc8",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_06",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_06",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_06",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_b21cb0efbea0afae"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "lantern_001",
+      "source_video_id": "GHIBLI_07",
+      "source_group": "ghibli",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_lantern_001",
+        "object_id": "lantern_001",
+        "reference_bank_id": "obj_ref_003",
+        "source_video_id": "GHIBLI_07",
+        "identity_signature": "identity_dec25bf3dbb2182c"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_lantern_001_lantern_hanging_01",
+        "object_id": "lantern_001",
+        "anchor_id": "lantern_hanging_01",
+        "anchor_kind": "prop",
+        "normalized_position": [
+          0.28,
+          0.35,
+          0.58
+        ],
+        "importance": 0.85
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_lantern_001",
+        "object_id": "lantern_001",
+        "scene_id": "scene_lantern-001",
+        "memory_signature": "memory_5c11d54de98c6df4",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.91
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_lantern_001_ghibli_07",
+        "object_id": "lantern_001",
+        "source_video_id": "GHIBLI_07",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_07",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/lantern_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_86ae99a29d25fd25"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_lantern_001",
+        "object_id": "lantern_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_lantern_001",
+        "object_id": "lantern_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.2,
+        "lock_strength": 0.8
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_lantern_001",
+        "object_id": "lantern_001",
+        "identity_signature": "identity_dec25bf3dbb2182c",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_lantern_001",
+        "object_id": "lantern_001",
+        "object_role": "scene_prop",
+        "role_weight": 0.82,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "suitcase_001",
+      "source_video_id": "SHINKAI_01",
+      "source_group": "shinkai",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_suitcase_001",
+        "object_id": "suitcase_001",
+        "reference_bank_id": "obj_ref_001",
+        "source_video_id": "SHINKAI_01",
+        "identity_signature": "identity_3e3e890b41c331f8"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_suitcase_001_suitcase_body_01",
+        "object_id": "suitcase_001",
+        "anchor_id": "suitcase_body_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.38,
+          0.72,
+          0.68
+        ],
+        "importance": 0.96
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_suitcase_001",
+        "object_id": "suitcase_001",
+        "scene_id": "scene_suitcase-001",
+        "memory_signature": "memory_ad98c34aad090c98",
+        "object_anchor_reuse": false,
+        "identity_level": "strict",
+        "persistence_score": 0.94
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_suitcase_001_shinkai_01",
+        "object_id": "suitcase_001",
+        "source_video_id": "SHINKAI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#SHINKAI_01",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/suitcase_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_b7ff25ae5c5fa132"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_suitcase_001",
+        "object_id": "suitcase_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_level": "strict",
+        "variation_tolerance": 0.05,
+        "lock_strength": 0.95
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_signature": "identity_3e3e890b41c331f8",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_suitcase_001",
+        "object_id": "suitcase_001",
+        "object_role": "hero_prop",
+        "role_weight": 0.95,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "suitcase_001",
+      "source_video_id": "SHINKAI_02",
+      "source_group": "shinkai",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_suitcase_001",
+        "object_id": "suitcase_001",
+        "reference_bank_id": "obj_ref_001",
+        "source_video_id": "SHINKAI_02",
+        "identity_signature": "identity_3e3e890b41c331f8"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_suitcase_001_suitcase_body_01",
+        "object_id": "suitcase_001",
+        "anchor_id": "suitcase_body_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.38,
+          0.72,
+          0.68
+        ],
+        "importance": 0.96
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_suitcase_001",
+        "object_id": "suitcase_001",
+        "scene_id": "scene_suitcase-001",
+        "memory_signature": "memory_9824f7032ade9122",
+        "object_anchor_reuse": false,
+        "identity_level": "strict",
+        "persistence_score": 0.94
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_suitcase_001_shinkai_02",
+        "object_id": "suitcase_001",
+        "source_video_id": "SHINKAI_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#SHINKAI_02",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/suitcase_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_06970fc919543424"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_suitcase_001",
+        "object_id": "suitcase_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_level": "strict",
+        "variation_tolerance": 0.05,
+        "lock_strength": 0.95
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_signature": "identity_3e3e890b41c331f8",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_suitcase_001",
+        "object_id": "suitcase_001",
+        "object_role": "hero_prop",
+        "role_weight": 0.95,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "suitcase_001",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_group": "live_action",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_suitcase_001",
+        "object_id": "suitcase_001",
+        "reference_bank_id": "obj_ref_001",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "identity_signature": "identity_3e3e890b41c331f8"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_suitcase_001_suitcase_body_01",
+        "object_id": "suitcase_001",
+        "anchor_id": "suitcase_body_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.38,
+          0.72,
+          0.68
+        ],
+        "importance": 0.96
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_suitcase_001",
+        "object_id": "suitcase_001",
+        "scene_id": "scene_suitcase-001",
+        "memory_signature": "memory_02e582db4913045f",
+        "object_anchor_reuse": false,
+        "identity_level": "strict",
+        "persistence_score": 0.94
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_suitcase_001_little_women_01",
+        "object_id": "suitcase_001",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#LITTLE_WOMEN_01",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/suitcase_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_c003d1717ca12a26"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_suitcase_001",
+        "object_id": "suitcase_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_level": "strict",
+        "variation_tolerance": 0.05,
+        "lock_strength": 0.95
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_suitcase_001",
+        "object_id": "suitcase_001",
+        "identity_signature": "identity_3e3e890b41c331f8",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_suitcase_001",
+        "object_id": "suitcase_001",
+        "object_role": "hero_prop",
+        "role_weight": 0.95,
+        "narrative_lock": true
+      }
+    },
+    {
+      "object_id": "wooden_crate_001",
+      "source_video_id": "MORI_01",
+      "source_group": "mori",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "reference_bank_id": "obj_ref_004",
+        "source_video_id": "MORI_01",
+        "identity_signature": "identity_b9828c8d17c2d6d7"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_wooden_crate_001_forest_crate_01",
+        "object_id": "wooden_crate_001",
+        "anchor_id": "forest_crate_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.55,
+          0.82,
+          0.48
+        ],
+        "importance": 0.78
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "scene_id": "scene_wooden-crate-001",
+        "memory_signature": "memory_d753a12a79924ea1",
+        "object_anchor_reuse": true,
+        "identity_level": "medium",
+        "persistence_score": 0.88
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_wooden_crate_001_mori_01",
+        "object_id": "wooden_crate_001",
+        "source_video_id": "MORI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_01",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/wooden_crate_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_a01f1c4e224aa26e"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.25,
+        "lock_strength": 0.75
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_signature": "identity_b9828c8d17c2d6d7",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "object_role": "environment_prop",
+        "role_weight": 0.75,
+        "narrative_lock": false
+      }
+    },
+    {
+      "object_id": "wooden_crate_001",
+      "source_video_id": "MORI_02",
+      "source_group": "mori",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "reference_bank_id": "obj_ref_004",
+        "source_video_id": "MORI_02",
+        "identity_signature": "identity_b9828c8d17c2d6d7"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_wooden_crate_001_forest_crate_01",
+        "object_id": "wooden_crate_001",
+        "anchor_id": "forest_crate_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.55,
+          0.82,
+          0.48
+        ],
+        "importance": 0.78
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "scene_id": "scene_wooden-crate-001",
+        "memory_signature": "memory_0fc463f3e054bc71",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.88
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_wooden_crate_001_mori_02",
+        "object_id": "wooden_crate_001",
+        "source_video_id": "MORI_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_02",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/wooden_crate_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_ace72e3172ee1457"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.25,
+        "lock_strength": 0.75
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_signature": "identity_b9828c8d17c2d6d7",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "object_role": "environment_prop",
+        "role_weight": 0.75,
+        "narrative_lock": false
+      }
+    },
+    {
+      "object_id": "wooden_crate_001",
+      "source_video_id": "MORI_03",
+      "source_group": "mori",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "reference_bank_id": "obj_ref_004",
+        "source_video_id": "MORI_03",
+        "identity_signature": "identity_b9828c8d17c2d6d7"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_wooden_crate_001_forest_crate_01",
+        "object_id": "wooden_crate_001",
+        "anchor_id": "forest_crate_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.55,
+          0.82,
+          0.48
+        ],
+        "importance": 0.78
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "scene_id": "scene_wooden-crate-001",
+        "memory_signature": "memory_0af549843bba068f",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.88
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_wooden_crate_001_mori_03",
+        "object_id": "wooden_crate_001",
+        "source_video_id": "MORI_03",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_03",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/wooden_crate_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_53df30c9975c0f1e"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.25,
+        "lock_strength": 0.75
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_signature": "identity_b9828c8d17c2d6d7",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "object_role": "environment_prop",
+        "role_weight": 0.75,
+        "narrative_lock": false
+      }
+    },
+    {
+      "object_id": "wooden_crate_001",
+      "source_video_id": "MORI_04",
+      "source_group": "mori",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "reference_bank_id": "obj_ref_004",
+        "source_video_id": "MORI_04",
+        "identity_signature": "identity_b9828c8d17c2d6d7"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_wooden_crate_001_forest_crate_01",
+        "object_id": "wooden_crate_001",
+        "anchor_id": "forest_crate_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.55,
+          0.82,
+          0.48
+        ],
+        "importance": 0.78
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "scene_id": "scene_wooden-crate-001",
+        "memory_signature": "memory_ed51a7050014ffdf",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.88
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_wooden_crate_001_mori_04",
+        "object_id": "wooden_crate_001",
+        "source_video_id": "MORI_04",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_04",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/wooden_crate_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_ee417dd75bc074a6"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.25,
+        "lock_strength": 0.75
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_signature": "identity_b9828c8d17c2d6d7",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "object_role": "environment_prop",
+        "role_weight": 0.75,
+        "narrative_lock": false
+      }
+    },
+    {
+      "object_id": "wooden_crate_001",
+      "source_video_id": "MORI_05",
+      "source_group": "mori",
+      "object_reference_bank_binding": {
+        "binding_id": "orb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "reference_bank_id": "obj_ref_004",
+        "source_video_id": "MORI_05",
+        "identity_signature": "identity_b9828c8d17c2d6d7"
+      },
+      "object_anchor_binding": {
+        "binding_id": "oab_wooden_crate_001_forest_crate_01",
+        "object_id": "wooden_crate_001",
+        "anchor_id": "forest_crate_01",
+        "anchor_kind": "container",
+        "normalized_position": [
+          0.55,
+          0.82,
+          0.48
+        ],
+        "importance": 0.78
+      },
+      "object_memory_binding": {
+        "binding_id": "omb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "scene_id": "scene_wooden-crate-001",
+        "memory_signature": "memory_c4f383ade2ef25a3",
+        "object_anchor_reuse": false,
+        "identity_level": "medium",
+        "persistence_score": 0.88
+      },
+      "object_traceability_binding": {
+        "binding_id": "otb_wooden_crate_001_mori_05",
+        "object_id": "wooden_crate_001",
+        "source_video_id": "MORI_05",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_05",
+        "object_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+        "identity_embedding_ref": "exports/movie_reconstruction_object_identity/embeddings/wooden_crate_001/identity_embedding.placeholder",
+        "traceability_signature": "trace_50b3ac47c088435b"
+      },
+      "object_retrieval_binding": {
+        "binding_id": "orv_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "strategy_id": "object_retrieval_v1",
+        "primary_key": "object_id",
+        "fallback_keys": [
+          "identity_signature",
+          "source_video_id",
+          "identity_level"
+        ]
+      },
+      "object_variation_tolerance_binding": {
+        "binding_id": "ovt_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_level": "medium",
+        "variation_tolerance": 0.25,
+        "lock_strength": 0.75
+      },
+      "object_similarity_binding": {
+        "binding_id": "osb_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "identity_signature": "identity_b9828c8d17c2d6d7",
+        "similarity_threshold": 0.82,
+        "same_object_threshold": 0.97,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "identity_signature"
+        ]
+      },
+      "object_role_binding": {
+        "binding_id": "orl_wooden_crate_001",
+        "object_id": "wooden_crate_001",
+        "object_role": "environment_prop",
+        "role_weight": 0.75,
+        "narrative_lock": false
+      }
+    }
+  ],
+  "traceability_coverage": 1
+}

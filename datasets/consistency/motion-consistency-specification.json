@@ -1,0 +1,29 @@
+{
+  "motion_spec_id": "motion-consistency-specification-v1",
+  "asset_type": "motion_consistency_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-002",
+  "purpose": "Motion continuity validation dimensions for generated video sequences.",
+  "motion_dimension_count": 3,
+  "motion_dimensions": [
+    "motion_continuity",
+    "trajectory_continuity",
+    "action_continuity"
+  ],
+  "dimension_definitions": {
+    "motion_continuity": {
+      "description": "Subject and camera motion vectors remain physically plausible and temporally smooth across adjacent frames.",
+      "evaluation_signals": ["optical_flow_magnitude", "motion_vector_jerk", "frame_delta_coherence"]
+    },
+    "trajectory_continuity": {
+      "description": "Character and object trajectories maintain spatial coherence without unexplained teleportation or path breaks.",
+      "evaluation_signals": ["trajectory_smoothness", "position_delta_bounds", "occlusion_recovery"]
+    },
+    "action_continuity": {
+      "description": "Performed actions progress logically without skipped phases or reversed gesture states.",
+      "evaluation_signals": ["pose_sequence_coherence", "action_phase_alignment", "gesture_state_machine"]
+    }
+  },
+  "video_consistency_spec_ref": "datasets/consistency/video-consistency-specification.json",
+  "linked_identity_dimension": "motion_identity"
+}

@@ -1,0 +1,43 @@
+{
+  "spec_id": "video-consistency-specification-v1",
+  "asset_type": "video_consistency_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-002",
+  "purpose": "Temporal video identity consistency validation extending image consistency to motion and transition dimensions.",
+  "upstream_checkpoint": "PASS_IMAGE_CONSISTENCY_VALIDATION_SYSTEM_V1",
+  "image_consistency_spec_ref": "datasets/consistency/image-consistency-specification.json",
+  "identity_dimension_count": 10,
+  "identity_dimensions": [
+    "character_identity",
+    "location_identity",
+    "lighting_identity",
+    "costume_identity",
+    "prop_identity",
+    "style_identity",
+    "composition_identity",
+    "camera_identity",
+    "motion_identity",
+    "transition_identity"
+  ],
+  "inherited_image_dimensions": [
+    "character_identity",
+    "location_identity",
+    "lighting_identity",
+    "costume_identity",
+    "prop_identity",
+    "style_identity",
+    "composition_identity",
+    "camera_identity"
+  ],
+  "video_extension_dimensions": [
+    "motion_identity",
+    "transition_identity"
+  ],
+  "evaluation_scope": {
+    "generation_type": "video",
+    "validation_mode": "sequence_identity_consistency",
+    "motion_spec_ref": "datasets/consistency/motion-consistency-specification.json",
+    "transition_spec_ref": "datasets/consistency/transition-consistency-specification.json",
+    "sequence_spec_ref": "datasets/consistency/video-sequence-specification.json"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "rules_id": "titanic-world-translation-rules-v3",
+  "phase": "PHASE-TITANIC-RECONSTRUCTION-DATASET-001",
+  "system_id": "TITANIC_MOVIE_RECONSTRUCTION_DATASET_V3",
+  "philosophy": {
+    "movie_dataset_is_scene_grammar": true,
+    "movie_dataset_is_not_world_dataset": true,
+    "gonegi_world_permanent": true,
+    "movie_dataset_swappable": true
+  },
+  "generation_model": {
+    "layers": [
+      {
+        "layer_id": "gonegi_world_layer",
+        "role": "fixed",
+        "dominance_weight": 0.72
+      },
+      {
+        "layer_id": "movie_reconstruction_layer",
+        "role": "swappable",
+        "dominance_weight": 0.28
+      }
+    ],
+    "final_output": "gonegi_world_layer * movie_reconstruction_layer"
+  },
+  "gonegi_world_controls": [
+    "architecture",
+    "materials",
+    "culture",
+    "color_palette",
+    "character_identity",
+    "location_identity",
+    "lighting_identity",
+    "living_world_identity"
+  ],
+  "movie_dataset_controls": [
+    "camera_language",
+    "scene_geometry",
+    "blocking",
+    "composition",
+    "spatial_depth",
+    "prop_relationships",
+    "semantic_anchors",
+    "transition_grammar",
+    "emotion_staging"
+  ],
+  "movie_dataset_forbidden_controls": [
+    "architecture_style",
+    "world_culture",
+    "character_appearance",
+    "environment_identity",
+    "master_color_identity"
+  ],
+  "world_identity_lock": {
+    "rule_id": "WORLD_IDENTITY_LOCK",
+    "gonegi_world_dominance": 0.72,
+    "movie_dataset_dominance": 0.28,
+    "gonegi_world_dominance_minimum": 0.7,
+    "movie_dataset_dominance_maximum": 0.3,
+    "status": "PASS"
+  },
+  "world_translation_example": {
+    "input_scene": "Titanic Bow Scene",
+    "movie_dataset_provides": [
+      "camera",
+      "blocking",
+      "composition",
+      "semantic_meaning",
+      "depth",
+      "prop_positions"
+    ],
+    "gonegi_provides": [
+      "mediterranean_ship_design",
+      "mediterranean_materials",
+      "mediterranean_color_palette",
+      "gonegi_characters",
+      "gonegi_culture"
+    ],
+    "required_output": "Titanic Scene Reconstructed Inside Gonegi World",
+    "forbidden_outputs": [
+      "Titanic Copy",
+      "Generic Harbor Scene"
+    ]
+  },
+  "swappability_success_definition": {
+    "swappable_datasets": [
+      "Titanic Dataset",
+      "Little Women Dataset",
+      "Shinkai Dataset",
+      "Ghibli Dataset"
+    ],
+    "must_change_with_swap": [
+      "camera",
+      "blocking",
+      "composition",
+      "semantic_meaning"
+    ],
+    "must_preserve_with_swap": [
+      "Gonegi World",
+      "character_identity",
+      "Mediterranean identity",
+      "living_world_identity"
+    ]
+  },
+  "translation_contract_ref": "datasets/world_translation/gonegi-world-translation-contract.json"
+}

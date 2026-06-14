@@ -1,0 +1,40 @@
+{
+  "manifest_id": "movie-analysis-dna-release-manifest-v1",
+  "phase": "PHASE-SOURCE-VIDEO-062-MOVIE_ANALYSIS_DNA_RELEASE_PACKAGE_V1",
+  "generated_at": "2026-06-06T04:05:47.688Z",
+  "release_package_path": "exports/movie_analysis_dna_release/movie-analysis-dna-release-package.json",
+  "release_report_path": "exports/movie_analysis_dna_release/movie-analysis-dna-release-report.json",
+  "dna_package_path": "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+  "image_bridge_path": "exports/movie_analysis_dna_consumer_bridge/movie-analysis-dna-image-bridge.json",
+  "video_bridge_path": "exports/movie_analysis_dna_consumer_bridge/movie-analysis-dna-video-bridge.json",
+  "import_test_report_path": "reports/movie-analysis-dna-consumer-import-test-report.json",
+  "source_count": 4,
+  "adapter_count": 24,
+  "assets": [
+    {
+      "asset_id": "dna_package",
+      "path": "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+      "role": "deployable_dna_package"
+    },
+    {
+      "asset_id": "image_bridge",
+      "path": "exports/movie_analysis_dna_consumer_bridge/movie-analysis-dna-image-bridge.json",
+      "role": "image_app_dna_bridge"
+    },
+    {
+      "asset_id": "video_bridge",
+      "path": "exports/movie_analysis_dna_consumer_bridge/movie-analysis-dna-video-bridge.json",
+      "role": "video_app_dna_bridge"
+    },
+    {
+      "asset_id": "import_test_report",
+      "path": "reports/movie-analysis-dna-consumer-import-test-report.json",
+      "role": "consumer_import_test_verdict"
+    },
+    {
+      "asset_id": "dna_release_package",
+      "path": "exports/movie_analysis_dna_release/movie-analysis-dna-release-package.json",
+      "role": "final_dna_release_package"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "adapter_id": "movie-dataset-export-adapter-v1",
+  "phase": "PHASE-MOVIE-DATASET-FACTORY-001",
+  "system_id": "MOVIE_DATASET_FACTORY_SYSTEM_V1",
+  "pipeline": [
+    "factory_output",
+    "exports/movie_datasets",
+    "app_consumption_ready"
+  ],
+  "export_root": "exports/movie_datasets",
+  "factory_registry_ref": "datasets/movie_factory/movie-dataset-registry.json",
+  "runtime_composition_ref": "exports/movie_datasets/movie-dataset-runtime-composition.json",
+  "export_targets": {
+    "movie_dataset_registry": "exports/movie_datasets/movie-dataset-registry.json",
+    "per_movie_bundles": "exports/movie_datasets/{movie_id}/{movie_id}_movie_reconstruction_bundle.json"
+  },
+  "app_consumption": {
+    "image_app": "exports/image_app/latest_v5",
+    "video_app": "exports/video_app/latest_v5",
+    "runtime_composition": true,
+    "movie_dataset_registry_field": "movie_dataset_registry"
+  },
+  "sync_policy": {
+    "preserve_existing_export_registry": true,
+    "add_factory_provenance": true,
+    "latest_v5_embed_forbidden": true
+  },
+  "production_ready_movies": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-keyframe-reconstruction.schema.json",
+  "title": "MovieKeyframeReconstructionPlan",
+  "description": "Design-level keyframe reconstruction plan derived from trajectory replay graphs for PHASE-MOVIE-REPLICA-004 image generation readiness",
+  "type": "object",
+  "required": [
+    "plan_id",
+    "movie_id",
+    "scene_id",
+    "keyframe_id",
+    "timestamp",
+    "camera_state",
+    "character_state",
+    "environment_state",
+    "reconstruction_priority",
+    "identity_replacement_map"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "plan_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "keyframe_id": { "type": "string", "minLength": 1 },
+    "replay_id": { "type": "string" },
+    "timestamp": { "type": "number", "minimum": 0 },
+    "camera_state": { "$ref": "#/$defs/camera_state" },
+    "character_state": { "$ref": "#/$defs/character_state" },
+    "environment_state": { "$ref": "#/$defs/environment_state" },
+    "reconstruction_priority": { "type": "integer", "minimum": 1 },
+    "identity_replacement_map": { "$ref": "#/$defs/identity_replacement_map" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    },
+    "camera_state": {
+      "type": "object",
+      "required": ["camera_id", "movement_type", "shot_type"],
+      "properties": {
+        "camera_id": { "type": "string" },
+        "movement_type": { "type": "string" },
+        "shot_type": { "type": "string" },
+        "start_position": { "type": ["array", "null"] },
+        "end_position": { "type": ["array", "null"] },
+        "timeline_ref": { "type": "string" },
+        "keyframe_role": { "type": "string" }
+      }
+    },
+    "character_state": {
+      "type": "object",
+      "required": ["character_count", "characters"],
+      "properties": {
+        "character_count": { "type": "integer", "minimum": 1 },
+        "characters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/character_entry" },
+          "minItems": 1
+        }
+      }
+    },
+    "character_entry": {
+      "type": "object",
+      "required": ["character_id", "motion_state"],
+      "properties": {
+        "character_id": { "type": "string" },
+        "motion_state": { "type": "string" },
+        "interaction_motion": { "type": "string" },
+        "position": { "type": ["array", "null"] },
+        "replacement_ready": { "type": "boolean" }
+      }
+    },
+    "environment_state": {
+      "type": "object",
+      "required": ["scene_id", "structure_control"],
+      "properties": {
+        "scene_id": { "type": "string" },
+        "environment_type": { "type": "string" },
+        "prop_count": { "type": "integer", "minimum": 0 },
+        "structure_control": { "type": "string" },
+        "appearance_control": { "type": "string" }
+      }
+    },
+    "identity_replacement_map": {
+      "type": "object",
+      "required": ["world_identity", "contract_ref", "mapping_count", "mappings"],
+      "properties": {
+        "world_identity": { "type": "string" },
+        "contract_ref": { "type": "string" },
+        "mapping_count": { "type": "integer", "minimum": 1 },
+        "mappings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/replacement_mapping" },
+          "minItems": 1
+        },
+        "replacement_ready": { "type": "boolean" }
+      }
+    },
+    "replacement_mapping": {
+      "type": "object",
+      "required": ["source_character_id", "target_character_id"],
+      "properties": {
+        "source_character_id": { "type": "string" },
+        "target_character_id": { "type": "string" },
+        "target_character_name": { "type": "string" },
+        "replacement_priority": { "type": "integer" }
+      }
+    }
+  }
+}

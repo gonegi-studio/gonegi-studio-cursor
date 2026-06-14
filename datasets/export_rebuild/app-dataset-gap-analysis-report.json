@@ -1,0 +1,28 @@
+{
+  "report_id": "app-dataset-gap-analysis-report-v1",
+  "phase": "PHASE-EXPORT-REBUILD-002",
+  "generated_at": "2026-06-09T02:57:54.496Z",
+  "compare_baseline": "exports/image_app/latest_v2",
+  "compare_target": "exports/image_app/latest_v3",
+  "missing_dna": [
+    "character_dna_bundle",
+    "location_dna_bundle",
+    "style_dna_bundle"
+  ],
+  "missing_analysis": [
+    "movie_analysis_dna_integration"
+  ],
+  "missing_story_assets": [
+    "story_blueprint_bundle"
+  ],
+  "missing_generation_assets": [
+    "prompt_generation_bundle"
+  ],
+  "missing_video_assets": [
+    "video_generation_bundle"
+  ],
+  "gap_analysis_integrity": "PASS",
+  "missing_dependencies": [],
+  "v2_was_manifest_only": true,
+  "v3_is_production_dataset": true
+}

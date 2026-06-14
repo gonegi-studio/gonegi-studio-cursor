@@ -1,0 +1,1046 @@
+{
+  "asset_type": "lighting_dna_library",
+  "asset_version": "v1",
+  "library_id": "lighting-dna-library-v1",
+  "phase": "PHASE-LTD-002",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "world_type": "early-1900s mediterranean harbor town",
+  "purpose": "Reference Lighting DNA to reduce lighting drift and color drift across Music Drama image sequences. No scenarios, prompts, or runtime generation.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_location_dna": false,
+    "modifies_mdg": false,
+    "modifies_adapters": false
+  },
+  "read_only_sources": {
+    "rkb_002": "datasets/render_feedback/RKB-002.json",
+    "location_dna_index": "datasets/location/location-dna-index-v1.json",
+    "time_library": "datasets/time/time-setting-library-v1.json"
+  },
+  "section_1_lighting_clusters": {
+    "target_range": {
+      "minimum": 30,
+      "recommended_max": 50
+    },
+    "lighting_count": 43,
+    "cluster_count": 43
+  },
+  "section_4_location_pairing": {
+    "pairing_policy": "When a shot uses location_id, bind default_lighting_id from pairings unless narrative time explicitly advances.",
+    "pairings": [
+      {
+        "location_id": "gonegi_bedroom_01",
+        "lighting_id": "sunrise_bakery_bedroom",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_window_corner_01",
+        "lighting_id": "sunrise_bakery_window",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_window_corner_01",
+        "lighting_id": "blue_hour_window_corner",
+        "pairing_role": "alternate_ep01_bridge"
+      },
+      {
+        "location_id": "family_bakery_kitchen_01",
+        "lighting_id": "morning_bakery_kitchen",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "family_bakery_kitchen_01",
+        "lighting_id": "night_bakery",
+        "pairing_role": "alternate_night"
+      },
+      {
+        "location_id": "harbor_main_dock_01",
+        "lighting_id": "morning_harbor_dock",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_stairway_01",
+        "lighting_id": "morning_harbor_street",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_harbor_road_01",
+        "lighting_id": "morning_harbor_street",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "village_market_01",
+        "lighting_id": "late_morning_market",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_square_01",
+        "lighting_id": "late_morning_market",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "olive_hill_lunch_spot_01",
+        "lighting_id": "afternoon_olive_hill",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "olive_hill_01",
+        "lighting_id": "afternoon_olive_hill",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "coastal_path_01",
+        "lighting_id": "afternoon_coastal_path",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "stone_path_to_harbor_01",
+        "lighting_id": "afternoon_coastal_path",
+        "pairing_role": "secondary"
+      },
+      {
+        "location_id": "harbor_watch_point_01",
+        "lighting_id": "golden_hour_harbor",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "cliff_overlook_01",
+        "lighting_id": "golden_hour_cliff",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "olive_hill_lunch_spot_01",
+        "lighting_id": "golden_hour_wind_grass",
+        "pairing_role": "alternate_ep01_chorus"
+      },
+      {
+        "location_id": "wind_grass_field_01",
+        "lighting_id": "golden_hour_wind_grass",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "olive_hill_01",
+        "lighting_id": "sunset_hill",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_watch_point_01",
+        "lighting_id": "sunset_sea_horizon",
+        "pairing_role": "alternate_sunset"
+      },
+      {
+        "location_id": "village_main_street_01",
+        "lighting_id": "early_evening_village",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_evening_lantern_alley_01",
+        "lighting_id": "evening_lantern_alley",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "family_bakery_front_01",
+        "lighting_id": "night_bakery",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_rooftop_01",
+        "lighting_id": "deep_night_rooftop",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_fish_market_01",
+        "lighting_id": "morning_fish_market",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_boatyard_01",
+        "lighting_id": "afternoon_harbor_boatyard",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_alley_01",
+        "lighting_id": "afternoon_village_alley",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_bakery_lane_01",
+        "lighting_id": "golden_hour_bakery_lane",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "gonegi_rooftop_01",
+        "lighting_id": "golden_hour_rooftop_gonegi",
+        "pairing_role": "alternate_golden"
+      },
+      {
+        "location_id": "harbor_small_pier_01",
+        "lighting_id": "blue_hour_harbor_pier",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "harbor_seawall_01",
+        "lighting_id": "after_rain_harbor_seawall",
+        "pairing_role": "primary"
+      },
+      {
+        "location_id": "village_square_01",
+        "lighting_id": "light_rain_village_square",
+        "pairing_role": "alternate_weather"
+      },
+      {
+        "location_id": "harbor_main_dock_01",
+        "lighting_id": "sea_fog_harbor_dock",
+        "pairing_role": "alternate_weather"
+      },
+      {
+        "location_id": "dana_garden_01",
+        "lighting_id": "dana_garden_morning",
+        "pairing_role": "primary_post_ep01"
+      },
+      {
+        "location_id": "shared_harbor_meeting_bench_01",
+        "lighting_id": "reunion_golden_bench",
+        "pairing_role": "primary_future"
+      }
+    ],
+    "pairing_count": 35,
+    "examples": [
+      {
+        "location_id": "gonegi_bedroom_01",
+        "lighting_id": "sunrise_bakery_bedroom"
+      },
+      {
+        "location_id": "harbor_main_dock_01",
+        "lighting_id": "morning_harbor_dock"
+      },
+      {
+        "location_id": "olive_hill_lunch_spot_01",
+        "lighting_id": "afternoon_olive_hill"
+      }
+    ]
+  },
+  "section_5_rkb_002_integration": {
+    "test_id": "RKB-002",
+    "findings_addressed": {
+      "lighting_drift": {
+        "detected": true,
+        "mitigation": "Reuse identical lighting_id color bundle (key, shadow, sky, ambient) for all shots in same time cluster."
+      },
+      "time_inconsistency": {
+        "detected": true,
+        "mitigation": "Lock time_period and sun_angle per sequence slot; do not advance without explicit narrative beat."
+      },
+      "scene_color_mutation": {
+        "detected": true,
+        "mitigation": "Apply contrast_profile and reflection_behavior consistently per lighting_id across same-place shots."
+      },
+      "same_time_multi_shot_requirement": {
+        "required": true,
+        "policy": "Consecutive shots sharing narrative time must use the same lighting_id and paired location default."
+      }
+    },
+    "source": "datasets/render_feedback/RKB-002.json#section_3_failure_findings"
+  },
+  "lighting_profiles": [
+    {
+      "lighting_id": "sunrise_bakery_bedroom",
+      "cluster_label": "Sunrise Bakery Bedroom",
+      "time_period": "sunrise",
+      "location_affinity": [
+        "gonegi_bedroom_01",
+        "family_bakery_dining_01"
+      ],
+      "sun_angle": "low_east_horizon",
+      "key_light_color": "#FFD1DC",
+      "shadow_color": "#E8C4A8",
+      "sky_color": "#B8D4E8",
+      "ambient_color": "#FFF5EE",
+      "contrast_profile": "soft_low",
+      "reflection_behavior": "diffuse_pink_fill_through_window",
+      "atmosphere": "soft pink morning mist with gentle golden edge on whitewash",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "sunrise_bakery_window",
+      "cluster_label": "Sunrise Bakery Window",
+      "time_period": "sunrise",
+      "location_affinity": [
+        "gonegi_window_corner_01",
+        "family_bakery_front_01"
+      ],
+      "sun_angle": "low_east_side",
+      "key_light_color": "#FFE4C4",
+      "shadow_color": "#C9B896",
+      "sky_color": "#A8C8E0",
+      "ambient_color": "#FFF8F0",
+      "contrast_profile": "soft_medium",
+      "reflection_behavior": "window_sill_glow_pool_interior",
+      "atmosphere": "first light through open shutter with cool exterior haze",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "morning_bakery_kitchen",
+      "cluster_label": "Morning Bakery Kitchen",
+      "time_period": "early_morning",
+      "location_affinity": [
+        "family_bakery_kitchen_01",
+        "family_bakery_storage_01"
+      ],
+      "sun_angle": "moderate_east",
+      "key_light_color": "#FFF8DC",
+      "shadow_color": "#4A3728",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#F5E6D3",
+      "contrast_profile": "warm_medium",
+      "reflection_behavior": "oven_amber_bounce_on_flour_surfaces",
+      "atmosphere": "warm kitchen fill with oven glow competing soft daylight",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "morning_harbor_dock",
+      "cluster_label": "Morning Harbor Dock",
+      "time_period": "morning",
+      "location_affinity": [
+        "harbor_main_dock_01",
+        "harbor_mooring_post_row_01"
+      ],
+      "sun_angle": "moderate_east_slightly_behind_camera",
+      "key_light_color": "#FDF5E6",
+      "shadow_color": "#2E5894",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#E8F4FC",
+      "contrast_profile": "clear_medium",
+      "reflection_behavior": "water_specular_blue_on_wet_planks",
+      "atmosphere": "bright harbor morning with blue sea shimmer on wood",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "morning_harbor_street",
+      "cluster_label": "Morning Harbor Street",
+      "time_period": "morning",
+      "location_affinity": [
+        "harbor_stairway_01",
+        "village_harbor_road_01"
+      ],
+      "sun_angle": "moderate_east_raking",
+      "key_light_color": "#FFFFFF",
+      "shadow_color": "#1A1A2E",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#F0F4F8",
+      "contrast_profile": "crisp_medium",
+      "reflection_behavior": "stone_step_highlight_with_cool_shadow_fill",
+      "atmosphere": "crisp descending light from village toward water",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "late_morning_market",
+      "cluster_label": "Late Morning Market",
+      "time_period": "late_morning",
+      "location_affinity": [
+        "village_market_01",
+        "village_square_01",
+        "harbor_fish_market_01"
+      ],
+      "sun_angle": "high_southeast",
+      "key_light_color": "#FFFFF0",
+      "shadow_color": "#5C5C5C",
+      "sky_color": "#7EC8E3",
+      "ambient_color": "#FAFAF5",
+      "contrast_profile": "neutral_bright",
+      "reflection_behavior": "awning_diffuse_fill_on_goods",
+      "atmosphere": "full neutral daylight for market color readability",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "afternoon_olive_hill",
+      "cluster_label": "Afternoon Olive Hill",
+      "time_period": "afternoon",
+      "location_affinity": [
+        "olive_hill_01",
+        "olive_hill_lunch_spot_01",
+        "olive_tree_rest_area_01"
+      ],
+      "sun_angle": "westward_warm_slant",
+      "key_light_color": "#F4E4BC",
+      "shadow_color": "#6B8E6B",
+      "sky_color": "#9EC9E8",
+      "ambient_color": "#E8F0E0",
+      "contrast_profile": "warm_soft",
+      "reflection_behavior": "leaf_silver_green_specular_dapple",
+      "atmosphere": "warm afternoon on terraces with soft green bounce",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "afternoon_coastal_path",
+      "cluster_label": "Afternoon Coastal Path",
+      "time_period": "afternoon",
+      "location_affinity": [
+        "coastal_path_01",
+        "stone_path_to_harbor_01",
+        "rocky_cove_01"
+      ],
+      "sun_angle": "southwest_open",
+      "key_light_color": "#FAEBD7",
+      "shadow_color": "#4A6FA5",
+      "sky_color": "#7EB8DA",
+      "ambient_color": "#E0EEF5",
+      "contrast_profile": "medium_high",
+      "reflection_behavior": "sea_teal_bounce_on_path_edges",
+      "atmosphere": "open coastal path with clear sea-reflected fill",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "golden_hour_harbor",
+      "cluster_label": "Golden Hour Harbor Watch",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "harbor_watch_point_01",
+        "harbor_small_pier_01",
+        "harbor_seawall_01"
+      ],
+      "sun_angle": "low_west_rim",
+      "key_light_color": "#FFB347",
+      "shadow_color": "#8B4513",
+      "sky_color": "#FF8C69",
+      "ambient_color": "#FFE4B5",
+      "contrast_profile": "warm_rich",
+      "reflection_behavior": "rim_light_on_figures_water_amber_reflect",
+      "atmosphere": "rich amber harbor rim light with long pier shadows",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "golden_hour_cliff",
+      "cluster_label": "Golden Hour Cliff",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "cliff_overlook_01",
+        "coastal_path_01"
+      ],
+      "sun_angle": "low_west_dramatic",
+      "key_light_color": "#FF9F5A",
+      "shadow_color": "#5D4037",
+      "sky_color": "#E07A5F",
+      "ambient_color": "#FFDAB9",
+      "contrast_profile": "dramatic_warm",
+      "reflection_behavior": "rock_face_warm_bounce_sea_dark_blue_contrast",
+      "atmosphere": "dramatic golden cliff overlook with deep sea contrast",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "sunset_hill",
+      "cluster_label": "Sunset Hill",
+      "time_period": "sunset",
+      "location_affinity": [
+        "olive_hill_01",
+        "wind_grass_field_01",
+        "sunrise_ridge_trail_01"
+      ],
+      "sun_angle": "low_west_horizon",
+      "key_light_color": "#FF7F50",
+      "shadow_color": "#704214",
+      "sky_color": "#CD5C5C",
+      "ambient_color": "#FFD1A9",
+      "contrast_profile": "warm_saturated",
+      "reflection_behavior": "grass_gold_line_highlight_hill_silhouette",
+      "atmosphere": "sunset wash over hill grass with long shadow bands",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "sunset_sea_horizon",
+      "cluster_label": "Sunset Sea Horizon",
+      "time_period": "sunset",
+      "location_affinity": [
+        "harbor_watch_point_01",
+        "cliff_overlook_01",
+        "shared_seaside_promenade_01"
+      ],
+      "sun_angle": "horizon_west",
+      "key_light_color": "#FF6B6B",
+      "shadow_color": "#2F4F4F",
+      "sky_color": "#4A6FA5",
+      "ambient_color": "#FFCBA4",
+      "contrast_profile": "high_silhouette",
+      "reflection_behavior": "sea_mirror_band_orange_purple_gradient",
+      "atmosphere": "horizon sunset with sea mirror band and figure silhouette potential",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "early_evening_village",
+      "cluster_label": "Early Evening Village",
+      "time_period": "early_evening",
+      "location_affinity": [
+        "village_main_street_01",
+        "village_bakery_lane_01",
+        "village_evening_lantern_alley_01"
+      ],
+      "sun_angle": "below_horizon_civil_twilight",
+      "key_light_color": "#B19CD9",
+      "shadow_color": "#2C3E50",
+      "sky_color": "#4A6FA5",
+      "ambient_color": "#D8BFD8",
+      "contrast_profile": "soft_cool_warm_mix",
+      "reflection_behavior": "lantern_pool_warm_against_blue_ambient",
+      "atmosphere": "civil twilight village with emerging lantern pools",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "night_bakery",
+      "cluster_label": "Night Bakery",
+      "time_period": "night",
+      "location_affinity": [
+        "family_bakery_kitchen_01",
+        "family_bakery_front_01",
+        "village_bakery_lane_01"
+      ],
+      "sun_angle": "none_interior_practical",
+      "key_light_color": "#FFB84D",
+      "shadow_color": "#1A1208",
+      "sky_color": "#1B2838",
+      "ambient_color": "#3D2B1F",
+      "contrast_profile": "low_warm_interior",
+      "reflection_behavior": "oven_and_lantern_practical_only",
+      "atmosphere": "night bakery interior lit by oven amber and single lantern",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "deep_night_rooftop",
+      "cluster_label": "Deep Night Rooftop",
+      "time_period": "late_night",
+      "location_affinity": [
+        "gonegi_rooftop_01",
+        "dana_rooftop_01",
+        "shared_rooftop_overlook_pair_01"
+      ],
+      "sun_angle": "none_moon_optional",
+      "key_light_color": "#C0C8D8",
+      "shadow_color": "#0D1117",
+      "sky_color": "#0B1426",
+      "ambient_color": "#1A2332",
+      "contrast_profile": "very_low_cool",
+      "reflection_behavior": "moon_path_on_sea_optional_window_glow_pockets",
+      "atmosphere": "deep night rooftop stillness with sparse window glow and cool moon fill",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "pre_dawn_bakery_kitchen",
+      "time_period": "pre_dawn",
+      "location_affinity": [
+        "family_bakery_kitchen_01",
+        "family_bakery_storage_01"
+      ],
+      "sun_angle": "none_pre_sun_horizon_glow",
+      "key_light_color": "#4A5568",
+      "shadow_color": "#1A202C",
+      "sky_color": "#2D3748",
+      "ambient_color": "#2C2416",
+      "contrast_profile": "very_low",
+      "reflection_behavior": "oven_only_amber_core_in_darkness",
+      "atmosphere": "pre-dawn bakery with oven as sole warm core",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "sunrise_harbor_watch",
+      "time_period": "sunrise",
+      "location_affinity": [
+        "harbor_watch_point_01",
+        "harbor_small_pier_01"
+      ],
+      "sun_angle": "low_east_over_water",
+      "key_light_color": "#FFDAB9",
+      "shadow_color": "#708090",
+      "sky_color": "#B0C4DE",
+      "ambient_color": "#E6E6FA",
+      "contrast_profile": "soft_medium",
+      "reflection_behavior": "horizon_pink_band_on_calm_water",
+      "atmosphere": "harbor sunrise mist with pink horizon band",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "morning_village_square",
+      "time_period": "morning",
+      "location_affinity": [
+        "village_square_01",
+        "village_fountain_01"
+      ],
+      "sun_angle": "moderate_east",
+      "key_light_color": "#FFFACD",
+      "shadow_color": "#696969",
+      "sky_color": "#87CEFA",
+      "ambient_color": "#F5F5DC",
+      "contrast_profile": "bright_neutral",
+      "reflection_behavior": "fountain_sparkle_direct_sun",
+      "atmosphere": "clear morning square with fountain sparkle",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "morning_fish_market",
+      "time_period": "early_morning",
+      "location_affinity": [
+        "harbor_fish_market_01"
+      ],
+      "sun_angle": "low_east_harsh_on_wet_stone",
+      "key_light_color": "#FFF8DC",
+      "shadow_color": "#2F4F4F",
+      "sky_color": "#778899",
+      "ambient_color": "#E0FFFF",
+      "contrast_profile": "high_wet_surface",
+      "reflection_behavior": "wet_slab_specular_ice_blue",
+      "atmosphere": "early fish market with wet stone specular and cool fill",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "morning_olive_trail",
+      "time_period": "morning",
+      "location_affinity": [
+        "stone_path_to_harbor_01",
+        "olive_hill_01"
+      ],
+      "sun_angle": "east_raking_path",
+      "key_light_color": "#F5DEB3",
+      "shadow_color": "#556B2F",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#F0FFF0",
+      "contrast_profile": "medium_warm",
+      "reflection_behavior": "path_ochre_highlight_olive_bounce",
+      "atmosphere": "morning trail descent with olive green ambient bounce",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "midday_bakery_heat",
+      "time_period": "midday",
+      "location_affinity": [
+        "family_bakery_kitchen_01",
+        "family_bakery_front_01"
+      ],
+      "sun_angle": "high_overhead_harsh",
+      "key_light_color": "#FFFFFF",
+      "shadow_color": "#3D3D3D",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#FAF0E6",
+      "contrast_profile": "high_short_shadow",
+      "reflection_behavior": "bleached_awning_shade_contrast",
+      "atmosphere": "midday heat with short dense shadows and bleached highlights",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "midday_olive_shade",
+      "time_period": "midday",
+      "location_affinity": [
+        "olive_tree_rest_area_01",
+        "pine_grove_shade_01"
+      ],
+      "sun_angle": "high_filtered",
+      "key_light_color": "#E8E8C8",
+      "shadow_color": "#2F4F2F",
+      "sky_color": "#98D8E8",
+      "ambient_color": "#D4E8C8",
+      "contrast_profile": "low_dapple",
+      "reflection_behavior": "leaf_canopy_diffuse_only",
+      "atmosphere": "midday shade pocket with dapple suppression",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "afternoon_harbor_boatyard",
+      "time_period": "afternoon",
+      "location_affinity": [
+        "harbor_boatyard_01",
+        "harbor_net_mending_shed_01"
+      ],
+      "sun_angle": "southwest_work_light",
+      "key_light_color": "#F0E68C",
+      "shadow_color": "#8B7355",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#F5F5DC",
+      "contrast_profile": "medium_neutral",
+      "reflection_behavior": "hull_timber_warm_bounce_open_shed",
+      "atmosphere": "afternoon boatyard neutral work light on raw timber",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "afternoon_village_alley",
+      "time_period": "afternoon",
+      "location_affinity": [
+        "village_alley_01",
+        "village_well_corner_01"
+      ],
+      "sun_angle": "high_narrow_slice",
+      "key_light_color": "#FFE4B5",
+      "shadow_color": "#36454F",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#D3D3D3",
+      "contrast_profile": "high_contrast_alley",
+      "reflection_behavior": "end_glow_slice_cool_wall_shade",
+      "atmosphere": "narrow alley with bright end slice and cool shadow wedge",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "golden_hour_bakery_lane",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "village_bakery_lane_01",
+        "family_bakery_front_01"
+      ],
+      "sun_angle": "low_west_lane_rake",
+      "key_light_color": "#FFA500",
+      "shadow_color": "#8B4513",
+      "sky_color": "#FF7F50",
+      "ambient_color": "#FFDAB9",
+      "contrast_profile": "warm_rich",
+      "reflection_behavior": "oven_smoke_haze_gold_window_glow",
+      "atmosphere": "golden hour bakery lane with warm smoke haze",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "golden_hour_wind_grass",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "wind_grass_field_01",
+        "olive_hill_lunch_spot_01"
+      ],
+      "sun_angle": "low_west_backlit_grass",
+      "key_light_color": "#FFD700",
+      "shadow_color": "#556B2F",
+      "sky_color": "#F4A460",
+      "ambient_color": "#FFF8DC",
+      "contrast_profile": "backlit_high",
+      "reflection_behavior": "grass_rim_translucent_glow",
+      "atmosphere": "backlit wind grass with translucent gold rim",
+      "cluster_label": "Golden Hour Wind Grass",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "golden_hour_rooftop_gonegi",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "gonegi_rooftop_01"
+      ],
+      "sun_angle": "low_west_parapet_rake",
+      "key_light_color": "#FFAE42",
+      "shadow_color": "#654321",
+      "sky_color": "#E9967A",
+      "ambient_color": "#FFE4C4",
+      "contrast_profile": "warm_medium",
+      "reflection_behavior": "terracotta_tile_warm_bounce_sea_glimmer",
+      "atmosphere": "golden rooftop parapet with terracotta warmth and sea glimmer",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "blue_hour_harbor_pier",
+      "time_period": "blue_hour",
+      "location_affinity": [
+        "harbor_small_pier_01",
+        "harbor_ticket_shelter_01"
+      ],
+      "sun_angle": "below_horizon",
+      "key_light_color": "#7B9EC8",
+      "shadow_color": "#1C2833",
+      "sky_color": "#2E4057",
+      "ambient_color": "#5D6D7E",
+      "contrast_profile": "cool_low",
+      "reflection_behavior": "pier_lamp_halo_optional_water_cool_reflect",
+      "atmosphere": "blue hour pier with cool ambient and optional lamp halo",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "blue_hour_window_corner",
+      "time_period": "blue_hour",
+      "location_affinity": [
+        "gonegi_window_corner_01",
+        "gonegi_bedroom_01"
+      ],
+      "sun_angle": "below_horizon_interior_mix",
+      "key_light_color": "#9FB4C7",
+      "shadow_color": "#2C3E50",
+      "sky_color": "#34495E",
+      "ambient_color": "#D5DBDB",
+      "contrast_profile": "soft_cool",
+      "reflection_behavior": "window_blue_fill_warm_interior_practical_optional",
+      "atmosphere": "blue hour window corner with cool exterior fill",
+      "cluster_label": "Blue Hour Window Corner",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "evening_lantern_alley",
+      "time_period": "evening",
+      "location_affinity": [
+        "village_evening_lantern_alley_01",
+        "village_alley_01"
+      ],
+      "sun_angle": "none_lantern_practical",
+      "key_light_color": "#FFB347",
+      "shadow_color": "#1B2631",
+      "sky_color": "#2E4053",
+      "ambient_color": "#566573",
+      "contrast_profile": "warm_pools_cool_fill",
+      "reflection_behavior": "lantern_glass_bokeh_cobble_wet_optional",
+      "atmosphere": "evening lantern alley with warm door pools",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "sea_fog_harbor_dock",
+      "time_period": "morning",
+      "location_affinity": [
+        "harbor_main_dock_01",
+        "harbor_lighthouse_base_01"
+      ],
+      "sun_angle": "diffuse_hidden",
+      "key_light_color": "#C0C0C0",
+      "shadow_color": "#708090",
+      "sky_color": "#B0BEC5",
+      "ambient_color": "#ECEFF1",
+      "contrast_profile": "very_low_flat",
+      "reflection_behavior": "flat_grey_water_no_specular",
+      "atmosphere": "sea fog harbor with flat grey light and softened masts",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "light_rain_village_square",
+      "time_period": "morning",
+      "location_affinity": [
+        "village_square_01",
+        "village_market_01"
+      ],
+      "sun_angle": "diffuse_overcast",
+      "key_light_color": "#D3D3D3",
+      "shadow_color": "#696969",
+      "sky_color": "#A9A9A9",
+      "ambient_color": "#E8E8E8",
+      "contrast_profile": "low_silver",
+      "reflection_behavior": "cobble_wet_sheen_puddle_ripple",
+      "atmosphere": "light rain village with silver fill and wet cobble sheen",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "after_rain_harbor_seawall",
+      "time_period": "late_morning",
+      "location_affinity": [
+        "harbor_seawall_01",
+        "harbor_main_dock_01"
+      ],
+      "sun_angle": "moderate_clearing",
+      "key_light_color": "#F0FFFF",
+      "shadow_color": "#4682B4",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#E0F7FA",
+      "contrast_profile": "clean_bright",
+      "reflection_behavior": "mirror_wet_stone_sea_clarity_boost",
+      "atmosphere": "after-rain clarity with mirror wet surfaces",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "windy_harbor_golden",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "harbor_seawall_01",
+        "harbor_watch_point_01"
+      ],
+      "sun_angle": "low_west_wind_flicker",
+      "key_light_color": "#FFB347",
+      "shadow_color": "#5D4037",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#FFECB3",
+      "contrast_profile": "dynamic_warm",
+      "reflection_behavior": "flag_and_wave_specular_flicker",
+      "atmosphere": "windy golden harbor with flickering specular on water",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "winter_clear_cliff",
+      "time_period": "afternoon",
+      "location_affinity": [
+        "cliff_overlook_01",
+        "coastal_path_01"
+      ],
+      "sun_angle": "low_cool_sun",
+      "key_light_color": "#E8F4F8",
+      "shadow_color": "#4A6FA5",
+      "sky_color": "#B0E0E6",
+      "ambient_color": "#F0F8FF",
+      "contrast_profile": "cool_crisp",
+      "reflection_behavior": "crisp_visibility_long_blue_shadow",
+      "atmosphere": "winter-clear coastal crisp visibility and long blue shadows",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "dana_garden_morning",
+      "time_period": "morning",
+      "location_affinity": [
+        "dana_garden_01",
+        "dana_courtyard_gate_01"
+      ],
+      "sun_angle": "gentle_east_garden",
+      "key_light_color": "#FFF0F5",
+      "shadow_color": "#6B8E6B",
+      "sky_color": "#98FB98",
+      "ambient_color": "#F5FFFA",
+      "contrast_profile": "soft_floral",
+      "reflection_behavior": "leaf_green_bounce_petal_highlight",
+      "atmosphere": "soft morning garden with green bounce and petal highlights",
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "lighting_id": "night_harbor_watch",
+      "time_period": "night",
+      "location_affinity": [
+        "harbor_watch_point_01",
+        "harbor_lighthouse_base_01"
+      ],
+      "sun_angle": "none_sparse_practical",
+      "key_light_color": "#F4D03F",
+      "shadow_color": "#0B1426",
+      "sky_color": "#1B2631",
+      "ambient_color": "#2C3E50",
+      "contrast_profile": "low_isolated_pools",
+      "reflection_behavior": "pier_lamp_pool_moon_path_optional",
+      "atmosphere": "night harbor watch with isolated pier lamps and dark water",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "storm_dim_harbor",
+      "time_period": "afternoon",
+      "location_affinity": [
+        "harbor_main_dock_01",
+        "harbor_boatyard_01"
+      ],
+      "sun_angle": "diffuse_shelf_cloud",
+      "key_light_color": "#A9A9A9",
+      "shadow_color": "#2F4F4F",
+      "sky_color": "#5D6D7E",
+      "ambient_color": "#BDC3C7",
+      "contrast_profile": "low_dramatic",
+      "reflection_behavior": "churned_water_grey_no_warm_bounce",
+      "atmosphere": "storm-front dim harbor with churned grey water",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "festival_evening_square",
+      "time_period": "evening",
+      "location_affinity": [
+        "village_square_01",
+        "shared_festival_square_01"
+      ],
+      "sun_angle": "none_mixed_practical",
+      "key_light_color": "#FF6B6B",
+      "shadow_color": "#2C3E50",
+      "sky_color": "#34495E",
+      "ambient_color": "#5D4E6D",
+      "contrast_profile": "mixed_color_pools",
+      "reflection_behavior": "banner_and_lantern_multi_source",
+      "atmosphere": "festival evening mixed lantern and banner color pools",
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "lighting_id": "reunion_golden_bench",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "shared_harbor_meeting_bench_01",
+        "harbor_watch_point_01"
+      ],
+      "sun_angle": "low_west_soft",
+      "key_light_color": "#FFC857",
+      "shadow_color": "#7D5A50",
+      "sky_color": "#E8A87C",
+      "ambient_color": "#FFE5D4",
+      "contrast_profile": "warm_gentle",
+      "reflection_behavior": "bench_wood_warm_bounce_neutral_sea",
+      "atmosphere": "gentle golden reunion bench light with neutral sea backdrop",
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "lighting_id": "summer_heat_plaza",
+      "time_period": "midday",
+      "location_affinity": [
+        "village_square_01",
+        "village_fountain_01"
+      ],
+      "sun_angle": "zenith_harsh",
+      "key_light_color": "#FFFFE0",
+      "shadow_color": "#2F2F2F",
+      "sky_color": "#00BFFF",
+      "ambient_color": "#FAEBD7",
+      "contrast_profile": "harsh_high",
+      "reflection_behavior": "bleached_stone_minimal_fill",
+      "atmosphere": "summer midday plaza with bleached stone and harsh short shade",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "church_morning_front",
+      "time_period": "morning",
+      "location_affinity": [
+        "village_church_front_01"
+      ],
+      "sun_angle": "east_facade_rake",
+      "key_light_color": "#FFFAF0",
+      "shadow_color": "#4A4A4A",
+      "sky_color": "#87CEEB",
+      "ambient_color": "#F5F5F5",
+      "contrast_profile": "facade_bright",
+      "reflection_behavior": "stone_step_bright_door_recess_dark",
+      "atmosphere": "morning church facade with bright stone and door recess shadow",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "lighting_id": "wildflower_meadow_golden",
+      "time_period": "golden_hour",
+      "location_affinity": [
+        "wildflower_meadow_01",
+        "terraced_vineyard_edge_01"
+      ],
+      "sun_angle": "low_west_field",
+      "key_light_color": "#FFD700",
+      "shadow_color": "#6B8E23",
+      "sky_color": "#F0A070",
+      "ambient_color": "#FFFACD",
+      "contrast_profile": "warm_pastoral",
+      "reflection_behavior": "petal_backlight_grass_gold",
+      "atmosphere": "golden wildflower meadow with pastoral backlight",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    }
+  ]
+}

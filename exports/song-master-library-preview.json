@@ -1,0 +1,1386 @@
+{
+  "library_version": "SONG-MASTER-LIBRARY-PHASE-81-v1",
+  "seed_count": 12,
+  "master_language": "en",
+  "supported_language_codes": [
+    "en",
+    "ja",
+    "ko",
+    "es",
+    "pt",
+    "it",
+    "vi",
+    "fr",
+    "hi"
+  ],
+  "required_fields": [
+    "song_master_id",
+    "song_title",
+    "master_language",
+    "current_duration_seconds",
+    "target_duration_seconds",
+    "primary_emotion",
+    "primary_relationship",
+    "emotion_timeline",
+    "grammar_sequence",
+    "language_variants",
+    "video_profile",
+    "keywords"
+  ],
+  "linked_layers": {
+    "music_grammar_ids": [
+      "MVG-intro-waiting",
+      "MVG-verse-loneliness",
+      "MVG-verse-hesitation",
+      "MVG-prechorus-hope",
+      "MVG-chorus-reunion",
+      "MVG-chorus-protection",
+      "MVG-bridge-farewell",
+      "MVG-bridge-determination",
+      "MVG-final-connection",
+      "MVG-outro-parting",
+      "MVG-memory-isolation",
+      "MVG-rain-care",
+      "MVG-sunset-resolution",
+      "MVG-night-longing",
+      "MVG-morning-new-journey",
+      "MVG-ending-redemption"
+    ],
+    "gonagi_grammar_ids": [
+      "GRA-waiting-guardian",
+      "GRA-waiting-lost-love",
+      "GRA-hesitation-friendship",
+      "GRA-farewell-lost-love",
+      "GRA-reunion-after-loss",
+      "GRA-protection-child",
+      "GRA-protection-student",
+      "GRA-hope-reunion",
+      "GRA-loneliness-distance",
+      "GRA-determination-return",
+      "GRA-care-healing",
+      "GRA-connection-recovery",
+      "GRA-parting-separation",
+      "GRA-optimism-new-journey",
+      "GRA-resolve-sacrifice",
+      "GRA-reunion-redemption"
+    ]
+  },
+  "seed_song_masters": [
+    {
+      "song_master_id": "song_master_01",
+      "song_title": "gonagi_master_track_01",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 210,
+      "primary_emotion": "anticipation",
+      "primary_relationship": "guardian_child",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 30,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-guardian",
+          "music_grammar_id": "MVG-intro-waiting"
+        },
+        {
+          "start_time": 30,
+          "end_time": 75,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-verse-loneliness"
+        },
+        {
+          "start_time": 75,
+          "end_time": 105,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-hope-reunion",
+          "music_grammar_id": "MVG-prechorus-hope"
+        },
+        {
+          "start_time": 105,
+          "end_time": 150,
+          "emotion_id": "care",
+          "grammar_id": "GRA-protection-child",
+          "music_grammar_id": "MVG-chorus-protection"
+        },
+        {
+          "start_time": 150,
+          "end_time": 180,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-farewell-lost-love",
+          "music_grammar_id": "MVG-bridge-farewell"
+        },
+        {
+          "start_time": 180,
+          "end_time": 210,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-parting-separation",
+          "music_grammar_id": "MVG-outro-parting"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-intro-waiting",
+        "MVG-verse-loneliness",
+        "MVG-prechorus-hope",
+        "MVG-chorus-protection",
+        "MVG-bridge-farewell",
+        "MVG-outro-parting"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_01"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-01",
+        "guardian",
+        "anticipation",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_02",
+      "song_title": "gonagi_master_track_02",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 225,
+      "primary_emotion": "parting",
+      "primary_relationship": "lost_lovers",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 35,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-lost-love",
+          "music_grammar_id": "MVG-night-longing"
+        },
+        {
+          "start_time": 35,
+          "end_time": 80,
+          "emotion_id": "uncertainty",
+          "grammar_id": "GRA-hesitation-friendship",
+          "music_grammar_id": "MVG-verse-hesitation"
+        },
+        {
+          "start_time": 80,
+          "end_time": 110,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-hope-reunion",
+          "music_grammar_id": "MVG-prechorus-hope"
+        },
+        {
+          "start_time": 110,
+          "end_time": 155,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-after-loss",
+          "music_grammar_id": "MVG-chorus-reunion"
+        },
+        {
+          "start_time": 155,
+          "end_time": 190,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-farewell-lost-love",
+          "music_grammar_id": "MVG-bridge-farewell"
+        },
+        {
+          "start_time": 190,
+          "end_time": 225,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-redemption",
+          "music_grammar_id": "MVG-ending-redemption"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-night-longing",
+        "MVG-verse-hesitation",
+        "MVG-prechorus-hope",
+        "MVG-chorus-reunion",
+        "MVG-bridge-farewell",
+        "MVG-ending-redemption"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_02"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-02",
+        "lost-lovers",
+        "parting",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_03",
+      "song_title": "gonagi_master_track_03",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 200,
+      "primary_emotion": "uncertainty",
+      "primary_relationship": "silent_friends",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 28,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-guardian",
+          "music_grammar_id": "MVG-intro-waiting"
+        },
+        {
+          "start_time": 28,
+          "end_time": 72,
+          "emotion_id": "uncertainty",
+          "grammar_id": "GRA-hesitation-friendship",
+          "music_grammar_id": "MVG-verse-hesitation"
+        },
+        {
+          "start_time": 72,
+          "end_time": 100,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-memory-isolation"
+        },
+        {
+          "start_time": 100,
+          "end_time": 140,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-connection-recovery",
+          "music_grammar_id": "MVG-final-connection"
+        },
+        {
+          "start_time": 140,
+          "end_time": 200,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-parting-separation",
+          "music_grammar_id": "MVG-outro-parting"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-intro-waiting",
+        "MVG-verse-hesitation",
+        "MVG-memory-isolation",
+        "MVG-final-connection",
+        "MVG-outro-parting"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_03"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-03",
+        "friendship",
+        "uncertainty",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_04",
+      "song_title": "gonagi_master_track_04",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 240,
+      "primary_emotion": "connection",
+      "primary_relationship": "reunion_after_loss",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 40,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-memory-isolation"
+        },
+        {
+          "start_time": 40,
+          "end_time": 85,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-verse-loneliness"
+        },
+        {
+          "start_time": 85,
+          "end_time": 120,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-hope-reunion",
+          "music_grammar_id": "MVG-prechorus-hope"
+        },
+        {
+          "start_time": 120,
+          "end_time": 165,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-after-loss",
+          "music_grammar_id": "MVG-chorus-reunion"
+        },
+        {
+          "start_time": 165,
+          "end_time": 200,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-connection-recovery",
+          "music_grammar_id": "MVG-final-connection"
+        },
+        {
+          "start_time": 200,
+          "end_time": 240,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-optimism-new-journey",
+          "music_grammar_id": "MVG-morning-new-journey"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-memory-isolation",
+        "MVG-verse-loneliness",
+        "MVG-prechorus-hope",
+        "MVG-chorus-reunion",
+        "MVG-final-connection",
+        "MVG-morning-new-journey"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_04"
+        }
+      ],
+      "video_profile": "emotion_timeline_extended_v1",
+      "keywords": [
+        "song-master-04",
+        "reunion",
+        "connection",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_05",
+      "song_title": "gonagi_master_track_05",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 215,
+      "primary_emotion": "care",
+      "primary_relationship": "mentor_student",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 32,
+          "emotion_id": "care",
+          "grammar_id": "GRA-care-healing",
+          "music_grammar_id": "MVG-rain-care"
+        },
+        {
+          "start_time": 32,
+          "end_time": 78,
+          "emotion_id": "uncertainty",
+          "grammar_id": "GRA-hesitation-friendship",
+          "music_grammar_id": "MVG-verse-hesitation"
+        },
+        {
+          "start_time": 78,
+          "end_time": 108,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-hope-reunion",
+          "music_grammar_id": "MVG-prechorus-hope"
+        },
+        {
+          "start_time": 108,
+          "end_time": 150,
+          "emotion_id": "care",
+          "grammar_id": "GRA-protection-child",
+          "music_grammar_id": "MVG-chorus-protection"
+        },
+        {
+          "start_time": 150,
+          "end_time": 215,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-optimism-new-journey",
+          "music_grammar_id": "MVG-morning-new-journey"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-rain-care",
+        "MVG-verse-hesitation",
+        "MVG-prechorus-hope",
+        "MVG-chorus-protection",
+        "MVG-morning-new-journey"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_05"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-05",
+        "mentor",
+        "care",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_06",
+      "song_title": "gonagi_master_track_06",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 205,
+      "primary_emotion": "resolve",
+      "primary_relationship": "rival_to_ally",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 30,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-guardian",
+          "music_grammar_id": "MVG-intro-waiting"
+        },
+        {
+          "start_time": 30,
+          "end_time": 70,
+          "emotion_id": "uncertainty",
+          "grammar_id": "GRA-hesitation-friendship",
+          "music_grammar_id": "MVG-verse-hesitation"
+        },
+        {
+          "start_time": 70,
+          "end_time": 100,
+          "emotion_id": "resolve",
+          "grammar_id": "GRA-resolve-sacrifice",
+          "music_grammar_id": "MVG-sunset-resolution"
+        },
+        {
+          "start_time": 100,
+          "end_time": 145,
+          "emotion_id": "resolve",
+          "grammar_id": "GRA-determination-return",
+          "music_grammar_id": "MVG-bridge-determination"
+        },
+        {
+          "start_time": 145,
+          "end_time": 205,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-redemption",
+          "music_grammar_id": "MVG-ending-redemption"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-intro-waiting",
+        "MVG-verse-hesitation",
+        "MVG-sunset-resolution",
+        "MVG-bridge-determination",
+        "MVG-ending-redemption"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_06"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-06",
+        "resolve",
+        "rival",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_07",
+      "song_title": "gonagi_master_track_07",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 220,
+      "primary_emotion": "isolation",
+      "primary_relationship": "family_separation",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 45,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-verse-loneliness"
+        },
+        {
+          "start_time": 45,
+          "end_time": 80,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-memory-isolation"
+        },
+        {
+          "start_time": 80,
+          "end_time": 115,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-lost-love",
+          "music_grammar_id": "MVG-night-longing"
+        },
+        {
+          "start_time": 115,
+          "end_time": 155,
+          "emotion_id": "resolve",
+          "grammar_id": "GRA-resolve-sacrifice",
+          "music_grammar_id": "MVG-sunset-resolution"
+        },
+        {
+          "start_time": 155,
+          "end_time": 220,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-parting-separation",
+          "music_grammar_id": "MVG-outro-parting"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-verse-loneliness",
+        "MVG-memory-isolation",
+        "MVG-night-longing",
+        "MVG-sunset-resolution",
+        "MVG-outro-parting"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_07"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-07",
+        "isolation",
+        "family",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_08",
+      "song_title": "gonagi_master_track_08",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 195,
+      "primary_emotion": "optimism",
+      "primary_relationship": "stranger_kindness",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 35,
+          "emotion_id": "care",
+          "grammar_id": "GRA-care-healing",
+          "music_grammar_id": "MVG-rain-care"
+        },
+        {
+          "start_time": 35,
+          "end_time": 80,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-hope-reunion",
+          "music_grammar_id": "MVG-prechorus-hope"
+        },
+        {
+          "start_time": 80,
+          "end_time": 125,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-connection-recovery",
+          "music_grammar_id": "MVG-final-connection"
+        },
+        {
+          "start_time": 125,
+          "end_time": 195,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-optimism-new-journey",
+          "music_grammar_id": "MVG-morning-new-journey"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-rain-care",
+        "MVG-prechorus-hope",
+        "MVG-final-connection",
+        "MVG-morning-new-journey"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_08"
+        }
+      ],
+      "video_profile": "emotion_timeline_compact_v1",
+      "keywords": [
+        "song-master-08",
+        "optimism",
+        "kindness",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_09",
+      "song_title": "gonagi_master_track_09",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 230,
+      "primary_emotion": "anticipation",
+      "primary_relationship": "lost_lovers",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 35,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-guardian",
+          "music_grammar_id": "MVG-intro-waiting"
+        },
+        {
+          "start_time": 35,
+          "end_time": 75,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-lost-love",
+          "music_grammar_id": "MVG-night-longing"
+        },
+        {
+          "start_time": 75,
+          "end_time": 110,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-hope-reunion",
+          "music_grammar_id": "MVG-prechorus-hope"
+        },
+        {
+          "start_time": 110,
+          "end_time": 155,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-after-loss",
+          "music_grammar_id": "MVG-chorus-reunion"
+        },
+        {
+          "start_time": 155,
+          "end_time": 190,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-farewell-lost-love",
+          "music_grammar_id": "MVG-bridge-farewell"
+        },
+        {
+          "start_time": 190,
+          "end_time": 230,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-redemption",
+          "music_grammar_id": "MVG-ending-redemption"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-intro-waiting",
+        "MVG-night-longing",
+        "MVG-prechorus-hope",
+        "MVG-chorus-reunion",
+        "MVG-bridge-farewell",
+        "MVG-ending-redemption"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_09"
+        }
+      ],
+      "video_profile": "emotion_timeline_extended_v1",
+      "keywords": [
+        "song-master-09",
+        "longing",
+        "anticipation",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_10",
+      "song_title": "gonagi_master_track_10",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 210,
+      "primary_emotion": "parting",
+      "primary_relationship": "family_separation",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 40,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-memory-isolation"
+        },
+        {
+          "start_time": 40,
+          "end_time": 85,
+          "emotion_id": "isolation",
+          "grammar_id": "GRA-loneliness-distance",
+          "music_grammar_id": "MVG-verse-loneliness"
+        },
+        {
+          "start_time": 85,
+          "end_time": 120,
+          "emotion_id": "resolve",
+          "grammar_id": "GRA-resolve-sacrifice",
+          "music_grammar_id": "MVG-sunset-resolution"
+        },
+        {
+          "start_time": 120,
+          "end_time": 160,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-farewell-lost-love",
+          "music_grammar_id": "MVG-bridge-farewell"
+        },
+        {
+          "start_time": 160,
+          "end_time": 210,
+          "emotion_id": "parting",
+          "grammar_id": "GRA-parting-separation",
+          "music_grammar_id": "MVG-outro-parting"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-memory-isolation",
+        "MVG-verse-loneliness",
+        "MVG-sunset-resolution",
+        "MVG-bridge-farewell",
+        "MVG-outro-parting"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_10"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-10",
+        "parting",
+        "separation",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_11",
+      "song_title": "gonagi_master_track_11",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 225,
+      "primary_emotion": "connection",
+      "primary_relationship": "lost_lovers",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 30,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-lost-love",
+          "music_grammar_id": "MVG-night-longing"
+        },
+        {
+          "start_time": 30,
+          "end_time": 75,
+          "emotion_id": "uncertainty",
+          "grammar_id": "GRA-hesitation-friendship",
+          "music_grammar_id": "MVG-verse-hesitation"
+        },
+        {
+          "start_time": 75,
+          "end_time": 110,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-hope-reunion",
+          "music_grammar_id": "MVG-prechorus-hope"
+        },
+        {
+          "start_time": 110,
+          "end_time": 155,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-after-loss",
+          "music_grammar_id": "MVG-chorus-reunion"
+        },
+        {
+          "start_time": 155,
+          "end_time": 225,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-reunion-redemption",
+          "music_grammar_id": "MVG-ending-redemption"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-night-longing",
+        "MVG-verse-hesitation",
+        "MVG-prechorus-hope",
+        "MVG-chorus-reunion",
+        "MVG-ending-redemption"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_11"
+        }
+      ],
+      "video_profile": "emotion_timeline_standard_v1",
+      "keywords": [
+        "song-master-11",
+        "connection",
+        "redemption",
+        "emotion-timeline"
+      ]
+    },
+    {
+      "song_master_id": "song_master_12",
+      "song_title": "gonagi_master_track_12",
+      "master_language": "en",
+      "current_duration_seconds": 0,
+      "target_duration_seconds": 240,
+      "primary_emotion": "resolve",
+      "primary_relationship": "guardian_child",
+      "emotion_timeline": [
+        {
+          "start_time": 0,
+          "end_time": 35,
+          "emotion_id": "anticipation",
+          "grammar_id": "GRA-waiting-guardian",
+          "music_grammar_id": "MVG-intro-waiting"
+        },
+        {
+          "start_time": 35,
+          "end_time": 80,
+          "emotion_id": "care",
+          "grammar_id": "GRA-protection-child",
+          "music_grammar_id": "MVG-chorus-protection"
+        },
+        {
+          "start_time": 80,
+          "end_time": 120,
+          "emotion_id": "resolve",
+          "grammar_id": "GRA-determination-return",
+          "music_grammar_id": "MVG-bridge-determination"
+        },
+        {
+          "start_time": 120,
+          "end_time": 165,
+          "emotion_id": "resolve",
+          "grammar_id": "GRA-resolve-sacrifice",
+          "music_grammar_id": "MVG-sunset-resolution"
+        },
+        {
+          "start_time": 165,
+          "end_time": 200,
+          "emotion_id": "connection",
+          "grammar_id": "GRA-connection-recovery",
+          "music_grammar_id": "MVG-final-connection"
+        },
+        {
+          "start_time": 200,
+          "end_time": 240,
+          "emotion_id": "optimism",
+          "grammar_id": "GRA-optimism-new-journey",
+          "music_grammar_id": "MVG-morning-new-journey"
+        }
+      ],
+      "grammar_sequence": [
+        "MVG-intro-waiting",
+        "MVG-chorus-protection",
+        "MVG-bridge-determination",
+        "MVG-sunset-resolution",
+        "MVG-final-connection",
+        "MVG-morning-new-journey"
+      ],
+      "language_variants": [
+        {
+          "language_code": "en",
+          "duration_match_required": true,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "ja",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "ko",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "es",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "pt",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "it",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "vi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "fr",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        },
+        {
+          "language_code": "hi",
+          "duration_match_required": false,
+          "master_song_reference": "song_master_12"
+        }
+      ],
+      "video_profile": "emotion_timeline_extended_v1",
+      "keywords": [
+        "song-master-12",
+        "resolve",
+        "guardian",
+        "emotion-timeline"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "spec_id": "dataset-evolution-specification-v1",
+  "asset_type": "dataset_evolution_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-001",
+  "module": "DATASET_EVOLUTION_SYSTEM_V1",
+  "purpose": "Close the loop from generation failures to dataset improvement candidates.",
+  "upstream_checkpoint": "REAL_FEATURE_PRODUCTION_READY",
+  "evolution_flow": [
+    "failure",
+    "root_cause",
+    "pattern_extraction",
+    "improvement_recommendation",
+    "dataset_update_candidate"
+  ],
+  "evolution_integrity": "PASS",
+  "failure_pattern_library_ref": "datasets/evolution/failure-pattern-library.json",
+  "success_pattern_library_ref": "datasets/evolution/success-pattern-library.json",
+  "improvement_recommendation_library_ref": "datasets/evolution/improvement-recommendation-library.json",
+  "failure_spec_ref": "exports/production_pipeline/production-failure-specification.json",
+  "generation_trace_spec_ref": "datasets/generation/generation-trace-specification.json"
+}

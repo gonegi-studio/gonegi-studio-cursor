@@ -1,0 +1,295 @@
+{
+  "asset_type": "visual_motif_grammar",
+  "asset_version": "v1",
+  "grammar_id": "visual-motif-grammar-v1",
+  "phase": "PHASE-MDG-005",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Reusable emotional visual symbols for Music Drama scenes. Motif grammar only — no generated scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false,
+    "modifies_living_world_core": false
+  },
+  "read_only_sources": {
+    "master_story": "datasets/story/music-drama-master-story-v1.json",
+    "scenario_rulebook": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+    "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+    "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+    "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+    "animal_companion_behavior_grammar": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+    "render_feedback": "datasets/render_feedback/RKB-001.json"
+  },
+  "motif_count": 21,
+  "section_1_domestic_motifs": {
+    "domestic_count": 6,
+    "motifs": [
+      {
+        "motif_id": "window",
+        "motif_group": "domestic",
+        "label": "Window",
+        "emotional_role": "threshold between private peace and the outside world",
+        "ep01_compatible": true,
+        "continuity_capable": true,
+        "continuity_examples": ["morning light through window", "evening reflection at same window", "quiet gaze outward"]
+      },
+      {
+        "motif_id": "wooden_chair",
+        "motif_group": "domestic",
+        "label": "Wooden Chair",
+        "emotional_role": "rest, belonging, and unhurried daily life",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "bread",
+        "motif_group": "domestic",
+        "label": "Bread",
+        "emotional_role": "family warmth and bakery-home continuity",
+        "ep01_compatible": true,
+        "continuity_capable": true,
+        "alignment": "family_bakery_warmth archetype; bakery_help behavior"
+      },
+      {
+        "motif_id": "toast",
+        "motif_group": "domestic",
+        "label": "Toast",
+        "emotional_role": "small carried comfort object across adjacent scenes",
+        "ep01_compatible": true,
+        "continuity_capable": true,
+        "continuity_rule_reference": "rulebook persistent_object example — toast remains until scenario removes it"
+      },
+      {
+        "motif_id": "tea_cup",
+        "motif_group": "domestic",
+        "label": "Tea Cup",
+        "emotional_role": "quiet morning or evening domestic calm",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "linen_blanket",
+        "motif_group": "domestic",
+        "label": "Linen Blanket",
+        "emotional_role": "sleep, rest, and soft domestic enclosure",
+        "ep01_compatible": true,
+        "continuity_capable": true,
+        "rkb_note": "Keep bedding geometry simple per RKB-001 object deformation finding"
+      }
+    ]
+  },
+  "section_2_harbor_motifs": {
+    "harbor_count": 5,
+    "motifs": [
+      {
+        "motif_id": "harbor_path",
+        "motif_group": "harbor",
+        "label": "Harbor Path",
+        "emotional_role": "route between village labor and sea horizon",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "stone_stairway",
+        "motif_group": "harbor",
+        "label": "Stone Stairway",
+        "emotional_role": "vertical movement through Mediterranean village stone fabric",
+        "ep01_compatible": true,
+        "continuity_capable": true,
+        "grammar_anchor_alignment": "stone staircase visual anchor"
+      },
+      {
+        "motif_id": "fishing_rod",
+        "motif_group": "harbor",
+        "label": "Fishing Rod",
+        "emotional_role": "harbor livelihood and patient waiting",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "wooden_boat",
+        "motif_group": "harbor",
+        "label": "Wooden Boat",
+        "emotional_role": "departure potential and harbor identity",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "sea_horizon",
+        "motif_group": "harbor",
+        "label": "Sea Horizon",
+        "emotional_role": "open future, distance, and quiet hope",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      }
+    ]
+  },
+  "section_3_emotional_motifs": {
+    "emotional_count": 5,
+    "motifs": [
+      {
+        "motif_id": "sunset_hill",
+        "motif_group": "emotional",
+        "label": "Sunset Hill",
+        "emotional_role": "warm fading day and lyric reflection",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "wind_grass",
+        "motif_group": "emotional",
+        "label": "Wind Grass",
+        "emotional_role": "gentle motion and small freedom outdoors",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "reflection",
+        "motif_group": "emotional",
+        "label": "Reflection",
+        "emotional_role": "quiet inward pause rendered through glass, water, or still surface",
+        "ep01_compatible": true,
+        "continuity_capable": true,
+        "behavior_alignment": "window_reflection daily-life behavior"
+      },
+      {
+        "motif_id": "open_window",
+        "motif_group": "emotional",
+        "label": "Open Window",
+        "emotional_role": "fresh air, morning opening, and invitation of daylight",
+        "ep01_compatible": true,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "morning_light",
+        "motif_group": "emotional",
+        "label": "Morning Light",
+        "emotional_role": "peaceful daily-life opening and ordinary happiness",
+        "ep01_compatible": true,
+        "continuity_capable": true,
+        "time_library_alignment": "datasets/time/time-setting-library-v1.json sunrise and early morning clusters"
+      }
+    ]
+  },
+  "section_4_future_story_motifs": {
+    "future_count": 5,
+    "future_use_only": true,
+    "ep01_compatible_default": false,
+    "motifs": [
+      {
+        "motif_id": "letter",
+        "motif_group": "future_story",
+        "label": "Letter",
+        "emotional_role": "distance, longing, and connection across separation",
+        "ep01_compatible": false,
+        "continuity_capable": true,
+        "story_alignment": "Master story letter delivery arc via Gamja"
+      },
+      {
+        "motif_id": "blue_ribbon",
+        "motif_group": "future_story",
+        "label": "Blue Ribbon",
+        "emotional_role": "dream-world threshold marker and romantic memory symbol",
+        "ep01_compatible": false,
+        "continuity_capable": true,
+        "story_alignment": "Dream door blue ribbon in master story outline"
+      },
+      {
+        "motif_id": "door",
+        "motif_group": "future_story",
+        "label": "Door",
+        "emotional_role": "passage between worlds, choice, and fate threshold",
+        "ep01_compatible": false,
+        "continuity_capable": true
+      },
+      {
+        "motif_id": "dream_key",
+        "motif_group": "future_story",
+        "label": "Dream Key",
+        "emotional_role": "access to shared dream space and forbidden reunion",
+        "ep01_compatible": false,
+        "continuity_capable": true,
+        "story_alignment": "Zepiro dream passage method in master story"
+      },
+      {
+        "motif_id": "memory_item",
+        "motif_group": "future_story",
+        "label": "Memory Item",
+        "emotional_role": "forgotten bond residue after memory loss arc",
+        "ep01_compatible": false,
+        "continuity_capable": true,
+        "story_alignment": "Final plaza encounter with unrecognized tears"
+      }
+    ]
+  },
+  "section_5_motif_continuity_law": {
+    "purpose": "Allow motifs to reappear across scenes to strengthen emotional memory.",
+    "rules": [
+      "Motifs may persist as recurring visual anchors within an episode.",
+      "The same motif may reappear in different time states if continuity_capable is true.",
+      "Motif reappearance should support emotional memory, not create symbol clutter.",
+      "Scenario field carries motif presence through location, atmosphere, and visible environment.",
+      "Character field must not narrate motif meaning — visual presence only."
+    ],
+    "examples": [
+      {
+        "motif_id": "window",
+        "sequence": ["morning scene", "evening scene", "reflection scene"],
+        "effect": "same window strengthens domestic emotional memory"
+      }
+    ]
+  },
+  "section_6_motif_density_law": {
+    "recommended_primary_motifs_per_scene": "1~2",
+    "maximum_visible_motifs": 3,
+    "avoid": [
+      "motif overload",
+      "symbol clutter"
+    ],
+    "protagonist_readability_rule": "Motifs support atmosphere; they must not compete with Gonegi or primary action."
+  },
+  "section_7_rkb_integration": {
+    "test_id": "RKB-001",
+    "encoded_principles": [
+      "character readability first",
+      "scenario/character separation success",
+      "daily-life atmosphere success",
+      "environment consistency success"
+    ],
+    "rkb_scores_reflected": {
+      "character_consistency": 9.5,
+      "environment_consistency": 9.0,
+      "style_consistency": 9.0,
+      "object_quality": 7.5
+    },
+    "grammar_alignment": {
+      "visual_anchor_law": "Motifs extend music-drama-grammar visual_anchor_grammar anchors",
+      "field_separation": "Motifs appear in scenario field context; character field remains visual identity only",
+      "persistent_object_rule": "toast and carried objects follow continuity_state_law"
+    }
+  },
+  "all_motifs_index": [
+    "window",
+    "wooden_chair",
+    "bread",
+    "toast",
+    "tea_cup",
+    "linen_blanket",
+    "harbor_path",
+    "stone_stairway",
+    "fishing_rod",
+    "wooden_boat",
+    "sea_horizon",
+    "sunset_hill",
+    "wind_grass",
+    "reflection",
+    "open_window",
+    "morning_light",
+    "letter",
+    "blue_ribbon",
+    "door",
+    "dream_key",
+    "memory_item"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "rules_id": "spirited-away-world-translation-rules-v1",
+  "phase": "PHASE-SPIRITED-AWAY-DATASET-001",
+  "system_id": "SPIRITED_AWAY_MOVIE_DATASET_V1",
+  "movie_id": "spirited_away",
+  "philosophy": {
+    "movie_dataset_controls_structure": true,
+    "latest_v5_controls_identity": true,
+    "spirited_away_world_override_forbidden": true,
+    "generic_harbor_fallback_forbidden": true
+  },
+  "latest_v5_controls": [
+    "character_identity",
+    "world_identity",
+    "lighting_identity",
+    "living_world_identity",
+    "location_identity",
+    "architecture_identity",
+    "color_identity"
+  ],
+  "movie_dataset_controls": [
+    "geometry",
+    "camera",
+    "blocking",
+    "composition",
+    "semantic_anchors"
+  ],
+  "movie_dataset_forbidden_controls": [
+    "character_appearance",
+    "world_culture_override",
+    "architecture_style_override",
+    "master_color_identity_override"
+  ],
+  "gonegi_translation": {
+    "target_world_identity": "GONEGI_MEDITERRANEAN",
+    "spirited_away_structure_preserved": true,
+    "gonegi_appearance_only": true
+  },
+  "required_output_label": "Spirited Away Scene Reconstructed Inside Gonegi World",
+  "forbidden_output_labels": [
+    "Generic Mediterranean Harbor Scene",
+    "Spirited Away Copy"
+  ]
+}

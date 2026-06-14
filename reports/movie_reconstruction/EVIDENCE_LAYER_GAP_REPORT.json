@@ -1,0 +1,32 @@
+{
+  "report_id": "evidence_layer_gap_mqd1vfpx",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-006D",
+  "system_id": "EVIDENCE_LAYER_READINESS_REVIEW_V1",
+  "generated_at": "2026-06-14T00:32:37.461Z",
+  "gap_report_defined": true,
+  "missing_evidence": [
+    "environment_evidence_not_collected",
+    "temporal_evidence_not_collected",
+    "object_evidence_not_collected"
+  ],
+  "high_risk_channels": [
+    "environment_identity",
+    "causal_transition_chain",
+    "hero_prop_identity"
+  ],
+  "blocking_factors": [
+    "gpu_execution disabled in all definition phases",
+    "no collected evidence records in any channel",
+    "evidence_sufficient_for_gpu_authorization=false on all channel readiness reports",
+    "VIDEO_RUNTIME_ENFORCEMENT ready_for_gpu_validation=false",
+    "Evidence Defined != Evidence Collected"
+  ],
+  "authorization_blockers": [
+    "environment_evidence_not_collected",
+    "temporal_evidence_not_collected",
+    "object_evidence_not_collected",
+    "evidence_not_validated",
+    "gpu_execution_disabled_in_definition_phases"
+  ],
+  "authorization_risk_score": 0.82
+}

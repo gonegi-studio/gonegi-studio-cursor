@@ -1,0 +1,33 @@
+{
+  "report_id": "movie_reconstruction_conditioning_design_gap_mqc26bu2",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-002",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_DESIGN_V1",
+  "generated_at": "2026-06-13T07:53:19.467Z",
+  "design_complete": true,
+  "implementation_complete": false,
+  "conditioning_design_complete": true,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "remaining_work": [
+    "Select and integrate ControlNet-class conditioning backend",
+    "Implement layout_map raster export from SpatialLayoutMap + numerical DNA",
+    "Implement depth_map raster pipeline from camera_path and depth_edges",
+    "Implement pose_map extraction and OpenPose raster generation",
+    "Wire blocking_map regional masks to regional prompting backend",
+    "Integrate IP-Adapter for object_identity and environment_identity reference conditioning",
+    "Build conditioning_backend orchestrator unifying all map inputs with text compiler output",
+    "Extend Image App import contract or add parallel map-ingestion API",
+    "Create verify:movie-reconstruction-conditioning-implementation gate",
+    "Run GPU validation phase after conditioning backend integration"
+  ],
+  "recommended_backend_strategy": "ControlNet-class layout/depth/pose conditioning backend required with IP-Adapter identity layer and regional prompting for blocking/environment maps; video conditioning backend required for temporal shot continuity.",
+  "requires_new_backend": [
+    "conditioning_backend",
+    "layout_map",
+    "depth_map",
+    "pose_map",
+    "object_identity",
+    "environment_identity"
+  ]
+}

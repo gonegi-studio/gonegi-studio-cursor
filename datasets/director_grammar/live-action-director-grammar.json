@@ -1,0 +1,129 @@
+{
+  "grammar_id": "director_grammar_live_action_v1",
+  "phase": "PHASE-SOURCE-VIDEO-003-DIRECTOR_GRAMMAR_EXTRACTION_V1",
+  "source_family": "LIVE_ACTION",
+  "visual_style": {
+    "summary": "Period domestic realism with natural skin texture and practical set authenticity.",
+    "patterns": [
+      "period-costume-texture",
+      "practical-set-wear",
+      "natural-skin-tones",
+      "candle-and-window practicals",
+      "ensemble-blocking realism"
+    ],
+    "constraints": [
+      "no-anime-line-simplification",
+      "no-synthetic-plastic-skin",
+      "preserve-period-material-truth"
+    ]
+  },
+  "camera_grammar": {
+    "summary": "Classical scene coverage with restrained movement and dialogue-forward framing.",
+    "patterns": [
+      "master-two-shot",
+      "over-shoulder-dialogue",
+      "table-level ensemble",
+      "entry-door reveal",
+      "static-emotional-hold"
+    ],
+    "constraints": [
+      "no-unmotivated-steadicam-orbit",
+      "coverage-must-support-dialogue"
+    ]
+  },
+  "lighting_grammar": {
+    "summary": "Soft window key, fireplace fill, and low-contrast interior realism.",
+    "patterns": [
+      "window-side-key",
+      "fireplace-warm-fill",
+      "candle-practical-accent",
+      "overcast-day-interior",
+      "evening-lamp-practical"
+    ],
+    "constraints": [
+      "no-high-key-fashion-lighting",
+      "no-unmotivated-backlight-halo"
+    ]
+  },
+  "blocking_grammar": {
+    "summary": "Family ensemble around hearth, table, and doorway social geometry.",
+    "patterns": [
+      "hearth-circle",
+      "dining-table-ensemble",
+      "doorway-greeting",
+      "writing-desk-focus",
+      "sibling-pair-counterpoint"
+    ],
+    "constraints": [
+      "no-empty-theater-staging",
+      "blocking-must-imply-relationship"
+    ]
+  },
+  "emotion_grammar": {
+    "summary": "Restrained period emotion through glance, posture, and domestic ritual.",
+    "patterns": [
+      "pride-in-composure",
+      "tenderness-in-small-gesture",
+      "grief-in-silence",
+      "hope-in-letter-or-gift",
+      "sibling-rivalry-subtext"
+    ],
+    "constraints": [
+      "no-broad-comedy-default",
+      "subtext-through-props-and-posture"
+    ]
+  },
+  "environment_grammar": {
+    "summary": "19th-century domestic interiors, snowy exteriors, and modest period streets.",
+    "patterns": [
+      "parlor-interior",
+      "snowy-lane",
+      "writing-room",
+      "kitchen-hearth",
+      "modest-street-exterior"
+    ],
+    "constraints": [
+      "no-modern-prop-intrusion",
+      "adapt-to-mediterranean-period-equivalent-when-remapped"
+    ]
+  },
+  "motion_grammar": {
+    "summary": "Naturalistic walking, seated gestures, and ritualized domestic tasks.",
+    "patterns": [
+      "seated-gesture",
+      "doorway-entry",
+      "letter-reading-pause",
+      "ensemble-table-service",
+      "slow-exit-down-lane"
+    ],
+    "constraints": [
+      "no-stylized-anime-motion",
+      "motion-grounded-in-period-behavior"
+    ]
+  },
+  "transition_grammar": {
+    "summary": "Scene-to-scene classical cuts anchored by room geography and season.",
+    "patterns": [
+      "room-to-room-cut",
+      "seasonal-exterior-bridge",
+      "object-continuity-cut",
+      "time-pass-montage",
+      "dialogue-motivated-cut"
+    ],
+    "constraints": [
+      "no-music-video-montage-default",
+      "preserve-spatial-logic"
+    ]
+  },
+  "use_case": [
+    "ensemble relationship reference",
+    "period domestic blocking for Gonegi adaptation",
+    "live-action realism anchor for hybrid pipelines"
+  ],
+  "design_only": true,
+  "gpu_execution": false,
+  "source_video_ids": [
+    "LITTLE_WOMEN_01"
+  ],
+  "extracted_at": "2026-06-05T06:41:28.894Z"
+}

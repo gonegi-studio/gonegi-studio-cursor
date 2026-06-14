@@ -1,0 +1,213 @@
+{
+  "asset_type": "music_drama_scene_archetypes",
+  "asset_version": "v1",
+  "grammar_id": "music-drama-scene-archetypes-v1",
+  "phase": "PHASE-MDG-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Reusable Music Drama scene archetype grammar for location-character-atmosphere binding. Archetypes define scene structure only — not generated scenario text.",
+  "archetype_count": 8,
+  "archetypes": [
+    {
+      "archetype_id": "gonegi_morning_routine",
+      "label": "Gonegi Morning Routine",
+      "location_type": "domestic-to-village transition",
+      "primary_locations": ["Gonegi home interior", "village lane", "stone staircase"],
+      "primary_characters": ["gonegi"],
+      "optional_characters": ["mare", "bardo"],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 2,
+      "crowd_groups_max": 0,
+      "atmosphere_cluster": ["early_morning", "morning_sunshine", "bright_morning_sun"],
+      "emotional_intent": ["peace", "warmth", "ordinary happiness", "quiet hope"],
+      "visual_anchors": ["stone staircase", "olive tree"],
+      "compatible_shot_patterns": ["establishing_daily_life", "street_passage", "rooftop_gaze", "bakery_morning", "harbor_edge_watch"],
+      "scenario_structure": {
+        "scenario_field": ["morning domestic or lane location", "soft daylight atmosphere", "visible routine action"],
+        "character_field": ["gonegi visual identity", "gamja if visible", "family member only if visible"]
+      },
+      "ep01_compatible": true,
+      "story_alignment": "EP01 centers on Gonegi's ordinary joyful daily life before meeting Dana"
+    },
+    {
+      "archetype_id": "gamja_companion_bond",
+      "label": "Gamja Companion Bond",
+      "location_type": "domestic companion space",
+      "primary_locations": ["Gonegi bedroom", "home courtyard", "village lane beside Gonegi"],
+      "primary_characters": ["gonegi"],
+      "optional_characters": [],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 0,
+      "crowd_groups_max": 0,
+      "atmosphere_cluster": ["early_morning", "morning_sunshine", "golden_hour_breeze"],
+      "emotional_intent": ["family comfort", "warmth", "quiet hope"],
+      "visual_anchors": ["bakery window"],
+      "compatible_shot_patterns": ["companion_bond_moment", "domestic_warmth", "quiet_solitude"],
+      "scenario_structure": {
+        "scenario_field": ["domestic location", "warm atmosphere", "visible companion interaction action"],
+        "character_field": ["gonegi visual identity", "gamja visual identity"]
+      },
+      "continuity_note": "Gamja should persist across adjacent companion scenes until departure is explicitly described",
+      "ep01_compatible": true,
+      "story_alignment": "EP01 goal emphasizes Gonegi-Gamja bond as core emotional anchor",
+      "rkb_validation": "RKB-001 Gamja consistency PASS 9.5/10"
+    },
+    {
+      "archetype_id": "family_bakery_warmth",
+      "label": "Family Bakery Warmth",
+      "location_type": "domestic bakery interior",
+      "primary_locations": ["Mare bakery interior", "bakery threshold", "bakery window"],
+      "primary_characters": ["gonegi", "mare"],
+      "optional_characters": ["bardo"],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 2,
+      "crowd_groups_max": 1,
+      "atmosphere_cluster": ["early_morning", "morning_sunshine", "morning_market"],
+      "emotional_intent": ["family comfort", "warmth", "ordinary happiness"],
+      "visual_anchors": ["bakery window"],
+      "compatible_shot_patterns": ["bakery_morning", "domestic_warmth", "establishing_daily_life"],
+      "scenario_structure": {
+        "scenario_field": ["bakery interior", "oven-warm atmosphere", "visible bread or morning preparation action"],
+        "character_field": ["gonegi", "mare if visible", "bardo if visible", "background queue extras only if visible"]
+      },
+      "ep01_compatible": true,
+      "story_alignment": "Supports Gonegi's positive hardworking family life tone",
+      "rkb_validation": "RKB-001 bakery environment PASS"
+    },
+    {
+      "archetype_id": "harbor_edge_watch",
+      "label": "Harbor Edge Watch",
+      "location_type": "harbor exterior",
+      "primary_locations": ["main pier", "harbor bench", "fishing pier"],
+      "primary_characters": ["gonegi"],
+      "optional_characters": ["bardo"],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 2,
+      "crowd_groups_max": 1,
+      "atmosphere_cluster": ["morning_sunshine", "bright_morning_sun", "golden_hour_breeze"],
+      "emotional_intent": ["small freedom", "quiet hope", "peace"],
+      "visual_anchors": ["harbor bench", "fishing pier"],
+      "compatible_shot_patterns": ["harbor_edge_watch", "establishing_daily_life", "quiet_solitude"],
+      "scenario_structure": {
+        "scenario_field": ["harbor edge location", "sea-facing atmosphere", "visible watch or wait action"],
+        "character_field": ["gonegi", "bardo if visible", "dock workers only if clearly visible"]
+      },
+      "ep01_compatible": true,
+      "story_alignment": "Harbor town identity without introducing Dana or plot conflict"
+    },
+    {
+      "archetype_id": "village_lane_passage",
+      "label": "Village Lane Passage",
+      "location_type": "village exterior",
+      "primary_locations": ["stone lane", "village stair", "whitewash alley"],
+      "primary_characters": ["gonegi"],
+      "optional_characters": [],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 2,
+      "crowd_groups_max": 1,
+      "atmosphere_cluster": ["early_morning", "morning_sunshine", "afternoon_work"],
+      "emotional_intent": ["ordinary happiness", "small freedom", "warmth"],
+      "visual_anchors": ["stone staircase", "olive tree"],
+      "compatible_shot_patterns": ["street_passage", "establishing_daily_life"],
+      "scenario_structure": {
+        "scenario_field": ["lane location", "daylight atmosphere", "visible walking or carrying action"],
+        "character_field": ["gonegi", "gamja if visible", "minimal named extras if visible"]
+      },
+      "ep01_compatible": true,
+      "story_alignment": "Natural movement through Mediterranean village daily life"
+    },
+    {
+      "archetype_id": "domestic_bedroom_peace",
+      "label": "Domestic Bedroom Peace",
+      "location_type": "domestic interior",
+      "primary_locations": ["Gonegi bedroom", "morning bedroom window"],
+      "primary_characters": ["gonegi"],
+      "optional_characters": [],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 0,
+      "crowd_groups_max": 0,
+      "atmosphere_cluster": ["sunrise", "early_morning", "morning_sunshine"],
+      "emotional_intent": ["peace", "warmth", "ordinary happiness"],
+      "visual_anchors": [],
+      "compatible_shot_patterns": ["domestic_warmth", "companion_bond_moment", "quiet_solitude"],
+      "scenario_structure": {
+        "scenario_field": ["bedroom interior", "soft morning atmosphere", "visible waking or resting action"],
+        "character_field": ["gonegi", "gamja if visible on bed or floor"]
+      },
+      "risk_mitigation": "Keep bedding geometry simple; RKB-001 reported blanket deformation at LOW severity",
+      "ep01_compatible": true,
+      "story_alignment": "Lyric-aligned peaceful morning still before the day opens"
+    },
+    {
+      "archetype_id": "market_edge_background",
+      "label": "Market Edge Background",
+      "location_type": "village market fringe",
+      "primary_locations": ["market plaza edge", "stall lane entrance"],
+      "primary_characters": ["gonegi"],
+      "optional_characters": [],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 2,
+      "crowd_groups_max": 1,
+      "atmosphere_cluster": ["morning_market", "morning_sunshine", "bright_morning_sun"],
+      "emotional_intent": ["ordinary happiness", "warmth"],
+      "visual_anchors": [],
+      "compatible_shot_patterns": ["establishing_daily_life", "street_passage"],
+      "scenario_structure": {
+        "scenario_field": ["market edge location", "lively but distant atmosphere", "visible passage action"],
+        "character_field": ["gonegi in foreground", "gamja if visible", "one crowd group as background support only"]
+      },
+      "density_warning": "RKB-001 crowd quality 7.0/10 — use only during controlled tests with strict density limits",
+      "ep01_compatible": true,
+      "story_alignment": "Peripheral town life that does not interrupt Gonegi's peace"
+    },
+    {
+      "archetype_id": "rooftop_gaze",
+      "label": "Rooftop Gaze",
+      "location_type": "elevated domestic exterior",
+      "primary_locations": ["rooftop edge", "high window ledge", "village roofline view"],
+      "primary_characters": ["gonegi"],
+      "optional_characters": [],
+      "companion_animals": ["gamja"],
+      "background_extras_max": 1,
+      "crowd_groups_max": 0,
+      "atmosphere_cluster": ["golden_hour_breeze", "afternoon_work", "morning_sunshine"],
+      "emotional_intent": ["quiet hope", "peace", "small freedom"],
+      "visual_anchors": ["olive tree"],
+      "compatible_shot_patterns": ["rooftop_gaze", "quiet_solitude", "establishing_daily_life"],
+      "scenario_structure": {
+        "scenario_field": ["elevated location", "open-sky atmosphere", "visible gaze or rest action"],
+        "character_field": ["gonegi", "gamja if visible"]
+      },
+      "ep01_compatible": true,
+      "story_alignment": "Lyric motif of unchanged peaceful world and quiet curiosity beyond the wall"
+    }
+  ],
+  "episode_constraints": {
+    "EP01": {
+      "title": "늘 그래왔듯이",
+      "hard_constraints": [
+        "Gonegi does not yet know Dana exists",
+        "Dana must not appear",
+        "Dana's name must not appear in scenario or character fields",
+        "no negative exclusion phrasing",
+        "Gonegi-Gamja bond is core emotional focus"
+      ],
+      "recommended_archetypes": [
+        "gonegi_morning_routine",
+        "gamja_companion_bond",
+        "family_bakery_warmth",
+        "harbor_edge_watch",
+        "village_lane_passage",
+        "domestic_bedroom_peace",
+        "rooftop_gaze"
+      ],
+      "discouraged_archetypes": [
+        "market_edge_background"
+      ],
+      "discouraged_reason": "crowd deformation risk during early testing unless density strictly limited"
+    }
+  },
+  "absent_character_policy": {
+    "method": "omission_only",
+    "forbidden_phrases": ["No Dana", "Dana absent", "without Dana"]
+  }
+}

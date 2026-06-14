@@ -1,0 +1,143 @@
+{
+  "coordinate_record_id": "coord_ghibli_kitchen_001_v1",
+  "phase": "PHASE-SOURCE-VIDEO-009-SOURCE_VIDEO_SEGMENT_TO_COORDINATE_COMPILER_V1",
+  "segment_id": "segment_ghibli_kitchen_001_v1",
+  "source_video_id": "GHIBLI_01",
+  "director_family": "GHIBLI",
+  "camera_coordinate": {
+    "position": "kitchen-entry-third",
+    "facing": "hearth-center",
+    "height": "eye-level",
+    "fov_hint": "normal-neutral",
+    "shot_type": "two-shot-medium",
+    "context_summary": "Eye-level two-shot medium with patient observational framing",
+    "context_tokens": [
+      "establishing-wide before intimacy",
+      "eye-level dialogue pairs",
+      "seated-conversation triangles",
+      "counter-exchange staging",
+      "doorway-threshold pauses"
+    ]
+  },
+  "character_coordinate": [
+    {
+      "character_ref": "protagonist_a",
+      "position": "counter-left-third",
+      "facing": "hearth",
+      "posture": "standing-work",
+      "identity_anchor": "identity_anchor:protagonist_a_face_v1"
+    },
+    {
+      "character_ref": "protagonist_b",
+      "position": "counter-right-third",
+      "facing": "protagonist_a",
+      "posture": "seated-relaxed",
+      "identity_anchor": "identity_anchor:protagonist_b_face_v1"
+    }
+  ],
+  "prop_coordinate": [
+    {
+      "prop_id": "tea_pot",
+      "position": "counter-center",
+      "interaction_state": "pour-ready"
+    },
+    {
+      "prop_id": "window_sill_herbs",
+      "position": "background-window",
+      "interaction_state": "static-anchor"
+    }
+  ],
+  "location_coordinate": {
+    "space_type": "domestic-kitchen",
+    "anchor_point": "hearth-center",
+    "walkable_zone": "kitchen-floor-tile",
+    "context_summary": "Domestic kitchen with hearth-centered blocking geometry",
+    "context_tokens": [
+      "mediterranean-harbor",
+      "village-street-life",
+      "seated-conversation triangles",
+      "counter-exchange staging",
+      "doorway-threshold pauses"
+    ]
+  },
+  "lighting_coordinate": {
+    "key_direction": "window-left",
+    "fill_level": "hearth-warm-fill",
+    "color_temperature": "warm-morning",
+    "context_summary": "Morning-window wash with warm interior practicals",
+    "context_tokens": [
+      "morning-window wash",
+      "golden-hour exterior glow",
+      "seated-conversation triangles",
+      "counter-exchange staging",
+      "doorway-threshold pauses"
+    ]
+  },
+  "motion_coordinate": [
+    {
+      "subject_ref": "protagonist_a",
+      "vector": "counter-reach-to-teapot",
+      "duration_hint": "slow-deliberate"
+    }
+  ],
+  "blocking_coordinate": {
+    "primary_focus": "counter-exchange",
+    "secondary_focus": "hearth-glow",
+    "negative_space": "window-background",
+    "context_summary": "Two-character counter-and-hearth ensemble",
+    "context_tokens": [
+      "seated-conversation triangles",
+      "counter-exchange staging",
+      "warmth-through-routine",
+      "longing-in-departure",
+      "doorway-threshold pauses"
+    ]
+  },
+  "depth_coordinate": [
+    {
+      "layer_index": 0,
+      "layer_role": "foreground",
+      "content_hint": "counter-props"
+    },
+    {
+      "layer_index": 1,
+      "layer_role": "midground",
+      "content_hint": "character-pair"
+    },
+    {
+      "layer_index": 2,
+      "layer_role": "background",
+      "content_hint": "window-hearth-wall"
+    }
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity_anchor:protagonist_a_face_v1",
+      "identity_anchor:protagonist_b_face_v1",
+      "identity_lock:preserve_face_geometry"
+    ],
+    "location_locks": [
+      "location_lock:domestic-kitchen",
+      "walkable-zone:kitchen-floor-tile"
+    ],
+    "composition_locks": [
+      "composition_lock:two-shot-balance",
+      "prop_anchor:tea_pot",
+      "prop_anchor:window_sill_herbs"
+    ]
+  },
+  "grammar_refs": [
+    "director_grammar_ghibli_v1"
+  ],
+  "scene_state_mapping_ref": "map_ghibli_kitchen_to_scene_state_v1",
+  "source_template_ref": "movie_coord_ghibli_kitchen_blocking_v1",
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "compiled_at": "2026-06-05T07:29:17.865Z"
+}

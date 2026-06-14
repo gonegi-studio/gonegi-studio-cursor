@@ -1,0 +1,61 @@
+{
+  "report_id": "object_evidence_record_spec_mqd2qq14",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-007C",
+  "system_id": "OBJECT_IDENTITY_EVIDENCE_COLLECTION_V1",
+  "generated_at": "2026-06-14T00:56:57.160Z",
+  "record_spec_defined": true,
+  "object_evidence_record_format": {
+    "object_id": "Target object_id from reference bank.",
+    "reference_bank_id": "Bank entry reference_bank_id for recall audit.",
+    "identity_signature": "Hash from object_similarity_v1 primary_key lookup path.",
+    "traceability_signature": "Hash binding conditioning_map_ref and object_spec_ref.",
+    "evidence_score": "Composite score from object_scoring_rules weighted formula.",
+    "object_classification": "Enum: same_object | strict_object | similar_object | different_object | identity_broken_object.",
+    "classification_reason": "Enum: identity_signature_match | texture_match | anchor_match | role_match | traceability_match | reference_bank_match."
+  },
+  "required_fields": [
+    "object_id",
+    "reference_bank_id",
+    "identity_signature",
+    "traceability_signature",
+    "evidence_score",
+    "object_classification",
+    "classification_reason"
+  ],
+  "object_classification": [
+    "same_object",
+    "strict_object",
+    "similar_object",
+    "different_object",
+    "identity_broken_object"
+  ],
+  "classification_reason": [
+    "identity_signature_match",
+    "texture_match",
+    "anchor_match",
+    "role_match",
+    "traceability_match",
+    "reference_bank_match"
+  ],
+  "identity_broken_object_defined": true,
+  "reference_bank_match_defined": true,
+  "classification_thresholds": {
+    "same_object": 0.97,
+    "strict_object": 0.95,
+    "similar_object": 0.8,
+    "different_object": 0.5,
+    "identity_break": 0.3,
+    "hero_prop": 0.98,
+    "secondary_prop": 0.9,
+    "background_object": 0.75
+  },
+  "example_record": {
+    "object_id": "suitcase_001",
+    "reference_bank_id": "obj_ref_001",
+    "identity_signature": "obj_id_sig_suitcase_a1b2c3",
+    "traceability_signature": "trace_sig_suitcase_001",
+    "evidence_score": 0.96,
+    "object_classification": "strict_object",
+    "classification_reason": "reference_bank_match"
+  }
+}

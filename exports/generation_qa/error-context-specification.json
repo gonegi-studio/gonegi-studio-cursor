@@ -1,0 +1,23 @@
+{
+  "spec_id": "error-context-specification-v1",
+  "asset_type": "error_context_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-QA-001",
+  "module": "GENERATION_QA_AND_ERROR_CONTEXT_SYSTEM_V1",
+  "purpose": "Structured error context for generation failures with traceability back to assembly artifacts.",
+  "upstream_checkpoint": "PASS_STORY_TO_BLUEPRINT_ENGINE_V1",
+  "error_context_fields": [
+    "error_id",
+    "error_type",
+    "root_cause",
+    "assembly_ref",
+    "generation_target_ref",
+    "trace_id",
+    "recovery_hint"
+  ],
+  "error_context_integrity": "PASS",
+  "generation_trace_ref": "exports/generation/generation-trace-specification.json",
+  "failure_pattern_ref": "exports/evolution/failure-pattern-library.json",
+  "export_id": "error-context-specification-export-v1",
+  "generated_at": "2026-06-09T01:41:14.442Z"
+}

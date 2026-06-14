@@ -1,0 +1,198 @@
+{
+  "asset_type": "scene_asset_composition_library",
+  "asset_version": "v1",
+  "library_id": "scene-asset-composition-library-v1",
+  "phase": "PHASE-SAC-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Reusable whole-scene composition memory locking room, furniture, props, character positions, and camera framing.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false
+  },
+  "read_only_sources": {
+    "room_layout_lock_library": "datasets/location/room-layout-lock-library-v1.json",
+    "prop_anchor_library": "datasets/props/prop-anchor-library-v1.json",
+    "rkb_011": "datasets/render_feedback/RKB-011_SCORECARD.json"
+  },
+  "composition_count": 8,
+  "validation_target": {
+    "test_id": "RKB-012",
+    "test_name": "SCENE_COMPOSITION_CONTINUITY_VALIDATION",
+    "next_phase": "PHASE-RKB-012"
+  },
+  "compositions": [
+    {
+      "composition_id": "gonegi_bedroom_reading",
+      "location_id": "gonegi_bedroom_01",
+      "layout_id": "layout_lock_gonegi_bedroom_01",
+      "prop_anchor_ids": ["wildflower_vase_01", "ship_model_01", "aged_wood_chair_01", "sketchbook_01"],
+      "character_positions": {
+        "gonegi": "bedside_chair",
+        "gamja": "floor_near_chair"
+      },
+      "camera_position": "southwest_threshold_eye_level",
+      "camera_height": "eye_level",
+      "camera_direction": "toward_east_window_and_bed",
+      "visibility_requirements": [
+        "must_show_window",
+        "must_show_vase",
+        "must_show_ship_model"
+      ],
+      "composition_priority": "high_indoor_story",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors",
+        "do_not_move_gonegi_from_bedside_chair_zone"
+      ]
+    },
+    {
+      "composition_id": "gonegi_window_reflection",
+      "location_id": "gonegi_window_corner_01",
+      "layout_id": "layout_lock_gonegi_window_corner_01",
+      "prop_anchor_ids": ["wildflower_vase_01", "ship_model_01", "aged_wood_chair_01", "sketchbook_01", "teacup_01"],
+      "character_positions": {
+        "gonegi": "east_corner_chair_angled_to_glass"
+      },
+      "camera_position": "southwest_corner_medium",
+      "camera_height": "eye_level",
+      "camera_direction": "toward_east_corner_window_and_sill",
+      "visibility_requirements": [
+        "must_show_window",
+        "must_show_vase",
+        "must_show_ship_model"
+      ],
+      "composition_priority": "high_window_mood",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors"
+      ]
+    },
+    {
+      "composition_id": "dana_window_reading",
+      "location_id": "dana_window_corner_01",
+      "layout_id": "layout_lock_dana_window_corner_01",
+      "prop_anchor_ids": ["reading_chair_01", "geranium_pot_01", "teacup_01", "sketchbook_01"],
+      "character_positions": {
+        "dana": "window_reading_spot"
+      },
+      "camera_position": "west_door_three_quarter",
+      "camera_height": "eye_level",
+      "camera_direction": "toward_reading_chair_and_garden_window",
+      "visibility_requirements": ["must_show_window", "must_show_vase"],
+      "composition_priority": "high_ballad_intimacy",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors",
+        "do_not_move_dana_from_window_reading_spot"
+      ]
+    },
+    {
+      "composition_id": "bakery_breakfast",
+      "location_id": "family_bakery_dining_01",
+      "layout_id": "layout_lock_family_bakery_dining_01",
+      "prop_anchor_ids": ["bread_basket_01", "pine_table_01", "teacup_01", "clay_jug_01"],
+      "character_positions": {
+        "gonegi": "north_bench_breakfast",
+        "dana": "south_bench_breakfast"
+      },
+      "camera_position": "west_kitchen_door_wide",
+      "camera_height": "eye_level",
+      "camera_direction": "along_table_toward_south_lane_window",
+      "visibility_requirements": ["must_show_window", "must_show_bread_basket"],
+      "composition_priority": "high_daily_life",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors"
+      ]
+    },
+    {
+      "composition_id": "bakery_evening_cleanup",
+      "location_id": "family_bakery_kitchen_01",
+      "layout_id": "layout_lock_family_bakery_kitchen_01",
+      "prop_anchor_ids": ["brick_oven_01", "copper_kettle_01", "rolling_pin_01", "pine_table_01"],
+      "character_positions": {
+        "gonegi": "work_table_evening_cleanup"
+      },
+      "camera_position": "west_dining_arch_medium",
+      "camera_height": "chest_height",
+      "camera_direction": "toward_oven_niche_and_table",
+      "visibility_requirements": ["must_show_bread_basket"],
+      "composition_priority": "high_work_scene",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors"
+      ]
+    },
+    {
+      "composition_id": "olive_hill_rest",
+      "location_id": "gonegi_olive_hill_01",
+      "layout_id": "layout_outdoor_olive_hill_rest_01",
+      "prop_anchor_ids": [],
+      "character_positions": {
+        "gonegi": "olive_trunk_shade_seat"
+      },
+      "camera_position": "path_approach_three_quarter",
+      "camera_height": "eye_level",
+      "camera_direction": "toward_olive_canopy_and_harbor_distant",
+      "visibility_requirements": ["must_show_harbor_horizon"],
+      "composition_priority": "high_instrumental_pause",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors"
+      ]
+    },
+    {
+      "composition_id": "harbor_watch_point",
+      "location_id": "harbor_watch_point_01",
+      "layout_id": "layout_outdoor_harbor_watch_01",
+      "prop_anchor_ids": [],
+      "character_positions": {
+        "gonegi": "stone_ledge_watch_pose"
+      },
+      "camera_position": "behind_character_over_shoulder",
+      "camera_height": "eye_level",
+      "camera_direction": "toward_harbor_open_water",
+      "visibility_requirements": ["must_show_harbor_horizon"],
+      "composition_priority": "high_environmental",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors"
+      ]
+    },
+    {
+      "composition_id": "harbor_sunset_bench",
+      "location_id": "harbor_watch_point_01",
+      "layout_id": "layout_outdoor_harbor_watch_01",
+      "prop_anchor_ids": [],
+      "character_positions": {
+        "gonegi": "harbor_bench_sunset",
+        "dana": "bench_end_sunset_optional"
+      },
+      "camera_position": "lane_side_wide",
+      "camera_height": "slightly_low",
+      "camera_direction": "toward_bench_and_golden_harbor_horizon",
+      "visibility_requirements": ["must_show_harbor_horizon"],
+      "composition_priority": "high_ballad_farewell",
+      "forbidden_composition_changes": [
+        "do not swap character positions",
+        "do not reverse composition",
+        "do not remove required assets",
+        "do not hide required anchors"
+      ]
+    }
+  ]
+}

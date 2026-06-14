@@ -1,0 +1,46 @@
+{
+  "dataset_id": "camera_continuity-validation-dataset-v1",
+  "validation_channel": "camera_continuity",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-003",
+  "dataset_size": 30,
+  "target_batch_size": 25,
+  "difficulty_tiers": [
+    "easy",
+    "medium",
+    "hard"
+  ],
+  "binding_ref": "exports/movie_reconstruction_temporal_preservation/temporal-preservation-binding-package.json",
+  "measurement_methods": [
+    "motion_vector_delta_score",
+    "eyeline_vector_stability_score"
+  ],
+  "pass_thresholds": {
+    "motion_vector_delta_score": 0.85,
+    "eyeline_vector_stability_score": 0.82,
+    "hard_tier_pass_threshold": 0.75
+  },
+  "failure_examples": [
+    "camera_inertia_break",
+    "eyeline_vector_jump",
+    "motion_smoothing_failure"
+  ],
+  "sample_seeds": [
+    {
+      "sample_id": "cam_easy_001",
+      "difficulty_tier": "easy",
+      "source_ref": "timeline_mori_001_001"
+    },
+    {
+      "sample_id": "cam_med_001",
+      "difficulty_tier": "medium",
+      "source_ref": "camera_inertia_anchor"
+    },
+    {
+      "sample_id": "cam_hard_001",
+      "difficulty_tier": "hard",
+      "source_ref": "cross_shot_motion_jump"
+    }
+  ],
+  "gpu_execution": false,
+  "dataset_only": true
+}

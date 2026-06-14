@@ -1,0 +1,39 @@
+{
+  "wiring_id": "wiring_remote_gpu_design_v1",
+  "phase": "PHASE-27-VIDEO-PROVIDER-WIRING-DESIGN-001",
+  "provider_id": "provider_stub_remote_api",
+  "wiring_mode": "remote_gpu_rental",
+  "runtime_target": "remote",
+  "required_environment": {
+    "readiness_profile_min": "none",
+    "gpu_required": false,
+    "network_required": true,
+    "python_min": "3.10.0",
+    "node_min": "18.0.0",
+    "vram_gb_min": 8
+  },
+  "input_contract": {
+    "gpu_render_payload_path": "datasets/gpu_payload/payloads/{gpu_payload_id}.json",
+    "video_runtime_interface_path": "datasets/video_runtime/interfaces/{runtime_interface_id}.json",
+    "provider_id": "provider_stub_remote_api",
+    "contract_version": "video-provider-input-v1"
+  },
+  "output_contract": {
+    "video_job_request_stub": "job_requests/stub/wiring_remote_gpu_design_v1_remote-gpu-rental.request.json.not_submitted",
+    "expected_artifact_stub": "renders/stub/provider_stub_remote_api_remote-gpu-rental.mp4.not_generated",
+    "contract_version": "video-provider-output-v1"
+  },
+  "safety_contract": {
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "activation_status": "design_only",
+    "executable": null,
+    "endpoint": null,
+    "local_execution_blocked": false
+  },
+  "activation_status": "design_only",
+  "execution_status": "design_only_possible",
+  "machine_readiness_gate": "requires_NOT_READY_or_higher_for_local_activation",
+  "notes": "Remote remote_gpu_rental wiring design — design-only until PHASE-28 provider selection.",
+  "built_at": "2026-06-05T04:34:58.612Z"
+}

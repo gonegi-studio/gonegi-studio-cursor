@@ -1,0 +1,29 @@
+{
+  "timeline_memory_spec_id": "timeline-memory-specification-v1",
+  "asset_type": "timeline_memory_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-003",
+  "purpose": "Timeline memory validation dimensions for narrative position persistence and recall.",
+  "timeline_memory_dimension_count": 3,
+  "timeline_memory_dimensions": [
+    "timeline_persistence",
+    "timeline_transition",
+    "timeline_recall"
+  ],
+  "dimension_definitions": {
+    "timeline_persistence": {
+      "description": "Narrative timeline position markers remain coherent within contiguous sequence blocks.",
+      "evaluation_signals": ["position_monotonicity", "marker_persistence_score", "gap_signaling_accuracy"]
+    },
+    "timeline_transition": {
+      "description": "Time jumps, flashbacks, and parallel cuts maintain declared timeline transitions.",
+      "evaluation_signals": ["transition_type_match", "parallel_track_alignment", "act_boundary_signaling"]
+    },
+    "timeline_recall": {
+      "description": "Timeline anchors are correctly recalled after long-range dependencies span horizons.",
+      "evaluation_signals": ["long_range_recall_rate", "dependency_resolution_integrity", "timeline_marker_linkage"]
+    }
+  },
+  "linked_memory_dimension": "timeline_memory",
+  "temporal_memory_spec_ref": "datasets/consistency/temporal-memory-specification.json"
+}

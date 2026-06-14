@@ -1,0 +1,63 @@
+{
+  "failure_spec_id": "production-failure-specification-v1",
+  "asset_type": "production_failure_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-004",
+  "purpose": "Production failure taxonomy and recovery strategies for pipeline execution.",
+  "failure_dimension_count": 5,
+  "failure_dimensions": [
+    "generation_failure",
+    "consistency_failure",
+    "memory_failure",
+    "pipeline_failure",
+    "render_failure"
+  ],
+  "failure_definitions": {
+    "generation_failure": {
+      "description": "Model or API generation errors during image/video/prompt execution.",
+      "severity": "high",
+      "recovery_strategy": "retry_with_backoff_and_fallback_model"
+    },
+    "consistency_failure": {
+      "description": "Identity, motion, or transition consistency scores below minimum threshold.",
+      "severity": "high",
+      "recovery_strategy": "regenerate_with_continuity_anchor_reinforcement"
+    },
+    "memory_failure": {
+      "description": "Temporal memory recall or callback resolution integrity below threshold.",
+      "severity": "critical",
+      "recovery_strategy": "replay_from_last_valid_memory_checkpoint"
+    },
+    "pipeline_failure": {
+      "description": "Stage handoff or transition integrity break in production pipeline.",
+      "severity": "critical",
+      "recovery_strategy": "rollback_to_last_passing_stage_and_revalidate_handoff"
+    },
+    "render_failure": {
+      "description": "Final edit or output render process failure.",
+      "severity": "high",
+      "recovery_strategy": "rebuild_edit_timeline_from_validated_video_traces"
+    }
+  },
+  "pipeline_recovery_integrity": "PASS",
+  "global_recovery_strategy": {
+    "max_retry_count": 3,
+    "checkpoint_interval_stages": [
+      "scene",
+      "shot",
+      "image",
+      "video"
+    ],
+    "escalation_policy": "halt_and_report_on_critical_failure"
+  },
+  "export_id": "production-failure-specification-export-v1",
+  "generated_at": "2026-06-08T23:22:51.879Z",
+  "dataset_ref": "datasets/production_pipeline/production-failure-specification.json",
+  "failure_dimension_list": [
+    "generation_failure",
+    "consistency_failure",
+    "memory_failure",
+    "pipeline_failure",
+    "render_failure"
+  ]
+}

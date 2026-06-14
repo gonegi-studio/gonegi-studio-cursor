@@ -1,0 +1,126 @@
+{
+  "plan_version": "108O",
+  "plan_type": "living_world_adapter_boundary_plan",
+  "generated_at": "2026-05-31T12:00:00.000Z",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "world_type": "early-1900s mediterranean harbor town",
+  "core_principle": "Living World Core is shared common world grammar. Image App Dataset and Video App Dataset remain separate.",
+  "shared_core": {
+    "source": "exports/shared/latest/living-world-core-v1-package.json",
+    "role": "common world grammar",
+    "used_by": [
+      "image_app",
+      "video_app",
+      "story_engine",
+      "scene_generator",
+      "music_drama_studio"
+    ],
+    "libraries": [
+      "emotion",
+      "relationship",
+      "crowd",
+      "profession",
+      "animal",
+      "child",
+      "weather",
+      "time",
+      "community",
+      "festival"
+    ]
+  },
+  "image_app_adapter_boundary": {
+    "allowed_to_consume": [
+      "emotion",
+      "relationship",
+      "crowd",
+      "profession",
+      "animal",
+      "child",
+      "weather",
+      "time",
+      "community",
+      "festival"
+    ],
+    "must_not_own": [
+      "Character DNA",
+      "Style Core",
+      "ENV DNA"
+    ],
+    "responsibilities": [
+      "still image scene enrichment",
+      "background activity selection",
+      "social atmosphere",
+      "emotional context",
+      "weather/time visual behavior"
+    ],
+    "requirements": [
+      "Output must be Cinematic DNA Lab compatible.",
+      "Do not directly generate prompts."
+    ],
+    "dataset_boundary": "Image App Dataset remains separate from Video App Dataset."
+  },
+  "video_app_adapter_boundary": {
+    "allowed_to_consume": [
+      "emotion",
+      "relationship",
+      "crowd",
+      "profession",
+      "animal",
+      "child",
+      "weather",
+      "time",
+      "community",
+      "festival"
+    ],
+    "must_not_own": [
+      "Character DNA",
+      "Style Core",
+      "ENV DNA"
+    ],
+    "responsibilities": [
+      "temporal continuity",
+      "motion continuity",
+      "crowd rhythm over time",
+      "weather/time transition effects",
+      "sequence-level living world consistency"
+    ],
+    "dataset_boundary": "Video App Dataset remains separate from Image App Dataset."
+  },
+  "separation_law": {
+    "rules": [
+      "Do not merge image_app dataset and video_app dataset.",
+      "Shared Living World Core is referenced by both.",
+      "App-specific adapters transform shared grammar into app-specific usage."
+    ],
+    "forbidden": [
+      "image_video_dataset_merge",
+      "shared_core_duplication_into_app_datasets",
+      "prompt_generation_in_adapter_layer",
+      "character_dna_in_living_world_core",
+      "style_core_in_living_world_core",
+      "env_dna_in_living_world_core"
+    ]
+  },
+  "future_outputs": {
+    "deferred": [
+      "exports/image_app/latest/living-world-image-adapter.json",
+      "exports/video_app/latest/living-world-video-adapter.json"
+    ],
+    "status": "not_created"
+  },
+  "next_phase": {
+    "execution_order": [
+      "108O",
+      "108P",
+      "TEST-1",
+      "108Q"
+    ],
+    "phases": {
+      "108O": "Living World Adapter Boundary Plan",
+      "108P": "Image App Living World Adapter",
+      "TEST-1": "Image App 1~3 image validation test",
+      "108Q": "Video App Living World Adapter"
+    }
+  },
+  "verdict": "PASS_LIVING_WORLD_ADAPTER_BOUNDARY_PLAN"
+}

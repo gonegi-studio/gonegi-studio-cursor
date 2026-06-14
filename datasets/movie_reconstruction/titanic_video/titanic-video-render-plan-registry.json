@@ -1,0 +1,39 @@
+{
+  "registry_id": "titanic-video-render-plan-registry-v1",
+  "phase": "PHASE-TITANIC-VIDEO-RECONSTRUCTION-001",
+  "generated_at": "2026-06-10T07:31:28.005Z",
+  "render_plan_count": 2,
+  "render_plans": [
+    {
+      "render_plan_id": "titanic_render_plan_master_v1",
+      "sequence_id": "titanic_video_seq_master_v1",
+      "frame_reference_strategy": "shot_keyframe_chain_with_motion_continuity",
+      "temporal_sampling_strategy": "shot_duration_weighted_24fps",
+      "continuity_constraints": [
+        "camera_motion_continuity",
+        "subject_motion_continuity",
+        "environment_motion_continuity",
+        "semantic_anchor_continuity",
+        "gonegi_identity_lock"
+      ],
+      "frame_rate_hint": 24,
+      "estimated_frame_count": 233280,
+      "render_readiness": "READY",
+      "gpu_execution": false
+    },
+    {
+      "render_plan_id": "titanic_render_plan_preview_v1",
+      "sequence_id": "titanic_video_seq_master_v1",
+      "frame_reference_strategy": "scene_keyframe_sparse",
+      "temporal_sampling_strategy": "scene_boundary_12fps",
+      "continuity_constraints": [
+        "semantic_anchor_continuity",
+        "gonegi_identity_lock"
+      ],
+      "frame_rate_hint": 12,
+      "estimated_frame_count": 116640,
+      "render_readiness": "READY",
+      "gpu_execution": false
+    }
+  ]
+}

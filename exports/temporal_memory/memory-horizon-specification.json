@@ -1,0 +1,61 @@
+{
+  "horizon_spec_id": "memory-horizon-specification-v1",
+  "asset_type": "memory_horizon_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-003",
+  "purpose": "Supported memory recall horizons for temporal memory consistency validation.",
+  "memory_horizons": [
+    10,
+    50,
+    100,
+    500,
+    1000,
+    5000
+  ],
+  "memory_horizon_max": 5000,
+  "memory_horizon_min": 10,
+  "horizon_profiles": [
+    {
+      "horizon": 10,
+      "profile": "clip_memory_validation",
+      "recommended_use": "short-clip memory recall smoke test"
+    },
+    {
+      "horizon": 50,
+      "profile": "scene_block_memory",
+      "recommended_use": "scene-block memory persistence validation"
+    },
+    {
+      "horizon": 100,
+      "profile": "act_fragment_memory",
+      "recommended_use": "act fragment callback recall validation"
+    },
+    {
+      "horizon": 500,
+      "profile": "medium_sequence_memory",
+      "recommended_use": "medium narrative memory horizon validation"
+    },
+    {
+      "horizon": 1000,
+      "profile": "feature_sequence_memory",
+      "recommended_use": "feature-scale memory recall validation"
+    },
+    {
+      "horizon": 5000,
+      "profile": "legacy_span_memory",
+      "recommended_use": "legacy callback and world-state long-horizon validation"
+    }
+  ],
+  "temporal_memory_spec_ref": "datasets/consistency/temporal-memory-specification.json",
+  "export_id": "memory-horizon-specification-export-v1",
+  "generated_at": "2026-06-08T23:12:52.686Z",
+  "dataset_ref": "datasets/consistency/memory-horizon-specification.json",
+  "supported_memory_horizons": [
+    10,
+    50,
+    100,
+    500,
+    1000,
+    5000
+  ]
+}

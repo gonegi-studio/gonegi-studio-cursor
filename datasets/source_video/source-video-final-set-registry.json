@@ -1,0 +1,50 @@
+{
+  "registry_id": "source-video-final-set-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-002-SOURCE_VIDEO_SET_FINALIZATION_V1",
+  "registry_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "schema_path": "datasets/source_video/source-video-final-set.schema.json",
+  "final_set_path": "datasets/source_video/source-video-final-set.json",
+  "import_root": "imports/source_videos",
+  "expected_active_count": 15,
+  "expected_archive_count": 1,
+  "expected_category_counts": {
+    "GHIBLI": 7,
+    "SHINKAI": 2,
+    "LIVE_ACTION": 1,
+    "MORI": 5,
+    "ARCHIVE": 1
+  },
+  "active_categories": {
+    "GHIBLI": {
+      "folder": "active/ghibli",
+      "video_ids": [
+        "GHIBLI_01",
+        "GHIBLI_02",
+        "GHIBLI_03",
+        "GHIBLI_04",
+        "GHIBLI_05",
+        "GHIBLI_06",
+        "GHIBLI_07"
+      ]
+    },
+    "SHINKAI": {
+      "folder": "active/shinkai",
+      "video_ids": ["SHINKAI_01", "SHINKAI_02"]
+    },
+    "LIVE_ACTION": {
+      "folder": "active/live_action",
+      "video_ids": ["LITTLE_WOMEN_01"]
+    },
+    "MORI": {
+      "folder": "active/mori",
+      "video_ids": ["MORI_01", "MORI_02", "MORI_03", "MORI_04", "MORI_05"]
+    }
+  },
+  "archive_categories": {
+    "ARCHIVE": {
+      "folder": "archive/test",
+      "video_ids": ["TEST_KIKI_25S"]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "report_type": "community_crowd_behavior_grammar_audit",
+  "report_version": "v1",
+  "phase": "PHASE-MDG-003",
+  "audit_timestamp": "2026-06-02T00:00:00.000Z",
+  "grammar_path": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+  "final_verdict": "PASS_COMMUNITY_CROWD_BEHAVIOR_GRAMMAR_V1",
+  "dependency_check": {
+    "music_drama_grammar": {
+      "path": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "status": "present"
+    },
+    "shot_patterns": {
+      "path": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "status": "present"
+    },
+    "scene_archetypes": {
+      "path": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+      "status": "present"
+    },
+    "daily_life_behavior_library": {
+      "path": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "status": "present"
+    },
+    "render_feedback": {
+      "path": "datasets/render_feedback/RKB-001.json",
+      "status": "present"
+    },
+    "living_world_core": {
+      "path": "exports/shared/latest/living-world-core-v1-package.json",
+      "status": "present"
+    },
+    "result": "PASS_ALL_DEPENDENCIES_PRESENT"
+  },
+  "validation_summary": {
+    "group_count": 12,
+    "group_count_minimum_met": true,
+    "environment_count": 8,
+    "behavior_type_count": 10,
+    "duplicate_group_id": 0,
+    "invalid_shot_pattern_refs": 0,
+    "invalid_archetype_refs": 0,
+    "all_groups_have_shot_pattern": true,
+    "all_groups_have_archetype": true,
+    "ep01_compatible_groups": 11,
+    "ep01_reserved_groups": 1,
+    "density_limits_consistent_with_rkb": true,
+    "protagonist_priority_all_groups": true
+  },
+  "required_groups_present": [
+    "bakery_customers",
+    "harbor_workers",
+    "dock_workers",
+    "fishermen",
+    "village_children",
+    "market_visitors",
+    "market_vendors",
+    "elderly_neighbors",
+    "street_observers",
+    "travelers",
+    "seaside_resters",
+    "festival_visitors"
+  ],
+  "rkb_integration_check": {
+    "market_crowd_caution": true,
+    "crowd_quality_7_0_lesson": true,
+    "background_support_principle": true,
+    "character_readability_preservation": true,
+    "named_extras_max_2": true,
+    "crowd_groups_max_1": true,
+    "background_animals_max_2": true
+  },
+  "export_paths": {
+    "grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+    "report": "datasets/music_drama_grammar/community-crowd-behavior-report.json"
+  },
+  "next_phase": "PHASE-MDG-004 Animal & Companion Behavior Grammar"
+}

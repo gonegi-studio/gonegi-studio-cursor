@@ -1,0 +1,485 @@
+{
+  "asset_type": "emotional_transition_grammar",
+  "asset_version": "v1",
+  "grammar_id": "emotional-transition-grammar-v1",
+  "phase": "PHASE-MDG-006",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Model emotional flow for Music Drama storytelling. Transition grammar only — no generated scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false,
+    "modifies_living_world_core": false
+  },
+  "read_only_sources": {
+    "master_story": "datasets/story/music-drama-master-story-v1.json",
+    "scenario_rulebook": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+    "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+    "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+    "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+    "animal_companion_behavior_grammar": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+    "visual_motif_grammar": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+    "render_feedback": "datasets/render_feedback/RKB-001.json"
+  },
+  "section_1_emotional_states": {
+    "emotional_state_count": 12,
+    "states": [
+      {
+        "emotion_id": "peace",
+        "description": "Ordinary calm and stable daily-life emotional baseline.",
+        "ep01_compatible": true,
+        "intensity_range": [0.3, 0.6]
+      },
+      {
+        "emotion_id": "comfort",
+        "description": "Family warmth, belonging, and domestic safety.",
+        "ep01_compatible": true,
+        "intensity_range": [0.35, 0.65]
+      },
+      {
+        "emotion_id": "curiosity",
+        "description": "Gentle interest in the world beyond familiar routine.",
+        "ep01_compatible": true,
+        "intensity_range": [0.35, 0.55]
+      },
+      {
+        "emotion_id": "wonder",
+        "description": "Soft discovery and openness without plot shock.",
+        "ep01_compatible": true,
+        "intensity_range": [0.4, 0.7]
+      },
+      {
+        "emotion_id": "longing",
+        "description": "Distance, desire, and emotional reach toward someone absent.",
+        "ep01_compatible": false,
+        "intensity_range": [0.45, 0.8]
+      },
+      {
+        "emotion_id": "hope",
+        "description": "Forward-looking warmth; in EP01 expressed as quiet hope only.",
+        "ep01_compatible": true,
+        "intensity_range": [0.35, 0.65]
+      },
+      {
+        "emotion_id": "sadness",
+        "description": "Visible sorrow after loss, restriction, or separation event.",
+        "ep01_compatible": false,
+        "intensity_range": [0.5, 0.85]
+      },
+      {
+        "emotion_id": "loss",
+        "description": "Emotional weight of something or someone gone.",
+        "ep01_compatible": false,
+        "intensity_range": [0.55, 0.9]
+      },
+      {
+        "emotion_id": "separation",
+        "description": "Pain of being kept apart from a bonded person.",
+        "ep01_compatible": false,
+        "intensity_range": [0.5, 0.85]
+      },
+      {
+        "emotion_id": "reunion",
+        "description": "Restored connection after absence or crisis.",
+        "ep01_compatible": false,
+        "intensity_range": [0.55, 0.9]
+      },
+      {
+        "emotion_id": "acceptance",
+        "description": "Quiet resolution after grief, memory loss, or fate.",
+        "ep01_compatible": false,
+        "intensity_range": [0.3, 0.6]
+      },
+      {
+        "emotion_id": "memory",
+        "description": "Emotional residue of the past; unrecognized or recognized.",
+        "ep01_compatible": false,
+        "intensity_range": [0.35, 0.75]
+      }
+    ]
+  },
+  "section_2_transition_pathways": {
+    "transition_count": 22,
+    "transitions": [
+      {
+        "from_emotion": "peace",
+        "to_emotion": "curiosity",
+        "transition_strength": 0.7,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.95
+      },
+      {
+        "from_emotion": "curiosity",
+        "to_emotion": "wonder",
+        "transition_strength": 0.75,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.92
+      },
+      {
+        "from_emotion": "wonder",
+        "to_emotion": "longing",
+        "transition_strength": 0.65,
+        "story_stage": "post_EP01_romance",
+        "transition_plausibility_score": 0.88
+      },
+      {
+        "from_emotion": "longing",
+        "to_emotion": "hope",
+        "transition_strength": 0.7,
+        "story_stage": "romance_arc",
+        "transition_plausibility_score": 0.9
+      },
+      {
+        "from_emotion": "hope",
+        "to_emotion": "separation",
+        "transition_strength": 0.8,
+        "story_stage": "conflict_arc",
+        "transition_plausibility_score": 0.85
+      },
+      {
+        "from_emotion": "separation",
+        "to_emotion": "sadness",
+        "transition_strength": 0.85,
+        "story_stage": "conflict_arc",
+        "transition_plausibility_score": 0.93
+      },
+      {
+        "from_emotion": "sadness",
+        "to_emotion": "memory",
+        "transition_strength": 0.75,
+        "story_stage": "memory_arc",
+        "transition_plausibility_score": 0.87
+      },
+      {
+        "from_emotion": "memory",
+        "to_emotion": "reunion",
+        "transition_strength": 0.8,
+        "story_stage": "reunion_arc",
+        "transition_plausibility_score": 0.86
+      },
+      {
+        "from_emotion": "reunion",
+        "to_emotion": "acceptance",
+        "transition_strength": 0.7,
+        "story_stage": "finale_arc",
+        "transition_plausibility_score": 0.84
+      },
+      {
+        "from_emotion": "peace",
+        "to_emotion": "comfort",
+        "transition_strength": 0.85,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.97
+      },
+      {
+        "from_emotion": "comfort",
+        "to_emotion": "peace",
+        "transition_strength": 0.8,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.96
+      },
+      {
+        "from_emotion": "comfort",
+        "to_emotion": "curiosity",
+        "transition_strength": 0.65,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.9
+      },
+      {
+        "from_emotion": "curiosity",
+        "to_emotion": "comfort",
+        "transition_strength": 0.7,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.91
+      },
+      {
+        "from_emotion": "peace",
+        "to_emotion": "wonder",
+        "transition_strength": 0.6,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.89
+      },
+      {
+        "from_emotion": "wonder",
+        "to_emotion": "curiosity",
+        "transition_strength": 0.55,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.88
+      },
+      {
+        "from_emotion": "comfort",
+        "to_emotion": "hope",
+        "transition_strength": 0.65,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.92
+      },
+      {
+        "from_emotion": "hope",
+        "to_emotion": "comfort",
+        "transition_strength": 0.6,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.9
+      },
+      {
+        "from_emotion": "curiosity",
+        "to_emotion": "hope",
+        "transition_strength": 0.55,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.87
+      },
+      {
+        "from_emotion": "peace",
+        "to_emotion": "hope",
+        "transition_strength": 0.5,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.86
+      },
+      {
+        "from_emotion": "comfort",
+        "to_emotion": "wonder",
+        "transition_strength": 0.55,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.85
+      },
+      {
+        "from_emotion": "curiosity",
+        "to_emotion": "peace",
+        "transition_strength": 0.6,
+        "story_stage": "EP01_daily_life",
+        "transition_plausibility_score": 0.9
+      },
+      {
+        "from_emotion": "hope",
+        "to_emotion": "loss",
+        "transition_strength": 0.75,
+        "story_stage": "tragedy_arc",
+        "transition_plausibility_score": 0.82
+      }
+    ]
+  },
+  "section_3_visual_motif_bridges": {
+    "motif_bridge_count": 12,
+    "rules": [
+      "Only use EP01-compatible motifs for EP01-compatible emotional states.",
+      "Future motifs remain future-only and link only to non-EP01 emotions."
+    ],
+    "bridges": [
+      {
+        "emotion_id": "peace",
+        "motif_ids": ["morning_light", "window"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "comfort",
+        "motif_ids": ["toast", "tea_cup", "bread"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "curiosity",
+        "motif_ids": ["open_window", "harbor_path", "stone_stairway"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "wonder",
+        "motif_ids": ["sea_horizon", "wind_grass"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "hope",
+        "motif_ids": ["morning_light", "sea_horizon", "sunset_hill"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "longing",
+        "motif_ids": ["sunset_hill", "reflection"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "sadness",
+        "motif_ids": ["reflection", "sea_horizon"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "separation",
+        "motif_ids": ["harbor_path", "wooden_boat", "sea_horizon"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "memory",
+        "motif_ids": ["letter", "blue_ribbon", "memory_item"],
+        "ep01_motif_only": false,
+        "future_motifs": true
+      },
+      {
+        "emotion_id": "reunion",
+        "motif_ids": ["harbor_path", "open_window"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "loss",
+        "motif_ids": ["sea_horizon", "reflection"],
+        "ep01_motif_only": true
+      },
+      {
+        "emotion_id": "acceptance",
+        "motif_ids": ["window", "sunset_hill", "wind_grass"],
+        "ep01_motif_only": true
+      }
+    ]
+  },
+  "section_4_shot_pattern_bridges": {
+    "shot_bridge_count": 12,
+    "behavior_bridge_count": 12,
+    "bridges": [
+      {
+        "emotion_id": "peace",
+        "shot_patterns": ["establishing_daily_life", "quiet_solitude"],
+        "archetypes": ["domestic_bedroom_peace", "gonegi_morning_routine"],
+        "behaviors": ["wake_up", "night_rest", "tree_rest"]
+      },
+      {
+        "emotion_id": "comfort",
+        "shot_patterns": ["domestic_warmth", "bakery_morning"],
+        "archetypes": ["family_bakery_warmth", "gamja_companion_bond"],
+        "behaviors": ["family_breakfast", "family_dinner", "morning_greeting"]
+      },
+      {
+        "emotion_id": "curiosity",
+        "shot_patterns": ["street_passage", "rooftop_gaze"],
+        "archetypes": ["village_lane_passage", "rooftop_gaze"],
+        "behaviors": ["afternoon_wandering", "harbor_watch"]
+      },
+      {
+        "emotion_id": "wonder",
+        "shot_patterns": ["harbor_edge_watch", "rooftop_gaze"],
+        "archetypes": ["harbor_edge_watch", "rooftop_gaze"],
+        "behaviors": ["hilltop_lunch", "harbor_watch"]
+      },
+      {
+        "emotion_id": "hope",
+        "shot_patterns": ["establishing_daily_life", "harbor_edge_watch"],
+        "archetypes": ["gonegi_morning_routine", "harbor_edge_watch"],
+        "behaviors": ["sunset_return", "walk_with_gamja"]
+      },
+      {
+        "emotion_id": "longing",
+        "shot_patterns": ["quiet_solitude", "harbor_edge_watch"],
+        "archetypes": ["harbor_edge_watch", "domestic_bedroom_peace"],
+        "behaviors": ["window_reflection", "harbor_watch"]
+      },
+      {
+        "emotion_id": "sadness",
+        "shot_patterns": ["quiet_solitude"],
+        "archetypes": ["domestic_bedroom_peace", "harbor_edge_watch"],
+        "behaviors": ["window_reflection", "night_rest"]
+      },
+      {
+        "emotion_id": "separation",
+        "shot_patterns": ["harbor_edge_watch", "quiet_solitude"],
+        "archetypes": ["harbor_edge_watch"],
+        "behaviors": ["harbor_watch", "fishing_break"]
+      },
+      {
+        "emotion_id": "loss",
+        "shot_patterns": ["quiet_solitude", "harbor_edge_watch"],
+        "archetypes": ["harbor_edge_watch"],
+        "behaviors": ["harbor_watch", "window_reflection"]
+      },
+      {
+        "emotion_id": "memory",
+        "shot_patterns": ["quiet_solitude", "domestic_warmth"],
+        "archetypes": ["domestic_bedroom_peace"],
+        "behaviors": ["window_reflection", "night_rest"]
+      },
+      {
+        "emotion_id": "reunion",
+        "shot_patterns": ["companion_bond_moment", "establishing_daily_life"],
+        "archetypes": ["gamja_companion_bond", "village_lane_passage"],
+        "behaviors": ["walk_with_gamja", "morning_greeting"]
+      },
+      {
+        "emotion_id": "acceptance",
+        "shot_patterns": ["quiet_solitude", "establishing_daily_life"],
+        "archetypes": ["rooftop_gaze", "village_lane_passage"],
+        "behaviors": ["tree_rest", "sunset_return"]
+      }
+    ]
+  },
+  "section_5_emotional_continuity_law": {
+    "summary": "Emotion should not jump randomly between scenes.",
+    "allowed_examples": [
+      "peace → comfort → curiosity"
+    ],
+    "not_recommended_examples": [
+      "peace → extreme sadness without supported story event"
+    ],
+    "rules": [
+      "Prefer adjacent emotional transitions with plausibility score ≥ 0.85 within EP01.",
+      "Large emotional jumps require explicit story_stage support.",
+      "Transition plausibility_score ranges from 0.0 to 1.0.",
+      "EP01 scenes should remain within EP01-compatible emotional states."
+    ],
+    "minimum_plausibility_ep01": 0.85,
+    "minimum_plausibility_story_arc": 0.8
+  },
+  "section_6_ep01_emotional_profile": {
+    "title": "늘 그래왔듯이",
+    "allowed_registers": [
+      "peace",
+      "family comfort",
+      "small freedom",
+      "quiet reflection",
+      "warm belonging"
+    ],
+    "allowed_emotion_ids": [
+      "peace",
+      "comfort",
+      "curiosity",
+      "wonder",
+      "hope"
+    ],
+    "forbidden_in_ep01": [
+      "romance",
+      "longing",
+      "separation",
+      "loss",
+      "reunion"
+    ],
+    "forbidden_emotion_ids": [
+      "longing",
+      "sadness",
+      "loss",
+      "separation",
+      "reunion",
+      "acceptance",
+      "memory"
+    ],
+    "register_mapping": {
+      "peace": "peaceful_daily_life",
+      "family comfort": "comfort",
+      "small freedom": "curiosity",
+      "quiet reflection": "peace",
+      "warm belonging": "comfort"
+    }
+  },
+  "section_7_rkb_integration": {
+    "test_id": "RKB-001",
+    "encoded_successes": [
+      "daily-life success",
+      "character consistency success",
+      "environment consistency success",
+      "scenario-character separation success"
+    ],
+    "rkb_scores": {
+      "character_consistency": 9.5,
+      "environment_consistency": 9.0,
+      "style_consistency": 9.0,
+      "overall_result": "SUCCESS"
+    },
+    "grammar_alignment": {
+      "field_separation": "Emotional intent informs scenario atmosphere; character field remains visual identity only",
+      "ep01_emotional_intent_from_master_story": ["peace", "warmth", "ordinary happiness", "family comfort", "small freedom", "quiet hope"]
+    }
+  }
+}

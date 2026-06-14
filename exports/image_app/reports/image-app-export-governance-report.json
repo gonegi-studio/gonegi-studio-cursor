@@ -1,0 +1,135 @@
+{
+  "phase": "PHASE-EXPORT-001",
+  "governance_version": "EXPORT-001-v1",
+  "generated_at": "2026-06-04T08:12:15.023Z",
+  "precheck": {
+    "latest_dir_present": true,
+    "render_feedback_present": true,
+    "rkb_005_verdict": "PASS_RKB_005_LIGHTING_VALIDATION",
+    "pass": true
+  },
+  "latest_policy": {
+    "allowlist": [
+      "cinematic-dna-library-import.json",
+      "image-app-brain-ingestion-package.json",
+      "living-world-core-v1-package.json",
+      "living-world-image-adapter.json",
+      "music-drama-image-adapter.json",
+      "location-lighting-image-adapter.json",
+      "indoor-location-anchor-adapter.json",
+      "lighting-anchor-adapter.json",
+      "shot-grammar-adapter.json",
+      "emotion-acting-adapter.json",
+      "instrumental-mv-adapter.json",
+      "ballad-mv-adapter.json",
+      "prop-anchor-adapter.json",
+      "room-layout-lock-adapter.json",
+      "scene-asset-composition-adapter.json",
+      "outdoor-layout-lock-adapter.json",
+      "character-first-contract.json"
+    ],
+    "files_present": [
+      "cinematic-dna-library-import.json",
+      "image-app-brain-ingestion-package.json",
+      "living-world-core-v1-package.json",
+      "living-world-image-adapter.json",
+      "music-drama-image-adapter.json",
+      "location-lighting-image-adapter.json",
+      "indoor-location-anchor-adapter.json",
+      "lighting-anchor-adapter.json",
+      "shot-grammar-adapter.json",
+      "emotion-acting-adapter.json",
+      "instrumental-mv-adapter.json",
+      "ballad-mv-adapter.json",
+      "prop-anchor-adapter.json",
+      "room-layout-lock-adapter.json",
+      "scene-asset-composition-adapter.json",
+      "outdoor-layout-lock-adapter.json",
+      "character-first-contract.json"
+    ],
+    "forbidden_found": [],
+    "extra_files": [],
+    "missing_required": [],
+    "pass": true
+  },
+  "test_batches": {
+    "files_in_test_batches": [
+      "rkb-004-indoor-location-test-batch.json",
+      "rkb-005-lighting-validation-test-batch.json",
+      "rkb-006-coverage-validation-test-batch.json",
+      "rkb-007-emotion-validation-test-batch.json",
+      "rkb-008-instrumental-mv-validation.json",
+      "rkb-009-ballad-mv-validation.json",
+      "rkb-010-prop-validation-test-batch.json",
+      "rkb-011-room-layout-validation-test-batch.json",
+      "rkb-012-scene-composition-validation-test-batch.json",
+      "rkb-013-outdoor-layout-validation-test-batch.json"
+    ],
+    "misplaced_in_latest": [],
+    "pass": true
+  },
+  "reports": {
+    "files_in_reports": [
+      "ballad-mv-adapter-report.json",
+      "cinematic-dna-library-import-report.json",
+      "emotion-acting-adapter-report.json",
+      "export-root-relocation-report.json",
+      "image-app-brain-ingestion-report.json",
+      "image-app-export-governance-report.json",
+      "indoor-location-anchor-adapter-report.json",
+      "instrumental-mv-adapter-report.json",
+      "lighting-anchor-adapter-report.json",
+      "living-world-core-v1-package-report.json",
+      "living-world-image-adapter-report.json",
+      "location-lighting-image-adapter-report.json",
+      "music-drama-image-adapter-report.json",
+      "outdoor-layout-lock-adapter-report.json",
+      "outdoor-layout-lock-lite-report.json",
+      "prop-anchor-adapter-report.json",
+      "room-layout-lock-adapter-report.json",
+      "scene-asset-composition-adapter-report.json",
+      "shot-grammar-adapter-report.json"
+    ],
+    "misplaced_in_latest": [],
+    "pass": true
+  },
+  "adapters": {
+    "files_in_adapters": [
+      "ballad-mv-adapter.json",
+      "emotion-acting-adapter.json",
+      "indoor-location-anchor-adapter.json",
+      "instrumental-mv-adapter.json",
+      "lighting-anchor-adapter.json",
+      "living-world-image-adapter.json",
+      "location-lighting-image-adapter.json",
+      "music-drama-image-adapter.json",
+      "outdoor-layout-lock-adapter-lite.json",
+      "outdoor-layout-lock-adapter-v2.json",
+      "outdoor-layout-lock-adapter.json",
+      "prop-anchor-adapter.json",
+      "room-layout-lock-adapter.json",
+      "scene-asset-composition-adapter.json",
+      "shot-grammar-adapter.json"
+    ],
+    "pass": true
+  },
+  "upload_manifest_path": "exports/image_app/upload_bundle/image-app-upload-manifest.json",
+  "outdoor_layout_v2_guard": {
+    "latest_adapter_path": "exports/image_app/latest/outdoor-layout-lock-adapter.json",
+    "pass": true,
+    "violations": []
+  },
+  "dataset_16": {
+    "upload_filename": "outdoor-layout-lock-adapter.json",
+    "production_variant": "v2",
+    "full_reference_path": "exports/image_app/adapters/full_reference/outdoor-layout-lock-adapter-full.json",
+    "character_first_contract_path": "exports/image_app/latest/character-first-contract.json"
+  },
+  "identity_protection": {
+    "final_verdict": "PASS_IDENTITY_PROTECTION_FRAMEWORK_V1",
+    "pass": true,
+    "violations": []
+  },
+  "final_verdict": "PASS_IMAGE_APP_EXPORT_GOVERNANCE_V1",
+  "violations": []
+}

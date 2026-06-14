@@ -1,0 +1,134 @@
+{
+  "asset_type": "music_drama_package_ecosystem_audit",
+  "asset_version": "v1",
+  "audit_id": "music-drama-package-ecosystem-audit-v1",
+  "phase": "PHASE-MDG-013",
+  "audit_timestamp": "2026-06-02T04:17:45.652Z",
+  "section_1_package_coverage_audit": {
+    "core_package_exists": true,
+    "image_adapter_exists": true,
+    "video_adapter_exists": true,
+    "core_report_exists": true,
+    "image_report_exists": true,
+    "video_report_exists": true,
+    "all_parse_valid": true
+  },
+  "section_2_reference_consistency_audit": {
+    "core_section_count": 10,
+    "image_referenced_section_count": 10,
+    "video_referenced_section_count": 6,
+    "missing_reference_count": 0,
+    "orphan_reference_count": 0,
+    "missing_references": [],
+    "orphan_references": []
+  },
+  "section_3_integrity_propagation_audit": {
+    "source": "datasets/music_drama_grammar/music-drama-integrity-index-v1.json",
+    "source_scores": {
+      "file_integrity_score": 1,
+      "reference_integrity_score": 1,
+      "ep01_integrity_score": 1,
+      "density_integrity_score": 1,
+      "overall_integrity_score": 1
+    },
+    "core_package_scores": {
+      "file_integrity_score": 1,
+      "reference_integrity_score": 1,
+      "ep01_integrity_score": 1,
+      "density_integrity_score": 1,
+      "overall_integrity_score": 1
+    },
+    "core_report_scores": {
+      "file_integrity_score": 1,
+      "reference_integrity_score": 1,
+      "ep01_integrity_score": 1,
+      "density_integrity_score": 1,
+      "overall_integrity_score": 1
+    },
+    "image_adapter_integrity_score": 1,
+    "video_adapter_integrity_score": 1,
+    "mismatch_count": 0,
+    "mismatches": [],
+    "propagated_correctly": true
+  },
+  "section_4_ep01_readiness_audit": {
+    "violation_count": 0,
+    "violations": [],
+    "index_checks": {
+      "dana_absent_from_cast": true,
+      "aengdu_absent_from_ep01_sequence": true,
+      "gamja_continuity_maintained": true,
+      "ep01_motif_rules_maintained": true,
+      "ep01_emotional_profile_maintained": true
+    },
+    "core_ep01_ready": true,
+    "image_ep01_ready": true,
+    "video_ep01_ready": true,
+    "profiles": {
+      "dana_absent": true,
+      "aengdu_absent": true,
+      "gamja_continuity": true,
+      "emotional_profile": true,
+      "motif_profile": true,
+      "density_profile": true
+    }
+  },
+  "section_5_adapter_coverage_audit": {
+    "image_adapter": {
+      "field_separation": true,
+      "density_governance": true,
+      "rkb_image_rules": true,
+      "compatibility_declarations": true
+    },
+    "video_adapter": {
+      "beat_flow": true,
+      "emotional_continuity": true,
+      "companion_continuity": true,
+      "density_governance": true,
+      "compatibility_declarations": true
+    }
+  },
+  "section_6_cross_package_compatibility_audit": {
+    "conflict_count": 0,
+    "conflicts": [],
+    "shared_core_to_image": {
+      "source_package_aligned": true,
+      "density_aligned": true,
+      "world_identity_aligned": true
+    },
+    "shared_core_to_video": {
+      "source_package_aligned": true,
+      "density_aligned": true,
+      "world_identity_aligned": true
+    },
+    "compatible": true
+  },
+  "section_7_ecosystem_score": {
+    "core_package_score": 1,
+    "image_adapter_score": 1,
+    "video_adapter_score": 1,
+    "ecosystem_integrity_score": 1
+  },
+  "validation_summary": {
+    "all_package_files_parse": true,
+    "missing_references": 0,
+    "orphan_references": 0,
+    "integrity_mismatches": 0,
+    "ep01_violations": 0,
+    "compatibility_conflicts": 0,
+    "ecosystem_scores_generated": true
+  },
+  "post_audit_status": {
+    "music_drama_grammar_v1_0": "COMPLETE",
+    "core_package": "COMPLETE",
+    "image_adapter": "COMPLETE",
+    "video_adapter": "COMPLETE",
+    "production_dataset_layer": "COMPLETE",
+    "ready_for": [
+      "Image App validation tests",
+      "Dataset refinement cycles",
+      "Future MDG v2 expansion (optional)"
+    ]
+  },
+  "final_verdict": "PASS_MUSIC_DRAMA_PACKAGE_ECOSYSTEM_V1"
+}

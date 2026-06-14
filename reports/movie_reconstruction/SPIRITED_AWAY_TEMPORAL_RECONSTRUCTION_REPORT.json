@@ -1,0 +1,60 @@
+{
+  "report_id": "spirited-away-temporal-reconstruction-report-v1",
+  "phase": "PHASE-SPIRITED-AWAY-TEMPORAL-001",
+  "system_id": "SPIRITED_AWAY_TEMPORAL_RECONSTRUCTION_V1",
+  "generated_at": "2026-06-10T07:56:53.910Z",
+  "final_verdict": "PASS_SPIRITED_AWAY_TEMPORAL_RECONSTRUCTION_V1",
+  "temporal_system_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "spirited_away_dataset_pass": true,
+      "scene_registry_exists": true,
+      "movie_bundle_exists": true,
+      "runtime_composition_exists": true
+    }
+  },
+  "validation_summary": {
+    "scene_count": 300,
+    "sequence_count": 300,
+    "shot_count": 2400,
+    "transition_count": 2399,
+    "temporal_continuity_score": 0.9602,
+    "semantic_continuity_score": 0.9663,
+    "character_state_consistency": 0.962,
+    "environment_continuity_score": 0.963,
+    "movie_dataset_swap_valid": true,
+    "world_identity_lock": "PASS",
+    "video_reconstruction_status": "READY",
+    "factory_second_movie_proven": true,
+    "gpu_execution": false,
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "issues": [],
+  "reconstruction_pipeline": [
+    "Spirited Away Scene",
+    "Temporal Flow",
+    "Video Reconstruction Ready",
+    "Factory Proven On Second Movie"
+  ],
+  "quality_gates": {
+    "temporal_continuity_score_gte_0_95": true,
+    "semantic_continuity_score_gte_0_95": true,
+    "character_state_consistency_gte_0_95": true,
+    "environment_continuity_score_gte_0_95": true,
+    "movie_dataset_swap_valid": true,
+    "world_identity_lock_pass": true
+  },
+  "dataset_paths": {
+    "temporal_dir": "datasets/movie_reconstruction/spirited_away_temporal",
+    "shot_sequence_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-shot-sequence-registry.json",
+    "character_state_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-character-state-registry.json",
+    "environment_continuity_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-environment-continuity-registry.json",
+    "temporal_transition_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-transition-registry.json",
+    "temporal_adapter": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-adapter.json"
+  },
+  "success_condition": {
+    "video_reconstruction": "READY",
+    "factory_second_movie_proven": true
+  }
+}

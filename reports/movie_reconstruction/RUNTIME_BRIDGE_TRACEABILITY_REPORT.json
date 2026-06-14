@@ -1,0 +1,53 @@
+{
+  "report_id": "runtime_bridge_traceability_mqcb6rag",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-006A",
+  "system_id": "BACKEND_RUNTIME_BRIDGE_V1",
+  "generated_at": "2026-06-13T12:05:36.040Z",
+  "entries": [
+    {
+      "traceability_id": "runtime_trace_001",
+      "source_contract": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json",
+      "adapter": "controlnet_adapter",
+      "runtime_target": "controlnet_backend",
+      "runtime_degradation_path": [
+        "controlnet_adapter",
+        "fallback_text_path"
+      ],
+      "traceability_signature": "trace_ef95a8e44cd96433"
+    },
+    {
+      "traceability_id": "runtime_trace_002",
+      "source_contract": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json",
+      "adapter": "comfyui_adapter",
+      "runtime_target": "comfyui_backend",
+      "runtime_degradation_path": [
+        "comfyui_adapter",
+        "fallback_text_path"
+      ],
+      "traceability_signature": "trace_9d05f9f0d03c921d"
+    },
+    {
+      "traceability_id": "runtime_trace_003",
+      "source_contract": "reports/movie_reconstruction/IMAGE_APP_INGESTION_SPECIFICATION.json",
+      "adapter": "comfyui_adapter",
+      "runtime_target": "comfyui_backend",
+      "runtime_degradation_path": [
+        "comfyui_adapter",
+        "fallback_text_path"
+      ],
+      "traceability_signature": "trace_530e34d1771291b5"
+    },
+    {
+      "traceability_id": "runtime_trace_004",
+      "source_contract": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json",
+      "adapter": "future_video_adapter",
+      "runtime_target": "future_video_backend",
+      "runtime_degradation_path": [
+        "future_video_adapter",
+        "comfyui_adapter",
+        "fallback_text_path"
+      ],
+      "traceability_signature": "trace_888ad4b743489ad4"
+    }
+  ]
+}

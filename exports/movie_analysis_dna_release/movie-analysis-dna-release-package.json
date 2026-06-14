@@ -1,0 +1,115 @@
+{
+  "release_id": "movie-analysis-dna-release-package-v1",
+  "release_version": "v1",
+  "phase": "PHASE-SOURCE-VIDEO-062-MOVIE_ANALYSIS_DNA_RELEASE_PACKAGE_V1",
+  "released_at": "2026-06-06T04:05:47.691Z",
+  "source_count": 4,
+  "adapter_count": 24,
+  "dna_package_path": "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+  "image_bridge_path": "exports/movie_analysis_dna_consumer_bridge/movie-analysis-dna-image-bridge.json",
+  "video_bridge_path": "exports/movie_analysis_dna_consumer_bridge/movie-analysis-dna-video-bridge.json",
+  "import_test_report_path": "reports/movie-analysis-dna-consumer-import-test-report.json",
+  "package_id": "movie-analysis-dna-package-v1",
+  "image_bridge_id": "movie-analysis-dna-image-bridge-v1",
+  "video_bridge_id": "movie-analysis-dna-video-bridge-v1",
+  "adapter_library_id": "movie-analysis-dna-adapter-library-v1",
+  "cinematic_dna_set_id": "movie-analysis-cinematic-dna-v1",
+  "integration_set_id": "movie-analysis-cinematic-dna-integration-v1",
+  "certification_verdict": "PASS_MOVIE_ANALYSIS_DNA_ADAPTER_CERTIFICATION_V1",
+  "certification_status": "CERTIFIED",
+  "import_test_verdict": "PASS_MOVIE_ANALYSIS_DNA_CONSUMER_IMPORT_TEST_V1",
+  "consumer_targets": [
+    "image_app",
+    "video_app"
+  ],
+  "sources": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "cinematic_dna_id": "cinematic_dna_ghibli_01_v1",
+      "integration_id": "cinematic_dna_integration_ghibli_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_ghibli_01_v1",
+      "adapter_ids": [
+        "dna_adapter_scene_adapter_ghibli_01_v1",
+        "dna_adapter_camera_adapter_ghibli_01_v1",
+        "dna_adapter_emotion_adapter_ghibli_01_v1",
+        "dna_adapter_transition_adapter_ghibli_01_v1",
+        "dna_adapter_continuity_adapter_ghibli_01_v1",
+        "dna_adapter_storytelling_adapter_ghibli_01_v1"
+      ],
+      "image_bridge_ready": true,
+      "video_bridge_ready": true,
+      "import_test_ready": true
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "cinematic_dna_id": "cinematic_dna_little_women_01_v1",
+      "integration_id": "cinematic_dna_integration_little_women_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_little_women_01_v1",
+      "adapter_ids": [
+        "dna_adapter_scene_adapter_little_women_01_v1",
+        "dna_adapter_camera_adapter_little_women_01_v1",
+        "dna_adapter_emotion_adapter_little_women_01_v1",
+        "dna_adapter_transition_adapter_little_women_01_v1",
+        "dna_adapter_continuity_adapter_little_women_01_v1",
+        "dna_adapter_storytelling_adapter_little_women_01_v1"
+      ],
+      "image_bridge_ready": true,
+      "video_bridge_ready": true,
+      "import_test_ready": true
+    },
+    {
+      "source_video_id": "MORI_01",
+      "cinematic_dna_id": "cinematic_dna_mori_01_v1",
+      "integration_id": "cinematic_dna_integration_mori_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_mori_01_v1",
+      "adapter_ids": [
+        "dna_adapter_scene_adapter_mori_01_v1",
+        "dna_adapter_camera_adapter_mori_01_v1",
+        "dna_adapter_emotion_adapter_mori_01_v1",
+        "dna_adapter_transition_adapter_mori_01_v1",
+        "dna_adapter_continuity_adapter_mori_01_v1",
+        "dna_adapter_storytelling_adapter_mori_01_v1"
+      ],
+      "image_bridge_ready": true,
+      "video_bridge_ready": true,
+      "import_test_ready": true
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "cinematic_dna_id": "cinematic_dna_shinkai_01_v1",
+      "integration_id": "cinematic_dna_integration_shinkai_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_shinkai_01_v1",
+      "adapter_ids": [
+        "dna_adapter_scene_adapter_shinkai_01_v1",
+        "dna_adapter_camera_adapter_shinkai_01_v1",
+        "dna_adapter_emotion_adapter_shinkai_01_v1",
+        "dna_adapter_transition_adapter_shinkai_01_v1",
+        "dna_adapter_continuity_adapter_shinkai_01_v1",
+        "dna_adapter_storytelling_adapter_shinkai_01_v1"
+      ],
+      "image_bridge_ready": true,
+      "video_bridge_ready": true,
+      "import_test_ready": true
+    }
+  ],
+  "release_readiness": {
+    "dna_package_linked": true,
+    "image_bridge_linked": true,
+    "video_bridge_linked": true,
+    "import_test_linked": true,
+    "source_ids_preserved": true,
+    "adapter_ids_preserved": true,
+    "traceability_preserved": true,
+    "certification_status_preserved": true,
+    "release_ready": true
+  },
+  "safety_summary": {
+    "planning_only": true,
+    "generation": false,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false
+  }
+}

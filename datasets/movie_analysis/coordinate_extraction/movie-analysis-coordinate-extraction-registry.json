@@ -1,0 +1,58 @@
+{
+  "registry_id": "movie-analysis-coordinate-extraction-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-026-MOVIE_ANALYSIS_COORDINATE_EXTRACTION_DESIGN_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/coordinate_extraction/movie-analysis-coordinate-extraction.schema.json",
+  "scene_detection_registry_path": "datasets/movie_analysis/scene_detection/movie-analysis-scene-detection-registry.json",
+  "storage_dir": "datasets/movie_analysis/coordinate_extraction/plans",
+  "coordinate_extraction_plans": [
+    {
+      "coordinate_extraction_id": "coordinate_extraction_ghibli_01_v1",
+      "plan_path": "datasets/movie_analysis/coordinate_extraction/plans/coordinate_extraction_ghibli_01_v1.json",
+      "source_video_id": "GHIBLI_01",
+      "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+      "dry_run_id": "dry_run_ghibli_01_v1",
+      "sampling_plan_id": "frame_sampling_ghibli_01_v1",
+      "scene_detection_id": "scene_detection_ghibli_01_v1",
+      "coordinate_extraction_strategy": "SHOT_GRAMMAR_CANDIDATE",
+      "coordinate_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "coordinate_extraction_id": "coordinate_extraction_shinkai_01_v1",
+      "plan_path": "datasets/movie_analysis/coordinate_extraction/plans/coordinate_extraction_shinkai_01_v1.json",
+      "source_video_id": "SHINKAI_01",
+      "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+      "dry_run_id": "dry_run_shinkai_01_v1",
+      "sampling_plan_id": "frame_sampling_shinkai_01_v1",
+      "scene_detection_id": "scene_detection_shinkai_01_v1",
+      "coordinate_extraction_strategy": "EMOTION_LOCATION_CANDIDATE",
+      "coordinate_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "coordinate_extraction_id": "coordinate_extraction_little_women_01_v1",
+      "plan_path": "datasets/movie_analysis/coordinate_extraction/plans/coordinate_extraction_little_women_01_v1.json",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "analysis_plan_id": "analysis_plan_little_women_01_v1",
+      "dry_run_id": "dry_run_little_women_01_v1",
+      "sampling_plan_id": "frame_sampling_little_women_01_v1",
+      "scene_detection_id": "scene_detection_little_women_01_v1",
+      "coordinate_extraction_strategy": "BLOCKING_CANDIDATE",
+      "coordinate_candidate_count": 18,
+      "status": "designed"
+    },
+    {
+      "coordinate_extraction_id": "coordinate_extraction_mori_01_v1",
+      "plan_path": "datasets/movie_analysis/coordinate_extraction/plans/coordinate_extraction_mori_01_v1.json",
+      "source_video_id": "MORI_01",
+      "analysis_plan_id": "analysis_plan_mori_01_v1",
+      "dry_run_id": "dry_run_mori_01_v1",
+      "sampling_plan_id": "frame_sampling_mori_01_v1",
+      "scene_detection_id": "scene_detection_mori_01_v1",
+      "coordinate_extraction_strategy": "CAMERA_MOTION_CANDIDATE",
+      "coordinate_candidate_count": 12,
+      "status": "designed"
+    }
+  ]
+}

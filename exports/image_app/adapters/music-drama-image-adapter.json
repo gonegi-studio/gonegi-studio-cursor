@@ -1,0 +1,259 @@
+{
+  "adapter_type": "music_drama_image_adapter",
+  "adapter_metadata": {
+    "adapter_name": "music-drama-image-adapter",
+    "adapter_version": "v1",
+    "phase": "PHASE-MDG-011",
+    "generated_at": "2026-06-02T04:04:16.120Z",
+    "source_package": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+    "target_app": "image_app",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "integrity_score": 1,
+    "ep01_ready": true
+  },
+  "grammar_references": [
+    {
+      "section_name": "music_drama_grammar",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#music_drama_grammar",
+      "item_count": 1
+    },
+    {
+      "section_name": "shot_patterns",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#shot_patterns",
+      "item_count": 8
+    },
+    {
+      "section_name": "scene_archetypes",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#scene_archetypes",
+      "item_count": 8
+    },
+    {
+      "section_name": "daily_life_behavior",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#daily_life_behavior",
+      "item_count": 16
+    },
+    {
+      "section_name": "community_behavior",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#community_behavior",
+      "item_count": 12
+    },
+    {
+      "section_name": "animal_behavior",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#animal_behavior",
+      "item_count": 10
+    },
+    {
+      "section_name": "visual_motifs",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#visual_motifs",
+      "item_count": 21
+    },
+    {
+      "section_name": "emotional_transitions",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#emotional_transitions",
+      "item_count": 12
+    },
+    {
+      "section_name": "beat_structure",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#beat_structure",
+      "item_count": 6
+    },
+    {
+      "section_name": "sequence_assembly",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json#sequence_assembly",
+      "item_count": 6
+    }
+  ],
+  "image_app_consumption_profile": {
+    "supported_use_cases": [
+      "daily_life_music_drama",
+      "harbor_storytelling",
+      "character_consistency_support",
+      "companion_continuity_support",
+      "visual_motif_support",
+      "emotional_flow_support"
+    ],
+    "consumption_mode": "reference_only",
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "generates_images": false,
+    "image_usage_rules": [
+      "consume grammar references for still-image Music Drama scene enrichment only",
+      "do not generate scenarios directly from adapter",
+      "do not generate prompts directly from adapter",
+      "do not override Character DNA",
+      "do not override Style Core",
+      "do not override Living World Core",
+      "do not merge adapter payload with external datasets"
+    ]
+  },
+  "field_separation_contract": {
+    "field_separation_required": true,
+    "scenario_field_rules": {
+      "must_contain": [
+        "location",
+        "atmosphere",
+        "visible environment",
+        "visible actions",
+        "scene context"
+      ],
+      "must_be": [
+        "cinematic",
+        "visual",
+        "music-drama compatible",
+        "one primary location",
+        "one primary action",
+        "emotionally readable"
+      ],
+      "forbidden": [
+        "character visual descriptions",
+        "plot summaries",
+        "exposition",
+        "internal monologue",
+        "excessive action stacking",
+        "negative exclusion phrases"
+      ]
+    },
+    "character_field_rules": {
+      "must_contain": [
+        "visible main characters",
+        "visible supporting characters",
+        "visible extras",
+        "visible crowd groups",
+        "visible animals",
+        "visual descriptions only"
+      ],
+      "description_must_include": [
+        "identity",
+        "age (if known)",
+        "appearance",
+        "clothing",
+        "key visual traits"
+      ],
+      "forbidden": [
+        "location descriptions",
+        "story narration",
+        "action sentences",
+        "camera instructions",
+        "lighting descriptions",
+        "absent characters",
+        "actions",
+        "emotions",
+        "scene descriptions"
+      ]
+    },
+    "absent_character_rule": "omit only — never write exclusion phrases such as \"No Dana\" or \"Dana absent\"",
+    "separation_source": "datasets/music_drama_grammar/music-drama-grammar-v1.json#field_contract"
+  },
+  "density_governance": {
+    "named_extras_max": 2,
+    "crowd_groups_max": 1,
+    "background_animals_max": 2,
+    "visible_motifs_max": 3,
+    "crowd_role": "background support only",
+    "protagonist_dominance": "crowd must never compete with protagonist visibility",
+    "source": "RKB-001 early image test validation",
+    "alignment_note": "Limits aligned with music-drama-grammar-v1.json and music-drama-integrity-index-v1.json"
+  },
+  "rkb_001_image_rules": {
+    "test_id": "RKB-001",
+    "source": "datasets/render_feedback/RKB-001.json",
+    "character_readability_first": {
+      "enabled": true,
+      "policy": "Character field contains visible entity descriptions only; protagonist readability takes priority over background density.",
+      "validated_by": {
+        "test_id": "RKB-001",
+        "validated_structure": {
+          "scenario_character_separation": true,
+          "negative_exclusion_tokens": false
+        },
+        "pass_observations": [
+          "character consistency improved with external manual scenario",
+          "Gonegi identity stable",
+          "Gamja identity stable",
+          "scenario/character separation effective"
+        ],
+        "known_risk_zones": [
+          {
+            "risk_id": "dense_market_crowd",
+            "severity": "MEDIUM",
+            "mitigation": "limit crowd groups and named extras per density_limits"
+          },
+          {
+            "risk_id": "bedroom_object_merge",
+            "severity": "LOW",
+            "mitigation": "keep bedding and body contact visually simple in domestic scenes"
+          },
+          {
+            "risk_id": "hand_artifacts",
+            "severity": "LOW",
+            "mitigation": "avoid complex hand poses in early test phases"
+          }
+        ]
+      }
+    },
+    "crowd_caution": {
+      "enabled": true,
+      "policy": "Limit crowd groups and named extras; crowd remains background support only.",
+      "risk_id": "dense_market_crowd",
+      "mitigation": "limit crowd groups and named extras per density_limits"
+    },
+    "market_caution": {
+      "enabled": true,
+      "policy": "Market and fish-market crowd patterns require strict density caps during image testing.",
+      "related_issue": "crowd deformation in market background characters"
+    },
+    "companion_continuity": {
+      "enabled": true,
+      "policy": "companion animals remain present across adjacent scenes until departure is explicitly described in scenario",
+      "track": [
+        "persistent_object",
+        "persistent_companion",
+        "persistent_weather",
+        "persistent_emotion"
+      ]
+    },
+    "environment_consistency": {
+      "enabled": true,
+      "policy": "Mediterranean harbor atmosphere and location anchors must align with time-setting-library and Living World references.",
+      "weather_rule": "time and weather must align with datasets/time/time-setting-library-v1.json"
+    },
+    "scenario_character_separation_success": {
+      "enabled": true,
+      "policy": "Strict scenario/character field separation improved Gonegi and Gamja consistency in RKB-001.",
+      "validated_structure": {
+        "scenario_character_separation": true,
+        "negative_exclusion_tokens": false
+      },
+      "forbidden_exclusion_phrases": [
+        "No Dana",
+        "Dana absent"
+      ]
+    }
+  },
+  "compatibility_declaration": {
+    "merge_policy": "reference_only",
+    "references": [
+      {
+        "asset_id": "character_simple_v1",
+        "reference_path": "datasets/character/character-simple-v1.json",
+        "role": "character identity injection at Image App character field"
+      },
+      {
+        "asset_id": "time_setting_library_v1",
+        "reference_path": "datasets/time/time-setting-library-v1.json",
+        "role": "timeSetting field and atmospheric continuity"
+      },
+      {
+        "asset_id": "living_world_core_v1_package",
+        "reference_path": "exports/shared/latest/living-world-core-v1-package.json",
+        "role": "ambient world grammar enrichment layer"
+      },
+      {
+        "asset_id": "living_world_image_adapter",
+        "reference_path": "exports/image_app/latest/living-world-image-adapter.json",
+        "role": "Image App world enrichment bridge alongside Music Drama grammar"
+      }
+    ]
+  }
+}

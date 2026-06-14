@@ -1,0 +1,87 @@
+{
+  "scene_state_id": "scene_olive_hill_overlook_wonder_v1",
+  "phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "character_state": {
+    "active_character_ids": [
+      "dana"
+    ],
+    "primary_character_id": "dana",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:dana"
+    ]
+  },
+  "location_state": {
+    "location_id": "olive_hill_01",
+    "location_name": "Olive Hill",
+    "location_type": "hillside",
+    "domain": "Nature Domain",
+    "location_source": "datasets/location/location-dna-index-v1.json"
+  },
+  "lighting_state": {
+    "lighting_id": "sunset_hill",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "intensity": "scene_default",
+    "direction": "motivated_natural"
+  },
+  "emotion_state": {
+    "emotion_id": "wonder",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.65,
+    "acting_visibility_weight": "highest"
+  },
+  "relationship_state": {
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "dana"
+    ]
+  },
+  "camera_state": {
+    "shot_type": "close",
+    "coverage_id": "coverage_pattern_03_pov_insert_chain",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "Wide → Object Insert → POV → Reaction → Medium"
+  },
+  "composition_state": {
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [],
+    "character_positions": {}
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "day",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": []
+  },
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "dana"
+    ],
+    "identity_lock_tokens": [
+      "identity:character_identity:dana",
+      "character_reference:Dana"
+    ]
+  },
+  "source_refs": {
+    "character": "datasets/character/character-simple-v1.json",
+    "location": "datasets/location/location-dna-index-v1.json",
+    "lighting": "datasets/lighting/lighting-dna-index-v1.json",
+    "emotion": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "relationship": "datasets/relationship/relationship-grammar-library.json",
+    "composition": "datasets/scene/scene-asset-composition-library-v1.json",
+    "camera": "datasets/shot/coverage-grammar-index-v1.json",
+    "identity": "exports/image_app/contracts/character-first-contract.json"
+  },
+  "built_at": "2026-06-05T02:34:04.239Z",
+  "transition": {
+    "from_scene_state_id": "scene_gonegi_bedroom_reading_v1",
+    "transition_type": "location_change",
+    "continuity_safe": true
+  }
+}

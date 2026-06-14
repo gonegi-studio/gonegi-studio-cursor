@@ -1,0 +1,41 @@
+{
+  "contract_id": "conditioning-map-export-contract-v1",
+  "contract_version": "1.0",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-004",
+  "system_id": "CONDITIONING_MAP_EXPORT_V1",
+  "backend_independent": true,
+  "adapter_required": true,
+  "raster_maps_deferred": true,
+  "map_types": {
+    "layout_map": {
+      "format": "normalized_layout_elements_v1",
+      "backend_targets": ["ControlNet"]
+    },
+    "depth_map": {
+      "format": "normalized_depth_samples_v1",
+      "backend_targets": ["Depth-conditioned diffusion"]
+    },
+    "pose_map": {
+      "format": "skeleton_keypoint_descriptors_v1",
+      "backend_targets": ["Pose-conditioned diffusion"]
+    },
+    "blocking_map": {
+      "format": "character_region_masks_v1",
+      "backend_targets": ["ControlNet", "Regional prompting"]
+    },
+    "environment_identity_map": {
+      "format": "reserved_v1",
+      "status": "reserved",
+      "backend_targets": ["IP-Adapter", "Regional prompting"]
+    }
+  },
+  "estimated_backend_count": 3,
+  "numerical_dna_source": "exports/source_video_numerical_dna_full/source-video-numerical-dna-full.json",
+  "architecture_decision_ref": "reports/movie_reconstruction/MOVIE_RECONSTRUCTION_CONDITIONING_ARCHITECTURE_DECISION_REPORT.json",
+  "execution_flags": {
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "spec_id": "dialogue-specification-v1",
+  "asset_type": "dialogue_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-DIALOGUE-001",
+  "module": "DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "purpose": "Structured dialogue line schema with relationship and memory context for lipsync generation.",
+  "upstream_checkpoint": "PASS_PROMPT_EVALUATION_SYSTEM_V1",
+  "required_fields": [
+    "dialogue_id",
+    "character_id",
+    "scene_id",
+    "speaker",
+    "dialogue_text",
+    "emotion",
+    "intent",
+    "speaking_style",
+    "relationship_context",
+    "memory_context",
+    "pause_points",
+    "emphasis_points",
+    "duration_estimate"
+  ],
+  "context_fields": [
+    "relationship_context",
+    "memory_context"
+  ],
+  "relationship_context_integrity": "PASS",
+  "memory_context_integrity": "PASS",
+  "dialogue_spec_integrity": "PASS",
+  "sample_dialogue": {
+    "dialogue_id": "dlg-harbor-001",
+    "character_id": "dana",
+    "scene_id": "scene_harbor_dock_014",
+    "speaker": "Dana",
+    "dialogue_text": "The harbor remembers what we tried to forget.",
+    "emotion": "melancholic_resolve",
+    "intent": "reveal_legacy_callback",
+    "speaking_style": "Dana_style",
+    "relationship_context": {
+      "relationship_id": "dana_gonegi_siblings",
+      "participant_ids": [
+        "dana",
+        "gonegi"
+      ],
+      "relationship_arc_ref": "elena_marco_bond",
+      "relationship_state": "unresolved_promise",
+      "intimacy_level": 0.72
+    },
+    "memory_context": {
+      "callback_id": "harbor_keeper_legacy",
+      "memory_horizon_ref": "exports/temporal_memory/temporal-memory-specification.json",
+      "world_state_ref": "harbor_dock",
+      "recall_strength": 0.88,
+      "timeline_era": "present"
+    },
+    "pause_points": [
+      {
+        "index": 2,
+        "duration_ms": 320,
+        "reason": "emotional_weight"
+      },
+      {
+        "index": 7,
+        "duration_ms": 180,
+        "reason": "breath_before_reveal"
+      }
+    ],
+    "emphasis_points": [
+      {
+        "index": 1,
+        "word": "harbor",
+        "weight": 0.9
+      },
+      {
+        "index": 6,
+        "word": "forget",
+        "weight": 0.85
+      }
+    ],
+    "duration_estimate": 4.2
+  },
+  "export_id": "dialogue-specification-export-v1",
+  "generated_at": "2026-06-09T01:56:50.629Z",
+  "dataset_ref": "datasets/dialogue/dialogue-specification.json",
+  "required_field_list": [
+    "dialogue_id",
+    "character_id",
+    "scene_id",
+    "speaker",
+    "dialogue_text",
+    "emotion",
+    "intent",
+    "speaking_style",
+    "relationship_context",
+    "memory_context",
+    "pause_points",
+    "emphasis_points",
+    "duration_estimate"
+  ]
+}

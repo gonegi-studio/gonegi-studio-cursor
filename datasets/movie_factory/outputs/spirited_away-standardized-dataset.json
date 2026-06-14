@@ -1,0 +1,59 @@
+{
+  "movie_id": "spirited_away",
+  "movie_name": "Spirited Away",
+  "movie_type": "anime_fantasy_adventure",
+  "scene_count": 300,
+  "geometry_layer": {
+    "scene_registry": "datasets/movie_reconstruction/spirited_away/spirited-away-scene-registry.json",
+    "camera_registry": "datasets/movie_reconstruction/spirited_away/spirited-away-camera-registry.json",
+    "blocking_registry": "datasets/movie_reconstruction/spirited_away/spirited-away-blocking-registry.json",
+    "composition_registry": "datasets/movie_reconstruction/spirited_away/spirited-away-composition-registry.json"
+  },
+  "shot_layer": {
+    "status": "production_ready",
+    "shots_dir": "datasets/movie_reconstruction/spirited_away_shots",
+    "shot_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json",
+    "shot_transition_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-transition-registry.json",
+    "shot_fingerprint_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-fingerprint-registry.json",
+    "image_adapter": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-image-adapter.json",
+    "video_adapter": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-video-adapter.json",
+    "shot_count": 2400,
+    "image_reconstruction_status": "PASS",
+    "video_reconstruction_status": "READY",
+    "next_phase": "PHASE-SPIRITED-AWAY-MOTION-GRAMMAR-001"
+  },
+  "temporal_layer": {
+    "temporal_dir": "datasets/movie_reconstruction/spirited_away_temporal",
+    "shot_sequence_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-shot-sequence-registry.json",
+    "temporal_adapter": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-adapter.json",
+    "video_reconstruction_status": "READY"
+  },
+  "motion_layer": {
+    "status": "production_ready",
+    "motion_dir": "datasets/movie_reconstruction/spirited_away_motion",
+    "motion_grammar_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-grammar-registry.json",
+    "motion_adapter": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-adapter.json",
+    "motion_count": 300,
+    "motion_grammar_coverage": 1,
+    "video_reconstruction_status": "READY",
+    "next_phase": "PHASE-SPIRITED-AWAY-IMAGE-VALIDATION-001"
+  },
+  "semantic_layer": {
+    "semantic_anchor_registry": "datasets/movie_reconstruction/spirited_away/spirited-away-semantic-anchor-registry.json",
+    "world_translation_rules": "datasets/movie_reconstruction/spirited_away/spirited-away-world-translation-rules.json"
+  },
+  "validation_layer": {
+    "factory_validation": "production_candidate",
+    "image_validation": "PASS",
+    "video_validation": "PASS",
+    "image_validation_dir": "datasets/movie_reconstruction/spirited_away_image_validation",
+    "next_phase": "PHASE-SPIRITED-AWAY-VIDEO-VALIDATION-001",
+    "video_reconstruction_verified": true
+  },
+  "factory_metadata": {
+    "standardized": true,
+    "source_bundle": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json",
+    "standardized_at": "2026-06-10T07:52:52.508Z",
+    "schema_version": "movie-dataset-factory-v1"
+  }
+}

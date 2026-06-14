@@ -1,0 +1,133 @@
+{
+  "coordinate_record_id": "coord_mori_emotion_flow_001_v1",
+  "phase": "PHASE-SOURCE-VIDEO-009-SOURCE_VIDEO_SEGMENT_TO_COORDINATE_COMPILER_V1",
+  "segment_id": "segment_mori_emotion_flow_001_v1",
+  "source_video_id": "MORI_01",
+  "director_family": "MORI",
+  "camera_coordinate": {
+    "position": "forest-path-mid",
+    "facing": "trail-ahead",
+    "height": "human-scale-eye",
+    "fov_hint": "path-following-wide",
+    "shot_type": "forest-path-wide",
+    "context_summary": "Grounded nature framing with path-following movement",
+    "context_tokens": [
+      "forest-path-wide",
+      "forage-detail-close",
+      "calm-foraging-focus",
+      "craft-contentment",
+      "social-warmth-at-market"
+    ]
+  },
+  "character_coordinate": [
+    {
+      "character_ref": "walker_companion",
+      "position": "path-center-left",
+      "facing": "trail-ahead",
+      "posture": "walking-contemplative",
+      "identity_anchor": "identity_anchor:walker_companion_mori_v1"
+    }
+  ],
+  "prop_coordinate": [
+    {
+      "prop_id": "forage_basket",
+      "position": "hand-carry-foreground",
+      "interaction_state": "carry-steady"
+    }
+  ],
+  "location_coordinate": {
+    "space_type": "woodland-path",
+    "anchor_point": "trail-bend",
+    "walkable_zone": "forest-trail-dirt",
+    "context_summary": "Woodland path with village-earth-tone surroundings",
+    "context_tokens": [
+      "forest-trail",
+      "village-market",
+      "forage-crouch",
+      "loom-seated-work",
+      "calm-foraging-focus"
+    ]
+  },
+  "lighting_coordinate": {
+    "key_direction": "canopy-dappled-overhead",
+    "fill_level": "forest-floor-bounce",
+    "color_temperature": "soft-day-green-gold",
+    "context_summary": "Canopy-dappled daylight with rain-soft diffusion option",
+    "context_tokens": [
+      "canopy-dappled-day",
+      "hearth-interior-glow",
+      "calm-foraging-focus",
+      "craft-contentment",
+      "social-warmth-at-market"
+    ]
+  },
+  "motion_coordinate": [
+    {
+      "subject_ref": "walker_companion",
+      "vector": "path-walk-steady",
+      "duration_hint": "daily-life-pace"
+    },
+    {
+      "subject_ref": "canopy_foliage",
+      "vector": "gentle-sway",
+      "duration_hint": "ambient-continuous"
+    }
+  ],
+  "blocking_coordinate": {
+    "primary_focus": "walker-path-relationship",
+    "secondary_focus": "forage-carry-gesture",
+    "negative_space": "forest-depth-right",
+    "context_summary": "Quiet emotional flow through gesture and environmental reaction",
+    "context_tokens": [
+      "calm-foraging-focus",
+      "craft-contentment",
+      "social-warmth-at-market"
+    ]
+  },
+  "depth_coordinate": [
+    {
+      "layer_index": 0,
+      "layer_role": "foreground",
+      "content_hint": "path-texture-forage-basket"
+    },
+    {
+      "layer_index": 1,
+      "layer_role": "midground",
+      "content_hint": "walker-companion-figure"
+    },
+    {
+      "layer_index": 2,
+      "layer_role": "background",
+      "content_hint": "woodland-canopy-depth"
+    }
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity_anchor:walker_companion_mori_v1",
+      "identity_lock:preserve_face_geometry",
+      "identity_lock:preserve_woodland_costume_silhouette"
+    ],
+    "location_locks": [
+      "location_lock:woodland-path",
+      "walkable-zone:forest-trail-dirt"
+    ],
+    "composition_locks": [
+      "composition_lock:path-leading-line",
+      "prop_anchor:forage_basket"
+    ]
+  },
+  "grammar_refs": [
+    "director_grammar_mori_v1"
+  ],
+  "scene_state_mapping_ref": null,
+  "source_template_ref": null,
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "compiled_at": "2026-06-05T07:29:17.868Z"
+}

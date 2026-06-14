@@ -1,0 +1,18 @@
+{
+  "registry_id": "gpu-validation-integration-registry-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005D",
+  "system_id": "GPU_VALIDATION_INTEGRATION_V1",
+  "version": "gpu_validation_integration_v1",
+  "validation_integration_definition_only": true,
+  "gpu_execution": false,
+  "environment_protocol_ref": "reports/movie_reconstruction/ENVIRONMENT_IDENTITY_GPU_VALIDATION_PROTOCOL.json",
+  "temporal_protocol_ref": "reports/movie_reconstruction/TEMPORAL_PRESERVATION_GPU_VALIDATION_PROTOCOL.json",
+  "object_protocol_ref": "reports/movie_reconstruction/OBJECT_IDENTITY_GPU_VALIDATION_PROTOCOL.json",
+  "campaign_ref": "reports/movie_reconstruction/GPU_VALIDATION_CAMPAIGN_REPORT.json",
+  "execution_flags": {
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

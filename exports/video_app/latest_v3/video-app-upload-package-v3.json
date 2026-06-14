@@ -1,0 +1,56 @@
+{
+  "package_id": "video-app-upload-package-v3",
+  "phase": "PHASE-EXPORT-REBUILD-002",
+  "generated_at": "2026-06-09T02:57:54.494Z",
+  "package_type": "production_dataset",
+  "manifest_only": false,
+  "gpu_execution": false,
+  "external_call_allowed": false,
+  "source_video_registry_ref": "imports/source_videos/active/active-source-video-registry.json",
+  "movie_analysis_ref": "exports/movie_analysis/movie-analysis-export-package.json",
+  "dna_package_ref": "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+  "output_blocks": [
+    {
+      "block_id": "video_style_dna",
+      "block_path": "exports/video_app/latest_v3/video_style_dna.json"
+    },
+    {
+      "block_id": "motion_dna",
+      "block_path": "exports/video_app/latest_v3/motion_dna.json"
+    },
+    {
+      "block_id": "camera_dna",
+      "block_path": "exports/video_app/latest_v3/camera_dna.json"
+    },
+    {
+      "block_id": "scene_transition_dna",
+      "block_path": "exports/video_app/latest_v3/scene_transition_dna.json"
+    },
+    {
+      "block_id": "temporal_memory_bundle",
+      "block_path": "exports/video_app/latest_v3/temporal_memory_bundle.json"
+    },
+    {
+      "block_id": "dialogue_lipsync_bundle",
+      "block_path": "exports/video_app/latest_v3/dialogue_lipsync_bundle.json"
+    },
+    {
+      "block_id": "continuity_bundle",
+      "block_path": "exports/video_app/latest_v3/continuity_bundle.json"
+    },
+    {
+      "block_id": "video_generation_bundle",
+      "block_path": "exports/video_app/latest_v3/video_generation_bundle.json"
+    }
+  ],
+  "integrated_systems": [
+    "temporal_memory",
+    "dialogue_lipsync",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution",
+    "movie_analysis"
+  ],
+  "upload_package_v3_integrity": "PASS"
+}

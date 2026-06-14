@@ -1,0 +1,33 @@
+{
+  "report_type": "render_knowledge_base_capture_report",
+  "report_version": "v1",
+  "phase": "PHASE-RKB-002",
+  "generated_at": "2026-05-24T00:00:00.000Z",
+  "entry_path": "datasets/render_feedback/RKB-002.json",
+  "test_id": "RKB-002",
+  "success_count": 6,
+  "failure_count": 5,
+  "top_strength": "character_consistency",
+  "top_weakness": "location_persistence",
+  "recommended_next_phase": "PHASE-LTD-001 Location DNA Foundation",
+  "json_parse_result": "valid",
+  "validation": {
+    "json_parse_valid": true,
+    "test_id_exists": true,
+    "success_findings_populated": true,
+    "failure_findings_populated": true,
+    "suitability_analysis_populated": true,
+    "priority_ranking_populated": true,
+    "shot_grammar_observations_populated": true,
+    "key_conclusion_populated": true
+  },
+  "final_verdict": "PASS_RKB_002_KNOWLEDGE_CAPTURE",
+  "constraints_honored": {
+    "no_new_datasets": true,
+    "no_location_dna_created": true,
+    "no_lighting_dna_created": true,
+    "no_mdg_modification": true,
+    "no_adapter_modification": true,
+    "knowledge_capture_only": true
+  }
+}

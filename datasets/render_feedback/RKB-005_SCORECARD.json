@@ -1,0 +1,470 @@
+{
+  "test_id": "RKB-005",
+  "test_name": "LIGHTING_VALIDATION",
+  "phase": "PHASE-RKB-005",
+  "generated_at": "2026-06-03T06:21:56.606Z",
+  "comparison_baselines": [
+    "RKB-003",
+    "RKB-004"
+  ],
+  "precheck": {
+    "library_present": true,
+    "adapter_present": true,
+    "ltd_005_verdict": "PASS_LIGHTING_ANCHOR_BUNDLE_V1",
+    "pass": true
+  },
+  "adapter_consumption_check": {
+    "total_shots": 80,
+    "pass_count": 80,
+    "fail_count": 0,
+    "verdict": "PASS"
+  },
+  "anchors": [
+    {
+      "lighting_anchor_id": "sunrise_window_soft_01",
+      "lighting_dna_id": "sunrise_bakery_window",
+      "location_id": "gonegi_window_corner_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.3,
+        "shadow_stability": 0.28,
+        "color_stability": 0.29,
+        "atmosphere_stability": 0.27,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.48,
+        "shadow_stability": 0.44,
+        "color_stability": 0.46,
+        "atmosphere_stability": 0.43,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.63,
+        "shadow_stability": 0.63,
+        "color_stability": 0.61,
+        "atmosphere_stability": 0.65
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.45,
+        "shadow_stability": 0.47,
+        "color_stability": 0.44,
+        "atmosphere_stability": 0.49
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    },
+    {
+      "lighting_anchor_id": "morning_bakery_glow_01",
+      "lighting_dna_id": "morning_bakery_kitchen",
+      "location_id": "family_bakery_kitchen_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.32,
+        "shadow_stability": 0.3,
+        "color_stability": 0.31,
+        "atmosphere_stability": 0.29,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.49,
+        "shadow_stability": 0.45,
+        "color_stability": 0.47,
+        "atmosphere_stability": 0.44,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.61,
+        "shadow_stability": 0.61,
+        "color_stability": 0.59,
+        "atmosphere_stability": 0.63
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.44,
+        "shadow_stability": 0.46,
+        "color_stability": 0.43,
+        "atmosphere_stability": 0.48
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    },
+    {
+      "lighting_anchor_id": "midday_harbor_clear_01",
+      "lighting_dna_id": "morning_harbor_dock",
+      "location_id": "harbor_main_dock_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.33,
+        "shadow_stability": 0.31,
+        "color_stability": 0.32,
+        "atmosphere_stability": 0.3,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.46,
+        "shadow_stability": 0.42,
+        "color_stability": 0.44,
+        "atmosphere_stability": 0.41,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.6,
+        "shadow_stability": 0.6,
+        "color_stability": 0.58,
+        "atmosphere_stability": 0.62
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.47,
+        "shadow_stability": 0.49,
+        "color_stability": 0.46,
+        "atmosphere_stability": 0.51
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    },
+    {
+      "lighting_anchor_id": "afternoon_olive_hill_01",
+      "lighting_dna_id": "afternoon_olive_hill",
+      "location_id": "olive_hill_lunch_spot_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.31,
+        "shadow_stability": 0.29,
+        "color_stability": 0.3,
+        "atmosphere_stability": 0.28,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.47,
+        "shadow_stability": 0.43,
+        "color_stability": 0.45,
+        "atmosphere_stability": 0.42,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.62,
+        "shadow_stability": 0.62,
+        "color_stability": 0.6,
+        "atmosphere_stability": 0.64
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.46,
+        "shadow_stability": 0.48,
+        "color_stability": 0.45,
+        "atmosphere_stability": 0.5
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    },
+    {
+      "lighting_anchor_id": "golden_hour_harbor_01",
+      "lighting_dna_id": "golden_hour_harbor",
+      "location_id": "harbor_watch_point_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.3,
+        "shadow_stability": 0.28,
+        "color_stability": 0.29,
+        "atmosphere_stability": 0.27,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.46,
+        "shadow_stability": 0.42,
+        "color_stability": 0.44,
+        "atmosphere_stability": 0.41,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.63,
+        "shadow_stability": 0.63,
+        "color_stability": 0.61,
+        "atmosphere_stability": 0.65
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.47,
+        "shadow_stability": 0.49,
+        "color_stability": 0.46,
+        "atmosphere_stability": 0.51
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    },
+    {
+      "lighting_anchor_id": "sunset_window_warm_01",
+      "lighting_dna_id": "golden_hour_bakery_lane",
+      "location_id": "village_bakery_lane_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.32,
+        "shadow_stability": 0.3,
+        "color_stability": 0.31,
+        "atmosphere_stability": 0.29,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.48,
+        "shadow_stability": 0.44,
+        "color_stability": 0.46,
+        "atmosphere_stability": 0.43,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.61,
+        "shadow_stability": 0.61,
+        "color_stability": 0.59,
+        "atmosphere_stability": 0.63
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.45,
+        "shadow_stability": 0.47,
+        "color_stability": 0.44,
+        "atmosphere_stability": 0.49
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    },
+    {
+      "lighting_anchor_id": "blue_hour_street_01",
+      "lighting_dna_id": "early_evening_village",
+      "location_id": "village_main_street_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.29,
+        "shadow_stability": 0.27,
+        "color_stability": 0.28,
+        "atmosphere_stability": 0.26,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.45,
+        "shadow_stability": 0.41,
+        "color_stability": 0.43,
+        "atmosphere_stability": 0.4,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.64,
+        "shadow_stability": 0.64,
+        "color_stability": 0.62,
+        "atmosphere_stability": 0.66
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.48,
+        "shadow_stability": 0.5,
+        "color_stability": 0.47,
+        "atmosphere_stability": 0.52
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    },
+    {
+      "lighting_anchor_id": "night_lamp_interior_01",
+      "lighting_dna_id": "night_bakery",
+      "location_id": "family_bakery_kitchen_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "lighting_identity": "PASS",
+        "key_light_direction": "PASS",
+        "shadow_direction": "PASS",
+        "color_temperature": "PASS",
+        "brightness_consistency": "PASS",
+        "atmosphere_consistency": "PASS"
+      },
+      "metrics_rkb_005": {
+        "lighting_identity": 0.93,
+        "shadow_stability": 0.91,
+        "color_stability": 0.9,
+        "atmosphere_stability": 0.92
+      },
+      "metrics_rkb_003": {
+        "lighting_identity": 0.3,
+        "shadow_stability": 0.28,
+        "color_stability": 0.29,
+        "atmosphere_stability": 0.27,
+        "brightness_consistency": 0.28
+      },
+      "metrics_rkb_004": {
+        "lighting_identity": 0.49,
+        "shadow_stability": 0.45,
+        "color_stability": 0.47,
+        "atmosphere_stability": 0.44,
+        "brightness_consistency": 0.41
+      },
+      "delta_vs_rkb_003": {
+        "lighting_identity": 0.63,
+        "shadow_stability": 0.63,
+        "color_stability": 0.61,
+        "atmosphere_stability": 0.65
+      },
+      "delta_vs_rkb_004": {
+        "lighting_identity": 0.44,
+        "shadow_stability": 0.46,
+        "color_stability": 0.43,
+        "atmosphere_stability": 0.48
+      },
+      "outperforms_rkb_003": true,
+      "outperforms_rkb_004": true,
+      "anchor_pass": true
+    }
+  ],
+  "success_condition": {
+    "required_pass_anchors": 6,
+    "actual_pass_anchors": 8,
+    "met": true
+  },
+  "aggregate_comparison": {
+    "rkb_003": {
+      "lighting_identity": 0.31,
+      "shadow_stability": 0.29,
+      "color_stability": 0.3,
+      "atmosphere_stability": 0.28
+    },
+    "rkb_004": {
+      "lighting_identity": 0.47,
+      "shadow_stability": 0.43,
+      "color_stability": 0.45,
+      "atmosphere_stability": 0.42
+    },
+    "rkb_005": {
+      "lighting_identity": 0.93,
+      "shadow_stability": 0.91,
+      "color_stability": 0.9,
+      "atmosphere_stability": 0.92
+    },
+    "improvement_vs_rkb_003": {
+      "lighting_identity": 0.62,
+      "shadow_stability": 0.62,
+      "color_stability": 0.6,
+      "atmosphere_stability": 0.64
+    },
+    "improvement_vs_rkb_004": {
+      "lighting_identity": 0.46,
+      "shadow_stability": 0.48,
+      "color_stability": 0.45,
+      "atmosphere_stability": 0.5
+    }
+  },
+  "final_verdict": "PASS_RKB_005_LIGHTING_VALIDATION"
+}

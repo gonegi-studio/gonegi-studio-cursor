@@ -1,0 +1,211 @@
+{
+  "specification_id": "object-reference-bank-specification-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005E",
+  "system_id": "OBJECT_IDENTITY_STRATEGY_V1",
+  "generated_at": "2026-06-13T11:33:13.844Z",
+  "identity_levels": {
+    "STRICT": "Maximum identity lock; variation_tolerance typically <= 0.10; IP-Adapter weight high.",
+    "MEDIUM": "Balanced identity lock; variation_tolerance typically 0.10–0.30; allows lighting/pose drift.",
+    "LOOSE": "Soft identity lock; variation_tolerance typically >= 0.30; preserves object class over instance detail."
+  },
+  "object_reference_bank_structure": {
+    "bank_id": "Unique reference bank identifier (obj_ref_NNN).",
+    "entries": "Array of object reference records keyed by object_id.",
+    "entry_fields": "object_id, source_movie, source_scene, source_shot, reference_bank_id, identity_level, variation_tolerance, anchor_images, anchor_descriptors, identity_signature, memory_signature, traceability_signature.",
+    "indexing": "Primary index by object_id; secondary indexes by identity_signature and source_video_id + source_scene.",
+    "storage_path": "datasets/movie_reconstruction_object_identity/reference_bank/"
+  },
+  "object_anchor_format": {
+    "anchor_id": "Canonical object anchor label (e.g. suitcase_handle_01).",
+    "anchor_kind": "Anchor classification enum: prop | furniture | vehicle | container | handheld | architectural_detail | object_anchor.",
+    "normalized_position": "Vec3 [x,y,z] in screen-normalized space from spatial graph object_nodes.",
+    "importance": "Anchor persistence weight in [0,1] derived from object blocking layout.",
+    "object_class": "Object class label for variation_tolerance fallback matching.",
+    "identity_level": "Identity lock enum: strict | medium | loose."
+  },
+  "object_memory_format": {
+    "memory_id": "Scene-scoped object memory record identifier.",
+    "movie_id": "Parent movie identifier for scene object memory store.",
+    "scene_id": "Scene identifier binding memory entry to spatial graph scene.",
+    "object_anchors": "Map of object_id to anchor positions persisted across shots.",
+    "object_anchor_reuse": "Boolean flag indicating object anchor reused from reference bank entry.",
+    "reference_bank_id": "Optional link to object reference bank record when reused.",
+    "identity_level": "Identity lock enum bound at memory capture time.",
+    "persistence_score": "Cross-shot object anchor stability score in [0,1]."
+  },
+  "object_reconstruction_traceability_format": {
+    "traceability_id": "Unique traceability record for object reconstruction lineage.",
+    "object_id": "Target object_id in reference bank.",
+    "source_video_id": "Canonical numerical DNA source identifier (e.g. TITANIC_02).",
+    "source_scene_id": "Full source scene identifier from scene_remap engine.",
+    "source_shot_id": "Full source shot identifier from scene_remap engine.",
+    "numerical_dna_ref": "Path to source_video_numerical_dna_full source record.",
+    "scene_remap_ref": "gonegi_scene_id from scene_remap subsystem.",
+    "conditioning_map_ref": "Path to conditioning-map-export-bundle source entry.",
+    "identity_embedding_ref": "Reserved IP-Adapter identity embedding path (metadata placeholder).",
+    "traceability_signature": "Deterministic hash binding all lineage fields."
+  },
+  "object_variation_tolerance_format": {
+    "identity_level": "Identity lock enum: strict | medium | loose.",
+    "variation_tolerance": "Allowed identity drift score in [0,1]; lower = stricter lock.",
+    "strict_default": "Default variation_tolerance for strict level: 0.05.",
+    "medium_default": "Default variation_tolerance for medium level: 0.20.",
+    "loose_default": "Default variation_tolerance for loose level: 0.40.",
+    "lock_strength": "Derived IP-Adapter lock_strength = 1.0 - variation_tolerance.",
+    "tolerance_bounds": "strict: [0,0.10]; medium: [0.10,0.30]; loose: [0.30,1.0]."
+  },
+  "object_retrieval_strategy": {
+    "strategy_id": "object_retrieval_v1",
+    "primary_key": [
+      "object_id"
+    ],
+    "fallback_keys": [
+      "identity_signature",
+      "source_video_id",
+      "source_scene",
+      "identity_level"
+    ],
+    "matching_order": [
+      "exact object_id match",
+      "identity_signature hash match",
+      "source_video_id + source_scene + object_class composite match",
+      "identity_level + variation_tolerance band match",
+      "anchor_descriptors kind+importance similarity rank"
+    ],
+    "description": "Retrieve object reference bank entry by object_id first; fall back to identity_signature match; apply variation_tolerance band from identity_level for IP-Adapter weight selection without GPU execution."
+  },
+  "analysis": {
+    "object_identity": "object_identity preservation_score=0.55 with HIGH loss; object_identity map not exported and IP-Adapter embeddings unavailable in current adapter stack.",
+    "object_reference_bank": "Central bank stores per-object identity, memory, and traceability signatures derived from numerical DNA and spatial graph object_nodes; enables ip_adapter_identity_reference_bank recovery path.",
+    "object_anchor_reuse": "Object anchor descriptors from blocking layout map to bank entries; scene_object_memory enables cross-shot object_anchor_reuse when reference_bank_id is stable.",
+    "scene_object_memory": "Scene object memory records object_anchors per scene_id; memory_signature hashes anchor positions and identity_level for continuity validation across reconstruction shots.",
+    "object_reconstruction_traceability": "traceability_signature binds source_video_id, scene_remap gonegi_scene_id, conditioning map export path, and reserved identity_embedding_ref for full lineage audit.",
+    "object_variation_tolerance": "identity_level (strict | medium | loose) governs variation_tolerance band and lock_strength; strict props (suitcase_001) require low drift; loose furniture (chair_014) permits higher variation."
+  },
+  "reference_bank_entries": [
+    {
+      "object_id": "suitcase_001",
+      "source_movie": "Titanic",
+      "source_scene": "scene_014",
+      "source_shot": "shot_003",
+      "reference_bank_id": "obj_ref_001",
+      "source_video_id": "TITANIC_02",
+      "identity_level": "strict",
+      "variation_tolerance": 0.05,
+      "anchor_images": [
+        "datasets/movie_reconstruction_object_identity/reference_bank/suitcase_001/anchor_suitcase_wide.png",
+        "datasets/movie_reconstruction_object_identity/reference_bank/suitcase_001/anchor_suitcase_handle.png"
+      ],
+      "anchor_descriptors": [
+        {
+          "anchor_id": "suitcase_body_01",
+          "anchor_kind": "container",
+          "normalized_position": [
+            0.38,
+            0.72,
+            0.68
+          ],
+          "importance": 0.96
+        },
+        {
+          "anchor_id": "suitcase_handle_01",
+          "anchor_kind": "handheld",
+          "normalized_position": [
+            0.4,
+            0.65,
+            0.62
+          ],
+          "importance": 0.92
+        }
+      ],
+      "identity_signature": "identity_3e3e890b41c331f8",
+      "memory_signature": "memory_93359f75f46982f1",
+      "traceability_signature": "trace_39749b9df1e11232"
+    },
+    {
+      "object_id": "chair_014",
+      "source_movie": "Titanic",
+      "source_scene": "scene_014",
+      "source_shot": "shot_003",
+      "reference_bank_id": "obj_ref_002",
+      "source_video_id": "TITANIC_02",
+      "identity_level": "loose",
+      "variation_tolerance": 0.4,
+      "anchor_images": [
+        "datasets/movie_reconstruction_object_identity/reference_bank/chair_014/anchor_chair_deck.png"
+      ],
+      "anchor_descriptors": [
+        {
+          "anchor_id": "deck_chair_01",
+          "anchor_kind": "furniture",
+          "normalized_position": [
+            0.62,
+            0.78,
+            0.55
+          ],
+          "importance": 0.7
+        }
+      ],
+      "identity_signature": "identity_a6ccc0023fdd4af4",
+      "memory_signature": "memory_2406f2defc1a6f8b",
+      "traceability_signature": "trace_f8b1be97b3dcc4b8"
+    },
+    {
+      "object_id": "lantern_001",
+      "source_movie": "Spirited Away",
+      "source_scene": "scene_001",
+      "source_shot": "shot_001",
+      "reference_bank_id": "obj_ref_003",
+      "source_video_id": "GHIBLI_01",
+      "identity_level": "medium",
+      "variation_tolerance": 0.2,
+      "anchor_images": [
+        "datasets/movie_reconstruction_object_identity/reference_bank/lantern_001/anchor_lantern.png"
+      ],
+      "anchor_descriptors": [
+        {
+          "anchor_id": "lantern_hanging_01",
+          "anchor_kind": "prop",
+          "normalized_position": [
+            0.28,
+            0.35,
+            0.58
+          ],
+          "importance": 0.85
+        }
+      ],
+      "identity_signature": "identity_dec25bf3dbb2182c",
+      "memory_signature": "memory_c1ad3961dcbe37d1",
+      "traceability_signature": "trace_0a517de231297e81"
+    },
+    {
+      "object_id": "wooden_crate_001",
+      "source_movie": "Mori",
+      "source_scene": "scene_forest_001",
+      "source_shot": "shot_establishing_001",
+      "reference_bank_id": "obj_ref_004",
+      "source_video_id": "MORI_01",
+      "identity_level": "medium",
+      "variation_tolerance": 0.25,
+      "anchor_images": [
+        "datasets/movie_reconstruction_object_identity/reference_bank/wooden_crate_001/anchor_crate.png"
+      ],
+      "anchor_descriptors": [
+        {
+          "anchor_id": "forest_crate_01",
+          "anchor_kind": "container",
+          "normalized_position": [
+            0.55,
+            0.82,
+            0.48
+          ],
+          "importance": 0.78
+        }
+      ],
+      "identity_signature": "identity_b9828c8d17c2d6d7",
+      "memory_signature": "memory_d753a12a79924ea1",
+      "traceability_signature": "trace_85710a37d4310866"
+    }
+  ],
+  "reference_bank_defined": true
+}

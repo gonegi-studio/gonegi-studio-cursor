@@ -1,0 +1,27 @@
+{
+  "package_id": "video-app-upload-package-v2",
+  "asset_type": "video_app_upload_package",
+  "asset_version": "v2",
+  "phase": "PHASE-EXPORT-REBUILD-001",
+  "module": "APP_DATASET_SYNCHRONIZATION_V1",
+  "purpose": "Next-generation Video App upload bundle synchronized with completed engine stack.",
+  "upstream_checkpoint": "PASS_REAL_PRODUCTION_TEST_PREPARATION_V1",
+  "gpu_execution": false,
+  "target_export_path": "exports/video_app/latest_v2",
+  "upload_package_integrity": "PASS",
+  "bundle_manifest": "exports/video_app/latest_v2/video-app-sync-manifest-v2.json",
+  "export_id": "video-app-upload-package-v2-export",
+  "generated_at": "2026-06-09T02:43:05.156Z",
+  "dataset_ref": "datasets/export_sync/video-app-upload-package-v2.json",
+  "manifest_ref": "exports/video_app/latest_v2/video-app-sync-manifest-v2.json",
+  "sync_systems": [
+    "temporal_memory",
+    "dialogue_lipsync",
+    "video_consistency",
+    "motion_consistency",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution"
+  ]
+}

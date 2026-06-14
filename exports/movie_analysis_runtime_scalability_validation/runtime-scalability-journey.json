@@ -1,0 +1,62 @@
+{
+  "runtime_scalability_scales": [
+    10000,
+    100000,
+    1000000
+  ],
+  "journey_steps": [
+    {
+      "step_index": 0,
+      "scale_tier": "10K",
+      "episode_count": 10000,
+      "runtime_scalability": "PASS",
+      "large_scale_traceability": "PASS",
+      "large_scale_memory_preservation": "PASS",
+      "large_scale_callback_preservation": "PASS",
+      "cross_season_scalability": "PASS",
+      "cross_series_scalability": "PASS",
+      "runtime_scalability_validated": "PASS"
+    },
+    {
+      "step_index": 1,
+      "scale_tier": "100K",
+      "episode_count": 100000,
+      "runtime_scalability": "PASS",
+      "large_scale_traceability": "PASS",
+      "large_scale_memory_preservation": "PASS",
+      "large_scale_callback_preservation": "PASS",
+      "cross_season_scalability": "PASS",
+      "cross_series_scalability": "PASS",
+      "runtime_scalability_validated": "PASS"
+    },
+    {
+      "step_index": 2,
+      "scale_tier": "1M",
+      "episode_count": 1000000,
+      "runtime_scalability": "PASS",
+      "large_scale_traceability": "PASS",
+      "large_scale_memory_preservation": "PASS",
+      "large_scale_callback_preservation": "PASS",
+      "cross_season_scalability": "PASS",
+      "cross_series_scalability": "PASS",
+      "runtime_scalability_validated": "PASS"
+    }
+  ],
+  "scale_results": [
+    {
+      "scale_tier": "10K",
+      "episode_count": 10000,
+      "runtime_scalability_validated": "PASS"
+    },
+    {
+      "scale_tier": "100K",
+      "episode_count": 100000,
+      "runtime_scalability_validated": "PASS"
+    },
+    {
+      "scale_tier": "1M",
+      "episode_count": 1000000,
+      "runtime_scalability_validated": "PASS"
+    }
+  ]
+}

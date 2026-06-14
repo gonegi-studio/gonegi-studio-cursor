@@ -1,0 +1,251 @@
+{
+  "asset_type": "room_layout_lock_library",
+  "asset_version": "v1",
+  "library_id": "room-layout-lock-library-v1",
+  "phase": "PHASE-RLL-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Lock room structure, anchor object positions, and orientation to prevent layout drift after prop continuity validation.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_location_dna": false
+  },
+  "read_only_sources": {
+    "indoor_location_anchor_library": "datasets/location/indoor-location-anchor-library-v1.json",
+    "prop_anchor_library": "datasets/props/prop-anchor-library-v1.json",
+    "rkb_010": "datasets/render_feedback/RKB-010_SCORECARD.json"
+  },
+  "layout_count": 6,
+  "validation_target": {
+    "test_id": "RKB-011",
+    "test_name": "ROOM_LAYOUT_CONTINUITY_VALIDATION",
+    "next_phase": "PHASE-RKB-011"
+  },
+  "layouts": [
+    {
+      "layout_id": "layout_lock_gonegi_bedroom_01",
+      "location_id": "gonegi_bedroom_01",
+      "indoor_anchor_id": "indoor_anchor_gonegi_bedroom_01",
+      "room_shape": "narrow_rectangle",
+      "window_wall": "east_wall",
+      "door_wall": "northwest_wall",
+      "room_orientation": "bed_south_wall_window_east_entry_northwest",
+      "anchor_object_positions": {
+        "ship_model_01": "north_bookshelf",
+        "wildflower_vase_01": "window_side_table",
+        "aged_wood_chair_01": "west_corner_foot_of_bed",
+        "sketchbook_01": "bedside_stool_east_of_bed"
+      },
+      "secondary_object_positions": {
+        "book_shelf": "north_wall_low",
+        "oil_lamp": "bedside_stool_zone",
+        "folded_blanket": "bed_foot_zone"
+      },
+      "camera_visibility_rules": {
+        "wide": "east_window_bed_north_shelf_triangle_locked",
+        "medium": "window_sill_or_chair_or_shelf_visible",
+        "close": "at_least_one_locked_anchor_position_in_frame",
+        "insert": "anchor_position_macro_without_relayout",
+        "reaction": "background_locked_furniture_positions_hold",
+        "pov": "orientation_locked_toward_east_window"
+      },
+      "walkable_zones": ["door_threshold_northwest", "bedside_strip_east", "chair_to_window_path"],
+      "forbidden_layout_changes": [
+        "do not move anchor furniture",
+        "do not rotate room",
+        "do not swap window wall",
+        "do not relocate anchor props",
+        "do_not_move_window_wall",
+        "do_not_relocate_bed_to_opposite_wall",
+        "do_not_swap_north_shelf_to_south"
+      ]
+    },
+    {
+      "layout_id": "layout_lock_gonegi_window_corner_01",
+      "location_id": "gonegi_window_corner_01",
+      "indoor_anchor_id": "indoor_anchor_gonegi_window_corner_01",
+      "room_shape": "corner_wedge",
+      "window_wall": "east_corner_wall",
+      "door_wall": "south_wall",
+      "room_orientation": "window_east_corner_chair_angled_45_to_glass",
+      "anchor_object_positions": {
+        "wildflower_vase_01": "east_sill_center",
+        "ship_model_01": "near_shelf_adjacent_to_corner",
+        "aged_wood_chair_01": "southeast_facing_window",
+        "sketchbook_01": "sill_or_chair_arm",
+        "teacup_01": "sill_edge_optional"
+      },
+      "secondary_object_positions": {
+        "clay_water_jug": "deep_sill_left",
+        "folded_work_shirt": "sill_fold_stack",
+        "open_wooden_shutter": "east_frame_fixed"
+      },
+      "camera_visibility_rules": {
+        "wide": "full_corner_window_chair_sill_locked",
+        "medium": "sill_depth_or_chair_back_visible",
+        "close": "single_anchor_position_locked",
+        "insert": "sill_object_position_fixed",
+        "reaction": "corner_orientation_unchanged",
+        "pov": "through_east_corner_to_harbor_slope"
+      },
+      "walkable_zones": ["south_door_entry", "chair_arc_to_sill"],
+      "forbidden_layout_changes": [
+        "do not move anchor furniture",
+        "do not rotate room",
+        "do not swap window wall",
+        "do not relocate anchor props",
+        "do_not_swap_corner_to_opposite_end",
+        "do_not_move_window_wall"
+      ]
+    },
+    {
+      "layout_id": "layout_lock_family_bakery_kitchen_01",
+      "location_id": "family_bakery_kitchen_01",
+      "indoor_anchor_id": "indoor_anchor_family_bakery_kitchen_01",
+      "room_shape": "L_shape_work_kitchen",
+      "window_wall": "west_wall_high_slit",
+      "door_wall": "west_arch_to_dining",
+      "room_orientation": "oven_north_table_center_kettle_east",
+      "anchor_object_positions": {
+        "brick_oven_01": "north_wall_niche_center",
+        "copper_kettle_01": "east_wall_hook_rail",
+        "rolling_pin_01": "work_table_surface_center",
+        "pine_table_01": "room_center_flour_zone",
+        "bread_basket_01": "table_edge_proofing_zone"
+      },
+      "secondary_object_positions": {
+        "flour_sack": "east_corner_lean",
+        "wooden_proofing_board": "table_south_edge"
+      },
+      "camera_visibility_rules": {
+        "wide": "oven_north_table_center_locked",
+        "medium": "oven_mouth_or_table_plane_visible",
+        "close": "tool_on_table_position_fixed",
+        "insert": "oven_lip_or_pin_position_locked",
+        "reaction": "kitchen_L_orientation_hold",
+        "pov": "approach_oven_from_table"
+      },
+      "walkable_zones": ["table_perimeter", "oven_front_arc", "door_to_dining_west"],
+      "forbidden_layout_changes": [
+        "do not move anchor furniture",
+        "do not rotate room",
+        "do not swap window wall",
+        "do not relocate anchor props",
+        "do_not_relocate_oven_niche",
+        "do_not_rotate_L_leg_to_south"
+      ]
+    },
+    {
+      "layout_id": "layout_lock_family_bakery_dining_01",
+      "location_id": "family_bakery_dining_01",
+      "indoor_anchor_id": "indoor_anchor_family_bakery_dining_01",
+      "room_shape": "rectangle_dining",
+      "window_wall": "south_wall_lane",
+      "door_wall": "west_wall_kitchen_arch",
+      "room_orientation": "table_east_west_benches_north_south",
+      "anchor_object_positions": {
+        "bread_basket_01": "table_center",
+        "pine_table_01": "room_center_axis",
+        "teacup_01": "north_bench_place_setting",
+        "clay_jug_01": "north_sideboard",
+        "blue_flower_vase_01": "south_window_stand_optional"
+      },
+      "secondary_object_positions": {
+        "bench_seating": "north_and_south_fixed",
+        "linen_runner": "table_center_under_basket"
+      },
+      "camera_visibility_rules": {
+        "wide": "table_length_south_window_locked",
+        "medium": "table_surface_or_lane_window_visible",
+        "close": "basket_center_position_hold",
+        "insert": "table_grain_zone_fixed",
+        "reaction": "dining_axis_unchanged",
+        "pov": "from_kitchen_door_toward_table"
+      },
+      "walkable_zones": ["bench_outer_perimeter", "kitchen_door_threshold_west"],
+      "forbidden_layout_changes": [
+        "do not move anchor furniture",
+        "do not rotate room",
+        "do not swap window wall",
+        "do not relocate anchor props",
+        "do_not_rotate_table_to_block_kitchen_door",
+        "do_not_move_window_wall"
+      ]
+    },
+    {
+      "layout_id": "layout_lock_dana_bedroom_01",
+      "location_id": "dana_bedroom_01",
+      "indoor_anchor_id": "indoor_anchor_dana_bedroom_01",
+      "room_shape": "rectangle_generous",
+      "window_wall": "east_wall_lace",
+      "door_wall": "northwest_wall",
+      "room_orientation": "canopy_bed_southwest_window_east_washbasin_north",
+      "anchor_object_positions": {
+        "blue_flower_vase_01": "north_stand_beside_washbasin",
+        "aged_wood_chair_01": "east_window_adjacent_stool_zone",
+        "geranium_pot_01": "east_window_sill_optional",
+        "clay_jug_01": "washbasin_stand_north_wall",
+        "sketchbook_01": "wooden_stool_east_of_washbasin"
+      },
+      "secondary_object_positions": {
+        "sewing_basket": "stool_top_fixed",
+        "story_books": "stool_stack_zone",
+        "lace_canopy_drape": "southwest_canopy_posts"
+      },
+      "camera_visibility_rules": {
+        "wide": "bed_window_washbasin_triangle_locked",
+        "medium": "lace_window_or_stand_objects_visible",
+        "close": "vase_or_stool_position_fixed",
+        "insert": "lace_or_vase_detail_position_hold",
+        "reaction": "bedroom_orientation_stable",
+        "pov": "from_door_toward_east_lace_window"
+      },
+      "walkable_zones": ["northwest_entry", "bed_front_arc", "washbasin_north_strip"],
+      "forbidden_layout_changes": [
+        "do not move anchor furniture",
+        "do not rotate room",
+        "do not swap window wall",
+        "do not relocate anchor props",
+        "do_not_remove_canopy_bed_frame",
+        "do_not_move_window_wall"
+      ]
+    },
+    {
+      "layout_id": "layout_lock_dana_window_corner_01",
+      "location_id": "dana_window_corner_01",
+      "indoor_anchor_id": "indoor_anchor_dana_window_corner_01",
+      "room_shape": "corner_reading_nook",
+      "window_wall": "east_wall_tall_casement",
+      "door_wall": "west_wall",
+      "room_orientation": "reading_chair_southeast_geranium_sill_garden_view",
+      "anchor_object_positions": {
+        "reading_chair_01": "east_window_corner",
+        "geranium_pot_01": "window_sill",
+        "teacup_01": "side_table_south_of_chair",
+        "sketchbook_01": "chair_arm_or_side_table",
+        "blue_flower_vase_01": "sill_optional_north_end"
+      },
+      "secondary_object_positions": {
+        "sewing_basket": "under_side_table",
+        "window_curtain": "east_frame_fixed"
+      },
+      "camera_visibility_rules": {
+        "wide": "tall_window_chair_sill_locked",
+        "medium": "geranium_or_chair_profile_visible",
+        "close": "sill_or_cup_position_fixed",
+        "insert": "geranium_or_teacup_macro_locked",
+        "reaction": "garden_window_orientation_hold",
+        "pov": "seated_facing_east_garden"
+      },
+      "walkable_zones": ["west_door_entry", "chair_to_sill_half_circle"],
+      "forbidden_layout_changes": [
+        "do not move anchor furniture",
+        "do not rotate room",
+        "do not swap window wall",
+        "do not relocate anchor props",
+        "do_not_replace_reading_chair_position",
+        "do_not_swap_garden_window_to_interior_wall"
+      ]
+    }
+  ]
+}

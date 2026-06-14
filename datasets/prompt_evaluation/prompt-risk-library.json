@@ -1,0 +1,64 @@
+{
+  "library_id": "prompt-risk-library-v1",
+  "asset_type": "prompt_risk_library",
+  "asset_version": "v1",
+  "phase": "PHASE-QA-002",
+  "module": "PROMPT_EVALUATION_SYSTEM_V1",
+  "purpose": "Catalogued prompt risk types for detection during quality audit.",
+  "upstream_checkpoint": "PASS_GENERATION_QA_AND_ERROR_CONTEXT_SYSTEM_V1",
+  "risk_type_count": 7,
+  "risk_types": [
+    "under_specified",
+    "over_specified",
+    "conflicting_identity",
+    "conflicting_adapter",
+    "missing_continuity",
+    "missing_memory",
+    "missing_generation_constraints"
+  ],
+  "prompt_risk_integrity": "PASS",
+  "risks": [
+    {
+      "risk_id": "risk-under-specified",
+      "risk_type": "under_specified",
+      "severity": "medium",
+      "detection_signal": "quality_dimension_below_minimum"
+    },
+    {
+      "risk_id": "risk-over-specified",
+      "risk_type": "over_specified",
+      "severity": "low",
+      "detection_signal": "prompt_token_budget_exceeded"
+    },
+    {
+      "risk_id": "risk-conflicting-identity",
+      "risk_type": "conflicting_identity",
+      "severity": "critical",
+      "detection_signal": "identity_clarity_consistency_mismatch"
+    },
+    {
+      "risk_id": "risk-conflicting-adapter",
+      "risk_type": "conflicting_adapter",
+      "severity": "high",
+      "detection_signal": "adapter_binding_conflict"
+    },
+    {
+      "risk_id": "risk-missing-continuity",
+      "risk_type": "missing_continuity",
+      "severity": "high",
+      "detection_signal": "continuity_clarity_below_target"
+    },
+    {
+      "risk_id": "risk-missing-memory",
+      "risk_type": "missing_memory",
+      "severity": "high",
+      "detection_signal": "memory_clarity_below_target"
+    },
+    {
+      "risk_id": "risk-missing-constraints",
+      "risk_type": "missing_generation_constraints",
+      "severity": "critical",
+      "detection_signal": "generation_constraints_unbound"
+    }
+  ]
+}

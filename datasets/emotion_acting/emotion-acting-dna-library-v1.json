@@ -1,0 +1,282 @@
+{
+  "asset_type": "emotion_acting_dna_library",
+  "asset_version": "v1",
+  "library_id": "emotion-acting-dna-library-v1",
+  "phase": "PHASE-EDA-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Reusable emotion acting grammar for recognizable performance. Reference layer only — no scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_shot_grammar": false,
+    "phase_1_emotion_count": 8
+  },
+  "read_only_sources": {
+    "shot_grammar_adapter": "exports/image_app/adapters/shot-grammar-adapter.json",
+    "rkb_006": "datasets/render_feedback/RKB-006_SCORECARD.json"
+  },
+  "initial_emotion_ids": [
+    "hope",
+    "wonder",
+    "gratitude",
+    "nostalgia",
+    "determination",
+    "loneliness",
+    "reunion",
+    "farewell"
+  ],
+  "emotion_count": 8,
+  "shot_visibility_weighting": {
+    "close": "highest",
+    "reaction": "high",
+    "medium": "medium",
+    "wide": "low",
+    "pov": "medium_high"
+  },
+  "validation_target": {
+    "test_id": "RKB-007",
+    "test_name": "EMOTION_ACTING_VALIDATION",
+    "next_phase": "RKB-007 EMOTION_ACTING_VALIDATION"
+  },
+  "emotions": [
+    {
+      "emotion_id": "hope",
+      "emotion_name": "Hope",
+      "eye_behavior": { "mode": "bright_soft_focus", "lid_tension": "lightly_open" },
+      "gaze_pattern": { "direction": "upward_soft", "focus_depth": "near_horizon" },
+      "head_angle": { "pitch": "slight_up", "yaw": "center_or_soft_left" },
+      "mouth_behavior": { "shape": "gentle_parted", "smile_curve": "subtle_rising" },
+      "body_tension": { "level": "low_medium", "core": "open_forward" },
+      "shoulder_posture": { "position": "relaxed_lifted", "roll": "neutral" },
+      "hand_behavior": { "gesture": "open_rest", "contact": "light_surface_touch" },
+      "breathing_pattern": { "rhythm": "steady_expansive", "chest": "visible_rise" },
+      "movement_energy": { "pace": "calm_forward", "impulse": "gentle" },
+      "compatible_shot_types": ["wide", "medium", "close", "reaction", "pov"],
+      "compatible_locations": [
+        "family_bakery_kitchen_01",
+        "gonegi_window_corner_01",
+        "gonegi_harbor_dock_01",
+        "gonegi_olive_hill_01"
+      ],
+      "compatible_lighting_anchors": [
+        "sunrise_window_soft_01",
+        "morning_bakery_glow_01",
+        "golden_hour_harbor_01"
+      ],
+      "forbidden_behaviors": [
+        "collapsed_posture",
+        "avoidance_gaze",
+        "slumped_shoulders",
+        "downcast_locked_stare"
+      ]
+    },
+    {
+      "emotion_id": "wonder",
+      "emotion_name": "Wonder",
+      "eye_behavior": { "mode": "widened_soft", "lid_tension": "open_hold" },
+      "gaze_pattern": { "direction": "up_or_outward", "focus_depth": "discovery_point" },
+      "head_angle": { "pitch": "neutral_to_slight_up", "yaw": "toward_subject" },
+      "mouth_behavior": { "shape": "soft_parted", "smile_curve": "minimal_awe" },
+      "body_tension": { "level": "low", "core": "still_upright" },
+      "shoulder_posture": { "position": "neutral_soft", "roll": "slight_back" },
+      "hand_behavior": { "gesture": "paused_reach", "contact": "none_or_light" },
+      "breathing_pattern": { "rhythm": "brief_hold_then_soft_exhale", "chest": "subtle" },
+      "movement_energy": { "pace": "still", "impulse": "micro_pause" },
+      "compatible_shot_types": ["wide", "medium", "close", "reaction", "pov"],
+      "compatible_locations": [
+        "gonegi_window_corner_01",
+        "dana_window_corner_01",
+        "gonegi_olive_hill_01",
+        "family_bakery_kitchen_01"
+      ],
+      "compatible_lighting_anchors": [
+        "sunrise_window_soft_01",
+        "afternoon_olive_hill_01",
+        "morning_bakery_glow_01"
+      ],
+      "forbidden_behaviors": [
+        "cynical_smirk",
+        "rushed_gesture_burst",
+        "closed_off_gaze"
+      ]
+    },
+    {
+      "emotion_id": "gratitude",
+      "emotion_name": "Gratitude",
+      "eye_behavior": { "mode": "warm_soft_focus", "lid_tension": "gentle_lower" },
+      "gaze_pattern": { "direction": "down_soft_to_subject", "focus_depth": "intimate_near" },
+      "head_angle": { "pitch": "slight_down", "yaw": "toward_other_or_object" },
+      "mouth_behavior": { "shape": "closed_soft_smile", "smile_curve": "warm_hold" },
+      "body_tension": { "level": "low", "core": "settled" },
+      "shoulder_posture": { "position": "rounded_soft_forward", "roll": "neutral" },
+      "hand_behavior": { "gesture": "cupped_hold_or_offer", "contact": "object_or_chest_near" },
+      "breathing_pattern": { "rhythm": "slow_deep_exhale", "chest": "soft_release" },
+      "movement_energy": { "pace": "slow", "impulse": "reverent" },
+      "compatible_shot_types": ["medium", "close", "reaction", "insert"],
+      "compatible_locations": [
+        "family_bakery_kitchen_01",
+        "family_bakery_dining_01",
+        "gonegi_harbor_dock_01"
+      ],
+      "compatible_lighting_anchors": [
+        "morning_bakery_glow_01",
+        "golden_hour_harbor_01",
+        "sunset_window_warm_01"
+      ],
+      "forbidden_behaviors": [
+        "aggressive_pointing",
+        "harsh_stare",
+        "rigid_arm_cross"
+      ]
+    },
+    {
+      "emotion_id": "nostalgia",
+      "emotion_name": "Nostalgia",
+      "eye_behavior": { "mode": "soft_focus", "lid_tension": "heavy_soft" },
+      "gaze_pattern": { "direction": "distance_view", "focus_depth": "far_memory_plane" },
+      "head_angle": { "pitch": "slightly_down", "yaw": "soft_off_axis" },
+      "mouth_behavior": { "shape": "gentle_closed_smile", "smile_curve": "faint_bittersweet" },
+      "body_tension": { "level": "low", "core": "relaxed_settle" },
+      "shoulder_posture": { "position": "soft_slump_allowed", "roll": "neutral" },
+      "hand_behavior": { "gesture": "resting_touch", "contact": "window_sill_or_object" },
+      "breathing_pattern": { "rhythm": "slow_shallow", "chest": "minimal" },
+      "movement_energy": { "pace": "slow", "impulse": "drift" },
+      "compatible_shot_types": ["wide", "medium", "close", "reaction", "pov"],
+      "compatible_locations": [
+        "gonegi_window_corner_01",
+        "dana_window_corner_01",
+        "gonegi_olive_hill_01",
+        "gonegi_bedroom_01"
+      ],
+      "compatible_lighting_anchors": [
+        "sunrise_window_soft_01",
+        "sunset_window_warm_01",
+        "afternoon_olive_hill_01"
+      ],
+      "forbidden_behaviors": [
+        "excited_bounce",
+        "wide_grin_performance",
+        "high_energy_wave"
+      ]
+    },
+    {
+      "emotion_id": "determination",
+      "emotion_name": "Determination",
+      "eye_behavior": { "mode": "focused_steady", "lid_tension": "firm_open" },
+      "gaze_pattern": { "direction": "forward_lock", "focus_depth": "task_target" },
+      "head_angle": { "pitch": "level", "yaw": "aligned_to_action" },
+      "mouth_behavior": { "shape": "set_closed", "smile_curve": "none" },
+      "body_tension": { "level": "medium_high", "core": "engaged_forward" },
+      "shoulder_posture": { "position": "squared_set", "roll": "neutral" },
+      "hand_behavior": { "gesture": "grip_or_press_task", "contact": "tool_or_surface" },
+      "breathing_pattern": { "rhythm": "controlled_steady", "chest": "controlled" },
+      "movement_energy": { "pace": "purposeful", "impulse": "directed" },
+      "compatible_shot_types": ["medium", "close", "reaction", "tracking"],
+      "compatible_locations": [
+        "family_bakery_kitchen_01",
+        "gonegi_harbor_dock_01",
+        "gonegi_olive_hill_01"
+      ],
+      "compatible_lighting_anchors": [
+        "morning_bakery_glow_01",
+        "midday_harbor_clear_01",
+        "afternoon_olive_hill_01"
+      ],
+      "forbidden_behaviors": [
+        "passive_idle_pose",
+        "wandering_gaze",
+        "slumped_defeat_posture"
+      ]
+    },
+    {
+      "emotion_id": "loneliness",
+      "emotion_name": "Loneliness",
+      "eye_behavior": { "mode": "distant_soft", "lid_tension": "heavy_half" },
+      "gaze_pattern": { "direction": "down_or_empty_space", "focus_depth": "unfocused_void" },
+      "head_angle": { "pitch": "down", "yaw": "away_from_group" },
+      "mouth_behavior": { "shape": "neutral_closed", "smile_curve": "absent" },
+      "body_tension": { "level": "low", "core": "inward_collapse" },
+      "shoulder_posture": { "position": "forward_rounded", "roll": "inward" },
+      "hand_behavior": { "gesture": "self_hold_or_empty", "contact": "lap_or_rail_light" },
+      "breathing_pattern": { "rhythm": "slow_shallow", "chest": "minimal_visible" },
+      "movement_energy": { "pace": "minimal", "impulse": "still" },
+      "compatible_shot_types": ["wide", "medium", "close", "reaction"],
+      "compatible_locations": [
+        "gonegi_bedroom_01",
+        "dana_bedroom_01",
+        "gonegi_window_corner_01",
+        "gonegi_harbor_dock_01"
+      ],
+      "compatible_lighting_anchors": [
+        "blue_hour_street_01",
+        "night_lamp_interior_01",
+        "midday_harbor_clear_01"
+      ],
+      "forbidden_behaviors": [
+        "confident_open_chest",
+        "high_energy_motion",
+        "social_reach_gesture",
+        "bright_performative_smile"
+      ]
+    },
+    {
+      "emotion_id": "reunion",
+      "emotion_name": "Reunion",
+      "eye_behavior": { "mode": "bright_wet_focus", "lid_tension": "wide_soft_blink" },
+      "gaze_pattern": { "direction": "direct_to_other", "focus_depth": "face_lock" },
+      "head_angle": { "pitch": "level_or_slight_up", "yaw": "toward_other" },
+      "mouth_behavior": { "shape": "open_smile", "smile_curve": "rising_warm" },
+      "body_tension": { "level": "medium", "core": "open_forward" },
+      "shoulder_posture": { "position": "open_lift", "roll": "neutral" },
+      "hand_behavior": { "gesture": "reach_or_clasp", "contact": "other_hands_or_shoulder" },
+      "breathing_pattern": { "rhythm": "catch_inhale_release", "chest": "visible_surge" },
+      "movement_energy": { "pace": "quick_step_in", "impulse": "approach" },
+      "compatible_shot_types": ["medium", "close", "reaction", "wide"],
+      "compatible_locations": [
+        "family_bakery_dining_01",
+        "gonegi_harbor_dock_01",
+        "family_bakery_kitchen_01"
+      ],
+      "compatible_lighting_anchors": [
+        "golden_hour_harbor_01",
+        "morning_bakery_glow_01",
+        "sunset_window_warm_01"
+      ],
+      "forbidden_behaviors": [
+        "avoidance_gaze",
+        "turned_away_shoulders",
+        "flat_affect_idle"
+      ]
+    },
+    {
+      "emotion_id": "farewell",
+      "emotion_name": "Farewell",
+      "eye_behavior": { "mode": "soft_wet_hold", "lid_tension": "slow_blink" },
+      "gaze_pattern": { "direction": "lingering_on_other", "focus_depth": "face_then_distance" },
+      "head_angle": { "pitch": "slight_down_then_level", "yaw": "toward_departing_path" },
+      "mouth_behavior": { "shape": "tremble_closed", "smile_curve": "sad_soft" },
+      "body_tension": { "level": "medium", "core": "held_back" },
+      "shoulder_posture": { "position": "soft_drop", "roll": "slight_inward" },
+      "hand_behavior": { "gesture": "wave_or_clasp_release", "contact": "brief_then_withdraw" },
+      "breathing_pattern": { "rhythm": "held_exhale", "chest": "visible_pause" },
+      "movement_energy": { "pace": "slow_retreat", "impulse": "hesitant_step" },
+      "compatible_shot_types": ["wide", "medium", "close", "reaction"],
+      "compatible_locations": [
+        "gonegi_harbor_dock_01",
+        "gonegi_coastal_path_01",
+        "family_bakery_dining_01"
+      ],
+      "compatible_lighting_anchors": [
+        "golden_hour_harbor_01",
+        "blue_hour_street_01",
+        "sunset_window_warm_01"
+      ],
+      "forbidden_behaviors": [
+        "joyful_run_away",
+        "neutral_wave_only",
+        "excited_departure"
+      ]
+    }
+  ]
+}

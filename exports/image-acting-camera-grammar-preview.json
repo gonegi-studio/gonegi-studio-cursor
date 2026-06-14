@@ -1,0 +1,828 @@
+{
+  "layer_version": "IMAGE-ACTING-CAMERA-GRAMMAR-PHASE-92-v1",
+  "seed_count": 16,
+  "song_master_id": "song_master_01",
+  "required_fields": [
+    "acting_camera_id",
+    "image_prompt_pack_id",
+    "storyboard_id",
+    "scene_order",
+    "acting_intent",
+    "body_action",
+    "gaze_direction",
+    "hand_action",
+    "posture_variation",
+    "camera_angle",
+    "camera_distance",
+    "camera_movement_hint",
+    "subject_blocking",
+    "environment_interaction",
+    "location_variation",
+    "foreground_midground_background",
+    "anti_static_pose_rules",
+    "next_video_potential",
+    "keywords"
+  ],
+  "anti_static_pose_rules_base": [
+    "no-direct-frontal-eye-contact-with-camera",
+    "no-parade-rest-standing-posture",
+    "no-decoration-only-background",
+    "require-in-progress-body-action",
+    "require-environment-touch-or-use",
+    "no-ai-studio-generation"
+  ],
+  "pipeline_chain": [
+    "song_master",
+    "emotion_timeline",
+    "narrative_beat",
+    "storyboard_scene",
+    "image_prompt_pack",
+    "image_acting_camera_grammar"
+  ],
+  "seed_image_acting_camera_grammar": [
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-01",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-01",
+      "storyboard_id": "SBD-song_master_01-01",
+      "scene_order": 1,
+      "acting_intent": "wait with restrained anticipation while tracking arrival cues",
+      "body_action": "weight shift idle at platform edge",
+      "gaze_direction": "off-camera toward arrival board and track gap",
+      "hand_action": "hands clasped loosely holding ticket edge",
+      "posture_variation": "slight forward lean at rest not parade rest",
+      "camera_angle": "high three-quarter establishing angle",
+      "camera_distance": "far to mid establishing",
+      "camera_movement_hint": "slow panoramic settle",
+      "subject_blocking": "subject left-third facing platform depth",
+      "environment_interaction": "gloved hand rests on platform bench back",
+      "location_variation": "LOC-station:station_waiting+window_gazing:station-canopy-wait-line-a",
+      "foreground_midground_background": [
+        "foreground:bench rail and ticket corner",
+        "midground:subject waiting profile",
+        "background:arrival board glow and track depth"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:1",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "micro push-in on anticipation beat",
+        "platform wind ripple"
+      ],
+      "keywords": [
+        "waiting",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:wide_establishing",
+        "behavior:waiting",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-02",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-02",
+      "storyboard_id": "SBD-song_master_01-02",
+      "scene_order": 2,
+      "acting_intent": "process memory isolation through object handling",
+      "body_action": "collapsed inward while seated with album open",
+      "gaze_direction": "downward at photo corner not lens",
+      "hand_action": "thumb traces photo edge with pen nearby",
+      "posture_variation": "curved spine over desk not upright pose",
+      "camera_angle": "top-down graphic isolation angle",
+      "camera_distance": "far overhead distance",
+      "camera_movement_hint": "slow vertical settle",
+      "subject_blocking": "subject center-low at writing desk",
+      "environment_interaction": "letter paper and photo album actively held",
+      "location_variation": "LOC-home:photo_viewing+letter_writing:home-desk-memory-corner-b",
+      "foreground_midground_background": [
+        "foreground:photo album page curl",
+        "midground:subject hunched over desk",
+        "background:dim room shelf depth"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:2",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "slow vertical settle on isolation",
+        "page corner flutter"
+      ],
+      "keywords": [
+        "memory",
+        "isolation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:overhead_isolation",
+        "behavior:loneliness",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-03",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-03",
+      "storyboard_id": "SBD-song_master_01-03",
+      "scene_order": 3,
+      "acting_intent": "hesitate during quiet shared routine with unspoken tension",
+      "body_action": "recoiled posture on bench with book half-open",
+      "gaze_direction": "averted toward companion side not camera",
+      "hand_action": "self-touch collar while holding book spine",
+      "posture_variation": "seated asymmetry with knee angled away",
+      "camera_angle": "eye-level intimate angle",
+      "camera_distance": "mid two-shot distance",
+      "camera_movement_hint": "micro push-in on beat",
+      "subject_blocking": "two-seat gap on park bench diagonal",
+      "environment_interaction": "book pages and bench slat contact",
+      "location_variation": "LOC-home:bench_sitting+book_reading:home-bench-reading-nook-c",
+      "foreground_midground_background": [
+        "foreground:book page edge",
+        "midground:subject profile on bench",
+        "background:park path soft blur"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:3",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "static breath drift in window light",
+        "leaf fall drift"
+      ],
+      "keywords": [
+        "discovery",
+        "friendship",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:medium_emotional",
+        "behavior:hesitation",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-04",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-04",
+      "storyboard_id": "SBD-song_master_01-04",
+      "scene_order": 4,
+      "acting_intent": "pause at departure threshold before emotional distance widens",
+      "body_action": "turned away half-step at doorway",
+      "gaze_direction": "over shoulder toward interior light not lens",
+      "hand_action": "hand on doorframe with bag strap grip",
+      "posture_variation": "threshold pause with hip angled out",
+      "camera_angle": "backlit long low angle",
+      "camera_distance": "far silhouette distance",
+      "camera_movement_hint": "slow pullback",
+      "subject_blocking": "subject framed in doorway vertical split",
+      "environment_interaction": "doorframe touch and luggage handle use",
+      "location_variation": "LOC-home:doorway_pause+train_riding:home-threshold-departure-d",
+      "foreground_midground_background": [
+        "foreground:door handle and strap",
+        "midground:subject in doorway silhouette",
+        "background:interior warm against exterior cool"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:4",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "slow pullback through threshold",
+        "door micro movement"
+      ],
+      "keywords": [
+        "distance",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:silhouette_distance",
+        "behavior:farewell",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-05",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-05",
+      "storyboard_id": "SBD-song_master_01-05",
+      "scene_order": 5,
+      "acting_intent": "hold longing while rain streaks frame absent bond",
+      "body_action": "stationary weight shift at window seat",
+      "gaze_direction": "through window reflection toward street not lens",
+      "hand_action": "finger fidget on window ledge",
+      "posture_variation": "seated curl toward glass pane",
+      "camera_angle": "interior reflection layered angle",
+      "camera_distance": "mid-close reflection distance",
+      "camera_movement_hint": "static with breath drift",
+      "subject_blocking": "subject right-third with window layer",
+      "environment_interaction": "palm near condensation on glass",
+      "location_variation": "LOC-home:rain_watching+evening_return:home-rain-window-seat-e",
+      "foreground_midground_background": [
+        "foreground:rain streak on glass",
+        "midground:subject reflection overlap",
+        "background:grey street depth through pane"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:5",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "reflection continuity hold",
+        "rain streak descent"
+      ],
+      "keywords": [
+        "longing",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:window_reflection",
+        "behavior:waiting",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-06",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-06",
+      "storyboard_id": "SBD-song_master_01-06",
+      "scene_order": 6,
+      "acting_intent": "convert grief residue into hopeful forward movement",
+      "body_action": "lightened stride mid-bridge crossing",
+      "gaze_direction": "toward horizon line off-camera right",
+      "hand_action": "open palm gesture at railing",
+      "posture_variation": "walking momentum with open chest",
+      "camera_angle": "eye-level intimate angle",
+      "camera_distance": "mid two-shot distance",
+      "camera_movement_hint": "micro push-in on beat",
+      "subject_blocking": "subject on bridge third-line toward vanishing point",
+      "environment_interaction": "hand slides along bridge railing",
+      "location_variation": "LOC-bridge:sunset_watching+bridge_crossing:bridge-sunset-crossing-f",
+      "foreground_midground_background": [
+        "foreground:railing texture and hand",
+        "midground:subject in walking stride",
+        "background:sunset river span depth"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:6",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "side tracking with stable horizon",
+        "sky gradient shift"
+      ],
+      "keywords": [
+        "hope",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:medium_emotional",
+        "behavior:hope",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-07",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-07",
+      "storyboard_id": "SBD-song_master_01-07",
+      "scene_order": 7,
+      "acting_intent": "begin optimistic journey from morning routine into motion",
+      "body_action": "light bounce readiness mounting bicycle",
+      "gaze_direction": "down-forward along bike path not camera",
+      "hand_action": "grip on handlebar with morning item in basket",
+      "posture_variation": "one-foot on pedal launch posture",
+      "camera_angle": "lateral profile tracking angle",
+      "camera_distance": "mid lateral distance",
+      "camera_movement_hint": "side tracking with stable horizon",
+      "subject_blocking": "diagonal street entry with bike foreground",
+      "environment_interaction": "bicycle handlebar and basket actively used",
+      "location_variation": "LOC-home:morning_routine+bicycle_riding:street-morning-bike-launch-g",
+      "foreground_midground_background": [
+        "foreground:handlebar and front wheel",
+        "midground:subject mounting bike",
+        "background:morning street perspective lines"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:7",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "rear tracking dolly cadence",
+        "wheel rotation blur"
+      ],
+      "keywords": [
+        "journey",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:side_tracking",
+        "behavior:hope",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-08",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-08",
+      "storyboard_id": "SBD-song_master_01-08",
+      "scene_order": 8,
+      "acting_intent": "align rival tension into shared resolve under crossing pressure",
+      "body_action": "purposeful stride frozen at crosswalk edge",
+      "gaze_direction": "side-evaluate toward companion not lens",
+      "hand_action": "half-raised hand signaling pause",
+      "posture_variation": "squared shoulders in mid-step not attention pose",
+      "camera_angle": "lateral profile tracking angle",
+      "camera_distance": "mid lateral distance",
+      "camera_movement_hint": "side tracking with stable horizon",
+      "subject_blocking": "two-subject stagger at crosswalk zebra",
+      "environment_interaction": "foot on crosswalk stripe and signal pole proximity",
+      "location_variation": "LOC-street:street_crossing+school_walk:street-crosswalk-rival-align-h",
+      "foreground_midground_background": [
+        "foreground:crosswalk stripe geometry",
+        "midground:subjects in lateral tension",
+        "background:traffic blur and school gate depth"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:8",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "side tracking axis lock",
+        "crosswalk signal pulse"
+      ],
+      "keywords": [
+        "conflict",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:side_tracking",
+        "behavior:determination",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-09",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-09",
+      "storyboard_id": "SBD-song_master_01-09",
+      "scene_order": 9,
+      "acting_intent": "interrupt domestic chore with resolve to leave for duty",
+      "body_action": "frozen mid-step between laundry and doorway",
+      "gaze_direction": "downcast toward laundry basket then door angle not lens",
+      "hand_action": "fabric fold paused in one hand",
+      "posture_variation": "twisted torso between tasks not static stand",
+      "camera_angle": "backlit long low angle",
+      "camera_distance": "far silhouette distance",
+      "camera_movement_hint": "slow pullback",
+      "subject_blocking": "subject between laundry foreground and door midground",
+      "environment_interaction": "laundry fabric and doorframe both engaged",
+      "location_variation": "LOC-home:doorway_pause+laundry:home-laundry-threshold-i",
+      "foreground_midground_background": [
+        "foreground:fabric fold in hand",
+        "midground:subject pivot between zones",
+        "background:doorway light rectangle"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:9",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "silhouette slow pullback",
+        "fabric tumble rhythm"
+      ],
+      "keywords": [
+        "sacrifice",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:silhouette_distance",
+        "behavior:determination",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-10",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-10",
+      "storyboard_id": "SBD-song_master_01-10",
+      "scene_order": 10,
+      "acting_intent": "offer small care gesture that begins emotional healing",
+      "body_action": "flanking escort pace while kneeling for pet care",
+      "gaze_direction": "down-soft toward pet not camera",
+      "hand_action": "offering hand with tea cup in other hand",
+      "posture_variation": "crouched care posture with protective lean",
+      "camera_angle": "high three-quarter establishing angle",
+      "camera_distance": "far to mid establishing",
+      "camera_movement_hint": "slow panoramic settle",
+      "subject_blocking": "subject low-left with pet and cup triangle",
+      "environment_interaction": "tea steam and pet fur touch active",
+      "location_variation": "LOC-home:tea_drinking+pet_care:home-tea-pet-healing-j",
+      "foreground_midground_background": [
+        "foreground:tea cup steam curl",
+        "midground:subject crouched interaction",
+        "background:rain-muted window depth"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:10",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "wide establishing rain hold",
+        "close hand detail on cup"
+      ],
+      "keywords": [
+        "healing",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:wide_establishing",
+        "behavior:protection",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-11",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-11",
+      "storyboard_id": "SBD-song_master_01-11",
+      "scene_order": 11,
+      "acting_intent": "reopen trust through shared public market moment",
+      "body_action": "forward lean open while reaching for market item",
+      "gaze_direction": "toward stall vendor hand exchange not lens",
+      "hand_action": "reach outward with music player in pocket bump",
+      "posture_variation": "asymmetric step with shoulder opening",
+      "camera_angle": "eye-level intimate angle",
+      "camera_distance": "mid two-shot distance",
+      "camera_movement_hint": "micro push-in on beat",
+      "subject_blocking": "subject at stall counter diagonal depth",
+      "environment_interaction": "market produce and headphone cable actively touched",
+      "location_variation": "LOC-street:market_visit+music_listening:street-market-trust-reopen-k",
+      "foreground_midground_background": [
+        "foreground:stall produce edge",
+        "midground:subject reaching gesture",
+        "background:market aisle bustle depth"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:11",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "medium emotional push-in",
+        "crowd lateral drift"
+      ],
+      "keywords": [
+        "forgiveness",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:medium_emotional",
+        "behavior:reunion",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-12",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-12",
+      "storyboard_id": "SBD-song_master_01-12",
+      "scene_order": 12,
+      "acting_intent": "transform waiting into reunion contact at arrival point",
+      "body_action": "accelerated approach breaking into matched pace",
+      "gaze_direction": "recognition lock toward approaching figure not lens",
+      "hand_action": "hand clasp initiation mid-stride",
+      "posture_variation": "running-to-walk settle with open arms",
+      "camera_angle": "lateral profile tracking angle",
+      "camera_distance": "mid lateral distance",
+      "camera_movement_hint": "side tracking with stable horizon",
+      "subject_blocking": "converging subjects on shore path thirds",
+      "environment_interaction": "shore foam edge and platform rail touched while moving",
+      "location_variation": "LOC-station:station_waiting+shore_walking:shore-station-reunion-l",
+      "foreground_midground_background": [
+        "foreground:wet sand footprint trail",
+        "midground:subjects converging motion",
+        "background:harbor open horizon"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:12",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "side tracking convergence",
+        "wave advance retreat"
+      ],
+      "keywords": [
+        "reunion",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:side_tracking",
+        "behavior:reunion",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-13",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-13",
+      "storyboard_id": "SBD-song_master_01-13",
+      "scene_order": 13,
+      "acting_intent": "frame bittersweet departure from elevated vantage",
+      "body_action": "slow retreat steps at rooftop parapet",
+      "gaze_direction": "upward skyline scan not camera lens",
+      "hand_action": "reluctant hand release from parapet stone",
+      "posture_variation": "wind-braced lean back not rigid stand",
+      "camera_angle": "backlit long low angle",
+      "camera_distance": "far silhouette distance",
+      "camera_movement_hint": "slow pullback",
+      "subject_blocking": "subject small against skyline upper third",
+      "environment_interaction": "parapet stone and bus stop sign below referenced",
+      "location_variation": "LOC-station:bus_waiting+rooftop_visit:rooftop-farewell-vista-m",
+      "foreground_midground_background": [
+        "foreground:parapet stone texture",
+        "midground:subject wind-braced silhouette",
+        "background:city grid depth planes"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:13",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "slow pullback rim light",
+        "wind on clothing ripple"
+      ],
+      "keywords": [
+        "departure",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:silhouette_distance",
+        "behavior:farewell",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-14",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-14",
+      "storyboard_id": "SBD-song_master_01-14",
+      "scene_order": 14,
+      "acting_intent": "practice mentor guidance during daily school walk",
+      "body_action": "slightly forward mentor lead on campus path",
+      "gaze_direction": "evaluative side glance toward student not lens",
+      "hand_action": "hand on shoulder guide with cooking apron fold",
+      "posture_variation": "walking instruction half-step behind not attention pose",
+      "camera_angle": "eye-level intimate angle",
+      "camera_distance": "mid two-shot distance",
+      "camera_movement_hint": "micro push-in on beat",
+      "subject_blocking": "mentor-student stagger on campus walk line",
+      "environment_interaction": "school gate arch and cooking towel prop in use",
+      "location_variation": "LOC-school:school_walk+cooking:school-mentor-walk-kitchen-n",
+      "foreground_midground_background": [
+        "foreground:apron fold and shoulder touch",
+        "midground:mentor-student walking pair",
+        "background:campus banner line depth"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:14",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "rear follow walking cadence",
+        "student background flow"
+      ],
+      "keywords": [
+        "growth",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:medium_emotional",
+        "behavior:protection",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-15",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-15",
+      "storyboard_id": "SBD-song_master_01-15",
+      "scene_order": 15,
+      "acting_intent": "perform quiet nightly ritual before redemptive reunion",
+      "body_action": "kneeling flower care with upward star gaze",
+      "gaze_direction": "upward to star field not camera",
+      "hand_action": "watering can tilt with tentative reach",
+      "posture_variation": "kneeling ritual posture with curved back",
+      "camera_angle": "backlit long low angle",
+      "camera_distance": "far silhouette distance",
+      "camera_movement_hint": "slow pullback",
+      "subject_blocking": "subject low center with flower pot foreground",
+      "environment_interaction": "water stream arc and planter soil actively used",
+      "location_variation": "LOC-home:flower_watering+star_gazing:forest-clearing-star-ritual-o",
+      "foreground_midground_background": [
+        "foreground:water droplet sparkle on petals",
+        "midground:subject kneeling ritual",
+        "background:night tree ring and stars"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:15",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "silhouette side tracking lift",
+        "star field subtle twinkle"
+      ],
+      "keywords": [
+        "redemption",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:silhouette_distance",
+        "behavior:reunion",
+        "song_master_01"
+      ]
+    },
+    {
+      "acting_camera_id": "IAC-SBD-song_master_01-16",
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-16",
+      "storyboard_id": "SBD-song_master_01-16",
+      "scene_order": 16,
+      "acting_intent": "open protective new chapter through morning guardian routine",
+      "body_action": "upright protective lean during flower watering",
+      "gaze_direction": "soft downward check toward planter not lens",
+      "hand_action": "hair comfort touch while holding watering can",
+      "posture_variation": "guardian half-step behind with nurturing lean",
+      "camera_angle": "eye-level intimate angle",
+      "camera_distance": "mid two-shot distance",
+      "camera_movement_hint": "micro push-in on beat",
+      "subject_blocking": "guardian-child offset in morning doorway light",
+      "environment_interaction": "morning routine objects and flower pot actively used",
+      "location_variation": "LOC-home:morning_routine+flower_watering:home-morning-guardian-reset-p",
+      "foreground_midground_background": [
+        "foreground:watering can spout and petals",
+        "midground:guardian nurturing gesture",
+        "background:morning doorway warm entry"
+      ],
+      "anti_static_pose_rules": [
+        "no-direct-frontal-eye-contact-with-camera",
+        "no-parade-rest-standing-posture",
+        "no-decoration-only-background",
+        "require-in-progress-body-action",
+        "require-environment-touch-or-use",
+        "no-ai-studio-generation",
+        "scene-order:16",
+        "no-similar-location-repeat-as-previous-scene"
+      ],
+      "next_video_potential": [
+        "medium emotional hero hold",
+        "morning light sweep"
+      ],
+      "keywords": [
+        "new-beginning",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "song_master_01",
+        "image-acting-camera-grammar",
+        "shot:medium_emotional",
+        "behavior:protection",
+        "song_master_01"
+      ]
+    }
+  ]
+}

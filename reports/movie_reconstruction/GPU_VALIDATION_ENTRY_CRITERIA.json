@@ -1,0 +1,24 @@
+{
+  "report_id": "gpu_validation_entry_criteria_mqczkwt5",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-002",
+  "system_id": "VIDEO_RUNTIME_ENFORCEMENT_V1",
+  "generated_at": "2026-06-13T23:28:27.161Z",
+  "required_conditions": [
+    "VIDEO_RUNTIME_ENFORCEMENT_PROTOCOL.json defined",
+    "All binding packages exported (temporal, environment, object)",
+    "VIDEO_CONDITIONING_BACKEND_REQUIREMENTS_REPORT.json PASS",
+    "minimum_validation_batch_size defined per critical channel",
+    "expected_degradation_path defined per runtime channel",
+    "GPU execution environment available (future phase)"
+  ],
+  "blocked_conditions": [
+    "gpu_execution in protocol definition phase",
+    "video_backend_implemented=false",
+    "environment_identity_map reserved_v1",
+    "identity_embedding_ref not generated",
+    "Validation Protocol != GPU Validation Passed"
+  ],
+  "ready_for_gpu_validation": false,
+  "gpu_entry_criteria_defined": true,
+  "assessment_note": "Protocol and entry criteria defined; GPU validation blocked until implementation phase explicitly enables gpu_execution."
+}

@@ -1,0 +1,219 @@
+{
+  "asset_type": "animal_companion_behavior_grammar",
+  "asset_version": "v1",
+  "grammar_id": "animal-companion-behavior-grammar-v1",
+  "phase": "PHASE-MDG-004",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Animal and companion behavior grammar for Music Drama. Establishes companion hierarchy, animal continuity rules, background animal ecology, and living village atmosphere without generating scenarios.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false,
+    "modifies_living_world_core": false
+  },
+  "read_only_sources": {
+    "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+    "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+    "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+    "render_feedback": "datasets/render_feedback/RKB-001.json",
+    "master_story": "datasets/story/music-drama-master-story-v1.json"
+  },
+  "section_1_primary_companion_layer": {
+    "companion_count": 2,
+    "companion_hierarchy_rule": "Primary companions always have higher priority than background animals.",
+    "companions": [
+      {
+        "animal_id": "gamja",
+        "label": "Gamja",
+        "owner_character": "gonegi",
+        "companion_type": "primary",
+        "continuity_required": true,
+        "emotional_anchor": true,
+        "appearance_priority": "VERY_HIGH",
+        "default_visibility": true,
+        "ep01_compatible": true,
+        "companion_continuity_law": "If Gonegi appears, Gamja should appear unless physically impossible."
+      },
+      {
+        "animal_id": "aengdu",
+        "label": "Aengdu",
+        "owner_character": "dana",
+        "companion_type": "primary",
+        "continuity_required": true,
+        "emotional_anchor": true,
+        "appearance_priority": "VERY_HIGH",
+        "default_visibility": true,
+        "ep01_compatible": false,
+        "ep01_note": "Reserved for post-EP01 Dana scenes; Dana does not appear in EP01",
+        "companion_continuity_law": "If Dana appears, Aengdu should appear unless physically impossible."
+      }
+    ],
+    "companion_continuity_law": {
+      "gonegi_gamja": "If Gonegi appears, Gamja should appear unless physically impossible.",
+      "dana_aengdu": "If Dana appears, Aengdu should appear unless physically impossible.",
+      "priority": "Primary companions outrank all background animals in character field ordering and visual emphasis."
+    }
+  },
+  "section_2_background_animal_layer": {
+    "background_animal_count": 8,
+    "animals": [
+      {
+        "animal_id": "seagull",
+        "label": "Seagull",
+        "animal_type": "background",
+        "environment": "harbor",
+        "appearance_frequency": "COMMON",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      },
+      {
+        "animal_id": "pelican",
+        "label": "Pelican",
+        "animal_type": "background",
+        "environment": "harbor",
+        "appearance_frequency": "OCCASIONAL",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      },
+      {
+        "animal_id": "harbor_cat",
+        "label": "Harbor Cat",
+        "animal_type": "background",
+        "environment": "harbor_alley",
+        "appearance_frequency": "OCCASIONAL",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      },
+      {
+        "animal_id": "village_dog",
+        "label": "Village Dog",
+        "animal_type": "background",
+        "environment": "village_path",
+        "appearance_frequency": "COMMON",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      },
+      {
+        "animal_id": "chicken",
+        "label": "Chicken",
+        "animal_type": "background",
+        "environment": "bakery_yard",
+        "appearance_frequency": "COMMON",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      },
+      {
+        "animal_id": "duck",
+        "label": "Duck",
+        "animal_type": "background",
+        "environment": "harbor_shallows",
+        "appearance_frequency": "OCCASIONAL",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      },
+      {
+        "animal_id": "goose",
+        "label": "Goose",
+        "animal_type": "background",
+        "environment": "farm_edge",
+        "appearance_frequency": "OCCASIONAL",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      },
+      {
+        "animal_id": "muscovy_duck",
+        "label": "Muscovy Duck",
+        "animal_type": "background",
+        "environment": "farm_edge",
+        "appearance_frequency": "RARE",
+        "recommended_group_size": 1,
+        "ep01_compatible": true
+      }
+    ]
+  },
+  "section_3_background_animal_rotation_law": {
+    "goal": "Prevent the same background animal from appearing everywhere.",
+    "rules": [
+      "Animals rotate naturally across environments.",
+      "No single background animal should dominate all scenes.",
+      "Select background animals from the environment-appropriate rotation zone only.",
+      "Do not stack multiple background animal types in one scene unless density law allows."
+    ],
+    "rotation_zones": [
+      {
+        "zone_id": "harbor",
+        "environments": ["harbor", "harbor_shallows"],
+        "preferred_animals": ["seagull", "pelican", "duck"]
+      },
+      {
+        "zone_id": "bakery_yard",
+        "environments": ["bakery_yard"],
+        "preferred_animals": ["chicken"]
+      },
+      {
+        "zone_id": "village_path",
+        "environments": ["village_path"],
+        "preferred_animals": ["village_dog"]
+      },
+      {
+        "zone_id": "farm_edge",
+        "environments": ["farm_edge"],
+        "preferred_animals": ["goose", "muscovy_duck"]
+      },
+      {
+        "zone_id": "harbor_alley",
+        "environments": ["harbor_alley"],
+        "preferred_animals": ["harbor_cat"]
+      }
+    ]
+  },
+  "section_4_animal_density_law": {
+    "primary_companion": {
+      "max_per_protagonist": 1,
+      "rule": "One primary companion per protagonist in frame."
+    },
+    "background_animals": {
+      "max_background_animal_groups": 1,
+      "rule": "At most one background animal group per scene."
+    },
+    "visible_animal_count": {
+      "recommended_max": 3,
+      "composition_rule": "Primary companion + at most one background animal group + optional single background individual."
+    },
+    "forbidden": [
+      "large flocks",
+      "large herds",
+      "animal-dominated composition"
+    ],
+    "support_principle": "Animals must support atmosphere.",
+    "protagonist_focus_rule": "Animals must never replace protagonist focus."
+  },
+  "section_5_rkb_integration": {
+    "test_id": "RKB-001",
+    "encoded_principles": [
+      "character readability first",
+      "crowd caution",
+      "companion continuity",
+      "living-world enhancement",
+      "stable daily-life atmosphere"
+    ],
+    "rkb_findings": {
+      "gamja_consistency_score": 9.5,
+      "gamja_stability": "PASS",
+      "companion_lesson": "Companion animals improve emotional readability and scene continuity",
+      "crowd_quality_score": 7.0,
+      "animal_density_alignment": "max 2 animals in grammar density_limits; recommended max 3 visible including companion"
+    },
+    "alignment_with_daily_life_library": "All 16 daily-life behaviors list gamja in continuity_companions",
+    "alignment_with_community_grammar": "background_animals_max: 2 in community-crowd-behavior-grammar density_limits"
+  },
+  "environment_registry": [
+    "harbor",
+    "harbor_shallows",
+    "harbor_alley",
+    "bakery_yard",
+    "village_path",
+    "farm_edge"
+  ]
+}

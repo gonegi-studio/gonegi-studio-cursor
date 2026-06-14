@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_reconstruction/semantic-anchor-library.schema.json",
+  "title": "SemanticAnchorLibrary",
+  "type": "object",
+  "required": ["library_id", "phase", "anchor_types", "anchors"],
+  "properties": {
+    "library_id": { "type": "string" },
+    "phase": { "type": "string" },
+    "library_version": { "type": "string" },
+    "anchor_types": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "iconic_pose",
+          "iconic_camera",
+          "iconic_transition",
+          "iconic_environment",
+          "iconic_blocking"
+        ]
+      },
+      "minItems": 5
+    },
+    "anchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "anchor_id",
+          "anchor_type",
+          "semantic_meaning",
+          "emotion",
+          "participants",
+          "relative_distance",
+          "orientation",
+          "interaction_type",
+          "iconic_score"
+        ],
+        "properties": {
+          "anchor_id": { "type": "string" },
+          "anchor_type": {
+            "type": "string",
+            "enum": [
+              "iconic_pose",
+              "iconic_camera",
+              "iconic_transition",
+              "iconic_environment",
+              "iconic_blocking"
+            ]
+          },
+          "semantic_meaning": { "type": "string" },
+          "emotion": { "type": "string" },
+          "participants": { "type": "integer", "minimum": 0 },
+          "relative_distance": { "type": "string" },
+          "orientation": { "type": "string" },
+          "interaction_type": { "type": "string" },
+          "iconic_score": { "type": "number", "minimum": 0, "maximum": 1 },
+          "source_video_id": { "type": "string" },
+          "source_scene_id": { "type": "string" },
+          "gonegi_translation_ref": { "type": "string" }
+        }
+      }
+    }
+  }
+}

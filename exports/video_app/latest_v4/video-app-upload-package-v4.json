@@ -1,0 +1,24 @@
+{
+  "package_id": "video-app-upload-package-v4",
+  "phase": "PHASE-EXPORT-REBUILD-003",
+  "generated_at": "2026-06-09T06:33:31.785Z",
+  "package_type": "production_dataset",
+  "manifest_only": false,
+  "production_grade": true,
+  "gpu_execution": false,
+  "base": "exports/video_app/latest_v3",
+  "target": "exports/video_app/latest_v4",
+  "production_layer_ref": "exports/video_app/latest_v4/video-production-layer.json",
+  "output_blocks": [
+    "temporal_memory_bundle",
+    "dialogue_lipsync_bundle",
+    "video_style_dna",
+    "motion_dna",
+    "camera_dna",
+    "scene_transition_dna",
+    "continuity_bundle",
+    "video_generation_bundle",
+    "generation_trace_bundle"
+  ],
+  "upload_package_v4_integrity": "PASS"
+}

@@ -1,0 +1,65 @@
+{
+  "spec_id": "story-blueprint-mapping-specification-v1",
+  "asset_type": "story_blueprint_mapping_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-STORY-001",
+  "module": "STORY_TO_BLUEPRINT_ENGINE_V1",
+  "purpose": "Map analyzed story through acts and arcs to scale-specific blueprint outputs.",
+  "upstream_checkpoint": "PASS_GENERATION_OPERATION_STACK_V1",
+  "mapping_flow": [
+    "story",
+    "acts",
+    "arcs",
+    "blueprint"
+  ],
+  "story_to_blueprint_integrity": "PASS",
+  "blueprint_generation_integrity": "PASS",
+  "feature_blueprint_compatibility": "PASS",
+  "output_blueprint_types": [
+    "MV",
+    "SHORT",
+    "MEDIUM",
+    "FEATURE"
+  ],
+  "generated_outputs": {
+    "MV": {
+      "output_id": "mv_blueprint",
+      "artifact_name": "mv_blueprint.json",
+      "artifact_ref": "exports/story_engine/mv_blueprint.json",
+      "target_blueprint_ref": "exports/mv_production_blueprint_system/mv-production-blueprint-system.json"
+    },
+    "SHORT": {
+      "output_id": "short_blueprint",
+      "artifact_name": "short_blueprint.json",
+      "artifact_ref": "exports/story_engine/short_blueprint.json",
+      "target_blueprint_ref": "exports/short_film_blueprint/short-film-blueprint.json"
+    },
+    "MEDIUM": {
+      "output_id": "medium_blueprint",
+      "artifact_name": "medium_blueprint.json",
+      "artifact_ref": "exports/story_engine/medium_blueprint.json",
+      "target_blueprint_ref": "exports/medium_film_blueprint/medium-film-blueprint.json"
+    },
+    "FEATURE": {
+      "output_id": "feature_blueprint",
+      "artifact_name": "feature_blueprint.json",
+      "artifact_ref": "exports/story_engine/feature_blueprint.json",
+      "target_blueprint_ref": "exports/feature_film_blueprint/feature-film-blueprint.json"
+    }
+  },
+  "export_id": "story-blueprint-mapping-specification-export-v1",
+  "generated_at": "2026-06-09T01:25:00.993Z",
+  "dataset_ref": "datasets/story/story-blueprint-mapping-specification.json",
+  "output_blueprint_type_list": [
+    "MV",
+    "SHORT",
+    "MEDIUM",
+    "FEATURE"
+  ],
+  "blueprint_target_refs": {
+    "MV": "exports/mv_production_blueprint_system/mv-production-blueprint-system.json",
+    "SHORT": "exports/short_film_blueprint/short-film-blueprint.json",
+    "MEDIUM": "exports/medium_film_blueprint/medium-film-blueprint.json",
+    "FEATURE": "exports/feature_film_blueprint/feature-film-blueprint.json"
+  }
+}

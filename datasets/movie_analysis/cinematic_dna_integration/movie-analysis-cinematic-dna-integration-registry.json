@@ -1,0 +1,25 @@
+{
+  "registry_id": "movie-analysis-cinematic-dna-integration-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-054-MOVIE_ANALYSIS_CINEMATIC_DNA_INTEGRATION_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/cinematic_dna_integration/movie-analysis-cinematic-dna-integration.schema.json",
+  "integration_path": "exports/movie_analysis_cinematic_dna_integration/movie-analysis-cinematic-dna-integration.json",
+  "report_path": "reports/movie-analysis-cinematic-dna-integration-report.json",
+  "cinematic_dna_path": "exports/movie_analysis_cinematic_dna/movie-analysis-cinematic-dna.json",
+  "cinematic_dna_report_path": "reports/movie-analysis-cinematic-dna-report.json",
+  "expected_source_count": 4,
+  "expected_source_video_ids": [
+    "GHIBLI_01",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "SHINKAI_01"
+  ],
+  "integration_targets": [
+    "scene_generation_adapter",
+    "camera_generation_adapter",
+    "emotion_generation_adapter",
+    "transition_generation_adapter",
+    "continuity_generation_adapter"
+  ],
+  "consumer_targets": ["image_app", "video_app"]
+}

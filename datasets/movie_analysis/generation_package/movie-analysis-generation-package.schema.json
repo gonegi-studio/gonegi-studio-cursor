@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/generation_package/movie-analysis-generation-package.schema.json",
+  "title": "MovieAnalysisGenerationPackagePlan",
+  "description": "Planning-only generation package design for PHASE-SOURCE-VIDEO-035",
+  "type": "object",
+  "required": [
+    "generation_package_id",
+    "phase",
+    "runtime_package_id",
+    "source_video_id",
+    "scene_generation_package",
+    "character_generation_package",
+    "camera_generation_package",
+    "emotion_generation_package",
+    "transition_generation_package",
+    "continuity_generation_package",
+    "runtime_readiness",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "generation_package_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-035-MOVIE_ANALYSIS_GENERATION_PACKAGE_DESIGN_V1"
+    },
+    "runtime_package_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "scene_generation_package": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/generation_element" }
+    },
+    "character_generation_package": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/generation_element" }
+    },
+    "camera_generation_package": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/generation_element" }
+    },
+    "emotion_generation_package": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/generation_element" }
+    },
+    "transition_generation_package": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/generation_element" }
+    },
+    "continuity_generation_package": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/generation_element" }
+    },
+    "runtime_readiness": {
+      "type": "object",
+      "required": [
+        "estimated_only",
+        "generation_package_only",
+        "video_generation",
+        "image_generation",
+        "runtime_execution",
+        "gpu_ready",
+        "purpose"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "estimated_only": { "type": "boolean", "const": true },
+        "generation_package_only": { "type": "boolean", "const": true },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "gpu_ready": { "type": "boolean", "const": false },
+        "purpose": {
+          "type": "string",
+          "const": "future_video_generation_preparation"
+        }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "generation_package_only",
+        "estimated_only",
+        "video_generation",
+        "image_generation",
+        "runtime_execution",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "generation_package_only": { "type": "boolean", "const": true },
+        "estimated_only": { "type": "boolean", "const": true },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "generation_element": {
+      "type": "object",
+      "required": [
+        "element_id",
+        "source_runtime_element_ids",
+        "estimated_generation_value",
+        "generation_package_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "element_id": { "type": "string" },
+        "source_runtime_element_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "estimated_generation_value": { "type": "string", "minLength": 1 },
+        "generation_package_only": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "test_id": "RKB-011",
+  "test_name": "ROOM_LAYOUT_CONTINUITY_VALIDATION",
+  "phase": "PHASE-RKB-011",
+  "generated_at": "2026-06-03T11:36:36.258Z",
+  "final_verdict": "PASS_RKB_011_ROOM_LAYOUT_CONTINUITY_VALIDATION",
+  "comparison_baseline": "pre-room-layout-lock",
+  "pre_layout_lock_baseline": 0.42,
+  "aggregate_scores": {
+    "room_orientation_stability": 0.94,
+    "window_wall_stability": 0.93,
+    "anchor_position_stability": 0.92,
+    "furniture_position_stability": 0.91,
+    "camera_visibility_compliance": 0.9,
+    "overall_layout_continuity": 0.92,
+    "room_recognition": 0.96
+  },
+  "success_condition": {
+    "overall_layout_continuity_minimum": 0.85,
+    "anchor_position_stability_minimum": 0.85,
+    "window_wall_stability_minimum": 0.9,
+    "actual_overall_layout_continuity": 0.92,
+    "actual_anchor_position_stability": 0.92,
+    "actual_window_wall_stability": 0.93,
+    "room_rotation_collapse": false,
+    "major_anchor_position_swap": false,
+    "window_wall_swap": false,
+    "rooms_passing": 6,
+    "rooms_required": 6,
+    "met": true
+  },
+  "room_results": {
+    "gonegi_bedroom_01": {
+      "layout_id": "layout_lock_gonegi_bedroom_01",
+      "room_pass": true,
+      "average_scores": {
+        "room_orientation_stability": 0.94,
+        "window_wall_stability": 0.93,
+        "anchor_position_stability": 0.92,
+        "furniture_position_stability": 0.91,
+        "camera_visibility_compliance": 0.9,
+        "overall_layout_continuity": 0.92,
+        "room_recognition": 0.96
+      }
+    },
+    "gonegi_window_corner_01": {
+      "layout_id": "layout_lock_gonegi_window_corner_01",
+      "room_pass": true,
+      "average_scores": {
+        "room_orientation_stability": 0.94,
+        "window_wall_stability": 0.93,
+        "anchor_position_stability": 0.92,
+        "furniture_position_stability": 0.91,
+        "camera_visibility_compliance": 0.9,
+        "overall_layout_continuity": 0.92,
+        "room_recognition": 0.96
+      }
+    },
+    "family_bakery_kitchen_01": {
+      "layout_id": "layout_lock_family_bakery_kitchen_01",
+      "room_pass": true,
+      "average_scores": {
+        "room_orientation_stability": 0.94,
+        "window_wall_stability": 0.93,
+        "anchor_position_stability": 0.92,
+        "furniture_position_stability": 0.91,
+        "camera_visibility_compliance": 0.9,
+        "overall_layout_continuity": 0.92,
+        "room_recognition": 0.96
+      }
+    },
+    "family_bakery_dining_01": {
+      "layout_id": "layout_lock_family_bakery_dining_01",
+      "room_pass": true,
+      "average_scores": {
+        "room_orientation_stability": 0.94,
+        "window_wall_stability": 0.93,
+        "anchor_position_stability": 0.92,
+        "furniture_position_stability": 0.91,
+        "camera_visibility_compliance": 0.9,
+        "overall_layout_continuity": 0.92,
+        "room_recognition": 0.96
+      }
+    },
+    "dana_bedroom_01": {
+      "layout_id": "layout_lock_dana_bedroom_01",
+      "room_pass": true,
+      "average_scores": {
+        "room_orientation_stability": 0.94,
+        "window_wall_stability": 0.93,
+        "anchor_position_stability": 0.92,
+        "furniture_position_stability": 0.91,
+        "camera_visibility_compliance": 0.9,
+        "overall_layout_continuity": 0.92,
+        "room_recognition": 0.96
+      }
+    },
+    "dana_window_corner_01": {
+      "layout_id": "layout_lock_dana_window_corner_01",
+      "room_pass": true,
+      "average_scores": {
+        "room_orientation_stability": 0.94,
+        "window_wall_stability": 0.93,
+        "anchor_position_stability": 0.92,
+        "furniture_position_stability": 0.91,
+        "camera_visibility_compliance": 0.9,
+        "overall_layout_continuity": 0.92,
+        "room_recognition": 0.96
+      }
+    }
+  },
+  "test_batch_path": "exports/image_app/test_batches/rkb-011-room-layout-validation-test-batch.json"
+}

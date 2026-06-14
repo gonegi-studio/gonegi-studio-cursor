@@ -1,0 +1,46 @@
+{
+  "adapter_id": "titanic-video-adapter-v1",
+  "phase": "PHASE-TITANIC-SHOT-GRAMMAR-001",
+  "system_id": "TITANIC_SHOT_RECONSTRUCTION_SYSTEM_V1",
+  "adapter_version": "v1",
+  "target_app": "video_app",
+  "shared_movie_dataset": true,
+  "separate_video_dataset": false,
+  "pipeline": [
+    "movie_dataset",
+    "titanic_video_adapter",
+    "shot_sequence",
+    "temporal_structure"
+  ],
+  "input_sources": {
+    "shot_registry": "datasets/movie_reconstruction/titanic_shots/titanic-shot-registry.json",
+    "shot_transition_registry": "datasets/movie_reconstruction/titanic_shots/titanic-shot-transition-registry.json",
+    "shot_fingerprint_registry": "datasets/movie_reconstruction/titanic_shots/titanic-shot-fingerprint-registry.json",
+    "movie_bundle": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json"
+  },
+  "shot_sequence": {
+    "shot_count": 3300,
+    "transition_count": 3299,
+    "sequence_mode": "scene_ordered_shot_chain"
+  },
+  "temporal_structure": {
+    "frame_rate_hint": 24,
+    "average_shot_duration": 2.9455,
+    "continuity_layers": [
+      "semantic_continuity",
+      "camera_continuity",
+      "emotion_continuity"
+    ]
+  },
+  "output_blocks": [
+    "shot_sequence_block",
+    "transition_block",
+    "camera_trajectory_block",
+    "semantic_continuity_block",
+    "gonegi_translation_block"
+  ],
+  "video_reconstruction_status": "READY",
+  "world_identity_source": "latest_v5",
+  "movie_geometry_source": "movie_dataset",
+  "adapter_ready": true
+}

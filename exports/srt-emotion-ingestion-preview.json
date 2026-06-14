@@ -1,0 +1,513 @@
+{
+  "layer_version": "SRT-EMOTION-INGESTION-PHASE-97A-v1",
+  "seed_count": 1,
+  "song_master_id": "song_master_01",
+  "required_fields": [
+    "ingestion_id",
+    "source_type",
+    "language_code",
+    "lyric_segments",
+    "emotion_timeline",
+    "narrative_intents",
+    "world_constraints",
+    "orchestration_bindings",
+    "keywords"
+  ],
+  "world_dna_priority_law": "WORLD_DNA_PRIORITY_LAW",
+  "default_world_setting": "early 1900s Mediterranean harbor town",
+  "world_dna_locked_dimensions": [
+    "era",
+    "architecture",
+    "transportation",
+    "clothing",
+    "environment",
+    "settlement_type"
+  ],
+  "allowed_waiting_places": [
+    "harbor_pier",
+    "lighthouse_path",
+    "breakwater",
+    "coastal_hill_road",
+    "old_town_square",
+    "stone_stair_alley"
+  ],
+  "forbidden_generic_locations": [
+    "train_station",
+    "bus_stop",
+    "modern_city",
+    "subway",
+    "airport"
+  ],
+  "pipeline_chain": [
+    "world_continuity",
+    "story_orchestration",
+    "srt_emotion_ingestion"
+  ],
+  "seed_srt_emotion_ingestion": [
+    {
+      "ingestion_id": "SRTING-song_master_01-v1",
+      "source_type": "srt",
+      "language_code": "ko",
+      "lyric_segments": [
+        {
+          "segment_index": 1,
+          "cue_id": "1",
+          "start_ms": 0,
+          "end_ms": 14000,
+          "text": "고요한 마음, 너를 기다리네"
+        },
+        {
+          "segment_index": 2,
+          "cue_id": "2",
+          "start_ms": 14000,
+          "end_ms": 28000,
+          "text": "멀어진 기억 속에 남은 너"
+        },
+        {
+          "segment_index": 3,
+          "cue_id": "3",
+          "start_ms": 28000,
+          "end_ms": 41000,
+          "text": "말없이 스친 눈빛 하나"
+        },
+        {
+          "segment_index": 4,
+          "cue_id": "4",
+          "start_ms": 41000,
+          "end_ms": 54000,
+          "text": "문 앞에서 멈춘 그대 이름"
+        },
+        {
+          "segment_index": 5,
+          "cue_id": "5",
+          "start_ms": 54000,
+          "end_ms": 67000,
+          "text": "비 내리는 창, 그리운 숨결"
+        },
+        {
+          "segment_index": 6,
+          "cue_id": "6",
+          "start_ms": 67000,
+          "end_ms": 80000,
+          "text": "노을 너머 희망을 걸어"
+        },
+        {
+          "segment_index": 7,
+          "cue_id": "7",
+          "start_ms": 80000,
+          "end_ms": 93000,
+          "text": "아침빛에 새 길을 열고"
+        },
+        {
+          "segment_index": 8,
+          "cue_id": "8",
+          "start_ms": 93000,
+          "end_ms": 106000,
+          "text": "마주 선 두 마음의 긴장"
+        },
+        {
+          "segment_index": 9,
+          "cue_id": "9",
+          "start_ms": 106000,
+          "end_ms": 119000,
+          "text": "해야 할 일 앞에 선 채"
+        },
+        {
+          "segment_index": 10,
+          "cue_id": "10",
+          "start_ms": 119000,
+          "end_ms": 132000,
+          "text": "따뜻한 차 한 모금, 작은 위로"
+        },
+        {
+          "segment_index": 11,
+          "cue_id": "11",
+          "start_ms": 132000,
+          "end_ms": 145000,
+          "text": "다시 손 내밀며 믿음을"
+        },
+        {
+          "segment_index": 12,
+          "cue_id": "12",
+          "start_ms": 145000,
+          "end_ms": 158000,
+          "text": "드디어 닿은 두 손의 온기"
+        },
+        {
+          "segment_index": 13,
+          "cue_id": "13",
+          "start_ms": 158000,
+          "end_ms": 171000,
+          "text": "높은 곳에서 작별 인사"
+        },
+        {
+          "segment_index": 14,
+          "cue_id": "14",
+          "start_ms": 171000,
+          "end_ms": 184000,
+          "text": "걸으며 배우는 작은 용기"
+        },
+        {
+          "segment_index": 15,
+          "cue_id": "15",
+          "start_ms": 184000,
+          "end_ms": 197000,
+          "text": "별 아래 꽃에 물을 주며"
+        },
+        {
+          "segment_index": 16,
+          "cue_id": "16",
+          "start_ms": 197000,
+          "end_ms": 210000,
+          "text": "새 아침, 다시 지켜 줄게"
+        }
+      ],
+      "emotion_timeline": [
+        {
+          "segment_index": 1,
+          "start_ms": 0,
+          "end_ms": 14000,
+          "emotion_id": "anticipation",
+          "emotion_label": "quiet anticipation before change",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 2,
+          "start_ms": 14000,
+          "end_ms": 28000,
+          "emotion_id": "isolation",
+          "emotion_label": "isolated memory ache",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 3,
+          "start_ms": 28000,
+          "end_ms": 41000,
+          "emotion_id": "uncertainty",
+          "emotion_label": "hesitant friendship discovery",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 4,
+          "start_ms": 41000,
+          "end_ms": 54000,
+          "emotion_id": "parting",
+          "emotion_label": "separation threshold ache",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 5,
+          "start_ms": 54000,
+          "end_ms": 67000,
+          "emotion_id": "anticipation",
+          "emotion_label": "longing through absence",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 6,
+          "start_ms": 67000,
+          "end_ms": 80000,
+          "emotion_id": "optimism",
+          "emotion_label": "hope rising at horizon",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 7,
+          "start_ms": 80000,
+          "end_ms": 93000,
+          "emotion_id": "optimism",
+          "emotion_label": "optimistic journey forward",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 8,
+          "start_ms": 93000,
+          "end_ms": 106000,
+          "emotion_id": "resolve",
+          "emotion_label": "rival tension into resolve",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 9,
+          "start_ms": 106000,
+          "end_ms": 119000,
+          "emotion_id": "resolve",
+          "emotion_label": "resolve before sacrifice",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 10,
+          "start_ms": 119000,
+          "end_ms": 132000,
+          "emotion_id": "care",
+          "emotion_label": "care offered in vulnerability",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 11,
+          "start_ms": 132000,
+          "end_ms": 145000,
+          "emotion_id": "connection",
+          "emotion_label": "trust reopening after fracture",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 12,
+          "start_ms": 145000,
+          "end_ms": 158000,
+          "emotion_id": "connection",
+          "emotion_label": "reunion contact warmth",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 13,
+          "start_ms": 158000,
+          "end_ms": 171000,
+          "emotion_id": "parting",
+          "emotion_label": "bittersweet farewell gaze",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 14,
+          "start_ms": 171000,
+          "end_ms": 184000,
+          "emotion_id": "care",
+          "emotion_label": "mentor growth guidance",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 15,
+          "start_ms": 184000,
+          "end_ms": 197000,
+          "emotion_id": "connection",
+          "emotion_label": "redemptive nightly ritual",
+          "emotion_source": "srt-emotion-only"
+        },
+        {
+          "segment_index": 16,
+          "start_ms": 197000,
+          "end_ms": 210000,
+          "emotion_id": "care",
+          "emotion_label": "protective new beginning",
+          "emotion_source": "srt-emotion-only"
+        }
+      ],
+      "narrative_intents": [
+        {
+          "segment_index": 1,
+          "beat_type": "waiting",
+          "narrative_function": "establish_emotional_patience",
+          "intent": "emotion-intent:waiting:establish_emotional_patience",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 2,
+          "beat_type": "memory",
+          "narrative_function": "surface_past_emotional_echo",
+          "intent": "emotion-intent:memory:surface_past_emotional_echo",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 3,
+          "beat_type": "discovery",
+          "narrative_function": "introduce_relational_discovery",
+          "intent": "emotion-intent:discovery:introduce_relational_discovery",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 4,
+          "beat_type": "distance",
+          "narrative_function": "mark_relational_separation",
+          "intent": "emotion-intent:distance:mark_relational_separation",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 5,
+          "beat_type": "longing",
+          "narrative_function": "sustain_absence_tension",
+          "intent": "emotion-intent:longing:sustain_absence_tension",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 6,
+          "beat_type": "hope",
+          "narrative_function": "lift_emotional_trajectory",
+          "intent": "emotion-intent:hope:lift_emotional_trajectory",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 7,
+          "beat_type": "journey",
+          "narrative_function": "advance_plot_momentum",
+          "intent": "emotion-intent:journey:advance_plot_momentum",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 8,
+          "beat_type": "conflict",
+          "narrative_function": "escalate_relational_tension",
+          "intent": "emotion-intent:conflict:escalate_relational_tension",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 9,
+          "beat_type": "sacrifice",
+          "narrative_function": "commit_to_costly_choice",
+          "intent": "emotion-intent:sacrifice:commit_to_costly_choice",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 10,
+          "beat_type": "healing",
+          "narrative_function": "restore_vulnerability_balance",
+          "intent": "emotion-intent:healing:restore_vulnerability_balance",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 11,
+          "beat_type": "forgiveness",
+          "narrative_function": "repair_relational_fracture",
+          "intent": "emotion-intent:forgiveness:repair_relational_fracture",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 12,
+          "beat_type": "reunion",
+          "narrative_function": "resolve_absence_arc",
+          "intent": "emotion-intent:reunion:resolve_absence_arc",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 13,
+          "beat_type": "departure",
+          "narrative_function": "close_chapter_with_parting",
+          "intent": "emotion-intent:departure:close_chapter_with_parting",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 14,
+          "beat_type": "growth",
+          "narrative_function": "develop_character_capacity",
+          "intent": "emotion-intent:growth:develop_character_capacity",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 15,
+          "beat_type": "redemption",
+          "narrative_function": "restore_moral_emotional_balance",
+          "intent": "emotion-intent:redemption:restore_moral_emotional_balance",
+          "emotion_only": true
+        },
+        {
+          "segment_index": 16,
+          "beat_type": "new_beginning",
+          "narrative_function": "reset_narrative_cycle",
+          "intent": "emotion-intent:new_beginning:reset_narrative_cycle",
+          "emotion_only": true
+        }
+      ],
+      "world_constraints": [
+        "allowed-waiting:breakwater",
+        "allowed-waiting:coastal_hill_road",
+        "allowed-waiting:harbor_pier",
+        "allowed-waiting:lighthouse_path",
+        "allowed-waiting:old_town_square",
+        "allowed-waiting:stone_stair_alley",
+        "default-world:early-1900s-Mediterranean-harbor-town",
+        "forbidden-from-lyrics:airport",
+        "forbidden-from-lyrics:bus_stop",
+        "forbidden-from-lyrics:modern_city",
+        "forbidden-from-lyrics:subway",
+        "forbidden-from-lyrics:train_station",
+        "law:WORLD_DNA_PRIORITY_LAW",
+        "locked-dimension:architecture",
+        "locked-dimension:clothing",
+        "locked-dimension:environment",
+        "locked-dimension:era",
+        "locked-dimension:settlement_type",
+        "locked-dimension:transportation",
+        "principle:lyrics-cannot-override-world-dna",
+        "principle:lyrics-provide-emotion-only",
+        "principle:no-lyric-based-location-generation",
+        "principle:no-lyric-based-world-generation",
+        "song-master:song_master_01",
+        "world-motif:motif:daily-life-anchor-ritual",
+        "world-motif:motif:gonagi-dana-bond-thread",
+        "world-motif:motif:protective-presence",
+        "world-motif:motif:rain-to-clear-healing",
+        "world-motif:motif:sunset-bridge-hope",
+        "world-motif:motif:transit-departure-return",
+        "world-motif:motif:waiting-to-reunion",
+        "world-motif:motif:window-reflection-memory",
+        "world-tone:cinematic music video realism",
+        "world-tone:gonagi visual continuity",
+        "world-tone:guardian-companion bond atmosphere",
+        "world-tone:intimate daily-life emotional scale",
+        "world-tone:photorealistic anime-realism blend",
+        "world:WORLD-song_master_01"
+      ],
+      "orchestration_bindings": [
+        "orchestration:ORCH-song_master_01",
+        "world:WORLD-song_master_01",
+        "song-master:song_master_01",
+        "binding:segment-01:ORCH-song_master_01",
+        "binding:segment-01:turn:turn:01:NBT-waiting:establish_emotional_patience:station_waiting+window_gazing",
+        "binding:segment-01:storyboard:SBD-song_master_01-01:beat:NBT-waiting",
+        "binding:segment-02:ORCH-song_master_01",
+        "binding:segment-02:turn:turn:02:NBT-memory:surface_past_emotional_echo:photo_viewing+letter_writing",
+        "binding:segment-02:storyboard:SBD-song_master_01-02:beat:NBT-memory",
+        "binding:segment-03:ORCH-song_master_01",
+        "binding:segment-03:turn:turn:03:NBT-discovery:introduce_relational_discovery:bench_sitting+book_reading",
+        "binding:segment-03:storyboard:SBD-song_master_01-03:beat:NBT-discovery",
+        "binding:segment-04:ORCH-song_master_01",
+        "binding:segment-04:turn:turn:04:NBT-distance:mark_relational_separation:doorway_pause+train_riding",
+        "binding:segment-04:storyboard:SBD-song_master_01-04:beat:NBT-distance",
+        "binding:segment-05:ORCH-song_master_01",
+        "binding:segment-05:turn:turn:05:NBT-longing:sustain_absence_tension:rain_watching+evening_return",
+        "binding:segment-05:storyboard:SBD-song_master_01-05:beat:NBT-longing",
+        "binding:segment-06:ORCH-song_master_01",
+        "binding:segment-06:turn:turn:06:NBT-hope:lift_emotional_trajectory:sunset_watching+bridge_crossing",
+        "binding:segment-06:storyboard:SBD-song_master_01-06:beat:NBT-hope",
+        "binding:segment-07:ORCH-song_master_01",
+        "binding:segment-07:turn:turn:07:NBT-journey:advance_plot_momentum:morning_routine+bicycle_riding",
+        "binding:segment-07:storyboard:SBD-song_master_01-07:beat:NBT-journey",
+        "binding:segment-08:ORCH-song_master_01",
+        "binding:segment-08:turn:turn:08:NBT-conflict:escalate_relational_tension:street_crossing+school_walk",
+        "binding:segment-08:storyboard:SBD-song_master_01-08:beat:NBT-conflict",
+        "binding:segment-09:ORCH-song_master_01",
+        "binding:segment-09:turn:turn:09:NBT-sacrifice:commit_to_costly_choice:doorway_pause+laundry",
+        "binding:segment-09:storyboard:SBD-song_master_01-09:beat:NBT-sacrifice",
+        "binding:segment-10:ORCH-song_master_01",
+        "binding:segment-10:turn:turn:10:NBT-healing:restore_vulnerability_balance:tea_drinking+pet_care",
+        "binding:segment-10:storyboard:SBD-song_master_01-10:beat:NBT-healing",
+        "binding:segment-11:ORCH-song_master_01",
+        "binding:segment-11:turn:turn:11:NBT-forgiveness:repair_relational_fracture:market_visit+music_listening",
+        "binding:segment-11:storyboard:SBD-song_master_01-11:beat:NBT-forgiveness",
+        "binding:segment-12:ORCH-song_master_01",
+        "binding:segment-12:turn:turn:12:NBT-reunion:resolve_absence_arc:station_waiting+shore_walking",
+        "binding:segment-12:storyboard:SBD-song_master_01-12:beat:NBT-reunion",
+        "binding:segment-13:ORCH-song_master_01",
+        "binding:segment-13:turn:turn:13:NBT-departure:close_chapter_with_parting:bus_waiting+rooftop_visit",
+        "binding:segment-13:storyboard:SBD-song_master_01-13:beat:NBT-departure",
+        "binding:segment-14:ORCH-song_master_01",
+        "binding:segment-14:turn:turn:14:NBT-growth:develop_character_capacity:school_walk+cooking",
+        "binding:segment-14:storyboard:SBD-song_master_01-14:beat:NBT-growth",
+        "binding:segment-15:ORCH-song_master_01",
+        "binding:segment-15:turn:turn:15:NBT-redemption:restore_moral_emotional_balance:flower_watering+star_gazing",
+        "binding:segment-15:storyboard:SBD-song_master_01-15:beat:NBT-redemption",
+        "binding:segment-16:ORCH-song_master_01",
+        "binding:segment-16:turn:turn:16:NBT-new_beginning:reset_narrative_cycle:morning_routine+flower_watering",
+        "binding:segment-16:storyboard:SBD-song_master_01-16:beat:NBT-new_beginning"
+      ],
+      "keywords": [
+        "srt-emotion-ingestion",
+        "song_master_01",
+        "world:WORLD-song_master_01",
+        "orchestration:ORCH-song_master_01",
+        "WORLD_DNA_PRIORITY_LAW",
+        "emotion-only-srt",
+        "no-ai-studio-generation"
+      ]
+    }
+  ]
+}

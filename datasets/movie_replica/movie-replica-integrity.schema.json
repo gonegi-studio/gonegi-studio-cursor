@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-replica-integrity.schema.json",
+  "title": "MovieReplicaIntegrityValidation",
+  "description": "Replica integrity audit record for PHASE-MOVIE-REPLICA-008 end-to-end pipeline verification",
+  "type": "object",
+  "required": [
+    "validation_id",
+    "movie_id",
+    "scene_id",
+    "geometry_integrity_score",
+    "camera_integrity_score",
+    "blocking_integrity_score",
+    "trajectory_integrity_score",
+    "timeline_integrity_score",
+    "replica_integrity_score"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "validation_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "replica_id": { "type": "string" },
+    "geometry_integrity_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "camera_integrity_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "blocking_integrity_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "trajectory_integrity_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "timeline_integrity_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "replica_integrity_score": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "frame_unit_count": { "type": "integer", "minimum": 0 },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

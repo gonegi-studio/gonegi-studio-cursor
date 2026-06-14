@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/cinematic_dna/movie-analysis-cinematic-dna.schema.json",
+  "title": "MovieAnalysisCinematicDna",
+  "description": "Reusable cinematic DNA extracted from certified movie analysis dataset for PHASE-SOURCE-VIDEO-053",
+  "type": "object",
+  "required": [
+    "cinematic_dna_set_id",
+    "cinematic_dna_version",
+    "phase",
+    "extracted_at",
+    "source_count",
+    "dataset_id",
+    "release_id",
+    "entries",
+    "safety_summary"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "cinematic_dna_set_id": { "type": "string", "minLength": 1 },
+    "cinematic_dna_version": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-053-MOVIE_ANALYSIS_CINEMATIC_DNA_EXTRACTION_V1"
+    },
+    "extracted_at": { "type": "string", "minLength": 1 },
+    "source_count": { "type": "integer", "minimum": 1 },
+    "dataset_id": { "type": "string", "minLength": 1 },
+    "release_id": { "type": "string", "minLength": 1 },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/CinematicDnaEntry" }
+    },
+    "safety_summary": { "$ref": "#/$defs/CinematicDnaSafetySummary" }
+  },
+  "$defs": {
+    "CinematicDnaPattern": {
+      "type": "object",
+      "required": [
+        "pattern_id",
+        "pattern_category",
+        "pattern_signature",
+        "source_element_ids",
+        "extraction_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pattern_id": { "type": "string", "minLength": 1 },
+        "pattern_category": { "type": "string", "minLength": 1 },
+        "pattern_signature": { "type": "string", "minLength": 1 },
+        "source_element_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "extraction_only": { "type": "boolean", "const": true }
+      }
+    },
+    "CinematicDnaSafety": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "dna_extraction_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "dna_extraction_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "ImageAppUsage": {
+      "type": "object",
+      "required": [
+        "consumer_target",
+        "emotion_dna_enabled",
+        "character_pattern_refs",
+        "reusable_for_generation_planning"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "consumer_target": { "type": "string", "const": "image_app" },
+        "emotion_dna_enabled": { "type": "boolean" },
+        "character_pattern_refs": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "reusable_for_generation_planning": { "type": "boolean", "const": true }
+      }
+    },
+    "VideoAppUsage": {
+      "type": "object",
+      "required": [
+        "consumer_target",
+        "scene_dna_enabled",
+        "camera_dna_enabled",
+        "transition_dna_enabled",
+        "continuity_dna_enabled",
+        "storytelling_dna_enabled",
+        "reusable_for_generation_planning"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "consumer_target": { "type": "string", "const": "video_app" },
+        "scene_dna_enabled": { "type": "boolean" },
+        "camera_dna_enabled": { "type": "boolean" },
+        "transition_dna_enabled": { "type": "boolean" },
+        "continuity_dna_enabled": { "type": "boolean" },
+        "storytelling_dna_enabled": { "type": "boolean" },
+        "reusable_for_generation_planning": { "type": "boolean", "const": true }
+      }
+    },
+    "CinematicDnaEntry": {
+      "type": "object",
+      "required": [
+        "cinematic_dna_id",
+        "source_video_id",
+        "scene_patterns",
+        "camera_patterns",
+        "emotion_patterns",
+        "transition_patterns",
+        "continuity_patterns",
+        "storytelling_patterns",
+        "strength_score",
+        "reusability_score",
+        "image_app_usage",
+        "video_app_usage",
+        "safety"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "cinematic_dna_id": { "type": "string", "minLength": 1 },
+        "source_video_id": { "type": "string", "minLength": 1 },
+        "scene_patterns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/CinematicDnaPattern" }
+        },
+        "camera_patterns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/CinematicDnaPattern" }
+        },
+        "emotion_patterns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/CinematicDnaPattern" }
+        },
+        "transition_patterns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/CinematicDnaPattern" }
+        },
+        "continuity_patterns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/CinematicDnaPattern" }
+        },
+        "storytelling_patterns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/CinematicDnaPattern" }
+        },
+        "strength_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "reusability_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "image_app_usage": { "$ref": "#/$defs/ImageAppUsage" },
+        "video_app_usage": { "$ref": "#/$defs/VideoAppUsage" },
+        "safety": { "$ref": "#/$defs/CinematicDnaSafety" }
+      }
+    },
+    "CinematicDnaSafetySummary": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "dna_extraction_only",
+        "runtime_execution",
+        "video_generation",
+        "image_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "dna_extraction_only": { "type": "boolean", "const": true },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

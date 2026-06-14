@@ -1,0 +1,91 @@
+{
+  "report_id": "conditioning_preservation_gap_mqc8lec3",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005B",
+  "system_id": "CONDITIONING_PRESERVATION_GAP_ANALYSIS_V1",
+  "generated_at": "2026-06-13T10:53:00.243Z",
+  "final_verdict": "PASS_CONDITIONING_PRESERVATION_GAP_ANALYSIS_V1",
+  "status": "CONDITIONING_PRESERVATION_GAP_ANALYZED",
+  "validation_passed": true,
+  "preservation_gap_analysis_complete": true,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "domains_analyzed": 7,
+  "critical_gap_count": 2,
+  "low_recoverability_count": 2,
+  "gaps": [
+    {
+      "domain": "layout_map",
+      "preservation_score": 0.88,
+      "failure_reason": "Vector-to-raster layout translation loses sub-pixel composition precision during ControlNet seg map rasterization",
+      "loss_severity": "MEDIUM",
+      "recoverability": "HIGH",
+      "recommended_solution": "controlnet_layout_adapter_with_subpixel_refinement"
+    },
+    {
+      "domain": "depth_map",
+      "preservation_score": 0.78,
+      "failure_reason": "Sparse z_normalized depth samples interpolated to full raster introduce layer boundary smoothing",
+      "loss_severity": "MEDIUM",
+      "recoverability": "HIGH",
+      "recommended_solution": "depth_map_dense_sampling_from_camera_path"
+    },
+    {
+      "domain": "pose_map",
+      "preservation_score": 0.58,
+      "failure_reason": "keypoint_descriptor_ref resolves to screen_position + eyeline_vector only; full skeletal topology not preserved",
+      "loss_severity": "HIGH",
+      "recoverability": "MEDIUM",
+      "recommended_solution": "openpose_extraction_pipeline_with_skeleton_topology_lock"
+    },
+    {
+      "domain": "blocking_map",
+      "preservation_score": 0.84,
+      "failure_reason": "interaction_pairs and region_label zones compress into discrete mask channels with pairwise relationship loss",
+      "loss_severity": "MEDIUM",
+      "recoverability": "HIGH",
+      "recommended_solution": "regional_prompting_with_interaction_pair_tokens"
+    },
+    {
+      "domain": "object_identity",
+      "preservation_score": 0.55,
+      "failure_reason": "object_identity map not exported; IP-Adapter identity embeddings unavailable in current adapter stack",
+      "loss_severity": "HIGH",
+      "recoverability": "MEDIUM",
+      "recommended_solution": "ip_adapter_identity_reference_bank"
+    },
+    {
+      "domain": "environment_identity",
+      "preservation_score": 0.12,
+      "failure_reason": "environment_identity_map is reserved_v1 with no populated payload; environment anchor raster and style reference not bound",
+      "loss_severity": "CRITICAL",
+      "recoverability": "LOW",
+      "recommended_solution": "environment_reference_bank"
+    },
+    {
+      "domain": "temporal_preservation",
+      "preservation_score": 0.28,
+      "failure_reason": "Video conditioning backend deferred; shot_boundary_continuity and motion_vectors temporal binding not executed",
+      "loss_severity": "CRITICAL",
+      "recoverability": "LOW",
+      "recommended_solution": "video_conditioning_backend_with_edit_rhythm_binding"
+    }
+  ],
+  "checks": {
+    "all_domains_analyzed": true,
+    "recoverability_defined": true,
+    "recommended_solution_defined": true,
+    "failure_reason_defined": true,
+    "environment_identity_gap_valid": true,
+    "adapter_translation_validated": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "analysis_only": true,
+    "backend_execution_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

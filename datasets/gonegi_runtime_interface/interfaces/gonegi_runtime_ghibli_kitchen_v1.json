@@ -1,0 +1,117 @@
+{
+  "gonegi_runtime_interface_id": "gonegi_runtime_ghibli_kitchen_v1",
+  "phase": "PHASE-SOURCE-VIDEO-018-GONEGI_GPU_PAYLOAD_TO_RUNTIME_INTERFACE_V2",
+  "source_gpu_payload_id": "gonegi_gpu_payload_ghibli_kitchen_v1",
+  "runtime_target": "deferred",
+  "provider_hint": {
+    "recommended_provider_id": "deferred_local_stub_v1",
+    "mapped_provider_id": "provider_stub_remote_api",
+    "wiring_id": "wiring_remote_api_design_v1",
+    "provider_activation": false,
+    "runtime_target": "deferred",
+    "selection_basis": "preparation_only_design_phase_no_provider_activation"
+  },
+  "input_contract": {
+    "artifact_type": "gonegi_gpu_payload",
+    "artifact_path": "datasets/gonegi_gpu_payload/payloads/gonegi_gpu_payload_ghibli_kitchen_v1.json",
+    "payload_schema": "datasets/gonegi_gpu_payload/gonegi-gpu-payload.schema.json",
+    "required_fields": [
+      "gonegi_gpu_payload_id",
+      "duration_seconds",
+      "fps_target",
+      "identity_locks",
+      "continuity_locks",
+      "keyframes",
+      "motion_segments",
+      "execution_flags"
+    ],
+    "submission_allowed": false
+  },
+  "output_contract": {
+    "artifact_type": "video_render_placeholder",
+    "output_path": "renders/gonegi_stub/gonegi_gpu_payload_ghibli_kitchen_v1.mp4.not_generated",
+    "format": "mp4_placeholder",
+    "generation_allowed": false
+  },
+  "handshake_contract": {
+    "payload_schema_version": "gonegi-gpu-payload-v1",
+    "reference_runtime_schema": "datasets/video_runtime/video-runtime-interface.schema.json",
+    "preflight_checks": [
+      "verify:gonegi-motion-to-gpu-payload",
+      "identity_locks_present",
+      "continuity_locks_present",
+      "motion_segments_aligned_with_keyframes",
+      "duration_seconds:24",
+      "fps_target:24",
+      "execution_flags.gpu_execution=false",
+      "execution_flags.external_call_allowed=false",
+      "execution_flags.provider_activation=false",
+      "complexity_score:9"
+    ],
+    "identity_lock_count": 12
+  },
+  "identity_lock_contract": {
+    "identity_locks": [
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:dana",
+      "character_reference:Dana",
+      "identity_lock:preserve_dana_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette",
+      "identity:character_identity:aengdu",
+      "character_reference:Aengdu",
+      "identity_lock:preserve_aengdu_silhouette"
+    ],
+    "lock_count": 12,
+    "preservation_required": true
+  },
+  "continuity_lock_contract": {
+    "identity_locks": [
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:dana",
+      "character_reference:Dana",
+      "identity_lock:preserve_dana_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette",
+      "identity:character_identity:aengdu",
+      "character_reference:Aengdu",
+      "identity_lock:preserve_aengdu_silhouette"
+    ],
+    "location_locks": [
+      "location_id:family_bakery_kitchen_01",
+      "location_lock:domestic-kitchen",
+      "walkable-zone:kitchen-floor-tile"
+    ],
+    "composition_locks": [
+      "prop_anchor:bakery_kettle_01",
+      "prop_anchor:herb_window_sill_01",
+      "composition_lock:two-shot-balance",
+      "prop_anchor:tea_pot",
+      "prop_anchor:window_sill_herbs"
+    ]
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "provider_activation": false,
+    "preparation_only": true,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "readiness_status": "design_only_not_wired",
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "gonegi_runtime_interface",
+    "production_registry": false,
+    "draft_status": "gonegi_runtime_interface_compiled_v1"
+  },
+  "compiled_at": "2026-06-05T10:57:40.387Z"
+}

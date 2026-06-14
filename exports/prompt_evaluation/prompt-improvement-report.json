@@ -1,0 +1,56 @@
+{
+  "improvement_report_id": "prompt-improvement-report-v1",
+  "phase": "PHASE-QA-002",
+  "generated_at": "2026-06-09T01:41:14.451Z",
+  "improvement_flow": [
+    "risk",
+    "cause",
+    "fix",
+    "recommended_prompt_change"
+  ],
+  "recommendations": [
+    {
+      "risk": "under_specified",
+      "cause": "insufficient_dimension_binding_in_compiled_prompt",
+      "fix": "expand_shot_dna_continuity_memory_fusion",
+      "recommended_prompt_change": "add_explicit_identity_and_location_anchors"
+    },
+    {
+      "risk": "over_specified",
+      "cause": "redundant_adapter_tokens_in_prompt",
+      "fix": "compress_adapter_binding_to_core_constraints",
+      "recommended_prompt_change": "trim_redundant_style_and_composition_tokens"
+    },
+    {
+      "risk": "conflicting_identity",
+      "cause": "dna_identity_anchor_mismatch_with_shot_registry",
+      "fix": "reconcile_identity_clarity_and_consistency_weights",
+      "recommended_prompt_change": "lock_character_identity_to_shot_continuity_refs"
+    },
+    {
+      "risk": "conflicting_adapter",
+      "cause": "multiple_adapter_bindings_on_same_prompt_segment",
+      "fix": "select_single_primary_adapter_per_segment",
+      "recommended_prompt_change": "deduplicate_adapter_binding_chain"
+    },
+    {
+      "risk": "missing_continuity",
+      "cause": "continuity_trace_not_bound_in_compilation",
+      "fix": "inject_production_traceability_continuity_refs",
+      "recommended_prompt_change": "bind_continuity_clarity_to_trace_chain"
+    },
+    {
+      "risk": "missing_memory",
+      "cause": "temporal_memory_horizon_not_referenced",
+      "fix": "attach_callback_and_world_state_memory_anchors",
+      "recommended_prompt_change": "bind_memory_clarity_to_temporal_memory_spec"
+    },
+    {
+      "risk": "missing_generation_constraints",
+      "cause": "generation_constraints_not_in_prompt_output",
+      "fix": "add_generation_constraint_block_to_compiled_prompt",
+      "recommended_prompt_change": "append_negative_and_safety_constraint_tokens"
+    }
+  ],
+  "prompt_improvement_integrity": "PASS"
+}

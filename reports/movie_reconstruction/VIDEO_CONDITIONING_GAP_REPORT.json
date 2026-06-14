@@ -1,0 +1,31 @@
+{
+  "report_id": "video_conditioning_gap_mqczcwyl",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-010",
+  "system_id": "VIDEO_CONDITIONING_BACKEND_V1",
+  "generated_at": "2026-06-13T23:22:14.109Z",
+  "defined": [
+    "video_conditioning_contract",
+    "environment_identity_runtime_channel",
+    "object_identity_runtime_channel",
+    "temporal_preservation_runtime_channel",
+    "camera_continuity_runtime_channel",
+    "multi_scene_consistency_runtime_channel",
+    "runtime_enforcement_level",
+    "expected_runtime_failure_modes"
+  ],
+  "missing": [
+    "future_video_backend implementation",
+    "GPU runtime socket connection",
+    "IP-Adapter video node execution",
+    "runtime enforcement proof via GPU validation",
+    "video_backend_implemented certification"
+  ],
+  "remaining_blockers": [
+    "gpu_execution disabled in this phase",
+    "design_only=true — no backend code generated",
+    "Video Backend Defined != Video Backend Implemented",
+    "Runtime Enforcement Defined != Runtime Enforcement Proven",
+    "Failure Modes Defined != GPU Validation Passed"
+  ],
+  "next_phase": "PHASE-GPU-CONDITIONING-VALIDATION-002_VIDEO_RUNTIME_ENFORCEMENT_V1"
+}

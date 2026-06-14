@@ -1,0 +1,70 @@
+{
+  "phase": "PHASE-MOVIE-BUNDLE-NORMALIZATION-001",
+  "normalization_id": "MOVIE_BUNDLE_NORMALIZATION_V1",
+  "generated_at": "2026-06-10T11:33:54.336Z",
+  "titanic_bundle_path": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json",
+  "spirited_away_bundle_path": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json",
+  "titanic_bundle_mode": "full_embedded",
+  "spirited_away_bundle_mode": "full_embedded",
+  "bundle_schema_match": true,
+  "critical_layer_missing_count": 0,
+  "critical_layers": {
+    "scene_registry": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "camera_registry": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "blocking_registry": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "composition_registry": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "semantic_anchor_registry": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "shot_layer": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "temporal_layer": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "motion_layer": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "image_validation_layer": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    },
+    "video_validation_layer": {
+      "titanic_embedded": true,
+      "spirited_away_embedded": true
+    }
+  },
+  "normalization_passed": true,
+  "final_verdict": "PASS_MOVIE_BUNDLE_NORMALIZATION_V1",
+  "issues": [],
+  "precheck": {
+    "precheck_passed": true,
+    "missing_files": [],
+    "upstream_checks": {
+      "multi_movie_runtime": true,
+      "real_image_generation": true,
+      "titanic_image_validation": true,
+      "titanic_video_validation": true,
+      "spirited_image_validation": true,
+      "spirited_video_validation": true
+    },
+    "runtime_composition_exists": true,
+    "safe_create_policy": "SAFE_CREATE_ONLY"
+  }
+}

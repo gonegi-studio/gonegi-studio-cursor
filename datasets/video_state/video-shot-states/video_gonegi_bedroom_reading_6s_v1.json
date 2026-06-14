@@ -1,0 +1,76 @@
+{
+  "video_shot_state_id": "video_gonegi_bedroom_reading_6s_v1",
+  "source_scene_state_id": "scene_gonegi_bedroom_reading_v1",
+  "phase": "PHASE-19-SCENE-STATE-TO-VIDEO-PREPARATION-001",
+  "duration_seconds": 6,
+  "fps_target": 24,
+  "keyframe_count": 12,
+  "camera_motion": {
+    "motion_type": "gentle_arc",
+    "path_description": "Character-first arc maintaining foreground priority",
+    "speed": "slow",
+    "identity_safe": true,
+    "shot_type_source": "medium"
+  },
+  "character_motion": [
+    {
+      "character_id": "gonegi",
+      "motion_type": "performance_beat",
+      "path_description": "Subtle acting beat preserving face and costume identity locks",
+      "identity_lock_preserved": true,
+      "start_position": "bedside_chair",
+      "end_position": "bedside_chair"
+    },
+    {
+      "character_id": "gamja",
+      "motion_type": "companion_reaction",
+      "path_description": "Minor supportive motion without crossing primary character foreground",
+      "identity_lock_preserved": true,
+      "start_position": "floor_near_chair",
+      "end_position": "floor_near_chair"
+    }
+  ],
+  "emotion_motion": {
+    "emotion_id": "hope",
+    "arc_type": "steady_hope",
+    "intensity_start": 0.65,
+    "intensity_end": 0.75
+  },
+  "environment_motion": {
+    "motion_type": "ambient_drift",
+    "path_description": "Background atmosphere only; no landmark relocation or layout mutation",
+    "location_lock_preserved": true,
+    "elements": [
+      "gonegi_bedroom_01"
+    ]
+  },
+  "continuity_locks": {
+    "identity_locks": [
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "protected_characters:gonegi,gamja"
+    ],
+    "location_locks": [
+      "location_id:gonegi_bedroom_01",
+      "layout_lock_id:layout_lock_gonegi_bedroom_01"
+    ],
+    "composition_locks": [
+      "composition_id:gonegi_bedroom_reading",
+      "prop_anchor:wildflower_vase_01",
+      "prop_anchor:ship_model_01",
+      "prop_anchor:aged_wood_chair_01",
+      "prop_anchor:sketchbook_01",
+      "character_position:gonegi@bedside_chair",
+      "character_position:gamja@floor_near_chair"
+    ]
+  },
+  "render_intent": {
+    "preparation_only": true,
+    "gpu_execution": false,
+    "target_pipeline": "scene_state_to_video_preparation_v1",
+    "next_phase": "PHASE-20 KEYFRAME_PLAN_BUILDER_V1"
+  },
+  "built_at": "2026-06-05T02:39:18.994Z"
+}

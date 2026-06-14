@@ -1,0 +1,79 @@
+{
+  "report_type": "music_drama_video_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-MDG-012",
+  "generated_at": "2026-06-02T04:10:16.722Z",
+  "cwd": "C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor",
+  "dependency_result": "all_present",
+  "source_package_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+  "target_app": "video_app",
+  "referenced_sections": [
+    {
+      "section_name": "beat_structure",
+      "item_count": 6
+    },
+    {
+      "section_name": "emotional_transitions",
+      "item_count": 12
+    },
+    {
+      "section_name": "sequence_assembly",
+      "item_count": 6
+    },
+    {
+      "section_name": "shot_patterns",
+      "item_count": 8
+    },
+    {
+      "section_name": "scene_archetypes",
+      "item_count": 8
+    },
+    {
+      "section_name": "daily_life_behavior",
+      "item_count": 16
+    }
+  ],
+  "continuity_contract_status": "present",
+  "density_governance_status": "present",
+  "compatibility_references": [
+    {
+      "asset_id": "character_simple_v1",
+      "reference_path": "datasets/character/character-simple-v1.json"
+    },
+    {
+      "asset_id": "time_setting_library_v1",
+      "reference_path": "datasets/time/time-setting-library-v1.json"
+    },
+    {
+      "asset_id": "living_world_core_v1_package",
+      "reference_path": "exports/shared/latest/living-world-core-v1-package.json"
+    },
+    {
+      "asset_id": "music_drama_grammar_core_v1_package",
+      "reference_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json"
+    }
+  ],
+  "export_path": "exports/video_app/latest/music-drama-video-adapter.json",
+  "report_path": "exports/video_app/reports/music-drama-video-adapter-report.json",
+  "file_size_bytes": 9372,
+  "json_parse_result": "valid",
+  "validation": {
+    "source_package_exists": true,
+    "target_app_is_video_app": true,
+    "beat_structure_present": true,
+    "emotional_transitions_present": true,
+    "sequence_assembly_present": true,
+    "continuity_contracts_present": true,
+    "density_rules_present": true,
+    "compatibility_references_present": true,
+    "json_parse_valid": true,
+    "duplicate_section_names": 0,
+    "beat_order_preserved": true,
+    "transition_integrity_required": true,
+    "no_scenarios": true,
+    "no_prompts": true,
+    "no_videos": true
+  },
+  "final_verdict": "PASS_MUSIC_DRAMA_VIDEO_ADAPTER_V1",
+  "next_phase": "PHASE-MDG-013 Music Drama Package Ecosystem Audit"
+}

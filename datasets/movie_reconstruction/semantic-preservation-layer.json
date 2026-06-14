@@ -1,0 +1,98 @@
+{
+  "layer_id": "semantic-preservation-layer-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-DATASET-001",
+  "system_id": "MOVIE_GEOMETRY_AND_SEMANTIC_DNA_SYSTEM_V2",
+  "layer_version": "v1",
+  "goal": "Preserve meaning, not only coordinates.",
+  "pipeline": [
+    {
+      "stage_id": "movie_scene",
+      "stage_name": "Movie Scene",
+      "controls": ["source_scene_id", "source_shot_id", "semantic_anchor_ids", "director_grammar"]
+    },
+    {
+      "stage_id": "geometry_reconstruction",
+      "stage_name": "Geometry Reconstruction",
+      "controls": [
+        "camera_coordinate",
+        "blocking_map",
+        "composition_grid",
+        "frame_coordinate_dna",
+        "depth_layers",
+        "continuity_locks"
+      ],
+      "dataset_refs": [
+        "datasets/movie_coordinate/movie-scene-coordinate-registry.json",
+        "exports/image_app/latest_v5/blocking_dna_bundle.json",
+        "exports/image_app/latest_v5/frame_coordinate_dna_bundle.json"
+      ]
+    },
+    {
+      "stage_id": "semantic_anchor_preservation",
+      "stage_name": "Semantic Anchor Preservation",
+      "controls": [
+        "anchor_id",
+        "semantic_meaning",
+        "emotion",
+        "interaction_type",
+        "iconic_score"
+      ],
+      "dataset_refs": ["datasets/movie_reconstruction/semantic_anchor_library.json"]
+    },
+    {
+      "stage_id": "gonegi_world_translation",
+      "stage_name": "Gonegi World Translation",
+      "controls": [
+        "character_translation",
+        "location_translation",
+        "architecture_translation",
+        "material_translation",
+        "cultural_identity",
+        "color_identity"
+      ],
+      "dataset_refs": [
+        "datasets/world_translation/gonegi-world-translation-contract.json",
+        "datasets/movie_reconstruction/world-translation-rules.json"
+      ]
+    },
+    {
+      "stage_id": "image_generation",
+      "stage_name": "Image Generation",
+      "controls": [
+        "prompt_generation_bundle",
+        "production_adapter_bundle",
+        "identity_lock_rules",
+        "semantic_anchor_tokens"
+      ],
+      "dataset_refs": ["exports/image_app/latest_v5/prompt_generation_bundle.json"]
+    }
+  ],
+  "success_condition": {
+    "preserve_geometry": ["camera", "blocking", "composition", "environment"],
+    "preserve_semantic_meaning": true,
+    "semantic_meaning_match_minimum": 0.9,
+    "geometry_match_minimum": 0.85,
+    "world_identity_must_change": true,
+    "source_movie_copy_forbidden": true,
+    "generic_scene_substitution_forbidden": true
+  },
+  "reference_example": {
+    "example_id": "titanic_bow_scene_gonegi_translation",
+    "source_anchor_id": "titanic_bow_pose",
+    "original_scene": "Titanic Bow Scene",
+    "original_meaning": ["freedom", "romance", "wonder"],
+    "output_cast": ["Gonegi", "Dana"],
+    "output_world_identity": "GONEGI_MEDITERRANEAN",
+    "output_location": "gonegi_harbor_dock_01",
+    "output_requirement": "same emotional meaning with different world identity",
+    "forbidden_outputs": ["Titanic Copy", "Generic Harbor Scene"],
+    "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+  },
+  "validation_tokens": [
+    "semantic-anchor:",
+    "semantic-meaning:",
+    "emotion-preserve:",
+    "iconic-score:",
+    "gonegi-translation:"
+  ]
+}

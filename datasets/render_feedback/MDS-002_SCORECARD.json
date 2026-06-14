@@ -1,0 +1,109 @@
+{
+  "test_id": "MDS-002",
+  "test_name": "FULL_LENGTH_MV_PRODUCTION_TEST",
+  "phase": "PHASE-MDS-002",
+  "generated_at": "2026-06-03T07:41:44.098Z",
+  "precheck": {
+    "mds_001_verdict": "PASS_MDS_001_MUSIC_DRAMA_STUDIO_FULL_PRODUCTION_TEST",
+    "rkb_009_verdict": "PASS_RKB_009_BALLAD_MV_PIPELINE_VALIDATION",
+    "upload_file_count": 12,
+    "dataset_hub_all_recognized": true,
+    "pass": true
+  },
+  "mode_a_instrumental": {
+    "mode": "instrumental",
+    "scene_count": 30,
+    "archetype_ids": [
+      "harbor_morning_walk",
+      "rainy_street_observation",
+      "seaside_evening_journey"
+    ],
+    "average_stability": {
+      "character_stability": 0.94,
+      "location_stability": 0.93,
+      "lighting_stability": 0.92,
+      "emotion_readability": 0.91,
+      "coverage_diversity": 0.89,
+      "narrative_continuity": 0.9
+    },
+    "drift": {
+      "scene_drift": 0.04,
+      "character_drift": 0.09,
+      "location_drift": 0.17,
+      "emotion_drift": 0.27,
+      "narrative_drift": 0.05,
+      "peak_edge_drift": 0.48,
+      "catastrophic": false
+    },
+    "unique_locations": 4,
+    "unique_lighting_anchors": 5,
+    "memory_callback_count": 0,
+    "mode_pass": true
+  },
+  "mode_b_ballad": {
+    "mode": "ballad",
+    "scene_count": 48,
+    "archetype_ids": [
+      "first_meeting",
+      "shared_daily_life",
+      "growing_affection",
+      "quiet_distance",
+      "farewell_day",
+      "memory_after_parting",
+      "reunion_after_time",
+      "hopeful_future"
+    ],
+    "average_stability": {
+      "character_stability": 0.94,
+      "location_stability": 0.93,
+      "lighting_stability": 0.92,
+      "emotion_readability": 0.91,
+      "coverage_diversity": 0.89,
+      "narrative_continuity": 0.91
+    },
+    "drift": {
+      "scene_drift": 0.04,
+      "character_drift": 0.05,
+      "location_drift": 0.12,
+      "emotion_drift": 0.25,
+      "narrative_drift": 0.05,
+      "peak_edge_drift": 0.28,
+      "catastrophic": false
+    },
+    "unique_locations": 9,
+    "unique_lighting_anchors": 8,
+    "memory_callback_count": 35,
+    "mode_pass": true
+  },
+  "combined_stability": {
+    "character_stability": 0.94,
+    "location_stability": 0.93,
+    "emotion_readability": 0.91,
+    "narrative_continuity": 0.91
+  },
+  "combined_drift": {
+    "scene_drift": 0.04,
+    "character_drift": 0.07,
+    "location_drift": 0.15,
+    "emotion_drift": 0.26,
+    "narrative_drift": 0.05,
+    "peak_edge_drift": 0.48,
+    "catastrophic": false
+  },
+  "success_condition": {
+    "character_stability_met": true,
+    "location_stability_met": true,
+    "emotion_readability_met": true,
+    "narrative_continuity_met": true,
+    "no_catastrophic_drift": true,
+    "met": true
+  },
+  "final_verdict": "PASS_MDS_002_FULL_LENGTH_MV_PRODUCTION_TEST",
+  "baseline_artifacts": {
+    "master_core_v18_frozen": true,
+    "production_ready_baseline_001_created": true,
+    "master_core_manifest_path": "exports/production_baselines/frozen/MASTER_CORE_V18/MASTER_CORE_V18_MANIFEST.json",
+    "baseline_path": "exports/production_baselines/PRODUCTION_READY_BASELINE_001.json"
+  },
+  "next_phase": "SHORT_FILM_DATASET_V1 (from PRODUCTION_READY_BASELINE_001)"
+}

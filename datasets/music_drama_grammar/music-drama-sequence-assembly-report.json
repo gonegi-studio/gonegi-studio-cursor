@@ -1,0 +1,64 @@
+{
+  "report_type": "music_drama_sequence_assembly_grammar_audit",
+  "report_version": "v1",
+  "phase": "PHASE-MDG-008",
+  "audit_timestamp": "2026-06-02T00:00:00.000Z",
+  "grammar_path": "datasets/music_drama_grammar/music-drama-sequence-assembly-grammar-v1.json",
+  "final_verdict": "PASS_MUSIC_DRAMA_SEQUENCE_ASSEMBLY_GRAMMAR_V1",
+  "dependency_check": {
+    "music_drama_grammar": {
+      "path": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "status": "present"
+    },
+    "shot_patterns": {
+      "path": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "status": "present"
+    },
+    "scene_archetypes": {
+      "path": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+      "status": "present"
+    },
+    "daily_life_behavior_library": {
+      "path": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "status": "present"
+    },
+    "community_crowd_behavior_grammar": {
+      "path": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "status": "present"
+    },
+    "animal_companion_behavior_grammar": {
+      "path": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+      "status": "present"
+    },
+    "visual_motif_grammar": {
+      "path": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+      "status": "present"
+    },
+    "emotional_transition_grammar": {
+      "path": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+      "status": "present"
+    },
+    "beat_structure_grammar": {
+      "path": "datasets/music_drama_grammar/music-drama-beat-structure-grammar-v1.json",
+      "status": "present"
+    },
+    "render_feedback": {
+      "path": "datasets/render_feedback/RKB-001.json",
+      "status": "present"
+    },
+    "result": "PASS_ALL_DEPENDENCIES_PRESENT"
+  },
+  "validation_summary": {
+    "sequence_beat_count": 6,
+    "assembly_pipeline_steps": 9,
+    "density_control_present": true,
+    "field_separation_contract_present": true,
+    "continuity_transfer_present": true,
+    "rkb_protection_present": true
+  },
+  "export_paths": {
+    "grammar": "datasets/music_drama_grammar/music-drama-sequence-assembly-grammar-v1.json",
+    "report": "datasets/music_drama_grammar/music-drama-sequence-assembly-report.json"
+  },
+  "next_phase": "PHASE-MDG-009 Music Drama Grammar Integrity Index"
+}

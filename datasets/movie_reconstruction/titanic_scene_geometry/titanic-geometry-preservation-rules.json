@@ -1,0 +1,37 @@
+{
+  "rules_id": "titanic-geometry-preservation-rules-v1",
+  "phase": "PHASE-TITANIC-SCENE-GEOMETRY-001",
+  "geometry_id": "TITANIC_SCENE_GEOMETRY_DENSIFICATION_V1",
+  "generated_at": "2026-06-10T06:50:47.752Z",
+  "camera_preservation_required": true,
+  "blocking_preservation_required": true,
+  "composition_preservation_required": true,
+  "depth_preservation_required": true,
+  "prop_preservation_required": true,
+  "semantic_preservation_required": true,
+  "preservation_thresholds": {
+    "movie_geometry_preservation_score_minimum": 95,
+    "semantic_anchor_binding_rate_minimum": 0.95,
+    "scene_fingerprint_uniqueness_minimum": 0.9,
+    "generic_harbor_regression_count_maximum": 0
+  },
+  "pipeline": [
+    "Movie Scene",
+    "Scene Geometry",
+    "Scene Reconstruction",
+    "Gonegi Translation",
+    "Generation"
+  ],
+  "forbidden_pipeline": [
+    "Movie Theme",
+    "Pattern Recreation",
+    "Generation"
+  ],
+  "world_identity_lock": {
+    "gonegi_world_dominance_minimum": 0.7,
+    "movie_dataset_dominance_maximum": 0.3,
+    "gonegi_translation_integrity_required": "PASS"
+  },
+  "quality_target": "Titanic Scene Reconstruction",
+  "quality_forbidden": "Titanic Theme Recreation"
+}

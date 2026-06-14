@@ -1,0 +1,3617 @@
+{
+  "metadata": {
+    "package_name": "music-drama-grammar-core-v1-package",
+    "package_version": "v1",
+    "package_type": "music_drama_grammar_core",
+    "phase": "PHASE-MDG-010",
+    "generated_at": "2026-06-02T03:59:09.337Z",
+    "source_file_count": 11,
+    "integrity_score": 1,
+    "ep01_ready": true,
+    "source_files": [
+      "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+      "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+      "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+      "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+      "datasets/music_drama_grammar/music-drama-beat-structure-grammar-v1.json",
+      "datasets/music_drama_grammar/music-drama-sequence-assembly-grammar-v1.json",
+      "datasets/music_drama_grammar/music-drama-integrity-index-v1.json"
+    ],
+    "export_rules": {
+      "alter_source_ids": false,
+      "alter_source_references": false,
+      "generate_derived_scenarios": false,
+      "generate_prompts": false,
+      "merge_character_dna": false,
+      "merge_style_core": false,
+      "merge_living_world_core": false
+    },
+    "compatibility": {
+      "image_app": true,
+      "video_app": true,
+      "music_drama_tooling": true
+    }
+  },
+  "integrity_summary": {
+    "file_integrity_score": 1,
+    "reference_integrity_score": 1,
+    "ep01_integrity_score": 1,
+    "density_integrity_score": 1,
+    "overall_integrity_score": 1
+  },
+  "music_drama_grammar": {
+    "asset_type": "music_drama_grammar",
+    "asset_version": "v1",
+    "grammar_id": "music-drama-grammar-v1",
+    "phase": "PHASE-MDG-001",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "purpose": "Formal grammar layer for Music Drama scenario writing. Defines structural rules and composition contracts without generating scenarios.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_existing_datasets": false
+    },
+    "read_only_sources": {
+      "master_story": "datasets/story/music-drama-master-story-v1.json",
+      "scenario_rulebook": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json",
+      "shot_patterns": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "scene_archetypes": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json"
+    },
+    "narrative_foundation": {
+      "series_title": "지중해 연대기 - 연작 뮤직비디오 시리즈",
+      "genre": "music drama fantasy romance",
+      "default_narrative_lens": "protagonist POV — camera follows the active lead character's visual attention",
+      "emotional_arc_style": "lyric-driven still moments with readable emotional residue between scenes"
+    },
+    "field_contract": {
+      "scenario_field": {
+        "must_contain": [
+          "location",
+          "atmosphere",
+          "visible environment",
+          "visible actions",
+          "scene context"
+        ],
+        "must_be": [
+          "cinematic",
+          "visual",
+          "music-drama compatible",
+          "one primary location",
+          "one primary action",
+          "emotionally readable"
+        ],
+        "forbidden": [
+          "character visual descriptions",
+          "plot summaries",
+          "exposition",
+          "internal monologue",
+          "excessive action stacking",
+          "negative exclusion phrases"
+        ]
+      },
+      "character_field": {
+        "must_contain": [
+          "visible main characters",
+          "visible supporting characters",
+          "visible extras",
+          "visible crowd groups",
+          "visible animals",
+          "visual descriptions only"
+        ],
+        "description_must_include": [
+          "identity",
+          "age (if known)",
+          "appearance",
+          "clothing",
+          "key visual traits"
+        ],
+        "forbidden": [
+          "location descriptions",
+          "story narration",
+          "action sentences",
+          "camera instructions",
+          "lighting descriptions",
+          "absent characters",
+          "actions",
+          "emotions",
+          "scene descriptions"
+        ]
+      },
+      "separation_required": true,
+      "absent_character_rule": "omit only — never write exclusion phrases such as \"No Dana\" or \"Dana absent\""
+    },
+    "density_limits": {
+      "source": "RKB-001 early image test validation",
+      "max_named_extras": 2,
+      "max_crowd_groups": 1,
+      "max_animals": 2,
+      "crowd_role": "background support only",
+      "protagonist_dominance": "crowd must never compete with protagonist visibility"
+    },
+    "continuity_grammar": {
+      "track": [
+        "persistent_object",
+        "persistent_companion",
+        "persistent_weather",
+        "persistent_emotion"
+      ],
+      "companion_rule": "companion animals remain present across adjacent scenes until departure is explicitly described in scenario",
+      "object_rule": "held or carried objects persist until scenario explicitly removes them",
+      "weather_rule": "time and weather must align with datasets/time/time-setting-library-v1.json"
+    },
+    "emotional_grammar": {
+      "music_drama_registers": [
+        {
+          "register_id": "peaceful_daily_life",
+          "labels": [
+            "peace",
+            "warmth",
+            "ordinary happiness"
+          ],
+          "compatible_episodes": [
+            "EP01"
+          ],
+          "shot_pattern_affinity": [
+            "establishing_daily_life",
+            "domestic_warmth",
+            "companion_bond_moment"
+          ]
+        },
+        {
+          "register_id": "family_comfort",
+          "labels": [
+            "family comfort",
+            "quiet hope"
+          ],
+          "compatible_episodes": [
+            "EP01"
+          ],
+          "shot_pattern_affinity": [
+            "domestic_warmth",
+            "bakery_morning"
+          ]
+        },
+        {
+          "register_id": "small_freedom",
+          "labels": [
+            "small freedom",
+            "quiet hope"
+          ],
+          "compatible_episodes": [
+            "EP01"
+          ],
+          "shot_pattern_affinity": [
+            "street_passage",
+            "harbor_edge_watch",
+            "rooftop_gaze"
+          ]
+        },
+        {
+          "register_id": "longing_distance",
+          "labels": [
+            "longing",
+            "separation",
+            "quiet sorrow"
+          ],
+          "compatible_episodes": [
+            "EP02+"
+          ],
+          "shot_pattern_affinity": [
+            "quiet_solitude",
+            "harbor_edge_watch"
+          ]
+        },
+        {
+          "register_id": "reunion_hope",
+          "labels": [
+            "reunion",
+            "relief",
+            "tender joy"
+          ],
+          "compatible_episodes": [
+            "EP03+"
+          ],
+          "shot_pattern_affinity": [
+            "companion_bond_moment",
+            "establishing_daily_life"
+          ]
+        }
+      ]
+    },
+    "time_atmosphere_binding": {
+      "reference_library": "datasets/time/time-setting-library-v1.json",
+      "rule": "scenario atmosphere must not contradict selected timeSetting cluster",
+      "clusters": {
+        "sunrise": [
+          "warm low-angle light",
+          "long shadows",
+          "morning atmosphere"
+        ],
+        "sunset": [
+          "warm fading light",
+          "evening atmosphere"
+        ],
+        "rain": [
+          "cloud cover",
+          "wet surfaces",
+          "reduced visibility"
+        ]
+      }
+    },
+    "visual_anchor_grammar": {
+      "purpose": "recurring anchors improve image consistency across Music Drama scenes",
+      "anchors": [
+        "bakery window",
+        "harbor bench",
+        "olive tree",
+        "fishing pier",
+        "stone staircase"
+      ],
+      "reuse_rule": "prefer repeating compatible anchors within the same episode"
+    },
+    "rkb_validated_findings": {
+      "test_id": "RKB-001",
+      "validated_structure": {
+        "scenario_character_separation": true,
+        "negative_exclusion_tokens": false
+      },
+      "pass_observations": [
+        "character consistency improved with external manual scenario",
+        "Gonegi identity stable",
+        "Gamja identity stable",
+        "scenario/character separation effective"
+      ],
+      "known_risk_zones": [
+        {
+          "risk_id": "dense_market_crowd",
+          "severity": "MEDIUM",
+          "mitigation": "limit crowd groups and named extras per density_limits"
+        },
+        {
+          "risk_id": "bedroom_object_merge",
+          "severity": "LOW",
+          "mitigation": "keep bedding and body contact visually simple in domestic scenes"
+        },
+        {
+          "risk_id": "hand_artifacts",
+          "severity": "LOW",
+          "mitigation": "avoid complex hand poses in early test phases"
+        }
+      ]
+    },
+    "grammar_modules": {
+      "shot_patterns_file": "music-drama-shot-patterns-v1.json",
+      "scene_archetypes_file": "music-drama-scene-archetypes-v1.json",
+      "recommended_expansion_priority": [
+        "Music Drama Grammar",
+        "Daily Life Grammar",
+        "Crowd Grammar",
+        "Animal Behavior Grammar"
+      ]
+    },
+    "generator_readiness": {
+      "automatic_scenario_generation": false,
+      "requires": [
+        "rulebook compliance",
+        "manual scenario validation",
+        "image test pass",
+        "grammar layer present"
+      ]
+    }
+  },
+  "shot_patterns": {
+    "asset_type": "music_drama_shot_patterns",
+    "asset_version": "v1",
+    "grammar_id": "music-drama-shot-patterns-v1",
+    "phase": "PHASE-MDG-001",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Reusable Music Drama shot-pattern grammar for still-image scenario composition. Patterns define framing intent only — not generated scenario text.",
+    "pattern_count": 8,
+    "patterns": [
+      {
+        "pattern_id": "establishing_daily_life",
+        "label": "Establishing Daily Life",
+        "shot_role": "open the viewer into a readable ordinary moment",
+        "framing_intent": "wide-to-medium view of one primary location with protagonist clearly anchored",
+        "protagonist_visibility": "required",
+        "max_named_extras": 2,
+        "max_crowd_groups": 1,
+        "max_animals": 2,
+        "scenario_field_focus": [
+          "location",
+          "atmosphere",
+          "visible environment",
+          "one primary action"
+        ],
+        "character_field_focus": [
+          "protagonist visual identity",
+          "visible companion if present",
+          "background extras only if visible"
+        ],
+        "emotional_register": "peaceful_daily_life",
+        "music_drama_function": "lyric-aligned opening still that establishes emotional baseline",
+        "compatible_archetypes": [
+          "gonegi_morning_routine",
+          "village_lane_passage",
+          "harbor_edge_watch",
+          "family_bakery_warmth",
+          "market_edge_background",
+          "rooftop_gaze"
+        ],
+        "ep01_compatible": true
+      },
+      {
+        "pattern_id": "companion_bond_moment",
+        "label": "Companion Bond Moment",
+        "shot_role": "show emotional readability through human-animal proximity",
+        "framing_intent": "medium shot with protagonist and companion animal sharing frame space",
+        "protagonist_visibility": "required",
+        "max_named_extras": 1,
+        "max_crowd_groups": 0,
+        "max_animals": 2,
+        "scenario_field_focus": [
+          "location",
+          "atmosphere",
+          "visible shared action between protagonist and companion"
+        ],
+        "character_field_focus": [
+          "protagonist visual identity",
+          "companion animal listed explicitly"
+        ],
+        "emotional_register": "family_comfort",
+        "music_drama_function": "quiet relationship beat supporting lyric warmth without dialogue exposition",
+        "compatible_archetypes": [
+          "gamja_companion_bond",
+          "domestic_bedroom_peace"
+        ],
+        "ep01_compatible": true,
+        "rkb_note": "RKB-001 validated Gamja companion stability in this pattern"
+      },
+      {
+        "pattern_id": "domestic_warmth",
+        "label": "Domestic Warmth",
+        "shot_role": "express family comfort inside home or bakery interior",
+        "framing_intent": "interior medium shot with warm domestic props and limited cast",
+        "protagonist_visibility": "required",
+        "max_named_extras": 2,
+        "max_crowd_groups": 0,
+        "max_animals": 1,
+        "scenario_field_focus": [
+          "interior location",
+          "warm atmosphere",
+          "visible domestic action"
+        ],
+        "character_field_focus": [
+          "protagonist",
+          "visible family member if present",
+          "companion animal if visible"
+        ],
+        "emotional_register": "family_comfort",
+        "music_drama_function": "home-space emotional anchor for lyric passages about peace and belonging",
+        "compatible_archetypes": [
+          "family_bakery_warmth",
+          "domestic_bedroom_peace",
+          "gamja_companion_bond"
+        ],
+        "ep01_compatible": true,
+        "risk_mitigation": "avoid complex bedding geometry per RKB-001 object deformation finding"
+      },
+      {
+        "pattern_id": "bakery_morning",
+        "label": "Bakery Morning",
+        "shot_role": "anchor morning routine through bakery warmth and food preparation context",
+        "framing_intent": "medium shot centered on bakery counter, oven glow, or window display",
+        "protagonist_visibility": "required or family-group",
+        "max_named_extras": 2,
+        "max_crowd_groups": 1,
+        "max_animals": 1,
+        "scenario_field_focus": [
+          "bakery interior or threshold",
+          "morning atmosphere",
+          "visible bread or preparation action"
+        ],
+        "character_field_focus": [
+          "visible family members",
+          "optional queue extras as background only"
+        ],
+        "emotional_register": "family_comfort",
+        "music_drama_function": "daily-life rhythm beat aligned with morning lyric sections",
+        "compatible_archetypes": [
+          "family_bakery_warmth",
+          "gonegi_morning_routine"
+        ],
+        "visual_anchors": [
+          "bakery window"
+        ],
+        "ep01_compatible": true
+      },
+      {
+        "pattern_id": "harbor_edge_watch",
+        "label": "Harbor Edge Watch",
+        "shot_role": "connect protagonist to sea, labor, and horizon without plot exposition",
+        "framing_intent": "medium-wide shot with harbor elements and protagonist at rail, bench, or pier edge",
+        "protagonist_visibility": "required",
+        "max_named_extras": 2,
+        "max_crowd_groups": 1,
+        "max_animals": 1,
+        "scenario_field_focus": [
+          "harbor location",
+          "sea atmosphere",
+          "visible watch or wait action"
+        ],
+        "character_field_focus": [
+          "protagonist",
+          "distant dock workers only if clearly visible"
+        ],
+        "emotional_register": "small_freedom",
+        "music_drama_function": "horizon-gazing lyric still suggesting quiet future possibility",
+        "compatible_archetypes": [
+          "harbor_edge_watch",
+          "gonegi_morning_routine"
+        ],
+        "visual_anchors": [
+          "harbor bench",
+          "fishing pier"
+        ],
+        "ep01_compatible": true
+      },
+      {
+        "pattern_id": "street_passage",
+        "label": "Street Passage",
+        "shot_role": "move protagonist through village lanes with readable environment",
+        "framing_intent": "tracking still of one lane or staircase with protagonist mid-passage",
+        "protagonist_visibility": "required",
+        "max_named_extras": 2,
+        "max_crowd_groups": 1,
+        "max_animals": 2,
+        "scenario_field_focus": [
+          "lane or stair location",
+          "daylight atmosphere",
+          "visible walking or carrying action"
+        ],
+        "character_field_focus": [
+          "protagonist",
+          "companion if present",
+          "minimal visible extras"
+        ],
+        "emotional_register": "small_freedom",
+        "music_drama_function": "transitional lyric still between domestic and harbor spaces",
+        "compatible_archetypes": [
+          "village_lane_passage",
+          "gonegi_morning_routine",
+          "market_edge_background"
+        ],
+        "visual_anchors": [
+          "stone staircase",
+          "olive tree"
+        ],
+        "ep01_compatible": true
+      },
+      {
+        "pattern_id": "quiet_solitude",
+        "label": "Quiet Solitude",
+        "shot_role": "hold one emotionally readable solitary moment",
+        "framing_intent": "medium close still with minimal background activity",
+        "protagonist_visibility": "required",
+        "max_named_extras": 0,
+        "max_crowd_groups": 0,
+        "max_animals": 1,
+        "scenario_field_focus": [
+          "single location",
+          "soft atmosphere",
+          "one restrained visible action"
+        ],
+        "character_field_focus": [
+          "protagonist only",
+          "companion animal if visible"
+        ],
+        "emotional_register": "longing_distance",
+        "music_drama_function": "internal lyric pause rendered through environment and posture, not monologue",
+        "compatible_archetypes": [
+          "domestic_bedroom_peace",
+          "harbor_edge_watch",
+          "rooftop_gaze",
+          "gamja_companion_bond"
+        ],
+        "ep01_compatible": true
+      },
+      {
+        "pattern_id": "rooftop_gaze",
+        "label": "Rooftop Gaze",
+        "shot_role": "elevated still looking over village roofline or wall boundary",
+        "framing_intent": "medium-wide elevated view with protagonist at roof edge or high window",
+        "protagonist_visibility": "required",
+        "max_named_extras": 1,
+        "max_crowd_groups": 0,
+        "max_animals": 1,
+        "scenario_field_focus": [
+          "rooftop or elevated location",
+          "afternoon atmosphere",
+          "visible gaze or rest action"
+        ],
+        "character_field_focus": [
+          "protagonist",
+          "companion if present"
+        ],
+        "emotional_register": "small_freedom",
+        "music_drama_function": "lyric bridge about unchanged world and quiet curiosity",
+        "compatible_archetypes": [
+          "rooftop_gaze",
+          "gonegi_morning_routine"
+        ],
+        "ep01_compatible": true
+      }
+    ],
+    "composition_rules": {
+      "one_primary_location": true,
+      "one_primary_action": true,
+      "protagonist_must_remain_readable": true,
+      "crowd_never_competes_with_protagonist": true,
+      "companion_animals_improve_continuity": true
+    }
+  },
+  "scene_archetypes": {
+    "asset_type": "music_drama_scene_archetypes",
+    "asset_version": "v1",
+    "grammar_id": "music-drama-scene-archetypes-v1",
+    "phase": "PHASE-MDG-001",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Reusable Music Drama scene archetype grammar for location-character-atmosphere binding. Archetypes define scene structure only — not generated scenario text.",
+    "archetype_count": 8,
+    "archetypes": [
+      {
+        "archetype_id": "gonegi_morning_routine",
+        "label": "Gonegi Morning Routine",
+        "location_type": "domestic-to-village transition",
+        "primary_locations": [
+          "Gonegi home interior",
+          "village lane",
+          "stone staircase"
+        ],
+        "primary_characters": [
+          "gonegi"
+        ],
+        "optional_characters": [
+          "mare",
+          "bardo"
+        ],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 2,
+        "crowd_groups_max": 0,
+        "atmosphere_cluster": [
+          "early_morning",
+          "morning_sunshine",
+          "bright_morning_sun"
+        ],
+        "emotional_intent": [
+          "peace",
+          "warmth",
+          "ordinary happiness",
+          "quiet hope"
+        ],
+        "visual_anchors": [
+          "stone staircase",
+          "olive tree"
+        ],
+        "compatible_shot_patterns": [
+          "establishing_daily_life",
+          "street_passage",
+          "rooftop_gaze",
+          "bakery_morning",
+          "harbor_edge_watch"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "morning domestic or lane location",
+            "soft daylight atmosphere",
+            "visible routine action"
+          ],
+          "character_field": [
+            "gonegi visual identity",
+            "gamja if visible",
+            "family member only if visible"
+          ]
+        },
+        "ep01_compatible": true,
+        "story_alignment": "EP01 centers on Gonegi's ordinary joyful daily life before meeting Dana"
+      },
+      {
+        "archetype_id": "gamja_companion_bond",
+        "label": "Gamja Companion Bond",
+        "location_type": "domestic companion space",
+        "primary_locations": [
+          "Gonegi bedroom",
+          "home courtyard",
+          "village lane beside Gonegi"
+        ],
+        "primary_characters": [
+          "gonegi"
+        ],
+        "optional_characters": [],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 0,
+        "crowd_groups_max": 0,
+        "atmosphere_cluster": [
+          "early_morning",
+          "morning_sunshine",
+          "golden_hour_breeze"
+        ],
+        "emotional_intent": [
+          "family comfort",
+          "warmth",
+          "quiet hope"
+        ],
+        "visual_anchors": [
+          "bakery window"
+        ],
+        "compatible_shot_patterns": [
+          "companion_bond_moment",
+          "domestic_warmth",
+          "quiet_solitude"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "domestic location",
+            "warm atmosphere",
+            "visible companion interaction action"
+          ],
+          "character_field": [
+            "gonegi visual identity",
+            "gamja visual identity"
+          ]
+        },
+        "continuity_note": "Gamja should persist across adjacent companion scenes until departure is explicitly described",
+        "ep01_compatible": true,
+        "story_alignment": "EP01 goal emphasizes Gonegi-Gamja bond as core emotional anchor",
+        "rkb_validation": "RKB-001 Gamja consistency PASS 9.5/10"
+      },
+      {
+        "archetype_id": "family_bakery_warmth",
+        "label": "Family Bakery Warmth",
+        "location_type": "domestic bakery interior",
+        "primary_locations": [
+          "Mare bakery interior",
+          "bakery threshold",
+          "bakery window"
+        ],
+        "primary_characters": [
+          "gonegi",
+          "mare"
+        ],
+        "optional_characters": [
+          "bardo"
+        ],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 2,
+        "crowd_groups_max": 1,
+        "atmosphere_cluster": [
+          "early_morning",
+          "morning_sunshine",
+          "morning_market"
+        ],
+        "emotional_intent": [
+          "family comfort",
+          "warmth",
+          "ordinary happiness"
+        ],
+        "visual_anchors": [
+          "bakery window"
+        ],
+        "compatible_shot_patterns": [
+          "bakery_morning",
+          "domestic_warmth",
+          "establishing_daily_life"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "bakery interior",
+            "oven-warm atmosphere",
+            "visible bread or morning preparation action"
+          ],
+          "character_field": [
+            "gonegi",
+            "mare if visible",
+            "bardo if visible",
+            "background queue extras only if visible"
+          ]
+        },
+        "ep01_compatible": true,
+        "story_alignment": "Supports Gonegi's positive hardworking family life tone",
+        "rkb_validation": "RKB-001 bakery environment PASS"
+      },
+      {
+        "archetype_id": "harbor_edge_watch",
+        "label": "Harbor Edge Watch",
+        "location_type": "harbor exterior",
+        "primary_locations": [
+          "main pier",
+          "harbor bench",
+          "fishing pier"
+        ],
+        "primary_characters": [
+          "gonegi"
+        ],
+        "optional_characters": [
+          "bardo"
+        ],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 2,
+        "crowd_groups_max": 1,
+        "atmosphere_cluster": [
+          "morning_sunshine",
+          "bright_morning_sun",
+          "golden_hour_breeze"
+        ],
+        "emotional_intent": [
+          "small freedom",
+          "quiet hope",
+          "peace"
+        ],
+        "visual_anchors": [
+          "harbor bench",
+          "fishing pier"
+        ],
+        "compatible_shot_patterns": [
+          "harbor_edge_watch",
+          "establishing_daily_life",
+          "quiet_solitude"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "harbor edge location",
+            "sea-facing atmosphere",
+            "visible watch or wait action"
+          ],
+          "character_field": [
+            "gonegi",
+            "bardo if visible",
+            "dock workers only if clearly visible"
+          ]
+        },
+        "ep01_compatible": true,
+        "story_alignment": "Harbor town identity without introducing Dana or plot conflict"
+      },
+      {
+        "archetype_id": "village_lane_passage",
+        "label": "Village Lane Passage",
+        "location_type": "village exterior",
+        "primary_locations": [
+          "stone lane",
+          "village stair",
+          "whitewash alley"
+        ],
+        "primary_characters": [
+          "gonegi"
+        ],
+        "optional_characters": [],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 2,
+        "crowd_groups_max": 1,
+        "atmosphere_cluster": [
+          "early_morning",
+          "morning_sunshine",
+          "afternoon_work"
+        ],
+        "emotional_intent": [
+          "ordinary happiness",
+          "small freedom",
+          "warmth"
+        ],
+        "visual_anchors": [
+          "stone staircase",
+          "olive tree"
+        ],
+        "compatible_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "lane location",
+            "daylight atmosphere",
+            "visible walking or carrying action"
+          ],
+          "character_field": [
+            "gonegi",
+            "gamja if visible",
+            "minimal named extras if visible"
+          ]
+        },
+        "ep01_compatible": true,
+        "story_alignment": "Natural movement through Mediterranean village daily life"
+      },
+      {
+        "archetype_id": "domestic_bedroom_peace",
+        "label": "Domestic Bedroom Peace",
+        "location_type": "domestic interior",
+        "primary_locations": [
+          "Gonegi bedroom",
+          "morning bedroom window"
+        ],
+        "primary_characters": [
+          "gonegi"
+        ],
+        "optional_characters": [],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 0,
+        "crowd_groups_max": 0,
+        "atmosphere_cluster": [
+          "sunrise",
+          "early_morning",
+          "morning_sunshine"
+        ],
+        "emotional_intent": [
+          "peace",
+          "warmth",
+          "ordinary happiness"
+        ],
+        "visual_anchors": [],
+        "compatible_shot_patterns": [
+          "domestic_warmth",
+          "companion_bond_moment",
+          "quiet_solitude"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "bedroom interior",
+            "soft morning atmosphere",
+            "visible waking or resting action"
+          ],
+          "character_field": [
+            "gonegi",
+            "gamja if visible on bed or floor"
+          ]
+        },
+        "risk_mitigation": "Keep bedding geometry simple; RKB-001 reported blanket deformation at LOW severity",
+        "ep01_compatible": true,
+        "story_alignment": "Lyric-aligned peaceful morning still before the day opens"
+      },
+      {
+        "archetype_id": "market_edge_background",
+        "label": "Market Edge Background",
+        "location_type": "village market fringe",
+        "primary_locations": [
+          "market plaza edge",
+          "stall lane entrance"
+        ],
+        "primary_characters": [
+          "gonegi"
+        ],
+        "optional_characters": [],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 2,
+        "crowd_groups_max": 1,
+        "atmosphere_cluster": [
+          "morning_market",
+          "morning_sunshine",
+          "bright_morning_sun"
+        ],
+        "emotional_intent": [
+          "ordinary happiness",
+          "warmth"
+        ],
+        "visual_anchors": [],
+        "compatible_shot_patterns": [
+          "establishing_daily_life",
+          "street_passage"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "market edge location",
+            "lively but distant atmosphere",
+            "visible passage action"
+          ],
+          "character_field": [
+            "gonegi in foreground",
+            "gamja if visible",
+            "one crowd group as background support only"
+          ]
+        },
+        "density_warning": "RKB-001 crowd quality 7.0/10 — use only during controlled tests with strict density limits",
+        "ep01_compatible": true,
+        "story_alignment": "Peripheral town life that does not interrupt Gonegi's peace"
+      },
+      {
+        "archetype_id": "rooftop_gaze",
+        "label": "Rooftop Gaze",
+        "location_type": "elevated domestic exterior",
+        "primary_locations": [
+          "rooftop edge",
+          "high window ledge",
+          "village roofline view"
+        ],
+        "primary_characters": [
+          "gonegi"
+        ],
+        "optional_characters": [],
+        "companion_animals": [
+          "gamja"
+        ],
+        "background_extras_max": 1,
+        "crowd_groups_max": 0,
+        "atmosphere_cluster": [
+          "golden_hour_breeze",
+          "afternoon_work",
+          "morning_sunshine"
+        ],
+        "emotional_intent": [
+          "quiet hope",
+          "peace",
+          "small freedom"
+        ],
+        "visual_anchors": [
+          "olive tree"
+        ],
+        "compatible_shot_patterns": [
+          "rooftop_gaze",
+          "quiet_solitude",
+          "establishing_daily_life"
+        ],
+        "scenario_structure": {
+          "scenario_field": [
+            "elevated location",
+            "open-sky atmosphere",
+            "visible gaze or rest action"
+          ],
+          "character_field": [
+            "gonegi",
+            "gamja if visible"
+          ]
+        },
+        "ep01_compatible": true,
+        "story_alignment": "Lyric motif of unchanged peaceful world and quiet curiosity beyond the wall"
+      }
+    ],
+    "episode_constraints": {
+      "EP01": {
+        "title": "늘 그래왔듯이",
+        "hard_constraints": [
+          "Gonegi does not yet know Dana exists",
+          "Dana must not appear",
+          "Dana's name must not appear in scenario or character fields",
+          "no negative exclusion phrasing",
+          "Gonegi-Gamja bond is core emotional focus"
+        ],
+        "recommended_archetypes": [
+          "gonegi_morning_routine",
+          "gamja_companion_bond",
+          "family_bakery_warmth",
+          "harbor_edge_watch",
+          "village_lane_passage",
+          "domestic_bedroom_peace",
+          "rooftop_gaze"
+        ],
+        "discouraged_archetypes": [
+          "market_edge_background"
+        ],
+        "discouraged_reason": "crowd deformation risk during early testing unless density strictly limited"
+      }
+    },
+    "absent_character_policy": {
+      "method": "omission_only",
+      "forbidden_phrases": [
+        "No Dana",
+        "Dana absent",
+        "without Dana"
+      ]
+    }
+  },
+  "daily_life_behavior": {
+    "asset_type": "daily_life_behavior_library",
+    "asset_version": "v1",
+    "library_id": "daily-life-behavior-library-v1",
+    "phase": "PHASE-MDG-002",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Reusable everyday behavior units for Music Drama scenario construction. Behavior grammar only — no generated scenarios or prompts.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_character_dna": false,
+      "modifies_style_core": false,
+      "modifies_living_world_core": false
+    },
+    "read_only_sources": {
+      "master_story": "datasets/story/music-drama-master-story-v1.json",
+      "scenario_rulebook": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+      "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "shot_patterns": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "scene_archetypes": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json"
+    },
+    "behavior_rules": {
+      "one_primary_action_per_behavior": true,
+      "one_emotional_register_per_behavior": true,
+      "ep01_compatible_default": true,
+      "field_separation": "behavior describes action intent only; scenario field carries location/atmosphere/action; character field carries visible identities",
+      "absent_character_policy": "omission_only",
+      "density_alignment": {
+        "max_named_extras": 2,
+        "max_crowd_groups": 1,
+        "max_animals": 2
+      }
+    },
+    "emotional_registers": [
+      "peaceful_daily_life",
+      "family_comfort",
+      "small_freedom",
+      "quiet_reflection",
+      "warm_belonging"
+    ],
+    "rkb_integration": {
+      "test_id": "RKB-001",
+      "reflected_findings": [
+        "scenario/character separation success",
+        "Gamja continuity success",
+        "crowd density limitations",
+        "market crowd caution",
+        "domestic object caution"
+      ],
+      "crowd_quality_score_reference": 7,
+      "object_quality_score_reference": 7.5
+    },
+    "behavior_count": 16,
+    "behaviors": [
+      {
+        "behavior_id": "wake_up",
+        "label": "Wake Up",
+        "description": "Gonegi wakes in his bedroom as soft morning light enters through the window.",
+        "emotional_register": "peaceful_daily_life",
+        "recommended_shot_patterns": [
+          "domestic_warmth",
+          "quiet_solitude"
+        ],
+        "recommended_archetypes": [
+          "domestic_bedroom_peace",
+          "gonegi_morning_routine"
+        ],
+        "continuity_objects": [
+          "bedding",
+          "morning light through window"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "NONE",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true,
+        "rkb_note": "Keep bedding geometry simple per domestic object caution"
+      },
+      {
+        "behavior_id": "morning_greeting",
+        "label": "Morning Greeting",
+        "description": "Gonegi greets Mare or Bardo at the home threshold with a brief familial morning exchange.",
+        "emotional_register": "warm_belonging",
+        "recommended_shot_patterns": [
+          "domestic_warmth",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "gonegi_morning_routine",
+          "family_bakery_warmth"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "family_breakfast",
+        "label": "Family Breakfast",
+        "description": "Gonegi shares a simple breakfast with family at the home table before the day begins.",
+        "emotional_register": "family_comfort",
+        "recommended_shot_patterns": [
+          "domestic_warmth",
+          "bakery_morning"
+        ],
+        "recommended_archetypes": [
+          "family_bakery_warmth",
+          "gonegi_morning_routine"
+        ],
+        "continuity_objects": [
+          "bread",
+          "table setting"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "bakery_help",
+        "label": "Bakery Help",
+        "description": "Gonegi helps Mare wrap loaves or carry a tray near the bakery counter.",
+        "emotional_register": "family_comfort",
+        "recommended_shot_patterns": [
+          "bakery_morning",
+          "domestic_warmth"
+        ],
+        "recommended_archetypes": [
+          "family_bakery_warmth"
+        ],
+        "continuity_objects": [
+          "wrapped loaves",
+          "apron",
+          "bakery tray"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true,
+        "rkb_note": "RKB-001 bakery environment PASS"
+      },
+      {
+        "behavior_id": "walk_with_gamja",
+        "label": "Walk With Gamja",
+        "description": "Gonegi walks along a village lane with Gamja keeping close at his side.",
+        "emotional_register": "warm_belonging",
+        "recommended_shot_patterns": [
+          "companion_bond_moment",
+          "street_passage"
+        ],
+        "recommended_archetypes": [
+          "gamja_companion_bond",
+          "village_lane_passage"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_required",
+        "ep01_compatible": true,
+        "rkb_note": "RKB-001 Gamja continuity PASS 9.5/10"
+      },
+      {
+        "behavior_id": "harbor_watch",
+        "label": "Harbor Watch",
+        "description": "Gonegi pauses at the harbor edge to watch boats, water, and distant activity.",
+        "emotional_register": "small_freedom",
+        "recommended_shot_patterns": [
+          "harbor_edge_watch",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "harbor_edge_watch",
+          "gonegi_morning_routine"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "market_passage",
+        "label": "Market Passage",
+        "description": "Gonegi passes through the market fringe without stopping, keeping foreground readability.",
+        "emotional_register": "peaceful_daily_life",
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "market_edge_background",
+          "village_lane_passage"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "MEDIUM",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true,
+        "rkb_note": "Market crowd caution — one background crowd group maximum"
+      },
+      {
+        "behavior_id": "fishing_break",
+        "label": "Fishing Break",
+        "description": "Gonegi rests briefly near dockside nets or crates while harbor work continues in the background.",
+        "emotional_register": "small_freedom",
+        "recommended_shot_patterns": [
+          "harbor_edge_watch",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "harbor_edge_watch"
+        ],
+        "continuity_objects": [
+          "coiled net",
+          "wooden crate"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "hilltop_lunch",
+        "label": "Hilltop Lunch",
+        "description": "Gonegi eats a simple packed lunch on a hillside overlook above the village.",
+        "emotional_register": "small_freedom",
+        "recommended_shot_patterns": [
+          "rooftop_gaze",
+          "quiet_solitude"
+        ],
+        "recommended_archetypes": [
+          "rooftop_gaze"
+        ],
+        "continuity_objects": [
+          "packed lunch",
+          "cloth bundle"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "NONE",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "tree_rest",
+        "label": "Tree Rest",
+        "description": "Gonegi rests in shade beneath an olive tree after walking through the village.",
+        "emotional_register": "peaceful_daily_life",
+        "recommended_shot_patterns": [
+          "quiet_solitude",
+          "street_passage"
+        ],
+        "recommended_archetypes": [
+          "village_lane_passage",
+          "rooftop_gaze"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "NONE",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "ball_play_with_gamja",
+        "label": "Ball Play With Gamja",
+        "description": "Gonegi rolls or tosses a small ball while Gamja responds playfully in a courtyard or lane.",
+        "emotional_register": "warm_belonging",
+        "recommended_shot_patterns": [
+          "companion_bond_moment",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "gamja_companion_bond",
+          "village_lane_passage"
+        ],
+        "continuity_objects": [
+          "small ball"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "NONE",
+        "animal_usage": "companion_required",
+        "ep01_compatible": true,
+        "rkb_note": "Companion play improves emotional readability per RKB-001 lesson_04"
+      },
+      {
+        "behavior_id": "afternoon_wandering",
+        "label": "Afternoon Wandering",
+        "description": "Gonegi wanders unhurriedly through stone lanes during the afternoon with no urgent destination.",
+        "emotional_register": "small_freedom",
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "village_lane_passage",
+          "gonegi_morning_routine"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "sunset_return",
+        "label": "Sunset Return",
+        "description": "Gonegi returns home along a warm-lit lane as the day softens toward evening.",
+        "emotional_register": "peaceful_daily_life",
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "village_lane_passage",
+          "gonegi_morning_routine"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "family_dinner",
+        "label": "Family Dinner",
+        "description": "Gonegi sits with family for an evening meal in the warm domestic interior.",
+        "emotional_register": "family_comfort",
+        "recommended_shot_patterns": [
+          "domestic_warmth",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "family_bakery_warmth",
+          "gonegi_morning_routine"
+        ],
+        "continuity_objects": [
+          "shared meal",
+          "table setting"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "LOW",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "window_reflection",
+        "label": "Window Reflection",
+        "description": "Gonegi pauses at a window, looking outward over rooftops or the lane below.",
+        "emotional_register": "quiet_reflection",
+        "recommended_shot_patterns": [
+          "quiet_solitude",
+          "rooftop_gaze"
+        ],
+        "recommended_archetypes": [
+          "domestic_bedroom_peace",
+          "rooftop_gaze"
+        ],
+        "continuity_objects": [],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "NONE",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true
+      },
+      {
+        "behavior_id": "night_rest",
+        "label": "Night Rest",
+        "description": "Gonegi settles into bed as the room falls quiet for the night.",
+        "emotional_register": "quiet_reflection",
+        "recommended_shot_patterns": [
+          "domestic_warmth",
+          "quiet_solitude"
+        ],
+        "recommended_archetypes": [
+          "domestic_bedroom_peace"
+        ],
+        "continuity_objects": [
+          "bedding",
+          "night lamp or moonlight"
+        ],
+        "continuity_companions": [
+          "gamja"
+        ],
+        "crowd_risk": "NONE",
+        "animal_usage": "companion_optional",
+        "ep01_compatible": true,
+        "rkb_note": "Keep bedding geometry simple per RKB-001 object deformation finding"
+      }
+    ]
+  },
+  "community_behavior": {
+    "asset_type": "community_crowd_behavior_grammar",
+    "asset_version": "v1",
+    "grammar_id": "community-crowd-behavior-grammar-v1",
+    "phase": "PHASE-MDG-003",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Community and crowd behavior grammar for Music Drama background life. Makes villages, markets, bakeries, harbors, and streets feel alive while preserving protagonist readability.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_character_dna": false,
+      "modifies_style_core": false,
+      "modifies_living_world_core": false
+    },
+    "read_only_sources": {
+      "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "shot_patterns": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "scene_archetypes": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+      "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json",
+      "living_world_core": "exports/shared/latest/living-world-core-v1-package.json"
+    },
+    "visibility_law": {
+      "summary": "Crowd exists to support world realism.",
+      "rules": [
+        "Crowd must never dominate frame.",
+        "Crowd must never become primary subject.",
+        "Crowd must never compete with Gonegi.",
+        "Crowd remains background support for protagonist readability."
+      ],
+      "protagonist_priority_required": true
+    },
+    "density_limits": {
+      "source": "RKB-001 + music-drama-grammar-v1",
+      "named_extras_max": 2,
+      "crowd_groups_max": 1,
+      "background_animals_max": 2,
+      "background_support_principle": true,
+      "character_readability_preservation": true
+    },
+    "rkb_integration": {
+      "test_id": "RKB-001",
+      "crowd_quality_score": 7,
+      "market_crowd_caution": "Use market groups sparingly; one crowd group maximum; keep Gonegi in clear foreground",
+      "crowd_deformation_risk": "MEDIUM in dense market scenes",
+      "lessons_encoded": [
+        "market crowd caution",
+        "crowd quality 7.0 lesson",
+        "background-support principle",
+        "character readability preservation"
+      ]
+    },
+    "community_behavior_types": [
+      "waiting",
+      "walking",
+      "talking",
+      "watching",
+      "working",
+      "shopping",
+      "resting",
+      "playing",
+      "eating",
+      "observing"
+    ],
+    "community_environments": [
+      "bakery",
+      "market",
+      "harbor",
+      "street",
+      "hilltop",
+      "village_square",
+      "seaside",
+      "festival_ground"
+    ],
+    "living_world_crowd_alignment": {
+      "reference_library": "crowd_grammar_library",
+      "aligned_crowd_ids": [
+        "market_crowd",
+        "dock_workers",
+        "children_playing",
+        "street_observers",
+        "harbor_commuters",
+        "bakery_queue",
+        "fish_market_group",
+        "festival_crowd"
+      ],
+      "note": "Read-only alignment reference; does not modify Living World Core"
+    },
+    "group_count": 12,
+    "groups": [
+      {
+        "group_id": "bakery_customers",
+        "label": "Bakery Customers",
+        "environment": "bakery",
+        "behavior_style": "waiting",
+        "behavior_types": [
+          "waiting",
+          "talking",
+          "eating"
+        ],
+        "visibility_role": "background_queue_support",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "bakery_morning",
+          "domestic_warmth"
+        ],
+        "recommended_archetypes": [
+          "family_bakery_warmth"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true,
+        "rkb_note": "Keep queue behind protagonist; max one crowd group"
+      },
+      {
+        "group_id": "harbor_workers",
+        "label": "Harbor Workers",
+        "environment": "harbor",
+        "behavior_style": "working",
+        "behavior_types": [
+          "working",
+          "walking",
+          "watching"
+        ],
+        "visibility_role": "distant_labor_background",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "harbor_edge_watch",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "harbor_edge_watch"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "dock_workers",
+        "label": "Dock Workers",
+        "environment": "harbor",
+        "behavior_style": "working",
+        "behavior_types": [
+          "working",
+          "watching",
+          "talking"
+        ],
+        "visibility_role": "peripheral_labor_cluster",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "harbor_edge_watch",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "harbor_edge_watch"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "fishermen",
+        "label": "Fishermen",
+        "environment": "harbor",
+        "behavior_style": "working",
+        "behavior_types": [
+          "working",
+          "resting",
+          "talking"
+        ],
+        "visibility_role": "harbor_activity_background",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "harbor_edge_watch",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "harbor_edge_watch",
+          "gonegi_morning_routine"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "village_children",
+        "label": "Village Children",
+        "environment": "street",
+        "behavior_style": "playing",
+        "behavior_types": [
+          "playing",
+          "walking",
+          "watching"
+        ],
+        "visibility_role": "peripheral_youth_motion",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "village_lane_passage",
+          "gonegi_morning_routine"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "market_visitors",
+        "label": "Market Visitors",
+        "environment": "market",
+        "behavior_style": "shopping",
+        "behavior_types": [
+          "shopping",
+          "walking",
+          "watching"
+        ],
+        "visibility_role": "market_fringe_background",
+        "recommended_density": "MEDIUM",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "market_edge_background",
+          "village_lane_passage"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true,
+        "rkb_note": "RKB-001 market crowd caution — crowd quality 7.0; use only at market fringe"
+      },
+      {
+        "group_id": "market_vendors",
+        "label": "Market Vendors",
+        "environment": "market",
+        "behavior_style": "working",
+        "behavior_types": [
+          "working",
+          "talking",
+          "observing"
+        ],
+        "visibility_role": "stall_background_support",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "market_edge_background"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true,
+        "rkb_note": "Named extras only; never let vendor cluster dominate frame"
+      },
+      {
+        "group_id": "elderly_neighbors",
+        "label": "Elderly Neighbors",
+        "environment": "village_square",
+        "behavior_style": "talking",
+        "behavior_types": [
+          "talking",
+          "resting",
+          "observing"
+        ],
+        "visibility_role": "doorway_shade_background",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "village_lane_passage",
+          "gonegi_morning_routine"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "street_observers",
+        "label": "Street Observers",
+        "environment": "street",
+        "behavior_style": "observing",
+        "behavior_types": [
+          "observing",
+          "watching",
+          "resting"
+        ],
+        "visibility_role": "passive_witness_layer",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "village_lane_passage",
+          "market_edge_background"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "travelers",
+        "label": "Travelers",
+        "environment": "village_square",
+        "behavior_style": "walking",
+        "behavior_types": [
+          "walking",
+          "waiting",
+          "watching"
+        ],
+        "visibility_role": "transient_pass_through",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "street_passage",
+          "establishing_daily_life"
+        ],
+        "recommended_archetypes": [
+          "village_lane_passage",
+          "gonegi_morning_routine"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "seaside_resters",
+        "label": "Seaside Resters",
+        "environment": "seaside",
+        "behavior_style": "resting",
+        "behavior_types": [
+          "resting",
+          "watching",
+          "observing"
+        ],
+        "visibility_role": "distant_harbor_edge_background",
+        "recommended_density": "LOW",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "harbor_edge_watch",
+          "quiet_solitude"
+        ],
+        "recommended_archetypes": [
+          "harbor_edge_watch"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": true
+      },
+      {
+        "group_id": "festival_visitors",
+        "label": "Festival Visitors",
+        "environment": "festival_ground",
+        "behavior_style": "watching",
+        "behavior_types": [
+          "watching",
+          "walking",
+          "talking"
+        ],
+        "visibility_role": "peripheral_celebration_background",
+        "recommended_density": "MEDIUM",
+        "max_visible_count": 2,
+        "recommended_shot_patterns": [
+          "establishing_daily_life",
+          "street_passage"
+        ],
+        "recommended_archetypes": [
+          "market_edge_background",
+          "village_lane_passage"
+        ],
+        "protagonist_priority": true,
+        "ep01_compatible": false,
+        "ep01_note": "Reserved for post-EP01 festival scenes; not for EP01 daily-life tests"
+      }
+    ],
+    "quality_targets": [
+      "EP01 daily life support",
+      "ordinary village realism",
+      "music drama background life",
+      "low-risk crowd rendering",
+      "high protagonist readability"
+    ]
+  },
+  "animal_behavior": {
+    "asset_type": "animal_companion_behavior_grammar",
+    "asset_version": "v1",
+    "grammar_id": "animal-companion-behavior-grammar-v1",
+    "phase": "PHASE-MDG-004",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Animal and companion behavior grammar for Music Drama. Establishes companion hierarchy, animal continuity rules, background animal ecology, and living village atmosphere without generating scenarios.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_character_dna": false,
+      "modifies_style_core": false,
+      "modifies_living_world_core": false
+    },
+    "read_only_sources": {
+      "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json",
+      "master_story": "datasets/story/music-drama-master-story-v1.json"
+    },
+    "section_1_primary_companion_layer": {
+      "companion_count": 2,
+      "companion_hierarchy_rule": "Primary companions always have higher priority than background animals.",
+      "companions": [
+        {
+          "animal_id": "gamja",
+          "label": "Gamja",
+          "owner_character": "gonegi",
+          "companion_type": "primary",
+          "continuity_required": true,
+          "emotional_anchor": true,
+          "appearance_priority": "VERY_HIGH",
+          "default_visibility": true,
+          "ep01_compatible": true,
+          "companion_continuity_law": "If Gonegi appears, Gamja should appear unless physically impossible."
+        },
+        {
+          "animal_id": "aengdu",
+          "label": "Aengdu",
+          "owner_character": "dana",
+          "companion_type": "primary",
+          "continuity_required": true,
+          "emotional_anchor": true,
+          "appearance_priority": "VERY_HIGH",
+          "default_visibility": true,
+          "ep01_compatible": false,
+          "ep01_note": "Reserved for post-EP01 Dana scenes; Dana does not appear in EP01",
+          "companion_continuity_law": "If Dana appears, Aengdu should appear unless physically impossible."
+        }
+      ],
+      "companion_continuity_law": {
+        "gonegi_gamja": "If Gonegi appears, Gamja should appear unless physically impossible.",
+        "dana_aengdu": "If Dana appears, Aengdu should appear unless physically impossible.",
+        "priority": "Primary companions outrank all background animals in character field ordering and visual emphasis."
+      }
+    },
+    "section_2_background_animal_layer": {
+      "background_animal_count": 8,
+      "animals": [
+        {
+          "animal_id": "seagull",
+          "label": "Seagull",
+          "animal_type": "background",
+          "environment": "harbor",
+          "appearance_frequency": "COMMON",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        },
+        {
+          "animal_id": "pelican",
+          "label": "Pelican",
+          "animal_type": "background",
+          "environment": "harbor",
+          "appearance_frequency": "OCCASIONAL",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        },
+        {
+          "animal_id": "harbor_cat",
+          "label": "Harbor Cat",
+          "animal_type": "background",
+          "environment": "harbor_alley",
+          "appearance_frequency": "OCCASIONAL",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        },
+        {
+          "animal_id": "village_dog",
+          "label": "Village Dog",
+          "animal_type": "background",
+          "environment": "village_path",
+          "appearance_frequency": "COMMON",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        },
+        {
+          "animal_id": "chicken",
+          "label": "Chicken",
+          "animal_type": "background",
+          "environment": "bakery_yard",
+          "appearance_frequency": "COMMON",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        },
+        {
+          "animal_id": "duck",
+          "label": "Duck",
+          "animal_type": "background",
+          "environment": "harbor_shallows",
+          "appearance_frequency": "OCCASIONAL",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        },
+        {
+          "animal_id": "goose",
+          "label": "Goose",
+          "animal_type": "background",
+          "environment": "farm_edge",
+          "appearance_frequency": "OCCASIONAL",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        },
+        {
+          "animal_id": "muscovy_duck",
+          "label": "Muscovy Duck",
+          "animal_type": "background",
+          "environment": "farm_edge",
+          "appearance_frequency": "RARE",
+          "recommended_group_size": 1,
+          "ep01_compatible": true
+        }
+      ]
+    },
+    "section_3_background_animal_rotation_law": {
+      "goal": "Prevent the same background animal from appearing everywhere.",
+      "rules": [
+        "Animals rotate naturally across environments.",
+        "No single background animal should dominate all scenes.",
+        "Select background animals from the environment-appropriate rotation zone only.",
+        "Do not stack multiple background animal types in one scene unless density law allows."
+      ],
+      "rotation_zones": [
+        {
+          "zone_id": "harbor",
+          "environments": [
+            "harbor",
+            "harbor_shallows"
+          ],
+          "preferred_animals": [
+            "seagull",
+            "pelican",
+            "duck"
+          ]
+        },
+        {
+          "zone_id": "bakery_yard",
+          "environments": [
+            "bakery_yard"
+          ],
+          "preferred_animals": [
+            "chicken"
+          ]
+        },
+        {
+          "zone_id": "village_path",
+          "environments": [
+            "village_path"
+          ],
+          "preferred_animals": [
+            "village_dog"
+          ]
+        },
+        {
+          "zone_id": "farm_edge",
+          "environments": [
+            "farm_edge"
+          ],
+          "preferred_animals": [
+            "goose",
+            "muscovy_duck"
+          ]
+        },
+        {
+          "zone_id": "harbor_alley",
+          "environments": [
+            "harbor_alley"
+          ],
+          "preferred_animals": [
+            "harbor_cat"
+          ]
+        }
+      ]
+    },
+    "section_4_animal_density_law": {
+      "primary_companion": {
+        "max_per_protagonist": 1,
+        "rule": "One primary companion per protagonist in frame."
+      },
+      "background_animals": {
+        "max_background_animal_groups": 1,
+        "rule": "At most one background animal group per scene."
+      },
+      "visible_animal_count": {
+        "recommended_max": 3,
+        "composition_rule": "Primary companion + at most one background animal group + optional single background individual."
+      },
+      "forbidden": [
+        "large flocks",
+        "large herds",
+        "animal-dominated composition"
+      ],
+      "support_principle": "Animals must support atmosphere.",
+      "protagonist_focus_rule": "Animals must never replace protagonist focus."
+    },
+    "section_5_rkb_integration": {
+      "test_id": "RKB-001",
+      "encoded_principles": [
+        "character readability first",
+        "crowd caution",
+        "companion continuity",
+        "living-world enhancement",
+        "stable daily-life atmosphere"
+      ],
+      "rkb_findings": {
+        "gamja_consistency_score": 9.5,
+        "gamja_stability": "PASS",
+        "companion_lesson": "Companion animals improve emotional readability and scene continuity",
+        "crowd_quality_score": 7,
+        "animal_density_alignment": "max 2 animals in grammar density_limits; recommended max 3 visible including companion"
+      },
+      "alignment_with_daily_life_library": "All 16 daily-life behaviors list gamja in continuity_companions",
+      "alignment_with_community_grammar": "background_animals_max: 2 in community-crowd-behavior-grammar density_limits"
+    },
+    "environment_registry": [
+      "harbor",
+      "harbor_shallows",
+      "harbor_alley",
+      "bakery_yard",
+      "village_path",
+      "farm_edge"
+    ]
+  },
+  "visual_motifs": {
+    "asset_type": "visual_motif_grammar",
+    "asset_version": "v1",
+    "grammar_id": "visual-motif-grammar-v1",
+    "phase": "PHASE-MDG-005",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Reusable emotional visual symbols for Music Drama scenes. Motif grammar only — no generated scenarios or prompts.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_character_dna": false,
+      "modifies_style_core": false,
+      "modifies_living_world_core": false
+    },
+    "read_only_sources": {
+      "master_story": "datasets/story/music-drama-master-story-v1.json",
+      "scenario_rulebook": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+      "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "animal_companion_behavior_grammar": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json"
+    },
+    "motif_count": 21,
+    "section_1_domestic_motifs": {
+      "domestic_count": 6,
+      "motifs": [
+        {
+          "motif_id": "window",
+          "motif_group": "domestic",
+          "label": "Window",
+          "emotional_role": "threshold between private peace and the outside world",
+          "ep01_compatible": true,
+          "continuity_capable": true,
+          "continuity_examples": [
+            "morning light through window",
+            "evening reflection at same window",
+            "quiet gaze outward"
+          ]
+        },
+        {
+          "motif_id": "wooden_chair",
+          "motif_group": "domestic",
+          "label": "Wooden Chair",
+          "emotional_role": "rest, belonging, and unhurried daily life",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "bread",
+          "motif_group": "domestic",
+          "label": "Bread",
+          "emotional_role": "family warmth and bakery-home continuity",
+          "ep01_compatible": true,
+          "continuity_capable": true,
+          "alignment": "family_bakery_warmth archetype; bakery_help behavior"
+        },
+        {
+          "motif_id": "toast",
+          "motif_group": "domestic",
+          "label": "Toast",
+          "emotional_role": "small carried comfort object across adjacent scenes",
+          "ep01_compatible": true,
+          "continuity_capable": true,
+          "continuity_rule_reference": "rulebook persistent_object example — toast remains until scenario removes it"
+        },
+        {
+          "motif_id": "tea_cup",
+          "motif_group": "domestic",
+          "label": "Tea Cup",
+          "emotional_role": "quiet morning or evening domestic calm",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "linen_blanket",
+          "motif_group": "domestic",
+          "label": "Linen Blanket",
+          "emotional_role": "sleep, rest, and soft domestic enclosure",
+          "ep01_compatible": true,
+          "continuity_capable": true,
+          "rkb_note": "Keep bedding geometry simple per RKB-001 object deformation finding"
+        }
+      ]
+    },
+    "section_2_harbor_motifs": {
+      "harbor_count": 5,
+      "motifs": [
+        {
+          "motif_id": "harbor_path",
+          "motif_group": "harbor",
+          "label": "Harbor Path",
+          "emotional_role": "route between village labor and sea horizon",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "stone_stairway",
+          "motif_group": "harbor",
+          "label": "Stone Stairway",
+          "emotional_role": "vertical movement through Mediterranean village stone fabric",
+          "ep01_compatible": true,
+          "continuity_capable": true,
+          "grammar_anchor_alignment": "stone staircase visual anchor"
+        },
+        {
+          "motif_id": "fishing_rod",
+          "motif_group": "harbor",
+          "label": "Fishing Rod",
+          "emotional_role": "harbor livelihood and patient waiting",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "wooden_boat",
+          "motif_group": "harbor",
+          "label": "Wooden Boat",
+          "emotional_role": "departure potential and harbor identity",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "sea_horizon",
+          "motif_group": "harbor",
+          "label": "Sea Horizon",
+          "emotional_role": "open future, distance, and quiet hope",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        }
+      ]
+    },
+    "section_3_emotional_motifs": {
+      "emotional_count": 5,
+      "motifs": [
+        {
+          "motif_id": "sunset_hill",
+          "motif_group": "emotional",
+          "label": "Sunset Hill",
+          "emotional_role": "warm fading day and lyric reflection",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "wind_grass",
+          "motif_group": "emotional",
+          "label": "Wind Grass",
+          "emotional_role": "gentle motion and small freedom outdoors",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "reflection",
+          "motif_group": "emotional",
+          "label": "Reflection",
+          "emotional_role": "quiet inward pause rendered through glass, water, or still surface",
+          "ep01_compatible": true,
+          "continuity_capable": true,
+          "behavior_alignment": "window_reflection daily-life behavior"
+        },
+        {
+          "motif_id": "open_window",
+          "motif_group": "emotional",
+          "label": "Open Window",
+          "emotional_role": "fresh air, morning opening, and invitation of daylight",
+          "ep01_compatible": true,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "morning_light",
+          "motif_group": "emotional",
+          "label": "Morning Light",
+          "emotional_role": "peaceful daily-life opening and ordinary happiness",
+          "ep01_compatible": true,
+          "continuity_capable": true,
+          "time_library_alignment": "datasets/time/time-setting-library-v1.json sunrise and early morning clusters"
+        }
+      ]
+    },
+    "section_4_future_story_motifs": {
+      "future_count": 5,
+      "future_use_only": true,
+      "ep01_compatible_default": false,
+      "motifs": [
+        {
+          "motif_id": "letter",
+          "motif_group": "future_story",
+          "label": "Letter",
+          "emotional_role": "distance, longing, and connection across separation",
+          "ep01_compatible": false,
+          "continuity_capable": true,
+          "story_alignment": "Master story letter delivery arc via Gamja"
+        },
+        {
+          "motif_id": "blue_ribbon",
+          "motif_group": "future_story",
+          "label": "Blue Ribbon",
+          "emotional_role": "dream-world threshold marker and romantic memory symbol",
+          "ep01_compatible": false,
+          "continuity_capable": true,
+          "story_alignment": "Dream door blue ribbon in master story outline"
+        },
+        {
+          "motif_id": "door",
+          "motif_group": "future_story",
+          "label": "Door",
+          "emotional_role": "passage between worlds, choice, and fate threshold",
+          "ep01_compatible": false,
+          "continuity_capable": true
+        },
+        {
+          "motif_id": "dream_key",
+          "motif_group": "future_story",
+          "label": "Dream Key",
+          "emotional_role": "access to shared dream space and forbidden reunion",
+          "ep01_compatible": false,
+          "continuity_capable": true,
+          "story_alignment": "Zepiro dream passage method in master story"
+        },
+        {
+          "motif_id": "memory_item",
+          "motif_group": "future_story",
+          "label": "Memory Item",
+          "emotional_role": "forgotten bond residue after memory loss arc",
+          "ep01_compatible": false,
+          "continuity_capable": true,
+          "story_alignment": "Final plaza encounter with unrecognized tears"
+        }
+      ]
+    },
+    "section_5_motif_continuity_law": {
+      "purpose": "Allow motifs to reappear across scenes to strengthen emotional memory.",
+      "rules": [
+        "Motifs may persist as recurring visual anchors within an episode.",
+        "The same motif may reappear in different time states if continuity_capable is true.",
+        "Motif reappearance should support emotional memory, not create symbol clutter.",
+        "Scenario field carries motif presence through location, atmosphere, and visible environment.",
+        "Character field must not narrate motif meaning — visual presence only."
+      ],
+      "examples": [
+        {
+          "motif_id": "window",
+          "sequence": [
+            "morning scene",
+            "evening scene",
+            "reflection scene"
+          ],
+          "effect": "same window strengthens domestic emotional memory"
+        }
+      ]
+    },
+    "section_6_motif_density_law": {
+      "recommended_primary_motifs_per_scene": "1~2",
+      "maximum_visible_motifs": 3,
+      "avoid": [
+        "motif overload",
+        "symbol clutter"
+      ],
+      "protagonist_readability_rule": "Motifs support atmosphere; they must not compete with Gonegi or primary action."
+    },
+    "section_7_rkb_integration": {
+      "test_id": "RKB-001",
+      "encoded_principles": [
+        "character readability first",
+        "scenario/character separation success",
+        "daily-life atmosphere success",
+        "environment consistency success"
+      ],
+      "rkb_scores_reflected": {
+        "character_consistency": 9.5,
+        "environment_consistency": 9,
+        "style_consistency": 9,
+        "object_quality": 7.5
+      },
+      "grammar_alignment": {
+        "visual_anchor_law": "Motifs extend music-drama-grammar visual_anchor_grammar anchors",
+        "field_separation": "Motifs appear in scenario field context; character field remains visual identity only",
+        "persistent_object_rule": "toast and carried objects follow continuity_state_law"
+      }
+    },
+    "all_motifs_index": [
+      "window",
+      "wooden_chair",
+      "bread",
+      "toast",
+      "tea_cup",
+      "linen_blanket",
+      "harbor_path",
+      "stone_stairway",
+      "fishing_rod",
+      "wooden_boat",
+      "sea_horizon",
+      "sunset_hill",
+      "wind_grass",
+      "reflection",
+      "open_window",
+      "morning_light",
+      "letter",
+      "blue_ribbon",
+      "door",
+      "dream_key",
+      "memory_item"
+    ]
+  },
+  "emotional_transitions": {
+    "asset_type": "emotional_transition_grammar",
+    "asset_version": "v1",
+    "grammar_id": "emotional-transition-grammar-v1",
+    "phase": "PHASE-MDG-006",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Model emotional flow for Music Drama storytelling. Transition grammar only — no generated scenarios or prompts.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_character_dna": false,
+      "modifies_style_core": false,
+      "modifies_living_world_core": false
+    },
+    "read_only_sources": {
+      "master_story": "datasets/story/music-drama-master-story-v1.json",
+      "scenario_rulebook": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+      "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "animal_companion_behavior_grammar": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+      "visual_motif_grammar": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json"
+    },
+    "section_1_emotional_states": {
+      "emotional_state_count": 12,
+      "states": [
+        {
+          "emotion_id": "peace",
+          "description": "Ordinary calm and stable daily-life emotional baseline.",
+          "ep01_compatible": true,
+          "intensity_range": [
+            0.3,
+            0.6
+          ]
+        },
+        {
+          "emotion_id": "comfort",
+          "description": "Family warmth, belonging, and domestic safety.",
+          "ep01_compatible": true,
+          "intensity_range": [
+            0.35,
+            0.65
+          ]
+        },
+        {
+          "emotion_id": "curiosity",
+          "description": "Gentle interest in the world beyond familiar routine.",
+          "ep01_compatible": true,
+          "intensity_range": [
+            0.35,
+            0.55
+          ]
+        },
+        {
+          "emotion_id": "wonder",
+          "description": "Soft discovery and openness without plot shock.",
+          "ep01_compatible": true,
+          "intensity_range": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "emotion_id": "longing",
+          "description": "Distance, desire, and emotional reach toward someone absent.",
+          "ep01_compatible": false,
+          "intensity_range": [
+            0.45,
+            0.8
+          ]
+        },
+        {
+          "emotion_id": "hope",
+          "description": "Forward-looking warmth; in EP01 expressed as quiet hope only.",
+          "ep01_compatible": true,
+          "intensity_range": [
+            0.35,
+            0.65
+          ]
+        },
+        {
+          "emotion_id": "sadness",
+          "description": "Visible sorrow after loss, restriction, or separation event.",
+          "ep01_compatible": false,
+          "intensity_range": [
+            0.5,
+            0.85
+          ]
+        },
+        {
+          "emotion_id": "loss",
+          "description": "Emotional weight of something or someone gone.",
+          "ep01_compatible": false,
+          "intensity_range": [
+            0.55,
+            0.9
+          ]
+        },
+        {
+          "emotion_id": "separation",
+          "description": "Pain of being kept apart from a bonded person.",
+          "ep01_compatible": false,
+          "intensity_range": [
+            0.5,
+            0.85
+          ]
+        },
+        {
+          "emotion_id": "reunion",
+          "description": "Restored connection after absence or crisis.",
+          "ep01_compatible": false,
+          "intensity_range": [
+            0.55,
+            0.9
+          ]
+        },
+        {
+          "emotion_id": "acceptance",
+          "description": "Quiet resolution after grief, memory loss, or fate.",
+          "ep01_compatible": false,
+          "intensity_range": [
+            0.3,
+            0.6
+          ]
+        },
+        {
+          "emotion_id": "memory",
+          "description": "Emotional residue of the past; unrecognized or recognized.",
+          "ep01_compatible": false,
+          "intensity_range": [
+            0.35,
+            0.75
+          ]
+        }
+      ]
+    },
+    "section_2_transition_pathways": {
+      "transition_count": 22,
+      "transitions": [
+        {
+          "from_emotion": "peace",
+          "to_emotion": "curiosity",
+          "transition_strength": 0.7,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.95
+        },
+        {
+          "from_emotion": "curiosity",
+          "to_emotion": "wonder",
+          "transition_strength": 0.75,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.92
+        },
+        {
+          "from_emotion": "wonder",
+          "to_emotion": "longing",
+          "transition_strength": 0.65,
+          "story_stage": "post_EP01_romance",
+          "transition_plausibility_score": 0.88
+        },
+        {
+          "from_emotion": "longing",
+          "to_emotion": "hope",
+          "transition_strength": 0.7,
+          "story_stage": "romance_arc",
+          "transition_plausibility_score": 0.9
+        },
+        {
+          "from_emotion": "hope",
+          "to_emotion": "separation",
+          "transition_strength": 0.8,
+          "story_stage": "conflict_arc",
+          "transition_plausibility_score": 0.85
+        },
+        {
+          "from_emotion": "separation",
+          "to_emotion": "sadness",
+          "transition_strength": 0.85,
+          "story_stage": "conflict_arc",
+          "transition_plausibility_score": 0.93
+        },
+        {
+          "from_emotion": "sadness",
+          "to_emotion": "memory",
+          "transition_strength": 0.75,
+          "story_stage": "memory_arc",
+          "transition_plausibility_score": 0.87
+        },
+        {
+          "from_emotion": "memory",
+          "to_emotion": "reunion",
+          "transition_strength": 0.8,
+          "story_stage": "reunion_arc",
+          "transition_plausibility_score": 0.86
+        },
+        {
+          "from_emotion": "reunion",
+          "to_emotion": "acceptance",
+          "transition_strength": 0.7,
+          "story_stage": "finale_arc",
+          "transition_plausibility_score": 0.84
+        },
+        {
+          "from_emotion": "peace",
+          "to_emotion": "comfort",
+          "transition_strength": 0.85,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.97
+        },
+        {
+          "from_emotion": "comfort",
+          "to_emotion": "peace",
+          "transition_strength": 0.8,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.96
+        },
+        {
+          "from_emotion": "comfort",
+          "to_emotion": "curiosity",
+          "transition_strength": 0.65,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.9
+        },
+        {
+          "from_emotion": "curiosity",
+          "to_emotion": "comfort",
+          "transition_strength": 0.7,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.91
+        },
+        {
+          "from_emotion": "peace",
+          "to_emotion": "wonder",
+          "transition_strength": 0.6,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.89
+        },
+        {
+          "from_emotion": "wonder",
+          "to_emotion": "curiosity",
+          "transition_strength": 0.55,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.88
+        },
+        {
+          "from_emotion": "comfort",
+          "to_emotion": "hope",
+          "transition_strength": 0.65,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.92
+        },
+        {
+          "from_emotion": "hope",
+          "to_emotion": "comfort",
+          "transition_strength": 0.6,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.9
+        },
+        {
+          "from_emotion": "curiosity",
+          "to_emotion": "hope",
+          "transition_strength": 0.55,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.87
+        },
+        {
+          "from_emotion": "peace",
+          "to_emotion": "hope",
+          "transition_strength": 0.5,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.86
+        },
+        {
+          "from_emotion": "comfort",
+          "to_emotion": "wonder",
+          "transition_strength": 0.55,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.85
+        },
+        {
+          "from_emotion": "curiosity",
+          "to_emotion": "peace",
+          "transition_strength": 0.6,
+          "story_stage": "EP01_daily_life",
+          "transition_plausibility_score": 0.9
+        },
+        {
+          "from_emotion": "hope",
+          "to_emotion": "loss",
+          "transition_strength": 0.75,
+          "story_stage": "tragedy_arc",
+          "transition_plausibility_score": 0.82
+        }
+      ]
+    },
+    "section_3_visual_motif_bridges": {
+      "motif_bridge_count": 12,
+      "rules": [
+        "Only use EP01-compatible motifs for EP01-compatible emotional states.",
+        "Future motifs remain future-only and link only to non-EP01 emotions."
+      ],
+      "bridges": [
+        {
+          "emotion_id": "peace",
+          "motif_ids": [
+            "morning_light",
+            "window"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "comfort",
+          "motif_ids": [
+            "toast",
+            "tea_cup",
+            "bread"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "curiosity",
+          "motif_ids": [
+            "open_window",
+            "harbor_path",
+            "stone_stairway"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "wonder",
+          "motif_ids": [
+            "sea_horizon",
+            "wind_grass"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "hope",
+          "motif_ids": [
+            "morning_light",
+            "sea_horizon",
+            "sunset_hill"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "longing",
+          "motif_ids": [
+            "sunset_hill",
+            "reflection"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "sadness",
+          "motif_ids": [
+            "reflection",
+            "sea_horizon"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "separation",
+          "motif_ids": [
+            "harbor_path",
+            "wooden_boat",
+            "sea_horizon"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "memory",
+          "motif_ids": [
+            "letter",
+            "blue_ribbon",
+            "memory_item"
+          ],
+          "ep01_motif_only": false,
+          "future_motifs": true
+        },
+        {
+          "emotion_id": "reunion",
+          "motif_ids": [
+            "harbor_path",
+            "open_window"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "loss",
+          "motif_ids": [
+            "sea_horizon",
+            "reflection"
+          ],
+          "ep01_motif_only": true
+        },
+        {
+          "emotion_id": "acceptance",
+          "motif_ids": [
+            "window",
+            "sunset_hill",
+            "wind_grass"
+          ],
+          "ep01_motif_only": true
+        }
+      ]
+    },
+    "section_4_shot_pattern_bridges": {
+      "shot_bridge_count": 12,
+      "behavior_bridge_count": 12,
+      "bridges": [
+        {
+          "emotion_id": "peace",
+          "shot_patterns": [
+            "establishing_daily_life",
+            "quiet_solitude"
+          ],
+          "archetypes": [
+            "domestic_bedroom_peace",
+            "gonegi_morning_routine"
+          ],
+          "behaviors": [
+            "wake_up",
+            "night_rest",
+            "tree_rest"
+          ]
+        },
+        {
+          "emotion_id": "comfort",
+          "shot_patterns": [
+            "domestic_warmth",
+            "bakery_morning"
+          ],
+          "archetypes": [
+            "family_bakery_warmth",
+            "gamja_companion_bond"
+          ],
+          "behaviors": [
+            "family_breakfast",
+            "family_dinner",
+            "morning_greeting"
+          ]
+        },
+        {
+          "emotion_id": "curiosity",
+          "shot_patterns": [
+            "street_passage",
+            "rooftop_gaze"
+          ],
+          "archetypes": [
+            "village_lane_passage",
+            "rooftop_gaze"
+          ],
+          "behaviors": [
+            "afternoon_wandering",
+            "harbor_watch"
+          ]
+        },
+        {
+          "emotion_id": "wonder",
+          "shot_patterns": [
+            "harbor_edge_watch",
+            "rooftop_gaze"
+          ],
+          "archetypes": [
+            "harbor_edge_watch",
+            "rooftop_gaze"
+          ],
+          "behaviors": [
+            "hilltop_lunch",
+            "harbor_watch"
+          ]
+        },
+        {
+          "emotion_id": "hope",
+          "shot_patterns": [
+            "establishing_daily_life",
+            "harbor_edge_watch"
+          ],
+          "archetypes": [
+            "gonegi_morning_routine",
+            "harbor_edge_watch"
+          ],
+          "behaviors": [
+            "sunset_return",
+            "walk_with_gamja"
+          ]
+        },
+        {
+          "emotion_id": "longing",
+          "shot_patterns": [
+            "quiet_solitude",
+            "harbor_edge_watch"
+          ],
+          "archetypes": [
+            "harbor_edge_watch",
+            "domestic_bedroom_peace"
+          ],
+          "behaviors": [
+            "window_reflection",
+            "harbor_watch"
+          ]
+        },
+        {
+          "emotion_id": "sadness",
+          "shot_patterns": [
+            "quiet_solitude"
+          ],
+          "archetypes": [
+            "domestic_bedroom_peace",
+            "harbor_edge_watch"
+          ],
+          "behaviors": [
+            "window_reflection",
+            "night_rest"
+          ]
+        },
+        {
+          "emotion_id": "separation",
+          "shot_patterns": [
+            "harbor_edge_watch",
+            "quiet_solitude"
+          ],
+          "archetypes": [
+            "harbor_edge_watch"
+          ],
+          "behaviors": [
+            "harbor_watch",
+            "fishing_break"
+          ]
+        },
+        {
+          "emotion_id": "loss",
+          "shot_patterns": [
+            "quiet_solitude",
+            "harbor_edge_watch"
+          ],
+          "archetypes": [
+            "harbor_edge_watch"
+          ],
+          "behaviors": [
+            "harbor_watch",
+            "window_reflection"
+          ]
+        },
+        {
+          "emotion_id": "memory",
+          "shot_patterns": [
+            "quiet_solitude",
+            "domestic_warmth"
+          ],
+          "archetypes": [
+            "domestic_bedroom_peace"
+          ],
+          "behaviors": [
+            "window_reflection",
+            "night_rest"
+          ]
+        },
+        {
+          "emotion_id": "reunion",
+          "shot_patterns": [
+            "companion_bond_moment",
+            "establishing_daily_life"
+          ],
+          "archetypes": [
+            "gamja_companion_bond",
+            "village_lane_passage"
+          ],
+          "behaviors": [
+            "walk_with_gamja",
+            "morning_greeting"
+          ]
+        },
+        {
+          "emotion_id": "acceptance",
+          "shot_patterns": [
+            "quiet_solitude",
+            "establishing_daily_life"
+          ],
+          "archetypes": [
+            "rooftop_gaze",
+            "village_lane_passage"
+          ],
+          "behaviors": [
+            "tree_rest",
+            "sunset_return"
+          ]
+        }
+      ]
+    },
+    "section_5_emotional_continuity_law": {
+      "summary": "Emotion should not jump randomly between scenes.",
+      "allowed_examples": [
+        "peace → comfort → curiosity"
+      ],
+      "not_recommended_examples": [
+        "peace → extreme sadness without supported story event"
+      ],
+      "rules": [
+        "Prefer adjacent emotional transitions with plausibility score ≥ 0.85 within EP01.",
+        "Large emotional jumps require explicit story_stage support.",
+        "Transition plausibility_score ranges from 0.0 to 1.0.",
+        "EP01 scenes should remain within EP01-compatible emotional states."
+      ],
+      "minimum_plausibility_ep01": 0.85,
+      "minimum_plausibility_story_arc": 0.8
+    },
+    "section_6_ep01_emotional_profile": {
+      "title": "늘 그래왔듯이",
+      "allowed_registers": [
+        "peace",
+        "family comfort",
+        "small freedom",
+        "quiet reflection",
+        "warm belonging"
+      ],
+      "allowed_emotion_ids": [
+        "peace",
+        "comfort",
+        "curiosity",
+        "wonder",
+        "hope"
+      ],
+      "forbidden_in_ep01": [
+        "romance",
+        "longing",
+        "separation",
+        "loss",
+        "reunion"
+      ],
+      "forbidden_emotion_ids": [
+        "longing",
+        "sadness",
+        "loss",
+        "separation",
+        "reunion",
+        "acceptance",
+        "memory"
+      ],
+      "register_mapping": {
+        "peace": "peaceful_daily_life",
+        "family comfort": "comfort",
+        "small freedom": "curiosity",
+        "quiet reflection": "peace",
+        "warm belonging": "comfort"
+      }
+    },
+    "section_7_rkb_integration": {
+      "test_id": "RKB-001",
+      "encoded_successes": [
+        "daily-life success",
+        "character consistency success",
+        "environment consistency success",
+        "scenario-character separation success"
+      ],
+      "rkb_scores": {
+        "character_consistency": 9.5,
+        "environment_consistency": 9,
+        "style_consistency": 9,
+        "overall_result": "SUCCESS"
+      },
+      "grammar_alignment": {
+        "field_separation": "Emotional intent informs scenario atmosphere; character field remains visual identity only",
+        "ep01_emotional_intent_from_master_story": [
+          "peace",
+          "warmth",
+          "ordinary happiness",
+          "family comfort",
+          "small freedom",
+          "quiet hope"
+        ]
+      }
+    }
+  },
+  "beat_structure": {
+    "asset_type": "music_drama_beat_structure_grammar",
+    "asset_version": "v1",
+    "grammar_id": "music-drama-beat-structure-grammar-v1",
+    "phase": "PHASE-MDG-007",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Connect emotional transitions to musical structure for Music Drama. Beat grammar only — no generated scenarios or prompts.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_character_dna": false,
+      "modifies_style_core": false,
+      "modifies_living_world_core": false
+    },
+    "read_only_sources": {
+      "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "visual_motif_grammar": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+      "emotional_transition_grammar": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json"
+    },
+    "section_1_beat_types": {
+      "beat_type_count": 6,
+      "beat_types": [
+        "intro",
+        "verse",
+        "pre_chorus",
+        "chorus",
+        "bridge",
+        "outro"
+      ]
+    },
+    "section_2_beat_profiles": {
+      "profiles": [
+        {
+          "beat_id": "intro",
+          "label": "Intro",
+          "emotion_density": "LOW",
+          "visual_density": "LOW",
+          "motif_density": "LOW",
+          "behavior_density": "LOW",
+          "crowd_density": "NONE",
+          "camera_energy": "LOW"
+        },
+        {
+          "beat_id": "verse",
+          "label": "Verse",
+          "emotion_density": "LOW",
+          "visual_density": "MEDIUM",
+          "motif_density": "LOW",
+          "behavior_density": "MEDIUM",
+          "crowd_density": "LOW",
+          "camera_energy": "LOW"
+        },
+        {
+          "beat_id": "pre_chorus",
+          "label": "Pre-Chorus",
+          "emotion_density": "MEDIUM",
+          "visual_density": "MEDIUM",
+          "motif_density": "MEDIUM",
+          "behavior_density": "MEDIUM",
+          "crowd_density": "LOW",
+          "camera_energy": "MEDIUM"
+        },
+        {
+          "beat_id": "chorus",
+          "label": "Chorus",
+          "emotion_density": "MEDIUM",
+          "visual_density": "MEDIUM",
+          "motif_density": "MEDIUM",
+          "behavior_density": "MEDIUM",
+          "crowd_density": "LOW",
+          "camera_energy": "MEDIUM"
+        },
+        {
+          "beat_id": "bridge",
+          "label": "Bridge",
+          "emotion_density": "MEDIUM",
+          "visual_density": "LOW",
+          "motif_density": "LOW",
+          "behavior_density": "LOW",
+          "crowd_density": "NONE",
+          "camera_energy": "LOW"
+        },
+        {
+          "beat_id": "outro",
+          "label": "Outro",
+          "emotion_density": "LOW",
+          "visual_density": "LOW",
+          "motif_density": "LOW",
+          "behavior_density": "LOW",
+          "crowd_density": "NONE",
+          "camera_energy": "LOW"
+        }
+      ]
+    },
+    "section_3_emotional_bridges": {
+      "emotional_bridge_count": 6,
+      "bridges": [
+        {
+          "beat_id": "intro",
+          "emotional_target": "peace",
+          "linked_emotion_id": "peace",
+          "ep01_compatible": true
+        },
+        {
+          "beat_id": "verse",
+          "emotional_target": "curiosity",
+          "linked_emotion_id": "curiosity",
+          "ep01_compatible": true
+        },
+        {
+          "beat_id": "pre_chorus",
+          "emotional_target": "wonder",
+          "linked_emotion_id": "wonder",
+          "ep01_compatible": true
+        },
+        {
+          "beat_id": "chorus",
+          "emotional_target": "hope",
+          "linked_emotion_id": "hope",
+          "ep01_compatible": true
+        },
+        {
+          "beat_id": "bridge",
+          "emotional_target": "reflection",
+          "linked_emotion_id": "peace",
+          "emotional_register": "quiet_reflection",
+          "primary_motif_id": "reflection",
+          "ep01_compatible": true
+        },
+        {
+          "beat_id": "outro",
+          "emotional_target": "acceptance",
+          "linked_emotion_id": "acceptance",
+          "ep01_emotion_override": "peace",
+          "ep01_compatible": true
+        }
+      ]
+    },
+    "section_4_motif_usage": {
+      "motif_rule_count": 6,
+      "rules": [
+        {
+          "beat_id": "intro",
+          "motif_count_min": 1,
+          "motif_count_max": 1
+        },
+        {
+          "beat_id": "verse",
+          "motif_count_min": 1,
+          "motif_count_max": 2
+        },
+        {
+          "beat_id": "pre_chorus",
+          "motif_count_min": 2,
+          "motif_count_max": 2
+        },
+        {
+          "beat_id": "chorus",
+          "motif_count_min": 2,
+          "motif_count_max": 3
+        },
+        {
+          "beat_id": "bridge",
+          "motif_count_min": 1,
+          "motif_count_max": 2
+        },
+        {
+          "beat_id": "outro",
+          "motif_count_min": 1,
+          "motif_count_max": 1
+        }
+      ],
+      "global_max_visible_motifs": 3,
+      "alignment": "visual-motif-grammar-v1 section_6_motif_density_law"
+    },
+    "section_5_behavior_intensity": {
+      "behavior_rule_count": 6,
+      "intensity_scale": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ],
+      "rules": [
+        {
+          "beat_id": "intro",
+          "behavior_intensity": "LOW"
+        },
+        {
+          "beat_id": "verse",
+          "behavior_intensity": "MEDIUM"
+        },
+        {
+          "beat_id": "pre_chorus",
+          "behavior_intensity": "MEDIUM"
+        },
+        {
+          "beat_id": "chorus",
+          "behavior_intensity": "MEDIUM"
+        },
+        {
+          "beat_id": "bridge",
+          "behavior_intensity": "LOW"
+        },
+        {
+          "beat_id": "outro",
+          "behavior_intensity": "LOW"
+        }
+      ]
+    },
+    "section_6_ep01_profile": {
+      "episode_id": "EP01",
+      "title": "늘 그래왔듯이",
+      "beat_behavior_map": [
+        {
+          "beat_id": "intro",
+          "behavior_id": "wake_up",
+          "linked_emotion_id": "peace"
+        },
+        {
+          "beat_id": "verse",
+          "behavior_id": "family_breakfast",
+          "linked_emotion_id": "comfort"
+        },
+        {
+          "beat_id": "pre_chorus",
+          "behavior_id": "harbor_watch",
+          "linked_emotion_id": "curiosity"
+        },
+        {
+          "beat_id": "chorus",
+          "behavior_id": "hilltop_lunch",
+          "linked_emotion_id": "hope"
+        },
+        {
+          "beat_id": "bridge",
+          "behavior_id": "window_reflection",
+          "linked_emotion_id": "peace",
+          "emotional_register": "quiet_reflection"
+        },
+        {
+          "beat_id": "outro",
+          "behavior_id": "night_rest",
+          "linked_emotion_id": "peace"
+        }
+      ],
+      "forbidden_ep01_beats_emotions": [
+        "longing",
+        "separation",
+        "loss",
+        "reunion"
+      ]
+    },
+    "section_7_rkb_integration": {
+      "test_id": "RKB-001",
+      "maintained_principles": [
+        "character readability",
+        "crowd caution",
+        "companion continuity",
+        "stable atmosphere"
+      ],
+      "alignment": {
+        "crowd_density_caps": "chorus and verse remain LOW crowd density for EP01",
+        "companion_continuity": "all EP01 beat behaviors support gamja continuity_companions",
+        "motif_density_cap": 3,
+        "character_readability": "camera_energy LOW-MEDIUM only; protagonist remains frame anchor"
+      },
+      "rkb_scores_reflected": {
+        "character_consistency": 9.5,
+        "environment_consistency": 9,
+        "style_consistency": 9,
+        "overall_result": "SUCCESS"
+      }
+    },
+    "beat_sequence_order": [
+      "intro",
+      "verse",
+      "pre_chorus",
+      "chorus",
+      "bridge",
+      "outro"
+    ]
+  },
+  "sequence_assembly": {
+    "asset_type": "music_drama_sequence_assembly_grammar",
+    "asset_version": "v1",
+    "grammar_id": "music-drama-sequence-assembly-grammar-v1",
+    "phase": "PHASE-MDG-008",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "purpose": "Define how Music Drama scenes assemble from beat through emotion, behavior, motif, shot pattern, archetype, and crowd/animal support. Assembly grammar only — no generated scenarios or prompts.",
+    "scope": {
+      "generates_scenarios": false,
+      "generates_prompts": false,
+      "modifies_character_dna": false,
+      "modifies_style_core": false,
+      "modifies_living_world_core": false
+    },
+    "read_only_sources": {
+      "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "shot_patterns": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+      "scene_archetypes": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+      "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "animal_companion_behavior_grammar": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+      "visual_motif_grammar": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+      "emotional_transition_grammar": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+      "beat_structure_grammar": "datasets/music_drama_grammar/music-drama-beat-structure-grammar-v1.json",
+      "render_feedback": "datasets/render_feedback/RKB-001.json"
+    },
+    "section_1_assembly_pipeline": {
+      "required_order": [
+        "beat_type",
+        "emotional_state",
+        "daily_life_behavior",
+        "visual_motif",
+        "shot_pattern",
+        "scene_archetype",
+        "community_support",
+        "animal_support",
+        "continuity_state"
+      ],
+      "pipeline_description": "Each assembled scene slot is filled in this fixed order before Image App field conversion."
+    },
+    "section_2_ep01_default_sequence": {
+      "episode_id": "EP01",
+      "title": "늘 그래왔듯이",
+      "sequence_beat_count": 6,
+      "beats": [
+        {
+          "beat_type": "intro",
+          "daily_life_behavior": "wake_up",
+          "emotional_state": "peace",
+          "emotional_register": "peaceful_daily_life",
+          "visual_motifs": [
+            "morning_light",
+            "window"
+          ],
+          "shot_pattern": "domestic_warmth",
+          "scene_archetype": "domestic_bedroom_peace",
+          "community_support": [],
+          "animal_support": {
+            "primary_companion": "gamja",
+            "background_animals": []
+          },
+          "continuity_state": {
+            "persistent_companion": "gamja",
+            "persistent_object": null,
+            "persistent_location_anchor": "gonegi_bedroom_window",
+            "persistent_emotion": "peace",
+            "persistent_time_cluster": "sunrise"
+          }
+        },
+        {
+          "beat_type": "verse",
+          "daily_life_behavior": "family_breakfast",
+          "emotional_state": "comfort",
+          "emotional_register": "family_comfort",
+          "visual_motifs": [
+            "bread",
+            "tea_cup"
+          ],
+          "shot_pattern": "bakery_morning",
+          "scene_archetype": "family_bakery_warmth",
+          "community_support": [
+            "bakery_customers"
+          ],
+          "animal_support": {
+            "primary_companion": "gamja",
+            "background_animals": [
+              "chicken"
+            ]
+          },
+          "continuity_state": {
+            "persistent_companion": "gamja",
+            "persistent_object": "bread",
+            "persistent_location_anchor": "bakery_window",
+            "persistent_emotion": "comfort",
+            "persistent_time_cluster": "early_morning"
+          }
+        },
+        {
+          "beat_type": "pre_chorus",
+          "daily_life_behavior": "harbor_watch",
+          "emotional_state": "wonder",
+          "emotional_register": "small_freedom",
+          "visual_motifs": [
+            "sea_horizon",
+            "harbor_path"
+          ],
+          "shot_pattern": "harbor_edge_watch",
+          "scene_archetype": "harbor_edge_watch",
+          "community_support": [
+            "harbor_workers"
+          ],
+          "animal_support": {
+            "primary_companion": "gamja",
+            "background_animals": [
+              "seagull"
+            ]
+          },
+          "continuity_state": {
+            "persistent_companion": "gamja",
+            "persistent_object": null,
+            "persistent_location_anchor": "harbor_bench",
+            "persistent_emotion": "wonder",
+            "persistent_time_cluster": "morning_sunshine"
+          }
+        },
+        {
+          "beat_type": "chorus",
+          "daily_life_behavior": "hilltop_lunch",
+          "emotional_state": "hope",
+          "emotional_register": "warm_belonging",
+          "visual_motifs": [
+            "toast",
+            "wind_grass"
+          ],
+          "shot_pattern": "rooftop_gaze",
+          "scene_archetype": "rooftop_gaze",
+          "community_support": [],
+          "animal_support": {
+            "primary_companion": "gamja",
+            "background_animals": []
+          },
+          "continuity_state": {
+            "persistent_companion": "gamja",
+            "persistent_object": "toast",
+            "persistent_location_anchor": "sunset_hill",
+            "persistent_emotion": "hope",
+            "persistent_time_cluster": "golden_hour_breeze"
+          }
+        },
+        {
+          "beat_type": "bridge",
+          "daily_life_behavior": "window_reflection",
+          "emotional_state": "peace",
+          "emotional_register": "quiet_reflection",
+          "visual_motifs": [
+            "reflection",
+            "open_window"
+          ],
+          "shot_pattern": "quiet_solitude",
+          "scene_archetype": "domestic_bedroom_peace",
+          "community_support": [],
+          "animal_support": {
+            "primary_companion": "gamja",
+            "background_animals": []
+          },
+          "continuity_state": {
+            "persistent_companion": "gamja",
+            "persistent_object": null,
+            "persistent_location_anchor": "window",
+            "persistent_emotion": "peace",
+            "persistent_time_cluster": "afternoon_work"
+          }
+        },
+        {
+          "beat_type": "outro",
+          "daily_life_behavior": "night_rest",
+          "emotional_state": "peace",
+          "emotional_register": "quiet_reflection",
+          "visual_motifs": [
+            "window",
+            "morning_light"
+          ],
+          "motif_note": "morning_light used as memory echo of intro beat",
+          "shot_pattern": "domestic_warmth",
+          "scene_archetype": "domestic_bedroom_peace",
+          "community_support": [],
+          "animal_support": {
+            "primary_companion": "gamja",
+            "background_animals": []
+          },
+          "continuity_state": {
+            "persistent_companion": "gamja",
+            "persistent_object": "linen_blanket",
+            "persistent_location_anchor": "gonegi_bedroom_window",
+            "persistent_emotion": "peace",
+            "persistent_time_cluster": "evening_lanterns"
+          }
+        }
+      ]
+    },
+    "section_3_scene_count_expansion_rule": {
+      "base_beat_count": 6,
+      "allowed_expansions": [
+        10,
+        15,
+        30
+      ],
+      "rules": [
+        "Do not invent new emotional jumps.",
+        "Repeat compatible motifs across expanded scenes.",
+        "Preserve continuity companion across adjacent scenes.",
+        "Preserve protagonist readability in every expanded slot.",
+        "Expansion inserts intermediate scenes between beats using allowed emotional transitions only.",
+        "Each expanded scene must complete the full assembly pipeline in section_1 order."
+      ],
+      "expansion_method": "subdivide beats with compatible daily-life behaviors and matching shot/archetype pairs from existing grammar libraries"
+    },
+    "section_4_continuity_state_transfer": {
+      "tracked_fields": [
+        "persistent_companion",
+        "persistent_object",
+        "persistent_location_anchor",
+        "persistent_emotion",
+        "persistent_time_cluster"
+      ],
+      "companion_rules": {
+        "gonegi_gamja": "Gamja persists with Gonegi across adjacent EP01 scenes unless departure is explicitly described.",
+        "dana_aengdu": "Aengdu persists with Dana only when Dana appears in future episodes."
+      },
+      "object_rule": "Carried objects such as toast persist until scenario explicitly removes them.",
+      "location_anchor_rule": "Recurring anchors such as window and harbor_bench may reappear to strengthen motif continuity.",
+      "time_cluster_rule": "Time atmosphere must stay compatible with datasets/time/time-setting-library-v1.json"
+    },
+    "section_5_field_separation_output_contract": {
+      "when_converted_to_image_app": true,
+      "scenario_field_receives": [
+        "location",
+        "atmosphere",
+        "visible environment",
+        "visible action"
+      ],
+      "character_field_receives": [
+        "only visible entity descriptions"
+      ],
+      "forbidden": [
+        "absent character names",
+        "negative exclusion text"
+      ],
+      "alignment": "music-drama-scenario-writing-rulebook-v1 field_separation_law"
+    },
+    "section_6_density_control": {
+      "max_named_extras": 2,
+      "max_crowd_groups": 1,
+      "max_background_animals": 2,
+      "max_visible_motifs": 3,
+      "crowd_role": "background only",
+      "animal_role": "support only",
+      "protagonist_readability": "required",
+      "alignment_sources": [
+        "music-drama-grammar-v1 density_limits",
+        "community-crowd-behavior-grammar-v1 visibility_law",
+        "animal-companion-behavior-grammar-v1 section_4_animal_density_law",
+        "visual-motif-grammar-v1 section_6_motif_density_law"
+      ]
+    },
+    "section_7_rkb_protection_rules": {
+      "test_id": "RKB-001",
+      "avoid": [
+        "blanket/body merge",
+        "dense market crowd",
+        "complex hand poses",
+        "overcrowded animal/crowd scenes"
+      ],
+      "mitigations": {
+        "blanket_body_merge": "Prefer simple bedding in domestic_bedroom_peace and night_rest beats",
+        "dense_market_crowd": "EP01 default sequence excludes market_edge_background; max one crowd group",
+        "complex_hand_poses": "Keep visible actions simple in behavior selection",
+        "overcrowded_animal_crowd": "Apply section_6 density_control on every assembled scene"
+      },
+      "rkb_scores_reflected": {
+        "character_consistency": 9.5,
+        "gamja_consistency": 9.5,
+        "crowd_quality": 7,
+        "object_quality": 7.5
+      }
+    }
+  }
+}

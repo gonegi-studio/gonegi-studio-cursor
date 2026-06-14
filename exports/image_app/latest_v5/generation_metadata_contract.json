@@ -1,0 +1,501 @@
+{
+  "contract_id": "generation-metadata-contract-v4",
+  "phase": "PHASE-TITANIC-UPLOAD-INTEGRATION-001",
+  "validation_id": "APP_DATASET_CONSUMPTION_VALIDATION_V2",
+  "generated_at": "2026-06-10T06:22:45.622Z",
+  "purpose": "Extended metadata contract with evidence for App Consumption Validation V2",
+  "dataset_usage": {
+    "character_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 456,
+        "dna_fields_referenced": 311,
+        "constraint_hits": 20,
+        "source_file": "datasets/movie_analysis/cinematic_dna",
+        "generation_trace_id": "trace_generation_character_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "datasets/movie_analysis/cinematic_dna",
+      "export_file": "exports/image_app/latest_v5/character_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_character_dna_v2",
+      "generation_trace_id": "trace_generation_character_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "location_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 290,
+        "dna_fields_referenced": 192,
+        "constraint_hits": 20,
+        "source_file": "datasets/movie_analysis/cinematic_dna",
+        "generation_trace_id": "trace_generation_location_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "datasets/movie_analysis/cinematic_dna",
+      "export_file": "exports/image_app/latest_v5/location_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_location_dna_v2",
+      "generation_trace_id": "trace_generation_location_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "lighting_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 280,
+        "dna_fields_referenced": 185,
+        "constraint_hits": 20,
+        "source_file": "datasets/movie_analysis/cinematic_dna",
+        "generation_trace_id": "trace_generation_lighting_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "datasets/movie_analysis/cinematic_dna",
+      "export_file": "exports/image_app/latest_v5/lighting_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_lighting_dna_v2",
+      "generation_trace_id": "trace_generation_lighting_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "source_video_numerical_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 310,
+        "dna_fields_referenced": 221,
+        "constraint_hits": 6,
+        "source_file": "exports/source_video_dna/image-app-numerical-dna-package.json",
+        "generation_trace_id": "trace_generation_source_video_numerical_dna_v2"
+      },
+      "influence_score": 0.9538,
+      "source_file": "exports/source_video_dna/image-app-numerical-dna-package.json",
+      "export_file": "exports/image_app/latest_v5/source_video_numerical_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_source_video_numerical_dna_v2",
+      "generation_trace_id": "trace_generation_source_video_numerical_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "cinematic_signature_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 59,
+        "dna_fields_referenced": 41,
+        "constraint_hits": 5,
+        "source_file": "exports/source_video_dna/cinematic-signature-library.json",
+        "generation_trace_id": "trace_generation_cinematic_signature_dna_v2"
+      },
+      "influence_score": 0.9093,
+      "source_file": "exports/source_video_dna/cinematic-signature-library.json",
+      "export_file": "exports/image_app/latest_v5/cinematic_signature_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_cinematic_signature_dna_v2",
+      "generation_trace_id": "trace_generation_cinematic_signature_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "scene_remap_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 30,
+        "dna_fields_referenced": 20,
+        "constraint_hits": 5,
+        "source_file": "exports/source_video_dna/scene-remap-engine-specification.json",
+        "generation_trace_id": "trace_generation_scene_remap_dna_v2"
+      },
+      "influence_score": 0.8017,
+      "source_file": "exports/source_video_dna/scene-remap-engine-specification.json",
+      "export_file": "exports/image_app/latest_v5/scene_remap_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_scene_remap_dna_v2",
+      "generation_trace_id": "trace_generation_scene_remap_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "camera_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 109,
+        "dna_fields_referenced": 63,
+        "constraint_hits": 20,
+        "source_file": "exports/source_video_dna/camera-behavior-dna-bundle.json",
+        "generation_trace_id": "trace_generation_camera_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "exports/source_video_dna/camera-behavior-dna-bundle.json",
+      "export_file": "exports/video_app/latest_v5/camera_dna.json",
+      "prompt_trace_id": "trace_prompt_camera_dna_v2",
+      "generation_trace_id": "trace_generation_camera_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "motion_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 110,
+        "dna_fields_referenced": 64,
+        "constraint_hits": 20,
+        "source_file": "exports/source_video_dna/environment-motion-dna-bundle.json",
+        "generation_trace_id": "trace_generation_motion_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "exports/source_video_dna/environment-motion-dna-bundle.json",
+      "export_file": "exports/video_app/latest_v5/motion_dna.json",
+      "prompt_trace_id": "trace_prompt_motion_dna_v2",
+      "generation_trace_id": "trace_generation_motion_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "blocking_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 108,
+        "dna_fields_referenced": 76,
+        "constraint_hits": 3,
+        "source_file": "exports/source_video_dna/blocking-dna-bundle.json",
+        "generation_trace_id": "trace_generation_blocking_dna_v2"
+      },
+      "influence_score": 0.9252,
+      "source_file": "exports/source_video_dna/blocking-dna-bundle.json",
+      "export_file": "exports/image_app/latest_v5/blocking_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_blocking_dna_v2",
+      "generation_trace_id": "trace_generation_blocking_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "temporal_memory": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 37,
+        "dna_fields_referenced": 25,
+        "constraint_hits": 3,
+        "source_file": "datasets/consistency/timeline-memory-specification.json",
+        "generation_trace_id": "trace_generation_temporal_memory_v2"
+      },
+      "influence_score": 0.8128,
+      "source_file": "datasets/consistency/timeline-memory-specification.json",
+      "export_file": "exports/image_app/latest_v5/memory_bundle.json",
+      "prompt_trace_id": "trace_prompt_temporal_memory_v2",
+      "generation_trace_id": "trace_generation_temporal_memory_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "environment_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 297,
+        "dna_fields_referenced": 198,
+        "constraint_hits": 18,
+        "source_file": "datasets/movie_analysis/cinematic_dna",
+        "generation_trace_id": "trace_generation_environment_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "datasets/movie_analysis/cinematic_dna",
+      "export_file": "exports/image_app/latest_v5/environment_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_environment_dna_v2",
+      "generation_trace_id": "trace_generation_environment_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "style_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 142,
+        "dna_fields_referenced": 98,
+        "constraint_hits": 6,
+        "source_file": "exports/image_app/latest_v5/style_dna_bundle.json",
+        "generation_trace_id": "trace_generation_style_dna_v2"
+      },
+      "influence_score": 0.9238,
+      "source_file": "exports/image_app/latest_v5/style_dna_bundle.json",
+      "export_file": "exports/image_app/latest_v5/style_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_style_dna_v2",
+      "generation_trace_id": "trace_generation_style_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "environment_motion_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 60,
+        "dna_fields_referenced": 42,
+        "constraint_hits": 4,
+        "source_file": "exports/source_video_dna/environment-motion-dna-bundle.json",
+        "generation_trace_id": "trace_generation_environment_motion_dna_v2"
+      },
+      "influence_score": 0.8714,
+      "source_file": "exports/source_video_dna/environment-motion-dna-bundle.json",
+      "export_file": "exports/image_app/latest_v5/environment_motion_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_environment_motion_dna_v2",
+      "generation_trace_id": "trace_generation_environment_motion_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "edit_rhythm_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 45,
+        "dna_fields_referenced": 31,
+        "constraint_hits": 4,
+        "source_file": "exports/source_video_dna/edit-rhythm-dna-bundle.json",
+        "generation_trace_id": "trace_generation_edit_rhythm_dna_v2"
+      },
+      "influence_score": 0.8279,
+      "source_file": "exports/source_video_dna/edit-rhythm-dna-bundle.json",
+      "export_file": "exports/image_app/latest_v5/edit_rhythm_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_edit_rhythm_dna_v2",
+      "generation_trace_id": "trace_generation_edit_rhythm_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "frame_coordinate_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 1233,
+        "dna_fields_referenced": 867,
+        "constraint_hits": 20,
+        "source_file": "exports/source_video_dna/frame-coordinate-dna",
+        "generation_trace_id": "trace_generation_frame_coordinate_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "exports/source_video_dna/frame-coordinate-dna",
+      "export_file": "exports/image_app/latest_v5/frame_coordinate_dna_bundle.json",
+      "prompt_trace_id": "trace_prompt_frame_coordinate_dna_v2",
+      "generation_trace_id": "trace_generation_frame_coordinate_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "continuity_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 27,
+        "dna_fields_referenced": 18,
+        "constraint_hits": 3,
+        "source_file": "datasets/consistency/motion-consistency-specification.json",
+        "generation_trace_id": "trace_generation_continuity_dna_v2"
+      },
+      "influence_score": 0.7402,
+      "source_file": "datasets/consistency/motion-consistency-specification.json",
+      "export_file": "exports/video_app/latest_v5/continuity_bundle.json",
+      "prompt_trace_id": "trace_prompt_continuity_dna_v2",
+      "generation_trace_id": "trace_generation_continuity_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "scene_transition_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 99,
+        "dna_fields_referenced": 57,
+        "constraint_hits": 19,
+        "source_file": "datasets/movie_analysis/motion_planning",
+        "generation_trace_id": "trace_generation_scene_transition_dna_v2"
+      },
+      "influence_score": 1,
+      "source_file": "datasets/movie_analysis/motion_planning",
+      "export_file": "exports/video_app/latest_v5/scene_transition_dna.json",
+      "prompt_trace_id": "trace_prompt_scene_transition_dna_v2",
+      "generation_trace_id": "trace_generation_scene_transition_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "dialogue_dna": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 25,
+        "dna_fields_referenced": 17,
+        "constraint_hits": 3,
+        "source_file": "datasets/dialogue",
+        "generation_trace_id": "trace_generation_dialogue_dna_v2"
+      },
+      "influence_score": 0.7032,
+      "source_file": "datasets/dialogue",
+      "export_file": "exports/image_app/latest_v5/dialogue_bundle.json",
+      "prompt_trace_id": "trace_prompt_dialogue_dna_v2",
+      "generation_trace_id": "trace_generation_dialogue_dna_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "story_blueprint": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 32,
+        "dna_fields_referenced": 22,
+        "constraint_hits": 3,
+        "source_file": "datasets/story",
+        "generation_trace_id": "trace_generation_story_blueprint_v2"
+      },
+      "influence_score": 0.7334,
+      "source_file": "datasets/story",
+      "export_file": "exports/image_app/latest_v5/story_blueprint_bundle.json",
+      "prompt_trace_id": "trace_prompt_story_blueprint_v2",
+      "generation_trace_id": "trace_generation_story_blueprint_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "prompt_generation": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 17,
+        "dna_fields_referenced": 11,
+        "constraint_hits": 3,
+        "source_file": "datasets/generation/prompt-compiler-specification.json",
+        "generation_trace_id": "trace_generation_prompt_generation_v2"
+      },
+      "influence_score": 0.6676,
+      "source_file": "datasets/generation/prompt-compiler-specification.json",
+      "export_file": "exports/image_app/latest_v5/prompt_generation_bundle.json",
+      "prompt_trace_id": "trace_prompt_prompt_generation_v2",
+      "generation_trace_id": "trace_generation_prompt_generation_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "generation_trace": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 19,
+        "dna_fields_referenced": 13,
+        "constraint_hits": 3,
+        "source_file": "datasets/generation/generation-trace-specification.json",
+        "generation_trace_id": "trace_generation_generation_trace_v2"
+      },
+      "influence_score": 0.6784,
+      "source_file": "datasets/generation/generation-trace-specification.json",
+      "export_file": "exports/video_app/latest_v5/generation_trace_bundle.json",
+      "prompt_trace_id": "trace_prompt_generation_trace_v2",
+      "generation_trace_id": "trace_generation_generation_trace_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "generation_rule": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 52,
+        "dna_fields_referenced": 36,
+        "constraint_hits": 3,
+        "source_file": "datasets/generation",
+        "generation_trace_id": "trace_generation_generation_rule_v2"
+      },
+      "influence_score": 0.8186,
+      "source_file": "datasets/generation",
+      "export_file": "exports/image_app/latest_v5/generation_rule_bundle.json",
+      "prompt_trace_id": "trace_prompt_generation_rule_v2",
+      "generation_trace_id": "trace_generation_generation_rule_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "production_adapter": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 1714,
+        "dna_fields_referenced": 1223,
+        "constraint_hits": 3,
+        "source_file": "datasets/movie_analysis/dna_adapter_library",
+        "generation_trace_id": "trace_generation_production_adapter_v2"
+      },
+      "influence_score": 0.8652,
+      "source_file": "datasets/movie_analysis/dna_adapter_library",
+      "export_file": "exports/image_app/latest_v5/production_adapter_bundle.json",
+      "prompt_trace_id": "trace_prompt_production_adapter_v2",
+      "generation_trace_id": "trace_generation_production_adapter_v2",
+      "evidence_verified": true,
+      "influence_failure": false
+    },
+    "titanic_movie_reconstruction": {
+      "loaded": true,
+      "consumed": true,
+      "evidence": {
+        "prompt_tokens_used": 420,
+        "dna_fields_referenced": 286,
+        "constraint_hits": 18,
+        "camera_fields_used": 50,
+        "blocking_fields_used": 50,
+        "composition_fields_used": 40,
+        "semantic_anchor_fields_used": 8,
+        "prop_coordinate_fields_used": 50,
+        "depth_fields_used": 40,
+        "source_file": "datasets/movie_reconstruction/titanic",
+        "generation_trace_id": "trace_generation_titanic_movie_reconstruction_v1"
+      },
+      "influence_score": 0.96,
+      "source_file": "datasets/movie_reconstruction/titanic",
+      "export_file": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json",
+      "prompt_trace_id": "trace_prompt_titanic_movie_reconstruction_v1",
+      "generation_trace_id": "trace_generation_titanic_movie_reconstruction_v1",
+      "evidence_verified": true,
+      "influence_failure": false,
+      "scene_registry_consumed": true,
+      "camera_registry_consumed": true,
+      "blocking_registry_consumed": true,
+      "composition_registry_consumed": true,
+      "semantic_anchor_consumed": true,
+      "prop_registry_consumed": true,
+      "depth_registry_consumed": true,
+      "runtime_composition": true,
+      "embedded_in_latest_v5": false
+    }
+  },
+  "generation_output_schema": {
+    "movie_reconstruction": {
+      "dataset_name": "titanic",
+      "loaded": true,
+      "consumed": true,
+      "influenced_output": true,
+      "scene_id": "",
+      "camera_pattern_id": "",
+      "blocking_pattern_id": "",
+      "composition_pattern_id": "",
+      "semantic_anchor_id": "",
+      "prop_coordinate_id": "",
+      "depth_profile_id": "",
+      "base_dataset": "latest_v5",
+      "movie_dataset": "titanic",
+      "runtime_composition": true
+    },
+    "evidence": {
+      "camera_fields_used": 0,
+      "blocking_fields_used": 0,
+      "composition_fields_used": 0,
+      "semantic_anchor_fields_used": 0,
+      "prop_coordinate_fields_used": 0,
+      "depth_fields_used": 0
+    },
+    "output_influence": {
+      "movie_geometry_preservation_score": 0,
+      "semantic_anchor_preservation_score": 0,
+      "world_translation_score": 0,
+      "generic_harbor_regression_detected": false
+    }
+  },
+  "movie_reconstruction_metadata_ready": true,
+  "export_path": "exports/image_app/latest_v5/generation_metadata_contract.json",
+  "canonical_upload_standard": "app-upload-standard-v1",
+  "canonical_filename_locked": true,
+  "materialized": true,
+  "schema_version": "v1",
+  "base_dataset": "latest_v5",
+  "movie_dataset": "titanic",
+  "runtime_composition": true,
+  "movie_dataset_registry_ref": "exports/movie_datasets/movie-dataset-registry.json",
+  "movie_dataset_runtime_composition_ref": "exports/movie_datasets/movie-dataset-runtime-composition.json",
+  "movie_dataset_export_path": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json",
+  "latest_v5_contains_movie_dataset": false
+}

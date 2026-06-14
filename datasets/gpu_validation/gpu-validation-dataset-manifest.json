@@ -1,0 +1,22 @@
+{
+  "manifest_id": "gpu-validation-dataset-manifest-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-003",
+  "system_id": "GPU_VALIDATION_DATASET_V1",
+  "version": "gpu_validation_dataset_v1",
+  "dataset_only": true,
+  "gpu_execution": false,
+  "enforcement_protocol_ref": "reports/movie_reconstruction/VIDEO_RUNTIME_ENFORCEMENT_PROTOCOL.json",
+  "channels": [
+    "environment_identity",
+    "object_identity",
+    "temporal_preservation",
+    "camera_continuity",
+    "multi_scene_consistency"
+  ],
+  "execution_flags": {
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

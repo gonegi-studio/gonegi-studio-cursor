@@ -1,0 +1,54 @@
+{
+  "registry_id": "movie-analysis-scene-detection-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-025-MOVIE_ANALYSIS_SCENE_DETECTION_DESIGN_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/scene_detection/movie-analysis-scene-detection.schema.json",
+  "frame_sampling_registry_path": "datasets/movie_analysis/frame_sampling/movie-analysis-frame-sampling-registry.json",
+  "storage_dir": "datasets/movie_analysis/scene_detection/plans",
+  "scene_detection_plans": [
+    {
+      "scene_detection_id": "scene_detection_ghibli_01_v1",
+      "plan_path": "datasets/movie_analysis/scene_detection/plans/scene_detection_ghibli_01_v1.json",
+      "source_video_id": "GHIBLI_01",
+      "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+      "dry_run_id": "dry_run_ghibli_01_v1",
+      "sampling_plan_id": "frame_sampling_ghibli_01_v1",
+      "scene_detection_strategy": "VISUAL_TRANSITION_CANDIDATE",
+      "scene_candidate_count": 4,
+      "status": "designed"
+    },
+    {
+      "scene_detection_id": "scene_detection_shinkai_01_v1",
+      "plan_path": "datasets/movie_analysis/scene_detection/plans/scene_detection_shinkai_01_v1.json",
+      "source_video_id": "SHINKAI_01",
+      "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+      "dry_run_id": "dry_run_shinkai_01_v1",
+      "sampling_plan_id": "frame_sampling_shinkai_01_v1",
+      "scene_detection_strategy": "EMOTIONAL_SHIFT_CANDIDATE",
+      "scene_candidate_count": 4,
+      "status": "designed"
+    },
+    {
+      "scene_detection_id": "scene_detection_little_women_01_v1",
+      "plan_path": "datasets/movie_analysis/scene_detection/plans/scene_detection_little_women_01_v1.json",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "analysis_plan_id": "analysis_plan_little_women_01_v1",
+      "dry_run_id": "dry_run_little_women_01_v1",
+      "sampling_plan_id": "frame_sampling_little_women_01_v1",
+      "scene_detection_strategy": "DIALOGUE_BLOCK_CANDIDATE",
+      "scene_candidate_count": 6,
+      "status": "designed"
+    },
+    {
+      "scene_detection_id": "scene_detection_mori_01_v1",
+      "plan_path": "datasets/movie_analysis/scene_detection/plans/scene_detection_mori_01_v1.json",
+      "source_video_id": "MORI_01",
+      "analysis_plan_id": "analysis_plan_mori_01_v1",
+      "dry_run_id": "dry_run_mori_01_v1",
+      "sampling_plan_id": "frame_sampling_mori_01_v1",
+      "scene_detection_strategy": "LOCATION_CHANGE_CANDIDATE",
+      "scene_candidate_count": 4,
+      "status": "designed"
+    }
+  ]
+}

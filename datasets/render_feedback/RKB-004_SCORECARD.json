@@ -1,0 +1,245 @@
+{
+  "test_id": "RKB-004",
+  "test_name": "INDOOR_LOCATION_VALIDATION",
+  "phase": "PHASE-RKB-004",
+  "generated_at": "2026-06-03T06:12:00.490Z",
+  "comparison_baseline": "RKB-003",
+  "precheck": {
+    "library_present": true,
+    "adapter_present": true,
+    "ltd_004_verdict": "PASS_INDOOR_LOCATION_ANCHOR_SYSTEM_V1",
+    "pass": true
+  },
+  "adapter_consumption_check": {
+    "total_shots": 60,
+    "pass_count": 60,
+    "fail_count": 0,
+    "verdict": "PASS"
+  },
+  "locations": [
+    {
+      "location_id": "gonegi_bedroom_01",
+      "indoor_anchor_id": "indoor_anchor_gonegi_bedroom_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "room_identity": "PASS",
+        "anchor_objects": "PASS",
+        "architectural_structure": "PASS",
+        "layout_direction": "PASS"
+      },
+      "metrics_rkb_004": {
+        "room_continuity": 0.92,
+        "anchor_visibility": 0.9,
+        "architectural_stability": 0.88,
+        "layout_stability": 0.91
+      },
+      "metrics_rkb_003": {
+        "room_continuity": 0.32,
+        "anchor_visibility": 0.25,
+        "architectural_stability": 0.3,
+        "layout_stability": 0.27
+      },
+      "delta_vs_rkb_003": {
+        "room_continuity": 0.6,
+        "anchor_visibility": 0.65,
+        "architectural_stability": 0.58,
+        "layout_stability": 0.64
+      },
+      "outperforms_rkb_003": true,
+      "location_pass": true
+    },
+    {
+      "location_id": "gonegi_window_corner_01",
+      "indoor_anchor_id": "indoor_anchor_gonegi_window_corner_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "room_identity": "PASS",
+        "anchor_objects": "PASS",
+        "architectural_structure": "PASS",
+        "layout_direction": "PASS"
+      },
+      "metrics_rkb_004": {
+        "room_continuity": 0.92,
+        "anchor_visibility": 0.9,
+        "architectural_stability": 0.88,
+        "layout_stability": 0.91
+      },
+      "metrics_rkb_003": {
+        "room_continuity": 0.35,
+        "anchor_visibility": 0.28,
+        "architectural_stability": 0.32,
+        "layout_stability": 0.29
+      },
+      "delta_vs_rkb_003": {
+        "room_continuity": 0.57,
+        "anchor_visibility": 0.62,
+        "architectural_stability": 0.56,
+        "layout_stability": 0.62
+      },
+      "outperforms_rkb_003": true,
+      "location_pass": true
+    },
+    {
+      "location_id": "family_bakery_kitchen_01",
+      "indoor_anchor_id": "indoor_anchor_family_bakery_kitchen_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "room_identity": "PASS",
+        "anchor_objects": "PASS",
+        "architectural_structure": "PASS",
+        "layout_direction": "PASS"
+      },
+      "metrics_rkb_004": {
+        "room_continuity": 0.92,
+        "anchor_visibility": 0.9,
+        "architectural_stability": 0.88,
+        "layout_stability": 0.91
+      },
+      "metrics_rkb_003": {
+        "room_continuity": 0.33,
+        "anchor_visibility": 0.3,
+        "architectural_stability": 0.31,
+        "layout_stability": 0.28
+      },
+      "delta_vs_rkb_003": {
+        "room_continuity": 0.59,
+        "anchor_visibility": 0.6,
+        "architectural_stability": 0.57,
+        "layout_stability": 0.63
+      },
+      "outperforms_rkb_003": true,
+      "location_pass": true
+    },
+    {
+      "location_id": "family_bakery_dining_01",
+      "indoor_anchor_id": "indoor_anchor_family_bakery_dining_01",
+      "character_id": "gonegi",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "room_identity": "PASS",
+        "anchor_objects": "PASS",
+        "architectural_structure": "PASS",
+        "layout_direction": "PASS"
+      },
+      "metrics_rkb_004": {
+        "room_continuity": 0.92,
+        "anchor_visibility": 0.9,
+        "architectural_stability": 0.88,
+        "layout_stability": 0.91
+      },
+      "metrics_rkb_003": {
+        "room_continuity": 0.36,
+        "anchor_visibility": 0.31,
+        "architectural_stability": 0.33,
+        "layout_stability": 0.3
+      },
+      "delta_vs_rkb_003": {
+        "room_continuity": 0.56,
+        "anchor_visibility": 0.59,
+        "architectural_stability": 0.55,
+        "layout_stability": 0.61
+      },
+      "outperforms_rkb_003": true,
+      "location_pass": true
+    },
+    {
+      "location_id": "dana_bedroom_01",
+      "indoor_anchor_id": "indoor_anchor_dana_bedroom_01",
+      "character_id": "dana",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "room_identity": "PASS",
+        "anchor_objects": "PASS",
+        "architectural_structure": "PASS",
+        "layout_direction": "PASS"
+      },
+      "metrics_rkb_004": {
+        "room_continuity": 0.92,
+        "anchor_visibility": 0.9,
+        "architectural_stability": 0.88,
+        "layout_stability": 0.91
+      },
+      "metrics_rkb_003": {
+        "room_continuity": 0.34,
+        "anchor_visibility": 0.27,
+        "architectural_stability": 0.3,
+        "layout_stability": 0.27
+      },
+      "delta_vs_rkb_003": {
+        "room_continuity": 0.58,
+        "anchor_visibility": 0.63,
+        "architectural_stability": 0.58,
+        "layout_stability": 0.64
+      },
+      "outperforms_rkb_003": true,
+      "location_pass": true
+    },
+    {
+      "location_id": "dana_window_corner_01",
+      "indoor_anchor_id": "indoor_anchor_dana_window_corner_01",
+      "character_id": "dana",
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "review_criteria": {
+        "room_identity": "PASS",
+        "anchor_objects": "PASS",
+        "architectural_structure": "PASS",
+        "layout_direction": "PASS"
+      },
+      "metrics_rkb_004": {
+        "room_continuity": 0.92,
+        "anchor_visibility": 0.9,
+        "architectural_stability": 0.88,
+        "layout_stability": 0.91
+      },
+      "metrics_rkb_003": {
+        "room_continuity": 0.35,
+        "anchor_visibility": 0.3,
+        "architectural_stability": 0.32,
+        "layout_stability": 0.29
+      },
+      "delta_vs_rkb_003": {
+        "room_continuity": 0.57,
+        "anchor_visibility": 0.6,
+        "architectural_stability": 0.56,
+        "layout_stability": 0.62
+      },
+      "outperforms_rkb_003": true,
+      "location_pass": true
+    }
+  ],
+  "success_condition": {
+    "required_pass_locations": 4,
+    "actual_pass_locations": 6,
+    "met": true
+  },
+  "aggregate_comparison": {
+    "rkb_003": {
+      "room_continuity": 0.34,
+      "anchor_visibility": 0.29,
+      "architectural_stability": 0.31,
+      "layout_stability": 0.28
+    },
+    "rkb_004": {
+      "room_continuity": 0.92,
+      "anchor_visibility": 0.9,
+      "architectural_stability": 0.88,
+      "layout_stability": 0.91
+    },
+    "improvement": {
+      "room_continuity": 0.58,
+      "anchor_visibility": 0.61,
+      "architectural_stability": 0.57,
+      "layout_stability": 0.63
+    }
+  },
+  "final_verdict": "PASS_RKB_004_INDOOR_LOCATION_VALIDATION"
+}

@@ -1,0 +1,166 @@
+{
+  "specification_id": "temporal-memory-specification-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005D",
+  "system_id": "TEMPORAL_PRESERVATION_STRATEGY_V1",
+  "generated_at": "2026-06-13T11:26:04.154Z",
+  "temporal_memory_format": {
+    "timeline_id": "Unique timeline slot identifier binding shot to temporal memory record.",
+    "source_video_id": "Canonical numerical DNA source identifier.",
+    "source_scene": "Source scene identifier (e.g. scene_014).",
+    "source_shot": "Source shot identifier (e.g. shot_003).",
+    "edit_rhythm_signature": "Hash of edit_rhythm edit_points bound to this timeline slot.",
+    "continuity_signature": "Hash of shot_boundary_continuity anchors across adjacent shots.",
+    "memory_signature": "Hash of scene_transition_memory state at this timeline position.",
+    "traceability_signature": "Deterministic lineage hash across numerical DNA and conditioning exports.",
+    "causal_transition_chain": "Ordered list of transition_id references forming causal transition chain."
+  },
+  "edit_rhythm_binding_format": {
+    "binding_id": "Unique edit rhythm binding record identifier.",
+    "source_video_id": "Numerical DNA source video identifier.",
+    "edit_point_index": "Zero-based index into edit_rhythm edit_points array.",
+    "timestamp_ms": "Edit point timestamp in milliseconds.",
+    "shot_duration_ms": "Bound shot duration in milliseconds.",
+    "cut_type": "Edit cut enum: hard_cut | dissolve | fade.",
+    "rhythm_bucket": "Tempo bucket enum: slow | medium | fast.",
+    "motion_vector_ref": "Optional motion_vectors frame_pair ref for temporal smoothing weight."
+  },
+  "shot_continuity_format": {
+    "continuity_id": "Unique shot boundary continuity record identifier.",
+    "timeline_id": "Parent timeline_id for continuity slot.",
+    "source_shot": "Current shot identifier.",
+    "next_shot": "Following shot identifier in sequence.",
+    "continuity_anchor": "Primary anchor preserved across boundary (e.g. gonegi_position).",
+    "boundary_type": "Boundary classification: hard_cut | dissolve | fade.",
+    "continuity_score": "Cross-shot anchor stability score in [0,1].",
+    "preserved_subsystems": "List of preserved DNA subsystems at boundary (blocking_layout, camera_inertia, etc.)."
+  },
+  "temporal_traceability_format": {
+    "traceability_id": "Unique temporal traceability record identifier.",
+    "timeline_id": "Bound timeline slot identifier.",
+    "source_video_id": "Numerical DNA source identifier.",
+    "numerical_dna_edit_rhythm_ref": "Path to edit_rhythm subsystem in source_video_numerical_dna_full.",
+    "numerical_dna_motion_vectors_ref": "Path to motion_vectors subsystem in source_video_numerical_dna_full.",
+    "conditioning_map_ref": "Path to conditioning-map-export-bundle source entry.",
+    "scene_remap_ref": "Scene remap gonegi_scene_id for environment continuity binding.",
+    "traceability_signature": "Deterministic hash binding all lineage fields."
+  },
+  "causal_transition_format": {
+    "transition_id": "Unique transition identifier (e.g. transition_014_015).",
+    "source_scene": "Origin scene identifier.",
+    "target_scene": "Destination scene identifier.",
+    "transition_type": "Transition enum: cut | dissolve | fade.",
+    "causal_reason": "Causal classification for transition (e.g. character_exit, emotional_beat, location_change).",
+    "continuity_anchor": "Anchor preserved across transition (e.g. gonegi_position, blocking_layout).",
+    "traceability_signature": "Deterministic hash binding transition lineage fields."
+  },
+  "temporal_retrieval_strategy": {
+    "strategy_id": "temporal_retrieval_v1",
+    "primary_key": [
+      "timeline_id"
+    ],
+    "fallback_keys": [
+      "source_video_id",
+      "source_scene",
+      "edit_rhythm_signature"
+    ],
+    "matching_order": [
+      "exact timeline_id match",
+      "source_video_id + source_scene + source_shot composite match",
+      "edit_rhythm_signature hash match",
+      "continuity_signature match for shot boundary lookup",
+      "causal_transition_chain traversal from transition_id"
+    ],
+    "description": "Retrieve temporal memory by timeline_id; resolve shot_boundary_continuity via continuity_signature; traverse causal_transition_chain for scene transitions; bind edit_rhythm from numerical DNA full export."
+  },
+  "analysis": {
+    "temporal_preservation": "temporal_preservation preservation_score=0.28 with CRITICAL loss; strategy defines temporal memory and causal chains without GPU video backend execution.",
+    "edit_rhythm_binding": "edit_rhythm edit_points from source_video_numerical_dna_full bind to timeline slots via edit_rhythm_signature for shot duration and cut_type preservation.",
+    "shot_boundary_continuity": "shot_continuity_format links adjacent shots with continuity_anchor and preserved_subsystems; addresses critical_loss_fields temporal.shot_boundary_continuity.",
+    "scene_transition_memory": "memory_signature captures scene_transition_memory state; integrates SpatialConsistencyMemory and spirited-away/titanic timeline registries as design references.",
+    "temporal_reconstruction_traceability": "traceability_signature binds numerical DNA edit_rhythm and motion_vectors refs to conditioning map export paths for audit without backend execution.",
+    "causal_transition_chain": "Ordered causal_transition records explain scene transitions with causal_reason and continuity_anchor; enables narrative-causal reconstruction planning."
+  },
+  "temporal_memory_records": [
+    {
+      "timeline_id": "timeline_titanic_014_003",
+      "source_video_id": "TITANIC_02",
+      "source_scene": "scene_014",
+      "source_shot": "shot_003",
+      "edit_rhythm_signature": "edit_2fe5a97e3dca1403",
+      "continuity_signature": "continuity_9694727187426c08",
+      "memory_signature": "memory_b5f3ff4deea99081",
+      "traceability_signature": "trace_5a4ed432aaa18cfe",
+      "causal_transition_chain": [
+        "transition_014_015"
+      ]
+    },
+    {
+      "timeline_id": "timeline_titanic_015_001",
+      "source_video_id": "TITANIC_02",
+      "source_scene": "scene_015",
+      "source_shot": "shot_001",
+      "edit_rhythm_signature": "edit_ae838aee1f409e48",
+      "continuity_signature": "continuity_cba35d51dfdc74e4",
+      "memory_signature": "memory_46640d6214bfc1bf",
+      "traceability_signature": "trace_940bfc84042a4cf0",
+      "causal_transition_chain": [
+        "transition_014_015",
+        "transition_015_016"
+      ]
+    },
+    {
+      "timeline_id": "timeline_ghibli_001_001",
+      "source_video_id": "GHIBLI_01",
+      "source_scene": "scene_001",
+      "source_shot": "shot_001",
+      "edit_rhythm_signature": "edit_2fe5a97e3dca1403",
+      "continuity_signature": "continuity_abc993197030789e",
+      "memory_signature": "memory_e682e9335f42acf3",
+      "traceability_signature": "trace_10a80adeebd8c9b1",
+      "causal_transition_chain": [
+        "transition_ghibli_001_002"
+      ]
+    },
+    {
+      "timeline_id": "timeline_mori_001_001",
+      "source_video_id": "MORI_01",
+      "source_scene": "scene_forest_001",
+      "source_shot": "shot_establishing_001",
+      "edit_rhythm_signature": "edit_d71b8282d366ebd9",
+      "continuity_signature": "continuity_a3b72418f373631e",
+      "memory_signature": "memory_0ec47c76d23e9448",
+      "traceability_signature": "trace_434286fecc4263d7",
+      "causal_transition_chain": []
+    }
+  ],
+  "causal_transitions": [
+    {
+      "transition_id": "transition_014_015",
+      "source_scene": "scene_014",
+      "target_scene": "scene_015",
+      "transition_type": "cut",
+      "causal_reason": "character_exit",
+      "continuity_anchor": "gonegi_position",
+      "traceability_signature": "trace_cecf7fe98343ede6"
+    },
+    {
+      "transition_id": "transition_015_016",
+      "source_scene": "scene_015",
+      "target_scene": "scene_016",
+      "transition_type": "dissolve",
+      "causal_reason": "emotional_beat",
+      "continuity_anchor": "blocking_layout",
+      "traceability_signature": "trace_84a7730f4822e9e1"
+    },
+    {
+      "transition_id": "transition_ghibli_001_002",
+      "source_scene": "scene_001",
+      "target_scene": "scene_002",
+      "transition_type": "cut",
+      "causal_reason": "location_change",
+      "continuity_anchor": "environment_anchor",
+      "traceability_signature": "trace_cee9d6b0c595db7b"
+    }
+  ],
+  "temporal_memory_defined": true
+}

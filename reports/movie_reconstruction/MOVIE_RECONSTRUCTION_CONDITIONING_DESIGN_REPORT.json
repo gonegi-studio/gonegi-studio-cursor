@@ -1,0 +1,111 @@
+{
+  "report_id": "movie_reconstruction_conditioning_design_mqc26bu3",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-002",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_DESIGN_V1",
+  "generated_at": "2026-06-13T07:53:19.467Z",
+  "final_verdict": "PASS_MOVIE_RECONSTRUCTION_CONDITIONING_DESIGN_V1",
+  "status": "MOVIE_RECONSTRUCTION_CONDITIONING_DESIGNED",
+  "validation_passed": true,
+  "design_only": true,
+  "conditioning_design_complete": true,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "all_7_subsystems_designed": true,
+  "backend_requirements_defined": true,
+  "requires_new_backend_defined": true,
+  "backend_options_defined": true,
+  "recommended_backend_strategy_defined": true,
+  "design_complete": true,
+  "subsystem_designs": [
+    {
+      "subsystem": "layout_map",
+      "conditioning_method": "ControlNet layout / soft segmentation map conditioning",
+      "backend_dependency": "ControlNet-seg or equivalent layout map ingestion with multi-control weighting",
+      "feasible_with_current_app": true,
+      "requires_new_backend": true,
+      "required_input": "RuntimeSpatialGraph + exports/source_video_numerical_dna_full frame_coordinates + composition_coordinates per scene frame",
+      "required_output": "Raster layout map (segmentation-style PNG/tensor) per frame + SpatialLayoutMap JSON with normalized element positions",
+      "current_app_support": "PARTIAL"
+    },
+    {
+      "subsystem": "depth_map",
+      "conditioning_method": "Depth-conditioned diffusion (ControlNet depth)",
+      "backend_dependency": "ControlNet depth / MiDaS-derived depth map ingestion pipeline",
+      "feasible_with_current_app": true,
+      "requires_new_backend": true,
+      "required_input": "frame_coordinates + camera_path depth samples + spatial graph depth_edges + depth_layers from numerical DNA",
+      "required_output": "Normalized depth map raster (0=near, 1=far) per frame aligned to source aspect ratio",
+      "current_app_support": "PARTIAL"
+    },
+    {
+      "subsystem": "pose_map",
+      "conditioning_method": "Pose-conditioned diffusion (ControlNet OpenPose)",
+      "backend_dependency": "Pose estimation module + ControlNet OpenPose backend adapter",
+      "feasible_with_current_app": false,
+      "requires_new_backend": true,
+      "required_input": "blocking_data character positions + gaze_constraints + optional skeleton estimation from source frame pairs",
+      "required_output": "OpenPose-style skeletal keypoint raster map per character per frame",
+      "current_app_support": "METADATA_ONLY"
+    },
+    {
+      "subsystem": "blocking_map",
+      "conditioning_method": "Regional prompting + composited layout map masks",
+      "backend_dependency": "Regional prompting backend with per-region weight control and inpainting mask support",
+      "feasible_with_current_app": true,
+      "requires_new_backend": true,
+      "required_input": "blocking_data numerical DNA + character_region constraints + scene_remap character_region_map",
+      "required_output": "Actor region blocking map with character_id labels and interaction pair overlays per frame",
+      "current_app_support": "PARTIAL"
+    },
+    {
+      "subsystem": "object_identity",
+      "conditioning_method": "IP-Adapter reference image conditioning with identity lock",
+      "backend_dependency": "IP-Adapter or equivalent reference-image identity conditioning backend",
+      "feasible_with_current_app": true,
+      "requires_new_backend": true,
+      "required_input": "Character identity anchors + semantic-preservation-layer + reference portrait embeddings + identity_lock metadata",
+      "required_output": "Identity conditioning bundle: reference image embeddings, lock strength metadata, drift prevention tokens",
+      "current_app_support": "PARTIAL"
+    },
+    {
+      "subsystem": "environment_identity",
+      "conditioning_method": "Regional prompting + environment anchor locks + style reference conditioning",
+      "backend_dependency": "IP-Adapter style reference + regional mask backend + environment lock token injection",
+      "feasible_with_current_app": true,
+      "requires_new_backend": true,
+      "required_input": "EnvironmentAnchorConstraint graph + timesetting lock datasets + environment-motion DNA + anchor_persistence_map",
+      "required_output": "Environment identity map raster + anchor persistence metadata bundle per scene",
+      "current_app_support": "PARTIAL"
+    },
+    {
+      "subsystem": "conditioning_backend",
+      "conditioning_method": "Multi-control stack (layout + depth + pose) with IP-Adapter identity and regional prompting orchestration",
+      "backend_dependency": "ControlNet-class multi-input backend + Video conditioning backend for temporal shot sequences",
+      "feasible_with_current_app": true,
+      "requires_new_backend": true,
+      "required_input": "Unified bundle: layout_map + depth_map + pose_map + blocking_map + object_identity + environment_identity + ConditionedPromptBuilder text constraints",
+      "required_output": "Single conditioning request payload to image/video diffusion backend with weighted multi-control stack",
+      "current_app_support": "PARTIAL"
+    }
+  ],
+  "checks": {
+    "all_7_subsystems_designed": true,
+    "backend_requirements_defined": true,
+    "requires_new_backend_defined": true,
+    "backend_options_defined": true,
+    "recommended_backend_strategy_defined": true,
+    "design_complete": true,
+    "gap_report_exists": true,
+    "backend_requirements_report_exists": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "design_only": true,
+    "implementation_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

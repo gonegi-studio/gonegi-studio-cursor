@@ -1,0 +1,56 @@
+{
+  "handoff_metadata": {
+    "schema_version": "IMAGE-APP-HANDOFF-PACKAGE-PHASE-66-v1",
+    "handoff_type": "image_app",
+    "consumer_target": "image_app_v17_handoff",
+    "source_layer": "image_dataset_handoff_layer",
+    "video_app_handoff_included": false,
+    "video_dataset_export_separate": true,
+    "video_dataset_export_path": "exports/video-dataset-export.json",
+    "phase": "PHASE-66",
+    "generated_at": "2026-05-30T01:38:44.486Z",
+    "package_json_path": "exports/image-app-handoff-package.json",
+    "scene_count": 16
+  },
+  "export_reference": {
+    "asset_id": "image-dataset-export",
+    "path": "exports/image-dataset-export.json",
+    "export_metadata": {
+      "schema_version": "IMAGE-DATASET-EXPORT-PHASE-66-v1",
+      "export_type": "image_dataset",
+      "active_export": "image_dataset",
+      "source_layer": "image_dataset_layer",
+      "video_dataset_export_separate": true,
+      "video_dataset_export_path": "exports/video-dataset-export.json",
+      "export_json_path": "exports/image-dataset-export.json",
+      "phase": "PHASE-66",
+      "generated_at": "2026-05-30T01:38:44.487Z",
+      "scene_count": 16
+    }
+  },
+  "quality_reference": {
+    "asset_id": "image-dataset-quality-report",
+    "path": "exports/image-dataset-quality-report.json",
+    "auditResult": "PASS",
+    "auditTimestamp": "2026-05-30T01:38:44.527Z",
+    "quality_score": 100,
+    "total_scene_count": 16
+  },
+  "manifest": {
+    "manifest_id": "image-app-handoff-manifest-v1",
+    "assets": [
+      {
+        "asset_id": "image-dataset-export",
+        "path": "exports/image-dataset-export.json",
+        "role": "image_dataset_export",
+        "required": true
+      },
+      {
+        "asset_id": "image-dataset-quality-report",
+        "path": "exports/image-dataset-quality-report.json",
+        "role": "quality_report",
+        "required": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,428 @@
+{
+  "validation_id": "SPIRITED_AWAY_VIDEO_RECONSTRUCTION_VALIDATION_V1",
+  "phase": "PHASE-SPIRITED-AWAY-VIDEO-VALIDATION-001",
+  "generated_at": "2026-06-10T10:34:27.755Z",
+  "source_video_id": "GHIBLI_01",
+  "base_dataset": "latest_v5",
+  "movie_dataset": "spirited_away",
+  "input_layers": {
+    "spirited_away_dataset": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json",
+    "spirited_away_shots": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json",
+    "spirited_away_temporal": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-shot-sequence-registry.json",
+    "spirited_away_motion": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-grammar-registry.json",
+    "latest_v5": "exports/image_app/latest_v5"
+  },
+  "validation_sequence_count": 10,
+  "sequences": [
+    {
+      "sequence_key": "01_bridge_crossing",
+      "scene_type": "bridge_crossing",
+      "validation_sequence_id": "spirited_video_val_seq_01_bridge_crossing",
+      "source_scene_id": "scene_spirited_away_bridge_crossing_0002",
+      "semantic_anchor_id": "bridge_crossing",
+      "ordered_shot_ids": [
+        "shot_spirited_00009",
+        "shot_spirited_00010",
+        "shot_spirited_00011",
+        "shot_spirited_00012",
+        "shot_spirited_00013",
+        "shot_spirited_00014",
+        "shot_spirited_00015",
+        "shot_spirited_00016"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0002",
+      "sequence_id": "spirited_seq_0002",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_01_bridge_crossing",
+        "scene_id": "scene_spirited_away_bridge_crossing_0002",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2255
+      }
+    },
+    {
+      "sequence_key": "02_bathhouse_arrival",
+      "scene_type": "bathhouse_arrival",
+      "validation_sequence_id": "spirited_video_val_seq_02_bathhouse_arrival",
+      "source_scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+      "semantic_anchor_id": "bathhouse_arrival",
+      "ordered_shot_ids": [
+        "shot_spirited_00001",
+        "shot_spirited_00002",
+        "shot_spirited_00003",
+        "shot_spirited_00004",
+        "shot_spirited_00005",
+        "shot_spirited_00006",
+        "shot_spirited_00007",
+        "shot_spirited_00008"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0001",
+      "sequence_id": "spirited_seq_0001",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_02_bathhouse_arrival",
+        "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2279
+      }
+    },
+    {
+      "sequence_key": "03_train_memory_scene",
+      "scene_type": "train_memory_scene",
+      "validation_sequence_id": "spirited_video_val_seq_03_train_memory_scene",
+      "source_scene_id": "scene_spirited_away_train_memory_0024",
+      "semantic_anchor_id": "train_memory_scene",
+      "ordered_shot_ids": [
+        "shot_spirited_00185",
+        "shot_spirited_00186",
+        "shot_spirited_00187",
+        "shot_spirited_00188",
+        "shot_spirited_00189",
+        "shot_spirited_00190",
+        "shot_spirited_00191",
+        "shot_spirited_00192"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0024",
+      "sequence_id": "spirited_seq_0024",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_03_train_memory_scene",
+        "scene_id": "scene_spirited_away_train_memory_0024",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2271
+      }
+    },
+    {
+      "sequence_key": "04_river_spirit_departure",
+      "scene_type": "river_spirit_departure",
+      "validation_sequence_id": "spirited_video_val_seq_04_river_spirit_departure",
+      "source_scene_id": "scene_spirited_away_river_spirit_departure_0003",
+      "semantic_anchor_id": "river_spirit_departure",
+      "ordered_shot_ids": [
+        "shot_spirited_00017",
+        "shot_spirited_00018",
+        "shot_spirited_00019",
+        "shot_spirited_00020",
+        "shot_spirited_00021",
+        "shot_spirited_00022",
+        "shot_spirited_00023",
+        "shot_spirited_00024"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0003",
+      "sequence_id": "spirited_seq_0003",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_04_river_spirit_departure",
+        "scene_id": "scene_spirited_away_river_spirit_departure_0003",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2252
+      }
+    },
+    {
+      "sequence_key": "05_no_face_loneliness",
+      "scene_type": "no_face_loneliness",
+      "validation_sequence_id": "spirited_video_val_seq_05_no_face_loneliness",
+      "source_scene_id": "scene_spirited_away_no_face_loneliness_0004",
+      "semantic_anchor_id": "no_face_loneliness",
+      "ordered_shot_ids": [
+        "shot_spirited_00025",
+        "shot_spirited_00026",
+        "shot_spirited_00027",
+        "shot_spirited_00028",
+        "shot_spirited_00029",
+        "shot_spirited_00030",
+        "shot_spirited_00031",
+        "shot_spirited_00032"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0004",
+      "sequence_id": "spirited_seq_0004",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_05_no_face_loneliness",
+        "scene_id": "scene_spirited_away_no_face_loneliness_0004",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2241
+      }
+    },
+    {
+      "sequence_key": "06_spirit_bath",
+      "scene_type": "spirit_bath",
+      "validation_sequence_id": "spirited_video_val_seq_06_spirit_bath",
+      "source_scene_id": "scene_spirited_away_spirit_bath_0031",
+      "semantic_anchor_id": "bathhouse_arrival",
+      "ordered_shot_ids": [
+        "shot_spirited_00241",
+        "shot_spirited_00242",
+        "shot_spirited_00243",
+        "shot_spirited_00244",
+        "shot_spirited_00245",
+        "shot_spirited_00246",
+        "shot_spirited_00247",
+        "shot_spirited_00248"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0031",
+      "sequence_id": "spirited_seq_0031",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_06_spirit_bath",
+        "scene_id": "scene_spirited_away_spirit_bath_0031",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2263
+      }
+    },
+    {
+      "sequence_key": "07_boiler_room",
+      "scene_type": "boiler_room",
+      "validation_sequence_id": "spirited_video_val_seq_07_boiler_room",
+      "source_scene_id": "scene_spirited_away_boiler_room_0017",
+      "semantic_anchor_id": "bridge_crossing",
+      "ordered_shot_ids": [
+        "shot_spirited_00129",
+        "shot_spirited_00130",
+        "shot_spirited_00131",
+        "shot_spirited_00132",
+        "shot_spirited_00133",
+        "shot_spirited_00134",
+        "shot_spirited_00135",
+        "shot_spirited_00136"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0017",
+      "sequence_id": "spirited_seq_0017",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_07_boiler_room",
+        "scene_id": "scene_spirited_away_boiler_room_0017",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2232
+      }
+    },
+    {
+      "sequence_key": "08_guest_hall",
+      "scene_type": "guest_hall",
+      "validation_sequence_id": "spirited_video_val_seq_08_guest_hall",
+      "source_scene_id": "scene_spirited_away_guest_hall_0006",
+      "semantic_anchor_id": "bathhouse_arrival",
+      "ordered_shot_ids": [
+        "shot_spirited_00041",
+        "shot_spirited_00042",
+        "shot_spirited_00043",
+        "shot_spirited_00044",
+        "shot_spirited_00045",
+        "shot_spirited_00046",
+        "shot_spirited_00047",
+        "shot_spirited_00048"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0006",
+      "sequence_id": "spirited_seq_0006",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_08_guest_hall",
+        "scene_id": "scene_spirited_away_guest_hall_0006",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2259
+      }
+    },
+    {
+      "sequence_key": "09_meadow_flower",
+      "scene_type": "meadow_flower",
+      "validation_sequence_id": "spirited_video_val_seq_09_meadow_flower",
+      "source_scene_id": "scene_spirited_away_meadow_flower_0020",
+      "semantic_anchor_id": "train_memory_scene",
+      "ordered_shot_ids": [
+        "shot_spirited_00153",
+        "shot_spirited_00154",
+        "shot_spirited_00155",
+        "shot_spirited_00156",
+        "shot_spirited_00157",
+        "shot_spirited_00158",
+        "shot_spirited_00159",
+        "shot_spirited_00160"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0020",
+      "sequence_id": "spirited_seq_0020",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_09_meadow_flower",
+        "scene_id": "scene_spirited_away_meadow_flower_0020",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2247
+      }
+    },
+    {
+      "sequence_key": "10_tunnel_threshold",
+      "scene_type": "tunnel_threshold",
+      "validation_sequence_id": "spirited_video_val_seq_10_tunnel_threshold",
+      "source_scene_id": "scene_spirited_away_tunnel_threshold_0022",
+      "semantic_anchor_id": "bridge_crossing",
+      "ordered_shot_ids": [
+        "shot_spirited_00169",
+        "shot_spirited_00170",
+        "shot_spirited_00171",
+        "shot_spirited_00172",
+        "shot_spirited_00173",
+        "shot_spirited_00174",
+        "shot_spirited_00175",
+        "shot_spirited_00176"
+      ],
+      "shot_count": 8,
+      "total_duration": 23.6,
+      "motion_id": "spirited_motion_0022",
+      "sequence_id": "spirited_seq_0022",
+      "character_dna_expanded": true,
+      "semantic_anchor_present": true,
+      "spirited_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "sequence_recognition_score": 0.99,
+        "geometry_preservation_score": 0.98,
+        "semantic_anchor_score": 0.99,
+        "motion_preservation_score": 0.968,
+        "temporal_continuity_score": 0.9673,
+        "gonegi_identity_score": 0.93
+      },
+      "video_generation_block": {
+        "video_spec_id": "spirited_video_spec_10_tunnel_threshold",
+        "scene_id": "scene_spirited_away_tunnel_threshold_0022",
+        "shot_count": 8,
+        "total_duration": 23.6,
+        "character_dna_expanded": true,
+        "composed_spec_length": 2244
+      }
+    }
+  ]
+}

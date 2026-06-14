@@ -1,0 +1,620 @@
+{
+  "map_id": "short-film-continuity-map-v1",
+  "phase": "PHASE-L3-002",
+  "continuity_dimensions": 6,
+  "dimension_list": [
+    "character",
+    "location",
+    "lighting",
+    "relationship",
+    "timeline",
+    "memory_callback"
+  ],
+  "archetypes": [
+    {
+      "short_film_archetype_id": "harbor_epic_departure",
+      "dimensions": {
+        "character": {
+          "dimension": "character",
+          "rules": [
+            "gonegi_visual_dna_stable_across_120_scenes",
+            "dana_appearance_consistent_on_reentry_scenes",
+            "wardrobe_progression_tracks_seasonal_timeline"
+          ],
+          "arc_ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana",
+              "marco"
+            ],
+            "stages": [
+              "content_harbor_life",
+              "reluctant_departure",
+              "isolated_journey",
+              "memory_weight",
+              "changed_return",
+              "quiet_acceptance"
+            ]
+          },
+          "checkpoint_interval_scenes": 25
+        },
+        "location": {
+          "dimension": "location",
+          "rules": [
+            "harbor_dock_geometry_stable_on_all_reentries",
+            "coastal_path_lighting_direction_consistent_east_west",
+            "bakery_interior_props_unchanged_between_visits"
+          ],
+          "arc_ref": {
+            "location_flow": [
+              "gonegi_harbor_dock_01",
+              "gonegi_coastal_path_01",
+              "gonegi_street_lane_01",
+              "family_bakery_kitchen_01",
+              "dana_window_corner_01",
+              "gonegi_harbor_dock_01"
+            ],
+            "reentry_locations": [
+              "gonegi_harbor_dock_01",
+              "dana_window_corner_01",
+              "harbor_bench"
+            ]
+          },
+          "reentry_locations": [
+            "gonegi_harbor_dock_01",
+            "dana_window_corner_01",
+            "harbor_bench"
+          ]
+        },
+        "lighting": {
+          "dimension": "lighting",
+          "rules": [
+            "morning_harbor_lighting_dna_matched_on_act1_and_act3_openers",
+            "golden_hour_progression_tracks_single_day_scenes",
+            "memory_montage_uses_softened_variants_of_established_lighting_dna"
+          ],
+          "arc_ref": {
+            "lighting_flow": [
+              "morning_harbor_dock",
+              "sunrise_bakery_window",
+              "evening_harbor_dock",
+              "autumn_harbor_return"
+            ],
+            "act_lighting_palette": {
+              "1": [
+                "morning_harbor_dock",
+                "sunrise_bakery_window"
+              ],
+              "2": [
+                "evening_harbor_dock"
+              ],
+              "3": [
+                "autumn_harbor_return"
+              ]
+            },
+            "emotional_turning_points": [
+              {
+                "scene_index": 12,
+                "emotion_id": "determination",
+                "trigger": "departure letter discovered"
+              },
+              {
+                "scene_index": 60,
+                "emotion_id": "longing",
+                "trigger": "midpoint memory callback"
+              },
+              {
+                "scene_index": 105,
+                "emotion_id": "gratitude",
+                "trigger": "harbor bench reunion"
+              }
+            ]
+          }
+        },
+        "relationship": {
+          "dimension": "relationship",
+          "rules": [
+            "gonegi_dana_eyeline_rules_preserved_across_acts",
+            "physical_distance_maps_to_relationship_stage",
+            "unspoken_bond_maintained_without_dialogue_instrumental_scenes"
+          ],
+          "arc_ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana",
+              "marco"
+            ],
+            "stages": [
+              "content_harbor_life",
+              "reluctant_departure",
+              "isolated_journey",
+              "memory_weight",
+              "changed_return",
+              "quiet_acceptance"
+            ],
+            "stage_count": 6
+          }
+        },
+        "timeline": {
+          "dimension": "timeline",
+          "rules": [
+            "season_markers_progress_spring_to_autumn_act2",
+            "letter_delay_span_minimum_30_scene_equivalent",
+            "return_scene_timeline_after_departure_minimum_40_scenes"
+          ],
+          "arc_ref": {
+            "arc_type": "departure_return",
+            "beats": [
+              "daily_harbor_life",
+              "departure_decision",
+              "journey_across_locations",
+              "failed_communication",
+              "memory_montage",
+              "harbor_return",
+              "promise_resolution"
+            ],
+            "inciting_incident_scene": 12,
+            "midpoint_scene": 60,
+            "climax_scene": 105,
+            "resolution_scene": 118,
+            "timeline_markers": [
+              {
+                "scene_index": 1,
+                "timeline_marker": "spring_morning"
+              },
+              {
+                "scene_index": 12,
+                "timeline_marker": "spring_morning"
+              },
+              {
+                "scene_index": 60,
+                "timeline_marker": "summer_evening"
+              },
+              {
+                "scene_index": 110,
+                "timeline_marker": "autumn_golden_hour"
+              }
+            ]
+          }
+        },
+        "memory_callback": {
+          "dimension": "memory_callback",
+          "rules": [
+            "harbor_bench_established_act1_must_payoff_act3",
+            "letter_fragment_introduced_scene_15_returns_scene_95",
+            "shared_window_gaze_act1_echoes_act3_window_scene"
+          ],
+          "arc_ref": [
+            {
+              "anchor_id": "harbor_bench",
+              "callback_seed": 8,
+              "callback_reference": 8,
+              "callback_resolution": 110,
+              "callback_completion_state": "pending"
+            },
+            {
+              "anchor_id": "letter_fragment",
+              "callback_seed": 15,
+              "callback_reference": 15,
+              "callback_resolution": 95,
+              "callback_completion_state": "resolved"
+            },
+            {
+              "anchor_id": "shared_window",
+              "callback_seed": 0,
+              "callback_reference": null,
+              "callback_resolution": null,
+              "callback_completion_state": "pending"
+            },
+            {
+              "anchor_id": "mooring_lines",
+              "callback_seed": 0,
+              "callback_reference": null,
+              "callback_resolution": null,
+              "callback_completion_state": "pending"
+            }
+          ],
+          "completion_states": [
+            "pending",
+            "resolved",
+            "pending",
+            "pending"
+          ]
+        }
+      }
+    },
+    {
+      "short_film_archetype_id": "mediterranean_season_arc",
+      "dimensions": {
+        "character": {
+          "dimension": "character",
+          "rules": [
+            "ensemble_cast_visual_dna_registry_for_4_principals",
+            "age_appearance_stable_within_single_season_blocks",
+            "costume_season_rotation_documented_per_act"
+          ],
+          "arc_ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana",
+              "marco",
+              "elena"
+            ],
+            "stages": [
+              "winter_observer",
+              "spring_participant",
+              "summer_connector",
+              "autumn_mourner",
+              "winter_elder"
+            ]
+          },
+          "checkpoint_interval_scenes": 25
+        },
+        "location": {
+          "dimension": "location",
+          "rules": [
+            "seasonal_prop_variants_pre_registered_per_location",
+            "olive_hill_foliage_state_tracks_spring_to_autumn",
+            "harbor_activity_level_scales_with_season_marker"
+          ],
+          "arc_ref": {
+            "location_flow": [
+              "family_bakery_kitchen_01",
+              "gonegi_harbor_dock_01",
+              "gonegi_coastal_path_01",
+              "gonegi_olive_hill_01",
+              "gonegi_street_lane_01",
+              "family_bakery_kitchen_01"
+            ],
+            "reentry_locations": [
+              "family_bakery_kitchen_01",
+              "gonegi_harbor_dock_01",
+              "gonegi_olive_hill_01"
+            ]
+          },
+          "reentry_locations": [
+            "family_bakery_kitchen_01",
+            "gonegi_harbor_dock_01",
+            "gonegi_olive_hill_01"
+          ]
+        },
+        "lighting": {
+          "dimension": "lighting",
+          "rules": [
+            "winter_interior_warm_palette_consistent_act1_act5",
+            "summer_midday_lighting_dna_for_act3_block",
+            "golden_hour_autumn_palette_for_act4_farewell_block"
+          ],
+          "arc_ref": {
+            "lighting_flow": [
+              "winter_bakery_interior",
+              "summer_festival_lane"
+            ],
+            "act_lighting_palette": {
+              "1": [
+                "winter_bakery_interior"
+              ],
+              "3": [
+                "summer_festival_lane"
+              ]
+            },
+            "emotional_turning_points": [
+              {
+                "scene_index": 38,
+                "emotion_id": "hope",
+                "trigger": "first_spring_light_on_harbor"
+              },
+              {
+                "scene_index": 120,
+                "emotion_id": "wonder",
+                "trigger": "summer_festival_peak"
+              },
+              {
+                "scene_index": 245,
+                "emotion_id": "gratitude",
+                "trigger": "winter_return_with_memory"
+              }
+            ]
+          }
+        },
+        "relationship": {
+          "dimension": "relationship",
+          "rules": [
+            "ensemble_relationship_matrix_tracks_all_principal_pairs",
+            "community_distance_rules_for_background_characters",
+            "farewell_act_preserves_unresolved_threads_for_sequel"
+          ],
+          "arc_ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana",
+              "marco",
+              "elena"
+            ],
+            "stages": [
+              "winter_observer",
+              "spring_participant",
+              "summer_connector",
+              "autumn_mourner",
+              "winter_elder"
+            ],
+            "stage_count": 5
+          }
+        },
+        "timeline": {
+          "dimension": "timeline",
+          "rules": [
+            "explicit_season_marker_per_act_boundary",
+            "minimum_30_scenes_per_season_block",
+            "festival_event_single_timeline_anchor_summer_act"
+          ],
+          "arc_ref": {
+            "arc_type": "seasonal_cycle",
+            "beats": [
+              "winter_interior",
+              "spring_harbor_opening",
+              "summer_community_peak",
+              "autumn_farewell",
+              "winter_transformed_return"
+            ],
+            "inciting_incident_scene": 38,
+            "midpoint_scene": 120,
+            "climax_scene": 200,
+            "resolution_scene": 245,
+            "timeline_markers": [
+              {
+                "scene_index": 1,
+                "timeline_marker": "winter_morning"
+              },
+              {
+                "scene_index": 120,
+                "timeline_marker": "summer_midday"
+              }
+            ]
+          }
+        },
+        "memory_callback": {
+          "dimension": "memory_callback",
+          "rules": [
+            "bakery_window_winter_opening_echoes_winter_closing",
+            "olive_tree_spring_scene_callbacks_autumn_farewell",
+            "festival_lantern_summer_establishes_winter_memory_scene"
+          ],
+          "arc_ref": [
+            {
+              "anchor_id": "bakery_window",
+              "callback_seed": 5,
+              "callback_reference": 5,
+              "callback_resolution": 245,
+              "callback_completion_state": "pending"
+            },
+            {
+              "anchor_id": "olive_tree",
+              "callback_seed": 55,
+              "callback_reference": 55,
+              "callback_resolution": 195,
+              "callback_completion_state": "resolved"
+            },
+            {
+              "anchor_id": "shared_bread",
+              "callback_seed": 0,
+              "callback_reference": null,
+              "callback_resolution": null,
+              "callback_completion_state": "pending"
+            },
+            {
+              "anchor_id": "festival_lantern",
+              "callback_seed": 0,
+              "callback_reference": null,
+              "callback_resolution": null,
+              "callback_completion_state": "pending"
+            }
+          ],
+          "completion_states": [
+            "pending",
+            "resolved",
+            "pending",
+            "pending"
+          ]
+        }
+      }
+    },
+    {
+      "short_film_archetype_id": "letter_across_years",
+      "dimensions": {
+        "character": {
+          "dimension": "character",
+          "rules": [
+            "gonegi_dana_pair_visual_dna_locked_entire_film",
+            "subtle_aging_progression_across_year_markers_only",
+            "handwriting_prop_consistent_for_letter_scenes"
+          ],
+          "arc_ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana"
+            ],
+            "stages": [
+              "strangers",
+              "tentative_connection",
+              "shared_routine",
+              "growing_affection",
+              "quiet_distance",
+              "memory_weight",
+              "hopeful_future"
+            ]
+          },
+          "checkpoint_interval_scenes": 25
+        },
+        "location": {
+          "dimension": "location",
+          "rules": [
+            "window_corner_geometry_identical_all_reentries",
+            "lane_cobblestone_pattern_stable_across_years",
+            "bakery_props_unchanged_between_time_jumps"
+          ],
+          "arc_ref": {
+            "location_flow": [
+              "gonegi_street_lane_01",
+              "family_bakery_kitchen_01",
+              "dana_window_corner_01",
+              "gonegi_harbor_dock_01",
+              "dana_window_corner_01"
+            ],
+            "reentry_locations": [
+              "dana_window_corner_01",
+              "family_bakery_kitchen_01",
+              "gonegi_street_lane_01"
+            ]
+          },
+          "reentry_locations": [
+            "dana_window_corner_01",
+            "family_bakery_kitchen_01",
+            "gonegi_street_lane_01"
+          ]
+        },
+        "lighting": {
+          "dimension": "lighting",
+          "rules": [
+            "sunrise_window_soft_01_for_all_window_scenes",
+            "memory_montage_uses_desaturated_variants",
+            "reunion_scene_matches_first_meeting_lighting_dna"
+          ],
+          "arc_ref": {
+            "lighting_flow": [
+              "sunrise_bakery_window",
+              "sunrise_bakery_window"
+            ],
+            "act_lighting_palette": {
+              "1": [
+                "sunrise_bakery_window"
+              ],
+              "3": [
+                "sunrise_bakery_window"
+              ]
+            },
+            "emotional_turning_points": [
+              {
+                "scene_index": 8,
+                "emotion_id": "wonder",
+                "trigger": "first_meeting_across_lane"
+              },
+              {
+                "scene_index": 50,
+                "emotion_id": "nostalgia",
+                "trigger": "midpoint_memory_montage"
+              },
+              {
+                "scene_index": 92,
+                "emotion_id": "hope",
+                "trigger": "book_exchange_callback_reunion"
+              }
+            ]
+          }
+        },
+        "relationship": {
+          "dimension": "relationship",
+          "rules": [
+            "ballad_mv_global_relationship_progression_preserved",
+            "physical_proximity_maps_to_relationship_stage_per_scene",
+            "eyeline_continuity_rules_from_ballad_mv_adapter"
+          ],
+          "arc_ref": {
+            "primary_character_id": "gonegi",
+            "secondary_character_ids": [
+              "dana"
+            ],
+            "stages": [
+              "strangers",
+              "tentative_connection",
+              "shared_routine",
+              "growing_affection",
+              "quiet_distance",
+              "memory_weight",
+              "hopeful_future"
+            ],
+            "stage_count": 7
+          }
+        },
+        "timeline": {
+          "dimension": "timeline",
+          "rules": [
+            "year_marker_explicit_at_act_boundaries",
+            "letter_delay_minimum_20_scene_equivalent",
+            "parallel_timeline_scenes_paired_by_memory_anchor"
+          ],
+          "arc_ref": {
+            "arc_type": "correspondence_reunion",
+            "beats": [
+              "first_meeting",
+              "shared_daily_life",
+              "growing_affection",
+              "quiet_distance",
+              "farewell_day",
+              "memory_after_parting",
+              "reunion_after_time"
+            ],
+            "inciting_incident_scene": 8,
+            "midpoint_scene": 50,
+            "climax_scene": 88,
+            "resolution_scene": 98,
+            "timeline_markers": [
+              {
+                "scene_index": 3,
+                "timeline_marker": "year_one_spring"
+              },
+              {
+                "scene_index": 92,
+                "timeline_marker": "year_three_spring"
+              }
+            ]
+          }
+        },
+        "memory_callback": {
+          "dimension": "memory_callback",
+          "rules": [
+            "book_exchange_must_reappear_in_growing_affection_and_reunion",
+            "shared_window_established_for_memory_after_parting",
+            "letter_fragment_introduced_act1_payoff_act3"
+          ],
+          "arc_ref": [
+            {
+              "anchor_id": "book_exchange",
+              "callback_seed": 3,
+              "callback_reference": 3,
+              "callback_resolution": 92,
+              "callback_completion_state": "pending"
+            },
+            {
+              "anchor_id": "letter_fragment",
+              "callback_seed": 22,
+              "callback_reference": 22,
+              "callback_resolution": 88,
+              "callback_completion_state": "pending"
+            },
+            {
+              "anchor_id": "shared_window",
+              "callback_seed": 0,
+              "callback_reference": null,
+              "callback_resolution": null,
+              "callback_completion_state": "pending"
+            },
+            {
+              "anchor_id": "shared_bread",
+              "callback_seed": 0,
+              "callback_reference": null,
+              "callback_resolution": null,
+              "callback_completion_state": "pending"
+            }
+          ],
+          "completion_states": [
+            "pending",
+            "pending",
+            "pending",
+            "pending"
+          ]
+        }
+      }
+    }
+  ]
+}

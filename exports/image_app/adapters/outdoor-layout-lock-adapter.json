@@ -1,0 +1,395 @@
+{
+  "adapter_type": "outdoor_layout_lock_image_adapter",
+  "adapter_metadata": {
+    "adapter_name": "outdoor-layout-lock-adapter",
+    "adapter_version": "v2",
+    "phase": "PHASE-16-PUBLISH-V2-LOCK-001",
+    "token_mode": "v2",
+    "character_first_contract_reference": "exports/image_app/contracts/character-first-contract.json",
+    "generated_at": "2026-06-04T08:12:14.924Z",
+    "target_app": "image_app",
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "layout_count": 6,
+    "library_reference": "datasets/location/outdoor-layout-lock-library-v1.json",
+    "index_reference": "datasets/location/outdoor-layout-lock-index-v1.json",
+    "parent_adapter_reference": "exports/image_app/adapters/scene-asset-composition-adapter.json",
+    "upload_slot": 16,
+    "production_upload_variant": "v2"
+  },
+  "adapter_responsibility_chain": [
+    "location_id",
+    "outdoor_layout_id",
+    "outdoor_prop_anchor_ids",
+    "render_payload"
+  ],
+  "location_to_outdoor_layout_map": [
+    {
+      "location_id": "olive_hill_overlook_01",
+      "outdoor_layout_id": "outdoor_layout_lock_olive_hill_overlook_01",
+      "outdoor_prop_anchor_ids": [],
+      "layout_tokens": [
+        "outdoor-layout-lock:outdoor_layout_lock_olive_hill_overlook_01",
+        "outdoor-orientation:path_approach_north_olive_crown_west_harbor_distant_south",
+        "landmark-position:olive_tree_01@hill_crown_west_canopy_anchor",
+        "landmark-position:stone_railing_01@overlook_edge_south_rail_locked",
+        "camera-preference:prefer_olive_trunk_or_rail_edge_context_character_foreground_priority",
+        "landmark-preference:olive_tree_01",
+        "landmark-preference:stone_railing_01",
+        "environment-supporting-elements:olive_tree_01_stone_railing_01"
+      ],
+      "render_payload": {
+        "layout_tokens": [
+          "outdoor-layout-lock:outdoor_layout_lock_olive_hill_overlook_01",
+          "outdoor-orientation:path_approach_north_olive_crown_west_harbor_distant_south",
+          "landmark-position:olive_tree_01@hill_crown_west_canopy_anchor",
+          "landmark-position:stone_railing_01@overlook_edge_south_rail_locked",
+          "camera-preference:prefer_olive_trunk_or_rail_edge_context_character_foreground_priority",
+          "landmark-preference:olive_tree_01",
+          "landmark-preference:stone_railing_01",
+          "environment-supporting-elements:olive_tree_01_stone_railing_01"
+        ],
+        "outdoor_layout_id": "outdoor_layout_lock_olive_hill_overlook_01",
+        "outdoor_orientation": "path_approach_north_olive_crown_west_harbor_distant_south",
+        "landmark_positions": [
+          "olive_tree_01@hill_crown_west_canopy_anchor",
+          "stone_railing_01@overlook_edge_south_rail_locked"
+        ],
+        "required_landmarks": [
+          "olive_tree_01",
+          "stone_railing_01"
+        ],
+        "outdoor_prop_anchor_ids": [],
+        "forbidden_outdoor_changes": [
+          "do not move landmark positions",
+          "do not swap landmark locations",
+          "do not rotate outdoor orientation",
+          "do not remove required landmarks",
+          "do_not_relocate_olive_tree_from_hill_crown"
+        ],
+        "active_camera_visibility": "prefer_olive_trunk_or_rail_edge_context_character_foreground_priority"
+      }
+    },
+    {
+      "location_id": "harbor_watch_point_01",
+      "outdoor_layout_id": "outdoor_layout_lock_harbor_watch_point_01",
+      "outdoor_prop_anchor_ids": [],
+      "layout_tokens": [
+        "outdoor-layout-lock:outdoor_layout_lock_harbor_watch_point_01",
+        "outdoor-orientation:ledge_east_open_water_north_rail_west_path_south",
+        "landmark-position:harbor_bench_01@ledge_east_facing_open_water",
+        "landmark-position:stone_railing_01@watch_rail_north_perimeter",
+        "camera-preference:prefer_bench_or_rail_with_water_context_character_foreground_priority",
+        "landmark-preference:harbor_bench_01",
+        "landmark-preference:stone_railing_01",
+        "environment-supporting-elements:harbor_bench_01_stone_railing_01"
+      ],
+      "render_payload": {
+        "layout_tokens": [
+          "outdoor-layout-lock:outdoor_layout_lock_harbor_watch_point_01",
+          "outdoor-orientation:ledge_east_open_water_north_rail_west_path_south",
+          "landmark-position:harbor_bench_01@ledge_east_facing_open_water",
+          "landmark-position:stone_railing_01@watch_rail_north_perimeter",
+          "camera-preference:prefer_bench_or_rail_with_water_context_character_foreground_priority",
+          "landmark-preference:harbor_bench_01",
+          "landmark-preference:stone_railing_01",
+          "environment-supporting-elements:harbor_bench_01_stone_railing_01"
+        ],
+        "outdoor_layout_id": "outdoor_layout_lock_harbor_watch_point_01",
+        "outdoor_orientation": "ledge_east_open_water_north_rail_west_path_south",
+        "landmark_positions": [
+          "harbor_bench_01@ledge_east_facing_open_water",
+          "stone_railing_01@watch_rail_north_perimeter"
+        ],
+        "required_landmarks": [
+          "harbor_bench_01",
+          "stone_railing_01"
+        ],
+        "outdoor_prop_anchor_ids": [],
+        "forbidden_outdoor_changes": [
+          "do not move landmark positions",
+          "do not swap landmark locations",
+          "do not rotate outdoor orientation",
+          "do not remove required landmarks"
+        ],
+        "active_camera_visibility": "prefer_bench_or_rail_with_water_context_character_foreground_priority"
+      }
+    },
+    {
+      "location_id": "harbor_sunset_bench_01",
+      "outdoor_layout_id": "outdoor_layout_lock_harbor_sunset_bench_01",
+      "outdoor_prop_anchor_ids": [],
+      "layout_tokens": [
+        "outdoor-layout-lock:outdoor_layout_lock_harbor_sunset_bench_01",
+        "outdoor-orientation:lane_bench_west_golden_harbor_horizon_east_rail_behind",
+        "landmark-position:harbor_bench_01@lane_bench_golden_hour_facing_west",
+        "landmark-position:stone_railing_01@bench_rail_behind_south_edge",
+        "camera-preference:prefer_bench_context_with_horizon_glow_character_foreground_priority",
+        "landmark-preference:harbor_bench_01",
+        "landmark-preference:stone_railing_01",
+        "environment-supporting-elements:harbor_bench_01_stone_railing_01"
+      ],
+      "render_payload": {
+        "layout_tokens": [
+          "outdoor-layout-lock:outdoor_layout_lock_harbor_sunset_bench_01",
+          "outdoor-orientation:lane_bench_west_golden_harbor_horizon_east_rail_behind",
+          "landmark-position:harbor_bench_01@lane_bench_golden_hour_facing_west",
+          "landmark-position:stone_railing_01@bench_rail_behind_south_edge",
+          "camera-preference:prefer_bench_context_with_horizon_glow_character_foreground_priority",
+          "landmark-preference:harbor_bench_01",
+          "landmark-preference:stone_railing_01",
+          "environment-supporting-elements:harbor_bench_01_stone_railing_01"
+        ],
+        "outdoor_layout_id": "outdoor_layout_lock_harbor_sunset_bench_01",
+        "outdoor_orientation": "lane_bench_west_golden_harbor_horizon_east_rail_behind",
+        "landmark_positions": [
+          "harbor_bench_01@lane_bench_golden_hour_facing_west",
+          "stone_railing_01@bench_rail_behind_south_edge"
+        ],
+        "required_landmarks": [
+          "harbor_bench_01",
+          "stone_railing_01"
+        ],
+        "outdoor_prop_anchor_ids": [],
+        "forbidden_outdoor_changes": [
+          "do not move landmark positions",
+          "do not swap landmark locations",
+          "do not rotate outdoor orientation",
+          "do not remove required landmarks",
+          "do_not_swap_bench_to_opposite_lane"
+        ],
+        "active_camera_visibility": "prefer_bench_context_with_horizon_glow_character_foreground_priority"
+      }
+    },
+    {
+      "location_id": "harbor_cliff_path_01",
+      "outdoor_layout_id": "outdoor_layout_lock_harbor_cliff_path_01",
+      "outdoor_prop_anchor_ids": [],
+      "layout_tokens": [
+        "outdoor-layout-lock:outdoor_layout_lock_harbor_cliff_path_01",
+        "outdoor-orientation:cliff_path_south_rail_outer_edge_lighthouse_distant_northeast",
+        "landmark-position:stone_railing_01@cliff_path_outer_edge_rail",
+        "landmark-position:lighthouse_01@distant_northeast_horizon_fixed",
+        "camera-preference:prefer_rail_curve_or_lighthouse_context_character_foreground_priority",
+        "landmark-preference:stone_railing_01",
+        "landmark-preference:lighthouse_01",
+        "environment-supporting-elements:stone_railing_01_lighthouse_01"
+      ],
+      "render_payload": {
+        "layout_tokens": [
+          "outdoor-layout-lock:outdoor_layout_lock_harbor_cliff_path_01",
+          "outdoor-orientation:cliff_path_south_rail_outer_edge_lighthouse_distant_northeast",
+          "landmark-position:stone_railing_01@cliff_path_outer_edge_rail",
+          "landmark-position:lighthouse_01@distant_northeast_horizon_fixed",
+          "camera-preference:prefer_rail_curve_or_lighthouse_context_character_foreground_priority",
+          "landmark-preference:stone_railing_01",
+          "landmark-preference:lighthouse_01",
+          "environment-supporting-elements:stone_railing_01_lighthouse_01"
+        ],
+        "outdoor_layout_id": "outdoor_layout_lock_harbor_cliff_path_01",
+        "outdoor_orientation": "cliff_path_south_rail_outer_edge_lighthouse_distant_northeast",
+        "landmark_positions": [
+          "stone_railing_01@cliff_path_outer_edge_rail",
+          "lighthouse_01@distant_northeast_horizon_fixed"
+        ],
+        "required_landmarks": [
+          "stone_railing_01",
+          "lighthouse_01"
+        ],
+        "outdoor_prop_anchor_ids": [],
+        "forbidden_outdoor_changes": [
+          "do not move landmark positions",
+          "do not swap landmark locations",
+          "do not rotate outdoor orientation",
+          "do not remove required landmarks"
+        ],
+        "active_camera_visibility": "prefer_rail_curve_or_lighthouse_context_character_foreground_priority"
+      }
+    },
+    {
+      "location_id": "dockside_walkway_01",
+      "outdoor_layout_id": "outdoor_layout_lock_dockside_walkway_01",
+      "outdoor_prop_anchor_ids": [
+        "dock_crate_01",
+        "dock_rope_bundle_01"
+      ],
+      "layout_tokens": [
+        "outdoor-layout-lock:outdoor_layout_lock_dockside_walkway_01",
+        "outdoor-orientation:walkway_east_water_west_crate_stack_port_north_ropes_bollard",
+        "landmark-position:dock_crate_01@walkway_stack_port_side_locked",
+        "landmark-position:dock_rope_bundle_01@bollard_coil_zone_south_end",
+        "camera-preference:prefer_crate_stack_or_rope_coil_context_character_foreground_priority",
+        "landmark-preference:dock_crate_01",
+        "landmark-preference:dock_rope_bundle_01",
+        "environment-supporting-elements:dock_crate_01_dock_rope_bundle_01",
+        "outdoor-prop:dock_crate_01",
+        "outdoor-prop:dock_rope_bundle_01"
+      ],
+      "render_payload": {
+        "layout_tokens": [
+          "outdoor-layout-lock:outdoor_layout_lock_dockside_walkway_01",
+          "outdoor-orientation:walkway_east_water_west_crate_stack_port_north_ropes_bollard",
+          "landmark-position:dock_crate_01@walkway_stack_port_side_locked",
+          "landmark-position:dock_rope_bundle_01@bollard_coil_zone_south_end",
+          "camera-preference:prefer_crate_stack_or_rope_coil_context_character_foreground_priority",
+          "landmark-preference:dock_crate_01",
+          "landmark-preference:dock_rope_bundle_01",
+          "environment-supporting-elements:dock_crate_01_dock_rope_bundle_01",
+          "outdoor-prop:dock_crate_01",
+          "outdoor-prop:dock_rope_bundle_01"
+        ],
+        "outdoor_layout_id": "outdoor_layout_lock_dockside_walkway_01",
+        "outdoor_orientation": "walkway_east_water_west_crate_stack_port_north_ropes_bollard",
+        "landmark_positions": [
+          "dock_crate_01@walkway_stack_port_side_locked",
+          "dock_rope_bundle_01@bollard_coil_zone_south_end"
+        ],
+        "required_landmarks": [
+          "dock_crate_01",
+          "dock_rope_bundle_01"
+        ],
+        "outdoor_prop_anchor_ids": [
+          "dock_crate_01",
+          "dock_rope_bundle_01"
+        ],
+        "forbidden_outdoor_changes": [
+          "do not move landmark positions",
+          "do not swap landmark locations",
+          "do not rotate outdoor orientation",
+          "do not remove required landmarks",
+          "do_not_swap_crate_and_rope_zones"
+        ],
+        "active_camera_visibility": "prefer_crate_stack_or_rope_coil_context_character_foreground_priority"
+      }
+    },
+    {
+      "location_id": "lighthouse_overlook_01",
+      "outdoor_layout_id": "outdoor_layout_lock_lighthouse_overlook_01",
+      "outdoor_prop_anchor_ids": [],
+      "layout_tokens": [
+        "outdoor-layout-lock:outdoor_layout_lock_lighthouse_overlook_01",
+        "outdoor-orientation:platform_center_lighthouse_north_rail_perimeter_west_harbor_panorama_south",
+        "landmark-position:lighthouse_01@overlook_platform_center_north_tower",
+        "landmark-position:stone_railing_01@overlook_perimeter_west_rail_arc",
+        "camera-preference:prefer_tower_base_or_rail_curve_context_character_foreground_priority",
+        "landmark-preference:lighthouse_01",
+        "landmark-preference:stone_railing_01",
+        "environment-supporting-elements:lighthouse_01_stone_railing_01"
+      ],
+      "render_payload": {
+        "layout_tokens": [
+          "outdoor-layout-lock:outdoor_layout_lock_lighthouse_overlook_01",
+          "outdoor-orientation:platform_center_lighthouse_north_rail_perimeter_west_harbor_panorama_south",
+          "landmark-position:lighthouse_01@overlook_platform_center_north_tower",
+          "landmark-position:stone_railing_01@overlook_perimeter_west_rail_arc",
+          "camera-preference:prefer_tower_base_or_rail_curve_context_character_foreground_priority",
+          "landmark-preference:lighthouse_01",
+          "landmark-preference:stone_railing_01",
+          "environment-supporting-elements:lighthouse_01_stone_railing_01"
+        ],
+        "outdoor_layout_id": "outdoor_layout_lock_lighthouse_overlook_01",
+        "outdoor_orientation": "platform_center_lighthouse_north_rail_perimeter_west_harbor_panorama_south",
+        "landmark_positions": [
+          "lighthouse_01@overlook_platform_center_north_tower",
+          "stone_railing_01@overlook_perimeter_west_rail_arc"
+        ],
+        "required_landmarks": [
+          "lighthouse_01",
+          "stone_railing_01"
+        ],
+        "outdoor_prop_anchor_ids": [],
+        "forbidden_outdoor_changes": [
+          "do not move landmark positions",
+          "do not swap landmark locations",
+          "do not rotate outdoor orientation",
+          "do not remove required landmarks",
+          "do_not_rotate_lighthouse_off_platform_center"
+        ],
+        "active_camera_visibility": "prefer_tower_base_or_rail_curve_context_character_foreground_priority"
+      }
+    }
+  ],
+  "image_app_token_contract": {
+    "required_prefixes": [
+      "outdoor-layout-lock:",
+      "outdoor-orientation:",
+      "landmark-position:",
+      "camera-preference:",
+      "landmark-preference:",
+      "environment-supporting-elements:",
+      "character-priority:"
+    ],
+    "removed_in_lite_mode": [],
+    "removed_in_v2_rebuild": [
+      "camera-visibility:",
+      "landmark-visibility:must_show_",
+      "walkable-zone:"
+    ],
+    "priority_order": [
+      "character_identity",
+      "character_reference",
+      "character_continuity",
+      "location_continuity",
+      "environment_details"
+    ],
+    "injection_layer": "location_continuity_anchors"
+  },
+  "runtime_verification_fields": {
+    "outdoor_layout_id": {
+      "exported": true,
+      "required_for_outdoor": true
+    },
+    "layout_tokens": {
+      "exported": true,
+      "required_for_outdoor": true
+    },
+    "render_payload": {
+      "exported": true,
+      "consumed_by_image_app": true
+    },
+    "secondary_validation": "Soft outdoor guidance only; character identity has higher priority than environment details. No FAIL-if-ignored enforcement."
+  },
+  "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+  "image_app_contract": {
+    "supported_location_ids": [
+      "olive_hill_overlook_01",
+      "harbor_watch_point_01",
+      "harbor_sunset_bench_01",
+      "harbor_cliff_path_01",
+      "dockside_walkway_01",
+      "lighthouse_overlook_01"
+    ],
+    "resolution_flow": {
+      "step_1": "resolve location_id from shot",
+      "step_2": "lookup outdoor_layout_id and outdoor_prop_anchor_ids",
+      "step_3": "attach locked landmark_positions and outdoor_orientation",
+      "step_4": "merge render_payload layout tokens into location continuity only"
+    },
+    "field_separation_preserved": true,
+    "generates_scenarios": false,
+    "generates_prompts": false
+  },
+  "rkb_013_validation_target": {
+    "test_id": "RKB-013",
+    "test_name": "OUTDOOR_LAYOUT_CONTINUITY_VALIDATION",
+    "review_criteria": [
+      "landmark_position_stability",
+      "outdoor_orientation_stability",
+      "landmark_recognition",
+      "required_landmark_visibility"
+    ],
+    "success_condition": "Locked outdoor landmarks remain recognizable across generations; no orientation or landmark position drift."
+  },
+  "compatibility_declaration": {
+    "merge_policy": "reference_only",
+    "references": [
+      {
+        "asset_id": "scene_asset_composition_adapter",
+        "reference_path": "exports/image_app/adapters/scene-asset-composition-adapter.json"
+      },
+      {
+        "asset_id": "outdoor_layout_lock_library_v1",
+        "reference_path": "datasets/location/outdoor-layout-lock-library-v1.json"
+      }
+    ]
+  }
+}

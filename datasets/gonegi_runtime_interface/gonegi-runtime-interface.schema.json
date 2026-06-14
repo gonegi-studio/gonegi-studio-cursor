@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/gonegi_runtime_interface/gonegi-runtime-interface.schema.json",
+  "title": "GonegiRuntimeInterface",
+  "description": "Runtime interface draft compiled from Gonegi GPU payloads for PHASE-SOURCE-VIDEO-018",
+  "type": "object",
+  "required": [
+    "gonegi_runtime_interface_id",
+    "phase",
+    "source_gpu_payload_id",
+    "runtime_target",
+    "provider_hint",
+    "input_contract",
+    "output_contract",
+    "handshake_contract",
+    "identity_lock_contract",
+    "continuity_lock_contract",
+    "execution_flags",
+    "readiness_status",
+    "production_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "gonegi_runtime_interface_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-018-GONEGI_GPU_PAYLOAD_TO_RUNTIME_INTERFACE_V2"
+    },
+    "source_gpu_payload_id": { "type": "string", "minLength": 1 },
+    "runtime_target": {
+      "type": "string",
+      "enum": ["local_stub", "remote_stub", "deferred"]
+    },
+    "provider_hint": { "$ref": "#/$defs/provider_hint" },
+    "input_contract": { "$ref": "#/$defs/input_contract" },
+    "output_contract": { "$ref": "#/$defs/output_contract" },
+    "handshake_contract": { "$ref": "#/$defs/handshake_contract" },
+    "identity_lock_contract": { "$ref": "#/$defs/identity_lock_contract" },
+    "continuity_lock_contract": { "$ref": "#/$defs/continuity_lock_contract" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "readiness_status": { "type": "string", "const": "design_only_not_wired" },
+    "production_status": { "$ref": "#/$defs/production_status" },
+    "compiled_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "provider_hint": {
+      "type": "object",
+      "required": [
+        "recommended_provider_id",
+        "mapped_provider_id",
+        "wiring_id",
+        "provider_activation",
+        "runtime_target",
+        "selection_basis"
+      ],
+      "properties": {
+        "recommended_provider_id": { "type": "string" },
+        "mapped_provider_id": { "type": "string" },
+        "wiring_id": { "type": "string" },
+        "provider_activation": { "type": "boolean", "const": false },
+        "runtime_target": { "type": "string", "enum": ["local_stub", "remote_stub", "deferred"] },
+        "selection_basis": { "type": "string" }
+      }
+    },
+    "input_contract": {
+      "type": "object",
+      "required": [
+        "artifact_type",
+        "artifact_path",
+        "payload_schema",
+        "required_fields",
+        "submission_allowed"
+      ],
+      "properties": {
+        "artifact_type": { "type": "string", "const": "gonegi_gpu_payload" },
+        "artifact_path": { "type": "string" },
+        "payload_schema": { "type": "string" },
+        "required_fields": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "submission_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "output_contract": {
+      "type": "object",
+      "required": [
+        "artifact_type",
+        "output_path",
+        "format",
+        "generation_allowed"
+      ],
+      "properties": {
+        "artifact_type": { "type": "string", "const": "video_render_placeholder" },
+        "output_path": { "type": "string" },
+        "format": { "type": "string", "const": "mp4_placeholder" },
+        "generation_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "handshake_contract": {
+      "type": "object",
+      "required": [
+        "payload_schema_version",
+        "reference_runtime_schema",
+        "preflight_checks",
+        "identity_lock_count"
+      ],
+      "properties": {
+        "payload_schema_version": { "type": "string" },
+        "reference_runtime_schema": { "type": "string" },
+        "preflight_checks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "identity_lock_count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "identity_lock_contract": {
+      "type": "object",
+      "required": ["identity_locks", "lock_count", "preservation_required"],
+      "properties": {
+        "identity_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "lock_count": { "type": "integer", "minimum": 1 },
+        "preservation_required": { "type": "boolean", "const": true }
+      }
+    },
+    "continuity_lock_contract": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks"],
+      "properties": {
+        "identity_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "location_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "composition_locks": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "provider_activation",
+        "preparation_only",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "provider_activation": { "type": "boolean", "const": false },
+        "preparation_only": { "type": "boolean", "const": true },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    },
+    "production_status": {
+      "type": "object",
+      "required": ["isolated", "storage_domain", "production_registry"],
+      "properties": {
+        "isolated": { "type": "boolean", "const": true },
+        "storage_domain": { "type": "string", "const": "gonegi_runtime_interface" },
+        "production_registry": { "type": "boolean", "const": false },
+        "draft_status": { "type": "string", "const": "gonegi_runtime_interface_compiled_v1" }
+      }
+    }
+  }
+}

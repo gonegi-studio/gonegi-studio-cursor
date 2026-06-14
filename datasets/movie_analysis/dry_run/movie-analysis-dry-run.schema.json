@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/dry_run/movie-analysis-dry-run.schema.json",
+  "title": "MovieAnalysisDryRun",
+  "description": "Planning-only dry-run for PHASE-SOURCE-VIDEO-023",
+  "type": "object",
+  "required": [
+    "dry_run_id",
+    "phase",
+    "analysis_plan_id",
+    "source_video_id",
+    "dry_run_steps",
+    "estimated_segment_count",
+    "estimated_coordinate_count",
+    "analysis_risk",
+    "identity_safety_checks",
+    "runtime_safety_checks",
+    "promotion_warning_preserved",
+    "execution_flags",
+    "planned_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "dry_run_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-023-MOVIE_ANALYSIS_DRY_RUN_PLANNER_V1"
+    },
+    "analysis_plan_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "dry_run_steps": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["step_id", "step_order", "action", "reads_frames", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "step_id": { "type": "string" },
+          "step_order": { "type": "integer", "minimum": 1 },
+          "action": { "type": "string" },
+          "reads_frames": { "type": "boolean", "const": false },
+          "status": {
+            "type": "string",
+            "enum": ["planned", "simulated_pass"]
+          },
+          "output_ref": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "estimated_segment_count": { "type": "integer", "minimum": 1 },
+    "estimated_coordinate_count": { "type": "integer", "minimum": 1 },
+    "analysis_risk": {
+      "type": "object",
+      "required": ["risk_score", "risk_level", "promotion_gate_status"],
+      "additionalProperties": false,
+      "properties": {
+        "risk_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "risk_level": {
+          "type": "string",
+          "enum": ["LOW", "MODERATE", "HIGH", "CRITICAL"]
+        },
+        "promotion_gate_status": {
+          "type": "string",
+          "enum": ["BLOCKED", "ALLOW_WITH_WARNING", "ALLOW"]
+        },
+        "watch_slot_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "identity_safety_checks": {
+      "type": "object",
+      "required": [
+        "identity_lock_required",
+        "character_first_contract",
+        "promotion_warning_preserved",
+        "downstream_pipeline_isolated"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "identity_lock_required": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "character_first_contract": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "promotion_warning_preserved": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "downstream_pipeline_isolated": { "type": "string", "enum": ["PASS", "FAIL"] }
+      }
+    },
+    "runtime_safety_checks": {
+      "type": "object",
+      "required": [
+        "frame_extraction",
+        "ocr",
+        "gpu_execution",
+        "external_call_allowed",
+        "planning_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "planning_only": { "type": "boolean", "const": true }
+      }
+    },
+    "promotion_warning_preserved": { "type": "boolean" },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    },
+    "planned_at": { "type": "string", "format": "date-time" }
+  }
+}

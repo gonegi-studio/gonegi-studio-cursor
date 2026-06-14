@@ -1,0 +1,45 @@
+{
+  "library_id": "improvement-recommendation-library-v1",
+  "asset_type": "improvement_recommendation_library",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-001",
+  "module": "DATASET_EVOLUTION_SYSTEM_V1",
+  "purpose": "Actionable improvement recommendations derived from failure and success pattern analysis.",
+  "recommendation_count": 5,
+  "recommendations": [
+    {
+      "recommendation_id": "ir-prompt-compiler-tighten",
+      "source_pattern_id": "fp-generation-prompt-drift",
+      "improvement_action": "tighten_shot_dna_continuity_memory_fusion_weights",
+      "dataset_update_candidate": "prompt-compiler-weight-calibration-v1"
+    },
+    {
+      "recommendation_id": "ir-identity-threshold-boost",
+      "source_pattern_id": "fp-consistency-identity-break",
+      "improvement_action": "raise_minimum_identity_dimension_floor",
+      "dataset_update_candidate": "identity-dimension-threshold-v1.1"
+    },
+    {
+      "recommendation_id": "ir-callback-horizon-extend",
+      "source_pattern_id": "fp-memory-callback-loss",
+      "improvement_action": "extend_callback_horizon_within_memory_spec",
+      "dataset_update_candidate": "callback-horizon-extension-v1"
+    },
+    {
+      "recommendation_id": "ir-handoff-trace-reinforce",
+      "source_pattern_id": "fp-pipeline-handoff-break",
+      "improvement_action": "reinforce_stage_transition_traceability_ids",
+      "dataset_update_candidate": "handoff-traceability-reinforcement-v1"
+    },
+    {
+      "recommendation_id": "ir-render-trace-validate",
+      "source_pattern_id": "fp-render-output-corrupt",
+      "improvement_action": "add_final_output_trace_validation_gate",
+      "dataset_update_candidate": "render-trace-validation-gate-v1"
+    }
+  ],
+  "export_id": "improvement-recommendation-library-export-v1",
+  "generated_at": "2026-06-08T23:51:35.784Z",
+  "dataset_ref": "datasets/evolution/improvement-recommendation-library.json",
+  "evolution_flow_terminal": "dataset_update_candidate"
+}

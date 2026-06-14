@@ -1,0 +1,141 @@
+{
+  "block_id": "temporal-dna-v5",
+  "dataset_type": "production",
+  "production_grade": true,
+  "placeholder": false,
+  "temporal_memory_active": true,
+  "materialized": true,
+  "temporal_memory_rules": {
+    "priority_order": [
+      "callback_memory",
+      "relationship_memory",
+      "world_state_memory",
+      "timeline_memory"
+    ],
+    "recall_threshold": 0.75,
+    "forget_rate_cap": 0.15
+  },
+  "memory_events": [
+    {
+      "event_id": "memory-event-character_memory",
+      "memory_dimension": "character_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-location_memory",
+      "memory_dimension": "location_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-relationship_memory",
+      "memory_dimension": "relationship_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-prop_memory",
+      "memory_dimension": "prop_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-costume_memory",
+      "memory_dimension": "costume_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-world_state_memory",
+      "memory_dimension": "world_state_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-theme_memory",
+      "memory_dimension": "theme_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-callback_memory",
+      "memory_dimension": "callback_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-legacy_callback_memory",
+      "memory_dimension": "legacy_callback_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-timeline_memory",
+      "memory_dimension": "timeline_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    }
+  ],
+  "memory_callbacks": {
+    "callback_dimensions": [
+      "callback_recall",
+      "callback_resolution",
+      "callback_chain_memory",
+      "callback_forget_rate"
+    ],
+    "callback_seeds": [
+      {
+        "callback_id": "harbor_keeper_legacy",
+        "recall_strength": 0.88,
+        "era": "present"
+      },
+      {
+        "callback_id": "window_reflection_memory",
+        "recall_strength": 0.82,
+        "era": "past"
+      }
+    ],
+    "dimension_definitions": {
+      "callback_recall": {
+        "description": "Callback seeds are correctly recalled when referenced at later narrative positions.",
+        "evaluation_signals": [
+          "seed_anchor_recall_rate",
+          "reference_linkage_integrity",
+          "pending_state_accuracy"
+        ]
+      },
+      "callback_resolution": {
+        "description": "Callback payoffs align with seeded anchors across the declared resolution horizon.",
+        "evaluation_signals": [
+          "resolution_alignment_score",
+          "payoff_scene_linkage",
+          "completion_state_accuracy"
+        ]
+      },
+      "callback_chain_memory": {
+        "description": "Multi-callback chains preserve layer order and anchor linkage across long spans.",
+        "evaluation_signals": [
+          "chain_id_persistence",
+          "layer_order_integrity",
+          "multi_callback_depth_coherence"
+        ]
+      },
+      "callback_forget_rate": {
+        "description": "Rate of unresolved or dropped callback anchors remains within acceptable bounds.",
+        "evaluation_signals": [
+          "orphan_anchor_count",
+          "forget_rate_per_horizon",
+          "stale_pending_ratio"
+        ]
+      }
+    }
+  },
+  "record_count": 12,
+  "canonical_alias_of": "temporal_memory_bundle.json",
+  "canonical_upload_standard": "app-upload-standard-v1",
+  "canonical_filename_locked": true,
+  "materialized_from": "exports/video_app/latest_v5/temporal_memory_bundle.json",
+  "materialized_at": "2026-06-10T02:30:15.438Z",
+  "schema_version": "v1"
+}

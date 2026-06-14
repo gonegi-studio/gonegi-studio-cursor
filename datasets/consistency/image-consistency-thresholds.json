@@ -1,0 +1,27 @@
+{
+  "thresholds_id": "image-consistency-thresholds-v1",
+  "asset_type": "image_consistency_thresholds",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-001",
+  "purpose": "Pass/fail and production-grade score thresholds for image consistency validation.",
+  "minimum_score": 0.8,
+  "target_score": 0.9,
+  "production_score": 0.95,
+  "threshold_order_valid": true,
+  "dimension_floor_scores": {
+    "character_identity": 0.82,
+    "location_identity": 0.8,
+    "lighting_identity": 0.78,
+    "costume_identity": 0.8,
+    "prop_identity": 0.76,
+    "style_identity": 0.8,
+    "composition_identity": 0.78,
+    "camera_identity": 0.78
+  },
+  "batch_failure_policy": {
+    "reject_below_minimum": true,
+    "flag_between_minimum_and_target": true,
+    "accept_at_or_above_target": true,
+    "production_grade_at_or_above_production_score": true
+  }
+}

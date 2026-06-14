@@ -1,0 +1,20 @@
+{
+  "spec_id": "lipsync-timing-specification-v1",
+  "asset_type": "lipsync_timing_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-DIALOGUE-001",
+  "module": "DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "purpose": "Map dialogue timing, pauses, and emphasis to lipsync keyframes.",
+  "upstream_checkpoint": "PASS_PROMPT_EVALUATION_SYSTEM_V1",
+  "timing_flow": [
+    "dialogue_text",
+    "pause_points",
+    "emphasis_points",
+    "duration_estimate",
+    "lipsync_keyframes"
+  ],
+  "lipsync_timing_integrity": "PASS",
+  "dialogue_spec_ref": "datasets/dialogue/dialogue-specification.json",
+  "minimum_duration_seconds": 0.5,
+  "maximum_duration_seconds": 30.0
+}

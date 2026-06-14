@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "RUNTIME-RESOLVER-CONTRACT-FINGERPRINT-v1",
+  "resolverInputs": [
+    "shot_id",
+    "transition_id",
+    "rule_id"
+  ],
+  "resolverOutputs": {
+    "topLevel": [
+      "compiled_shot_binding",
+      "compiled_transition_binding",
+      "continuity_glue"
+    ],
+    "compiled_shot_binding": [
+      "shot_id",
+      "framing",
+      "lens_behavior",
+      "camera_motion",
+      "subject_distance",
+      "cinematic_role"
+    ],
+    "compiled_transition_binding": [
+      "transition_id",
+      "from_state",
+      "to_state",
+      "emotional_bridge",
+      "motion_bridge",
+      "camera_shift",
+      "lighting_shift",
+      "pacing_shift",
+      "continuity_glue"
+    ]
+  },
+  "selectionRuleReferences": [
+    "SEL-close-hand-hope-sadness",
+    "SEL-close-hand-sadness-hope",
+    "SEL-medium-emotional-confession",
+    "SEL-medium-emotional-hope-sadness",
+    "SEL-overhead-isolation-hope-sadness",
+    "SEL-overhead-isolation-sunset",
+    "SEL-rear-follow-reunion",
+    "SEL-rear-follow-walking",
+    "SEL-side-tracking-reunion",
+    "SEL-side-tracking-walking",
+    "SEL-silhouette-reunion",
+    "SEL-silhouette-sunset",
+    "SEL-wide-establishing-rain",
+    "SEL-wide-establishing-sunset",
+    "SEL-window-reflection-confession",
+    "SEL-window-reflection-hope"
+  ],
+  "crossLinkReferences": [
+    "close_hand_detail::hope_to_sadness",
+    "close_hand_detail::sadness_to_hope",
+    "medium_emotional::hope_to_sadness",
+    "medium_emotional::silence_to_confession",
+    "overhead_isolation::hope_to_sadness",
+    "overhead_isolation::sunset_to_night",
+    "rear_follow::separation_to_reunion",
+    "rear_follow::walking_to_running",
+    "side_tracking::separation_to_reunion",
+    "side_tracking::walking_to_running",
+    "silhouette_distance::separation_to_reunion",
+    "silhouette_distance::sunset_to_night",
+    "wide_establishing::rain_to_clear",
+    "wide_establishing::sunset_to_night",
+    "window_reflection::sadness_to_hope",
+    "window_reflection::silence_to_confession"
+  ],
+  "dependencyGraph": {
+    "runtime_resolver": [
+      "selection_rules",
+      "cross_links",
+      "shot_fingerprint_library",
+      "transition_dna_library"
+    ],
+    "selection_rules": [
+      "cross_links"
+    ],
+    "cross_links": [
+      "shot_fingerprint_library",
+      "transition_dna_library"
+    ],
+    "shot_fingerprint_library": [],
+    "transition_dna_library": []
+  },
+  "mappingIds": [
+    "RES-close-hand-hope-sadness",
+    "RES-close-hand-sadness-hope",
+    "RES-medium-emotional-confession",
+    "RES-medium-emotional-hope-sadness",
+    "RES-overhead-isolation-hope-sadness",
+    "RES-overhead-isolation-sunset",
+    "RES-rear-follow-reunion",
+    "RES-rear-follow-walking",
+    "RES-side-tracking-reunion",
+    "RES-side-tracking-walking",
+    "RES-silhouette-reunion",
+    "RES-silhouette-sunset",
+    "RES-wide-establishing-rain",
+    "RES-wide-establishing-sunset",
+    "RES-window-reflection-confession",
+    "RES-window-reflection-hope"
+  ],
+  "selectionRuleSchemaVersion": "RUNTIME-SELECTION-RULE-FINGERPRINT-v1",
+  "crossLinkSchemaVersion": "RUNTIME-LIBRARY-CROSS-LINK-FINGERPRINT-v1",
+  "frozenAt": "2026-05-30T00:00:00.000Z"
+}

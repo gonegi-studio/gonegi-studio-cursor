@@ -1,0 +1,68 @@
+{
+  "spec_id": "feature-dependency-specification-v1",
+  "asset_type": "feature_dependency_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L3-FEATURE-001",
+  "purpose": "Feature film dependency graph specification extending Medium Film 7-dimension scene deps to feature-scale shot and narrative dependencies.",
+  "medium_film_dependency_ref": "exports/medium_film_scene_assembly/medium-film-scene-dependency-graph.json",
+  "dependency_dimensions": [
+    "scene_predecessor",
+    "scene_successor",
+    "shot_predecessor",
+    "shot_successor",
+    "callback_dependency",
+    "arc_dependency",
+    "timeline_dependency",
+    "world_dependency",
+    "relationship_dependency",
+    "theme_dependency",
+    "legacy_callback_dependency"
+  ],
+  "dimension_count": 11,
+  "scene_dependency_dimensions": [
+    "scene_predecessor",
+    "scene_successor",
+    "callback_dependency",
+    "arc_dependency",
+    "timeline_dependency",
+    "world_dependency",
+    "relationship_dependency"
+  ],
+  "feature_dependency_dimensions": [
+    "theme_dependency",
+    "legacy_callback_dependency",
+    "shot_predecessor",
+    "shot_successor"
+  ],
+  "enforcement_rules": {
+    "timeline_dependency": {
+      "long_range_gap_minimum_scenes": 120,
+      "cross_act_dependency_documented": true
+    },
+    "callback_dependency": {
+      "callback_depth_minimum": 3,
+      "legacy_callback_chain_required": true
+    },
+    "theme_dependency": {
+      "theme_beat_predecessor_required": true,
+      "finale_theme_convergence_required": true
+    },
+    "legacy_callback_dependency": {
+      "span_minimum_scenes": 200,
+      "anchor_registry_required": true
+    },
+    "shot_dependency": {
+      "inherits_from_medium_shot_assembly": true,
+      "adaptive_shot_scaling": true
+    }
+  },
+  "integrity_requirements": [
+    "orphan_scene_count=0",
+    "orphan_shot_count=0",
+    "dependency_chain_complete_per_archetype",
+    "theme_dependency_resolves_in_finale_act",
+    "legacy_callback_dependency_links_to_memory_callback_arc"
+  ],
+  "export_id": "feature-film-dependency-specification-export-v1",
+  "generated_at": "2026-06-08T12:04:38.293Z"
+}

@@ -1,0 +1,340 @@
+{
+  "map_id": "medium-film-arc-network-v1",
+  "phase": "PHASE-L3-MEDIUM-002",
+  "purpose": "arc_relationship_tracking",
+  "archetypes": [
+    {
+      "medium_film_archetype_id": "harbor_saga_medium",
+      "network_id": "harbor_saga_medium_arc_network_v1",
+      "purpose": "arc_relationship_tracking",
+      "nodes": [
+        {
+          "node_id": "main_arc",
+          "arc_type": "main_arc",
+          "ref": "departure_main"
+        },
+        {
+          "node_id": "marco_fishing_line",
+          "arc_type": "subplot_arc",
+          "ref": "marco_fishing_line"
+        },
+        {
+          "node_id": "bakery_expansion",
+          "arc_type": "subplot_arc",
+          "ref": "bakery_expansion"
+        },
+        {
+          "node_id": "departure_track",
+          "arc_type": "parallel_arc",
+          "ref": "departure_main"
+        },
+        {
+          "node_id": "community_track",
+          "arc_type": "parallel_arc",
+          "ref": "community_harbor"
+        },
+        {
+          "node_id": "relationship_arc",
+          "arc_type": "relationship_arc",
+          "ref": "relationship_network"
+        },
+        {
+          "node_id": "world_arc",
+          "arc_type": "world_arc",
+          "ref": "world_change_story"
+        }
+      ],
+      "edges": [
+        {
+          "from": "main_arc",
+          "to": "marco_fishing_line",
+          "relationship": "contains_subplot"
+        },
+        {
+          "from": "main_arc",
+          "to": "departure_track",
+          "relationship": "parallel_counterpoint"
+        },
+        {
+          "from": "main_arc",
+          "to": "relationship_arc",
+          "relationship": "character_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_arc",
+          "relationship": "world_change_story"
+        },
+        {
+          "from": "world_arc",
+          "to": "relationship_arc",
+          "relationship": "community_evolution"
+        },
+        {
+          "from": "departure_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "community_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        }
+      ],
+      "relationship_network_ref": {
+        "nodes": [
+          "gonegi",
+          "dana",
+          "marco",
+          "elena"
+        ],
+        "edges": [
+          {
+            "from": "gonegi",
+            "to": "dana",
+            "relationship_type": "romantic_bond"
+          },
+          {
+            "from": "gonegi",
+            "to": "marco",
+            "relationship_type": "harbor_ally"
+          },
+          {
+            "from": "dana",
+            "to": "elena",
+            "relationship_type": "family_neighbor"
+          },
+          {
+            "from": "marco",
+            "to": "elena",
+            "relationship_type": "community_peer"
+          }
+        ],
+        "evolution_stages": [
+          "isolated_pairs",
+          "community_mesh",
+          "departure_fracture",
+          "reunion_network"
+        ]
+      }
+    },
+    {
+      "medium_film_archetype_id": "mediterranean_chronicle_medium",
+      "network_id": "mediterranean_chronicle_medium_arc_network_v1",
+      "purpose": "arc_relationship_tracking",
+      "nodes": [
+        {
+          "node_id": "main_arc",
+          "arc_type": "main_arc",
+          "ref": "seasonal_cycle_main"
+        },
+        {
+          "node_id": "olive_harvest_line",
+          "arc_type": "subplot_arc",
+          "ref": "olive_harvest_line"
+        },
+        {
+          "node_id": "harbor_trade_line",
+          "arc_type": "subplot_arc",
+          "ref": "harbor_trade_line"
+        },
+        {
+          "node_id": "seasonal_track",
+          "arc_type": "parallel_arc",
+          "ref": "seasonal_cycle_main"
+        },
+        {
+          "node_id": "festival_track",
+          "arc_type": "parallel_arc",
+          "ref": "festival_lineage"
+        },
+        {
+          "node_id": "relationship_arc",
+          "arc_type": "relationship_arc",
+          "ref": "relationship_network"
+        },
+        {
+          "node_id": "world_arc",
+          "arc_type": "world_arc",
+          "ref": "world_change_story"
+        }
+      ],
+      "edges": [
+        {
+          "from": "main_arc",
+          "to": "olive_harvest_line",
+          "relationship": "contains_subplot"
+        },
+        {
+          "from": "main_arc",
+          "to": "seasonal_track",
+          "relationship": "parallel_counterpoint"
+        },
+        {
+          "from": "main_arc",
+          "to": "relationship_arc",
+          "relationship": "character_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_arc",
+          "relationship": "world_change_story"
+        },
+        {
+          "from": "world_arc",
+          "to": "relationship_arc",
+          "relationship": "community_evolution"
+        },
+        {
+          "from": "seasonal_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "festival_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        }
+      ],
+      "relationship_network_ref": {
+        "nodes": [
+          "gonegi",
+          "dana",
+          "marco",
+          "elena"
+        ],
+        "edges": [
+          {
+            "from": "gonegi",
+            "to": "dana",
+            "relationship_type": "life_partner"
+          },
+          {
+            "from": "gonegi",
+            "to": "marco",
+            "relationship_type": "trade_ally"
+          },
+          {
+            "from": "elena",
+            "to": "dana",
+            "relationship_type": "ritual_kin"
+          },
+          {
+            "from": "marco",
+            "to": "elena",
+            "relationship_type": "festival_partner"
+          }
+        ],
+        "evolution_stages": [
+          "winter_cluster",
+          "summer_expansion",
+          "autumn_consolidation",
+          "decade_network"
+        ]
+      }
+    },
+    {
+      "medium_film_archetype_id": "correspondence_saga_medium",
+      "network_id": "correspondence_saga_medium_arc_network_v1",
+      "purpose": "arc_relationship_tracking",
+      "nodes": [
+        {
+          "node_id": "main_arc",
+          "arc_type": "main_arc",
+          "ref": "correspondence_main"
+        },
+        {
+          "node_id": "bakery_letters_line",
+          "arc_type": "subplot_arc",
+          "ref": "bakery_letters_line"
+        },
+        {
+          "node_id": "harbor_travel_line",
+          "arc_type": "subplot_arc",
+          "ref": "harbor_travel_line"
+        },
+        {
+          "node_id": "correspondence_track",
+          "arc_type": "parallel_arc",
+          "ref": "correspondence_main"
+        },
+        {
+          "node_id": "dual_lives_track",
+          "arc_type": "parallel_arc",
+          "ref": "parallel_lives"
+        },
+        {
+          "node_id": "relationship_arc",
+          "arc_type": "relationship_arc",
+          "ref": "relationship_network"
+        },
+        {
+          "node_id": "world_arc",
+          "arc_type": "world_arc",
+          "ref": "world_change_story"
+        }
+      ],
+      "edges": [
+        {
+          "from": "main_arc",
+          "to": "bakery_letters_line",
+          "relationship": "contains_subplot"
+        },
+        {
+          "from": "main_arc",
+          "to": "correspondence_track",
+          "relationship": "parallel_counterpoint"
+        },
+        {
+          "from": "main_arc",
+          "to": "relationship_arc",
+          "relationship": "character_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_arc",
+          "relationship": "world_change_story"
+        },
+        {
+          "from": "world_arc",
+          "to": "relationship_arc",
+          "relationship": "community_evolution"
+        },
+        {
+          "from": "correspondence_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "dual_lives_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        }
+      ],
+      "relationship_network_ref": {
+        "nodes": [
+          "gonegi",
+          "dana"
+        ],
+        "edges": [
+          {
+            "from": "gonegi",
+            "to": "dana",
+            "relationship_type": "correspondence_bond"
+          },
+          {
+            "from": "dana",
+            "to": "gonegi",
+            "relationship_type": "memory_holder"
+          }
+        ],
+        "evolution_stages": [
+          "stranger_nodes",
+          "connected_pair",
+          "distant_parallel",
+          "reunited_network"
+        ]
+      }
+    }
+  ]
+}

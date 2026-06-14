@@ -1,0 +1,426 @@
+{
+  "asset_type": "indoor_location_anchor_library",
+  "asset_version": "v1",
+  "library_id": "indoor-location-anchor-library-v1",
+  "phase": "PHASE-LTD-004",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Persistent indoor spatial anchors for recognizable room identity across multi-shot Image App sequences. Reference layer only — no scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_location_dna": false,
+    "modifies_character_dna": false,
+    "modifies_mdg": false,
+    "modifies_adapters": false
+  },
+  "read_only_sources": {
+    "location_dna_library": "datasets/location/location-dna-library-v1.json",
+    "location_lighting_adapter": "exports/image_app/adapters/location-lighting-image-adapter.json",
+    "rkb_002": "datasets/render_feedback/RKB-002.json"
+  },
+  "target_indoor_locations": [
+    "gonegi_bedroom_01",
+    "gonegi_window_corner_01",
+    "family_bakery_kitchen_01",
+    "family_bakery_dining_01",
+    "dana_bedroom_01",
+    "dana_window_corner_01"
+  ],
+  "anchor_count": 6,
+  "validation_target": {
+    "test_id": "RKB-004",
+    "test_name": "INDOOR_LOCATION_VALIDATION",
+    "generation_count_per_location": 10,
+    "comparison_baseline": "RKB-003",
+    "review_criteria": [
+      "same_room_identity",
+      "same_major_anchor_objects",
+      "similar_architectural_structure",
+      "similar_layout_direction"
+    ],
+    "success_condition": "Indoor recognition visibly stronger than RKB-003; anchor objects and layout direction remain consistent across 10 generations.",
+    "secondary_validation": "Verify adapter exports anchor_id, fixed_anchor_objects, camera_view_rules and Image App consumes them."
+  },
+  "anchors": [
+    {
+      "anchor_id": "indoor_anchor_gonegi_bedroom_01",
+      "location_id": "gonegi_bedroom_01",
+      "location_name": "Gonegi Bedroom",
+      "domain": "Gonegi Domain",
+      "room_layout": {
+        "shape": "narrow_rectangle",
+        "orientation": "bed_on_south_wall_window_on_east_wall",
+        "entry_door": "northwest_corner_inward_swing",
+        "ceiling_height": "low_domestic",
+        "primary_zone": "sleep_zone_east_window",
+        "spatial_read": "compact hillside boy bedroom — bed left, window right, chair foot of bed"
+      },
+      "window_positions": [
+        "single_east_wall_centered_above_bed_head",
+        "deep_sill_with_morning_light_pool",
+        "wooden_shutter_half_open_outward"
+      ],
+      "door_positions": [
+        "northwest_threshold_to_hallway",
+        "interior_plank_door_timber_frame"
+      ],
+      "major_furniture_positions": [
+        "low_wooden_bed_frame_against_south_wall",
+        "aged_wood_chair_at_foot_of_bed_facing_window",
+        "book_shelf_north_wall_low_height",
+        "wooden_bedside_stool_east_of_bed"
+      ],
+      "fixed_anchor_objects": [
+        "small_ship_model",
+        "wildflower_vase",
+        "aged_wood_chair",
+        "folded_blanket",
+        "book_shelf",
+        "oil_lamp"
+      ],
+      "secondary_anchor_objects": [
+        "quilted_blanket",
+        "wooden_bedside_stool",
+        "linen_pillow_stack"
+      ],
+      "wall_material": "sun-washed whitewash plaster with visible hand texture",
+      "floor_material": "worn honey-tone floorboards with soft morning sheen",
+      "ceiling_type": "low timber-beam white plaster ceiling",
+      "visual_memory_tokens": [
+        "east_window_glow_strip",
+        "ship_model_silhouette_on_shelf",
+        "wildflower_vase_on_sill",
+        "navy_textile_on_bed",
+        "cream_wall_warmth"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_move_window_wall",
+        "do_not_replace_anchor_chair",
+        "do_not_remove_wildflower_vase",
+        "do_not_remove_small_ship_model",
+        "do_not_change_wall_material",
+        "do_not_change_room_orientation",
+        "do_not_relocate_bed_to_opposite_wall",
+        "do_not_remove_book_shelf"
+      ],
+      "camera_view_rules": {
+        "wide": "show_window_plus_bed_plus_anchor_chair",
+        "medium": "keep_window_or_anchor_chair_visible",
+        "close": "keep_at_least_one_anchor_object_visible"
+      },
+      "ep01_compatible": true
+    },
+    {
+      "anchor_id": "indoor_anchor_gonegi_window_corner_01",
+      "location_id": "gonegi_window_corner_01",
+      "location_name": "Gonegi Window Corner",
+      "domain": "Gonegi Domain",
+      "room_layout": {
+        "shape": "corner_wedge",
+        "orientation": "window_on_east_corner_two_walls_meet",
+        "entry_door": "south_wall_mid",
+        "ceiling_height": "low_domestic",
+        "primary_zone": "window_reading_nook",
+        "spatial_read": "tight northeast corner — sill depth dominates, chair angled to glass"
+      },
+      "window_positions": [
+        "east_corner_floor_to_ceiling_casement",
+        "deep_sill_with_clay_jug_and_folded_shirt",
+        "open_wooden_shutter_casting_gold_patch"
+      ],
+      "door_positions": [
+        "south_wall_plank_door_to_hallway"
+      ],
+      "major_furniture_positions": [
+        "aged_wood_chair_angled_45deg_to_window",
+        "low_sill_seat_extension_on_east_wall"
+      ],
+      "fixed_anchor_objects": [
+        "clay_water_jug",
+        "folded_work_shirt",
+        "aged_wood_chair",
+        "open_wooden_shutter",
+        "linen_curtain_half_drawn"
+      ],
+      "secondary_anchor_objects": [
+        "small_ship_model_visible_on_near_shelf",
+        "oil_lamp_on_sill_edge"
+      ],
+      "wall_material": "thick plaster reveal whitewash with cool shadow wedge",
+      "floor_material": "worn floorboards meeting stone threshold at door",
+      "ceiling_type": "simple plaster with timber lintel at window head",
+      "visual_memory_tokens": [
+        "gold_sill_light_pool",
+        "jug_silhouette",
+        "shutter_blade_angle",
+        "village_slope_glimpse",
+        "chair_back_to_camera_profile_friendly"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_move_window_wall",
+        "do_not_replace_anchor_chair",
+        "do_not_remove_clay_water_jug",
+        "do_not_change_wall_material",
+        "do_not_change_room_orientation",
+        "do_not_close_shutter_fully_unless_narrative_night",
+        "do_not_swap_corner_to_opposite_room_end"
+      ],
+      "camera_view_rules": {
+        "wide": "show_full_window_corner_plus_chair_plus_sill_objects",
+        "medium": "keep_window_sill_or_chair_visible",
+        "close": "keep_at_least_one_anchor_object_visible"
+      },
+      "ep01_compatible": true
+    },
+    {
+      "anchor_id": "indoor_anchor_family_bakery_kitchen_01",
+      "location_id": "family_bakery_kitchen_01",
+      "location_name": "Family Bakery Kitchen",
+      "domain": "Gonegi Domain",
+      "room_layout": {
+        "shape": "L_shape_work_kitchen",
+        "orientation": "brick_oven_on_north_wall_table_center",
+        "entry_door": "west_wall_to_dining",
+        "ceiling_height": "timber_beam_medium",
+        "primary_zone": "oven_and_work_table",
+        "spatial_read": "rear bakery kitchen — oven dominates north, flour table center, kettle east"
+      },
+      "window_positions": [
+        "high_narrow_window_west_wall_above_door",
+        "morning_slit_light_on_flour_table"
+      ],
+      "door_positions": [
+        "west_arch_door_to_family_bakery_dining_01",
+        "rear_service_hatch_south_wall_optional"
+      ],
+      "major_furniture_positions": [
+        "flour_dusted_work_table_center",
+        "brick_oven_niche_north_wall",
+        "wall_hook_rail_east_wall"
+      ],
+      "fixed_anchor_objects": [
+        "brick_bread_oven_mouth",
+        "rolling_pin",
+        "linen_proofing_cloth",
+        "copper_kettle",
+        "flour_dusted_work_table"
+      ],
+      "secondary_anchor_objects": [
+        "wooden_proofing_board",
+        "flour_sack_lean_east_corner"
+      ],
+      "wall_material": "whitewash plaster with flour dust film near table",
+      "floor_material": "stone_inlay_with_flour_tracks_to_oven",
+      "ceiling_type": "exposed timber ceiling beams with soot patina near oven",
+      "visual_memory_tokens": [
+        "amber_oven_glow",
+        "flour_white_table_plane",
+        "copper_kettle_steam_wisp",
+        "arched_oven_niche_silhouette",
+        "charcoal_hearth_shadow"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_move_window_wall",
+        "do_not_relocate_oven_niche",
+        "do_not_remove_rolling_pin_from_table_zone",
+        "do_not_change_wall_material",
+        "do_not_change_room_orientation",
+        "do_not_replace_brick_oven_with_steel_appliance",
+        "do_not_remove_copper_kettle"
+      ],
+      "camera_view_rules": {
+        "wide": "show_oven_niche_plus_work_table_plus_kettle",
+        "medium": "keep_oven_mouth_or_table_surface_visible",
+        "close": "keep_at_least_one_anchor_object_visible"
+      },
+      "ep01_compatible": true
+    },
+    {
+      "anchor_id": "indoor_anchor_family_bakery_dining_01",
+      "location_id": "family_bakery_dining_01",
+      "location_name": "Family Bakery Dining Room",
+      "domain": "Gonegi Domain",
+      "room_layout": {
+        "shape": "rectangle_dining",
+        "orientation": "long_table_east_west_benches_north_south",
+        "entry_door": "west_wall_to_kitchen",
+        "ceiling_height": "timber_beam_medium",
+        "primary_zone": "family_table_center",
+        "spatial_read": "attached dining — pine table center, lane window south, kitchen door west"
+      },
+      "window_positions": [
+        "south_wall_window_to_bakery_lane",
+        "bench_below_window_morning_wash"
+      ],
+      "door_positions": [
+        "west_door_arch_to_family_bakery_kitchen_01"
+      ],
+      "major_furniture_positions": [
+        "long_pine_dining_table_center",
+        "bench_seating_north_and_south_sides",
+        "sideboard_north_wall_optional"
+      ],
+      "fixed_anchor_objects": [
+        "long_pine_dining_table",
+        "bench_seating",
+        "ceramic_bread_basket",
+        "tin_tea_pot",
+        "south_lane_window"
+      ],
+      "secondary_anchor_objects": [
+        "linen_runner",
+        "wooden_bowl_stack_sideboard"
+      ],
+      "wall_material": "warm cream plaster with honey wood trim",
+      "floor_material": "stone_floor_inlay_with worn traffic path to kitchen door",
+      "ceiling_type": "exposed beam ceiling white plaster between timbers",
+      "visual_memory_tokens": [
+        "honey_wood_table_tone",
+        "bread_basket_center_or_near",
+        "lane_window_rectangle",
+        "morning_white_wash",
+        "kitchen_door_arch_glimpse"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_move_window_wall",
+        "do_not_replace_long_pine_table",
+        "do_not_remove_ceramic_bread_basket",
+        "do_not_change_wall_material",
+        "do_not_change_room_orientation",
+        "do_not_rotate_table_to_block_kitchen_door",
+        "do_not_remove_bench_seating"
+      ],
+      "camera_view_rules": {
+        "wide": "show_table_length_plus_lane_window_plus_bench",
+        "medium": "keep_table_surface_or_window_visible",
+        "close": "keep_at_least_one_anchor_object_visible"
+      },
+      "ep01_compatible": true
+    },
+    {
+      "anchor_id": "indoor_anchor_dana_bedroom_01",
+      "location_id": "dana_bedroom_01",
+      "location_name": "Dana Bedroom",
+      "domain": "Dana Domain",
+      "room_layout": {
+        "shape": "rectangle_generous",
+        "orientation": "canopy_bed_south_wall_window_east",
+        "entry_door": "northwest_to_hall",
+        "ceiling_height": "taller_decorative",
+        "primary_zone": "canopy_sleep_zone",
+        "spatial_read": "refined girl bedroom — canopy corner, lace east window, washbasin north"
+      },
+      "window_positions": [
+        "east_wall_lace_curtain_panel_full_height",
+        "soft_garden_fill_through_lace"
+      ],
+      "door_positions": [
+        "northwest_door_with_decorative_frame"
+      ],
+      "major_furniture_positions": [
+        "canopy_bed_southwest_corner",
+        "porcelain_washbasin_stand_north_wall",
+        "wooden_stool_east_of_washbasin"
+      ],
+      "fixed_anchor_objects": [
+        "blue_flower_vase",
+        "sewing_basket",
+        "window_curtain",
+        "wooden_stool",
+        "story_books"
+      ],
+      "secondary_anchor_objects": [
+        "ribboned_brush_tray",
+        "folded_letter_stack",
+        "lace_canopy_drape"
+      ],
+      "wall_material": "soft rose-white plaster with decorative cornice",
+      "floor_material": "pale timber floor with woven rug under bed",
+      "ceiling_type": "taller plaster ceiling with simple cornice moulding",
+      "visual_memory_tokens": [
+        "lace_backlight_glow",
+        "blue_flower_vase_on_stand",
+        "canopy_post_silhouette",
+        "lavender_textile_hint",
+        "sewing_basket_on_stool"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_move_window_wall",
+        "do_not_remove_blue_flower_vase",
+        "do_not_replace_wooden_stool",
+        "do_not_change_wall_material",
+        "do_not_change_room_orientation",
+        "do_not_remove_canopy_bed_frame",
+        "do_not_remove_story_books_from_stool_zone"
+      ],
+      "camera_view_rules": {
+        "wide": "show_window_plus_bed_plus_anchor_chair",
+        "medium": "keep_window_or_anchor_chair_visible",
+        "close": "keep_at_least_one_anchor_object_visible"
+      },
+      "ep01_compatible": false
+    },
+    {
+      "anchor_id": "indoor_anchor_dana_window_corner_01",
+      "location_id": "dana_window_corner_01",
+      "location_name": "Dana Window Corner",
+      "domain": "Dana Domain",
+      "room_layout": {
+        "shape": "corner_reading_nook",
+        "orientation": "tall_casement_east_reading_chair_southeast",
+        "entry_door": "west_wall_mid",
+        "ceiling_height": "taller_decorative",
+        "primary_zone": "reading_chair_by_garden_window",
+        "spatial_read": "garden-facing corner — tall glass, reading chair, geranium sill"
+      },
+      "window_positions": [
+        "tall_casement_east_wall_garden_view",
+        "potted_geranium_on_deep_sill",
+        "molded_plaster_surround"
+      ],
+      "door_positions": [
+        "west_plank_door_to_hall"
+      ],
+      "major_furniture_positions": [
+        "reading_chair_southeast_facing_window",
+        "low_side_table_south_of_chair"
+      ],
+      "fixed_anchor_objects": [
+        "reading_chair",
+        "potted_geranium",
+        "open_sketchbook",
+        "teacup_on_saucer",
+        "window_curtain"
+      ],
+      "secondary_anchor_objects": [
+        "sewing_basket_under_table",
+        "blue_flower_vase_on_sill_optional"
+      ],
+      "wall_material": "molded plaster surround with soft rose-white interior walls",
+      "floor_material": "pale timber with small woven rug under chair",
+      "ceiling_type": "taller plaster with window head moulding",
+      "visual_memory_tokens": [
+        "geranium_green_on_sill",
+        "sketchbook_open_on_lap_or_table",
+        "garden_bokeh_through_glass",
+        "chair_profile_to_window",
+        "teacup_steam_wisp"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_move_window_wall",
+        "do_not_replace_reading_chair",
+        "do_not_remove_potted_geranium",
+        "do_not_change_wall_material",
+        "do_not_change_room_orientation",
+        "do_not_remove_open_sketchbook_from_scene_zone",
+        "do_not_swap_garden_window_to_interior_wall"
+      ],
+      "camera_view_rules": {
+        "wide": "show_tall_window_plus_reading_chair_plus_geranium_sill",
+        "medium": "keep_window_or_reading_chair_visible",
+        "close": "keep_at_least_one_anchor_object_visible"
+      },
+      "ep01_compatible": false
+    }
+  ]
+}

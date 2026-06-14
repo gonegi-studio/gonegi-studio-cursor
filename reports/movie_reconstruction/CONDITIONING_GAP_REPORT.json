@@ -1,0 +1,65 @@
+{
+  "report_id": "conditioning_gap_mqc1rv0t",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-001",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_AUDIT_V1",
+  "generated_at": "2026-06-13T07:42:04.493Z",
+  "conditioning_gap_understood": true,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "implemented": 0,
+  "partially_supported": 6,
+  "not_supported": 1,
+  "recommended_priority_order": [
+    "conditioning_backend",
+    "layout_map",
+    "depth_map",
+    "blocking_map",
+    "pose_map",
+    "object_identity",
+    "environment_identity"
+  ],
+  "requires_new_backend": [
+    "conditioning_backend",
+    "layout_map",
+    "depth_map",
+    "pose_map"
+  ],
+  "subsystem_summary": [
+    {
+      "subsystem": "layout_map",
+      "current_support": "PARTIAL",
+      "gap_level": "HIGH"
+    },
+    {
+      "subsystem": "depth_map",
+      "current_support": "PARTIAL",
+      "gap_level": "HIGH"
+    },
+    {
+      "subsystem": "pose_map",
+      "current_support": "METADATA_ONLY",
+      "gap_level": "CRITICAL"
+    },
+    {
+      "subsystem": "blocking_map",
+      "current_support": "PARTIAL",
+      "gap_level": "MEDIUM"
+    },
+    {
+      "subsystem": "object_identity",
+      "current_support": "PARTIAL",
+      "gap_level": "HIGH"
+    },
+    {
+      "subsystem": "environment_identity",
+      "current_support": "PARTIAL",
+      "gap_level": "MEDIUM"
+    },
+    {
+      "subsystem": "conditioning_backend",
+      "current_support": "PARTIAL",
+      "gap_level": "CRITICAL"
+    }
+  ]
+}

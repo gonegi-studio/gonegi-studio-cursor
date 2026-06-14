@@ -1,0 +1,56 @@
+{
+  "requirements_id": "video-runtime-requirements-v1",
+  "phase": "PHASE-26-LOCAL-GPU-RUNTIME-PREFLIGHT-001",
+  "requirements_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "profiles": {
+    "minimal": {
+      "label": "minimal",
+      "description": "Minimum local stub for short Gonegi clips (6-8s) with identity locks",
+      "vram_gb_min": 8,
+      "ram_gb_min": 16,
+      "storage_free_gb_min": 50,
+      "gpu_required": true,
+      "node_version_min": "18.0.0",
+      "python_version_min": "3.10.0",
+      "git_required": true,
+      "supported_providers": [
+        "provider_stub_local_sd_webui",
+        "provider_stub_local_animatediff"
+      ]
+    },
+    "recommended": {
+      "label": "recommended",
+      "description": "Comfortable local runtime for ComfyUI, Wan, and AnimateDiff workflows",
+      "vram_gb_min": 16,
+      "ram_gb_min": 32,
+      "storage_free_gb_min": 100,
+      "gpu_required": true,
+      "node_version_min": "20.0.0",
+      "python_version_min": "3.11.0",
+      "git_required": true,
+      "supported_providers": [
+        "provider_stub_local_comfyui",
+        "provider_stub_local_wan",
+        "provider_stub_local_animatediff"
+      ]
+    },
+    "production": {
+      "label": "production",
+      "description": "Production-grade local GPU runtime for longer clips and batch preflight",
+      "vram_gb_min": 24,
+      "ram_gb_min": 64,
+      "storage_free_gb_min": 250,
+      "gpu_required": true,
+      "node_version_min": "20.0.0",
+      "python_version_min": "3.11.0",
+      "git_required": true,
+      "supported_providers": [
+        "provider_stub_local_comfyui",
+        "provider_stub_local_wan",
+        "provider_stub_local_animatediff",
+        "provider_stub_remote_api"
+      ]
+    }
+  }
+}

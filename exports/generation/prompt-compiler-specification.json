@@ -1,0 +1,55 @@
+{
+  "spec_id": "prompt-compiler-specification-v1",
+  "asset_type": "prompt_compiler_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-001",
+  "module": "PROMPT_COMPILER_V1",
+  "purpose": "Compile shot, DNA, continuity, and memory inputs into generation-ready prompts.",
+  "upstream_checkpoint": "REAL_FEATURE_PRODUCTION_READY",
+  "compiler_inputs": {
+    "shot": {
+      "input_id": "shot",
+      "description": "Shot coverage, camera motion, and dependency refs from shot registry.",
+      "source_ref": "exports/feature_film_shot_assembly/feature-film-shot-registry.json"
+    },
+    "dna": {
+      "input_id": "dna",
+      "description": "Behavior, emotion, relationship, and cinematic DNA anchors.",
+      "source_ref": "exports/image_consistency/image-consistency-specification.json"
+    },
+    "continuity": {
+      "input_id": "continuity",
+      "description": "Continuity dimensions and arc refs from production traceability.",
+      "source_ref": "exports/production_pipeline/production-traceability-specification.json"
+    },
+    "memory": {
+      "input_id": "memory",
+      "description": "Temporal memory horizons, callbacks, and world-state anchors.",
+      "source_ref": "exports/temporal_memory/temporal-memory-specification.json"
+    }
+  },
+  "compiler_output": {
+    "output_id": "generation_prompt",
+    "artifact_name": "compiled-prompt.json",
+    "artifact_ref": "exports/generation/compiled-prompt.json"
+  },
+  "required_fields": [
+    "prompt_version",
+    "prompt_seed",
+    "prompt_trace_id",
+    "compiler_rule_version"
+  ],
+  "compiler_rule_version": "prompt-compiler-v1.0.0",
+  "compilation_formula": "shot * dna * continuity * memory -> generation_prompt",
+  "shot_to_prompt_integrity": "PASS",
+  "prompt_traceability_integrity": "PASS",
+  "export_id": "prompt-compiler-specification-export-v1",
+  "generated_at": "2026-06-08T23:51:35.778Z",
+  "dataset_ref": "datasets/generation/prompt-compiler-specification.json",
+  "input_source_refs": {
+    "shot": "exports/feature_film_shot_assembly/feature-film-shot-registry.json",
+    "dna": "exports/image_consistency/image-consistency-specification.json",
+    "continuity": "exports/production_pipeline/production-traceability-specification.json",
+    "memory": "exports/temporal_memory/temporal-memory-specification.json"
+  }
+}

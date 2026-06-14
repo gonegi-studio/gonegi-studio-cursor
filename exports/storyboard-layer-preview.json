@@ -1,0 +1,622 @@
+{
+  "layer_version": "STORYBOARD-LAYER-PHASE-83-v1",
+  "seed_count": 16,
+  "song_master_id": "song_master_01",
+  "required_fields": [
+    "storyboard_id",
+    "song_master_id",
+    "beat_id",
+    "scene_order",
+    "scene_duration_seconds",
+    "visual_summary",
+    "daily_life_anchor",
+    "behavior_id",
+    "emotion_id",
+    "relationship_id",
+    "shot_affinity",
+    "transition_affinity",
+    "image_dataset_usage",
+    "video_dataset_usage",
+    "keywords"
+  ],
+  "pipeline_chain": [
+    "song_master",
+    "emotion_timeline",
+    "narrative_beat",
+    "storyboard_scene"
+  ],
+  "seed_storyboard_scenes": [
+    {
+      "storyboard_id": "SBD-song_master_01-01",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-waiting",
+      "scene_order": 1,
+      "scene_duration_seconds": 14,
+      "visual_summary": "Daily waiting ritual anchors quiet anticipation before change rendered through station_waiting and window_gazing",
+      "daily_life_anchor": [
+        "station_waiting",
+        "window_gazing"
+      ],
+      "behavior_id": "waiting",
+      "emotion_id": "anticipation",
+      "relationship_id": "guardian_child",
+      "shot_affinity": [
+        "wide_establishing",
+        "medium_emotional"
+      ],
+      "transition_affinity": [
+        "silence_to_confession",
+        "sunset_to_night"
+      ],
+      "image_dataset_usage": [
+        "IDS-wide-establishing-sunset"
+      ],
+      "video_dataset_usage": [
+        "VDS-wide-establishing-sunset"
+      ],
+      "keywords": [
+        "waiting",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-02",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-memory",
+      "scene_order": 2,
+      "scene_duration_seconds": 14,
+      "visual_summary": "Memory objects trigger isolation felt across distance rendered through photo_viewing and letter_writing",
+      "daily_life_anchor": [
+        "photo_viewing",
+        "letter_writing"
+      ],
+      "behavior_id": "loneliness",
+      "emotion_id": "isolation",
+      "relationship_id": "family_separation",
+      "shot_affinity": [
+        "overhead_isolation",
+        "silhouette_distance"
+      ],
+      "transition_affinity": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "image_dataset_usage": [
+        "IDS-overhead-isolation-sunset"
+      ],
+      "video_dataset_usage": [
+        "VDS-overhead-isolation-sunset"
+      ],
+      "keywords": [
+        "memory",
+        "isolation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-03",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-discovery",
+      "scene_order": 3,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Small shared routine reveals unspoken friendship rendered through bench_sitting and book_reading",
+      "daily_life_anchor": [
+        "bench_sitting",
+        "book_reading"
+      ],
+      "behavior_id": "hesitation",
+      "emotion_id": "uncertainty",
+      "relationship_id": "silent_friends",
+      "shot_affinity": [
+        "medium_emotional",
+        "window_reflection"
+      ],
+      "transition_affinity": [
+        "silence_to_confession",
+        "hope_to_sadness"
+      ],
+      "image_dataset_usage": [
+        "IDS-medium-emotional-confession"
+      ],
+      "video_dataset_usage": [
+        "VDS-medium-emotional-confession"
+      ],
+      "keywords": [
+        "discovery",
+        "friendship",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-04",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-distance",
+      "scene_order": 4,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Departure threshold widens physical and emotional distance rendered through doorway_pause and train_riding",
+      "daily_life_anchor": [
+        "doorway_pause",
+        "train_riding"
+      ],
+      "behavior_id": "farewell",
+      "emotion_id": "parting",
+      "relationship_id": "family_separation",
+      "shot_affinity": [
+        "silhouette_distance",
+        "wide_establishing"
+      ],
+      "transition_affinity": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "image_dataset_usage": [
+        "IDS-silhouette-sunset"
+      ],
+      "video_dataset_usage": [
+        "VDS-silhouette-sunset"
+      ],
+      "keywords": [
+        "distance",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-05",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-longing",
+      "scene_order": 5,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Familiar return path holds longing for absent bond rendered through rain_watching and evening_return",
+      "daily_life_anchor": [
+        "rain_watching",
+        "evening_return"
+      ],
+      "behavior_id": "waiting",
+      "emotion_id": "anticipation",
+      "relationship_id": "lost_lovers",
+      "shot_affinity": [
+        "window_reflection",
+        "medium_emotional"
+      ],
+      "transition_affinity": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "image_dataset_usage": [
+        "IDS-window-reflection-hope"
+      ],
+      "video_dataset_usage": [
+        "VDS-window-reflection-hope"
+      ],
+      "keywords": [
+        "longing",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-06",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-hope",
+      "scene_order": 6,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Horizon movement converts grief residue into hopeful return rendered through sunset_watching and bridge_crossing",
+      "daily_life_anchor": [
+        "sunset_watching",
+        "bridge_crossing"
+      ],
+      "behavior_id": "hope",
+      "emotion_id": "optimism",
+      "relationship_id": "reunion_after_loss",
+      "shot_affinity": [
+        "medium_emotional",
+        "side_tracking"
+      ],
+      "transition_affinity": [
+        "sadness_to_hope",
+        "separation_to_reunion"
+      ],
+      "image_dataset_usage": [
+        "IDS-window-reflection-hope"
+      ],
+      "video_dataset_usage": [
+        "VDS-window-reflection-hope"
+      ],
+      "keywords": [
+        "hope",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-07",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-journey",
+      "scene_order": 7,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Morning departure marks optimistic path forward rendered through morning_routine and bicycle_riding",
+      "daily_life_anchor": [
+        "morning_routine",
+        "bicycle_riding"
+      ],
+      "behavior_id": "hope",
+      "emotion_id": "optimism",
+      "relationship_id": "mentor_student",
+      "shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "transition_affinity": [
+        "sadness_to_hope",
+        "walking_to_running"
+      ],
+      "image_dataset_usage": [
+        "IDS-rear-follow-walking"
+      ],
+      "video_dataset_usage": [
+        "VDS-rear-follow-walking"
+      ],
+      "keywords": [
+        "journey",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-08",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-conflict",
+      "scene_order": 8,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Converging paths force rival alignment under pressure rendered through street_crossing and school_walk",
+      "daily_life_anchor": [
+        "street_crossing",
+        "school_walk"
+      ],
+      "behavior_id": "determination",
+      "emotion_id": "resolve",
+      "relationship_id": "rival_to_ally",
+      "shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "transition_affinity": [
+        "walking_to_running",
+        "hope_to_sadness"
+      ],
+      "image_dataset_usage": [
+        "IDS-side-tracking-walking"
+      ],
+      "video_dataset_usage": [
+        "VDS-side-tracking-walking"
+      ],
+      "keywords": [
+        "conflict",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-09",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-sacrifice",
+      "scene_order": 9,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Ordinary chore interrupted by resolve to leave for duty rendered through doorway_pause and laundry",
+      "daily_life_anchor": [
+        "doorway_pause",
+        "laundry"
+      ],
+      "behavior_id": "determination",
+      "emotion_id": "resolve",
+      "relationship_id": "family_separation",
+      "shot_affinity": [
+        "silhouette_distance",
+        "wide_establishing"
+      ],
+      "transition_affinity": [
+        "hope_to_sadness",
+        "sunset_to_night"
+      ],
+      "image_dataset_usage": [
+        "IDS-medium-emotional-hope-sadness"
+      ],
+      "video_dataset_usage": [
+        "VDS-medium-emotional-hope-sadness"
+      ],
+      "keywords": [
+        "sacrifice",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-10",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-healing",
+      "scene_order": 10,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Small care gesture in rain begins emotional healing rendered through tea_drinking and pet_care",
+      "daily_life_anchor": [
+        "tea_drinking",
+        "pet_care"
+      ],
+      "behavior_id": "protection",
+      "emotion_id": "care",
+      "relationship_id": "stranger_kindness",
+      "shot_affinity": [
+        "wide_establishing",
+        "close_hand_detail"
+      ],
+      "transition_affinity": [
+        "rain_to_clear",
+        "separation_to_reunion"
+      ],
+      "image_dataset_usage": [
+        "IDS-wide-establishing-rain"
+      ],
+      "video_dataset_usage": [
+        "VDS-wide-establishing-rain"
+      ],
+      "keywords": [
+        "healing",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-11",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-forgiveness",
+      "scene_order": 11,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Shared public moment reopens trust after withdrawal rendered through market_visit and music_listening",
+      "daily_life_anchor": [
+        "market_visit",
+        "music_listening"
+      ],
+      "behavior_id": "reunion",
+      "emotion_id": "connection",
+      "relationship_id": "stranger_kindness",
+      "shot_affinity": [
+        "medium_emotional",
+        "close_hand_detail"
+      ],
+      "transition_affinity": [
+        "rain_to_clear",
+        "separation_to_reunion"
+      ],
+      "image_dataset_usage": [
+        "IDS-close-hand-sadness-hope"
+      ],
+      "video_dataset_usage": [
+        "VDS-close-hand-sadness-hope"
+      ],
+      "keywords": [
+        "forgiveness",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-12",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-reunion",
+      "scene_order": 12,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Arrival point transforms waiting into reunion contact rendered through station_waiting and shore_walking",
+      "daily_life_anchor": [
+        "station_waiting",
+        "shore_walking"
+      ],
+      "behavior_id": "reunion",
+      "emotion_id": "connection",
+      "relationship_id": "reunion_after_loss",
+      "shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sadness_to_hope"
+      ],
+      "image_dataset_usage": [
+        "IDS-side-tracking-reunion"
+      ],
+      "video_dataset_usage": [
+        "VDS-side-tracking-reunion"
+      ],
+      "keywords": [
+        "reunion",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-13",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-departure",
+      "scene_order": 13,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Elevated farewell view frames bittersweet departure rendered through bus_waiting and rooftop_visit",
+      "daily_life_anchor": [
+        "bus_waiting",
+        "rooftop_visit"
+      ],
+      "behavior_id": "farewell",
+      "emotion_id": "parting",
+      "relationship_id": "lost_lovers",
+      "shot_affinity": [
+        "silhouette_distance",
+        "medium_emotional"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sunset_to_night"
+      ],
+      "image_dataset_usage": [
+        "IDS-silhouette-sunset"
+      ],
+      "video_dataset_usage": [
+        "VDS-silhouette-sunset"
+      ],
+      "keywords": [
+        "departure",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-14",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-growth",
+      "scene_order": 14,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Mentor guidance during daily practice enables growth rendered through school_walk and cooking",
+      "daily_life_anchor": [
+        "school_walk",
+        "cooking"
+      ],
+      "behavior_id": "protection",
+      "emotion_id": "care",
+      "relationship_id": "mentor_student",
+      "shot_affinity": [
+        "medium_emotional",
+        "wide_establishing"
+      ],
+      "transition_affinity": [
+        "sadness_to_hope",
+        "silence_to_confession"
+      ],
+      "image_dataset_usage": [
+        "IDS-rear-follow-walking"
+      ],
+      "video_dataset_usage": [
+        "VDS-rear-follow-walking"
+      ],
+      "keywords": [
+        "growth",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-15",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-redemption",
+      "scene_order": 15,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Quiet nightly ritual precedes redemptive reunion rendered through flower_watering and star_gazing",
+      "daily_life_anchor": [
+        "flower_watering",
+        "star_gazing"
+      ],
+      "behavior_id": "reunion",
+      "emotion_id": "connection",
+      "relationship_id": "lost_lovers",
+      "shot_affinity": [
+        "silhouette_distance",
+        "side_tracking"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sadness_to_hope"
+      ],
+      "image_dataset_usage": [
+        "IDS-silhouette-reunion"
+      ],
+      "video_dataset_usage": [
+        "VDS-silhouette-reunion"
+      ],
+      "keywords": [
+        "redemption",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    },
+    {
+      "storyboard_id": "SBD-song_master_01-16",
+      "song_master_id": "song_master_01",
+      "beat_id": "NBT-new_beginning",
+      "scene_order": 16,
+      "scene_duration_seconds": 13,
+      "visual_summary": "Guardian morning routine opens protective new chapter rendered through morning_routine and flower_watering",
+      "daily_life_anchor": [
+        "morning_routine",
+        "flower_watering"
+      ],
+      "behavior_id": "protection",
+      "emotion_id": "care",
+      "relationship_id": "guardian_child",
+      "shot_affinity": [
+        "medium_emotional",
+        "wide_establishing"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "silence_to_confession"
+      ],
+      "image_dataset_usage": [
+        "IDS-wide-establishing-sunset"
+      ],
+      "video_dataset_usage": [
+        "VDS-wide-establishing-sunset"
+      ],
+      "keywords": [
+        "new-beginning",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01"
+      ]
+    }
+  ]
+}

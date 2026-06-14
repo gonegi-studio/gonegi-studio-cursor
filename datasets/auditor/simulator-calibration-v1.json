@@ -1,0 +1,33 @@
+{
+  "calibration_id": "simulator-calibration-v1",
+  "phase": "PHASE-AUDITOR-006",
+  "generated_at": "2026-06-05T02:24:06.310Z",
+  "source_feedback_test": "MDS-005",
+  "source_feedback_report": "reports/generation-feedback-report.json",
+  "source_simulator_report": "reports/pre-generation-simulator-report.json",
+  "identity_weight": 1.2,
+  "costume_weight": 0.9,
+  "hairstyle_weight": 0.7,
+  "duplication_weight": 1.15,
+  "location_weight": 1.1,
+  "composition_weight": 1.2,
+  "lighting_weight": 0.95,
+  "token_pressure_weight": 0.78,
+  "outdoor_layout_bonus": {
+    "composition_risk": 16,
+    "location_risk": 12,
+    "lighting_risk": 10,
+    "token_pressure_risk": 8
+  },
+  "multi_character_bonus": {
+    "duplication_risk": 12,
+    "composition_risk": 10,
+    "token_pressure_risk": 5
+  },
+  "calibrated_pass_credit": {
+    "LOW": 1,
+    "MODERATE": 0.5,
+    "HIGH": 0,
+    "CRITICAL": 0
+  }
+}

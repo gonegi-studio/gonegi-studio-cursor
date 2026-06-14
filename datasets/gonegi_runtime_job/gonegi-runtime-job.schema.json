@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/gonegi_runtime_job/gonegi-runtime-job.schema.json",
+  "title": "GonegiRuntimeJob",
+  "description": "Design-only simulated runtime job for PHASE-SOURCE-VIDEO-019",
+  "type": "object",
+  "required": [
+    "gonegi_runtime_job_id",
+    "phase",
+    "runtime_interface_id",
+    "source_gpu_payload_id",
+    "provider_id",
+    "job_state",
+    "validation_steps",
+    "identity_lock_result",
+    "continuity_lock_result",
+    "payload_alignment_result",
+    "provider_safety_result",
+    "simulated_output",
+    "execution_flags",
+    "production_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "gonegi_runtime_job_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-019-GONEGI_RUNTIME_STUB_EXECUTION_V2"
+    },
+    "runtime_interface_id": { "type": "string", "minLength": 1 },
+    "source_gpu_payload_id": { "type": "string", "minLength": 1 },
+    "provider_id": { "type": "string", "minLength": 1 },
+    "job_state": {
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "VALIDATING",
+        "READY",
+        "SIMULATED_RUNNING",
+        "SIMULATED_COMPLETE",
+        "SIMULATED_FAILED"
+      ]
+    },
+    "validation_steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/validation_step" }
+    },
+    "identity_lock_result": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "continuity_lock_result": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "payload_alignment_result": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "provider_safety_result": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "simulated_output": { "$ref": "#/$defs/simulated_output" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "production_status": { "$ref": "#/$defs/production_status" },
+    "executed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "validation_step": {
+      "type": "object",
+      "required": ["step", "job_state", "passed"],
+      "properties": {
+        "step": { "type": "string" },
+        "job_state": {
+          "type": "string",
+          "enum": [
+            "QUEUED",
+            "VALIDATING",
+            "READY",
+            "SIMULATED_RUNNING",
+            "SIMULATED_COMPLETE",
+            "SIMULATED_FAILED"
+          ]
+        },
+        "passed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "simulated_output": {
+      "type": "object",
+      "required": [
+        "output_path",
+        "format",
+        "generated",
+        "duration_seconds",
+        "fps_target",
+        "simulation_notes"
+      ],
+      "properties": {
+        "output_path": { "type": "string" },
+        "format": { "type": "string", "const": "mp4_placeholder" },
+        "generated": { "type": "boolean", "const": false },
+        "duration_seconds": { "type": "number" },
+        "fps_target": { "type": "number" },
+        "simulation_notes": { "type": "string" }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "provider_activation",
+        "simulation_only",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "provider_activation": { "type": "boolean", "const": false },
+        "simulation_only": { "type": "boolean", "const": true },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    },
+    "production_status": {
+      "type": "object",
+      "required": ["isolated", "storage_domain", "production_registry"],
+      "properties": {
+        "isolated": { "type": "boolean", "const": true },
+        "storage_domain": { "type": "string", "const": "gonegi_runtime_job" },
+        "production_registry": { "type": "boolean", "const": false },
+        "draft_status": { "type": "string", "const": "gonegi_runtime_job_simulated_v1" }
+      }
+    }
+  }
+}

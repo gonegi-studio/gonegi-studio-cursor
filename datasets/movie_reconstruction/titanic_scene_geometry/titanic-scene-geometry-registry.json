@@ -1,0 +1,3161 @@
+{
+  "registry_id": "titanic-scene-geometry-registry-v1",
+  "phase": "PHASE-TITANIC-SCENE-GEOMETRY-001",
+  "geometry_id": "TITANIC_SCENE_GEOMETRY_DENSIFICATION_V1",
+  "generated_at": "2026-06-10T06:50:47.748Z",
+  "source_video_id": "TITANIC_02",
+  "scene_geometry_count": 30,
+  "densification_level": "scene_geometry",
+  "scene_geometries": [
+    {
+      "scene_geometry_id": "titanic_geom_001",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_promenade_deck_001",
+      "camera_position": [
+        0.45,
+        0.39,
+        2.8
+      ],
+      "camera_rotation": [
+        -6,
+        -10,
+        0
+      ],
+      "camera_distance": 3.6,
+      "camera_height": "eye_level",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.32,
+            0.55
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.46,
+            0.53
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.16,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_002",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_005",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "foreground_boundary",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "promenade_deck"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.27
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.2,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.958,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_002",
+        "blocking_pattern_id": "titanic_blk_002",
+        "composition_id": "titanic_comp_002",
+        "depth_entry_id": "titanic_depth_002",
+        "prop_coordinate_ids": [
+          "titanic_prop_002",
+          "titanic_prop_005"
+        ],
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "emotion": "longing, social tension, destiny"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_002",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_grand_staircase_002",
+      "camera_position": [
+        0.4,
+        0.43,
+        3.1
+      ],
+      "camera_rotation": [
+        -4,
+        -5,
+        0
+      ],
+      "camera_distance": 4,
+      "camera_height": "elevated",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.36,
+            0.58
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.52,
+            0.58
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.18,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_003",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_006",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "vertical_axis_center",
+        "scene_type": "grand_staircase"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.29
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.22,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.966,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_003",
+        "blocking_pattern_id": "titanic_blk_003",
+        "composition_id": "titanic_comp_003",
+        "depth_entry_id": "titanic_depth_003",
+        "prop_coordinate_ids": [
+          "titanic_prop_003",
+          "titanic_prop_006"
+        ],
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "emotion": "grief, devotion, urgency"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_003",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_first_class_salon_003",
+      "camera_position": [
+        0.35,
+        0.47,
+        3.4
+      ],
+      "camera_rotation": [
+        -2,
+        0,
+        0
+      ],
+      "camera_distance": 4.4,
+      "camera_height": "low",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.4,
+            0.61
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.52,
+            0.63
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.2,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_004",
+          "position": [
+            0.24,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_007",
+          "position": [
+            0.42,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.44,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "first_class_salon"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.54
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.31
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.24,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.974,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_004",
+        "blocking_pattern_id": "titanic_blk_004",
+        "composition_id": "titanic_comp_004",
+        "depth_entry_id": "titanic_depth_004",
+        "prop_coordinate_ids": [
+          "titanic_prop_004",
+          "titanic_prop_007"
+        ],
+        "semantic_anchor_id": "titanic_sunset_rail_pose",
+        "emotion": "tenderness, awe, impermanence"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_004",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_engine_room_004",
+      "camera_position": [
+        0.3,
+        0.35,
+        3.7
+      ],
+      "camera_rotation": [
+        0,
+        5,
+        0
+      ],
+      "camera_distance": 4.8,
+      "camera_height": "eye_level",
+      "camera_angle": "wide_establishing",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.44,
+            0.64
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.58,
+            0.6
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.22,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_005",
+          "position": [
+            0.15,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_008",
+          "position": [
+            0.33,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.38,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "engine_room"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.45
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.33
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.18,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.982,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_005",
+        "blocking_pattern_id": "titanic_blk_005",
+        "composition_id": "titanic_comp_005",
+        "depth_entry_id": "titanic_depth_005",
+        "prop_coordinate_ids": [
+          "titanic_prop_005",
+          "titanic_prop_008"
+        ],
+        "semantic_anchor_id": "titanic_bow_wide_camera",
+        "emotion": "awe, liberation"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_005",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_crowd_departure_005",
+      "camera_position": [
+        0.25,
+        0.39,
+        2.5
+      ],
+      "camera_rotation": [
+        -8,
+        10,
+        0
+      ],
+      "camera_distance": 5.2,
+      "camera_height": "elevated",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.48,
+            0.52
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.64,
+            0.5
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.14,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_006",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_009",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "crowd_departure"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.25
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.2,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.99,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_006",
+        "blocking_pattern_id": "titanic_blk_006",
+        "composition_id": "titanic_comp_006",
+        "depth_entry_id": "titanic_depth_006",
+        "prop_coordinate_ids": [
+          "titanic_prop_006",
+          "titanic_prop_009"
+        ],
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "emotion": "shift, anticipation, constraint"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_006",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_lifeboat_dock_006",
+      "camera_position": [
+        0.5,
+        0.43,
+        2.8
+      ],
+      "camera_rotation": [
+        -6,
+        15,
+        0
+      ],
+      "camera_distance": 3.2,
+      "camera_height": "low",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.52,
+            0.55
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.64,
+            0.55
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.16,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_007",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_010",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "lifeboat_dock"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.27
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.22,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.95,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_007",
+        "blocking_pattern_id": "titanic_blk_007",
+        "composition_id": "titanic_comp_007",
+        "depth_entry_id": "titanic_depth_007",
+        "prop_coordinate_ids": [
+          "titanic_prop_007",
+          "titanic_prop_010"
+        ],
+        "semantic_anchor_id": "titanic_crowd_pressure_blocking",
+        "emotion": "joy, discovery"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_007",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_sunset_rail_007",
+      "camera_position": [
+        0.45,
+        0.47,
+        3.1
+      ],
+      "camera_rotation": [
+        -4,
+        20,
+        0
+      ],
+      "camera_distance": 3.6,
+      "camera_height": "eye_level",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.28,
+            0.58
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.42,
+            0.6
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.18,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_008",
+          "position": [
+            0.24,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_011",
+          "position": [
+            0.42,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.44,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "sunset_rail"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.54
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.29
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.24,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.958,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_008",
+        "blocking_pattern_id": "titanic_blk_008",
+        "composition_id": "titanic_comp_008",
+        "depth_entry_id": "titanic_depth_008",
+        "prop_coordinate_ids": [
+          "titanic_prop_008",
+          "titanic_prop_011"
+        ],
+        "semantic_anchor_id": "titanic_lifeboat_threshold_pose",
+        "emotion": "anxiety, separation"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_008",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_dining_salon_008",
+      "camera_position": [
+        0.4,
+        0.35,
+        3.4
+      ],
+      "camera_rotation": [
+        -2,
+        -15,
+        0
+      ],
+      "camera_distance": 4,
+      "camera_height": "elevated",
+      "camera_angle": "wide_establishing",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.32,
+            0.61
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.48,
+            0.57
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.2,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_009",
+          "position": [
+            0.15,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_012",
+          "position": [
+            0.33,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.38,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "dining_salon"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.45
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.31
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.18,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.98,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_009",
+        "blocking_pattern_id": "titanic_blk_009",
+        "composition_id": "titanic_comp_009",
+        "depth_entry_id": "titanic_depth_009",
+        "prop_coordinate_ids": [
+          "titanic_prop_009",
+          "titanic_prop_012"
+        ],
+        "semantic_anchor_id": "titanic_bow_pose",
+        "emotion": "freedom, romance, wonder"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_009",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_corridor_encounter_009",
+      "camera_position": [
+        0.35,
+        0.39,
+        3.7
+      ],
+      "camera_rotation": [
+        0,
+        -10,
+        0
+      ],
+      "camera_distance": 4.4,
+      "camera_height": "low",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.36,
+            0.64
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.48,
+            0.62
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.22,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_010",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_013",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "corridor_encounter"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.33
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.2,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.974,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_010",
+        "blocking_pattern_id": "titanic_blk_010",
+        "composition_id": "titanic_comp_010",
+        "depth_entry_id": "titanic_depth_010",
+        "prop_coordinate_ids": [
+          "titanic_prop_010",
+          "titanic_prop_013"
+        ],
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "emotion": "longing, social tension, destiny"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_010",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_harbor_approach_010",
+      "camera_position": [
+        0.3,
+        0.43,
+        2.5
+      ],
+      "camera_rotation": [
+        -8,
+        -5,
+        0
+      ],
+      "camera_distance": 4.8,
+      "camera_height": "eye_level",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.4,
+            0.52
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.54,
+            0.52
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.14,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_011",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_014",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "harbor_approach"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.25
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.22,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.982,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_011",
+        "blocking_pattern_id": "titanic_blk_011",
+        "composition_id": "titanic_comp_011",
+        "depth_entry_id": "titanic_depth_011",
+        "prop_coordinate_ids": [
+          "titanic_prop_011",
+          "titanic_prop_014"
+        ],
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "emotion": "grief, devotion, urgency"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_011",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_interior_dialogue_011",
+      "camera_position": [
+        0.25,
+        0.47,
+        2.8
+      ],
+      "camera_rotation": [
+        -6,
+        0,
+        0
+      ],
+      "camera_distance": 5.2,
+      "camera_height": "elevated",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.44,
+            0.55
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.6,
+            0.57
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.16,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_012",
+          "position": [
+            0.24,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_015",
+          "position": [
+            0.42,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.44,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "interior_dialogue"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.54
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.27
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.24,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.99,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_012",
+        "blocking_pattern_id": "titanic_blk_012",
+        "composition_id": "titanic_comp_012",
+        "depth_entry_id": "titanic_depth_012",
+        "prop_coordinate_ids": [
+          "titanic_prop_012",
+          "titanic_prop_015"
+        ],
+        "semantic_anchor_id": "titanic_sunset_rail_pose",
+        "emotion": "tenderness, awe, impermanence"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_012",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_bow_deck_012",
+      "camera_position": [
+        0.5,
+        0.35,
+        3.1
+      ],
+      "camera_rotation": [
+        -4,
+        5,
+        0
+      ],
+      "camera_distance": 3.2,
+      "camera_height": "low",
+      "camera_angle": "wide_establishing",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.48,
+            0.58
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.6,
+            0.54
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.18,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_013",
+          "position": [
+            0.15,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_016",
+          "position": [
+            0.33,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.38,
+        "rail_position": "foreground_boundary",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "bow_deck"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.45
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.29
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.18,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.95,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_013",
+        "blocking_pattern_id": "titanic_blk_013",
+        "composition_id": "titanic_comp_013",
+        "depth_entry_id": "titanic_depth_013",
+        "prop_coordinate_ids": [
+          "titanic_prop_013",
+          "titanic_prop_016"
+        ],
+        "semantic_anchor_id": "titanic_bow_wide_camera",
+        "emotion": "awe, liberation"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_013",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_promenade_deck_013",
+      "camera_position": [
+        0.45,
+        0.39,
+        3.4
+      ],
+      "camera_rotation": [
+        -2,
+        10,
+        0
+      ],
+      "camera_distance": 3.6,
+      "camera_height": "eye_level",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.52,
+            0.61
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.66,
+            0.59
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.2,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_014",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_017",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "foreground_boundary",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "promenade_deck"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.31
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.2,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.958,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_014",
+        "blocking_pattern_id": "titanic_blk_014",
+        "composition_id": "titanic_comp_014",
+        "depth_entry_id": "titanic_depth_014",
+        "prop_coordinate_ids": [
+          "titanic_prop_014",
+          "titanic_prop_017"
+        ],
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "emotion": "shift, anticipation, constraint"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_014",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_grand_staircase_014",
+      "camera_position": [
+        0.4,
+        0.43,
+        3.7
+      ],
+      "camera_rotation": [
+        0,
+        15,
+        0
+      ],
+      "camera_distance": 4,
+      "camera_height": "elevated",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.28,
+            0.64
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.44,
+            0.64
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.22,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_015",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_018",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "vertical_axis_center",
+        "scene_type": "grand_staircase"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.33
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.22,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.966,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_015",
+        "blocking_pattern_id": "titanic_blk_015",
+        "composition_id": "titanic_comp_015",
+        "depth_entry_id": "titanic_depth_015",
+        "prop_coordinate_ids": [
+          "titanic_prop_015",
+          "titanic_prop_018"
+        ],
+        "semantic_anchor_id": "titanic_crowd_pressure_blocking",
+        "emotion": "joy, discovery"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_015",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_first_class_salon_015",
+      "camera_position": [
+        0.35,
+        0.47,
+        2.5
+      ],
+      "camera_rotation": [
+        -8,
+        20,
+        0
+      ],
+      "camera_distance": 4.4,
+      "camera_height": "low",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.32,
+            0.52
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.44,
+            0.54
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.14,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_016",
+          "position": [
+            0.24,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_019",
+          "position": [
+            0.42,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.44,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "first_class_salon"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.54
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.25
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.24,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.974,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_016",
+        "blocking_pattern_id": "titanic_blk_016",
+        "composition_id": "titanic_comp_016",
+        "depth_entry_id": "titanic_depth_016",
+        "prop_coordinate_ids": [
+          "titanic_prop_016",
+          "titanic_prop_019"
+        ],
+        "semantic_anchor_id": "titanic_lifeboat_threshold_pose",
+        "emotion": "anxiety, separation"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_016",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_engine_room_016",
+      "camera_position": [
+        0.3,
+        0.35,
+        2.8
+      ],
+      "camera_rotation": [
+        -6,
+        -15,
+        0
+      ],
+      "camera_distance": 4.8,
+      "camera_height": "eye_level",
+      "camera_angle": "wide_establishing",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.36,
+            0.55
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.5,
+            0.51
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.16,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_017",
+          "position": [
+            0.15,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_020",
+          "position": [
+            0.33,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.38,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "engine_room"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.45
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.27
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.18,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.98,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_017",
+        "blocking_pattern_id": "titanic_blk_017",
+        "composition_id": "titanic_comp_017",
+        "depth_entry_id": "titanic_depth_017",
+        "prop_coordinate_ids": [
+          "titanic_prop_017",
+          "titanic_prop_020"
+        ],
+        "semantic_anchor_id": "titanic_bow_pose",
+        "emotion": "freedom, romance, wonder"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_017",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_crowd_departure_017",
+      "camera_position": [
+        0.25,
+        0.39,
+        3.1
+      ],
+      "camera_rotation": [
+        -4,
+        -10,
+        0
+      ],
+      "camera_distance": 5.2,
+      "camera_height": "elevated",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.4,
+            0.58
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.56,
+            0.56
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.18,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_018",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_021",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "crowd_departure"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.29
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.2,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.99,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_018",
+        "blocking_pattern_id": "titanic_blk_018",
+        "composition_id": "titanic_comp_018",
+        "depth_entry_id": "titanic_depth_018",
+        "prop_coordinate_ids": [
+          "titanic_prop_018",
+          "titanic_prop_021"
+        ],
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "emotion": "longing, social tension, destiny"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_018",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_lifeboat_dock_018",
+      "camera_position": [
+        0.5,
+        0.43,
+        3.4
+      ],
+      "camera_rotation": [
+        -2,
+        -5,
+        0
+      ],
+      "camera_distance": 3.2,
+      "camera_height": "low",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.44,
+            0.61
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.56,
+            0.61
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.2,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_019",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_022",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "lifeboat_dock"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.31
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.22,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.95,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_019",
+        "blocking_pattern_id": "titanic_blk_019",
+        "composition_id": "titanic_comp_019",
+        "depth_entry_id": "titanic_depth_019",
+        "prop_coordinate_ids": [
+          "titanic_prop_019",
+          "titanic_prop_022"
+        ],
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "emotion": "grief, devotion, urgency"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_019",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_sunset_rail_019",
+      "camera_position": [
+        0.45,
+        0.47,
+        3.7
+      ],
+      "camera_rotation": [
+        0,
+        0,
+        0
+      ],
+      "camera_distance": 3.6,
+      "camera_height": "eye_level",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.48,
+            0.64
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.62,
+            0.66
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.22,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_020",
+          "position": [
+            0.24,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_023",
+          "position": [
+            0.42,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.44,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "sunset_rail"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.54
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.33
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.24,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.958,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_020",
+        "blocking_pattern_id": "titanic_blk_020",
+        "composition_id": "titanic_comp_020",
+        "depth_entry_id": "titanic_depth_020",
+        "prop_coordinate_ids": [
+          "titanic_prop_020",
+          "titanic_prop_023"
+        ],
+        "semantic_anchor_id": "titanic_sunset_rail_pose",
+        "emotion": "tenderness, awe, impermanence"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_020",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_dining_salon_020",
+      "camera_position": [
+        0.4,
+        0.35,
+        2.5
+      ],
+      "camera_rotation": [
+        -8,
+        5,
+        0
+      ],
+      "camera_distance": 4,
+      "camera_height": "elevated",
+      "camera_angle": "wide_establishing",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.52,
+            0.52
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.68,
+            0.48
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.14,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_021",
+          "position": [
+            0.15,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_024",
+          "position": [
+            0.33,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.38,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "dining_salon"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.45
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.25
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.18,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.966,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_021",
+        "blocking_pattern_id": "titanic_blk_021",
+        "composition_id": "titanic_comp_021",
+        "depth_entry_id": "titanic_depth_021",
+        "prop_coordinate_ids": [
+          "titanic_prop_021",
+          "titanic_prop_024"
+        ],
+        "semantic_anchor_id": "titanic_bow_wide_camera",
+        "emotion": "awe, liberation"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_021",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_corridor_encounter_021",
+      "camera_position": [
+        0.35,
+        0.39,
+        2.8
+      ],
+      "camera_rotation": [
+        -6,
+        10,
+        0
+      ],
+      "camera_distance": 4.4,
+      "camera_height": "low",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.28,
+            0.55
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.4,
+            0.53
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.16,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_022",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_025",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "corridor_encounter"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.27
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.2,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.974,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_022",
+        "blocking_pattern_id": "titanic_blk_022",
+        "composition_id": "titanic_comp_022",
+        "depth_entry_id": "titanic_depth_022",
+        "prop_coordinate_ids": [
+          "titanic_prop_022",
+          "titanic_prop_025"
+        ],
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "emotion": "shift, anticipation, constraint"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_022",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_harbor_approach_022",
+      "camera_position": [
+        0.3,
+        0.43,
+        3.1
+      ],
+      "camera_rotation": [
+        -4,
+        15,
+        0
+      ],
+      "camera_distance": 4.8,
+      "camera_height": "eye_level",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.32,
+            0.58
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.46,
+            0.58
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.18,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_023",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_026",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "harbor_approach"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.29
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.22,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.982,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_023",
+        "blocking_pattern_id": "titanic_blk_023",
+        "composition_id": "titanic_comp_023",
+        "depth_entry_id": "titanic_depth_023",
+        "prop_coordinate_ids": [
+          "titanic_prop_023",
+          "titanic_prop_026"
+        ],
+        "semantic_anchor_id": "titanic_crowd_pressure_blocking",
+        "emotion": "joy, discovery"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_023",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_interior_dialogue_023",
+      "camera_position": [
+        0.25,
+        0.47,
+        3.4
+      ],
+      "camera_rotation": [
+        -2,
+        20,
+        0
+      ],
+      "camera_distance": 5.2,
+      "camera_height": "elevated",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.36,
+            0.61
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.52,
+            0.63
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.2,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_024",
+          "position": [
+            0.24,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_027",
+          "position": [
+            0.42,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.44,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "interior_dialogue"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.54
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.31
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.24,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.99,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_024",
+        "blocking_pattern_id": "titanic_blk_024",
+        "composition_id": "titanic_comp_024",
+        "depth_entry_id": "titanic_depth_024",
+        "prop_coordinate_ids": [
+          "titanic_prop_024",
+          "titanic_prop_027"
+        ],
+        "semantic_anchor_id": "titanic_lifeboat_threshold_pose",
+        "emotion": "anxiety, separation"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_024",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_bow_deck_024",
+      "camera_position": [
+        0.5,
+        0.35,
+        3.7
+      ],
+      "camera_rotation": [
+        0,
+        -15,
+        0
+      ],
+      "camera_distance": 3.2,
+      "camera_height": "low",
+      "camera_angle": "wide_establishing",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.4,
+            0.64
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.52,
+            0.6
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.22,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_025",
+          "position": [
+            0.15,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_028",
+          "position": [
+            0.33,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.38,
+        "rail_position": "foreground_boundary",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "bow_deck"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.45
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.33
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.18,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.98,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_025",
+        "blocking_pattern_id": "titanic_blk_025",
+        "composition_id": "titanic_comp_025",
+        "depth_entry_id": "titanic_depth_025",
+        "prop_coordinate_ids": [
+          "titanic_prop_025",
+          "titanic_prop_028"
+        ],
+        "semantic_anchor_id": "titanic_bow_pose",
+        "emotion": "freedom, romance, wonder"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_025",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_promenade_deck_025",
+      "camera_position": [
+        0.45,
+        0.39,
+        2.5
+      ],
+      "camera_rotation": [
+        -8,
+        -10,
+        0
+      ],
+      "camera_distance": 3.6,
+      "camera_height": "eye_level",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.44,
+            0.52
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.58,
+            0.5
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.14,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_026",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_029",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "foreground_boundary",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "promenade_deck"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.25
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.2,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.958,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_026",
+        "blocking_pattern_id": "titanic_blk_026",
+        "composition_id": "titanic_comp_026",
+        "depth_entry_id": "titanic_depth_026",
+        "prop_coordinate_ids": [
+          "titanic_prop_026",
+          "titanic_prop_029"
+        ],
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "emotion": "longing, social tension, destiny"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_026",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_grand_staircase_026",
+      "camera_position": [
+        0.4,
+        0.43,
+        2.8
+      ],
+      "camera_rotation": [
+        -6,
+        -5,
+        0
+      ],
+      "camera_distance": 4,
+      "camera_height": "elevated",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.48,
+            0.55
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.64,
+            0.55
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.16,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_027",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_030",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "vertical_axis_center",
+        "scene_type": "grand_staircase"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.27
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.22,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.966,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_027",
+        "blocking_pattern_id": "titanic_blk_027",
+        "composition_id": "titanic_comp_027",
+        "depth_entry_id": "titanic_depth_027",
+        "prop_coordinate_ids": [
+          "titanic_prop_027",
+          "titanic_prop_030"
+        ],
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "emotion": "grief, devotion, urgency"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_027",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_first_class_salon_027",
+      "camera_position": [
+        0.35,
+        0.47,
+        3.1
+      ],
+      "camera_rotation": [
+        -4,
+        0,
+        0
+      ],
+      "camera_distance": 4.4,
+      "camera_height": "low",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.52,
+            0.58
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.64,
+            0.6
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.18,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_028",
+          "position": [
+            0.24,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_031",
+          "position": [
+            0.42,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.44,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "first_class_salon"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.54
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.29
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.24,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.974,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_028",
+        "blocking_pattern_id": "titanic_blk_028",
+        "composition_id": "titanic_comp_028",
+        "depth_entry_id": "titanic_depth_028",
+        "prop_coordinate_ids": [
+          "titanic_prop_028",
+          "titanic_prop_031"
+        ],
+        "semantic_anchor_id": "titanic_sunset_rail_pose",
+        "emotion": "tenderness, awe, impermanence"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_028",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_engine_room_028",
+      "camera_position": [
+        0.3,
+        0.35,
+        3.4
+      ],
+      "camera_rotation": [
+        -2,
+        5,
+        0
+      ],
+      "camera_distance": 4.8,
+      "camera_height": "eye_level",
+      "camera_angle": "wide_establishing",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.28,
+            0.61
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.42,
+            0.57
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.2,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_029",
+          "position": [
+            0.15,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_032",
+          "position": [
+            0.33,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.38,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "engine_room"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.25
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.45
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.31
+      },
+      "visual_weight_map": {
+        "subjects": 0.46,
+        "props": 0.18,
+        "environment": 0.37
+      },
+      "geometry_confidence": 0.982,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_029",
+        "blocking_pattern_id": "titanic_blk_029",
+        "composition_id": "titanic_comp_029",
+        "depth_entry_id": "titanic_depth_029",
+        "prop_coordinate_ids": [
+          "titanic_prop_029",
+          "titanic_prop_032"
+        ],
+        "semantic_anchor_id": "titanic_bow_wide_camera",
+        "emotion": "awe, liberation"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_029",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_crowd_departure_029",
+      "camera_position": [
+        0.25,
+        0.39,
+        3.7
+      ],
+      "camera_rotation": [
+        0,
+        10,
+        0
+      ],
+      "camera_distance": 5.2,
+      "camera_height": "elevated",
+      "camera_angle": "medium_tracking",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.32,
+            0.64
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.48,
+            0.62
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "toward_partner",
+        "CHAR_dana": "forward_horizon"
+      },
+      "subject_spacing": 0.22,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_030",
+          "position": [
+            0.18,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_033",
+          "position": [
+            0.36,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.4,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "crowd_departure"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.3
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.48
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.33
+      },
+      "visual_weight_map": {
+        "subjects": 0.5,
+        "props": 0.2,
+        "environment": 0.34
+      },
+      "geometry_confidence": 0.99,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_030",
+        "blocking_pattern_id": "titanic_blk_030",
+        "composition_id": "titanic_comp_030",
+        "depth_entry_id": "titanic_depth_030",
+        "prop_coordinate_ids": [
+          "titanic_prop_030",
+          "titanic_prop_033"
+        ],
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "emotion": "shift, anticipation, constraint"
+      },
+      "densification_level": "scene_geometry"
+    },
+    {
+      "scene_geometry_id": "titanic_geom_030",
+      "source_video_id": "TITANIC_02",
+      "scene_id": "scene_titanic_02_lifeboat_dock_030",
+      "camera_position": [
+        0.5,
+        0.43,
+        2.5
+      ],
+      "camera_rotation": [
+        -8,
+        15,
+        0
+      ],
+      "camera_distance": 3.2,
+      "camera_height": "low",
+      "camera_angle": "intimate_two_shot",
+      "subject_positions": [
+        {
+          "subject_id": "CHAR-gonagi",
+          "position": [
+            0.36,
+            0.52
+          ],
+          "depth_layer": "midground"
+        },
+        {
+          "subject_id": "CHAR-dana",
+          "position": [
+            0.48,
+            0.52
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "subject_facing": {
+        "CHAR_gonagi": "forward_horizon",
+        "CHAR_dana": "toward_partner"
+      },
+      "subject_spacing": 0.14,
+      "prop_positions": [
+        {
+          "prop_id": "titanic_prop_031",
+          "position": [
+            0.21,
+            0.22
+          ],
+          "depth_layer": "foreground"
+        },
+        {
+          "prop_id": "titanic_prop_034",
+          "position": [
+            0.39,
+            0.34
+          ],
+          "depth_layer": "midground"
+        }
+      ],
+      "environment_layout": {
+        "horizon_line": 0.42,
+        "rail_position": "none",
+        "architecture_frame": "lateral_balance",
+        "scene_type": "lifeboat_dock"
+      },
+      "foreground_zone": {
+        "depth_range": [
+          0,
+          0.25
+        ],
+        "visual_weight": 0.2
+      },
+      "midground_zone": {
+        "depth_range": [
+          0.25,
+          0.65
+        ],
+        "visual_weight": 0.51
+      },
+      "background_zone": {
+        "depth_range": [
+          0.65,
+          1
+        ],
+        "visual_weight": 0.25
+      },
+      "visual_weight_map": {
+        "subjects": 0.42,
+        "props": 0.22,
+        "environment": 0.4
+      },
+      "geometry_confidence": 0.95,
+      "pattern_bindings": {
+        "camera_pattern_id": "titanic_cam_031",
+        "blocking_pattern_id": "titanic_blk_031",
+        "composition_id": "titanic_comp_031",
+        "depth_entry_id": "titanic_depth_031",
+        "prop_coordinate_ids": [
+          "titanic_prop_031",
+          "titanic_prop_034"
+        ],
+        "semantic_anchor_id": "titanic_crowd_pressure_blocking",
+        "emotion": "joy, discovery"
+      },
+      "densification_level": "scene_geometry"
+    }
+  ]
+}

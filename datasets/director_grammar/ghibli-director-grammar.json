@@ -1,0 +1,137 @@
+{
+  "grammar_id": "director_grammar_ghibli_v1",
+  "phase": "PHASE-SOURCE-VIDEO-003-DIRECTOR_GRAMMAR_EXTRACTION_V1",
+  "source_family": "GHIBLI",
+  "visual_style": {
+    "summary": "Hand-painted warmth, domestic intimacy, and Mediterranean-adaptable pastoral clarity.",
+    "patterns": [
+      "soft-line character silhouettes",
+      "warm domestic interiors",
+      "readable environmental storytelling",
+      "gentle fantasy realism",
+      "harbor-and-village world cues"
+    ],
+    "constraints": [
+      "no-neon-city-tokens",
+      "no-hard-cgi-shine",
+      "preserve-handcrafted-surface-read"
+    ]
+  },
+  "camera_grammar": {
+    "summary": "Patient observational framing with gentle movement and human-scale perspective.",
+    "patterns": [
+      "establishing-wide before intimacy",
+      "eye-level dialogue pairs",
+      "tracking-walk with deep focus",
+      "task-detail close-ups",
+      "rear-follow departure shots",
+      "aerial harbor sweeps"
+    ],
+    "constraints": [
+      "no-handheld-chaos",
+      "no-unmotivated-dutch-tilt",
+      "motivate-cuts-with-emotional-beat"
+    ]
+  },
+  "lighting_grammar": {
+    "summary": "Naturalistic daylight with warm interior practicals and soft shadow rolloff.",
+    "patterns": [
+      "morning-window wash",
+      "golden-hour exterior glow",
+      "hearth-interior warmth",
+      "overcast-soft diffusion",
+      "lantern-practical accents"
+    ],
+    "constraints": [
+      "no-flat-studio-key",
+      "no-unmotivated-rim-only-portraits"
+    ]
+  },
+  "blocking_grammar": {
+    "summary": "Characters anchored to domestic tasks, shared meals, and purposeful path movement.",
+    "patterns": [
+      "seated-conversation triangles",
+      "counter-exchange staging",
+      "doorway-threshold pauses",
+      "work-surface hand dominance",
+      "paired-walk with social spacing"
+    ],
+    "constraints": [
+      "no-empty-center-stage-posing",
+      "require-object-or-task-anchor"
+    ]
+  },
+  "emotion_grammar": {
+    "summary": "Quiet emotional arcs expressed through gesture, pause, and environmental reaction.",
+    "patterns": [
+      "warmth-through-routine",
+      "longing-in-departure",
+      "joy-in-small-discovery",
+      "calm-after-storm",
+      "reunion-in-shared-space"
+    ],
+    "constraints": [
+      "no-melodrama-exposition",
+      "subtext-over-dialogue-carry"
+    ]
+  },
+  "environment_grammar": {
+    "summary": "Lived-in villages, harbors, rooftops, and domestic rooms with tactile detail.",
+    "patterns": [
+      "mediterranean-harbor",
+      "village-street-life",
+      "domestic-kitchen",
+      "rooftop-horizon",
+      "workshop-craft-space"
+    ],
+    "constraints": [
+      "no-future-tech-props",
+      "no-identity-breaking-landmark-swap"
+    ]
+  },
+  "motion_grammar": {
+    "summary": "Deliberate walking rhythms, task motions, and gentle environmental drift.",
+    "patterns": [
+      "slow-contemplative-walk",
+      "meal-prep-task-motion",
+      "departure-trail",
+      "street-crossing",
+      "object-handoff"
+    ],
+    "constraints": [
+      "no-action-chase-default",
+      "motion-must-support-emotion"
+    ]
+  },
+  "transition_grammar": {
+    "summary": "Geography-linked cuts and time-of-day bridges rather than shock edits.",
+    "patterns": [
+      "doorway-to-exterior-match",
+      "walk-through-dissolve",
+      "time-of-day-wipe",
+      "object-continuity-bridge",
+      "horizon-match-cut"
+    ],
+    "constraints": [
+      "no-random-flash-cuts",
+      "preserve-spatial-continuity"
+    ]
+  },
+  "use_case": [
+    "Gonegi domestic harbor scenes",
+    "music-drama warmth beats",
+    "character-continuity reference for Mediterranean adaptation"
+  ],
+  "design_only": true,
+  "gpu_execution": false,
+  "source_video_ids": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07"
+  ],
+  "extracted_at": "2026-06-05T06:41:28.894Z"
+}

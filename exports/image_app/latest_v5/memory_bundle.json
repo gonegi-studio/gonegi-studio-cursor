@@ -1,0 +1,208 @@
+{
+  "bundle_id": "memory-bundle-v5",
+  "dataset_type": "production",
+  "production_grade": true,
+  "placeholder": false,
+  "materialized": true,
+  "memory_events": [
+    {
+      "event_id": "memory-event-character_memory",
+      "memory_dimension": "character_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-location_memory",
+      "memory_dimension": "location_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-relationship_memory",
+      "memory_dimension": "relationship_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-prop_memory",
+      "memory_dimension": "prop_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-costume_memory",
+      "memory_dimension": "costume_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-world_state_memory",
+      "memory_dimension": "world_state_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-theme_memory",
+      "memory_dimension": "theme_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-callback_memory",
+      "memory_dimension": "callback_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-legacy_callback_memory",
+      "memory_dimension": "legacy_callback_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    },
+    {
+      "event_id": "memory-event-timeline_memory",
+      "memory_dimension": "timeline_memory",
+      "recall_strength": 0.85,
+      "horizon": "feature_film"
+    }
+  ],
+  "memory_callbacks": {
+    "callback_dimensions": [
+      "callback_recall",
+      "callback_resolution",
+      "callback_chain_memory",
+      "callback_forget_rate"
+    ],
+    "callback_seeds": [
+      {
+        "callback_id": "harbor_keeper_legacy",
+        "recall_strength": 0.88,
+        "era": "present"
+      },
+      {
+        "callback_id": "window_reflection_memory",
+        "recall_strength": 0.82,
+        "era": "past"
+      }
+    ],
+    "dimension_definitions": {
+      "callback_recall": {
+        "description": "Callback seeds are correctly recalled when referenced at later narrative positions.",
+        "evaluation_signals": [
+          "seed_anchor_recall_rate",
+          "reference_linkage_integrity",
+          "pending_state_accuracy"
+        ]
+      },
+      "callback_resolution": {
+        "description": "Callback payoffs align with seeded anchors across the declared resolution horizon.",
+        "evaluation_signals": [
+          "resolution_alignment_score",
+          "payoff_scene_linkage",
+          "completion_state_accuracy"
+        ]
+      },
+      "callback_chain_memory": {
+        "description": "Multi-callback chains preserve layer order and anchor linkage across long spans.",
+        "evaluation_signals": [
+          "chain_id_persistence",
+          "layer_order_integrity",
+          "multi_callback_depth_coherence"
+        ]
+      },
+      "callback_forget_rate": {
+        "description": "Rate of unresolved or dropped callback anchors remains within acceptable bounds.",
+        "evaluation_signals": [
+          "orphan_anchor_count",
+          "forget_rate_per_horizon",
+          "stale_pending_ratio"
+        ]
+      }
+    }
+  },
+  "relationship_memory": {
+    "dimensions": [
+      "relationship_memory"
+    ],
+    "tracked_relationships": [
+      "dana_gonegi_siblings",
+      "elena_marco_bond"
+    ],
+    "intimacy_tracking": true
+  },
+  "continuity_memory": {
+    "dimensions": [
+      "character_memory",
+      "location_memory",
+      "prop_memory",
+      "costume_memory"
+    ],
+    "continuity_depth": {
+      "feature_film_continuity_depth": 14,
+      "memory_callback_arc": "callback_memory",
+      "legacy_callback_arc": "legacy_callback_memory",
+      "world_state_arc": "world_state_memory",
+      "theme_arc": "theme_memory",
+      "timeline_arc": "timeline_memory"
+    }
+  },
+  "world_state_memory": {
+    "dimensions": [
+      "world_state_memory",
+      "theme_memory",
+      "timeline_memory"
+    ],
+    "world_state_spec": {
+      "world_state_memory_spec_id": "world-state-memory-specification-v1",
+      "asset_type": "world_state_memory_specification",
+      "asset_version": "v1",
+      "phase": "PHASE-L2-CONSISTENCY-003",
+      "purpose": "World-state memory validation dimensions for macro narrative persistence.",
+      "world_state_memory_dimension_count": 3,
+      "world_state_memory_dimensions": [
+        "world_state_persistence",
+        "world_state_transition",
+        "world_state_recall"
+      ],
+      "dimension_definitions": {
+        "world_state_persistence": {
+          "description": "Macro world-state stages remain stable across scenes within the same act horizon.",
+          "evaluation_signals": [
+            "stage_persistence_score",
+            "community_state_coherence",
+            "location_transformation_tracking"
+          ]
+        },
+        "world_state_transition": {
+          "description": "World-state transitions occur at declared act boundaries with traceable cause.",
+          "evaluation_signals": [
+            "transition_boundary_alignment",
+            "act_state_handoff",
+            "transformation_causality"
+          ]
+        },
+        "world_state_recall": {
+          "description": "Prior world-state anchors are correctly recalled after long narrative gaps.",
+          "evaluation_signals": [
+            "state_anchor_recall_rate",
+            "horizon_recall_integrity",
+            "world_arc_linkage"
+          ]
+        }
+      },
+      "linked_memory_dimension": "world_state_memory",
+      "temporal_memory_spec_ref": "datasets/consistency/temporal-memory-specification.json"
+    }
+  },
+  "memory_priority_rules": {
+    "priority_order": [
+      "callback_memory",
+      "relationship_memory",
+      "world_state_memory",
+      "timeline_memory"
+    ],
+    "recall_threshold": 0.75,
+    "forget_rate_cap": 0.15
+  },
+  "record_count": 12
+}

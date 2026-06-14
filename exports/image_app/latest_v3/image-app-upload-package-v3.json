@@ -1,0 +1,68 @@
+{
+  "package_id": "image-app-upload-package-v3",
+  "phase": "PHASE-EXPORT-REBUILD-002",
+  "generated_at": "2026-06-09T02:57:54.493Z",
+  "package_type": "production_dataset",
+  "manifest_only": false,
+  "gpu_execution": false,
+  "external_call_allowed": false,
+  "source_video_registry_ref": "imports/source_videos/active/active-source-video-registry.json",
+  "movie_analysis_ref": "exports/movie_analysis/movie-analysis-export-package.json",
+  "dna_package_ref": "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+  "output_blocks": [
+    {
+      "block_id": "character_dna_bundle",
+      "block_path": "exports/image_app/latest_v3/character_dna_bundle.json"
+    },
+    {
+      "block_id": "location_dna_bundle",
+      "block_path": "exports/image_app/latest_v3/location_dna_bundle.json"
+    },
+    {
+      "block_id": "lighting_dna_bundle",
+      "block_path": "exports/image_app/latest_v3/lighting_dna_bundle.json"
+    },
+    {
+      "block_id": "environment_dna_bundle",
+      "block_path": "exports/image_app/latest_v3/environment_dna_bundle.json"
+    },
+    {
+      "block_id": "style_dna_bundle",
+      "block_path": "exports/image_app/latest_v3/style_dna_bundle.json"
+    },
+    {
+      "block_id": "story_blueprint_bundle",
+      "block_path": "exports/image_app/latest_v3/story_blueprint_bundle.json"
+    },
+    {
+      "block_id": "prompt_generation_bundle",
+      "block_path": "exports/image_app/latest_v3/prompt_generation_bundle.json"
+    },
+    {
+      "block_id": "memory_bundle",
+      "block_path": "exports/image_app/latest_v3/memory_bundle.json"
+    },
+    {
+      "block_id": "dialogue_bundle",
+      "block_path": "exports/image_app/latest_v3/dialogue_bundle.json"
+    },
+    {
+      "block_id": "generation_rule_bundle",
+      "block_path": "exports/image_app/latest_v3/generation_rule_bundle.json"
+    }
+  ],
+  "integrated_systems": [
+    "story_engine",
+    "prompt_compiler",
+    "generation_qa",
+    "prompt_evaluation",
+    "temporal_memory",
+    "dialogue_lipsync",
+    "generation_trace",
+    "dataset_evolution",
+    "asset_registry",
+    "production_execution",
+    "movie_analysis"
+  ],
+  "upload_package_v3_integrity": "PASS"
+}

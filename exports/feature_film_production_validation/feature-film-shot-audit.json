@@ -1,0 +1,44 @@
+{
+  "audit_id": "feature-film-shot-audit-v1",
+  "phase": "PHASE-L3-FEATURE-005",
+  "generated_at": "2026-06-08T22:39:02.665Z",
+  "shot_scale_valid": true,
+  "shot_per_scene_valid": true,
+  "shot_density_valid": true,
+  "audit_passed": true,
+  "global_shot_count": 21171,
+  "archetypes": [
+    {
+      "feature_film_archetype_id": "harbor_saga_feature",
+      "shot_count": 6599,
+      "scene_count": 1500,
+      "avg_shots_per_scene": 4.4,
+      "scale_valid": true,
+      "per_scene_valid": true,
+      "density_valid": true
+    },
+    {
+      "feature_film_archetype_id": "mediterranean_epoch_feature",
+      "shot_count": 8913,
+      "scene_count": 2000,
+      "avg_shots_per_scene": 4.46,
+      "scale_valid": true,
+      "per_scene_valid": true,
+      "density_valid": true
+    },
+    {
+      "feature_film_archetype_id": "correspondence_ledger_feature",
+      "shot_count": 5659,
+      "scene_count": 1300,
+      "avg_shots_per_scene": 4.35,
+      "scale_valid": true,
+      "per_scene_valid": true,
+      "density_valid": true
+    }
+  ],
+  "upstream_refs": {
+    "shot_scale_rules_ref": "exports/feature_film_shot_assembly/feature-shot-scale-rules.json",
+    "shot_per_scene_rules_ref": "exports/feature_film_shot_assembly/feature-shot-per-scene-rules.json",
+    "shot_density_ref": "exports/feature_film_shot_assembly/feature-shot-density-by-scene-type.json"
+  }
+}

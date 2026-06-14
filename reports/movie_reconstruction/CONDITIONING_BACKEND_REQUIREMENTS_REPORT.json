@@ -1,0 +1,45 @@
+{
+  "report_id": "conditioning_backend_requirements_mqc26bu2",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-002",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_DESIGN_V1",
+  "generated_at": "2026-06-13T07:53:19.466Z",
+  "minimum_backend_features": [
+    "Multi-ControlNet input stacking with per-control weight configuration",
+    "Depth map raster ingestion (normalized 0-1, scene-aligned)",
+    "Pose map / OpenPose keypoint raster ingestion",
+    "Layout / segmentation map ingestion",
+    "Regional mask prompting with character_id region labels",
+    "IP-Adapter reference image embedding injection",
+    "Video temporal conditioning for shot-sequence continuity",
+    "Numerical DNA bundle binding (source_video_id + frame_index alignment)",
+    "Conditioning request audit trail and weight reproducibility"
+  ],
+  "required_conditioning_types": [
+    "layout",
+    "depth",
+    "pose",
+    "blocking_regional",
+    "object_identity",
+    "environment_identity",
+    "text_spatial_compiler",
+    "video_temporal"
+  ],
+  "critical_blockers": [
+    "Image App import contract accepts text slots only; no map tensor ingestion path (D-016)",
+    "Direct spatial conditioning unavailable in current architecture (D-017, TD-C003)",
+    "No ControlNet-class backend integrated in agent-stability-layer generation path",
+    "GPU execution deferred; conditioning backend selection requires GPU validation phase",
+    "Pose map pipeline not implemented (METADATA_ONLY in audit)"
+  ],
+  "backend_options": [
+    "ControlNet",
+    "Depth-conditioned diffusion",
+    "Pose-conditioned diffusion",
+    "Regional prompting",
+    "IP-Adapter",
+    "Video conditioning backend"
+  ],
+  "requires_new_backend": true,
+  "conditioning_ready": false,
+  "gpu_ready": false
+}

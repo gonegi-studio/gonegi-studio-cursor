@@ -1,0 +1,44 @@
+{
+  "adapter_id": "titanic-image-adapter-v1",
+  "phase": "PHASE-TITANIC-SHOT-GRAMMAR-001",
+  "system_id": "TITANIC_SHOT_RECONSTRUCTION_SYSTEM_V1",
+  "adapter_version": "v1",
+  "target_app": "image_app",
+  "shared_movie_dataset": true,
+  "separate_image_dataset": false,
+  "pipeline": [
+    "movie_dataset",
+    "titanic_image_adapter",
+    "image_prompt_block"
+  ],
+  "input_sources": {
+    "shot_registry": "datasets/movie_reconstruction/titanic_shots/titanic-shot-registry.json",
+    "scene_master": "datasets/movie_reconstruction/titanic_dense/titanic-scene-master-registry.json",
+    "movie_bundle": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json"
+  },
+  "output_blocks": [
+    "movie_geometry_block",
+    "camera_block",
+    "blocking_block",
+    "composition_block",
+    "semantic_block",
+    "gonegi_translation_block"
+  ],
+  "prompt_merge_order": [
+    "gonegi_translation_block",
+    "movie_geometry_block",
+    "camera_block",
+    "blocking_block",
+    "composition_block",
+    "semantic_block"
+  ],
+  "shot_binding": {
+    "default_shot_count_per_scene": 11,
+    "total_shots_available": 3300,
+    "semantic_anchor_required": true
+  },
+  "image_reconstruction_status": "PASS",
+  "world_identity_source": "latest_v5",
+  "movie_geometry_source": "movie_dataset",
+  "adapter_ready": true
+}

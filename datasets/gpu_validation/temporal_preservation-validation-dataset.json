@@ -1,0 +1,46 @@
+{
+  "dataset_id": "temporal_preservation-validation-dataset-v1",
+  "validation_channel": "temporal_preservation",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-003",
+  "dataset_size": 36,
+  "target_batch_size": 30,
+  "difficulty_tiers": [
+    "easy",
+    "medium",
+    "hard"
+  ],
+  "binding_ref": "exports/movie_reconstruction_temporal_preservation/temporal-preservation-binding-package.json",
+  "measurement_methods": [
+    "edit_rhythm_alignment_score",
+    "continuity_signature_score"
+  ],
+  "pass_thresholds": {
+    "edit_rhythm_alignment_score": 0.9,
+    "continuity_signature_score": 0.88,
+    "hard_tier_pass_threshold": 0.82
+  },
+  "failure_examples": [
+    "edit_rhythm_desync",
+    "shot_boundary_jump",
+    "causal_transition_break"
+  ],
+  "sample_seeds": [
+    {
+      "sample_id": "tmp_easy_001",
+      "difficulty_tier": "easy",
+      "source_ref": "timeline_ghibli_001_001"
+    },
+    {
+      "sample_id": "tmp_med_001",
+      "difficulty_tier": "medium",
+      "source_ref": "timeline_titanic_014_003"
+    },
+    {
+      "sample_id": "tmp_hard_001",
+      "difficulty_tier": "hard",
+      "source_ref": "transition_014_015"
+    }
+  ],
+  "gpu_execution": false,
+  "dataset_only": true
+}

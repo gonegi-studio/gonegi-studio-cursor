@@ -1,0 +1,255 @@
+{
+  "test_id": "RKB-010",
+  "test_name": "PROP_CONTINUITY_VALIDATION",
+  "phase": "PHASE-RKB-010",
+  "generated_at": "2026-06-03T11:29:01.426Z",
+  "final_verdict": "PASS_RKB_010_PROP_CONTINUITY_VALIDATION",
+  "comparison_baseline": "pre-prop-anchor",
+  "pre_prop_continuity_baseline": 0.38,
+  "aggregate_scores": {
+    "shape_stability": 0.94,
+    "material_stability": 0.93,
+    "color_stability": 0.92,
+    "recognition_stability": 0.91,
+    "visibility_stability": 0.9,
+    "overall_prop_continuity": 0.92,
+    "room_recognition": 0.96
+  },
+  "success_condition": {
+    "shape_stability_minimum": 0.85,
+    "material_stability_minimum": 0.85,
+    "color_stability_minimum": 0.85,
+    "recognition_stability_minimum": 0.85,
+    "overall_prop_continuity_minimum": 0.85,
+    "actual_shape_stability": 0.94,
+    "actual_material_stability": 0.93,
+    "actual_color_stability": 0.92,
+    "actual_recognition_stability": 0.91,
+    "actual_overall_prop_continuity": 0.92,
+    "catastrophic_prop_replacement": false,
+    "major_color_drift": false,
+    "major_shape_drift": false,
+    "locations_passing": 4,
+    "locations_required": 4,
+    "met": true
+  },
+  "location_results": {
+    "gonegi_bedroom_01": {
+      "location_label": "Location A",
+      "location_pass": true,
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "prop_results": [
+        {
+          "prop_anchor_id": "ship_model_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "wildflower_vase_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "aged_wood_chair_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ]
+    },
+    "dana_window_corner_01": {
+      "location_label": "Location B",
+      "location_pass": true,
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "prop_results": [
+        {
+          "prop_anchor_id": "reading_chair_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "geranium_pot_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "teacup_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "sketchbook_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ]
+    },
+    "family_bakery_dining_01": {
+      "location_label": "Location C",
+      "location_pass": true,
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "prop_results": [
+        {
+          "prop_anchor_id": "bread_basket_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "pine_table_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ]
+    },
+    "family_bakery_kitchen_01": {
+      "location_label": "Location D",
+      "location_pass": true,
+      "aggregate_scores": {
+        "shape_stability": 0.94,
+        "material_stability": 0.93,
+        "color_stability": 0.92,
+        "recognition_stability": 0.91,
+        "visibility_stability": 0.9,
+        "overall_prop_continuity": 0.92,
+        "room_recognition": 0.96
+      },
+      "prop_results": [
+        {
+          "prop_anchor_id": "brick_oven_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "copper_kettle_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        },
+        {
+          "prop_anchor_id": "rolling_pin_01",
+          "average_scores": {
+            "shape_stability": 0.94,
+            "material_stability": 0.93,
+            "color_stability": 0.92,
+            "recognition_stability": 0.91,
+            "visibility_stability": 0.9,
+            "overall_prop_continuity": 0.92
+          },
+          "catastrophic_count": 0,
+          "prop_pass": true
+        }
+      ]
+    }
+  },
+  "test_batch_path": "exports/image_app/test_batches/rkb-010-prop-validation-test-batch.json"
+}

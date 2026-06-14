@@ -1,0 +1,32 @@
+{
+  "rebuild_id": "source-video-dataset-rebuild-v1",
+  "asset_type": "source_video_dataset_rebuild_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-EXPORT-REBUILD-002",
+  "module": "SOURCE_VIDEO_TO_APP_DATASET_REBUILD_V1",
+  "purpose": "Rebuild actual production app datasets from source video analysis and engine stack integration.",
+  "upstream_checkpoint": "PASS_APP_DATASET_SYNCHRONIZATION_V1",
+  "source_video_groups": ["ghibli", "shinkai", "live_action", "mori"],
+  "ghibli_count": 7,
+  "shinkai_count": 2,
+  "live_action_count": 1,
+  "mori_count": 5,
+  "analysis_dependencies": [
+    "exports/movie_analysis/movie-analysis-export-manifest.json",
+    "exports/movie_analysis/movie-analysis-export-package.json",
+    "exports/movie_analysis_cinematic_dna/movie-analysis-cinematic-dna.json",
+    "exports/movie_analysis_dna_adapter_library/movie-analysis-dna-adapter-library.json",
+    "exports/movie_analysis_image_bridge/movie-analysis-image-app-bridge.json",
+    "exports/movie_analysis_video_bridge/movie-analysis-video-app-bridge.json"
+  ],
+  "dna_dependencies": [
+    "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+    "exports/movie_analysis_cinematic_dna_integration/movie-analysis-cinematic-dna-integration.json"
+  ],
+  "target_exports": {
+    "image_app": "exports/image_app/latest_v3",
+    "video_app": "exports/video_app/latest_v3"
+  },
+  "rebuild_strategy": "source_videos_to_movie_analysis_to_dna_aggregation_to_dataset_packaging",
+  "rebuild_integrity": "PASS"
+}

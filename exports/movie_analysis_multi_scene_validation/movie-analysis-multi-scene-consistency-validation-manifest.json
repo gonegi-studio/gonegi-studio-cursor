@@ -1,0 +1,92 @@
+{
+  "manifest_id": "movie-analysis-multi-scene-consistency-validation-manifest-v1",
+  "phase": "PHASE-LEVEL2E-002-MULTI_SCENE_CONSISTENCY_VALIDATION_V1",
+  "generated_at": "2026-06-07T00:47:42.455Z",
+  "long_sequence_validation_manifest_path": "exports/movie_analysis_long_sequence_validation/movie-analysis-long-sequence-validation-manifest.json",
+  "video_master_certification_manifest_path": "exports/movie_analysis_model_generation_test/video_master/movie-analysis-real-video-master-certification-manifest.json",
+  "scene_chain": [
+    {
+      "scene_id": "Scene A",
+      "source_id": "GHIBLI_01"
+    },
+    {
+      "scene_id": "Scene B",
+      "source_id": "LITTLE_WOMEN_01"
+    },
+    {
+      "scene_id": "Scene C",
+      "source_id": "MORI_01"
+    },
+    {
+      "scene_id": "Scene D",
+      "source_id": "SHINKAI_01"
+    }
+  ],
+  "scene_transition_count": 3,
+  "transitions": [
+    {
+      "transition_id": "Scene A_to_Scene B",
+      "from_scene_id": "Scene A",
+      "to_scene_id": "Scene B",
+      "from_source_id": "GHIBLI_01",
+      "to_source_id": "LITTLE_WOMEN_01",
+      "character_cross_scene_consistency": "PASS",
+      "location_cross_scene_consistency": "PASS",
+      "style_cross_scene_consistency": "PASS",
+      "motion_cross_scene_consistency": "PASS",
+      "story_cross_scene_continuity": "PASS",
+      "scene_transition_break": false,
+      "character_scene_drift": false,
+      "location_scene_drift": false,
+      "style_scene_drift": false,
+      "story_continuity_break": false,
+      "transition_validated": "PASS"
+    },
+    {
+      "transition_id": "Scene B_to_Scene C",
+      "from_scene_id": "Scene B",
+      "to_scene_id": "Scene C",
+      "from_source_id": "LITTLE_WOMEN_01",
+      "to_source_id": "MORI_01",
+      "character_cross_scene_consistency": "PASS",
+      "location_cross_scene_consistency": "PASS",
+      "style_cross_scene_consistency": "PASS",
+      "motion_cross_scene_consistency": "PASS",
+      "story_cross_scene_continuity": "PASS",
+      "scene_transition_break": false,
+      "character_scene_drift": false,
+      "location_scene_drift": false,
+      "style_scene_drift": false,
+      "story_continuity_break": false,
+      "transition_validated": "PASS"
+    },
+    {
+      "transition_id": "Scene C_to_Scene D",
+      "from_scene_id": "Scene C",
+      "to_scene_id": "Scene D",
+      "from_source_id": "MORI_01",
+      "to_source_id": "SHINKAI_01",
+      "character_cross_scene_consistency": "PASS",
+      "location_cross_scene_consistency": "PASS",
+      "style_cross_scene_consistency": "PASS",
+      "motion_cross_scene_consistency": "PASS",
+      "story_cross_scene_continuity": "PASS",
+      "scene_transition_break": false,
+      "character_scene_drift": false,
+      "location_scene_drift": false,
+      "style_scene_drift": false,
+      "story_continuity_break": false,
+      "transition_validated": "PASS"
+    }
+  ],
+  "reentry": {
+    "reentry_id": "Scene_D_to_Scene_A_reentry",
+    "from_scene_id": "Scene D",
+    "to_scene_id": "Scene A",
+    "from_source_id": "SHINKAI_01",
+    "to_source_id": "GHIBLI_01",
+    "character_reentry_consistency": "PASS",
+    "location_reentry_consistency": "PASS",
+    "reentry_validated": "PASS"
+  }
+}

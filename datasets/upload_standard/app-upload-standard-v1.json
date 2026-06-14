@@ -1,0 +1,89 @@
+{
+  "standard_id": "app-upload-standard-v1",
+  "phase": "PHASE-CANONICAL-UPLOAD-STANDARD-001",
+  "audit_id": "APP_UPLOAD_STANDARDIZATION_V1",
+  "generated_at": "2026-06-10T06:34:40.829Z",
+  "purpose": "Permanent canonical upload standard for Image App and Video App using latest_v5 fixed filenames.",
+  "policy": "SAFE_CREATE_ONLY",
+  "canonical_version_dir": "latest_v5",
+  "forbidden_version_dirs": [
+    "latest_v6",
+    "latest_v7",
+    "latest_v8"
+  ],
+  "evolution_policy": {
+    "filename_change_forbidden": true,
+    "canonical_structure_locked": true,
+    "version_inside_metadata_only": true,
+    "dataset_evolution_updates_contents_only": true,
+    "rollback_to_legacy_structure_forbidden": true,
+    "harvested_legacy_pattern_loss_forbidden": true,
+    "dataset_deletion_forbidden": true
+  },
+  "schema_lock": {
+    "filename_change_forbidden": true,
+    "canonical_structure_locked": true,
+    "version_inside_metadata_only": true
+  },
+  "image_app": {
+    "canonical_dir": "exports/image_app/latest_v5",
+    "upload_manifest": "image-app-upload-package-v5.json",
+    "required_files": [
+      "character_dna_bundle.json",
+      "location_dna_bundle.json",
+      "lighting_dna_bundle.json",
+      "environment_dna_bundle.json",
+      "style_dna_bundle.json",
+      "source_video_dna_bundle.json",
+      "generation_rule_bundle.json",
+      "production_adapter_bundle.json",
+      "frame_coordinate_dna_bundle.json",
+      "generation_metadata_contract.json",
+      "image-app-upload-package-v5.json"
+    ],
+    "supplemental_files_allowed": true
+  },
+  "video_app": {
+    "canonical_dir": "exports/video_app/latest_v5",
+    "upload_manifest": "video-app-upload-package-v5.json",
+    "required_files": [
+      "character_dna.json",
+      "location_dna.json",
+      "lighting_dna.json",
+      "environment_dna.json",
+      "source_video_dna.json",
+      "motion_dna.json",
+      "temporal_dna.json",
+      "frame_coordinate_dna.json",
+      "video_generation_rules.json",
+      "video-app-upload-package-v5.json"
+    ],
+    "supplemental_files_allowed": true
+  },
+  "manifest_verification": {
+    "required_files_exist": true,
+    "schema_match": true,
+    "critical_missing_count_eq_0": true
+  },
+  "materialization_aliases": {
+    "image_app": {
+      "source_video_dna_bundle.json": "source_video_numerical_dna_bundle.json",
+      "generation_metadata_contract.json": "datasets/app_consumption/generation-metadata-contract.json"
+    },
+    "video_app": {
+      "character_dna.json": "exports/image_app/latest_v5/character_dna_bundle.json",
+      "location_dna.json": "exports/image_app/latest_v5/location_dna_bundle.json",
+      "lighting_dna.json": "exports/image_app/latest_v5/lighting_dna_bundle.json",
+      "environment_dna.json": "exports/image_app/latest_v5/environment_dna_bundle.json",
+      "source_video_dna.json": "source_video_numerical_dna.json",
+      "temporal_dna.json": "temporal_memory_bundle.json",
+      "video_generation_rules.json": "video_generation_bundle.json"
+    }
+  },
+  "regression_gates": {
+    "export_coverage_pass": "PASS_CURSOR_DATASET_FULL_EXPORT_COVERAGE_V2",
+    "app_consumption_pass": "PASS_APP_CONSUMPTION_VALIDATION_V2",
+    "legacy_harvest_pass": "PASS_LEGACY_PATTERN_EXTRACTION_AND_V5_ENRICHMENT_V1"
+  },
+  "next_order": "PHASE-VIDEO-SHORT-TEST-001"
+}

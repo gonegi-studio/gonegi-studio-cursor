@@ -1,0 +1,57 @@
+{
+  "contract_id": "scene-state-priority-contract-v1",
+  "phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "contract_version": "v1",
+  "purpose": "No lower-priority scene state layer may override a higher-priority layer.",
+  "override_rule": "Higher rank wins. Lower layers may enrich context but must not replace identity, character, or emotion anchors.",
+  "priority_order": [
+    {
+      "rank": 1,
+      "layer": "identity_state",
+      "aliases": ["identity", "character_identity", "character_first", "identity_lock"]
+    },
+    {
+      "rank": 2,
+      "layer": "character_state",
+      "aliases": ["character", "character_reference", "character_continuity", "character_dna"]
+    },
+    {
+      "rank": 3,
+      "layer": "emotion_state",
+      "aliases": ["emotion", "emotion_acting", "emotion_dna", "performance"]
+    },
+    {
+      "rank": 4,
+      "layer": "relationship_state",
+      "aliases": ["relationship", "relationship_dna", "relationship_stage", "social_distance"]
+    },
+    {
+      "rank": 5,
+      "layer": "camera_state",
+      "aliases": ["camera", "shot_grammar", "coverage", "shot_type", "framing"]
+    },
+    {
+      "rank": 6,
+      "layer": "composition_state",
+      "aliases": ["composition", "scene_composition", "scene_asset_composition", "layout_lock"]
+    },
+    {
+      "rank": 7,
+      "layer": "location_state",
+      "aliases": ["location", "location_dna", "room_layout", "outdoor_layout"]
+    },
+    {
+      "rank": 8,
+      "layer": "environment_state",
+      "aliases": ["environment", "world_context", "weather", "time_setting", "atmosphere"]
+    }
+  ],
+  "lighting_state_note": "lighting_state binds to location_state and environment_state but must not override identity_state or character_state visual anchors.",
+  "forbidden_overrides": [
+    "environment_state must not replace identity_state.protected_character_ids",
+    "location_state must not replace character_state.active_character_ids",
+    "composition_state must not replace emotion_state.emotion_id",
+    "camera_state must not replace relationship_state.participant_ids"
+  ],
+  "character_first_contract_reference": "exports/image_app/contracts/character-first-contract.json"
+}

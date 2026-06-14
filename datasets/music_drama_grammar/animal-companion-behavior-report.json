@@ -1,0 +1,65 @@
+{
+  "report_type": "animal_companion_behavior_grammar_audit",
+  "report_version": "v1",
+  "phase": "PHASE-MDG-004",
+  "audit_timestamp": "2026-06-02T00:00:00.000Z",
+  "grammar_path": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+  "final_verdict": "PASS_ANIMAL_COMPANION_BEHAVIOR_GRAMMAR_V1",
+  "dependency_check": {
+    "music_drama_grammar": {
+      "path": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "status": "present"
+    },
+    "daily_life_behavior_library": {
+      "path": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "status": "present"
+    },
+    "community_crowd_behavior_grammar": {
+      "path": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "status": "present"
+    },
+    "render_feedback": {
+      "path": "datasets/render_feedback/RKB-001.json",
+      "status": "present"
+    },
+    "master_story": {
+      "path": "datasets/story/music-drama-master-story-v1.json",
+      "status": "present"
+    },
+    "result": "PASS_ALL_DEPENDENCIES_PRESENT"
+  },
+  "validation_summary": {
+    "companion_count": 2,
+    "background_animal_count": 8,
+    "environment_count": 6,
+    "rotation_zone_count": 5,
+    "duplicate_animal_id": 0,
+    "density_law_present": true,
+    "rotation_law_present": true,
+    "ep01_primary_companion_compatible": 1,
+    "ep01_background_animals_compatible": 8,
+    "required_companions_present": ["gamja", "aengdu"],
+    "required_background_animals_present": [
+      "seagull",
+      "pelican",
+      "harbor_cat",
+      "village_dog",
+      "chicken",
+      "duck",
+      "goose",
+      "muscovy_duck"
+    ]
+  },
+  "section_checks": {
+    "section_1_primary_companion_layer": true,
+    "section_2_background_animal_layer": true,
+    "section_3_background_animal_rotation_law": true,
+    "section_4_animal_density_law": true,
+    "section_5_rkb_integration": true
+  },
+  "export_paths": {
+    "grammar": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+    "report": "datasets/music_drama_grammar/animal-companion-behavior-report.json"
+  },
+  "next_phase": "PHASE-MDG-005 Visual Motif Grammar"
+}

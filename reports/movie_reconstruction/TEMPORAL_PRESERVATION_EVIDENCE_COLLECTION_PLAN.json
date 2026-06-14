@@ -1,0 +1,116 @@
+{
+  "report_id": "temporal_evidence_collection_plan_mqd29b5n",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-007B",
+  "system_id": "TEMPORAL_PRESERVATION_EVIDENCE_COLLECTION_V1",
+  "generated_at": "2026-06-14T00:43:24.731Z",
+  "batch_plan_defined": true,
+  "target_sample_count": 30,
+  "collection_order": [
+    "easy_batch",
+    "medium_batch",
+    "hard_batch",
+    "stress_batch",
+    "long_horizon_batch"
+  ],
+  "easy_batch": [
+    {
+      "case_id": "temp_col_easy_001",
+      "timeline_id": "timeline_titanic_014",
+      "memory_signature": "temp_mem_001"
+    },
+    {
+      "case_id": "temp_col_easy_002",
+      "timeline_id": "timeline_titanic_015",
+      "memory_signature": "temp_mem_002"
+    }
+  ],
+  "medium_batch": [
+    {
+      "case_id": "temp_col_med_001",
+      "timeline_id": "timeline_ghibli_001",
+      "memory_signature": "temp_mem_003"
+    },
+    {
+      "case_id": "temp_col_med_002",
+      "timeline_id": "timeline_gonegi_001",
+      "memory_signature": "temp_mem_004"
+    }
+  ],
+  "hard_batch": [
+    {
+      "case_id": "temp_col_hard_001",
+      "timeline_id": "timeline_titanic_014_015",
+      "failure_mode": "character_position_jump"
+    },
+    {
+      "case_id": "temp_col_hard_002",
+      "timeline_id": "timeline_titanic_015_016",
+      "failure_mode": "missing_transition_cause"
+    }
+  ],
+  "stress_batch": [
+    {
+      "case_id": "temp_col_stress_001",
+      "timeline_id": "timeline_titanic_014_015",
+      "stress_mode": "rapid_cut_sequence"
+    },
+    {
+      "case_id": "temp_col_stress_002",
+      "timeline_id": "timeline_titanic_015_016",
+      "stress_mode": "cross_scene_jump"
+    },
+    {
+      "case_id": "temp_col_stress_003",
+      "timeline_id": "timeline_ghibli_001_002",
+      "stress_mode": "edit_rhythm_acceleration"
+    }
+  ],
+  "long_horizon_batch": [
+    {
+      "case_id": "temp_col_lh_001",
+      "timeline_id": "timeline_callback_020",
+      "horizon_mode": "callback_after_20_scenes"
+    },
+    {
+      "case_id": "temp_col_lh_002",
+      "timeline_id": "timeline_callback_050",
+      "horizon_mode": "callback_after_50_scenes"
+    },
+    {
+      "case_id": "temp_col_lh_003",
+      "timeline_id": "timeline_callback_100",
+      "horizon_mode": "callback_after_100_scenes"
+    }
+  ],
+  "analysis": {
+    "temporal_evidence_protocol": "TEMPORAL_PRESERVATION_EVIDENCE_PROTOCOL defines composite scoring, pass_threshold=0.95, and causal_transition_chain highest risk; collection plan binds batch execution order without generating records.",
+    "temporal_dataset": "TEMPORAL_PRESERVATION_EVIDENCE_DATASET provides easy/medium/hard/stress/long_horizon batch seeds for collection plan wiring.",
+    "temporal_memory_binding": "Timeline slots bind memory_signature and edit_rhythm_signature; record spec requires memory_recall_match classification reason.",
+    "causal_transition_chain_binding": "Ordered causal_transition records govern causal_chain_signature and causally_broken_timeline classification boundary.",
+    "temporal_traceability_binding": "traceability_signature binds numerical DNA edit_rhythm refs to conditioning map export paths for batch audit."
+  },
+  "evidence_collection_contract": {
+    "contract_id": "temporal_preservation_evidence_collection_v1",
+    "contract_version": "1.0",
+    "scope": "Collection execution definition only — Collection Ready != Collection Executed.",
+    "evidence_protocol_ref": "reports/movie_reconstruction/TEMPORAL_PRESERVATION_EVIDENCE_PROTOCOL.json",
+    "evidence_dataset_ref": "reports/movie_reconstruction/TEMPORAL_PRESERVATION_EVIDENCE_DATASET.json",
+    "binding_ref": "exports/movie_reconstruction_temporal_preservation/temporal-preservation-binding-package.json",
+    "memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+    "evidence_collection_mode": "DEFINITION_ONLY",
+    "gpu_execution": "false — collection plan and record spec only; no evidence records generated.",
+    "assessment_note": "Do NOT claim TEMPORAL_EVIDENCE_COLLECTED, TEMPORAL_VALIDATED, or TEMPORAL_PRESERVATION_READY."
+  },
+  "collection_batch_plan": {
+    "collection_order": "easy_batch → medium_batch → hard_batch → stress_batch → long_horizon_batch",
+    "target_sample_count": "30",
+    "batch_note": "Sequential collection order; long_horizon_batch runs last for callback memory audit."
+  },
+  "collection_traceability_rules": {
+    "record_traceability": "Each evidence record must bind timeline_id, continuity_signature, causal_chain_signature, and traceability_signature.",
+    "batch_audit_signature": "Collection batch_id hashes case_id list for offline replay without GPU execution.",
+    "classification_audit": "timeline_classification and classification_reason required on every record at collection time.",
+    "causal_chain_integrity": "causal_chain_signature must resolve to binding package causal_transition_chain entry.",
+    "collection_note": "Collection Ready != Collection Executed; Evidence Records Generated = 0."
+  }
+}

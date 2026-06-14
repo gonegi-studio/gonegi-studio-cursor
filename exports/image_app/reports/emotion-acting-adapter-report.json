@@ -1,0 +1,29 @@
+{
+  "report_type": "emotion_acting_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-EDA-001",
+  "generated_at": "2026-06-03T07:14:31.493Z",
+  "emotion_count": 8,
+  "target_emotion_count": 8,
+  "validation": {
+    "library_exists": true,
+    "index_exists": true,
+    "adapter_exists": true,
+    "adapter_synced_to_latest": true,
+    "required_emotions_present": true,
+    "required_tokens_exported": true,
+    "adapter_chain_complete": true,
+    "core_forbidden_rules_present": true,
+    "precheck_pass": true
+  },
+  "export_path": "exports/image_app/adapters/emotion-acting-adapter.json",
+  "report_path": "exports/image_app/reports/emotion-acting-adapter-report.json",
+  "library_path": "datasets/emotion_acting/emotion-acting-dna-library-v1.json",
+  "index_path": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+  "final_verdict": "PASS_EMOTION_ACTING_DNA_V1",
+  "violations": [],
+  "next_phases": [
+    "RKB-007 EMOTION_ACTING_VALIDATION",
+    "MV-DATASET-001 INSTRUMENTAL_MV_DATASET_V1"
+  ]
+}

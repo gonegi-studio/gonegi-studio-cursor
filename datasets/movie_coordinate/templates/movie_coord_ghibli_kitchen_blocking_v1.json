@@ -1,0 +1,109 @@
+{
+  "coordinate_id": "movie_coord_ghibli_kitchen_blocking_v1",
+  "phase": "PHASE-SOURCE-VIDEO-004-MOVIE_SCENE_COORDINATE_SYSTEM_V1",
+  "source_video_id": "GHIBLI_01",
+  "scene_index": 1,
+  "timestamp_start": 48,
+  "timestamp_end": 72,
+  "camera_coordinate": {
+    "position": "kitchen-entry-third",
+    "facing": "hearth-center",
+    "height": "eye-level",
+    "fov_hint": "normal-neutral",
+    "shot_type": "two-shot-medium"
+  },
+  "character_coordinates": [
+    {
+      "character_ref": "protagonist_a",
+      "position": "counter-left-third",
+      "facing": "hearth",
+      "posture": "standing-work",
+      "identity_anchor": "identity_anchor:protagonist_a_face_v1"
+    },
+    {
+      "character_ref": "protagonist_b",
+      "position": "counter-right-third",
+      "facing": "protagonist_a",
+      "posture": "seated-relaxed",
+      "identity_anchor": "identity_anchor:protagonist_b_face_v1"
+    }
+  ],
+  "prop_coordinates": [
+    {
+      "prop_id": "tea_pot",
+      "position": "counter-center",
+      "interaction_state": "pour-ready"
+    },
+    {
+      "prop_id": "window_sill_herbs",
+      "position": "background-window",
+      "interaction_state": "static-anchor"
+    }
+  ],
+  "location_coordinates": {
+    "space_type": "domestic-kitchen",
+    "anchor_point": "hearth-center",
+    "walkable_zone": "kitchen-floor-tile"
+  },
+  "lighting_coordinates": {
+    "key_direction": "window-left",
+    "fill_level": "hearth-warm-fill",
+    "color_temperature": "warm-morning"
+  },
+  "motion_vectors": [
+    {
+      "subject_ref": "protagonist_a",
+      "vector": "counter-reach-to-teapot",
+      "duration_hint": "slow-deliberate"
+    }
+  ],
+  "blocking_map": {
+    "primary_focus": "counter-exchange",
+    "secondary_focus": "hearth-glow",
+    "negative_space": "window-background"
+  },
+  "depth_layers": [
+    {
+      "layer_index": 0,
+      "layer_role": "foreground",
+      "content_hint": "counter-props"
+    },
+    {
+      "layer_index": 1,
+      "layer_role": "midground",
+      "content_hint": "character-pair"
+    },
+    {
+      "layer_index": 2,
+      "layer_role": "background",
+      "content_hint": "window-hearth-wall"
+    }
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity_anchor:protagonist_a_face_v1",
+      "identity_anchor:protagonist_b_face_v1",
+      "identity_lock:preserve_face_geometry"
+    ],
+    "location_locks": [
+      "location_lock:domestic-kitchen",
+      "walkable-zone:kitchen-floor-tile"
+    ],
+    "composition_locks": [
+      "composition_lock:two-shot-balance",
+      "prop_anchor:tea_pot",
+      "prop_anchor:window_sill_herbs"
+    ]
+  },
+  "director_grammar_refs": [
+    "director_grammar_ghibli_v1"
+  ],
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "frame_extraction": false,
+    "external_call_allowed": false
+  },
+  "template_kind": "design_template",
+  "built_at": "2026-06-05T06:47:55.991Z"
+}

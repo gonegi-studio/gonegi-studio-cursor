@@ -1,0 +1,189 @@
+{
+  "report_id": "gpu_validation_campaign_mqd01ext",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-004",
+  "system_id": "GPU_VALIDATION_CAMPAIGN_V1",
+  "generated_at": "2026-06-13T23:41:17.153Z",
+  "final_verdict": "PASS_GPU_VALIDATION_CAMPAIGN_V1",
+  "status": "GPU_VALIDATION_CAMPAIGN_DEFINED",
+  "validation_passed": true,
+  "gpu_validation_campaign_defined": true,
+  "campaign_defined": true,
+  "stage_order_defined": true,
+  "stop_conditions_defined": true,
+  "escalation_rules_defined": true,
+  "exit_criteria_defined": true,
+  "execution_readiness_defined": true,
+  "channel_validation_roadmap_defined": true,
+  "gpu_validation_executed": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "analysis": {
+    "environment_identity_validation": "First-priority channel; STRICT enforcement; hard-tier pass is primary Movie Reconstruction target; minimum batch 50 with same_environment_score gate.",
+    "temporal_preservation_validation": "Second-priority channel; edit_rhythm and continuity_signature validation across frame sequences; blocks object_identity until pass.",
+    "object_identity_validation": "Third-priority channel; variation_tolerance bands and hero_prop STRICT lock; depends on environment and temporal stage pass.",
+    "camera_continuity_validation": "MEDIUM enforcement channel; deferred to post-005C campaign extension; motion_vector delta validation.",
+    "multi_scene_consistency_validation": "STRICT cross-scene anchor validation; deferred until camera_continuity baseline established."
+  },
+  "validation_campaign_contract": {
+    "contract_id": "gpu_validation_campaign_v1",
+    "contract_version": "1.0",
+    "scope": "Campaign definition only — Channel Validation must be executed separately in 005A/B/C phases.",
+    "dataset_ref": "reports/movie_reconstruction/GPU_VALIDATION_DATASET_REPORT.json",
+    "enforcement_protocol_ref": "reports/movie_reconstruction/VIDEO_RUNTIME_ENFORCEMENT_PROTOCOL.json",
+    "stage_progression": "Sequential channel stages; next stage blocked until prior exit_criteria met.",
+    "certification_scope": "Campaign Defined != Campaign Executed; gpu_execution_allowed=false in this phase."
+  },
+  "validation_stage_order": [
+    "environment_identity",
+    "temporal_preservation",
+    "object_identity",
+    "camera_continuity",
+    "multi_scene_consistency"
+  ],
+  "validation_stop_conditions": [
+    "Channel batch pass_rate below validation_exit_criteria.pass_rate",
+    "Hard-tier pass_rate below hard_tier_pass_threshold",
+    "Two consecutive escalation events on same channel",
+    "campaign_abort_conditions triggered in GPU_VALIDATION_RISK_REPORT",
+    "gpu_execution_allowed=false while campaign execution attempted"
+  ],
+  "validation_escalation_rules": [
+    "environment_identity failure blocks all subsequent channel stages",
+    "Medium-tier failure escalates channel to hard-tier revalidation batch",
+    "Hard-tier failure triggers recovery_strategy from risk report before retry",
+    "STRICT channel failure executes expected_degradation_path audit",
+    "Campaign Defined != Campaign Executed — escalation rules apply at execution time only"
+  ],
+  "validation_exit_criteria": {
+    "pass_rate": "Minimum batch pass rate in [0,1] required to exit channel stage.",
+    "same_environment_score": "Environment identity same_environment threshold for stage exit.",
+    "same_object_score": "Object identity same_object threshold for stage exit.",
+    "hard_tier_pass_rate": "Hard tier batch pass rate — primary Movie Reconstruction target.",
+    "assessment_note": "Exit criteria defined at campaign design; not proven until channel phase execution."
+  },
+  "stages": [
+    {
+      "validation_stage": "environment_identity",
+      "target_channel": "environment_identity",
+      "batch_size": 50,
+      "pass_threshold": 0.98,
+      "difficulty_tier": "hard",
+      "expected_pass_rate": 0.82,
+      "success_criteria": [
+        "reference_bank_match",
+        "same_environment_score >= 0.98"
+      ],
+      "failure_criteria": [
+        "reference_drift",
+        "geometry_mismatch",
+        "style_overrides_identity"
+      ],
+      "validation_exit_criteria": {
+        "pass_rate": 0.8,
+        "same_environment_score": 0.95
+      },
+      "next_channel_phase": "PHASE-GPU-CONDITIONING-VALIDATION-005A"
+    },
+    {
+      "validation_stage": "temporal_preservation",
+      "target_channel": "temporal_preservation",
+      "batch_size": 30,
+      "pass_threshold": 0.9,
+      "difficulty_tier": "hard",
+      "expected_pass_rate": 0.75,
+      "success_criteria": [
+        "edit_rhythm_alignment",
+        "continuity_signature_stable"
+      ],
+      "failure_criteria": [
+        "edit_rhythm_desync",
+        "shot_boundary_discontinuity"
+      ],
+      "validation_exit_criteria": {
+        "pass_rate": 0.75,
+        "edit_rhythm_alignment_score": 0.88
+      },
+      "next_channel_phase": "PHASE-GPU-CONDITIONING-VALIDATION-005B"
+    },
+    {
+      "validation_stage": "object_identity",
+      "target_channel": "object_identity",
+      "batch_size": 40,
+      "pass_threshold": 0.97,
+      "difficulty_tier": "hard",
+      "expected_pass_rate": 0.78,
+      "success_criteria": [
+        "identity_signature_match",
+        "variation_tolerance_band_score >= 0.9"
+      ],
+      "failure_criteria": [
+        "identity_embedding_drift",
+        "role_weight_ignored"
+      ],
+      "validation_exit_criteria": {
+        "pass_rate": 0.78,
+        "same_object_score": 0.93
+      },
+      "next_channel_phase": "PHASE-GPU-CONDITIONING-VALIDATION-005C"
+    },
+    {
+      "validation_stage": "camera_continuity",
+      "target_channel": "camera_continuity",
+      "batch_size": 25,
+      "pass_threshold": 0.85,
+      "difficulty_tier": "medium",
+      "expected_pass_rate": 0.7,
+      "success_criteria": [
+        "camera_inertia_preserved"
+      ],
+      "failure_criteria": [
+        "camera_inertia_break"
+      ],
+      "validation_exit_criteria": {
+        "pass_rate": 0.7,
+        "motion_vector_delta_score": 0.82
+      },
+      "next_channel_phase": "DEFERRED_POST_005C"
+    },
+    {
+      "validation_stage": "multi_scene_consistency",
+      "target_channel": "multi_scene_consistency",
+      "batch_size": 35,
+      "pass_threshold": 0.85,
+      "difficulty_tier": "hard",
+      "expected_pass_rate": 0.72,
+      "success_criteria": [
+        "cross_scene_anchor_stable"
+      ],
+      "failure_criteria": [
+        "cross_scene_memory_loss"
+      ],
+      "validation_exit_criteria": {
+        "pass_rate": 0.72,
+        "anchor_persistence_score": 0.85
+      },
+      "next_channel_phase": "DEFERRED_POST_005C"
+    }
+  ],
+  "checks": {
+    "campaign_defined": true,
+    "stage_order_defined": true,
+    "stop_conditions_defined": true,
+    "escalation_rules_defined": true,
+    "exit_criteria_defined": true,
+    "execution_readiness_defined": true,
+    "channel_validation_roadmap_defined": true,
+    "environment_stage_example_present": true,
+    "gpu_validation_executed_false": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "campaign_definition_only": true,
+    "gpu_execution": false,
+    "image_generation": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

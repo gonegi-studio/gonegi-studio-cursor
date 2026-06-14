@@ -1,0 +1,307 @@
+{
+  "contract_id": "gonegi-master-character-replacement-v1",
+  "phase": "PHASE-SOURCE-VIDEO-012-CHARACTER_REPLACEMENT_CONTRACT_V1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "world_translation_contract_ref": "datasets/world_translation/gonegi-world-translation-contract.json",
+  "character_anchor_index_ref": "datasets/character/character-simple-v1.json",
+  "character_first_contract_ref": "exports/image_app/contracts/character-first-contract.json",
+  "replacements": [
+    {
+      "replacement_id": "replacement_protagonist_a_v1",
+      "source_role": "protagonist_a",
+      "target_character_id": "gonegi",
+      "target_character_name": "Gonegi",
+      "replacement_priority": 1,
+      "identity_anchor_required": true,
+      "companion_rule": "gonegi_must_keep_gamja_nearby_when_scene_allows",
+      "costume_lock_required": true,
+      "relationship_mapping": "primary_protagonist",
+      "forbidden_replacements": [
+        "dana",
+        "gamja",
+        "aengdu",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:gonegi",
+        "character_reference:Gonegi",
+        "identity_lock:preserve_gonegi_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_protagonist_b_v1",
+      "source_role": "protagonist_b",
+      "target_character_id": "dana",
+      "target_character_name": "Dana",
+      "replacement_priority": 1,
+      "identity_anchor_required": true,
+      "companion_rule": "dana_must_keep_aengdu_nearby_when_scene_allows",
+      "costume_lock_required": true,
+      "relationship_mapping": "secondary_protagonist",
+      "forbidden_replacements": [
+        "gonegi",
+        "gamja",
+        "aengdu",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:dana",
+        "character_reference:Dana",
+        "identity_lock:preserve_dana_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_solitary_figure_v1",
+      "source_role": "solitary_figure",
+      "target_character_id": "dana",
+      "target_character_name": "Dana",
+      "replacement_priority": 2,
+      "identity_anchor_required": true,
+      "companion_rule": "dana_must_keep_aengdu_nearby_when_scene_allows",
+      "costume_lock_required": true,
+      "relationship_mapping": "solitary_contemplation",
+      "forbidden_replacements": [
+        "gonegi",
+        "gamja",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:dana",
+        "character_reference:Dana",
+        "identity_lock:preserve_dana_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_child_observer_v1",
+      "source_role": "child_observer",
+      "target_character_id": "gonegi",
+      "target_character_name": "Gonegi",
+      "replacement_priority": 2,
+      "identity_anchor_required": true,
+      "companion_rule": "gonegi_must_keep_gamja_nearby_when_scene_allows",
+      "costume_lock_required": true,
+      "relationship_mapping": "child_observer_wonder",
+      "forbidden_replacements": [
+        "dana",
+        "aengdu",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:gonegi",
+        "character_reference:Gonegi",
+        "identity_lock:preserve_gonegi_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_animal_companion_a_v1",
+      "source_role": "animal_companion_a",
+      "target_character_id": "gamja",
+      "target_character_name": "Gamja",
+      "replacement_priority": 1,
+      "identity_anchor_required": true,
+      "companion_rule": "paired_with_gonegi_only",
+      "costume_lock_required": true,
+      "relationship_mapping": "gonegi_animal_companion",
+      "forbidden_replacements": [
+        "aengdu",
+        "dana",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:gamja",
+        "character_reference:Gamja",
+        "identity_lock:preserve_gamja_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_animal_companion_b_v1",
+      "source_role": "animal_companion_b",
+      "target_character_id": "aengdu",
+      "target_character_name": "Aengdu",
+      "replacement_priority": 1,
+      "identity_anchor_required": true,
+      "companion_rule": "paired_with_dana_only",
+      "costume_lock_required": true,
+      "relationship_mapping": "dana_animal_companion",
+      "forbidden_replacements": [
+        "gamja",
+        "gonegi",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:aengdu",
+        "character_reference:Aengdu",
+        "identity_lock:preserve_aengdu_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_background_adult_v1",
+      "source_role": "background_adult",
+      "target_character_id": "living_world_background_actor",
+      "target_character_name": "Living World Background Actor",
+      "replacement_priority": 3,
+      "identity_anchor_required": false,
+      "companion_rule": null,
+      "costume_lock_required": false,
+      "relationship_mapping": "living_world_background",
+      "forbidden_replacements": [
+        "gonegi",
+        "dana",
+        "gamja",
+        "aengdu",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "living_world_actor:living_world_background_actor",
+        "identity_lock:no_canonical_cast_override"
+      ]
+    },
+    {
+      "replacement_id": "replacement_crowd_member_v1",
+      "source_role": "crowd_member",
+      "target_character_id": "living_world_crowd_actor",
+      "target_character_name": "Living World Crowd Actor",
+      "replacement_priority": 4,
+      "identity_anchor_required": false,
+      "companion_rule": null,
+      "costume_lock_required": false,
+      "relationship_mapping": "living_world_crowd",
+      "forbidden_replacements": [
+        "gonegi",
+        "dana",
+        "gamja",
+        "aengdu",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "living_world_actor:living_world_crowd_actor",
+        "identity_lock:no_canonical_cast_override"
+      ]
+    },
+    {
+      "replacement_id": "replacement_sister_a_v1",
+      "source_role": "sister_a",
+      "target_character_id": "dana",
+      "target_character_name": "Dana",
+      "replacement_priority": 2,
+      "identity_anchor_required": true,
+      "companion_rule": "dana_must_keep_aengdu_nearby_when_scene_allows",
+      "costume_lock_required": true,
+      "relationship_mapping": "sibling_dialogue",
+      "forbidden_replacements": [
+        "gonegi",
+        "gamja",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:dana",
+        "character_reference:Dana",
+        "identity_lock:preserve_dana_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_sister_b_v1",
+      "source_role": "sister_b",
+      "target_character_id": "gonegi",
+      "target_character_name": "Gonegi",
+      "replacement_priority": 2,
+      "identity_anchor_required": true,
+      "companion_rule": "gonegi_must_keep_gamja_nearby_when_scene_allows",
+      "costume_lock_required": true,
+      "relationship_mapping": "sibling_dialogue",
+      "forbidden_replacements": [
+        "dana",
+        "aengdu",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:gonegi",
+        "character_reference:Gonegi",
+        "identity_lock:preserve_gonegi_silhouette"
+      ]
+    },
+    {
+      "replacement_id": "replacement_walker_companion_v1",
+      "source_role": "walker_companion",
+      "target_character_id": "gonegi",
+      "target_character_name": "Gonegi",
+      "replacement_priority": 2,
+      "identity_anchor_required": true,
+      "companion_rule": "gonegi_must_keep_gamja_nearby_when_scene_allows",
+      "costume_lock_required": true,
+      "relationship_mapping": "companion_walk",
+      "forbidden_replacements": [
+        "dana",
+        "aengdu",
+        "gamja_to_aengdu",
+        "aengdu_to_gamja"
+      ],
+      "continuity_locks": [
+        "identity:character_identity:gonegi",
+        "character_reference:Gonegi",
+        "identity_lock:preserve_gonegi_silhouette"
+      ]
+    }
+  ],
+  "companion_rules": {
+    "rules": [
+      "gonegi_must_keep_gamja_nearby_when_scene_allows",
+      "dana_must_keep_aengdu_nearby_when_scene_allows",
+      "do_not_swap_gamja_and_aengdu"
+    ],
+    "gonegi_gamja_pair": true,
+    "dana_aengdu_pair": true,
+    "no_companion_swap": true
+  },
+  "identity_rules": {
+    "identity_priority_rank": 1,
+    "no_source_override_of_canonical_cast": true,
+    "no_extra_gonegi_dana_duplication": true,
+    "absent_roles_must_not_appear": true,
+    "protected_character_ids": [
+      "gonegi",
+      "dana",
+      "gamja",
+      "aengdu"
+    ]
+  },
+  "duplication_guard": {
+    "enabled": true,
+    "max_instances_per_character": 1,
+    "blocked_duplicate_roles": [
+      "gonegi",
+      "dana",
+      "gamja",
+      "aengdu"
+    ]
+  },
+  "absent_character_rule": {
+    "strategy": "inject_only_active_scene_characters",
+    "description": "Only characters present in the active scene may be injected; absent source roles must not appear in the translated state."
+  },
+  "core_character_links": {
+    "gonegi": "linked",
+    "dana": "linked",
+    "gamja": "linked",
+    "aengdu": "linked"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "built_at": "2026-06-05T07:52:54.730Z"
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/scene_detection/movie-analysis-scene-detection.schema.json",
+  "title": "MovieAnalysisSceneDetectionPlan",
+  "description": "Planning-only scene detection design for PHASE-SOURCE-VIDEO-025",
+  "type": "object",
+  "required": [
+    "scene_detection_id",
+    "phase",
+    "source_video_id",
+    "analysis_plan_id",
+    "dry_run_id",
+    "sampling_plan_id",
+    "scene_candidate_count",
+    "scene_detection_strategy",
+    "scene_candidates",
+    "coverage_goal",
+    "identity_safety",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "scene_detection_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-025-MOVIE_ANALYSIS_SCENE_DETECTION_DESIGN_V1"
+    },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "analysis_plan_id": { "type": "string", "minLength": 1 },
+    "dry_run_id": { "type": "string", "minLength": 1 },
+    "sampling_plan_id": { "type": "string", "minLength": 1 },
+    "scene_candidate_count": { "type": "integer", "minimum": 1 },
+    "scene_detection_strategy": {
+      "type": "string",
+      "enum": [
+        "VISUAL_TRANSITION_CANDIDATE",
+        "EMOTIONAL_SHIFT_CANDIDATE",
+        "LOCATION_CHANGE_CANDIDATE",
+        "DIALOGUE_BLOCK_CANDIDATE"
+      ]
+    },
+    "scene_candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "candidate_id",
+          "estimated_start_seconds",
+          "estimated_end_seconds",
+          "candidate_role",
+          "reads_frame",
+          "extracts_boundary",
+          "validates_timestamp",
+          "candidate_type",
+          "estimated_only"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "candidate_id": { "type": "string" },
+          "estimated_start_seconds": { "type": "number", "minimum": 0 },
+          "estimated_end_seconds": { "type": "number", "minimum": 0 },
+          "candidate_role": {
+            "type": "string",
+            "enum": [
+              "visual_transition",
+              "emotional_shift",
+              "location_change",
+              "dialogue_block"
+            ]
+          },
+          "reads_frame": { "type": "boolean", "const": false },
+          "extracts_boundary": { "type": "boolean", "const": false },
+          "validates_timestamp": { "type": "boolean", "const": false },
+          "candidate_type": {
+            "type": "string",
+            "const": "estimated_scene_candidate"
+          },
+          "estimated_only": { "type": "boolean", "const": true }
+        }
+      }
+    },
+    "coverage_goal": {
+      "type": "object",
+      "required": ["segment_span_seconds", "coverage_percent", "purpose"],
+      "additionalProperties": false,
+      "properties": {
+        "segment_span_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "coverage_percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "purpose": {
+          "type": "string",
+          "const": "future_coordinate_extraction_preparation"
+        }
+      }
+    },
+    "identity_safety": {
+      "type": "object",
+      "required": [
+        "identity_lock_required",
+        "character_first_contract",
+        "estimated_only",
+        "no_boundary_extraction"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "identity_lock_required": { "type": "boolean", "const": true },
+        "character_first_contract": { "type": "boolean", "const": true },
+        "estimated_only": { "type": "boolean", "const": true },
+        "no_boundary_extraction": { "type": "boolean", "const": true }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "scene_extraction",
+        "ocr"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "scene_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "design_id": "source-video-numerical-extraction-design-v1",
+  "phase": "PHASE-SOURCE-VIDEO-DNA-REAL-003",
+  "system_id": "SOURCE_VIDEO_NUMERICAL_DNA_EXTRACTION_DESIGN_V1",
+  "version": "extraction_design_v1",
+  "design_only": true,
+  "metadata_only": true,
+  "extraction_design_complete": true,
+  "numerical_dna_extracted": false,
+  "numerical_dna_complete": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "schema_path": "datasets/source_video_numerical_dna_design/source-video-numerical-extraction-design.schema.json",
+  "audit_registry_ref": "datasets/source_video_numerical_dna_audit/source-video-numerical-dna-audit-registry.json",
+  "feasibility_report_ref": "reports/source_video_numerical_dna/NUMERICAL_EXTRACTION_FEASIBILITY_REPORT.json",
+  "subsystems": [
+    {
+      "subsystem_id": "frame_coordinates",
+      "input_source": "imports/source_videos/{source_video_id}.mp4 + frame_sampling_plan + scene_detection_segments",
+      "output_structure": "exports/source_video_numerical_dna/{source_video_id}/frame-coordinates.json",
+      "required_fields": [
+        "source_video_id",
+        "frame_index",
+        "timestamp_ms",
+        "normalized_x",
+        "normalized_y",
+        "coordinate_space",
+        "confidence_score"
+      ],
+      "confidence_method": "Weighted blend of sampling coverage ratio, scene boundary alignment, and cross-frame temporal consistency score.",
+      "validation_method": "Verify required fields present, timestamps monotonic, coordinates within [0,1], confidence_score >= threshold per frame.",
+      "failure_conditions": [
+        "frame_index_missing",
+        "timestamp_not_monotonic",
+        "coordinate_out_of_bounds",
+        "confidence_below_threshold",
+        "sampling_coverage_insufficient"
+      ]
+    },
+    {
+      "subsystem_id": "composition_coordinates",
+      "input_source": "frame_coordinates.json + subject_detection_candidates + horizon_line_estimates",
+      "output_structure": "exports/source_video_numerical_dna/{source_video_id}/composition-coordinates.json",
+      "required_fields": [
+        "source_video_id",
+        "frame_index",
+        "subject_bbox",
+        "horizon_line_y",
+        "rule_of_thirds_anchor",
+        "headroom_ratio",
+        "confidence_score"
+      ],
+      "confidence_method": "Detector agreement score between subject bbox candidates and composition grid fit residual.",
+      "validation_method": "Validate bbox within frame bounds, horizon_line_y in [0,1], rule_of_thirds_anchor enum valid, confidence threshold gate.",
+      "failure_conditions": [
+        "subject_bbox_missing",
+        "horizon_line_missing",
+        "composition_grid_mismatch",
+        "confidence_below_threshold",
+        "headroom_ratio_out_of_range"
+      ]
+    },
+    {
+      "subsystem_id": "camera_path",
+      "input_source": "frame_coordinates.json + composition_coordinates.json + camera_behavior_dna_candidates",
+      "output_structure": "exports/source_video_numerical_dna/{source_video_id}/camera-path.json",
+      "required_fields": [
+        "source_video_id",
+        "segment_id",
+        "camera_position",
+        "camera_rotation",
+        "focal_length_mm",
+        "path_samples",
+        "confidence_score"
+      ],
+      "confidence_method": "Spline fit residual across path_samples with penalty for discontinuous velocity changes.",
+      "validation_method": "Check path_samples continuity, camera_position present for each sample, rotation euler bounds, confidence aggregate >= threshold.",
+      "failure_conditions": [
+        "camera_position_missing",
+        "trajectory_not_continuous",
+        "rotation_out_of_bounds",
+        "path_sample_gap_exceeded",
+        "confidence_below_threshold"
+      ]
+    },
+    {
+      "subsystem_id": "blocking_data",
+      "input_source": "frame_coordinates.json + composition_coordinates.json + character_detection_candidates",
+      "output_structure": "exports/source_video_numerical_dna/{source_video_id}/blocking-data.json",
+      "required_fields": [
+        "source_video_id",
+        "frame_index",
+        "character_id",
+        "screen_position",
+        "depth_layer",
+        "eyeline_vector",
+        "interaction_pairs",
+        "confidence_score"
+      ],
+      "confidence_method": "Multi-frame identity persistence score combined with eyeline-vector stability across adjacent frames.",
+      "validation_method": "Ensure character_id stable within scene segment, screen_position in bounds, depth_layer enum valid, eyeline unit vector normalized.",
+      "failure_conditions": [
+        "character_id_unstable",
+        "screen_position_missing",
+        "depth_layer_invalid",
+        "eyeline_vector_missing",
+        "confidence_below_threshold"
+      ]
+    },
+    {
+      "subsystem_id": "motion_vectors",
+      "input_source": "frame_coordinates.json + consecutive_frame_pairs + optical_flow_estimation_plan",
+      "output_structure": "exports/source_video_numerical_dna/{source_video_id}/motion-vectors.json",
+      "required_fields": [
+        "source_video_id",
+        "frame_pair_index",
+        "vector_field_ref",
+        "dominant_motion_magnitude",
+        "dominant_motion_direction",
+        "confidence_score"
+      ],
+      "confidence_method": "Optical flow field coherence score averaged over region-of-interest masks derived from subject_bbox.",
+      "validation_method": "Validate vector_field_ref resolvable, magnitude non-negative, direction in radians [-pi, pi], temporal pair continuity.",
+      "failure_conditions": [
+        "vector_field_missing",
+        "motion_magnitude_invalid",
+        "flow_field_incoherent",
+        "frame_pair_gap_exceeded",
+        "confidence_below_threshold"
+      ]
+    },
+    {
+      "subsystem_id": "edit_rhythm",
+      "input_source": "scene_detection_segments + shot_boundary_candidates + audio_silence_markers",
+      "output_structure": "exports/source_video_numerical_dna/{source_video_id}/edit-rhythm.json",
+      "required_fields": [
+        "source_video_id",
+        "edit_point_index",
+        "timestamp_ms",
+        "shot_duration_ms",
+        "cut_type",
+        "rhythm_bucket",
+        "confidence_score"
+      ],
+      "confidence_method": "Boundary detector consensus score weighted by shot_duration distribution fit against source group rhythm profile.",
+      "validation_method": "Verify edit points monotonic, shot_duration_ms > 0, cut_type enum valid, rhythm_bucket assigned, confidence threshold met.",
+      "failure_conditions": [
+        "edit_point_missing",
+        "shot_duration_invalid",
+        "cut_type_unknown",
+        "rhythm_profile_mismatch",
+        "confidence_below_threshold"
+      ]
+    },
+    {
+      "subsystem_id": "scene_remap",
+      "input_source": "frame_coordinates.json + camera_path.json + blocking_data.json + gonegi_spatial_graph_template",
+      "output_structure": "exports/source_video_numerical_dna/{source_video_id}/scene-remap.json",
+      "required_fields": [
+        "source_video_id",
+        "source_scene_id",
+        "gonegi_scene_id",
+        "remap_transform",
+        "character_region_map",
+        "anchor_persistence_map",
+        "confidence_score"
+      ],
+      "confidence_method": "Transform fit residual between source blocking positions and Gonegi spatial graph target regions with anchor lock penalty.",
+      "validation_method": "Validate remap_transform invertible, character_region_map complete for active characters, anchor_persistence_map covers critical anchors.",
+      "failure_conditions": [
+        "remap_transform_missing",
+        "character_region_map_incomplete",
+        "anchor_persistence_missing",
+        "spatial_graph_template_unbound",
+        "confidence_below_threshold"
+      ]
+    }
+  ],
+  "generated_at": "2026-06-13T07:09:23.806Z"
+}

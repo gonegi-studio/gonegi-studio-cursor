@@ -1,0 +1,192 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import type {
+  TestKikiActingGrammar,
+  TestKikiCameraGrammar,
+  TestKikiDailyLifeGrammar,
+} from './testKikiExtractionSchema.js';
+
+export const GHIBLI_01_VIDEO_ID = 'GHIBLI_01' as const;
+export const GHIBLI_01_DURATION_SECONDS = 177 as const;
+export const GHIBLI_01_GRAMMAR_CATALOG_VERSION = '102A' as const;
+export const GHIBLI_01_GRAMMAR_CATALOG_PATH =
+  'exports/ghibli01-grammar-catalog.json' as const;
+
+export type Ghibli01ObjectInteractionCandidate = {
+  interaction_type: string;
+  object_category: string;
+  grip_style: string;
+  interaction_phase: string;
+};
+
+export type Ghibli01ExtraActorCandidate = {
+  actor_role: string;
+  spatial_relation: string;
+  activity_involvement: string;
+  visibility_weight: string;
+};
+
+export type Ghibli01AnimalCandidate = {
+  animal_type: string;
+  movement_state: string;
+  subject_relation: string;
+  framing_weight: string;
+};
+
+export type Ghibli01GrammarCatalog = {
+  catalog_type: 'grammar_catalog';
+  catalog_version: typeof GHIBLI_01_GRAMMAR_CATALOG_VERSION;
+  source: typeof GHIBLI_01_VIDEO_ID;
+  source_duration_seconds: typeof GHIBLI_01_DURATION_SECONDS;
+  camera_candidates: readonly TestKikiCameraGrammar[];
+  acting_candidates: readonly TestKikiActingGrammar[];
+  daily_life_candidates: readonly TestKikiDailyLifeGrammar[];
+  object_interaction_candidates: readonly Ghibli01ObjectInteractionCandidate[];
+  extra_actor_candidates: readonly Ghibli01ExtraActorCandidate[];
+  animal_candidates: readonly Ghibli01AnimalCandidate[];
+  candidate_counts: {
+    camera: number;
+    acting: number;
+    daily_life: number;
+    object_interaction: number;
+    extra_actor: number;
+    animal: number;
+  };
+};
+
+const GHIBLI_01_CAMERA_CANDIDATES: readonly TestKikiCameraGrammar[] = Object.freeze([
+  { camera_distance: 'extreme-close', camera_height: 'eye-level', camera_angle: 'front', lens_feeling: 'shallow-focus', framing_type: 'reaction-close', subject_position: 'center' },
+  { camera_distance: 'close', camera_height: 'low', camera_angle: 'upward', lens_feeling: 'wide-intimate', framing_type: 'hero-low', subject_position: 'lower-third' },
+  { camera_distance: 'mid', camera_height: 'eye-level', camera_angle: 'two-shot', lens_feeling: 'normal-neutral', framing_type: 'dialogue-pair', subject_position: 'balanced-split' },
+  { camera_distance: 'wide', camera_height: 'eye-level', camera_angle: 'tracking', lens_feeling: 'deep-focus', framing_type: 'follow-path', subject_position: 'leading-third' },
+  { camera_distance: 'extreme-wide', camera_height: 'aerial', camera_angle: 'downward', lens_feeling: 'wide-expansive', framing_type: 'city-establish', subject_position: 'dot-subject' },
+  { camera_distance: 'mid-close', camera_height: 'shoulder-level', camera_angle: 'over-shoulder', lens_feeling: 'shallow-focus', framing_type: 'counter-exchange', subject_position: 'foreground-occlusion' },
+  { camera_distance: 'wide', camera_height: 'high', camera_angle: 'oblique', lens_feeling: 'tele-compressed', framing_type: 'rooftop-establish', subject_position: 'roof-edge' },
+  { camera_distance: 'mid', camera_height: 'ground-level', camera_angle: 'low-profile', lens_feeling: 'normal-neutral', framing_type: 'street-cross', subject_position: 'crosswalk-center' },
+  { camera_distance: 'close', camera_height: 'table-level', camera_angle: 'downward-task', lens_feeling: 'macro-detail', framing_type: 'work-surface', subject_position: 'hands-dominant' },
+  { camera_distance: 'mid-wide', camera_height: 'eye-level', camera_angle: 'pan-follow', lens_feeling: 'deep-focus', framing_type: 'interior-walkthrough', subject_position: 'depth-center' },
+  { camera_distance: 'wide', camera_height: 'eye-level', camera_angle: 'rear-follow', lens_feeling: 'normal-neutral', framing_type: 'departure-trail', subject_position: 'background-exit' },
+  { camera_distance: 'extreme-wide', camera_height: 'high', camera_angle: 'side-profile', lens_feeling: 'deep-focus', framing_type: 'harbor-sweep', subject_position: 'waterline-third' },
+]);
+
+const GHIBLI_01_ACTING_CANDIDATES: readonly TestKikiActingGrammar[] = Object.freeze([
+  { gaze_direction: 'toward-speaker', head_direction: 'slight-tilt', hand_activity: 'cup-hold', posture: 'seated-relaxed', body_weight_distribution: 'centered' },
+  { gaze_direction: 'downward-reading', head_direction: 'chin-down', hand_activity: 'page-turn', posture: 'seated-upright', body_weight_distribution: 'forward-lean-light' },
+  { gaze_direction: 'off-camera-startled', head_direction: 'snap-turn', hand_activity: 'defensive-raise', posture: 'recoil', body_weight_distribution: 'rear-shift' },
+  { gaze_direction: 'toward-task', head_direction: 'level', hand_activity: 'mixing-stir', posture: 'standing-work', body_weight_distribution: 'hip-counter' },
+  { gaze_direction: 'mutual-eye-contact', head_direction: 'level', hand_activity: 'gesture-open', posture: 'standing-conversation', body_weight_distribution: 'even' },
+  { gaze_direction: 'sleep-drift', head_direction: 'nod-down', hand_activity: 'blanket-clutch', posture: 'side-lying', body_weight_distribution: 'curled' },
+  { gaze_direction: 'upward-listen', head_direction: 'chin-up', hand_activity: 'radio-dial', posture: 'seated-attentive', body_weight_distribution: 'rear-weighted' },
+  { gaze_direction: 'downward-apology', head_direction: 'bow-forward', hand_activity: 'apron-smooth', posture: 'standing-bow', body_weight_distribution: 'toe-lean' },
+  { gaze_direction: 'toward-window', head_direction: 'profile', hand_activity: 'sill-rest', posture: 'seated-lean-out', body_weight_distribution: 'forward-weighted' },
+  { gaze_direction: 'toward-companion', head_direction: 'turn-in', hand_activity: 'offering-hand', posture: 'walking-pair', body_weight_distribution: 'in-step' },
+  { gaze_direction: 'downward-pack', head_direction: 'chin-down', hand_activity: 'bundle-tie', posture: 'kneeling-pack', body_weight_distribution: 'knee-anchored' },
+  { gaze_direction: 'upward-flight', head_direction: 'chin-up', hand_activity: 'braced-flight', posture: 'standing-flight', body_weight_distribution: 'lift-ready' },
+]);
+
+const GHIBLI_01_DAILY_LIFE_CANDIDATES: readonly TestKikiDailyLifeGrammar[] = Object.freeze([
+  { activity: 'baking', object_interaction: 'tray-handling', environmental_touchpoint: 'bakery-counter' },
+  { activity: 'serving', object_interaction: 'tray-carry', environmental_touchpoint: 'shop-aisle' },
+  { activity: 'eating', object_interaction: 'utensil-use', environmental_touchpoint: 'table-seat' },
+  { activity: 'cooking', object_interaction: 'ingredient-handling', environmental_touchpoint: 'kitchen-counter' },
+  { activity: 'sleeping', object_interaction: 'none', environmental_touchpoint: 'bed-surface' },
+  { activity: 'listening', object_interaction: 'radio-device', environmental_touchpoint: 'interior-sit' },
+  { activity: 'reading', object_interaction: 'book-handling', environmental_touchpoint: 'window-seat' },
+  { activity: 'shopping', object_interaction: 'basket-carry', environmental_touchpoint: 'market-aisle' },
+  { activity: 'cleaning', object_interaction: 'cloth-wipe', environmental_touchpoint: 'room-floor' },
+  { activity: 'grooming', object_interaction: 'mirror-touch', environmental_touchpoint: 'washroom' },
+  { activity: 'sewing', object_interaction: 'needle-tool', environmental_touchpoint: 'work-table' },
+  { activity: 'letter-writing', object_interaction: 'pen-tool', environmental_touchpoint: 'desk-surface' },
+  { activity: 'waiting', object_interaction: 'clock-check', environmental_touchpoint: 'bench-sit' },
+  { activity: 'repairing', object_interaction: 'wrench-tool', environmental_touchpoint: 'rooftop' },
+  { activity: 'stargazing', object_interaction: 'none', environmental_touchpoint: 'rooftop-ledge' },
+  { activity: 'rain-shelter', object_interaction: 'umbrella-prop', environmental_touchpoint: 'awning-stand' },
+  { activity: 'packing', object_interaction: 'bundle-wrap', environmental_touchpoint: 'floor-pack' },
+  { activity: 'celebrating', object_interaction: 'ribbon-prop', environmental_touchpoint: 'street-gather' },
+  { activity: 'delivering', object_interaction: 'package-handoff', environmental_touchpoint: 'doorway-threshold' },
+  { activity: 'listening-outside', object_interaction: 'none', environmental_touchpoint: 'exterior-stand' },
+  { activity: 'resting-break', object_interaction: 'cup-hold', environmental_touchpoint: 'bench-sit' },
+  { activity: 'window-watch', object_interaction: 'none', environmental_touchpoint: 'window-ledge' },
+  { activity: 'laundry', object_interaction: 'line-pin', environmental_touchpoint: 'courtyard-line' },
+  { activity: 'errand-run', object_interaction: 'handheld-prop', environmental_touchpoint: 'steep-street' },
+  { activity: 'arrival-greet', object_interaction: 'door-open', environmental_touchpoint: 'entry-threshold' },
+]);
+
+const GHIBLI_01_OBJECT_INTERACTION_CANDIDATES: readonly Ghibli01ObjectInteractionCandidate[] =
+  Object.freeze([
+    { interaction_type: 'carry', object_category: 'delivery-bag', grip_style: 'shoulder-strap', interaction_phase: 'transport' },
+    { interaction_type: 'serve', object_category: 'baked-goods', grip_style: 'tray-balanced', interaction_phase: 'handoff' },
+    { interaction_type: 'prepare', object_category: 'food-ingredient', grip_style: 'scoop-grip', interaction_phase: 'mixing' },
+    { interaction_type: 'consume', object_category: 'meal-item', grip_style: 'utensil-precision', interaction_phase: 'eating' },
+    { interaction_type: 'listen', object_category: 'radio-device', grip_style: 'dial-touch', interaction_phase: 'tuning' },
+    { interaction_type: 'read', object_category: 'book', grip_style: 'page-turn', interaction_phase: 'study' },
+    { interaction_type: 'write', object_category: 'letter-paper', grip_style: 'pen-precision', interaction_phase: 'compose' },
+    { interaction_type: 'clean', object_category: 'cloth', grip_style: 'spread-wipe', interaction_phase: 'wiping' },
+    { interaction_type: 'repair', object_category: 'hand-tool', grip_style: 'wrench-firm', interaction_phase: 'fixing' },
+    { interaction_type: 'stitch', object_category: 'textile', grip_style: 'needle-pinch', interaction_phase: 'sewing' },
+    { interaction_type: 'pack', object_category: 'travel-bundle', grip_style: 'wrap-bind', interaction_phase: 'binding' },
+    { interaction_type: 'shelter', object_category: 'umbrella', grip_style: 'handle-grip', interaction_phase: 'open-hold' },
+    { interaction_type: 'shop', object_category: 'market-basket', grip_style: 'handle-carry', interaction_phase: 'browsing' },
+    { interaction_type: 'flight-control', object_category: 'broom-vehicle', grip_style: 'dual-hand-brace', interaction_phase: 'steering' },
+    { interaction_type: 'receive', object_category: 'parcel', grip_style: 'two-hand-pass', interaction_phase: 'acceptance' },
+    { interaction_type: 'offer', object_category: 'shared-item', grip_style: 'open-palm', interaction_phase: 'giving' },
+    { interaction_type: 'pin', object_category: 'laundry-item', grip_style: 'clip-pin', interaction_phase: 'hanging' },
+    { interaction_type: 'open', object_category: 'entry-door', grip_style: 'handle-pull', interaction_phase: 'entry' },
+  ]);
+
+const GHIBLI_01_EXTRA_ACTOR_CANDIDATES: readonly Ghibli01ExtraActorCandidate[] = Object.freeze([
+  { actor_role: 'shopkeeper', spatial_relation: 'counter-across', activity_involvement: 'transaction', visibility_weight: 'medium' },
+  { actor_role: 'friend-peer', spatial_relation: 'walk-alongside', activity_involvement: 'shared-travel', visibility_weight: 'high' },
+  { actor_role: 'elder-mentor', spatial_relation: 'background-seated', activity_involvement: 'observe-guidance', visibility_weight: 'medium' },
+  { actor_role: 'crowd-extra', spatial_relation: 'midground-fill', activity_involvement: 'ambient-move', visibility_weight: 'low' },
+  { actor_role: 'rival-peer', spatial_relation: 'opposite-path', activity_involvement: 'passing-cross', visibility_weight: 'medium' },
+  { actor_role: 'family-elder', spatial_relation: 'porch-near', activity_involvement: 'farewell-wave', visibility_weight: 'medium' },
+  { actor_role: 'delivery-customer', spatial_relation: 'doorway-front', activity_involvement: 'receive-handoff', visibility_weight: 'medium' },
+  { actor_role: 'street-vendor', spatial_relation: 'stall-adjacent', activity_involvement: 'selling-call', visibility_weight: 'low' },
+]);
+
+const GHIBLI_01_ANIMAL_CANDIDATES: readonly Ghibli01AnimalCandidate[] = Object.freeze([
+  { animal_type: 'cat-companion', movement_state: 'perched-still', subject_relation: 'shoulder-proximity', framing_weight: 'foreground-accent' },
+  { animal_type: 'cat-companion', movement_state: 'tail-walk', subject_relation: 'path-adjacent', framing_weight: 'midground' },
+  { animal_type: 'bird-flock', movement_state: 'airborne-sweep', subject_relation: 'sky-background', framing_weight: 'environmental' },
+  { animal_type: 'street-cat', movement_state: 'crouch-observe', subject_relation: 'alley-distance', framing_weight: 'background' },
+  { animal_type: 'seagull', movement_state: 'glide-hover', subject_relation: 'harbor-air', framing_weight: 'midground' },
+  { animal_type: 'insect-detail', movement_state: 'flutter-near', subject_relation: 'foreground-micro', framing_weight: 'accent' },
+  { animal_type: 'cat-companion', movement_state: 'window-perch', subject_relation: 'interior-near', framing_weight: 'midground' },
+  { animal_type: 'bird-single', movement_state: 'wire-rest', subject_relation: 'rooftop-near', framing_weight: 'background-accent' },
+]);
+
+export function buildGhibli01GrammarCatalog(): Ghibli01GrammarCatalog {
+  return Object.freeze({
+    catalog_type: 'grammar_catalog' as const,
+    catalog_version: GHIBLI_01_GRAMMAR_CATALOG_VERSION,
+    source: GHIBLI_01_VIDEO_ID,
+    source_duration_seconds: GHIBLI_01_DURATION_SECONDS,
+    camera_candidates: GHIBLI_01_CAMERA_CANDIDATES,
+    acting_candidates: GHIBLI_01_ACTING_CANDIDATES,
+    daily_life_candidates: GHIBLI_01_DAILY_LIFE_CANDIDATES,
+    object_interaction_candidates: GHIBLI_01_OBJECT_INTERACTION_CANDIDATES,
+    extra_actor_candidates: GHIBLI_01_EXTRA_ACTOR_CANDIDATES,
+    animal_candidates: GHIBLI_01_ANIMAL_CANDIDATES,
+    candidate_counts: Object.freeze({
+      camera: GHIBLI_01_CAMERA_CANDIDATES.length,
+      acting: GHIBLI_01_ACTING_CANDIDATES.length,
+      daily_life: GHIBLI_01_DAILY_LIFE_CANDIDATES.length,
+      object_interaction: GHIBLI_01_OBJECT_INTERACTION_CANDIDATES.length,
+      extra_actor: GHIBLI_01_EXTRA_ACTOR_CANDIDATES.length,
+      animal: GHIBLI_01_ANIMAL_CANDIDATES.length,
+    }),
+  });
+}
+
+export function writeGhibli01GrammarCatalog(projectRoot: string): Ghibli01GrammarCatalog {
+  const catalog = buildGhibli01GrammarCatalog();
+  const exportsDir = path.join(projectRoot, 'exports');
+  fs.mkdirSync(exportsDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(projectRoot, GHIBLI_01_GRAMMAR_CATALOG_PATH),
+    `${JSON.stringify(catalog)}\n`,
+    'utf8'
+  );
+  return catalog;
+}

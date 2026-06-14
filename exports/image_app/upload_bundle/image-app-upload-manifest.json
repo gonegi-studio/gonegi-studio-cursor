@@ -1,0 +1,131 @@
+{
+  "manifest_type": "image_app_upload_bundle",
+  "manifest_version": "EXPORT-001-v1",
+  "phase": "PHASE-16-PUBLISH-V2-LOCK-001",
+  "generated_at": "2026-06-04T08:12:14.938Z",
+  "purpose": "Image App upload source — files listed here must match exports/image_app/latest exactly",
+  "upload_file_count": 17,
+  "policy": {
+    "latest_dir": "exports/image_app/latest",
+    "adapters_canonical_dir": "exports/image_app/adapters",
+    "test_batches_dir": "exports/image_app/test_batches",
+    "reports_dir": "exports/image_app/reports",
+    "render_feedback_dir": "datasets/render_feedback",
+    "forbidden_in_latest": [
+      "^rkb-",
+      "^qa-",
+      "^audit-",
+      "-report\\.",
+      "-scorecard\\.",
+      "-visual-comparison\\.",
+      "-test-batch\\.",
+      "^verification-",
+      "^validation-"
+    ],
+    "outdoor_full_reference_only": "exports/image_app/adapters/full_reference/outdoor-layout-lock-adapter-full.json",
+    "outdoor_latest_must_be_v2": true
+  },
+  "dataset_16": {
+    "upload_filename": "outdoor-layout-lock-adapter.json",
+    "production_variant": "v2",
+    "upload_index": 16,
+    "full_reference_path": "exports/image_app/adapters/full_reference/outdoor-layout-lock-adapter-full.json",
+    "character_first_contract_path": "exports/image_app/latest/character-first-contract.json",
+    "marked_in_manifest": {
+      "token_mode": "v2",
+      "adapter_version": "v2"
+    }
+  },
+  "upload_files": [
+    {
+      "filename": "ballad-mv-adapter.json",
+      "relative_path": "exports/image_app/latest/ballad-mv-adapter.json",
+      "sha256": "badba98fe3e4e31a952e09ca21bddc30d47a627720b11deaedfc0184b6457a73"
+    },
+    {
+      "filename": "character-first-contract.json",
+      "relative_path": "exports/image_app/latest/character-first-contract.json",
+      "sha256": "dd63e804df41f312bbe379aad0a25335acc21d53ea08184b52a3b5f1ab0c168c",
+      "role": "character_first_contract",
+      "pairs_with_dataset_16": true
+    },
+    {
+      "filename": "cinematic-dna-library-import.json",
+      "relative_path": "exports/image_app/latest/cinematic-dna-library-import.json",
+      "sha256": "866306677ccdd8b5b526394786ad8b87590d1bbb88d73dd49dd77cec2940bc29"
+    },
+    {
+      "filename": "emotion-acting-adapter.json",
+      "relative_path": "exports/image_app/latest/emotion-acting-adapter.json",
+      "sha256": "72c3ca0d3d6297edb2a4f1c74e52e733bbb856b7946b73ae29533149c6c5c5e0"
+    },
+    {
+      "filename": "image-app-brain-ingestion-package.json",
+      "relative_path": "exports/image_app/latest/image-app-brain-ingestion-package.json",
+      "sha256": "b56b13e8b80575760e57316fedb8d1c05f680a3f7473f24419d57457f036c3a6"
+    },
+    {
+      "filename": "indoor-location-anchor-adapter.json",
+      "relative_path": "exports/image_app/latest/indoor-location-anchor-adapter.json",
+      "sha256": "a4400bdc64fcae33871eb3f943a0ecff01f81bd8f935f015ec1e78f3c1c797b7"
+    },
+    {
+      "filename": "instrumental-mv-adapter.json",
+      "relative_path": "exports/image_app/latest/instrumental-mv-adapter.json",
+      "sha256": "37fbb809c826f42e1c8da54df9e28c9cee6bb5b95c2fca434eb136802260a646"
+    },
+    {
+      "filename": "lighting-anchor-adapter.json",
+      "relative_path": "exports/image_app/latest/lighting-anchor-adapter.json",
+      "sha256": "546abfd6def44754eaff946fdfb81bafbbe3f3409f5639ca62edb6a4f7f0955a"
+    },
+    {
+      "filename": "living-world-core-v1-package.json",
+      "relative_path": "exports/image_app/latest/living-world-core-v1-package.json",
+      "sha256": "8fc3e2903c683f4b6c7764a7c921c93cfff45320f57c7ffaee579d8a3916b0c3"
+    },
+    {
+      "filename": "living-world-image-adapter.json",
+      "relative_path": "exports/image_app/latest/living-world-image-adapter.json",
+      "sha256": "5d050e62b292050bb62876c9cba49b8644cd962859391d4132a0bec92d4cb7b9"
+    },
+    {
+      "filename": "location-lighting-image-adapter.json",
+      "relative_path": "exports/image_app/latest/location-lighting-image-adapter.json",
+      "sha256": "51b99dfbb3c6b38ba320ea3b024c902e46344c323eff0ed88e7cfff9afdb9fb6"
+    },
+    {
+      "filename": "music-drama-image-adapter.json",
+      "relative_path": "exports/image_app/latest/music-drama-image-adapter.json",
+      "sha256": "058f921366d37cae3f65bbe16a10d302348e4cfabb541d390119eb30f122a32e"
+    },
+    {
+      "filename": "outdoor-layout-lock-adapter.json",
+      "relative_path": "exports/image_app/latest/outdoor-layout-lock-adapter.json",
+      "sha256": "584158230468b4b705708ac0b718b731c14abf11ea4785d799d6e8bfe5f6df1e",
+      "dataset_index": 16,
+      "production_variant": "v2"
+    },
+    {
+      "filename": "prop-anchor-adapter.json",
+      "relative_path": "exports/image_app/latest/prop-anchor-adapter.json",
+      "sha256": "5389faf9661285fa0f97074dd8f5d1a9fd8b66fc6b113d96c36f523165ca4a4e"
+    },
+    {
+      "filename": "room-layout-lock-adapter.json",
+      "relative_path": "exports/image_app/latest/room-layout-lock-adapter.json",
+      "sha256": "39b738d8a3570b1f99ba3fdf77dfdf4dd54e1989ea28884d1d7eaf950c1de89b"
+    },
+    {
+      "filename": "scene-asset-composition-adapter.json",
+      "relative_path": "exports/image_app/latest/scene-asset-composition-adapter.json",
+      "sha256": "c9e6cd59c04f321af0186a6c52a54ad8f208d4d79a0a4bf9f102ac76199b211a"
+    },
+    {
+      "filename": "shot-grammar-adapter.json",
+      "relative_path": "exports/image_app/latest/shot-grammar-adapter.json",
+      "sha256": "f613ab35066e3108cbfb6b7da213a5c44949f8b7424f0d86847ff5b80a784828"
+    }
+  ],
+  "character_first_contract_present": true
+}

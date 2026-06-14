@@ -1,0 +1,67 @@
+{
+  "report_type": "outdoor_layout_lock_lite_audit",
+  "report_version": "lite-v1",
+  "phase": "PHASE-OUTDOOR-LAYOUT-LOCK-LITE-001",
+  "generated_at": "2026-06-04T00:15:48.585Z",
+  "precheck": {
+    "outdoor_layout_lock_verdict": "PASS_OUTDOOR_LAYOUT_LOCK_SYSTEM_V1",
+    "rkb_013_verdict": "PASS_RKB_013_OUTDOOR_LAYOUT_CONTINUITY_VALIDATION",
+    "latest_adapter_present": true,
+    "pass": true
+  },
+  "token_contract": {
+    "kept_prefixes": [
+      "outdoor-layout-lock:",
+      "outdoor-orientation:",
+      "landmark-position:"
+    ],
+    "removed_prefixes": [
+      "landmark-visibility:",
+      "camera-visibility:",
+      "walkable-zone:"
+    ]
+  },
+  "outdoor_continuity": {
+    "overall_outdoor_layout_continuity": 0.93,
+    "landmark_position_stability": 0.92,
+    "outdoor_orientation_stability": 0.93,
+    "minimum": 0.85,
+    "met": true
+  },
+  "character_continuity": {
+    "improved_vs_pre_16th": true,
+    "average_stability": 0.9,
+    "minimum": 0.85,
+    "per_character": {
+      "gonegi": {
+        "stability": 0.89,
+        "stable": true
+      },
+      "dana": {
+        "stability": 0.91,
+        "stable": true
+      },
+      "gamja": {
+        "stability": 0.91,
+        "stable": true
+      },
+      "cherry": {
+        "stability": 0.88,
+        "stable": true
+      }
+    },
+    "met": true
+  },
+  "five_image_scenario": {
+    "bundle_id": "FSB-song_master_01-01",
+    "image_count": 5,
+    "pre_16th_outdoor_token_total": 56,
+    "lite_outdoor_token_total": 26,
+    "token_reduction_percent": 54,
+    "comparison_baseline_path": "datasets/render_feedback/PRE_16TH_ADAPTER_5IMAGE_BASELINE.json"
+  },
+  "export_path": "exports/image_app/adapters/outdoor-layout-lock-adapter-lite.json",
+  "latest_replaced_path": "exports/image_app/latest/outdoor-layout-lock-adapter.json",
+  "final_verdict": "PASS_OUTDOOR_LAYOUT_LOCK_LITE_V1",
+  "violations": []
+}

@@ -1,0 +1,29 @@
+{
+  "spec_id": "arc-extraction-specification-v1",
+  "asset_type": "arc_extraction_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-STORY-001",
+  "module": "STORY_TO_BLUEPRINT_ENGINE_V1",
+  "purpose": "Extract narrative arcs from analyzed story for blueprint assembly.",
+  "upstream_checkpoint": "PASS_GENERATION_OPERATION_STACK_V1",
+  "arc_type_count": 7,
+  "arc_types": [
+    "main_arc",
+    "subplot_arc",
+    "character_arc",
+    "relationship_arc",
+    "world_arc",
+    "theme_arc",
+    "legacy_callback_arc"
+  ],
+  "arc_extraction_integrity": "PASS",
+  "extracted_arcs": {
+    "main_arc": { "arc_id": "harbor_saga_main", "span": "full_story", "act_binding": ["act_1", "act_2", "act_3", "optional_act_4", "optional_act_5"] },
+    "subplot_arc": { "arc_id": "family_secret_subplot", "span": "act_2_to_act_4", "act_binding": ["act_2", "optional_act_4"] },
+    "character_arc": { "arc_id": "elena_growth", "span": "full_story", "act_binding": ["act_1", "act_3", "optional_act_5"] },
+    "relationship_arc": { "arc_id": "elena_marco_bond", "span": "act_1_to_act_3", "act_binding": ["act_1", "act_2", "act_3"] },
+    "world_arc": { "arc_id": "harbor_transformation", "span": "full_story", "act_binding": ["act_1", "optional_act_4", "optional_act_5"] },
+    "theme_arc": { "arc_id": "legacy_theme", "span": "full_story", "act_binding": ["act_1", "act_3", "optional_act_5"] },
+    "legacy_callback_arc": { "arc_id": "harbor_keeper_legacy", "span": "callback_chain", "act_binding": ["act_1", "optional_act_5"], "callback_depth": 4 }
+  }
+}

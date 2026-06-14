@@ -1,0 +1,549 @@
+{
+  "asset_type": "short_film_archetype_library",
+  "asset_version": "v1",
+  "library_id": "short-film-archetype-library-v1",
+  "phase": "PHASE-L3-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Long-form short film archetype blueprints extending MV production structure to 50-300 scene continuity with act structure, multi-arc progression, and callback systems.",
+  "scope": {
+    "generates_lyrics": false,
+    "generates_dialogue": true,
+    "requires_story_arc": true,
+    "requires_act_structure": true,
+    "requires_long_form_continuity": true,
+    "target_output": "short_film_image_sequence",
+    "duration_target_minutes": "15-45",
+    "scene_count_range": "50-300"
+  },
+  "mv_expansion_baseline": {
+    "source_mv_types": ["instrumental_mv", "ballad_mv", "story_mv"],
+    "mv_scene_count_range": "10-50",
+    "short_film_scene_count_range": "50-300",
+    "expansion_ratio": "5x-10x"
+  },
+  "integrated_systems": {
+    "character_dna": "exports/character-continuity-preview.json",
+    "location_dna": "exports/location-continuity-preview.json",
+    "indoor_anchor": "exports/image_app/adapters/indoor-location-anchor-adapter.json",
+    "lighting_anchor": "exports/image_app/adapters/lighting-anchor-adapter.json",
+    "shot_grammar": "exports/image_app/adapters/shot-grammar-adapter.json",
+    "emotion_acting": "exports/image_app/adapters/emotion-acting-adapter.json",
+    "instrumental_mv": "datasets/mv/instrumental-mv-archetype-library-v1.json",
+    "ballad_mv": "datasets/mv/ballad-mv-archetype-library-v1.json",
+    "story_mv": "datasets/mv/story-mv-archetype-library-v1.json"
+  },
+  "blueprint_schema_ref": "schemas/short-film-blueprint.schema.json",
+  "continuity_spec_ref": "exports/short_film_foundation/long-form-continuity-specification.json",
+  "archetype_count": 3,
+  "archetypes": [
+    {
+      "short_film_archetype_id": "harbor_epic_departure",
+      "theme": "Epic departure across seasons with unresolved promise and return",
+      "scene_count_range": "80-120",
+      "recommended_duration": "20m-30m",
+      "act_structure": {
+        "act_count": 3,
+        "acts": [
+          {
+            "act_index": 1,
+            "act_name": "establishment",
+            "scene_range": "1-35",
+            "dramatic_purpose": "Establish harbor world, relationship bond, and departure pressure",
+            "turning_point": "gonegi commits to departure at scene 35"
+          },
+          {
+            "act_index": 2,
+            "act_name": "separation_journey",
+            "scene_range": "36-85",
+            "dramatic_purpose": "Cross-location journey, memory callbacks, growing distance",
+            "turning_point": "letter fails to arrive at scene 72"
+          },
+          {
+            "act_index": 3,
+            "act_name": "return_resolution",
+            "scene_range": "86-120",
+            "dramatic_purpose": "Harbor return, callback payoff, quiet reunion or unresolved close",
+            "turning_point": "harbor bench callback resolves at scene 110"
+          }
+        ]
+      },
+      "story_arc": {
+        "arc_type": "departure_return",
+        "beats": [
+          "daily_harbor_life",
+          "departure_decision",
+          "journey_across_locations",
+          "failed_communication",
+          "memory_montage",
+          "harbor_return",
+          "promise_resolution"
+        ],
+        "inciting_incident_scene": 12,
+        "midpoint_scene": 60,
+        "climax_scene": 105,
+        "resolution_scene": 118
+      },
+      "character_arc": {
+        "primary_character_id": "gonegi",
+        "secondary_character_ids": ["dana", "marco"],
+        "stages": [
+          "content_harbor_life",
+          "reluctant_departure",
+          "isolated_journey",
+          "memory_weight",
+          "changed_return",
+          "quiet_acceptance"
+        ]
+      },
+      "location_arc": {
+        "location_flow": [
+          "gonegi_harbor_dock_01",
+          "gonegi_coastal_path_01",
+          "gonegi_street_lane_01",
+          "family_bakery_kitchen_01",
+          "dana_window_corner_01",
+          "gonegi_harbor_dock_01"
+        ],
+        "reentry_locations": ["gonegi_harbor_dock_01", "dana_window_corner_01", "harbor_bench"]
+      },
+      "emotional_arc": {
+        "emotion_flow": ["hope", "wonder", "determination", "nostalgia", "longing", "gratitude"],
+        "emotional_turning_points": [
+          { "scene_index": 12, "emotion_id": "determination", "trigger": "departure letter discovered" },
+          { "scene_index": 60, "emotion_id": "longing", "trigger": "midpoint memory callback" },
+          { "scene_index": 105, "emotion_id": "gratitude", "trigger": "harbor bench reunion" }
+        ]
+      },
+      "callback_system": {
+        "memory_anchors": ["harbor_bench", "shared_window", "letter_fragment", "mooring_lines"],
+        "callback_rules": [
+          "harbor_bench_established_act1_must_payoff_act3",
+          "letter_fragment_introduced_scene_15_returns_scene_95",
+          "shared_window_gaze_act1_echoes_act3_window_scene"
+        ],
+        "foreshadow_payoff_pairs": [
+          { "foreshadow_scene": 8, "payoff_scene": 110, "anchor_id": "harbor_bench" },
+          { "foreshadow_scene": 15, "payoff_scene": 95, "anchor_id": "letter_fragment" }
+        ]
+      },
+      "continuity_requirements": {
+        "character_continuity": [
+          "gonegi_visual_dna_stable_across_120_scenes",
+          "dana_appearance_consistent_on_reentry_scenes",
+          "wardrobe_progression_tracks_seasonal_timeline"
+        ],
+        "location_continuity": [
+          "harbor_dock_geometry_stable_on_all_reentries",
+          "coastal_path_lighting_direction_consistent_east_west",
+          "bakery_interior_props_unchanged_between_visits"
+        ],
+        "lighting_continuity": [
+          "morning_harbor_lighting_dna_matched_on_act1_and_act3_openers",
+          "golden_hour_progression_tracks_single_day_scenes",
+          "memory_montage_uses_softened_variants_of_established_lighting_dna"
+        ],
+        "relationship_continuity": [
+          "gonegi_dana_eyeline_rules_preserved_across_acts",
+          "physical_distance_maps_to_relationship_stage",
+          "unspoken_bond_maintained_without_dialogue_instrumental_scenes"
+        ],
+        "timeline_continuity": [
+          "season_markers_progress_spring_to_autumn_act2",
+          "letter_delay_span_minimum_30_scene_equivalent",
+          "return_scene_timeline_after_departure_minimum_40_scenes"
+        ]
+      },
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "act_index": 1,
+          "scene_goal": "establish harbor morning stillness before departure arc",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "midday_harbor_clear_01",
+          "lighting_dna_id": "morning_harbor_dock",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "hope",
+          "scene_archetype": "harbor_work",
+          "action_type": "walk",
+          "timeline_marker": "spring_morning"
+        },
+        {
+          "scene_index": 12,
+          "act_index": 1,
+          "scene_goal": "discover departure letter inciting incident",
+          "character_id": "gonegi",
+          "partner_character_id": "dana",
+          "location_id": "dana_window_corner_01",
+          "lighting_anchor_id": "sunrise_window_soft_01",
+          "lighting_dna_id": "sunrise_bakery_window",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "determination",
+          "scene_archetype": "window_gaze",
+          "action_type": "discover",
+          "memory_anchor": "letter_fragment",
+          "callback_scene": null,
+          "relationship_stage": "growing_affection",
+          "timeline_marker": "spring_morning"
+        },
+        {
+          "scene_index": 60,
+          "act_index": 2,
+          "scene_goal": "midpoint memory callback at harbor bench",
+          "character_id": "gonegi",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "evening_harbor_dock",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "longing",
+          "scene_archetype": "harbor_work",
+          "action_type": "remember",
+          "memory_anchor": "harbor_bench",
+          "callback_scene": 8,
+          "relationship_stage": "quiet_distance",
+          "timeline_marker": "summer_evening"
+        },
+        {
+          "scene_index": 110,
+          "act_index": 3,
+          "scene_goal": "harbor bench callback payoff and quiet reunion",
+          "character_id": "gonegi",
+          "partner_character_id": "dana",
+          "location_id": "gonegi_harbor_dock_01",
+          "lighting_anchor_id": "golden_hour_harbor_01",
+          "lighting_dna_id": "autumn_harbor_return",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "gratitude",
+          "scene_archetype": "harbor_work",
+          "action_type": "reunite",
+          "memory_anchor": "harbor_bench",
+          "callback_scene": 8,
+          "relationship_stage": "hopeful_future",
+          "timeline_marker": "autumn_golden_hour"
+        }
+      ]
+    },
+    {
+      "short_film_archetype_id": "mediterranean_season_arc",
+      "theme": "Year-long village rhythm from winter stillness to festival return",
+      "scene_count_range": "150-250",
+      "recommended_duration": "30m-45m",
+      "act_structure": {
+        "act_count": 5,
+        "acts": [
+          {
+            "act_index": 1,
+            "act_name": "winter_stillness",
+            "scene_range": "1-40",
+            "dramatic_purpose": "Establish closed-season village and interior warmth",
+            "turning_point": "first_spring_sign_at_scene_38"
+          },
+          {
+            "act_index": 2,
+            "act_name": "spring_awakening",
+            "scene_range": "41-90",
+            "dramatic_purpose": "Harbor and olive hill reopen, community returns",
+            "turning_point": "festival_preparation_announced_scene_88"
+          },
+          {
+            "act_index": 3,
+            "act_name": "summer_peak",
+            "scene_range": "91-150",
+            "dramatic_purpose": "Peak activity, relationship deepening, location expansion",
+            "turning_point": "storm_withdrawal_scene_145"
+          },
+          {
+            "act_index": 4,
+            "act_name": "autumn_parting",
+            "scene_range": "151-210",
+            "dramatic_purpose": "Departures, memory consolidation, lighting shift to gold",
+            "turning_point": "farewell_sequence_scene_200"
+          },
+          {
+            "act_index": 5,
+            "act_name": "winter_return",
+            "scene_range": "211-250",
+            "dramatic_purpose": "Circular return to winter with transformed understanding",
+            "turning_point": "festival_memory_callback_scene_240"
+          }
+        ]
+      },
+      "story_arc": {
+        "arc_type": "seasonal_cycle",
+        "beats": [
+          "winter_interior",
+          "spring_harbor_opening",
+          "summer_community_peak",
+          "autumn_farewell",
+          "winter_transformed_return"
+        ],
+        "inciting_incident_scene": 38,
+        "midpoint_scene": 120,
+        "climax_scene": 200,
+        "resolution_scene": 245
+      },
+      "character_arc": {
+        "primary_character_id": "gonegi",
+        "secondary_character_ids": ["dana", "marco", "elena"],
+        "stages": [
+          "winter_observer",
+          "spring_participant",
+          "summer_connector",
+          "autumn_mourner",
+          "winter_elder"
+        ]
+      },
+      "location_arc": {
+        "location_flow": [
+          "family_bakery_kitchen_01",
+          "gonegi_harbor_dock_01",
+          "gonegi_coastal_path_01",
+          "gonegi_olive_hill_01",
+          "gonegi_street_lane_01",
+          "family_bakery_kitchen_01"
+        ],
+        "reentry_locations": [
+          "family_bakery_kitchen_01",
+          "gonegi_harbor_dock_01",
+          "gonegi_olive_hill_01"
+        ]
+      },
+      "emotional_arc": {
+        "emotion_flow": ["nostalgia", "hope", "wonder", "gratitude", "determination", "nostalgia"],
+        "emotional_turning_points": [
+          { "scene_index": 38, "emotion_id": "hope", "trigger": "first_spring_light_on_harbor" },
+          { "scene_index": 120, "emotion_id": "wonder", "trigger": "summer_festival_peak" },
+          { "scene_index": 245, "emotion_id": "gratitude", "trigger": "winter_return_with_memory" }
+        ]
+      },
+      "callback_system": {
+        "memory_anchors": ["shared_bread", "olive_tree", "festival_lantern", "bakery_window"],
+        "callback_rules": [
+          "bakery_window_winter_opening_echoes_winter_closing",
+          "olive_tree_spring_scene_callbacks_autumn_farewell",
+          "festival_lantern_summer_establishes_winter_memory_scene"
+        ],
+        "foreshadow_payoff_pairs": [
+          { "foreshadow_scene": 5, "payoff_scene": 245, "anchor_id": "bakery_window" },
+          { "foreshadow_scene": 55, "payoff_scene": 195, "anchor_id": "olive_tree" }
+        ]
+      },
+      "continuity_requirements": {
+        "character_continuity": [
+          "ensemble_cast_visual_dna_registry_for_4_principals",
+          "age_appearance_stable_within_single_season_blocks",
+          "costume_season_rotation_documented_per_act"
+        ],
+        "location_continuity": [
+          "seasonal_prop_variants_pre_registered_per_location",
+          "olive_hill_foliage_state_tracks_spring_to_autumn",
+          "harbor_activity_level_scales_with_season_marker"
+        ],
+        "lighting_continuity": [
+          "winter_interior_warm_palette_consistent_act1_act5",
+          "summer_midday_lighting_dna_for_act3_block",
+          "golden_hour_autumn_palette_for_act4_farewell_block"
+        ],
+        "relationship_continuity": [
+          "ensemble_relationship_matrix_tracks_all_principal_pairs",
+          "community_distance_rules_for_background_characters",
+          "farewell_act_preserves_unresolved_threads_for_sequel"
+        ],
+        "timeline_continuity": [
+          "explicit_season_marker_per_act_boundary",
+          "minimum_30_scenes_per_season_block",
+          "festival_event_single_timeline_anchor_summer_act"
+        ]
+      },
+      "scene_blueprints": [
+        {
+          "scene_index": 1,
+          "act_index": 1,
+          "scene_goal": "winter bakery interior warmth establishment",
+          "character_id": "gonegi",
+          "location_id": "family_bakery_kitchen_01",
+          "lighting_anchor_id": "morning_bakery_glow_01",
+          "lighting_dna_id": "winter_bakery_interior",
+          "coverage_id": "coverage_pattern_02_environmental_close",
+          "emotion_id": "nostalgia",
+          "scene_archetype": "bakery_opening",
+          "action_type": "observe",
+          "memory_anchor": "bakery_window",
+          "timeline_marker": "winter_morning"
+        },
+        {
+          "scene_index": 120,
+          "act_index": 3,
+          "scene_goal": "summer festival peak community scene",
+          "character_id": "gonegi",
+          "partner_character_id": "dana",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "midday_harbor_clear_01",
+          "lighting_dna_id": "summer_festival_lane",
+          "coverage_id": "coverage_pattern_04_tracking_detail_close",
+          "emotion_id": "wonder",
+          "scene_archetype": "street_evening",
+          "action_type": "celebrate",
+          "memory_anchor": "festival_lantern",
+          "timeline_marker": "summer_midday"
+        }
+      ]
+    },
+    {
+      "short_film_archetype_id": "letter_across_years",
+      "theme": "Multi-year relationship arc carried by delayed correspondence",
+      "scene_count_range": "50-100",
+      "recommended_duration": "15m-25m",
+      "act_structure": {
+        "act_count": 3,
+        "acts": [
+          {
+            "act_index": 1,
+            "act_name": "first_exchange",
+            "scene_range": "1-25",
+            "dramatic_purpose": "Ballad MV relationship origin expanded to full first act",
+            "turning_point": "first_letter_sent_scene_22"
+          },
+          {
+            "act_index": 2,
+            "act_name": "years_apart",
+            "scene_range": "26-75",
+            "dramatic_purpose": "Parallel lives, memory callbacks, failed reunions",
+            "turning_point": "letter_lost_scene_68"
+          },
+          {
+            "act_index": 3,
+            "act_name": "letter_return",
+            "dramatic_purpose": "Delayed letter arrival and reunion resolution",
+            "scene_range": "76-100",
+            "turning_point": "book_exchange_callback_scene_92"
+          }
+        ]
+      },
+      "story_arc": {
+        "arc_type": "correspondence_reunion",
+        "beats": [
+          "first_meeting",
+          "shared_daily_life",
+          "growing_affection",
+          "quiet_distance",
+          "farewell_day",
+          "memory_after_parting",
+          "reunion_after_time"
+        ],
+        "inciting_incident_scene": 8,
+        "midpoint_scene": 50,
+        "climax_scene": 88,
+        "resolution_scene": 98
+      },
+      "character_arc": {
+        "primary_character_id": "gonegi",
+        "secondary_character_ids": ["dana"],
+        "stages": [
+          "strangers",
+          "tentative_connection",
+          "shared_routine",
+          "growing_affection",
+          "quiet_distance",
+          "memory_weight",
+          "hopeful_future"
+        ]
+      },
+      "location_arc": {
+        "location_flow": [
+          "gonegi_street_lane_01",
+          "family_bakery_kitchen_01",
+          "dana_window_corner_01",
+          "gonegi_harbor_dock_01",
+          "dana_window_corner_01"
+        ],
+        "reentry_locations": ["dana_window_corner_01", "family_bakery_kitchen_01", "gonegi_street_lane_01"]
+      },
+      "emotional_arc": {
+        "emotion_flow": ["wonder", "hope", "gratitude", "nostalgia", "longing", "hope"],
+        "emotional_turning_points": [
+          { "scene_index": 8, "emotion_id": "wonder", "trigger": "first_meeting_across_lane" },
+          { "scene_index": 50, "emotion_id": "nostalgia", "trigger": "midpoint_memory_montage" },
+          { "scene_index": 92, "emotion_id": "hope", "trigger": "book_exchange_callback_reunion" }
+        ]
+      },
+      "callback_system": {
+        "memory_anchors": ["book_exchange", "shared_window", "shared_bread", "letter_fragment"],
+        "callback_rules": [
+          "book_exchange_must_reappear_in_growing_affection_and_reunion",
+          "shared_window_established_for_memory_after_parting",
+          "letter_fragment_introduced_act1_payoff_act3"
+        ],
+        "foreshadow_payoff_pairs": [
+          { "foreshadow_scene": 3, "payoff_scene": 92, "anchor_id": "book_exchange" },
+          { "foreshadow_scene": 22, "payoff_scene": 88, "anchor_id": "letter_fragment" }
+        ]
+      },
+      "continuity_requirements": {
+        "character_continuity": [
+          "gonegi_dana_pair_visual_dna_locked_entire_film",
+          "subtle_aging_progression_across_year_markers_only",
+          "handwriting_prop_consistent_for_letter_scenes"
+        ],
+        "location_continuity": [
+          "window_corner_geometry_identical_all_reentries",
+          "lane_cobblestone_pattern_stable_across_years",
+          "bakery_props_unchanged_between_time_jumps"
+        ],
+        "lighting_continuity": [
+          "sunrise_window_soft_01_for_all_window_scenes",
+          "memory_montage_uses_desaturated_variants",
+          "reunion_scene_matches_first_meeting_lighting_dna"
+        ],
+        "relationship_continuity": [
+          "ballad_mv_global_relationship_progression_preserved",
+          "physical_proximity_maps_to_relationship_stage_per_scene",
+          "eyeline_continuity_rules_from_ballad_mv_adapter"
+        ],
+        "timeline_continuity": [
+          "year_marker_explicit_at_act_boundaries",
+          "letter_delay_minimum_20_scene_equivalent",
+          "parallel_timeline_scenes_paired_by_memory_anchor"
+        ]
+      },
+      "scene_blueprints": [
+        {
+          "scene_index": 3,
+          "act_index": 1,
+          "scene_goal": "book exchange foreshadow for reunion payoff",
+          "character_id": "gonegi",
+          "partner_character_id": "dana",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "sunrise_window_soft_01",
+          "lighting_dna_id": "sunrise_bakery_window",
+          "coverage_id": "coverage_pattern_03_pov_insert_chain",
+          "emotion_id": "wonder",
+          "scene_archetype": "street_evening",
+          "action_type": "discover",
+          "memory_anchor": "book_exchange",
+          "callback_scene": null,
+          "relationship_stage": "strangers",
+          "timeline_marker": "year_one_spring"
+        },
+        {
+          "scene_index": 92,
+          "act_index": 3,
+          "scene_goal": "book exchange callback reunion without dialogue",
+          "character_id": "gonegi",
+          "partner_character_id": "dana",
+          "location_id": "gonegi_street_lane_01",
+          "lighting_anchor_id": "sunrise_window_soft_01",
+          "lighting_dna_id": "sunrise_bakery_window",
+          "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+          "emotion_id": "hope",
+          "scene_archetype": "street_evening",
+          "action_type": "reunite",
+          "memory_anchor": "book_exchange",
+          "callback_scene": 3,
+          "relationship_stage": "hopeful_future",
+          "timeline_marker": "year_three_spring"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "traceability_spec_id": "production-traceability-specification-v1",
+  "asset_type": "production_traceability_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-004",
+  "purpose": "End-to-end production traceability dimensions across all pipeline stages.",
+  "traceability_dimension_count": 8,
+  "traceability_dimensions": [
+    "blueprint_trace",
+    "scene_trace",
+    "shot_trace",
+    "prompt_trace",
+    "image_trace",
+    "video_trace",
+    "edit_trace",
+    "final_output_trace"
+  ],
+  "dimension_definitions": {
+    "blueprint_trace": {
+      "stage": "blueprint",
+      "trace_fields": ["archetype_id", "act_structure_ref", "arc_network_ref", "callback_layer_ref"]
+    },
+    "scene_trace": {
+      "stage": "scene",
+      "trace_fields": ["scene_id", "act_id", "continuity_refs", "dependency_graph_ref"]
+    },
+    "shot_trace": {
+      "stage": "shot",
+      "trace_fields": ["shot_id", "scene_id", "coverage_role", "shot_order"]
+    },
+    "prompt_trace": {
+      "stage": "prompt",
+      "trace_fields": ["prompt_id", "shot_id", "continuity_anchor_refs", "generation_params"]
+    },
+    "image_trace": {
+      "stage": "image",
+      "trace_fields": ["image_id", "prompt_id", "identity_consistency_score", "batch_ref"]
+    },
+    "video_trace": {
+      "stage": "video",
+      "trace_fields": ["video_id", "image_id", "motion_consistency_score", "sequence_ref"]
+    },
+    "edit_trace": {
+      "stage": "edit",
+      "trace_fields": ["edit_id", "video_id", "timeline_position", "coverage_alignment"]
+    },
+    "final_output_trace": {
+      "stage": "final_output",
+      "trace_fields": ["output_id", "edit_id", "production_readiness_score", "full_trace_chain_ref"]
+    }
+  },
+  "production_traceability_integrity": "PASS"
+}

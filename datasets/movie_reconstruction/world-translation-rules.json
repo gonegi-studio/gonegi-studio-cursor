@@ -1,0 +1,60 @@
+{
+  "rules_id": "movie-reconstruction-world-translation-rules-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-DATASET-001",
+  "system_id": "MOVIE_GEOMETRY_AND_SEMANTIC_DNA_SYSTEM_V2",
+  "rules_version": "v1",
+  "dominance_rule": {
+    "statement": "Movie Geometry dominates structure. Gonegi World dominates appearance.",
+    "movie_geometry_dominates": ["scene_geometry", "camera", "blocking", "composition", "semantic_anchors"],
+    "gonegi_world_dominates": [
+      "architecture",
+      "materials",
+      "environment_identity",
+      "character_identity",
+      "cultural_identity",
+      "color_identity"
+    ]
+  },
+  "movie_dataset_controls": [
+    "scene_geometry",
+    "camera",
+    "blocking",
+    "composition",
+    "semantic_anchors"
+  ],
+  "gonegi_dataset_controls": [
+    "architecture",
+    "materials",
+    "environment_identity",
+    "character_identity",
+    "cultural_identity",
+    "color_identity"
+  ],
+  "translation_contract_ref": "datasets/world_translation/gonegi-world-translation-contract.json",
+  "semantic_anchor_library_ref": "datasets/movie_reconstruction/semantic_anchor_library.json",
+  "forbidden_outcomes": [
+    "Titanic Copy",
+    "Generic Harbor Scene",
+    "Legacy Structure Rollback",
+    "Semantic Meaning Loss"
+  ],
+  "required_outcome_label": "Titanic Scene Reconstructed Inside Gonegi World",
+  "evaluation_criteria": {
+    "structure_from_movie_geometry": true,
+    "appearance_from_gonegi_world": true,
+    "semantic_meaning_preserved": true,
+    "source_movie_surface_identity_removed": true
+  },
+  "character_translation_map": {
+    "source_cast_policy": "map_to_canonical_gonegi_cast",
+    "primary_pairs": [
+      { "source_archetype": "romantic_lead_male", "gonegi_character_id": "CHAR-gonagi" },
+      { "source_archetype": "romantic_lead_female", "gonegi_character_id": "CHAR-dana" }
+    ]
+  },
+  "location_translation_map": {
+    "titanic_deck": "gonegi_harbor_dock_01",
+    "titanic_interior_stairwell": "family_bakery_dining_01",
+    "titanic_crowd_departure": "gonegi_harbor_lane_01"
+  }
+}

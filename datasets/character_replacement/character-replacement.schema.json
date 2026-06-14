@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/character_replacement/character-replacement.schema.json",
+  "title": "CharacterReplacementContract",
+  "description": "Deterministic character replacement contract for PHASE-SOURCE-VIDEO-012",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "phase",
+    "world_identity",
+    "world_translation_contract_ref",
+    "character_anchor_index_ref",
+    "character_first_contract_ref",
+    "replacements",
+    "companion_rules",
+    "identity_rules",
+    "duplication_guard",
+    "absent_character_rule",
+    "core_character_links",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-012-CHARACTER_REPLACEMENT_CONTRACT_V1"
+    },
+    "world_identity": { "type": "string", "const": "GONEGI_MEDITERRANEAN" },
+    "world_translation_contract_ref": { "type": "string" },
+    "character_anchor_index_ref": { "type": "string" },
+    "character_first_contract_ref": { "type": "string" },
+    "replacements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/replacement_rule" },
+      "minItems": 1
+    },
+    "companion_rules": { "$ref": "#/$defs/companion_rules" },
+    "identity_rules": { "$ref": "#/$defs/identity_rules" },
+    "duplication_guard": { "$ref": "#/$defs/duplication_guard" },
+    "absent_character_rule": { "$ref": "#/$defs/absent_character_rule" },
+    "core_character_links": { "$ref": "#/$defs/core_character_links" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "replacement_rule": {
+      "type": "object",
+      "required": [
+        "replacement_id",
+        "source_role",
+        "target_character_id",
+        "target_character_name",
+        "replacement_priority",
+        "identity_anchor_required",
+        "companion_rule",
+        "costume_lock_required",
+        "relationship_mapping",
+        "forbidden_replacements",
+        "continuity_locks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "replacement_id": { "type": "string" },
+        "source_role": { "type": "string" },
+        "target_character_id": { "type": "string" },
+        "target_character_name": { "type": "string" },
+        "replacement_priority": { "type": "integer", "minimum": 1 },
+        "identity_anchor_required": { "type": "boolean" },
+        "companion_rule": { "type": ["string", "null"] },
+        "costume_lock_required": { "type": "boolean" },
+        "relationship_mapping": { "type": "string" },
+        "forbidden_replacements": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "continuity_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    },
+    "companion_rules": {
+      "type": "object",
+      "required": ["rules", "gonegi_gamja_pair", "dana_aengdu_pair", "no_companion_swap"],
+      "properties": {
+        "rules": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "gonegi_gamja_pair": { "type": "boolean", "const": true },
+        "dana_aengdu_pair": { "type": "boolean", "const": true },
+        "no_companion_swap": { "type": "boolean", "const": true }
+      }
+    },
+    "identity_rules": {
+      "type": "object",
+      "required": [
+        "identity_priority_rank",
+        "no_source_override_of_canonical_cast",
+        "no_extra_gonegi_dana_duplication",
+        "absent_roles_must_not_appear"
+      ],
+      "properties": {
+        "identity_priority_rank": { "type": "integer", "const": 1 },
+        "no_source_override_of_canonical_cast": { "type": "boolean", "const": true },
+        "no_extra_gonegi_dana_duplication": { "type": "boolean", "const": true },
+        "absent_roles_must_not_appear": { "type": "boolean", "const": true },
+        "protected_character_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 4
+        }
+      }
+    },
+    "duplication_guard": {
+      "type": "object",
+      "required": ["enabled", "max_instances_per_character", "blocked_duplicate_roles"],
+      "properties": {
+        "enabled": { "type": "boolean", "const": true },
+        "max_instances_per_character": { "type": "integer", "const": 1 },
+        "blocked_duplicate_roles": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "absent_character_rule": {
+      "type": "object",
+      "required": ["strategy", "description"],
+      "properties": {
+        "strategy": { "type": "string", "const": "inject_only_active_scene_characters" },
+        "description": { "type": "string" }
+      }
+    },
+    "core_character_links": {
+      "type": "object",
+      "required": ["gonegi", "dana", "gamja", "aengdu"],
+      "properties": {
+        "gonegi": { "type": "string", "enum": ["linked"] },
+        "dana": { "type": "string", "enum": ["linked"] },
+        "gamja": { "type": "string", "enum": ["linked"] },
+        "aengdu": { "type": "string", "enum": ["linked"] }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

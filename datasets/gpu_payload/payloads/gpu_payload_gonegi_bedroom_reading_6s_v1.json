@@ -1,0 +1,114 @@
+{
+  "gpu_payload_id": "gpu_payload_gonegi_bedroom_reading_6s_v1",
+  "phase": "PHASE-22-GPU-RENDER-PAYLOAD-PREPARATION-001",
+  "source_video_shot_state_id": "video_gonegi_bedroom_reading_6s_v1",
+  "source_keyframe_plan_id": "keyframe_plan_gonegi_bedroom_reading_6s_v1",
+  "source_motion_plan_id": "motion_plan_gonegi_bedroom_reading_6s_v1",
+  "source_scene_state_id": "scene_gonegi_bedroom_reading_v1",
+  "render_mode": "preparation_stub_v1",
+  "duration_seconds": 6,
+  "fps_target": 24,
+  "resolution": "1280x720",
+  "aspect_ratio": "16:9",
+  "identity_locks": [
+    "identity:character_identity:gonegi",
+    "character_reference:Gonegi",
+    "identity:character_identity:gamja",
+    "character_reference:Gamja",
+    "protected_characters:gonegi,gamja"
+  ],
+  "location_locks": [
+    "location_id:gonegi_bedroom_01",
+    "layout_lock_id:layout_lock_gonegi_bedroom_01"
+  ],
+  "composition_locks": [
+    "composition_id:gonegi_bedroom_reading",
+    "prop_anchor:wildflower_vase_01",
+    "prop_anchor:ship_model_01",
+    "prop_anchor:aged_wood_chair_01",
+    "prop_anchor:sketchbook_01",
+    "character_position:gonegi@bedside_chair",
+    "character_position:gamja@floor_near_chair"
+  ],
+  "prop_locks": [
+    "prop_anchor:wildflower_vase_01",
+    "prop_anchor:ship_model_01",
+    "prop_anchor:aged_wood_chair_01",
+    "prop_anchor:sketchbook_01"
+  ],
+  "keyframes": [
+    {
+      "keyframe_index": 0,
+      "timestamp": 0,
+      "keyframe_role": "start",
+      "scene_state_ref": "scene_gonegi_bedroom_reading_v1",
+      "shot_type": "medium",
+      "emotion_id": "hope",
+      "emotion_intensity": 0.65
+    },
+    {
+      "keyframe_index": 1,
+      "timestamp": 3,
+      "keyframe_role": "transition",
+      "scene_state_ref": "scene_gonegi_bedroom_reading_v1",
+      "shot_type": "medium",
+      "emotion_id": "hope",
+      "emotion_intensity": 0.7
+    },
+    {
+      "keyframe_index": 2,
+      "timestamp": 6,
+      "keyframe_role": "end",
+      "scene_state_ref": "scene_gonegi_bedroom_reading_v1",
+      "shot_type": "close",
+      "emotion_id": "hope",
+      "emotion_intensity": 0.75
+    }
+  ],
+  "motion_segments": [
+    {
+      "segment_id": "motion_plan_gonegi_bedroom_reading_6s_v1_seg_0_to_1",
+      "from_keyframe": 0,
+      "to_keyframe": 1,
+      "duration_seconds": 3,
+      "camera_motion_category": "dolly",
+      "emotion_motion_category": "hope",
+      "environment_motion_category": "ambient"
+    },
+    {
+      "segment_id": "motion_plan_gonegi_bedroom_reading_6s_v1_seg_1_to_2",
+      "from_keyframe": 1,
+      "to_keyframe": 2,
+      "duration_seconds": 3,
+      "camera_motion_category": "push_in",
+      "emotion_motion_category": "hope",
+      "environment_motion_category": "ambient"
+    }
+  ],
+  "render_constraints": [
+    "character_identity_has_highest_priority",
+    "preserve_identity_lock_tokens_across_all_frames",
+    "preserve_location_and_layout_locks",
+    "preserve_composition_and_prop_anchors",
+    "target_duration_seconds:6",
+    "target_fps:24",
+    "no_landmark_relocation",
+    "no_identity_drift"
+  ],
+  "negative_constraints": [
+    "no_gpu_execution_in_phase_22",
+    "no_external_api_calls",
+    "no_video_file_output",
+    "no_identity_override_tokens",
+    "no_hard_enforcement_must_show",
+    "no_fail_if_ignored_enforcement",
+    "no_prop_removal",
+    "no_location_swap"
+  ],
+  "execution_flags": {
+    "gpu_execution": false,
+    "preparation_only": true,
+    "external_call_allowed": false
+  },
+  "built_at": "2026-06-05T04:13:06.803Z"
+}

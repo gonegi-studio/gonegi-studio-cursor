@@ -1,0 +1,42 @@
+{
+  "report_type": "ballad_mv_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-BALLAD-MV-DATASET-001",
+  "generated_at": "2026-06-03T07:29:25.279Z",
+  "archetype_count": 8,
+  "target_archetype_count": 8,
+  "validation": {
+    "library_exists": true,
+    "index_exists": true,
+    "adapter_exists": true,
+    "adapter_synced_to_latest": true,
+    "required_archetypes_present": true,
+    "relationship_arcs_valid": true,
+    "memory_anchors_connected": true,
+    "callback_chains_valid": true,
+    "all_validated_systems_connected": true,
+    "adapter_chain_complete": true,
+    "precheck_pass": true
+  },
+  "validated_system_refs": {
+    "character_dna": "exports/character-continuity-preview.json",
+    "location_dna": "exports/location-continuity-preview.json",
+    "indoor_anchor": "exports/image_app/adapters/indoor-location-anchor-adapter.json",
+    "lighting_anchor": "exports/image_app/adapters/lighting-anchor-adapter.json",
+    "shot_grammar": "exports/image_app/adapters/shot-grammar-adapter.json",
+    "emotion_acting": "exports/image_app/adapters/emotion-acting-adapter.json",
+    "instrumental_mv": "exports/image_app/adapters/instrumental-mv-adapter.json",
+    "relationship_arc": "datasets/mv/ballad-mv-archetype-library-v1.json",
+    "memory_anchors": "datasets/mv/ballad-mv-archetype-library-v1.json"
+  },
+  "export_path": "exports/image_app/adapters/ballad-mv-adapter.json",
+  "report_path": "exports/image_app/reports/ballad-mv-adapter-report.json",
+  "library_path": "datasets/mv/ballad-mv-archetype-library-v1.json",
+  "index_path": "datasets/mv/ballad-mv-archetype-index-v1.json",
+  "final_verdict": "PASS_BALLAD_MV_DATASET_V1",
+  "violations": [],
+  "next_phases": [
+    "RKB-009 BALLAD_MV_PIPELINE_VALIDATION",
+    "MUSIC_DRAMA_STUDIO_FULL_PRODUCTION_TEST"
+  ]
+}

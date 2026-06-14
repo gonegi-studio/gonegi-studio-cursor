@@ -1,0 +1,28 @@
+{
+  "config_id": "movie-factory-validation-config-v1",
+  "phase": "PHASE-MOVIE-DATASET-FACTORY-VALIDATION-001",
+  "validation_id": "MOVIE_DATASET_FACTORY_VALIDATION_V1",
+  "validation_areas": [
+    "factory_schema_validation",
+    "runtime_composition_validation",
+    "image_adapter_validation",
+    "video_adapter_validation",
+    "dataset_registry_validation",
+    "dataset_isolation_validation",
+    "world_identity_lock_validation",
+    "movie_dataset_swap_validation"
+  ],
+  "reference_movie": "titanic",
+  "validation_mode": "factory_generic_no_movie_specific_code",
+  "quality_gates": {
+    "factory_output_valid": true,
+    "runtime_composition_valid": true,
+    "image_adapter_valid": true,
+    "video_adapter_valid": true,
+    "movie_dataset_swap_valid": true,
+    "dataset_isolation_valid": true,
+    "world_identity_lock_valid": true,
+    "critical_missing_count_eq_0": true
+  },
+  "next_phase_on_pass": "PHASE-SPIRITED-AWAY-DATASET-001"
+}

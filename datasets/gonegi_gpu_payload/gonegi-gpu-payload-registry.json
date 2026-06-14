@@ -1,0 +1,50 @@
+{
+  "registry_id": "gonegi-gpu-payload-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-017-GONEGI_MOTION_TO_GPU_PAYLOAD_COMPILER_V2",
+  "registry_version": "v1",
+  "schema_path": "datasets/gonegi_gpu_payload/gonegi-gpu-payload.schema.json",
+  "reference_gpu_payload_schema_path": "datasets/gpu_payload/gpu-render-payload.schema.json",
+  "gonegi_motion_plan_registry_path": "datasets/gonegi_motion_plan/gonegi-motion-plan-registry.json",
+  "gonegi_keyframe_plan_registry_path": "datasets/gonegi_keyframe_plan/gonegi-keyframe-plan-registry.json",
+  "gonegi_video_state_registry_path": "datasets/gonegi_video_state/gonegi-video-state-registry.json",
+  "video_defaults_path": "datasets/video_state/video-state-defaults-v1.json",
+  "storage_dir": "datasets/gonegi_gpu_payload/payloads",
+  "gonegi_gpu_payloads": [
+    {
+      "gonegi_gpu_payload_id": "gonegi_gpu_payload_ghibli_kitchen_v1",
+      "source_motion_plan_id": "gonegi_motion_ghibli_kitchen_v1",
+      "source_keyframe_plan_id": "gonegi_keyframe_ghibli_kitchen_v1",
+      "source_video_state_id": "gonegi_video_state_ghibli_kitchen_v1",
+      "payload_path": "datasets/gonegi_gpu_payload/payloads/gonegi_gpu_payload_ghibli_kitchen_v1.json",
+      "duration_seconds": 24,
+      "status": "compiled"
+    },
+    {
+      "gonegi_gpu_payload_id": "gonegi_gpu_payload_shinkai_sky_light_v1",
+      "source_motion_plan_id": "gonegi_motion_shinkai_sky_light_v1",
+      "source_keyframe_plan_id": "gonegi_keyframe_shinkai_sky_light_v1",
+      "source_video_state_id": "gonegi_video_state_shinkai_sky_light_v1",
+      "payload_path": "datasets/gonegi_gpu_payload/payloads/gonegi_gpu_payload_shinkai_sky_light_v1.json",
+      "duration_seconds": 26,
+      "status": "compiled"
+    },
+    {
+      "gonegi_gpu_payload_id": "gonegi_gpu_payload_live_action_dialogue_v1",
+      "source_motion_plan_id": "gonegi_motion_live_action_dialogue_v1",
+      "source_keyframe_plan_id": "gonegi_keyframe_live_action_dialogue_v1",
+      "source_video_state_id": "gonegi_video_state_live_action_dialogue_v1",
+      "payload_path": "datasets/gonegi_gpu_payload/payloads/gonegi_gpu_payload_live_action_dialogue_v1.json",
+      "duration_seconds": 33,
+      "status": "compiled"
+    },
+    {
+      "gonegi_gpu_payload_id": "gonegi_gpu_payload_mori_emotion_flow_v1",
+      "source_motion_plan_id": "gonegi_motion_mori_emotion_flow_v1",
+      "source_keyframe_plan_id": "gonegi_keyframe_mori_emotion_flow_v1",
+      "source_video_state_id": "gonegi_video_state_mori_emotion_flow_v1",
+      "payload_path": "datasets/gonegi_gpu_payload/payloads/gonegi_gpu_payload_mori_emotion_flow_v1.json",
+      "duration_seconds": 25,
+      "status": "compiled"
+    }
+  ]
+}

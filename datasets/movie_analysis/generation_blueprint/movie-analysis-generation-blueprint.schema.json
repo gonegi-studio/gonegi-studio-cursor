@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/generation_blueprint/movie-analysis-generation-blueprint.schema.json",
+  "title": "MovieAnalysisGenerationBlueprintPlan",
+  "description": "Planning-only generation blueprint design for PHASE-SOURCE-VIDEO-036",
+  "type": "object",
+  "required": [
+    "generation_blueprint_id",
+    "phase",
+    "generation_package_id",
+    "source_video_id",
+    "scene_generation_structure",
+    "character_generation_structure",
+    "camera_generation_structure",
+    "emotion_generation_structure",
+    "transition_generation_structure",
+    "continuity_generation_structure",
+    "execution_readiness_structure",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "generation_blueprint_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-036-MOVIE_ANALYSIS_GENERATION_BLUEPRINT_DESIGN_V1"
+    },
+    "generation_package_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "scene_generation_structure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "character_generation_structure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "camera_generation_structure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "emotion_generation_structure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "transition_generation_structure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "continuity_generation_structure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "execution_readiness_structure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/structure_element" }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "generation_blueprint_only",
+        "estimated_only",
+        "video_generation",
+        "image_generation",
+        "runtime_execution",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "generation_blueprint_only": { "type": "boolean", "const": true },
+        "estimated_only": { "type": "boolean", "const": true },
+        "video_generation": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "runtime_execution": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "structure_element": {
+      "type": "object",
+      "required": [
+        "element_id",
+        "source_generation_package_element_ids",
+        "estimated_blueprint_value",
+        "generation_blueprint_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "element_id": { "type": "string" },
+        "source_generation_package_element_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "estimated_blueprint_value": { "type": "string", "minLength": 1 },
+        "generation_blueprint_only": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

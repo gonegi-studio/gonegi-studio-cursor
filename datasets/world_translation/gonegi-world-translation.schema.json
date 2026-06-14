@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/world_translation/gonegi-world-translation.schema.json",
+  "title": "GonegiWorldTranslationProfile",
+  "description": "Deterministic translation profile from source movie states to Gonegi world for PHASE-SOURCE-VIDEO-011",
+  "type": "object",
+  "required": [
+    "translation_id",
+    "phase",
+    "target_world_type",
+    "target_world_identity",
+    "director_blend_ref",
+    "family_translations",
+    "character_translation",
+    "location_translation",
+    "prop_translation",
+    "environment_translation",
+    "emotion_translation",
+    "relationship_translation",
+    "camera_translation",
+    "lighting_translation",
+    "motion_translation",
+    "identity_rules",
+    "continuity_rules",
+    "living_world_refs",
+    "source_state_draft_refs",
+    "family_translation_status",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "translation_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-011-GONEGI_WORLD_TRANSLATION_CONTRACT_V1"
+    },
+    "target_world_type": { "type": "string" },
+    "target_world_identity": { "type": "string", "const": "GONEGI_MEDITERRANEAN" },
+    "director_blend_ref": { "type": "string", "minLength": 1 },
+    "family_translations": {
+      "type": "object",
+      "required": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"],
+      "properties": {
+        "GHIBLI": { "$ref": "#/$defs/family_translation" },
+        "SHINKAI": { "$ref": "#/$defs/family_translation" },
+        "LIVE_ACTION": { "$ref": "#/$defs/family_translation" },
+        "MORI": { "$ref": "#/$defs/family_translation" }
+      }
+    },
+    "character_translation": { "$ref": "#/$defs/translation_block" },
+    "location_translation": { "$ref": "#/$defs/translation_block" },
+    "prop_translation": { "$ref": "#/$defs/translation_block" },
+    "environment_translation": { "$ref": "#/$defs/translation_block" },
+    "emotion_translation": { "$ref": "#/$defs/translation_block" },
+    "relationship_translation": { "$ref": "#/$defs/translation_block" },
+    "camera_translation": { "$ref": "#/$defs/translation_block" },
+    "lighting_translation": { "$ref": "#/$defs/translation_block" },
+    "motion_translation": { "$ref": "#/$defs/translation_block" },
+    "identity_rules": { "$ref": "#/$defs/identity_rules" },
+    "continuity_rules": { "$ref": "#/$defs/continuity_rules" },
+    "living_world_refs": { "$ref": "#/$defs/living_world_refs" },
+    "source_state_draft_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/state_draft_ref" },
+      "minItems": 4
+    },
+    "family_translation_status": {
+      "type": "object",
+      "required": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"],
+      "properties": {
+        "GHIBLI": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "SHINKAI": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "LIVE_ACTION": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "MORI": { "type": "string", "enum": ["PASS", "FAIL"] }
+      }
+    },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "family_translation": {
+      "type": "object",
+      "required": ["source_world_type", "target_world_type", "target_world_identity", "state_draft_ref"],
+      "properties": {
+        "source_world_type": { "type": "string" },
+        "target_world_type": { "type": "string" },
+        "target_world_identity": { "type": "string", "const": "GONEGI_MEDITERRANEAN" },
+        "state_draft_ref": { "type": "string" },
+        "source_video_id": { "type": "string" }
+      }
+    },
+    "translation_block": {
+      "type": "object",
+      "required": ["strategy", "rules", "replacement_supported"],
+      "properties": {
+        "strategy": { "type": "string" },
+        "rules": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "replacement_supported": { "type": "boolean" },
+        "mappings": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "identity_rules": {
+      "type": "object",
+      "required": [
+        "identity_priority_rank",
+        "character_first_contract",
+        "preserve_identity_locks",
+        "preserve_face_geometry",
+        "no_identity_swap_without_rule"
+      ],
+      "properties": {
+        "identity_priority_rank": { "type": "integer", "const": 1 },
+        "character_first_contract": { "type": "string" },
+        "preserve_identity_locks": { "type": "boolean", "const": true },
+        "preserve_face_geometry": { "type": "boolean", "const": true },
+        "no_identity_swap_without_rule": { "type": "boolean", "const": true }
+      }
+    },
+    "continuity_rules": {
+      "type": "object",
+      "required": ["rules", "lock_preservation", "layout_lock_required"],
+      "properties": {
+        "rules": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "lock_preservation": { "type": "boolean", "const": true },
+        "layout_lock_required": { "type": "boolean", "const": true }
+      }
+    },
+    "living_world_refs": {
+      "type": "object",
+      "required": ["foundation_index", "integrity_index", "world_identity"],
+      "properties": {
+        "foundation_index": { "type": "string" },
+        "integrity_index": { "type": "string" },
+        "adapter_boundary_plan": { "type": "string" },
+        "living_world_core": { "type": "string" },
+        "world_identity": { "type": "string", "const": "GONEGI_MEDITERRANEAN" }
+      }
+    },
+    "state_draft_ref": {
+      "type": "object",
+      "required": ["state_draft_id", "director_family", "source_video_id"],
+      "properties": {
+        "state_draft_id": { "type": "string" },
+        "director_family": { "type": "string" },
+        "source_video_id": { "type": "string" }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "asset_type": "coverage_grammar_library",
+  "asset_version": "v1",
+  "library_id": "coverage-grammar-library-v1",
+  "phase": "PHASE-SHOT-GRAMMAR-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Directed cinematic coverage sequences that block flat medium-medium chains. Reference layer only — no scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_location_dna": false,
+    "modifies_lighting_anchors": false,
+    "modifies_indoor_anchors": false
+  },
+  "read_only_sources": {
+    "indoor_anchor_adapter": "exports/image_app/adapters/indoor-location-anchor-adapter.json",
+    "lighting_anchor_adapter": "exports/image_app/adapters/lighting-anchor-adapter.json",
+    "rkb_004": "datasets/render_feedback/RKB-004_SCORECARD.json",
+    "rkb_005": "datasets/render_feedback/RKB-005_SCORECARD.json"
+  },
+  "shot_types": [
+    "establishing",
+    "wide",
+    "medium",
+    "close",
+    "extreme_close",
+    "insert",
+    "reaction",
+    "over_shoulder",
+    "pov",
+    "environmental",
+    "tracking",
+    "profile",
+    "silhouette"
+  ],
+  "global_forbidden_patterns": [
+    "medium_then_medium_then_medium",
+    "close_then_close_then_close",
+    "insert_then_insert",
+    "reaction_then_reaction",
+    "same_shot_type_repeated_more_than_2"
+  ],
+  "global_forbidden_transitions": [
+    { "from": "medium", "to": "medium", "max_consecutive": 1 },
+    { "from": "close", "to": "close", "max_consecutive": 1 },
+    { "from": "insert", "to": "insert", "max_consecutive": 0 },
+    { "from": "reaction", "to": "reaction", "max_consecutive": 0 }
+  ],
+  "max_same_shot_type_repeat": 2,
+  "validation_target": {
+    "test_id": "RKB-006",
+    "test_name": "COVERAGE_VALIDATION",
+    "next_phase": "RKB-006 COVERAGE_VALIDATION"
+  },
+  "coverages": [
+    {
+      "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+      "coverage_name": "Establishing → Medium → Insert → Reaction → Wide",
+      "coverage_sequence": ["establishing", "medium", "insert", "reaction", "wide"],
+      "shot_priority": ["establishing", "wide", "insert", "reaction", "medium"],
+      "allowed_followups": {
+        "establishing": ["medium", "wide"],
+        "medium": ["insert", "close"],
+        "insert": ["reaction", "close"],
+        "reaction": ["wide", "medium"],
+        "wide": ["environmental", "establishing"]
+      },
+      "forbidden_followups": {
+        "medium": ["medium"],
+        "close": ["close", "close"],
+        "insert": ["insert"],
+        "reaction": ["reaction"]
+      },
+      "coverage_purpose": "Open spatial read, tactile detail, emotional beat, then re-establish geography",
+      "compatible_scene_archetypes": [
+        "domestic_morning",
+        "interior_awakening",
+        "bakery_opening"
+      ],
+      "compatible_location_types": [
+        "domestic_interior",
+        "domestic_corner",
+        "bakery_interior"
+      ],
+      "compatible_lighting_anchors": [
+        "sunrise_window_soft_01",
+        "morning_bakery_glow_01",
+        "night_lamp_interior_01"
+      ],
+      "camera_continuity_rules": [
+        "establishing_must_show_full_room_orientation",
+        "insert_must_reference_prior_medium_anchor_zone",
+        "reaction_requires_face_or_hands_in_frame",
+        "final_wide_must_restore_layout_direction"
+      ],
+      "anchor_visibility_rules": [
+        "keep_at_least_one_location_anchor_visible_in_establishing",
+        "keep_at_least_one_anchor_object_in_insert",
+        "preserve_lighting_key_direction_in_reaction"
+      ]
+    },
+    {
+      "coverage_id": "coverage_pattern_02_environmental_close",
+      "coverage_name": "Wide → Environmental → Medium → Close → Reaction",
+      "coverage_sequence": ["wide", "environmental", "medium", "close", "reaction"],
+      "shot_priority": ["environmental", "wide", "medium", "close", "reaction"],
+      "allowed_followups": {
+        "wide": ["environmental", "medium"],
+        "environmental": ["medium", "tracking"],
+        "medium": ["close", "profile"],
+        "close": ["reaction", "extreme_close"],
+        "reaction": ["wide", "silhouette"]
+      },
+      "forbidden_followups": {
+        "medium": ["medium", "medium"],
+        "close": ["close"],
+        "insert": ["insert"],
+        "reaction": ["reaction"]
+      },
+      "coverage_purpose": "Place character in world, breathe environment, tighten to emotional close",
+      "compatible_scene_archetypes": [
+        "harbor_work",
+        "outdoor_transition",
+        "hill_afternoon",
+        "street_evening"
+      ],
+      "compatible_location_types": [
+        "exterior_harbor",
+        "exterior_hill",
+        "exterior_street",
+        "exterior_path"
+      ],
+      "compatible_lighting_anchors": [
+        "midday_harbor_clear_01",
+        "afternoon_olive_hill_01",
+        "golden_hour_harbor_01",
+        "blue_hour_street_01"
+      ],
+      "camera_continuity_rules": [
+        "environmental_shot_must_include_sky_or_horizon_cue",
+        "medium_maintains_character_silhouette_scale_from_wide",
+        "close_preserves_shadow_direction_from_environmental",
+        "reaction_allows_off-axis_eyeline"
+      ],
+      "anchor_visibility_rules": [
+        "environmental_must_show_location_terrain_or_architecture_anchor",
+        "harbor_or_hill_anchor_visible_in_wide",
+        "lighting_rim_or_ambient_token_visible_in_close"
+      ]
+    },
+    {
+      "coverage_id": "coverage_pattern_03_pov_insert_chain",
+      "coverage_name": "Wide → Object Insert → POV → Reaction → Medium",
+      "coverage_sequence": ["wide", "insert", "pov", "reaction", "medium"],
+      "shot_priority": ["insert", "pov", "wide", "reaction", "medium"],
+      "allowed_followups": {
+        "wide": ["insert", "environmental"],
+        "insert": ["pov", "close"],
+        "pov": ["reaction", "over_shoulder"],
+        "reaction": ["medium", "profile"],
+        "medium": ["wide", "tracking"]
+      },
+      "forbidden_followups": {
+        "medium": ["medium"],
+        "insert": ["insert"],
+        "pov": ["pov"],
+        "reaction": ["reaction"]
+      },
+      "coverage_purpose": "Objective view, tactile focus, subjective POV, emotional response, balanced reset",
+      "compatible_scene_archetypes": [
+        "discovery_moment",
+        "window_gaze",
+        "object_task",
+        "lane_walk"
+      ],
+      "compatible_location_types": [
+        "domestic_corner",
+        "bakery_lane",
+        "window_nook",
+        "street_exterior"
+      ],
+      "compatible_lighting_anchors": [
+        "sunrise_window_soft_01",
+        "sunset_window_warm_01",
+        "golden_hour_harbor_01"
+      ],
+      "camera_continuity_rules": [
+        "insert_is_object_or_hand_detail_not_full_body",
+        "pov_matches_insert_subject_axis",
+        "reaction_cut_on_eyeline_from_pov",
+        "medium_reorients_room_after_subjective_beat"
+      ],
+      "anchor_visibility_rules": [
+        "insert_must_show_fixed_anchor_object",
+        "pov_may_imply_anchor_object_off_screen",
+        "reaction_preserves_character_identity_anchor"
+      ]
+    },
+    {
+      "coverage_id": "coverage_pattern_04_tracking_detail_close",
+      "coverage_name": "Tracking → Medium → Detail Insert → Close → Wide",
+      "coverage_sequence": ["tracking", "medium", "insert", "close", "wide"],
+      "shot_priority": ["tracking", "insert", "medium", "close", "wide"],
+      "allowed_followups": {
+        "tracking": ["medium", "wide"],
+        "medium": ["insert", "profile"],
+        "insert": ["close", "extreme_close"],
+        "close": ["wide", "reaction"],
+        "wide": ["establishing", "environmental"]
+      },
+      "forbidden_followups": {
+        "medium": ["medium", "medium"],
+        "close": ["close", "close"],
+        "insert": ["insert"],
+        "reaction": ["reaction"]
+      },
+      "coverage_purpose": "Kinetic entry, sustained performance, detail punct, intimacy, release wide",
+      "compatible_scene_archetypes": [
+        "movement_arrival",
+        "kitchen_work",
+        "dock_walk",
+        "emotional_approach"
+      ],
+      "compatible_location_types": [
+        "bakery_interior",
+        "harbor_dock",
+        "interior_path",
+        "domestic_interior"
+      ],
+      "compatible_lighting_anchors": [
+        "morning_bakery_glow_01",
+        "midday_harbor_clear_01",
+        "night_lamp_interior_01"
+      ],
+      "camera_continuity_rules": [
+        "tracking_maintains_motion_vector_into_medium",
+        "detail_insert_breaks_scale_before_close",
+        "close_holds_on_face_or_hands_after_insert",
+        "closing_wide_decompresses_framing"
+      ],
+      "anchor_visibility_rules": [
+        "tracking_shows_path_or_threshold_anchor",
+        "detail_insert_highlights_single_anchor_object",
+        "close_maintains_lighting_shadow_continuity"
+      ]
+    }
+  ]
+}

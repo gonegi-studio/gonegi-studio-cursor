@@ -1,0 +1,58 @@
+{
+  "sequence_spec_id": "video-sequence-specification-v1",
+  "asset_type": "video_sequence_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-002",
+  "purpose": "Supported video sequence lengths for temporal consistency validation at production scale.",
+  "generation_type": "video",
+  "sequence_lengths": [
+    10,
+    50,
+    100,
+    500,
+    1000
+  ],
+  "sequence_length_max": 1000,
+  "sequence_length_min": 10,
+  "sequence_profiles": [
+    {
+      "sequence_length": 10,
+      "profile": "clip_smoke_validation",
+      "recommended_use": "single-clip motion and transition calibration"
+    },
+    {
+      "sequence_length": 50,
+      "profile": "scene_block_validation",
+      "recommended_use": "short scene-block temporal consistency"
+    },
+    {
+      "sequence_length": 100,
+      "profile": "act_fragment_validation",
+      "recommended_use": "act fragment continuity run"
+    },
+    {
+      "sequence_length": 500,
+      "profile": "medium_sequence_validation",
+      "recommended_use": "medium-length narrative sequence validation"
+    },
+    {
+      "sequence_length": 1000,
+      "profile": "feature_sequence_validation",
+      "recommended_use": "feature-scale temporal consistency stress validation"
+    }
+  ],
+  "consistency_spec_ref": "datasets/consistency/video-consistency-specification.json",
+  "scorecard_ref": "datasets/consistency/video-consistency-scorecard.json",
+  "thresholds_ref": "datasets/consistency/video-consistency-thresholds.json",
+  "export_id": "video-sequence-specification-export-v1",
+  "generated_at": "2026-06-08T23:03:47.223Z",
+  "dataset_ref": "datasets/consistency/video-sequence-specification.json",
+  "sequence_spec_exists": true,
+  "supported_sequence_lengths": [
+    10,
+    50,
+    100,
+    500,
+    1000
+  ]
+}

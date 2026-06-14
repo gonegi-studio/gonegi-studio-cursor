@@ -1,0 +1,384 @@
+{
+  "report_id": "titanic-image-reconstruction-validation-report-v1",
+  "phase": "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001",
+  "validation_id": "TITANIC_IMAGE_RECONSTRUCTION_VALIDATION_V1",
+  "generated_at": "2026-06-10T07:21:47.422Z",
+  "final_verdict": "PASS_TITANIC_IMAGE_RECONSTRUCTION_VALIDATION_V1",
+  "validation_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "shot_reconstruction_pass": true,
+      "image_adapter_exists": true,
+      "movie_bundle_exists": true,
+      "latest_v5_exists": true,
+      "gonagi_dna_exists": true,
+      "dana_dna_exists": true,
+      "runtime_composition_ready": true
+    }
+  },
+  "validation_summary": {
+    "test_scene_count": 10,
+    "titanic_recognition_rate": 0.99,
+    "scene_geometry_preservation": 0.96,
+    "camera_preservation": 0.94,
+    "blocking_preservation": 0.95,
+    "composition_preservation": 0.9,
+    "pose_preservation": 0.9582,
+    "semantic_anchor_preservation": 0.968,
+    "gonegi_identity_preservation": 0.94,
+    "generic_harbor_count": 0,
+    "character_dna_expanded_all": true,
+    "semantic_anchor_present_all": true,
+    "titanic_structure_present_all": true,
+    "base_dataset": "latest_v5",
+    "movie_dataset": "titanic",
+    "gpu_execution": false,
+    "actual_image_generation": false,
+    "validation_mode": "prompt_reconstruction_quality_simulation",
+    "next_order_pass": "PHASE-TITANIC-TEMPORAL-RECONSTRUCTION-001",
+    "next_order_fail": "PHASE-TITANIC-SHOT-DENSIFICATION-002",
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "test_scenes": [
+    {
+      "test_scene_key": "01_bow_pose",
+      "scene_type": "bow_pose",
+      "source_scene_id": "scene_titanic_dense_bow_deck_0024",
+      "semantic_anchor_id": "titanic_bow_pose",
+      "shot_id": "shot_titanic_00254",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.97,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_01_bow_pose",
+        "scene_id": "scene_titanic_dense_bow_deck_0024",
+        "semantic_anchor_id": "titanic_bow_pose",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2081
+      }
+    },
+    {
+      "test_scene_key": "02_staircase_encounter",
+      "scene_type": "staircase_encounter",
+      "source_scene_id": "scene_titanic_dense_grand_staircase_0110",
+      "semantic_anchor_id": "titanic_staircase_encounter",
+      "shot_id": "shot_titanic_01200",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.948,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_02_staircase_encounter",
+        "scene_id": "scene_titanic_dense_grand_staircase_0110",
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2094
+      }
+    },
+    {
+      "test_scene_key": "03_deck_walk",
+      "scene_type": "deck_walk",
+      "source_scene_id": "scene_titanic_dense_promenade_0013",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "shot_id": "shot_titanic_00133",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.94,
+        "semantic_anchor_preservation": 0.94,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_03_deck_walk",
+        "scene_id": "scene_titanic_dense_promenade_0013",
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2084
+      }
+    },
+    {
+      "test_scene_key": "04_sunset_rail",
+      "scene_type": "sunset_rail",
+      "source_scene_id": "scene_titanic_dense_sunset_rail_0019",
+      "semantic_anchor_id": "titanic_sunset_rail_pose",
+      "shot_id": "shot_titanic_00199",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.94,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_04_sunset_rail",
+        "scene_id": "scene_titanic_dense_sunset_rail_0019",
+        "semantic_anchor_id": "titanic_sunset_rail_pose",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2104
+      }
+    },
+    {
+      "test_scene_key": "05_dining_hall",
+      "scene_type": "dining_hall",
+      "source_scene_id": "scene_titanic_dense_dining_0044",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "shot_id": "shot_titanic_00474",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.948,
+        "semantic_anchor_preservation": 0.94,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_05_dining_hall",
+        "scene_id": "scene_titanic_dense_dining_0044",
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2084
+      }
+    },
+    {
+      "test_scene_key": "06_engine_room",
+      "scene_type": "engine_room",
+      "source_scene_id": "scene_titanic_dense_engine_room_0052",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "shot_id": "shot_titanic_00562",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.964,
+        "semantic_anchor_preservation": 0.94,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_06_engine_room",
+        "scene_id": "scene_titanic_dense_engine_room_0052",
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2081
+      }
+    },
+    {
+      "test_scene_key": "07_corridor",
+      "scene_type": "corridor",
+      "source_scene_id": "scene_titanic_dense_corridor_0009",
+      "semantic_anchor_id": "titanic_staircase_encounter",
+      "shot_id": "shot_titanic_00089",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.956,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_07_corridor",
+        "scene_id": "scene_titanic_dense_corridor_0009",
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2098
+      }
+    },
+    {
+      "test_scene_key": "08_farewell",
+      "scene_type": "farewell",
+      "source_scene_id": "scene_titanic_dense_crowd_departure_0041",
+      "semantic_anchor_id": "titanic_farewell_pose",
+      "shot_id": "shot_titanic_00441",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.972,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_08_farewell",
+        "scene_id": "scene_titanic_dense_crowd_departure_0041",
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2081
+      }
+    },
+    {
+      "test_scene_key": "09_rescue_boat",
+      "scene_type": "rescue_boat",
+      "source_scene_id": "scene_titanic_dense_lifeboat_0018",
+      "semantic_anchor_id": "titanic_farewell_pose",
+      "shot_id": "shot_titanic_00188",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.98,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_09_rescue_boat",
+        "scene_id": "scene_titanic_dense_lifeboat_0018",
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2083
+      }
+    },
+    {
+      "test_scene_key": "10_final_memory",
+      "scene_type": "final_memory",
+      "source_scene_id": "scene_titanic_dense_harbor_approach_0010",
+      "semantic_anchor_id": "titanic_farewell_pose",
+      "shot_id": "shot_titanic_00100",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.964,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_10_final_memory",
+        "scene_id": "scene_titanic_dense_harbor_approach_0010",
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "character_dna_expanded": true,
+        "composed_prompt_length": 2089
+      }
+    }
+  ],
+  "issues": [],
+  "input": {
+    "base_dataset": "latest_v5",
+    "movie_dataset": "titanic",
+    "source_video_id": "TITANIC_02",
+    "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json"
+  },
+  "validation_metrics": {
+    "titanic_recognition_rate": 0.99,
+    "scene_geometry_preservation": 0.96,
+    "camera_preservation": 0.94,
+    "blocking_preservation": 0.95,
+    "composition_preservation": 0.9,
+    "pose_preservation": 0.9582,
+    "semantic_anchor_preservation": 0.968,
+    "gonegi_identity_preservation": 0.94,
+    "generic_harbor_count": 0
+  },
+  "pass_conditions": {
+    "titanic_recognition_rate_gte_0_8": true,
+    "scene_geometry_preservation_gte_0_8": true,
+    "semantic_anchor_preservation_gte_0_9": true,
+    "gonegi_identity_preservation_gte_0_9": true,
+    "generic_harbor_count_lte_1": true,
+    "character_dna_expanded_all": true
+  },
+  "fail_conditions_checked": {
+    "generic_harbor_scene": false,
+    "missing_titanic_structure": false,
+    "character_dna_omitted": false,
+    "semantic_anchor_missing": false
+  },
+  "next_decision": "PHASE-TITANIC-TEMPORAL-RECONSTRUCTION-001",
+  "dataset_paths": {
+    "validation_dir": "datasets/movie_reconstruction/titanic_image_validation",
+    "test_scenes": "datasets/movie_reconstruction/titanic_image_validation/titanic-image-reconstruction-test-scenes.json"
+  },
+  "test_scene_keys": [
+    "01_bow_pose",
+    "02_staircase_encounter",
+    "03_deck_walk",
+    "04_sunset_rail",
+    "05_dining_hall",
+    "06_engine_room",
+    "07_corridor",
+    "08_farewell",
+    "09_rescue_boat",
+    "10_final_memory"
+  ]
+}

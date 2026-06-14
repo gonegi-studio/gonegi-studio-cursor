@@ -1,0 +1,38 @@
+{
+  "registry_id": "director-grammar-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-003-DIRECTOR_GRAMMAR_EXTRACTION_V1",
+  "registry_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "schema_path": "datasets/director_grammar/director-grammar.schema.json",
+  "final_set_path": "datasets/source_video/source-video-final-set.json",
+  "grammar_profiles": [
+    {
+      "grammar_id": "director_grammar_ghibli_v1",
+      "source_family": "GHIBLI",
+      "profile_path": "datasets/director_grammar/ghibli-director-grammar.json",
+      "expected_source_count": 7,
+      "status": "extracted"
+    },
+    {
+      "grammar_id": "director_grammar_shinkai_v1",
+      "source_family": "SHINKAI",
+      "profile_path": "datasets/director_grammar/shinkai-director-grammar.json",
+      "expected_source_count": 2,
+      "status": "extracted"
+    },
+    {
+      "grammar_id": "director_grammar_live_action_v1",
+      "source_family": "LIVE_ACTION",
+      "profile_path": "datasets/director_grammar/live-action-director-grammar.json",
+      "expected_source_count": 1,
+      "status": "extracted"
+    },
+    {
+      "grammar_id": "director_grammar_mori_v1",
+      "source_family": "MORI",
+      "profile_path": "datasets/director_grammar/mori-director-grammar.json",
+      "expected_source_count": 5,
+      "status": "extracted"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "report_id": "environment_evidence_record_spec_mqd2289m",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-007A",
+  "system_id": "ENVIRONMENT_IDENTITY_EVIDENCE_COLLECTION_V1",
+  "generated_at": "2026-06-14T00:37:54.394Z",
+  "record_spec_defined": true,
+  "environment_evidence_record_format": {
+    "environment_id": "Target environment_id from reference bank.",
+    "reference_bank_id": "Bank entry reference_bank_id for recall audit.",
+    "retrieval_signature": "Hash from environment_retrieval_v1 lookup path.",
+    "evidence_score": "Composite score from evidence_scoring_rules weighted formula.",
+    "traceability_score": "Traceability signature match score against conditioning_map_ref.",
+    "environment_classification": "Enum: same_environment | strict_environment | similar_environment | different_environment.",
+    "classification_reason": "Enum: layout_signature_match | anchor_match | reference_bank_match."
+  },
+  "required_fields": [
+    "environment_id",
+    "reference_bank_id",
+    "retrieval_signature",
+    "evidence_score",
+    "traceability_score",
+    "environment_classification",
+    "classification_reason"
+  ],
+  "environment_classification": [
+    "same_environment",
+    "strict_environment",
+    "similar_environment",
+    "different_environment"
+  ],
+  "classification_reason": [
+    "layout_signature_match",
+    "anchor_match",
+    "reference_bank_match"
+  ],
+  "classification_thresholds": {
+    "same_environment": 0.98,
+    "strict_environment": 0.95,
+    "similar_environment": 0.8,
+    "different_environment": 0.5
+  },
+  "example_record": {
+    "environment_id": "titanic_staircase_001",
+    "reference_bank_id": "env_ref_001",
+    "retrieval_signature": "env_retrieval_v1:titanic_staircase_001:layout_sig_a1b2c3",
+    "evidence_score": 0.97,
+    "traceability_score": 0.96,
+    "environment_classification": "strict_environment",
+    "classification_reason": "layout_signature_match"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "motion_plan_id": "motion_plan_gonegi_bedroom_reading_6s_v1",
+  "phase": "PHASE-21-MOTION-PLAN-BUILDER-001",
+  "source_keyframe_plan_id": "keyframe_plan_gonegi_bedroom_reading_6s_v1",
+  "source_video_shot_state_id": "video_gonegi_bedroom_reading_6s_v1",
+  "motion_segments": [
+    {
+      "segment_id": "motion_plan_gonegi_bedroom_reading_6s_v1_seg_0_to_1",
+      "from_keyframe": 0,
+      "to_keyframe": 1,
+      "duration_seconds": 3,
+      "camera_motion": {
+        "motion_category": "dolly",
+        "from_shot_type": "medium",
+        "to_shot_type": "medium",
+        "motion_progress_delta": 0.5,
+        "identity_safe": true,
+        "speed": "moderate"
+      },
+      "character_motion": [
+        {
+          "character_id": "gonegi",
+          "motion_category": "sit",
+          "from_position": "bedside_chair",
+          "to_position": "bedside_chair",
+          "identity_lock_preserved": true
+        },
+        {
+          "character_id": "gamja",
+          "motion_category": "sit",
+          "from_position": "floor_near_chair",
+          "to_position": "floor_near_chair",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "hope",
+        "emotion_id": "hope",
+        "intensity_start": 0.65,
+        "intensity_end": 0.7
+      },
+      "environment_motion": {
+        "motion_category": "ambient",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "gonegi_bedroom_01",
+          "wildflower_vase_01",
+          "ship_model_01",
+          "aged_wood_chair_01",
+          "sketchbook_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:gonegi",
+          "character_reference:Gonegi",
+          "identity:character_identity:gamja",
+          "character_reference:Gamja",
+          "protected_characters:gonegi,gamja"
+        ],
+        "location_locks": [
+          "location_id:gonegi_bedroom_01",
+          "layout_lock_id:layout_lock_gonegi_bedroom_01"
+        ],
+        "composition_locks": [
+          "composition_id:gonegi_bedroom_reading",
+          "prop_anchor:wildflower_vase_01",
+          "prop_anchor:ship_model_01",
+          "prop_anchor:aged_wood_chair_01",
+          "prop_anchor:sketchbook_01",
+          "character_position:gonegi@bedside_chair",
+          "character_position:gamja@floor_near_chair"
+        ]
+      }
+    },
+    {
+      "segment_id": "motion_plan_gonegi_bedroom_reading_6s_v1_seg_1_to_2",
+      "from_keyframe": 1,
+      "to_keyframe": 2,
+      "duration_seconds": 3,
+      "camera_motion": {
+        "motion_category": "push_in",
+        "from_shot_type": "medium",
+        "to_shot_type": "close",
+        "motion_progress_delta": 0.5,
+        "identity_safe": true,
+        "speed": "moderate"
+      },
+      "character_motion": [
+        {
+          "character_id": "gonegi",
+          "motion_category": "sit",
+          "from_position": "bedside_chair",
+          "to_position": "bedside_chair",
+          "identity_lock_preserved": true
+        },
+        {
+          "character_id": "gamja",
+          "motion_category": "sit",
+          "from_position": "floor_near_chair",
+          "to_position": "floor_near_chair",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "hope",
+        "emotion_id": "hope",
+        "intensity_start": 0.7,
+        "intensity_end": 0.75
+      },
+      "environment_motion": {
+        "motion_category": "ambient",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "gonegi_bedroom_01",
+          "wildflower_vase_01",
+          "ship_model_01",
+          "aged_wood_chair_01",
+          "sketchbook_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:gonegi",
+          "character_reference:Gonegi",
+          "identity:character_identity:gamja",
+          "character_reference:Gamja",
+          "protected_characters:gonegi,gamja"
+        ],
+        "location_locks": [
+          "location_id:gonegi_bedroom_01",
+          "layout_lock_id:layout_lock_gonegi_bedroom_01"
+        ],
+        "composition_locks": [
+          "composition_id:gonegi_bedroom_reading",
+          "prop_anchor:wildflower_vase_01",
+          "prop_anchor:ship_model_01",
+          "prop_anchor:aged_wood_chair_01",
+          "prop_anchor:sketchbook_01",
+          "character_position:gonegi@bedside_chair",
+          "character_position:gamja@floor_near_chair"
+        ]
+      }
+    }
+  ],
+  "built_at": "2026-06-05T04:10:51.746Z"
+}

@@ -1,0 +1,77 @@
+{
+  "certification_id": "production-runtime-certification-v1",
+  "phase": "PHASE-LEVEL3-007-PRODUCTION_RUNTIME_CERTIFICATION_V1",
+  "generated_at": "2026-06-07T06:57:31.885Z",
+  "production_runtime_engine_artifact_path": "exports/movie_analysis_production_runtime_engine/production-runtime-engine.json",
+  "runtime_package_audits": [
+    {
+      "runtime_id": "production_runtime_mv_v1",
+      "runtime_mode": "mv_production_runtime",
+      "runtime_package_ready": "PASS",
+      "execution_queue_valid": "PASS",
+      "runtime_units_valid": "PASS",
+      "adapter_execution_valid": "PASS",
+      "quality_gate_valid": "PASS",
+      "failure_recovery_valid": "PASS",
+      "traceability_preserved": "PASS",
+      "package_certified": "PASS"
+    },
+    {
+      "runtime_id": "production_runtime_short_film_v1",
+      "runtime_mode": "short_film_production_runtime",
+      "runtime_package_ready": "PASS",
+      "execution_queue_valid": "PASS",
+      "runtime_units_valid": "PASS",
+      "adapter_execution_valid": "PASS",
+      "quality_gate_valid": "PASS",
+      "failure_recovery_valid": "PASS",
+      "traceability_preserved": "PASS",
+      "package_certified": "PASS"
+    },
+    {
+      "runtime_id": "production_runtime_episode_v1",
+      "runtime_mode": "episode_production_runtime",
+      "runtime_package_ready": "PASS",
+      "execution_queue_valid": "PASS",
+      "runtime_units_valid": "PASS",
+      "adapter_execution_valid": "PASS",
+      "quality_gate_valid": "PASS",
+      "failure_recovery_valid": "PASS",
+      "traceability_preserved": "PASS",
+      "package_certified": "PASS"
+    },
+    {
+      "runtime_id": "production_runtime_scene_sequence_v1",
+      "runtime_mode": "scene_sequence_production_runtime",
+      "runtime_package_ready": "PASS",
+      "execution_queue_valid": "PASS",
+      "runtime_units_valid": "PASS",
+      "adapter_execution_valid": "PASS",
+      "quality_gate_valid": "PASS",
+      "failure_recovery_valid": "PASS",
+      "traceability_preserved": "PASS",
+      "package_certified": "PASS"
+    }
+  ],
+  "certification_complete": true,
+  "test_mode_allowed": true,
+  "production_mode_blocked": true,
+  "real_generation_blocked": true,
+  "runtime_not_executed": true,
+  "no_external_calls": true,
+  "no_gpu_execution": true,
+  "no_file_overwrite": true,
+  "safety_flags": {
+    "planning_only": true,
+    "generation": false,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "no_execution": true,
+    "no_rendering": true,
+    "test_mode_only": true,
+    "production_mode_blocked": true
+  }
+}

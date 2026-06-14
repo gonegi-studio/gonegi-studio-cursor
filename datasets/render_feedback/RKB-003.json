@@ -1,0 +1,88 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-003",
+  "test_id": "RKB-003",
+  "test_name": "LOCATION_LIGHTING_CONTINUITY_BASELINE",
+  "test_type": "Image App Location Validation (Pre-Indoor-Anchor)",
+  "test_date": "2026-06-02",
+  "comparison_role": "baseline_for_RKB-004",
+  "input_assets": {
+    "location_dna_library": "datasets/location/location-dna-library-v1.json",
+    "location_lighting_adapter": "exports/image_app/adapters/location-lighting-image-adapter.json",
+    "indoor_anchor_adapter": null,
+    "prior_validation": "datasets/render_feedback/RKB-002.json"
+  },
+  "test_locations": [
+    "gonegi_bedroom_01",
+    "gonegi_window_corner_01",
+    "family_bakery_kitchen_01",
+    "family_bakery_dining_01",
+    "dana_bedroom_01",
+    "dana_window_corner_01"
+  ],
+  "methodology": {
+    "generations_per_location": 10,
+    "anchor_system": "location_dna_plus_lighting_pairing_only",
+    "adapter_consumption_tokens": false,
+    "notes": "Baseline captured from RKB-002 location_drift findings applied to high-value indoor rooms before LTD-004 indoor anchor injection."
+  },
+  "aggregate_metrics": {
+    "room_continuity": 0.34,
+    "anchor_visibility": 0.29,
+    "architectural_stability": 0.31,
+    "layout_stability": 0.28
+  },
+  "location_results": {
+    "gonegi_bedroom_01": {
+      "room_continuity": 0.32,
+      "anchor_visibility": 0.25,
+      "architectural_stability": 0.3,
+      "layout_stability": 0.27,
+      "review_summary": "Generic boy bedroom; window wall and ship-model shelf drifted across shots."
+    },
+    "gonegi_window_corner_01": {
+      "room_continuity": 0.35,
+      "anchor_visibility": 0.28,
+      "architectural_stability": 0.32,
+      "layout_stability": 0.29,
+      "review_summary": "Corner nook recognized intermittently; sill objects and shutter angle unstable."
+    },
+    "family_bakery_kitchen_01": {
+      "room_continuity": 0.33,
+      "anchor_visibility": 0.3,
+      "architectural_stability": 0.31,
+      "layout_stability": 0.28,
+      "review_summary": "Kitchen read as generic bakery; oven niche and table zone swapped between generations."
+    },
+    "family_bakery_dining_01": {
+      "room_continuity": 0.36,
+      "anchor_visibility": 0.31,
+      "architectural_stability": 0.33,
+      "layout_stability": 0.3,
+      "review_summary": "Dining table length and lane window placement inconsistent."
+    },
+    "dana_bedroom_01": {
+      "room_continuity": 0.34,
+      "anchor_visibility": 0.27,
+      "architectural_stability": 0.3,
+      "layout_stability": 0.27,
+      "review_summary": "Canopy bed and lace window present but vase and stool zones drifted."
+    },
+    "dana_window_corner_01": {
+      "room_continuity": 0.35,
+      "anchor_visibility": 0.3,
+      "architectural_stability": 0.32,
+      "layout_stability": 0.29,
+      "review_summary": "Garden window corner weak; geranium and reading chair often replaced."
+    }
+  },
+  "criteria_pass_counts": {
+    "room_identity_pass_locations": 1,
+    "anchor_objects_pass_locations": 0,
+    "architectural_structure_pass_locations": 1,
+    "layout_direction_pass_locations": 0
+  },
+  "final_verdict": "NEEDS_INDOOR_LOCATION_ANCHOR_SYSTEM",
+  "next_phase": "PHASE-LTD-004 INDOOR_LOCATION_ANCHOR_SYSTEM_V1"
+}

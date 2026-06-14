@@ -1,0 +1,93 @@
+{
+  "scorecard_id": "temporal-memory-scorecard-v1",
+  "asset_type": "temporal_memory_scorecard",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-003",
+  "purpose": "Weighted scoring model for temporal memory consistency across narrative horizons.",
+  "scoring_method": "weighted_dimension_average",
+  "video_scorecard_ref": "datasets/consistency/video-consistency-scorecard.json",
+  "dimensions": [
+    {
+      "dimension": "character_memory",
+      "weight": 0.12,
+      "evaluation_method": "identity_recall + trait_persistence",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "location_memory",
+      "weight": 0.1,
+      "evaluation_method": "spatial_anchor_recall + layout_persistence",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "relationship_memory",
+      "weight": 0.1,
+      "evaluation_method": "network_state_recall + bond_evolution_coherence",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "prop_memory",
+      "weight": 0.08,
+      "evaluation_method": "object_reid_recall + prop_state_persistence",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "costume_memory",
+      "weight": 0.08,
+      "evaluation_method": "wardrobe_state_recall + silhouette_persistence",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "world_state_memory",
+      "weight": 0.1,
+      "evaluation_method": "macro_state_persistence + transition_coherence",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "theme_memory",
+      "weight": 0.08,
+      "evaluation_method": "motif_recall + thematic_beat_alignment",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "callback_memory",
+      "weight": 0.12,
+      "evaluation_method": "seed_recall + resolution_alignment",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "legacy_callback_memory",
+      "weight": 0.12,
+      "evaluation_method": "legacy_anchor_recall + generation_span_coherence",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    },
+    {
+      "dimension": "timeline_memory",
+      "weight": 0.1,
+      "evaluation_method": "position_recall + temporal_gap_signaling",
+      "pass_indicator": "recall_score >= dimension_threshold"
+    }
+  ],
+  "composite_scoring": {
+    "weighted_average": true,
+    "weight_sum": 1,
+    "rounding_precision": 4
+  },
+  "threshold_ref": "datasets/consistency/temporal-memory-thresholds.json",
+  "export_id": "temporal-memory-scorecard-export-v1",
+  "generated_at": "2026-06-08T23:12:52.686Z",
+  "dataset_ref": "datasets/consistency/temporal-memory-scorecard.json",
+  "memory_dimension_count": 10,
+  "dimension_list": [
+    "character_memory",
+    "location_memory",
+    "relationship_memory",
+    "prop_memory",
+    "costume_memory",
+    "world_state_memory",
+    "theme_memory",
+    "callback_memory",
+    "legacy_callback_memory",
+    "timeline_memory"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "spec_id": "story-ingestion-specification-v1",
+  "asset_type": "story_ingestion_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-STORY-001",
+  "module": "STORY_TO_BLUEPRINT_ENGINE_V1",
+  "purpose": "Ingest raw story input and normalize for analysis, act extraction, and blueprint mapping.",
+  "upstream_checkpoint": "PASS_GENERATION_OPERATION_STACK_V1",
+  "ingestion_flow": [
+    "story_input",
+    "story_normalization",
+    "story_analysis",
+    "act_extraction",
+    "arc_extraction",
+    "blueprint_mapping"
+  ],
+  "supported_input_formats": [
+    "json",
+    "markdown",
+    "structured_story"
+  ],
+  "story_trace_id_prefix": "story-trace",
+  "story_analysis_spec_ref": "datasets/story/story-analysis-specification.json",
+  "act_extraction_spec_ref": "datasets/story/act-extraction-specification.json",
+  "arc_extraction_spec_ref": "datasets/story/arc-extraction-specification.json",
+  "mapping_spec_ref": "datasets/story/story-blueprint-mapping-specification.json",
+  "sample_story_ref": "datasets/story/sample-story-input.json",
+  "story_ingestion_integrity": "PASS",
+  "export_id": "story-ingestion-specification-export-v1",
+  "generated_at": "2026-06-09T01:25:00.993Z",
+  "dataset_ref": "datasets/story/story-ingestion-specification.json"
+}

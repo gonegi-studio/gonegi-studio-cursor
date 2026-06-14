@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/video_state/video-shot-state.schema.json",
+  "title": "VideoShotState",
+  "description": "Video shot state preparation object for PHASE-19 SCENE_STATE_TO_VIDEO_PREPARATION_V1",
+  "type": "object",
+  "required": [
+    "video_shot_state_id",
+    "source_scene_state_id",
+    "phase",
+    "duration_seconds",
+    "fps_target",
+    "keyframe_count",
+    "camera_motion",
+    "character_motion",
+    "emotion_motion",
+    "environment_motion",
+    "continuity_locks",
+    "render_intent"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "video_shot_state_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_scene_state_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-19-SCENE-STATE-TO-VIDEO-PREPARATION-001"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 120
+    },
+    "fps_target": {
+      "type": "number",
+      "enum": [12, 24, 25, 30]
+    },
+    "keyframe_count": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 7200
+    },
+    "camera_motion": {
+      "$ref": "#/$defs/camera_motion"
+    },
+    "character_motion": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/character_motion" },
+      "minItems": 1
+    },
+    "emotion_motion": {
+      "$ref": "#/$defs/emotion_motion"
+    },
+    "environment_motion": {
+      "$ref": "#/$defs/environment_motion"
+    },
+    "continuity_locks": {
+      "$ref": "#/$defs/continuity_locks"
+    },
+    "render_intent": {
+      "$ref": "#/$defs/render_intent"
+    },
+    "built_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "camera_motion": {
+      "type": "object",
+      "required": ["motion_type", "path_description", "speed", "identity_safe"],
+      "additionalProperties": false,
+      "properties": {
+        "motion_type": { "type": "string" },
+        "path_description": { "type": "string" },
+        "speed": { "type": "string", "enum": ["static", "slow", "moderate", "fast"] },
+        "identity_safe": { "type": "boolean" },
+        "shot_type_source": { "type": "string" }
+      }
+    },
+    "character_motion": {
+      "type": "object",
+      "required": ["character_id", "motion_type", "path_description", "identity_lock_preserved"],
+      "additionalProperties": false,
+      "properties": {
+        "character_id": { "type": "string" },
+        "motion_type": { "type": "string" },
+        "path_description": { "type": "string" },
+        "identity_lock_preserved": { "type": "boolean" },
+        "start_position": { "type": "string" },
+        "end_position": { "type": "string" }
+      }
+    },
+    "emotion_motion": {
+      "type": "object",
+      "required": ["emotion_id", "arc_type", "intensity_start", "intensity_end"],
+      "additionalProperties": false,
+      "properties": {
+        "emotion_id": { "type": "string" },
+        "arc_type": { "type": "string" },
+        "intensity_start": { "type": "number", "minimum": 0, "maximum": 1 },
+        "intensity_end": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "environment_motion": {
+      "type": "object",
+      "required": ["motion_type", "path_description", "location_lock_preserved"],
+      "additionalProperties": false,
+      "properties": {
+        "motion_type": { "type": "string" },
+        "path_description": { "type": "string" },
+        "location_lock_preserved": { "type": "boolean" },
+        "elements": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks", "composition_locks"],
+      "additionalProperties": false,
+      "properties": {
+        "identity_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "location_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "composition_locks": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "render_intent": {
+      "type": "object",
+      "required": [
+        "preparation_only",
+        "gpu_execution",
+        "target_pipeline",
+        "next_phase"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "preparation_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "target_pipeline": { "type": "string" },
+        "next_phase": { "type": "string" }
+      }
+    }
+  }
+}

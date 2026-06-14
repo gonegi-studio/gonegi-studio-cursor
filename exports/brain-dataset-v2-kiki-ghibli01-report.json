@@ -1,0 +1,64 @@
+{
+  "auditTimestamp": "2026-05-31T04:28:00.340Z",
+  "final_verdict": "PASS_FOR_IMAGE_APP_V2_TEST",
+  "dataset_type": "brain_dataset_v2",
+  "dataset_version": "102B",
+  "sources": [
+    "TEST_KIKI_25S",
+    "GHIBLI_01"
+  ],
+  "pre_merge_counts": {
+    "camera": 22,
+    "acting": 22,
+    "daily_life": 34,
+    "location": 21,
+    "object_interaction": 22,
+    "extra_actor": 8,
+    "animal": 8
+  },
+  "post_merge_counts": {
+    "camera": 22,
+    "acting": 20,
+    "daily_life": 32,
+    "location": 21,
+    "object_interaction": 21,
+    "extra_actor": 8,
+    "animal": 8
+  },
+  "added_counts": {
+    "camera": 12,
+    "acting": 12,
+    "daily_life": 25,
+    "location": 12,
+    "object_interaction": 17,
+    "extra_actor": 8,
+    "animal": 8
+  },
+  "deduped_counts": {
+    "camera": 0,
+    "acting": 2,
+    "daily_life": 2,
+    "location": 0,
+    "object_interaction": 1,
+    "extra_actor": 0,
+    "animal": 0
+  },
+  "generic_pattern_warnings": [
+    "daily-life-ffd50b839fd3: generic daily_life observing/none/ground-stand"
+  ],
+  "forbidden_field_scan": {
+    "passed": true,
+    "hits": []
+  },
+  "violations": [],
+  "audit_codes": [],
+  "quality_targets": {
+    "camera": 15,
+    "acting": 18,
+    "daily_life": 25,
+    "location": 12,
+    "object_interaction": 15,
+    "extra_actor": 5,
+    "animal": 5
+  }
+}

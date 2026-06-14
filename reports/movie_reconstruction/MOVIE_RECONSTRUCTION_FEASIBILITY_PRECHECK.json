@@ -1,0 +1,48 @@
+{
+  "report_id": "movie_reconstruction_feasibility_mqcyeky2",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-001",
+  "system_id": "GPU_CONDITIONING_CAPABILITY_AUDIT_V1",
+  "generated_at": "2026-06-13T22:55:32.234Z",
+  "required_features": [
+    "layout_map",
+    "depth_map",
+    "pose_map",
+    "blocking_map",
+    "environment_identity",
+    "object_identity",
+    "temporal_preservation",
+    "character_identity_fidelity",
+    "multi_scene_consistency",
+    "camera_continuity",
+    "edit_rhythm_binding",
+    "shot_boundary_continuity"
+  ],
+  "available_features": [
+    "layout_map",
+    "depth_map",
+    "pose_map",
+    "blocking_map",
+    "text_spatial_compiler_fallback",
+    "environment_reference_bank_metadata",
+    "object_reference_bank_metadata",
+    "temporal_memory_metadata"
+  ],
+  "missing_features": [
+    "environment_identity_map populated payload",
+    "object_identity identity_embedding_ref",
+    "temporal_preservation GPU video backend",
+    "multi_scene_consistency runtime binding",
+    "camera_continuity cross-shot preservation",
+    "character_identity_fidelity IP-Adapter execution",
+    "live runtime_connected backend socket"
+  ],
+  "highest_priority_gap": "temporal_preservation",
+  "movie_reconstruction_score": 0.28,
+  "storyboard_generation_score": 0.95,
+  "music_video_score": 0.82,
+  "short_film_score": 0.51,
+  "feature_film_score": 0.19,
+  "feasibility_scores_defined": true,
+  "highest_priority_gap_defined": true,
+  "assessment_note": "Storyboard Ready != Movie Reconstruction Ready; MV Ready != Feature Film Ready; Backend Capability != Movie Reconstruction Capability. Scores reflect pipeline-effective readiness without GPU execution."
+}

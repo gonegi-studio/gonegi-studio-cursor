@@ -1,0 +1,39 @@
+{
+  "report_id": "conditioning_adapter_compatibility_mqc7phzo",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005",
+  "system_id": "CONDITIONING_BACKEND_ADAPTER_V1",
+  "generated_at": "2026-06-13T10:28:11.988Z",
+  "input_contract_version": "1.0",
+  "entries": [
+    {
+      "adapter": "controlnet_adapter",
+      "layout_map": true,
+      "depth_map": true,
+      "pose_map": true,
+      "blocking_map": true,
+      "environment_identity_map": false,
+      "object_identity_support": false,
+      "translation_loss": "HIGH"
+    },
+    {
+      "adapter": "comfyui_adapter",
+      "layout_map": true,
+      "depth_map": true,
+      "pose_map": true,
+      "blocking_map": true,
+      "environment_identity_map": false,
+      "object_identity_support": false,
+      "translation_loss": "MEDIUM"
+    },
+    {
+      "adapter": "future_video_adapter",
+      "layout_map": true,
+      "depth_map": true,
+      "pose_map": true,
+      "blocking_map": true,
+      "environment_identity_map": false,
+      "object_identity_support": false,
+      "translation_loss": "VERY_HIGH"
+    }
+  ]
+}

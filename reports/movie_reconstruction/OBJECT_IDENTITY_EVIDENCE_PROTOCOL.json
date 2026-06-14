@@ -1,0 +1,156 @@
+{
+  "protocol_id": "object-identity-evidence-protocol-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-006C",
+  "system_id": "OBJECT_IDENTITY_EVIDENCE_V1",
+  "generated_at": "2026-06-14T00:27:25.643Z",
+  "evidence_defined": true,
+  "analysis": {
+    "object_validation_protocol": "OBJECT_IDENTITY_GPU_VALIDATION_PROTOCOL defines same_object=0.97, role thresholds, and reference_bank recall rules; evidence collection binds measurable scores without GPU execution.",
+    "object_dataset_plan": "OBJECT_IDENTITY_GPU_VALIDATION_DATASET_PLAN provides easy/medium/hard and role case seeds; evidence dataset extends with stress_batch for occlusion and zoom perturbations.",
+    "object_reference_bank": "Bank entries (suitcase_001, chair_014, lantern_001, wooden_crate_001) supply reference_bank_id, identity_signature, and anchor_descriptors for evidence record templates.",
+    "object_similarity_binding": "object_similarity_v1 same_object_threshold=0.97 governs evidence scoring; similar_object scores must not be classified as definitive evidence.",
+    "object_role_binding": "object_role_v1 assigns hero_prop > scene_prop priority; role thresholds govern pass threshold tier per evidence batch.",
+    "object_traceability_binding": "traceability_signature links conditioning_map_ref and OBJECT_REFERENCE_BANK_SPECIFICATION for batch audit without GPU execution."
+  },
+  "object_evidence_contract": {
+    "contract_id": "object_identity_evidence_v1",
+    "contract_version": "1.0",
+    "scope": "Evidence definition only — Evidence Defined != Evidence Collected.",
+    "validation_protocol_ref": "reports/movie_reconstruction/OBJECT_IDENTITY_GPU_VALIDATION_PROTOCOL.json",
+    "dataset_plan_ref": "reports/movie_reconstruction/OBJECT_IDENTITY_GPU_VALIDATION_DATASET_PLAN.json",
+    "binding_ref": "exports/movie_reconstruction_object_identity/object-identity-binding-package.json",
+    "bank_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+    "gpu_execution": "false — evidence protocol and dataset only; collection deferred.",
+    "gpu_authorization": "false — evidence_sufficient_for_gpu_authorization must remain false until execution phase.",
+    "texture_match_note": "Texture Match is part of Object Identity — texture_drift is a first-class object failure mode.",
+    "assessment_note": "Evidence Collected != Object Validated; Object Validated != Movie Reconstruction Ready."
+  },
+  "object_measurement_rules": {
+    "identity_signature_match_score": "Primary measurement from identity_signature hash equality against reference bank.",
+    "texture_match_score": "Surface texture consistency against anchor_images metadata descriptors.",
+    "anchor_recall_score": "Count of anchor_descriptors kind+importance matches >= minimum_anchor_match.",
+    "role_weight_score": "Narrative lock weight derived from object_role_binding role priority.",
+    "object_traceability_score": "Traceability signature match against conditioning_map_ref and bank spec path.",
+    "measurement_note": "All measurements are schema-defined; no GPU raster comparison in this phase."
+  },
+  "object_scoring_rules": {
+    "composite_evidence_score": "weighted_sum(identity_signature_match_score * 0.35, texture_match_score * 0.25, anchor_recall_score * 0.20, role_weight_score * 0.20)",
+    "pass_threshold": "composite_evidence_score >= 0.97 required for same-object evidence tier.",
+    "hero_prop_gate": "hero_prop batch requires composite >= object_role_thresholds.hero_prop (0.98).",
+    "false_positive_penalty": "Scores above pass_threshold on different_object cases trigger false_positive audit.",
+    "false_negative_tolerance": "same_suitcase_different_lighting permitted within strict_object band [0.95, 0.97)."
+  },
+  "object_evidence_levels": [
+    {
+      "level_id": "same_object",
+      "min_object_score": 0.97,
+      "note": "Definitive object evidence; composite score >= 0.97 with texture_match >= 0.90."
+    },
+    {
+      "level_id": "strict_object",
+      "min_object_score": 0.95,
+      "note": "Strict band; sufficient for anchor tuning review but not identity lock."
+    },
+    {
+      "level_id": "similar_object",
+      "min_object_score": 0.8,
+      "note": "Similar object band; logged for degradation path only."
+    },
+    {
+      "level_id": "different_object",
+      "min_object_score": 0,
+      "note": "Below different_object threshold; evidence record rejected."
+    }
+  ],
+  "object_traceability_rules": {
+    "traceability_signature": "Must bind object_id, reference_bank_id, identity_signature, and object_spec_ref.",
+    "identity_signature_integrity": "identity_signature must resolve to bank spec entry; mismatch triggers traceability failure.",
+    "batch_audit_path": "Evidence records written to OBJECT_IDENTITY_EVIDENCE_DATASET.json batches for offline review.",
+    "role_binding_cross_ref": "object_role_binding role must align with batch tier (hero_prop_batch, secondary_prop_batch, background_object_batch).",
+    "evidence_layer_note": "Evidence Defined != Evidence Collected."
+  },
+  "object_degradation_levels": {
+    "minor_drift": 0.85,
+    "moderate_drift": 0.7,
+    "critical_drift": 0.5,
+    "identity_break": 0.3
+  },
+  "object_role_thresholds": {
+    "hero_prop": 0.98,
+    "secondary_prop": 0.9,
+    "background_object": 0.75
+  },
+  "object_identity_tiers": [
+    {
+      "tier_id": "hero_prop_strict",
+      "role": "hero_prop",
+      "pass_threshold": 0.98,
+      "identity_level": "strict",
+      "note": "Hero Prop Defined != Hero Prop Preserved — suitcase_001 requires highest lock."
+    },
+    {
+      "tier_id": "secondary_prop_medium",
+      "role": "secondary_prop",
+      "pass_threshold": 0.9,
+      "identity_level": "medium",
+      "note": "Maps to scene_prop and environment_prop roles in object_role_v1 binding."
+    },
+    {
+      "tier_id": "background_object_loose",
+      "role": "background_object",
+      "pass_threshold": 0.75,
+      "identity_level": "loose",
+      "note": "Maps to background_furniture role; permits higher variation within band."
+    }
+  ],
+  "measurement_method": [
+    "identity_signature_match_score",
+    "texture_match_score",
+    "anchor_recall_score",
+    "role_weight_score",
+    "object_traceability_score"
+  ],
+  "pass_threshold": 0.97,
+  "evidence_score": {
+    "composite_formula": "0.35 * identity_signature_match_score + 0.25 * texture_match_score + 0.20 * anchor_recall_score + 0.20 * role_weight_score",
+    "identity_signature_weight": 0.35,
+    "texture_match_weight": 0.25,
+    "anchor_recall_weight": 0.2,
+    "role_weight": 0.2
+  },
+  "failure_examples": [
+    "identity_embedding_drift",
+    "role_weight_ignored",
+    "variation_tolerance_exceeded",
+    "identity_swap",
+    "hallucinated_object"
+  ],
+  "object_failure_examples": [
+    "missing_accessory",
+    "shape_change",
+    "identity_swap",
+    "hallucinated_object",
+    "texture_drift"
+  ],
+  "false_positive_examples": [
+    "similar_suitcase_wrong_pattern",
+    "shared_style_different_object_id",
+    "texture_match_wrong_silhouette"
+  ],
+  "false_negative_examples": [
+    "same_suitcase_different_lighting",
+    "hero_prop_with_minor_wear_variation",
+    "anchor_occlusion_but_identity_preserved"
+  ],
+  "reference_bank_recall_rules": {
+    "required_reference_count": 4,
+    "minimum_anchor_match": 2,
+    "recall_method": "Match evidence record anchors against reference bank anchor_descriptors; count kind+importance matches >= minimum_anchor_match."
+  },
+  "example_evidence_record": {
+    "object_id": "suitcase_001",
+    "reference_bank_id": "obj_ref_001",
+    "identity_signature": "obj_id_sig_suitcase_a1b2c3",
+    "traceability_score": 0.96
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "resolution_execution_id": "mv-high-priority-item-resolution-execution-v1",
+  "phase": "PHASE-DIGITAL-STUDIO-025-MV_HIGH_PRIORITY_ITEM_RESOLUTION_EXECUTION_V1",
+  "generated_at": "2026-06-08T05:14:23.900Z",
+  "source_termination_gate_ref": "exports/mv_production_ready_reentry_termination_gate/mv-production-ready-reentry-termination-gate.json",
+  "reentry_termination_gate_id": "mv-production-ready-reentry-termination-gate-v1",
+  "high_priority_item_ids": [
+    "dataset_refs_empty_story_mv_generation_plan_v1",
+    "production_mode_blocked",
+    "real_generation_blocked"
+  ],
+  "high_priority_item_category": {
+    "DATASET_REFS_EMPTY": "consistency",
+    "PRODUCTION_MODE_BLOCKED": "operational",
+    "REAL_GENERATION_BLOCKED": "operational"
+  },
+  "resolution_execution_plan": {
+    "DATASET_REFS_EMPTY": {
+      "item_id": "dataset_refs_empty_story_mv_generation_plan_v1",
+      "blocker_code": "DATASET_REFS_EMPTY",
+      "category": "consistency",
+      "owner": "mv_dataset_consistency_owner",
+      "target_phase": "DS_025",
+      "execution_action": "POPULATE_DATASET_REFS",
+      "success_criteria": "story_mv dataset_refs populated with at least one valid dataset path and trace_integrity remains PASS"
+    },
+    "PRODUCTION_MODE_BLOCKED": {
+      "item_id": "production_mode_blocked",
+      "blocker_code": "PRODUCTION_MODE_BLOCKED",
+      "category": "operational",
+      "owner": "mv_production_ops_owner",
+      "target_phase": "DS_025",
+      "execution_action": "CLEAR_PRODUCTION_MODE_BLOCK",
+      "success_criteria": "production_mode_blocked flag cleared under gated production scope with safety certification preserved"
+    },
+    "REAL_GENERATION_BLOCKED": {
+      "item_id": "real_generation_blocked",
+      "blocker_code": "REAL_GENERATION_BLOCKED",
+      "category": "operational",
+      "owner": "mv_generation_ops_owner",
+      "target_phase": "DS_025",
+      "execution_action": "ENABLE_CONTROLLED_REAL_GENERATION",
+      "success_criteria": "real_generation_blocked lifted with controlled generation scope and quality gates active"
+    }
+  },
+  "resolution_status_by_item": {
+    "DATASET_REFS_EMPTY": "RESOLVED",
+    "PRODUCTION_MODE_BLOCKED": "RESOLVED",
+    "REAL_GENERATION_BLOCKED": "RESOLVED"
+  },
+  "resolution_started": true,
+  "resolution_evidence_ref": {
+    "DATASET_REFS_EMPTY": "exports/mv_high_priority_item_resolution_execution/evidence/dataset_refs_empty_story_mv_generation_plan_v1-execution-evidence.json",
+    "PRODUCTION_MODE_BLOCKED": "exports/mv_high_priority_item_resolution_execution/evidence/production_mode_blocked-execution-evidence.json",
+    "REAL_GENERATION_BLOCKED": "exports/mv_high_priority_item_resolution_execution/evidence/real_generation_blocked-execution-evidence.json"
+  },
+  "resolved_high_priority_count": 3,
+  "remaining_high_priority_count": 0,
+  "high_priority_resolution_count": 3,
+  "next_reentry_gate_label": "DS_023_REENTRY",
+  "current_readiness_tier": "TEST_READY",
+  "target_readiness_tier": "PRODUCTION_READY",
+  "traceability_chain": [
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "instrumental_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "instrumental_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "instrumental_mv_scene_assembly_v1",
+      "mv_blueprint_id": "instrumental_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/instrumental-mv-archetype-library-v1.json",
+        "datasets/mv/instrumental-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "ballad_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "ballad_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "ballad_mv_scene_assembly_v1",
+      "mv_blueprint_id": "ballad_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/ballad-mv-archetype-library-v1.json",
+        "datasets/mv/ballad-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "story_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "story_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "story_mv_scene_assembly_v1",
+      "mv_blueprint_id": "story_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_short_film_v1",
+      "dataset_refs": [
+        "datasets/mv/story-mv-archetype-library-v1.json",
+        "datasets/mv/story-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "music_drama_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "music_drama_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "music_drama_mv_scene_assembly_v1",
+      "mv_blueprint_id": "music_drama_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_episode_v1",
+      "dataset_refs": [
+        "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    }
+  ],
+  "execution_scope": "test_mode_only",
+  "traceability_preserved": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/mv_production_ready_reentry_termination_gate/mv-production-ready-reentry-termination-gate.json",
+      "exports/mv_production_ready_reentry_termination_gate/mv-production-ready-reentry-termination-gate-manifest.json",
+      "exports/mv_high_priority_resolution_audit_hardening/mv-high-priority-resolution-audit-hardening.json",
+      "exports/mv_production_blocker_resolution_certification/mv-production-blocker-resolution-certification.json"
+    ],
+    "write_paths": [
+      "reports/mv_high_priority_item_resolution_execution",
+      "exports/mv_high_priority_item_resolution_execution",
+      "exports/mv_high_priority_item_resolution_execution/evidence",
+      "reports/mv_high_priority_item_resolution_execution/mv-high-priority-item-resolution-execution-report.json",
+      "reports/mv_high_priority_item_resolution_execution/MV_HIGH_PRIORITY_ITEM_RESOLUTION_EXECUTION.md",
+      "exports/mv_high_priority_item_resolution_execution/mv-high-priority-item-resolution-execution-manifest.json",
+      "exports/mv_high_priority_item_resolution_execution/mv-high-priority-item-resolution-execution.json"
+    ],
+    "resolution_execution_artifact_write_scope": "exports/mv_high_priority_item_resolution_execution/",
+    "upstream_artifacts_unchanged": true
+  },
+  "resolution_execution_complete": true,
+  "next_stage_ready": true
+}

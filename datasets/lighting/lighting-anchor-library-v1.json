@@ -1,0 +1,304 @@
+{
+  "asset_type": "lighting_anchor_library",
+  "asset_version": "v1",
+  "library_id": "lighting-anchor-library-v1",
+  "phase": "PHASE-LTD-005",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Persistent lighting anchors that lock key/fill/shadow/color/brightness beyond descriptive mood tags. Reference layer only — no scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_lighting_dna": false,
+    "modifies_location_dna": false,
+    "modifies_indoor_anchor": false
+  },
+  "read_only_sources": {
+    "lighting_dna_library": "datasets/lighting/lighting-dna-library-v1.json",
+    "indoor_location_anchor_library": "datasets/location/indoor-location-anchor-library-v1.json",
+    "indoor_location_anchor_adapter": "exports/image_app/adapters/indoor-location-anchor-adapter.json",
+    "rkb_004": "datasets/render_feedback/RKB-004_SCORECARD.json"
+  },
+  "initial_lighting_anchors": [
+    "sunrise_window_soft_01",
+    "morning_bakery_glow_01",
+    "midday_harbor_clear_01",
+    "afternoon_olive_hill_01",
+    "golden_hour_harbor_01",
+    "sunset_window_warm_01",
+    "blue_hour_street_01",
+    "night_lamp_interior_01"
+  ],
+  "anchor_count": 8,
+  "validation_target": {
+    "test_id": "RKB-005",
+    "test_name": "LIGHTING_VALIDATION",
+    "generation_count_per_anchor": 10,
+    "comparison_baselines": ["RKB-003", "RKB-004"],
+    "review_criteria": [
+      "lighting_identity",
+      "shadow_direction",
+      "color_consistency",
+      "brightness_consistency",
+      "atmosphere_consistency"
+    ],
+    "success_condition": "Lighting stability visibly stronger than RKB-003 and RKB-004 baseline; lighting identity remains recognizable across 10 generations per anchor."
+  },
+  "anchors": [
+    {
+      "lighting_anchor_id": "sunrise_window_soft_01",
+      "lighting_dna_id": "sunrise_bakery_window",
+      "light_source_positions": [
+        "low_east_exterior_through_open_shutter",
+        "sill_glow_pool_on_interior_floor",
+        "soft_sky_fill_from_east_window_plane"
+      ],
+      "key_light_direction": "low_east_raking_through_window_plane",
+      "fill_light_direction": "cool_haze_fill_from_exterior_left",
+      "shadow_direction": "west_interior_wall_soft_falloff",
+      "color_temperature": "warm_pink_3200k_with_cool_exterior_fill_6500k",
+      "brightness_range": "soft_low_0.35_to_0.55_ev_interior",
+      "window_glow_strength": "medium_high_sill_pool_required",
+      "ambient_strength": "gentle_diffuse_0.45",
+      "highlight_behavior": "shutter_edge_rim_and_sill_specular_only",
+      "visual_memory_tokens": [
+        "pink_morning_sill_strip",
+        "cool_exterior_haze_rectangle",
+        "soft_shadow_wedge_on_west_wall",
+        "cream_ambient_base",
+        "first_light_gold_edge"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_swap_east_window_to_west_key",
+        "do_not_overexpose_sill_pool"
+      ]
+    },
+    {
+      "lighting_anchor_id": "morning_bakery_glow_01",
+      "lighting_dna_id": "morning_bakery_kitchen",
+      "light_source_positions": [
+        "brick_oven_mouth_amber_core_north",
+        "east_daylight_slit_above_door",
+        "flour_table_bounce_center"
+      ],
+      "key_light_direction": "moderate_east_daylight_plus_oven_north_bounce",
+      "fill_light_direction": "warm_oven_fill_across_work_table",
+      "shadow_direction": "south_wall_soft_downward_from_lintel",
+      "color_temperature": "warm_3800k_oven_dominant_with_neutral_day_5000k",
+      "brightness_range": "warm_medium_0.50_to_0.70_interior",
+      "window_glow_strength": "low_slit_above_door_only",
+      "ambient_strength": "oven_competed_fill_0.55",
+      "highlight_behavior": "flour_surface_matte_highlight_and_oven_mouth_rim",
+      "visual_memory_tokens": [
+        "amber_oven_core",
+        "flour_white_table_bounce",
+        "charcoal_shadow_under_lintel",
+        "warm_kitchen_haze",
+        "copper_kettle_edge_glint"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_remove_oven_amber_core",
+        "do_not_cool_to_blue_hour_without_narrative"
+      ]
+    },
+    {
+      "lighting_anchor_id": "midday_harbor_clear_01",
+      "lighting_dna_id": "morning_harbor_dock",
+      "light_source_positions": [
+        "high_southeast_sun_over_open_water",
+        "wet_plank_specular_center",
+        "sky_dome_fill_from_above"
+      ],
+      "key_light_direction": "moderate_east_slightly_behind_camera_on_dock",
+      "fill_light_direction": "sea_blue_bounce_upward_on_planks",
+      "shadow_direction": "short_northwest_dock_shadows",
+      "color_temperature": "neutral_daylight_5500k_with_blue_sea_bounce",
+      "brightness_range": "clear_bright_0.65_to_0.85_exterior",
+      "window_glow_strength": "none_exterior_open",
+      "ambient_strength": "high_clear_0.75",
+      "highlight_behavior": "water_specular_streaks_on_wet_wood",
+      "visual_memory_tokens": [
+        "blue_sea_shimmer_band",
+        "white_plank_highlight_lane",
+        "crisp_dock_shadow_edge",
+        "clear_sky_dome",
+        "rope_and_post_rim_light"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_flatten_to_overcast_without_weather_beat",
+        "do_not_invert_sea_bounce_to_warm_fill"
+      ]
+    },
+    {
+      "lighting_anchor_id": "afternoon_olive_hill_01",
+      "lighting_dna_id": "afternoon_olive_hill",
+      "light_source_positions": [
+        "westward_warm_sun_on_terrace",
+        "olive_leaf_dapple_from_above",
+        "green_ground_bounce_on_stone"
+      ],
+      "key_light_direction": "westward_warm_slant_across_terrace",
+      "fill_light_direction": "soft_green_leaf_bounce_from_canopy",
+      "shadow_direction": "east_long_terrace_shadow_bands",
+      "color_temperature": "warm_4200k_with_green_bounce_4800k",
+      "brightness_range": "warm_soft_0.55_to_0.72_exterior",
+      "window_glow_strength": "none_open_terrace",
+      "ambient_strength": "leaf_filtered_0.58",
+      "highlight_behavior": "silver_green_leaf_specular_dapple",
+      "visual_memory_tokens": [
+        "gold_terrace_wash",
+        "olive_dapple_rhythm",
+        "long_east_shadow_bands",
+        "green_bounce_on_stone",
+        "warm_afternoon_haze"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_collapse_to_midday_neutral",
+        "do_not_remove_green_bounce_signature"
+      ]
+    },
+    {
+      "lighting_anchor_id": "golden_hour_harbor_01",
+      "lighting_dna_id": "golden_hour_harbor",
+      "light_source_positions": [
+        "low_west_rim_over_water_and_pier",
+        "figure_rim_from_behind_camera_left",
+        "amber_sea_reflect_band"
+      ],
+      "key_light_direction": "low_west_rim_key_on_pier_and_figures",
+      "fill_light_direction": "warm_ambient_sky_fill_from_west_horizon",
+      "shadow_direction": "long_east_pier_and_post_shadows",
+      "color_temperature": "rich_amber_3000k_rim_with_orange_sky_2800k",
+      "brightness_range": "warm_rich_0.60_to_0.80_exterior",
+      "window_glow_strength": "low_optional_shack_window_warm_dots",
+      "ambient_strength": "golden_fill_0.65",
+      "highlight_behavior": "rim_light_on_silhouette_edges_and_water_amber_band",
+      "visual_memory_tokens": [
+        "amber_rim_on_figure_edge",
+        "long_pier_shadow_fingers",
+        "orange_west_sky_grad",
+        "sea_amber_reflect_band",
+        "harbor_watch_silhouette_read"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_swap_rim_to_front_flat_fill",
+        "do_not_cool_to_blue_hour_without_beat"
+      ]
+    },
+    {
+      "lighting_anchor_id": "sunset_window_warm_01",
+      "lighting_dna_id": "golden_hour_bakery_lane",
+      "light_source_positions": [
+        "low_west_lane_rake_on_window_frame",
+        "warm_window_glow_box_interior",
+        "oven_smoke_haze_gold_in_lane"
+      ],
+      "key_light_direction": "low_west_raking_on_window_and_lane_cobble",
+      "fill_light_direction": "warm_window_box_spill_into_lane",
+      "shadow_direction": "east_building_shadow_across_lane",
+      "color_temperature": "warm_3200k_window_glow_with_3500k_lane_rake",
+      "brightness_range": "warm_medium_0.50_to_0.68_mixed_interior_exterior",
+      "window_glow_strength": "high_required_warm_window_rectangle",
+      "ambient_strength": "smoke_haze_fill_0.52",
+      "highlight_behavior": "window_frame_gold_and_smoke_volumetric_edge",
+      "visual_memory_tokens": [
+        "gold_window_rectangle",
+        "lane_smoke_haze",
+        "warm_cobble_rake",
+        "east_shadow_wedge",
+        "bakery_front_glow_spill"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_close_window_glow_box",
+        "do_not_shift_to_cool_twilight_without_beat"
+      ]
+    },
+    {
+      "lighting_anchor_id": "blue_hour_street_01",
+      "lighting_dna_id": "early_evening_village",
+      "light_source_positions": [
+        "below_horizon_civil_twilight_sky_dome",
+        "lantern_pool_warm_on_street_level",
+        "cool_ambient_from_alleys_and_facades"
+      ],
+      "key_light_direction": "cool_twilight_sky_from_above_with_warm_lantern_underfill",
+      "fill_light_direction": "lantern_warm_pools_along_street_axis",
+      "shadow_direction": "soft_down_facade_shadows_toward_street_center",
+      "color_temperature": "cool_7500k_ambient_with_2800k_lantern_pools",
+      "brightness_range": "soft_low_0.35_to_0.55_exterior",
+      "window_glow_strength": "medium_facade_window_warm_dots",
+      "ambient_strength": "civil_twilight_0.42",
+      "highlight_behavior": "lantern_halo_and_window_dot_contrast_on_cool street",
+      "visual_memory_tokens": [
+        "blue_twilight_street_base",
+        "lantern_pool_rhythm",
+        "facade_window_warm_dots",
+        "cool_alley_depth",
+        "cobble_soft_specular"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_remove_lantern_pools",
+        "do_not_brighten_to_midday"
+      ]
+    },
+    {
+      "lighting_anchor_id": "night_lamp_interior_01",
+      "lighting_dna_id": "night_bakery",
+      "light_source_positions": [
+        "single_oil_lamp_practical_table_height",
+        "oven_mouth_amber_core_north_niche",
+        "no_exterior_sun"
+      ],
+      "key_light_direction": "lamp_practical_from_table_zone_with_oven_north_fill",
+      "fill_light_direction": "oven_amber_bounce_on_near_plaster",
+      "shadow_direction": "deep_shadow_falloff_to_south_and_west_corners",
+      "color_temperature": "warm_2600k_lamp_with_3000k_oven_core",
+      "brightness_range": "low_warm_0.20_to_0.40_interior",
+      "window_glow_strength": "low_cool_moon_slit_optional_only",
+      "ambient_strength": "very_low_0.25",
+      "highlight_behavior": "lamp_halo_core_and_oven_mouth_rim_only",
+      "visual_memory_tokens": [
+        "oil_lamp_halo_core",
+        "oven_amber_niche",
+        "deep_corner_shadow_mass",
+        "cool_window_slit_optional",
+        "warm_practical_only_read"
+      ],
+      "forbidden_mutation_rules": [
+        "do_not_reverse_key_light",
+        "do_not_flip_shadow_direction",
+        "do_not_change_color_temperature_group",
+        "do_not_remove_window_glow",
+        "do_not_remove_lamp_practical",
+        "do_not_add_daylight_sun_without_narrative"
+      ]
+    }
+  ]
+}

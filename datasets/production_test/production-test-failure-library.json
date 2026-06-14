@@ -1,0 +1,73 @@
+{
+  "library_id": "production-test-failure-library-v1",
+  "asset_type": "production_test_failure_library",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-002",
+  "module": "REAL_PRODUCTION_TEST_PREPARATION_V1",
+  "purpose": "Catalogued production test failure types with recovery strategies for GPU execution.",
+  "upstream_checkpoint": "PASS_DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "failure_type_count": 8,
+  "failure_types": [
+    "generation_failure",
+    "identity_failure",
+    "continuity_failure",
+    "memory_failure",
+    "render_failure",
+    "lipsync_failure",
+    "prompt_failure",
+    "traceability_failure"
+  ],
+  "prompt_failure_recovery_integrity": "PASS",
+  "traceability_failure_recovery_integrity": "PASS",
+  "failure_library_integrity": "PASS",
+  "failures": [
+    {
+      "failure_id": "ptf-generation",
+      "failure_type": "generation_failure",
+      "severity": "critical",
+      "recovery_strategy": "retry_with_compiled_prompt_and_trace_chain"
+    },
+    {
+      "failure_id": "ptf-identity",
+      "failure_type": "identity_failure",
+      "severity": "critical",
+      "recovery_strategy": "rebind_character_location_identity_anchors"
+    },
+    {
+      "failure_id": "ptf-continuity",
+      "failure_type": "continuity_failure",
+      "severity": "high",
+      "recovery_strategy": "reconcile_production_traceability_handoff_chain"
+    },
+    {
+      "failure_id": "ptf-memory",
+      "failure_type": "memory_failure",
+      "severity": "high",
+      "recovery_strategy": "extend_callback_horizon_within_memory_spec"
+    },
+    {
+      "failure_id": "ptf-render",
+      "failure_type": "render_failure",
+      "severity": "critical",
+      "recovery_strategy": "validate_video_trace_to_final_output_gate"
+    },
+    {
+      "failure_id": "ptf-lipsync",
+      "failure_type": "lipsync_failure",
+      "severity": "high",
+      "recovery_strategy": "realign_pause_emphasis_timing_with_dialogue_spec"
+    },
+    {
+      "failure_id": "ptf-prompt",
+      "failure_type": "prompt_failure",
+      "severity": "critical",
+      "recovery_strategy": "run_prompt_evaluation_improvement_recommendations_and_recompile"
+    },
+    {
+      "failure_id": "ptf-traceability",
+      "failure_type": "traceability_failure",
+      "severity": "critical",
+      "recovery_strategy": "rebuild_prompt_image_video_failure_recovery_trace_chain"
+    }
+  ]
+}

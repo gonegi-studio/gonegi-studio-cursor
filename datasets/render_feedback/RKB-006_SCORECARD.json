@@ -1,0 +1,224 @@
+{
+  "test_id": "RKB-006",
+  "test_name": "COVERAGE_VALIDATION",
+  "phase": "PHASE-RKB-006",
+  "generated_at": "2026-06-03T07:07:24.501Z",
+  "comparison_baselines": [
+    "RKB-004",
+    "RKB-005",
+    "pre-SHOT-GRAMMAR"
+  ],
+  "precheck": {
+    "shot_grammar_verdict": "PASS_CINEMATIC_COVERAGE_GRAMMAR_V1",
+    "rkb_004_verdict": "PASS_RKB_004_INDOOR_LOCATION_VALIDATION",
+    "rkb_005_verdict": "PASS_RKB_005_LIGHTING_VALIDATION",
+    "latest_adapter_present": true,
+    "pass": true
+  },
+  "adapter_consumption_check": {
+    "total_shots": 40,
+    "pass_count": 40,
+    "fail_count": 0,
+    "verdict": "PASS"
+  },
+  "medium_chain_reduction": {
+    "pre_shot_total_chains": 32,
+    "rkb_006_total_chains": 0,
+    "reduction_rate": 1,
+    "target_reduction": 0.8,
+    "met": true
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_a",
+      "scene_label": "Gonegi bakery morning",
+      "location_id": "family_bakery_kitchen_01",
+      "lighting_anchor_id": "morning_bakery_glow_01",
+      "character_id": "gonegi",
+      "scene_goal": "open bakery morning ritual",
+      "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+      "shot_sequence": [
+        "establishing",
+        "medium",
+        "insert",
+        "reaction",
+        "wide"
+      ],
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "unique_shot_types": [
+        "establishing",
+        "medium",
+        "insert",
+        "reaction",
+        "wide"
+      ],
+      "medium_triple_chain_count": 0,
+      "pre_shot_medium_triple_chain_count": 8,
+      "medium_chain_reduction_rate": 1,
+      "coverage_diversity_score": 0.57,
+      "review_criteria": {
+        "coverage_diversity": "PASS",
+        "medium_chain_reduction": "PASS",
+        "cinematic_feel": "PASS",
+        "anchor_preservation": "PASS"
+      },
+      "metrics_pre_shot": {
+        "coverage_diversity": 0.14,
+        "medium_chain_rate": 1
+      },
+      "metrics_rkb_006": {
+        "coverage_diversity": 0.57,
+        "medium_chain_rate": 0
+      },
+      "coverage_pattern_recognizable": true,
+      "scene_pass": true
+    },
+    {
+      "scene_id": "scene_b",
+      "scene_label": "Dana window reading",
+      "location_id": "dana_window_corner_01",
+      "lighting_anchor_id": "sunrise_window_soft_01",
+      "character_id": "dana",
+      "scene_goal": "quiet reading at window nook",
+      "coverage_id": "coverage_pattern_03_pov_insert_chain",
+      "shot_sequence": [
+        "wide",
+        "insert",
+        "pov",
+        "reaction",
+        "medium"
+      ],
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "unique_shot_types": [
+        "wide",
+        "insert",
+        "pov",
+        "reaction",
+        "medium"
+      ],
+      "medium_triple_chain_count": 0,
+      "pre_shot_medium_triple_chain_count": 8,
+      "medium_chain_reduction_rate": 1,
+      "coverage_diversity_score": 0.71,
+      "review_criteria": {
+        "coverage_diversity": "PASS",
+        "medium_chain_reduction": "PASS",
+        "cinematic_feel": "PASS",
+        "anchor_preservation": "PASS"
+      },
+      "metrics_pre_shot": {
+        "coverage_diversity": 0.14,
+        "medium_chain_rate": 1
+      },
+      "metrics_rkb_006": {
+        "coverage_diversity": 0.71,
+        "medium_chain_rate": 0
+      },
+      "coverage_pattern_recognizable": true,
+      "scene_pass": true
+    },
+    {
+      "scene_id": "scene_c",
+      "scene_label": "Harbor dock activity",
+      "location_id": "gonegi_harbor_dock_01",
+      "lighting_anchor_id": "midday_harbor_clear_01",
+      "character_id": "gonegi",
+      "scene_goal": "dock work under clear midday light",
+      "coverage_id": "coverage_pattern_02_environmental_close",
+      "shot_sequence": [
+        "wide",
+        "environmental",
+        "medium",
+        "close",
+        "reaction"
+      ],
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "unique_shot_types": [
+        "wide",
+        "environmental",
+        "medium",
+        "close",
+        "reaction"
+      ],
+      "medium_triple_chain_count": 0,
+      "pre_shot_medium_triple_chain_count": 8,
+      "medium_chain_reduction_rate": 1,
+      "coverage_diversity_score": 0.71,
+      "review_criteria": {
+        "coverage_diversity": "PASS",
+        "medium_chain_reduction": "PASS",
+        "cinematic_feel": "PASS",
+        "anchor_preservation": "PASS"
+      },
+      "metrics_pre_shot": {
+        "coverage_diversity": 0.14,
+        "medium_chain_rate": 1
+      },
+      "metrics_rkb_006": {
+        "coverage_diversity": 0.71,
+        "medium_chain_rate": 0
+      },
+      "coverage_pattern_recognizable": true,
+      "scene_pass": true
+    },
+    {
+      "scene_id": "scene_d",
+      "scene_label": "Olive hill lunch",
+      "location_id": "gonegi_olive_hill_01",
+      "lighting_anchor_id": "afternoon_olive_hill_01",
+      "character_id": "gonegi",
+      "scene_goal": "afternoon lunch pause on olive hill",
+      "coverage_id": "coverage_pattern_02_environmental_close",
+      "shot_sequence": [
+        "wide",
+        "environmental",
+        "medium",
+        "close",
+        "reaction"
+      ],
+      "generation_count": 10,
+      "adapter_consumption_pass_count": 10,
+      "unique_shot_types": [
+        "wide",
+        "environmental",
+        "medium",
+        "close",
+        "reaction"
+      ],
+      "medium_triple_chain_count": 0,
+      "pre_shot_medium_triple_chain_count": 8,
+      "medium_chain_reduction_rate": 1,
+      "coverage_diversity_score": 0.71,
+      "review_criteria": {
+        "coverage_diversity": "PASS",
+        "medium_chain_reduction": "PASS",
+        "cinematic_feel": "PASS",
+        "anchor_preservation": "PASS"
+      },
+      "metrics_pre_shot": {
+        "coverage_diversity": 0.14,
+        "medium_chain_rate": 1
+      },
+      "metrics_rkb_006": {
+        "coverage_diversity": 0.71,
+        "medium_chain_rate": 0
+      },
+      "coverage_pattern_recognizable": true,
+      "scene_pass": true
+    }
+  ],
+  "success_condition": {
+    "required_pass_scenes": 4,
+    "actual_pass_scenes": 4,
+    "met": true
+  },
+  "aggregate_coverage_diversity": {
+    "pre_shot": 0.14,
+    "rkb_006": 0.68,
+    "improvement": 0.54
+  },
+  "final_verdict": "PASS_RKB_006_COVERAGE_VALIDATION"
+}

@@ -1,0 +1,192 @@
+{
+  "report_id": "real_image_app_manual_report_mqbnn2ej",
+  "phase": "PHASE-IMAGE-APP-MANUAL-VALIDATION-001",
+  "system_id": "REAL_IMAGE_APP_MANUAL_V1",
+  "generated_at": "2026-06-13T01:06:26.155Z",
+  "final_verdict": "FAIL_REAL_IMAGE_APP_MANUAL_V1",
+  "validation_passed": false,
+  "manual_validation_complete": false,
+  "real_application_output_verified": false,
+  "human_review_complete": false,
+  "native_import_path": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+  "output_directory": "exports/movie_spatial/image_app_manual",
+  "intake_path": "datasets/movie_spatial/image_app_manual/REAL_IMAGE_APP_MANUAL_INTAKE.json",
+  "reviewer": "",
+  "reviewed_at": null,
+  "manual_test_procedure": {
+    "title": "Real Image App Manual Validation",
+    "native_import_path": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+    "output_directory": "exports/movie_spatial/image_app_manual",
+    "intake_path": "datasets/movie_spatial/image_app_manual/REAL_IMAGE_APP_MANUAL_INTAKE.json",
+    "global_steps": [
+      "Open the real Image App and import exports/movie_spatial/titanic-image-app-native-import-v8.json.",
+      "Confirm slots[] load with artStyle, timeSetting, scenario, and character fields.",
+      "Generate scene 001 (slot index 0), scene 002 (slot index 1), and scene 003 (slot index 2).",
+      "Save outputs to exports/movie_spatial/image_app_manual/real_scene_001.png, real_scene_002.png, real_scene_003.png.",
+      "Record human review scores in datasets/movie_spatial/image_app_manual/REAL_IMAGE_APP_MANUAL_INTAKE.json.",
+      "Run npm run verify:real-image-app-manual to produce REAL_IMAGE_APP_MANUAL_REPORT.json."
+    ]
+  },
+  "metrics": {
+    "scene_count": 3,
+    "scenes_passed": 0,
+    "real_output_count": 0,
+    "average_artStyle_accuracy": 0,
+    "average_character_accuracy": 0,
+    "average_timeSetting_accuracy": 0,
+    "average_scenario_accuracy": 0,
+    "average_overall_replica_quality": 0,
+    "average_scene_score": 0
+  },
+  "scene_results": [
+    {
+      "test_scene_key": "scene_001",
+      "scene_id": "scene_titanic_dense_promenade_0001",
+      "slot_index": 0,
+      "native_import_ref": "exports/movie_spatial/titanic-image-app-native-import-v8.json#slot_index=0",
+      "expected_output_path": "exports/movie_spatial/image_app_manual/real_scene_001.png",
+      "output_exists": false,
+      "output_sha256": null,
+      "output_bytes": 0,
+      "simulated_output_rejected": false,
+      "import_success": false,
+      "generation_success": false,
+      "import_slot": {
+        "artStyle": "Studio Ghibli hand-painted gouache style, clean and crisp black ink outlines, enhanced with Vitreous Paradox (combination of dry matte chalky textures and high-gloss translucent enamel varnishing), using deep layered oil glazing techniques for luminous ambient light refraction.",
+        "timeSetting": "Warm golden hour light #FFA07A, soft orange haze rising from the sea.",
+        "scenario": "[SCENE_RECONSTRUCTION] scene_id=scene_titanic_dense_promenade_0001 movie_id=titanic graph_id=titanic_spatial_graph_scene_titanic_dense_promenade_0001 [CAMERA_LANGUAGE] eye level medium shot camera_observes_character:framed_subject; camera_observes_character:framed_subject [CAMERA_DISTANCE] 3.0000 units label=medium [CAMERA_HEIGHT] eye_level [SHOT_TYPE] medium_shot [BLOCKING] characters: CHAR-gonagi depth=midground position=[0.4200,0.4850,1.6000] rotation=[6.7190,1.6387,0.0000]; CHAR-dana depth=midground position=[0.5800,0.4850,1.6800] rotation=[7.0941,-5.1918,0.0000] | interactions: CHAR-gonagi->CHAR-dana type=scene_blocking_pair [GAZE] CHAR-gonagi->CHAR-dana origin=[0.4200,0.4850,1.6000] direction=[0.8944,0.0000,0.4472]; CHAR-dana->CHAR-gonagi origin=[0.5800,0.4850,1.6800] direction=[-0.8944,0.0000,-0.4472] [FOREGROUND] layer_id=foreground depth_range=0-0.35 elements=none [MIDGROUND] layer_id=midground depth_range=0.35-0.7 elements=CHAR-gonagi, CHAR-dana [BACKGROUND] layer_id=background depth_range=0.7-1 elements=env_anchor_titanic_replica_0001 [ENVIRONMENT_ANCHOR] anchor_id=titanic_staircase_encounter environment_type=interior_luxury scene_category=promenade position=[0.5000,0.5000,3.5000] [PROP_ANCHOR] env_anchor_titanic_replica_0001 depth=background position=[0.5000,0.5000,2.8000] [SEMANTIC_ANCHOR] semantic_anchor_id=titanic_staircase_encounter scene_id=scene_titanic_dense_promenade_0001 spatial_id=titanic_spatial_scene_titanic_dense_promenade_0001 [REPLICA_PRESERVATION] preserve movie spatial graph blocking, camera framing, depth layering, gaze vectors, environment anchors, and prop anchors without summary compression.",
+        "character": "Goneg- Grid 1-1i: 11yo boy. Messy matte jet-black Pazu-like hair, healthy sun-kissed tan skin. Wearing off-white henley shirt with sleeves rolled up, high-waisted navy trousers, suspenders, dark brown work boots. Distinct Ghibli-style expressive eyes. || Dana- Grid 1-2: 11yo girl. Long flowing soft chestnut hair tied in low twin ponytails with thin blue strings, fair skin. Wearing soft solid cornflower blue sleeveless shift dress, seashell pendant necklace, flat dark-brown leather sandals."
+      },
+      "review": null,
+      "scene_passed": false
+    },
+    {
+      "test_scene_key": "scene_002",
+      "scene_id": "scene_titanic_dense_grand_staircase_0002",
+      "slot_index": 1,
+      "native_import_ref": "exports/movie_spatial/titanic-image-app-native-import-v8.json#slot_index=1",
+      "expected_output_path": "exports/movie_spatial/image_app_manual/real_scene_002.png",
+      "output_exists": false,
+      "output_sha256": null,
+      "output_bytes": 0,
+      "simulated_output_rejected": false,
+      "import_success": false,
+      "generation_success": false,
+      "import_slot": {
+        "artStyle": "Studio Ghibli hand-painted gouache style, clean and crisp black ink outlines, enhanced with Vitreous Paradox (combination of dry matte chalky textures and high-gloss translucent enamel varnishing), using deep layered oil glazing techniques for luminous ambient light refraction.",
+        "timeSetting": "Warm golden hour light #FFA07A, soft orange haze rising from the sea.",
+        "scenario": "[SCENE_RECONSTRUCTION] scene_id=scene_titanic_dense_grand_staircase_0002 movie_id=titanic graph_id=titanic_spatial_graph_scene_titanic_dense_grand_staircase_0002 [CAMERA_LANGUAGE] eye level medium shot camera_observes_character:framed_subject; camera_observes_character:framed_subject [CAMERA_DISTANCE] 3.0000 units label=medium [CAMERA_HEIGHT] eye_level [SHOT_TYPE] medium_shot [BLOCKING] characters: CHAR-gonagi depth=midground position=[0.4200,0.4900,1.6000] rotation=[5.3535,2.1471,0.0000]; CHAR-dana depth=midground position=[0.5800,0.4900,1.6800] rotation=[5.6240,-3.7624,0.0000] | interactions: CHAR-gonagi->CHAR-dana type=scene_blocking_pair [GAZE] CHAR-gonagi->CHAR-dana origin=[0.4200,0.4900,1.6000] direction=[0.8944,0.0000,0.4472]; CHAR-dana->CHAR-gonagi origin=[0.5800,0.4900,1.6800] direction=[-0.8944,0.0000,-0.4472] [FOREGROUND] layer_id=foreground depth_range=0-0.35 elements=none [MIDGROUND] layer_id=midground depth_range=0.35-0.7 elements=CHAR-gonagi, CHAR-dana [BACKGROUND] layer_id=background depth_range=0.7-1 elements=env_anchor_titanic_replica_0002 [ENVIRONMENT_ANCHOR] anchor_id=titanic_farewell_pose environment_type=interior_work scene_category=grand_staircase position=[0.5000,0.5000,3.5000] [PROP_ANCHOR] env_anchor_titanic_replica_0002 depth=background position=[0.5000,0.5000,2.8000] [SEMANTIC_ANCHOR] semantic_anchor_id=titanic_farewell_pose scene_id=scene_titanic_dense_grand_staircase_0002 spatial_id=titanic_spatial_scene_titanic_dense_grand_staircase_0002 [REPLICA_PRESERVATION] preserve movie spatial graph blocking, camera framing, depth layering, gaze vectors, environment anchors, and prop anchors without summary compression.",
+        "character": "Goneg- Grid 1-1i: 11yo boy. Messy matte jet-black Pazu-like hair, healthy sun-kissed tan skin. Wearing off-white henley shirt with sleeves rolled up, high-waisted navy trousers, suspenders, dark brown work boots. Distinct Ghibli-style expressive eyes. || Dana- Grid 1-2: 11yo girl. Long flowing soft chestnut hair tied in low twin ponytails with thin blue strings, fair skin. Wearing soft solid cornflower blue sleeveless shift dress, seashell pendant necklace, flat dark-brown leather sandals."
+      },
+      "review": null,
+      "scene_passed": false
+    },
+    {
+      "test_scene_key": "scene_003",
+      "scene_id": "scene_titanic_dense_first_class_salon_0003",
+      "slot_index": 2,
+      "native_import_ref": "exports/movie_spatial/titanic-image-app-native-import-v8.json#slot_index=2",
+      "expected_output_path": "exports/movie_spatial/image_app_manual/real_scene_003.png",
+      "output_exists": false,
+      "output_sha256": null,
+      "output_bytes": 0,
+      "simulated_output_rejected": false,
+      "import_success": false,
+      "generation_success": false,
+      "import_slot": {
+        "artStyle": "Studio Ghibli hand-painted gouache style, clean and crisp black ink outlines, enhanced with Vitreous Paradox (combination of dry matte chalky textures and high-gloss translucent enamel varnishing), using deep layered oil glazing techniques for luminous ambient light refraction.",
+        "timeSetting": "Warm golden hour light #FFA07A, soft orange haze rising from the sea.",
+        "scenario": "[SCENE_RECONSTRUCTION] scene_id=scene_titanic_dense_first_class_salon_0003 movie_id=titanic graph_id=titanic_spatial_graph_scene_titanic_dense_first_class_salon_0003 [CAMERA_LANGUAGE] eye level medium shot camera_observes_character:framed_subject; camera_observes_character:framed_subject [CAMERA_DISTANCE] 3.0000 units label=medium [CAMERA_HEIGHT] eye_level [SHOT_TYPE] medium_shot [BLOCKING] characters: CHAR-gonagi depth=midground position=[0.4200,0.4950,1.6000] rotation=[4.2840,2.5462,0.0000]; CHAR-dana depth=midground position=[0.5800,0.4950,1.6800] rotation=[4.4851,-2.6618,0.0000] | interactions: CHAR-gonagi->CHAR-dana type=scene_blocking_pair [GAZE] CHAR-gonagi->CHAR-dana origin=[0.4200,0.4950,1.6000] direction=[0.8944,0.0000,0.4472]; CHAR-dana->CHAR-gonagi origin=[0.5800,0.4950,1.6800] direction=[-0.8944,0.0000,-0.4472] [FOREGROUND] layer_id=foreground depth_range=0-0.35 elements=none [MIDGROUND] layer_id=midground depth_range=0.35-0.7 elements=CHAR-gonagi, CHAR-dana [BACKGROUND] layer_id=background depth_range=0.7-1 elements=env_anchor_titanic_replica_0003 [ENVIRONMENT_ANCHOR] anchor_id=titanic_sunset_rail_pose environment_type=crowd_space scene_category=first_class_salon position=[0.5000,0.5000,3.5000] [PROP_ANCHOR] env_anchor_titanic_replica_0003 depth=background position=[0.5000,0.5000,2.8000] [SEMANTIC_ANCHOR] semantic_anchor_id=titanic_sunset_rail_pose scene_id=scene_titanic_dense_first_class_salon_0003 spatial_id=titanic_spatial_scene_titanic_dense_first_class_salon_0003 [REPLICA_PRESERVATION] preserve movie spatial graph blocking, camera framing, depth layering, gaze vectors, environment anchors, and prop anchors without summary compression.",
+        "character": "Goneg- Grid 1-1i: 11yo boy. Messy matte jet-black Pazu-like hair, healthy sun-kissed tan skin. Wearing off-white henley shirt with sleeves rolled up, high-waisted navy trousers, suspenders, dark brown work boots. Distinct Ghibli-style expressive eyes. || Dana- Grid 1-2: 11yo girl. Long flowing soft chestnut hair tied in low twin ponytails with thin blue strings, fair skin. Wearing soft solid cornflower blue sleeveless shift dress, seashell pendant necklace, flat dark-brown leather sandals."
+      },
+      "review": null,
+      "scene_passed": false
+    }
+  ],
+  "issues": [
+    {
+      "code": "IMPORT_NOT_ATTESTED",
+      "message": "Set import_completed=true in datasets/movie_spatial/image_app_manual/REAL_IMAGE_APP_MANUAL_INTAKE.json after real Image App import",
+      "severity": "error"
+    },
+    {
+      "code": "REVIEWER_MISSING",
+      "message": "Set reviewer in datasets/movie_spatial/image_app_manual/REAL_IMAGE_APP_MANUAL_INTAKE.json",
+      "severity": "error"
+    },
+    {
+      "code": "REVIEW_TIMESTAMP_MISSING",
+      "message": "Set reviewed_at in datasets/movie_spatial/image_app_manual/REAL_IMAGE_APP_MANUAL_INTAKE.json",
+      "severity": "error"
+    },
+    {
+      "code": "REAL_OUTPUT_MISSING",
+      "message": "Missing real Image App output exports/movie_spatial/image_app_manual/real_scene_001.png",
+      "severity": "error"
+    },
+    {
+      "code": "IMPORT_SUCCESS_NOT_ATTESTED",
+      "message": "scene_001: set import_success=true in intake after real import",
+      "severity": "error"
+    },
+    {
+      "code": "GENERATION_SUCCESS_NOT_ATTESTED",
+      "message": "scene_001: set generation_success=true in intake after real generation",
+      "severity": "error"
+    },
+    {
+      "code": "HUMAN_REVIEW_INCOMPLETE",
+      "message": "scene_001: all review scores must be numbers between 0 and 1",
+      "severity": "error"
+    },
+    {
+      "code": "REAL_OUTPUT_MISSING",
+      "message": "Missing real Image App output exports/movie_spatial/image_app_manual/real_scene_002.png",
+      "severity": "error"
+    },
+    {
+      "code": "IMPORT_SUCCESS_NOT_ATTESTED",
+      "message": "scene_002: set import_success=true in intake after real import",
+      "severity": "error"
+    },
+    {
+      "code": "GENERATION_SUCCESS_NOT_ATTESTED",
+      "message": "scene_002: set generation_success=true in intake after real generation",
+      "severity": "error"
+    },
+    {
+      "code": "HUMAN_REVIEW_INCOMPLETE",
+      "message": "scene_002: all review scores must be numbers between 0 and 1",
+      "severity": "error"
+    },
+    {
+      "code": "REAL_OUTPUT_MISSING",
+      "message": "Missing real Image App output exports/movie_spatial/image_app_manual/real_scene_003.png",
+      "severity": "error"
+    },
+    {
+      "code": "IMPORT_SUCCESS_NOT_ATTESTED",
+      "message": "scene_003: set import_success=true in intake after real import",
+      "severity": "error"
+    },
+    {
+      "code": "GENERATION_SUCCESS_NOT_ATTESTED",
+      "message": "scene_003: set generation_success=true in intake after real generation",
+      "severity": "error"
+    },
+    {
+      "code": "HUMAN_REVIEW_INCOMPLETE",
+      "message": "scene_003: all review scores must be numbers between 0 and 1",
+      "severity": "error"
+    }
+  ],
+  "execution_flags": {
+    "design_only": false,
+    "gpu_execution": false,
+    "image_generation": true,
+    "video_generation": false,
+    "rendering": false,
+    "pixel_engine": false,
+    "simulation": false
+  }
+}

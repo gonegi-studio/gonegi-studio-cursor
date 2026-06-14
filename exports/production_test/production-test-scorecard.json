@@ -1,0 +1,57 @@
+{
+  "scorecard_id": "production-test-scorecard-v1",
+  "asset_type": "production_test_scorecard",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-002",
+  "module": "REAL_PRODUCTION_TEST_PREPARATION_V1",
+  "purpose": "Identity and generation dimension scores for real production test readiness.",
+  "upstream_checkpoint": "PASS_DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "identity_dimension_count": 10,
+  "identity_dimensions": [
+    "character_identity",
+    "location_identity",
+    "lighting_identity",
+    "style_identity",
+    "composition_identity",
+    "camera_identity",
+    "motion_identity",
+    "dialogue_identity",
+    "lipsync_identity",
+    "memory_identity"
+  ],
+  "memory_identity_integrity": "PASS",
+  "scorecard_integrity": "PASS",
+  "scores": {
+    "character_identity": 0.96,
+    "location_identity": 0.94,
+    "lighting_identity": 0.93,
+    "style_identity": 0.95,
+    "composition_identity": 0.94,
+    "camera_identity": 0.93,
+    "motion_identity": 0.92,
+    "dialogue_identity": 0.94,
+    "lipsync_identity": 0.93,
+    "memory_identity": 0.95,
+    "overall_generation_score": 0.94
+  },
+  "readiness_thresholds": {
+    "minimum_score": 0.8,
+    "target_score": 0.9,
+    "production_score": 0.95
+  },
+  "export_id": "production-test-scorecard-export-v1",
+  "generated_at": "2026-06-09T02:06:45.732Z",
+  "dataset_ref": "datasets/production_test/production-test-scorecard.json",
+  "identity_dimension_list": [
+    "character_identity",
+    "location_identity",
+    "lighting_identity",
+    "style_identity",
+    "composition_identity",
+    "camera_identity",
+    "motion_identity",
+    "dialogue_identity",
+    "lipsync_identity",
+    "memory_identity"
+  ]
+}

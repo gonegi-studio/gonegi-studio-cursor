@@ -1,0 +1,483 @@
+{
+  "map_id": "feature-film-arc-network-v1",
+  "phase": "PHASE-L3-FEATURE-002",
+  "purpose": "feature_arc_relationship_tracking",
+  "archetypes": [
+    {
+      "feature_film_archetype_id": "harbor_saga_feature",
+      "network_id": "harbor_saga_feature_arc_network_v1",
+      "purpose": "feature_arc_relationship_tracking",
+      "nodes": [
+        {
+          "node_id": "main_arc",
+          "arc_type": "main_arc",
+          "ref": "departure_main"
+        },
+        {
+          "node_id": "marco_fishing_line",
+          "arc_type": "subplot_arc",
+          "ref": "marco_fishing_line"
+        },
+        {
+          "node_id": "bakery_expansion",
+          "arc_type": "subplot_arc",
+          "ref": "bakery_expansion"
+        },
+        {
+          "node_id": "departure_track",
+          "arc_type": "parallel_arc",
+          "ref": "departure_main"
+        },
+        {
+          "node_id": "community_track",
+          "arc_type": "parallel_arc",
+          "ref": "community_harbor"
+        },
+        {
+          "node_id": "legacy_track",
+          "arc_type": "parallel_arc",
+          "ref": "legacy_harbor_line"
+        },
+        {
+          "node_id": "relationship_arc",
+          "arc_type": "relationship_arc",
+          "ref": "relationship_network"
+        },
+        {
+          "node_id": "world_arc",
+          "arc_type": "world_arc",
+          "ref": "world_change_story"
+        },
+        {
+          "node_id": "world_state_arc",
+          "arc_type": "world_state_arc",
+          "ref": "world_state_evolution"
+        },
+        {
+          "node_id": "theme_arc",
+          "arc_type": "theme_arc",
+          "ref": "return_and_memory"
+        },
+        {
+          "node_id": "legacy_callback_arc",
+          "arc_type": "legacy_callback_arc",
+          "ref": "legacy_chains"
+        }
+      ],
+      "edges": [
+        {
+          "from": "main_arc",
+          "to": "marco_fishing_line",
+          "relationship": "contains_subplot"
+        },
+        {
+          "from": "main_arc",
+          "to": "departure_track",
+          "relationship": "parallel_counterpoint"
+        },
+        {
+          "from": "main_arc",
+          "to": "relationship_arc",
+          "relationship": "character_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_arc",
+          "relationship": "world_change_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_state_arc",
+          "relationship": "macro_world_evolution"
+        },
+        {
+          "from": "main_arc",
+          "to": "theme_arc",
+          "relationship": "thematic_through_line"
+        },
+        {
+          "from": "theme_arc",
+          "to": "legacy_callback_arc",
+          "relationship": "legacy_payoff_alignment"
+        },
+        {
+          "from": "world_arc",
+          "to": "world_state_arc",
+          "relationship": "state_stage_alignment"
+        },
+        {
+          "from": "world_state_arc",
+          "to": "relationship_arc",
+          "relationship": "community_evolution"
+        },
+        {
+          "from": "departure_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "community_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "legacy_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        }
+      ],
+      "relationship_network_ref": {
+        "nodes": [
+          "gonegi",
+          "dana",
+          "marco",
+          "elena",
+          "gonegi_ancestor"
+        ],
+        "edges": [
+          {
+            "from": "gonegi",
+            "to": "dana",
+            "relationship_type": "romantic_bond"
+          },
+          {
+            "from": "gonegi",
+            "to": "marco",
+            "relationship_type": "harbor_ally"
+          },
+          {
+            "from": "gonegi",
+            "to": "gonegi_ancestor",
+            "relationship_type": "generational_legacy"
+          },
+          {
+            "from": "dana",
+            "to": "elena",
+            "relationship_type": "family_neighbor"
+          }
+        ],
+        "evolution_stages": [
+          "isolated_pairs",
+          "community_mesh",
+          "departure_fracture",
+          "reunion_network",
+          "legacy_continuum"
+        ]
+      }
+    },
+    {
+      "feature_film_archetype_id": "mediterranean_epoch_feature",
+      "network_id": "mediterranean_epoch_feature_arc_network_v1",
+      "purpose": "feature_arc_relationship_tracking",
+      "nodes": [
+        {
+          "node_id": "main_arc",
+          "arc_type": "main_arc",
+          "ref": "seasonal_cycle_main"
+        },
+        {
+          "node_id": "festival_preparation",
+          "arc_type": "subplot_arc",
+          "ref": "festival_preparation"
+        },
+        {
+          "node_id": "civic_debate",
+          "arc_type": "subplot_arc",
+          "ref": "civic_debate"
+        },
+        {
+          "node_id": "seasonal_track",
+          "arc_type": "parallel_arc",
+          "ref": "seasonal_cycle_main"
+        },
+        {
+          "node_id": "festival_track",
+          "arc_type": "parallel_arc",
+          "ref": "festival_lineage"
+        },
+        {
+          "node_id": "civic_track",
+          "arc_type": "parallel_arc",
+          "ref": "civic_transformation"
+        },
+        {
+          "node_id": "relationship_arc",
+          "arc_type": "relationship_arc",
+          "ref": "relationship_network"
+        },
+        {
+          "node_id": "world_arc",
+          "arc_type": "world_arc",
+          "ref": "world_change_story"
+        },
+        {
+          "node_id": "world_state_arc",
+          "arc_type": "world_state_arc",
+          "ref": "world_state_evolution"
+        },
+        {
+          "node_id": "theme_arc",
+          "arc_type": "theme_arc",
+          "ref": "tradition_and_change"
+        },
+        {
+          "node_id": "legacy_callback_arc",
+          "arc_type": "legacy_callback_arc",
+          "ref": "legacy_chains"
+        }
+      ],
+      "edges": [
+        {
+          "from": "main_arc",
+          "to": "festival_preparation",
+          "relationship": "contains_subplot"
+        },
+        {
+          "from": "main_arc",
+          "to": "seasonal_track",
+          "relationship": "parallel_counterpoint"
+        },
+        {
+          "from": "main_arc",
+          "to": "relationship_arc",
+          "relationship": "character_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_arc",
+          "relationship": "world_change_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_state_arc",
+          "relationship": "macro_world_evolution"
+        },
+        {
+          "from": "main_arc",
+          "to": "theme_arc",
+          "relationship": "thematic_through_line"
+        },
+        {
+          "from": "theme_arc",
+          "to": "legacy_callback_arc",
+          "relationship": "legacy_payoff_alignment"
+        },
+        {
+          "from": "world_arc",
+          "to": "world_state_arc",
+          "relationship": "state_stage_alignment"
+        },
+        {
+          "from": "world_state_arc",
+          "to": "relationship_arc",
+          "relationship": "community_evolution"
+        },
+        {
+          "from": "seasonal_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "festival_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "civic_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        }
+      ],
+      "relationship_network_ref": {
+        "nodes": [
+          "gonegi",
+          "dana",
+          "marco",
+          "elena",
+          "elder_council"
+        ],
+        "edges": [
+          {
+            "from": "gonegi",
+            "to": "dana",
+            "relationship_type": "neighbor_bond"
+          },
+          {
+            "from": "elena",
+            "to": "marco",
+            "relationship_type": "ritual_partners"
+          },
+          {
+            "from": "marco",
+            "to": "elder_council",
+            "relationship_type": "civic_delegate"
+          }
+        ],
+        "evolution_stages": [
+          "village_mesh",
+          "festival_bond",
+          "civic_fracture",
+          "heritage_synthesis",
+          "epoch_continuum"
+        ]
+      }
+    },
+    {
+      "feature_film_archetype_id": "correspondence_ledger_feature",
+      "network_id": "correspondence_ledger_feature_arc_network_v1",
+      "purpose": "feature_arc_relationship_tracking",
+      "nodes": [
+        {
+          "node_id": "main_arc",
+          "arc_type": "main_arc",
+          "ref": "correspondence_main"
+        },
+        {
+          "node_id": "postal_delay_line",
+          "arc_type": "subplot_arc",
+          "ref": "postal_delay_line"
+        },
+        {
+          "node_id": "archive_restoration",
+          "arc_type": "subplot_arc",
+          "ref": "archive_restoration"
+        },
+        {
+          "node_id": "letter_track",
+          "arc_type": "parallel_arc",
+          "ref": "correspondence_main"
+        },
+        {
+          "node_id": "lives_track",
+          "arc_type": "parallel_arc",
+          "ref": "parallel_lives"
+        },
+        {
+          "node_id": "archive_track",
+          "arc_type": "parallel_arc",
+          "ref": "archive_line"
+        },
+        {
+          "node_id": "relationship_arc",
+          "arc_type": "relationship_arc",
+          "ref": "relationship_network"
+        },
+        {
+          "node_id": "world_arc",
+          "arc_type": "world_arc",
+          "ref": "world_change_story"
+        },
+        {
+          "node_id": "world_state_arc",
+          "arc_type": "world_state_arc",
+          "ref": "world_state_evolution"
+        },
+        {
+          "node_id": "theme_arc",
+          "arc_type": "theme_arc",
+          "ref": "words_across_distance"
+        },
+        {
+          "node_id": "legacy_callback_arc",
+          "arc_type": "legacy_callback_arc",
+          "ref": "legacy_chains"
+        }
+      ],
+      "edges": [
+        {
+          "from": "main_arc",
+          "to": "postal_delay_line",
+          "relationship": "contains_subplot"
+        },
+        {
+          "from": "main_arc",
+          "to": "letter_track",
+          "relationship": "parallel_counterpoint"
+        },
+        {
+          "from": "main_arc",
+          "to": "relationship_arc",
+          "relationship": "character_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_arc",
+          "relationship": "world_change_story"
+        },
+        {
+          "from": "main_arc",
+          "to": "world_state_arc",
+          "relationship": "macro_world_evolution"
+        },
+        {
+          "from": "main_arc",
+          "to": "theme_arc",
+          "relationship": "thematic_through_line"
+        },
+        {
+          "from": "theme_arc",
+          "to": "legacy_callback_arc",
+          "relationship": "legacy_payoff_alignment"
+        },
+        {
+          "from": "world_arc",
+          "to": "world_state_arc",
+          "relationship": "state_stage_alignment"
+        },
+        {
+          "from": "world_state_arc",
+          "to": "relationship_arc",
+          "relationship": "community_evolution"
+        },
+        {
+          "from": "letter_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "lives_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        },
+        {
+          "from": "archive_track",
+          "to": "main_arc",
+          "relationship": "converges_at_resolution"
+        }
+      ],
+      "relationship_network_ref": {
+        "nodes": [
+          "gonegi",
+          "dana",
+          "marco",
+          "elena",
+          "archivist"
+        ],
+        "edges": [
+          {
+            "from": "gonegi",
+            "to": "dana",
+            "relationship_type": "correspondence_bond"
+          },
+          {
+            "from": "gonegi",
+            "to": "marco",
+            "relationship_type": "parallel_life_friend"
+          },
+          {
+            "from": "elena",
+            "to": "archivist",
+            "relationship_type": "archive_partnership"
+          }
+        ],
+        "evolution_stages": [
+          "written_intimacy",
+          "geographic_mesh",
+          "silent_fracture",
+          "archive_reunion",
+          "ledger_continuum"
+        ]
+      }
+    }
+  ]
+}

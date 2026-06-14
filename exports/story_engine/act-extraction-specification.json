@@ -1,0 +1,90 @@
+{
+  "spec_id": "act-extraction-specification-v1",
+  "asset_type": "act_extraction_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-STORY-001",
+  "module": "STORY_TO_BLUEPRINT_ENGINE_V1",
+  "purpose": "Extract act structure from analyzed story for blueprint mapping.",
+  "upstream_checkpoint": "PASS_GENERATION_OPERATION_STACK_V1",
+  "required_acts": [
+    "act_1",
+    "act_2",
+    "act_3"
+  ],
+  "optional_acts": [
+    "optional_act_4",
+    "optional_act_5"
+  ],
+  "act_extraction_integrity": "PASS",
+  "runtime_act_mapping": {
+    "MV": {
+      "act_count": 3,
+      "acts": [
+        "act_1",
+        "act_2",
+        "act_3"
+      ]
+    },
+    "SHORT": {
+      "act_count": 3,
+      "acts": [
+        "act_1",
+        "act_2",
+        "act_3"
+      ]
+    },
+    "MEDIUM": {
+      "act_count": 4,
+      "acts": [
+        "act_1",
+        "act_2",
+        "act_3",
+        "optional_act_4"
+      ]
+    },
+    "FEATURE": {
+      "act_count": 5,
+      "acts": [
+        "act_1",
+        "act_2",
+        "act_3",
+        "optional_act_4",
+        "optional_act_5"
+      ]
+    }
+  },
+  "extracted_acts": {
+    "act_1": {
+      "act_name": "setup",
+      "purpose": "Establish world, characters, and inciting conflict."
+    },
+    "act_2": {
+      "act_name": "rising_action",
+      "purpose": "Escalate conflicts and deepen relationships."
+    },
+    "act_3": {
+      "act_name": "climax",
+      "purpose": "Peak confrontation and emotional turn."
+    },
+    "optional_act_4": {
+      "act_name": "falling_action",
+      "purpose": "Resolve subplots and world-state shifts."
+    },
+    "optional_act_5": {
+      "act_name": "resolution",
+      "purpose": "Legacy callbacks and final output alignment."
+    }
+  },
+  "export_id": "act-extraction-specification-export-v1",
+  "generated_at": "2026-06-09T01:25:00.993Z",
+  "dataset_ref": "datasets/story/act-extraction-specification.json",
+  "required_act_list": [
+    "act_1",
+    "act_2",
+    "act_3"
+  ],
+  "optional_act_list": [
+    "optional_act_4",
+    "optional_act_5"
+  ]
+}

@@ -1,0 +1,1264 @@
+{
+  "package_id": "environment-identity-binding-package-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-008",
+  "system_id": "ENVIRONMENT_IDENTITY_BINDING_V1",
+  "generated_at": "2026-06-13T23:05:31.690Z",
+  "environment_reference_bank_binding": {
+    "binding_id": "Unique environment reference bank binding record identifier.",
+    "environment_id": "Canonical environment identifier from reference bank.",
+    "reference_bank_id": "Reference bank slot identifier (env_ref_NNN).",
+    "source_video_id": "Canonical numerical DNA source identifier.",
+    "layout_signature": "Hash of environment anchor layout from reference bank entry."
+  },
+  "environment_anchor_binding": {
+    "binding_id": "Unique environment anchor binding record identifier.",
+    "environment_id": "Parent environment identifier.",
+    "anchor_id": "Canonical environment anchor label.",
+    "anchor_kind": "Anchor classification enum from environment_anchor_format.",
+    "normalized_position": "Vec3 [x,y,z] in screen-normalized space.",
+    "importance": "Anchor persistence weight in [0,1]."
+  },
+  "environment_memory_binding": {
+    "binding_id": "Unique environment memory binding record identifier.",
+    "environment_id": "Parent environment identifier.",
+    "scene_id": "Scene identifier binding memory entry to spatial graph scene.",
+    "memory_signature": "Hash of environment_anchors persisted across scenes.",
+    "location_anchor_reuse": "Boolean flag indicating anchor reused from reference bank.",
+    "persistence_score": "Cross-scene anchor position stability score in [0,1]."
+  },
+  "environment_traceability_binding": {
+    "binding_id": "Unique environment traceability binding record identifier.",
+    "environment_id": "Target environment_id in reference bank.",
+    "source_video_id": "Canonical numerical DNA source identifier.",
+    "conditioning_map_ref": "Path to conditioning-map-export-bundle source entry.",
+    "environment_spec_ref": "Path to ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json.",
+    "traceability_signature": "Deterministic hash binding all lineage fields."
+  },
+  "environment_retrieval_binding": {
+    "binding_id": "Unique environment retrieval binding record identifier.",
+    "environment_id": "Target environment identifier for retrieval.",
+    "strategy_id": "Retrieval strategy identifier (environment_retrieval_v1).",
+    "primary_key": "Primary retrieval key field name.",
+    "fallback_keys": "Ordered fallback key fields for retrieval."
+  },
+  "environment_similarity_binding": {
+    "binding_id": "Unique environment similarity binding record identifier.",
+    "environment_id": "Target environment identifier for similarity matching.",
+    "layout_signature": "Layout signature hash used for similarity comparison.",
+    "similarity_threshold": "Minimum score to treat environments as similar (not identical).",
+    "same_environment_threshold": "Minimum score required for same-environment identity lock.",
+    "matching_features": "Feature list used in similarity rank (anchor_kind, importance, layout_signature)."
+  },
+  "environment_binding_defined": true,
+  "similarity_matching_strategy": {
+    "strategy_id": "environment_similarity_v1",
+    "primary_match": "exact environment_id",
+    "secondary_match": "layout_signature hash equality",
+    "tertiary_match": "anchor_descriptors kind+importance cosine rank",
+    "similarity_threshold": 0.85,
+    "same_environment_threshold": 0.98,
+    "note": "Similar Environment != Same Environment — scores below same_environment_threshold must not be treated as identity lock."
+  },
+  "entries": [
+    {
+      "environment_id": "titanic_staircase_001",
+      "source_video_id": "TITANIC_02",
+      "source_group": "Titanic",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "reference_bank_id": "env_ref_001",
+        "source_video_id": "TITANIC_02",
+        "layout_signature": "layout_40530d5b89017b91"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_titanic_staircase_001_staircase_grand_01",
+        "environment_id": "titanic_staircase_001",
+        "anchor_id": "staircase_grand_01",
+        "anchor_kind": "staircase",
+        "normalized_position": [
+          0.5,
+          0.62,
+          0.85
+        ],
+        "importance": 0.95
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "scene_id": "scene_titanic-staircase-001",
+        "memory_signature": "memory_4e44a5f864934075",
+        "location_anchor_reuse": true,
+        "persistence_score": 0.94
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_titanic_staircase_001_titanic_02",
+        "environment_id": "titanic_staircase_001",
+        "source_video_id": "TITANIC_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#TITANIC_02",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_92bcf6be57b758f4"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "layout_signature": "layout_40530d5b89017b91",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_01",
+      "source_group": "Spirited Away",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_01",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_d40212bcda69cace",
+        "location_anchor_reuse": true,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_01",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_01",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_324aac4eb4cd3990"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "gonegi_harbor_dock_001",
+      "source_video_id": "GHIBLI_01",
+      "source_group": "Gonegi",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_gonegi_harbor_dock_001",
+        "environment_id": "gonegi_harbor_dock_001",
+        "reference_bank_id": "env_ref_003",
+        "source_video_id": "GHIBLI_01",
+        "layout_signature": "layout_dc961bcc02df4dcb"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_gonegi_harbor_dock_001_harbor_dock_01",
+        "environment_id": "gonegi_harbor_dock_001",
+        "anchor_id": "harbor_dock_01",
+        "anchor_kind": "architectural_space",
+        "normalized_position": [
+          0.5,
+          0.7,
+          0.9
+        ],
+        "importance": 0.92
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_gonegi_harbor_dock_001",
+        "environment_id": "gonegi_harbor_dock_001",
+        "scene_id": "scene_gonegi-harbor-dock-001",
+        "memory_signature": "memory_514d297a37e9f843",
+        "location_anchor_reuse": true,
+        "persistence_score": 0.93
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_gonegi_harbor_dock_001_ghibli_01",
+        "environment_id": "gonegi_harbor_dock_001",
+        "source_video_id": "GHIBLI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_01",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_2e65a49b6cc752d0"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_gonegi_harbor_dock_001",
+        "environment_id": "gonegi_harbor_dock_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_gonegi_harbor_dock_001",
+        "environment_id": "gonegi_harbor_dock_001",
+        "layout_signature": "layout_dc961bcc02df4dcb",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "mori_forest_clearing_001",
+      "source_video_id": "MORI_01",
+      "source_group": "Mori",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "reference_bank_id": "env_ref_004",
+        "source_video_id": "MORI_01",
+        "layout_signature": "layout_8adf3c63ea443953"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_mori_forest_clearing_001_forest_clearing_01",
+        "environment_id": "mori_forest_clearing_001",
+        "anchor_id": "forest_clearing_01",
+        "anchor_kind": "architectural_space",
+        "normalized_position": [
+          0.5,
+          0.65,
+          0.88
+        ],
+        "importance": 0.9
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "scene_id": "scene_mori-forest-clearing-001",
+        "memory_signature": "memory_700e207fe9c4731f",
+        "location_anchor_reuse": true,
+        "persistence_score": 0.92
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_mori_forest_clearing_001_mori_01",
+        "environment_id": "mori_forest_clearing_001",
+        "source_video_id": "MORI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_01",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_615d09e3b8ed7931"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "layout_signature": "layout_8adf3c63ea443953",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    }
+  ],
+  "source_bindings": [
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_01",
+      "source_group": "ghibli",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_01",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_d40212bcda69cace",
+        "location_anchor_reuse": true,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_01",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_01",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_324aac4eb4cd3990"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_02",
+      "source_group": "ghibli",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_02",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_dcff4e7a4e2c0ba9",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_02",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_02",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_61641f810f0f6b48"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_03",
+      "source_group": "ghibli",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_03",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_cc8cce9d5d653344",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_03",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_03",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_03",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_14b15ed86e10ca21"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_04",
+      "source_group": "ghibli",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_04",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_ef6af40f293f397e",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_04",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_04",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_04",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_ddd259d27f78bd3e"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_05",
+      "source_group": "ghibli",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_05",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_84a0a0741d0c642b",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_05",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_05",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_05",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_000267dbb3347b16"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_06",
+      "source_group": "ghibli",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_06",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_47a6ae95cdb2f543",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_06",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_06",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_06",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_5f913be0a11bbc90"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "ghibli_kitchen_001",
+      "source_video_id": "GHIBLI_07",
+      "source_group": "ghibli",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "reference_bank_id": "env_ref_002",
+        "source_video_id": "GHIBLI_07",
+        "layout_signature": "layout_cefdc47309e22232"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_ghibli_kitchen_001_kitchen_table_01",
+        "environment_id": "ghibli_kitchen_001",
+        "anchor_id": "kitchen_table_01",
+        "anchor_kind": "table",
+        "normalized_position": [
+          0.48,
+          0.58,
+          0.72
+        ],
+        "importance": 0.82
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "scene_id": "scene_ghibli-kitchen-001",
+        "memory_signature": "memory_04a70c063b81e11c",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.9
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_ghibli_kitchen_001_ghibli_07",
+        "environment_id": "ghibli_kitchen_001",
+        "source_video_id": "GHIBLI_07",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#GHIBLI_07",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_97136580716da64b"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_ghibli_kitchen_001",
+        "environment_id": "ghibli_kitchen_001",
+        "layout_signature": "layout_cefdc47309e22232",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "titanic_staircase_001",
+      "source_video_id": "SHINKAI_01",
+      "source_group": "shinkai",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "reference_bank_id": "env_ref_001",
+        "source_video_id": "SHINKAI_01",
+        "layout_signature": "layout_40530d5b89017b91"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_titanic_staircase_001_staircase_grand_01",
+        "environment_id": "titanic_staircase_001",
+        "anchor_id": "staircase_grand_01",
+        "anchor_kind": "staircase",
+        "normalized_position": [
+          0.5,
+          0.62,
+          0.85
+        ],
+        "importance": 0.95
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "scene_id": "scene_titanic-staircase-001",
+        "memory_signature": "memory_1b130aa9b33aff2f",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.94
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_titanic_staircase_001_shinkai_01",
+        "environment_id": "titanic_staircase_001",
+        "source_video_id": "SHINKAI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#SHINKAI_01",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_0fe3ddde6a67b66c"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "layout_signature": "layout_40530d5b89017b91",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "titanic_staircase_001",
+      "source_video_id": "SHINKAI_02",
+      "source_group": "shinkai",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "reference_bank_id": "env_ref_001",
+        "source_video_id": "SHINKAI_02",
+        "layout_signature": "layout_40530d5b89017b91"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_titanic_staircase_001_staircase_grand_01",
+        "environment_id": "titanic_staircase_001",
+        "anchor_id": "staircase_grand_01",
+        "anchor_kind": "staircase",
+        "normalized_position": [
+          0.5,
+          0.62,
+          0.85
+        ],
+        "importance": 0.95
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "scene_id": "scene_titanic-staircase-001",
+        "memory_signature": "memory_2f542390bc60f22e",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.94
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_titanic_staircase_001_shinkai_02",
+        "environment_id": "titanic_staircase_001",
+        "source_video_id": "SHINKAI_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#SHINKAI_02",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_06c22d0fc04ac468"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "layout_signature": "layout_40530d5b89017b91",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "titanic_staircase_001",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_group": "live_action",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "reference_bank_id": "env_ref_001",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "layout_signature": "layout_40530d5b89017b91"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_titanic_staircase_001_staircase_grand_01",
+        "environment_id": "titanic_staircase_001",
+        "anchor_id": "staircase_grand_01",
+        "anchor_kind": "staircase",
+        "normalized_position": [
+          0.5,
+          0.62,
+          0.85
+        ],
+        "importance": 0.95
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "scene_id": "scene_titanic-staircase-001",
+        "memory_signature": "memory_b100e7a3165ccdff",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.94
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_titanic_staircase_001_little_women_01",
+        "environment_id": "titanic_staircase_001",
+        "source_video_id": "LITTLE_WOMEN_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#LITTLE_WOMEN_01",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_6343acc93a317657"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_titanic_staircase_001",
+        "environment_id": "titanic_staircase_001",
+        "layout_signature": "layout_40530d5b89017b91",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "mori_forest_clearing_001",
+      "source_video_id": "MORI_01",
+      "source_group": "mori",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "reference_bank_id": "env_ref_004",
+        "source_video_id": "MORI_01",
+        "layout_signature": "layout_8adf3c63ea443953"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_mori_forest_clearing_001_forest_clearing_01",
+        "environment_id": "mori_forest_clearing_001",
+        "anchor_id": "forest_clearing_01",
+        "anchor_kind": "architectural_space",
+        "normalized_position": [
+          0.5,
+          0.65,
+          0.88
+        ],
+        "importance": 0.9
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "scene_id": "scene_mori-forest-clearing-001",
+        "memory_signature": "memory_700e207fe9c4731f",
+        "location_anchor_reuse": true,
+        "persistence_score": 0.92
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_mori_forest_clearing_001_mori_01",
+        "environment_id": "mori_forest_clearing_001",
+        "source_video_id": "MORI_01",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_01",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_615d09e3b8ed7931"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "layout_signature": "layout_8adf3c63ea443953",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "mori_forest_clearing_001",
+      "source_video_id": "MORI_02",
+      "source_group": "mori",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "reference_bank_id": "env_ref_004",
+        "source_video_id": "MORI_02",
+        "layout_signature": "layout_8adf3c63ea443953"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_mori_forest_clearing_001_forest_clearing_01",
+        "environment_id": "mori_forest_clearing_001",
+        "anchor_id": "forest_clearing_01",
+        "anchor_kind": "architectural_space",
+        "normalized_position": [
+          0.5,
+          0.65,
+          0.88
+        ],
+        "importance": 0.9
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "scene_id": "scene_mori-forest-clearing-001",
+        "memory_signature": "memory_2a0f58e60aa3b331",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.92
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_mori_forest_clearing_001_mori_02",
+        "environment_id": "mori_forest_clearing_001",
+        "source_video_id": "MORI_02",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_02",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_ed8c0d0304da91fe"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "layout_signature": "layout_8adf3c63ea443953",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "mori_forest_clearing_001",
+      "source_video_id": "MORI_03",
+      "source_group": "mori",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "reference_bank_id": "env_ref_004",
+        "source_video_id": "MORI_03",
+        "layout_signature": "layout_8adf3c63ea443953"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_mori_forest_clearing_001_forest_clearing_01",
+        "environment_id": "mori_forest_clearing_001",
+        "anchor_id": "forest_clearing_01",
+        "anchor_kind": "architectural_space",
+        "normalized_position": [
+          0.5,
+          0.65,
+          0.88
+        ],
+        "importance": 0.9
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "scene_id": "scene_mori-forest-clearing-001",
+        "memory_signature": "memory_b4fe01721ed415af",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.92
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_mori_forest_clearing_001_mori_03",
+        "environment_id": "mori_forest_clearing_001",
+        "source_video_id": "MORI_03",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_03",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_8bbc19ce91591ba7"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "layout_signature": "layout_8adf3c63ea443953",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "mori_forest_clearing_001",
+      "source_video_id": "MORI_04",
+      "source_group": "mori",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "reference_bank_id": "env_ref_004",
+        "source_video_id": "MORI_04",
+        "layout_signature": "layout_8adf3c63ea443953"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_mori_forest_clearing_001_forest_clearing_01",
+        "environment_id": "mori_forest_clearing_001",
+        "anchor_id": "forest_clearing_01",
+        "anchor_kind": "architectural_space",
+        "normalized_position": [
+          0.5,
+          0.65,
+          0.88
+        ],
+        "importance": 0.9
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "scene_id": "scene_mori-forest-clearing-001",
+        "memory_signature": "memory_92cd434350280476",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.92
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_mori_forest_clearing_001_mori_04",
+        "environment_id": "mori_forest_clearing_001",
+        "source_video_id": "MORI_04",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_04",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_fe9d7bb1ce1f1d0b"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "layout_signature": "layout_8adf3c63ea443953",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    },
+    {
+      "environment_id": "mori_forest_clearing_001",
+      "source_video_id": "MORI_05",
+      "source_group": "mori",
+      "environment_reference_bank_binding": {
+        "binding_id": "erb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "reference_bank_id": "env_ref_004",
+        "source_video_id": "MORI_05",
+        "layout_signature": "layout_8adf3c63ea443953"
+      },
+      "environment_anchor_binding": {
+        "binding_id": "eab_mori_forest_clearing_001_forest_clearing_01",
+        "environment_id": "mori_forest_clearing_001",
+        "anchor_id": "forest_clearing_01",
+        "anchor_kind": "architectural_space",
+        "normalized_position": [
+          0.5,
+          0.65,
+          0.88
+        ],
+        "importance": 0.9
+      },
+      "environment_memory_binding": {
+        "binding_id": "emb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "scene_id": "scene_mori-forest-clearing-001",
+        "memory_signature": "memory_b09016d76e13b440",
+        "location_anchor_reuse": false,
+        "persistence_score": 0.92
+      },
+      "environment_traceability_binding": {
+        "binding_id": "etb_mori_forest_clearing_001_mori_05",
+        "environment_id": "mori_forest_clearing_001",
+        "source_video_id": "MORI_05",
+        "conditioning_map_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json#MORI_05",
+        "environment_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+        "traceability_signature": "trace_b5428ad5d8c579a6"
+      },
+      "environment_retrieval_binding": {
+        "binding_id": "erv_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "strategy_id": "environment_retrieval_v1",
+        "primary_key": "environment_id",
+        "fallback_keys": [
+          "layout_signature",
+          "source_video_id",
+          "source_scene"
+        ]
+      },
+      "environment_similarity_binding": {
+        "binding_id": "esb_mori_forest_clearing_001",
+        "environment_id": "mori_forest_clearing_001",
+        "layout_signature": "layout_8adf3c63ea443953",
+        "similarity_threshold": 0.85,
+        "same_environment_threshold": 0.98,
+        "matching_features": [
+          "anchor_kind",
+          "importance",
+          "layout_signature"
+        ]
+      }
+    }
+  ],
+  "traceability_coverage": 1
+}

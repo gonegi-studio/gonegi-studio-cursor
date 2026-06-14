@@ -1,0 +1,49 @@
+{
+  "report_id": "environment_identity_gpu_dataset_plan_mqd0dwfd",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005A",
+  "system_id": "ENVIRONMENT_IDENTITY_GPU_VALIDATION_V1",
+  "generated_at": "2026-06-13T23:50:59.689Z",
+  "dataset_plan_defined": true,
+  "minimum_batch_size": 50,
+  "easy_cases": [
+    {
+      "case_id": "env_gpu_easy_001",
+      "environment_id": "titanic_staircase_001",
+      "source_ref": "env_ref_001"
+    },
+    {
+      "case_id": "env_gpu_easy_002",
+      "environment_id": "ghibli_kitchen_001",
+      "source_ref": "env_ref_002"
+    }
+  ],
+  "medium_cases": [
+    {
+      "case_id": "env_gpu_med_001",
+      "environment_id": "gonegi_harbor_dock_001",
+      "source_ref": "env_ref_003"
+    },
+    {
+      "case_id": "env_gpu_med_002",
+      "environment_id": "mori_forest_clearing_001",
+      "source_ref": "env_ref_004"
+    }
+  ],
+  "hard_cases": [
+    {
+      "case_id": "env_gpu_hard_001",
+      "environment_id": "titanic_staircase_001",
+      "failure_mode": "different_staircase"
+    },
+    {
+      "case_id": "env_gpu_hard_002",
+      "environment_id": "titanic_staircase_001",
+      "failure_mode": "missing_railing"
+    },
+    {
+      "case_id": "env_gpu_hard_003",
+      "environment_id": "ghibli_kitchen_001",
+      "failure_mode": "hallucinated_architecture"
+    }
+  ]
+}

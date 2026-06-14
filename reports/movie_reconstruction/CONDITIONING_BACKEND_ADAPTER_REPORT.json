@@ -1,0 +1,170 @@
+{
+  "report_id": "conditioning_backend_adapter_mqc7phzo",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005",
+  "system_id": "CONDITIONING_BACKEND_ADAPTER_V1",
+  "generated_at": "2026-06-13T10:28:11.988Z",
+  "final_verdict": "PASS_CONDITIONING_BACKEND_ADAPTER_V1",
+  "status": "CONDITIONING_BACKEND_ADAPTERS_DESIGNED",
+  "validation_passed": true,
+  "design_only": true,
+  "backend_adapters_designed": true,
+  "adapter_translation_validated": false,
+  "backend_implemented": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "controlnet_adapter_defined": true,
+  "comfyui_adapter_defined": true,
+  "future_video_adapter_defined": true,
+  "contract_version_supported": true,
+  "translation_rules_defined": true,
+  "lossy_translation_risk_defined": true,
+  "adapters": [
+    {
+      "adapter_name": "controlnet_adapter",
+      "input_contract_version": "1.0",
+      "supported_maps": [
+        "layout_map",
+        "depth_map",
+        "pose_map",
+        "blocking_map"
+      ],
+      "translation_coverage": 0.6667,
+      "backend_target": "ControlNet (layout + depth + pose multi-control stack)",
+      "lossy_translation_risk": "HIGH",
+      "identity_preservation_level": "LOW"
+    },
+    {
+      "adapter_name": "comfyui_adapter",
+      "input_contract_version": "1.0",
+      "supported_maps": [
+        "layout_map",
+        "depth_map",
+        "pose_map",
+        "blocking_map"
+      ],
+      "translation_coverage": 0.6667,
+      "backend_target": "ComfyUI orchestration layer wrapping ControlNet stack",
+      "lossy_translation_risk": "MEDIUM",
+      "identity_preservation_level": "MEDIUM"
+    },
+    {
+      "adapter_name": "future_video_adapter",
+      "input_contract_version": "1.0",
+      "supported_maps": [
+        "layout_map",
+        "depth_map",
+        "pose_map",
+        "blocking_map"
+      ],
+      "translation_coverage": 0.6667,
+      "backend_target": "Video conditioning backend (deferred stack)",
+      "lossy_translation_risk": "VERY_HIGH",
+      "identity_preservation_level": "MEDIUM"
+    }
+  ],
+  "adapter_specs": [
+    {
+      "adapter_name": "controlnet_adapter",
+      "input_contract": "conditioning-map-export-contract v1.0 bundle",
+      "input_contract_version": "1.0",
+      "output_format": "ControlNet preprocessor spec: layout→seg/canny PNG, depth→depth PNG, pose→OpenPose PNG, blocking→region mask PNG",
+      "supported_maps": [
+        "layout_map",
+        "depth_map",
+        "pose_map",
+        "blocking_map"
+      ],
+      "unsupported_maps": [
+        "environment_identity_map",
+        "object_identity"
+      ],
+      "translation_rules": [
+        "normalized_layout_elements_v1 → rasterize subject bbox + vanishing point to 512x512 seg map",
+        "normalized_depth_samples_v1 → interpolate z samples to grayscale depth PNG aligned to frame aspect",
+        "skeleton_keypoint_descriptors_v1 → render OpenPose stick figure from screen_position + eyeline_vector",
+        "character_region_masks_v1 → paint region_label zones as discrete mask channels",
+        "Apply per-map ControlNet weight from architecture decision multi-control stack"
+      ],
+      "lossy_translation_risk": "HIGH",
+      "identity_preservation_level": "LOW",
+      "unsupported_reason": "environment_identity_map is reserved_v1 with no populated payload; object_identity requires IP-Adapter path outside ControlNet adapter scope",
+      "backend_target": "ControlNet (layout + depth + pose multi-control stack)"
+    },
+    {
+      "adapter_name": "comfyui_adapter",
+      "input_contract": "conditioning-map-export-contract v1.0 bundle + ComfyUI workflow schema",
+      "input_contract_version": "1.0",
+      "output_format": "ComfyUI workflow JSON with LoadImage/ControlNetApplyAdvanced nodes bound to translated map artifacts",
+      "supported_maps": [
+        "layout_map",
+        "depth_map",
+        "pose_map",
+        "blocking_map"
+      ],
+      "unsupported_maps": [
+        "environment_identity_map",
+        "object_identity"
+      ],
+      "translation_rules": [
+        "Invoke controlnet_adapter raster translation pipeline for map PNG outputs",
+        "Map bundle source_video_id → ComfyUI batch folder structure",
+        "Wire ControlNetApplyAdvanced nodes with weight presets per map type",
+        "Inject ConditionedPromptBuilder text constraints as CLIPTextEncode nodes",
+        "Export workflow template with placeholder checkpoint and ControlNet model refs"
+      ],
+      "lossy_translation_risk": "MEDIUM",
+      "identity_preservation_level": "MEDIUM",
+      "unsupported_reason": "ComfyUI IP-Adapter nodes deferred until object_identity map export exists; environment_identity_map reserved",
+      "backend_target": "ComfyUI orchestration layer wrapping ControlNet stack"
+    },
+    {
+      "adapter_name": "future_video_adapter",
+      "input_contract": "conditioning-map-export-contract v1.0 bundle + shot timeline registry + temporal continuity metadata",
+      "input_contract_version": "1.0",
+      "output_format": "Video conditioning request payload: per-shot frame stack with temporal attention hints and continuity locks",
+      "supported_maps": [
+        "layout_map",
+        "depth_map",
+        "pose_map",
+        "blocking_map"
+      ],
+      "unsupported_maps": [
+        "environment_identity_map",
+        "object_identity"
+      ],
+      "translation_rules": [
+        "Aggregate per-frame controlnet_adapter outputs into shot-sequence tensor stack",
+        "Bind edit_rhythm edit_points to shot boundary transitions",
+        "Apply motion_vectors frame_pair hints to temporal smoothing weights",
+        "Inject scene_remap gonegi_scene_id as environment continuity anchor",
+        "Defer raster generation until GPU validation phase; design schema only in this phase"
+      ],
+      "lossy_translation_risk": "VERY_HIGH",
+      "identity_preservation_level": "MEDIUM",
+      "unsupported_reason": "Video conditioning backend deferred per architecture decision; temporal GPU pipeline not designed for execution in this phase",
+      "backend_target": "Video conditioning backend (deferred stack)"
+    }
+  ],
+  "checks": {
+    "controlnet_adapter_defined": true,
+    "comfyui_adapter_defined": true,
+    "future_video_adapter_defined": true,
+    "contract_version_supported": true,
+    "translation_rules_defined": true,
+    "lossy_translation_risk_defined": true,
+    "compatibility_matrix_exists": true,
+    "roadmap_exists": true,
+    "backend_adapters_designed": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "design_only": true,
+    "adapter_validation_deferred": true,
+    "backend_execution_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

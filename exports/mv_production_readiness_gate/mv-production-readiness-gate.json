@@ -1,0 +1,359 @@
+{
+  "readiness_gate_id": "mv-production-readiness-gate-v1",
+  "phase": "PHASE-DIGITAL-STUDIO-014-MV_PRODUCTION_READINESS_GATE_V1",
+  "generated_at": "2026-06-07T22:58:04.391Z",
+  "source_final_audit_ref": "exports/mv_test_mode_final_audit/mv-test-mode-final-audit.json",
+  "production_readiness_score": 100,
+  "production_readiness_status": "MV_PRODUCTION_READINESS_GATE_READY",
+  "production_readiness_tier": "TEST_READY",
+  "critical_blocker_count": 0,
+  "warning_count": 6,
+  "remaining_blockers": [
+    {
+      "blocker_id": "dataset_refs_empty_story_mv_generation_plan_v1",
+      "severity": "warning",
+      "blocker_code": "DATASET_REFS_EMPTY",
+      "message": "Dataset refs empty for story_mv_generation_plan_v1",
+      "resolved": false
+    },
+    {
+      "blocker_id": "production_mode_blocked",
+      "severity": "warning",
+      "phase_level": "DS-013",
+      "blocker_code": "PRODUCTION_MODE_BLOCKED",
+      "message": "Production mode remains blocked pending DS-015+ promotion",
+      "resolved": false
+    },
+    {
+      "blocker_id": "real_generation_blocked",
+      "severity": "warning",
+      "phase_level": "DS-013",
+      "blocker_code": "REAL_GENERATION_BLOCKED",
+      "message": "Real generation remains disabled under test_mode_only scope",
+      "resolved": false
+    },
+    {
+      "blocker_id": "runtime_not_executed",
+      "severity": "warning",
+      "phase_level": "DS-013",
+      "blocker_code": "RUNTIME_NOT_EXECUTED",
+      "message": "Production runtime execution not yet activated",
+      "resolved": false
+    },
+    {
+      "blocker_id": "external_call_blocked",
+      "severity": "warning",
+      "phase_level": "DS-013",
+      "blocker_code": "EXTERNAL_CALL_BLOCKED",
+      "message": "External calls remain blocked under test_mode_only scope",
+      "resolved": false
+    },
+    {
+      "blocker_id": "gpu_execution_blocked",
+      "severity": "warning",
+      "phase_level": "DS-013",
+      "blocker_code": "GPU_EXECUTION_BLOCKED",
+      "message": "GPU execution remains blocked under test_mode_only scope",
+      "resolved": false
+    }
+  ],
+  "next_stage_gate_label": "DS-015_ENTRY",
+  "traceability_chain": [
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "instrumental_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "instrumental_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "instrumental_mv_scene_assembly_v1",
+      "mv_blueprint_id": "instrumental_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/instrumental-mv-archetype-library-v1.json",
+        "datasets/mv/instrumental-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "ballad_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "ballad_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "ballad_mv_scene_assembly_v1",
+      "mv_blueprint_id": "ballad_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/ballad-mv-archetype-library-v1.json",
+        "datasets/mv/ballad-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "story_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "story_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "story_mv_scene_assembly_v1",
+      "mv_blueprint_id": "story_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_short_film_v1",
+      "dataset_refs": [],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "music_drama_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "music_drama_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "music_drama_mv_scene_assembly_v1",
+      "mv_blueprint_id": "music_drama_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_episode_v1",
+      "dataset_refs": [
+        "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    }
+  ],
+  "digital_studio_readiness_phase_count": 13,
+  "phase_readiness_audits": [
+    {
+      "phase_level": "DS-001",
+      "report_path": "reports/mv_production_system_foundation/mv-production-system-foundation-report.json",
+      "manifest_path": "exports/mv_production_system_foundation/mv-production-system-foundation-manifest.json",
+      "artifact_path": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+      "pass_verdict": "PASS_MV_PRODUCTION_SYSTEM_FOUNDATION_V1",
+      "certification_status": "MV_PRODUCTION_FOUNDATION_READY",
+      "ready_field": "mv_production_system_foundation_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-002",
+      "report_path": "reports/mv_production_blueprint_system/mv-production-blueprint-system-report.json",
+      "manifest_path": "exports/mv_production_blueprint_system/mv-production-blueprint-system-manifest.json",
+      "artifact_path": "exports/mv_production_blueprint_system/mv-production-blueprint-system.json",
+      "pass_verdict": "PASS_MV_PRODUCTION_BLUEPRINT_SYSTEM_V1",
+      "certification_status": "MV_PRODUCTION_BLUEPRINT_READY",
+      "ready_field": "mv_production_blueprint_system_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-003",
+      "report_path": "reports/mv_scene_assembly_engine/mv-scene-assembly-engine-report.json",
+      "manifest_path": "exports/mv_scene_assembly_engine/mv-scene-assembly-engine-manifest.json",
+      "artifact_path": "exports/mv_scene_assembly_engine/mv-scene-assembly-engine.json",
+      "pass_verdict": "PASS_MV_SCENE_ASSEMBLY_ENGINE_V1",
+      "certification_status": "MV_SCENE_ASSEMBLY_READY",
+      "ready_field": "mv_scene_assembly_engine_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-004",
+      "report_path": "reports/mv_shot_assembly_engine/mv-shot-assembly-engine-report.json",
+      "manifest_path": "exports/mv_shot_assembly_engine/mv-shot-assembly-engine-manifest.json",
+      "artifact_path": "exports/mv_shot_assembly_engine/mv-shot-assembly-engine.json",
+      "pass_verdict": "PASS_MV_SHOT_ASSEMBLY_ENGINE_V1",
+      "certification_status": "MV_SHOT_ASSEMBLY_READY",
+      "ready_field": "mv_shot_assembly_engine_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-005",
+      "report_path": "reports/mv_generation_planning_engine/mv-generation-planning-engine-report.json",
+      "manifest_path": "exports/mv_generation_planning_engine/mv-generation-planning-engine-manifest.json",
+      "artifact_path": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "pass_verdict": "PASS_MV_GENERATION_PLANNING_ENGINE_V1",
+      "certification_status": "MV_GENERATION_PLANNING_READY",
+      "ready_field": "mv_generation_planning_engine_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-006",
+      "report_path": "reports/mv_production_runtime_engine/mv-production-runtime-engine-report.json",
+      "manifest_path": "exports/mv_production_runtime_engine/mv-production-runtime-engine-manifest.json",
+      "artifact_path": "exports/mv_production_runtime_engine/mv-production-runtime-engine.json",
+      "pass_verdict": "PASS_MV_PRODUCTION_RUNTIME_ENGINE_V1",
+      "certification_status": "MV_PRODUCTION_RUNTIME_READY",
+      "ready_field": "mv_production_runtime_engine_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-007",
+      "report_path": "reports/mv_production_runtime_certification/mv-production-runtime-certification-report.json",
+      "manifest_path": "exports/mv_production_runtime_certification/mv-production-runtime-certification-manifest.json",
+      "artifact_path": "exports/mv_production_runtime_certification/mv-production-runtime-certification.json",
+      "pass_verdict": "PASS_MV_PRODUCTION_RUNTIME_CERTIFICATION_V1",
+      "certification_status": "MV_PRODUCTION_RUNTIME_CERTIFIED",
+      "ready_field": "mv_production_runtime_certification_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-008",
+      "report_path": "reports/mv_test_execution_package/mv-test-execution-package-report.json",
+      "manifest_path": "exports/mv_test_execution_package/mv-test-execution-package-manifest.json",
+      "artifact_path": "exports/mv_test_execution_package/mv-test-execution-package.json",
+      "pass_verdict": "PASS_MV_TEST_EXECUTION_PACKAGE_V1",
+      "certification_status": "MV_TEST_EXECUTION_PACKAGE_READY",
+      "ready_field": "mv_test_execution_package_engine_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-009",
+      "report_path": "reports/mv_test_mode_execution_audit/mv-test-mode-execution-audit-report.json",
+      "manifest_path": "exports/mv_test_mode_execution_audit/mv-test-mode-execution-audit-manifest.json",
+      "artifact_path": "exports/mv_test_mode_execution_audit/mv-test-mode-execution-audit.json",
+      "pass_verdict": "PASS_MV_TEST_MODE_EXECUTION_AUDIT_V1",
+      "certification_status": "MV_TEST_MODE_EXECUTION_AUDIT_READY",
+      "ready_field": "mv_test_mode_execution_audit_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-010",
+      "report_path": "reports/mv_test_mode_execution_certification/mv-test-mode-execution-certification-report.json",
+      "manifest_path": "exports/mv_test_mode_execution_certification/mv-test-mode-execution-certification-manifest.json",
+      "artifact_path": "exports/mv_test_mode_execution_certification/mv-test-mode-execution-certification.json",
+      "pass_verdict": "PASS_MV_TEST_MODE_EXECUTION_CERTIFICATION_V1",
+      "certification_status": "MV_TEST_MODE_EXECUTION_CERTIFIED",
+      "ready_field": "mv_test_mode_execution_certification_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-011",
+      "report_path": "reports/mv_test_mode_dry_run/mv-test-mode-dry-run-report.json",
+      "manifest_path": "exports/mv_test_mode_dry_run/mv-test-mode-dry-run-manifest.json",
+      "artifact_path": "exports/mv_test_mode_dry_run/mv-test-mode-dry-run.json",
+      "pass_verdict": "PASS_MV_TEST_MODE_DRY_RUN_V1",
+      "certification_status": "MV_TEST_MODE_DRY_RUN_READY",
+      "ready_field": "mv_test_mode_dry_run_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-012",
+      "report_path": "reports/mv_test_mode_dry_run_certification/mv-test-mode-dry-run-certification-report.json",
+      "manifest_path": "exports/mv_test_mode_dry_run_certification/mv-test-mode-dry-run-certification-manifest.json",
+      "artifact_path": "exports/mv_test_mode_dry_run_certification/mv-test-mode-dry-run-certification.json",
+      "pass_verdict": "PASS_MV_TEST_MODE_DRY_RUN_CERTIFICATION_V1",
+      "certification_status": "MV_TEST_MODE_DRY_RUN_CERTIFIED",
+      "ready_field": "mv_test_mode_dry_run_certification_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    },
+    {
+      "phase_level": "DS-013",
+      "report_path": "reports/mv_test_mode_final_audit/mv-test-mode-final-audit-report.json",
+      "manifest_path": "exports/mv_test_mode_final_audit/mv-test-mode-final-audit-manifest.json",
+      "artifact_path": "exports/mv_test_mode_final_audit/mv-test-mode-final-audit.json",
+      "pass_verdict": "PASS_MV_TEST_MODE_FINAL_AUDIT_V1",
+      "certification_status": "MV_DIGITAL_STUDIO_TEST_CHAIN_COMPLETE",
+      "ready_field": "mv_test_mode_final_audit_ready",
+      "phase_certified": true,
+      "manifest_present": true,
+      "manifest_integrity_valid": true
+    }
+  ],
+  "readiness_gate_checks": [
+    {
+      "check_id": "final_audit_consumed",
+      "check_label": "Final Audit Consumed",
+      "status": "PASS"
+    },
+    {
+      "check_id": "digital_studio_test_chain_complete",
+      "check_label": "Digital Studio Test Chain Complete",
+      "status": "PASS"
+    },
+    {
+      "check_id": "production_readiness_score_valid",
+      "check_label": "Production Readiness Score Valid",
+      "status": "PASS"
+    },
+    {
+      "check_id": "production_readiness_tier_valid",
+      "check_label": "Production Readiness Tier Valid",
+      "status": "PASS"
+    },
+    {
+      "check_id": "critical_blocker_count_valid",
+      "check_label": "Critical Blocker Count Valid",
+      "status": "PASS"
+    },
+    {
+      "check_id": "warning_count_valid",
+      "check_label": "Warning Count Valid",
+      "status": "PASS"
+    },
+    {
+      "check_id": "remaining_blockers_identified",
+      "check_label": "Remaining Blockers Identified",
+      "status": "PASS"
+    },
+    {
+      "check_id": "traceability_preserved",
+      "check_label": "Traceability Preserved",
+      "status": "PASS"
+    },
+    {
+      "check_id": "safe_create_policy_verified",
+      "check_label": "Safe Create Policy Verified",
+      "status": "PASS"
+    },
+    {
+      "check_id": "next_stage_ready",
+      "check_label": "Next Stage Ready",
+      "status": "PASS"
+    }
+  ],
+  "next_stage_approved": true,
+  "readiness_gate_complete": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/mv_test_mode_final_audit/mv-test-mode-final-audit.json",
+      "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+      "exports/mv_production_blueprint_system/mv-production-blueprint-system.json",
+      "exports/mv_scene_assembly_engine/mv-scene-assembly-engine.json",
+      "exports/mv_shot_assembly_engine/mv-shot-assembly-engine.json",
+      "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "exports/mv_production_runtime_engine/mv-production-runtime-engine.json",
+      "exports/mv_production_runtime_certification/mv-production-runtime-certification.json",
+      "exports/mv_test_execution_package/mv-test-execution-package.json",
+      "exports/mv_test_mode_execution_audit/mv-test-mode-execution-audit.json",
+      "exports/mv_test_mode_execution_certification/mv-test-mode-execution-certification.json",
+      "exports/mv_test_mode_dry_run/mv-test-mode-dry-run.json",
+      "exports/mv_test_mode_dry_run_certification/mv-test-mode-dry-run-certification.json",
+      "exports/mv_test_mode_final_audit/mv-test-mode-final-audit.json"
+    ],
+    "write_paths": [
+      "reports/mv_production_readiness_gate",
+      "exports/mv_production_readiness_gate",
+      "reports/mv_production_readiness_gate/mv-production-readiness-gate-report.json",
+      "reports/mv_production_readiness_gate/MV_PRODUCTION_READINESS_GATE.md",
+      "exports/mv_production_readiness_gate/mv-production-readiness-gate-manifest.json",
+      "exports/mv_production_readiness_gate/mv-production-readiness-gate.json"
+    ],
+    "readiness_gate_artifact_write_scope": "exports/mv_production_readiness_gate/",
+    "upstream_artifacts_unchanged": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "composition_id": "movie-dataset-runtime-composition-v1",
+  "phase": "PHASE-MOVIE-DATASET-SEPARATION-001",
+  "separation_id": "MOVIE_DATASET_RUNTIME_COMPOSITION_V1",
+  "generated_at": "2026-06-10T07:53:06.804Z",
+  "base_dataset": "latest_v5",
+  "movie_dataset": "titanic",
+  "world_identity_source": "latest_v5",
+  "movie_geometry_source": "movie_dataset",
+  "merge_mode": "runtime",
+  "world_identity_lock": {
+    "gonegi_world_dominance": 0.72,
+    "movie_dataset_dominance": 0.28,
+    "world_identity_source_locked": "latest_v5",
+    "movie_world_override_forbidden": true,
+    "status": "PASS"
+  },
+  "composition_formula": "latest_v5(world_identity) + movie_dataset(scene_grammar) -> final_generation",
+  "swappable_movie_datasets": [
+    "titanic",
+    "your_name",
+    "spirited_away",
+    "castle_in_the_sky",
+    "howls_moving_castle"
+  ],
+  "registry_ref": "exports/movie_datasets/movie-dataset-registry.json",
+  "active_bundle_ref": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json",
+  "factory_rules_ref": "datasets/movie_factory/movie-runtime-composition-rules.json",
+  "factory_ref": "datasets/movie_factory/movie-dataset-registry.json",
+  "factory_synced_at": "2026-06-10T07:53:08.869Z",
+  "multi_movie_runtime_validation": {
+    "phase": "PHASE-MULTI-MOVIE-RUNTIME-001",
+    "system_id": "MULTI_MOVIE_RUNTIME_VALIDATION_V1",
+    "validation_dir": "datasets/movie_runtime_validation",
+    "runtime_swap_verified": true,
+    "tested_movies": [
+      "titanic",
+      "spirited_away"
+    ],
+    "movie_swap_success_rate": 1,
+    "patched_at": "2026-06-10T10:41:58.265Z"
+  },
+  "real_image_generation_validation": {
+    "phase": "PHASE-REAL-IMAGE-GENERATION-001",
+    "system_id": "REAL_IMAGE_GENERATION_VALIDATION_V1",
+    "validation_dir": "datasets/real_generation_validation",
+    "validation_passed": true,
+    "simulation_pass": true,
+    "real_generation_pass": true,
+    "patched_at": "2026-06-10T10:58:30.151Z"
+  }
+}

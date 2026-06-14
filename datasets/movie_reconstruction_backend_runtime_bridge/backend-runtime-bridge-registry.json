@@ -1,0 +1,16 @@
+{
+  "registry_id": "backend-runtime-bridge-registry-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-006A",
+  "system_id": "BACKEND_RUNTIME_BRIDGE_V1",
+  "version": "backend_runtime_bridge_v1",
+  "architecture_validation_only": true,
+  "implementation_deferred": true,
+  "image_app_ingestion_ref": "reports/movie_reconstruction/IMAGE_APP_INGESTION_SPECIFICATION.json",
+  "conditioning_map_export_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json",
+  "execution_flags": {
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

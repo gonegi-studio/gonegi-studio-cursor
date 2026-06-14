@@ -1,0 +1,58 @@
+{
+  "report_id": "movie-dataset-separation-report-v1",
+  "phase": "PHASE-MOVIE-DATASET-SEPARATION-001",
+  "separation_id": "MOVIE_DATASET_RUNTIME_COMPOSITION_V1",
+  "generated_at": "2026-06-10T07:53:06.810Z",
+  "final_verdict": "PASS_MOVIE_DATASET_SEPARATION_V1",
+  "separation_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "titanic_upload_integration_pass": true,
+      "titanic_bundle_available": true,
+      "image_latest_v5_exists": true,
+      "video_latest_v5_exists": true
+    }
+  },
+  "validation_summary": {
+    "latest_v5_contains_movie_dataset": false,
+    "movie_dataset_registry_exists": true,
+    "runtime_composition_ready": true,
+    "world_identity_lock": true,
+    "movie_dataset_swappable": true,
+    "titanic_bundle_separated": true,
+    "direct_embed_removed": true,
+    "future_movie_dataset_count": 5,
+    "gpu_execution": false,
+    "video_generation": false,
+    "next_order": "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001",
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "issues": [],
+  "architecture": {
+    "before": "latest_v5 embedded titanic_movie_reconstruction_bundle",
+    "after": "latest_v5 universal only + exports/movie_datasets/{title}/ swappable modules",
+    "final_generation": "latest_v5 + selected_movie_dataset"
+  },
+  "paths": {
+    "movie_datasets_dir": "exports/movie_datasets",
+    "registry": "exports/movie_datasets/movie-dataset-registry.json",
+    "runtime_composition": "exports/movie_datasets/movie-dataset-runtime-composition.json",
+    "titanic_bundle": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json"
+  },
+  "production_readiness_gates": {
+    "latest_v5_contains_movie_dataset_eq_false": true,
+    "movie_dataset_registry_exists_eq_true": true,
+    "runtime_composition_ready_eq_true": true,
+    "world_identity_lock_eq_true": true,
+    "movie_dataset_swappable_eq_true": true
+  },
+  "success_condition": {
+    "latest_v5_universal_only": true,
+    "movie_datasets_swappable_grammar": true,
+    "final_generation_runtime_merge": true
+  },
+  "next_pipeline": [
+    "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001"
+  ]
+}

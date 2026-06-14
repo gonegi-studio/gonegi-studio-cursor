@@ -1,0 +1,462 @@
+{
+  "manifest_id": "movie-analysis-level2-robustness-audit-manifest-v1",
+  "phase": "PHASE-LEVEL2-FINAL-REDTEAM-001-LEVEL2_ROBUSTNESS_AUDIT_V1",
+  "generated_at": "2026-06-07T02:30:54.655Z",
+  "level2_robustness_audit_count": 7,
+  "finding_count": 0,
+  "findings": [],
+  "level3_entry_ready": true,
+  "robustness_audits": [
+    {
+      "audit_id": "AUDIT-01",
+      "audit_category": "SCENE_BOUNDARY_ACCURACY",
+      "audit_label": "Scene Boundary Accuracy",
+      "has_finding": false,
+      "scene_boundary_precision": 1,
+      "scene_boundary_recall": 1,
+      "false_split_detection": "PASS",
+      "false_merge_detection": "PASS",
+      "boundary_oversegmentation": false,
+      "boundary_undersegmentation": false,
+      "checks": [
+        {
+          "check_id": "scene_boundary_precision",
+          "check_label": "scene boundary precision",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_scene_granularity_restore/movie-analysis-scene-granularity-restore-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "scene_boundary_recall",
+          "check_label": "scene boundary recall",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_scene_granularity_restore/movie-analysis-scene-granularity-restore-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "false_split_detection",
+          "check_label": "false split detection",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_scene_granularity_restore/movie-analysis-scene-granularity-restore-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "false_merge_detection",
+          "check_label": "false merge detection",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_scene_granularity_restore/movie-analysis-scene-granularity-restore-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "scene_boundary_quality_gate",
+          "check_label": "scene boundary quality gate",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_world_validation/movie-analysis-real-world-validation-report.json",
+          "finding_reason": null
+        }
+      ]
+    },
+    {
+      "audit_id": "AUDIT-02",
+      "audit_category": "CROSS_SOURCE_GENERALIZATION",
+      "audit_label": "Cross Source Generalization",
+      "has_finding": false,
+      "new_source_ingestion": "PASS",
+      "unseen_movie_processing": "PASS",
+      "cross_source_normalization": "PASS",
+      "source_independent_analysis": "PASS",
+      "source_overfitting": false,
+      "source_specific_bias": false,
+      "simulated_new_source_id": "REDTEAM_SOURCE_05",
+      "checks": [
+        {
+          "check_id": "new_source_ingestion",
+          "check_label": "new source ingestion",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "unseen_movie_processing",
+          "check_label": "unseen movie processing",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_world_validation/movie-analysis-real-world-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "cross_source_normalization",
+          "check_label": "cross source normalization",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_world_validation/movie-analysis-real-world-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "source_independent_analysis",
+          "check_label": "source independent analysis",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_world_validation/movie-analysis-real-world-validation-report.json",
+          "finding_reason": null
+        }
+      ]
+    },
+    {
+      "audit_id": "AUDIT-03",
+      "audit_category": "ANALYSIS_QUALITY_ACCURACY",
+      "audit_label": "Analysis Quality Accuracy",
+      "has_finding": false,
+      "character_dna_accuracy": "PASS",
+      "location_dna_accuracy": "PASS",
+      "style_dna_accuracy": "PASS",
+      "motion_dna_accuracy": "PASS",
+      "emotion_dna_accuracy": "PASS",
+      "relationship_dna_accuracy": "PASS",
+      "dna_misattribution": false,
+      "analysis_hallucination": false,
+      "attribute_loss": false,
+      "checks": [
+        {
+          "check_id": "character_dna_accuracy",
+          "check_label": "character dna accuracy",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_identity_consistency_validation/movie-analysis-real-video-identity-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "location_dna_accuracy",
+          "check_label": "location dna accuracy",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_location_consistency_validation/movie-analysis-real-video-location-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "style_dna_accuracy",
+          "check_label": "style dna accuracy",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_style_consistency_validation/movie-analysis-real-video-style-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "motion_dna_accuracy",
+          "check_label": "motion dna accuracy",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_motion_consistency_validation/movie-analysis-real-video-motion-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "emotion_dna_accuracy",
+          "check_label": "emotion dna accuracy",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_dna_to_frame_validation/movie-analysis-dna-to-frame-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "relationship_dna_accuracy",
+          "check_label": "relationship dna accuracy",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_relationship_evolution_validation/movie-analysis-relationship-evolution-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "dna_misattribution_probe",
+          "check_label": "dna misattribution probe",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "reports/movie_analysis_dna_to_frame_validation/movie-analysis-dna-to-frame-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "analysis_hallucination_probe",
+          "check_label": "analysis hallucination probe",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_dna_to_frame_validation/movie-analysis-dna-to-frame-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "attribute_loss_probe",
+          "check_label": "attribute loss probe",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_master_certification/movie-analysis-real-video-master-certification-report.json",
+          "finding_reason": null
+        }
+      ]
+    },
+    {
+      "audit_id": "AUDIT-04",
+      "audit_category": "FALSE_POSITIVE_AUDIT",
+      "audit_label": "False Positive Audit",
+      "has_finding": false,
+      "character_detection_false_positive": "PASS",
+      "location_detection_false_positive": "PASS",
+      "scene_detection_false_positive": "PASS",
+      "event_detection_false_positive": "PASS",
+      "false_detection_rate_exceeded": false,
+      "checks": [
+        {
+          "check_id": "character_detection_false_positive",
+          "check_label": "character detection false positive",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_identity_consistency_validation/movie-analysis-real-video-identity-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "location_detection_false_positive",
+          "check_label": "location detection false positive",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_location_consistency_validation/movie-analysis-real-video-location-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "scene_detection_false_positive",
+          "check_label": "scene detection false positive",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_scene_granularity_restore/movie-analysis-scene-granularity-restore-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "event_detection_false_positive",
+          "check_label": "event detection false positive",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_world_state_memory_validation/movie-analysis-world-state-memory-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "phantom_detection_probe",
+          "check_label": "phantom detection probe",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "reports/movie_analysis_real_video_identity_consistency_validation/movie-analysis-real-video-identity-consistency-validation-report.json",
+          "finding_reason": null
+        }
+      ]
+    },
+    {
+      "audit_id": "AUDIT-05",
+      "audit_category": "FALSE_NEGATIVE_AUDIT",
+      "audit_label": "False Negative Audit",
+      "has_finding": false,
+      "character_detection_false_negative": "PASS",
+      "location_detection_false_negative": "PASS",
+      "scene_detection_false_negative": "PASS",
+      "event_detection_false_negative": "PASS",
+      "miss_rate_exceeded": false,
+      "checks": [
+        {
+          "check_id": "character_detection_false_negative",
+          "check_label": "character detection false negative",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_identity_consistency_validation/movie-analysis-real-video-identity-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "location_detection_false_negative",
+          "check_label": "location detection false negative",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_location_consistency_validation/movie-analysis-real-video-location-consistency-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "scene_detection_false_negative",
+          "check_label": "scene detection false negative",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_scene_granularity_restore/movie-analysis-scene-granularity-restore-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "event_detection_false_negative",
+          "check_label": "event detection false negative",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_world_state_memory_validation/movie-analysis-world-state-memory-validation-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "missing_entity_probe",
+          "check_label": "missing entity probe",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "exports/movie_analysis_model_generation_test/video_identity",
+          "finding_reason": null
+        }
+      ]
+    },
+    {
+      "audit_id": "AUDIT-06",
+      "audit_category": "ADVERSARIAL_INPUT_AUDIT",
+      "audit_label": "Adversarial Input Audit",
+      "has_finding": false,
+      "noisy_metadata": "PASS",
+      "missing_frames": "PASS",
+      "duplicate_frames": "PASS",
+      "corrupted_snapshots": "PASS",
+      "partial_datasets": "PASS",
+      "audit_bypass": false,
+      "validation_bypass": false,
+      "checks": [
+        {
+          "check_id": "noisy_metadata",
+          "check_label": "noisy metadata",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "reports/movie_analysis_level2_gap_audit/movie-analysis-level2-completeness-audit-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "missing_frames",
+          "check_label": "missing frames",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "exports/movie_analysis_model_generation_test/video_identity",
+          "finding_reason": null
+        },
+        {
+          "check_id": "duplicate_frames",
+          "check_label": "duplicate frames",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "exports/movie_analysis_model_generation_test/video_identity",
+          "finding_reason": null
+        },
+        {
+          "check_id": "corrupted_snapshots",
+          "check_label": "corrupted snapshots",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "exports/movie_analysis_model_generation_test/video_identity",
+          "finding_reason": null
+        },
+        {
+          "check_id": "partial_datasets",
+          "check_label": "partial datasets",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "exports/movie_analysis_dna_package/movie-analysis-dna-package.json",
+          "finding_reason": null
+        }
+      ]
+    },
+    {
+      "audit_id": "AUDIT-07",
+      "audit_category": "CHAIN_INTEGRITY_AUDIT",
+      "audit_label": "Chain Integrity Audit",
+      "has_finding": false,
+      "l2a": "PASS",
+      "l2b": "PASS",
+      "l2c": "PASS",
+      "l2d": "PASS",
+      "l2e": "PASS",
+      "l2f": "PASS",
+      "l2g": "PASS",
+      "cross_track_integrity": "PASS",
+      "report_manifest_consistency": "PASS",
+      "chain_break": false,
+      "certification_inconsistency": false,
+      "checks": [
+        {
+          "check_id": "l2a",
+          "check_label": "L2A",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_level2_runtime_certification/movie-analysis-level2-runtime-certification-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "l2b",
+          "check_label": "L2B",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_level2b_consumption_certification/movie-analysis-level2b-consumption-certification-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "l2c",
+          "check_label": "L2C",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_level2c_simulation_certification/movie-analysis-level2c-simulation-certification-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "l2d",
+          "check_label": "L2D",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_runtime_certification/movie-analysis-real-runtime-certification-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "l2e",
+          "check_label": "L2E",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_generation_pipeline_certification/movie-analysis-generation-pipeline-certification-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "l2f",
+          "check_label": "L2F",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_real_video_master_certification/movie-analysis-real-video-master-certification-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "l2g",
+          "check_label": "L2G",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_level2_gap_audit/movie-analysis-level2-completeness-audit-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "cross_track_integrity",
+          "check_label": "cross track integrity",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "reports/movie_analysis_level2_final_certification_v2/movie-analysis-level2-final-certification-v2-report.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "report_manifest_consistency",
+          "check_label": "report manifest consistency",
+          "status": "PASS",
+          "probe_type": "production",
+          "evidence_report_path": "exports/movie_analysis_level2_robustness_audit/movie-analysis-level2-robustness-audit-manifest.json",
+          "finding_reason": null
+        },
+        {
+          "check_id": "chain_break_probe",
+          "check_label": "chain break probe",
+          "status": "PASS",
+          "probe_type": "failure_injection",
+          "evidence_report_path": "reports/movie_analysis_level2_final_certification_v2/movie-analysis-level2-final-certification-v2-report.json",
+          "finding_reason": null
+        }
+      ]
+    }
+  ],
+  "certification_status": "LEVEL2_COMPLETE_FINAL_PLUS"
+}

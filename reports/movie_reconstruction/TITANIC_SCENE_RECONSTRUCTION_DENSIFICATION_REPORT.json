@@ -1,0 +1,105 @@
+{
+  "report_id": "titanic-scene-reconstruction-densification-report-v2",
+  "phase": "PHASE-TITANIC-SCENE-DENSIFICATION-002",
+  "densification_id": "TITANIC_SCENE_RECONSTRUCTION_DENSIFICATION_V2",
+  "generated_at": "2026-06-10T07:04:13.911Z",
+  "final_verdict": "PASS_TITANIC_SCENE_RECONSTRUCTION_DENSIFICATION_V2",
+  "densification_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "scene_geometry_pass": true,
+      "base_scene_registry_exists": true,
+      "scene_geometry_registry_exists": true,
+      "fingerprint_registry_exists": true
+    }
+  },
+  "validation_summary": {
+    "scene_count": 300,
+    "pose_count": 300,
+    "interaction_count": 300,
+    "prop_layout_count": 300,
+    "depth_layer_count": 300,
+    "scene_geometry_preservation_score": 95.39,
+    "semantic_anchor_binding_rate": 1,
+    "scene_fingerprint_uniqueness": 0.968,
+    "generic_harbor_regression_count": 0,
+    "gonegi_translation_integrity": "PASS",
+    "world_identity_lock": "PASS",
+    "reconstruction_density_score": 96.06,
+    "current_reconstruction_fidelity_estimate": 0.25,
+    "target_reconstruction_fidelity_estimate": 0.75,
+    "projected_reconstruction_fidelity_estimate": 0.73,
+    "movie_style_override": false,
+    "world_identity_override": false,
+    "generic_harbor_fallback": false,
+    "gpu_execution": false,
+    "video_generation": false,
+    "next_order": "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001",
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "issues": [],
+  "pipeline": [
+    "Titanic Scene",
+    "Scene Geometry",
+    "Character Coordinates",
+    "Pose Coordinates",
+    "Semantic Preservation",
+    "Gonegi Translation",
+    "Image Generation"
+  ],
+  "dataset_paths": {
+    "dense_dir": "datasets/movie_reconstruction/titanic_dense",
+    "scene_master": "datasets/movie_reconstruction/titanic_dense/titanic-scene-master-registry.json",
+    "body_pose": "datasets/movie_reconstruction/titanic_dense/titanic-body-pose-registry.json",
+    "character_interaction": "datasets/movie_reconstruction/titanic_dense/titanic-character-interaction-registry.json",
+    "prop_layout": "datasets/movie_reconstruction/titanic_dense/titanic-prop-layout-registry.json",
+    "depth_layer": "datasets/movie_reconstruction/titanic_dense/titanic-depth-layer-registry.json",
+    "density_score": "datasets/movie_reconstruction/titanic_dense/titanic-scene-density-score-registry.json"
+  },
+  "control_separation": {
+    "titanic_dataset_controls": [
+      "camera",
+      "blocking",
+      "composition",
+      "depth",
+      "pose",
+      "interaction",
+      "props",
+      "semantic_anchors"
+    ],
+    "gonegi_dataset_controls": [
+      "architecture",
+      "materials",
+      "culture",
+      "color_identity",
+      "character_identity",
+      "living_world_identity"
+    ],
+    "forbidden": [
+      "movie_style_override",
+      "world_identity_override",
+      "generic_harbor_fallback"
+    ]
+  },
+  "quality_gates": {
+    "scene_count_gte_300": true,
+    "scene_geometry_preservation_score_gte_95": true,
+    "semantic_anchor_binding_rate_gte_0_95": true,
+    "scene_fingerprint_uniqueness_gte_0_95": true,
+    "generic_harbor_regression_eq_0": true,
+    "gonegi_translation_integrity_pass": true,
+    "world_identity_lock_pass": true,
+    "reconstruction_density_score_gte_90": true
+  },
+  "success_condition": {
+    "required_output": "Titanic Scene Reconstructed Inside Gonegi World",
+    "forbidden_outputs": [
+      "Generic Mediterranean Harbor Scene",
+      "Titanic Copy"
+    ]
+  },
+  "next_pipeline": [
+    "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001"
+  ]
+}

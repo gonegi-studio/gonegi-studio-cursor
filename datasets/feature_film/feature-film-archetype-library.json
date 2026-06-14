@@ -1,0 +1,406 @@
+{
+  "asset_type": "feature_film_archetype_library",
+  "asset_version": "v1",
+  "library_id": "feature-film-archetype-library-v1",
+  "phase": "PHASE-L3-FEATURE-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Feature film archetype blueprints extending Medium Film Production Ready to 1000-3000 scenes with world state, theme, and legacy callback dimensions.",
+  "scope": {
+    "generates_lyrics": false,
+    "generates_dialogue": true,
+    "requires_multiple_story_arcs": true,
+    "requires_parallel_narrative": true,
+    "requires_relationship_network": true,
+    "requires_world_state_evolution": true,
+    "requires_theme_through_line": true,
+    "requires_legacy_callbacks": true,
+    "target_output": "feature_film_image_sequence",
+    "duration_target_minutes": "120-240",
+    "scene_count_range": "1000-3000",
+    "min_scene_count": 1000,
+    "max_scene_count": 3000
+  },
+  "medium_film_expansion_baseline": {
+    "source_studio": "MEDIUM_FILM_PRODUCTION_READY",
+    "medium_film_scene_count_range": "300-1000",
+    "feature_film_scene_count_range": "1000-3000",
+    "expansion_ratio": "2x-3x"
+  },
+  "integrated_systems": {
+    "medium_film_library": "datasets/medium_film/medium-film-archetype-library-v1.json",
+    "medium_film_blueprint": "exports/medium_film_blueprint/medium-film-blueprint.json",
+    "medium_film_scene_registry": "exports/medium_film_scene_assembly/medium-film-scene-registry.json",
+    "medium_film_shot_registry": "exports/medium_film_shot_assembly/medium-film-shot-registry.json",
+    "medium_film_production_readiness": "exports/medium_film_production_validation/medium-film-production-readiness.json"
+  },
+  "continuity_spec_ref": "datasets/feature_film/feature-continuity-specification-v1.json",
+  "dependency_spec_ref": "datasets/feature_film/feature-dependency-specification-v1.json",
+  "scale_rules_ref": "datasets/feature_film/feature-scale-rules.json",
+  "archetype_count": 3,
+  "archetypes": [
+    {
+      "feature_film_archetype_id": "harbor_saga_feature",
+      "theme": "Generational harbor saga spanning decades with legacy callbacks and world-state transformation",
+      "scene_count_range": "1200-1800",
+      "recommended_duration": "150m-210m",
+      "medium_film_source_ref": "harbor_saga_medium",
+      "story_arcs": [
+        {
+          "arc_id": "departure_main",
+          "arc_type": "departure_return",
+          "beats": ["harbor_life", "departure_commitment", "journey", "failed_letters", "return", "generational_handoff"],
+          "primary_character_group": "gonegi_dana_pair"
+        },
+        {
+          "arc_id": "community_harbor",
+          "arc_type": "ensemble_community",
+          "beats": ["dock_routine", "storm_preparation", "festival_build", "farewell_support", "rebuilt_harbor"],
+          "primary_character_group": "harbor_ensemble"
+        },
+        {
+          "arc_id": "legacy_harbor_line",
+          "arc_type": "generational_legacy",
+          "beats": ["ancestor_departure", "inherited_letter", "modern_return", "legacy_resolution"],
+          "primary_character_group": "legacy_line"
+        }
+      ],
+      "parallel_narrative_flows": [
+        { "flow_id": "gonegi_journey_flow", "flow_type": "primary_linear", "scene_range": "1-1800", "interleave_interval": 10 },
+        { "flow_id": "harbor_community_flow", "flow_type": "parallel_ensemble", "scene_range": "30-1750", "interleave_interval": 14 },
+        { "flow_id": "legacy_line_flow", "flow_type": "parallel_legacy", "scene_range": "100-1700", "interleave_interval": 40 }
+      ],
+      "character_groups": [
+        { "group_id": "gonegi_dana_pair", "member_ids": ["gonegi", "dana"], "group_role": "primary_romance" },
+        { "group_id": "harbor_ensemble", "member_ids": ["gonegi", "marco", "elena"], "group_role": "community_anchor" },
+        { "group_id": "legacy_line", "member_ids": ["gonegi_ancestor", "gonegi"], "group_role": "generational_bridge" }
+      ],
+      "character_arc": {
+        "primary_character_id": "gonegi",
+        "secondary_character_ids": ["dana", "marco", "elena", "gonegi_ancestor"],
+        "stages": ["content_harbor_life", "reluctant_departure", "isolated_journey", "community_memory", "changed_return", "networked_acceptance", "legacy_bearer"]
+      },
+      "location_arc": {
+        "location_flow": ["gonegi_harbor_dock_01", "gonegi_coastal_path_01", "gonegi_street_lane_01", "family_bakery_kitchen_01", "dana_window_corner_01", "gonegi_harbor_dock_01"],
+        "reentry_locations": ["gonegi_harbor_dock_01", "dana_window_corner_01", "harbor_bench", "ancestor_dock_marker"]
+      },
+      "lighting_arc": {
+        "lighting_flow": ["morning_harbor_dock", "evening_harbor_dock", "autumn_harbor_return", "twilight_legacy_glow"],
+        "seasonal_palettes": ["spring_harbor", "summer_harbor", "autumn_harbor", "winter_harbor"]
+      },
+      "relationship_arc": {
+        "primary_pair": "gonegi_dana",
+        "stages": ["growing_affection", "quiet_distance", "memory_weight", "hopeful_future", "generational_continuity"]
+      },
+      "timeline_arc": {
+        "arc_type": "multi_decade_saga",
+        "long_range_dependencies": [
+          { "from_scene": 60, "to_scene": 1400, "dependency_type": "letter_delay" },
+          { "from_scene": 120, "to_scene": 1550, "dependency_type": "harbor_bench_callback" },
+          { "from_scene": 300, "to_scene": 1650, "dependency_type": "legacy_anchor_chain" }
+        ],
+        "timeline_markers": ["year_one_spring", "year_five_summer", "year_ten_autumn", "year_twenty_winter", "present_return"]
+      },
+      "memory_callback_arc": [
+        { "anchor_id": "harbor_bench", "callback_seed": 60, "callback_resolution": 1550, "callback_completion_state": "seeded" },
+        { "anchor_id": "letter_fragment", "callback_seed": 110, "callback_resolution": 1300, "callback_completion_state": "seeded" },
+        { "anchor_id": "mooring_lines", "callback_seed": 200, "callback_resolution": 1480, "callback_completion_state": "seeded" }
+      ],
+      "subplot_arc": {
+        "subplots": [
+          { "subplot_id": "marco_fishing_line", "beats": ["net_repair", "storm_loss", "community_rebuild", "fleet_legacy"], "scene_range": "80-1200" },
+          { "subplot_id": "bakery_expansion", "beats": ["winter_shortage", "spring_reopening", "festival_bread", "generational_recipe"], "scene_range": "150-1500" }
+        ]
+      },
+      "parallel_arc": {
+        "parallel_tracks": [
+          { "track_id": "departure_track", "arc_ref": "departure_main", "scene_range": "1-1800" },
+          { "track_id": "community_track", "arc_ref": "community_harbor", "scene_range": "30-1750" },
+          { "track_id": "legacy_track", "arc_ref": "legacy_harbor_line", "scene_range": "100-1700" }
+        ]
+      },
+      "multi_callback_arc": {
+        "callback_layers": [
+          {
+            "layer_id": "object_layer",
+            "anchors": ["harbor_bench", "letter_fragment", "mooring_lines"],
+            "foreshadow_payoff_pairs": [
+              { "foreshadow_scene": 60, "payoff_scene": 1550, "anchor_id": "harbor_bench" },
+              { "foreshadow_scene": 110, "payoff_scene": 1300, "anchor_id": "letter_fragment" }
+            ]
+          },
+          {
+            "layer_id": "relationship_layer",
+            "anchors": ["shared_window", "harbor_bench_gaze"],
+            "foreshadow_payoff_pairs": [
+              { "foreshadow_scene": 180, "payoff_scene": 1600, "anchor_id": "shared_window" }
+            ]
+          },
+          {
+            "layer_id": "legacy_layer",
+            "anchors": ["ancestor_dock_marker", "inherited_compass"],
+            "foreshadow_payoff_pairs": [
+              { "foreshadow_scene": 250, "payoff_scene": 1700, "anchor_id": "ancestor_dock_marker" }
+            ]
+          }
+        ]
+      },
+      "relationship_network": {
+        "nodes": ["gonegi", "dana", "marco", "elena", "gonegi_ancestor"],
+        "edges": [
+          { "from": "gonegi", "to": "dana", "relationship_type": "romantic_bond" },
+          { "from": "gonegi", "to": "marco", "relationship_type": "harbor_ally" },
+          { "from": "gonegi", "to": "gonegi_ancestor", "relationship_type": "generational_legacy" },
+          { "from": "dana", "to": "elena", "relationship_type": "family_neighbor" }
+        ],
+        "evolution_stages": ["isolated_pairs", "community_mesh", "departure_fracture", "reunion_network", "legacy_continuum"]
+      },
+      "world_arc": {
+        "world_state_stages": ["established_community", "departure_disruption", "rebuilt_harbor", "modernized_port", "legacy_preservation"],
+        "location_transformations": [
+          { "location_id": "gonegi_harbor_dock_01", "transformation_stage": 3 },
+          { "location_id": "dana_window_corner_01", "transformation_stage": 4 }
+        ]
+      },
+      "world_state_arc": {
+        "stages": ["pre_industrial_harbor", "post_departure_decline", "community_reconstruction", "tourism_transition", "heritage_preservation"],
+        "act_alignment": { "act1": "pre_industrial_harbor", "act2": "post_departure_decline", "act3": "community_reconstruction", "act4": "heritage_preservation" }
+      },
+      "theme_arc": {
+        "primary_theme": "return_and_memory",
+        "theme_beats": ["belonging", "departure_weight", "absence_echo", "reunion_cost", "legacy_acceptance"],
+        "symbolic_motifs": ["harbor_bench", "mooring_lines", "shared_window", "inherited_compass"]
+      },
+      "legacy_callback_arc": {
+        "legacy_anchors": [
+          { "anchor_id": "ancestor_dock_marker", "seed_scene": 250, "payoff_scene": 1700, "generation_span": 2 },
+          { "anchor_id": "inherited_compass", "seed_scene": 400, "payoff_scene": 1650, "generation_span": 2 }
+        ],
+        "callback_depth": 3
+      },
+      "continuity_requirements": {
+        "character_continuity": ["ensemble_dna_registry_for_5_principals"],
+        "world_state_continuity": ["world_state_stage_per_act_required"],
+        "theme_continuity": ["theme_beat_per_act_required"],
+        "legacy_callback_continuity": ["legacy_anchor_minimum_2"]
+      }
+    },
+    {
+      "feature_film_archetype_id": "mediterranean_epoch_feature",
+      "theme": "Century-spanning Mediterranean epoch with parallel seasonal, ritual, and civic transformation threads",
+      "scene_count_range": "1500-2500",
+      "recommended_duration": "180m-240m",
+      "medium_film_source_ref": "mediterranean_chronicle_medium",
+      "story_arcs": [
+        { "arc_id": "seasonal_cycle_main", "arc_type": "seasonal_cycle", "beats": ["winter", "spring", "summer", "autumn", "winter_return", "epoch_close"], "primary_character_group": "village_ensemble" },
+        { "arc_id": "festival_lineage", "arc_type": "generational_ritual", "beats": ["lantern_origin", "festival_peak", "memory_transmission", "ritual_renewal"], "primary_character_group": "festival_custodians" },
+        { "arc_id": "civic_transformation", "arc_type": "civic_change", "beats": ["old_quarter", "modern_intrusion", "heritage_defense", "synthesis"], "primary_character_group": "civic_elders" }
+      ],
+      "parallel_narrative_flows": [
+        { "flow_id": "seasonal_main_flow", "flow_type": "primary_cyclical", "scene_range": "1-2500", "interleave_interval": 12 },
+        { "flow_id": "festival_parallel_flow", "flow_type": "parallel_ritual", "scene_range": "100-2400", "interleave_interval": 24 },
+        { "flow_id": "civic_parallel_flow", "flow_type": "parallel_civic", "scene_range": "200-2300", "interleave_interval": 30 }
+      ],
+      "character_groups": [
+        { "group_id": "village_ensemble", "member_ids": ["gonegi", "dana", "marco", "elena"], "group_role": "community_core" },
+        { "group_id": "festival_custodians", "member_ids": ["elena", "marco"], "group_role": "ritual_keepers" },
+        { "group_id": "civic_elders", "member_ids": ["marco", "elder_council"], "group_role": "civic_memory" }
+      ],
+      "character_arc": {
+        "primary_character_id": "gonegi",
+        "secondary_character_ids": ["dana", "marco", "elena"],
+        "stages": ["winter_observer", "spring_participant", "summer_connector", "autumn_elder", "winter_chronicler", "epoch_witness"]
+      },
+      "location_arc": {
+        "location_flow": ["village_square_01", "olive_hill_path_01", "festival_lane_01", "harbor_overlook_01", "village_square_01"],
+        "reentry_locations": ["village_square_01", "festival_lane_01", "lantern_arch"]
+      },
+      "lighting_arc": {
+        "lighting_flow": ["winter_dawn_village", "spring_festival_glow", "summer_midday_olive", "autumn_lantern_warm"],
+        "seasonal_palettes": ["winter_village", "spring_festival", "summer_olive", "autumn_lantern"]
+      },
+      "relationship_arc": {
+        "primary_pair": "gonegi_dana",
+        "stages": ["neighbor_warmth", "festival_partnership", "seasonal_distance", "elder_companionship", "epoch_shared_memory"]
+      },
+      "timeline_arc": {
+        "arc_type": "century_chronicle",
+        "long_range_dependencies": [
+          { "from_scene": 100, "to_scene": 2000, "dependency_type": "festival_lantern_origin" },
+          { "from_scene": 250, "to_scene": 2200, "dependency_type": "civic_transformation_arc" }
+        ],
+        "timeline_markers": ["decade_one", "decade_three", "decade_five", "present_epoch"]
+      },
+      "memory_callback_arc": [
+        { "anchor_id": "lantern_arch", "callback_seed": 100, "callback_resolution": 2100, "callback_completion_state": "seeded" },
+        { "anchor_id": "olive_press_stone", "callback_seed": 180, "callback_resolution": 1950, "callback_completion_state": "seeded" }
+      ],
+      "subplot_arc": {
+        "subplots": [
+          { "subplot_id": "festival_preparation", "beats": ["lantern_craft", "procession_route", "night_illumination"], "scene_range": "200-2000" },
+          { "subplot_id": "civic_debate", "beats": ["old_quarter_petition", "modern_plan", "heritage_compromise"], "scene_range": "300-2200" }
+        ]
+      },
+      "parallel_arc": {
+        "parallel_tracks": [
+          { "track_id": "seasonal_track", "arc_ref": "seasonal_cycle_main", "scene_range": "1-2500" },
+          { "track_id": "festival_track", "arc_ref": "festival_lineage", "scene_range": "100-2400" },
+          { "track_id": "civic_track", "arc_ref": "civic_transformation", "scene_range": "200-2300" }
+        ]
+      },
+      "multi_callback_arc": {
+        "callback_layers": [
+          { "layer_id": "ritual_layer", "anchors": ["lantern_arch", "procession_bell"], "foreshadow_payoff_pairs": [{ "foreshadow_scene": 100, "payoff_scene": 2100, "anchor_id": "lantern_arch" }] },
+          { "layer_id": "object_layer", "anchors": ["olive_press_stone", "festival_banner"], "foreshadow_payoff_pairs": [{ "foreshadow_scene": 180, "payoff_scene": 1950, "anchor_id": "olive_press_stone" }] },
+          { "layer_id": "civic_layer", "anchors": ["old_quarter_plaque", "modern_plan_draft"], "foreshadow_payoff_pairs": [{ "foreshadow_scene": 300, "payoff_scene": 2200, "anchor_id": "old_quarter_plaque" }] }
+        ]
+      },
+      "relationship_network": {
+        "nodes": ["gonegi", "dana", "marco", "elena", "elder_council"],
+        "edges": [
+          { "from": "gonegi", "to": "dana", "relationship_type": "neighbor_bond" },
+          { "from": "elena", "to": "marco", "relationship_type": "ritual_partners" },
+          { "from": "marco", "to": "elder_council", "relationship_type": "civic_delegate" }
+        ],
+        "evolution_stages": ["village_mesh", "festival_bond", "civic_fracture", "heritage_synthesis", "epoch_continuum"]
+      },
+      "world_arc": {
+        "world_state_stages": ["agrarian_village", "festival_ascendancy", "modern_pressure", "heritage_synthesis"],
+        "location_transformations": [
+          { "location_id": "village_square_01", "transformation_stage": 3 },
+          { "location_id": "festival_lane_01", "transformation_stage": 2 }
+        ]
+      },
+      "world_state_arc": {
+        "stages": ["agrarian_epoch", "festival_golden_age", "modern_intrusion", "heritage_reclamation", "synthesis_present"],
+        "act_alignment": { "act1": "agrarian_epoch", "act2": "festival_golden_age", "act3": "modern_intrusion", "act4": "heritage_reclamation", "act5": "synthesis_present" }
+      },
+      "theme_arc": {
+        "primary_theme": "tradition_and_change",
+        "theme_beats": ["cyclical_return", "ritual_memory", "modern_intrusion", "heritage_defense", "living_synthesis"],
+        "symbolic_motifs": ["lantern_arch", "olive_press_stone", "festival_banner", "old_quarter_plaque"]
+      },
+      "legacy_callback_arc": {
+        "legacy_anchors": [
+          { "anchor_id": "lantern_arch", "seed_scene": 100, "payoff_scene": 2100, "generation_span": 3 },
+          { "anchor_id": "olive_press_stone", "seed_scene": 180, "payoff_scene": 1950, "generation_span": 2 }
+        ],
+        "callback_depth": 4
+      },
+      "continuity_requirements": {
+        "character_continuity": ["multi_generation_cast_rotation"],
+        "world_state_continuity": ["civic_transformation_tracked_per_act"],
+        "theme_continuity": ["tradition_change_theme_per_act"],
+        "legacy_callback_continuity": ["ritual_legacy_span_minimum_200_scenes"]
+      }
+    },
+    {
+      "feature_film_archetype_id": "correspondence_ledger_feature",
+      "theme": "Multi-decade correspondence ledger with parallel lives, layered memory, and legacy letter chains",
+      "scene_count_range": "1000-1600",
+      "recommended_duration": "120m-180m",
+      "medium_film_source_ref": "correspondence_saga_medium",
+      "story_arcs": [
+        { "arc_id": "correspondence_main", "arc_type": "epistolary_saga", "beats": ["first_letter", "silence_years", "rediscovered_bundle", "final_reply", "ledger_close"], "primary_character_group": "correspondents_pair" },
+        { "arc_id": "parallel_lives", "arc_type": "parallel_biography", "beats": ["divergent_paths", "missed_meetings", "convergent_memory", "shared_finale"], "primary_character_group": "parallel_pair" },
+        { "arc_id": "archive_line", "arc_type": "archival_legacy", "beats": ["ledger_found", "translation", "publication", "memory_preservation"], "primary_character_group": "archive_keepers" }
+      ],
+      "parallel_narrative_flows": [
+        { "flow_id": "letter_main_flow", "flow_type": "primary_epistolary", "scene_range": "1-1600", "interleave_interval": 8 },
+        { "flow_id": "parallel_lives_flow", "flow_type": "parallel_biography", "scene_range": "50-1550", "interleave_interval": 16 },
+        { "flow_id": "archive_flow", "flow_type": "parallel_archive", "scene_range": "200-1500", "interleave_interval": 35 }
+      ],
+      "character_groups": [
+        { "group_id": "correspondents_pair", "member_ids": ["gonegi", "dana"], "group_role": "primary_correspondents" },
+        { "group_id": "parallel_pair", "member_ids": ["gonegi", "marco"], "group_role": "parallel_lives" },
+        { "group_id": "archive_keepers", "member_ids": ["elena", "archivist"], "group_role": "memory_preservation" }
+      ],
+      "character_arc": {
+        "primary_character_id": "gonegi",
+        "secondary_character_ids": ["dana", "marco", "elena"],
+        "stages": ["letter_writer", "waiting_years", "life_divergence", "memory_return", "ledger_reader", "archive_guardian"]
+      },
+      "location_arc": {
+        "location_flow": ["writing_desk_01", "post_office_lane_01", "harbor_waiting_bench_01", "archive_room_01", "writing_desk_01"],
+        "reentry_locations": ["writing_desk_01", "post_office_lane_01", "archive_room_01"]
+      },
+      "lighting_arc": {
+        "lighting_flow": ["morning_desk_light", "afternoon_post_lane", "evening_waiting_bench", "archive_lamp_glow"],
+        "seasonal_palettes": ["spring_correspondence", "summer_waiting", "autumn_archive", "winter_ledger"]
+      },
+      "relationship_arc": {
+        "primary_pair": "gonegi_dana",
+        "stages": ["written_intimacy", "geographic_distance", "silent_years", "rediscovered_bond", "archived_love"]
+      },
+      "timeline_arc": {
+        "arc_type": "multi_decade_correspondence",
+        "long_range_dependencies": [
+          { "from_scene": 80, "to_scene": 1200, "dependency_type": "letter_delay_chain" },
+          { "from_scene": 150, "to_scene": 1400, "dependency_type": "archive_discovery" }
+        ],
+        "timeline_markers": ["decade_one_letters", "decade_two_silence", "decade_three_rediscovery", "present_ledger"]
+      },
+      "memory_callback_arc": [
+        { "anchor_id": "sealed_envelope", "callback_seed": 80, "callback_resolution": 1200, "callback_completion_state": "seeded" },
+        { "anchor_id": "ledger_page", "callback_seed": 150, "callback_resolution": 1400, "callback_completion_state": "seeded" }
+      ],
+      "subplot_arc": {
+        "subplots": [
+          { "subplot_id": "postal_delay_line", "beats": ["lost_bundle", "rerouted_letter", "delayed_arrival"], "scene_range": "100-1100" },
+          { "subplot_id": "archive_restoration", "beats": ["damaged_page", "translation_effort", "public_reading"], "scene_range": "200-1500" }
+        ]
+      },
+      "parallel_arc": {
+        "parallel_tracks": [
+          { "track_id": "letter_track", "arc_ref": "correspondence_main", "scene_range": "1-1600" },
+          { "track_id": "lives_track", "arc_ref": "parallel_lives", "scene_range": "50-1550" },
+          { "track_id": "archive_track", "arc_ref": "archive_line", "scene_range": "200-1500" }
+        ]
+      },
+      "multi_callback_arc": {
+        "callback_layers": [
+          { "layer_id": "letter_layer", "anchors": ["sealed_envelope", "ink_blot_mark"], "foreshadow_payoff_pairs": [{ "foreshadow_scene": 80, "payoff_scene": 1200, "anchor_id": "sealed_envelope" }] },
+          { "layer_id": "archive_layer", "anchors": ["ledger_page", "binding_thread"], "foreshadow_payoff_pairs": [{ "foreshadow_scene": 150, "payoff_scene": 1400, "anchor_id": "ledger_page" }] },
+          { "layer_id": "legacy_layer", "anchors": ["ancestor_letter", "modern_transcript"], "foreshadow_payoff_pairs": [{ "foreshadow_scene": 220, "payoff_scene": 1500, "anchor_id": "ancestor_letter" }] }
+        ]
+      },
+      "relationship_network": {
+        "nodes": ["gonegi", "dana", "marco", "elena", "archivist"],
+        "edges": [
+          { "from": "gonegi", "to": "dana", "relationship_type": "correspondence_bond" },
+          { "from": "gonegi", "to": "marco", "relationship_type": "parallel_life_friend" },
+          { "from": "elena", "to": "archivist", "relationship_type": "archive_partnership" }
+        ],
+        "evolution_stages": ["written_intimacy", "geographic_mesh", "silent_fracture", "archive_reunion", "ledger_continuum"]
+      },
+      "world_arc": {
+        "world_state_stages": ["handwritten_era", "postal_expansion", "digital_intrusion", "archive_preservation"],
+        "location_transformations": [
+          { "location_id": "post_office_lane_01", "transformation_stage": 2 },
+          { "location_id": "archive_room_01", "transformation_stage": 4 }
+        ]
+      },
+      "world_state_arc": {
+        "stages": ["handwritten_era", "wartime_disruption", "postwar_reconnection", "digital_transition", "archive_preservation"],
+        "act_alignment": { "act1": "handwritten_era", "act2": "wartime_disruption", "act3": "postwar_reconnection", "act4": "archive_preservation" }
+      },
+      "theme_arc": {
+        "primary_theme": "words_across_distance",
+        "theme_beats": ["written_intimacy", "silence_weight", "rediscovery_shock", "archived_memory", "living_ledger"],
+        "symbolic_motifs": ["sealed_envelope", "ledger_page", "ink_blot_mark", "binding_thread"]
+      },
+      "legacy_callback_arc": {
+        "legacy_anchors": [
+          { "anchor_id": "ancestor_letter", "seed_scene": 220, "payoff_scene": 1500, "generation_span": 2 },
+          { "anchor_id": "modern_transcript", "seed_scene": 350, "payoff_scene": 1450, "generation_span": 2 }
+        ],
+        "callback_depth": 3
+      },
+      "continuity_requirements": {
+        "character_continuity": ["correspondent_dna_stable_across_decades"],
+        "world_state_continuity": ["communication_era_tracked_per_act"],
+        "theme_continuity": ["distance_intimacy_theme_per_act"],
+        "legacy_callback_continuity": ["letter_legacy_span_minimum_200_scenes"]
+      }
+    }
+  ]
+}

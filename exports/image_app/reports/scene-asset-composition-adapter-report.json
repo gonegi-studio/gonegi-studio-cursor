@@ -1,0 +1,37 @@
+{
+  "report_type": "scene_asset_composition_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-SAC-001",
+  "generated_at": "2026-06-03T11:40:20.498Z",
+  "composition_count": 8,
+  "target_composition_count": 8,
+  "duplicate_ids": 0,
+  "runtime_fields_exported": {
+    "composition_id": true,
+    "composition_tokens": true,
+    "render_payload": true,
+    "tokens_injected": true
+  },
+  "validation_target": "RKB-012 SCENE_COMPOSITION_CONTINUITY_VALIDATION",
+  "json_parse_result": "valid",
+  "validation": {
+    "all_target_compositions_present": true,
+    "duplicate_ids_zero": true,
+    "required_fields_complete": true,
+    "adapter_chain_complete": true,
+    "adapter_synced_to_latest": true,
+    "runtime_verification_exported": true,
+    "compositions_resolve": true,
+    "forbidden_rules_include_core_four": true,
+    "tokens_injected": true
+  },
+  "export_path": "exports/image_app/adapters/scene-asset-composition-adapter.json",
+  "report_path": "exports/image_app/reports/scene-asset-composition-adapter-report.json",
+  "library_path": "datasets/scene/scene-asset-composition-library-v1.json",
+  "index_path": "datasets/scene/scene-asset-composition-index-v1.json",
+  "final_verdict": "PASS_SCENE_ASSET_COMPOSITION_SYSTEM_V1",
+  "violations": [],
+  "next_phases": [
+    "PHASE-RKB-012 SCENE_COMPOSITION_CONTINUITY_VALIDATION"
+  ]
+}

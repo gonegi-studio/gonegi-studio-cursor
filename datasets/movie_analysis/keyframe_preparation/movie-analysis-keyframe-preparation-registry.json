@@ -1,0 +1,70 @@
+{
+  "registry_id": "movie-analysis-keyframe-preparation-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-029-MOVIE_ANALYSIS_KEYFRAME_PREPARATION_DESIGN_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/keyframe_preparation/movie-analysis-keyframe-preparation.schema.json",
+  "video_state_compilation_registry_path": "datasets/movie_analysis/video_state_compilation/movie-analysis-video-state-compilation-registry.json",
+  "storage_dir": "datasets/movie_analysis/keyframe_preparation/plans",
+  "keyframe_preparation_plans": [
+    {
+      "keyframe_preparation_id": "keyframe_preparation_ghibli_01_v1",
+      "plan_path": "datasets/movie_analysis/keyframe_preparation/plans/keyframe_preparation_ghibli_01_v1.json",
+      "source_video_id": "GHIBLI_01",
+      "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+      "dry_run_id": "dry_run_ghibli_01_v1",
+      "sampling_plan_id": "frame_sampling_ghibli_01_v1",
+      "scene_detection_id": "scene_detection_ghibli_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_ghibli_01_v1",
+      "gonegi_state_mapping_id": "gonegi_state_mapping_ghibli_01_v1",
+      "video_state_compilation_id": "video_state_compilation_ghibli_01_v1",
+      "preparation_strategy": "SCENE_ANCHOR_KEYFRAME_CANDIDATE",
+      "keyframe_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "keyframe_preparation_id": "keyframe_preparation_shinkai_01_v1",
+      "plan_path": "datasets/movie_analysis/keyframe_preparation/plans/keyframe_preparation_shinkai_01_v1.json",
+      "source_video_id": "SHINKAI_01",
+      "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+      "dry_run_id": "dry_run_shinkai_01_v1",
+      "sampling_plan_id": "frame_sampling_shinkai_01_v1",
+      "scene_detection_id": "scene_detection_shinkai_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_shinkai_01_v1",
+      "gonegi_state_mapping_id": "gonegi_state_mapping_shinkai_01_v1",
+      "video_state_compilation_id": "video_state_compilation_shinkai_01_v1",
+      "preparation_strategy": "EMOTION_BLOCKING_KEYFRAME_CANDIDATE",
+      "keyframe_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "keyframe_preparation_id": "keyframe_preparation_little_women_01_v1",
+      "plan_path": "datasets/movie_analysis/keyframe_preparation/plans/keyframe_preparation_little_women_01_v1.json",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "analysis_plan_id": "analysis_plan_little_women_01_v1",
+      "dry_run_id": "dry_run_little_women_01_v1",
+      "sampling_plan_id": "frame_sampling_little_women_01_v1",
+      "scene_detection_id": "scene_detection_little_women_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_little_women_01_v1",
+      "gonegi_state_mapping_id": "gonegi_state_mapping_little_women_01_v1",
+      "video_state_compilation_id": "video_state_compilation_little_women_01_v1",
+      "preparation_strategy": "CHARACTER_IDENTITY_KEYFRAME_CANDIDATE",
+      "keyframe_candidate_count": 18,
+      "status": "designed"
+    },
+    {
+      "keyframe_preparation_id": "keyframe_preparation_mori_01_v1",
+      "plan_path": "datasets/movie_analysis/keyframe_preparation/plans/keyframe_preparation_mori_01_v1.json",
+      "source_video_id": "MORI_01",
+      "analysis_plan_id": "analysis_plan_mori_01_v1",
+      "dry_run_id": "dry_run_mori_01_v1",
+      "sampling_plan_id": "frame_sampling_mori_01_v1",
+      "scene_detection_id": "scene_detection_mori_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_mori_01_v1",
+      "gonegi_state_mapping_id": "gonegi_state_mapping_mori_01_v1",
+      "video_state_compilation_id": "video_state_compilation_mori_01_v1",
+      "preparation_strategy": "MOTION_BRIDGE_KEYFRAME_CANDIDATE",
+      "keyframe_candidate_count": 12,
+      "status": "designed"
+    }
+  ]
+}

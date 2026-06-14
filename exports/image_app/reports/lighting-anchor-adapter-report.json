@@ -1,0 +1,35 @@
+{
+  "report_type": "lighting_anchor_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-LTD-005",
+  "generated_at": "2026-06-03T06:33:54.866Z",
+  "anchor_count": 8,
+  "target_anchor_count": 8,
+  "duplicate_ids": 0,
+  "runtime_fields_exported": {
+    "lighting_anchor_id": true,
+    "lighting_tokens": true,
+    "render_payload": true
+  },
+  "validation_target": "RKB-005 LIGHTING_VALIDATION",
+  "json_parse_result": "valid",
+  "validation": {
+    "all_initial_anchors_present": true,
+    "duplicate_ids_zero": true,
+    "required_fields_complete": true,
+    "adapter_chain_complete": true,
+    "runtime_verification_exported": true,
+    "dna_ids_resolve": true,
+    "forbidden_rules_include_core_four": true
+  },
+  "export_path": "exports/image_app/adapters/lighting-anchor-adapter.json",
+  "report_path": "exports/image_app/reports/lighting-anchor-adapter-report.json",
+  "library_path": "datasets/lighting/lighting-anchor-library-v1.json",
+  "index_path": "datasets/lighting/lighting-anchor-index-v1.json",
+  "final_verdict": "PASS_LIGHTING_ANCHOR_BUNDLE_V1",
+  "violations": [],
+  "next_phases": [
+    "RKB-005 Lighting Validation",
+    "SHOT-GRAMMAR-001 Cinematic Coverage Grammar"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "report_id": "spirited-away-shot-reconstruction-report-v1",
+  "phase": "PHASE-SPIRITED-AWAY-SHOT-GRAMMAR-001",
+  "system_id": "SPIRITED_AWAY_SHOT_RECONSTRUCTION_V1",
+  "generated_at": "2026-06-10T08:06:50.079Z",
+  "final_verdict": "PASS_SPIRITED_AWAY_SHOT_RECONSTRUCTION_V1",
+  "shot_system_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "spirited_away_dataset_pass": true,
+      "scene_registry_exists": true,
+      "movie_bundle_exists": true,
+      "runtime_composition_exists": true
+    }
+  },
+  "validation_summary": {
+    "scene_count": 300,
+    "shot_count": 2400,
+    "shots_per_scene": 8,
+    "transition_count": 2399,
+    "shot_fingerprint_uniqueness": 0.971,
+    "semantic_anchor_binding_rate": 1,
+    "generic_harbor_regression_count": 0,
+    "movie_dataset_swap_valid": true,
+    "world_identity_lock": "PASS",
+    "image_adapter_ready": true,
+    "video_adapter_ready": true,
+    "image_reconstruction_status": "PASS",
+    "video_reconstruction_status": "READY",
+    "single_movie_dataset": true,
+    "gpu_execution": false,
+    "policy": "SAFE_CREATE_ONLY",
+    "next_order": "PHASE-SPIRITED-AWAY-MOTION-GRAMMAR-001"
+  },
+  "issues": [],
+  "reconstruction_pipeline": [
+    "Spirited Away Scene",
+    "Shot Layer",
+    "Temporal Layer",
+    "Video Reconstruction Ready"
+  ],
+  "quality_gates": {
+    "shot_count_gte_2400": true,
+    "shot_fingerprint_uniqueness_gte_0_95": true,
+    "semantic_anchor_binding_rate_gte_0_95": true,
+    "movie_dataset_swap_valid": true,
+    "world_identity_lock_pass": true,
+    "generic_harbor_regression_eq_0": true,
+    "image_adapter_ready": true,
+    "video_adapter_ready": true
+  },
+  "dataset_paths": {
+    "shots_dir": "datasets/movie_reconstruction/spirited_away_shots",
+    "shot_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json",
+    "shot_transition_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-transition-registry.json",
+    "shot_fingerprint_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-fingerprint-registry.json",
+    "image_adapter": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-image-adapter.json",
+    "video_adapter": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-video-adapter.json"
+  },
+  "success_condition": {
+    "scene_to_shot_layer": "PASS",
+    "shot_to_temporal_layer": "READY",
+    "video_reconstruction": "READY"
+  },
+  "next_pipeline": [
+    "PHASE-SPIRITED-AWAY-MOTION-GRAMMAR-001"
+  ]
+}

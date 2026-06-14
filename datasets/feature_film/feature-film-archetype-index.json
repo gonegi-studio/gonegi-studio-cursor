@@ -1,0 +1,52 @@
+{
+  "asset_type": "feature_film_archetype_index",
+  "asset_version": "v1",
+  "index_id": "feature-film-archetype-index-v1",
+  "phase": "PHASE-L3-FEATURE-001",
+  "library_path": "datasets/feature_film/feature-film-archetype-library.json",
+  "continuity_spec_ref": "datasets/feature_film/feature-continuity-specification-v1.json",
+  "dependency_spec_ref": "datasets/feature_film/feature-dependency-specification-v1.json",
+  "scale_rules_ref": "datasets/feature_film/feature-scale-rules.json",
+  "archetype_count": 3,
+  "scene_count_range": "1000-3000",
+  "min_scene_count": 1000,
+  "max_scene_count": 3000,
+  "medium_film_source_studio": "MEDIUM_FILM_PRODUCTION_READY",
+  "global_progression": [
+    "harbor_saga_feature",
+    "mediterranean_epoch_feature",
+    "correspondence_ledger_feature"
+  ],
+  "entries": [
+    {
+      "feature_film_archetype_id": "harbor_saga_feature",
+      "theme": "Generational harbor saga spanning decades with legacy callbacks and world-state transformation",
+      "recommended_duration": "150m-210m",
+      "scene_count_range": "1200-1800",
+      "story_arc_count": 3,
+      "parallel_flow_count": 3,
+      "character_group_count": 3,
+      "medium_film_source_ref": "harbor_saga_medium"
+    },
+    {
+      "feature_film_archetype_id": "mediterranean_epoch_feature",
+      "theme": "Century-spanning Mediterranean epoch with parallel seasonal, ritual, and civic transformation threads",
+      "recommended_duration": "180m-240m",
+      "scene_count_range": "1500-2500",
+      "story_arc_count": 3,
+      "parallel_flow_count": 3,
+      "character_group_count": 3,
+      "medium_film_source_ref": "mediterranean_chronicle_medium"
+    },
+    {
+      "feature_film_archetype_id": "correspondence_ledger_feature",
+      "theme": "Multi-decade correspondence ledger with parallel lives, layered memory, and legacy letter chains",
+      "recommended_duration": "120m-180m",
+      "scene_count_range": "1000-1600",
+      "story_arc_count": 3,
+      "parallel_flow_count": 3,
+      "character_group_count": 3,
+      "medium_film_source_ref": "correspondence_saga_medium"
+    }
+  ]
+}

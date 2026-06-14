@@ -1,0 +1,49 @@
+{
+  "analysis_plan_id": "analysis_plan_little_women_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1",
+  "source_video_id": "LITTLE_WOMEN_01",
+  "source_video_path": "imports/source_videos/active/live_action/LITTLE_WOMEN_01.mp4",
+  "director_family": "LIVE_ACTION",
+  "director_grammar_ref": "director_grammar_live_action_v1",
+  "analysis_mode": "design_only",
+  "target_outputs": [
+    "scene_segment_candidates",
+    "coordinate_extraction_candidates",
+    "gonegi_pipeline_alignment"
+  ],
+  "segment_detection_strategy": {
+    "strategy_id": "analysis_plan_little_women_01_v1_segment_strategy",
+    "method": "dialogue_boundary_heuristic",
+    "design_notes": "Detect dialogue-blocking segment candidates via live-action boundary heuristics without OCR.",
+    "candidate_count_target": 1,
+    "downstream_segment_ref": "segment_live_action_dialogue_001_v1"
+  },
+  "coordinate_detection_strategy": {
+    "strategy_id": "analysis_plan_little_women_01_v1_coordinate_strategy",
+    "method": "grammar_layer_projection",
+    "design_notes": "Project dialogue-blocking grammar layers into coordinate extraction candidates.",
+    "layer_targets": [
+      "camera_coordinate",
+      "character_coordinate",
+      "prop_coordinate"
+    ],
+    "downstream_coordinate_ref": "coord_live_action_dialogue_001_v1"
+  },
+  "identity_safety_strategy": {
+    "strategy_id": "analysis_plan_little_women_01_v1_identity_safety",
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "promotion_gate_warnings_preserved": true,
+    "downstream_pipeline": "gonegi_isolated"
+  },
+  "promotion_gate_status": "ALLOW_WITH_WARNING",
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "built_at": "2026-06-05T11:45:29.827Z"
+}

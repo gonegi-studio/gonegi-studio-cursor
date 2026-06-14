@@ -1,0 +1,28 @@
+{
+  "report_id": "video_conditioning_architecture_mqczcwyk",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-010",
+  "system_id": "VIDEO_CONDITIONING_BACKEND_V1",
+  "generated_at": "2026-06-13T23:22:14.108Z",
+  "selected_architecture": "Hybrid Video Conditioning Stack",
+  "runtime_layers": [
+    "conditioning-map-export ingestion layer",
+    "future_video_adapter translation layer",
+    "runtime_enforcement gate layer",
+    "channel degradation router"
+  ],
+  "identity_layers": [
+    "environment_identity_runtime_channel (IP-Adapter environment reference)",
+    "object_identity_runtime_channel (IP-Adapter object reference + variation_tolerance)",
+    "environment_similarity_v1 + object_similarity_v1 threshold gates"
+  ],
+  "temporal_layers": [
+    "temporal_preservation_runtime_channel (edit_rhythm + shot_boundary)",
+    "causal_transition_chain runtime traversal",
+    "temporal_traceability binding lineage"
+  ],
+  "continuity_layers": [
+    "camera_continuity_runtime_channel (motion_vectors + camera_inertia)",
+    "multi_scene_consistency_runtime_channel (SpatialConsistencyMemory anchors)",
+    "cross-shot continuity_signature validation"
+  ]
+}

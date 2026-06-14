@@ -1,0 +1,63 @@
+{
+  "spec_id": "image-consistency-specification-v1",
+  "asset_type": "image_consistency_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-001",
+  "purpose": "Real generation image identity consistency validation bridging Level 3 production-ready engines to generation output QA.",
+  "upstream_checkpoint": "LEVEL3_DIGITAL_STUDIO_COMPLETE",
+  "identity_dimension_count": 8,
+  "identity_dimensions": [
+    "character_identity",
+    "location_identity",
+    "lighting_identity",
+    "costume_identity",
+    "prop_identity",
+    "style_identity",
+    "composition_identity",
+    "camera_identity"
+  ],
+  "evaluation_scope": {
+    "generation_type": "image",
+    "validation_mode": "batch_identity_consistency",
+    "studio_lineage": [
+      "mv_production_ready",
+      "short_film_production_ready",
+      "medium_film_production_ready",
+      "feature_film_production_ready"
+    ]
+  },
+  "dimension_definitions": {
+    "character_identity": {
+      "description": "Facial features, body proportions, and recognizable character markers remain stable across generated frames.",
+      "continuity_ref": "character_arc"
+    },
+    "location_identity": {
+      "description": "Spatial layout, set geography, and environmental anchors remain consistent within a location sequence.",
+      "continuity_ref": "location_arc"
+    },
+    "lighting_identity": {
+      "description": "Key/fill/rim balance, color temperature, and shadow direction remain coherent across shots.",
+      "continuity_ref": "lighting_arc"
+    },
+    "costume_identity": {
+      "description": "Wardrobe silhouette, palette, and accessory placement remain stable for each character.",
+      "continuity_ref": "character_arc"
+    },
+    "prop_identity": {
+      "description": "Story-critical objects retain shape, scale, and visual markers across callbacks and re-entries.",
+      "continuity_ref": "memory_callback_arc"
+    },
+    "style_identity": {
+      "description": "Rendering style, grain, palette grading, and artistic treatment remain within the declared style envelope.",
+      "continuity_ref": "world_arc"
+    },
+    "composition_identity": {
+      "description": "Framing grammar, subject placement, and negative-space balance remain intentional across coverage roles.",
+      "continuity_ref": "relationship_network"
+    },
+    "camera_identity": {
+      "description": "Lens feel, focal length cues, and camera motion vocabulary remain consistent with shot coverage intent.",
+      "continuity_ref": "timeline_arc"
+    }
+  }
+}

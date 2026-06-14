@@ -1,0 +1,117 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-001",
+  "test_id": "RKB-001",
+  "test_date": "2026-06-02",
+  "test_type": "Image App Character Consistency Validation",
+  "scenario_source": "Manual Music Drama Scenario Prototype",
+  "story_episode": {
+    "episode_id": "EP01",
+    "title_ko": "늘 그래왔듯이"
+  },
+  "input_assets": {
+    "character_library": "datasets/character/character-simple-v1.json",
+    "time_library": "datasets/time/time-setting-library-v1.json",
+    "living_world_core": "exports/shared/latest/living-world-core-v1-package.json",
+    "living_world_adapter": "exports/image_app/latest/living-world-image-adapter.json",
+    "rulebook_reference": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json"
+  },
+  "scenario_method": "External manual scenario",
+  "important_structure": {
+    "scenario_field": "Scene description only",
+    "character_field": "Character description only",
+    "scenario_character_separation": true,
+    "negative_exclusion_tokens": false
+  },
+  "generated_image_count": 3,
+  "success_observations": {
+    "character_consistency": {
+      "gonegi_identity": "PASS",
+      "gamja_identity": "PASS",
+      "hair_consistency": "PASS",
+      "clothing_consistency": "PASS",
+      "face_consistency": "PASS"
+    },
+    "environment_consistency": {
+      "mediterranean_atmosphere": "PASS",
+      "harbor_village_feeling": "PASS",
+      "bakery_environment": "PASS"
+    },
+    "style_consistency": {
+      "warm_daily_life_mood": "PASS",
+      "music_drama_suitability": "PASS"
+    }
+  },
+  "known_issues": [
+    {
+      "issue_id": "issue_01",
+      "type": "object deformation",
+      "description": "Blanket geometry deformation in bedroom scene.",
+      "severity": "LOW"
+    },
+    {
+      "issue_id": "issue_02",
+      "type": "crowd deformation",
+      "description": "Some market background characters showed distorted anatomy.",
+      "severity": "MEDIUM"
+    },
+    {
+      "issue_id": "issue_03",
+      "type": "minor hand artifact",
+      "description": "Occasional hand/finger irregularities.",
+      "severity": "LOW"
+    }
+  ],
+  "major_discovery": {
+    "finding_01": "External manually-written scenario produced significantly higher character consistency than internally generated scenario.",
+    "finding_02": "Strict separation between scenario field and character field appears to improve character stability.",
+    "finding_03": "Character field should contain only visible entities and visual descriptions.",
+    "finding_04": "Absent characters should be omitted completely. Do not use exclusion phrases such as \"No Dana\", \"Dana absent\", or similar."
+  },
+  "forbidden_exclusion_phrases": [
+    "No Dana",
+    "Dana absent"
+  ],
+  "lessons_learned": {
+    "lesson_01": {
+      "field": "scenario",
+      "content": [
+        "location",
+        "environment",
+        "atmosphere",
+        "visible action"
+      ],
+      "note": "only"
+    },
+    "lesson_02": {
+      "field": "character",
+      "content": "visible character descriptions only"
+    },
+    "lesson_03": "Crowd density should remain limited during early testing.",
+    "lesson_04": "Companion animals improve emotional readability and scene continuity."
+  },
+  "scoring": {
+    "character_consistency": 9.5,
+    "gamja_consistency": 9.5,
+    "environment_consistency": 9.0,
+    "style_consistency": 9.0,
+    "crowd_quality": 7.0,
+    "object_quality": 7.5,
+    "overall_result": "SUCCESS"
+  },
+  "recommended_next_step": {
+    "summary": "Continue Music Drama dataset expansion.",
+    "prioritize": [
+      "Music Drama Grammar",
+      "Daily Life Grammar",
+      "Crowd Grammar",
+      "Animal Behavior Grammar"
+    ],
+    "guidance": "Create additional image tests before major generator development."
+  },
+  "verdict": {
+    "code": "PASS_RKB_001",
+    "label": "FIRST_SUCCESSFUL_EXTERNAL_SCENARIO_TEST"
+  }
+}

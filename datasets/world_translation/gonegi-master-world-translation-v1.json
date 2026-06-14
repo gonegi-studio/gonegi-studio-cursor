@@ -1,0 +1,242 @@
+{
+  "translation_id": "gonegi-master-world-translation-v1",
+  "phase": "PHASE-SOURCE-VIDEO-011-GONEGI_WORLD_TRANSLATION_CONTRACT_V1",
+  "target_world_type": "early-1900s mediterranean harbor town",
+  "target_world_identity": "GONEGI_MEDITERRANEAN",
+  "director_blend_ref": "gonegi-master-director-blend-v1",
+  "family_translations": {
+    "GHIBLI": {
+      "source_world_type": "ghibli_pastoral_fantasy",
+      "target_world_type": "early-1900s mediterranean harbor town",
+      "target_world_identity": "GONEGI_MEDITERRANEAN",
+      "state_draft_ref": "state_draft_ghibli_kitchen_001_v2",
+      "source_video_id": "GHIBLI_01"
+    },
+    "SHINKAI": {
+      "source_world_type": "shinkai_urban_contemplative",
+      "target_world_type": "early-1900s mediterranean harbor town",
+      "target_world_identity": "GONEGI_MEDITERRANEAN",
+      "state_draft_ref": "state_draft_shinkai_sky_light_001_v2",
+      "source_video_id": "SHINKAI_01"
+    },
+    "LIVE_ACTION": {
+      "source_world_type": "live_action_period_domestic",
+      "target_world_type": "early-1900s mediterranean harbor town",
+      "target_world_identity": "GONEGI_MEDITERRANEAN",
+      "state_draft_ref": "state_draft_live_action_dialogue_001_v2",
+      "source_video_id": "LITTLE_WOMEN_01"
+    },
+    "MORI": {
+      "source_world_type": "mori_woodland_craft_life",
+      "target_world_type": "early-1900s mediterranean harbor town",
+      "target_world_identity": "GONEGI_MEDITERRANEAN",
+      "state_draft_ref": "state_draft_mori_emotion_flow_001_v2",
+      "source_video_id": "MORI_01"
+    }
+  },
+  "character_translation": {
+    "strategy": "canonical_cast_replacement",
+    "rules": [
+      "map_source_protagonists_to_gonegi_cast",
+      "preserve_primary_character_role",
+      "preserve_companion_animal_when_present",
+      "identity_lock_tokens_carry_to_target_character"
+    ],
+    "replacement_supported": true,
+    "mappings": {
+      "protagonist_a": "gonegi",
+      "protagonist_b": "mare",
+      "solitary_figure": "dana",
+      "sister_a": "dana",
+      "sister_b": "gonegi",
+      "walker_companion": "gonegi",
+      "supporting_father": "bardo",
+      "animal_companion": "gamja"
+    }
+  },
+  "location_translation": {
+    "strategy": "mediterranean_harbor_vocabulary",
+    "rules": [
+      "domestic_kitchen_to_family_bakery_kitchen",
+      "elevated_overlook_to_olive_hill_or_harbor_watch",
+      "period_parlor_to_family_dining_room",
+      "woodland_path_to_village_trail_or_harbor_outskirts",
+      "preserve_walkable_zone_and_anchor_point_semantics"
+    ],
+    "replacement_supported": true,
+    "mappings": {
+      "domestic-kitchen": "family_bakery_kitchen_01",
+      "elevated-overlook": "olive_hill_overlook_01",
+      "period-parlor": "family_dining_room_01",
+      "woodland-path": "village_trail_01"
+    }
+  },
+  "prop_translation": {
+    "strategy": "mediterranean_prop_normalization",
+    "rules": [
+      "tea_pot_to_bakery_kettle_or_teapot",
+      "transit_ticket_to_harbor_ferry_ticket",
+      "writing_desk_letter_to_sketchbook_or_letter_prop",
+      "forage_basket_to_market_basket",
+      "preserve_prop_anchor_locks"
+    ],
+    "replacement_supported": true,
+    "mappings": {
+      "tea_pot": "bakery_kettle_01",
+      "transit_ticket": "harbor_ferry_ticket_01",
+      "writing_desk_letter": "sketchbook_01",
+      "forage_basket": "market_basket_01",
+      "window_sill_herbs": "herb_window_sill_01",
+      "fireplace_practical": "hearth_practical_01"
+    }
+  },
+  "environment_translation": {
+    "strategy": "gonegi_mediterranean_environment_lock",
+    "rules": [
+      "normalize_weather_to_mediterranean_profiles",
+      "time_of_day_maps_to_living_world_time_library",
+      "supporting_elements_use_harbor_village_cues",
+      "no_future_tech_environment_tokens"
+    ],
+    "replacement_supported": true,
+    "mappings": {
+      "clear_mediterranean": "clear_mediterranean",
+      "overcast": "harbor_overcast_soft",
+      "morning": "morning_harbor_light",
+      "golden_hour": "golden_harbor_hour",
+      "twilight": "blue_hour_harbor"
+    }
+  },
+  "emotion_translation": {
+    "strategy": "living_world_emotion_library",
+    "rules": [
+      "warmth_maps_to_hope_or_gratitude",
+      "longing_maps_to_nostalgia_or_loneliness",
+      "tenderness_maps_to_reunion_or_gratitude",
+      "craft_contentment_maps_to_hope",
+      "preserve_emotion_intensity_curve"
+    ],
+    "replacement_supported": true,
+    "mappings": {
+      "warmth": "hope",
+      "longing": "nostalgia",
+      "tenderness": "reunion",
+      "craft_contentment": "hope",
+      "companionship": "friendship",
+      "solitary_contemplation": "loneliness",
+      "sibling_bond": "siblings",
+      "companion_walk": "friendship"
+    }
+  },
+  "relationship_translation": {
+    "strategy": "living_world_relationship_library",
+    "rules": [
+      "ensemble_blocking_maps_to_relationship_grammar",
+      "dialogue_pairs_map_to_siblings_or_friendship",
+      "solitary_contemplation_maps_to_lonely_wonder",
+      "preserve_participant_ids_after_character_replacement"
+    ],
+    "replacement_supported": true,
+    "mappings": {
+      "companionship": "friendship",
+      "solitary_contemplation": "loneliness",
+      "sibling_bond": "siblings",
+      "companion_walk": "friendship"
+    }
+  },
+  "camera_translation": {
+    "strategy": "director_blend_camera_grammar",
+    "rules": [
+      "preserve_shot_type_and_blocking_geometry",
+      "shinkai_sky_dominance_maps_to_harbor_horizon_frames",
+      "ghibli_observational_patience_preserved",
+      "mori_human_scale_path_following_preserved",
+      "identity_safe_camera_default_true"
+    ],
+    "replacement_supported": false
+  },
+  "lighting_translation": {
+    "strategy": "director_blend_lighting_grammar",
+    "rules": [
+      "shinkai_twilight_separation_to_harbor_blue_hour",
+      "ghibli_warm_interior_to_bakery_hearth_practicals",
+      "mori_canopy_dapple_to_olive_grove_dapple",
+      "live_action_practical_warmth_to_mediterranean_interior"
+    ],
+    "replacement_supported": false
+  },
+  "motion_translation": {
+    "strategy": "director_blend_motion_grammar",
+    "rules": [
+      "mori_daily_life_motion_to_harbor_chore_motion",
+      "ghibli_task_motion_to_bakery_work_motion",
+      "ambient_motion_preserved_in_environment_state",
+      "no_chase_sequence_introduction"
+    ],
+    "replacement_supported": false
+  },
+  "identity_rules": {
+    "identity_priority_rank": 1,
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "preserve_identity_locks": true,
+    "preserve_face_geometry": true,
+    "no_identity_swap_without_rule": true
+  },
+  "continuity_rules": {
+    "rules": [
+      "preserve_identity_lock_tokens_through_translation",
+      "preserve_location_lock_tokens_through_translation",
+      "preserve_composition_and_prop_anchor_locks",
+      "layout_lock_required_for_indoor_locations",
+      "no_production_scene_state_registry_mutation",
+      "identity_priority_always_wins",
+      "preserve_blocking_geometry_and_emotional_arc"
+    ],
+    "lock_preservation": true,
+    "layout_lock_required": true
+  },
+  "living_world_refs": {
+    "foundation_index": "datasets/living_world/living-world-foundation-index.json",
+    "integrity_index": "datasets/living_world/living-world-integrity-index.json",
+    "adapter_boundary_plan": "datasets/living_world/living-world-adapter-boundary-plan.json",
+    "living_world_core": "exports/shared/latest/living-world-core-v1-package.json",
+    "world_identity": "GONEGI_MEDITERRANEAN"
+  },
+  "source_state_draft_refs": [
+    {
+      "state_draft_id": "state_draft_ghibli_kitchen_001_v2",
+      "director_family": "GHIBLI",
+      "source_video_id": "GHIBLI_01"
+    },
+    {
+      "state_draft_id": "state_draft_shinkai_sky_light_001_v2",
+      "director_family": "SHINKAI",
+      "source_video_id": "SHINKAI_01"
+    },
+    {
+      "state_draft_id": "state_draft_live_action_dialogue_001_v2",
+      "director_family": "LIVE_ACTION",
+      "source_video_id": "LITTLE_WOMEN_01"
+    },
+    {
+      "state_draft_id": "state_draft_mori_emotion_flow_001_v2",
+      "director_family": "MORI",
+      "source_video_id": "MORI_01"
+    }
+  ],
+  "family_translation_status": {
+    "GHIBLI": "PASS",
+    "SHINKAI": "PASS",
+    "LIVE_ACTION": "PASS",
+    "MORI": "PASS"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "built_at": "2026-06-05T07:43:29.678Z"
+}

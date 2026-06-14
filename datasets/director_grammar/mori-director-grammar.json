@@ -1,0 +1,135 @@
+{
+  "grammar_id": "director_grammar_mori_v1",
+  "phase": "PHASE-SOURCE-VIDEO-003-DIRECTOR_GRAMMAR_EXTRACTION_V1",
+  "source_family": "MORI",
+  "visual_style": {
+    "summary": "Pastoral woodland craft life with tactile nature surfaces and village rhythm.",
+    "patterns": [
+      "forest-floor-texture",
+      "craft-material-closeups",
+      "village-earth-tones",
+      "seasonal-nature-palette",
+      "animal-companion-presence"
+    ],
+    "constraints": [
+      "no-urban-glass-tower-default",
+      "preserve-woodland-tactility",
+      "no-identity-breaking-ecology-swap"
+    ]
+  },
+  "camera_grammar": {
+    "summary": "Grounded nature framing with profile detail and path-following movement.",
+    "patterns": [
+      "forest-path-wide",
+      "forage-detail-close",
+      "village-walk-mid-wide",
+      "two-shot-porch",
+      "rain-walk-tracking",
+      "valley-bridge-extreme-wide"
+    ],
+    "constraints": [
+      "no-aerial-showoff-without-purpose",
+      "camera-respects-human-scale"
+    ]
+  },
+  "lighting_grammar": {
+    "summary": "Canopy-dappled daylight, hearth warmth, lantern evening, and rain-soft diffusion.",
+    "patterns": [
+      "canopy-dappled-day",
+      "hearth-interior-glow",
+      "lantern-evening-path",
+      "rain-overcast-soft",
+      "creek-reflection-glint"
+    ],
+    "constraints": [
+      "no-studio-flat-exterior",
+      "light-motivated-by-season-and-weather"
+    ]
+  },
+  "blocking_grammar": {
+    "summary": "Craft tasks, foraging, market exchange, and companion walks as staging anchors.",
+    "patterns": [
+      "forage-crouch",
+      "loom-seated-work",
+      "market-stall-exchange",
+      "companion-walk-pair",
+      "festival-banner-carry"
+    ],
+    "constraints": [
+      "no-idle-center-posing",
+      "require-task-or-path-anchor"
+    ]
+  },
+  "emotion_grammar": {
+    "summary": "Calm focus, social warmth, patience, and gentle reunion hints.",
+    "patterns": [
+      "calm-foraging-focus",
+      "craft-contentment",
+      "social-warmth-at-market",
+      "patience-in-rain-wait",
+      "reunion-hint-at-bridge"
+    ],
+    "constraints": [
+      "no-high-drama-melodrama",
+      "emotion-through-activity-not-speech"
+    ]
+  },
+  "environment_grammar": {
+    "summary": "Woodland paths, village craft spaces, bridges, docks, and apiary fields.",
+    "patterns": [
+      "forest-trail",
+      "village-market",
+      "wooden-bridge",
+      "river-dock",
+      "apiary-field",
+      "shrine-steps"
+    ],
+    "constraints": [
+      "normalize-to-mediterranean-woodland-harbor-when-adapted"
+    ]
+  },
+  "motion_grammar": {
+    "summary": "Foraging, craft work, festival carry, ferry wait, and path walking.",
+    "patterns": [
+      "foraging-motion",
+      "loom-shuttle-task",
+      "bridge-cross",
+      "ferry-wait",
+      "festival-carry",
+      "rain-shelter-stand"
+    ],
+    "constraints": [
+      "no-chase-sequence-default",
+      "motion-tied-to-daily-life"
+    ]
+  },
+  "transition_grammar": {
+    "summary": "Path continuity, weather shifts, and craft-to-outdoor geography bridges.",
+    "patterns": [
+      "path-to-village-cut",
+      "rain-to-lantern-bridge",
+      "craft-to-market-transition",
+      "bridge-to-dock-match",
+      "seasonal-field-dissolve"
+    ],
+    "constraints": [
+      "no-random-montage",
+      "preserve-daily-life-rhythm"
+    ]
+  },
+  "use_case": [
+    "MORI woodland-to-Mediterranean village normalization",
+    "craft-and-animal continuity reference",
+    "daily-life motion grammar for Gonegi scenes"
+  ],
+  "design_only": true,
+  "gpu_execution": false,
+  "source_video_ids": [
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "extracted_at": "2026-06-05T06:41:28.894Z"
+}

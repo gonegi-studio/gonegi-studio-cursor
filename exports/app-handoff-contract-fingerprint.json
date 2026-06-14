@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "APP-HANDOFF-CONTRACT-FINGERPRINT-PHASE-72-v1",
+  "imageAppTarget": "image_app_v17_handoff",
+  "videoAppTarget": "video_app_v82_6_handoff",
+  "handoffPaths": {
+    "image": "exports/image-app-handoff-package.json",
+    "video": "exports/video-app-handoff-package.json"
+  },
+  "exportPaths": {
+    "image": "exports/image-dataset-export.json",
+    "video": "exports/video-dataset-export.json"
+  },
+  "qualityPaths": {
+    "image": "exports/image-dataset-quality-report.json",
+    "video": "exports/video-dataset-quality-report.json"
+  },
+  "manifestAssets": {
+    "image": [
+      {
+        "asset_id": "image-dataset-export",
+        "path": "exports/image-dataset-export.json",
+        "role": "image_dataset_export",
+        "required": true
+      },
+      {
+        "asset_id": "image-dataset-quality-report",
+        "path": "exports/image-dataset-quality-report.json",
+        "role": "quality_report",
+        "required": true
+      }
+    ],
+    "video": [
+      {
+        "asset_id": "video-dataset-export",
+        "path": "exports/video-dataset-export.json",
+        "role": "video_dataset_export",
+        "required": true
+      },
+      {
+        "asset_id": "video-dataset-quality-report",
+        "path": "exports/video-dataset-quality-report.json",
+        "role": "quality_report",
+        "required": true
+      }
+    ]
+  },
+  "imageHandoffContract": {
+    "schema_version": "IMAGE-APP-HANDOFF-PACKAGE-PHASE-66-v1",
+    "handoff_type": "image_app",
+    "consumer_target": "image_app_v17_handoff",
+    "manifest_id": "image-app-handoff-manifest-v1",
+    "package_json_path": "exports/image-app-handoff-package.json"
+  },
+  "videoHandoffContract": {
+    "schema_version": "VIDEO-APP-HANDOFF-PACKAGE-PHASE-63-v1",
+    "handoff_type": "video_app",
+    "consumer_target": "video_app_v82_6_handoff",
+    "manifest_id": "video-app-handoff-manifest-v1",
+    "package_json_path": "exports/video-app-handoff-package.json"
+  },
+  "frozenAt": "2026-05-30T02:12:43.859Z"
+}

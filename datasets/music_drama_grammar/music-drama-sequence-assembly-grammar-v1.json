@@ -1,0 +1,257 @@
+{
+  "asset_type": "music_drama_sequence_assembly_grammar",
+  "asset_version": "v1",
+  "grammar_id": "music-drama-sequence-assembly-grammar-v1",
+  "phase": "PHASE-MDG-008",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Define how Music Drama scenes assemble from beat through emotion, behavior, motif, shot pattern, archetype, and crowd/animal support. Assembly grammar only — no generated scenarios or prompts.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false,
+    "modifies_living_world_core": false
+  },
+  "read_only_sources": {
+    "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+    "shot_patterns": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+    "scene_archetypes": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+    "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+    "community_crowd_behavior_grammar": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+    "animal_companion_behavior_grammar": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+    "visual_motif_grammar": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+    "emotional_transition_grammar": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+    "beat_structure_grammar": "datasets/music_drama_grammar/music-drama-beat-structure-grammar-v1.json",
+    "render_feedback": "datasets/render_feedback/RKB-001.json"
+  },
+  "section_1_assembly_pipeline": {
+    "required_order": [
+      "beat_type",
+      "emotional_state",
+      "daily_life_behavior",
+      "visual_motif",
+      "shot_pattern",
+      "scene_archetype",
+      "community_support",
+      "animal_support",
+      "continuity_state"
+    ],
+    "pipeline_description": "Each assembled scene slot is filled in this fixed order before Image App field conversion."
+  },
+  "section_2_ep01_default_sequence": {
+    "episode_id": "EP01",
+    "title": "늘 그래왔듯이",
+    "sequence_beat_count": 6,
+    "beats": [
+      {
+        "beat_type": "intro",
+        "daily_life_behavior": "wake_up",
+        "emotional_state": "peace",
+        "emotional_register": "peaceful_daily_life",
+        "visual_motifs": ["morning_light", "window"],
+        "shot_pattern": "domestic_warmth",
+        "scene_archetype": "domestic_bedroom_peace",
+        "community_support": [],
+        "animal_support": {
+          "primary_companion": "gamja",
+          "background_animals": []
+        },
+        "continuity_state": {
+          "persistent_companion": "gamja",
+          "persistent_object": null,
+          "persistent_location_anchor": "gonegi_bedroom_window",
+          "persistent_emotion": "peace",
+          "persistent_time_cluster": "sunrise"
+        }
+      },
+      {
+        "beat_type": "verse",
+        "daily_life_behavior": "family_breakfast",
+        "emotional_state": "comfort",
+        "emotional_register": "family_comfort",
+        "visual_motifs": ["bread", "tea_cup"],
+        "shot_pattern": "bakery_morning",
+        "scene_archetype": "family_bakery_warmth",
+        "community_support": ["bakery_customers"],
+        "animal_support": {
+          "primary_companion": "gamja",
+          "background_animals": ["chicken"]
+        },
+        "continuity_state": {
+          "persistent_companion": "gamja",
+          "persistent_object": "bread",
+          "persistent_location_anchor": "bakery_window",
+          "persistent_emotion": "comfort",
+          "persistent_time_cluster": "early_morning"
+        }
+      },
+      {
+        "beat_type": "pre_chorus",
+        "daily_life_behavior": "harbor_watch",
+        "emotional_state": "wonder",
+        "emotional_register": "small_freedom",
+        "visual_motifs": ["sea_horizon", "harbor_path"],
+        "shot_pattern": "harbor_edge_watch",
+        "scene_archetype": "harbor_edge_watch",
+        "community_support": ["harbor_workers"],
+        "animal_support": {
+          "primary_companion": "gamja",
+          "background_animals": ["seagull"]
+        },
+        "continuity_state": {
+          "persistent_companion": "gamja",
+          "persistent_object": null,
+          "persistent_location_anchor": "harbor_bench",
+          "persistent_emotion": "wonder",
+          "persistent_time_cluster": "morning_sunshine"
+        }
+      },
+      {
+        "beat_type": "chorus",
+        "daily_life_behavior": "hilltop_lunch",
+        "emotional_state": "hope",
+        "emotional_register": "warm_belonging",
+        "visual_motifs": ["toast", "wind_grass"],
+        "shot_pattern": "rooftop_gaze",
+        "scene_archetype": "rooftop_gaze",
+        "community_support": [],
+        "animal_support": {
+          "primary_companion": "gamja",
+          "background_animals": []
+        },
+        "continuity_state": {
+          "persistent_companion": "gamja",
+          "persistent_object": "toast",
+          "persistent_location_anchor": "sunset_hill",
+          "persistent_emotion": "hope",
+          "persistent_time_cluster": "golden_hour_breeze"
+        }
+      },
+      {
+        "beat_type": "bridge",
+        "daily_life_behavior": "window_reflection",
+        "emotional_state": "peace",
+        "emotional_register": "quiet_reflection",
+        "visual_motifs": ["reflection", "open_window"],
+        "shot_pattern": "quiet_solitude",
+        "scene_archetype": "domestic_bedroom_peace",
+        "community_support": [],
+        "animal_support": {
+          "primary_companion": "gamja",
+          "background_animals": []
+        },
+        "continuity_state": {
+          "persistent_companion": "gamja",
+          "persistent_object": null,
+          "persistent_location_anchor": "window",
+          "persistent_emotion": "peace",
+          "persistent_time_cluster": "afternoon_work"
+        }
+      },
+      {
+        "beat_type": "outro",
+        "daily_life_behavior": "night_rest",
+        "emotional_state": "peace",
+        "emotional_register": "quiet_reflection",
+        "visual_motifs": ["window", "morning_light"],
+        "motif_note": "morning_light used as memory echo of intro beat",
+        "shot_pattern": "domestic_warmth",
+        "scene_archetype": "domestic_bedroom_peace",
+        "community_support": [],
+        "animal_support": {
+          "primary_companion": "gamja",
+          "background_animals": []
+        },
+        "continuity_state": {
+          "persistent_companion": "gamja",
+          "persistent_object": "linen_blanket",
+          "persistent_location_anchor": "gonegi_bedroom_window",
+          "persistent_emotion": "peace",
+          "persistent_time_cluster": "evening_lanterns"
+        }
+      }
+    ]
+  },
+  "section_3_scene_count_expansion_rule": {
+    "base_beat_count": 6,
+    "allowed_expansions": [10, 15, 30],
+    "rules": [
+      "Do not invent new emotional jumps.",
+      "Repeat compatible motifs across expanded scenes.",
+      "Preserve continuity companion across adjacent scenes.",
+      "Preserve protagonist readability in every expanded slot.",
+      "Expansion inserts intermediate scenes between beats using allowed emotional transitions only.",
+      "Each expanded scene must complete the full assembly pipeline in section_1 order."
+    ],
+    "expansion_method": "subdivide beats with compatible daily-life behaviors and matching shot/archetype pairs from existing grammar libraries"
+  },
+  "section_4_continuity_state_transfer": {
+    "tracked_fields": [
+      "persistent_companion",
+      "persistent_object",
+      "persistent_location_anchor",
+      "persistent_emotion",
+      "persistent_time_cluster"
+    ],
+    "companion_rules": {
+      "gonegi_gamja": "Gamja persists with Gonegi across adjacent EP01 scenes unless departure is explicitly described.",
+      "dana_aengdu": "Aengdu persists with Dana only when Dana appears in future episodes."
+    },
+    "object_rule": "Carried objects such as toast persist until scenario explicitly removes them.",
+    "location_anchor_rule": "Recurring anchors such as window and harbor_bench may reappear to strengthen motif continuity.",
+    "time_cluster_rule": "Time atmosphere must stay compatible with datasets/time/time-setting-library-v1.json"
+  },
+  "section_5_field_separation_output_contract": {
+    "when_converted_to_image_app": true,
+    "scenario_field_receives": [
+      "location",
+      "atmosphere",
+      "visible environment",
+      "visible action"
+    ],
+    "character_field_receives": [
+      "only visible entity descriptions"
+    ],
+    "forbidden": [
+      "absent character names",
+      "negative exclusion text"
+    ],
+    "alignment": "music-drama-scenario-writing-rulebook-v1 field_separation_law"
+  },
+  "section_6_density_control": {
+    "max_named_extras": 2,
+    "max_crowd_groups": 1,
+    "max_background_animals": 2,
+    "max_visible_motifs": 3,
+    "crowd_role": "background only",
+    "animal_role": "support only",
+    "protagonist_readability": "required",
+    "alignment_sources": [
+      "music-drama-grammar-v1 density_limits",
+      "community-crowd-behavior-grammar-v1 visibility_law",
+      "animal-companion-behavior-grammar-v1 section_4_animal_density_law",
+      "visual-motif-grammar-v1 section_6_motif_density_law"
+    ]
+  },
+  "section_7_rkb_protection_rules": {
+    "test_id": "RKB-001",
+    "avoid": [
+      "blanket/body merge",
+      "dense market crowd",
+      "complex hand poses",
+      "overcrowded animal/crowd scenes"
+    ],
+    "mitigations": {
+      "blanket_body_merge": "Prefer simple bedding in domestic_bedroom_peace and night_rest beats",
+      "dense_market_crowd": "EP01 default sequence excludes market_edge_background; max one crowd group",
+      "complex_hand_poses": "Keep visible actions simple in behavior selection",
+      "overcrowded_animal_crowd": "Apply section_6 density_control on every assembled scene"
+    },
+    "rkb_scores_reflected": {
+      "character_consistency": 9.5,
+      "gamja_consistency": 9.5,
+      "crowd_quality": 7.0,
+      "object_quality": 7.5
+    }
+  }
+}

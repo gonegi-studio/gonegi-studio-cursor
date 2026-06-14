@@ -1,0 +1,77 @@
+{
+  "adapter_id": "titanic-reconstruction-prompt-adapter-v3",
+  "phase": "PHASE-TITANIC-RECONSTRUCTION-DATASET-001",
+  "system_id": "TITANIC_MOVIE_RECONSTRUCTION_DATASET_V3",
+  "adapter_version": "v3",
+  "pipeline": [
+    "movie_dataset",
+    "reconstruction_adapter",
+    "image_app_prompt"
+  ],
+  "input_layer": "movie_reconstruction_layer",
+  "output_target": "image_app_prompt",
+  "output_blocks": [
+    "movie_geometry_block",
+    "camera_block",
+    "blocking_block",
+    "depth_block",
+    "prop_block",
+    "semantic_block",
+    "gonegi_translation_block"
+  ],
+  "block_definitions": {
+    "movie_geometry_block": {
+      "source": "scene_geometry",
+      "world_identity_control": "FORBIDDEN"
+    },
+    "camera_block": {
+      "source": "camera_language",
+      "world_identity_control": "FORBIDDEN"
+    },
+    "blocking_block": {
+      "source": "blocking",
+      "world_identity_control": "FORBIDDEN"
+    },
+    "depth_block": {
+      "source": "spatial_depth",
+      "world_identity_control": "FORBIDDEN"
+    },
+    "prop_block": {
+      "source": "prop_relationships",
+      "world_identity_control": "FORBIDDEN"
+    },
+    "semantic_block": {
+      "source": "semantic_anchors",
+      "preserves_meaning": true
+    },
+    "gonegi_translation_block": {
+      "source": "gonegi_world_layer",
+      "controls": [
+        "architecture",
+        "materials",
+        "culture",
+        "color_palette",
+        "character_identity",
+        "location_identity",
+        "lighting_identity",
+        "living_world_identity"
+      ],
+      "dominance_weight": 0.72
+    }
+  },
+  "prompt_merge_order": [
+    "gonegi_translation_block",
+    "movie_geometry_block",
+    "camera_block",
+    "blocking_block",
+    "depth_block",
+    "prop_block",
+    "semantic_block"
+  ],
+  "semantic_anchor_tokens": [
+    "semantic-anchor:",
+    "semantic-meaning:",
+    "emotion-preserve:",
+    "gonegi-translation:"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "report_id": "conditioning_backend_decision_matrix_mqc2gyr0",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-003",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_ARCHITECTURE_DECISION_V1",
+  "generated_at": "2026-06-13T08:01:35.724Z",
+  "selected_architecture": "Hybrid Extension",
+  "options": [
+    {
+      "option": "ControlNet",
+      "supports_layout": true,
+      "supports_depth": false,
+      "supports_pose": false,
+      "supports_object_identity": false,
+      "supports_environment_identity": false,
+      "supports_temporal": false,
+      "current_app_compatible": false,
+      "recommended_use": "Primary layout and blocking segmentation map conditioning in minimum stack"
+    },
+    {
+      "option": "Depth-conditioned diffusion",
+      "supports_layout": false,
+      "supports_depth": true,
+      "supports_pose": false,
+      "supports_object_identity": false,
+      "supports_environment_identity": false,
+      "supports_temporal": false,
+      "current_app_compatible": false,
+      "recommended_use": "Depth map conditioning paired with ControlNet multi-control stack"
+    },
+    {
+      "option": "Pose-conditioned diffusion",
+      "supports_layout": false,
+      "supports_depth": false,
+      "supports_pose": true,
+      "supports_object_identity": false,
+      "supports_environment_identity": false,
+      "supports_temporal": false,
+      "current_app_compatible": false,
+      "recommended_use": "Character pose fidelity layer in minimum stack after layout and depth"
+    },
+    {
+      "option": "Regional prompting",
+      "supports_layout": false,
+      "supports_depth": false,
+      "supports_pose": false,
+      "supports_object_identity": false,
+      "supports_environment_identity": true,
+      "supports_temporal": false,
+      "current_app_compatible": false,
+      "recommended_use": "Blocking and environment anchor regional masks; complements ControlNet layout"
+    },
+    {
+      "option": "IP-Adapter",
+      "supports_layout": false,
+      "supports_depth": false,
+      "supports_pose": false,
+      "supports_object_identity": true,
+      "supports_environment_identity": true,
+      "supports_temporal": false,
+      "current_app_compatible": false,
+      "recommended_use": "Object and environment identity preservation via reference image embeddings"
+    },
+    {
+      "option": "Video conditioning backend",
+      "supports_layout": true,
+      "supports_depth": true,
+      "supports_pose": true,
+      "supports_object_identity": true,
+      "supports_environment_identity": true,
+      "supports_temporal": true,
+      "current_app_compatible": false,
+      "recommended_use": "Deferred temporal continuity layer after image conditioning stack validated"
+    }
+  ],
+  "option_evaluations": [
+    {
+      "option": "ControlNet",
+      "supported_conditioning_types": [
+        "layout",
+        "blocking_regional"
+      ],
+      "required_inputs": [
+        "layout_map raster",
+        "SpatialLayoutMap JSON",
+        "text prompt bundle"
+      ],
+      "required_outputs": [
+        "conditioned latent guidance signal",
+        "control weight audit record"
+      ],
+      "integration_complexity": "HIGH",
+      "backend_dependency": "Diffusion pipeline with ControlNet-seg / canny adapter hooks",
+      "current_app_compatibility": false,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "option": "Depth-conditioned diffusion",
+      "supported_conditioning_types": [
+        "depth"
+      ],
+      "required_inputs": [
+        "depth_map raster",
+        "camera_path depth samples",
+        "frame aspect metadata"
+      ],
+      "required_outputs": [
+        "depth-conditioned generation output",
+        "depth alignment score"
+      ],
+      "integration_complexity": "HIGH",
+      "backend_dependency": "ControlNet depth or MiDaS-conditioned diffusion module",
+      "current_app_compatibility": false,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "option": "Pose-conditioned diffusion",
+      "supported_conditioning_types": [
+        "pose"
+      ],
+      "required_inputs": [
+        "pose_map raster",
+        "blocking_data",
+        "gaze_constraints"
+      ],
+      "required_outputs": [
+        "pose-conditioned generation output",
+        "skeleton alignment score"
+      ],
+      "integration_complexity": "VERY_HIGH",
+      "backend_dependency": "OpenPose extraction + ControlNet OpenPose backend adapter",
+      "current_app_compatibility": false,
+      "risk_level": "HIGH"
+    },
+    {
+      "option": "Regional prompting",
+      "supported_conditioning_types": [
+        "blocking_regional",
+        "environment_identity"
+      ],
+      "required_inputs": [
+        "blocking_map masks",
+        "character_region_map",
+        "environment anchor masks"
+      ],
+      "required_outputs": [
+        "region-weighted prompt tokens",
+        "mask application audit"
+      ],
+      "integration_complexity": "MEDIUM",
+      "backend_dependency": "Regional mask prompting layer compatible with diffusion backend",
+      "current_app_compatibility": false,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "option": "IP-Adapter",
+      "supported_conditioning_types": [
+        "object_identity",
+        "environment_identity"
+      ],
+      "required_inputs": [
+        "reference portrait embeddings",
+        "identity_lock metadata",
+        "style reference images"
+      ],
+      "required_outputs": [
+        "identity-conditioned embeddings",
+        "drift prevention score"
+      ],
+      "integration_complexity": "HIGH",
+      "backend_dependency": "IP-Adapter image encoder + injection adapter in diffusion UNet",
+      "current_app_compatibility": false,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "option": "Video conditioning backend",
+      "supported_conditioning_types": [
+        "video_temporal",
+        "layout",
+        "depth",
+        "pose"
+      ],
+      "required_inputs": [
+        "per-frame conditioning stack",
+        "shot timeline registry",
+        "motion continuity metadata"
+      ],
+      "required_outputs": [
+        "temporally consistent video frames",
+        "continuity audit record"
+      ],
+      "integration_complexity": "VERY_HIGH",
+      "backend_dependency": "Video diffusion model with temporal attention and multi-control input",
+      "current_app_compatibility": false,
+      "risk_level": "CRITICAL"
+    }
+  ]
+}

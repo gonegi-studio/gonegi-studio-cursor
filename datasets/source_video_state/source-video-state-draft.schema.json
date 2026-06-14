@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video_state/source-video-state-draft.schema.json",
+  "title": "SourceVideoStateDraft",
+  "description": "Scene State-compatible draft compiled from source video coordinates for PHASE-SOURCE-VIDEO-010",
+  "type": "object",
+  "required": [
+    "state_draft_id",
+    "phase",
+    "source_coordinate_record_id",
+    "source_segment_id",
+    "source_video_id",
+    "director_family",
+    "director_blend_ref",
+    "video_state_defaults_ref",
+    "identity_state",
+    "character_state",
+    "emotion_state",
+    "relationship_state",
+    "camera_state",
+    "composition_state",
+    "location_state",
+    "lighting_state",
+    "environment_state",
+    "coordinate_trace",
+    "continuity_locks",
+    "production_status",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "state_draft_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-010-SOURCE_VIDEO_COORDINATE_TO_STATE_COMPILER_V2"
+    },
+    "scene_state_phase": {
+      "type": "string",
+      "const": "PHASE-18-STATE-ENGINE-FOUNDATION-001"
+    },
+    "world_identity": { "type": "string", "const": "GONEGI_MEDITERRANEAN" },
+    "source_coordinate_record_id": { "type": "string", "minLength": 1 },
+    "source_segment_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "director_family": {
+      "type": "string",
+      "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"]
+    },
+    "director_blend_ref": { "type": "string", "minLength": 1 },
+    "video_state_defaults_ref": { "type": "string", "minLength": 1 },
+    "director_grammar_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "scene_state_mapping_ref": {
+      "type": ["string", "null"]
+    },
+    "identity_state": { "$ref": "#/$defs/identity_state" },
+    "character_state": { "$ref": "#/$defs/character_state" },
+    "emotion_state": { "$ref": "#/$defs/emotion_state" },
+    "relationship_state": { "$ref": "#/$defs/relationship_state" },
+    "camera_state": { "$ref": "#/$defs/camera_state" },
+    "composition_state": { "$ref": "#/$defs/composition_state" },
+    "location_state": { "$ref": "#/$defs/location_state" },
+    "lighting_state": { "$ref": "#/$defs/lighting_state" },
+    "environment_state": { "$ref": "#/$defs/environment_state" },
+    "coordinate_trace": { "$ref": "#/$defs/coordinate_trace" },
+    "continuity_locks": { "$ref": "#/$defs/continuity_locks" },
+    "production_status": { "$ref": "#/$defs/production_status" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "compiled_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "identity_state": {
+      "type": "object",
+      "required": [
+        "identity_priority_rank",
+        "identity_source",
+        "character_first_contract",
+        "protected_character_ids",
+        "identity_lock_tokens"
+      ],
+      "properties": {
+        "identity_priority_rank": { "type": "integer", "const": 1 },
+        "identity_source": { "type": "string" },
+        "character_first_contract": { "type": "string" },
+        "protected_character_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "identity_lock_tokens": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "location_lock_tokens": { "type": "array", "items": { "type": "string" } },
+        "composition_lock_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "character_state": {
+      "type": "object",
+      "required": ["active_character_ids", "primary_character_id", "character_source", "character_tokens"],
+      "properties": {
+        "active_character_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "primary_character_id": { "type": "string" },
+        "character_source": { "type": "string" },
+        "character_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "emotion_state": {
+      "type": "object",
+      "required": ["emotion_id", "emotion_source", "intensity"],
+      "properties": {
+        "emotion_id": { "type": "string" },
+        "emotion_source": { "type": "string" },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "acting_visibility_weight": { "type": "string" }
+      }
+    },
+    "relationship_state": {
+      "type": "object",
+      "required": ["relationship_source", "participant_ids"],
+      "properties": {
+        "relationship_id": { "type": "string" },
+        "relationship_source": { "type": "string" },
+        "participant_ids": { "type": "array", "items": { "type": "string" } },
+        "distance_behavior": { "type": "string" },
+        "gaze_pattern": { "type": "string" },
+        "blocking_primary_focus": { "type": "string" }
+      }
+    },
+    "camera_state": {
+      "type": "object",
+      "required": ["shot_type", "camera_source"],
+      "properties": {
+        "shot_type": { "type": "string" },
+        "camera_source": { "type": "string" },
+        "camera_position": { "type": "string" },
+        "camera_height": { "type": "string" },
+        "camera_direction": { "type": "string" },
+        "motion_vectors": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "composition_state": {
+      "type": "object",
+      "required": ["composition_source", "prop_anchor_ids", "character_positions"],
+      "properties": {
+        "composition_id": { "type": "string" },
+        "composition_source": { "type": "string" },
+        "prop_anchor_ids": { "type": "array", "items": { "type": "string" } },
+        "character_positions": { "type": "object", "additionalProperties": { "type": "string" } },
+        "depth_layers": { "type": "array", "items": { "type": "object" } },
+        "negative_space": { "type": "string" }
+      }
+    },
+    "location_state": {
+      "type": "object",
+      "required": ["location_id", "location_source", "location_type", "domain"],
+      "properties": {
+        "location_id": { "type": "string" },
+        "location_name": { "type": "string" },
+        "location_type": { "type": "string" },
+        "domain": { "type": "string" },
+        "location_source": { "type": "string" },
+        "layout_lock_id": { "type": "string" },
+        "walkable_zone": { "type": "string" }
+      }
+    },
+    "lighting_state": {
+      "type": "object",
+      "required": ["lighting_id", "lighting_source"],
+      "properties": {
+        "lighting_id": { "type": "string" },
+        "lighting_source": { "type": "string" },
+        "direction": { "type": "string" },
+        "intensity": { "type": "string" },
+        "color_temperature_k": { "type": "number" }
+      }
+    },
+    "environment_state": {
+      "type": "object",
+      "required": ["world_identity", "environment_source", "supporting_elements"],
+      "properties": {
+        "world_identity": { "type": "string" },
+        "world_type": { "type": "string" },
+        "environment_source": { "type": "string" },
+        "time_setting_id": { "type": "string" },
+        "weather_profile": { "type": "string" },
+        "supporting_elements": { "type": "array", "items": { "type": "string" } },
+        "ambient_motion": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "coordinate_trace": {
+      "type": "object",
+      "required": [
+        "coordinate_record_id",
+        "segment_id",
+        "source_video_id",
+        "layer_map",
+        "scene_state_schema"
+      ],
+      "properties": {
+        "coordinate_record_id": { "type": "string" },
+        "segment_id": { "type": "string" },
+        "source_video_id": { "type": "string" },
+        "source_template_ref": { "type": ["string", "null"] },
+        "scene_state_mapping_ref": { "type": ["string", "null"] },
+        "timestamp_start": { "type": "number" },
+        "timestamp_end": { "type": "number" },
+        "layer_map": { "type": "object", "additionalProperties": { "type": "string" } },
+        "scene_state_schema": { "type": "string" },
+        "director_blend_contract": { "type": "string" }
+      }
+    },
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks"],
+      "properties": {
+        "identity_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "location_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "composition_locks": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "production_status": {
+      "type": "object",
+      "required": ["isolated", "storage_domain", "production_registry", "draft_status"],
+      "properties": {
+        "isolated": { "type": "boolean", "const": true },
+        "storage_domain": { "type": "string", "const": "source_video_state" },
+        "production_registry": { "type": "boolean", "const": false },
+        "draft_status": { "type": "string", "const": "coordinate_compiled_v2" }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

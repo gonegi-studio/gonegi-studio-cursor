@@ -1,0 +1,134 @@
+{
+  "protocol_id": "temporal-preservation-gpu-validation-protocol-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005B",
+  "system_id": "TEMPORAL_PRESERVATION_GPU_VALIDATION_V1",
+  "generated_at": "2026-06-13T23:55:23.373Z",
+  "temporal_validation_defined": true,
+  "analysis": {
+    "temporal_memory_binding": "Timeline slots bind memory_signature and edit_rhythm_signature per source; validation recalls temporal memory records against generated frame sequences without GPU execution in this phase.",
+    "edit_rhythm_binding": "edit_rhythm edit_points from source_video_numerical_dna_full enforce cut_type and rhythm_bucket alignment; edit_rhythm_break is a primary transition failure mode.",
+    "shot_boundary_continuity_binding": "continuity_signature links adjacent shots via continuity_anchor; shot_boundary_discontinuity triggers moderate_drift degradation path.",
+    "causal_transition_chain_binding": "Ordered causal_transition records with causal_reason and continuity_anchor; highest-risk area for narrative-causal reconstruction validation.",
+    "temporal_traceability_binding": "traceability_signature binds numerical DNA edit_rhythm and motion_vectors refs to conditioning map export paths for batch audit."
+  },
+  "temporal_validation_contract": {
+    "contract_id": "temporal_preservation_gpu_validation_v1",
+    "contract_version": "1.0",
+    "scope": "Validation definition only — Validation Defined != Validation Executed.",
+    "binding_ref": "exports/movie_reconstruction_temporal_preservation/temporal-preservation-binding-package.json",
+    "memory_spec_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+    "dataset_ref": "datasets/gpu_validation/temporal_preservation-validation-dataset.json",
+    "campaign_stage_ref": "reports/movie_reconstruction/GPU_VALIDATION_CAMPAIGN_REPORT.json",
+    "gpu_execution": "false — protocol and dataset plan only; execution deferred to future GPU-enabled phase."
+  },
+  "same_timeline_criteria": {
+    "same_timeline": "Score >= 0.95 required for same-timeline preservation certification.",
+    "continuity_signature_match": "continuity_signature stable across adjacent shots with edit_rhythm_alignment_score >= 0.95.",
+    "memory_signature_match": "temporal_memory recall matches timeline_id with memory_signature hash equality.",
+    "assessment_note": "Timeline Defined != Timeline Preserved."
+  },
+  "temporal_drift_levels": {
+    "same_timeline": 0.95,
+    "strict_timeline": 0.9,
+    "similar_timeline": 0.75,
+    "broken_timeline": 0.5
+  },
+  "timeline_degradation_levels": {
+    "minor_drift": 0.85,
+    "moderate_drift": 0.7,
+    "critical_drift": 0.5
+  },
+  "temporal_failure_criteria": {
+    "edit_rhythm_desync": "Generated cut points diverge from edit_rhythm_signature beyond strict_timeline threshold.",
+    "shot_boundary_discontinuity": "continuity_signature unstable across shot boundary; triggers moderate_drift.",
+    "causal_chain_break": "causal_transition_chain traversal fails; missing_transition_cause logged.",
+    "timeline_reset": "Hard-tier failure: timeline_id continuity lost mid-sequence.",
+    "character_position_jump": "Hard-tier failure: subject position discontinuous without causal transition.",
+    "assessment_note": "Causal Transition Defined != Causal Transition Preserved."
+  },
+  "transition_failure_examples": [
+    "character_position_jump",
+    "missing_transition_cause",
+    "edit_rhythm_break",
+    "timeline_reset"
+  ],
+  "tiers": [
+    {
+      "difficulty_tier": "easy",
+      "measurement_method": [
+        "edit_rhythm_alignment_score",
+        "continuity_signature_score"
+      ],
+      "pass_threshold": 0.95,
+      "failure_examples": [
+        "minor_lighting_drift_between_cuts"
+      ],
+      "transition_failure_examples": [
+        "edit_rhythm_break"
+      ],
+      "timeline_recall_rules": {
+        "required_timeline_slots": 5,
+        "minimum_continuity_chain_match": 3
+      },
+      "exit_criteria": {
+        "pass_rate": 0.9,
+        "edit_rhythm_alignment_score": 0.95
+      }
+    },
+    {
+      "difficulty_tier": "medium",
+      "measurement_method": [
+        "edit_rhythm_alignment_score",
+        "shot_boundary_continuity_score"
+      ],
+      "pass_threshold": 0.9,
+      "failure_examples": [
+        "shot_boundary_discontinuity",
+        "rhythm_bucket_shift"
+      ],
+      "transition_failure_examples": [
+        "missing_transition_cause",
+        "edit_rhythm_break"
+      ],
+      "timeline_recall_rules": {
+        "required_timeline_slots": 5,
+        "minimum_continuity_chain_match": 3
+      },
+      "exit_criteria": {
+        "pass_rate": 0.85,
+        "edit_rhythm_alignment_score": 0.9
+      }
+    },
+    {
+      "difficulty_tier": "hard",
+      "measurement_method": [
+        "causal_transition_chain_score",
+        "continuity_signature_score"
+      ],
+      "pass_threshold": 0.88,
+      "failure_examples": [
+        "timeline_reset",
+        "causal_chain_break"
+      ],
+      "transition_failure_examples": [
+        "character_position_jump",
+        "missing_transition_cause",
+        "edit_rhythm_break",
+        "timeline_reset"
+      ],
+      "timeline_recall_rules": {
+        "required_timeline_slots": 5,
+        "minimum_continuity_chain_match": 3
+      },
+      "exit_criteria": {
+        "pass_rate": 0.75,
+        "edit_rhythm_alignment_score": 0.88
+      }
+    }
+  ],
+  "timeline_recall_rules": {
+    "required_timeline_slots": 5,
+    "minimum_continuity_chain_match": 3,
+    "recall_method": "Traverse causal_transition_chain from transition_id; count continuity_anchor matches >= minimum_continuity_chain_match across required_timeline_slots per batch."
+  }
+}

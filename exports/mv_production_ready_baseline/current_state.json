@@ -1,0 +1,21 @@
+{
+  "state_id": "mv-production-ready-current-state-v1",
+  "updated_at": "2026-06-08T05:14:23.926Z",
+  "production_ready_certified": true,
+  "production_ready_status": "PRODUCTION_READY",
+  "production_ready_score": 100,
+  "resolved_high_priority_count": 3,
+  "remaining_high_priority_count": 0,
+  "gate_state": "OPEN",
+  "reentry_ready": true,
+  "baseline_snapshot_frozen": true,
+  "baseline_snapshot_ref": "exports/mv_production_ready_baseline/PRODUCTION_READY_BASELINE_SNAPSHOT.json",
+  "latest_manifest_ref": "exports/mv_production_ready_baseline/latest/production-ready-baseline-manifest.json",
+  "handoff_ref": "exports/mv_production_ready_baseline/handoff/mv-production-ready-handoff.json",
+  "no_new_ds_phase_allowed": true,
+  "rehardening_blocked": true,
+  "verify_commands": [
+    "verify:mv-production-ready-final-certification",
+    "verify:mv-production-ready-baseline-snapshot"
+  ]
+}

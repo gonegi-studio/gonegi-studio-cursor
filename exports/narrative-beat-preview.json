@@ -1,0 +1,640 @@
+{
+  "beat_version": "NARRATIVE-BEAT-PHASE-82-v1",
+  "seed_count": 16,
+  "seed_beat_types": [
+    "waiting",
+    "memory",
+    "discovery",
+    "distance",
+    "longing",
+    "hope",
+    "journey",
+    "conflict",
+    "sacrifice",
+    "healing",
+    "forgiveness",
+    "reunion",
+    "departure",
+    "growth",
+    "redemption",
+    "new_beginning"
+  ],
+  "daily_life_anchors": [
+    "window_gazing",
+    "rain_watching",
+    "tea_drinking",
+    "book_reading",
+    "walking_alone",
+    "bus_waiting",
+    "train_riding",
+    "letter_writing",
+    "photo_viewing",
+    "flower_watering",
+    "pet_care",
+    "market_visit",
+    "school_walk",
+    "bridge_crossing",
+    "sunset_watching",
+    "star_gazing",
+    "room_cleaning",
+    "cooking",
+    "laundry",
+    "bicycle_riding",
+    "bench_sitting",
+    "forest_path",
+    "shore_walking",
+    "snow_watching",
+    "music_listening",
+    "earphone_walk",
+    "station_waiting",
+    "doorway_pause",
+    "rooftop_visit",
+    "street_crossing",
+    "morning_routine",
+    "evening_return"
+  ],
+  "required_fields": [
+    "beat_id",
+    "beat_type",
+    "emotion_id",
+    "grammar_id",
+    "relationship_id",
+    "daily_life_anchor",
+    "scene_purpose",
+    "narrative_function",
+    "camera_affinity",
+    "music_affinity",
+    "transition_affinity",
+    "keywords"
+  ],
+  "linked_layers": {
+    "emotion_dna_ids": [
+      "anticipation",
+      "uncertainty",
+      "isolation",
+      "connection",
+      "optimism",
+      "resolve",
+      "care",
+      "parting"
+    ],
+    "gonagi_grammar_ids": [
+      "GRA-waiting-guardian",
+      "GRA-waiting-lost-love",
+      "GRA-hesitation-friendship",
+      "GRA-farewell-lost-love",
+      "GRA-reunion-after-loss",
+      "GRA-protection-child",
+      "GRA-protection-student",
+      "GRA-hope-reunion",
+      "GRA-loneliness-distance",
+      "GRA-determination-return",
+      "GRA-care-healing",
+      "GRA-connection-recovery",
+      "GRA-parting-separation",
+      "GRA-optimism-new-journey",
+      "GRA-resolve-sacrifice",
+      "GRA-reunion-redemption"
+    ],
+    "relationship_dna_ids": [
+      "guardian_child",
+      "lost_lovers",
+      "silent_friends",
+      "rival_to_ally",
+      "family_separation",
+      "mentor_student",
+      "stranger_kindness",
+      "reunion_after_loss"
+    ]
+  },
+  "seed_narrative_beats": [
+    {
+      "beat_id": "NBT-waiting",
+      "beat_type": "waiting",
+      "emotion_id": "anticipation",
+      "grammar_id": "GRA-waiting-guardian",
+      "relationship_id": "guardian_child",
+      "daily_life_anchor": [
+        "station_waiting",
+        "window_gazing"
+      ],
+      "scene_purpose": "Daily waiting ritual anchors quiet anticipation before change",
+      "narrative_function": "establish_emotional_patience",
+      "camera_affinity": [
+        "over-shoulder guardian frame",
+        "medium-wide hold",
+        "slow push-in optional"
+      ],
+      "music_affinity": [
+        "sparse piano motif",
+        "warm low strings",
+        "gentle pulse under 80 bpm"
+      ],
+      "transition_affinity": [
+        "silence_to_confession",
+        "sunset_to_night"
+      ],
+      "keywords": [
+        "waiting",
+        "anticipation",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-memory",
+      "beat_type": "memory",
+      "emotion_id": "isolation",
+      "grammar_id": "GRA-loneliness-distance",
+      "relationship_id": "family_separation",
+      "daily_life_anchor": [
+        "photo_viewing",
+        "letter_writing"
+      ],
+      "scene_purpose": "Memory objects trigger isolation felt across distance",
+      "narrative_function": "surface_past_emotional_echo",
+      "camera_affinity": [
+        "wide isolation hold",
+        "negative space framing",
+        "doorway frame separation"
+      ],
+      "music_affinity": [
+        "solo cello line",
+        "minor key drift",
+        "reverb tail loneliness"
+      ],
+      "transition_affinity": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "keywords": [
+        "memory",
+        "isolation",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-discovery",
+      "beat_type": "discovery",
+      "emotion_id": "uncertainty",
+      "grammar_id": "GRA-hesitation-friendship",
+      "relationship_id": "silent_friends",
+      "daily_life_anchor": [
+        "bench_sitting",
+        "book_reading"
+      ],
+      "scene_purpose": "Small shared routine reveals unspoken friendship",
+      "narrative_function": "introduce_relational_discovery",
+      "camera_affinity": [
+        "over-shoulder doubt frame",
+        "two-shot quiet hold",
+        "side-by-side tracking"
+      ],
+      "music_affinity": [
+        "syncopated pause",
+        "solo piano sparse",
+        "held string note"
+      ],
+      "transition_affinity": [
+        "silence_to_confession",
+        "hope_to_sadness"
+      ],
+      "keywords": [
+        "discovery",
+        "friendship",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-distance",
+      "beat_type": "distance",
+      "emotion_id": "parting",
+      "grammar_id": "GRA-parting-separation",
+      "relationship_id": "family_separation",
+      "daily_life_anchor": [
+        "doorway_pause",
+        "train_riding"
+      ],
+      "scene_purpose": "Departure threshold widens physical and emotional distance",
+      "narrative_function": "mark_relational_separation",
+      "camera_affinity": [
+        "doorway frame separation",
+        "pull-back family tableau",
+        "silhouette departure"
+      ],
+      "music_affinity": [
+        "fading motif reprise",
+        "solo cello line",
+        "minor key drift"
+      ],
+      "transition_affinity": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "keywords": [
+        "distance",
+        "parting",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-longing",
+      "beat_type": "longing",
+      "emotion_id": "anticipation",
+      "grammar_id": "GRA-waiting-lost-love",
+      "relationship_id": "lost_lovers",
+      "daily_life_anchor": [
+        "rain_watching",
+        "evening_return"
+      ],
+      "scene_purpose": "Familiar return path holds longing for absent bond",
+      "narrative_function": "sustain_absence_tension",
+      "camera_affinity": [
+        "static frame patience",
+        "negative space framing",
+        "slow push-in optional"
+      ],
+      "music_affinity": [
+        "suspended harmony",
+        "sparse piano motif",
+        "fading motif reprise"
+      ],
+      "transition_affinity": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "keywords": [
+        "longing",
+        "anticipation",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-hope",
+      "beat_type": "hope",
+      "emotion_id": "optimism",
+      "grammar_id": "GRA-hope-reunion",
+      "relationship_id": "reunion_after_loss",
+      "daily_life_anchor": [
+        "sunset_watching",
+        "bridge_crossing"
+      ],
+      "scene_purpose": "Horizon movement converts grief residue into hopeful return",
+      "narrative_function": "lift_emotional_trajectory",
+      "camera_affinity": [
+        "golden hour key lift",
+        "forward tracking optimism",
+        "two-shot reunion frame"
+      ],
+      "music_affinity": [
+        "major lift motif",
+        "rising arpeggio",
+        "motif return"
+      ],
+      "transition_affinity": [
+        "sadness_to_hope",
+        "separation_to_reunion"
+      ],
+      "keywords": [
+        "hope",
+        "optimism",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-journey",
+      "beat_type": "journey",
+      "emotion_id": "optimism",
+      "grammar_id": "GRA-optimism-new-journey",
+      "relationship_id": "mentor_student",
+      "daily_life_anchor": [
+        "morning_routine",
+        "bicycle_riding"
+      ],
+      "scene_purpose": "Morning departure marks optimistic path forward",
+      "narrative_function": "advance_plot_momentum",
+      "camera_affinity": [
+        "low angle student lift",
+        "forward tracking optimism",
+        "golden hour key"
+      ],
+      "music_affinity": [
+        "rising arpeggio",
+        "major lift motif",
+        "motif return on breakthrough"
+      ],
+      "transition_affinity": [
+        "sadness_to_hope",
+        "walking_to_running"
+      ],
+      "keywords": [
+        "journey",
+        "optimism",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-conflict",
+      "beat_type": "conflict",
+      "emotion_id": "resolve",
+      "grammar_id": "GRA-determination-return",
+      "relationship_id": "rival_to_ally",
+      "daily_life_anchor": [
+        "street_crossing",
+        "school_walk"
+      ],
+      "scene_purpose": "Converging paths force rival alignment under pressure",
+      "narrative_function": "escalate_relational_tension",
+      "camera_affinity": [
+        "hero medium-low angle",
+        "face-off symmetrical frame",
+        "locked axis tracking"
+      ],
+      "music_affinity": [
+        "driving percussion",
+        "ostinato build",
+        "unified tempo lock"
+      ],
+      "transition_affinity": [
+        "walking_to_running",
+        "hope_to_sadness"
+      ],
+      "keywords": [
+        "conflict",
+        "resolve",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-sacrifice",
+      "beat_type": "sacrifice",
+      "emotion_id": "resolve",
+      "grammar_id": "GRA-resolve-sacrifice",
+      "relationship_id": "family_separation",
+      "daily_life_anchor": [
+        "doorway_pause",
+        "laundry"
+      ],
+      "scene_purpose": "Ordinary chore interrupted by resolve to leave for duty",
+      "narrative_function": "commit_to_costly_choice",
+      "camera_affinity": [
+        "hero medium-low angle",
+        "doorway frame separation",
+        "push-in resolve"
+      ],
+      "music_affinity": [
+        "driving percussion",
+        "ostinato build",
+        "minor resolution"
+      ],
+      "transition_affinity": [
+        "hope_to_sadness",
+        "sunset_to_night"
+      ],
+      "keywords": [
+        "sacrifice",
+        "resolve",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-healing",
+      "beat_type": "healing",
+      "emotion_id": "care",
+      "grammar_id": "GRA-care-healing",
+      "relationship_id": "stranger_kindness",
+      "daily_life_anchor": [
+        "tea_drinking",
+        "pet_care"
+      ],
+      "scene_purpose": "Small care gesture in rain begins emotional healing",
+      "narrative_function": "restore_vulnerability_balance",
+      "camera_affinity": [
+        "street-level encounter frame",
+        "medium two-shot kindness",
+        "soft background bokeh"
+      ],
+      "music_affinity": [
+        "gentle piano motif",
+        "warm string pad",
+        "brief major lift"
+      ],
+      "transition_affinity": [
+        "rain_to_clear",
+        "separation_to_reunion"
+      ],
+      "keywords": [
+        "healing",
+        "care",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-forgiveness",
+      "beat_type": "forgiveness",
+      "emotion_id": "connection",
+      "grammar_id": "GRA-connection-recovery",
+      "relationship_id": "stranger_kindness",
+      "daily_life_anchor": [
+        "market_visit",
+        "music_listening"
+      ],
+      "scene_purpose": "Shared public moment reopens trust after withdrawal",
+      "narrative_function": "repair_relational_fracture",
+      "camera_affinity": [
+        "medium two-shot kindness",
+        "tracking convergence",
+        "soft background bokeh"
+      ],
+      "music_affinity": [
+        "brief major lift",
+        "gentle piano motif",
+        "warm string pad"
+      ],
+      "transition_affinity": [
+        "rain_to_clear",
+        "separation_to_reunion"
+      ],
+      "keywords": [
+        "forgiveness",
+        "connection",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-reunion",
+      "beat_type": "reunion",
+      "emotion_id": "connection",
+      "grammar_id": "GRA-reunion-after-loss",
+      "relationship_id": "reunion_after_loss",
+      "daily_life_anchor": [
+        "station_waiting",
+        "shore_walking"
+      ],
+      "scene_purpose": "Arrival point transforms waiting into reunion contact",
+      "narrative_function": "resolve_absence_arc",
+      "camera_affinity": [
+        "tracking convergence",
+        "two-shot reunion frame",
+        "golden hour key lift"
+      ],
+      "music_affinity": [
+        "swelling strings",
+        "major resolution chord",
+        "motif return"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sadness_to_hope"
+      ],
+      "keywords": [
+        "reunion",
+        "connection",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-departure",
+      "beat_type": "departure",
+      "emotion_id": "parting",
+      "grammar_id": "GRA-farewell-lost-love",
+      "relationship_id": "lost_lovers",
+      "daily_life_anchor": [
+        "bus_waiting",
+        "rooftop_visit"
+      ],
+      "scene_purpose": "Elevated farewell view frames bittersweet departure",
+      "narrative_function": "close_chapter_with_parting",
+      "camera_affinity": [
+        "pull-back widening frame",
+        "silhouette departure",
+        "two-shot reunion frame"
+      ],
+      "music_affinity": [
+        "fading motif reprise",
+        "minor resolution",
+        "swelling strings"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sunset_to_night"
+      ],
+      "keywords": [
+        "departure",
+        "parting",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-growth",
+      "beat_type": "growth",
+      "emotion_id": "care",
+      "grammar_id": "GRA-protection-student",
+      "relationship_id": "mentor_student",
+      "daily_life_anchor": [
+        "school_walk",
+        "cooking"
+      ],
+      "scene_purpose": "Mentor guidance during daily practice enables growth",
+      "narrative_function": "develop_character_capacity",
+      "camera_affinity": [
+        "over-shoulder instruction frame",
+        "two-shot practice hold",
+        "low protective angle"
+      ],
+      "music_affinity": [
+        "warm low strings",
+        "rising arpeggio",
+        "protective motif"
+      ],
+      "transition_affinity": [
+        "sadness_to_hope",
+        "silence_to_confession"
+      ],
+      "keywords": [
+        "growth",
+        "care",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-redemption",
+      "beat_type": "redemption",
+      "emotion_id": "connection",
+      "grammar_id": "GRA-reunion-redemption",
+      "relationship_id": "lost_lovers",
+      "daily_life_anchor": [
+        "flower_watering",
+        "star_gazing"
+      ],
+      "scene_purpose": "Quiet nightly ritual precedes redemptive reunion",
+      "narrative_function": "restore_moral_emotional_balance",
+      "camera_affinity": [
+        "two-shot reunion frame",
+        "tracking convergence",
+        "medium hold on contact"
+      ],
+      "music_affinity": [
+        "swelling strings",
+        "major resolution chord",
+        "minor to major lift"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sadness_to_hope"
+      ],
+      "keywords": [
+        "redemption",
+        "connection",
+        "daily-life",
+        "anchor"
+      ]
+    },
+    {
+      "beat_id": "NBT-new_beginning",
+      "beat_type": "new_beginning",
+      "emotion_id": "care",
+      "grammar_id": "GRA-protection-child",
+      "relationship_id": "guardian_child",
+      "daily_life_anchor": [
+        "morning_routine",
+        "flower_watering"
+      ],
+      "scene_purpose": "Guardian morning routine opens protective new chapter",
+      "narrative_function": "reset_narrative_cycle",
+      "camera_affinity": [
+        "over-shoulder guardian frame",
+        "two-shot shelter composition",
+        "low protective angle"
+      ],
+      "music_affinity": [
+        "warm low strings",
+        "protective motif",
+        "steady heartbeat pulse"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "silence_to_confession"
+      ],
+      "keywords": [
+        "new-beginning",
+        "care",
+        "daily-life",
+        "anchor"
+      ]
+    }
+  ]
+}

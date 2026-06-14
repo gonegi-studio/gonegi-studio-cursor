@@ -1,0 +1,37 @@
+{
+  "report_type": "indoor_location_anchor_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-LTD-004",
+  "generated_at": "2026-06-03T06:33:56.786Z",
+  "anchor_count": 6,
+  "target_location_count": 6,
+  "duplicate_ids": 0,
+  "runtime_fields_exported": {
+    "anchor_id": true,
+    "fixed_anchor_objects": true,
+    "camera_view_rules": true,
+    "render_payload": true
+  },
+  "validation_target": "RKB-004 INDOOR_LOCATION_VALIDATION",
+  "json_parse_result": "valid",
+  "validation": {
+    "all_targets_anchored": true,
+    "duplicate_ids_zero": true,
+    "required_fields_complete": true,
+    "adapter_chain_complete": true,
+    "runtime_verification_exported": true,
+    "image_app_consumption_simulated": true
+  },
+  "export_path": "exports/image_app/adapters/indoor-location-anchor-adapter.json",
+  "report_path": "exports/image_app/reports/indoor-location-anchor-adapter-report.json",
+  "library_path": "datasets/location/indoor-location-anchor-library-v1.json",
+  "index_path": "datasets/location/indoor-location-anchor-index-v1.json",
+  "final_verdict": "PASS_INDOOR_LOCATION_ANCHOR_SYSTEM_V1",
+  "violations": [],
+  "next_phases": [
+    "LTD-005 Lighting Anchor Bundle",
+    "RKB-005 Lighting Validation",
+    "SHOT-GRAMMAR-001 Cinematic Coverage Grammar",
+    "PHASE-IMG-003 / RKB-004 Indoor Location Validation Test"
+  ]
+}

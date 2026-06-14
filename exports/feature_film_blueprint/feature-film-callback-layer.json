@@ -1,0 +1,411 @@
+{
+  "layer_id": "feature-film-callback-layer-v1",
+  "phase": "PHASE-L3-FEATURE-002",
+  "callback_depth_range": "3-5",
+  "multi_callback_chain": true,
+  "archetypes": [
+    {
+      "feature_film_archetype_id": "harbor_saga_feature",
+      "callback_depth": 3,
+      "multi_callback_chain": true,
+      "entries": [
+        {
+          "anchor_id": "harbor_bench",
+          "layer_id": "object_layer",
+          "callback_seed": 60,
+          "callback_reference": 60,
+          "callback_resolution": 1550,
+          "callback_completion_state": "seeded",
+          "callback_depth": 1,
+          "multi_callback_chain": [
+            "chain_object_layer_harbor_bench",
+            "object_layer",
+            "harbor_bench"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "letter_fragment",
+          "layer_id": "object_layer",
+          "callback_seed": 110,
+          "callback_reference": 110,
+          "callback_resolution": 1300,
+          "callback_completion_state": "seeded",
+          "callback_depth": 2,
+          "multi_callback_chain": [
+            "chain_object_layer_letter_fragment",
+            "object_layer",
+            "letter_fragment"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "shared_window",
+          "layer_id": "relationship_layer",
+          "callback_seed": 180,
+          "callback_reference": 180,
+          "callback_resolution": 1600,
+          "callback_completion_state": "seeded",
+          "callback_depth": 3,
+          "multi_callback_chain": [
+            "chain_relationship_layer_shared_window",
+            "relationship_layer",
+            "shared_window"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "ancestor_dock_marker",
+          "layer_id": "legacy_layer",
+          "callback_seed": 250,
+          "callback_reference": 250,
+          "callback_resolution": 1700,
+          "callback_completion_state": "seeded",
+          "callback_depth": 4,
+          "multi_callback_chain": [
+            "chain_legacy_layer_ancestor_dock_marker",
+            "legacy_layer",
+            "ancestor_dock_marker"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "ancestor_dock_marker",
+          "layer_id": "legacy_layer",
+          "callback_seed": 250,
+          "callback_reference": 250,
+          "callback_resolution": 1700,
+          "callback_completion_state": "seeded",
+          "callback_depth": 5,
+          "multi_callback_chain": [
+            "legacy_chain_ancestor_dock_marker",
+            "legacy_layer",
+            "ancestor_dock_marker"
+          ],
+          "legacy_chain": true
+        },
+        {
+          "anchor_id": "inherited_compass",
+          "layer_id": "legacy_layer",
+          "callback_seed": 400,
+          "callback_reference": 400,
+          "callback_resolution": 1650,
+          "callback_completion_state": "seeded",
+          "callback_depth": 6,
+          "multi_callback_chain": [
+            "legacy_chain_inherited_compass",
+            "legacy_layer",
+            "inherited_compass"
+          ],
+          "legacy_chain": true
+        }
+      ],
+      "multi_callback_chains": [
+        {
+          "chain_id": "multi_callback_object_layer",
+          "layer_ids": [
+            "object_layer"
+          ],
+          "anchor_ids": [
+            "harbor_bench",
+            "letter_fragment"
+          ]
+        },
+        {
+          "chain_id": "multi_callback_relationship_layer",
+          "layer_ids": [
+            "relationship_layer"
+          ],
+          "anchor_ids": [
+            "shared_window"
+          ]
+        },
+        {
+          "chain_id": "multi_callback_legacy_layer",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "ancestor_dock_marker"
+          ]
+        },
+        {
+          "chain_id": "legacy_chain_ancestor_dock_marker",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "ancestor_dock_marker"
+          ]
+        },
+        {
+          "chain_id": "legacy_chain_inherited_compass",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "inherited_compass"
+          ]
+        }
+      ]
+    },
+    {
+      "feature_film_archetype_id": "mediterranean_epoch_feature",
+      "callback_depth": 4,
+      "multi_callback_chain": true,
+      "entries": [
+        {
+          "anchor_id": "lantern_arch",
+          "layer_id": "ritual_layer",
+          "callback_seed": 100,
+          "callback_reference": 100,
+          "callback_resolution": 2100,
+          "callback_completion_state": "seeded",
+          "callback_depth": 1,
+          "multi_callback_chain": [
+            "chain_ritual_layer_lantern_arch",
+            "ritual_layer",
+            "lantern_arch"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "olive_press_stone",
+          "layer_id": "object_layer",
+          "callback_seed": 180,
+          "callback_reference": 180,
+          "callback_resolution": 1950,
+          "callback_completion_state": "seeded",
+          "callback_depth": 2,
+          "multi_callback_chain": [
+            "chain_object_layer_olive_press_stone",
+            "object_layer",
+            "olive_press_stone"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "old_quarter_plaque",
+          "layer_id": "civic_layer",
+          "callback_seed": 300,
+          "callback_reference": 300,
+          "callback_resolution": 2200,
+          "callback_completion_state": "seeded",
+          "callback_depth": 3,
+          "multi_callback_chain": [
+            "chain_civic_layer_old_quarter_plaque",
+            "civic_layer",
+            "old_quarter_plaque"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "lantern_arch",
+          "layer_id": "legacy_layer",
+          "callback_seed": 100,
+          "callback_reference": 100,
+          "callback_resolution": 2100,
+          "callback_completion_state": "seeded",
+          "callback_depth": 4,
+          "multi_callback_chain": [
+            "legacy_chain_lantern_arch",
+            "legacy_layer",
+            "lantern_arch"
+          ],
+          "legacy_chain": true
+        },
+        {
+          "anchor_id": "olive_press_stone",
+          "layer_id": "legacy_layer",
+          "callback_seed": 180,
+          "callback_reference": 180,
+          "callback_resolution": 1950,
+          "callback_completion_state": "seeded",
+          "callback_depth": 5,
+          "multi_callback_chain": [
+            "legacy_chain_olive_press_stone",
+            "legacy_layer",
+            "olive_press_stone"
+          ],
+          "legacy_chain": true
+        }
+      ],
+      "multi_callback_chains": [
+        {
+          "chain_id": "multi_callback_ritual_layer",
+          "layer_ids": [
+            "ritual_layer"
+          ],
+          "anchor_ids": [
+            "lantern_arch"
+          ]
+        },
+        {
+          "chain_id": "multi_callback_object_layer",
+          "layer_ids": [
+            "object_layer"
+          ],
+          "anchor_ids": [
+            "olive_press_stone"
+          ]
+        },
+        {
+          "chain_id": "multi_callback_civic_layer",
+          "layer_ids": [
+            "civic_layer"
+          ],
+          "anchor_ids": [
+            "old_quarter_plaque"
+          ]
+        },
+        {
+          "chain_id": "legacy_chain_lantern_arch",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "lantern_arch"
+          ]
+        },
+        {
+          "chain_id": "legacy_chain_olive_press_stone",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "olive_press_stone"
+          ]
+        }
+      ]
+    },
+    {
+      "feature_film_archetype_id": "correspondence_ledger_feature",
+      "callback_depth": 3,
+      "multi_callback_chain": true,
+      "entries": [
+        {
+          "anchor_id": "sealed_envelope",
+          "layer_id": "letter_layer",
+          "callback_seed": 80,
+          "callback_reference": 80,
+          "callback_resolution": 1200,
+          "callback_completion_state": "seeded",
+          "callback_depth": 1,
+          "multi_callback_chain": [
+            "chain_letter_layer_sealed_envelope",
+            "letter_layer",
+            "sealed_envelope"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "ledger_page",
+          "layer_id": "archive_layer",
+          "callback_seed": 150,
+          "callback_reference": 150,
+          "callback_resolution": 1400,
+          "callback_completion_state": "seeded",
+          "callback_depth": 2,
+          "multi_callback_chain": [
+            "chain_archive_layer_ledger_page",
+            "archive_layer",
+            "ledger_page"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "ancestor_letter",
+          "layer_id": "legacy_layer",
+          "callback_seed": 220,
+          "callback_reference": 220,
+          "callback_resolution": 1500,
+          "callback_completion_state": "seeded",
+          "callback_depth": 3,
+          "multi_callback_chain": [
+            "chain_legacy_layer_ancestor_letter",
+            "legacy_layer",
+            "ancestor_letter"
+          ],
+          "legacy_chain": false
+        },
+        {
+          "anchor_id": "ancestor_letter",
+          "layer_id": "legacy_layer",
+          "callback_seed": 220,
+          "callback_reference": 220,
+          "callback_resolution": 1500,
+          "callback_completion_state": "seeded",
+          "callback_depth": 4,
+          "multi_callback_chain": [
+            "legacy_chain_ancestor_letter",
+            "legacy_layer",
+            "ancestor_letter"
+          ],
+          "legacy_chain": true
+        },
+        {
+          "anchor_id": "modern_transcript",
+          "layer_id": "legacy_layer",
+          "callback_seed": 350,
+          "callback_reference": 350,
+          "callback_resolution": 1450,
+          "callback_completion_state": "seeded",
+          "callback_depth": 5,
+          "multi_callback_chain": [
+            "legacy_chain_modern_transcript",
+            "legacy_layer",
+            "modern_transcript"
+          ],
+          "legacy_chain": true
+        }
+      ],
+      "multi_callback_chains": [
+        {
+          "chain_id": "multi_callback_letter_layer",
+          "layer_ids": [
+            "letter_layer"
+          ],
+          "anchor_ids": [
+            "sealed_envelope"
+          ]
+        },
+        {
+          "chain_id": "multi_callback_archive_layer",
+          "layer_ids": [
+            "archive_layer"
+          ],
+          "anchor_ids": [
+            "ledger_page"
+          ]
+        },
+        {
+          "chain_id": "multi_callback_legacy_layer",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "ancestor_letter"
+          ]
+        },
+        {
+          "chain_id": "legacy_chain_ancestor_letter",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "ancestor_letter"
+          ]
+        },
+        {
+          "chain_id": "legacy_chain_modern_transcript",
+          "layer_ids": [
+            "legacy_layer"
+          ],
+          "anchor_ids": [
+            "modern_transcript"
+          ]
+        }
+      ]
+    }
+  ]
+}

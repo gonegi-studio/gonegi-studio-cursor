@@ -1,0 +1,103 @@
+{
+  "scene_state_id": "scene_gonegi_bedroom_reading_v1",
+  "phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "character_state": {
+    "active_character_ids": [
+      "gonegi",
+      "gamja"
+    ],
+    "primary_character_id": "gonegi",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:gonegi",
+      "character:gamja"
+    ]
+  },
+  "location_state": {
+    "location_id": "gonegi_bedroom_01",
+    "location_name": "Gonegi Bedroom",
+    "location_type": "domestic_interior",
+    "domain": "Gonegi Domain",
+    "location_source": "datasets/location/location-dna-index-v1.json",
+    "layout_lock_id": "layout_lock_gonegi_bedroom_01"
+  },
+  "lighting_state": {
+    "lighting_id": "sunrise_bakery_bedroom",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "intensity": "scene_default",
+    "direction": "motivated_natural"
+  },
+  "emotion_state": {
+    "emotion_id": "hope",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.65,
+    "acting_visibility_weight": "medium"
+  },
+  "relationship_state": {
+    "relationship_id": "friendship",
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "gonegi",
+      "gamja"
+    ],
+    "distance_behavior": "comfortable arm's length, easy side-by-side walking",
+    "gaze_pattern": "frequent shared glances, relaxed eye contact"
+  },
+  "camera_state": {
+    "shot_type": "medium",
+    "coverage_id": "coverage_pattern_01_establishing_insert_reaction",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "Establishing → Medium → Insert → Reaction → Wide",
+    "camera_height": "eye_level",
+    "camera_direction": "toward_east_window_and_bed"
+  },
+  "composition_state": {
+    "composition_id": "gonegi_bedroom_reading",
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [
+      "wildflower_vase_01",
+      "ship_model_01",
+      "aged_wood_chair_01",
+      "sketchbook_01"
+    ],
+    "character_positions": {
+      "gonegi": "bedside_chair",
+      "gamja": "floor_near_chair"
+    }
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "sunrise",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": []
+  },
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "gonegi",
+      "gamja"
+    ],
+    "identity_lock_tokens": [
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja"
+    ]
+  },
+  "source_refs": {
+    "character": "datasets/character/character-simple-v1.json",
+    "location": "datasets/location/location-dna-index-v1.json",
+    "lighting": "datasets/lighting/lighting-dna-index-v1.json",
+    "emotion": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "relationship": "datasets/relationship/relationship-grammar-library.json",
+    "composition": "datasets/scene/scene-asset-composition-library-v1.json",
+    "camera": "datasets/shot/coverage-grammar-index-v1.json",
+    "identity": "exports/image_app/contracts/character-first-contract.json"
+  },
+  "built_at": "2026-06-05T02:34:04.236Z"
+}

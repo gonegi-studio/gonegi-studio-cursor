@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "movie-dataset-factory-v1",
+  "title": "Movie Dataset Factory Standard Schema",
+  "description": "Standard schema for all movie reconstruction datasets produced by MOVIE_DATASET_FACTORY_SYSTEM_V1",
+  "type": "object",
+  "required": [
+    "movie_id",
+    "movie_name",
+    "movie_type",
+    "scene_count",
+    "geometry_layer",
+    "shot_layer",
+    "temporal_layer",
+    "motion_layer",
+    "semantic_layer",
+    "validation_layer",
+    "factory_metadata"
+  ],
+  "properties": {
+    "movie_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "movie_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "movie_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scene_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "geometry_layer": {
+      "type": "object"
+    },
+    "shot_layer": {
+      "type": "object"
+    },
+    "temporal_layer": {
+      "type": "object"
+    },
+    "motion_layer": {
+      "type": "object"
+    },
+    "semantic_layer": {
+      "type": "object"
+    },
+    "validation_layer": {
+      "type": "object"
+    },
+    "factory_metadata": {
+      "type": "object",
+      "required": [
+        "standardized",
+        "source_bundle",
+        "standardized_at",
+        "schema_version"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "fixed_identity_source": "latest_v5",
+  "swappable_layers": [
+    "geometry_layer",
+    "shot_layer",
+    "temporal_layer",
+    "motion_layer",
+    "semantic_layer"
+  ]
+}

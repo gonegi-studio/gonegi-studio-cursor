@@ -1,0 +1,429 @@
+{
+  "schema_version": "EMOTION-DNA-SCHEMA-PHASE-78B-v1",
+  "schema_path": "schemas/emotionDna.schema.json",
+  "seed_count": 8,
+  "required_fields": [
+    "emotion_id",
+    "emotion_name",
+    "emotion_family",
+    "emotional_temperature",
+    "emotional_direction",
+    "internal_state",
+    "external_expression",
+    "behavior_affinity",
+    "relationship_affinity",
+    "music_affinity",
+    "camera_affinity",
+    "transition_affinity",
+    "intensity_range",
+    "keywords"
+  ],
+  "behavior_emotion_linkage": {
+    "waiting": "anticipation",
+    "hesitation": "uncertainty",
+    "loneliness": "isolation",
+    "reunion": "connection",
+    "hope": "optimism",
+    "determination": "resolve",
+    "protection": "care",
+    "farewell": "parting"
+  },
+  "intensity_range": {
+    "min": 1,
+    "max": 5
+  },
+  "seed_emotions": [
+    {
+      "emotion_id": "anticipation",
+      "emotion_name": "Anticipation",
+      "emotion_family": "prospective",
+      "emotional_temperature": "neutral",
+      "emotional_direction": "forward",
+      "internal_state": [
+        "expectant focus",
+        "suspended readiness",
+        "future-oriented attention"
+      ],
+      "external_expression": [
+        "held stillness",
+        "subtle lean",
+        "quiet alertness"
+      ],
+      "behavior_affinity": [
+        "waiting"
+      ],
+      "relationship_affinity": [
+        "pre-bond arrival",
+        "awaiting companion",
+        "solo expectancy"
+      ],
+      "music_affinity": [
+        "suspended harmony",
+        "sparse piano motif",
+        "gentle pulse under 80 bpm"
+      ],
+      "camera_affinity": [
+        "medium-wide hold",
+        "static frame patience",
+        "slow push-in optional"
+      ],
+      "transition_affinity": [
+        "silence_to_confession",
+        "sunset_to_night"
+      ],
+      "intensity_range": {
+        "min": 1,
+        "max": 3
+      },
+      "keywords": [
+        "anticipation",
+        "expectancy",
+        "waiting",
+        "prospective"
+      ]
+    },
+    {
+      "emotion_id": "uncertainty",
+      "emotion_name": "Uncertainty",
+      "emotion_family": "volatile",
+      "emotional_temperature": "cool",
+      "emotional_direction": "inward",
+      "internal_state": [
+        "cognitive pause",
+        "risk evaluation",
+        "unresolved choice"
+      ],
+      "external_expression": [
+        "micro hesitation",
+        "averted focus",
+        "unfinished gesture"
+      ],
+      "behavior_affinity": [
+        "hesitation"
+      ],
+      "relationship_affinity": [
+        "trust threshold",
+        "confession pause",
+        "emotional risk"
+      ],
+      "music_affinity": [
+        "syncopated pause",
+        "minor second tension",
+        "held string note"
+      ],
+      "camera_affinity": [
+        "over-shoulder doubt frame",
+        "slight dutch unease",
+        "close-medium tension"
+      ],
+      "transition_affinity": [
+        "hope_to_sadness",
+        "silence_to_confession"
+      ],
+      "intensity_range": {
+        "min": 2,
+        "max": 4
+      },
+      "keywords": [
+        "uncertainty",
+        "doubt",
+        "hesitation",
+        "volatile"
+      ]
+    },
+    {
+      "emotion_id": "isolation",
+      "emotion_name": "Isolation",
+      "emotion_family": "inward",
+      "emotional_temperature": "cold",
+      "emotional_direction": "inward",
+      "internal_state": [
+        "emotional distance",
+        "self-contained ache",
+        "peripheral disconnection"
+      ],
+      "external_expression": [
+        "reduced presence",
+        "downcast stillness",
+        "minimal engagement"
+      ],
+      "behavior_affinity": [
+        "loneliness"
+      ],
+      "relationship_affinity": [
+        "absence of companion",
+        "post-separation",
+        "crowd isolation"
+      ],
+      "music_affinity": [
+        "solo cello line",
+        "reverb tail loneliness",
+        "minor key drift"
+      ],
+      "camera_affinity": [
+        "negative space framing",
+        "wide isolation hold",
+        "back-follow solitude"
+      ],
+      "transition_affinity": [
+        "sunset_to_night",
+        "rain_to_clear"
+      ],
+      "intensity_range": {
+        "min": 3,
+        "max": 5
+      },
+      "keywords": [
+        "isolation",
+        "loneliness",
+        "solitude",
+        "inward"
+      ]
+    },
+    {
+      "emotion_id": "connection",
+      "emotion_name": "Connection",
+      "emotion_family": "social",
+      "emotional_temperature": "warm",
+      "emotional_direction": "outward",
+      "internal_state": [
+        "bond recognition",
+        "shared relief",
+        "relational warmth"
+      ],
+      "external_expression": [
+        "open recognition",
+        "closing distance",
+        "shared gaze bloom"
+      ],
+      "behavior_affinity": [
+        "reunion"
+      ],
+      "relationship_affinity": [
+        "long separation resolve",
+        "companion return",
+        "bond reaffirmation"
+      ],
+      "music_affinity": [
+        "swelling strings",
+        "major resolution chord",
+        "motif return"
+      ],
+      "camera_affinity": [
+        "two-shot reunion frame",
+        "tracking convergence",
+        "medium hold on contact"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sadness_to_hope"
+      ],
+      "intensity_range": {
+        "min": 3,
+        "max": 5
+      },
+      "keywords": [
+        "connection",
+        "reunion",
+        "bond",
+        "social"
+      ]
+    },
+    {
+      "emotion_id": "optimism",
+      "emotion_name": "Optimism",
+      "emotion_family": "aspirational",
+      "emotional_temperature": "warm",
+      "emotional_direction": "rising",
+      "internal_state": [
+        "forward belief",
+        "renewed possibility",
+        "lightened resolve"
+      ],
+      "external_expression": [
+        "brightened composure",
+        "open posture",
+        "gentle uplift"
+      ],
+      "behavior_affinity": [
+        "hope"
+      ],
+      "relationship_affinity": [
+        "shared future gaze",
+        "mentor support",
+        "renewed trust"
+      ],
+      "music_affinity": [
+        "rising arpeggio",
+        "major lift motif",
+        "tempo brighten"
+      ],
+      "camera_affinity": [
+        "low angle lift",
+        "golden hour key",
+        "forward tracking optimism"
+      ],
+      "transition_affinity": [
+        "sadness_to_hope",
+        "rain_to_clear"
+      ],
+      "intensity_range": {
+        "min": 2,
+        "max": 4
+      },
+      "keywords": [
+        "optimism",
+        "hope",
+        "renewal",
+        "aspirational"
+      ]
+    },
+    {
+      "emotion_id": "resolve",
+      "emotion_name": "Resolve",
+      "emotion_family": "volitional",
+      "emotional_temperature": "neutral",
+      "emotional_direction": "forward",
+      "internal_state": [
+        "committed intent",
+        "focused determination",
+        "decision lock"
+      ],
+      "external_expression": [
+        "set composure",
+        "decisive bearing",
+        "unwavering focus"
+      ],
+      "behavior_affinity": [
+        "determination"
+      ],
+      "relationship_affinity": [
+        "protective vow",
+        "mission commit",
+        "self-promise"
+      ],
+      "music_affinity": [
+        "driving percussion",
+        "ostinato build",
+        "tempo lock 100-120 bpm"
+      ],
+      "camera_affinity": [
+        "hero medium-low angle",
+        "locked axis tracking",
+        "push-in resolve"
+      ],
+      "transition_affinity": [
+        "walking_to_running",
+        "hope_to_sadness"
+      ],
+      "intensity_range": {
+        "min": 4,
+        "max": 5
+      },
+      "keywords": [
+        "resolve",
+        "determination",
+        "commitment",
+        "volitional"
+      ]
+    },
+    {
+      "emotion_id": "care",
+      "emotion_name": "Care",
+      "emotion_family": "protective",
+      "emotional_temperature": "warm",
+      "emotional_direction": "outward",
+      "internal_state": [
+        "protective concern",
+        "guardian attentiveness",
+        "safety priority"
+      ],
+      "external_expression": [
+        "shielding presence",
+        "reassuring steadiness",
+        "companion focus"
+      ],
+      "behavior_affinity": [
+        "protection"
+      ],
+      "relationship_affinity": [
+        "guardian role",
+        "vulnerable companion",
+        "safety priority"
+      ],
+      "music_affinity": [
+        "warm low strings",
+        "protective motif",
+        "steady heartbeat pulse"
+      ],
+      "camera_affinity": [
+        "over-shoulder guardian",
+        "two-shot shelter frame",
+        "slight foreground depth"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "silence_to_confession"
+      ],
+      "intensity_range": {
+        "min": 3,
+        "max": 5
+      },
+      "keywords": [
+        "care",
+        "protection",
+        "guardian",
+        "protective"
+      ]
+    },
+    {
+      "emotion_id": "parting",
+      "emotion_name": "Parting",
+      "emotion_family": "closure",
+      "emotional_temperature": "cool",
+      "emotional_direction": "falling",
+      "internal_state": [
+        "bittersweet release",
+        "departure ache",
+        "promise of return"
+      ],
+      "external_expression": [
+        "lingering look",
+        "reluctant withdrawal",
+        "soft farewell gesture"
+      ],
+      "behavior_affinity": [
+        "farewell"
+      ],
+      "relationship_affinity": [
+        "departure bond",
+        "promise of return",
+        "bittersweet closure"
+      ],
+      "music_affinity": [
+        "fading motif reprise",
+        "minor resolution",
+        "tempo deceleration"
+      ],
+      "camera_affinity": [
+        "pull-back widening frame",
+        "silhouette departure",
+        "long hold on distance"
+      ],
+      "transition_affinity": [
+        "separation_to_reunion",
+        "sunset_to_night"
+      ],
+      "intensity_range": {
+        "min": 3,
+        "max": 5
+      },
+      "keywords": [
+        "parting",
+        "farewell",
+        "departure",
+        "closure"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video/source-video-coverage.schema.json",
+  "title": "SourceVideoCoverageRecord",
+  "description": "Per-video coverage audit record for PHASE-SOURCE-VIDEO-001",
+  "type": "object",
+  "required": [
+    "source_video_id",
+    "filename",
+    "import_path",
+    "file_present",
+    "file_size_bytes",
+    "category_coverage",
+    "audit_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-001-SOURCE_VIDEO_COVERAGE_AUDIT_V1" },
+    "filename": { "type": "string" },
+    "import_path": { "type": "string" },
+    "file_present": { "type": "boolean" },
+    "file_size_bytes": { "type": "integer", "minimum": 0 },
+    "duration_seconds": { "type": "number" },
+    "category_coverage": { "$ref": "#/$defs/category_coverage" },
+    "audit_status": { "type": "string", "enum": ["audited", "missing_file", "unregistered"] },
+    "audited_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "category_coverage": {
+      "type": "object",
+      "required": [
+        "indoor",
+        "outdoor",
+        "emotion",
+        "relationship",
+        "camera",
+        "lighting",
+        "weather",
+        "crowd",
+        "animal",
+        "motion",
+        "environment"
+      ],
+      "properties": {
+        "indoor": { "type": "array", "items": { "type": "string" } },
+        "outdoor": { "type": "array", "items": { "type": "string" } },
+        "emotion": { "type": "array", "items": { "type": "string" } },
+        "relationship": { "type": "array", "items": { "type": "string" } },
+        "camera": { "type": "array", "items": { "type": "string" } },
+        "lighting": { "type": "array", "items": { "type": "string" } },
+        "weather": { "type": "array", "items": { "type": "string" } },
+        "crowd": { "type": "array", "items": { "type": "string" } },
+        "animal": { "type": "array", "items": { "type": "string" } },
+        "motion": { "type": "array", "items": { "type": "string" } },
+        "environment": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

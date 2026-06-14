@@ -1,0 +1,49 @@
+{
+  "report_id": "temporal_preservation_gpu_dataset_plan_mqd0jjvy",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005B",
+  "system_id": "TEMPORAL_PRESERVATION_GPU_VALIDATION_V1",
+  "generated_at": "2026-06-13T23:55:23.374Z",
+  "dataset_plan_defined": true,
+  "minimum_batch_size": 30,
+  "easy_cases": [
+    {
+      "case_id": "temp_gpu_easy_001",
+      "timeline_id": "timeline_titanic_014",
+      "source_ref": "temp_mem_001"
+    },
+    {
+      "case_id": "temp_gpu_easy_002",
+      "timeline_id": "timeline_titanic_015",
+      "source_ref": "temp_mem_002"
+    }
+  ],
+  "medium_cases": [
+    {
+      "case_id": "temp_gpu_med_001",
+      "timeline_id": "timeline_ghibli_001",
+      "source_ref": "temp_mem_003"
+    },
+    {
+      "case_id": "temp_gpu_med_002",
+      "timeline_id": "timeline_gonegi_001",
+      "source_ref": "temp_mem_004"
+    }
+  ],
+  "hard_cases": [
+    {
+      "case_id": "temp_gpu_hard_001",
+      "timeline_id": "timeline_titanic_014_015",
+      "failure_mode": "character_position_jump"
+    },
+    {
+      "case_id": "temp_gpu_hard_002",
+      "timeline_id": "timeline_titanic_015_016",
+      "failure_mode": "missing_transition_cause"
+    },
+    {
+      "case_id": "temp_gpu_hard_003",
+      "timeline_id": "timeline_ghibli_001_002",
+      "failure_mode": "timeline_reset"
+    }
+  ]
+}

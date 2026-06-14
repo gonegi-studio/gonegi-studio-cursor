@@ -1,0 +1,77 @@
+{
+  "job_id": "runtime_job_gonegi_dana_harbor_reunion_8s_v1",
+  "phase": "PHASE-24-VIDEO-RUNTIME-STUB-EXECUTION-001",
+  "runtime_interface_id": "video_runtime_gonegi_dana_harbor_reunion_8s_v1",
+  "gpu_payload_id": "gpu_payload_gonegi_dana_harbor_reunion_8s_v1",
+  "job_state": "SIMULATED_COMPLETE",
+  "validation_result": {
+    "runtime_initialized": true,
+    "payload_valid": true,
+    "identity_lock_valid": true,
+    "motion_valid": true,
+    "render_queue_created": true,
+    "passed": true,
+    "issues": []
+  },
+  "identity_lock_status": "PASS",
+  "continuity_lock_status": "PASS",
+  "completion_status": "COMPLETE",
+  "execution_flags": {
+    "gpu_execution": false,
+    "simulation_only": true,
+    "external_call_allowed": false
+  },
+  "simulation_trace": [
+    {
+      "step": "job_queued",
+      "job_state": "QUEUED",
+      "passed": true,
+      "notes": "Stub job runtime_job_gonegi_dana_harbor_reunion_8s_v1 enqueued for video_runtime_gonegi_dana_harbor_reunion_8s_v1"
+    },
+    {
+      "step": "runtime_initialization",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "payload_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "identity_lock_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "continuity_lock_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "motion_validation",
+      "job_state": "VALIDATING",
+      "passed": true
+    },
+    {
+      "step": "render_queue_creation",
+      "job_state": "READY",
+      "passed": true,
+      "notes": "Simulated queue slot reserved for gpu_payload_gonegi_dana_harbor_reunion_8s_v1"
+    },
+    {
+      "step": "simulated_render_execution",
+      "job_state": "SIMULATED_RUNNING",
+      "passed": true,
+      "notes": "Simulating 8s @ 24fps without GPU"
+    },
+    {
+      "step": "job_completion",
+      "job_state": "SIMULATED_COMPLETE",
+      "passed": true,
+      "notes": "Output placeholder: renders/stub/gpu_payload_gonegi_dana_harbor_reunion_8s_v1.mp4.not_generated"
+    }
+  ],
+  "output_placeholder": "renders/stub/gpu_payload_gonegi_dana_harbor_reunion_8s_v1.mp4.not_generated",
+  "built_at": "2026-06-05T04:23:46.260Z"
+}

@@ -1,0 +1,175 @@
+{
+  "template_id": "movie-dataset-template-v1",
+  "schema_version": "movie-dataset-factory-v1",
+  "description": "Canonical template for all movie reconstruction datasets produced by the factory",
+  "required_fields": [
+    "movie_id",
+    "movie_name",
+    "movie_type",
+    "scene_count",
+    "geometry_layer",
+    "shot_layer",
+    "temporal_layer",
+    "motion_layer",
+    "semantic_layer",
+    "validation_layer"
+  ],
+  "example": {
+    "movie_id": "titanic",
+    "movie_name": "Titanic",
+    "movie_type": "live_action_romance_epic",
+    "scene_count": 300,
+    "geometry_layer": {
+      "base_geometry": "datasets/movie_reconstruction/titanic_scene_geometry",
+      "dense_geometry": "datasets/movie_reconstruction/titanic_dense",
+      "bundle_ref": {
+        "densification_phase": "PHASE-TITANIC-SCENE-DENSIFICATION-002",
+        "densification_id": "TITANIC_SCENE_RECONSTRUCTION_DENSIFICATION_V2",
+        "dense_dir": "datasets/movie_reconstruction/titanic_dense",
+        "scene_master_registry_ref": "datasets/movie_reconstruction/titanic_dense/titanic-scene-master-registry.json",
+        "body_pose_registry_ref": "datasets/movie_reconstruction/titanic_dense/titanic-body-pose-registry.json",
+        "character_interaction_registry_ref": "datasets/movie_reconstruction/titanic_dense/titanic-character-interaction-registry.json",
+        "prop_layout_registry_ref": "datasets/movie_reconstruction/titanic_dense/titanic-prop-layout-registry.json",
+        "depth_layer_registry_ref": "datasets/movie_reconstruction/titanic_dense/titanic-depth-layer-registry.json",
+        "scene_density_score_registry_ref": "datasets/movie_reconstruction/titanic_dense/titanic-scene-density-score-registry.json",
+        "scene_count": 300,
+        "reconstruction_density_score": 96.06,
+        "projected_reconstruction_fidelity_estimate": 0.73,
+        "densified_at": "2026-06-10T07:04:13.910Z"
+      }
+    },
+    "shot_layer": {
+      "shots_dir": "datasets/movie_reconstruction/titanic_shots",
+      "bundle_ref": {
+        "phase": "PHASE-TITANIC-SHOT-GRAMMAR-001",
+        "system_id": "TITANIC_SHOT_RECONSTRUCTION_SYSTEM_V1",
+        "shots_dir": "datasets/movie_reconstruction/titanic_shots",
+        "shot_registry_ref": "datasets/movie_reconstruction/titanic_shots/titanic-shot-registry.json",
+        "shot_transition_registry_ref": "datasets/movie_reconstruction/titanic_shots/titanic-shot-transition-registry.json",
+        "shot_fingerprint_registry_ref": "datasets/movie_reconstruction/titanic_shots/titanic-shot-fingerprint-registry.json",
+        "image_adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "video_adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-video-adapter.json",
+        "shared_movie_dataset": true,
+        "shot_count": 3300,
+        "scene_count": 300,
+        "shot_fingerprint_uniqueness": 0.971,
+        "patched_at": "2026-06-10T07:26:16.004Z"
+      }
+    },
+    "temporal_layer": {
+      "video_dir": "datasets/movie_reconstruction/titanic_video",
+      "bundle_ref": {
+        "phase": "PHASE-TITANIC-VIDEO-RECONSTRUCTION-001",
+        "system_id": "TITANIC_VIDEO_RECONSTRUCTION_SYSTEM_V1",
+        "video_dir": "datasets/movie_reconstruction/titanic_video",
+        "video_sequence_registry_ref": "datasets/movie_reconstruction/titanic_video/titanic-video-sequence-registry.json",
+        "scene_transition_registry_ref": "datasets/movie_reconstruction/titanic_video/titanic-scene-transition-registry.json",
+        "video_timeline_registry_ref": "datasets/movie_reconstruction/titanic_video/titanic-video-timeline-registry.json",
+        "video_render_plan_registry_ref": "datasets/movie_reconstruction/titanic_video/titanic-video-render-plan-registry.json",
+        "video_adapter_v2_ref": "datasets/movie_reconstruction/titanic_video/titanic-video-adapter-v2.json",
+        "video_sequence_integrity": 0.962,
+        "scene_transition_count": 299,
+        "scene_transition_score": 0.959,
+        "timeline_entry_count": 3300,
+        "timeline_integrity": 0.962,
+        "render_plan_count": 2,
+        "total_duration": 9720,
+        "video_generation_status": "READY",
+        "patched_at": "2026-06-10T07:31:28.022Z"
+      }
+    },
+    "motion_layer": {
+      "motion_dir": "datasets/movie_reconstruction/titanic_motion",
+      "bundle_ref": {
+        "phase": "PHASE-TITANIC-MOTION-GRAMMAR-001",
+        "system_id": "TITANIC_MOTION_RECONSTRUCTION_SYSTEM_V1",
+        "motion_dir": "datasets/movie_reconstruction/titanic_motion",
+        "motion_grammar_registry_ref": "datasets/movie_reconstruction/titanic_motion/titanic-motion-grammar-registry.json",
+        "motion_adapter_ref": "datasets/movie_reconstruction/titanic_motion/titanic-motion-adapter.json",
+        "motion_count": 300,
+        "scene_count": 300,
+        "camera_motion_count": 300,
+        "subject_motion_count": 600,
+        "environment_motion_count": 300,
+        "continuity_count": 3299,
+        "motion_grammar_coverage": 1,
+        "camera_motion_score": 0.974,
+        "subject_motion_score": 0.972,
+        "environment_motion_score": 0.973,
+        "motion_continuity_score": 0.9518,
+        "patched_at": "2026-06-10T07:31:29.808Z"
+      }
+    },
+    "semantic_layer": {
+      "semantic_anchor_library": "datasets/movie_reconstruction/semantic_anchor_library.json",
+      "world_translation_rules": "datasets/movie_reconstruction/world-translation-rules.json",
+      "semantic_preservation": "datasets/movie_reconstruction/semantic-preservation-layer.json"
+    },
+    "validation_layer": {
+      "image_validation": "datasets/movie_reconstruction/titanic_image_validation",
+      "video_validation": "datasets/movie_reconstruction/titanic_video_validation",
+      "bundle_refs": {
+        "image": {
+          "phase": "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001",
+          "validation_id": "TITANIC_IMAGE_RECONSTRUCTION_VALIDATION_V1",
+          "test_scenes_ref": "datasets/movie_reconstruction/titanic_image_validation/titanic-image-reconstruction-test-scenes.json",
+          "test_scene_count": 10,
+          "validation_passed": true,
+          "titanic_recognition_rate": 0.99,
+          "semantic_anchor_preservation": 0.968,
+          "gonegi_identity_preservation": 0.94,
+          "patched_at": "2026-06-10T07:21:47.420Z"
+        },
+        "video": {
+          "phase": "PHASE-TITANIC-VIDEO-VALIDATION-001",
+          "validation_id": "TITANIC_VIDEO_RECONSTRUCTION_VALIDATION_V1",
+          "validation_scenes_ref": "datasets/movie_reconstruction/titanic_video_validation/titanic-video-validation-scenes.json",
+          "validation_metrics_ref": "datasets/movie_reconstruction/titanic_video_validation/titanic-video-validation-metrics.json",
+          "validation_report_ref": "datasets/movie_reconstruction/titanic_video_validation/titanic-video-validation-report.json",
+          "validation_sequence_count": 10,
+          "validation_passed": true,
+          "sequence_recognition_score": 0.99,
+          "motion_preservation_score": 0.9736,
+          "temporal_continuity_score": 0.9519,
+          "patched_at": "2026-06-10T07:31:21.419Z"
+        }
+      }
+    }
+  },
+  "layer_contracts": {
+    "geometry_layer": [
+      "scene_geometry",
+      "poses",
+      "placements",
+      "depth"
+    ],
+    "shot_layer": [
+      "shot_registry",
+      "shot_transitions",
+      "shot_fingerprints",
+      "image_adapter"
+    ],
+    "temporal_layer": [
+      "video_sequence",
+      "scene_transitions",
+      "timeline",
+      "video_adapter"
+    ],
+    "motion_layer": [
+      "motion_grammar",
+      "camera_motion",
+      "subject_motion",
+      "environment_motion",
+      "motion_continuity"
+    ],
+    "semantic_layer": [
+      "semantic_anchors",
+      "world_translation",
+      "semantic_preservation"
+    ],
+    "validation_layer": [
+      "image_validation",
+      "video_validation"
+    ]
+  }
+}

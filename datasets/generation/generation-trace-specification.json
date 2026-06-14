@@ -1,0 +1,48 @@
+{
+  "spec_id": "generation-trace-specification-v1",
+  "asset_type": "generation_trace_specification",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-001",
+  "module": "GENERATION_TRACE_SYSTEM_V1",
+  "purpose": "End-to-end trace chain from prompt through image and video generation with failure and recovery tracking.",
+  "upstream_checkpoint": "REAL_FEATURE_PRODUCTION_READY",
+  "trace_flow": [
+    "prompt",
+    "image",
+    "video",
+    "failure_trace"
+  ],
+  "trace_dimension_count": 5,
+  "trace_dimensions": [
+    "prompt_trace",
+    "image_trace",
+    "video_trace",
+    "failure_trace",
+    "recovery_trace"
+  ],
+  "generation_trace_integrity": "PASS",
+  "trace_links": [
+    {
+      "trace_id": "prompt_to_image",
+      "input_trace": "prompt_trace",
+      "output_trace": "image_trace"
+    },
+    {
+      "trace_id": "image_to_video",
+      "input_trace": "image_trace",
+      "output_trace": "video_trace"
+    },
+    {
+      "trace_id": "video_to_failure",
+      "input_trace": "video_trace",
+      "output_trace": "failure_trace"
+    },
+    {
+      "trace_id": "failure_to_recovery",
+      "input_trace": "failure_trace",
+      "output_trace": "recovery_trace"
+    }
+  ],
+  "compiled_prompt_ref": "exports/generation/compiled-prompt.json",
+  "production_failure_spec_ref": "exports/production_pipeline/production-failure-specification.json"
+}

@@ -1,0 +1,101 @@
+{
+  "coordinate_id": "movie_coord_shinkai_light_sky_v1",
+  "phase": "PHASE-SOURCE-VIDEO-004-MOVIE_SCENE_COORDINATE_SYSTEM_V1",
+  "source_video_id": "SHINKAI_01",
+  "scene_index": 1,
+  "timestamp_start": 12,
+  "timestamp_end": 38,
+  "camera_coordinate": {
+    "position": "overlook-rail-center",
+    "facing": "horizon-sky",
+    "height": "chest-level",
+    "fov_hint": "wide-expansive",
+    "shot_type": "sky-dominant-wide"
+  },
+  "character_coordinates": [
+    {
+      "character_ref": "solitary_figure",
+      "position": "rail-left-third",
+      "facing": "horizon",
+      "posture": "standing-contemplative",
+      "identity_anchor": "identity_anchor:solitary_figure_silhouette_v1"
+    }
+  ],
+  "prop_coordinates": [
+    {
+      "prop_id": "transit_ticket",
+      "position": "hand-hold-foreground",
+      "interaction_state": "grip-tight"
+    }
+  ],
+  "location_coordinates": {
+    "space_type": "elevated-overlook",
+    "anchor_point": "horizon-line",
+    "walkable_zone": "overlook-platform"
+  },
+  "lighting_coordinates": {
+    "key_direction": "sunset-backlight",
+    "fill_level": "sky-gradient-fill",
+    "color_temperature": "golden-to-blue-shift"
+  },
+  "motion_vectors": [
+    {
+      "subject_ref": "cloud_layer",
+      "vector": "slow-lateral-drift",
+      "duration_hint": "ambient-continuous"
+    },
+    {
+      "subject_ref": "solitary_figure",
+      "vector": "minimal-head-turn",
+      "duration_hint": "emotional-hold"
+    }
+  ],
+  "blocking_map": {
+    "primary_focus": "figure-sky-silhouette",
+    "secondary_focus": "horizon-gradient",
+    "negative_space": "upper-sky-dominant"
+  },
+  "depth_layers": [
+    {
+      "layer_index": 0,
+      "layer_role": "foreground",
+      "content_hint": "rail-figure-silhouette"
+    },
+    {
+      "layer_index": 1,
+      "layer_role": "midground",
+      "content_hint": "city-depth-layer"
+    },
+    {
+      "layer_index": 2,
+      "layer_role": "background",
+      "content_hint": "sky-gradient-clouds"
+    }
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity_anchor:solitary_figure_silhouette_v1",
+      "identity_lock:preserve_silhouette_read"
+    ],
+    "location_locks": [
+      "location_lock:elevated-overlook",
+      "walkable-zone:overlook-platform"
+    ],
+    "composition_locks": [
+      "composition_lock:sky-negative-space",
+      "composition_lock:horizon-third",
+      "prop_anchor:transit_ticket"
+    ]
+  },
+  "director_grammar_refs": [
+    "director_grammar_shinkai_v1"
+  ],
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "frame_extraction": false,
+    "external_call_allowed": false
+  },
+  "template_kind": "design_template",
+  "built_at": "2026-06-05T06:47:55.992Z"
+}

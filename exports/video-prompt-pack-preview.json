@@ -1,0 +1,1277 @@
+{
+  "layer_version": "VIDEO-PROMPT-PACK-PHASE-85-v1",
+  "seed_count": 16,
+  "song_master_id": "song_master_01",
+  "required_fields": [
+    "video_prompt_pack_id",
+    "storyboard_id",
+    "scene_order",
+    "video_prompt",
+    "negative_prompt",
+    "motion_prompt",
+    "camera_motion",
+    "character_motion",
+    "environment_motion",
+    "transition_dna",
+    "continuity_glue",
+    "behavior_id",
+    "emotion_id",
+    "relationship_id",
+    "daily_life_anchor",
+    "shot_affinity",
+    "video_dataset_usage",
+    "keywords"
+  ],
+  "pipeline_chain": [
+    "song_master",
+    "emotion_timeline",
+    "narrative_beat",
+    "storyboard_scene",
+    "video_prompt_pack"
+  ],
+  "negative_prompt_base": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+  "seed_video_prompt_packs": [
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-01",
+      "storyboard_id": "SBD-song_master_01-01",
+      "scene_order": 1,
+      "video_prompt": "Daily waiting ritual anchors quiet anticipation before change rendered through station_waiting and window_gazing Camera motion: shot:wide_establishing, slow panoramic settle, shot:medium_emotional, micro push-in on beat. Character motion: behavior:waiting, emotion:anticipation, stationary hold, weight shift idle, watching arrival point, held stillness, close protective proximity, guardian scan to child check. Environment motion: anchor:station_waiting, platform wind ripple, train approach vibration, anchor:window_gazing, curtain micro sway, exterior light drift through glass. Transition DNA: silence_to_confession, sunset_to_night. Continuity glue: storyboard:SBD-song_master_01-01, scene-order:1, duration-seconds:14, song-master:song_master_01, transition:silence_to_confession, framing continuity, spatial intimacy, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, shot-continuity:wide_establishing, depth planes stable, shot-continuity:medium_emotional, eyeline match, shoulder line stable. Duration target: 14 seconds. Dataset reference: VDS-wide-establishing-sunset. Storyboard SBD-song_master_01-01, scene 1. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Daily waiting ritual anchors quiet anticipation before change rendered through station_waiting and window_gazing Camera motion: shot:wide_establishing, slow panoramic settle, shot:medium_emotional, micro push-in on beat. Character motion: behavior:waiting, emotion:anticipation, stationary hold, weight shift idle, watching arrival point, held stillness, close protective proximity, guardian scan to child check. Environment motion: anchor:station_waiting, platform wind ripple, train approach vibration, anchor:window_gazing, curtain micro sway, exterior light drift through glass. Transition DNA: silence_to_confession, sunset_to_night. Continuity glue: storyboard:SBD-song_master_01-01, scene-order:1, duration-seconds:14, song-master:song_master_01, transition:silence_to_confession, framing continuity, spatial intimacy, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, shot-continuity:wide_establishing, depth planes stable, shot-continuity:medium_emotional, eyeline match, shoulder line stable.",
+      "camera_motion": [
+        "shot:wide_establishing",
+        "slow panoramic settle",
+        "shot:medium_emotional",
+        "micro push-in on beat"
+      ],
+      "character_motion": [
+        "behavior:waiting",
+        "emotion:anticipation",
+        "stationary hold",
+        "weight shift idle",
+        "watching arrival point",
+        "held stillness",
+        "close protective proximity",
+        "guardian scan to child check"
+      ],
+      "environment_motion": [
+        "anchor:station_waiting",
+        "platform wind ripple",
+        "train approach vibration",
+        "anchor:window_gazing",
+        "curtain micro sway",
+        "exterior light drift through glass"
+      ],
+      "transition_dna": [
+        "silence_to_confession",
+        "sunset_to_night"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-01",
+        "scene-order:1",
+        "duration-seconds:14",
+        "song-master:song_master_01",
+        "transition:silence_to_confession",
+        "framing continuity",
+        "spatial intimacy",
+        "transition:sunset_to_night",
+        "lighting continuity",
+        "horizon lock",
+        "palette drift",
+        "shot-continuity:wide_establishing",
+        "depth planes stable",
+        "shot-continuity:medium_emotional",
+        "eyeline match",
+        "shoulder line stable"
+      ],
+      "behavior_id": "waiting",
+      "emotion_id": "anticipation",
+      "relationship_id": "guardian_child",
+      "daily_life_anchor": [
+        "station_waiting",
+        "window_gazing"
+      ],
+      "shot_affinity": [
+        "wide_establishing",
+        "medium_emotional"
+      ],
+      "video_dataset_usage": [
+        "VDS-wide-establishing-sunset"
+      ],
+      "keywords": [
+        "waiting",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-02",
+      "storyboard_id": "SBD-song_master_01-02",
+      "scene_order": 2,
+      "video_prompt": "Memory objects trigger isolation felt across distance rendered through photo_viewing and letter_writing Camera motion: shot:overhead_isolation, slow vertical settle, shot:silhouette_distance, slow pullback. Character motion: behavior:loneliness, emotion:isolation, slow solitary stride, collapsed inward, non-engagement, reduced presence, threshold departure gap, doorway backward look. Environment motion: anchor:photo_viewing, album page turn drift, memory object tilt, anchor:letter_writing, pen stroke rhythm, paper edge lift. Transition DNA: sunset_to_night, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-02, scene-order:2, duration-seconds:14, song-master:song_master_01, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:overhead_isolation, geometry continuity, shot-continuity:silhouette_distance, rim continuity. Duration target: 14 seconds. Dataset reference: VDS-overhead-isolation-sunset. Storyboard SBD-song_master_01-02, scene 2. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Memory objects trigger isolation felt across distance rendered through photo_viewing and letter_writing Camera motion: shot:overhead_isolation, slow vertical settle, shot:silhouette_distance, slow pullback. Character motion: behavior:loneliness, emotion:isolation, slow solitary stride, collapsed inward, non-engagement, reduced presence, threshold departure gap, doorway backward look. Environment motion: anchor:photo_viewing, album page turn drift, memory object tilt, anchor:letter_writing, pen stroke rhythm, paper edge lift. Transition DNA: sunset_to_night, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-02, scene-order:2, duration-seconds:14, song-master:song_master_01, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:overhead_isolation, geometry continuity, shot-continuity:silhouette_distance, rim continuity.",
+      "camera_motion": [
+        "shot:overhead_isolation",
+        "slow vertical settle",
+        "shot:silhouette_distance",
+        "slow pullback"
+      ],
+      "character_motion": [
+        "behavior:loneliness",
+        "emotion:isolation",
+        "slow solitary stride",
+        "collapsed inward",
+        "non-engagement",
+        "reduced presence",
+        "threshold departure gap",
+        "doorway backward look"
+      ],
+      "environment_motion": [
+        "anchor:photo_viewing",
+        "album page turn drift",
+        "memory object tilt",
+        "anchor:letter_writing",
+        "pen stroke rhythm",
+        "paper edge lift"
+      ],
+      "transition_dna": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-02",
+        "scene-order:2",
+        "duration-seconds:14",
+        "song-master:song_master_01",
+        "transition:sunset_to_night",
+        "lighting continuity",
+        "horizon lock",
+        "palette drift",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "shot-continuity:overhead_isolation",
+        "geometry continuity",
+        "shot-continuity:silhouette_distance",
+        "rim continuity"
+      ],
+      "behavior_id": "loneliness",
+      "emotion_id": "isolation",
+      "relationship_id": "family_separation",
+      "daily_life_anchor": [
+        "photo_viewing",
+        "letter_writing"
+      ],
+      "shot_affinity": [
+        "overhead_isolation",
+        "silhouette_distance"
+      ],
+      "video_dataset_usage": [
+        "VDS-overhead-isolation-sunset"
+      ],
+      "keywords": [
+        "memory",
+        "isolation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-03",
+      "storyboard_id": "SBD-song_master_01-03",
+      "scene_order": 3,
+      "video_prompt": "Small shared routine reveals unspoken friendship rendered through bench_sitting and book_reading Camera motion: shot:medium_emotional, micro push-in on beat, shot:window_reflection, static with breath drift. Character motion: behavior:hesitation, emotion:uncertainty, aborted step, recoiled posture, distance maintenance, micro hesitation, parallel walk spacing, averted companion glance. Environment motion: anchor:bench_sitting, leaf fall drift, distant pedestrian pass, anchor:book_reading, page corner flutter, dust motes in light beam. Transition DNA: silence_to_confession, hope_to_sadness. Continuity glue: storyboard:SBD-song_master_01-03, scene-order:3, duration-seconds:13, song-master:song_master_01, transition:silence_to_confession, framing continuity, spatial intimacy, transition:hope_to_sadness, eyeline continuity, spacing continuity, shot-continuity:medium_emotional, eyeline match, shoulder line stable, shot-continuity:window_reflection, reflection continuity. Duration target: 13 seconds. Dataset reference: VDS-medium-emotional-confession. Storyboard SBD-song_master_01-03, scene 3. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Small shared routine reveals unspoken friendship rendered through bench_sitting and book_reading Camera motion: shot:medium_emotional, micro push-in on beat, shot:window_reflection, static with breath drift. Character motion: behavior:hesitation, emotion:uncertainty, aborted step, recoiled posture, distance maintenance, micro hesitation, parallel walk spacing, averted companion glance. Environment motion: anchor:bench_sitting, leaf fall drift, distant pedestrian pass, anchor:book_reading, page corner flutter, dust motes in light beam. Transition DNA: silence_to_confession, hope_to_sadness. Continuity glue: storyboard:SBD-song_master_01-03, scene-order:3, duration-seconds:13, song-master:song_master_01, transition:silence_to_confession, framing continuity, spatial intimacy, transition:hope_to_sadness, eyeline continuity, spacing continuity, shot-continuity:medium_emotional, eyeline match, shoulder line stable, shot-continuity:window_reflection, reflection continuity.",
+      "camera_motion": [
+        "shot:medium_emotional",
+        "micro push-in on beat",
+        "shot:window_reflection",
+        "static with breath drift"
+      ],
+      "character_motion": [
+        "behavior:hesitation",
+        "emotion:uncertainty",
+        "aborted step",
+        "recoiled posture",
+        "distance maintenance",
+        "micro hesitation",
+        "parallel walk spacing",
+        "averted companion glance"
+      ],
+      "environment_motion": [
+        "anchor:bench_sitting",
+        "leaf fall drift",
+        "distant pedestrian pass",
+        "anchor:book_reading",
+        "page corner flutter",
+        "dust motes in light beam"
+      ],
+      "transition_dna": [
+        "silence_to_confession",
+        "hope_to_sadness"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-03",
+        "scene-order:3",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:silence_to_confession",
+        "framing continuity",
+        "spatial intimacy",
+        "transition:hope_to_sadness",
+        "eyeline continuity",
+        "spacing continuity",
+        "shot-continuity:medium_emotional",
+        "eyeline match",
+        "shoulder line stable",
+        "shot-continuity:window_reflection",
+        "reflection continuity"
+      ],
+      "behavior_id": "hesitation",
+      "emotion_id": "uncertainty",
+      "relationship_id": "silent_friends",
+      "daily_life_anchor": [
+        "bench_sitting",
+        "book_reading"
+      ],
+      "shot_affinity": [
+        "medium_emotional",
+        "window_reflection"
+      ],
+      "video_dataset_usage": [
+        "VDS-medium-emotional-confession"
+      ],
+      "keywords": [
+        "discovery",
+        "friendship",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-04",
+      "storyboard_id": "SBD-song_master_01-04",
+      "scene_order": 4,
+      "video_prompt": "Departure threshold widens physical and emotional distance rendered through doorway_pause and train_riding Camera motion: shot:silhouette_distance, slow pullback, shot:wide_establishing, slow panoramic settle. Character motion: behavior:farewell, emotion:parting, slow retreat steps, turned away pause, final words exchange, lingering look, threshold departure gap, doorway backward look. Environment motion: anchor:doorway_pause, threshold light shift, door micro movement, anchor:train_riding, landscape parallax scroll, carriage interior sway. Transition DNA: sunset_to_night, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-04, scene-order:4, duration-seconds:13, song-master:song_master_01, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:silhouette_distance, rim continuity, shot-continuity:wide_establishing, depth planes stable. Duration target: 13 seconds. Dataset reference: VDS-silhouette-sunset. Storyboard SBD-song_master_01-04, scene 4. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Departure threshold widens physical and emotional distance rendered through doorway_pause and train_riding Camera motion: shot:silhouette_distance, slow pullback, shot:wide_establishing, slow panoramic settle. Character motion: behavior:farewell, emotion:parting, slow retreat steps, turned away pause, final words exchange, lingering look, threshold departure gap, doorway backward look. Environment motion: anchor:doorway_pause, threshold light shift, door micro movement, anchor:train_riding, landscape parallax scroll, carriage interior sway. Transition DNA: sunset_to_night, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-04, scene-order:4, duration-seconds:13, song-master:song_master_01, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:silhouette_distance, rim continuity, shot-continuity:wide_establishing, depth planes stable.",
+      "camera_motion": [
+        "shot:silhouette_distance",
+        "slow pullback",
+        "shot:wide_establishing",
+        "slow panoramic settle"
+      ],
+      "character_motion": [
+        "behavior:farewell",
+        "emotion:parting",
+        "slow retreat steps",
+        "turned away pause",
+        "final words exchange",
+        "lingering look",
+        "threshold departure gap",
+        "doorway backward look"
+      ],
+      "environment_motion": [
+        "anchor:doorway_pause",
+        "threshold light shift",
+        "door micro movement",
+        "anchor:train_riding",
+        "landscape parallax scroll",
+        "carriage interior sway"
+      ],
+      "transition_dna": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-04",
+        "scene-order:4",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sunset_to_night",
+        "lighting continuity",
+        "horizon lock",
+        "palette drift",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "shot-continuity:silhouette_distance",
+        "rim continuity",
+        "shot-continuity:wide_establishing",
+        "depth planes stable"
+      ],
+      "behavior_id": "farewell",
+      "emotion_id": "parting",
+      "relationship_id": "family_separation",
+      "daily_life_anchor": [
+        "doorway_pause",
+        "train_riding"
+      ],
+      "shot_affinity": [
+        "silhouette_distance",
+        "wide_establishing"
+      ],
+      "video_dataset_usage": [
+        "VDS-silhouette-sunset"
+      ],
+      "keywords": [
+        "distance",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-05",
+      "storyboard_id": "SBD-song_master_01-05",
+      "scene_order": 5,
+      "video_prompt": "Familiar return path holds longing for absent bond rendered through rain_watching and evening_return Camera motion: shot:window_reflection, static with breath drift, shot:medium_emotional, micro push-in on beat. Character motion: behavior:waiting, emotion:anticipation, stationary hold, weight shift idle, watching arrival point, held stillness, widening departure gap, lingering backward look. Environment motion: anchor:rain_watching, rain streak descent, condensation bead crawl, anchor:evening_return, entry light bloom, doorway shadow shift. Transition DNA: sunset_to_night, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-05, scene-order:5, duration-seconds:13, song-master:song_master_01, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:window_reflection, reflection continuity, shot-continuity:medium_emotional, shoulder line stable. Duration target: 13 seconds. Dataset reference: VDS-window-reflection-hope. Storyboard SBD-song_master_01-05, scene 5. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Familiar return path holds longing for absent bond rendered through rain_watching and evening_return Camera motion: shot:window_reflection, static with breath drift, shot:medium_emotional, micro push-in on beat. Character motion: behavior:waiting, emotion:anticipation, stationary hold, weight shift idle, watching arrival point, held stillness, widening departure gap, lingering backward look. Environment motion: anchor:rain_watching, rain streak descent, condensation bead crawl, anchor:evening_return, entry light bloom, doorway shadow shift. Transition DNA: sunset_to_night, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-05, scene-order:5, duration-seconds:13, song-master:song_master_01, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:window_reflection, reflection continuity, shot-continuity:medium_emotional, shoulder line stable.",
+      "camera_motion": [
+        "shot:window_reflection",
+        "static with breath drift",
+        "shot:medium_emotional",
+        "micro push-in on beat"
+      ],
+      "character_motion": [
+        "behavior:waiting",
+        "emotion:anticipation",
+        "stationary hold",
+        "weight shift idle",
+        "watching arrival point",
+        "held stillness",
+        "widening departure gap",
+        "lingering backward look"
+      ],
+      "environment_motion": [
+        "anchor:rain_watching",
+        "rain streak descent",
+        "condensation bead crawl",
+        "anchor:evening_return",
+        "entry light bloom",
+        "doorway shadow shift"
+      ],
+      "transition_dna": [
+        "sunset_to_night",
+        "separation_to_reunion"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-05",
+        "scene-order:5",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sunset_to_night",
+        "lighting continuity",
+        "horizon lock",
+        "palette drift",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "shot-continuity:window_reflection",
+        "reflection continuity",
+        "shot-continuity:medium_emotional",
+        "shoulder line stable"
+      ],
+      "behavior_id": "waiting",
+      "emotion_id": "anticipation",
+      "relationship_id": "lost_lovers",
+      "daily_life_anchor": [
+        "rain_watching",
+        "evening_return"
+      ],
+      "shot_affinity": [
+        "window_reflection",
+        "medium_emotional"
+      ],
+      "video_dataset_usage": [
+        "VDS-window-reflection-hope"
+      ],
+      "keywords": [
+        "longing",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-06",
+      "storyboard_id": "SBD-song_master_01-06",
+      "scene_order": 6,
+      "video_prompt": "Horizon movement converts grief residue into hopeful return rendered through sunset_watching and bridge_crossing Camera motion: shot:medium_emotional, micro push-in on beat, shot:side_tracking, side tracking with stable horizon. Character motion: behavior:hope, emotion:optimism, lightened stride, upright posture, encouraging nod, brightened composure, recognition distance collapse, disbelief recognition look. Environment motion: anchor:sunset_watching, sky gradient shift, cloud slow drift, anchor:bridge_crossing, water current below, cable or railing vibration. Transition DNA: sadness_to_hope, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-06, scene-order:6, duration-seconds:13, song-master:song_master_01, transition:sadness_to_hope, eyeline continuity, friendship spacing, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:medium_emotional, shoulder line stable, shot-continuity:side_tracking, axis lock, pace match, no jump cut. Duration target: 13 seconds. Dataset reference: VDS-window-reflection-hope. Storyboard SBD-song_master_01-06, scene 6. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Horizon movement converts grief residue into hopeful return rendered through sunset_watching and bridge_crossing Camera motion: shot:medium_emotional, micro push-in on beat, shot:side_tracking, side tracking with stable horizon. Character motion: behavior:hope, emotion:optimism, lightened stride, upright posture, encouraging nod, brightened composure, recognition distance collapse, disbelief recognition look. Environment motion: anchor:sunset_watching, sky gradient shift, cloud slow drift, anchor:bridge_crossing, water current below, cable or railing vibration. Transition DNA: sadness_to_hope, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-06, scene-order:6, duration-seconds:13, song-master:song_master_01, transition:sadness_to_hope, eyeline continuity, friendship spacing, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:medium_emotional, shoulder line stable, shot-continuity:side_tracking, axis lock, pace match, no jump cut.",
+      "camera_motion": [
+        "shot:medium_emotional",
+        "micro push-in on beat",
+        "shot:side_tracking",
+        "side tracking with stable horizon"
+      ],
+      "character_motion": [
+        "behavior:hope",
+        "emotion:optimism",
+        "lightened stride",
+        "upright posture",
+        "encouraging nod",
+        "brightened composure",
+        "recognition distance collapse",
+        "disbelief recognition look"
+      ],
+      "environment_motion": [
+        "anchor:sunset_watching",
+        "sky gradient shift",
+        "cloud slow drift",
+        "anchor:bridge_crossing",
+        "water current below",
+        "cable or railing vibration"
+      ],
+      "transition_dna": [
+        "sadness_to_hope",
+        "separation_to_reunion"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-06",
+        "scene-order:6",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sadness_to_hope",
+        "eyeline continuity",
+        "friendship spacing",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "shot-continuity:medium_emotional",
+        "shoulder line stable",
+        "shot-continuity:side_tracking",
+        "axis lock",
+        "pace match",
+        "no jump cut"
+      ],
+      "behavior_id": "hope",
+      "emotion_id": "optimism",
+      "relationship_id": "reunion_after_loss",
+      "daily_life_anchor": [
+        "sunset_watching",
+        "bridge_crossing"
+      ],
+      "shot_affinity": [
+        "medium_emotional",
+        "side_tracking"
+      ],
+      "video_dataset_usage": [
+        "VDS-window-reflection-hope"
+      ],
+      "keywords": [
+        "hope",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-07",
+      "storyboard_id": "SBD-song_master_01-07",
+      "scene_order": 7,
+      "video_prompt": "Morning departure marks optimistic path forward rendered through morning_routine and bicycle_riding Camera motion: shot:side_tracking, side tracking with stable horizon, shot:rear_follow, rear tracking dolly cadence. Character motion: behavior:hope, emotion:optimism, lightened stride, upright posture, encouraging nod, brightened composure, slightly forward mentor lead, evaluative mentor look. Environment motion: anchor:morning_routine, morning light sweep, routine object motion, anchor:bicycle_riding, wheel rotation blur, road texture scroll. Transition DNA: sadness_to_hope, walking_to_running. Continuity glue: storyboard:SBD-song_master_01-07, scene-order:7, duration-seconds:13, song-master:song_master_01, transition:sadness_to_hope, eyeline continuity, friendship spacing, transition:walking_to_running, axis continuity, pace match, horizon lock, shot-continuity:side_tracking, axis lock, no jump cut, shot-continuity:rear_follow, path continuity, back silhouette stable. Duration target: 13 seconds. Dataset reference: VDS-rear-follow-walking. Storyboard SBD-song_master_01-07, scene 7. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Morning departure marks optimistic path forward rendered through morning_routine and bicycle_riding Camera motion: shot:side_tracking, side tracking with stable horizon, shot:rear_follow, rear tracking dolly cadence. Character motion: behavior:hope, emotion:optimism, lightened stride, upright posture, encouraging nod, brightened composure, slightly forward mentor lead, evaluative mentor look. Environment motion: anchor:morning_routine, morning light sweep, routine object motion, anchor:bicycle_riding, wheel rotation blur, road texture scroll. Transition DNA: sadness_to_hope, walking_to_running. Continuity glue: storyboard:SBD-song_master_01-07, scene-order:7, duration-seconds:13, song-master:song_master_01, transition:sadness_to_hope, eyeline continuity, friendship spacing, transition:walking_to_running, axis continuity, pace match, horizon lock, shot-continuity:side_tracking, axis lock, no jump cut, shot-continuity:rear_follow, path continuity, back silhouette stable.",
+      "camera_motion": [
+        "shot:side_tracking",
+        "side tracking with stable horizon",
+        "shot:rear_follow",
+        "rear tracking dolly cadence"
+      ],
+      "character_motion": [
+        "behavior:hope",
+        "emotion:optimism",
+        "lightened stride",
+        "upright posture",
+        "encouraging nod",
+        "brightened composure",
+        "slightly forward mentor lead",
+        "evaluative mentor look"
+      ],
+      "environment_motion": [
+        "anchor:morning_routine",
+        "morning light sweep",
+        "routine object motion",
+        "anchor:bicycle_riding",
+        "wheel rotation blur",
+        "road texture scroll"
+      ],
+      "transition_dna": [
+        "sadness_to_hope",
+        "walking_to_running"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-07",
+        "scene-order:7",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sadness_to_hope",
+        "eyeline continuity",
+        "friendship spacing",
+        "transition:walking_to_running",
+        "axis continuity",
+        "pace match",
+        "horizon lock",
+        "shot-continuity:side_tracking",
+        "axis lock",
+        "no jump cut",
+        "shot-continuity:rear_follow",
+        "path continuity",
+        "back silhouette stable"
+      ],
+      "behavior_id": "hope",
+      "emotion_id": "optimism",
+      "relationship_id": "mentor_student",
+      "daily_life_anchor": [
+        "morning_routine",
+        "bicycle_riding"
+      ],
+      "shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "video_dataset_usage": [
+        "VDS-rear-follow-walking"
+      ],
+      "keywords": [
+        "journey",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-08",
+      "storyboard_id": "SBD-song_master_01-08",
+      "scene_order": 8,
+      "video_prompt": "Converging paths force rival alignment under pressure rendered through street_crossing and school_walk Camera motion: shot:side_tracking, side tracking with stable horizon, shot:rear_follow, rear tracking dolly cadence. Character motion: behavior:determination, emotion:resolve, purposeful stride, squared shoulders, directive gesture, set composure, confrontational spacing, challenge stare down. Environment motion: anchor:street_crossing, crosswalk signal pulse, traffic flow blur, anchor:school_walk, student background flow, flag or banner ripple. Transition DNA: walking_to_running, hope_to_sadness. Continuity glue: storyboard:SBD-song_master_01-08, scene-order:8, duration-seconds:13, song-master:song_master_01, transition:walking_to_running, axis continuity, pace match, horizon lock, transition:hope_to_sadness, eyeline continuity, spacing continuity, shot-continuity:side_tracking, axis lock, no jump cut, shot-continuity:rear_follow, path continuity, back silhouette stable. Duration target: 13 seconds. Dataset reference: VDS-side-tracking-walking. Storyboard SBD-song_master_01-08, scene 8. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Converging paths force rival alignment under pressure rendered through street_crossing and school_walk Camera motion: shot:side_tracking, side tracking with stable horizon, shot:rear_follow, rear tracking dolly cadence. Character motion: behavior:determination, emotion:resolve, purposeful stride, squared shoulders, directive gesture, set composure, confrontational spacing, challenge stare down. Environment motion: anchor:street_crossing, crosswalk signal pulse, traffic flow blur, anchor:school_walk, student background flow, flag or banner ripple. Transition DNA: walking_to_running, hope_to_sadness. Continuity glue: storyboard:SBD-song_master_01-08, scene-order:8, duration-seconds:13, song-master:song_master_01, transition:walking_to_running, axis continuity, pace match, horizon lock, transition:hope_to_sadness, eyeline continuity, spacing continuity, shot-continuity:side_tracking, axis lock, no jump cut, shot-continuity:rear_follow, path continuity, back silhouette stable.",
+      "camera_motion": [
+        "shot:side_tracking",
+        "side tracking with stable horizon",
+        "shot:rear_follow",
+        "rear tracking dolly cadence"
+      ],
+      "character_motion": [
+        "behavior:determination",
+        "emotion:resolve",
+        "purposeful stride",
+        "squared shoulders",
+        "directive gesture",
+        "set composure",
+        "confrontational spacing",
+        "challenge stare down"
+      ],
+      "environment_motion": [
+        "anchor:street_crossing",
+        "crosswalk signal pulse",
+        "traffic flow blur",
+        "anchor:school_walk",
+        "student background flow",
+        "flag or banner ripple"
+      ],
+      "transition_dna": [
+        "walking_to_running",
+        "hope_to_sadness"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-08",
+        "scene-order:8",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:walking_to_running",
+        "axis continuity",
+        "pace match",
+        "horizon lock",
+        "transition:hope_to_sadness",
+        "eyeline continuity",
+        "spacing continuity",
+        "shot-continuity:side_tracking",
+        "axis lock",
+        "no jump cut",
+        "shot-continuity:rear_follow",
+        "path continuity",
+        "back silhouette stable"
+      ],
+      "behavior_id": "determination",
+      "emotion_id": "resolve",
+      "relationship_id": "rival_to_ally",
+      "daily_life_anchor": [
+        "street_crossing",
+        "school_walk"
+      ],
+      "shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "video_dataset_usage": [
+        "VDS-side-tracking-walking"
+      ],
+      "keywords": [
+        "conflict",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-09",
+      "storyboard_id": "SBD-song_master_01-09",
+      "scene_order": 9,
+      "video_prompt": "Ordinary chore interrupted by resolve to leave for duty rendered through doorway_pause and laundry Camera motion: shot:silhouette_distance, slow pullback, shot:wide_establishing, slow panoramic settle. Character motion: behavior:determination, emotion:resolve, purposeful stride, squared shoulders, directive gesture, set composure, threshold departure gap, doorway backward look. Environment motion: anchor:doorway_pause, threshold light shift, door micro movement, anchor:laundry, fabric tumble rhythm, hanger sway. Transition DNA: hope_to_sadness, sunset_to_night. Continuity glue: storyboard:SBD-song_master_01-09, scene-order:9, duration-seconds:13, song-master:song_master_01, transition:hope_to_sadness, eyeline continuity, spacing continuity, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, shot-continuity:silhouette_distance, rim continuity, shot-continuity:wide_establishing, depth planes stable. Duration target: 13 seconds. Dataset reference: VDS-medium-emotional-hope-sadness. Storyboard SBD-song_master_01-09, scene 9. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Ordinary chore interrupted by resolve to leave for duty rendered through doorway_pause and laundry Camera motion: shot:silhouette_distance, slow pullback, shot:wide_establishing, slow panoramic settle. Character motion: behavior:determination, emotion:resolve, purposeful stride, squared shoulders, directive gesture, set composure, threshold departure gap, doorway backward look. Environment motion: anchor:doorway_pause, threshold light shift, door micro movement, anchor:laundry, fabric tumble rhythm, hanger sway. Transition DNA: hope_to_sadness, sunset_to_night. Continuity glue: storyboard:SBD-song_master_01-09, scene-order:9, duration-seconds:13, song-master:song_master_01, transition:hope_to_sadness, eyeline continuity, spacing continuity, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, shot-continuity:silhouette_distance, rim continuity, shot-continuity:wide_establishing, depth planes stable.",
+      "camera_motion": [
+        "shot:silhouette_distance",
+        "slow pullback",
+        "shot:wide_establishing",
+        "slow panoramic settle"
+      ],
+      "character_motion": [
+        "behavior:determination",
+        "emotion:resolve",
+        "purposeful stride",
+        "squared shoulders",
+        "directive gesture",
+        "set composure",
+        "threshold departure gap",
+        "doorway backward look"
+      ],
+      "environment_motion": [
+        "anchor:doorway_pause",
+        "threshold light shift",
+        "door micro movement",
+        "anchor:laundry",
+        "fabric tumble rhythm",
+        "hanger sway"
+      ],
+      "transition_dna": [
+        "hope_to_sadness",
+        "sunset_to_night"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-09",
+        "scene-order:9",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:hope_to_sadness",
+        "eyeline continuity",
+        "spacing continuity",
+        "transition:sunset_to_night",
+        "lighting continuity",
+        "horizon lock",
+        "palette drift",
+        "shot-continuity:silhouette_distance",
+        "rim continuity",
+        "shot-continuity:wide_establishing",
+        "depth planes stable"
+      ],
+      "behavior_id": "determination",
+      "emotion_id": "resolve",
+      "relationship_id": "family_separation",
+      "daily_life_anchor": [
+        "doorway_pause",
+        "laundry"
+      ],
+      "shot_affinity": [
+        "silhouette_distance",
+        "wide_establishing"
+      ],
+      "video_dataset_usage": [
+        "VDS-medium-emotional-hope-sadness"
+      ],
+      "keywords": [
+        "sacrifice",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-10",
+      "storyboard_id": "SBD-song_master_01-10",
+      "scene_order": 10,
+      "video_prompt": "Small care gesture in rain begins emotional healing rendered through tea_drinking and pet_care Camera motion: shot:wide_establishing, slow panoramic settle, shot:close_hand_detail, minimal hold. Character motion: behavior:protection, emotion:care, flanking escort pace, body block stance, covering companion, shielding presence, initial stranger gap, cautious first look. Environment motion: anchor:tea_drinking, steam curl rise, liquid surface ripple, anchor:pet_care, pet tail sway, soft fur ripple on touch. Transition DNA: rain_to_clear, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-10, scene-order:10, duration-seconds:13, song-master:song_master_01, transition:rain_to_clear, weather continuity, ground reflection match, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:wide_establishing, horizon lock, depth planes stable, shot-continuity:close_hand_detail, hand anatomy stable. Duration target: 13 seconds. Dataset reference: VDS-wide-establishing-rain. Storyboard SBD-song_master_01-10, scene 10. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Small care gesture in rain begins emotional healing rendered through tea_drinking and pet_care Camera motion: shot:wide_establishing, slow panoramic settle, shot:close_hand_detail, minimal hold. Character motion: behavior:protection, emotion:care, flanking escort pace, body block stance, covering companion, shielding presence, initial stranger gap, cautious first look. Environment motion: anchor:tea_drinking, steam curl rise, liquid surface ripple, anchor:pet_care, pet tail sway, soft fur ripple on touch. Transition DNA: rain_to_clear, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-10, scene-order:10, duration-seconds:13, song-master:song_master_01, transition:rain_to_clear, weather continuity, ground reflection match, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:wide_establishing, horizon lock, depth planes stable, shot-continuity:close_hand_detail, hand anatomy stable.",
+      "camera_motion": [
+        "shot:wide_establishing",
+        "slow panoramic settle",
+        "shot:close_hand_detail",
+        "minimal hold"
+      ],
+      "character_motion": [
+        "behavior:protection",
+        "emotion:care",
+        "flanking escort pace",
+        "body block stance",
+        "covering companion",
+        "shielding presence",
+        "initial stranger gap",
+        "cautious first look"
+      ],
+      "environment_motion": [
+        "anchor:tea_drinking",
+        "steam curl rise",
+        "liquid surface ripple",
+        "anchor:pet_care",
+        "pet tail sway",
+        "soft fur ripple on touch"
+      ],
+      "transition_dna": [
+        "rain_to_clear",
+        "separation_to_reunion"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-10",
+        "scene-order:10",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:rain_to_clear",
+        "weather continuity",
+        "ground reflection match",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "shot-continuity:wide_establishing",
+        "horizon lock",
+        "depth planes stable",
+        "shot-continuity:close_hand_detail",
+        "hand anatomy stable"
+      ],
+      "behavior_id": "protection",
+      "emotion_id": "care",
+      "relationship_id": "stranger_kindness",
+      "daily_life_anchor": [
+        "tea_drinking",
+        "pet_care"
+      ],
+      "shot_affinity": [
+        "wide_establishing",
+        "close_hand_detail"
+      ],
+      "video_dataset_usage": [
+        "VDS-wide-establishing-rain"
+      ],
+      "keywords": [
+        "healing",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-11",
+      "storyboard_id": "SBD-song_master_01-11",
+      "scene_order": 11,
+      "video_prompt": "Shared public moment reopens trust after withdrawal rendered through market_visit and music_listening Camera motion: shot:medium_emotional, micro push-in on beat, shot:close_hand_detail, minimal hold. Character motion: behavior:reunion, emotion:connection, accelerated approach, forward lean open, name call response, open recognition, initial stranger gap, cautious first look. Environment motion: anchor:market_visit, stall banner flutter, crowd lateral drift, anchor:music_listening, headphone cable micro sway, ambient room drift. Transition DNA: rain_to_clear, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-11, scene-order:11, duration-seconds:13, song-master:song_master_01, transition:rain_to_clear, weather continuity, ground reflection match, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:medium_emotional, shoulder line stable, shot-continuity:close_hand_detail, hand anatomy stable. Duration target: 13 seconds. Dataset reference: VDS-close-hand-sadness-hope. Storyboard SBD-song_master_01-11, scene 11. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Shared public moment reopens trust after withdrawal rendered through market_visit and music_listening Camera motion: shot:medium_emotional, micro push-in on beat, shot:close_hand_detail, minimal hold. Character motion: behavior:reunion, emotion:connection, accelerated approach, forward lean open, name call response, open recognition, initial stranger gap, cautious first look. Environment motion: anchor:market_visit, stall banner flutter, crowd lateral drift, anchor:music_listening, headphone cable micro sway, ambient room drift. Transition DNA: rain_to_clear, separation_to_reunion. Continuity glue: storyboard:SBD-song_master_01-11, scene-order:11, duration-seconds:13, song-master:song_master_01, transition:rain_to_clear, weather continuity, ground reflection match, transition:separation_to_reunion, distance continuity, eyeline match, shot-continuity:medium_emotional, shoulder line stable, shot-continuity:close_hand_detail, hand anatomy stable.",
+      "camera_motion": [
+        "shot:medium_emotional",
+        "micro push-in on beat",
+        "shot:close_hand_detail",
+        "minimal hold"
+      ],
+      "character_motion": [
+        "behavior:reunion",
+        "emotion:connection",
+        "accelerated approach",
+        "forward lean open",
+        "name call response",
+        "open recognition",
+        "initial stranger gap",
+        "cautious first look"
+      ],
+      "environment_motion": [
+        "anchor:market_visit",
+        "stall banner flutter",
+        "crowd lateral drift",
+        "anchor:music_listening",
+        "headphone cable micro sway",
+        "ambient room drift"
+      ],
+      "transition_dna": [
+        "rain_to_clear",
+        "separation_to_reunion"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-11",
+        "scene-order:11",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:rain_to_clear",
+        "weather continuity",
+        "ground reflection match",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "shot-continuity:medium_emotional",
+        "shoulder line stable",
+        "shot-continuity:close_hand_detail",
+        "hand anatomy stable"
+      ],
+      "behavior_id": "reunion",
+      "emotion_id": "connection",
+      "relationship_id": "stranger_kindness",
+      "daily_life_anchor": [
+        "market_visit",
+        "music_listening"
+      ],
+      "shot_affinity": [
+        "medium_emotional",
+        "close_hand_detail"
+      ],
+      "video_dataset_usage": [
+        "VDS-close-hand-sadness-hope"
+      ],
+      "keywords": [
+        "forgiveness",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-12",
+      "storyboard_id": "SBD-song_master_01-12",
+      "scene_order": 12,
+      "video_prompt": "Arrival point transforms waiting into reunion contact rendered through station_waiting and shore_walking Camera motion: shot:side_tracking, side tracking with stable horizon, shot:rear_follow, rear tracking dolly cadence. Character motion: behavior:reunion, emotion:connection, accelerated approach, forward lean open, name call response, open recognition, recognition distance collapse, disbelief recognition look. Environment motion: anchor:station_waiting, platform wind ripple, train approach vibration, anchor:shore_walking, wave advance retreat, foam edge crawl. Transition DNA: separation_to_reunion, sadness_to_hope. Continuity glue: storyboard:SBD-song_master_01-12, scene-order:12, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:sadness_to_hope, eyeline continuity, friendship spacing, shot-continuity:side_tracking, axis lock, pace match, no jump cut, shot-continuity:rear_follow, path continuity, back silhouette stable. Duration target: 13 seconds. Dataset reference: VDS-side-tracking-reunion. Storyboard SBD-song_master_01-12, scene 12. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Arrival point transforms waiting into reunion contact rendered through station_waiting and shore_walking Camera motion: shot:side_tracking, side tracking with stable horizon, shot:rear_follow, rear tracking dolly cadence. Character motion: behavior:reunion, emotion:connection, accelerated approach, forward lean open, name call response, open recognition, recognition distance collapse, disbelief recognition look. Environment motion: anchor:station_waiting, platform wind ripple, train approach vibration, anchor:shore_walking, wave advance retreat, foam edge crawl. Transition DNA: separation_to_reunion, sadness_to_hope. Continuity glue: storyboard:SBD-song_master_01-12, scene-order:12, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:sadness_to_hope, eyeline continuity, friendship spacing, shot-continuity:side_tracking, axis lock, pace match, no jump cut, shot-continuity:rear_follow, path continuity, back silhouette stable.",
+      "camera_motion": [
+        "shot:side_tracking",
+        "side tracking with stable horizon",
+        "shot:rear_follow",
+        "rear tracking dolly cadence"
+      ],
+      "character_motion": [
+        "behavior:reunion",
+        "emotion:connection",
+        "accelerated approach",
+        "forward lean open",
+        "name call response",
+        "open recognition",
+        "recognition distance collapse",
+        "disbelief recognition look"
+      ],
+      "environment_motion": [
+        "anchor:station_waiting",
+        "platform wind ripple",
+        "train approach vibration",
+        "anchor:shore_walking",
+        "wave advance retreat",
+        "foam edge crawl"
+      ],
+      "transition_dna": [
+        "separation_to_reunion",
+        "sadness_to_hope"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-12",
+        "scene-order:12",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "transition:sadness_to_hope",
+        "eyeline continuity",
+        "friendship spacing",
+        "shot-continuity:side_tracking",
+        "axis lock",
+        "pace match",
+        "no jump cut",
+        "shot-continuity:rear_follow",
+        "path continuity",
+        "back silhouette stable"
+      ],
+      "behavior_id": "reunion",
+      "emotion_id": "connection",
+      "relationship_id": "reunion_after_loss",
+      "daily_life_anchor": [
+        "station_waiting",
+        "shore_walking"
+      ],
+      "shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "video_dataset_usage": [
+        "VDS-side-tracking-reunion"
+      ],
+      "keywords": [
+        "reunion",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-13",
+      "storyboard_id": "SBD-song_master_01-13",
+      "scene_order": 13,
+      "video_prompt": "Elevated farewell view frames bittersweet departure rendered through bus_waiting and rooftop_visit Camera motion: shot:silhouette_distance, slow pullback, shot:medium_emotional, micro push-in on beat. Character motion: behavior:farewell, emotion:parting, slow retreat steps, turned away pause, final words exchange, lingering look, widening departure gap, lingering backward look. Environment motion: anchor:bus_waiting, arrival board flicker, distant vehicle approach blur, anchor:rooftop_visit, skyline haze drift, wind on clothing ripple. Transition DNA: separation_to_reunion, sunset_to_night. Continuity glue: storyboard:SBD-song_master_01-13, scene-order:13, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, shot-continuity:silhouette_distance, rim continuity, shot-continuity:medium_emotional, shoulder line stable. Duration target: 13 seconds. Dataset reference: VDS-silhouette-sunset. Storyboard SBD-song_master_01-13, scene 13. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Elevated farewell view frames bittersweet departure rendered through bus_waiting and rooftop_visit Camera motion: shot:silhouette_distance, slow pullback, shot:medium_emotional, micro push-in on beat. Character motion: behavior:farewell, emotion:parting, slow retreat steps, turned away pause, final words exchange, lingering look, widening departure gap, lingering backward look. Environment motion: anchor:bus_waiting, arrival board flicker, distant vehicle approach blur, anchor:rooftop_visit, skyline haze drift, wind on clothing ripple. Transition DNA: separation_to_reunion, sunset_to_night. Continuity glue: storyboard:SBD-song_master_01-13, scene-order:13, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:sunset_to_night, lighting continuity, horizon lock, palette drift, shot-continuity:silhouette_distance, rim continuity, shot-continuity:medium_emotional, shoulder line stable.",
+      "camera_motion": [
+        "shot:silhouette_distance",
+        "slow pullback",
+        "shot:medium_emotional",
+        "micro push-in on beat"
+      ],
+      "character_motion": [
+        "behavior:farewell",
+        "emotion:parting",
+        "slow retreat steps",
+        "turned away pause",
+        "final words exchange",
+        "lingering look",
+        "widening departure gap",
+        "lingering backward look"
+      ],
+      "environment_motion": [
+        "anchor:bus_waiting",
+        "arrival board flicker",
+        "distant vehicle approach blur",
+        "anchor:rooftop_visit",
+        "skyline haze drift",
+        "wind on clothing ripple"
+      ],
+      "transition_dna": [
+        "separation_to_reunion",
+        "sunset_to_night"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-13",
+        "scene-order:13",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "transition:sunset_to_night",
+        "lighting continuity",
+        "horizon lock",
+        "palette drift",
+        "shot-continuity:silhouette_distance",
+        "rim continuity",
+        "shot-continuity:medium_emotional",
+        "shoulder line stable"
+      ],
+      "behavior_id": "farewell",
+      "emotion_id": "parting",
+      "relationship_id": "lost_lovers",
+      "daily_life_anchor": [
+        "bus_waiting",
+        "rooftop_visit"
+      ],
+      "shot_affinity": [
+        "silhouette_distance",
+        "medium_emotional"
+      ],
+      "video_dataset_usage": [
+        "VDS-silhouette-sunset"
+      ],
+      "keywords": [
+        "departure",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-14",
+      "storyboard_id": "SBD-song_master_01-14",
+      "scene_order": 14,
+      "video_prompt": "Mentor guidance during daily practice enables growth rendered through school_walk and cooking Camera motion: shot:medium_emotional, micro push-in on beat, shot:wide_establishing, slow panoramic settle. Character motion: behavior:protection, emotion:care, flanking escort pace, body block stance, covering companion, shielding presence, slightly forward mentor lead, evaluative mentor look. Environment motion: anchor:school_walk, student background flow, flag or banner ripple, anchor:cooking, steam pulse, ingredient stir rhythm. Transition DNA: sadness_to_hope, silence_to_confession. Continuity glue: storyboard:SBD-song_master_01-14, scene-order:14, duration-seconds:13, song-master:song_master_01, transition:sadness_to_hope, eyeline continuity, friendship spacing, transition:silence_to_confession, framing continuity, spatial intimacy, shot-continuity:medium_emotional, eyeline match, shoulder line stable, shot-continuity:wide_establishing, horizon lock, depth planes stable. Duration target: 13 seconds. Dataset reference: VDS-rear-follow-walking. Storyboard SBD-song_master_01-14, scene 14. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Mentor guidance during daily practice enables growth rendered through school_walk and cooking Camera motion: shot:medium_emotional, micro push-in on beat, shot:wide_establishing, slow panoramic settle. Character motion: behavior:protection, emotion:care, flanking escort pace, body block stance, covering companion, shielding presence, slightly forward mentor lead, evaluative mentor look. Environment motion: anchor:school_walk, student background flow, flag or banner ripple, anchor:cooking, steam pulse, ingredient stir rhythm. Transition DNA: sadness_to_hope, silence_to_confession. Continuity glue: storyboard:SBD-song_master_01-14, scene-order:14, duration-seconds:13, song-master:song_master_01, transition:sadness_to_hope, eyeline continuity, friendship spacing, transition:silence_to_confession, framing continuity, spatial intimacy, shot-continuity:medium_emotional, eyeline match, shoulder line stable, shot-continuity:wide_establishing, horizon lock, depth planes stable.",
+      "camera_motion": [
+        "shot:medium_emotional",
+        "micro push-in on beat",
+        "shot:wide_establishing",
+        "slow panoramic settle"
+      ],
+      "character_motion": [
+        "behavior:protection",
+        "emotion:care",
+        "flanking escort pace",
+        "body block stance",
+        "covering companion",
+        "shielding presence",
+        "slightly forward mentor lead",
+        "evaluative mentor look"
+      ],
+      "environment_motion": [
+        "anchor:school_walk",
+        "student background flow",
+        "flag or banner ripple",
+        "anchor:cooking",
+        "steam pulse",
+        "ingredient stir rhythm"
+      ],
+      "transition_dna": [
+        "sadness_to_hope",
+        "silence_to_confession"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-14",
+        "scene-order:14",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sadness_to_hope",
+        "eyeline continuity",
+        "friendship spacing",
+        "transition:silence_to_confession",
+        "framing continuity",
+        "spatial intimacy",
+        "shot-continuity:medium_emotional",
+        "eyeline match",
+        "shoulder line stable",
+        "shot-continuity:wide_establishing",
+        "horizon lock",
+        "depth planes stable"
+      ],
+      "behavior_id": "protection",
+      "emotion_id": "care",
+      "relationship_id": "mentor_student",
+      "daily_life_anchor": [
+        "school_walk",
+        "cooking"
+      ],
+      "shot_affinity": [
+        "medium_emotional",
+        "wide_establishing"
+      ],
+      "video_dataset_usage": [
+        "VDS-rear-follow-walking"
+      ],
+      "keywords": [
+        "growth",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-15",
+      "storyboard_id": "SBD-song_master_01-15",
+      "scene_order": 15,
+      "video_prompt": "Quiet nightly ritual precedes redemptive reunion rendered through flower_watering and star_gazing Camera motion: shot:silhouette_distance, slow pullback, shot:side_tracking, side tracking with stable horizon. Character motion: behavior:reunion, emotion:connection, accelerated approach, forward lean open, name call response, open recognition, widening departure gap, lingering backward look. Environment motion: anchor:flower_watering, water stream arc, petal tremble after pour, anchor:star_gazing, star field subtle twinkle, night air haze drift. Transition DNA: separation_to_reunion, sadness_to_hope. Continuity glue: storyboard:SBD-song_master_01-15, scene-order:15, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:sadness_to_hope, eyeline continuity, friendship spacing, shot-continuity:silhouette_distance, rim continuity, horizon lock, shot-continuity:side_tracking, axis lock, pace match, no jump cut. Duration target: 13 seconds. Dataset reference: VDS-silhouette-reunion. Storyboard SBD-song_master_01-15, scene 15. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Quiet nightly ritual precedes redemptive reunion rendered through flower_watering and star_gazing Camera motion: shot:silhouette_distance, slow pullback, shot:side_tracking, side tracking with stable horizon. Character motion: behavior:reunion, emotion:connection, accelerated approach, forward lean open, name call response, open recognition, widening departure gap, lingering backward look. Environment motion: anchor:flower_watering, water stream arc, petal tremble after pour, anchor:star_gazing, star field subtle twinkle, night air haze drift. Transition DNA: separation_to_reunion, sadness_to_hope. Continuity glue: storyboard:SBD-song_master_01-15, scene-order:15, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:sadness_to_hope, eyeline continuity, friendship spacing, shot-continuity:silhouette_distance, rim continuity, horizon lock, shot-continuity:side_tracking, axis lock, pace match, no jump cut.",
+      "camera_motion": [
+        "shot:silhouette_distance",
+        "slow pullback",
+        "shot:side_tracking",
+        "side tracking with stable horizon"
+      ],
+      "character_motion": [
+        "behavior:reunion",
+        "emotion:connection",
+        "accelerated approach",
+        "forward lean open",
+        "name call response",
+        "open recognition",
+        "widening departure gap",
+        "lingering backward look"
+      ],
+      "environment_motion": [
+        "anchor:flower_watering",
+        "water stream arc",
+        "petal tremble after pour",
+        "anchor:star_gazing",
+        "star field subtle twinkle",
+        "night air haze drift"
+      ],
+      "transition_dna": [
+        "separation_to_reunion",
+        "sadness_to_hope"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-15",
+        "scene-order:15",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "transition:sadness_to_hope",
+        "eyeline continuity",
+        "friendship spacing",
+        "shot-continuity:silhouette_distance",
+        "rim continuity",
+        "horizon lock",
+        "shot-continuity:side_tracking",
+        "axis lock",
+        "pace match",
+        "no jump cut"
+      ],
+      "behavior_id": "reunion",
+      "emotion_id": "connection",
+      "relationship_id": "lost_lovers",
+      "daily_life_anchor": [
+        "flower_watering",
+        "star_gazing"
+      ],
+      "shot_affinity": [
+        "silhouette_distance",
+        "side_tracking"
+      ],
+      "video_dataset_usage": [
+        "VDS-silhouette-reunion"
+      ],
+      "keywords": [
+        "redemption",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    },
+    {
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-16",
+      "storyboard_id": "SBD-song_master_01-16",
+      "scene_order": 16,
+      "video_prompt": "Guardian morning routine opens protective new chapter rendered through morning_routine and flower_watering Camera motion: shot:medium_emotional, micro push-in on beat, shot:wide_establishing, slow panoramic settle. Character motion: behavior:protection, emotion:care, flanking escort pace, body block stance, covering companion, shielding presence, close protective proximity, guardian scan to child check. Environment motion: anchor:morning_routine, morning light sweep, routine object motion, anchor:flower_watering, water stream arc, petal tremble after pour. Transition DNA: separation_to_reunion, silence_to_confession. Continuity glue: storyboard:SBD-song_master_01-16, scene-order:16, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:silence_to_confession, framing continuity, spatial intimacy, shot-continuity:medium_emotional, shoulder line stable, shot-continuity:wide_establishing, horizon lock, depth planes stable. Duration target: 13 seconds. Dataset reference: VDS-wide-establishing-sunset. Storyboard SBD-song_master_01-16, scene 16. Cinematic music video motion, gonagi visual continuity, no GPU generation in pipeline.",
+      "negative_prompt": "low quality, blurry, watermark, text overlay, distorted anatomy, extra limbs, temporal flicker, frame inconsistency, morphing faces, jittery camera, oversaturated, AI artifacts, duplicate subjects, jump cuts",
+      "motion_prompt": "Guardian morning routine opens protective new chapter rendered through morning_routine and flower_watering Camera motion: shot:medium_emotional, micro push-in on beat, shot:wide_establishing, slow panoramic settle. Character motion: behavior:protection, emotion:care, flanking escort pace, body block stance, covering companion, shielding presence, close protective proximity, guardian scan to child check. Environment motion: anchor:morning_routine, morning light sweep, routine object motion, anchor:flower_watering, water stream arc, petal tremble after pour. Transition DNA: separation_to_reunion, silence_to_confession. Continuity glue: storyboard:SBD-song_master_01-16, scene-order:16, duration-seconds:13, song-master:song_master_01, transition:separation_to_reunion, distance continuity, eyeline match, transition:silence_to_confession, framing continuity, spatial intimacy, shot-continuity:medium_emotional, shoulder line stable, shot-continuity:wide_establishing, horizon lock, depth planes stable.",
+      "camera_motion": [
+        "shot:medium_emotional",
+        "micro push-in on beat",
+        "shot:wide_establishing",
+        "slow panoramic settle"
+      ],
+      "character_motion": [
+        "behavior:protection",
+        "emotion:care",
+        "flanking escort pace",
+        "body block stance",
+        "covering companion",
+        "shielding presence",
+        "close protective proximity",
+        "guardian scan to child check"
+      ],
+      "environment_motion": [
+        "anchor:morning_routine",
+        "morning light sweep",
+        "routine object motion",
+        "anchor:flower_watering",
+        "water stream arc",
+        "petal tremble after pour"
+      ],
+      "transition_dna": [
+        "separation_to_reunion",
+        "silence_to_confession"
+      ],
+      "continuity_glue": [
+        "storyboard:SBD-song_master_01-16",
+        "scene-order:16",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "distance continuity",
+        "eyeline match",
+        "transition:silence_to_confession",
+        "framing continuity",
+        "spatial intimacy",
+        "shot-continuity:medium_emotional",
+        "shoulder line stable",
+        "shot-continuity:wide_establishing",
+        "horizon lock",
+        "depth planes stable"
+      ],
+      "behavior_id": "protection",
+      "emotion_id": "care",
+      "relationship_id": "guardian_child",
+      "daily_life_anchor": [
+        "morning_routine",
+        "flower_watering"
+      ],
+      "shot_affinity": [
+        "medium_emotional",
+        "wide_establishing"
+      ],
+      "video_dataset_usage": [
+        "VDS-wide-establishing-sunset"
+      ],
+      "keywords": [
+        "new-beginning",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "video-prompt-pack",
+        "song_master_01"
+      ]
+    }
+  ]
+}

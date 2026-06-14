@@ -1,0 +1,78 @@
+{
+  "report_id": "adapter_translation_validation_mqc80of6",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005A",
+  "system_id": "ADAPTER_TRANSLATION_VALIDATION_V1",
+  "generated_at": "2026-06-13T10:36:53.538Z",
+  "final_verdict": "PASS_ADAPTER_TRANSLATION_VALIDATION_V1",
+  "status": "ADAPTER_TRANSLATION_VALIDATED",
+  "validation_passed": true,
+  "adapter_translation_validated": true,
+  "backend_implemented": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "contract_field_coverage_threshold": 0.95,
+  "translation_loss_documented": true,
+  "identity_preservation_defined": true,
+  "environment_preservation_defined": true,
+  "temporal_preservation_defined": true,
+  "highest_risk_fields_defined": true,
+  "critical_loss_fields_defined": true,
+  "adapters": [
+    {
+      "adapter_name": "controlnet_adapter",
+      "contract_field_coverage": 1,
+      "translation_completeness": 1,
+      "translation_loss": 0.65,
+      "loss_severity": "HIGH",
+      "identity_preservation_score": 0.35,
+      "environment_preservation_score": 0,
+      "temporal_preservation_score": 0.1,
+      "loss_reason": "environment_identity_map is reserved_v1 with no populated payload; object_identity requires IP-Adapter path outside ControlNet adapter scope",
+      "translation_loss_documented": true
+    },
+    {
+      "adapter_name": "comfyui_adapter",
+      "contract_field_coverage": 1,
+      "translation_completeness": 1,
+      "translation_loss": 0.35,
+      "loss_severity": "MEDIUM",
+      "identity_preservation_score": 0.65,
+      "environment_preservation_score": 0,
+      "temporal_preservation_score": 0.15,
+      "loss_reason": "ComfyUI IP-Adapter nodes deferred until object_identity map export exists; environment_identity_map reserved",
+      "translation_loss_documented": true
+    },
+    {
+      "adapter_name": "future_video_adapter",
+      "contract_field_coverage": 1,
+      "translation_completeness": 1,
+      "translation_loss": 0.85,
+      "loss_severity": "CRITICAL",
+      "identity_preservation_score": 0.65,
+      "environment_preservation_score": 0.25,
+      "temporal_preservation_score": 0.72,
+      "loss_reason": "Video conditioning backend deferred per architecture decision; temporal GPU pipeline not designed for execution in this phase",
+      "translation_loss_documented": true
+    }
+  ],
+  "checks": {
+    "contract_field_coverage_threshold_met": true,
+    "translation_loss_documented": true,
+    "identity_preservation_defined": true,
+    "environment_preservation_defined": true,
+    "temporal_preservation_defined": true,
+    "highest_risk_fields_defined": true,
+    "critical_loss_fields_defined": true,
+    "gap_report_exists": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "validation_only": true,
+    "backend_execution_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

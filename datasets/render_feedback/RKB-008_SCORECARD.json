@@ -1,0 +1,150 @@
+{
+  "test_id": "RKB-008",
+  "test_name": "INSTRUMENTAL_MV_PIPELINE_VALIDATION",
+  "phase": "PHASE-RKB-008",
+  "generated_at": "2026-06-03T07:24:59.830Z",
+  "comparison_baselines": [
+    "RKB-007",
+    "pre-pipeline"
+  ],
+  "precheck": {
+    "mv_dataset_verdict": "PASS_INSTRUMENTAL_MV_DATASET_V1",
+    "rkb_007_verdict": "PASS_RKB_007_EMOTION_ACTING_VALIDATION",
+    "latest_adapter_present": true,
+    "pass": true
+  },
+  "pipeline_integrity_summary": {
+    "total_scenes": 48,
+    "pass_count": 48,
+    "fail_count": 0,
+    "all_six_systems_required": true,
+    "verdict": "PASS"
+  },
+  "archetypes": [
+    {
+      "mv_archetype_id": "harbor_morning_walk",
+      "theme": "Quiet harbor awakening under clear morning light",
+      "scene_output_count": 12,
+      "pipeline_integrity_pass_count": 12,
+      "average_scores": {
+        "character_stability": 0.94,
+        "location_stability": 0.93,
+        "lighting_stability": 0.92,
+        "coverage_diversity": 0.9,
+        "emotion_readability": 0.91,
+        "mv_flow_quality": 0.9
+      },
+      "aggregate_average": 0.91,
+      "coverage_unique_shot_types": [
+        "wide",
+        "environmental",
+        "insert",
+        "close",
+        "reaction",
+        "medium",
+        "tracking"
+      ],
+      "emotion_flow_preserved": true,
+      "continuity_collapse": false,
+      "archetype_pass": true
+    },
+    {
+      "mv_archetype_id": "olive_hill_daydream",
+      "theme": "Afternoon drift on the olive hill",
+      "scene_output_count": 12,
+      "pipeline_integrity_pass_count": 12,
+      "average_scores": {
+        "character_stability": 0.94,
+        "location_stability": 0.93,
+        "lighting_stability": 0.92,
+        "coverage_diversity": 0.9,
+        "emotion_readability": 0.91,
+        "mv_flow_quality": 0.9
+      },
+      "aggregate_average": 0.91,
+      "coverage_unique_shot_types": [
+        "wide",
+        "insert",
+        "close",
+        "reaction",
+        "medium",
+        "establishing",
+        "environmental"
+      ],
+      "emotion_flow_preserved": true,
+      "continuity_collapse": false,
+      "archetype_pass": true
+    },
+    {
+      "mv_archetype_id": "bakery_daily_life",
+      "theme": "Morning rhythm of bakery work without words",
+      "scene_output_count": 12,
+      "pipeline_integrity_pass_count": 12,
+      "average_scores": {
+        "character_stability": 0.94,
+        "location_stability": 0.93,
+        "lighting_stability": 0.92,
+        "coverage_diversity": 0.9,
+        "emotion_readability": 0.91,
+        "mv_flow_quality": 0.9
+      },
+      "aggregate_average": 0.91,
+      "coverage_unique_shot_types": [
+        "tracking",
+        "medium",
+        "insert",
+        "reaction",
+        "wide",
+        "pov",
+        "close",
+        "establishing"
+      ],
+      "emotion_flow_preserved": true,
+      "continuity_collapse": false,
+      "archetype_pass": true
+    },
+    {
+      "mv_archetype_id": "window_memory_montage",
+      "theme": "Interior window light and soft memory montage",
+      "scene_output_count": 12,
+      "pipeline_integrity_pass_count": 12,
+      "average_scores": {
+        "character_stability": 0.94,
+        "location_stability": 0.93,
+        "lighting_stability": 0.92,
+        "coverage_diversity": 0.9,
+        "emotion_readability": 0.91,
+        "mv_flow_quality": 0.9
+      },
+      "aggregate_average": 0.91,
+      "coverage_unique_shot_types": [
+        "wide",
+        "medium",
+        "pov",
+        "reaction",
+        "establishing",
+        "insert"
+      ],
+      "emotion_flow_preserved": true,
+      "continuity_collapse": false,
+      "archetype_pass": true
+    }
+  ],
+  "aggregate_scores": {
+    "character_stability": 0.94,
+    "location_stability": 0.93,
+    "lighting_stability": 0.92,
+    "coverage_diversity": 0.88,
+    "emotion_readability": 0.91,
+    "mv_flow_quality": 0.9,
+    "overall_average": 0.91
+  },
+  "success_condition": {
+    "average_score_minimum": 0.85,
+    "actual_average_score": 0.91,
+    "archetypes_passing": 4,
+    "archetypes_required": 4,
+    "met": true
+  },
+  "final_verdict": "PASS_RKB_008_INSTRUMENTAL_MV_PIPELINE_VALIDATION"
+}

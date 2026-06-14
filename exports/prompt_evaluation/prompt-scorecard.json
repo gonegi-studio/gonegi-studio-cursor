@@ -1,0 +1,35 @@
+{
+  "scorecard_id": "prompt-scorecard-v1",
+  "asset_type": "prompt_scorecard",
+  "asset_version": "v1",
+  "phase": "PHASE-QA-002",
+  "module": "PROMPT_EVALUATION_SYSTEM_V1",
+  "purpose": "Scored evaluation of compiled prompt quality and generation readiness.",
+  "upstream_checkpoint": "PASS_GENERATION_QA_AND_ERROR_CONTEXT_SYSTEM_V1",
+  "required_score_fields": [
+    "prompt_quality_score",
+    "identity_score",
+    "continuity_score",
+    "memory_score",
+    "generation_readiness_score"
+  ],
+  "prompt_scorecard_integrity": "PASS",
+  "prompt_generation_readiness": "PASS",
+  "scores": {
+    "prompt_quality_score": 0.94,
+    "identity_score": 0.95,
+    "continuity_score": 0.93,
+    "memory_score": 0.92,
+    "generation_readiness_score": 0.94
+  },
+  "readiness_thresholds": {
+    "minimum_score": 0.8,
+    "target_score": 0.9,
+    "production_score": 0.95
+  },
+  "export_id": "prompt-scorecard-export-v1",
+  "generated_at": "2026-06-09T01:41:14.452Z",
+  "dataset_ref": "datasets/prompt_evaluation/prompt-scorecard.json",
+  "compiled_prompt_ref": "exports/generation/compiled-prompt.json",
+  "prompt_trace_id": "prompt-trace-gpu-prep-001"
+}

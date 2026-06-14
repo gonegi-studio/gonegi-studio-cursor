@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_analysis/temporal_flow/movie-analysis-temporal-flow.schema.json",
+  "title": "MovieAnalysisTemporalFlowPlan",
+  "description": "Planning-only temporal flow design for PHASE-SOURCE-VIDEO-031",
+  "type": "object",
+  "required": [
+    "temporal_flow_id",
+    "phase",
+    "source_video_id",
+    "motion_plan_id",
+    "temporal_candidate_count",
+    "flow_strategy",
+    "temporal_candidates",
+    "flow_categories",
+    "coverage_goal",
+    "identity_safety",
+    "execution_flags",
+    "designed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "temporal_flow_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-031-MOVIE_ANALYSIS_TEMPORAL_FLOW_DESIGN_V1"
+    },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "motion_plan_id": { "type": "string", "minLength": 1 },
+    "temporal_candidate_count": { "type": "integer", "minimum": 1 },
+    "flow_strategy": {
+      "type": "string",
+      "enum": [
+        "SEQUENCE_FLOW_PLAN",
+        "EMOTION_TIMELINE_PLAN",
+        "CAMERA_CONTINUITY_PLAN",
+        "TRANSITION_CHAIN_PLAN"
+      ]
+    },
+    "temporal_candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "temporal_candidate_id",
+          "motion_candidate_id",
+          "flow_category",
+          "estimated_flow_value",
+          "generates_sequence",
+          "generates_video",
+          "generates_motion",
+          "candidate_type",
+          "estimated_only"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "temporal_candidate_id": { "type": "string" },
+          "motion_candidate_id": { "type": "string" },
+          "flow_category": {
+            "type": "string",
+            "enum": [
+              "sequence_flow",
+              "emotion_flow",
+              "camera_flow",
+              "character_flow",
+              "environment_flow",
+              "crowd_flow",
+              "animal_flow",
+              "transition_flow",
+              "continuity_flow"
+            ]
+          },
+          "estimated_flow_value": { "type": "string", "minLength": 1 },
+          "generates_sequence": { "type": "boolean", "const": false },
+          "generates_video": { "type": "boolean", "const": false },
+          "generates_motion": { "type": "boolean", "const": false },
+          "candidate_type": {
+            "type": "string",
+            "const": "estimated_temporal_candidate"
+          },
+          "estimated_only": { "type": "boolean", "const": true }
+        }
+      }
+    },
+    "flow_categories": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "sequence_flow",
+          "emotion_flow",
+          "camera_flow",
+          "character_flow",
+          "environment_flow",
+          "crowd_flow",
+          "animal_flow",
+          "transition_flow",
+          "continuity_flow"
+        ]
+      }
+    },
+    "coverage_goal": {
+      "type": "object",
+      "required": ["segment_span_seconds", "coverage_percent", "purpose"],
+      "additionalProperties": false,
+      "properties": {
+        "segment_span_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "coverage_percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "purpose": {
+          "type": "string",
+          "const": "future_sequence_generation_preparation"
+        }
+      }
+    },
+    "identity_safety": {
+      "type": "object",
+      "required": [
+        "identity_lock_required",
+        "character_first_contract",
+        "estimated_only",
+        "no_sequence_generation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "identity_lock_required": { "type": "boolean", "const": true },
+        "character_first_contract": { "type": "boolean", "const": true },
+        "estimated_only": { "type": "boolean", "const": true },
+        "no_sequence_generation": { "type": "boolean", "const": true }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "planning_only",
+        "temporal_flow_only",
+        "sequence_generation",
+        "video_generation",
+        "motion_generation",
+        "gpu_execution",
+        "external_call_allowed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "planning_only": { "type": "boolean", "const": true },
+        "temporal_flow_only": { "type": "boolean", "const": true },
+        "sequence_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "motion_generation": { "type": "boolean", "const": false },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "designed_at": { "type": "string", "format": "date-time" }
+  }
+}

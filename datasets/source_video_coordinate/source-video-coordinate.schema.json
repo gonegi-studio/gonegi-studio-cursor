@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video_coordinate/source-video-coordinate.schema.json",
+  "title": "SourceVideoCoordinateRecord",
+  "description": "Compiled coordinate record from scene segment for PHASE-SOURCE-VIDEO-009",
+  "type": "object",
+  "required": [
+    "coordinate_record_id",
+    "phase",
+    "segment_id",
+    "source_video_id",
+    "director_family",
+    "camera_coordinate",
+    "character_coordinate",
+    "prop_coordinate",
+    "location_coordinate",
+    "lighting_coordinate",
+    "motion_coordinate",
+    "blocking_coordinate",
+    "depth_coordinate",
+    "continuity_locks",
+    "grammar_refs",
+    "scene_state_mapping_ref",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "coordinate_record_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-009-SOURCE_VIDEO_SEGMENT_TO_COORDINATE_COMPILER_V1"
+    },
+    "segment_id": { "type": "string", "minLength": 1 },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "director_family": {
+      "type": "string",
+      "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"]
+    },
+    "camera_coordinate": { "$ref": "#/$defs/camera_coordinate" },
+    "character_coordinate": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/character_entry" },
+      "minItems": 1
+    },
+    "prop_coordinate": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/prop_entry" }
+    },
+    "location_coordinate": { "$ref": "#/$defs/location_coordinate" },
+    "lighting_coordinate": { "$ref": "#/$defs/lighting_coordinate" },
+    "motion_coordinate": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/motion_entry" },
+      "minItems": 1
+    },
+    "blocking_coordinate": { "$ref": "#/$defs/blocking_coordinate" },
+    "depth_coordinate": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/depth_layer" },
+      "minItems": 2
+    },
+    "continuity_locks": { "$ref": "#/$defs/continuity_locks" },
+    "grammar_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "scene_state_mapping_ref": {
+      "type": ["string", "null"]
+    },
+    "source_template_ref": {
+      "type": ["string", "null"]
+    },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "compiled_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "camera_coordinate": {
+      "type": "object",
+      "required": ["position", "facing", "height", "shot_type", "context_summary"],
+      "additionalProperties": false,
+      "properties": {
+        "position": { "type": "string" },
+        "facing": { "type": "string" },
+        "height": { "type": "string" },
+        "fov_hint": { "type": "string" },
+        "shot_type": { "type": "string" },
+        "context_summary": { "type": "string" },
+        "context_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "character_entry": {
+      "type": "object",
+      "required": ["character_ref", "position", "facing", "posture", "identity_anchor"],
+      "additionalProperties": false,
+      "properties": {
+        "character_ref": { "type": "string" },
+        "position": { "type": "string" },
+        "facing": { "type": "string" },
+        "posture": { "type": "string" },
+        "identity_anchor": { "type": "string" }
+      }
+    },
+    "prop_entry": {
+      "type": "object",
+      "required": ["prop_id", "position", "interaction_state"],
+      "additionalProperties": false,
+      "properties": {
+        "prop_id": { "type": "string" },
+        "position": { "type": "string" },
+        "interaction_state": { "type": "string" }
+      }
+    },
+    "location_coordinate": {
+      "type": "object",
+      "required": ["space_type", "anchor_point", "walkable_zone", "context_summary"],
+      "additionalProperties": false,
+      "properties": {
+        "space_type": { "type": "string" },
+        "anchor_point": { "type": "string" },
+        "walkable_zone": { "type": "string" },
+        "context_summary": { "type": "string" },
+        "context_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "lighting_coordinate": {
+      "type": "object",
+      "required": ["key_direction", "fill_level", "color_temperature", "context_summary"],
+      "additionalProperties": false,
+      "properties": {
+        "key_direction": { "type": "string" },
+        "fill_level": { "type": "string" },
+        "color_temperature": { "type": "string" },
+        "context_summary": { "type": "string" },
+        "context_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "motion_entry": {
+      "type": "object",
+      "required": ["subject_ref", "vector", "duration_hint"],
+      "additionalProperties": false,
+      "properties": {
+        "subject_ref": { "type": "string" },
+        "vector": { "type": "string" },
+        "duration_hint": { "type": "string" }
+      }
+    },
+    "blocking_coordinate": {
+      "type": "object",
+      "required": ["primary_focus", "secondary_focus", "negative_space", "context_summary"],
+      "additionalProperties": false,
+      "properties": {
+        "primary_focus": { "type": "string" },
+        "secondary_focus": { "type": "string" },
+        "negative_space": { "type": "string" },
+        "context_summary": { "type": "string" },
+        "context_tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "depth_layer": {
+      "type": "object",
+      "required": ["layer_index", "layer_role", "content_hint"],
+      "additionalProperties": false,
+      "properties": {
+        "layer_index": { "type": "integer", "minimum": 0 },
+        "layer_role": { "type": "string" },
+        "content_hint": { "type": "string" }
+      }
+    },
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks", "composition_locks"],
+      "additionalProperties": false,
+      "properties": {
+        "identity_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "location_locks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "composition_locks": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

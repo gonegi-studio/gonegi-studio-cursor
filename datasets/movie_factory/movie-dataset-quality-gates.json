@@ -1,0 +1,19 @@
+{
+  "gates_id": "movie-dataset-quality-gates-v1",
+  "phase": "PHASE-MOVIE-DATASET-FACTORY-001",
+  "required": {
+    "scene_geometry_score_gte": 0.95,
+    "semantic_anchor_score_gte": 0.95,
+    "temporal_score_gte": 0.95,
+    "motion_score_gte": 0.95,
+    "world_identity_lock": "PASS",
+    "generic_harbor_regression_count_eq": 0
+  },
+  "validation_layers": [
+    "geometry",
+    "semantic",
+    "temporal",
+    "motion",
+    "world_identity_lock"
+  ]
+}

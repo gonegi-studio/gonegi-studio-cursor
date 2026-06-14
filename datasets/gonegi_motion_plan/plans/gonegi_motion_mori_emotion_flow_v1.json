@@ -1,0 +1,456 @@
+{
+  "gonegi_motion_plan_id": "gonegi_motion_mori_emotion_flow_v1",
+  "phase": "PHASE-SOURCE-VIDEO-016-GONEGI_KEYFRAME_TO_MOTION_COMPILER_V2",
+  "source_keyframe_plan_id": "gonegi_keyframe_mori_emotion_flow_v1",
+  "segment_count": 5,
+  "motion_segments": [
+    {
+      "segment_id": "gonegi_motion_mori_emotion_flow_v1_seg_0_to_1",
+      "from_keyframe": 0,
+      "to_keyframe": 1,
+      "from_timestamp": 0,
+      "to_timestamp": 5,
+      "duration_seconds": 5,
+      "camera_motion": {
+        "motion_category": "push_in",
+        "from_shot_type": "forest-path-wide",
+        "to_shot_type": "forest-path-wide",
+        "motion_progress_delta": 0.2,
+        "identity_safe": true,
+        "speed": "slow"
+      },
+      "character_motion": [
+        {
+          "character_id": "gonegi",
+          "motion_category": "stand",
+          "from_position": "path-center-left",
+          "to_position": "path-center-left",
+          "identity_lock_preserved": true
+        },
+        {
+          "character_id": "gamja",
+          "motion_category": "idle",
+          "from_position": "path-center-left_companion_near",
+          "to_position": "path-center-left_companion_near",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "hope",
+        "emotion_id": "hope",
+        "intensity_start": 0.6,
+        "intensity_end": 0.63
+      },
+      "environment_motion": {
+        "motion_category": "ambient",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "village_trail_01",
+          "market_basket_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:gonegi",
+          "character_reference:Gonegi",
+          "identity_lock:preserve_gonegi_silhouette",
+          "identity:character_identity:gamja",
+          "character_reference:Gamja",
+          "identity_lock:preserve_gamja_silhouette"
+        ],
+        "location_locks": [
+          "location_id:village_trail_01",
+          "location_lock:woodland-path",
+          "walkable-zone:forest-trail-dirt"
+        ],
+        "composition_locks": [
+          "prop_anchor:market_basket_01",
+          "composition_lock:path-leading-line",
+          "prop_anchor:forage_basket",
+          "character_position:gonegi@path-center-left",
+          "character_position:gamja@path-center-left_companion_near"
+        ]
+      }
+    },
+    {
+      "segment_id": "gonegi_motion_mori_emotion_flow_v1_seg_1_to_2",
+      "from_keyframe": 1,
+      "to_keyframe": 2,
+      "from_timestamp": 5,
+      "to_timestamp": 10,
+      "duration_seconds": 5,
+      "camera_motion": {
+        "motion_category": "push_in",
+        "from_shot_type": "forest-path-wide",
+        "to_shot_type": "forest-path-wide",
+        "motion_progress_delta": 0.2,
+        "identity_safe": true,
+        "speed": "slow"
+      },
+      "character_motion": [
+        {
+          "character_id": "gonegi",
+          "motion_category": "gesture",
+          "from_position": "path-center-left",
+          "to_position": "path-center-left",
+          "identity_lock_preserved": true
+        },
+        {
+          "character_id": "gamja",
+          "motion_category": "idle",
+          "from_position": "path-center-left_companion_near",
+          "to_position": "path-center-left_companion_near",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "hope",
+        "emotion_id": "hope",
+        "intensity_start": 0.63,
+        "intensity_end": 0.66
+      },
+      "environment_motion": {
+        "motion_category": "ambient",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "village_trail_01",
+          "market_basket_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:gonegi",
+          "character_reference:Gonegi",
+          "identity_lock:preserve_gonegi_silhouette",
+          "identity:character_identity:gamja",
+          "character_reference:Gamja",
+          "identity_lock:preserve_gamja_silhouette"
+        ],
+        "location_locks": [
+          "location_id:village_trail_01",
+          "location_lock:woodland-path",
+          "walkable-zone:forest-trail-dirt"
+        ],
+        "composition_locks": [
+          "prop_anchor:market_basket_01",
+          "composition_lock:path-leading-line",
+          "prop_anchor:forage_basket",
+          "character_position:gonegi@path-center-left",
+          "character_position:gamja@path-center-left_companion_near"
+        ]
+      }
+    },
+    {
+      "segment_id": "gonegi_motion_mori_emotion_flow_v1_seg_2_to_3",
+      "from_keyframe": 2,
+      "to_keyframe": 3,
+      "from_timestamp": 10,
+      "to_timestamp": 15,
+      "duration_seconds": 5,
+      "camera_motion": {
+        "motion_category": "push_in",
+        "from_shot_type": "forest-path-wide",
+        "to_shot_type": "forest-path-wide",
+        "motion_progress_delta": 0.2,
+        "identity_safe": true,
+        "speed": "slow"
+      },
+      "character_motion": [
+        {
+          "character_id": "gonegi",
+          "motion_category": "gesture",
+          "from_position": "path-center-left",
+          "to_position": "path-center-left",
+          "identity_lock_preserved": true
+        },
+        {
+          "character_id": "gamja",
+          "motion_category": "idle",
+          "from_position": "path-center-left_companion_near",
+          "to_position": "path-center-left_companion_near",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "hope",
+        "emotion_id": "hope",
+        "intensity_start": 0.66,
+        "intensity_end": 0.69
+      },
+      "environment_motion": {
+        "motion_category": "ambient",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "village_trail_01",
+          "market_basket_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:gonegi",
+          "character_reference:Gonegi",
+          "identity_lock:preserve_gonegi_silhouette",
+          "identity:character_identity:gamja",
+          "character_reference:Gamja",
+          "identity_lock:preserve_gamja_silhouette"
+        ],
+        "location_locks": [
+          "location_id:village_trail_01",
+          "location_lock:woodland-path",
+          "walkable-zone:forest-trail-dirt"
+        ],
+        "composition_locks": [
+          "prop_anchor:market_basket_01",
+          "composition_lock:path-leading-line",
+          "prop_anchor:forage_basket",
+          "character_position:gonegi@path-center-left",
+          "character_position:gamja@path-center-left_companion_near"
+        ]
+      }
+    },
+    {
+      "segment_id": "gonegi_motion_mori_emotion_flow_v1_seg_3_to_4",
+      "from_keyframe": 3,
+      "to_keyframe": 4,
+      "from_timestamp": 15,
+      "to_timestamp": 20,
+      "duration_seconds": 5,
+      "camera_motion": {
+        "motion_category": "push_in",
+        "from_shot_type": "forest-path-wide",
+        "to_shot_type": "forest-path-wide",
+        "motion_progress_delta": 0.2,
+        "identity_safe": true,
+        "speed": "slow"
+      },
+      "character_motion": [
+        {
+          "character_id": "gonegi",
+          "motion_category": "idle",
+          "from_position": "path-center-left",
+          "to_position": "path-center-left",
+          "identity_lock_preserved": true
+        },
+        {
+          "character_id": "gamja",
+          "motion_category": "idle",
+          "from_position": "path-center-left_companion_near",
+          "to_position": "path-center-left_companion_near",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "hope",
+        "emotion_id": "hope",
+        "intensity_start": 0.69,
+        "intensity_end": 0.72
+      },
+      "environment_motion": {
+        "motion_category": "ambient",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "village_trail_01",
+          "market_basket_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:gonegi",
+          "character_reference:Gonegi",
+          "identity_lock:preserve_gonegi_silhouette",
+          "identity:character_identity:gamja",
+          "character_reference:Gamja",
+          "identity_lock:preserve_gamja_silhouette"
+        ],
+        "location_locks": [
+          "location_id:village_trail_01",
+          "location_lock:woodland-path",
+          "walkable-zone:forest-trail-dirt"
+        ],
+        "composition_locks": [
+          "prop_anchor:market_basket_01",
+          "composition_lock:path-leading-line",
+          "prop_anchor:forage_basket",
+          "character_position:gonegi@path-center-left",
+          "character_position:gamja@path-center-left_companion_near"
+        ]
+      }
+    },
+    {
+      "segment_id": "gonegi_motion_mori_emotion_flow_v1_seg_4_to_5",
+      "from_keyframe": 4,
+      "to_keyframe": 5,
+      "from_timestamp": 20,
+      "to_timestamp": 25,
+      "duration_seconds": 5,
+      "camera_motion": {
+        "motion_category": "push_in",
+        "from_shot_type": "forest-path-wide",
+        "to_shot_type": "medium",
+        "motion_progress_delta": 0.2,
+        "identity_safe": true,
+        "speed": "slow"
+      },
+      "character_motion": [
+        {
+          "character_id": "gonegi",
+          "motion_category": "look",
+          "from_position": "path-center-left",
+          "to_position": "path-center-left",
+          "identity_lock_preserved": true
+        },
+        {
+          "character_id": "gamja",
+          "motion_category": "turn",
+          "from_position": "path-center-left_companion_near",
+          "to_position": "path-center-left_companion_near",
+          "identity_lock_preserved": true
+        }
+      ],
+      "emotion_motion": {
+        "motion_category": "hope",
+        "emotion_id": "hope",
+        "intensity_start": 0.72,
+        "intensity_end": 0.75
+      },
+      "environment_motion": {
+        "motion_category": "ambient",
+        "location_lock_preserved": true,
+        "prop_lock_preserved": true,
+        "elements": [
+          "village_trail_01",
+          "market_basket_01"
+        ]
+      },
+      "continuity_locks": {
+        "identity_locks": [
+          "identity:character_identity:gonegi",
+          "character_reference:Gonegi",
+          "identity_lock:preserve_gonegi_silhouette",
+          "identity:character_identity:gamja",
+          "character_reference:Gamja",
+          "identity_lock:preserve_gamja_silhouette"
+        ],
+        "location_locks": [
+          "location_id:village_trail_01",
+          "location_lock:woodland-path",
+          "walkable-zone:forest-trail-dirt"
+        ],
+        "composition_locks": [
+          "prop_anchor:market_basket_01",
+          "composition_lock:path-leading-line",
+          "prop_anchor:forage_basket",
+          "character_position:gonegi@path-center-left",
+          "character_position:gamja@path-center-left_companion_near"
+        ]
+      }
+    }
+  ],
+  "identity_locks": [
+    "identity:character_identity:gonegi",
+    "character_reference:Gonegi",
+    "identity_lock:preserve_gonegi_silhouette",
+    "identity:character_identity:gamja",
+    "character_reference:Gamja",
+    "identity_lock:preserve_gamja_silhouette"
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette"
+    ],
+    "location_locks": [
+      "location_id:village_trail_01",
+      "location_lock:woodland-path",
+      "walkable-zone:forest-trail-dirt"
+    ],
+    "composition_locks": [
+      "prop_anchor:market_basket_01",
+      "composition_lock:path-leading-line",
+      "prop_anchor:forage_basket"
+    ]
+  },
+  "translation_trace": {
+    "translation_id": "gonegi-master-world-translation-v1",
+    "source_world_type": "mori_woodland_craft_life",
+    "target_world_identity": "GONEGI_MEDITERRANEAN",
+    "applied_dimensions": [
+      "character_translation",
+      "location_translation",
+      "prop_translation",
+      "emotion_translation",
+      "relationship_translation",
+      "environment_translation"
+    ],
+    "location_mapping": {
+      "woodland-path": "village_trail_01"
+    },
+    "prop_mappings": {
+      "forage_basket": "market_basket_01"
+    },
+    "emotion_mapping": {
+      "craft_contentment": "hope"
+    },
+    "video_state_translation": {
+      "translator_phase": "PHASE-SOURCE-VIDEO-014-GONEGI_STATE_TO_VIDEO_STATE_TRANSLATOR_V1",
+      "defaults_id": "video-state-defaults-v1",
+      "blend_id": "gonegi-master-director-blend-v1",
+      "director_family": "MORI"
+    },
+    "keyframe_plan_translation": {
+      "compiler_phase": "PHASE-SOURCE-VIDEO-015-VIDEO_STATE_TO_KEYFRAME_COMPILER_V2",
+      "defaults_id": "video-state-defaults-v1",
+      "reference_schema": "datasets/keyframe_plan/keyframe-plan.schema.json"
+    },
+    "motion_plan_translation": {
+      "compiler_phase": "PHASE-SOURCE-VIDEO-016-GONEGI_KEYFRAME_TO_MOTION_COMPILER_V2",
+      "reference_schema": "datasets/motion_plan/motion-plan.schema.json",
+      "blend_id": "gonegi-master-director-blend-v1"
+    }
+  },
+  "replacement_trace": {
+    "contract_id": "gonegi-master-character-replacement-v1",
+    "replacements_applied": [
+      {
+        "source_role": "walker_companion",
+        "target_character_id": "gonegi",
+        "replacement_id": "replacement_walker_companion_v1"
+      }
+    ],
+    "companions_injected": [
+      "gamja"
+    ]
+  },
+  "director_blend_ref": "gonegi-master-director-blend-v1",
+  "motion_defaults": {
+    "source_family": "MORI",
+    "camera_motion_category_default": "dolly",
+    "character_motion_category_default": "walk",
+    "environment_motion_category_default": "ambient",
+    "emotion_motion_category_default": "hope",
+    "speed_default": "slow"
+  },
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "gonegi_motion_plan",
+    "production_registry": false,
+    "draft_status": "gonegi_motion_plan_compiled_v1"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "compiled_at": "2026-06-05T10:39:17.824Z"
+}

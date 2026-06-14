@@ -1,0 +1,1813 @@
+{
+  "validation_id": "TITANIC_IMAGE_RECONSTRUCTION_VALIDATION_V1",
+  "phase": "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001",
+  "generated_at": "2026-06-10T07:21:47.417Z",
+  "base_dataset": "latest_v5",
+  "movie_dataset": "titanic",
+  "test_scene_count": 10,
+  "character_dna_policy": {
+    "full_descriptions_required": true,
+    "names_only_forbidden": true,
+    "gonagi_dna_ref": "imports/character_image_anchors/slot_1-1/character_dna.json",
+    "dana_dna_ref": "imports/character_image_anchors/slot_1-2/character_dna.json"
+  },
+  "test_scenes": [
+    {
+      "test_scene_key": "01_bow_pose",
+      "scene_type": "bow_pose",
+      "source_scene_id": "scene_titanic_dense_bow_deck_0024",
+      "semantic_anchor_id": "titanic_bow_pose",
+      "shot_id": "shot_titanic_00254",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.97,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_01_bow_pose",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_bow_deck_0024",
+        "shot_id": "shot_titanic_00254",
+        "semantic_anchor_id": "titanic_bow_pose",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0024",
+          "blocking_id": "titanic_blk_dense_0024",
+          "composition_id": "titanic_comp_dense_0024",
+          "fingerprint_id": "titanic_fp_dense_0024",
+          "titanic_structure_markers": [
+            "bow",
+            "open_horizon",
+            "arms_linked",
+            "forward_facing"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_bow_pose",
+          "semantic_meaning": "shared wonder at open horizon; freedom through forward-facing embrace of the world",
+          "emotion": "freedom, romance, wonder",
+          "preserved_meaning": [
+            "freedom",
+            "romance",
+            "wonder"
+          ],
+          "gonegi_translation_ref": "gonegi_dana_harbor_bow_pose_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0024",
+          "scene_id": "scene_titanic_dense_bow_deck_0024",
+          "head_rotation": [
+            0,
+            16,
+            0
+          ],
+          "eye_direction": "mutual_gaze",
+          "torso_rotation": [
+            0,
+            8,
+            0
+          ],
+          "left_arm_position": [
+            0.48,
+            0.62,
+            0.1
+          ],
+          "right_arm_position": [
+            0.62,
+            0.6,
+            0.1
+          ],
+          "left_hand_position": "linked_partner_hand",
+          "right_hand_position": "rail_grasp_optional",
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.97
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: bow_pose. Titanic structure: bow, open_horizon, arms_linked, forward_facing. Semantic anchor: titanic_bow_pose — shared wonder at open horizon; freedom through forward-facing embrace of the world. Camera pattern: titanic_cam_dense_0024 (wide_establishing). Blocking pattern: titanic_blk_dense_0024. Composition: titanic_comp_dense_0024. Emotion: freedom, romance, wonder. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [0,16,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "02_staircase_encounter",
+      "scene_type": "staircase_encounter",
+      "source_scene_id": "scene_titanic_dense_grand_staircase_0110",
+      "semantic_anchor_id": "titanic_staircase_encounter",
+      "shot_id": "shot_titanic_01200",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.948,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_02_staircase_encounter",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_grand_staircase_0110",
+        "shot_id": "shot_titanic_01200",
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0110",
+          "blocking_id": "titanic_blk_dense_0110",
+          "composition_id": "titanic_comp_dense_0110",
+          "fingerprint_id": "titanic_fp_dense_0110",
+          "titanic_structure_markers": [
+            "staircase",
+            "vertical_ascent",
+            "intercepted_gaze",
+            "class_boundary"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_staircase_encounter",
+          "semantic_meaning": "class-boundary crossing through vertical ascent and intercepted gaze",
+          "emotion": "longing, social tension, destiny",
+          "preserved_meaning": [
+            "longing",
+            "social_tension",
+            "destiny"
+          ],
+          "gonegi_translation_ref": "gonegi_dana_stairwell_encounter_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0110",
+          "scene_id": "scene_titanic_dense_grand_staircase_0110",
+          "head_rotation": [
+            -4,
+            8,
+            0
+          ],
+          "eye_direction": "mutual_gaze",
+          "torso_rotation": [
+            0,
+            12,
+            0
+          ],
+          "left_arm_position": [
+            0.44,
+            0.6,
+            0.1
+          ],
+          "right_arm_position": [
+            0.58,
+            0.58,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.948
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: staircase_encounter. Titanic structure: staircase, vertical_ascent, intercepted_gaze, class_boundary. Semantic anchor: titanic_staircase_encounter — class-boundary crossing through vertical ascent and intercepted gaze. Camera pattern: titanic_cam_dense_0110 (wide_establishing). Blocking pattern: titanic_blk_dense_0110. Composition: titanic_comp_dense_0110. Emotion: awe, liberation. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-4,8,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "03_deck_walk",
+      "scene_type": "deck_walk",
+      "source_scene_id": "scene_titanic_dense_promenade_0013",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "shot_id": "shot_titanic_00133",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.94,
+        "semantic_anchor_preservation": 0.94,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_03_deck_walk",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_promenade_0013",
+        "shot_id": "shot_titanic_00133",
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0013",
+          "blocking_id": "titanic_blk_dense_0013",
+          "composition_id": "titanic_comp_dense_0013",
+          "fingerprint_id": "titanic_fp_dense_0013",
+          "titanic_structure_markers": [
+            "promenade",
+            "deck_walk",
+            "voyage_path",
+            "open_deck"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_deck_to_interior_transition",
+          "semantic_meaning": "movement from open possibility into constrained social order",
+          "emotion": "shift, anticipation, constraint",
+          "gonegi_translation_ref": "gonegi_lane_to_bakery_threshold_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0013",
+          "scene_id": "scene_titanic_dense_promenade_0013",
+          "head_rotation": [
+            -5,
+            4,
+            0
+          ],
+          "eye_direction": "forward_horizon",
+          "torso_rotation": [
+            0,
+            6,
+            0
+          ],
+          "left_arm_position": [
+            0.42,
+            0.58,
+            0.1
+          ],
+          "right_arm_position": [
+            0.56,
+            0.56,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.94
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: deck_walk. Titanic structure: promenade, deck_walk, voyage_path, open_deck. Semantic anchor: titanic_deck_to_interior_transition — movement from open possibility into constrained social order. Camera pattern: titanic_cam_dense_0013 (wide_establishing). Blocking pattern: titanic_blk_dense_0013. Composition: titanic_comp_dense_0013. Emotion: shift, anticipation, constraint. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-5,4,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "04_sunset_rail",
+      "scene_type": "sunset_rail",
+      "source_scene_id": "scene_titanic_dense_sunset_rail_0019",
+      "semantic_anchor_id": "titanic_sunset_rail_pose",
+      "shot_id": "shot_titanic_00199",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.94,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_04_sunset_rail",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_sunset_rail_0019",
+        "shot_id": "shot_titanic_00199",
+        "semantic_anchor_id": "titanic_sunset_rail_pose",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0019",
+          "blocking_id": "titanic_blk_dense_0019",
+          "composition_id": "titanic_comp_dense_0019",
+          "fingerprint_id": "titanic_fp_dense_0019",
+          "titanic_structure_markers": [
+            "sunset_rail",
+            "golden_hour",
+            "profile_silhouette",
+            "rail_boundary"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_sunset_rail_pose",
+          "semantic_meaning": "golden-hour intimacy against vast water; private world inside public voyage",
+          "emotion": "tenderness, awe, impermanence",
+          "preserved_meaning": [
+            "tenderness",
+            "awe",
+            "impermanence"
+          ],
+          "gonegi_translation_ref": "gonegi_dana_sunset_quay_pose_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0019",
+          "scene_id": "scene_titanic_dense_sunset_rail_0019",
+          "head_rotation": [
+            -5,
+            -4,
+            0
+          ],
+          "eye_direction": "forward_horizon",
+          "torso_rotation": [
+            0,
+            9,
+            0
+          ],
+          "left_arm_position": [
+            0.46,
+            0.58,
+            0.1
+          ],
+          "right_arm_position": [
+            0.6,
+            0.56,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.94
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: sunset_rail. Titanic structure: sunset_rail, golden_hour, profile_silhouette, rail_boundary. Semantic anchor: titanic_sunset_rail_pose — golden-hour intimacy against vast water; private world inside public voyage. Camera pattern: titanic_cam_dense_0019 (wide_establishing). Blocking pattern: titanic_blk_dense_0019. Composition: titanic_comp_dense_0019. Emotion: tenderness, awe, impermanence. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-5,-4,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "05_dining_hall",
+      "scene_type": "dining_hall",
+      "source_scene_id": "scene_titanic_dense_dining_0044",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "shot_id": "shot_titanic_00474",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.948,
+        "semantic_anchor_preservation": 0.94,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_05_dining_hall",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_dining_0044",
+        "shot_id": "shot_titanic_00474",
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0044",
+          "blocking_id": "titanic_blk_dense_0044",
+          "composition_id": "titanic_comp_dense_0044",
+          "fingerprint_id": "titanic_fp_dense_0044",
+          "titanic_structure_markers": [
+            "dining_salon",
+            "table_geometry",
+            "interior_luxury",
+            "social_order"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_deck_to_interior_transition",
+          "semantic_meaning": "movement from open possibility into constrained social order",
+          "emotion": "shift, anticipation, constraint",
+          "gonegi_translation_ref": "gonegi_lane_to_bakery_threshold_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0044",
+          "scene_id": "scene_titanic_dense_dining_0044",
+          "head_rotation": [
+            -4,
+            0,
+            0
+          ],
+          "eye_direction": "mutual_gaze",
+          "torso_rotation": [
+            0,
+            9,
+            0
+          ],
+          "left_arm_position": [
+            0.48,
+            0.6,
+            0.1
+          ],
+          "right_arm_position": [
+            0.62,
+            0.58,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.948
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: dining_hall. Titanic structure: dining_salon, table_geometry, interior_luxury, social_order. Semantic anchor: titanic_deck_to_interior_transition — movement from open possibility into constrained social order. Camera pattern: titanic_cam_dense_0044 (wide_establishing). Blocking pattern: titanic_blk_dense_0044. Composition: titanic_comp_dense_0044. Emotion: joy, discovery. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-4,0,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "06_engine_room",
+      "scene_type": "engine_room",
+      "source_scene_id": "scene_titanic_dense_engine_room_0052",
+      "semantic_anchor_id": "titanic_deck_to_interior_transition",
+      "shot_id": "shot_titanic_00562",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.964,
+        "semantic_anchor_preservation": 0.94,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_06_engine_room",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_engine_room_0052",
+        "shot_id": "shot_titanic_00562",
+        "semantic_anchor_id": "titanic_deck_to_interior_transition",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0052",
+          "blocking_id": "titanic_blk_dense_0052",
+          "composition_id": "titanic_comp_dense_0052",
+          "fingerprint_id": "titanic_fp_dense_0052",
+          "titanic_structure_markers": [
+            "engine_room",
+            "industrial_depth",
+            "machine_geometry",
+            "descent"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_deck_to_interior_transition",
+          "semantic_meaning": "movement from open possibility into constrained social order",
+          "emotion": "shift, anticipation, constraint",
+          "gonegi_translation_ref": "gonegi_lane_to_bakery_threshold_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0052",
+          "scene_id": "scene_titanic_dense_engine_room_0052",
+          "head_rotation": [
+            -2,
+            0,
+            0
+          ],
+          "eye_direction": "mutual_gaze",
+          "torso_rotation": [
+            0,
+            3,
+            0
+          ],
+          "left_arm_position": [
+            0.48,
+            0.58,
+            0.1
+          ],
+          "right_arm_position": [
+            0.62,
+            0.56,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.964
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: engine_room. Titanic structure: engine_room, industrial_depth, machine_geometry, descent. Semantic anchor: titanic_deck_to_interior_transition — movement from open possibility into constrained social order. Camera pattern: titanic_cam_dense_0052 (wide_establishing). Blocking pattern: titanic_blk_dense_0052. Composition: titanic_comp_dense_0052. Emotion: joy, discovery. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-2,0,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "07_corridor",
+      "scene_type": "corridor",
+      "source_scene_id": "scene_titanic_dense_corridor_0009",
+      "semantic_anchor_id": "titanic_staircase_encounter",
+      "shot_id": "shot_titanic_00089",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.956,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_07_corridor",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_corridor_0009",
+        "shot_id": "shot_titanic_00089",
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0009",
+          "blocking_id": "titanic_blk_dense_0009",
+          "composition_id": "titanic_comp_dense_0009",
+          "fingerprint_id": "titanic_fp_dense_0009",
+          "titanic_structure_markers": [
+            "corridor",
+            "threshold_passage",
+            "linear_depth",
+            "interior_axis"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_staircase_encounter",
+          "semantic_meaning": "class-boundary crossing through vertical ascent and intercepted gaze",
+          "emotion": "longing, social tension, destiny",
+          "preserved_meaning": [
+            "longing",
+            "social_tension",
+            "destiny"
+          ],
+          "gonegi_translation_ref": "gonegi_dana_stairwell_encounter_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0009",
+          "scene_id": "scene_titanic_dense_corridor_0009",
+          "head_rotation": [
+            -3,
+            -12,
+            0
+          ],
+          "eye_direction": "forward_horizon",
+          "torso_rotation": [
+            0,
+            9,
+            0
+          ],
+          "left_arm_position": [
+            0.42,
+            0.62,
+            0.1
+          ],
+          "right_arm_position": [
+            0.56,
+            0.6,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.956
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: corridor. Titanic structure: corridor, threshold_passage, linear_depth, interior_axis. Semantic anchor: titanic_staircase_encounter — class-boundary crossing through vertical ascent and intercepted gaze. Camera pattern: titanic_cam_dense_0009 (wide_establishing). Blocking pattern: titanic_blk_dense_0009. Composition: titanic_comp_dense_0009. Emotion: longing, social tension, destiny. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-3,-12,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "08_farewell",
+      "scene_type": "farewell",
+      "source_scene_id": "scene_titanic_dense_crowd_departure_0041",
+      "semantic_anchor_id": "titanic_farewell_pose",
+      "shot_id": "shot_titanic_00441",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.972,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_08_farewell",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_crowd_departure_0041",
+        "shot_id": "shot_titanic_00441",
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0041",
+          "blocking_id": "titanic_blk_dense_0041",
+          "composition_id": "titanic_comp_dense_0041",
+          "fingerprint_id": "titanic_fp_dense_0041",
+          "titanic_structure_markers": [
+            "farewell",
+            "departure_edge",
+            "clasp_and_parting",
+            "separation"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_farewell_pose",
+          "semantic_meaning": "separation at threshold; love held against departure pressure",
+          "emotion": "grief, devotion, urgency",
+          "preserved_meaning": [
+            "grief",
+            "devotion",
+            "urgency"
+          ],
+          "gonegi_translation_ref": "gonegi_dana_harbor_farewell_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0041",
+          "scene_id": "scene_titanic_dense_crowd_departure_0041",
+          "head_rotation": [
+            -1,
+            -12,
+            0
+          ],
+          "eye_direction": "forward_horizon",
+          "torso_rotation": [
+            0,
+            0,
+            0
+          ],
+          "left_arm_position": [
+            0.42,
+            0.6,
+            0.1
+          ],
+          "right_arm_position": [
+            0.56,
+            0.58,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.972
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: farewell. Titanic structure: farewell, departure_edge, clasp_and_parting, separation. Semantic anchor: titanic_farewell_pose — separation at threshold; love held against departure pressure. Camera pattern: titanic_cam_dense_0041 (wide_establishing). Blocking pattern: titanic_blk_dense_0041. Composition: titanic_comp_dense_0041. Emotion: tenderness, awe, impermanence. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-1,-12,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "09_rescue_boat",
+      "scene_type": "rescue_boat",
+      "source_scene_id": "scene_titanic_dense_lifeboat_0018",
+      "semantic_anchor_id": "titanic_farewell_pose",
+      "shot_id": "shot_titanic_00188",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.98,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_09_rescue_boat",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_lifeboat_0018",
+        "shot_id": "shot_titanic_00188",
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0018",
+          "blocking_id": "titanic_blk_dense_0018",
+          "composition_id": "titanic_comp_dense_0018",
+          "fingerprint_id": "titanic_fp_dense_0018",
+          "titanic_structure_markers": [
+            "lifeboat",
+            "rescue_threshold",
+            "crowd_pressure",
+            "departure_urgency"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_farewell_pose",
+          "semantic_meaning": "separation at threshold; love held against departure pressure",
+          "emotion": "grief, devotion, urgency",
+          "preserved_meaning": [
+            "grief",
+            "devotion",
+            "urgency"
+          ],
+          "gonegi_translation_ref": "gonegi_dana_harbor_farewell_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0018",
+          "scene_id": "scene_titanic_dense_lifeboat_0018",
+          "head_rotation": [
+            0,
+            -8,
+            0
+          ],
+          "eye_direction": "mutual_gaze",
+          "torso_rotation": [
+            0,
+            6,
+            0
+          ],
+          "left_arm_position": [
+            0.44,
+            0.62,
+            0.1
+          ],
+          "right_arm_position": [
+            0.58,
+            0.6,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.98
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: rescue_boat. Titanic structure: lifeboat, rescue_threshold, crowd_pressure, departure_urgency. Semantic anchor: titanic_farewell_pose — separation at threshold; love held against departure pressure. Camera pattern: titanic_cam_dense_0018 (wide_establishing). Blocking pattern: titanic_blk_dense_0018. Composition: titanic_comp_dense_0018. Emotion: grief, devotion, urgency. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [0,-8,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    },
+    {
+      "test_scene_key": "10_final_memory",
+      "scene_type": "final_memory",
+      "source_scene_id": "scene_titanic_dense_harbor_approach_0010",
+      "semantic_anchor_id": "titanic_farewell_pose",
+      "shot_id": "shot_titanic_00100",
+      "character_dna_expanded": true,
+      "character_dna_names_only": false,
+      "semantic_anchor_present": true,
+      "titanic_structure_present": true,
+      "generic_harbor_detected": false,
+      "metrics": {
+        "titanic_recognition": 0.99,
+        "scene_geometry_preservation": 0.96,
+        "camera_preservation": 0.94,
+        "blocking_preservation": 0.95,
+        "composition_preservation": 0.9,
+        "pose_preservation": 0.964,
+        "semantic_anchor_preservation": 0.98,
+        "gonegi_identity_preservation": 0.94
+      },
+      "image_prompt_block": {
+        "prompt_id": "titanic_image_prompt_10_final_memory",
+        "base_dataset": "latest_v5",
+        "movie_dataset": "titanic",
+        "adapter_ref": "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+        "scene_id": "scene_titanic_dense_harbor_approach_0010",
+        "shot_id": "shot_titanic_00100",
+        "semantic_anchor_id": "titanic_farewell_pose",
+        "gonegi_translation_block": {
+          "target_world_identity": "GONEGI_MEDITERRANEAN",
+          "appearance_control": "gonegi_world_only",
+          "structure_control": "movie_dataset_only",
+          "required_output_label": "Titanic Scene Reconstructed Inside Gonegi World"
+        },
+        "movie_geometry_block": {
+          "camera_id": "titanic_cam_dense_0010",
+          "blocking_id": "titanic_blk_dense_0010",
+          "composition_id": "titanic_comp_dense_0010",
+          "fingerprint_id": "titanic_fp_dense_0010",
+          "titanic_structure_markers": [
+            "final_memory",
+            "memory_recall",
+            "emotional_afterimage",
+            "voyage_closure"
+          ]
+        },
+        "character_dna_block": {
+          "CHAR_gonagi": {
+            "character_id": "CHAR-gonagi",
+            "name": "Gonegi",
+            "korean_name": "고네기",
+            "height_cm": 164,
+            "age_years": 11,
+            "role": "protagonist_boy",
+            "visual_dna_full": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+            "face_description": "Mature and refined Pazu-lookalike",
+            "hair_description": "Messy matte jet-black hair",
+            "outfit_description": "Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders",
+            "skin_description": "Healthy sun-kissed tan (#F2D1B3)",
+            "footwear_description": "Simple dark brown worn leather work boots",
+            "companion_lock": "Gamja",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "CHAR_dana": {
+            "character_id": "CHAR-dana",
+            "name": "Dana",
+            "korean_name": "다나",
+            "height_cm": 152,
+            "age_years": 11,
+            "role": "protagonist_girl",
+            "visual_dna_full": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "face_description": "Mature but soft facial structure",
+            "hair_description": "Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings",
+            "outfit_description": "One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF)",
+            "skin_description": "Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6)",
+            "footwear_description": "Simple flat dark-brown leather sandals (thin straps)",
+            "companion_lock": "Aengdu",
+            "identity_law": {
+              "priority_order": [
+                "elite-image-main visual reference",
+                "canonical_visual_dna",
+                "face_hair_outfit_silhouette locks",
+                "style/env/scene rules"
+              ],
+              "reference_required": true,
+              "allow_runtime_rewrite": false,
+              "allow_poetic_compression": false,
+              "allow_generic_substitution": false
+            },
+            "prompt_usage": {
+              "recommended_order": "name -> age/role -> face/eyes -> hair -> skin -> outfit -> footwear -> companion -> action/scene",
+              "do_not_summarize_away": "eyes, hair, outfit, height, age, relational anchor",
+              "natural_prompt_required": true
+            },
+            "names_only_forbidden": true,
+            "expanded_for_image_generation": true
+          },
+          "full_descriptions_required": true,
+          "names_only_forbidden": true
+        },
+        "semantic_block": {
+          "anchor_id": "titanic_farewell_pose",
+          "semantic_meaning": "separation at threshold; love held against departure pressure",
+          "emotion": "grief, devotion, urgency",
+          "preserved_meaning": [
+            "grief",
+            "devotion",
+            "urgency"
+          ],
+          "gonegi_translation_ref": "gonegi_dana_harbor_farewell_v1"
+        },
+        "pose_block": {
+          "pose_id": "titanic_pose_0010",
+          "scene_id": "scene_titanic_dense_harbor_approach_0010",
+          "head_rotation": [
+            -2,
+            -8,
+            0
+          ],
+          "eye_direction": "mutual_gaze",
+          "torso_rotation": [
+            0,
+            12,
+            0
+          ],
+          "left_arm_position": [
+            0.44,
+            0.58,
+            0.1
+          ],
+          "right_arm_position": [
+            0.58,
+            0.56,
+            0.1
+          ],
+          "left_hand_position": [
+            0.4,
+            0.6,
+            0.12
+          ],
+          "right_hand_position": [
+            0.58,
+            0.58,
+            0.12
+          ],
+          "left_leg_position": [
+            0.38,
+            0.28,
+            0
+          ],
+          "right_leg_position": [
+            0.48,
+            0.28,
+            0
+          ],
+          "pose_confidence": 0.964
+        },
+        "composed_prompt_text": "Titanic Scene Reconstructed Inside Gonegi World. Scene type: final_memory. Titanic structure: final_memory, memory_recall, emotional_afterimage, voyage_closure. Semantic anchor: titanic_farewell_pose — separation at threshold; love held against departure pressure. Camera pattern: titanic_cam_dense_0010 (wide_establishing). Blocking pattern: titanic_blk_dense_0010. Composition: titanic_comp_dense_0010. Emotion: grief, devotion, urgency. Gonegi world: GONEGI_MEDITERRANEAN (appearance from latest_v5 only). Character A — [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.. Character B — [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.. Pose coordinates: head [-2,-8,0], arms linked geometry preserved. Forbidden: Generic Mediterranean Harbor Scene, Titanic Copy, names-only character references",
+        "generic_harbor_fallback": false,
+        "movie_style_override": false,
+        "world_identity_override": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,2549 @@
+{
+  "asset_type": "location_dna_library",
+  "asset_version": "v1",
+  "library_id": "location-dna-library-v1",
+  "phase": "PHASE-LTD-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "world_type": "early-1900s mediterranean harbor town",
+  "purpose": "Reference Location DNA for persistent place identity across Music Drama image sequences. No scenarios, prompts, or runtime generation.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_mdg": false,
+    "modifies_adapters": false
+  },
+  "read_only_sources": {
+    "rkb_002": "datasets/render_feedback/RKB-002.json",
+    "music_drama_grammar_core": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+    "time_library": "datasets/time/time-setting-library-v1.json"
+  },
+  "section_1_location_domains": {
+    "domain_count": 6,
+    "domains": [
+      {
+        "domain": "Gonegi Domain",
+        "location_count": 12
+      },
+      {
+        "domain": "Dana Domain",
+        "location_count": 9
+      },
+      {
+        "domain": "Harbor Domain",
+        "location_count": 12
+      },
+      {
+        "domain": "Village Domain",
+        "location_count": 12
+      },
+      {
+        "domain": "Nature Domain",
+        "location_count": 12
+      },
+      {
+        "domain": "Shared Future Domain",
+        "location_count": 10
+      }
+    ]
+  },
+  "section_5_location_identity_law": {
+    "minimum_visual_anchors": 3,
+    "minimum_persistent_objects": 2,
+    "minimum_color_identity": 1,
+    "minimum_camera_identity": 1,
+    "purpose": "Same location_id must be described with consistent anchors across future scenarios to prevent location drift.",
+    "enforcement": "reference_only"
+  },
+  "section_6_rkb_002_integration": {
+    "test_id": "RKB-002",
+    "findings_addressed": {
+      "location_drift": {
+        "detected": true,
+        "mitigation": "Bind scenario location text to location_id anchors; reuse visual, architectural, and color anchors per shot."
+      },
+      "scene_mutation": {
+        "detected": true,
+        "mitigation": "Lock persistent_objects and architectural_anchors across same-location multi-shot sequences."
+      },
+      "environment_inconsistency": {
+        "detected": true,
+        "mitigation": "Pair location_id with recommended_time_profiles and terrain_anchors for micro-environment stability."
+      },
+      "same_place_multi_shot_requirement": {
+        "required": true,
+        "policy": "When consecutive shots share narrative place, reuse identical location_id and full anchor set from this library."
+      }
+    },
+    "source": "datasets/render_feedback/RKB-002.json#section_3_failure_findings"
+  },
+  "location_count": 67,
+  "locations": [
+    {
+      "location_id": "gonegi_bedroom_01",
+      "location_name": "Gonegi Bedroom",
+      "domain": "Gonegi Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "low wooden bed frame",
+        "sun-washed whitewash walls",
+        "single east-facing window"
+      ],
+      "architectural_anchors": [
+        "plaster wall texture",
+        "simple timber lintel",
+        "worn floorboards"
+      ],
+      "terrain_anchors": [
+        "interior — hillside house level"
+      ],
+      "color_anchors": [
+        "warm cream walls",
+        "soft blue morning fill",
+        "navy textile accent"
+      ],
+      "persistent_objects": [
+        "quilted blanket",
+        "wooden bedside stool"
+      ],
+      "sound_identity": "distant rooster, floorboard creak, linen rustle",
+      "camera_friendly_zones": [
+        "window-side medium",
+        "bed-foot wide",
+        "doorway threshold"
+      ],
+      "recommended_time_profiles": [
+        "sunrise",
+        "early_morning",
+        "evening_lanterns"
+      ],
+      "narrative_note": "EP01 intro and outro anchor",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "gonegi_window_corner_01",
+      "location_name": "Gonegi Window Corner",
+      "domain": "Gonegi Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "deep window sill",
+        "open wooden shutter",
+        "linen curtain half-drawn"
+      ],
+      "architectural_anchors": [
+        "thick plaster reveal",
+        "iron latch hardware"
+      ],
+      "terrain_anchors": [
+        "interior corner overlooking village slope"
+      ],
+      "color_anchors": [
+        "pale gold light pool",
+        "cool shadow wedge"
+      ],
+      "persistent_objects": [
+        "clay water jug",
+        "folded work shirt on sill"
+      ],
+      "sound_identity": "soft breeze through shutter, distant harbor bell",
+      "camera_friendly_zones": [
+        "profile silhouette at window",
+        "over-shoulder to exterior"
+      ],
+      "recommended_time_profiles": [
+        "sunrise",
+        "blue_hour",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "gonegi_rooftop_01",
+      "location_name": "Gonegi Rooftop",
+      "domain": "Gonegi Domain",
+      "location_type": "domestic_exterior",
+      "visual_anchors": [
+        "terracotta roof tiles",
+        "low parapet wall",
+        "chimney stack"
+      ],
+      "architectural_anchors": [
+        "whitewashed parapet",
+        "wooden roof ladder access"
+      ],
+      "terrain_anchors": [
+        "elevated above village lanes",
+        "sea glimpse beyond roofs"
+      ],
+      "color_anchors": [
+        "sun-bleached terracotta",
+        "azure horizon strip"
+      ],
+      "persistent_objects": [
+        "clothes line rope",
+        "earthenware water jar"
+      ],
+      "sound_identity": "wind across tiles, distant gull cry",
+      "camera_friendly_zones": [
+        "parapet lean wide",
+        "seated on tile medium"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "morning_sunshine",
+        "clear_morning"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "family_bakery_kitchen_01",
+      "location_name": "Family Bakery Kitchen",
+      "domain": "Gonegi Domain",
+      "location_type": "commercial_interior",
+      "visual_anchors": [
+        "brick bread oven mouth",
+        "flour-dusted work table",
+        "copper kettle steam"
+      ],
+      "architectural_anchors": [
+        "arched oven niche",
+        "timber ceiling beams"
+      ],
+      "terrain_anchors": [
+        "ground floor bakery rear"
+      ],
+      "color_anchors": [
+        "amber oven glow",
+        "warm flour white",
+        "charcoal hearth shadow"
+      ],
+      "persistent_objects": [
+        "rolling pin",
+        "linen proofing cloth"
+      ],
+      "sound_identity": "oven door thud, dough slap rhythm",
+      "camera_friendly_zones": [
+        "oven glow medium",
+        "table work close"
+      ],
+      "recommended_time_profiles": [
+        "pre_dawn",
+        "early_morning"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "family_bakery_dining_01",
+      "location_name": "Family Bakery Dining Room",
+      "domain": "Gonegi Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "long pine dining table",
+        "bench seating",
+        "window to bakery lane"
+      ],
+      "architectural_anchors": [
+        "exposed beam ceiling",
+        "stone floor inlay"
+      ],
+      "terrain_anchors": [
+        "attached to bakery kitchen"
+      ],
+      "color_anchors": [
+        "honey wood tone",
+        "morning white wash"
+      ],
+      "persistent_objects": [
+        "ceramic bread basket",
+        "tin tea pot"
+      ],
+      "sound_identity": "cutlery clink, muffled street footfall",
+      "camera_friendly_zones": [
+        "table length wide",
+        "bench-side medium"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "morning_market"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "family_bakery_front_01",
+      "location_name": "Family Bakery Front",
+      "domain": "Gonegi Domain",
+      "location_type": "commercial_threshold",
+      "visual_anchors": [
+        "display window loaves",
+        "awning stripe fabric",
+        "threshold step wear"
+      ],
+      "architectural_anchors": [
+        "stone arch doorway",
+        "painted shop sign board"
+      ],
+      "terrain_anchors": [
+        "lane-facing shop front"
+      ],
+      "color_anchors": [
+        "warm crust gold",
+        "faded red awning"
+      ],
+      "persistent_objects": [
+        "wooden bread tray",
+        "handwritten price slate"
+      ],
+      "sound_identity": "door bell chime, morning queue murmur",
+      "camera_friendly_zones": [
+        "exterior facade wide",
+        "counter through window"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "morning_market"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "family_bakery_storage_01",
+      "location_name": "Family Bakery Storage",
+      "domain": "Gonegi Domain",
+      "location_type": "service_interior",
+      "visual_anchors": [
+        "sack stacks",
+        "cool stone shelving",
+        "narrow lantern hook"
+      ],
+      "architectural_anchors": [
+        "vaulted low ceiling cellar form"
+      ],
+      "terrain_anchors": [
+        "below-grade bakery annex"
+      ],
+      "color_anchors": [
+        "cool grey stone",
+        "muted burlap tan"
+      ],
+      "persistent_objects": [
+        "flour sack pile",
+        "wooden crate stack"
+      ],
+      "sound_identity": "muted footsteps, sack shift rustle",
+      "camera_friendly_zones": [
+        "aisle depth medium",
+        "shelf detail close"
+      ],
+      "recommended_time_profiles": [
+        "pre_dawn",
+        "afternoon_work"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "family_bakery_stairway_01",
+      "location_name": "Family Bakery Stairway",
+      "domain": "Gonegi Domain",
+      "location_type": "circulation",
+      "visual_anchors": [
+        "worn stone steps",
+        "rope handrail",
+        "wall lantern niche"
+      ],
+      "architectural_anchors": [
+        "curved inner stairwell",
+        "whitewash passage walls"
+      ],
+      "terrain_anchors": [
+        "connects bakery floors to upper rooms"
+      ],
+      "color_anchors": [
+        "warm step highlight",
+        "cool upper shadow"
+      ],
+      "persistent_objects": [
+        "wall hook for apron",
+        "step-side flour bag"
+      ],
+      "sound_identity": "shoe scuff on stone, distant oven echo",
+      "camera_friendly_zones": [
+        "descending angle wide",
+        "mid-stair portrait"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "evening_lanterns"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "gonegi_desk_nook_01",
+      "location_name": "Gonegi Desk Nook",
+      "domain": "Gonegi Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "small writing desk",
+        "oil lamp bracket",
+        "shelf of twine and tools"
+      ],
+      "architectural_anchors": [
+        "alcove under sloped ceiling"
+      ],
+      "terrain_anchors": [
+        "upper room corner"
+      ],
+      "color_anchors": [
+        "amber lamp pool",
+        "navy shadow corner"
+      ],
+      "persistent_objects": [
+        "ledger book",
+        "ink pot"
+      ],
+      "sound_identity": "pen scratch, house timber settle",
+      "camera_friendly_zones": [
+        "desk side medium",
+        "over-desk close"
+      ],
+      "recommended_time_profiles": [
+        "evening_lanterns",
+        "blue_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "gonegi_hallway_01",
+      "location_name": "Gonegi Hallway",
+      "domain": "Gonegi Domain",
+      "location_type": "circulation",
+      "visual_anchors": [
+        "narrow plank floor corridor",
+        "framed family print",
+        "coat peg row"
+      ],
+      "architectural_anchors": [
+        "timber door frames",
+        "low ceiling beam"
+      ],
+      "terrain_anchors": [
+        "interior domestic passage"
+      ],
+      "color_anchors": [
+        "soft neutral plaster",
+        "warm floor amber"
+      ],
+      "persistent_objects": [
+        "woven house slippers",
+        "hanging work coat"
+      ],
+      "sound_identity": "soft footsteps, distant kitchen clatter",
+      "camera_friendly_zones": [
+        "corridor depth",
+        "doorway frame"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "evening_lanterns"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "gonegi_courtyard_entry_01",
+      "location_name": "Gonegi Courtyard Entry",
+      "domain": "Gonegi Domain",
+      "location_type": "domestic_exterior",
+      "visual_anchors": [
+        "stone courtyard pavers",
+        "wooden gate",
+        "climbing vine on wall"
+      ],
+      "architectural_anchors": [
+        "whitewash courtyard walls",
+        "arched side passage"
+      ],
+      "terrain_anchors": [
+        "between house and lane"
+      ],
+      "color_anchors": [
+        "sunlit stone beige",
+        "green vine accent"
+      ],
+      "persistent_objects": [
+        "water basin",
+        "broom by door"
+      ],
+      "sound_identity": "gate latch, chicken cluck distant",
+      "camera_friendly_zones": [
+        "gate threshold wide",
+        "courtyard center"
+      ],
+      "recommended_time_profiles": [
+        "morning_sunshine",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "gonegi_loft_storage_01",
+      "location_name": "Gonegi Loft Storage",
+      "domain": "Gonegi Domain",
+      "location_type": "service_interior",
+      "visual_anchors": [
+        "rafter beams",
+        "trunk stacks",
+        "round attic window"
+      ],
+      "architectural_anchors": [
+        "timber roof trusses"
+      ],
+      "terrain_anchors": [
+        "top house level"
+      ],
+      "color_anchors": [
+        "dusty sun shaft",
+        "aged wood brown"
+      ],
+      "persistent_objects": [
+        "travel trunk",
+        "rolled fishing net"
+      ],
+      "sound_identity": "roof timber creak, wind at window",
+      "camera_friendly_zones": [
+        "window dust beam",
+        "trunk aisle"
+      ],
+      "recommended_time_profiles": [
+        "afternoon_work",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "dana_bedroom_01",
+      "location_name": "Dana Bedroom",
+      "domain": "Dana Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "canopy bed corner",
+        "lace curtain panel",
+        "porcelain washbasin stand"
+      ],
+      "architectural_anchors": [
+        "taller ceiling plaster",
+        "decorative cornice"
+      ],
+      "terrain_anchors": [
+        "upper village house interior"
+      ],
+      "color_anchors": [
+        "soft rose-white walls",
+        "lavender textile hint"
+      ],
+      "persistent_objects": [
+        "ribboned brush tray",
+        "folded letter stack"
+      ],
+      "sound_identity": "quiet clock tick, garden bird outside",
+      "camera_friendly_zones": [
+        "bedside medium",
+        "window lace backlight"
+      ],
+      "recommended_time_profiles": [
+        "sunrise",
+        "blue_hour"
+      ],
+      "ep01_compatible": false,
+      "narrative_note": "Post-EP01 Dana arc",
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_window_corner_01",
+      "location_name": "Dana Window Corner",
+      "domain": "Dana Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "tall casement window",
+        "reading chair",
+        "potted geranium sill"
+      ],
+      "architectural_anchors": [
+        "molded window surround"
+      ],
+      "terrain_anchors": [
+        "garden-facing interior corner"
+      ],
+      "color_anchors": [
+        "cool morning fill",
+        "green plant accent"
+      ],
+      "persistent_objects": [
+        "open sketchbook",
+        "teacup on saucer"
+      ],
+      "sound_identity": "garden breeze, distant fountain splash",
+      "camera_friendly_zones": [
+        "chair profile",
+        "window gaze outward"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "morning_sunshine"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_rooftop_01",
+      "location_name": "Dana Rooftop",
+      "domain": "Dana Domain",
+      "location_type": "domestic_exterior",
+      "visual_anchors": [
+        "painted parapet bench",
+        "flower pot row",
+        "sea-facing rail gap"
+      ],
+      "architectural_anchors": [
+        "ornamental roof crest tile"
+      ],
+      "terrain_anchors": [
+        "elevated garden house roof"
+      ],
+      "color_anchors": [
+        "terracotta warm",
+        "sea blue band"
+      ],
+      "persistent_objects": [
+        "watering can",
+        "folded shawl on bench"
+      ],
+      "sound_identity": "wind chime, open sea hush",
+      "camera_friendly_zones": [
+        "bench seated wide",
+        "rail horizon"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "clear_morning"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_garden_01",
+      "location_name": "Dana Garden",
+      "domain": "Dana Domain",
+      "location_type": "domestic_exterior",
+      "visual_anchors": [
+        "stone path loop",
+        "rose trellis",
+        "central bird bath"
+      ],
+      "architectural_anchors": [
+        "low garden wall",
+        "iron gate to lane"
+      ],
+      "terrain_anchors": [
+        "behind Dana house"
+      ],
+      "color_anchors": [
+        "leaf green depth",
+        "blossom pink accent"
+      ],
+      "persistent_objects": [
+        "garden bench",
+        "clay herb pots"
+      ],
+      "sound_identity": "bee hum, leaf rustle, distant bell",
+      "camera_friendly_zones": [
+        "trellis path medium",
+        "bird bath center"
+      ],
+      "recommended_time_profiles": [
+        "morning_sunshine",
+        "golden_hour"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_dining_room_01",
+      "location_name": "Dana Dining Room",
+      "domain": "Dana Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "oval dining table",
+        "sideboard with glassware",
+        "garden door glass panes"
+      ],
+      "architectural_anchors": [
+        "chandelier hook plate",
+        "wainscot paneling"
+      ],
+      "terrain_anchors": [
+        "ground floor formal room"
+      ],
+      "color_anchors": [
+        "warm ivory walls",
+        "polished wood glow"
+      ],
+      "persistent_objects": [
+        "fruit bowl centerpiece",
+        "linen table runner"
+      ],
+      "sound_identity": "glass clink, garden door sway",
+      "camera_friendly_zones": [
+        "table wide",
+        "doorway garden view"
+      ],
+      "recommended_time_profiles": [
+        "evening_lanterns",
+        "afternoon_work"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_balcony_01",
+      "location_name": "Dana Balcony",
+      "domain": "Dana Domain",
+      "location_type": "domestic_exterior",
+      "visual_anchors": [
+        "wrought iron rail",
+        "balcony tile floor",
+        "overlooking lane below"
+      ],
+      "architectural_anchors": [
+        "French door exit",
+        "stone bracket supports"
+      ],
+      "terrain_anchors": [
+        "upper facade above village lane"
+      ],
+      "color_anchors": [
+        "shadowed tile cool",
+        "sunlit rail warm"
+      ],
+      "persistent_objects": [
+        "empty chair",
+        "small side table"
+      ],
+      "sound_identity": "lane voices below, pigeon wing flap",
+      "camera_friendly_zones": [
+        "rail lean",
+        "door frame interior-exterior"
+      ],
+      "recommended_time_profiles": [
+        "blue_hour",
+        "golden_hour"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_study_corner_01",
+      "location_name": "Dana Study Corner",
+      "domain": "Dana Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "bookshelf wall",
+        "writing desk lamp",
+        "map folio drawer"
+      ],
+      "architectural_anchors": [
+        "built-in shelf niche"
+      ],
+      "terrain_anchors": [
+        "interior study annex"
+      ],
+      "color_anchors": [
+        "lamp amber cone",
+        "deep shelf shadow"
+      ],
+      "persistent_objects": [
+        "sealed envelope stack",
+        "inkwell"
+      ],
+      "sound_identity": "page turn, distant harbor horn",
+      "camera_friendly_zones": [
+        "desk close",
+        "shelf depth"
+      ],
+      "recommended_time_profiles": [
+        "evening_lanterns",
+        "afternoon_work"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_courtyard_gate_01",
+      "location_name": "Dana Courtyard Gate",
+      "domain": "Dana Domain",
+      "location_type": "circulation",
+      "visual_anchors": [
+        "iron garden gate",
+        "gravel courtyard ring",
+        "house facade ivy"
+      ],
+      "architectural_anchors": [
+        "stone gate posts",
+        "lantern sconce pair"
+      ],
+      "terrain_anchors": [
+        "Dana house entry court"
+      ],
+      "color_anchors": [
+        "grey gravel",
+        "ivy green frame"
+      ],
+      "persistent_objects": [
+        "gate latch chain",
+        "welcome mat stone"
+      ],
+      "sound_identity": "gravel step crunch, gate hinge",
+      "camera_friendly_zones": [
+        "gate threshold",
+        "facade wide"
+      ],
+      "recommended_time_profiles": [
+        "morning_sunshine",
+        "golden_hour"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "dana_music_room_01",
+      "location_name": "Dana Music Room",
+      "domain": "Dana Domain",
+      "location_type": "domestic_interior",
+      "visual_anchors": [
+        "upright piano silhouette",
+        "sheet stand",
+        "high window light"
+      ],
+      "architectural_anchors": [
+        "acoustic wood floor",
+        "curved ceiling bay"
+      ],
+      "terrain_anchors": [
+        "side room with garden view"
+      ],
+      "color_anchors": [
+        "polished wood amber",
+        "soft curtain white"
+      ],
+      "persistent_objects": [
+        "piano bench",
+        "metronome on stand"
+      ],
+      "sound_identity": "single piano note decay, clock tick",
+      "camera_friendly_zones": [
+        "keyboard side medium",
+        "window backlight"
+      ],
+      "recommended_time_profiles": [
+        "blue_hour",
+        "evening_lanterns"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "harbor_main_dock_01",
+      "location_name": "Harbor Main Dock",
+      "domain": "Harbor Domain",
+      "location_type": "harbor_infrastructure",
+      "visual_anchors": [
+        "main pier planks",
+        "mooring bollard row",
+        "cargo crate stacks"
+      ],
+      "architectural_anchors": [
+        "timber pile supports",
+        "warehouse facade backdrop"
+      ],
+      "terrain_anchors": [
+        "water edge primary berth"
+      ],
+      "color_anchors": [
+        "weathered grey wood",
+        "deep blue water"
+      ],
+      "persistent_objects": [
+        "coiled rope heap",
+        "hand truck"
+      ],
+      "sound_identity": "wave lap, gull cry, crate thud",
+      "camera_friendly_zones": [
+        "pier length wide",
+        "bollard foreground"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "morning_market",
+        "windy_harbor"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_small_pier_01",
+      "location_name": "Harbor Small Pier",
+      "domain": "Harbor Domain",
+      "location_type": "harbor_infrastructure",
+      "visual_anchors": [
+        "narrow pier extension",
+        "small rowboat tie",
+        "weathered rail"
+      ],
+      "architectural_anchors": [
+        "short timber jetty"
+      ],
+      "terrain_anchors": [
+        "quiet harbor cove side"
+      ],
+      "color_anchors": [
+        "silver water shimmer",
+        "sun-bleached rail"
+      ],
+      "persistent_objects": [
+        "mooring line to rowboat",
+        "wooden bucket"
+      ],
+      "sound_identity": "gentle water slap, rope creak",
+      "camera_friendly_zones": [
+        "pier end sit",
+        "side-on boat"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "blue_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_boatyard_01",
+      "location_name": "Harbor Boatyard",
+      "domain": "Harbor Domain",
+      "location_type": "workyard",
+      "visual_anchors": [
+        "hull on blocks",
+        "sawhorse planks",
+        "caulk tool bench"
+      ],
+      "architectural_anchors": [
+        "open shed roof truss",
+        "slipway ramp"
+      ],
+      "terrain_anchors": [
+        "shoreline craft zone"
+      ],
+      "color_anchors": [
+        "raw wood tan",
+        "tar black patch"
+      ],
+      "persistent_objects": [
+        "half-built hull frame",
+        "rope coil cart"
+      ],
+      "sound_identity": "hammer tap, saw rhythm, gull overhead",
+      "camera_friendly_zones": [
+        "hull side wide",
+        "bench detail"
+      ],
+      "recommended_time_profiles": [
+        "afternoon_work",
+        "clear_morning"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_fish_market_01",
+      "location_name": "Harbor Fish Market",
+      "domain": "Harbor Domain",
+      "location_type": "market",
+      "visual_anchors": [
+        "ice tray tables",
+        "scale hook station",
+        "wet stone floor sheen"
+      ],
+      "architectural_anchors": [
+        "canvas awning frames",
+        "slab auction block"
+      ],
+      "terrain_anchors": [
+        "dockside market edge"
+      ],
+      "color_anchors": [
+        "silver fish scale flash",
+        "navy awning stripe"
+      ],
+      "persistent_objects": [
+        "catch basket stack",
+        "water spray hose"
+      ],
+      "sound_identity": "auction call, ice crush, gull squabble",
+      "camera_friendly_zones": [
+        "stall front medium",
+        "crowd edge wide"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "morning_market"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_stairway_01",
+      "location_name": "Harbor Stairway",
+      "domain": "Harbor Domain",
+      "location_type": "circulation",
+      "visual_anchors": [
+        "stone steps to quay",
+        "rope handline",
+        "harbor view gap"
+      ],
+      "architectural_anchors": [
+        "cut-stone retaining wall",
+        "iron lamp post"
+      ],
+      "terrain_anchors": [
+        "village descent to water"
+      ],
+      "color_anchors": [
+        "cool stone grey",
+        "bright sea strip below"
+      ],
+      "persistent_objects": [
+        "step-side net bundle",
+        "lantern at landing"
+      ],
+      "sound_identity": "step echo, rising wind at top",
+      "camera_friendly_zones": [
+        "descending wide",
+        "landing rest medium"
+      ],
+      "recommended_time_profiles": [
+        "morning_sunshine",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_seawall_01",
+      "location_name": "Harbor Seawall",
+      "domain": "Harbor Domain",
+      "location_type": "harbor_infrastructure",
+      "visual_anchors": [
+        "capped stone wall",
+        "wave splash zone",
+        "rust tide line"
+      ],
+      "architectural_anchors": [
+        "masonry coping blocks",
+        "drain iron grate"
+      ],
+      "terrain_anchors": [
+        "harbor perimeter edge"
+      ],
+      "color_anchors": [
+        "wet stone charcoal",
+        "foam white edge"
+      ],
+      "persistent_objects": [
+        "mooring ring set",
+        "fishing net drying rack"
+      ],
+      "sound_identity": "wave crash rhythm, spray hiss",
+      "camera_friendly_zones": [
+        "wall walk wide",
+        "splash close low"
+      ],
+      "recommended_time_profiles": [
+        "windy_harbor",
+        "after_rain_glow"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_watch_point_01",
+      "location_name": "Harbor Watch Point",
+      "domain": "Harbor Domain",
+      "location_type": "viewpoint",
+      "visual_anchors": [
+        "wooden bench facing sea",
+        "post rail gap",
+        "horizon line"
+      ],
+      "architectural_anchors": [
+        "stone platform overlook"
+      ],
+      "terrain_anchors": [
+        "elevated quay corner"
+      ],
+      "color_anchors": [
+        "warm bench wood",
+        "cool horizon blue"
+      ],
+      "persistent_objects": [
+        "bench plank wear",
+        "discarded rope coil under bench"
+      ],
+      "sound_identity": "open wind, distant ship bell",
+      "camera_friendly_zones": [
+        "bench seated profile",
+        "over-shoulder horizon"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "morning_sunshine",
+        "sea_fog"
+      ],
+      "narrative_note": "EP01 pre-chorus harbor watch anchor",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_warehouse_edge_01",
+      "location_name": "Harbor Warehouse Edge",
+      "domain": "Harbor Domain",
+      "location_type": "industrial",
+      "visual_anchors": [
+        "rolling door half-open",
+        "pallet stacks",
+        "dock number stencil"
+      ],
+      "architectural_anchors": [
+        "corrugated metal wall",
+        "timber loading bay"
+      ],
+      "terrain_anchors": [
+        "behind main dock"
+      ],
+      "color_anchors": [
+        "oxidized metal rust",
+        "shadowed interior black"
+      ],
+      "persistent_objects": [
+        "hand pallet jack",
+        "tarp-covered crate"
+      ],
+      "sound_identity": "metal door rattle, forklift distant",
+      "camera_friendly_zones": [
+        "door frame silhouette",
+        "pallet aisle"
+      ],
+      "recommended_time_profiles": [
+        "afternoon_work",
+        "overcast_soft"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_lighthouse_base_01",
+      "location_name": "Harbor Lighthouse Base",
+      "domain": "Harbor Domain",
+      "location_type": "landmark",
+      "visual_anchors": [
+        "white tower base",
+        "spiral stair window slits",
+        "rock foundation ring"
+      ],
+      "architectural_anchors": [
+        "circular masonry tower",
+        "iron gallery rail"
+      ],
+      "terrain_anchors": [
+        "breakwater tip"
+      ],
+      "color_anchors": [
+        "chalk white tower",
+        "deep sea surround"
+      ],
+      "persistent_objects": [
+        "oil can at door",
+        "rope guide post"
+      ],
+      "sound_identity": "wind whistle, foghorn distant",
+      "camera_friendly_zones": [
+        "tower base wide",
+        "stair window up-angle"
+      ],
+      "recommended_time_profiles": [
+        "sea_fog",
+        "blue_hour",
+        "night_harbor"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_mooring_post_row_01",
+      "location_name": "Harbor Mooring Post Row",
+      "domain": "Harbor Domain",
+      "location_type": "harbor_infrastructure",
+      "visual_anchors": [
+        "paired bollards",
+        "line slack to water",
+        "plank gap reflection"
+      ],
+      "architectural_anchors": [
+        "repeating timber post rhythm"
+      ],
+      "terrain_anchors": [
+        "inner harbor berth line"
+      ],
+      "color_anchors": [
+        "dark wet wood",
+        "green water tint"
+      ],
+      "persistent_objects": [
+        "heavy rope braid",
+        "fender buoy"
+      ],
+      "sound_identity": "line strain creak, water ripple",
+      "camera_friendly_zones": [
+        "post rhythm depth",
+        "low water line"
+      ],
+      "recommended_time_profiles": [
+        "clear_morning",
+        "windy_harbor"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_net_mending_shed_01",
+      "location_name": "Harbor Net Mending Shed",
+      "domain": "Harbor Domain",
+      "location_type": "workyard",
+      "visual_anchors": [
+        "net spread frame",
+        "needle stool",
+        "open wall to water"
+      ],
+      "architectural_anchors": [
+        "three-wall timber shed"
+      ],
+      "terrain_anchors": [
+        "dockside craft shelter"
+      ],
+      "color_anchors": [
+        "twine beige",
+        "shade blue interior"
+      ],
+      "persistent_objects": [
+        "mending needle bundle",
+        "net weight stone"
+      ],
+      "sound_identity": "twine pull, water lap through opening",
+      "camera_friendly_zones": [
+        "net frame wide",
+        "hands close on twine"
+      ],
+      "recommended_time_profiles": [
+        "afternoon_work",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "harbor_ticket_shelter_01",
+      "location_name": "Harbor Ticket Shelter",
+      "domain": "Harbor Domain",
+      "location_type": "transit",
+      "visual_anchors": [
+        "small roofed booth",
+        "gangway sign board",
+        "queue chalk marks"
+      ],
+      "architectural_anchors": [
+        "cast iron column shelter"
+      ],
+      "terrain_anchors": [
+        "ferry landing approach"
+      ],
+      "color_anchors": [
+        "green painted iron",
+        "chalk white marks"
+      ],
+      "persistent_objects": [
+        "ticket window shutter",
+        "bench under roof"
+      ],
+      "sound_identity": "queue shuffle, horn short blast",
+      "camera_friendly_zones": [
+        "shelter front",
+        "gangway line"
+      ],
+      "recommended_time_profiles": [
+        "morning_market",
+        "blue_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_main_street_01",
+      "location_name": "Village Main Street",
+      "domain": "Village Domain",
+      "location_type": "street",
+      "visual_anchors": [
+        "cobble center channel",
+        "shop awning row",
+        "cart wheel ruts"
+      ],
+      "architectural_anchors": [
+        "mixed facade heights",
+        "stone gutter channel"
+      ],
+      "terrain_anchors": [
+        "primary village artery"
+      ],
+      "color_anchors": [
+        "warm facade ochre",
+        "grey cobble"
+      ],
+      "persistent_objects": [
+        "hand cart",
+        "hanging shop sign"
+      ],
+      "sound_identity": "cart wheel roll, merchant call",
+      "camera_friendly_zones": [
+        "street axis wide",
+        "shop threshold"
+      ],
+      "recommended_time_profiles": [
+        "morning_market",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_alley_01",
+      "location_name": "Village Alley",
+      "domain": "Village Domain",
+      "location_type": "street",
+      "visual_anchors": [
+        "narrow passage",
+        "overhead laundry line",
+        "shadow wedge"
+      ],
+      "architectural_anchors": [
+        "close whitewash walls",
+        "stone step irregularity"
+      ],
+      "terrain_anchors": [
+        "between main street blocks"
+      ],
+      "color_anchors": [
+        "cool alley shadow",
+        "sun slice at end"
+      ],
+      "persistent_objects": [
+        "clay pot by door",
+        "wooden stool"
+      ],
+      "sound_identity": "echo footstep, distant plaza hum",
+      "camera_friendly_zones": [
+        "alley depth",
+        "doorway frame"
+      ],
+      "recommended_time_profiles": [
+        "morning_sunshine",
+        "blue_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_square_01",
+      "location_name": "Village Square",
+      "domain": "Village Domain",
+      "location_type": "plaza",
+      "visual_anchors": [
+        "central stone fountain",
+        "four-way cobble junction",
+        "market stall frames"
+      ],
+      "architectural_anchors": [
+        "surrounding arcade arches",
+        "clock tower corner"
+      ],
+      "terrain_anchors": [
+        "village civic center"
+      ],
+      "color_anchors": [
+        "fountain stone pale",
+        "awning color patches"
+      ],
+      "persistent_objects": [
+        "fountain basin",
+        "foldable stall table"
+      ],
+      "sound_identity": "fountain splash, crowd murmur, pigeon coo",
+      "camera_friendly_zones": [
+        "square center wide",
+        "fountain edge medium"
+      ],
+      "recommended_time_profiles": [
+        "morning_market",
+        "festival_crowd"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_market_01",
+      "location_name": "Village Market",
+      "domain": "Village Domain",
+      "location_type": "market",
+      "visual_anchors": [
+        "produce cloth displays",
+        "scale balance arm",
+        "canvas canopy"
+      ],
+      "architectural_anchors": [
+        "stall timber frames",
+        "stone market slab"
+      ],
+      "terrain_anchors": [
+        "square market extension"
+      ],
+      "color_anchors": [
+        "fruit red accent",
+        "canvas sand tan"
+      ],
+      "persistent_objects": [
+        "woven basket stack",
+        "coin tray"
+      ],
+      "sound_identity": "vendor call, coin clink, basket rustle",
+      "camera_friendly_zones": [
+        "stall row wide",
+        "goods close"
+      ],
+      "recommended_time_profiles": [
+        "morning_market",
+        "early_morning"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_fountain_01",
+      "location_name": "Village Fountain",
+      "domain": "Village Domain",
+      "location_type": "landmark",
+      "visual_anchors": [
+        "tiered stone basin",
+        "water arc",
+        "moss ring at base"
+      ],
+      "architectural_anchors": [
+        "carved lip spout",
+        "circular surround pavers"
+      ],
+      "terrain_anchors": [
+        "square focal point"
+      ],
+      "color_anchors": [
+        "wet stone green-grey",
+        "sparkle highlight"
+      ],
+      "persistent_objects": [
+        "clay jug on rim",
+        "bench stone ring"
+      ],
+      "sound_identity": "steady water pour, splash echo",
+      "camera_friendly_zones": [
+        "basin close",
+        "bench circle wide"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "afternoon_work"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_church_front_01",
+      "location_name": "Village Church Front",
+      "domain": "Village Domain",
+      "location_type": "landmark",
+      "visual_anchors": [
+        "wooden church doors",
+        "stone step landing",
+        "bell tower shaft"
+      ],
+      "architectural_anchors": [
+        "simple nave facade",
+        "iron cross finial"
+      ],
+      "terrain_anchors": [
+        "lane end civic rise"
+      ],
+      "color_anchors": [
+        "sunlit stone cream",
+        "dark door timber"
+      ],
+      "persistent_objects": [
+        "offering box stand",
+        "bench under tree"
+      ],
+      "sound_identity": "bell toll, shoe on stone step",
+      "camera_friendly_zones": [
+        "steps wide",
+        "tower up-angle"
+      ],
+      "recommended_time_profiles": [
+        "clear_morning",
+        "church_gathering"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_bakery_lane_01",
+      "location_name": "Village Bakery Lane",
+      "domain": "Village Domain",
+      "location_type": "street",
+      "visual_anchors": [
+        "oven smoke vent",
+        "morning queue chalk line",
+        "family bakery sign"
+      ],
+      "architectural_anchors": [
+        "lane arch bend",
+        "stone gutter"
+      ],
+      "terrain_anchors": [
+        "approach to family bakery front"
+      ],
+      "color_anchors": [
+        "warm smoke haze",
+        "crust gold window glow"
+      ],
+      "persistent_objects": [
+        "bread rack outside",
+        "queue rope post"
+      ],
+      "sound_identity": "oven vent hiss, queue chatter",
+      "camera_friendly_zones": [
+        "lane bend medium",
+        "shop front"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "morning_market"
+      ],
+      "narrative_note": "Connects to family_bakery_front_01",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_harbor_road_01",
+      "location_name": "Village Harbor Road",
+      "domain": "Village Domain",
+      "location_type": "street",
+      "visual_anchors": [
+        "descent curve to water",
+        "mooring view gaps",
+        "stone curb wear"
+      ],
+      "architectural_anchors": [
+        "retaining wall segments",
+        "lamp post rhythm"
+      ],
+      "terrain_anchors": [
+        "village-to-harbor connector"
+      ],
+      "color_anchors": [
+        "warm road dust",
+        "blue water peek"
+      ],
+      "persistent_objects": [
+        "donkey cart track",
+        "harbor direction sign"
+      ],
+      "sound_identity": "cart descent creak, gull louder near bottom",
+      "camera_friendly_zones": [
+        "road curve wide",
+        "water glimpse"
+      ],
+      "recommended_time_profiles": [
+        "morning_sunshine",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_stone_bridge_01",
+      "location_name": "Village Stone Bridge",
+      "domain": "Village Domain",
+      "location_type": "landmark",
+      "visual_anchors": [
+        "single arch span",
+        "low canal water",
+        "mossy capstones"
+      ],
+      "architectural_anchors": [
+        "cut stone voussoirs",
+        "iron side rail"
+      ],
+      "terrain_anchors": [
+        "canal crossing at lane edge"
+      ],
+      "color_anchors": [
+        "grey arch stone",
+        "green water reflect"
+      ],
+      "persistent_objects": [
+        "bridge name plaque",
+        "rope tie on rail"
+      ],
+      "sound_identity": "water under arch echo, foot on stone",
+      "camera_friendly_zones": [
+        "arch symmetry",
+        "side rail medium"
+      ],
+      "recommended_time_profiles": [
+        "after_rain_glow",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_evening_lantern_alley_01",
+      "location_name": "Village Evening Lantern Alley",
+      "domain": "Village Domain",
+      "location_type": "street",
+      "visual_anchors": [
+        "lantern hook row",
+        "warm door glow pools",
+        "cobble wet sheen"
+      ],
+      "architectural_anchors": [
+        "overhang timber eaves",
+        "narrow passage walls"
+      ],
+      "terrain_anchors": [
+        "residential lane off square"
+      ],
+      "color_anchors": [
+        "amber lantern pools",
+        "deep blue surround"
+      ],
+      "persistent_objects": [
+        "wall lantern glass",
+        "door boot scraper"
+      ],
+      "sound_identity": "lantern glass tick, quiet greeting murmur",
+      "camera_friendly_zones": [
+        "lantern bokeh depth",
+        "doorway portrait"
+      ],
+      "recommended_time_profiles": [
+        "evening_lanterns",
+        "blue_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_school_front_01",
+      "location_name": "Village School Front",
+      "domain": "Village Domain",
+      "location_type": "civic",
+      "visual_anchors": [
+        "bell above door",
+        "chalk board easel",
+        "courtyard gate"
+      ],
+      "architectural_anchors": [
+        "two-story stone schoolhouse",
+        "shuttered windows"
+      ],
+      "terrain_anchors": [
+        "lane branch near square"
+      ],
+      "color_anchors": [
+        "chalk white board",
+        "warm stone facade"
+      ],
+      "persistent_objects": [
+        "school bell rope",
+        "wooden bench row"
+      ],
+      "sound_identity": "children distant play, bell single ring",
+      "camera_friendly_zones": [
+        "gate wide",
+        "board close"
+      ],
+      "recommended_time_profiles": [
+        "morning_market",
+        "afternoon_work"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "village_well_corner_01",
+      "location_name": "Village Well Corner",
+      "domain": "Village Domain",
+      "location_type": "landmark",
+      "visual_anchors": [
+        "stone well crown",
+        "bucket rope",
+        "shade tree canopy"
+      ],
+      "architectural_anchors": [
+        "circular well curb",
+        "timber roof cross"
+      ],
+      "terrain_anchors": [
+        "lane junction shade spot"
+      ],
+      "color_anchors": [
+        "cool well shadow",
+        "rope hemp tan"
+      ],
+      "persistent_objects": [
+        "water bucket",
+        "wash basin on curb"
+      ],
+      "sound_identity": "rope creak, bucket splash",
+      "camera_friendly_zones": [
+        "well center",
+        "tree shade rim"
+      ],
+      "recommended_time_profiles": [
+        "midday_heat",
+        "afternoon_work"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "olive_hill_01",
+      "location_name": "Olive Hill",
+      "domain": "Nature Domain",
+      "location_type": "hillside",
+      "visual_anchors": [
+        "terraced olive rows",
+        "dirt path switchback",
+        "distant harbor glimpse"
+      ],
+      "architectural_anchors": [
+        "dry-stone terrace walls"
+      ],
+      "terrain_anchors": [
+        "rise above village"
+      ],
+      "color_anchors": [
+        "silver-green leaf",
+        "earth path tan"
+      ],
+      "persistent_objects": [
+        "harvest ladder lean",
+        "woven harvest sack"
+      ],
+      "sound_identity": "leaf rustle, cicada, far bell",
+      "camera_friendly_zones": [
+        "terrace wide",
+        "path climb medium"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "clear_morning"
+      ],
+      "narrative_note": "EP01 chorus hilltop context",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "olive_hill_lunch_spot_01",
+      "location_name": "Olive Hill Lunch Spot",
+      "domain": "Nature Domain",
+      "location_type": "hillside",
+      "visual_anchors": [
+        "flat rock table",
+        "grass patch overlook",
+        "toast-ready flat stone"
+      ],
+      "architectural_anchors": [
+        "natural stone slab platform"
+      ],
+      "terrain_anchors": [
+        "upper olive_hill terrace"
+      ],
+      "color_anchors": [
+        "sun grass gold",
+        "sea blue band below"
+      ],
+      "persistent_objects": [
+        "checked cloth spread",
+        "wooden lunch tin"
+      ],
+      "sound_identity": "wind grass hiss, distant gull",
+      "camera_friendly_zones": [
+        "lunch seated wide",
+        "overlook horizon"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "afternoon_work"
+      ],
+      "narrative_note": "EP01 chorus hilltop_lunch beat",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "olive_tree_rest_area_01",
+      "location_name": "Olive Tree Rest Area",
+      "domain": "Nature Domain",
+      "location_type": "hillside",
+      "visual_anchors": [
+        "broad olive trunk shade",
+        "root-exposed seat ledge",
+        "grass ring"
+      ],
+      "architectural_anchors": [
+        "ancient tree trunk form"
+      ],
+      "terrain_anchors": [
+        "mid-hill shade pocket"
+      ],
+      "color_anchors": [
+        "deep leaf shade green",
+        "dapple light spots"
+      ],
+      "persistent_objects": [
+        "water flask on root",
+        "straw hat on branch"
+      ],
+      "sound_identity": "leaf flutter, insect hum",
+      "camera_friendly_zones": [
+        "trunk shade portrait",
+        "grass ring wide"
+      ],
+      "recommended_time_profiles": [
+        "midday_heat",
+        "golden_hour"
+      ],
+      "narrative_note": "MDG tree_rest behavior anchor",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "wind_grass_field_01",
+      "location_name": "Wind Grass Field",
+      "domain": "Nature Domain",
+      "location_type": "meadow",
+      "visual_anchors": [
+        "tall grass wave lines",
+        "lone tree windbreak",
+        "cloud shadow drift"
+      ],
+      "architectural_anchors": [
+        "none — open terrain"
+      ],
+      "terrain_anchors": [
+        "village fringe meadow"
+      ],
+      "color_anchors": [
+        "grass gold-green",
+        "sky pale blue"
+      ],
+      "persistent_objects": [
+        "weathered fence post",
+        "stone boundary cairn"
+      ],
+      "sound_identity": "grass wave hiss, open wind",
+      "camera_friendly_zones": [
+        "grass depth wide",
+        "fence post foreground"
+      ],
+      "recommended_time_profiles": [
+        "windy_harbor",
+        "golden_hour"
+      ],
+      "narrative_note": "EP01 chorus wind_grass motif",
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "coastal_path_01",
+      "location_name": "Coastal Path",
+      "domain": "Nature Domain",
+      "location_type": "coastal",
+      "visual_anchors": [
+        "cliff-side footpath",
+        "sea spray edge",
+        "wildflower verge"
+      ],
+      "architectural_anchors": [
+        "cut-step stone patches"
+      ],
+      "terrain_anchors": [
+        "between cliff and water"
+      ],
+      "color_anchors": [
+        "path ochre",
+        "sea teal"
+      ],
+      "persistent_objects": [
+        "rope guide post",
+        "walker cairn stack"
+      ],
+      "sound_identity": "wave below, path gravel crunch",
+      "camera_friendly_zones": [
+        "path curve wide",
+        "sea edge medium"
+      ],
+      "recommended_time_profiles": [
+        "clear_morning",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "cliff_overlook_01",
+      "location_name": "Cliff Overlook",
+      "domain": "Nature Domain",
+      "location_type": "viewpoint",
+      "visual_anchors": [
+        "rock lip overlook",
+        "full harbor panorama",
+        "guard rope line"
+      ],
+      "architectural_anchors": [
+        "natural cliff shelf"
+      ],
+      "terrain_anchors": [
+        "high coastal edge"
+      ],
+      "color_anchors": [
+        "warm rock umber",
+        "deep sea blue"
+      ],
+      "persistent_objects": [
+        "warning post stake",
+        "bench plank on rock"
+      ],
+      "sound_identity": "strong wind, distant ship horn",
+      "camera_friendly_zones": [
+        "panorama wide",
+        "figure at lip"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "winter_clear_air"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "stone_path_to_harbor_01",
+      "location_name": "Stone Path to Harbor",
+      "domain": "Nature Domain",
+      "location_type": "circulation",
+      "visual_anchors": [
+        "stepped stone descent",
+        "harbor roofline reveal",
+        "olive tree flank"
+      ],
+      "architectural_anchors": [
+        "retaining wall with steps"
+      ],
+      "terrain_anchors": [
+        "hill to harbor_stairway connector"
+      ],
+      "color_anchors": [
+        "warm stone steps",
+        "harbor grey-blue below"
+      ],
+      "persistent_objects": [
+        "handrail rope",
+        "step-side herb pot"
+      ],
+      "sound_identity": "step echo, rising harbor noise",
+      "camera_friendly_zones": [
+        "descent wide",
+        "harbor reveal frame"
+      ],
+      "recommended_time_profiles": [
+        "morning_sunshine",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "wildflower_meadow_01",
+      "location_name": "Wildflower Meadow",
+      "domain": "Nature Domain",
+      "location_type": "meadow",
+      "visual_anchors": [
+        "mixed wildflower scatter",
+        "butterfly path line",
+        "low stone wall border"
+      ],
+      "architectural_anchors": [
+        "dry-stone border wall"
+      ],
+      "terrain_anchors": [
+        "inland from coastal_path"
+      ],
+      "color_anchors": [
+        "petal pink-purple mix",
+        "grass bright green"
+      ],
+      "persistent_objects": [
+        "wooden gate in wall",
+        "scythe rest post"
+      ],
+      "sound_identity": "bee drone, grass whisper",
+      "camera_friendly_zones": [
+        "flower depth low",
+        "gate threshold"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "clear_morning"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "terraced_vineyard_edge_01",
+      "location_name": "Terraced Vineyard Edge",
+      "domain": "Nature Domain",
+      "location_type": "hillside",
+      "visual_anchors": [
+        "grape row lines",
+        "terrace wall curve",
+        "valley drop view"
+      ],
+      "architectural_anchors": [
+        "stone terrace retention"
+      ],
+      "terrain_anchors": [
+        "south slope above village"
+      ],
+      "color_anchors": [
+        "vine leaf deep green",
+        "soil red-brown"
+      ],
+      "persistent_objects": [
+        "pruning shear hook",
+        "harvest crate"
+      ],
+      "sound_identity": "vine leaf rustle, distant dog bark",
+      "camera_friendly_zones": [
+        "terrace line wide",
+        "row depth"
+      ],
+      "recommended_time_profiles": [
+        "afternoon_work",
+        "golden_hour"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "pine_grove_shade_01",
+      "location_name": "Pine Grove Shade",
+      "domain": "Nature Domain",
+      "location_type": "woodland",
+      "visual_anchors": [
+        "tall pine trunks",
+        "needle carpet floor",
+        "filtered light shafts"
+      ],
+      "architectural_anchors": [
+        "none — natural grove"
+      ],
+      "terrain_anchors": [
+        "inland ridge behind village"
+      ],
+      "color_anchors": [
+        "deep pine green",
+        "cool shadow blue"
+      ],
+      "persistent_objects": [
+        "wood bench stump",
+        "pine cone scatter pile"
+      ],
+      "sound_identity": "needle crunch step, wind in canopy",
+      "camera_friendly_zones": [
+        "trunk rhythm depth",
+        "bench rest"
+      ],
+      "recommended_time_profiles": [
+        "midday_heat",
+        "winter_clear_air"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "rocky_cove_01",
+      "location_name": "Rocky Cove",
+      "domain": "Nature Domain",
+      "location_type": "coastal",
+      "visual_anchors": [
+        "pebble beach pocket",
+        "rock pool mirror",
+        "tidal line wrack"
+      ],
+      "architectural_anchors": [
+        "natural rock arch fragment"
+      ],
+      "terrain_anchors": [
+        "sheltered harbor outside main dock"
+      ],
+      "color_anchors": [
+        "pebble grey mix",
+        "pool turquoise"
+      ],
+      "persistent_objects": [
+        "driftwood log",
+        "fishing net spread dry"
+      ],
+      "sound_identity": "small wave tick, pebble roll",
+      "camera_friendly_zones": [
+        "cove wide",
+        "pool close"
+      ],
+      "recommended_time_profiles": [
+        "blue_hour",
+        "after_rain_glow"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "sunrise_ridge_trail_01",
+      "location_name": "Sunrise Ridge Trail",
+      "domain": "Nature Domain",
+      "location_type": "hillside",
+      "visual_anchors": [
+        "east-facing ridge path",
+        "first light strip",
+        "village mist below"
+      ],
+      "architectural_anchors": [
+        "trail cut along ridge"
+      ],
+      "terrain_anchors": [
+        "above olive_hill east wing"
+      ],
+      "color_anchors": [
+        "pink dawn sky",
+        "mist silver valley"
+      ],
+      "persistent_objects": [
+        "trail marker cairn",
+        "walker staff lean rock"
+      ],
+      "sound_identity": "dawn bird call, soft wind",
+      "camera_friendly_zones": [
+        "ridge path wide",
+        "mist valley overlook"
+      ],
+      "recommended_time_profiles": [
+        "sunrise",
+        "pre_dawn"
+      ],
+      "world_identity": "GONEGI_MEDITERRANEAN",
+      "ep01_compatible": true
+    },
+    {
+      "location_id": "shared_harbor_meeting_bench_01",
+      "location_name": "Shared Harbor Meeting Bench",
+      "domain": "Shared Future Domain",
+      "location_type": "reunion_point",
+      "visual_anchors": [
+        "paired bench facing sea",
+        "neutral harbor backdrop",
+        "lantern post between seats"
+      ],
+      "architectural_anchors": [
+        "standard harbor_watch_point bench form"
+      ],
+      "terrain_anchors": [
+        "harbor_watch_point extension"
+      ],
+      "color_anchors": [
+        "neutral warm wood",
+        "open horizon blue"
+      ],
+      "persistent_objects": [
+        "center bench plank",
+        "lantern glass"
+      ],
+      "sound_identity": "open harbor hush, bench wood creak",
+      "camera_friendly_zones": [
+        "two-seat wide",
+        "over-shoulder pair"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "blue_hour"
+      ],
+      "ep01_compatible": false,
+      "narrative_note": "Future Gonegi-Dana reunion staging",
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_festival_square_01",
+      "location_name": "Shared Festival Square",
+      "domain": "Shared Future Domain",
+      "location_type": "plaza",
+      "visual_anchors": [
+        "banner rope lines",
+        "expanded stall ring",
+        "fountain as stage center"
+      ],
+      "architectural_anchors": [
+        "village_square_01 festival overlay"
+      ],
+      "terrain_anchors": [
+        "village_square civic center"
+      ],
+      "color_anchors": [
+        "festive cloth reds",
+        "evening gold wash"
+      ],
+      "persistent_objects": [
+        "banner pole bases",
+        "stage plank stack"
+      ],
+      "sound_identity": "crowd cheer layer, musician tuning",
+      "camera_friendly_zones": [
+        "square center elevated",
+        "stall ring wide"
+      ],
+      "recommended_time_profiles": [
+        "festival_crowd",
+        "evening_lanterns"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_old_well_plaza_01",
+      "location_name": "Shared Old Well Plaza",
+      "domain": "Shared Future Domain",
+      "location_type": "plaza",
+      "visual_anchors": [
+        "ancient well crown",
+        "circular paver ring",
+        "memory-tree shade"
+      ],
+      "architectural_anchors": [
+        "expanded well curb masonry"
+      ],
+      "terrain_anchors": [
+        "off-square heritage pocket"
+      ],
+      "color_anchors": [
+        "aged stone grey",
+        "tree shade green"
+      ],
+      "persistent_objects": [
+        "well bucket rope",
+        "memory plaque stone"
+      ],
+      "sound_identity": "bucket echo, leaf shade rustle",
+      "camera_friendly_zones": [
+        "well ring center",
+        "tree shade bench"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "nostalgia_cluster"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_seaside_promenade_01",
+      "location_name": "Shared Seaside Promenade",
+      "domain": "Shared Future Domain",
+      "location_type": "coastal",
+      "visual_anchors": [
+        "sea-facing walk line",
+        "regular lamp posts",
+        "low wall rail"
+      ],
+      "architectural_anchors": [
+        "cut-stone promenade paving"
+      ],
+      "terrain_anchors": [
+        "harbor perimeter public walk"
+      ],
+      "color_anchors": [
+        "promenade stone pale",
+        "sea horizon blue"
+      ],
+      "persistent_objects": [
+        "lamp post series",
+        "bench every third post"
+      ],
+      "sound_identity": "wave constant, promenade footfall",
+      "camera_friendly_zones": [
+        "walk line depth",
+        "bench pair"
+      ],
+      "recommended_time_profiles": [
+        "evening_lanterns",
+        "golden_hour"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_memory_lane_01",
+      "location_name": "Shared Memory Lane",
+      "domain": "Shared Future Domain",
+      "location_type": "street",
+      "visual_anchors": [
+        "familiar alley bend",
+        "soft wall wash",
+        "distant square glow"
+      ],
+      "architectural_anchors": [
+        "village_alley_01 narrative extension"
+      ],
+      "terrain_anchors": [
+        "between domestic and square zones"
+      ],
+      "color_anchors": [
+        "warm memory amber",
+        "cool end glow"
+      ],
+      "persistent_objects": [
+        "child chalk marks faded",
+        "door wreath hook"
+      ],
+      "sound_identity": "muted footstep echo, distant music",
+      "camera_friendly_zones": [
+        "alley depth memory",
+        "door pause"
+      ],
+      "recommended_time_profiles": [
+        "blue_hour",
+        "evening_lanterns"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_rooftop_overlook_pair_01",
+      "location_name": "Shared Rooftop Overlook Pair",
+      "domain": "Shared Future Domain",
+      "location_type": "viewpoint",
+      "visual_anchors": [
+        "two rooflines in frame",
+        "shared sea horizon",
+        "parapet gap view"
+      ],
+      "architectural_anchors": [
+        "gonegi_rooftop_01 and dana_rooftop_01 sightline composite"
+      ],
+      "terrain_anchors": [
+        "elevated village roof plane"
+      ],
+      "color_anchors": [
+        "terracotta dual tone",
+        "shared horizon gold"
+      ],
+      "persistent_objects": [
+        "paired chimney stacks",
+        "shared clothes line glimpse"
+      ],
+      "sound_identity": "cross-roof wind, distant bell",
+      "camera_friendly_zones": [
+        "split roof wide",
+        "horizon center"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "clear_morning"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_ferry_landing_01",
+      "location_name": "Shared Ferry Landing",
+      "domain": "Shared Future Domain",
+      "location_type": "transit",
+      "visual_anchors": [
+        "gangway planks",
+        "departure rope tension",
+        "farewell wave space"
+      ],
+      "architectural_anchors": [
+        "harbor_ticket_shelter adjacency"
+      ],
+      "terrain_anchors": [
+        "harbor commuter flow point"
+      ],
+      "color_anchors": [
+        "wet plank grey",
+        "departure banner white"
+      ],
+      "persistent_objects": [
+        "gangway rope rail",
+        "farewell handkerchief prop zone"
+      ],
+      "sound_identity": "horn blast, rope strain, crowd sendoff",
+      "camera_friendly_zones": [
+        "gangway line",
+        "dock edge wave"
+      ],
+      "recommended_time_profiles": [
+        "early_morning",
+        "blue_hour"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_garden_gate_meet_01",
+      "location_name": "Shared Garden Gate Meet",
+      "domain": "Shared Future Domain",
+      "location_type": "reunion_point",
+      "visual_anchors": [
+        "garden gate open",
+        "gravel path two-side",
+        "flower arch frame"
+      ],
+      "architectural_anchors": [
+        "dana_courtyard_gate_01 shared entry"
+      ],
+      "terrain_anchors": [
+        "between Dana garden and village lane"
+      ],
+      "color_anchors": [
+        "blossom frame pink",
+        "gravel neutral"
+      ],
+      "persistent_objects": [
+        "gate latch open",
+        "welcome stone mat"
+      ],
+      "sound_identity": "gravel step pair, garden bird",
+      "camera_friendly_zones": [
+        "gate frame two-figure",
+        "path approach"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "morning_sunshine"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_market_bridge_view_01",
+      "location_name": "Shared Market Bridge View",
+      "domain": "Shared Future Domain",
+      "location_type": "viewpoint",
+      "visual_anchors": [
+        "bridge arch over canal",
+        "market awning beyond",
+        "reflection pool"
+      ],
+      "architectural_anchors": [
+        "village_stone_bridge_01 with market sightline"
+      ],
+      "terrain_anchors": [
+        "canal edge market approach"
+      ],
+      "color_anchors": [
+        "arch grey",
+        "awning color patch beyond"
+      ],
+      "persistent_objects": [
+        "bridge plaque",
+        "canal moored small boat"
+      ],
+      "sound_identity": "market hum beyond, water under arch",
+      "camera_friendly_zones": [
+        "arch frame depth",
+        "market glimpse"
+      ],
+      "recommended_time_profiles": [
+        "morning_market",
+        "golden_hour"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    },
+    {
+      "location_id": "shared_cliff_vow_point_01",
+      "location_name": "Shared Cliff Vow Point",
+      "domain": "Shared Future Domain",
+      "location_type": "viewpoint",
+      "visual_anchors": [
+        "cliff edge flat rock",
+        "wide sea emptiness",
+        "wind grass fringe"
+      ],
+      "architectural_anchors": [
+        "cliff_overlook_01 vow staging"
+      ],
+      "terrain_anchors": [
+        "high coastal edge ritual spot"
+      ],
+      "color_anchors": [
+        "rock warm umber",
+        "sea deep blue"
+      ],
+      "persistent_objects": [
+        "marker ribbon on post",
+        "flat vow stone"
+      ],
+      "sound_identity": "strong wind vow silence beat",
+      "camera_friendly_zones": [
+        "cliff edge pair wide",
+        "grass fringe foreground"
+      ],
+      "recommended_time_profiles": [
+        "golden_hour",
+        "windy_harbor"
+      ],
+      "ep01_compatible": false,
+      "world_identity": "GONEGI_MEDITERRANEAN"
+    }
+  ]
+}

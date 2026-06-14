@@ -1,0 +1,58 @@
+{
+  "report_type": "emotional_transition_grammar_audit",
+  "report_version": "v1",
+  "phase": "PHASE-MDG-006",
+  "audit_timestamp": "2026-06-02T00:00:00.000Z",
+  "grammar_path": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+  "final_verdict": "PASS_EMOTIONAL_TRANSITION_GRAMMAR_V1",
+  "dependency_check": {
+    "master_story": {
+      "path": "datasets/story/music-drama-master-story-v1.json",
+      "status": "present"
+    },
+    "scenario_rulebook": {
+      "path": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+      "status": "present"
+    },
+    "music_drama_grammar": {
+      "path": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+      "status": "present"
+    },
+    "daily_life_behavior_library": {
+      "path": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+      "status": "present"
+    },
+    "community_crowd_behavior_grammar": {
+      "path": "datasets/music_drama_grammar/community-crowd-behavior-grammar-v1.json",
+      "status": "present"
+    },
+    "animal_companion_behavior_grammar": {
+      "path": "datasets/music_drama_grammar/animal-companion-behavior-grammar-v1.json",
+      "status": "present"
+    },
+    "visual_motif_grammar": {
+      "path": "datasets/music_drama_grammar/visual-motif-grammar-v1.json",
+      "status": "present"
+    },
+    "render_feedback": {
+      "path": "datasets/render_feedback/RKB-001.json",
+      "status": "present"
+    },
+    "result": "PASS_ALL_DEPENDENCIES_PRESENT"
+  },
+  "validation_summary": {
+    "emotional_state_count": 12,
+    "transition_count": 22,
+    "motif_bridge_count": 12,
+    "shot_bridge_count": 12,
+    "behavior_bridge_count": 12,
+    "duplicate_emotion_id": 0,
+    "continuity_law_present": true,
+    "ep01_profile_valid": true
+  },
+  "export_paths": {
+    "grammar": "datasets/music_drama_grammar/emotional-transition-grammar-v1.json",
+    "report": "datasets/music_drama_grammar/emotional-transition-grammar-report.json"
+  },
+  "next_phase": "PHASE-MDG-007 Music Drama Beat Structure Grammar"
+}

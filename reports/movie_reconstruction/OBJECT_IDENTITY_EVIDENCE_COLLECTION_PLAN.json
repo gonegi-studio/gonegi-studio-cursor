@@ -1,0 +1,129 @@
+{
+  "report_id": "object_evidence_collection_plan_mqd2qq13",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-007C",
+  "system_id": "OBJECT_IDENTITY_EVIDENCE_COLLECTION_V1",
+  "generated_at": "2026-06-14T00:56:57.159Z",
+  "batch_plan_defined": true,
+  "target_sample_count": 40,
+  "collection_order": [
+    "easy_batch",
+    "medium_batch",
+    "hard_batch",
+    "stress_batch",
+    "hero_prop_batch",
+    "secondary_prop_batch",
+    "background_object_batch"
+  ],
+  "easy_batch": [
+    {
+      "case_id": "obj_col_easy_001",
+      "object_id": "lantern_001",
+      "reference_bank_id": "obj_ref_003"
+    },
+    {
+      "case_id": "obj_col_easy_002",
+      "object_id": "wooden_crate_001",
+      "reference_bank_id": "obj_ref_004"
+    }
+  ],
+  "medium_batch": [
+    {
+      "case_id": "obj_col_med_001",
+      "object_id": "chair_014",
+      "reference_bank_id": "obj_ref_002"
+    },
+    {
+      "case_id": "obj_col_med_002",
+      "object_id": "lantern_001",
+      "reference_bank_id": "obj_ref_003"
+    }
+  ],
+  "hard_batch": [
+    {
+      "case_id": "obj_col_hard_001",
+      "object_id": "suitcase_001",
+      "failure_mode": "identity_swap"
+    },
+    {
+      "case_id": "obj_col_hard_002",
+      "object_id": "suitcase_001",
+      "failure_mode": "missing_accessory"
+    }
+  ],
+  "stress_batch": [
+    {
+      "case_id": "obj_col_stress_001",
+      "object_id": "suitcase_001",
+      "stress_mode": "extreme_zoom"
+    },
+    {
+      "case_id": "obj_col_stress_002",
+      "object_id": "suitcase_001",
+      "stress_mode": "partial_occlusion"
+    },
+    {
+      "case_id": "obj_col_stress_003",
+      "object_id": "suitcase_001",
+      "stress_mode": "accessory_visibility_loss"
+    }
+  ],
+  "hero_prop_batch": [
+    {
+      "case_id": "obj_col_hero_001",
+      "object_id": "suitcase_001",
+      "role": "hero_prop"
+    }
+  ],
+  "secondary_prop_batch": [
+    {
+      "case_id": "obj_col_sec_001",
+      "object_id": "lantern_001",
+      "role": "secondary_prop"
+    },
+    {
+      "case_id": "obj_col_sec_002",
+      "object_id": "wooden_crate_001",
+      "role": "secondary_prop"
+    }
+  ],
+  "background_object_batch": [
+    {
+      "case_id": "obj_col_bg_001",
+      "object_id": "chair_014",
+      "role": "background_object"
+    }
+  ],
+  "analysis": {
+    "object_evidence_protocol": "OBJECT_IDENTITY_EVIDENCE_PROTOCOL defines composite scoring, pass_threshold=0.97, and hero_prop role gate; collection plan binds batch execution order without generating records.",
+    "object_dataset": "OBJECT_IDENTITY_EVIDENCE_DATASET provides easy/medium/hard/stress and role batch seeds for collection plan wiring.",
+    "object_reference_bank": "Bank entries (suitcase_001, chair_014, lantern_001, wooden_crate_001) supply reference_bank_id and identity_signature templates.",
+    "object_similarity_binding": "object_similarity_v1 same_object_threshold=0.97 governs object_classification assignment in record spec.",
+    "object_role_binding": "object_role_v1 assigns hero_prop > scene_prop priority; hero_prop_batch runs with strictest pass threshold.",
+    "object_traceability_binding": "traceability_signature links conditioning_map_ref and OBJECT_REFERENCE_BANK_SPECIFICATION for batch audit."
+  },
+  "evidence_collection_contract": {
+    "contract_id": "object_identity_evidence_collection_v1",
+    "contract_version": "1.0",
+    "scope": "Collection execution definition only — Collection Ready != Collection Executed.",
+    "evidence_protocol_ref": "reports/movie_reconstruction/OBJECT_IDENTITY_EVIDENCE_PROTOCOL.json",
+    "evidence_dataset_ref": "reports/movie_reconstruction/OBJECT_IDENTITY_EVIDENCE_DATASET.json",
+    "binding_ref": "exports/movie_reconstruction_object_identity/object-identity-binding-package.json",
+    "bank_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+    "evidence_collection_mode": "DEFINITION_ONLY",
+    "gpu_execution": "false — collection plan and record spec only; no evidence records generated.",
+    "texture_match_note": "Texture Match is part of Object Identity — texture_match is a required classification_reason.",
+    "assessment_note": "Do NOT claim OBJECT_EVIDENCE_COLLECTED, OBJECT_VALIDATED, or OBJECT_IDENTITY_READY."
+  },
+  "collection_batch_plan": {
+    "collection_order": "easy_batch → medium_batch → hard_batch → stress_batch → hero_prop_batch → secondary_prop_batch → background_object_batch",
+    "target_sample_count": "40",
+    "batch_note": "Role batches run after difficulty batches; hero_prop_batch has highest failure risk."
+  },
+  "collection_traceability_rules": {
+    "record_traceability": "Each evidence record must bind object_id, reference_bank_id, identity_signature, and traceability_signature.",
+    "batch_audit_signature": "Collection batch_id hashes case_id list for offline replay without GPU execution.",
+    "classification_audit": "object_classification and classification_reason required on every record at collection time.",
+    "role_binding_cross_ref": "role_match classification_reason must align with hero_prop/secondary_prop/background_object batch tier.",
+    "collection_note": "Collection Ready != Collection Executed; Evidence Records Generated = 0."
+  }
+}

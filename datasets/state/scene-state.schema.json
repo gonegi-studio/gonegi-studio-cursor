@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/state/scene-state.schema.json",
+  "title": "SceneState",
+  "description": "Unified scene state object for PHASE-18 STATE_ENGINE_FOUNDATION_V1",
+  "type": "object",
+  "required": [
+    "scene_state_id",
+    "phase",
+    "world_identity",
+    "character_state",
+    "location_state",
+    "lighting_state",
+    "emotion_state",
+    "relationship_state",
+    "camera_state",
+    "composition_state",
+    "environment_state",
+    "identity_state"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "scene_state_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-18-STATE-ENGINE-FOUNDATION-001"
+    },
+    "world_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "character_state": {
+      "$ref": "#/$defs/character_state"
+    },
+    "location_state": {
+      "$ref": "#/$defs/location_state"
+    },
+    "lighting_state": {
+      "$ref": "#/$defs/lighting_state"
+    },
+    "emotion_state": {
+      "$ref": "#/$defs/emotion_state"
+    },
+    "relationship_state": {
+      "$ref": "#/$defs/relationship_state"
+    },
+    "camera_state": {
+      "$ref": "#/$defs/camera_state"
+    },
+    "composition_state": {
+      "$ref": "#/$defs/composition_state"
+    },
+    "environment_state": {
+      "$ref": "#/$defs/environment_state"
+    },
+    "identity_state": {
+      "$ref": "#/$defs/identity_state"
+    },
+    "transition": {
+      "$ref": "#/$defs/transition"
+    },
+    "source_refs": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "built_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "character_state": {
+      "type": "object",
+      "required": ["active_character_ids", "character_source"],
+      "additionalProperties": false,
+      "properties": {
+        "active_character_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "primary_character_id": { "type": "string" },
+        "character_source": { "type": "string" },
+        "character_tokens": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "location_state": {
+      "type": "object",
+      "required": ["location_id", "location_source"],
+      "additionalProperties": false,
+      "properties": {
+        "location_id": { "type": "string" },
+        "location_name": { "type": "string" },
+        "location_type": { "type": "string" },
+        "domain": { "type": "string" },
+        "location_source": { "type": "string" },
+        "layout_lock_id": { "type": "string" },
+        "outdoor_layout_id": { "type": "string" }
+      }
+    },
+    "lighting_state": {
+      "type": "object",
+      "required": ["lighting_id", "lighting_source"],
+      "additionalProperties": false,
+      "properties": {
+        "lighting_id": { "type": "string" },
+        "lighting_source": { "type": "string" },
+        "color_temperature_k": { "type": "number" },
+        "direction": { "type": "string" },
+        "intensity": { "type": "string" }
+      }
+    },
+    "emotion_state": {
+      "type": "object",
+      "required": ["emotion_id", "emotion_source"],
+      "additionalProperties": false,
+      "properties": {
+        "emotion_id": { "type": "string" },
+        "emotion_source": { "type": "string" },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "acting_visibility_weight": { "type": "string" }
+      }
+    },
+    "relationship_state": {
+      "type": "object",
+      "required": ["relationship_source"],
+      "additionalProperties": false,
+      "properties": {
+        "relationship_id": { "type": "string" },
+        "relationship_source": { "type": "string" },
+        "participant_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "distance_behavior": { "type": "string" },
+        "gaze_pattern": { "type": "string" }
+      }
+    },
+    "camera_state": {
+      "type": "object",
+      "required": ["shot_type", "camera_source"],
+      "additionalProperties": false,
+      "properties": {
+        "shot_type": { "type": "string" },
+        "coverage_id": { "type": "string" },
+        "camera_source": { "type": "string" },
+        "camera_position": { "type": "string" },
+        "camera_height": { "type": "string" },
+        "camera_direction": { "type": "string" }
+      }
+    },
+    "composition_state": {
+      "type": "object",
+      "required": ["composition_source"],
+      "additionalProperties": false,
+      "properties": {
+        "composition_id": { "type": "string" },
+        "composition_source": { "type": "string" },
+        "prop_anchor_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "character_positions": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "environment_state": {
+      "type": "object",
+      "required": ["world_identity", "environment_source"],
+      "additionalProperties": false,
+      "properties": {
+        "world_identity": { "type": "string" },
+        "world_type": { "type": "string" },
+        "environment_source": { "type": "string" },
+        "time_setting_id": { "type": "string" },
+        "weather_profile": { "type": "string" },
+        "supporting_elements": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "identity_state": {
+      "type": "object",
+      "required": ["identity_priority_rank", "identity_source"],
+      "additionalProperties": false,
+      "properties": {
+        "identity_priority_rank": { "type": "integer", "minimum": 1 },
+        "identity_source": { "type": "string" },
+        "character_first_contract": { "type": "string" },
+        "protected_character_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "identity_lock_tokens": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "from_scene_state_id": { "type": "string" },
+        "transition_type": { "type": "string" },
+        "continuity_safe": { "type": "boolean" }
+      }
+    }
+  }
+}

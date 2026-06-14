@@ -1,0 +1,110 @@
+{
+  "report_type": "music_drama_scenario_writing_rulebook_audit",
+  "report_version": "v1.1",
+  "phase": "PHASE-SCENARIO-RULEBOOK-A-v1.1",
+  "audit_timestamp": "2026-05-24T00:00:00.000Z",
+  "rulebook_path": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+  "final_verdict": "PASS_MUSIC_DRAMA_SCENARIO_RULEBOOK_V1",
+  "rule_section_count": 12,
+  "rule_sections_present": [
+    "field_separation_law",
+    "absent_character_law",
+    "active_character_law",
+    "character_description_law",
+    "scenario_style_law",
+    "crowd_density_law",
+    "animal_law",
+    "continuity_state_law",
+    "time_lighting_consistency_law",
+    "visual_anchor_law",
+    "successful_test_observations",
+    "future_generator_requirements"
+  ],
+  "dependency_check": {
+    "character_library": {
+      "path": "datasets/character/character-simple-v1.json",
+      "status": "present"
+    },
+    "time_setting_library": {
+      "path": "datasets/time/time-setting-library-v1.json",
+      "status": "present"
+    },
+    "living_world_core": {
+      "path": "exports/shared/latest/living-world-core-v1-package.json",
+      "status": "present"
+    },
+    "living_world_image_adapter": {
+      "path": "exports/image_app/latest/living-world-image-adapter.json",
+      "status": "present"
+    },
+    "result": "PASS_ALL_DEPENDENCIES_PRESENT"
+  },
+  "scope_guard": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_datasets": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false
+  },
+  "validation_checks": [
+    {
+      "check_id": "rule_section_count",
+      "expected": 12,
+      "actual": 12,
+      "passed": true
+    },
+    {
+      "check_id": "field_separation_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "absent_character_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "active_character_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "character_description_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "scenario_style_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "crowd_density_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "animal_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "continuity_state_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "time_lighting_consistency_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "visual_anchor_law_defined",
+      "passed": true
+    },
+    {
+      "check_id": "successful_test_observations_defined",
+      "passed": true
+    },
+    {
+      "check_id": "future_generator_requirements_defined",
+      "passed": true
+    }
+  ],
+  "export_paths": {
+    "rulebook": "datasets/music_drama/music-drama-scenario-writing-rulebook-v1.json",
+    "report": "datasets/music_drama/music-drama-scenario-writing-rulebook-report.json"
+  },
+  "next_step": "Manual scenario validation and image tests before automatic scenario generation."
+}

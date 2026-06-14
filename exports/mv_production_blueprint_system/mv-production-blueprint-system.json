@@ -1,0 +1,1184 @@
+{
+  "blueprint_system_id": "mv-production-blueprint-system-v1",
+  "phase": "PHASE-DIGITAL-STUDIO-002-MV_PRODUCTION_BLUEPRINT_SYSTEM_V1",
+  "generated_at": "2026-06-07T11:19:37.802Z",
+  "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+  "mv_foundation_id": "mv-production-system-foundation-v1",
+  "mv_blueprints": [
+    {
+      "mv_blueprint_id": "instrumental_mv_blueprint_v1",
+      "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+      "mv_type": "instrumental_mv",
+      "narrative_structure": {
+        "structure_type": "instrumental_visual_flow",
+        "beats": [
+          "establish",
+          "develop",
+          "peak",
+          "resolve",
+          "close"
+        ],
+        "structure_ready": true
+      },
+      "scene_count_plan": {
+        "planned_scene_count": 4,
+        "min_scene_count": 4,
+        "max_scene_count": 4,
+        "plan_valid": true
+      },
+      "shot_count_plan": {
+        "planned_shot_count": 12,
+        "shots_per_scene": 3,
+        "plan_valid": true
+      },
+      "music_sync_plan": {
+        "sync_id": "instrumental_mv_music_sync_v1",
+        "beat_markers": [
+          {
+            "beat_index": 1,
+            "scene_ref": "instrumental_mv_scene_1",
+            "timestamp_seconds": 0
+          },
+          {
+            "beat_index": 2,
+            "scene_ref": "instrumental_mv_scene_2",
+            "timestamp_seconds": 26
+          },
+          {
+            "beat_index": 3,
+            "scene_ref": "instrumental_mv_scene_3",
+            "timestamp_seconds": 52
+          },
+          {
+            "beat_index": 4,
+            "scene_ref": "instrumental_mv_scene_4",
+            "timestamp_seconds": 78
+          }
+        ],
+        "sync_valid": true
+      },
+      "emotional_arc": [
+        "hope",
+        "wonder",
+        "determination",
+        "gratitude"
+      ],
+      "runtime_estimate": {
+        "estimated_seconds_min": 90,
+        "estimated_seconds_max": 120,
+        "estimate_valid": true
+      },
+      "mv_scene_sequence": [
+        {
+          "scene_id": "instrumental_mv_scene_1",
+          "scene_order": 1,
+          "scene_goal": "establish harbor morning stillness",
+          "mv_type": "instrumental_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "instrumental_mv_scene_2",
+          "scene_order": 2,
+          "scene_goal": "notice light on water",
+          "mv_type": "instrumental_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "instrumental_mv_scene_3",
+          "scene_order": 3,
+          "scene_goal": "walk the coastal path with purpose",
+          "mv_type": "instrumental_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "instrumental_mv_scene_4",
+          "scene_order": 4,
+          "scene_goal": "pause with quiet thanks at the dock",
+          "mv_type": "instrumental_mv",
+          "sequence_valid": true
+        }
+      ],
+      "mv_shot_sequence": [
+        {
+          "shot_id": "instrumental_mv_scene_1_shot_1",
+          "scene_ref": "instrumental_mv_scene_1",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_1_shot_2",
+          "scene_ref": "instrumental_mv_scene_1",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_1_shot_3",
+          "scene_ref": "instrumental_mv_scene_1",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_2_shot_1",
+          "scene_ref": "instrumental_mv_scene_2",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_2_shot_2",
+          "scene_ref": "instrumental_mv_scene_2",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_2_shot_3",
+          "scene_ref": "instrumental_mv_scene_2",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_3_shot_1",
+          "scene_ref": "instrumental_mv_scene_3",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_3_shot_2",
+          "scene_ref": "instrumental_mv_scene_3",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_3_shot_3",
+          "scene_ref": "instrumental_mv_scene_3",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_4_shot_1",
+          "scene_ref": "instrumental_mv_scene_4",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_4_shot_2",
+          "scene_ref": "instrumental_mv_scene_4",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "instrumental_mv_scene_4_shot_3",
+          "scene_ref": "instrumental_mv_scene_4",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        }
+      ],
+      "traceability_chain": {
+        "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_blueprint_id": "mv_blueprint_v1",
+        "upstream_runtime_id": "production_runtime_mv_v1",
+        "dataset_refs": [
+          "datasets/mv/instrumental-mv-archetype-library-v1.json",
+          "datasets/mv/instrumental-mv-archetype-index-v1.json"
+        ],
+        "trace_integrity": "PASS"
+      },
+      "blueprint_ready": "PASS"
+    },
+    {
+      "mv_blueprint_id": "ballad_mv_blueprint_v1",
+      "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+      "mv_type": "ballad_mv",
+      "narrative_structure": {
+        "structure_type": "ballad_relationship_arc",
+        "beats": [
+          "first_meeting",
+          "shared_daily_life",
+          "growing_affection"
+        ],
+        "structure_ready": true
+      },
+      "scene_count_plan": {
+        "planned_scene_count": 3,
+        "min_scene_count": 3,
+        "max_scene_count": 3,
+        "plan_valid": true
+      },
+      "shot_count_plan": {
+        "planned_shot_count": 9,
+        "shots_per_scene": 3,
+        "plan_valid": true
+      },
+      "music_sync_plan": {
+        "sync_id": "ballad_mv_music_sync_v1",
+        "beat_markers": [
+          {
+            "beat_index": 1,
+            "scene_ref": "ballad_mv_scene_1",
+            "timestamp_seconds": 0
+          },
+          {
+            "beat_index": 2,
+            "scene_ref": "ballad_mv_scene_2",
+            "timestamp_seconds": 50
+          },
+          {
+            "beat_index": 3,
+            "scene_ref": "ballad_mv_scene_3",
+            "timestamp_seconds": 100
+          }
+        ],
+        "sync_valid": true
+      },
+      "emotional_arc": [
+        "tenderness",
+        "longing",
+        "distance",
+        "memory",
+        "hope"
+      ],
+      "runtime_estimate": {
+        "estimated_seconds_min": 120,
+        "estimated_seconds_max": 180,
+        "estimate_valid": true
+      },
+      "mv_scene_sequence": [
+        {
+          "scene_id": "ballad_mv_scene_1",
+          "scene_order": 1,
+          "scene_goal": "first glimpse across the village lane",
+          "mv_type": "ballad_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "ballad_mv_scene_2",
+          "scene_order": 2,
+          "scene_goal": "offer bread as unspoken greeting",
+          "mv_type": "ballad_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "ballad_mv_scene_3",
+          "scene_order": 3,
+          "scene_goal": "quiet thanks without words",
+          "mv_type": "ballad_mv",
+          "sequence_valid": true
+        }
+      ],
+      "mv_shot_sequence": [
+        {
+          "shot_id": "ballad_mv_scene_1_shot_1",
+          "scene_ref": "ballad_mv_scene_1",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_1_shot_2",
+          "scene_ref": "ballad_mv_scene_1",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_1_shot_3",
+          "scene_ref": "ballad_mv_scene_1",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_2_shot_1",
+          "scene_ref": "ballad_mv_scene_2",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_2_shot_2",
+          "scene_ref": "ballad_mv_scene_2",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_2_shot_3",
+          "scene_ref": "ballad_mv_scene_2",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_3_shot_1",
+          "scene_ref": "ballad_mv_scene_3",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_3_shot_2",
+          "scene_ref": "ballad_mv_scene_3",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "ballad_mv_scene_3_shot_3",
+          "scene_ref": "ballad_mv_scene_3",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        }
+      ],
+      "traceability_chain": {
+        "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_blueprint_id": "mv_blueprint_v1",
+        "upstream_runtime_id": "production_runtime_mv_v1",
+        "dataset_refs": [
+          "datasets/mv/ballad-mv-archetype-library-v1.json",
+          "datasets/mv/ballad-mv-archetype-index-v1.json"
+        ],
+        "trace_integrity": "PASS"
+      },
+      "blueprint_ready": "PASS"
+    },
+    {
+      "mv_blueprint_id": "story_mv_blueprint_v1",
+      "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+      "mv_type": "story_mv",
+      "narrative_structure": {
+        "structure_type": "short_film_narrative_arc",
+        "beats": [
+          "setup",
+          "inciting",
+          "rising",
+          "climax",
+          "falling",
+          "resolution"
+        ],
+        "structure_ready": true
+      },
+      "scene_count_plan": {
+        "planned_scene_count": 10,
+        "min_scene_count": 10,
+        "max_scene_count": 10,
+        "plan_valid": true
+      },
+      "shot_count_plan": {
+        "planned_shot_count": 30,
+        "shots_per_scene": 3,
+        "plan_valid": true
+      },
+      "music_sync_plan": {
+        "sync_id": "story_mv_music_sync_v1",
+        "beat_markers": [
+          {
+            "beat_index": 1,
+            "scene_ref": "story_mv_scene_1",
+            "timestamp_seconds": 0
+          },
+          {
+            "beat_index": 2,
+            "scene_ref": "story_mv_scene_2",
+            "timestamp_seconds": 21
+          },
+          {
+            "beat_index": 3,
+            "scene_ref": "story_mv_scene_3",
+            "timestamp_seconds": 42
+          },
+          {
+            "beat_index": 4,
+            "scene_ref": "story_mv_scene_4",
+            "timestamp_seconds": 63
+          },
+          {
+            "beat_index": 5,
+            "scene_ref": "story_mv_scene_5",
+            "timestamp_seconds": 84
+          },
+          {
+            "beat_index": 6,
+            "scene_ref": "story_mv_scene_6",
+            "timestamp_seconds": 105
+          },
+          {
+            "beat_index": 7,
+            "scene_ref": "story_mv_scene_7",
+            "timestamp_seconds": 126
+          },
+          {
+            "beat_index": 8,
+            "scene_ref": "story_mv_scene_8",
+            "timestamp_seconds": 147
+          },
+          {
+            "beat_index": 9,
+            "scene_ref": "story_mv_scene_9",
+            "timestamp_seconds": 168
+          },
+          {
+            "beat_index": 10,
+            "scene_ref": "story_mv_scene_10",
+            "timestamp_seconds": 189
+          }
+        ],
+        "sync_valid": true
+      },
+      "emotional_arc": [
+        "curiosity",
+        "tension",
+        "conflict",
+        "release",
+        "closure"
+      ],
+      "runtime_estimate": {
+        "estimated_seconds_min": 180,
+        "estimated_seconds_max": 240,
+        "estimate_valid": true
+      },
+      "mv_scene_sequence": [
+        {
+          "scene_id": "story_mv_scene_1",
+          "scene_order": 1,
+          "scene_goal": "story_mv_scene_1_setup",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_2",
+          "scene_order": 2,
+          "scene_goal": "story_mv_scene_2_inciting",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_3",
+          "scene_order": 3,
+          "scene_goal": "story_mv_scene_3_rising",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_4",
+          "scene_order": 4,
+          "scene_goal": "story_mv_scene_4_climax",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_5",
+          "scene_order": 5,
+          "scene_goal": "story_mv_scene_5_falling",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_6",
+          "scene_order": 6,
+          "scene_goal": "story_mv_scene_6_resolution",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_7",
+          "scene_order": 7,
+          "scene_goal": "story_mv_scene_7_setup",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_8",
+          "scene_order": 8,
+          "scene_goal": "story_mv_scene_8_inciting",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_9",
+          "scene_order": 9,
+          "scene_goal": "story_mv_scene_9_rising",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "story_mv_scene_10",
+          "scene_order": 10,
+          "scene_goal": "story_mv_scene_10_climax",
+          "mv_type": "story_mv",
+          "sequence_valid": true
+        }
+      ],
+      "mv_shot_sequence": [
+        {
+          "shot_id": "story_mv_scene_1_shot_1",
+          "scene_ref": "story_mv_scene_1",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_1_shot_2",
+          "scene_ref": "story_mv_scene_1",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_1_shot_3",
+          "scene_ref": "story_mv_scene_1",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_2_shot_1",
+          "scene_ref": "story_mv_scene_2",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_2_shot_2",
+          "scene_ref": "story_mv_scene_2",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_2_shot_3",
+          "scene_ref": "story_mv_scene_2",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_3_shot_1",
+          "scene_ref": "story_mv_scene_3",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_3_shot_2",
+          "scene_ref": "story_mv_scene_3",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_3_shot_3",
+          "scene_ref": "story_mv_scene_3",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_4_shot_1",
+          "scene_ref": "story_mv_scene_4",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_4_shot_2",
+          "scene_ref": "story_mv_scene_4",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_4_shot_3",
+          "scene_ref": "story_mv_scene_4",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_5_shot_1",
+          "scene_ref": "story_mv_scene_5",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_5_shot_2",
+          "scene_ref": "story_mv_scene_5",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_5_shot_3",
+          "scene_ref": "story_mv_scene_5",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_6_shot_1",
+          "scene_ref": "story_mv_scene_6",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_6_shot_2",
+          "scene_ref": "story_mv_scene_6",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_6_shot_3",
+          "scene_ref": "story_mv_scene_6",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_7_shot_1",
+          "scene_ref": "story_mv_scene_7",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_7_shot_2",
+          "scene_ref": "story_mv_scene_7",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_7_shot_3",
+          "scene_ref": "story_mv_scene_7",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_8_shot_1",
+          "scene_ref": "story_mv_scene_8",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_8_shot_2",
+          "scene_ref": "story_mv_scene_8",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_8_shot_3",
+          "scene_ref": "story_mv_scene_8",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_9_shot_1",
+          "scene_ref": "story_mv_scene_9",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_9_shot_2",
+          "scene_ref": "story_mv_scene_9",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_9_shot_3",
+          "scene_ref": "story_mv_scene_9",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_10_shot_1",
+          "scene_ref": "story_mv_scene_10",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_10_shot_2",
+          "scene_ref": "story_mv_scene_10",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "story_mv_scene_10_shot_3",
+          "scene_ref": "story_mv_scene_10",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        }
+      ],
+      "traceability_chain": {
+        "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_blueprint_id": "short_film_blueprint_v1",
+        "upstream_runtime_id": "production_runtime_short_film_v1",
+        "dataset_refs": [],
+        "trace_integrity": "PASS"
+      },
+      "blueprint_ready": "PASS"
+    },
+    {
+      "mv_blueprint_id": "music_drama_mv_blueprint_v1",
+      "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+      "mv_type": "music_drama_mv",
+      "narrative_structure": {
+        "structure_type": "music_drama_episode_arc",
+        "beats": [
+          "daily_life",
+          "companion_bond",
+          "community_presence",
+          "emotional_turn",
+          "memory_anchor",
+          "farewell_signal",
+          "afterglow",
+          "future_hint"
+        ],
+        "structure_ready": true
+      },
+      "scene_count_plan": {
+        "planned_scene_count": 8,
+        "min_scene_count": 8,
+        "max_scene_count": 8,
+        "plan_valid": true
+      },
+      "shot_count_plan": {
+        "planned_shot_count": 24,
+        "shots_per_scene": 3,
+        "plan_valid": true
+      },
+      "music_sync_plan": {
+        "sync_id": "music_drama_mv_music_sync_v1",
+        "beat_markers": [
+          {
+            "beat_index": 1,
+            "scene_ref": "music_drama_mv_scene_1",
+            "timestamp_seconds": 0
+          },
+          {
+            "beat_index": 2,
+            "scene_ref": "music_drama_mv_scene_2",
+            "timestamp_seconds": 22
+          },
+          {
+            "beat_index": 3,
+            "scene_ref": "music_drama_mv_scene_3",
+            "timestamp_seconds": 44
+          },
+          {
+            "beat_index": 4,
+            "scene_ref": "music_drama_mv_scene_4",
+            "timestamp_seconds": 66
+          },
+          {
+            "beat_index": 5,
+            "scene_ref": "music_drama_mv_scene_5",
+            "timestamp_seconds": 88
+          },
+          {
+            "beat_index": 6,
+            "scene_ref": "music_drama_mv_scene_6",
+            "timestamp_seconds": 110
+          },
+          {
+            "beat_index": 7,
+            "scene_ref": "music_drama_mv_scene_7",
+            "timestamp_seconds": 132
+          },
+          {
+            "beat_index": 8,
+            "scene_ref": "music_drama_mv_scene_8",
+            "timestamp_seconds": 154
+          }
+        ],
+        "sync_valid": true
+      },
+      "emotional_arc": [
+        "peace",
+        "warmth",
+        "community",
+        "transition",
+        "hope"
+      ],
+      "runtime_estimate": {
+        "estimated_seconds_min": 150,
+        "estimated_seconds_max": 210,
+        "estimate_valid": true
+      },
+      "mv_scene_sequence": [
+        {
+          "scene_id": "music_drama_mv_scene_1",
+          "scene_order": 1,
+          "scene_goal": "Gonegi Morning Routine",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "music_drama_mv_scene_2",
+          "scene_order": 2,
+          "scene_goal": "Gamja Companion Bond",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "music_drama_mv_scene_3",
+          "scene_order": 3,
+          "scene_goal": "Family Bakery Warmth",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "music_drama_mv_scene_4",
+          "scene_order": 4,
+          "scene_goal": "Harbor Edge Watch",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "music_drama_mv_scene_5",
+          "scene_order": 5,
+          "scene_goal": "Village Lane Passage",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "music_drama_mv_scene_6",
+          "scene_order": 6,
+          "scene_goal": "Domestic Bedroom Peace",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "music_drama_mv_scene_7",
+          "scene_order": 7,
+          "scene_goal": "Market Edge Background",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        },
+        {
+          "scene_id": "music_drama_mv_scene_8",
+          "scene_order": 8,
+          "scene_goal": "Rooftop Gaze",
+          "mv_type": "music_drama_mv",
+          "sequence_valid": true
+        }
+      ],
+      "mv_shot_sequence": [
+        {
+          "shot_id": "music_drama_mv_scene_1_shot_1",
+          "scene_ref": "music_drama_mv_scene_1",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_1_shot_2",
+          "scene_ref": "music_drama_mv_scene_1",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_1_shot_3",
+          "scene_ref": "music_drama_mv_scene_1",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_2_shot_1",
+          "scene_ref": "music_drama_mv_scene_2",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_2_shot_2",
+          "scene_ref": "music_drama_mv_scene_2",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_2_shot_3",
+          "scene_ref": "music_drama_mv_scene_2",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_3_shot_1",
+          "scene_ref": "music_drama_mv_scene_3",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_3_shot_2",
+          "scene_ref": "music_drama_mv_scene_3",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_3_shot_3",
+          "scene_ref": "music_drama_mv_scene_3",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_4_shot_1",
+          "scene_ref": "music_drama_mv_scene_4",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_4_shot_2",
+          "scene_ref": "music_drama_mv_scene_4",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_4_shot_3",
+          "scene_ref": "music_drama_mv_scene_4",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_5_shot_1",
+          "scene_ref": "music_drama_mv_scene_5",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_5_shot_2",
+          "scene_ref": "music_drama_mv_scene_5",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_5_shot_3",
+          "scene_ref": "music_drama_mv_scene_5",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_6_shot_1",
+          "scene_ref": "music_drama_mv_scene_6",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_6_shot_2",
+          "scene_ref": "music_drama_mv_scene_6",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_6_shot_3",
+          "scene_ref": "music_drama_mv_scene_6",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_7_shot_1",
+          "scene_ref": "music_drama_mv_scene_7",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_7_shot_2",
+          "scene_ref": "music_drama_mv_scene_7",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_7_shot_3",
+          "scene_ref": "music_drama_mv_scene_7",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_8_shot_1",
+          "scene_ref": "music_drama_mv_scene_8",
+          "shot_order": 1,
+          "shot_type": "establishing",
+          "coverage_ref": "coverage_pattern_01",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_8_shot_2",
+          "scene_ref": "music_drama_mv_scene_8",
+          "shot_order": 2,
+          "shot_type": "medium",
+          "coverage_ref": "coverage_pattern_02",
+          "sequence_valid": true
+        },
+        {
+          "shot_id": "music_drama_mv_scene_8_shot_3",
+          "scene_ref": "music_drama_mv_scene_8",
+          "shot_order": 3,
+          "shot_type": "detail",
+          "coverage_ref": "coverage_pattern_03",
+          "sequence_valid": true
+        }
+      ],
+      "traceability_chain": {
+        "source_foundation_ref": "exports/mv_production_system_foundation/mv-production-system-foundation.json",
+        "mv_foundation_id": "mv-production-system-foundation-v1",
+        "upstream_blueprint_id": "episode_blueprint_v1",
+        "upstream_runtime_id": "production_runtime_episode_v1",
+        "dataset_refs": [
+          "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+          "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+          "datasets/music_drama_grammar/music-drama-grammar-v1.json"
+        ],
+        "trace_integrity": "PASS"
+      },
+      "blueprint_ready": "PASS"
+    }
+  ],
+  "safety_flags": {
+    "planning_only": true,
+    "generation": false,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "no_execution": true,
+    "no_rendering": true,
+    "production_mode_blocked": true
+  },
+  "foundation_consumed": true,
+  "production_mode_blocked": true,
+  "traceability_preserved": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/mv_production_system_foundation/mv-production-system-foundation.json"
+    ],
+    "write_paths": [
+      "reports/mv_production_blueprint_system",
+      "exports/mv_production_blueprint_system",
+      "reports/mv_production_blueprint_system/mv-production-blueprint-system-report.json",
+      "reports/mv_production_blueprint_system/MV_PRODUCTION_BLUEPRINT_SYSTEM.md",
+      "exports/mv_production_blueprint_system/mv-production-blueprint-system-manifest.json",
+      "exports/mv_production_blueprint_system/mv-production-blueprint-system.json"
+    ],
+    "blueprint_artifact_write_scope": "exports/mv_production_blueprint_system/",
+    "upstream_artifacts_unchanged": true
+  },
+  "blueprint_system_ready": true
+}

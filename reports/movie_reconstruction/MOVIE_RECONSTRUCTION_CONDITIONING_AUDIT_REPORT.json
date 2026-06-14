@@ -1,0 +1,122 @@
+{
+  "report_id": "movie_reconstruction_conditioning_audit_mqc1rv0t",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-001",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_AUDIT_V1",
+  "generated_at": "2026-06-13T07:42:04.493Z",
+  "final_verdict": "PASS_MOVIE_RECONSTRUCTION_CONDITIONING_AUDIT_V1",
+  "status": "MOVIE_RECONSTRUCTION_CONDITIONING_AUDITED",
+  "validation_passed": true,
+  "audit_only": true,
+  "conditioning_gap_understood": true,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "all_7_subsystems_audited": true,
+  "subsystem_audits": [
+    {
+      "subsystem": "layout_map",
+      "current_support": "PARTIAL",
+      "required_support": "FULL",
+      "blocking_reason": "SpatialLayoutMap produces normalized graph elements for text constraints only; no raster layout map export or Image App map ingestion path.",
+      "gap_level": "HIGH",
+      "feasible_with_current_app": false,
+      "evidence_paths": [
+        "src/spatial_conditioning/SpatialLayoutMap.ts",
+        "reports/movie_spatial/SPATIAL_GRAPH_CONDITIONING_REPORT.json"
+      ],
+      "evidence_present": true
+    },
+    {
+      "subsystem": "depth_map",
+      "current_support": "PARTIAL",
+      "required_support": "FULL",
+      "blocking_reason": "Depth constraints derive z-layers from spatial graph nodes; no depth map rasterization or ControlNet depth backend.",
+      "gap_level": "HIGH",
+      "feasible_with_current_app": false,
+      "evidence_paths": [
+        "src/spatial_conditioning/DepthConditioning.ts"
+      ],
+      "evidence_present": true
+    },
+    {
+      "subsystem": "pose_map",
+      "current_support": "METADATA_ONLY",
+      "required_support": "FULL",
+      "blocking_reason": "Gaze vectors and posture strings exist as metadata; no skeletal pose map extraction or pose conditioning backend.",
+      "gap_level": "CRITICAL",
+      "feasible_with_current_app": false,
+      "evidence_paths": [
+        "src/spatial_conditioning/GazeConditioning.ts"
+      ],
+      "evidence_present": true
+    },
+    {
+      "subsystem": "blocking_map",
+      "current_support": "PARTIAL",
+      "required_support": "FULL",
+      "blocking_reason": "Blocking maps exist as schema fields and numerical blocking_data; pixel-level blocking map conditioning not wired to generation backend.",
+      "gap_level": "MEDIUM",
+      "feasible_with_current_app": true,
+      "evidence_paths": [
+        "datasets/movie_coordinate/movie-scene-coordinate.schema.json",
+        "exports/source_video_dna/blocking-dna"
+      ],
+      "evidence_present": true
+    },
+    {
+      "subsystem": "object_identity",
+      "current_support": "PARTIAL",
+      "required_support": "FULL",
+      "blocking_reason": "Identity locks and semantic anchors available as text/metadata; no pixel-level object identity conditioning or drift prevention backend.",
+      "gap_level": "HIGH",
+      "feasible_with_current_app": true,
+      "evidence_paths": [
+        "services/movieSceneCoordinateBuilder.ts",
+        "datasets/movie_reconstruction/semantic-preservation-layer.json"
+      ],
+      "evidence_present": true
+    },
+    {
+      "subsystem": "environment_identity",
+      "current_support": "PARTIAL",
+      "required_support": "FULL",
+      "blocking_reason": "Environment anchor constraints and timesetting lock PASS for reference movies; no environment identity map generation for reconstruction backend.",
+      "gap_level": "MEDIUM",
+      "feasible_with_current_app": true,
+      "evidence_paths": [
+        "src/spatial_conditioning/EnvironmentAnchorConditioning.ts",
+        "reports/movie_spatial/MOVIE_TIMESETTING_LOCK_REPORT.json"
+      ],
+      "evidence_present": true
+    },
+    {
+      "subsystem": "conditioning_backend",
+      "current_support": "PARTIAL",
+      "required_support": "FULL",
+      "blocking_reason": "Current backend compiles spatial graph into text generation_constraints only; no ControlNet-class multi-map conditioning ingestion (D-016, D-017, TD-C003).",
+      "gap_level": "CRITICAL",
+      "feasible_with_current_app": false,
+      "evidence_paths": [
+        "src/spatial_conditioning/ConditionedPromptBuilder.ts",
+        "reports/movie_spatial/SPATIAL_GRAPH_CONDITIONING_REPORT.json"
+      ],
+      "evidence_present": true
+    }
+  ],
+  "checks": {
+    "all_7_subsystems_audited": true,
+    "gap_report_exists": true,
+    "priority_order_defined": true,
+    "requires_new_backend_defined": true,
+    "conditioning_gap_understood": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "audit_only": true,
+    "implementation_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

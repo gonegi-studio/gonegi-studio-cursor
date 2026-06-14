@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/video_runtime/provider-wiring.schema.json",
+  "title": "ProviderWiringDesign",
+  "description": "Design-only provider wiring contract for PHASE-27",
+  "type": "object",
+  "required": [
+    "wiring_id",
+    "phase",
+    "provider_id",
+    "wiring_mode",
+    "runtime_target",
+    "required_environment",
+    "input_contract",
+    "output_contract",
+    "safety_contract",
+    "activation_status",
+    "execution_status",
+    "machine_readiness_gate"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "wiring_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-27-VIDEO-PROVIDER-WIRING-DESIGN-001" },
+    "provider_id": { "type": "string", "minLength": 1 },
+    "wiring_mode": {
+      "type": "string",
+      "enum": ["local_comfyui", "local_wan", "local_animatediff", "remote_gpu_rental", "remote_api"]
+    },
+    "runtime_target": { "type": "string", "enum": ["local", "remote"] },
+    "required_environment": { "$ref": "#/$defs/required_environment" },
+    "input_contract": { "$ref": "#/$defs/input_contract" },
+    "output_contract": { "$ref": "#/$defs/output_contract" },
+    "safety_contract": { "$ref": "#/$defs/safety_contract" },
+    "activation_status": { "type": "string", "const": "design_only" },
+    "execution_status": {
+      "type": "string",
+      "enum": ["blocked_for_execution", "design_only_possible"]
+    },
+    "machine_readiness_gate": { "type": "string" },
+    "notes": { "type": "string" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "required_environment": {
+      "type": "object",
+      "required": ["readiness_profile_min", "gpu_required", "network_required"],
+      "properties": {
+        "readiness_profile_min": {
+          "type": "string",
+          "enum": ["minimal", "recommended", "production", "none"]
+        },
+        "gpu_required": { "type": "boolean" },
+        "network_required": { "type": "boolean" },
+        "python_min": { "type": "string" },
+        "node_min": { "type": "string" },
+        "vram_gb_min": { "type": "number" }
+      }
+    },
+    "input_contract": {
+      "type": "object",
+      "required": [
+        "gpu_render_payload_path",
+        "video_runtime_interface_path",
+        "provider_id",
+        "contract_version"
+      ],
+      "properties": {
+        "gpu_render_payload_path": { "type": "string" },
+        "video_runtime_interface_path": { "type": "string" },
+        "provider_id": { "type": "string" },
+        "contract_version": { "type": "string", "const": "video-provider-input-v1" }
+      }
+    },
+    "output_contract": {
+      "type": "object",
+      "required": ["video_job_request_stub", "expected_artifact_stub", "contract_version"],
+      "properties": {
+        "video_job_request_stub": { "type": "string" },
+        "expected_artifact_stub": { "type": "string" },
+        "contract_version": { "type": "string", "const": "video-provider-output-v1" }
+      }
+    },
+    "safety_contract": {
+      "type": "object",
+      "required": [
+        "gpu_execution",
+        "external_call_allowed",
+        "activation_status",
+        "executable",
+        "endpoint"
+      ],
+      "properties": {
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "activation_status": { "type": "string", "const": "design_only" },
+        "executable": { "type": "null" },
+        "endpoint": { "type": "null" },
+        "local_execution_blocked": { "type": "boolean" }
+      }
+    }
+  }
+}

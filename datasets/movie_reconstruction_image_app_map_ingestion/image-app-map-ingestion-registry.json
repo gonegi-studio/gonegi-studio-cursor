@@ -1,0 +1,19 @@
+{
+  "registry_id": "image-app-map-ingestion-registry-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-006",
+  "system_id": "IMAGE_APP_MAP_INGESTION_V1",
+  "version": "image_app_map_ingestion_v1",
+  "ingestion_only": true,
+  "implementation_deferred": true,
+  "conditioning_map_export_ref": "exports/movie_reconstruction_conditioning/conditioning-map-export-bundle.json",
+  "environment_strategy_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+  "object_strategy_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+  "temporal_strategy_ref": "reports/movie_reconstruction/TEMPORAL_MEMORY_SPECIFICATION.json",
+  "adapter_validation_ref": "reports/movie_reconstruction/ADAPTER_TRANSLATION_VALIDATION_REPORT.json",
+  "execution_flags": {
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

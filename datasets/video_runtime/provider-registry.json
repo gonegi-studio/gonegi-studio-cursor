@@ -1,0 +1,184 @@
+{
+  "registry_id": "video-runtime-provider-registry-v1",
+  "phase": "PHASE-25-VIDEO-RUNTIME-PROVIDER-ABSTRACTION-001",
+  "registry_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "schema_path": "datasets/video_runtime/provider.schema.json",
+  "providers": [
+    {
+      "provider_id": "provider_stub_local_comfyui",
+      "phase": "PHASE-25-VIDEO-RUNTIME-PROVIDER-ABSTRACTION-001",
+      "provider_type": "local",
+      "runtime_mode": "stub",
+      "status": "not_wired",
+      "supported_inputs": ["gpu_render_payload_v1", "video_runtime_interface_v1"],
+      "supported_outputs": ["mp4_placeholder", "frame_sequence_placeholder"],
+      "capabilities": {
+        "max_duration_seconds": 12,
+        "max_fps": 30,
+        "max_resolution": "1280x720",
+        "identity_lock_preservation": true,
+        "motion_segment_support": true,
+        "keyframe_interpolation": true,
+        "local_gpu_required": true,
+        "remote_api": false,
+        "motion_complexity_tier": "high"
+      },
+      "limitations": [
+        "not_wired_in_phase_25",
+        "no_comfyui_workflow_execution",
+        "requires_future_local_gpu_preflight"
+      ],
+      "execution_flags": {
+        "gpu_execution": false,
+        "preparation_only": true,
+        "external_call_allowed": false
+      },
+      "wiring": {
+        "executable": null,
+        "endpoint": null
+      },
+      "notes": "Future ComfyUI adapter for node-graph video workflows with identity lock injection."
+    },
+    {
+      "provider_id": "provider_stub_local_sd_webui",
+      "phase": "PHASE-25-VIDEO-RUNTIME-PROVIDER-ABSTRACTION-001",
+      "provider_type": "local",
+      "runtime_mode": "stub",
+      "status": "not_wired",
+      "supported_inputs": ["gpu_render_payload_v1", "video_runtime_interface_v1"],
+      "supported_outputs": ["mp4_placeholder", "frame_sequence_placeholder"],
+      "capabilities": {
+        "max_duration_seconds": 6,
+        "max_fps": 24,
+        "max_resolution": "1280x720",
+        "identity_lock_preservation": true,
+        "motion_segment_support": false,
+        "keyframe_interpolation": true,
+        "local_gpu_required": true,
+        "remote_api": false,
+        "motion_complexity_tier": "low"
+      },
+      "limitations": [
+        "not_wired_in_phase_25",
+        "limited_motion_segment_pipeline",
+        "best_for_short_static_motion_clips"
+      ],
+      "execution_flags": {
+        "gpu_execution": false,
+        "preparation_only": true,
+        "external_call_allowed": false
+      },
+      "wiring": {
+        "executable": null,
+        "endpoint": null
+      },
+      "notes": "Future Stable Diffusion WebUI adapter for img2img and short clip extensions."
+    },
+    {
+      "provider_id": "provider_stub_local_wan",
+      "phase": "PHASE-25-VIDEO-RUNTIME-PROVIDER-ABSTRACTION-001",
+      "provider_type": "local",
+      "runtime_mode": "stub",
+      "status": "not_wired",
+      "supported_inputs": ["gpu_render_payload_v1", "video_runtime_interface_v1"],
+      "supported_outputs": ["mp4_placeholder", "frame_sequence_placeholder"],
+      "capabilities": {
+        "max_duration_seconds": 16,
+        "max_fps": 30,
+        "max_resolution": "1280x720",
+        "identity_lock_preservation": true,
+        "motion_segment_support": true,
+        "keyframe_interpolation": true,
+        "local_gpu_required": true,
+        "remote_api": false,
+        "motion_complexity_tier": "high"
+      },
+      "limitations": [
+        "not_wired_in_phase_25",
+        "no_wan_model_execution",
+        "requires_future_local_gpu_preflight"
+      ],
+      "execution_flags": {
+        "gpu_execution": false,
+        "preparation_only": true,
+        "external_call_allowed": false
+      },
+      "wiring": {
+        "executable": null,
+        "endpoint": null
+      },
+      "notes": "Future Wan local video model adapter for longer narrative motion clips."
+    },
+    {
+      "provider_id": "provider_stub_local_animatediff",
+      "phase": "PHASE-25-VIDEO-RUNTIME-PROVIDER-ABSTRACTION-001",
+      "provider_type": "local",
+      "runtime_mode": "stub",
+      "status": "not_wired",
+      "supported_inputs": ["gpu_render_payload_v1", "video_runtime_interface_v1"],
+      "supported_outputs": ["mp4_placeholder", "frame_sequence_placeholder"],
+      "capabilities": {
+        "max_duration_seconds": 8,
+        "max_fps": 24,
+        "max_resolution": "1280x720",
+        "identity_lock_preservation": true,
+        "motion_segment_support": true,
+        "keyframe_interpolation": true,
+        "local_gpu_required": true,
+        "remote_api": false,
+        "motion_complexity_tier": "medium"
+      },
+      "limitations": [
+        "not_wired_in_phase_25",
+        "no_animatediff_pipeline_execution",
+        "best_for_medium_duration_motion"
+      ],
+      "execution_flags": {
+        "gpu_execution": false,
+        "preparation_only": true,
+        "external_call_allowed": false
+      },
+      "wiring": {
+        "executable": null,
+        "endpoint": null
+      },
+      "notes": "Future AnimateDiff adapter for keyframe-guided short motion synthesis."
+    },
+    {
+      "provider_id": "provider_stub_remote_api",
+      "phase": "PHASE-25-VIDEO-RUNTIME-PROVIDER-ABSTRACTION-001",
+      "provider_type": "remote",
+      "runtime_mode": "stub",
+      "status": "not_wired",
+      "supported_inputs": ["gpu_render_payload_v1", "video_runtime_interface_v1"],
+      "supported_outputs": ["mp4_placeholder", "job_status_placeholder"],
+      "capabilities": {
+        "max_duration_seconds": 30,
+        "max_fps": 30,
+        "max_resolution": "1920x1080",
+        "identity_lock_preservation": true,
+        "motion_segment_support": true,
+        "keyframe_interpolation": true,
+        "local_gpu_required": false,
+        "remote_api": true,
+        "motion_complexity_tier": "high"
+      },
+      "limitations": [
+        "not_wired_in_phase_25",
+        "no_remote_endpoint_configured",
+        "no_network_calls_in_abstraction_phase"
+      ],
+      "execution_flags": {
+        "gpu_execution": false,
+        "preparation_only": true,
+        "external_call_allowed": false
+      },
+      "wiring": {
+        "executable": null,
+        "endpoint": null
+      },
+      "notes": "Future commercial or hosted API adapter (Hunyuan Video, hosted Wan, etc.)."
+    }
+  ]
+}

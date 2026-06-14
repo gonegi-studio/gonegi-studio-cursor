@@ -1,0 +1,79 @@
+{
+  "checklist_id": "gpu-readiness-checklist-v1",
+  "asset_type": "gpu_readiness_checklist",
+  "asset_version": "v1",
+  "phase": "PHASE-GPU-PREP-002",
+  "module": "REAL_PRODUCTION_TEST_PREPARATION_V1",
+  "purpose": "GPU execution readiness checklist across generation operation stack and story/dialogue layers.",
+  "upstream_checkpoint": "PASS_DIALOGUE_LIPSYNC_SYSTEM_V1",
+  "checklist_item_count": 8,
+  "checklist_items": [
+    "prompt_compiler",
+    "prompt_evaluation",
+    "generation_qa",
+    "generation_trace",
+    "asset_registry",
+    "dataset_evolution",
+    "story_engine",
+    "dialogue_lipsync"
+  ],
+  "prompt_evaluation_readiness": "PASS",
+  "generation_qa_readiness": "PASS",
+  "gpu_readiness": "PASS",
+  "checklist_integrity": "PASS",
+  "readiness_refs": {
+    "prompt_compiler": {
+      "item_id": "prompt_compiler",
+      "readiness_ref": "exports/generation/compiled-prompt.json",
+      "expected_integrity": "PASS"
+    },
+    "prompt_evaluation": {
+      "item_id": "prompt_evaluation",
+      "readiness_ref": "reports/prompt_evaluation/PROMPT_EVALUATION_SYSTEM_REPORT.json",
+      "expected_verdict": "PASS_PROMPT_EVALUATION_SYSTEM_V1"
+    },
+    "generation_qa": {
+      "item_id": "generation_qa",
+      "readiness_ref": "reports/generation_qa/GENERATION_QA_AND_ERROR_CONTEXT_REPORT.json",
+      "expected_verdict": "PASS_GENERATION_QA_AND_ERROR_CONTEXT_SYSTEM_V1"
+    },
+    "generation_trace": {
+      "item_id": "generation_trace",
+      "readiness_ref": "exports/generation/generation-trace-specification.json",
+      "expected_integrity": "PASS"
+    },
+    "asset_registry": {
+      "item_id": "asset_registry",
+      "readiness_ref": "exports/assets/generated-asset-registry.json",
+      "expected_integrity": "PASS"
+    },
+    "dataset_evolution": {
+      "item_id": "dataset_evolution",
+      "readiness_ref": "exports/evolution/dataset-evolution-specification.json",
+      "expected_integrity": "PASS"
+    },
+    "story_engine": {
+      "item_id": "story_engine",
+      "readiness_ref": "reports/story_engine/STORY_TO_BLUEPRINT_ENGINE_REPORT.json",
+      "expected_verdict": "PASS_STORY_TO_BLUEPRINT_ENGINE_V1"
+    },
+    "dialogue_lipsync": {
+      "item_id": "dialogue_lipsync",
+      "readiness_ref": "reports/dialogue_lipsync/DIALOGUE_LIPSYNC_SYSTEM_REPORT.json",
+      "expected_verdict": "PASS_DIALOGUE_LIPSYNC_SYSTEM_V1"
+    }
+  },
+  "export_id": "gpu-readiness-checklist-export-v1",
+  "generated_at": "2026-06-09T02:06:45.732Z",
+  "dataset_ref": "datasets/production_test/gpu-readiness-checklist.json",
+  "checklist_item_list": [
+    "prompt_compiler",
+    "prompt_evaluation",
+    "generation_qa",
+    "generation_trace",
+    "asset_registry",
+    "dataset_evolution",
+    "story_engine",
+    "dialogue_lipsync"
+  ]
+}

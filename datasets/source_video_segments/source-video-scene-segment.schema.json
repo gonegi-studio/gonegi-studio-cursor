@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video_segments/source-video-scene-segment.schema.json",
+  "title": "SourceVideoSceneSegment",
+  "description": "Design-only scene segment unit for PHASE-SOURCE-VIDEO-008",
+  "type": "object",
+  "required": [
+    "segment_id",
+    "phase",
+    "source_video_id",
+    "segment_index",
+    "timestamp_start",
+    "timestamp_end",
+    "duration_seconds",
+    "segment_type",
+    "director_family",
+    "dominant_grammar",
+    "location_context",
+    "character_context",
+    "camera_context",
+    "lighting_context",
+    "motion_context",
+    "emotion_context",
+    "transition_in",
+    "transition_out",
+    "video_state_defaults_ref",
+    "director_grammar_ref",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "segment_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-008-SOURCE_VIDEO_SCENE_SEGMENT_SCHEMA_V1"
+    },
+    "source_video_id": { "type": "string", "minLength": 1 },
+    "segment_index": { "type": "integer", "minimum": 1 },
+    "timestamp_start": { "type": "number", "minimum": 0 },
+    "timestamp_end": { "type": "number", "exclusiveMinimum": 0 },
+    "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+    "segment_type": {
+      "type": "string",
+      "enum": ["kitchen_blocking", "light_sky", "dialogue_blocking", "emotion_flow"]
+    },
+    "director_family": {
+      "type": "string",
+      "enum": ["GHIBLI", "SHINKAI", "LIVE_ACTION", "MORI"]
+    },
+    "dominant_grammar": {
+      "type": "string",
+      "enum": [
+        "visual_style",
+        "camera_grammar",
+        "lighting_grammar",
+        "blocking_grammar",
+        "emotion_grammar",
+        "motion_grammar",
+        "environment_grammar"
+      ]
+    },
+    "location_context": { "$ref": "#/$defs/context_block" },
+    "character_context": { "$ref": "#/$defs/context_block" },
+    "camera_context": { "$ref": "#/$defs/context_block" },
+    "lighting_context": { "$ref": "#/$defs/context_block" },
+    "motion_context": { "$ref": "#/$defs/context_block" },
+    "emotion_context": { "$ref": "#/$defs/context_block" },
+    "transition_in": { "type": "string", "minLength": 1 },
+    "transition_out": { "type": "string", "minLength": 1 },
+    "coordinate_template_ref": {
+      "type": ["string", "null"]
+    },
+    "scene_state_mapping_ref": {
+      "type": ["string", "null"]
+    },
+    "video_state_defaults_ref": { "type": "string", "minLength": 1 },
+    "director_grammar_ref": { "type": "string", "minLength": 1 },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "context_block": {
+      "type": "object",
+      "required": ["summary", "tokens"],
+      "additionalProperties": false,
+      "properties": {
+        "summary": { "type": "string" },
+        "tokens": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "ocr",
+        "generation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,991 @@
+{
+  "layer_version": "PROMPT-PACK-PAIRING-PHASE-86-v1",
+  "seed_count": 16,
+  "song_master_id": "song_master_01",
+  "required_fields": [
+    "pair_id",
+    "storyboard_id",
+    "scene_order",
+    "image_prompt_pack_id",
+    "video_prompt_pack_id",
+    "shared_behavior_id",
+    "shared_emotion_id",
+    "shared_relationship_id",
+    "shared_daily_life_anchor",
+    "shared_shot_affinity",
+    "image_to_video_alignment",
+    "continuity_notes",
+    "keywords"
+  ],
+  "pipeline_chain": [
+    "song_master",
+    "emotion_timeline",
+    "narrative_beat",
+    "storyboard_scene",
+    "image_prompt_pack",
+    "video_prompt_pack",
+    "prompt_pack_pair"
+  ],
+  "seed_prompt_pack_pairs": [
+    {
+      "pair_id": "PAIR-SBD-song_master_01-01",
+      "storyboard_id": "SBD-song_master_01-01",
+      "scene_order": 1,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-01",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-01",
+      "shared_behavior_id": "waiting",
+      "shared_emotion_id": "anticipation",
+      "shared_relationship_id": "guardian_child",
+      "shared_daily_life_anchor": [
+        "station_waiting",
+        "window_gazing"
+      ],
+      "shared_shot_affinity": [
+        "wide_establishing",
+        "medium_emotional"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-01",
+        "scene-order:1",
+        "image-pack:IPP-SBD-song_master_01-01",
+        "video-pack:VPP-SBD-song_master_01-01",
+        "shared-shot:wide_establishing",
+        "shot-bridge:wide_establishing",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-anchor:station_waiting",
+        "environment-bridge:station_waiting",
+        "shared-anchor:window_gazing",
+        "environment-bridge:window_gazing",
+        "character-bridge:waiting",
+        "relationship-anchor:guardian_child",
+        "video-transition:silence_to_confession",
+        "video-transition:sunset_to_night"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-01",
+        "video-pack:VPP-SBD-song_master_01-01",
+        "storyboard:SBD-song_master_01-01",
+        "scene-order:1",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:14",
+        "song-master:song_master_01",
+        "transition:silence_to_confession",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "waiting",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-02",
+      "storyboard_id": "SBD-song_master_01-02",
+      "scene_order": 2,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-02",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-02",
+      "shared_behavior_id": "loneliness",
+      "shared_emotion_id": "isolation",
+      "shared_relationship_id": "family_separation",
+      "shared_daily_life_anchor": [
+        "photo_viewing",
+        "letter_writing"
+      ],
+      "shared_shot_affinity": [
+        "overhead_isolation",
+        "silhouette_distance"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-02",
+        "scene-order:2",
+        "image-pack:IPP-SBD-song_master_01-02",
+        "video-pack:VPP-SBD-song_master_01-02",
+        "shared-shot:overhead_isolation",
+        "shot-bridge:overhead_isolation",
+        "shared-shot:silhouette_distance",
+        "shot-bridge:silhouette_distance",
+        "shared-anchor:photo_viewing",
+        "environment-bridge:photo_viewing",
+        "shared-anchor:letter_writing",
+        "environment-bridge:letter_writing",
+        "character-bridge:loneliness",
+        "relationship-anchor:family_separation",
+        "video-transition:sunset_to_night",
+        "video-transition:separation_to_reunion"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-02",
+        "video-pack:VPP-SBD-song_master_01-02",
+        "storyboard:SBD-song_master_01-02",
+        "scene-order:2",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:14",
+        "song-master:song_master_01",
+        "transition:sunset_to_night",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "memory",
+        "isolation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-03",
+      "storyboard_id": "SBD-song_master_01-03",
+      "scene_order": 3,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-03",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-03",
+      "shared_behavior_id": "hesitation",
+      "shared_emotion_id": "uncertainty",
+      "shared_relationship_id": "silent_friends",
+      "shared_daily_life_anchor": [
+        "bench_sitting",
+        "book_reading"
+      ],
+      "shared_shot_affinity": [
+        "medium_emotional",
+        "window_reflection"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-03",
+        "scene-order:3",
+        "image-pack:IPP-SBD-song_master_01-03",
+        "video-pack:VPP-SBD-song_master_01-03",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-shot:window_reflection",
+        "shot-bridge:window_reflection",
+        "shared-anchor:bench_sitting",
+        "environment-bridge:bench_sitting",
+        "shared-anchor:book_reading",
+        "environment-bridge:book_reading",
+        "character-bridge:hesitation",
+        "relationship-anchor:silent_friends",
+        "video-transition:silence_to_confession",
+        "video-transition:hope_to_sadness"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-03",
+        "video-pack:VPP-SBD-song_master_01-03",
+        "storyboard:SBD-song_master_01-03",
+        "scene-order:3",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:silence_to_confession",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "discovery",
+        "friendship",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-04",
+      "storyboard_id": "SBD-song_master_01-04",
+      "scene_order": 4,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-04",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-04",
+      "shared_behavior_id": "farewell",
+      "shared_emotion_id": "parting",
+      "shared_relationship_id": "family_separation",
+      "shared_daily_life_anchor": [
+        "doorway_pause",
+        "train_riding"
+      ],
+      "shared_shot_affinity": [
+        "silhouette_distance",
+        "wide_establishing"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-04",
+        "scene-order:4",
+        "image-pack:IPP-SBD-song_master_01-04",
+        "video-pack:VPP-SBD-song_master_01-04",
+        "shared-shot:silhouette_distance",
+        "shot-bridge:silhouette_distance",
+        "shared-shot:wide_establishing",
+        "shot-bridge:wide_establishing",
+        "shared-anchor:doorway_pause",
+        "environment-bridge:doorway_pause",
+        "shared-anchor:train_riding",
+        "environment-bridge:train_riding",
+        "character-bridge:farewell",
+        "relationship-anchor:family_separation",
+        "video-transition:sunset_to_night",
+        "video-transition:separation_to_reunion"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-04",
+        "video-pack:VPP-SBD-song_master_01-04",
+        "storyboard:SBD-song_master_01-04",
+        "scene-order:4",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sunset_to_night",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "distance",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-05",
+      "storyboard_id": "SBD-song_master_01-05",
+      "scene_order": 5,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-05",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-05",
+      "shared_behavior_id": "waiting",
+      "shared_emotion_id": "anticipation",
+      "shared_relationship_id": "lost_lovers",
+      "shared_daily_life_anchor": [
+        "rain_watching",
+        "evening_return"
+      ],
+      "shared_shot_affinity": [
+        "window_reflection",
+        "medium_emotional"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-05",
+        "scene-order:5",
+        "image-pack:IPP-SBD-song_master_01-05",
+        "video-pack:VPP-SBD-song_master_01-05",
+        "shared-shot:window_reflection",
+        "shot-bridge:window_reflection",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-anchor:rain_watching",
+        "environment-bridge:rain_watching",
+        "shared-anchor:evening_return",
+        "environment-bridge:evening_return",
+        "character-bridge:waiting",
+        "relationship-anchor:lost_lovers",
+        "video-transition:sunset_to_night",
+        "video-transition:separation_to_reunion"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-05",
+        "video-pack:VPP-SBD-song_master_01-05",
+        "storyboard:SBD-song_master_01-05",
+        "scene-order:5",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sunset_to_night",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "longing",
+        "anticipation",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-06",
+      "storyboard_id": "SBD-song_master_01-06",
+      "scene_order": 6,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-06",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-06",
+      "shared_behavior_id": "hope",
+      "shared_emotion_id": "optimism",
+      "shared_relationship_id": "reunion_after_loss",
+      "shared_daily_life_anchor": [
+        "sunset_watching",
+        "bridge_crossing"
+      ],
+      "shared_shot_affinity": [
+        "medium_emotional",
+        "side_tracking"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-06",
+        "scene-order:6",
+        "image-pack:IPP-SBD-song_master_01-06",
+        "video-pack:VPP-SBD-song_master_01-06",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-shot:side_tracking",
+        "shot-bridge:side_tracking",
+        "shared-anchor:sunset_watching",
+        "environment-bridge:sunset_watching",
+        "shared-anchor:bridge_crossing",
+        "environment-bridge:bridge_crossing",
+        "character-bridge:hope",
+        "relationship-anchor:reunion_after_loss",
+        "video-transition:sadness_to_hope",
+        "video-transition:separation_to_reunion"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-06",
+        "video-pack:VPP-SBD-song_master_01-06",
+        "storyboard:SBD-song_master_01-06",
+        "scene-order:6",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sadness_to_hope",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "hope",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-07",
+      "storyboard_id": "SBD-song_master_01-07",
+      "scene_order": 7,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-07",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-07",
+      "shared_behavior_id": "hope",
+      "shared_emotion_id": "optimism",
+      "shared_relationship_id": "mentor_student",
+      "shared_daily_life_anchor": [
+        "morning_routine",
+        "bicycle_riding"
+      ],
+      "shared_shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-07",
+        "scene-order:7",
+        "image-pack:IPP-SBD-song_master_01-07",
+        "video-pack:VPP-SBD-song_master_01-07",
+        "shared-shot:side_tracking",
+        "shot-bridge:side_tracking",
+        "shared-shot:rear_follow",
+        "shot-bridge:rear_follow",
+        "shared-anchor:morning_routine",
+        "environment-bridge:morning_routine",
+        "shared-anchor:bicycle_riding",
+        "environment-bridge:bicycle_riding",
+        "character-bridge:hope",
+        "relationship-anchor:mentor_student",
+        "video-transition:sadness_to_hope",
+        "video-transition:walking_to_running"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-07",
+        "video-pack:VPP-SBD-song_master_01-07",
+        "storyboard:SBD-song_master_01-07",
+        "scene-order:7",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sadness_to_hope",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "journey",
+        "optimism",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-08",
+      "storyboard_id": "SBD-song_master_01-08",
+      "scene_order": 8,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-08",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-08",
+      "shared_behavior_id": "determination",
+      "shared_emotion_id": "resolve",
+      "shared_relationship_id": "rival_to_ally",
+      "shared_daily_life_anchor": [
+        "street_crossing",
+        "school_walk"
+      ],
+      "shared_shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-08",
+        "scene-order:8",
+        "image-pack:IPP-SBD-song_master_01-08",
+        "video-pack:VPP-SBD-song_master_01-08",
+        "shared-shot:side_tracking",
+        "shot-bridge:side_tracking",
+        "shared-shot:rear_follow",
+        "shot-bridge:rear_follow",
+        "shared-anchor:street_crossing",
+        "environment-bridge:street_crossing",
+        "shared-anchor:school_walk",
+        "environment-bridge:school_walk",
+        "character-bridge:determination",
+        "relationship-anchor:rival_to_ally",
+        "video-transition:walking_to_running",
+        "video-transition:hope_to_sadness"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-08",
+        "video-pack:VPP-SBD-song_master_01-08",
+        "storyboard:SBD-song_master_01-08",
+        "scene-order:8",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:walking_to_running",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "conflict",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-09",
+      "storyboard_id": "SBD-song_master_01-09",
+      "scene_order": 9,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-09",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-09",
+      "shared_behavior_id": "determination",
+      "shared_emotion_id": "resolve",
+      "shared_relationship_id": "family_separation",
+      "shared_daily_life_anchor": [
+        "doorway_pause",
+        "laundry"
+      ],
+      "shared_shot_affinity": [
+        "silhouette_distance",
+        "wide_establishing"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-09",
+        "scene-order:9",
+        "image-pack:IPP-SBD-song_master_01-09",
+        "video-pack:VPP-SBD-song_master_01-09",
+        "shared-shot:silhouette_distance",
+        "shot-bridge:silhouette_distance",
+        "shared-shot:wide_establishing",
+        "shot-bridge:wide_establishing",
+        "shared-anchor:doorway_pause",
+        "environment-bridge:doorway_pause",
+        "shared-anchor:laundry",
+        "environment-bridge:laundry",
+        "character-bridge:determination",
+        "relationship-anchor:family_separation",
+        "video-transition:hope_to_sadness",
+        "video-transition:sunset_to_night"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-09",
+        "video-pack:VPP-SBD-song_master_01-09",
+        "storyboard:SBD-song_master_01-09",
+        "scene-order:9",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:hope_to_sadness",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "sacrifice",
+        "resolve",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-10",
+      "storyboard_id": "SBD-song_master_01-10",
+      "scene_order": 10,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-10",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-10",
+      "shared_behavior_id": "protection",
+      "shared_emotion_id": "care",
+      "shared_relationship_id": "stranger_kindness",
+      "shared_daily_life_anchor": [
+        "tea_drinking",
+        "pet_care"
+      ],
+      "shared_shot_affinity": [
+        "wide_establishing",
+        "close_hand_detail"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-10",
+        "scene-order:10",
+        "image-pack:IPP-SBD-song_master_01-10",
+        "video-pack:VPP-SBD-song_master_01-10",
+        "shared-shot:wide_establishing",
+        "shot-bridge:wide_establishing",
+        "shared-shot:close_hand_detail",
+        "shot-bridge:close_hand_detail",
+        "shared-anchor:tea_drinking",
+        "environment-bridge:tea_drinking",
+        "shared-anchor:pet_care",
+        "environment-bridge:pet_care",
+        "character-bridge:protection",
+        "relationship-anchor:stranger_kindness",
+        "video-transition:rain_to_clear",
+        "video-transition:separation_to_reunion"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-10",
+        "video-pack:VPP-SBD-song_master_01-10",
+        "storyboard:SBD-song_master_01-10",
+        "scene-order:10",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:rain_to_clear",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "healing",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-11",
+      "storyboard_id": "SBD-song_master_01-11",
+      "scene_order": 11,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-11",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-11",
+      "shared_behavior_id": "reunion",
+      "shared_emotion_id": "connection",
+      "shared_relationship_id": "stranger_kindness",
+      "shared_daily_life_anchor": [
+        "market_visit",
+        "music_listening"
+      ],
+      "shared_shot_affinity": [
+        "medium_emotional",
+        "close_hand_detail"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-11",
+        "scene-order:11",
+        "image-pack:IPP-SBD-song_master_01-11",
+        "video-pack:VPP-SBD-song_master_01-11",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-shot:close_hand_detail",
+        "shot-bridge:close_hand_detail",
+        "shared-anchor:market_visit",
+        "environment-bridge:market_visit",
+        "shared-anchor:music_listening",
+        "environment-bridge:music_listening",
+        "character-bridge:reunion",
+        "relationship-anchor:stranger_kindness",
+        "video-transition:rain_to_clear",
+        "video-transition:separation_to_reunion"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-11",
+        "video-pack:VPP-SBD-song_master_01-11",
+        "storyboard:SBD-song_master_01-11",
+        "scene-order:11",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:rain_to_clear",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "forgiveness",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-12",
+      "storyboard_id": "SBD-song_master_01-12",
+      "scene_order": 12,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-12",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-12",
+      "shared_behavior_id": "reunion",
+      "shared_emotion_id": "connection",
+      "shared_relationship_id": "reunion_after_loss",
+      "shared_daily_life_anchor": [
+        "station_waiting",
+        "shore_walking"
+      ],
+      "shared_shot_affinity": [
+        "side_tracking",
+        "rear_follow"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-12",
+        "scene-order:12",
+        "image-pack:IPP-SBD-song_master_01-12",
+        "video-pack:VPP-SBD-song_master_01-12",
+        "shared-shot:side_tracking",
+        "shot-bridge:side_tracking",
+        "shared-shot:rear_follow",
+        "shot-bridge:rear_follow",
+        "shared-anchor:station_waiting",
+        "environment-bridge:station_waiting",
+        "shared-anchor:shore_walking",
+        "environment-bridge:shore_walking",
+        "character-bridge:reunion",
+        "relationship-anchor:reunion_after_loss",
+        "video-transition:separation_to_reunion",
+        "video-transition:sadness_to_hope"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-12",
+        "video-pack:VPP-SBD-song_master_01-12",
+        "storyboard:SBD-song_master_01-12",
+        "scene-order:12",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "reunion",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-13",
+      "storyboard_id": "SBD-song_master_01-13",
+      "scene_order": 13,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-13",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-13",
+      "shared_behavior_id": "farewell",
+      "shared_emotion_id": "parting",
+      "shared_relationship_id": "lost_lovers",
+      "shared_daily_life_anchor": [
+        "bus_waiting",
+        "rooftop_visit"
+      ],
+      "shared_shot_affinity": [
+        "silhouette_distance",
+        "medium_emotional"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-13",
+        "scene-order:13",
+        "image-pack:IPP-SBD-song_master_01-13",
+        "video-pack:VPP-SBD-song_master_01-13",
+        "shared-shot:silhouette_distance",
+        "shot-bridge:silhouette_distance",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-anchor:bus_waiting",
+        "environment-bridge:bus_waiting",
+        "shared-anchor:rooftop_visit",
+        "environment-bridge:rooftop_visit",
+        "character-bridge:farewell",
+        "relationship-anchor:lost_lovers",
+        "video-transition:separation_to_reunion",
+        "video-transition:sunset_to_night"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-13",
+        "video-pack:VPP-SBD-song_master_01-13",
+        "storyboard:SBD-song_master_01-13",
+        "scene-order:13",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "departure",
+        "parting",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-14",
+      "storyboard_id": "SBD-song_master_01-14",
+      "scene_order": 14,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-14",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-14",
+      "shared_behavior_id": "protection",
+      "shared_emotion_id": "care",
+      "shared_relationship_id": "mentor_student",
+      "shared_daily_life_anchor": [
+        "school_walk",
+        "cooking"
+      ],
+      "shared_shot_affinity": [
+        "medium_emotional",
+        "wide_establishing"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-14",
+        "scene-order:14",
+        "image-pack:IPP-SBD-song_master_01-14",
+        "video-pack:VPP-SBD-song_master_01-14",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-shot:wide_establishing",
+        "shot-bridge:wide_establishing",
+        "shared-anchor:school_walk",
+        "environment-bridge:school_walk",
+        "shared-anchor:cooking",
+        "environment-bridge:cooking",
+        "character-bridge:protection",
+        "relationship-anchor:mentor_student",
+        "video-transition:sadness_to_hope",
+        "video-transition:silence_to_confession"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-14",
+        "video-pack:VPP-SBD-song_master_01-14",
+        "storyboard:SBD-song_master_01-14",
+        "scene-order:14",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:sadness_to_hope",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "growth",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-15",
+      "storyboard_id": "SBD-song_master_01-15",
+      "scene_order": 15,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-15",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-15",
+      "shared_behavior_id": "reunion",
+      "shared_emotion_id": "connection",
+      "shared_relationship_id": "lost_lovers",
+      "shared_daily_life_anchor": [
+        "flower_watering",
+        "star_gazing"
+      ],
+      "shared_shot_affinity": [
+        "silhouette_distance",
+        "side_tracking"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-15",
+        "scene-order:15",
+        "image-pack:IPP-SBD-song_master_01-15",
+        "video-pack:VPP-SBD-song_master_01-15",
+        "shared-shot:silhouette_distance",
+        "shot-bridge:silhouette_distance",
+        "shared-shot:side_tracking",
+        "shot-bridge:side_tracking",
+        "shared-anchor:flower_watering",
+        "environment-bridge:flower_watering",
+        "shared-anchor:star_gazing",
+        "environment-bridge:star_gazing",
+        "character-bridge:reunion",
+        "relationship-anchor:lost_lovers",
+        "video-transition:separation_to_reunion",
+        "video-transition:sadness_to_hope"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-15",
+        "video-pack:VPP-SBD-song_master_01-15",
+        "storyboard:SBD-song_master_01-15",
+        "scene-order:15",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "redemption",
+        "connection",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    },
+    {
+      "pair_id": "PAIR-SBD-song_master_01-16",
+      "storyboard_id": "SBD-song_master_01-16",
+      "scene_order": 16,
+      "image_prompt_pack_id": "IPP-SBD-song_master_01-16",
+      "video_prompt_pack_id": "VPP-SBD-song_master_01-16",
+      "shared_behavior_id": "protection",
+      "shared_emotion_id": "care",
+      "shared_relationship_id": "guardian_child",
+      "shared_daily_life_anchor": [
+        "morning_routine",
+        "flower_watering"
+      ],
+      "shared_shot_affinity": [
+        "medium_emotional",
+        "wide_establishing"
+      ],
+      "image_to_video_alignment": [
+        "storyboard:SBD-song_master_01-16",
+        "scene-order:16",
+        "image-pack:IPP-SBD-song_master_01-16",
+        "video-pack:VPP-SBD-song_master_01-16",
+        "shared-shot:medium_emotional",
+        "shot-bridge:medium_emotional",
+        "shared-shot:wide_establishing",
+        "shot-bridge:wide_establishing",
+        "shared-anchor:morning_routine",
+        "environment-bridge:morning_routine",
+        "shared-anchor:flower_watering",
+        "environment-bridge:flower_watering",
+        "character-bridge:protection",
+        "relationship-anchor:guardian_child",
+        "video-transition:separation_to_reunion",
+        "video-transition:silence_to_confession"
+      ],
+      "continuity_notes": [
+        "pairing:image-first-then-video-motion",
+        "image-pack:IPP-SBD-song_master_01-16",
+        "video-pack:VPP-SBD-song_master_01-16",
+        "storyboard:SBD-song_master_01-16",
+        "scene-order:16",
+        "pipeline:no-ai-studio-no-gpu",
+        "duration-seconds:13",
+        "song-master:song_master_01",
+        "transition:separation_to_reunion",
+        "image-style:cinematic music video still",
+        "image-style:gonagi visual continuity"
+      ],
+      "keywords": [
+        "new-beginning",
+        "care",
+        "daily-life",
+        "anchor",
+        "storyboard",
+        "song_master_01",
+        "image-prompt-pack",
+        "video-prompt-pack",
+        "prompt-pack-pair"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "temporal_flow_id": "temporal_flow_mori_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-031-MOVIE_ANALYSIS_TEMPORAL_FLOW_DESIGN_V1",
+  "source_video_id": "MORI_01",
+  "motion_plan_id": "motion_plan_mori_01_v1",
+  "temporal_candidate_count": 12,
+  "flow_strategy": "TRANSITION_CHAIN_PLAN",
+  "temporal_candidates": [
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_001",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_001",
+      "flow_category": "camera_flow",
+      "estimated_flow_value": "estimated_flow_camera_continuity",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_002",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_002",
+      "flow_category": "camera_flow",
+      "estimated_flow_value": "estimated_flow_camera_bridge",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_003",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_003",
+      "flow_category": "camera_flow",
+      "estimated_flow_value": "estimated_flow_camera_hold",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_004",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_004",
+      "flow_category": "transition_flow",
+      "estimated_flow_value": "estimated_flow_transition_cut",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_005",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_005",
+      "flow_category": "character_flow",
+      "estimated_flow_value": "estimated_flow_character_arc",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_006",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_006",
+      "flow_category": "character_flow",
+      "estimated_flow_value": "estimated_flow_character_bridge",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_007",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_007",
+      "flow_category": "environment_flow",
+      "estimated_flow_value": "estimated_flow_environment_hold",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_008",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_008",
+      "flow_category": "environment_flow",
+      "estimated_flow_value": "estimated_flow_environment_shift",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_009",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_009",
+      "flow_category": "emotion_flow",
+      "estimated_flow_value": "estimated_flow_emotion_release",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_010",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_010",
+      "flow_category": "camera_flow",
+      "estimated_flow_value": "estimated_flow_camera_continuity",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_011",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_011",
+      "flow_category": "camera_flow",
+      "estimated_flow_value": "estimated_flow_camera_bridge",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    },
+    {
+      "temporal_candidate_id": "temporal_flow_mori_01_v1_tf_012",
+      "motion_candidate_id": "motion_plan_mori_01_v1_mc_012",
+      "flow_category": "camera_flow",
+      "estimated_flow_value": "estimated_flow_camera_hold",
+      "generates_sequence": false,
+      "generates_video": false,
+      "generates_motion": false,
+      "candidate_type": "estimated_temporal_candidate",
+      "estimated_only": true
+    }
+  ],
+  "flow_categories": [
+    "sequence_flow",
+    "emotion_flow",
+    "camera_flow",
+    "character_flow",
+    "environment_flow",
+    "crowd_flow",
+    "animal_flow",
+    "transition_flow",
+    "continuity_flow"
+  ],
+  "coverage_goal": {
+    "segment_span_seconds": 25,
+    "coverage_percent": 100,
+    "purpose": "future_sequence_generation_preparation"
+  },
+  "identity_safety": {
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "estimated_only": true,
+    "no_sequence_generation": true
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "temporal_flow_only": true,
+    "sequence_generation": false,
+    "video_generation": false,
+    "motion_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false
+  },
+  "designed_at": "2026-06-05T23:08:56.169Z"
+}

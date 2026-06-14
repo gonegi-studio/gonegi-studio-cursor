@@ -1,0 +1,32 @@
+{
+  "manifest_id": "movie-reconstruction-conditioning-design-manifest-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-002",
+  "system_id": "MOVIE_RECONSTRUCTION_CONDITIONING_DESIGN_V1",
+  "version": "conditioning_design_v1",
+  "design_only": true,
+  "implementation_deferred": true,
+  "metadata_only": true,
+  "conditioning_design_complete": true,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "audit_report_ref": "reports/movie_reconstruction/MOVIE_RECONSTRUCTION_CONDITIONING_AUDIT_REPORT.json",
+  "audit_gap_report_ref": "reports/movie_reconstruction/CONDITIONING_GAP_REPORT.json",
+  "numerical_dna_readiness_ref": "reports/source_video_numerical_dna/NUMERICAL_DNA_READINESS_REPORT.json",
+  "subsystems": [
+    "layout_map",
+    "depth_map",
+    "pose_map",
+    "blocking_map",
+    "object_identity",
+    "environment_identity",
+    "conditioning_backend"
+  ],
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

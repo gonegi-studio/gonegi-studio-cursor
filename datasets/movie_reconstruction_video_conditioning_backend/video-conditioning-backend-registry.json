@@ -1,0 +1,18 @@
+{
+  "registry_id": "video-conditioning-backend-registry-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-010",
+  "system_id": "VIDEO_CONDITIONING_BACKEND_V1",
+  "version": "video_conditioning_backend_v1",
+  "design_only": true,
+  "implementation_deferred": true,
+  "temporal_binding_ref": "exports/movie_reconstruction_temporal_preservation/temporal-preservation-binding-package.json",
+  "environment_binding_ref": "exports/movie_reconstruction_environment_identity/environment-identity-binding-package.json",
+  "object_binding_ref": "exports/movie_reconstruction_object_identity/object-identity-binding-package.json",
+  "backend_runtime_bridge_ref": "reports/movie_reconstruction/BACKEND_RUNTIME_BRIDGE_REPORT.json",
+  "execution_flags": {
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

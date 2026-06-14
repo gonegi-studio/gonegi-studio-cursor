@@ -1,0 +1,62 @@
+{
+  "runtime_interface_id": "video_runtime_gonegi_bedroom_reading_6s_v1",
+  "phase": "PHASE-23-VIDEO-RUNTIME-INTERFACE-DESIGN-001",
+  "source_gpu_payload_id": "gpu_payload_gonegi_bedroom_reading_6s_v1",
+  "runtime_target": "deferred",
+  "handshake": {
+    "payload_schema_version": "gpu-render-payload-v1",
+    "required_lock_categories": [
+      "identity_locks",
+      "location_locks",
+      "composition_locks"
+    ],
+    "preflight_checks": [
+      "verify:gpu-payload",
+      "identity_locks_present",
+      "location_locks_present",
+      "motion_segments_aligned_with_keyframes",
+      "duration_seconds:6",
+      "fps_target:24",
+      "execution_flags.gpu_execution=false",
+      "execution_flags.external_call_allowed=false"
+    ],
+    "identity_lock_count": 5
+  },
+  "submission_contract": {
+    "method": "submit_render_job_stub",
+    "input_artifact_path": "datasets/gpu_payload/payloads/gpu_payload_gonegi_bedroom_reading_6s_v1.json",
+    "output_artifact_placeholder": "renders/stub/gpu_payload_gonegi_bedroom_reading_6s_v1.mp4.not_generated",
+    "timeout_seconds": 180,
+    "submission_allowed": false
+  },
+  "local_adapter": {
+    "adapter_id": "local_gpu_stub_gpu_payload_gonegi_bedroom_reading_6s_v1",
+    "runtime_kind": "local_gpu_stub",
+    "executable": null,
+    "status": "not_wired",
+    "notes": "Future local runtime will load gpu_payload, validate locks, and enqueue frame synthesis without modifying identity anchors."
+  },
+  "remote_adapter": {
+    "adapter_id": "remote_api_stub_gpu_payload_gonegi_bedroom_reading_6s_v1",
+    "runtime_kind": "remote_api_stub",
+    "endpoint": null,
+    "status": "not_wired",
+    "notes": "Future remote runtime will accept serialized gpu_payload JSON; no endpoint configured in PHASE-23 design."
+  },
+  "payload_summary": {
+    "duration_seconds": 6,
+    "fps_target": 24,
+    "resolution": "1280x720",
+    "aspect_ratio": "16:9",
+    "keyframe_count": 3,
+    "motion_segment_count": 2,
+    "source_scene_state_id": "scene_gonegi_bedroom_reading_v1"
+  },
+  "execution_flags": {
+    "gpu_execution": false,
+    "preparation_only": true,
+    "external_call_allowed": false
+  },
+  "readiness": "design_only",
+  "built_at": "2026-06-05T04:17:16.843Z"
+}

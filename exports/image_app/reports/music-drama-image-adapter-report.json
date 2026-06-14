@@ -1,0 +1,52 @@
+{
+  "report_type": "music_drama_image_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-MDG-011",
+  "generated_at": "2026-06-02T04:04:16.120Z",
+  "cwd": "C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor",
+  "dependency_result": "all_present",
+  "source_package_path": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+  "grammar_section_count": 10,
+  "target_app": "image_app",
+  "compatibility_references": [
+    {
+      "asset_id": "character_simple_v1",
+      "reference_path": "datasets/character/character-simple-v1.json"
+    },
+    {
+      "asset_id": "time_setting_library_v1",
+      "reference_path": "datasets/time/time-setting-library-v1.json"
+    },
+    {
+      "asset_id": "living_world_core_v1_package",
+      "reference_path": "exports/shared/latest/living-world-core-v1-package.json"
+    },
+    {
+      "asset_id": "living_world_image_adapter",
+      "reference_path": "exports/image_app/latest/living-world-image-adapter.json"
+    }
+  ],
+  "field_separation_status": "required",
+  "density_governance_status": "present",
+  "export_path": "exports/image_app/latest/music-drama-image-adapter.json",
+  "report_path": "exports/image_app/reports/music-drama-image-adapter-report.json",
+  "file_size_bytes": 9114,
+  "json_parse_result": "valid",
+  "validation": {
+    "source_package_exists": true,
+    "grammar_section_count": 10,
+    "target_app_is_image_app": true,
+    "field_separation_required": true,
+    "density_rules_present": true,
+    "compatibility_references_present": true,
+    "json_parse_valid": true,
+    "duplicate_section_names": 0,
+    "no_scenarios": true,
+    "no_prompts": true,
+    "no_character_dna_merge": true,
+    "no_style_core_merge": true,
+    "no_living_world_core_merge": true
+  },
+  "final_verdict": "PASS_MUSIC_DRAMA_IMAGE_ADAPTER_V1",
+  "next_phase": "PHASE-MDG-012 Video App Music Drama Adapter"
+}

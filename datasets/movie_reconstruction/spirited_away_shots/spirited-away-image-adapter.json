@@ -1,0 +1,44 @@
+{
+  "adapter_id": "spirited-away-image-adapter-v1",
+  "phase": "PHASE-SPIRITED-AWAY-SHOT-GRAMMAR-001",
+  "system_id": "SPIRITED_AWAY_SHOT_RECONSTRUCTION_V1",
+  "adapter_version": "v1",
+  "target_app": "image_app",
+  "shared_movie_dataset": true,
+  "movie_id": "spirited_away",
+  "pipeline": [
+    "movie_dataset",
+    "image_reconstruction"
+  ],
+  "input_sources": {
+    "shot_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json",
+    "shot_fingerprint_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-fingerprint-registry.json",
+    "scene_registry": "datasets/movie_reconstruction/spirited_away/spirited-away-scene-registry.json",
+    "movie_bundle": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json"
+  },
+  "output_blocks": [
+    "movie_geometry_block",
+    "camera_block",
+    "blocking_block",
+    "composition_block",
+    "semantic_block",
+    "gonegi_translation_block"
+  ],
+  "prompt_merge_order": [
+    "gonegi_translation_block",
+    "movie_geometry_block",
+    "camera_block",
+    "blocking_block",
+    "composition_block",
+    "semantic_block"
+  ],
+  "shot_binding": {
+    "default_shot_count_per_scene": 8,
+    "total_shots_available": 2400,
+    "semantic_anchor_required": true
+  },
+  "image_reconstruction_status": "PASS",
+  "world_identity_source": "latest_v5",
+  "movie_geometry_source": "movie_dataset",
+  "adapter_ready": true
+}

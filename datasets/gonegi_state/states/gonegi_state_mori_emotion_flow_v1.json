@@ -1,0 +1,211 @@
+{
+  "gonegi_state_id": "gonegi_state_mori_emotion_flow_v1",
+  "phase": "PHASE-SOURCE-VIDEO-013-SOURCE_STATE_TO_GONEGI_STATE_COMPILER_V1",
+  "scene_state_phase": "PHASE-18-STATE-ENGINE-FOUNDATION-001",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "source_state_draft_id": "state_draft_mori_emotion_flow_001_v2",
+  "source_video_id": "MORI_01",
+  "director_family": "MORI",
+  "world_translation_ref": "gonegi-master-world-translation-v1",
+  "character_replacement_ref": "gonegi-master-character-replacement-v1",
+  "director_blend_ref": "gonegi-master-director-blend-v1",
+  "video_defaults_ref": "video-state-defaults-v1",
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "gonegi",
+      "gamja"
+    ],
+    "identity_lock_tokens": [
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette"
+    ],
+    "location_lock_tokens": [
+      "location_id:village_trail_01",
+      "layout_lock:trail-bend"
+    ],
+    "composition_lock_tokens": [
+      "prop_anchor:market_basket_01"
+    ]
+  },
+  "character_state": {
+    "active_character_ids": [
+      "gonegi",
+      "gamja"
+    ],
+    "primary_character_id": "gonegi",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:gonegi",
+      "character:gamja"
+    ],
+    "companion_injected": [
+      "gamja"
+    ]
+  },
+  "emotion_state": {
+    "emotion_id": "hope",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.7,
+    "acting_visibility_weight": "medium",
+    "source_emotion_id": "craft_contentment"
+  },
+  "relationship_state": {
+    "relationship_id": "friendship",
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "gonegi",
+      "gamja"
+    ],
+    "distance_behavior": "walker-path-relationship",
+    "gaze_pattern": "trail-ahead",
+    "blocking_primary_focus": "walker-path-relationship"
+  },
+  "camera_state": {
+    "shot_type": "forest-path-wide",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "forest-path-mid",
+    "camera_height": "human-scale-eye",
+    "camera_direction": "trail-ahead",
+    "motion_vectors": [
+      "path-walk-steady",
+      "gentle-sway"
+    ]
+  },
+  "composition_state": {
+    "composition_id": "gonegi_composition_gonegi_state_mori_emotion_flow_v1",
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [
+      "market_basket_01"
+    ],
+    "character_positions": {
+      "gonegi": "path-center-left",
+      "gamja": "path-center-left_companion_near"
+    },
+    "depth_layers": [
+      {
+        "layer_index": 0,
+        "layer_role": "foreground",
+        "content_hint": "path-texture-forage-basket"
+      },
+      {
+        "layer_index": 1,
+        "layer_role": "midground",
+        "content_hint": "walker-companion-figure"
+      },
+      {
+        "layer_index": 2,
+        "layer_role": "background",
+        "content_hint": "woodland-canopy-depth"
+      }
+    ],
+    "negative_space": "forest-depth-right"
+  },
+  "location_state": {
+    "location_id": "village_trail_01",
+    "location_name": "woodland-path",
+    "location_type": "woodland-path",
+    "domain": "gonegi_state_draft",
+    "location_source": "datasets/location/location-dna-index-v1.json",
+    "layout_lock_id": "layout_lock:village_trail_01",
+    "walkable_zone": "forest-trail-dirt",
+    "source_location_type": "woodland-path"
+  },
+  "lighting_state": {
+    "lighting_id": "gonegi_lighting_gonegi_state_mori_emotion_flow_v1",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "direction": "canopy-dappled-overhead",
+    "intensity": "forest-floor-bounce"
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "day",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": [
+      "path-texture-forage-basket",
+      "walker-companion-figure",
+      "woodland-canopy-depth"
+    ],
+    "ambient_motion": [
+      "gentle-sway"
+    ]
+  },
+  "translation_trace": {
+    "translation_id": "gonegi-master-world-translation-v1",
+    "source_world_type": "mori_woodland_craft_life",
+    "target_world_identity": "GONEGI_MEDITERRANEAN",
+    "applied_dimensions": [
+      "character_translation",
+      "location_translation",
+      "prop_translation",
+      "emotion_translation",
+      "relationship_translation",
+      "environment_translation"
+    ],
+    "location_mapping": {
+      "woodland-path": "village_trail_01"
+    },
+    "prop_mappings": {
+      "forage_basket": "market_basket_01"
+    },
+    "emotion_mapping": {
+      "craft_contentment": "hope"
+    }
+  },
+  "replacement_trace": {
+    "contract_id": "gonegi-master-character-replacement-v1",
+    "replacements_applied": [
+      {
+        "source_role": "walker_companion",
+        "target_character_id": "gonegi",
+        "replacement_id": "replacement_walker_companion_v1"
+      }
+    ],
+    "companions_injected": [
+      "gamja"
+    ]
+  },
+  "continuity_locks": {
+    "identity_locks": [
+      "identity:character_identity:gonegi",
+      "character_reference:Gonegi",
+      "identity_lock:preserve_gonegi_silhouette",
+      "identity:character_identity:gamja",
+      "character_reference:Gamja",
+      "identity_lock:preserve_gamja_silhouette"
+    ],
+    "location_locks": [
+      "location_id:village_trail_01",
+      "location_lock:woodland-path",
+      "walkable-zone:forest-trail-dirt"
+    ],
+    "composition_locks": [
+      "prop_anchor:market_basket_01",
+      "composition_lock:path-leading-line",
+      "prop_anchor:forage_basket"
+    ]
+  },
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "gonegi_state",
+    "production_registry": false,
+    "draft_status": "gonegi_world_compiled_v1"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "compiled_at": "2026-06-05T08:00:14.302Z"
+}

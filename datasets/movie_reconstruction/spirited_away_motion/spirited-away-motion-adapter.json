@@ -1,0 +1,58 @@
+{
+  "adapter_id": "spirited-away-motion-adapter-v1",
+  "phase": "PHASE-SPIRITED-AWAY-MOTION-GRAMMAR-001",
+  "system_id": "SPIRITED_AWAY_MOTION_RECONSTRUCTION_V1",
+  "adapter_version": "v1",
+  "target_app": "video_app",
+  "shared_movie_dataset": true,
+  "movie_id": "spirited_away",
+  "pipeline": [
+    "movie_dataset",
+    "motion_grammar",
+    "temporal_flow",
+    "video_adapter"
+  ],
+  "input_sources": {
+    "motion_grammar_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-grammar-registry.json",
+    "camera_motion_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-camera-motion-registry.json",
+    "subject_motion_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-subject-motion-registry.json",
+    "environment_motion_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-environment-motion-registry.json",
+    "motion_continuity_registry": "datasets/movie_reconstruction/spirited_away_motion/spirited-away-motion-continuity-registry.json",
+    "shot_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json",
+    "video_adapter": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-video-adapter.json",
+    "temporal_adapter": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-adapter.json",
+    "movie_bundle": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json"
+  },
+  "control_split": {
+    "movie_dataset_controls": [
+      "motion",
+      "timing",
+      "trajectory",
+      "camera_behavior"
+    ],
+    "gonegi_dataset_controls": [
+      "visual_identity",
+      "world_identity",
+      "character_identity"
+    ]
+  },
+  "temporal_flow": {
+    "scene_count": 300,
+    "motion_count": 300,
+    "continuity_count": 2399,
+    "average_motion_continuity": 0.9701,
+    "average_semantic_continuity": 0.975
+  },
+  "output_blocks": [
+    "motion_grammar_block",
+    "camera_motion_block",
+    "subject_motion_block",
+    "environment_motion_block",
+    "motion_continuity_block",
+    "gonegi_translation_block"
+  ],
+  "video_reconstruction_status": "READY",
+  "world_identity_source": "latest_v5",
+  "movie_motion_source": "movie_dataset",
+  "adapter_ready": true
+}

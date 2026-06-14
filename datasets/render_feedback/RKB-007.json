@@ -1,0 +1,25 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-007",
+  "test_id": "RKB-007",
+  "test_name": "EMOTION_ACTING_VALIDATION",
+  "test_date": "2026-06-03",
+  "comparison_baselines": [
+    "RKB-006",
+    "pre-EDA"
+  ],
+  "input_assets": {
+    "emotion_acting_library": "datasets/emotion_acting/emotion-acting-dna-library-v1.json",
+    "emotion_acting_adapter": "exports/image_app/adapters/emotion-acting-adapter.json",
+    "emotion_acting_latest_adapter": "exports/image_app/latest/emotion-acting-adapter.json",
+    "test_batch": "exports/image_app/test_batches/rkb-007-emotion-validation-test-batch.json",
+    "scorecard": "datasets/render_feedback/RKB-007_SCORECARD.json"
+  },
+  "generation_count": 80,
+  "adapter_consumption_verdict": "PASS",
+  "forbidden_behavior_suppressed": true,
+  "success_condition_met": true,
+  "final_verdict": "PASS_RKB_007_EMOTION_ACTING_VALIDATION",
+  "next_phase": "MV-DATASET-001 INSTRUMENTAL_MV_DATASET_V1"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "TRANSITION-DNA-CONTRACT-FINGERPRINT-v1",
+  "librarySchemaVersion": "TRANSITION-DNA-INDEX-v1",
+  "transitionIds": [
+    "sunset_to_night",
+    "rain_to_clear",
+    "hope_to_sadness",
+    "sadness_to_hope",
+    "walking_to_running",
+    "separation_to_reunion",
+    "silence_to_confession"
+  ],
+  "categories": {
+    "sunset_to_night": "nostalgia deepens into quiet resolve",
+    "rain_to_clear": "tension releases into cautious hope",
+    "hope_to_sadness": "hope folds into tender sadness",
+    "sadness_to_hope": "sadness lifts into gentle hope",
+    "walking_to_running": "companionship sustains through motion continuity",
+    "separation_to_reunion": "separation resolves into reunion warmth",
+    "silence_to_confession": "silence breaks into vulnerable confession"
+  },
+  "requiredFields": [
+    "transition_id",
+    "from_state",
+    "to_state",
+    "emotional_bridge",
+    "motion_bridge",
+    "camera_shift",
+    "lighting_shift",
+    "pacing_shift",
+    "continuity_keywords"
+  ],
+  "indexStructure": [
+    {
+      "transition_id": "sunset_to_night",
+      "path": "transition_dna/sunset_to_night.json"
+    },
+    {
+      "transition_id": "rain_to_clear",
+      "path": "transition_dna/rain_to_clear.json"
+    },
+    {
+      "transition_id": "hope_to_sadness",
+      "path": "transition_dna/hope_to_sadness.json"
+    },
+    {
+      "transition_id": "sadness_to_hope",
+      "path": "transition_dna/sadness_to_hope.json"
+    },
+    {
+      "transition_id": "walking_to_running",
+      "path": "transition_dna/walking_to_running.json"
+    },
+    {
+      "transition_id": "separation_to_reunion",
+      "path": "transition_dna/separation_to_reunion.json"
+    },
+    {
+      "transition_id": "silence_to_confession",
+      "path": "transition_dna/silence_to_confession.json"
+    }
+  ],
+  "frozenAt": "2026-05-30T00:00:00.000Z"
+}

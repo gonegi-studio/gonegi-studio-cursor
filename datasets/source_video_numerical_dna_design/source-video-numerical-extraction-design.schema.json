@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/source_video_numerical_dna_design/source-video-numerical-extraction-design.schema.json",
+  "title": "SourceVideoNumericalExtractionDesign",
+  "description": "Design-only schema for PHASE-SOURCE-VIDEO-DNA-REAL-003. No real extraction.",
+  "type": "object",
+  "required": [
+    "design_id",
+    "phase",
+    "system_id",
+    "version",
+    "design_only",
+    "metadata_only",
+    "extraction_design_complete",
+    "numerical_dna_extracted",
+    "numerical_dna_complete",
+    "subsystems",
+    "generated_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "design_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-SOURCE-VIDEO-DNA-REAL-003" },
+    "system_id": { "type": "string", "const": "SOURCE_VIDEO_NUMERICAL_DNA_EXTRACTION_DESIGN_V1" },
+    "version": { "type": "string", "const": "extraction_design_v1" },
+    "design_only": { "type": "boolean", "const": true },
+    "metadata_only": { "type": "boolean", "const": true },
+    "extraction_design_complete": { "type": "boolean", "const": true },
+    "numerical_dna_extracted": { "type": "boolean", "const": false },
+    "numerical_dna_complete": { "type": "boolean", "const": false },
+    "movie_reconstruction_ready": { "type": "boolean", "const": false },
+    "gpu_ready": { "type": "boolean", "const": false },
+    "schema_path": {
+      "type": "string",
+      "const": "datasets/source_video_numerical_dna_design/source-video-numerical-extraction-design.schema.json"
+    },
+    "subsystems": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": { "$ref": "#/$defs/subsystem_design" }
+    },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "subsystem_design": {
+      "type": "object",
+      "required": [
+        "subsystem_id",
+        "input_source",
+        "output_structure",
+        "required_fields",
+        "confidence_method",
+        "validation_method",
+        "failure_conditions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "subsystem_id": {
+          "type": "string",
+          "enum": [
+            "frame_coordinates",
+            "composition_coordinates",
+            "camera_path",
+            "blocking_data",
+            "motion_vectors",
+            "edit_rhythm",
+            "scene_remap"
+          ]
+        },
+        "input_source": { "type": "string", "minLength": 1 },
+        "output_structure": { "type": "string", "minLength": 1 },
+        "required_fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "confidence_method": { "type": "string", "minLength": 1 },
+        "validation_method": { "type": "string", "minLength": 1 },
+        "failure_conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

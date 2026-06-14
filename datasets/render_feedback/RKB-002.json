@@ -1,0 +1,224 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-002",
+  "section_1_test_metadata": {
+    "test_id": "RKB-002",
+    "test_name": "EP01_V4_LITE_SHOT_GRAMMAR_TEST",
+    "test_type": "Image App Validation",
+    "test_date": "2026-05-24",
+    "source": "EP01_V4_LITE_25_SHOT_TEST",
+    "generated_image_count": 25,
+    "story_episode": {
+      "episode_id": "EP01",
+      "title_ko": "늘 그래왔듯이"
+    },
+    "input_assets": {
+      "music_drama_grammar_core": "exports/shared/latest/music-drama-grammar-core-v1-package.json",
+      "music_drama_image_adapter": "exports/image_app/latest/music-drama-image-adapter.json",
+      "character_library": "datasets/character/character-simple-v1.json",
+      "time_library": "datasets/time/time-setting-library-v1.json",
+      "living_world_core": "exports/shared/latest/living-world-core-v1-package.json",
+      "living_world_adapter": "exports/image_app/latest/living-world-image-adapter.json",
+      "prior_validation": "datasets/render_feedback/RKB-001.json"
+    },
+    "scenario_method": "EP01 V4-LITE shot-grammar structured batch with scenario/character field separation",
+    "shot_grammar_scope": "music-drama-shot-patterns-v1 across 25 still-image slots"
+  },
+  "section_2_success_findings": {
+    "scenario_character_separation": {
+      "observation": "Strict scenario/character field separation held across all 25 shots. Scenario fields stayed location-atmosphere-action only; character fields carried visible entity descriptions only.",
+      "impact": "Reduced character identity bleed and improved Gonegi/Gamja readability versus mixed-field prompts.",
+      "confidence_score": 0.94
+    },
+    "character_dna_stability": {
+      "observation": "Character-simple-v1 injection remained stable for hair, clothing silhouette, and age read across domestic, lane, and harbor shots.",
+      "impact": "Confirmed production-safe baseline for Music Drama Image App batches without full Character DNA expansion.",
+      "confidence_score": 0.91
+    },
+    "gonegi_consistency": {
+      "observation": "Gonegi facial identity, henley-suspenders costume cluster, and boy-scale proportions remained recognizable in 22 of 25 shots.",
+      "impact": "Protagonist anchor reliable for lyric-aligned still sequences.",
+      "confidence_score": 0.9
+    },
+    "gamja_consistency": {
+      "observation": "Gamja companion scale, fur tone, and proximity framing remained stable in companion-forward and domestic shots.",
+      "impact": "Validates MDG companion continuity rules and RKB-001 companion finding at 25-shot scale.",
+      "confidence_score": 0.89
+    },
+    "overall_visual_quality": {
+      "observation": "Warm Mediterranean daily-life mood, readable compositions, and low catastrophic anatomy failure rate across the batch.",
+      "impact": "Batch suitable as first MDG v1 shot-grammar validation success for still-image Music Drama.",
+      "confidence_score": 0.87
+    },
+    "mdg_v1_compatibility": {
+      "observation": "MDG shot patterns, beat-linked emotional states, motifs, and density limits were consumable without adapter or grammar modification.",
+      "impact": "Music Drama Grammar Core + Image Adapter stack validated as operational input layer for Image App tests.",
+      "confidence_score": 0.92
+    }
+  },
+  "section_3_failure_findings": {
+    "location_drift": {
+      "description": "Same narrative location (bedroom, bakery threshold, harbor bench) shifted architecture, wall layout, or landmark placement between adjacent shots.",
+      "severity": "HIGH",
+      "example_cases": [
+        "Bedroom window wall moved between intro and bridge quiet shots",
+        "Harbor bench orientation flipped between pre-chorus harbor watch shots",
+        "Bakery counter depth changed between verse family breakfast stills"
+      ],
+      "production_risk": "Breaks multi-shot music-video spatial continuity and viewer place memory."
+    },
+    "lighting_drift": {
+      "description": "Time-of-day and key-light direction inconsistent within the same time cluster (sunrise, early morning, golden hour).",
+      "severity": "HIGH",
+      "example_cases": [
+        "Sunrise cool fill became warm overhead in consecutive domestic shots",
+        "Harbor rim-light direction reversed between two wonder-state frames",
+        "Interior bakery glow intensity jumped without narrative time advance"
+      ],
+      "production_risk": "Undermines lyric-time alignment and sequential believability."
+    },
+    "scene_mutation": {
+      "description": "Props, furniture, and background layout changed between shots intended to share one scene anchor.",
+      "severity": "MEDIUM",
+      "example_cases": [
+        "Table setting changed between two family breakfast frames",
+        "Rooftop parapet detail appeared/disappeared in hilltop lunch pair",
+        "Lane staircase railing style varied in street passage sequence"
+      ],
+      "production_risk": "Creates subtle continuity errors visible in video-style sequencing."
+    },
+    "environment_inconsistency": {
+      "description": "Harbor-village atmosphere remained warm overall but micro-environment cues (fog, sea color, cobble wear) varied without weather narrative.",
+      "severity": "MEDIUM",
+      "example_cases": [
+        "Sea horizon color shifted from slate-blue to emerald between harbor shots",
+        "Cobblestone texture density changed in lane vs harbor edge without relocation",
+        "Background hillside detail density inconsistent in wide frames"
+      ],
+      "production_risk": "Weakens world-bible trust even when character identity stays strong."
+    },
+    "weak_emotional_expression": {
+      "description": "Faces and body language often read neutral-calm rather than MDG target emotions (comfort, wonder, quiet hope).",
+      "severity": "MEDIUM",
+      "example_cases": [
+        "Chorus hope beat read as generic smile without forward-looking residue",
+        "Bridge quiet reflection lacked softened stillness in gaze/posture",
+        "Pre-chorus wonder under-expressed in harbor watch framing"
+      ],
+      "production_risk": "Limits narrative emotional delivery required for ballad and healing MV formats."
+    }
+  },
+  "section_4_shot_grammar_observations": {
+    "wide_shots": {
+      "quality_score": 8.2,
+      "stability_score": 6.4,
+      "future_use_recommendation": "USE_WITH_LOCATION_DNA — strong atmosphere, weak spatial lock",
+      "mdg_pattern_mapping": ["establishing_daily_life", "harbor_edge_watch"]
+    },
+    "medium_shots": {
+      "quality_score": 8.6,
+      "stability_score": 7.5,
+      "future_use_recommendation": "PRIMARY_WORKHORSE — best balance of character readability and scene context",
+      "mdg_pattern_mapping": ["domestic_warmth", "bakery_morning", "street_passage"]
+    },
+    "close_shots": {
+      "quality_score": 8.4,
+      "stability_score": 8.1,
+      "future_use_recommendation": "STRONG_FOR_CHARACTER_ANCHOR — prioritize for consistency recovery slots",
+      "mdg_pattern_mapping": ["companion_bond_moment", "quiet_solitude"]
+    },
+    "reaction_shots": {
+      "quality_score": 7.6,
+      "stability_score": 6.9,
+      "future_use_recommendation": "USE_SPARINGLY_UNTIL_EMOTION_DNA — expression drift limits lyric beats",
+      "mdg_pattern_mapping": ["quiet_solitude"]
+    },
+    "insert_shots": {
+      "quality_score": 7.8,
+      "stability_score": 7.2,
+      "future_use_recommendation": "SAFE_FOR_MOTIF_BRIDGE — bread, window, tea motif inserts stable; avoid complex hands",
+      "mdg_pattern_mapping": ["visual_motif_slots"]
+    }
+  },
+  "section_5_music_video_suitability": {
+    "instrumental_music_video": {
+      "suitability_score": 8.7,
+      "reason": "Atmosphere-forward sequencing tolerates softer acting; location/lighting drift is the main blocker."
+    },
+    "healing_music_video": {
+      "suitability_score": 8.9,
+      "reason": "Warm daily-life tone, Gamja companion beats, and calm emotional baseline align strongly with EP01 grammar."
+    },
+    "travel_music_video": {
+      "suitability_score": 6.8,
+      "reason": "Location drift and environment inconsistency reduce geographic continuity needed for travel-style cuts."
+    },
+    "ambient_music_video": {
+      "suitability_score": 9.0,
+      "reason": "Mediterranean mood and low narrative pressure match current system strengths."
+    },
+    "lyric_ballad_music_video": {
+      "suitability_score": 6.2,
+      "reason": "Requires stable emotional acting and lighting-time fidelity not yet met without Emotion DNA and Lighting DNA."
+    }
+  },
+  "section_6_key_conclusion": {
+    "current_system_strength": {
+      "world_atmosphere": "Mediterranean harbor-town warmth and music-drama mood read clearly across the 25-shot batch.",
+      "character_consistency": "Gonegi and Gamja identity stability confirmed at scale with field separation and MDG v1 grammar.",
+      "visual_warmth": "Domestic and harbor stills deliver lyric-friendly warmth suitable for healing and ambient MV directions."
+    },
+    "current_system_weakness": {
+      "location_persistence": "No Location DNA layer; same-scene architectural drift is the primary continuity failure.",
+      "lighting_persistence": "No Lighting DNA layer; time-cluster lighting does not hold across adjacent shots.",
+      "emotion_acting": "Facial and body-language expression under-delivers MDG emotional targets.",
+      "narrative_emotional_delivery": "Sequential emotional progression readable in grammar but weak in rendered expression for ballad-style MV."
+    }
+  },
+  "section_7_next_development_priority": {
+    "ranked_priorities": [
+      {
+        "rank": 1,
+        "priority": "Location DNA",
+        "rationale": "Highest-severity failure cluster (location_drift, scene_mutation) blocking multi-shot continuity."
+      },
+      {
+        "rank": 2,
+        "priority": "Lighting DNA",
+        "rationale": "Second-highest drift source; required for time-cluster and lyric-time alignment."
+      },
+      {
+        "rank": 3,
+        "priority": "Emotion DNA",
+        "rationale": "Needed to close weak_emotional_expression gap for ballad and reaction-heavy shots."
+      },
+      {
+        "rank": 4,
+        "priority": "Instrumental MV Validation",
+        "rationale": "Near-ready format; validate after Location and Lighting DNA reduce drift."
+      },
+      {
+        "rank": 5,
+        "priority": "Future Ballad MV Validation",
+        "rationale": "Deferred until Emotion DNA and lighting persistence improve narrative delivery."
+      }
+    ]
+  },
+  "scoring_summary": {
+    "success_finding_count": 6,
+    "failure_finding_count": 5,
+    "overall_batch_result": "SUCCESS_WITH_CONTINUITY_GAPS",
+    "character_consistency": 8.9,
+    "gamja_consistency": 8.8,
+    "location_continuity": 5.8,
+    "lighting_continuity": 6.1,
+    "emotional_delivery": 6.5,
+    "mdg_v1_operational": true
+  },
+  "verdict": {
+    "code": "PASS_RKB_002_KNOWLEDGE_CAPTURE",
+    "label": "FIRST_EP01_V4_LITE_SHOT_GRAMMAR_VALIDATION_CAPTURED"
+  },
+  "next_phase": "PHASE-LTD-001 Location DNA Foundation"
+}

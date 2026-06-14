@@ -1,0 +1,57 @@
+{
+  "readiness_id": "feature-film-production-readiness-v1",
+  "phase": "PHASE-L3-FEATURE-005",
+  "generated_at": "2026-06-08T22:39:02.665Z",
+  "production_readiness_score": 94,
+  "production_readiness_status": "FEATURE_FILM_PRODUCTION_READY",
+  "production_readiness_score_min": 90,
+  "pass_rules": {
+    "continuity_dimension_count_min": 14,
+    "critical_continuity_break_count": 0,
+    "callback_resolution_ratio_min": 0.9,
+    "legacy_callback_integrity": "PASS",
+    "world_state_integrity": "PASS",
+    "theme_arc_integrity": "PASS",
+    "coverage_collapse_count": 0,
+    "dependency_integrity": "PASS",
+    "orphan_scene_count": 0,
+    "orphan_shot_count": 0,
+    "shot_scale_valid": true,
+    "shot_per_scene_valid": true,
+    "shot_density_valid": true,
+    "traceability_integrity": "PASS",
+    "production_readiness_score_min": 90
+  },
+  "pass_rules_met": true,
+  "validation_metrics": {
+    "continuity_dimension_count": 14,
+    "continuity_break_count": 999,
+    "critical_continuity_break_count": 0,
+    "callback_resolution_ratio": 1,
+    "legacy_callback_integrity": "PASS",
+    "world_state_integrity": "PASS",
+    "theme_arc_integrity": "PASS",
+    "coverage_collapse_count": 0,
+    "dependency_integrity": "PASS",
+    "orphan_scene_count": 0,
+    "orphan_shot_count": 0,
+    "shot_scale_valid": true,
+    "shot_per_scene_valid": true,
+    "shot_density_valid": true,
+    "traceability_integrity": "PASS"
+  },
+  "audits": {
+    "continuity_audit_ref": "exports/feature_film_production_validation/feature-film-continuity-audit.json",
+    "callback_audit_ref": "exports/feature_film_production_validation/feature-film-callback-audit.json",
+    "coverage_audit_ref": "exports/feature_film_production_validation/feature-film-coverage-audit.json",
+    "shot_audit_ref": "exports/feature_film_production_validation/feature-film-shot-audit.json"
+  },
+  "upstream_refs": {
+    "shot_sequence_ref": "exports/feature_film_shot_assembly/feature-film-shot-sequence.json",
+    "shot_registry_ref": "exports/feature_film_shot_assembly/feature-film-shot-registry.json",
+    "shot_dependency_graph_ref": "exports/feature_film_shot_assembly/feature-film-shot-dependency-graph.json",
+    "shot_continuity_map_ref": "exports/feature_film_shot_assembly/feature-film-shot-continuity-map.json",
+    "shot_coverage_map_ref": "exports/feature_film_shot_assembly/feature-film-shot-coverage-map.json"
+  },
+  "validation_ready": true
+}

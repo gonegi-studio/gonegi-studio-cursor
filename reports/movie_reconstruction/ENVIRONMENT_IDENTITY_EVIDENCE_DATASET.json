@@ -1,0 +1,66 @@
+{
+  "report_id": "environment_identity_evidence_dataset_mqd1dn9a",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-006A",
+  "system_id": "ENVIRONMENT_IDENTITY_EVIDENCE_V1",
+  "generated_at": "2026-06-14T00:18:47.422Z",
+  "dataset_defined": true,
+  "minimum_batch_size": 50,
+  "easy_batch": [
+    {
+      "case_id": "env_ev_easy_001",
+      "environment_id": "titanic_staircase_001",
+      "reference_bank_id": "env_ref_001"
+    },
+    {
+      "case_id": "env_ev_easy_002",
+      "environment_id": "ghibli_kitchen_001",
+      "reference_bank_id": "env_ref_002"
+    }
+  ],
+  "medium_batch": [
+    {
+      "case_id": "env_ev_med_001",
+      "environment_id": "gonegi_harbor_dock_001",
+      "reference_bank_id": "env_ref_003"
+    },
+    {
+      "case_id": "env_ev_med_002",
+      "environment_id": "mori_forest_clearing_001",
+      "reference_bank_id": "env_ref_004"
+    }
+  ],
+  "hard_batch": [
+    {
+      "case_id": "env_ev_hard_001",
+      "environment_id": "titanic_staircase_001",
+      "failure_mode": "different_staircase"
+    },
+    {
+      "case_id": "env_ev_hard_002",
+      "environment_id": "titanic_staircase_001",
+      "failure_mode": "missing_railing"
+    },
+    {
+      "case_id": "env_ev_hard_003",
+      "environment_id": "ghibli_kitchen_001",
+      "failure_mode": "hallucinated_architecture"
+    }
+  ],
+  "stress_batch": [
+    {
+      "case_id": "env_ev_stress_001",
+      "environment_id": "titanic_staircase_001",
+      "stress_mode": "extreme_camera_rotation"
+    },
+    {
+      "case_id": "env_ev_stress_002",
+      "environment_id": "titanic_staircase_001",
+      "stress_mode": "extreme_zoom_change"
+    },
+    {
+      "case_id": "env_ev_stress_003",
+      "environment_id": "ghibli_kitchen_001",
+      "stress_mode": "lighting_shift"
+    }
+  ]
+}

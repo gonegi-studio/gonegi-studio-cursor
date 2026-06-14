@@ -1,0 +1,133 @@
+{
+  "report_id": "multi-movie-runtime-validation-report-v1",
+  "phase": "PHASE-MULTI-MOVIE-RUNTIME-001",
+  "system_id": "MULTI_MOVIE_RUNTIME_VALIDATION_V1",
+  "generated_at": "2026-06-10T10:41:58.262Z",
+  "final_verdict": "PASS_MULTI_MOVIE_RUNTIME_V1",
+  "runtime_validation_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "titanic_video_validation_pass": true,
+      "spirited_away_video_validation_pass": true,
+      "runtime_composition_exists": true,
+      "titanic_bundle_exists": true,
+      "spirited_away_bundle_exists": true,
+      "latest_v5_exists": true,
+      "gonagi_dna_exists": true,
+      "dana_dna_exists": true,
+      "titanic_in_swappable_list": true,
+      "spirited_away_in_swappable_list": true,
+      "titanic_video_verified": true,
+      "spirited_away_video_verified": true
+    }
+  },
+  "validation_summary": {
+    "movie_count": 2,
+    "swap_scenario_count": 2,
+    "movie_swap_success_rate": 1,
+    "world_identity_preservation": 0.98,
+    "character_identity_preservation": 0.98,
+    "movie_signature_separation": 1,
+    "cross_movie_contamination": 0,
+    "identity_hash_unified": true,
+    "runtime_swap_verified": true,
+    "tested_pairs": "titanic ↔ spirited_away",
+    "base_dataset": "latest_v5",
+    "swap_policy": "movie_dataset_only",
+    "gpu_execution": false,
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "swap_scenarios": [
+    {
+      "scenario_id": "swap_titanic_to_spirited_away",
+      "from_movie": "titanic",
+      "to_movie": "spirited_away",
+      "swap_only": "movie_dataset",
+      "identity_unchanged": true,
+      "grammar_changed": true,
+      "geometry_changed": true,
+      "camera_changed": true,
+      "blocking_changed": true,
+      "composition_changed": true,
+      "semantic_changed": true,
+      "contamination_detected": false,
+      "swap_success": true,
+      "scores": {
+        "world_identity_preservation": 0.98,
+        "character_identity_preservation": 0.98,
+        "movie_signature_separation": 1
+      }
+    },
+    {
+      "scenario_id": "swap_spirited_away_to_titanic",
+      "from_movie": "spirited_away",
+      "to_movie": "titanic",
+      "swap_only": "movie_dataset",
+      "identity_unchanged": true,
+      "grammar_changed": true,
+      "geometry_changed": true,
+      "camera_changed": true,
+      "blocking_changed": true,
+      "composition_changed": true,
+      "semantic_changed": true,
+      "contamination_detected": false,
+      "swap_success": true,
+      "scores": {
+        "world_identity_preservation": 0.98,
+        "character_identity_preservation": 0.98,
+        "movie_signature_separation": 1
+      }
+    }
+  ],
+  "issues": [],
+  "input": {
+    "base_dataset": "latest_v5",
+    "movie_datasets": [
+      "titanic",
+      "spirited_away"
+    ],
+    "titanic_source_id": "TITANIC_02",
+    "spirited_away_source_id": "GHIBLI_01",
+    "runtime_composition_ref": "exports/movie_datasets/movie-dataset-runtime-composition.json"
+  },
+  "test_design": {
+    "same_character": [
+      "CHAR-gonagi",
+      "CHAR-dana"
+    ],
+    "same_location": "GONEGI_MEDITERRANEAN",
+    "same_action": "paired_threshold_crossing",
+    "swap_only": "movie_dataset",
+    "unchanged_layers": [
+      "character_dna",
+      "world_identity",
+      "location_identity",
+      "lighting_identity"
+    ],
+    "swappable_layers": [
+      "geometry",
+      "camera",
+      "blocking",
+      "composition",
+      "semantic"
+    ]
+  },
+  "success_condition": {
+    "titanic_spirited_away_runtime_swap": "verified",
+    "runtime_swap_verified": true
+  },
+  "quality_gates": {
+    "movie_swap_success_rate_gte_0_95": true,
+    "world_identity_preservation_gte_0_95": true,
+    "character_identity_preservation_gte_0_95": true,
+    "movie_signature_separation_gte_0_95": true,
+    "cross_movie_contamination_eq_0": true
+  },
+  "dataset_paths": {
+    "validation_dir": "datasets/movie_runtime_validation",
+    "validation_scenes": "datasets/movie_runtime_validation/movie-runtime-validation-scenes.json",
+    "swap_metrics": "datasets/movie_runtime_validation/movie-runtime-swap-metrics.json",
+    "validation_report": "datasets/movie_runtime_validation/movie-runtime-validation-report.json"
+  }
+}

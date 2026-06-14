@@ -1,0 +1,37 @@
+{
+  "contract_id": "character-replacement-contract-v1",
+  "phase": "PHASE-SOURCE-VIDEO-012-CHARACTER_REPLACEMENT_CONTRACT_V1",
+  "contract_version": "v1",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "world_translation_contract_ref": "datasets/world_translation/gonegi-world-translation-contract.json",
+  "character_anchor_index_ref": "datasets/character/character-simple-v1.json",
+  "character_first_contract_ref": "exports/image_app/contracts/character-first-contract.json",
+  "built_profile_id": "gonegi-master-character-replacement-v1",
+  "core_mappings": {
+    "protagonist_a": "gonegi",
+    "protagonist_b": "dana",
+    "solitary_figure": "dana",
+    "child_observer": "gonegi",
+    "animal_companion_a": "gamja",
+    "animal_companion_b": "aengdu",
+    "background_adult": "living_world_background_actor",
+    "crowd_member": "living_world_crowd_actor"
+  },
+  "companion_rules": [
+    "gonegi_must_keep_gamja_nearby_when_scene_allows",
+    "dana_must_keep_aengdu_nearby_when_scene_allows",
+    "do_not_swap_gamja_and_aengdu"
+  ],
+  "identity_principles": [
+    "character_identity_priority_rank_1",
+    "no_source_character_may_override_gonegi_dana_gamja_aengdu_identity",
+    "no_extra_gonegi_dana_duplication",
+    "absent_source_roles_must_not_appear"
+  ],
+  "forbidden_swaps": [
+    "gamja_to_aengdu",
+    "aengdu_to_gamja",
+    "gonegi_to_dana_identity_swap",
+    "dana_to_gonegi_identity_swap"
+  ]
+}

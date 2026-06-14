@@ -1,0 +1,41 @@
+{
+  "report_id": "conditioning_adapter_roadmap_mqc7phzo",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005",
+  "system_id": "CONDITIONING_BACKEND_ADAPTER_V1",
+  "generated_at": "2026-06-13T10:28:11.988Z",
+  "backend_adapters_designed": true,
+  "adapter_priority": [
+    "controlnet_adapter",
+    "comfyui_adapter",
+    "future_video_adapter"
+  ],
+  "implementation_order": [
+    {
+      "adapter": "controlnet_adapter",
+      "priority": 1,
+      "gpu_dependency": true,
+      "phase_gate": "PHASE-GPU-CONDITIONING-VALIDATION-001"
+    },
+    {
+      "adapter": "comfyui_adapter",
+      "priority": 2,
+      "gpu_dependency": true,
+      "phase_gate": "PHASE-GPU-CONDITIONING-VALIDATION-001"
+    },
+    {
+      "adapter": "future_video_adapter",
+      "priority": 3,
+      "gpu_dependency": true,
+      "phase_gate": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-007_VIDEO_CONDITIONING_BACKEND_V1"
+    }
+  ],
+  "gpu_dependency": {
+    "controlnet_adapter": true,
+    "comfyui_adapter": true,
+    "future_video_adapter": true
+  },
+  "next_phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-006_IMAGE_APP_MAP_INGESTION_V1",
+  "adapter_translation_validated": false,
+  "conditioning_ready": false,
+  "gpu_ready": false
+}

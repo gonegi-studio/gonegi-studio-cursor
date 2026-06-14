@@ -1,0 +1,34 @@
+{
+  "mapping_id": "map_shinkai_light_sky_to_scene_state_v1",
+  "phase": "PHASE-SOURCE-VIDEO-005-SOURCE_VIDEO_TO_SCENE_STATE_MAPPING_V1",
+  "source_coordinate_id": "movie_coord_shinkai_light_sky_v1",
+  "target_scene_state_id": "scene_draft_shinkai_light_sky_v1",
+  "source_video_id": "SHINKAI_01",
+  "director_grammar_refs": [
+    "director_grammar_shinkai_v1"
+  ],
+  "coordinate_to_state_map": {
+    "camera_coordinate": "camera_state",
+    "character_coordinates": "character_state",
+    "prop_coordinates": "composition_state",
+    "location_coordinates": "location_state",
+    "lighting_coordinates": "lighting_state",
+    "motion_vectors": [
+      "camera_state",
+      "environment_state"
+    ],
+    "blocking_map": [
+      "relationship_state",
+      "composition_state"
+    ],
+    "depth_layers": "composition_state",
+    "continuity_locks": "identity_state"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "frame_extraction": false,
+    "external_call_allowed": false
+  },
+  "mapped_at": "2026-06-05T06:47:56.962Z"
+}

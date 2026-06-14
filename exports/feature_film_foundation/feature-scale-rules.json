@@ -1,0 +1,28 @@
+{
+  "asset_type": "feature_scale_rules",
+  "asset_version": "v1",
+  "rules_id": "feature-scale-rules-v1",
+  "phase": "PHASE-L3-FEATURE-001",
+  "purpose": "Feature film scale constraints extending Medium Film Production Ready baseline.",
+  "medium_film_baseline_ref": "exports/medium_film_production_validation/medium-film-production-readiness.json",
+  "scene_range": "1000-3000",
+  "shot_range": "4000-24000",
+  "act_range": "3-5",
+  "callback_depth": "3-5",
+  "continuity_depth": 14,
+  "min_scene_count": 1000,
+  "max_scene_count": 3000,
+  "min_shot_count": 4000,
+  "max_shot_count": 24000,
+  "min_act_count": 3,
+  "max_act_count": 5,
+  "min_callback_depth": 3,
+  "max_callback_depth": 5,
+  "expansion_from_medium": {
+    "medium_scene_range": "300-1000",
+    "medium_shot_range": "1200-8000",
+    "medium_continuity_depth": 11,
+    "medium_callback_depth": "2-3",
+    "expansion_ratio_scenes": "2x-3x"
+  }
+}

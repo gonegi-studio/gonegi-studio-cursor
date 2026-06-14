@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "DUAL-DATASET-RELEASE-FINGERPRINT-PHASE-67-v1",
+  "imageDatasetAssets": [
+    "exports/image-dataset-export.json"
+  ],
+  "imageHandoffAssets": [
+    "exports/image-app-handoff-package.json",
+    "exports/image-app-handoff-report.json"
+  ],
+  "videoDatasetAssets": [
+    "exports/video-dataset-builder-preview.json",
+    "exports/video-dataset-builder-report.json",
+    "exports/video-dataset-export-report.json",
+    "exports/video-dataset-export.json",
+    "exports/video-dataset-quality-report.json"
+  ],
+  "videoHandoffAssets": [
+    "exports/video-app-handoff-package.json",
+    "exports/video-app-handoff-report.json"
+  ],
+  "boundaryFingerprint": {
+    "schemaVersion": "DATASET-BOUNDARY-FINGERPRINT-PHASE-64-v1",
+    "boundary": "image_dataset|video_dataset|image_handoff|video_handoff",
+    "imageDatasetAssets": [
+      "exports/image-dataset-export.json"
+    ],
+    "videoDatasetAssets": [
+      "exports/video-dataset-builder-preview.json",
+      "exports/video-dataset-builder-report.json",
+      "exports/video-dataset-export-report.json",
+      "exports/video-dataset-export.json",
+      "exports/video-dataset-quality-report.json"
+    ],
+    "imageHandoffAssets": [
+      "exports/image-app-handoff-package.json",
+      "exports/image-app-handoff-report.json"
+    ],
+    "videoHandoffAssets": [
+      "exports/video-app-handoff-package.json",
+      "exports/video-app-handoff-report.json"
+    ],
+    "frozenAt": "2026-05-30T01:38:51.912Z"
+  },
+  "dependencyFingerprint": {
+    "schemaVersion": "IMAGE-VIDEO-DEPENDENCY-FINGERPRINT-PHASE-65-v1",
+    "imageDatasetReferences": [
+      {
+        "from": "image_dataset",
+        "to": "exports/image-dataset-export.json",
+        "reference_type": "direct"
+      },
+      {
+        "from": "video_dataset",
+        "to": "exports/image-dataset-export.json",
+        "reference_type": "direct"
+      },
+      {
+        "from": "video_handoff",
+        "to": "exports/image-dataset-export.json",
+        "reference_type": "boundary"
+      }
+    ],
+    "imageHandoffReferences": [
+      {
+        "from": "image_handoff",
+        "to": "exports/image-dataset-export.json",
+        "reference_type": "pipeline"
+      }
+    ],
+    "videoDatasetReferences": [
+      {
+        "from": "image_dataset",
+        "to": "exports/video-dataset-export.json",
+        "reference_type": "boundary"
+      },
+      {
+        "from": "image_handoff",
+        "to": "exports/video-dataset-export.json",
+        "reference_type": "pipeline"
+      },
+      {
+        "from": "video_handoff",
+        "to": "exports/video-dataset-export.json",
+        "reference_type": "direct"
+      }
+    ],
+    "dependencyGraph": {
+      "image_dataset": [
+        "image_handoff"
+      ],
+      "image_handoff": [
+        "video_dataset"
+      ],
+      "video_dataset": [
+        "image_dataset"
+      ],
+      "video_handoff": [
+        "video_dataset"
+      ]
+    },
+    "frozenAt": "2026-05-30T01:38:55.056Z"
+  },
+  "frozenAt": "2026-05-30T01:46:30.945Z"
+}

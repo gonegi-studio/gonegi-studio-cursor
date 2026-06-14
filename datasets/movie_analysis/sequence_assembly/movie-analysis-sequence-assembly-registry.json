@@ -1,0 +1,46 @@
+{
+  "registry_id": "movie-analysis-sequence-assembly-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-032-MOVIE_ANALYSIS_SEQUENCE_ASSEMBLY_DESIGN_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/sequence_assembly/movie-analysis-sequence-assembly.schema.json",
+  "temporal_flow_registry_path": "datasets/movie_analysis/temporal_flow/movie-analysis-temporal-flow-registry.json",
+  "storage_dir": "datasets/movie_analysis/sequence_assembly/plans",
+  "sequence_assembly_plans": [
+    {
+      "sequence_assembly_id": "sequence_assembly_ghibli_01_v1",
+      "plan_path": "datasets/movie_analysis/sequence_assembly/plans/sequence_assembly_ghibli_01_v1.json",
+      "source_video_id": "GHIBLI_01",
+      "temporal_flow_id": "temporal_flow_ghibli_01_v1",
+      "assembly_strategy": "CONTINUITY_ASSEMBLY_PLAN",
+      "sequence_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "sequence_assembly_id": "sequence_assembly_shinkai_01_v1",
+      "plan_path": "datasets/movie_analysis/sequence_assembly/plans/sequence_assembly_shinkai_01_v1.json",
+      "source_video_id": "SHINKAI_01",
+      "temporal_flow_id": "temporal_flow_shinkai_01_v1",
+      "assembly_strategy": "EMOTION_SEQUENCE_PLAN",
+      "sequence_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "sequence_assembly_id": "sequence_assembly_little_women_01_v1",
+      "plan_path": "datasets/movie_analysis/sequence_assembly/plans/sequence_assembly_little_women_01_v1.json",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "temporal_flow_id": "temporal_flow_little_women_01_v1",
+      "assembly_strategy": "SEQUENCE_CHAIN_PLAN",
+      "sequence_candidate_count": 18,
+      "status": "designed"
+    },
+    {
+      "sequence_assembly_id": "sequence_assembly_mori_01_v1",
+      "plan_path": "datasets/movie_analysis/sequence_assembly/plans/sequence_assembly_mori_01_v1.json",
+      "source_video_id": "MORI_01",
+      "temporal_flow_id": "temporal_flow_mori_01_v1",
+      "assembly_strategy": "TRANSITION_SEQUENCE_PLAN",
+      "sequence_candidate_count": 12,
+      "status": "designed"
+    }
+  ]
+}

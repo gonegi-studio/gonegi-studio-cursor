@@ -1,0 +1,414 @@
+{
+  "export_id": "movie-analysis-real-image-prompts-v1",
+  "export_type": "movie_analysis_real_image_prompt_export",
+  "phase": "PHASE-LEVEL2D-002-MOVIE_ANALYSIS_REAL_IMAGE_PROMPT_EXPORT_V1",
+  "consumer_target": "image_app",
+  "generated_at": "2026-06-06T07:26:54.430Z",
+  "preparation_report_path": "reports/movie_analysis_real_image_runtime_preparation/movie-analysis-real-image-runtime-preparation-report.json",
+  "image_runtime_package_path": "exports/movie_analysis_image_runtime/movie-analysis-image-runtime-package.json",
+  "source_count": 4,
+  "adapter_count": 24,
+  "entries": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "template_id": "resolved_prompt_ghibli_01_v1",
+      "assembly_id": "prompt_assembly_ghibli_01_v1",
+      "resolved_image_prompt": "image_prompt: [scene] cinematic scene composition with scene_layout, scene_scene_layout, scene_scene_open, scene_scene_develop, scene_scene_peak, scene_scene_resolve [camera] camera framing and movement: camera_layout, camera_camera_layout, camera_camera_bridge, camera_camera_hold, camera_camera_shift [emotion] emotional tone and expression: emotion_layout, emotion_emotion_layout, emotion_emotion_release [style] visual narrative style: narrative_hold with transitions transition_layout, transition_transition_layout, transition_transition_cut [continuity] scene continuity and environment hold: continuity_layout, continuity_continuity_layout, continuity_environment_hold, continuity_environment_shift [negative] no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "negative_prompt": "no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "resolved_runtime_mappings": [
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_ghibli_01_scene_adapter",
+          "source_video_id": "GHIBLI_01",
+          "binding_id": "runtime_binding_ghibli_01_scene_adapter",
+          "runtime_target": "scene_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_scene_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_ghibli_01_camera_adapter",
+          "source_video_id": "GHIBLI_01",
+          "binding_id": "runtime_binding_ghibli_01_camera_adapter",
+          "runtime_target": "camera_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_camera_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_ghibli_01_emotion_adapter",
+          "source_video_id": "GHIBLI_01",
+          "binding_id": "runtime_binding_ghibli_01_emotion_adapter",
+          "runtime_target": "emotion_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_emotion_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_ghibli_01_transition_adapter",
+          "source_video_id": "GHIBLI_01",
+          "binding_id": "runtime_binding_ghibli_01_transition_adapter",
+          "runtime_target": "transition_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_cut"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_ghibli_01_continuity_adapter",
+          "source_video_id": "GHIBLI_01",
+          "binding_id": "runtime_binding_ghibli_01_continuity_adapter",
+          "runtime_target": "continuity_runtime_rule",
+          "resolved_pattern_signatures": [
+            "resolved_continuity_runtime_rule"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_ghibli_01_storytelling_adapter",
+          "source_video_id": "GHIBLI_01",
+          "binding_id": "runtime_binding_ghibli_01_storytelling_adapter",
+          "runtime_target": "narrative_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_cut"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        }
+      ],
+      "adapter_traceability": {
+        "cinematic_dna_id": "cinematic_dna_ghibli_01_v1",
+        "integration_id": "cinematic_dna_integration_ghibli_01_v1",
+        "adapter_library_entry_id": "dna_adapter_library_entry_ghibli_01_v1",
+        "adapter_ids": [
+          "dna_adapter_scene_adapter_ghibli_01_v1",
+          "dna_adapter_camera_adapter_ghibli_01_v1",
+          "dna_adapter_emotion_adapter_ghibli_01_v1",
+          "dna_adapter_transition_adapter_ghibli_01_v1",
+          "dna_adapter_continuity_adapter_ghibli_01_v1",
+          "dna_adapter_storytelling_adapter_ghibli_01_v1"
+        ],
+        "traceability_preserved": true
+      },
+      "export_ready": true,
+      "planning_only": true,
+      "generation": false
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "template_id": "resolved_prompt_little_women_01_v1",
+      "assembly_id": "prompt_assembly_little_women_01_v1",
+      "resolved_image_prompt": "image_prompt: [scene] cinematic scene composition with scene_layout, scene_scene_layout, scene_scene_open, scene_scene_develop, scene_scene_peak, scene_scene_resolve, scene_scene_close, scene_scene_bridge [camera] camera framing and movement: camera_layout, camera_camera_layout, camera_camera_shift, camera_camera_bridge, camera_camera_hold [emotion] emotional tone and expression: emotion_layout, emotion_emotion_layout, emotion_emotion_hold [style] visual narrative style: narrative_hold with transitions transition_layout, transition_transition_layout, transition_transition_match [continuity] scene continuity and environment hold: continuity_layout, continuity_continuity_layout, continuity_environment_bridge, continuity_environment_hold [negative] no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "negative_prompt": "no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "resolved_runtime_mappings": [
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_little_women_01_scene_adapter",
+          "source_video_id": "LITTLE_WOMEN_01",
+          "binding_id": "runtime_binding_little_women_01_scene_adapter",
+          "runtime_target": "scene_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_scene_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_little_women_01_camera_adapter",
+          "source_video_id": "LITTLE_WOMEN_01",
+          "binding_id": "runtime_binding_little_women_01_camera_adapter",
+          "runtime_target": "camera_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_camera_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_little_women_01_emotion_adapter",
+          "source_video_id": "LITTLE_WOMEN_01",
+          "binding_id": "runtime_binding_little_women_01_emotion_adapter",
+          "runtime_target": "emotion_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_emotion_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_little_women_01_transition_adapter",
+          "source_video_id": "LITTLE_WOMEN_01",
+          "binding_id": "runtime_binding_little_women_01_transition_adapter",
+          "runtime_target": "transition_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_match"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_little_women_01_continuity_adapter",
+          "source_video_id": "LITTLE_WOMEN_01",
+          "binding_id": "runtime_binding_little_women_01_continuity_adapter",
+          "runtime_target": "continuity_runtime_rule",
+          "resolved_pattern_signatures": [
+            "resolved_continuity_runtime_rule"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_little_women_01_storytelling_adapter",
+          "source_video_id": "LITTLE_WOMEN_01",
+          "binding_id": "runtime_binding_little_women_01_storytelling_adapter",
+          "runtime_target": "narrative_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_match"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        }
+      ],
+      "adapter_traceability": {
+        "cinematic_dna_id": "cinematic_dna_little_women_01_v1",
+        "integration_id": "cinematic_dna_integration_little_women_01_v1",
+        "adapter_library_entry_id": "dna_adapter_library_entry_little_women_01_v1",
+        "adapter_ids": [
+          "dna_adapter_scene_adapter_little_women_01_v1",
+          "dna_adapter_camera_adapter_little_women_01_v1",
+          "dna_adapter_emotion_adapter_little_women_01_v1",
+          "dna_adapter_transition_adapter_little_women_01_v1",
+          "dna_adapter_continuity_adapter_little_women_01_v1",
+          "dna_adapter_storytelling_adapter_little_women_01_v1"
+        ],
+        "traceability_preserved": true
+      },
+      "export_ready": true,
+      "planning_only": true,
+      "generation": false
+    },
+    {
+      "source_video_id": "MORI_01",
+      "template_id": "resolved_prompt_mori_01_v1",
+      "assembly_id": "prompt_assembly_mori_01_v1",
+      "resolved_image_prompt": "image_prompt: [scene] cinematic scene composition with scene_layout, scene_scene_layout, scene_scene_open, scene_scene_develop, scene_scene_peak, scene_scene_resolve [camera] camera framing and movement: camera_layout, camera_camera_layout, camera_camera_bridge, camera_camera_hold, camera_camera_shift [emotion] emotional tone and expression: emotion_layout, emotion_emotion_layout, emotion_emotion_release [style] visual narrative style: narrative_hold with transitions transition_layout, transition_transition_layout, transition_transition_cut [continuity] scene continuity and environment hold: continuity_layout, continuity_continuity_layout, continuity_environment_hold, continuity_environment_shift [negative] no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "negative_prompt": "no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "resolved_runtime_mappings": [
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_mori_01_scene_adapter",
+          "source_video_id": "MORI_01",
+          "binding_id": "runtime_binding_mori_01_scene_adapter",
+          "runtime_target": "scene_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_scene_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_mori_01_camera_adapter",
+          "source_video_id": "MORI_01",
+          "binding_id": "runtime_binding_mori_01_camera_adapter",
+          "runtime_target": "camera_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_camera_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_mori_01_emotion_adapter",
+          "source_video_id": "MORI_01",
+          "binding_id": "runtime_binding_mori_01_emotion_adapter",
+          "runtime_target": "emotion_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_emotion_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_mori_01_transition_adapter",
+          "source_video_id": "MORI_01",
+          "binding_id": "runtime_binding_mori_01_transition_adapter",
+          "runtime_target": "transition_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_cut"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_mori_01_continuity_adapter",
+          "source_video_id": "MORI_01",
+          "binding_id": "runtime_binding_mori_01_continuity_adapter",
+          "runtime_target": "continuity_runtime_rule",
+          "resolved_pattern_signatures": [
+            "resolved_continuity_runtime_rule"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_mori_01_storytelling_adapter",
+          "source_video_id": "MORI_01",
+          "binding_id": "runtime_binding_mori_01_storytelling_adapter",
+          "runtime_target": "narrative_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_cut"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        }
+      ],
+      "adapter_traceability": {
+        "cinematic_dna_id": "cinematic_dna_mori_01_v1",
+        "integration_id": "cinematic_dna_integration_mori_01_v1",
+        "adapter_library_entry_id": "dna_adapter_library_entry_mori_01_v1",
+        "adapter_ids": [
+          "dna_adapter_scene_adapter_mori_01_v1",
+          "dna_adapter_camera_adapter_mori_01_v1",
+          "dna_adapter_emotion_adapter_mori_01_v1",
+          "dna_adapter_transition_adapter_mori_01_v1",
+          "dna_adapter_continuity_adapter_mori_01_v1",
+          "dna_adapter_storytelling_adapter_mori_01_v1"
+        ],
+        "traceability_preserved": true
+      },
+      "export_ready": true,
+      "planning_only": true,
+      "generation": false
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "template_id": "resolved_prompt_shinkai_01_v1",
+      "assembly_id": "prompt_assembly_shinkai_01_v1",
+      "resolved_image_prompt": "image_prompt: [scene] cinematic scene composition with scene_layout, scene_scene_layout, scene_scene_open, scene_scene_develop, scene_scene_peak, scene_scene_resolve [camera] camera framing and movement: camera_layout, camera_camera_layout, camera_camera_hold, camera_camera_shift, camera_camera_bridge [emotion] emotional tone and expression: emotion_layout, emotion_emotion_layout, emotion_emotion_rise [style] visual narrative style: narrative_hold with transitions transition_layout, transition_transition_layout, transition_transition_match [continuity] scene continuity and environment hold: continuity_layout, continuity_continuity_layout, continuity_environment_shift, continuity_environment_bridge [negative] no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "negative_prompt": "no runtime execution, no gpu rendering, no actual image generation, no actual video generation, planning only estimated output",
+      "resolved_runtime_mappings": [
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_shinkai_01_scene_adapter",
+          "source_video_id": "SHINKAI_01",
+          "binding_id": "runtime_binding_shinkai_01_scene_adapter",
+          "runtime_target": "scene_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_scene_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_shinkai_01_camera_adapter",
+          "source_video_id": "SHINKAI_01",
+          "binding_id": "runtime_binding_shinkai_01_camera_adapter",
+          "runtime_target": "camera_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_camera_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_shinkai_01_emotion_adapter",
+          "source_video_id": "SHINKAI_01",
+          "binding_id": "runtime_binding_shinkai_01_emotion_adapter",
+          "runtime_target": "emotion_prompt",
+          "resolved_pattern_signatures": [
+            "resolved_emotion_prompt"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_shinkai_01_transition_adapter",
+          "source_video_id": "SHINKAI_01",
+          "binding_id": "runtime_binding_shinkai_01_transition_adapter",
+          "runtime_target": "transition_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_match"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_shinkai_01_continuity_adapter",
+          "source_video_id": "SHINKAI_01",
+          "binding_id": "runtime_binding_shinkai_01_continuity_adapter",
+          "runtime_target": "continuity_runtime_rule",
+          "resolved_pattern_signatures": [
+            "resolved_continuity_runtime_rule"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        },
+        {
+          "mapping_id": "resolved_runtime_mapping_runtime_binding_shinkai_01_storytelling_adapter",
+          "source_video_id": "SHINKAI_01",
+          "binding_id": "runtime_binding_shinkai_01_storytelling_adapter",
+          "runtime_target": "narrative_runtime_rule",
+          "resolved_pattern_signatures": [
+            "narrative_hold",
+            "transition_layout",
+            "transition_transition_layout",
+            "transition_transition_match"
+          ],
+          "conflict_free": true,
+          "planning_only": true
+        }
+      ],
+      "adapter_traceability": {
+        "cinematic_dna_id": "cinematic_dna_shinkai_01_v1",
+        "integration_id": "cinematic_dna_integration_shinkai_01_v1",
+        "adapter_library_entry_id": "dna_adapter_library_entry_shinkai_01_v1",
+        "adapter_ids": [
+          "dna_adapter_scene_adapter_shinkai_01_v1",
+          "dna_adapter_camera_adapter_shinkai_01_v1",
+          "dna_adapter_emotion_adapter_shinkai_01_v1",
+          "dna_adapter_transition_adapter_shinkai_01_v1",
+          "dna_adapter_continuity_adapter_shinkai_01_v1",
+          "dna_adapter_storytelling_adapter_shinkai_01_v1"
+        ],
+        "traceability_preserved": true
+      },
+      "export_ready": true,
+      "planning_only": true,
+      "generation": false
+    }
+  ],
+  "safety_summary": {
+    "planning_only": true,
+    "generation": false,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "asset_type": "medium_film_archetype_index",
+  "asset_version": "v1",
+  "index_id": "medium-film-archetype-index-v1",
+  "phase": "PHASE-L3-MEDIUM-001",
+  "library_path": "datasets/medium_film/medium-film-archetype-library-v1.json",
+  "blueprint_schema_ref": "schemas/medium-film-blueprint.schema.json",
+  "continuity_spec_ref": "exports/medium_film_foundation/long-form-continuity-specification-v2.json",
+  "archetype_count": 3,
+  "scene_count_range": "300-1000",
+  "min_scene_count": 300,
+  "max_scene_count": 1000,
+  "short_film_source_studio": "SHORT_FILM_PRODUCTION_READY",
+  "global_progression": [
+    "harbor_saga_medium",
+    "mediterranean_chronicle_medium",
+    "correspondence_saga_medium"
+  ],
+  "entries": [
+    {
+      "medium_film_archetype_id": "harbor_saga_medium",
+      "theme": "Multi-year harbor saga with parallel departure and community threads",
+      "recommended_duration": "90m-120m",
+      "scene_count_range": "400-650",
+      "story_arc_count": 2,
+      "parallel_flow_count": 2,
+      "character_group_count": 2,
+      "short_film_source_ref": "harbor_epic_departure"
+    },
+    {
+      "medium_film_archetype_id": "mediterranean_chronicle_medium",
+      "theme": "Decade-spanning village chronicle with seasonal parallel threads",
+      "recommended_duration": "120m-180m",
+      "scene_count_range": "600-1000",
+      "story_arc_count": 2,
+      "parallel_flow_count": 2,
+      "character_group_count": 2,
+      "short_film_source_ref": "mediterranean_season_arc"
+    },
+    {
+      "medium_film_archetype_id": "correspondence_saga_medium",
+      "theme": "Multi-decade correspondence saga with parallel lives and layered memory",
+      "recommended_duration": "60m-90m",
+      "scene_count_range": "300-500",
+      "story_arc_count": 2,
+      "parallel_flow_count": 2,
+      "character_group_count": 2,
+      "short_film_source_ref": "letter_across_years"
+    }
+  ]
+}

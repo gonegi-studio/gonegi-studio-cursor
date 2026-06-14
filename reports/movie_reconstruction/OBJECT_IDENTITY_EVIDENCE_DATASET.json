@@ -1,0 +1,92 @@
+{
+  "report_id": "object_identity_evidence_dataset_mqd1or4c",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-006C",
+  "system_id": "OBJECT_IDENTITY_EVIDENCE_V1",
+  "generated_at": "2026-06-14T00:27:25.644Z",
+  "dataset_defined": true,
+  "minimum_batch_size": 40,
+  "easy_batch": [
+    {
+      "case_id": "obj_ev_easy_001",
+      "object_id": "lantern_001",
+      "reference_bank_id": "obj_ref_003"
+    },
+    {
+      "case_id": "obj_ev_easy_002",
+      "object_id": "wooden_crate_001",
+      "reference_bank_id": "obj_ref_004"
+    }
+  ],
+  "medium_batch": [
+    {
+      "case_id": "obj_ev_med_001",
+      "object_id": "chair_014",
+      "reference_bank_id": "obj_ref_002"
+    },
+    {
+      "case_id": "obj_ev_med_002",
+      "object_id": "lantern_001",
+      "reference_bank_id": "obj_ref_003"
+    }
+  ],
+  "hard_batch": [
+    {
+      "case_id": "obj_ev_hard_001",
+      "object_id": "suitcase_001",
+      "failure_mode": "identity_swap"
+    },
+    {
+      "case_id": "obj_ev_hard_002",
+      "object_id": "suitcase_001",
+      "failure_mode": "missing_accessory"
+    },
+    {
+      "case_id": "obj_ev_hard_003",
+      "object_id": "suitcase_001",
+      "failure_mode": "hallucinated_object"
+    }
+  ],
+  "stress_batch": [
+    {
+      "case_id": "obj_ev_stress_001",
+      "object_id": "suitcase_001",
+      "stress_mode": "extreme_zoom"
+    },
+    {
+      "case_id": "obj_ev_stress_002",
+      "object_id": "suitcase_001",
+      "stress_mode": "partial_occlusion"
+    },
+    {
+      "case_id": "obj_ev_stress_003",
+      "object_id": "suitcase_001",
+      "stress_mode": "accessory_visibility_loss"
+    }
+  ],
+  "hero_prop_batch": [
+    {
+      "case_id": "obj_ev_hero_001",
+      "object_id": "suitcase_001",
+      "role": "hero_prop"
+    }
+  ],
+  "secondary_prop_batch": [
+    {
+      "case_id": "obj_ev_sec_001",
+      "object_id": "lantern_001",
+      "role": "secondary_prop"
+    },
+    {
+      "case_id": "obj_ev_sec_002",
+      "object_id": "wooden_crate_001",
+      "role": "secondary_prop"
+    }
+  ],
+  "background_object_batch": [
+    {
+      "case_id": "obj_ev_bg_001",
+      "object_id": "chair_014",
+      "role": "background_object"
+    }
+  ]
+}

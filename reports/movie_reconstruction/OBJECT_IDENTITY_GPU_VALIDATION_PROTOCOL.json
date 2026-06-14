@@ -1,0 +1,168 @@
+{
+  "protocol_id": "object-identity-gpu-validation-protocol-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005C",
+  "system_id": "OBJECT_IDENTITY_GPU_VALIDATION_V1",
+  "generated_at": "2026-06-14T00:00:54.033Z",
+  "object_validation_defined": true,
+  "analysis": {
+    "object_reference_bank_binding": "Reference bank entries (suitcase_001, chair_014, lantern_001, wooden_crate_001) bind identity_signature and anchor_descriptors; recall rules require minimum anchor match against bank entries per batch.",
+    "object_similarity_binding": "object_similarity_v1 governs same_object_threshold=0.97 vs similarity_threshold=0.82; validation must not treat similar_object scores as identity lock.",
+    "object_variation_tolerance_binding": "variation_tolerance bands (strict/medium/loose) derive lock_strength independently from similarity score; evaluated separately from visual match.",
+    "object_role_binding": "object_role_v1 assigns hero_prop > scene_prop > environment_prop > background_furniture priority; role governs narrative lock weight and pass threshold tier.",
+    "object_traceability_binding": "traceability_signature links conditioning_map_ref and OBJECT_REFERENCE_BANK_SPECIFICATION for batch audit without GPU execution in this phase."
+  },
+  "object_validation_contract": {
+    "contract_id": "object_identity_gpu_validation_v1",
+    "contract_version": "1.0",
+    "scope": "Validation definition only — Validation Defined != Validation Executed.",
+    "binding_ref": "exports/movie_reconstruction_object_identity/object-identity-binding-package.json",
+    "bank_spec_ref": "reports/movie_reconstruction/OBJECT_REFERENCE_BANK_SPECIFICATION.json",
+    "dataset_ref": "datasets/gpu_validation/object_identity-validation-dataset.json",
+    "campaign_stage_ref": "reports/movie_reconstruction/GPU_VALIDATION_CAMPAIGN_REPORT.json",
+    "gpu_execution": "false — protocol and dataset plan only; execution deferred to future GPU-enabled phase.",
+    "texture_match_note": "Texture Match is part of Object Identity — texture_drift is a first-class object failure mode."
+  },
+  "same_object_criteria": {
+    "same_object": "Score >= 0.97 required for same-object identity lock certification.",
+    "identity_signature_match": "Exact object_id or identity_signature hash match with reference_bank_match_score >= 0.97.",
+    "texture_match": "Texture consistency contributes to same_object score; texture_drift below minor_drift triggers degradation review.",
+    "assessment_note": "Object Defined != Object Preserved."
+  },
+  "object_drift_levels": {
+    "same_object": 0.97,
+    "strict_object": 0.95,
+    "similar_object": 0.8,
+    "different_object": 0.5
+  },
+  "object_degradation_levels": {
+    "minor_drift": 0.85,
+    "moderate_drift": 0.7,
+    "critical_drift": 0.5
+  },
+  "object_failure_criteria": {
+    "identity_embedding_drift": "Generated object embedding diverges from identity_signature beyond strict_object threshold.",
+    "role_weight_ignored": "Hero prop lock weight ignored; role_threshold not applied during conditioning.",
+    "variation_tolerance_exceeded": "Output drift exceeds variation_tolerance band for bound identity_level.",
+    "texture_drift": "Surface texture diverges from reference anchor; contributes to object identity score degradation.",
+    "missing_accessory": "Hard-tier failure: attached accessory absent from generated object.",
+    "shape_change": "Hard-tier failure: silhouette or geometry inconsistent with reference bank.",
+    "identity_swap": "Hard-tier failure: wrong object_id rendered in hero prop slot.",
+    "hallucinated_object": "Hard-tier failure: object not present in reference bank."
+  },
+  "object_role_thresholds": {
+    "hero_prop": 0.98,
+    "secondary_prop": 0.9,
+    "background_object": 0.75
+  },
+  "object_identity_tiers": [
+    {
+      "tier_id": "hero_prop_strict",
+      "role": "hero_prop",
+      "pass_threshold": 0.98,
+      "identity_level": "strict",
+      "note": "Hero Prop Defined != Hero Prop Preserved — suitcase_001 and narrative-critical props require highest lock."
+    },
+    {
+      "tier_id": "secondary_prop_medium",
+      "role": "secondary_prop",
+      "pass_threshold": 0.9,
+      "identity_level": "medium",
+      "note": "Maps to scene_prop and environment_prop roles in object_role_v1 binding."
+    },
+    {
+      "tier_id": "background_object_loose",
+      "role": "background_object",
+      "pass_threshold": 0.75,
+      "identity_level": "loose",
+      "note": "Maps to background_furniture role; permits higher variation within band."
+    }
+  ],
+  "object_failure_examples": [
+    "missing_accessory",
+    "shape_change",
+    "identity_swap",
+    "hallucinated_object",
+    "texture_drift"
+  ],
+  "tiers": [
+    {
+      "difficulty_tier": "easy",
+      "measurement_method": [
+        "identity_signature_match_score",
+        "texture_match_score"
+      ],
+      "pass_threshold": 0.97,
+      "failure_examples": [
+        "minor_texture_drift"
+      ],
+      "object_failure_examples": [
+        "texture_drift"
+      ],
+      "reference_bank_recall_rules": {
+        "required_reference_count": 4,
+        "minimum_anchor_match": 2
+      },
+      "exit_criteria": {
+        "pass_rate": 0.9,
+        "same_object_score": 0.97
+      }
+    },
+    {
+      "difficulty_tier": "medium",
+      "measurement_method": [
+        "identity_signature_match_score",
+        "variation_tolerance_band_score"
+      ],
+      "pass_threshold": 0.95,
+      "failure_examples": [
+        "variation_tolerance_exceeded",
+        "identity_embedding_drift"
+      ],
+      "object_failure_examples": [
+        "texture_drift",
+        "shape_change"
+      ],
+      "reference_bank_recall_rules": {
+        "required_reference_count": 4,
+        "minimum_anchor_match": 2
+      },
+      "exit_criteria": {
+        "pass_rate": 0.85,
+        "same_object_score": 0.95
+      }
+    },
+    {
+      "difficulty_tier": "hard",
+      "measurement_method": [
+        "identity_signature_match_score",
+        "role_weight_score",
+        "texture_match_score"
+      ],
+      "pass_threshold": 0.93,
+      "failure_examples": [
+        "role_weight_ignored",
+        "identity_swap"
+      ],
+      "object_failure_examples": [
+        "missing_accessory",
+        "shape_change",
+        "identity_swap",
+        "hallucinated_object",
+        "texture_drift"
+      ],
+      "reference_bank_recall_rules": {
+        "required_reference_count": 4,
+        "minimum_anchor_match": 2
+      },
+      "exit_criteria": {
+        "pass_rate": 0.78,
+        "same_object_score": 0.93
+      }
+    }
+  ],
+  "reference_bank_recall_rules": {
+    "required_reference_count": 4,
+    "minimum_anchor_match": 2,
+    "recall_method": "Match generated object anchors against reference bank anchor_descriptors; count kind+importance matches >= minimum_anchor_match across required_reference_count bank entries per batch."
+  }
+}

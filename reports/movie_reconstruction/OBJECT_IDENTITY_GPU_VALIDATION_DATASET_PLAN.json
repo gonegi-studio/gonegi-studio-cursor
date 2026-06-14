@@ -1,0 +1,75 @@
+{
+  "report_id": "object_identity_gpu_dataset_plan_mqd0qn0y",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005C",
+  "system_id": "OBJECT_IDENTITY_GPU_VALIDATION_V1",
+  "generated_at": "2026-06-14T00:00:54.034Z",
+  "dataset_plan_defined": true,
+  "minimum_batch_size": 40,
+  "easy_cases": [
+    {
+      "case_id": "obj_gpu_easy_001",
+      "object_id": "lantern_001",
+      "source_ref": "obj_ref_003"
+    },
+    {
+      "case_id": "obj_gpu_easy_002",
+      "object_id": "wooden_crate_001",
+      "source_ref": "obj_ref_004"
+    }
+  ],
+  "medium_cases": [
+    {
+      "case_id": "obj_gpu_med_001",
+      "object_id": "chair_014",
+      "source_ref": "obj_ref_002"
+    },
+    {
+      "case_id": "obj_gpu_med_002",
+      "object_id": "lantern_001",
+      "source_ref": "obj_ref_003"
+    }
+  ],
+  "hard_cases": [
+    {
+      "case_id": "obj_gpu_hard_001",
+      "object_id": "suitcase_001",
+      "failure_mode": "identity_swap"
+    },
+    {
+      "case_id": "obj_gpu_hard_002",
+      "object_id": "suitcase_001",
+      "failure_mode": "missing_accessory"
+    },
+    {
+      "case_id": "obj_gpu_hard_003",
+      "object_id": "suitcase_001",
+      "failure_mode": "hallucinated_object"
+    }
+  ],
+  "hero_prop_cases": [
+    {
+      "case_id": "obj_gpu_hero_001",
+      "object_id": "suitcase_001",
+      "role": "hero_prop"
+    }
+  ],
+  "secondary_prop_cases": [
+    {
+      "case_id": "obj_gpu_sec_001",
+      "object_id": "lantern_001",
+      "role": "secondary_prop"
+    },
+    {
+      "case_id": "obj_gpu_sec_002",
+      "object_id": "wooden_crate_001",
+      "role": "secondary_prop"
+    }
+  ],
+  "background_object_cases": [
+    {
+      "case_id": "obj_gpu_bg_001",
+      "object_id": "chair_014",
+      "role": "background_object"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "bundle_id": "story-blueprint-bundle-v5",
+  "dataset_type": "production",
+  "production_grade": true,
+  "placeholder": false,
+  "materialized": true,
+  "story_id": "gonagi-harbor-saga-v1",
+  "story_arcs": {
+    "main_arc": {
+      "arc_id": "harbor_saga_main",
+      "span": "full_story",
+      "act_binding": [
+        "act_1",
+        "act_2",
+        "act_3",
+        "optional_act_4",
+        "optional_act_5"
+      ]
+    },
+    "subplot_arc": {
+      "arc_id": "family_secret_subplot",
+      "span": "act_2_to_act_4",
+      "act_binding": [
+        "act_2",
+        "optional_act_4"
+      ]
+    },
+    "character_arc": {
+      "arc_id": "elena_growth",
+      "span": "full_story",
+      "act_binding": [
+        "act_1",
+        "act_3",
+        "optional_act_5"
+      ]
+    },
+    "relationship_arc": {
+      "arc_id": "elena_marco_bond",
+      "span": "act_1_to_act_3",
+      "act_binding": [
+        "act_1",
+        "act_2",
+        "act_3"
+      ]
+    },
+    "world_arc": {
+      "arc_id": "harbor_transformation",
+      "span": "full_story",
+      "act_binding": [
+        "act_1",
+        "optional_act_4",
+        "optional_act_5"
+      ]
+    },
+    "theme_arc": {
+      "arc_id": "legacy_theme",
+      "span": "full_story",
+      "act_binding": [
+        "act_1",
+        "act_3",
+        "optional_act_5"
+      ]
+    },
+    "legacy_callback_arc": {
+      "arc_id": "harbor_keeper_legacy",
+      "span": "callback_chain",
+      "act_binding": [
+        "act_1",
+        "optional_act_5"
+      ],
+      "callback_depth": 4
+    }
+  },
+  "scene_progression": {
+    "act_sequence": [
+      "act_1",
+      "act_2",
+      "act_3",
+      "optional_act_4",
+      "optional_act_5"
+    ],
+    "acts": {
+      "act_1": {
+        "act_name": "setup",
+        "purpose": "Establish world, characters, and inciting conflict."
+      },
+      "act_2": {
+        "act_name": "rising_action",
+        "purpose": "Escalate conflicts and deepen relationships."
+      },
+      "act_3": {
+        "act_name": "climax",
+        "purpose": "Peak confrontation and emotional turn."
+      },
+      "optional_act_4": {
+        "act_name": "falling_action",
+        "purpose": "Resolve subplots and world-state shifts."
+      },
+      "optional_act_5": {
+        "act_name": "resolution",
+        "purpose": "Legacy callbacks and final output alignment."
+      }
+    },
+    "mapping_flow": [
+      "story",
+      "acts",
+      "arcs",
+      "blueprint"
+    ],
+    "act_count": 5
+  },
+  "relationship_progression": {
+    "relationship_arc": {
+      "arc_id": "elena_marco_bond",
+      "span": "act_1_to_act_3",
+      "act_binding": [
+        "act_1",
+        "act_2",
+        "act_3"
+      ]
+    },
+    "character_arc": {
+      "arc_id": "elena_growth",
+      "span": "full_story",
+      "act_binding": [
+        "act_1",
+        "act_3",
+        "optional_act_5"
+      ]
+    },
+    "subplot_arc": {
+      "arc_id": "family_secret_subplot",
+      "span": "act_2_to_act_4",
+      "act_binding": [
+        "act_2",
+        "optional_act_4"
+      ]
+    }
+  },
+  "emotional_progression": {
+    "theme_arc": {
+      "arc_id": "legacy_theme",
+      "span": "full_story",
+      "act_binding": [
+        "act_1",
+        "act_3",
+        "optional_act_5"
+      ]
+    },
+    "main_arc": {
+      "arc_id": "harbor_saga_main",
+      "span": "full_story",
+      "act_binding": [
+        "act_1",
+        "act_2",
+        "act_3",
+        "optional_act_4",
+        "optional_act_5"
+      ]
+    },
+    "story_themes": [
+      "legacy",
+      "belonging",
+      "transformation",
+      "memory"
+    ]
+  },
+  "callback_system": {
+    "legacy_callback_arc": {
+      "arc_id": "harbor_keeper_legacy",
+      "span": "callback_chain",
+      "act_binding": [
+        "act_1",
+        "optional_act_5"
+      ],
+      "callback_depth": 4
+    },
+    "callback_depth": 4,
+    "callback_chain": [
+      "harbor_keeper_legacy",
+      "window_reflection_memory",
+      "transit_return_promise"
+    ]
+  },
+  "narrative_rules": {
+    "output_blueprint_types": [
+      "MV",
+      "SHORT",
+      "MEDIUM",
+      "FEATURE"
+    ],
+    "blueprint_generation_integrity": "PASS",
+    "story_to_blueprint_integrity": "PASS",
+    "act_binding_required": true,
+    "arc_span_required": true
+  },
+  "story_summary": {
+    "title": "Harbor Saga",
+    "genre": "drama",
+    "target_runtime": "feature",
+    "themes": [
+      "legacy",
+      "belonging",
+      "transformation",
+      "memory"
+    ]
+  },
+  "record_count": 12
+}

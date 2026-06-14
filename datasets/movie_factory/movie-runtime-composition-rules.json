@@ -1,0 +1,39 @@
+{
+  "rules_id": "movie-runtime-composition-rules-v1",
+  "phase": "PHASE-MOVIE-DATASET-FACTORY-001",
+  "system_id": "MOVIE_DATASET_FACTORY_SYSTEM_V1",
+  "base_dataset": "latest_v5",
+  "merge_mode": "runtime",
+  "composition_formula": "latest_v5(fixed_identity) + movie_dataset(swappable_grammar) -> runtime_composition -> generation",
+  "latest_v5_dominates": {
+    "character_identity": true,
+    "environment_identity": true,
+    "architecture_identity": true,
+    "color_identity": true,
+    "location_identity": true,
+    "lighting_identity": true,
+    "living_world_identity": true,
+    "world_identity_source_locked": true,
+    "minimum_dominance": 0.7
+  },
+  "movie_dataset_dominates": {
+    "scene_structure": true,
+    "camera_grammar": true,
+    "blocking_grammar": true,
+    "composition_grammar": true,
+    "temporal_grammar": true,
+    "motion_grammar": true,
+    "semantic_anchors": true,
+    "maximum_dominance": 0.3
+  },
+  "forbidden": [
+    "movie_style_override",
+    "world_identity_override",
+    "generic_harbor_fallback",
+    "latest_v5_movie_bundle_embed"
+  ],
+  "runtime_output": [
+    "image_generation",
+    "video_generation"
+  ]
+}

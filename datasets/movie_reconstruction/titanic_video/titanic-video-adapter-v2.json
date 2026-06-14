@@ -1,0 +1,56 @@
+{
+  "adapter_id": "titanic-video-adapter-v2",
+  "phase": "PHASE-TITANIC-VIDEO-RECONSTRUCTION-001",
+  "system_id": "TITANIC_VIDEO_RECONSTRUCTION_SYSTEM_V1",
+  "adapter_version": "v2",
+  "target_app": "video_app",
+  "shared_movie_dataset": true,
+  "pipeline": [
+    "movie_dataset",
+    "scene_layer",
+    "shot_layer",
+    "temporal_layer",
+    "motion_layer",
+    "video_sequence",
+    "video_generation"
+  ],
+  "layer_refs": {
+    "scene_layer": "datasets/movie_reconstruction/titanic_dense/titanic-scene-master-registry.json",
+    "shot_layer": "datasets/movie_reconstruction/titanic_shots/titanic-shot-registry.json",
+    "temporal_layer": "datasets/movie_reconstruction/titanic_shots/titanic-shot-transition-registry.json",
+    "motion_layer": "datasets/movie_reconstruction/titanic_motion/titanic-motion-continuity-registry.json",
+    "video_sequence_layer": "datasets/movie_reconstruction/titanic_video/titanic-video-sequence-registry.json",
+    "scene_transition_layer": "datasets/movie_reconstruction/titanic_video/titanic-scene-transition-registry.json",
+    "video_timeline_layer": "datasets/movie_reconstruction/titanic_video/titanic-video-timeline-registry.json",
+    "video_render_plan_layer": "datasets/movie_reconstruction/titanic_video/titanic-video-render-plan-registry.json",
+    "legacy_video_adapter": "datasets/movie_reconstruction/titanic_shots/titanic-video-adapter.json",
+    "movie_bundle": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json"
+  },
+  "sequence_summary": {
+    "video_sequence_id": "titanic_video_seq_master_v1",
+    "total_duration": 9720,
+    "scene_count": 300,
+    "shot_count": 3300,
+    "scene_transition_count": 299,
+    "timeline_entry_count": 3300,
+    "render_plan_count": 2
+  },
+  "control_split": {
+    "movie_dataset_controls": [
+      "motion",
+      "timing",
+      "trajectory",
+      "camera_behavior",
+      "shot_sequence"
+    ],
+    "gonegi_dataset_controls": [
+      "visual_identity",
+      "world_identity",
+      "character_identity"
+    ]
+  },
+  "video_generation_status": "READY",
+  "world_identity_source": "latest_v5",
+  "movie_structure_source": "movie_dataset",
+  "adapter_ready": true
+}

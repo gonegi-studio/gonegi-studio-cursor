@@ -1,0 +1,57 @@
+{
+  "report_id": "temporal_evidence_record_spec_mqd29b5n",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-007B",
+  "system_id": "TEMPORAL_PRESERVATION_EVIDENCE_COLLECTION_V1",
+  "generated_at": "2026-06-14T00:43:24.731Z",
+  "record_spec_defined": true,
+  "temporal_evidence_record_format": {
+    "timeline_id": "Target timeline_id from temporal memory binding.",
+    "continuity_signature": "Hash of shot_boundary_continuity anchors across adjacent shots.",
+    "causal_chain_signature": "Hash of causal_transition_chain traversal path.",
+    "traceability_signature": "Hash binding numerical DNA edit_rhythm and motion_vectors refs.",
+    "evidence_score": "Composite score from temporal_scoring_rules weighted formula.",
+    "timeline_classification": "Enum: same_timeline | strict_timeline | similar_timeline | broken_timeline | causally_broken_timeline.",
+    "classification_reason": "Enum: continuity_match | causal_chain_match | edit_rhythm_match | traceability_match | memory_recall_match."
+  },
+  "required_fields": [
+    "timeline_id",
+    "continuity_signature",
+    "causal_chain_signature",
+    "traceability_signature",
+    "evidence_score",
+    "timeline_classification",
+    "classification_reason"
+  ],
+  "timeline_classification": [
+    "same_timeline",
+    "strict_timeline",
+    "similar_timeline",
+    "broken_timeline",
+    "causally_broken_timeline"
+  ],
+  "classification_reason": [
+    "continuity_match",
+    "causal_chain_match",
+    "edit_rhythm_match",
+    "traceability_match",
+    "memory_recall_match"
+  ],
+  "causally_broken_timeline_defined": true,
+  "memory_recall_match_defined": true,
+  "classification_thresholds": {
+    "same_timeline": 0.95,
+    "strict_timeline": 0.9,
+    "similar_timeline": 0.75,
+    "broken_timeline": 0.5,
+    "timeline_break": 0.3
+  },
+  "example_record": {
+    "timeline_id": "timeline_titanic_014_015",
+    "continuity_signature": "cont_sig_a1b2c3d4",
+    "causal_chain_signature": "causal_sig_transition_014_015",
+    "traceability_signature": "trace_sig_edit_rhythm_014_015",
+    "evidence_score": 0.94,
+    "timeline_classification": "strict_timeline",
+    "classification_reason": "causal_chain_match"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "registry_id": "movie-dataset-registry-v1",
+  "phase": "PHASE-MOVIE-DATASET-FACTORY-001",
+  "separation_id": "MOVIE_DATASET_RUNTIME_COMPOSITION_V1",
+  "generated_at": "2026-06-10T07:53:06.803Z",
+  "movie_datasets": [
+    "titanic",
+    "your_name",
+    "spirited_away",
+    "castle_in_the_sky",
+    "howls_moving_castle"
+  ],
+  "datasets": [
+    {
+      "dataset_id": "titanic",
+      "title": "Titanic",
+      "status": "materialized",
+      "bundle_path": "exports/movie_datasets/titanic/titanic_movie_reconstruction_bundle.json",
+      "swappable": true,
+      "modifies_latest_v5": false,
+      "factory_validation_status": "PASS"
+    },
+    {
+      "dataset_id": "your_name",
+      "title": "Your Name",
+      "status": "registry_ready",
+      "bundle_path": "exports/movie_datasets/your_name/your_name_movie_reconstruction_bundle.json",
+      "swappable": true,
+      "modifies_latest_v5": false,
+      "factory_validation_status": "PENDING"
+    },
+    {
+      "dataset_id": "spirited_away",
+      "title": "Spirited Away",
+      "status": "registry_ready",
+      "bundle_path": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json",
+      "swappable": true,
+      "modifies_latest_v5": false,
+      "factory_validation_status": "PENDING"
+    },
+    {
+      "dataset_id": "castle_in_the_sky",
+      "title": "Castle in the Sky",
+      "status": "registry_ready",
+      "bundle_path": "exports/movie_datasets/castle_in_the_sky/castle_in_the_sky_movie_reconstruction_bundle.json",
+      "swappable": true,
+      "modifies_latest_v5": false,
+      "factory_validation_status": "PENDING"
+    },
+    {
+      "dataset_id": "howls_moving_castle",
+      "title": "Howl's Moving Castle",
+      "status": "registry_ready",
+      "bundle_path": "exports/movie_datasets/howls_moving_castle/howls_moving_castle_movie_reconstruction_bundle.json",
+      "swappable": true,
+      "modifies_latest_v5": false,
+      "factory_validation_status": "PENDING"
+    }
+  ],
+  "architecture": {
+    "latest_v5_role": "universal_gonegi_world_dataset",
+    "movie_datasets_role": "swappable_scene_grammar_modules",
+    "final_generation": "latest_v5 + selected_movie_dataset",
+    "factory_system": "MOVIE_DATASET_FACTORY_SYSTEM_V1"
+  },
+  "factory_ref": "datasets/movie_factory/movie-dataset-registry.json",
+  "factory_synced_at": "2026-06-10T07:53:08.868Z"
+}

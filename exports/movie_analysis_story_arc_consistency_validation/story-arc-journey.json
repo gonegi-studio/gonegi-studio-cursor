@@ -1,0 +1,74 @@
+{
+  "story_arc_path": [
+    {
+      "act_id": "ACT1",
+      "source_id": "GHIBLI_01"
+    },
+    {
+      "act_id": "ACT2",
+      "source_id": "LITTLE_WOMEN_01"
+    },
+    {
+      "act_id": "ACT3",
+      "source_id": "MORI_01"
+    },
+    {
+      "act_id": "ENDING",
+      "source_id": "SHINKAI_01"
+    }
+  ],
+  "story_arc_anchor": {
+    "act_id": "ACT1",
+    "source_id": "GHIBLI_01",
+    "frame_index": 0,
+    "identity_signature": "5c2957a5e589",
+    "story_signature": "5446f3c797db",
+    "callback_memory_signature": "57744a0d23000c41",
+    "emotion_score": 0.4019607843137255,
+    "relationship_stage": "establishment"
+  },
+  "act_transitions": [
+    {
+      "transition_id": "ACT1_to_ACT2",
+      "character_arc_consistency": "PASS",
+      "emotion_arc_consistency": "PASS",
+      "relationship_arc_consistency": "PASS",
+      "story_progression_consistency": "PASS",
+      "story_arc_break": false,
+      "emotion_reset": false,
+      "relationship_reset": false,
+      "transition_validated": "PASS"
+    },
+    {
+      "transition_id": "ACT2_to_ACT3",
+      "character_arc_consistency": "PASS",
+      "emotion_arc_consistency": "PASS",
+      "relationship_arc_consistency": "PASS",
+      "story_progression_consistency": "PASS",
+      "story_arc_break": false,
+      "emotion_reset": false,
+      "relationship_reset": false,
+      "transition_validated": "PASS"
+    },
+    {
+      "transition_id": "ACT3_to_ENDING",
+      "character_arc_consistency": "PASS",
+      "emotion_arc_consistency": "PASS",
+      "relationship_arc_consistency": "PASS",
+      "story_progression_consistency": "PASS",
+      "story_arc_break": false,
+      "emotion_reset": false,
+      "relationship_reset": false,
+      "transition_validated": "PASS"
+    }
+  ],
+  "ending_validation": {
+    "ending_act_id": "ENDING",
+    "anchor_act_id": "ACT1",
+    "callback_memory_consistency": "PASS",
+    "ending_resolution_consistency": "PASS",
+    "callback_loss": false,
+    "ending_inconsistency": false,
+    "ending_validated": "PASS"
+  }
+}

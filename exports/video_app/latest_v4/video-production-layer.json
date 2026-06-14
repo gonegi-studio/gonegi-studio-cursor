@@ -1,0 +1,24 @@
+{
+  "layer_id": "video-production-layer-v4",
+  "phase": "PHASE-EXPORT-REBUILD-003",
+  "generated_at": "2026-06-09T06:33:31.772Z",
+  "base": "exports/video_app/latest_v3",
+  "reference": "exports/video_app/latest",
+  "production_refs": [
+    {
+      "ref_id": "music-drama-video-adapter",
+      "reference_path": "exports/video_app/latest/music-drama-video-adapter.json",
+      "bound": true
+    },
+    {
+      "ref_id": "video-brain-dataset",
+      "reference_path": "exports/video_app/latest/video-brain-dataset.json",
+      "bound": true
+    }
+  ],
+  "active_bundles": [
+    "temporal_memory_bundle",
+    "dialogue_lipsync_bundle",
+    "generation_trace_bundle"
+  ]
+}

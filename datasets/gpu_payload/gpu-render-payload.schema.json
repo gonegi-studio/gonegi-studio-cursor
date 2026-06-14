@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/gpu_payload/gpu-render-payload.schema.json",
+  "title": "GpuRenderPayload",
+  "description": "GPU-ready render payload preparation object for PHASE-22",
+  "type": "object",
+  "required": [
+    "gpu_payload_id",
+    "phase",
+    "source_video_shot_state_id",
+    "source_keyframe_plan_id",
+    "source_motion_plan_id",
+    "source_scene_state_id",
+    "render_mode",
+    "duration_seconds",
+    "fps_target",
+    "resolution",
+    "aspect_ratio",
+    "identity_locks",
+    "location_locks",
+    "composition_locks",
+    "prop_locks",
+    "keyframes",
+    "motion_segments",
+    "render_constraints",
+    "negative_constraints",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "gpu_payload_id": { "type": "string", "minLength": 1 },
+    "phase": { "type": "string", "const": "PHASE-22-GPU-RENDER-PAYLOAD-PREPARATION-001" },
+    "source_video_shot_state_id": { "type": "string" },
+    "source_keyframe_plan_id": { "type": "string" },
+    "source_motion_plan_id": { "type": "string" },
+    "source_scene_state_id": { "type": "string" },
+    "render_mode": { "type": "string" },
+    "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+    "fps_target": { "type": "number", "enum": [12, 24, 25, 30] },
+    "resolution": { "type": "string" },
+    "aspect_ratio": { "type": "string" },
+    "identity_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "location_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "composition_locks": { "type": "array", "items": { "type": "string" } },
+    "prop_locks": { "type": "array", "items": { "type": "string" } },
+    "keyframes": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/keyframe_ref" } },
+    "motion_segments": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/motion_segment_ref" } },
+    "render_constraints": { "type": "array", "items": { "type": "string" } },
+    "negative_constraints": { "type": "array", "items": { "type": "string" } },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": ["gpu_execution", "preparation_only", "external_call_allowed"],
+      "additionalProperties": false,
+      "properties": {
+        "gpu_execution": { "type": "boolean", "const": false },
+        "preparation_only": { "type": "boolean", "const": true },
+        "external_call_allowed": { "type": "boolean", "const": false }
+      }
+    },
+    "keyframe_ref": {
+      "type": "object",
+      "required": ["keyframe_index", "timestamp", "keyframe_role", "scene_state_ref"],
+      "properties": {
+        "keyframe_index": { "type": "integer" },
+        "timestamp": { "type": "number" },
+        "keyframe_role": { "type": "string" },
+        "scene_state_ref": { "type": "string" },
+        "shot_type": { "type": "string" },
+        "emotion_id": { "type": "string" },
+        "emotion_intensity": { "type": "number" }
+      }
+    },
+    "motion_segment_ref": {
+      "type": "object",
+      "required": ["segment_id", "from_keyframe", "to_keyframe", "duration_seconds"],
+      "properties": {
+        "segment_id": { "type": "string" },
+        "from_keyframe": { "type": "integer" },
+        "to_keyframe": { "type": "integer" },
+        "duration_seconds": { "type": "number" },
+        "camera_motion_category": { "type": "string" },
+        "emotion_motion_category": { "type": "string" },
+        "environment_motion_category": { "type": "string" }
+      }
+    }
+  }
+}

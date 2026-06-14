@@ -1,0 +1,29 @@
+{
+  "report_id": "channel_validation_roadmap_mqd01ext",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-004",
+  "system_id": "GPU_VALIDATION_CAMPAIGN_V1",
+  "generated_at": "2026-06-13T23:41:17.153Z",
+  "channel_validation_roadmap_defined": true,
+  "channel_phase_order": [
+    {
+      "channel": "environment_identity",
+      "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005A",
+      "phase_name": "ENVIRONMENT_IDENTITY_GPU_VALIDATION_V1"
+    },
+    {
+      "channel": "temporal_preservation",
+      "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005B",
+      "phase_name": "TEMPORAL_PRESERVATION_GPU_VALIDATION_V1"
+    },
+    {
+      "channel": "object_identity",
+      "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005C",
+      "phase_name": "OBJECT_IDENTITY_GPU_VALIDATION_V1"
+    }
+  ],
+  "next_channel_phase": "PHASE-GPU-CONDITIONING-VALIDATION-005A",
+  "deferred_channels": [
+    "camera_continuity",
+    "multi_scene_consistency"
+  ]
+}

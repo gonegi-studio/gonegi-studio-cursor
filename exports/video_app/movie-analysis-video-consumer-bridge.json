@@ -1,0 +1,3130 @@
+{
+  "bridge_id": "movie-analysis-video-consumer-bridge-v1",
+  "bridge_type": "movie_analysis_video_consumer_bridge",
+  "phase": "PHASE-SOURCE-VIDEO-046-MOVIE_ANALYSIS_DATASET_CONSUMER_BRIDGE_V1",
+  "consumer_target": "video_app",
+  "generated_at": "2026-06-07T02:52:50.899Z",
+  "source_dataset_path": "exports/movie_analysis_dataset/movie-analysis-dataset.json",
+  "dataset_id": "movie-analysis-dataset-v1",
+  "dataset_version": "v1",
+  "source_count": 4,
+  "entries": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "source_video_path": "imports/source_videos/active/ghibli/GHIBLI_01.mp4",
+      "master_package_id": "master_package_ghibli_01_v1",
+      "final_runtime_bundle_id": "final_runtime_bundle_ghibli_01_v1",
+      "generation_blueprint_id": "generation_blueprint_ghibli_01_v1",
+      "chain_ids": {
+        "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+        "video_blueprint_id": "video_blueprint_ghibli_01_v1",
+        "temporal_flow_id": "temporal_flow_ghibli_01_v1",
+        "sequence_assembly_id": "sequence_assembly_ghibli_01_v1",
+        "motion_plan_id": "motion_plan_ghibli_01_v1",
+        "generation_blueprint_id": "generation_blueprint_ghibli_01_v1",
+        "final_runtime_bundle_id": "final_runtime_bundle_ghibli_01_v1"
+      },
+      "package_trace": [
+        {
+          "step": 1,
+          "phase": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1",
+          "plan_type": "analysis_plan",
+          "plan_id": "analysis_plan_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 2,
+          "phase": "PHASE-SOURCE-VIDEO-023-MOVIE_ANALYSIS_DRY_RUN_PLANNER_V1",
+          "plan_type": "dry_run",
+          "plan_id": "dry_run_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 3,
+          "phase": "PHASE-SOURCE-VIDEO-024-MOVIE_ANALYSIS_FRAME_SAMPLING_DESIGN_V1",
+          "plan_type": "frame_sampling",
+          "plan_id": "frame_sampling_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 4,
+          "phase": "PHASE-SOURCE-VIDEO-025-MOVIE_ANALYSIS_SCENE_DETECTION_DESIGN_V1",
+          "plan_type": "scene_detection",
+          "plan_id": "scene_detection_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 5,
+          "phase": "PHASE-SOURCE-VIDEO-026-MOVIE_ANALYSIS_COORDINATE_EXTRACTION_DESIGN_V1",
+          "plan_type": "coordinate_extraction",
+          "plan_id": "coordinate_extraction_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 6,
+          "phase": "PHASE-SOURCE-VIDEO-027-MOVIE_ANALYSIS_GONEGI_STATE_MAPPING_DESIGN_V1",
+          "plan_type": "gonegi_state_mapping",
+          "plan_id": "gonegi_state_mapping_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 7,
+          "phase": "PHASE-SOURCE-VIDEO-028-MOVIE_ANALYSIS_VIDEO_STATE_COMPILATION_DESIGN_V1",
+          "plan_type": "video_state_compilation",
+          "plan_id": "video_state_compilation_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 8,
+          "phase": "PHASE-SOURCE-VIDEO-029-MOVIE_ANALYSIS_KEYFRAME_PREPARATION_DESIGN_V1",
+          "plan_type": "keyframe_preparation",
+          "plan_id": "keyframe_preparation_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 9,
+          "phase": "PHASE-SOURCE-VIDEO-030-MOVIE_ANALYSIS_MOTION_PLANNING_DESIGN_V1",
+          "plan_type": "motion_plan",
+          "plan_id": "motion_plan_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 10,
+          "phase": "PHASE-SOURCE-VIDEO-031-MOVIE_ANALYSIS_TEMPORAL_FLOW_DESIGN_V1",
+          "plan_type": "temporal_flow",
+          "plan_id": "temporal_flow_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 11,
+          "phase": "PHASE-SOURCE-VIDEO-032-MOVIE_ANALYSIS_SEQUENCE_ASSEMBLY_DESIGN_V1",
+          "plan_type": "sequence_assembly",
+          "plan_id": "sequence_assembly_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 12,
+          "phase": "PHASE-SOURCE-VIDEO-033-MOVIE_ANALYSIS_VIDEO_BLUEPRINT_DESIGN_V1",
+          "plan_type": "video_blueprint",
+          "plan_id": "video_blueprint_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 13,
+          "phase": "PHASE-SOURCE-VIDEO-034-MOVIE_ANALYSIS_RUNTIME_PACKAGE_DESIGN_V1",
+          "plan_type": "runtime_package",
+          "plan_id": "runtime_package_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 14,
+          "phase": "PHASE-SOURCE-VIDEO-035-MOVIE_ANALYSIS_GENERATION_PACKAGE_DESIGN_V1",
+          "plan_type": "generation_package",
+          "plan_id": "generation_package_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 15,
+          "phase": "PHASE-SOURCE-VIDEO-036-MOVIE_ANALYSIS_GENERATION_BLUEPRINT_DESIGN_V1",
+          "plan_type": "generation_blueprint",
+          "plan_id": "generation_blueprint_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 16,
+          "phase": "PHASE-SOURCE-VIDEO-037-MOVIE_ANALYSIS_EXECUTION_READINESS_DESIGN_V1",
+          "plan_type": "execution_readiness",
+          "plan_id": "execution_readiness_ghibli_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 17,
+          "phase": "PHASE-SOURCE-VIDEO-038-MOVIE_ANALYSIS_FINAL_RUNTIME_BUNDLE_DESIGN_V1",
+          "plan_type": "final_runtime_bundle",
+          "plan_id": "final_runtime_bundle_ghibli_01_v1",
+          "status": "designed"
+        }
+      ],
+      "payload_mapping": {
+        "consumer_target": "video_app",
+        "video_blueprint_id": "video_blueprint_ghibli_01_v1",
+        "temporal_flow_id": "temporal_flow_ghibli_01_v1",
+        "sequence_assembly_id": "sequence_assembly_ghibli_01_v1",
+        "motion_plan_id": "motion_plan_ghibli_01_v1",
+        "scene_generation_structure": [
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_scene_001",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_scene_001",
+              "generation_package_ghibli_01_v1_scene_002",
+              "generation_package_ghibli_01_v1_scene_003",
+              "generation_package_ghibli_01_v1_scene_004",
+              "generation_package_ghibli_01_v1_scene_005",
+              "generation_package_ghibli_01_v1_scene_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_scene_002",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_scene_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_scene_003",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_scene_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_scene_004",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_scene_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_open",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_scene_005",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_scene_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_develop",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_scene_006",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_scene_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_peak",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_scene_007",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_scene_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_resolve",
+            "generation_blueprint_only": true
+          }
+        ],
+        "camera_generation_structure": [
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_001",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_001",
+              "generation_package_ghibli_01_v1_camera_002",
+              "generation_package_ghibli_01_v1_camera_003",
+              "generation_package_ghibli_01_v1_camera_004",
+              "generation_package_ghibli_01_v1_camera_005",
+              "generation_package_ghibli_01_v1_camera_006",
+              "generation_package_ghibli_01_v1_camera_007",
+              "generation_package_ghibli_01_v1_camera_008",
+              "generation_package_ghibli_01_v1_camera_009"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_002",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_003",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_004",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_005",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_006",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_007",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_shift",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_008",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_007"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_009",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_008"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_camera_010",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_camera_009"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_shift",
+            "generation_blueprint_only": true
+          }
+        ],
+        "transition_generation_structure": [
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_transition_001",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_transition_001",
+              "generation_package_ghibli_01_v1_transition_002",
+              "generation_package_ghibli_01_v1_transition_003",
+              "generation_package_ghibli_01_v1_transition_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_transition_002",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_transition_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_transition_003",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_transition_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_transition_004",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_transition_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_transition_005",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_transition_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_transition_cut",
+            "generation_blueprint_only": true
+          }
+        ],
+        "continuity_generation_structure": [
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_continuity_001",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_continuity_001",
+              "generation_package_ghibli_01_v1_continuity_002",
+              "generation_package_ghibli_01_v1_continuity_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_continuity_002",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_continuity_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_continuity_003",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_continuity_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_ghibli_01_v1_continuity_004",
+            "source_generation_package_element_ids": [
+              "generation_package_ghibli_01_v1_continuity_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_shift",
+            "generation_blueprint_only": true
+          }
+        ],
+        "scene_bundle": [
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_001",
+              "execution_readiness_ghibli_01_v1_scene_002",
+              "execution_readiness_ghibli_01_v1_scene_003",
+              "execution_readiness_ghibli_01_v1_scene_004",
+              "execution_readiness_ghibli_01_v1_scene_005",
+              "execution_readiness_ghibli_01_v1_scene_006",
+              "execution_readiness_ghibli_01_v1_scene_007",
+              "execution_readiness_ghibli_01_v1_scene_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_open",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_develop",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_peak",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_scene_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_resolve",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "camera_bundle": [
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_001",
+              "execution_readiness_ghibli_01_v1_camera_002",
+              "execution_readiness_ghibli_01_v1_camera_003",
+              "execution_readiness_ghibli_01_v1_camera_004",
+              "execution_readiness_ghibli_01_v1_camera_005",
+              "execution_readiness_ghibli_01_v1_camera_006",
+              "execution_readiness_ghibli_01_v1_camera_007",
+              "execution_readiness_ghibli_01_v1_camera_008",
+              "execution_readiness_ghibli_01_v1_camera_009",
+              "execution_readiness_ghibli_01_v1_camera_010",
+              "execution_readiness_ghibli_01_v1_camera_011"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_shift",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_010",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_009"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_011",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_010"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_camera_012",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_011"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_shift",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "transition_bundle": [
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_transition_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_001",
+              "execution_readiness_ghibli_01_v1_transition_002",
+              "execution_readiness_ghibli_01_v1_transition_003",
+              "execution_readiness_ghibli_01_v1_transition_004",
+              "execution_readiness_ghibli_01_v1_transition_005",
+              "execution_readiness_ghibli_01_v1_transition_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_transition_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_transition_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_transition_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_transition_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_transition_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_transition_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_transition_cut",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "continuity_bundle": [
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_continuity_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_continuity_001",
+              "execution_readiness_ghibli_01_v1_continuity_002",
+              "execution_readiness_ghibli_01_v1_continuity_003",
+              "execution_readiness_ghibli_01_v1_continuity_004",
+              "execution_readiness_ghibli_01_v1_continuity_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_continuity_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_continuity_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_continuity_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_continuity_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_continuity_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_continuity_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_continuity_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_continuity_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_continuity_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_shift",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "runtime_bundle": [
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_runtime_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_001",
+              "execution_readiness_ghibli_01_v1_character_001",
+              "execution_readiness_ghibli_01_v1_camera_001",
+              "execution_readiness_ghibli_01_v1_emotion_001",
+              "execution_readiness_ghibli_01_v1_transition_001",
+              "execution_readiness_ghibli_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_runtime_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_estimated_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_runtime_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_character_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_execution_readiness_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_runtime_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_runtime_execution",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_runtime_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_emotion_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_video_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_runtime_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_image_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_ghibli_01_v1_runtime_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_ghibli_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_gpu_ready",
+            "final_runtime_bundle_only": true
+          }
+        ]
+      },
+      "safety": {
+        "planning_only": true,
+        "design_only": true,
+        "runtime_execution": false,
+        "video_generation": false,
+        "image_generation": false,
+        "gpu_execution": false,
+        "external_call_allowed": false,
+        "no_execution": true,
+        "no_rendering": true,
+        "no_inference": true
+      }
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "source_video_path": "imports/source_videos/active/live_action/LITTLE_WOMEN_01.mp4",
+      "master_package_id": "master_package_little_women_01_v1",
+      "final_runtime_bundle_id": "final_runtime_bundle_little_women_01_v1",
+      "generation_blueprint_id": "generation_blueprint_little_women_01_v1",
+      "chain_ids": {
+        "analysis_plan_id": "analysis_plan_little_women_01_v1",
+        "video_blueprint_id": "video_blueprint_little_women_01_v1",
+        "temporal_flow_id": "temporal_flow_little_women_01_v1",
+        "sequence_assembly_id": "sequence_assembly_little_women_01_v1",
+        "motion_plan_id": "motion_plan_little_women_01_v1",
+        "generation_blueprint_id": "generation_blueprint_little_women_01_v1",
+        "final_runtime_bundle_id": "final_runtime_bundle_little_women_01_v1"
+      },
+      "package_trace": [
+        {
+          "step": 1,
+          "phase": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1",
+          "plan_type": "analysis_plan",
+          "plan_id": "analysis_plan_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 2,
+          "phase": "PHASE-SOURCE-VIDEO-023-MOVIE_ANALYSIS_DRY_RUN_PLANNER_V1",
+          "plan_type": "dry_run",
+          "plan_id": "dry_run_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 3,
+          "phase": "PHASE-SOURCE-VIDEO-024-MOVIE_ANALYSIS_FRAME_SAMPLING_DESIGN_V1",
+          "plan_type": "frame_sampling",
+          "plan_id": "frame_sampling_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 4,
+          "phase": "PHASE-SOURCE-VIDEO-025-MOVIE_ANALYSIS_SCENE_DETECTION_DESIGN_V1",
+          "plan_type": "scene_detection",
+          "plan_id": "scene_detection_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 5,
+          "phase": "PHASE-SOURCE-VIDEO-026-MOVIE_ANALYSIS_COORDINATE_EXTRACTION_DESIGN_V1",
+          "plan_type": "coordinate_extraction",
+          "plan_id": "coordinate_extraction_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 6,
+          "phase": "PHASE-SOURCE-VIDEO-027-MOVIE_ANALYSIS_GONEGI_STATE_MAPPING_DESIGN_V1",
+          "plan_type": "gonegi_state_mapping",
+          "plan_id": "gonegi_state_mapping_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 7,
+          "phase": "PHASE-SOURCE-VIDEO-028-MOVIE_ANALYSIS_VIDEO_STATE_COMPILATION_DESIGN_V1",
+          "plan_type": "video_state_compilation",
+          "plan_id": "video_state_compilation_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 8,
+          "phase": "PHASE-SOURCE-VIDEO-029-MOVIE_ANALYSIS_KEYFRAME_PREPARATION_DESIGN_V1",
+          "plan_type": "keyframe_preparation",
+          "plan_id": "keyframe_preparation_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 9,
+          "phase": "PHASE-SOURCE-VIDEO-030-MOVIE_ANALYSIS_MOTION_PLANNING_DESIGN_V1",
+          "plan_type": "motion_plan",
+          "plan_id": "motion_plan_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 10,
+          "phase": "PHASE-SOURCE-VIDEO-031-MOVIE_ANALYSIS_TEMPORAL_FLOW_DESIGN_V1",
+          "plan_type": "temporal_flow",
+          "plan_id": "temporal_flow_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 11,
+          "phase": "PHASE-SOURCE-VIDEO-032-MOVIE_ANALYSIS_SEQUENCE_ASSEMBLY_DESIGN_V1",
+          "plan_type": "sequence_assembly",
+          "plan_id": "sequence_assembly_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 12,
+          "phase": "PHASE-SOURCE-VIDEO-033-MOVIE_ANALYSIS_VIDEO_BLUEPRINT_DESIGN_V1",
+          "plan_type": "video_blueprint",
+          "plan_id": "video_blueprint_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 13,
+          "phase": "PHASE-SOURCE-VIDEO-034-MOVIE_ANALYSIS_RUNTIME_PACKAGE_DESIGN_V1",
+          "plan_type": "runtime_package",
+          "plan_id": "runtime_package_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 14,
+          "phase": "PHASE-SOURCE-VIDEO-035-MOVIE_ANALYSIS_GENERATION_PACKAGE_DESIGN_V1",
+          "plan_type": "generation_package",
+          "plan_id": "generation_package_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 15,
+          "phase": "PHASE-SOURCE-VIDEO-036-MOVIE_ANALYSIS_GENERATION_BLUEPRINT_DESIGN_V1",
+          "plan_type": "generation_blueprint",
+          "plan_id": "generation_blueprint_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 16,
+          "phase": "PHASE-SOURCE-VIDEO-037-MOVIE_ANALYSIS_EXECUTION_READINESS_DESIGN_V1",
+          "plan_type": "execution_readiness",
+          "plan_id": "execution_readiness_little_women_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 17,
+          "phase": "PHASE-SOURCE-VIDEO-038-MOVIE_ANALYSIS_FINAL_RUNTIME_BUNDLE_DESIGN_V1",
+          "plan_type": "final_runtime_bundle",
+          "plan_id": "final_runtime_bundle_little_women_01_v1",
+          "status": "designed"
+        }
+      ],
+      "payload_mapping": {
+        "consumer_target": "video_app",
+        "video_blueprint_id": "video_blueprint_little_women_01_v1",
+        "temporal_flow_id": "temporal_flow_little_women_01_v1",
+        "sequence_assembly_id": "sequence_assembly_little_women_01_v1",
+        "motion_plan_id": "motion_plan_little_women_01_v1",
+        "scene_generation_structure": [
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_001",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_001",
+              "generation_package_little_women_01_v1_scene_002",
+              "generation_package_little_women_01_v1_scene_003",
+              "generation_package_little_women_01_v1_scene_004",
+              "generation_package_little_women_01_v1_scene_005",
+              "generation_package_little_women_01_v1_scene_006",
+              "generation_package_little_women_01_v1_scene_007",
+              "generation_package_little_women_01_v1_scene_008"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_002",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_003",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_004",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_open",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_005",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_develop",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_006",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_peak",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_007",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_resolve",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_008",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_007"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_close",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_scene_009",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_scene_008"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_bridge",
+            "generation_blueprint_only": true
+          }
+        ],
+        "camera_generation_structure": [
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_001",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_001",
+              "generation_package_little_women_01_v1_camera_002",
+              "generation_package_little_women_01_v1_camera_003",
+              "generation_package_little_women_01_v1_camera_004",
+              "generation_package_little_women_01_v1_camera_005",
+              "generation_package_little_women_01_v1_camera_006",
+              "generation_package_little_women_01_v1_camera_007",
+              "generation_package_little_women_01_v1_camera_008",
+              "generation_package_little_women_01_v1_camera_009"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_002",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_003",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_004",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_005",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_shift",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_006",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_007",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_008",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_007"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_shift",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_009",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_008"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_camera_010",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_camera_009"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_hold",
+            "generation_blueprint_only": true
+          }
+        ],
+        "transition_generation_structure": [
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_transition_001",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_transition_001",
+              "generation_package_little_women_01_v1_transition_002",
+              "generation_package_little_women_01_v1_transition_003",
+              "generation_package_little_women_01_v1_transition_004",
+              "generation_package_little_women_01_v1_transition_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_transition_002",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_transition_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_transition_003",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_transition_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_transition_004",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_transition_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_transition_005",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_transition_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_transition_match",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_transition_006",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_transition_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_transition_match",
+            "generation_blueprint_only": true
+          }
+        ],
+        "continuity_generation_structure": [
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_continuity_001",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_continuity_001",
+              "generation_package_little_women_01_v1_continuity_002",
+              "generation_package_little_women_01_v1_continuity_003",
+              "generation_package_little_women_01_v1_continuity_004",
+              "generation_package_little_women_01_v1_continuity_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_continuity_002",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_continuity_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_continuity_003",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_continuity_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_continuity_004",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_continuity_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_continuity_005",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_continuity_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_little_women_01_v1_continuity_006",
+            "source_generation_package_element_ids": [
+              "generation_package_little_women_01_v1_continuity_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_hold",
+            "generation_blueprint_only": true
+          }
+        ],
+        "scene_bundle": [
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_001",
+              "execution_readiness_little_women_01_v1_scene_002",
+              "execution_readiness_little_women_01_v1_scene_003",
+              "execution_readiness_little_women_01_v1_scene_004",
+              "execution_readiness_little_women_01_v1_scene_005",
+              "execution_readiness_little_women_01_v1_scene_006",
+              "execution_readiness_little_women_01_v1_scene_007",
+              "execution_readiness_little_women_01_v1_scene_008",
+              "execution_readiness_little_women_01_v1_scene_009",
+              "execution_readiness_little_women_01_v1_scene_010"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_open",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_develop",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_peak",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_resolve",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_010",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_009"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_close",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_scene_011",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_010"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_bridge",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "camera_bundle": [
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_001",
+              "execution_readiness_little_women_01_v1_camera_002",
+              "execution_readiness_little_women_01_v1_camera_003",
+              "execution_readiness_little_women_01_v1_camera_004",
+              "execution_readiness_little_women_01_v1_camera_005",
+              "execution_readiness_little_women_01_v1_camera_006",
+              "execution_readiness_little_women_01_v1_camera_007",
+              "execution_readiness_little_women_01_v1_camera_008",
+              "execution_readiness_little_women_01_v1_camera_009",
+              "execution_readiness_little_women_01_v1_camera_010",
+              "execution_readiness_little_women_01_v1_camera_011"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_shift",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_010",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_009"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_shift",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_011",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_010"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_camera_012",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_011"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_hold",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "transition_bundle": [
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_001",
+              "execution_readiness_little_women_01_v1_transition_002",
+              "execution_readiness_little_women_01_v1_transition_003",
+              "execution_readiness_little_women_01_v1_transition_004",
+              "execution_readiness_little_women_01_v1_transition_005",
+              "execution_readiness_little_women_01_v1_transition_006",
+              "execution_readiness_little_women_01_v1_transition_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_transition_match",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_transition_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_transition_match",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "continuity_bundle": [
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_001",
+              "execution_readiness_little_women_01_v1_continuity_002",
+              "execution_readiness_little_women_01_v1_continuity_003",
+              "execution_readiness_little_women_01_v1_continuity_004",
+              "execution_readiness_little_women_01_v1_continuity_005",
+              "execution_readiness_little_women_01_v1_continuity_006",
+              "execution_readiness_little_women_01_v1_continuity_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_continuity_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_hold",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "runtime_bundle": [
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_runtime_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_001",
+              "execution_readiness_little_women_01_v1_character_001",
+              "execution_readiness_little_women_01_v1_camera_001",
+              "execution_readiness_little_women_01_v1_emotion_001",
+              "execution_readiness_little_women_01_v1_transition_001",
+              "execution_readiness_little_women_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_runtime_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_estimated_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_runtime_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_character_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_execution_readiness_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_runtime_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_runtime_execution",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_runtime_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_emotion_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_video_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_runtime_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_image_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_little_women_01_v1_runtime_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_little_women_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_gpu_ready",
+            "final_runtime_bundle_only": true
+          }
+        ]
+      },
+      "safety": {
+        "planning_only": true,
+        "design_only": true,
+        "runtime_execution": false,
+        "video_generation": false,
+        "image_generation": false,
+        "gpu_execution": false,
+        "external_call_allowed": false,
+        "no_execution": true,
+        "no_rendering": true,
+        "no_inference": true
+      }
+    },
+    {
+      "source_video_id": "MORI_01",
+      "source_video_path": "imports/source_videos/active/mori/MORI_01.mp4",
+      "master_package_id": "master_package_mori_01_v1",
+      "final_runtime_bundle_id": "final_runtime_bundle_mori_01_v1",
+      "generation_blueprint_id": "generation_blueprint_mori_01_v1",
+      "chain_ids": {
+        "analysis_plan_id": "analysis_plan_mori_01_v1",
+        "video_blueprint_id": "video_blueprint_mori_01_v1",
+        "temporal_flow_id": "temporal_flow_mori_01_v1",
+        "sequence_assembly_id": "sequence_assembly_mori_01_v1",
+        "motion_plan_id": "motion_plan_mori_01_v1",
+        "generation_blueprint_id": "generation_blueprint_mori_01_v1",
+        "final_runtime_bundle_id": "final_runtime_bundle_mori_01_v1"
+      },
+      "package_trace": [
+        {
+          "step": 1,
+          "phase": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1",
+          "plan_type": "analysis_plan",
+          "plan_id": "analysis_plan_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 2,
+          "phase": "PHASE-SOURCE-VIDEO-023-MOVIE_ANALYSIS_DRY_RUN_PLANNER_V1",
+          "plan_type": "dry_run",
+          "plan_id": "dry_run_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 3,
+          "phase": "PHASE-SOURCE-VIDEO-024-MOVIE_ANALYSIS_FRAME_SAMPLING_DESIGN_V1",
+          "plan_type": "frame_sampling",
+          "plan_id": "frame_sampling_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 4,
+          "phase": "PHASE-SOURCE-VIDEO-025-MOVIE_ANALYSIS_SCENE_DETECTION_DESIGN_V1",
+          "plan_type": "scene_detection",
+          "plan_id": "scene_detection_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 5,
+          "phase": "PHASE-SOURCE-VIDEO-026-MOVIE_ANALYSIS_COORDINATE_EXTRACTION_DESIGN_V1",
+          "plan_type": "coordinate_extraction",
+          "plan_id": "coordinate_extraction_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 6,
+          "phase": "PHASE-SOURCE-VIDEO-027-MOVIE_ANALYSIS_GONEGI_STATE_MAPPING_DESIGN_V1",
+          "plan_type": "gonegi_state_mapping",
+          "plan_id": "gonegi_state_mapping_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 7,
+          "phase": "PHASE-SOURCE-VIDEO-028-MOVIE_ANALYSIS_VIDEO_STATE_COMPILATION_DESIGN_V1",
+          "plan_type": "video_state_compilation",
+          "plan_id": "video_state_compilation_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 8,
+          "phase": "PHASE-SOURCE-VIDEO-029-MOVIE_ANALYSIS_KEYFRAME_PREPARATION_DESIGN_V1",
+          "plan_type": "keyframe_preparation",
+          "plan_id": "keyframe_preparation_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 9,
+          "phase": "PHASE-SOURCE-VIDEO-030-MOVIE_ANALYSIS_MOTION_PLANNING_DESIGN_V1",
+          "plan_type": "motion_plan",
+          "plan_id": "motion_plan_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 10,
+          "phase": "PHASE-SOURCE-VIDEO-031-MOVIE_ANALYSIS_TEMPORAL_FLOW_DESIGN_V1",
+          "plan_type": "temporal_flow",
+          "plan_id": "temporal_flow_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 11,
+          "phase": "PHASE-SOURCE-VIDEO-032-MOVIE_ANALYSIS_SEQUENCE_ASSEMBLY_DESIGN_V1",
+          "plan_type": "sequence_assembly",
+          "plan_id": "sequence_assembly_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 12,
+          "phase": "PHASE-SOURCE-VIDEO-033-MOVIE_ANALYSIS_VIDEO_BLUEPRINT_DESIGN_V1",
+          "plan_type": "video_blueprint",
+          "plan_id": "video_blueprint_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 13,
+          "phase": "PHASE-SOURCE-VIDEO-034-MOVIE_ANALYSIS_RUNTIME_PACKAGE_DESIGN_V1",
+          "plan_type": "runtime_package",
+          "plan_id": "runtime_package_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 14,
+          "phase": "PHASE-SOURCE-VIDEO-035-MOVIE_ANALYSIS_GENERATION_PACKAGE_DESIGN_V1",
+          "plan_type": "generation_package",
+          "plan_id": "generation_package_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 15,
+          "phase": "PHASE-SOURCE-VIDEO-036-MOVIE_ANALYSIS_GENERATION_BLUEPRINT_DESIGN_V1",
+          "plan_type": "generation_blueprint",
+          "plan_id": "generation_blueprint_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 16,
+          "phase": "PHASE-SOURCE-VIDEO-037-MOVIE_ANALYSIS_EXECUTION_READINESS_DESIGN_V1",
+          "plan_type": "execution_readiness",
+          "plan_id": "execution_readiness_mori_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 17,
+          "phase": "PHASE-SOURCE-VIDEO-038-MOVIE_ANALYSIS_FINAL_RUNTIME_BUNDLE_DESIGN_V1",
+          "plan_type": "final_runtime_bundle",
+          "plan_id": "final_runtime_bundle_mori_01_v1",
+          "status": "designed"
+        }
+      ],
+      "payload_mapping": {
+        "consumer_target": "video_app",
+        "video_blueprint_id": "video_blueprint_mori_01_v1",
+        "temporal_flow_id": "temporal_flow_mori_01_v1",
+        "sequence_assembly_id": "sequence_assembly_mori_01_v1",
+        "motion_plan_id": "motion_plan_mori_01_v1",
+        "scene_generation_structure": [
+          {
+            "element_id": "generation_blueprint_mori_01_v1_scene_001",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_scene_001",
+              "generation_package_mori_01_v1_scene_002",
+              "generation_package_mori_01_v1_scene_003",
+              "generation_package_mori_01_v1_scene_004",
+              "generation_package_mori_01_v1_scene_005",
+              "generation_package_mori_01_v1_scene_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_scene_002",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_scene_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_scene_003",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_scene_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_scene_004",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_scene_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_open",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_scene_005",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_scene_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_develop",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_scene_006",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_scene_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_peak",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_scene_007",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_scene_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_resolve",
+            "generation_blueprint_only": true
+          }
+        ],
+        "camera_generation_structure": [
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_001",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_001",
+              "generation_package_mori_01_v1_camera_002",
+              "generation_package_mori_01_v1_camera_003",
+              "generation_package_mori_01_v1_camera_004",
+              "generation_package_mori_01_v1_camera_005",
+              "generation_package_mori_01_v1_camera_006",
+              "generation_package_mori_01_v1_camera_007",
+              "generation_package_mori_01_v1_camera_008",
+              "generation_package_mori_01_v1_camera_009"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_002",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_003",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_004",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_005",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_006",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_007",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_shift",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_008",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_007"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_009",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_008"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_camera_010",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_camera_009"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_shift",
+            "generation_blueprint_only": true
+          }
+        ],
+        "transition_generation_structure": [
+          {
+            "element_id": "generation_blueprint_mori_01_v1_transition_001",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_transition_001",
+              "generation_package_mori_01_v1_transition_002",
+              "generation_package_mori_01_v1_transition_003",
+              "generation_package_mori_01_v1_transition_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_transition_002",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_transition_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_transition_003",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_transition_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_transition_004",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_transition_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_transition_005",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_transition_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_transition_cut",
+            "generation_blueprint_only": true
+          }
+        ],
+        "continuity_generation_structure": [
+          {
+            "element_id": "generation_blueprint_mori_01_v1_continuity_001",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_continuity_001",
+              "generation_package_mori_01_v1_continuity_002",
+              "generation_package_mori_01_v1_continuity_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_continuity_002",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_continuity_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_continuity_003",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_continuity_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_mori_01_v1_continuity_004",
+            "source_generation_package_element_ids": [
+              "generation_package_mori_01_v1_continuity_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_shift",
+            "generation_blueprint_only": true
+          }
+        ],
+        "scene_bundle": [
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_001",
+              "execution_readiness_mori_01_v1_scene_002",
+              "execution_readiness_mori_01_v1_scene_003",
+              "execution_readiness_mori_01_v1_scene_004",
+              "execution_readiness_mori_01_v1_scene_005",
+              "execution_readiness_mori_01_v1_scene_006",
+              "execution_readiness_mori_01_v1_scene_007",
+              "execution_readiness_mori_01_v1_scene_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_open",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_develop",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_peak",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_scene_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_resolve",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "camera_bundle": [
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_001",
+              "execution_readiness_mori_01_v1_camera_002",
+              "execution_readiness_mori_01_v1_camera_003",
+              "execution_readiness_mori_01_v1_camera_004",
+              "execution_readiness_mori_01_v1_camera_005",
+              "execution_readiness_mori_01_v1_camera_006",
+              "execution_readiness_mori_01_v1_camera_007",
+              "execution_readiness_mori_01_v1_camera_008",
+              "execution_readiness_mori_01_v1_camera_009",
+              "execution_readiness_mori_01_v1_camera_010",
+              "execution_readiness_mori_01_v1_camera_011"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_shift",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_010",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_009"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_011",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_010"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_camera_012",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_011"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_shift",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "transition_bundle": [
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_transition_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_001",
+              "execution_readiness_mori_01_v1_transition_002",
+              "execution_readiness_mori_01_v1_transition_003",
+              "execution_readiness_mori_01_v1_transition_004",
+              "execution_readiness_mori_01_v1_transition_005",
+              "execution_readiness_mori_01_v1_transition_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_transition_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_transition_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_transition_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_transition_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_transition_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_transition_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_transition_cut",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "continuity_bundle": [
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_continuity_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_continuity_001",
+              "execution_readiness_mori_01_v1_continuity_002",
+              "execution_readiness_mori_01_v1_continuity_003",
+              "execution_readiness_mori_01_v1_continuity_004",
+              "execution_readiness_mori_01_v1_continuity_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_continuity_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_continuity_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_continuity_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_continuity_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_continuity_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_continuity_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_continuity_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_continuity_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_continuity_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_shift",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "runtime_bundle": [
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_runtime_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_001",
+              "execution_readiness_mori_01_v1_character_001",
+              "execution_readiness_mori_01_v1_camera_001",
+              "execution_readiness_mori_01_v1_emotion_001",
+              "execution_readiness_mori_01_v1_transition_001",
+              "execution_readiness_mori_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_runtime_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_estimated_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_runtime_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_character_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_execution_readiness_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_runtime_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_runtime_execution",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_runtime_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_emotion_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_video_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_runtime_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_image_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_mori_01_v1_runtime_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_mori_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_gpu_ready",
+            "final_runtime_bundle_only": true
+          }
+        ]
+      },
+      "safety": {
+        "planning_only": true,
+        "design_only": true,
+        "runtime_execution": false,
+        "video_generation": false,
+        "image_generation": false,
+        "gpu_execution": false,
+        "external_call_allowed": false,
+        "no_execution": true,
+        "no_rendering": true,
+        "no_inference": true
+      }
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "source_video_path": "imports/source_videos/active/shinkai/SHINKAI_01.mp4",
+      "master_package_id": "master_package_shinkai_01_v1",
+      "final_runtime_bundle_id": "final_runtime_bundle_shinkai_01_v1",
+      "generation_blueprint_id": "generation_blueprint_shinkai_01_v1",
+      "chain_ids": {
+        "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+        "video_blueprint_id": "video_blueprint_shinkai_01_v1",
+        "temporal_flow_id": "temporal_flow_shinkai_01_v1",
+        "sequence_assembly_id": "sequence_assembly_shinkai_01_v1",
+        "motion_plan_id": "motion_plan_shinkai_01_v1",
+        "generation_blueprint_id": "generation_blueprint_shinkai_01_v1",
+        "final_runtime_bundle_id": "final_runtime_bundle_shinkai_01_v1"
+      },
+      "package_trace": [
+        {
+          "step": 1,
+          "phase": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1",
+          "plan_type": "analysis_plan",
+          "plan_id": "analysis_plan_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 2,
+          "phase": "PHASE-SOURCE-VIDEO-023-MOVIE_ANALYSIS_DRY_RUN_PLANNER_V1",
+          "plan_type": "dry_run",
+          "plan_id": "dry_run_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 3,
+          "phase": "PHASE-SOURCE-VIDEO-024-MOVIE_ANALYSIS_FRAME_SAMPLING_DESIGN_V1",
+          "plan_type": "frame_sampling",
+          "plan_id": "frame_sampling_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 4,
+          "phase": "PHASE-SOURCE-VIDEO-025-MOVIE_ANALYSIS_SCENE_DETECTION_DESIGN_V1",
+          "plan_type": "scene_detection",
+          "plan_id": "scene_detection_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 5,
+          "phase": "PHASE-SOURCE-VIDEO-026-MOVIE_ANALYSIS_COORDINATE_EXTRACTION_DESIGN_V1",
+          "plan_type": "coordinate_extraction",
+          "plan_id": "coordinate_extraction_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 6,
+          "phase": "PHASE-SOURCE-VIDEO-027-MOVIE_ANALYSIS_GONEGI_STATE_MAPPING_DESIGN_V1",
+          "plan_type": "gonegi_state_mapping",
+          "plan_id": "gonegi_state_mapping_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 7,
+          "phase": "PHASE-SOURCE-VIDEO-028-MOVIE_ANALYSIS_VIDEO_STATE_COMPILATION_DESIGN_V1",
+          "plan_type": "video_state_compilation",
+          "plan_id": "video_state_compilation_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 8,
+          "phase": "PHASE-SOURCE-VIDEO-029-MOVIE_ANALYSIS_KEYFRAME_PREPARATION_DESIGN_V1",
+          "plan_type": "keyframe_preparation",
+          "plan_id": "keyframe_preparation_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 9,
+          "phase": "PHASE-SOURCE-VIDEO-030-MOVIE_ANALYSIS_MOTION_PLANNING_DESIGN_V1",
+          "plan_type": "motion_plan",
+          "plan_id": "motion_plan_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 10,
+          "phase": "PHASE-SOURCE-VIDEO-031-MOVIE_ANALYSIS_TEMPORAL_FLOW_DESIGN_V1",
+          "plan_type": "temporal_flow",
+          "plan_id": "temporal_flow_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 11,
+          "phase": "PHASE-SOURCE-VIDEO-032-MOVIE_ANALYSIS_SEQUENCE_ASSEMBLY_DESIGN_V1",
+          "plan_type": "sequence_assembly",
+          "plan_id": "sequence_assembly_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 12,
+          "phase": "PHASE-SOURCE-VIDEO-033-MOVIE_ANALYSIS_VIDEO_BLUEPRINT_DESIGN_V1",
+          "plan_type": "video_blueprint",
+          "plan_id": "video_blueprint_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 13,
+          "phase": "PHASE-SOURCE-VIDEO-034-MOVIE_ANALYSIS_RUNTIME_PACKAGE_DESIGN_V1",
+          "plan_type": "runtime_package",
+          "plan_id": "runtime_package_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 14,
+          "phase": "PHASE-SOURCE-VIDEO-035-MOVIE_ANALYSIS_GENERATION_PACKAGE_DESIGN_V1",
+          "plan_type": "generation_package",
+          "plan_id": "generation_package_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 15,
+          "phase": "PHASE-SOURCE-VIDEO-036-MOVIE_ANALYSIS_GENERATION_BLUEPRINT_DESIGN_V1",
+          "plan_type": "generation_blueprint",
+          "plan_id": "generation_blueprint_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 16,
+          "phase": "PHASE-SOURCE-VIDEO-037-MOVIE_ANALYSIS_EXECUTION_READINESS_DESIGN_V1",
+          "plan_type": "execution_readiness",
+          "plan_id": "execution_readiness_shinkai_01_v1",
+          "status": "designed"
+        },
+        {
+          "step": 17,
+          "phase": "PHASE-SOURCE-VIDEO-038-MOVIE_ANALYSIS_FINAL_RUNTIME_BUNDLE_DESIGN_V1",
+          "plan_type": "final_runtime_bundle",
+          "plan_id": "final_runtime_bundle_shinkai_01_v1",
+          "status": "designed"
+        }
+      ],
+      "payload_mapping": {
+        "consumer_target": "video_app",
+        "video_blueprint_id": "video_blueprint_shinkai_01_v1",
+        "temporal_flow_id": "temporal_flow_shinkai_01_v1",
+        "sequence_assembly_id": "sequence_assembly_shinkai_01_v1",
+        "motion_plan_id": "motion_plan_shinkai_01_v1",
+        "scene_generation_structure": [
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_scene_001",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_scene_001",
+              "generation_package_shinkai_01_v1_scene_002",
+              "generation_package_shinkai_01_v1_scene_003",
+              "generation_package_shinkai_01_v1_scene_004",
+              "generation_package_shinkai_01_v1_scene_005",
+              "generation_package_shinkai_01_v1_scene_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_scene_002",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_scene_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_scene_003",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_scene_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_scene_004",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_scene_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_open",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_scene_005",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_scene_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_develop",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_scene_006",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_scene_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_peak",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_scene_007",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_scene_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_scene_scene_scene_resolve",
+            "generation_blueprint_only": true
+          }
+        ],
+        "camera_generation_structure": [
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_camera_001",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_camera_001",
+              "generation_package_shinkai_01_v1_camera_002",
+              "generation_package_shinkai_01_v1_camera_003",
+              "generation_package_shinkai_01_v1_camera_004",
+              "generation_package_shinkai_01_v1_camera_005",
+              "generation_package_shinkai_01_v1_camera_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_camera_002",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_camera_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_camera_003",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_camera_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_camera_004",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_camera_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_camera_005",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_camera_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_hold",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_camera_006",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_camera_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_shift",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_camera_007",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_camera_006"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_camera_camera_camera_camera_camera_bridge",
+            "generation_blueprint_only": true
+          }
+        ],
+        "transition_generation_structure": [
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_transition_001",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_transition_001",
+              "generation_package_shinkai_01_v1_transition_002",
+              "generation_package_shinkai_01_v1_transition_003",
+              "generation_package_shinkai_01_v1_transition_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_transition_002",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_transition_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_transition_003",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_transition_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_transition_004",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_transition_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_transition_005",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_transition_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_transition_transition_transition_transition_transition_match",
+            "generation_blueprint_only": true
+          }
+        ],
+        "continuity_generation_structure": [
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_continuity_001",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_continuity_001",
+              "generation_package_shinkai_01_v1_continuity_002",
+              "generation_package_shinkai_01_v1_continuity_003",
+              "generation_package_shinkai_01_v1_continuity_004",
+              "generation_package_shinkai_01_v1_continuity_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_continuity_002",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_continuity_001"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_layout",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_continuity_003",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_continuity_002"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_shift",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_continuity_004",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_continuity_003"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_bridge",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_continuity_005",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_continuity_004"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_shift",
+            "generation_blueprint_only": true
+          },
+          {
+            "element_id": "generation_blueprint_shinkai_01_v1_continuity_006",
+            "source_generation_package_element_ids": [
+              "generation_package_shinkai_01_v1_continuity_005"
+            ],
+            "estimated_blueprint_value": "estimated_blueprint_continuity_continuity_continuity_environment_bridge",
+            "generation_blueprint_only": true
+          }
+        ],
+        "scene_bundle": [
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_001",
+              "execution_readiness_shinkai_01_v1_scene_002",
+              "execution_readiness_shinkai_01_v1_scene_003",
+              "execution_readiness_shinkai_01_v1_scene_004",
+              "execution_readiness_shinkai_01_v1_scene_005",
+              "execution_readiness_shinkai_01_v1_scene_006",
+              "execution_readiness_shinkai_01_v1_scene_007",
+              "execution_readiness_shinkai_01_v1_scene_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_open",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_develop",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_peak",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_scene_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_scene_scene_scene_scene_scene_resolve",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "camera_bundle": [
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_001",
+              "execution_readiness_shinkai_01_v1_camera_002",
+              "execution_readiness_shinkai_01_v1_camera_003",
+              "execution_readiness_shinkai_01_v1_camera_004",
+              "execution_readiness_shinkai_01_v1_camera_005",
+              "execution_readiness_shinkai_01_v1_camera_006",
+              "execution_readiness_shinkai_01_v1_camera_007",
+              "execution_readiness_shinkai_01_v1_camera_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_hold",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_shift",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_camera_009",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_008"
+            ],
+            "estimated_bundle_value": "estimated_bundle_camera_camera_camera_camera_camera_camera_camera_bridge",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "transition_bundle": [
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_transition_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_001",
+              "execution_readiness_shinkai_01_v1_transition_002",
+              "execution_readiness_shinkai_01_v1_transition_003",
+              "execution_readiness_shinkai_01_v1_transition_004",
+              "execution_readiness_shinkai_01_v1_transition_005",
+              "execution_readiness_shinkai_01_v1_transition_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_transition_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_transition_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_transition_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_transition_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_transition_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_transition_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_transition_transition_transition_transition_transition_transition_transition_match",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "continuity_bundle": [
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_001",
+              "execution_readiness_shinkai_01_v1_continuity_002",
+              "execution_readiness_shinkai_01_v1_continuity_003",
+              "execution_readiness_shinkai_01_v1_continuity_004",
+              "execution_readiness_shinkai_01_v1_continuity_005",
+              "execution_readiness_shinkai_01_v1_continuity_006",
+              "execution_readiness_shinkai_01_v1_continuity_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_002"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_003"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_004"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_shift",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_005"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_bridge",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_006"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_shift",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_continuity_008",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_007"
+            ],
+            "estimated_bundle_value": "estimated_bundle_continuity_continuity_continuity_continuity_continuity_environment_bridge",
+            "final_runtime_bundle_only": true
+          }
+        ],
+        "runtime_bundle": [
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_runtime_001",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_001",
+              "execution_readiness_shinkai_01_v1_character_001",
+              "execution_readiness_shinkai_01_v1_camera_001",
+              "execution_readiness_shinkai_01_v1_emotion_001",
+              "execution_readiness_shinkai_01_v1_transition_001",
+              "execution_readiness_shinkai_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_layout",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_runtime_002",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_scene_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_estimated_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_runtime_003",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_character_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_execution_readiness_only",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_runtime_004",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_camera_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_runtime_execution",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_runtime_005",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_emotion_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_video_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_runtime_006",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_transition_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_image_generation",
+            "final_runtime_bundle_only": true
+          },
+          {
+            "element_id": "final_runtime_bundle_shinkai_01_v1_runtime_007",
+            "source_readiness_element_ids": [
+              "execution_readiness_shinkai_01_v1_continuity_001"
+            ],
+            "estimated_bundle_value": "estimated_bundle_runtime_no_gpu_ready",
+            "final_runtime_bundle_only": true
+          }
+        ]
+      },
+      "safety": {
+        "planning_only": true,
+        "design_only": true,
+        "runtime_execution": false,
+        "video_generation": false,
+        "image_generation": false,
+        "gpu_execution": false,
+        "external_call_allowed": false,
+        "no_execution": true,
+        "no_rendering": true,
+        "no_inference": true
+      }
+    }
+  ],
+  "safety_summary": {
+    "planning_only": true,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_call_allowed": false
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/gonegi_motion_plan/gonegi-motion-plan.schema.json",
+  "title": "GonegiMotionPlan",
+  "description": "Deterministic motion plan between Gonegi keyframes for PHASE-SOURCE-VIDEO-016",
+  "type": "object",
+  "required": [
+    "gonegi_motion_plan_id",
+    "phase",
+    "source_keyframe_plan_id",
+    "segment_count",
+    "motion_segments",
+    "identity_locks",
+    "continuity_locks",
+    "translation_trace",
+    "replacement_trace",
+    "director_blend_ref",
+    "motion_defaults",
+    "production_status",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "gonegi_motion_plan_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "const": "PHASE-SOURCE-VIDEO-016-GONEGI_KEYFRAME_TO_MOTION_COMPILER_V2"
+    },
+    "source_keyframe_plan_id": { "type": "string", "minLength": 1 },
+    "segment_count": { "type": "integer", "minimum": 4, "maximum": 6 },
+    "motion_segments": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/motion_segment" }
+    },
+    "identity_locks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "continuity_locks": { "$ref": "#/$defs/continuity_locks" },
+    "translation_trace": { "$ref": "#/$defs/translation_trace" },
+    "replacement_trace": { "$ref": "#/$defs/replacement_trace" },
+    "director_blend_ref": { "type": "string" },
+    "motion_defaults": { "$ref": "#/$defs/motion_defaults" },
+    "production_status": { "$ref": "#/$defs/production_status" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "compiled_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "camera_motion_category": {
+      "type": "string",
+      "enum": ["static", "pan", "tilt", "push_in", "pull_out", "orbit"]
+    },
+    "character_motion_category": {
+      "type": "string",
+      "enum": ["idle", "walk", "turn", "look", "gesture", "sit", "stand"]
+    },
+    "emotion_motion_category": {
+      "type": "string",
+      "enum": ["calm", "wonder", "hope", "reunion", "farewell"]
+    },
+    "environment_motion_category": {
+      "type": "string",
+      "enum": ["wind", "water", "cloud", "foliage", "ambient"]
+    },
+    "motion_segment": {
+      "type": "object",
+      "required": [
+        "segment_id",
+        "from_keyframe",
+        "to_keyframe",
+        "from_timestamp",
+        "to_timestamp",
+        "duration_seconds",
+        "camera_motion",
+        "character_motion",
+        "emotion_motion",
+        "environment_motion",
+        "continuity_locks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "segment_id": { "type": "string" },
+        "from_keyframe": { "type": "integer", "minimum": 0 },
+        "to_keyframe": { "type": "integer", "minimum": 0 },
+        "from_timestamp": { "type": "number", "minimum": 0 },
+        "to_timestamp": { "type": "number", "minimum": 0 },
+        "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "camera_motion": { "$ref": "#/$defs/camera_motion" },
+        "character_motion": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/character_motion" },
+          "minItems": 1
+        },
+        "emotion_motion": { "$ref": "#/$defs/emotion_motion" },
+        "environment_motion": { "$ref": "#/$defs/environment_motion" },
+        "continuity_locks": { "$ref": "#/$defs/continuity_locks" }
+      }
+    },
+    "camera_motion": {
+      "type": "object",
+      "required": [
+        "motion_category",
+        "from_shot_type",
+        "to_shot_type",
+        "motion_progress_delta",
+        "identity_safe",
+        "speed"
+      ],
+      "properties": {
+        "motion_category": { "$ref": "#/$defs/camera_motion_category" },
+        "from_shot_type": { "type": "string" },
+        "to_shot_type": { "type": "string" },
+        "motion_progress_delta": { "type": "number", "minimum": 0, "maximum": 1 },
+        "identity_safe": { "type": "boolean" },
+        "speed": { "type": "string", "enum": ["static", "slow", "moderate"] }
+      }
+    },
+    "character_motion": {
+      "type": "object",
+      "required": [
+        "character_id",
+        "motion_category",
+        "from_position",
+        "to_position",
+        "identity_lock_preserved"
+      ],
+      "properties": {
+        "character_id": { "type": "string" },
+        "motion_category": { "$ref": "#/$defs/character_motion_category" },
+        "from_position": { "type": "string" },
+        "to_position": { "type": "string" },
+        "identity_lock_preserved": { "type": "boolean" }
+      }
+    },
+    "emotion_motion": {
+      "type": "object",
+      "required": ["motion_category", "emotion_id", "intensity_start", "intensity_end"],
+      "properties": {
+        "motion_category": { "$ref": "#/$defs/emotion_motion_category" },
+        "emotion_id": { "type": "string" },
+        "intensity_start": { "type": "number", "minimum": 0, "maximum": 1 },
+        "intensity_end": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "environment_motion": {
+      "type": "object",
+      "required": ["motion_category", "location_lock_preserved", "prop_lock_preserved"],
+      "properties": {
+        "motion_category": { "$ref": "#/$defs/environment_motion_category" },
+        "location_lock_preserved": { "type": "boolean" },
+        "prop_lock_preserved": { "type": "boolean" },
+        "elements": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "continuity_locks": {
+      "type": "object",
+      "required": ["identity_locks", "location_locks"],
+      "properties": {
+        "identity_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "location_locks": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "composition_locks": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "translation_trace": {
+      "type": "object",
+      "required": ["translation_id", "source_world_type", "target_world_identity", "applied_dimensions"],
+      "properties": {
+        "translation_id": { "type": "string" },
+        "source_world_type": { "type": "string" },
+        "target_world_identity": { "type": "string" },
+        "applied_dimensions": { "type": "array", "items": { "type": "string" } },
+        "location_mapping": { "type": "object" },
+        "prop_mappings": { "type": "object" },
+        "emotion_mapping": { "type": "object" },
+        "video_state_translation": { "type": "object" },
+        "keyframe_plan_translation": { "type": "object" },
+        "motion_plan_translation": { "type": "object" }
+      }
+    },
+    "replacement_trace": {
+      "type": "object",
+      "required": ["contract_id", "replacements_applied", "companions_injected"],
+      "properties": {
+        "contract_id": { "type": "string" },
+        "replacements_applied": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source_role", "target_character_id"],
+            "properties": {
+              "source_role": { "type": "string" },
+              "target_character_id": { "type": "string" },
+              "replacement_id": { "type": "string" }
+            }
+          }
+        },
+        "companions_injected": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "motion_defaults": {
+      "type": "object",
+      "required": [
+        "source_family",
+        "camera_motion_category_default",
+        "character_motion_category_default",
+        "environment_motion_category_default",
+        "emotion_motion_category_default",
+        "speed_default"
+      ],
+      "properties": {
+        "source_family": { "type": "string" },
+        "camera_motion_category_default": { "type": "string" },
+        "character_motion_category_default": { "type": "string" },
+        "environment_motion_category_default": { "type": "string" },
+        "emotion_motion_category_default": { "type": "string" },
+        "speed_default": { "type": "string" }
+      }
+    },
+    "production_status": {
+      "type": "object",
+      "required": ["isolated", "storage_domain", "production_registry"],
+      "properties": {
+        "isolated": { "type": "boolean", "const": true },
+        "storage_domain": { "type": "string", "const": "gonegi_motion_plan" },
+        "production_registry": { "type": "boolean", "const": false },
+        "draft_status": { "type": "string", "const": "gonegi_motion_plan_compiled_v1" }
+      }
+    },
+    "execution_flags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "external_call_allowed", "frame_extraction", "ocr", "generation"],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "ocr": { "type": "boolean", "const": false },
+        "generation": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

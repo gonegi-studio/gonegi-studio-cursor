@@ -1,0 +1,62 @@
+{
+  "registry_id": "movie-analysis-gonegi-state-mapping-registry-v1",
+  "phase": "PHASE-SOURCE-VIDEO-027-MOVIE_ANALYSIS_GONEGI_STATE_MAPPING_DESIGN_V1",
+  "registry_version": "v1",
+  "schema_path": "datasets/movie_analysis/gonegi_state_mapping/movie-analysis-gonegi-state-mapping.schema.json",
+  "coordinate_extraction_registry_path": "datasets/movie_analysis/coordinate_extraction/movie-analysis-coordinate-extraction-registry.json",
+  "storage_dir": "datasets/movie_analysis/gonegi_state_mapping/plans",
+  "mapping_plans": [
+    {
+      "gonegi_state_mapping_id": "gonegi_state_mapping_ghibli_01_v1",
+      "plan_path": "datasets/movie_analysis/gonegi_state_mapping/plans/gonegi_state_mapping_ghibli_01_v1.json",
+      "source_video_id": "GHIBLI_01",
+      "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+      "dry_run_id": "dry_run_ghibli_01_v1",
+      "sampling_plan_id": "frame_sampling_ghibli_01_v1",
+      "scene_detection_id": "scene_detection_ghibli_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_ghibli_01_v1",
+      "mapping_strategy": "WORLD_TRANSLATION_CANDIDATE",
+      "state_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "gonegi_state_mapping_id": "gonegi_state_mapping_shinkai_01_v1",
+      "plan_path": "datasets/movie_analysis/gonegi_state_mapping/plans/gonegi_state_mapping_shinkai_01_v1.json",
+      "source_video_id": "SHINKAI_01",
+      "analysis_plan_id": "analysis_plan_shinkai_01_v1",
+      "dry_run_id": "dry_run_shinkai_01_v1",
+      "sampling_plan_id": "frame_sampling_shinkai_01_v1",
+      "scene_detection_id": "scene_detection_shinkai_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_shinkai_01_v1",
+      "mapping_strategy": "EMOTION_TRANSLATION_CANDIDATE",
+      "state_candidate_count": 12,
+      "status": "designed"
+    },
+    {
+      "gonegi_state_mapping_id": "gonegi_state_mapping_little_women_01_v1",
+      "plan_path": "datasets/movie_analysis/gonegi_state_mapping/plans/gonegi_state_mapping_little_women_01_v1.json",
+      "source_video_id": "LITTLE_WOMEN_01",
+      "analysis_plan_id": "analysis_plan_little_women_01_v1",
+      "dry_run_id": "dry_run_little_women_01_v1",
+      "sampling_plan_id": "frame_sampling_little_women_01_v1",
+      "scene_detection_id": "scene_detection_little_women_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_little_women_01_v1",
+      "mapping_strategy": "CHARACTER_REPLACEMENT_CANDIDATE",
+      "state_candidate_count": 18,
+      "status": "designed"
+    },
+    {
+      "gonegi_state_mapping_id": "gonegi_state_mapping_mori_01_v1",
+      "plan_path": "datasets/movie_analysis/gonegi_state_mapping/plans/gonegi_state_mapping_mori_01_v1.json",
+      "source_video_id": "MORI_01",
+      "analysis_plan_id": "analysis_plan_mori_01_v1",
+      "dry_run_id": "dry_run_mori_01_v1",
+      "sampling_plan_id": "frame_sampling_mori_01_v1",
+      "scene_detection_id": "scene_detection_mori_01_v1",
+      "coordinate_extraction_id": "coordinate_extraction_mori_01_v1",
+      "mapping_strategy": "SCENE_STATE_CANDIDATE",
+      "state_candidate_count": 12,
+      "status": "designed"
+    }
+  ]
+}

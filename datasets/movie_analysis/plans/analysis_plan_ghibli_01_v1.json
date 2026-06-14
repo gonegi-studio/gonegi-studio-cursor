@@ -1,0 +1,49 @@
+{
+  "analysis_plan_id": "analysis_plan_ghibli_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-022-MOVIE_ANALYSIS_ENGINE_FOUNDATION_V1",
+  "source_video_id": "GHIBLI_01",
+  "source_video_path": "imports/source_videos/active/ghibli/GHIBLI_01.mp4",
+  "director_family": "GHIBLI",
+  "director_grammar_ref": "director_grammar_ghibli_v1",
+  "analysis_mode": "design_only",
+  "target_outputs": [
+    "scene_segment_candidates",
+    "coordinate_extraction_candidates",
+    "gonegi_pipeline_alignment"
+  ],
+  "segment_detection_strategy": {
+    "strategy_id": "analysis_plan_ghibli_01_v1_segment_strategy",
+    "method": "grammar_timestamp_heuristic",
+    "design_notes": "Detect kitchen-blocking segment candidates via Ghibli grammar timestamp heuristics without frame extraction.",
+    "candidate_count_target": 1,
+    "downstream_segment_ref": "segment_ghibli_kitchen_001_v1"
+  },
+  "coordinate_detection_strategy": {
+    "strategy_id": "analysis_plan_ghibli_01_v1_coordinate_strategy",
+    "method": "blocking_geometry_projection",
+    "design_notes": "Project blocking geometry layers into coordinate extraction candidates aligned with existing pipeline seed.",
+    "layer_targets": [
+      "camera_coordinate",
+      "character_coordinate",
+      "location_coordinate"
+    ],
+    "downstream_coordinate_ref": "coord_ghibli_kitchen_001_v1"
+  },
+  "identity_safety_strategy": {
+    "strategy_id": "analysis_plan_ghibli_01_v1_identity_safety",
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "promotion_gate_warnings_preserved": true,
+    "downstream_pipeline": "gonegi_isolated"
+  },
+  "promotion_gate_status": "ALLOW_WITH_WARNING",
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "built_at": "2026-06-05T11:45:29.826Z"
+}

@@ -1,0 +1,25 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-008",
+  "test_id": "RKB-008",
+  "test_name": "INSTRUMENTAL_MV_PIPELINE_VALIDATION",
+  "test_date": "2026-06-03",
+  "comparison_baselines": [
+    "RKB-007",
+    "pre-pipeline"
+  ],
+  "input_assets": {
+    "instrumental_mv_library": "datasets/mv/instrumental-mv-archetype-library-v1.json",
+    "instrumental_mv_adapter": "exports/image_app/adapters/instrumental-mv-adapter.json",
+    "instrumental_mv_latest_adapter": "exports/image_app/latest/instrumental-mv-adapter.json",
+    "test_batch": "exports/image_app/test_batches/rkb-008-instrumental-mv-validation.json",
+    "scorecard": "datasets/render_feedback/RKB-008_SCORECARD.json"
+  },
+  "generation_count": 48,
+  "pipeline_integrity_verdict": "PASS",
+  "overall_average_score": 0.91,
+  "success_condition_met": true,
+  "final_verdict": "PASS_RKB_008_INSTRUMENTAL_MV_PIPELINE_VALIDATION",
+  "next_phase": "BALLAD-MV-DATASET-001 BALLAD_MV_DATASET_V1"
+}

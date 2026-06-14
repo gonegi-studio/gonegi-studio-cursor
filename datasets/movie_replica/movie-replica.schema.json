@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/movie_replica/movie-replica.schema.json",
+  "title": "MovieReplicaEntry",
+  "description": "Design-level movie replica scene entry for PHASE-MOVIE-REPLICA-001 — structure-only dataset for character replacement and future video reconstruction",
+  "type": "object",
+  "required": [
+    "replica_id",
+    "movie_id",
+    "scene_id",
+    "scene_geometry",
+    "camera_profile",
+    "blocking_profile",
+    "composition_profile",
+    "semantic_anchor",
+    "trajectory_registry",
+    "pose_registry",
+    "camera_timeline_registry",
+    "temporal_registry_v2",
+    "identity_replacement_rules",
+    "execution_flags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "replica_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "scene_geometry": { "$ref": "#/$defs/scene_geometry" },
+    "camera_profile": { "$ref": "#/$defs/camera_profile" },
+    "blocking_profile": { "$ref": "#/$defs/blocking_profile" },
+    "composition_profile": { "$ref": "#/$defs/composition_profile" },
+    "semantic_anchor": { "$ref": "#/$defs/semantic_anchor" },
+    "trajectory_registry": { "$ref": "#/$defs/trajectory_registry" },
+    "pose_registry": { "$ref": "#/$defs/pose_registry" },
+    "camera_timeline_registry": { "$ref": "#/$defs/camera_timeline_registry" },
+    "temporal_registry_v2": { "$ref": "#/$defs/temporal_registry_v2" },
+    "identity_replacement_rules": { "$ref": "#/$defs/identity_replacement_rules" },
+    "execution_flags": { "$ref": "#/$defs/execution_flags" },
+    "built_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "execution_flags": {
+      "type": "object",
+      "required": [
+        "design_only",
+        "gpu_execution",
+        "external_call_allowed",
+        "frame_extraction",
+        "image_generation",
+        "video_generation",
+        "rendering"
+      ],
+      "properties": {
+        "design_only": { "type": "boolean", "const": true },
+        "gpu_execution": { "type": "boolean", "const": false },
+        "external_call_allowed": { "type": "boolean", "const": false },
+        "frame_extraction": { "type": "boolean", "const": false },
+        "image_generation": { "type": "boolean", "const": false },
+        "video_generation": { "type": "boolean", "const": false },
+        "rendering": { "type": "boolean", "const": false }
+      }
+    },
+    "scene_geometry": {
+      "type": "object",
+      "required": ["scene_id", "geometry_source"],
+      "properties": {
+        "scene_id": { "type": "string" },
+        "geometry_source": { "type": "string" },
+        "scene_category": { "type": "string" },
+        "environment_type": { "type": "string" },
+        "camera_position": { "type": "array", "items": { "type": "number" } },
+        "camera_rotation": { "type": "array", "items": { "type": "number" } },
+        "subject_positions": { "type": "array" },
+        "prop_positions": { "type": "array" },
+        "depth_layers": { "type": "array" },
+        "structure_markers": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "camera_profile": {
+      "type": "object",
+      "required": ["camera_id", "shot_type"],
+      "properties": {
+        "camera_id": { "type": "string" },
+        "camera_pattern_id": { "type": "string" },
+        "shot_type": { "type": "string" },
+        "camera_language": { "type": "string" },
+        "camera_height": { "type": "string" },
+        "camera_movement": { "type": "string" },
+        "fov_hint": { "type": "string" },
+        "framing_intent": { "type": "string" }
+      }
+    },
+    "blocking_profile": {
+      "type": "object",
+      "required": ["blocking_id"],
+      "properties": {
+        "blocking_id": { "type": "string" },
+        "blocking_pattern_id": { "type": "string" },
+        "blocking_layout": { "type": "string" },
+        "blocking_intent": { "type": "string" },
+        "character_positions": { "type": "array", "items": { "type": "string" } },
+        "primary_focus": { "type": "string" },
+        "secondary_focus": { "type": "string" }
+      }
+    },
+    "composition_profile": {
+      "type": "object",
+      "required": ["composition_id"],
+      "properties": {
+        "composition_id": { "type": "string" },
+        "composition_intent": { "type": "string" },
+        "depth_layers": { "type": "array", "items": { "type": "string" } },
+        "framing_rule": { "type": "string" },
+        "negative_space": { "type": "string" }
+      }
+    },
+    "semantic_anchor": {
+      "type": "object",
+      "required": ["anchor_id", "semantic_meaning"],
+      "properties": {
+        "anchor_id": { "type": "string" },
+        "semantic_anchor_id": { "type": "string" },
+        "semantic_meaning": { "type": "string" },
+        "emotion": { "type": "string" },
+        "participants": { "type": "integer", "minimum": 0 },
+        "interaction_type": { "type": "string" },
+        "preserved_meaning": { "type": "array", "items": { "type": "string" } },
+        "gonegi_translation_ref": { "type": "string" }
+      }
+    },
+    "trajectory_registry": {
+      "type": "object",
+      "required": ["trajectory_count", "trajectories"],
+      "properties": {
+        "trajectory_count": { "type": "integer", "minimum": 0 },
+        "trajectories": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "pose_registry": {
+      "type": "object",
+      "required": ["pose_count", "poses"],
+      "properties": {
+        "pose_count": { "type": "integer", "minimum": 0 },
+        "poses": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "camera_timeline_registry": {
+      "type": "object",
+      "required": ["timeline_count", "timeline"],
+      "properties": {
+        "timeline_count": { "type": "integer", "minimum": 0 },
+        "timeline": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "temporal_registry_v2": {
+      "type": "object",
+      "required": ["segment_count", "segments"],
+      "properties": {
+        "segment_count": { "type": "integer", "minimum": 0 },
+        "segments": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "identity_replacement_rules": {
+      "type": "object",
+      "required": ["world_identity", "contract_ref", "scene_characters", "replacement_strategy"],
+      "properties": {
+        "world_identity": { "type": "string" },
+        "contract_ref": { "type": "string" },
+        "scene_characters": { "type": "array", "items": { "type": "string" } },
+        "replacement_strategy": { "type": "string" },
+        "appearance_control": { "type": "string" },
+        "structure_control": { "type": "string" }
+      }
+    }
+  }
+}

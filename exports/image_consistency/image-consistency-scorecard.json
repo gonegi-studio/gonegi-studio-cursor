@@ -1,0 +1,78 @@
+{
+  "scorecard_id": "image-consistency-scorecard-v1",
+  "asset_type": "image_consistency_scorecard",
+  "asset_version": "v1",
+  "phase": "PHASE-L2-CONSISTENCY-001",
+  "purpose": "Weighted scoring model for image identity consistency across generation batches.",
+  "scoring_method": "weighted_dimension_average",
+  "dimensions": [
+    {
+      "dimension": "character_identity",
+      "weight": 0.18,
+      "evaluation_method": "embedding_similarity + landmark_drift",
+      "pass_indicator": "drift_score <= dimension_threshold"
+    },
+    {
+      "dimension": "location_identity",
+      "weight": 0.14,
+      "evaluation_method": "scene_layout_hash + depth_plane_stability",
+      "pass_indicator": "layout_delta <= dimension_threshold"
+    },
+    {
+      "dimension": "lighting_identity",
+      "weight": 0.12,
+      "evaluation_method": "histogram_vector_distance + shadow_angle_delta",
+      "pass_indicator": "lighting_delta <= dimension_threshold"
+    },
+    {
+      "dimension": "costume_identity",
+      "weight": 0.12,
+      "evaluation_method": "silhouette_iou + palette_distance",
+      "pass_indicator": "costume_delta <= dimension_threshold"
+    },
+    {
+      "dimension": "prop_identity",
+      "weight": 0.1,
+      "evaluation_method": "object_reid_similarity + scale_ratio_check",
+      "pass_indicator": "prop_delta <= dimension_threshold"
+    },
+    {
+      "dimension": "style_identity",
+      "weight": 0.12,
+      "evaluation_method": "style_embedding_distance + grade_curve_match",
+      "pass_indicator": "style_delta <= dimension_threshold"
+    },
+    {
+      "dimension": "composition_identity",
+      "weight": 0.11,
+      "evaluation_method": "subject_bbox_stability + rule_of_thirds_alignment",
+      "pass_indicator": "composition_delta <= dimension_threshold"
+    },
+    {
+      "dimension": "camera_identity",
+      "weight": 0.11,
+      "evaluation_method": "focal_length_estimate + motion_vector_coherence",
+      "pass_indicator": "camera_delta <= dimension_threshold"
+    }
+  ],
+  "composite_scoring": {
+    "weighted_average": true,
+    "weight_sum": 1,
+    "rounding_precision": 4
+  },
+  "threshold_ref": "datasets/consistency/image-consistency-thresholds.json",
+  "export_id": "image-consistency-scorecard-export-v1",
+  "generated_at": "2026-06-08T22:56:33.293Z",
+  "dataset_ref": "datasets/consistency/image-consistency-scorecard.json",
+  "identity_dimension_count": 8,
+  "dimension_list": [
+    "character_identity",
+    "location_identity",
+    "lighting_identity",
+    "costume_identity",
+    "prop_identity",
+    "style_identity",
+    "composition_identity",
+    "camera_identity"
+  ]
+}

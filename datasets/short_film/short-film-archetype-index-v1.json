@@ -1,0 +1,46 @@
+{
+  "asset_type": "short_film_archetype_index",
+  "asset_version": "v1",
+  "index_id": "short-film-archetype-index-v1",
+  "phase": "PHASE-L3-001",
+  "library_path": "datasets/short_film/short-film-archetype-library-v1.json",
+  "blueprint_schema_ref": "schemas/short-film-blueprint.schema.json",
+  "continuity_spec_ref": "exports/short_film_foundation/long-form-continuity-specification.json",
+  "archetype_count": 3,
+  "scene_count_range": "50-300",
+  "mv_source_types": ["instrumental_mv", "ballad_mv", "story_mv"],
+  "global_progression": [
+    "harbor_epic_departure",
+    "mediterranean_season_arc",
+    "letter_across_years"
+  ],
+  "entries": [
+    {
+      "short_film_archetype_id": "harbor_epic_departure",
+      "theme": "Epic departure across seasons with unresolved promise and return",
+      "recommended_duration": "20m-30m",
+      "scene_count_range": "80-120",
+      "act_count": 3,
+      "mv_source_archetype": "harbor_departure",
+      "mv_source_type": "story_mv"
+    },
+    {
+      "short_film_archetype_id": "mediterranean_season_arc",
+      "theme": "Year-long village rhythm from winter stillness to festival return",
+      "recommended_duration": "30m-45m",
+      "scene_count_range": "150-250",
+      "act_count": 5,
+      "mv_source_archetype": "festival_preparation",
+      "mv_source_type": "instrumental_mv"
+    },
+    {
+      "short_film_archetype_id": "letter_across_years",
+      "theme": "Multi-year relationship arc carried by delayed correspondence",
+      "recommended_duration": "15m-25m",
+      "scene_count_range": "50-100",
+      "act_count": 3,
+      "mv_source_archetype": "first_meeting",
+      "mv_source_type": "ballad_mv"
+    }
+  ]
+}

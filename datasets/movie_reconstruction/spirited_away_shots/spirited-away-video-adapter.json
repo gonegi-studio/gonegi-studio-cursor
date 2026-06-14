@@ -1,0 +1,55 @@
+{
+  "adapter_id": "spirited-away-video-adapter-v1",
+  "phase": "PHASE-SPIRITED-AWAY-SHOT-GRAMMAR-001",
+  "system_id": "SPIRITED_AWAY_SHOT_RECONSTRUCTION_V1",
+  "adapter_version": "v1",
+  "target_app": "video_app",
+  "shared_movie_dataset": true,
+  "movie_id": "spirited_away",
+  "pipeline": [
+    "movie_dataset",
+    "shot_sequence",
+    "temporal_flow",
+    "video_reconstruction"
+  ],
+  "input_sources": {
+    "shot_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json",
+    "shot_transition_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-transition-registry.json",
+    "shot_fingerprint_registry": "datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-fingerprint-registry.json",
+    "shot_sequence_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-shot-sequence-registry.json",
+    "temporal_adapter": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-adapter.json",
+    "movie_bundle": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json"
+  },
+  "shot_sequence": {
+    "shot_count": 2400,
+    "transition_count": 2399,
+    "shots_per_scene": 8,
+    "sequence_mode": "scene_ordered_shot_chain"
+  },
+  "temporal_flow": {
+    "temporal_dir": "datasets/movie_reconstruction/spirited_away_temporal",
+    "shot_sequence_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-shot-sequence-registry.json",
+    "temporal_adapter": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-adapter.json"
+  },
+  "temporal_structure": {
+    "frame_rate_hint": 24,
+    "average_shot_duration": 2.95,
+    "continuity_layers": [
+      "continuity_score",
+      "semantic_anchor",
+      "camera_blocking"
+    ]
+  },
+  "output_blocks": [
+    "shot_sequence_block",
+    "transition_block",
+    "temporal_flow_block",
+    "camera_trajectory_block",
+    "semantic_continuity_block",
+    "gonegi_translation_block"
+  ],
+  "video_reconstruction_status": "READY",
+  "world_identity_source": "latest_v5",
+  "movie_geometry_source": "movie_dataset",
+  "adapter_ready": true
+}

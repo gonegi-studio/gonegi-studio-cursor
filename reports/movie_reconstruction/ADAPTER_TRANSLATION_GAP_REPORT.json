@@ -1,0 +1,37 @@
+{
+  "report_id": "adapter_translation_gap_mqc80of6",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-005A",
+  "system_id": "ADAPTER_TRANSLATION_VALIDATION_V1",
+  "generated_at": "2026-06-13T10:36:53.538Z",
+  "adapter_translation_validated": true,
+  "fully_translatable": [
+    "layout_map",
+    "depth_map",
+    "blocking_map"
+  ],
+  "partially_translatable": [
+    "pose_map"
+  ],
+  "non_translatable": [
+    "environment_identity_map",
+    "object_identity"
+  ],
+  "highest_risk_fields": [
+    "pose_map.keypoint_descriptor_ref",
+    "depth_map.z_normalized",
+    "layout_map.layout_elements.normalized_x",
+    "blocking_map.interaction_pairs",
+    "environment_identity_map.reserved_for",
+    "object_identity.identity_embedding_ref"
+  ],
+  "recommended_adapter": "comfyui_adapter",
+  "critical_loss_fields": [
+    "environment_identity_map.reserved_for",
+    "environment_identity_map.scene_remap_ref",
+    "object_identity.identity_embedding_ref",
+    "object_identity.lock_strength",
+    "temporal.shot_boundary_continuity"
+  ],
+  "conditioning_ready": false,
+  "gpu_ready": false
+}

@@ -1,0 +1,69 @@
+{
+  "report_id": "environment_identity_binding_mqcyrfhm",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-CONDITIONING-008",
+  "system_id": "ENVIRONMENT_IDENTITY_BINDING_V1",
+  "generated_at": "2026-06-13T23:05:31.690Z",
+  "final_verdict": "PASS_ENVIRONMENT_IDENTITY_BINDING_V1",
+  "status": "ENVIRONMENT_IDENTITY_BINDINGS_DEFINED",
+  "validation_passed": true,
+  "environment_bindings_defined": true,
+  "environment_binding_defined": true,
+  "environment_reference_bank_binding": true,
+  "environment_anchor_binding": true,
+  "environment_memory_binding": true,
+  "environment_traceability_binding": true,
+  "environment_retrieval_binding": true,
+  "environment_similarity_binding": true,
+  "environment_identity_solved": false,
+  "runtime_implemented": false,
+  "conditioning_ready": false,
+  "movie_reconstruction_ready": false,
+  "gpu_ready": false,
+  "implemented_bindings": [
+    "environment_reference_bank_binding",
+    "environment_anchor_binding",
+    "environment_memory_binding",
+    "environment_traceability_binding",
+    "environment_retrieval_binding",
+    "environment_similarity_binding"
+  ],
+  "traceability_coverage": 1,
+  "similarity_matching_strategy": {
+    "strategy_id": "environment_similarity_v1",
+    "primary_match": "exact environment_id",
+    "secondary_match": "layout_signature hash equality",
+    "tertiary_match": "anchor_descriptors kind+importance cosine rank",
+    "similarity_threshold": 0.85,
+    "same_environment_threshold": 0.98,
+    "note": "Similar Environment != Same Environment — scores below same_environment_threshold must not be treated as identity lock."
+  },
+  "remaining_gaps": [
+    "environment_identity_map reserved_v1 with no populated payload",
+    "IP-Adapter environment reference execution deferred",
+    "anchor_images are metadata placeholders only",
+    "environment_identity preservation_score=0.12 unresolved",
+    "Similar Environment != Same Environment",
+    "Binding Defined != Environment Identity Solved"
+  ],
+  "checks": {
+    "environment_binding_defined": true,
+    "environment_reference_bank_binding": true,
+    "environment_anchor_binding": true,
+    "environment_memory_binding": true,
+    "environment_traceability_binding": true,
+    "environment_retrieval_binding": true,
+    "environment_similarity_binding": true,
+    "titanic_binding_present": true,
+    "environment_identity_solved_false": true,
+    "runtime_implemented_false": true
+  },
+  "issues": [],
+  "execution_flags": {
+    "binding_only": true,
+    "runtime_implementation_deferred": true,
+    "gpu_execution": false,
+    "ocr": false,
+    "external_api": false,
+    "safe_create_only": true
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "report_id": "gpu_validation_execution_sequence_mqd0vv0l",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005D",
+  "system_id": "GPU_VALIDATION_INTEGRATION_V1",
+  "generated_at": "2026-06-14T00:04:57.669Z",
+  "execution_sequence_defined": true,
+  "retry_rules_defined": true,
+  "stage_order": [
+    "environment_identity",
+    "temporal_preservation",
+    "object_identity"
+  ],
+  "stages": [
+    {
+      "stage": "environment_identity",
+      "stage_order": 1,
+      "max_retry": 2,
+      "entry_conditions": [
+        "GPU_VALIDATION_CAMPAIGN_REPORT.json PASS",
+        "ENVIRONMENT_IDENTITY_GPU_VALIDATION_PROTOCOL.json defined",
+        "environment_identity-validation-dataset.json coverage_ratio=1.0",
+        "gpu_execution_allowed=false until master readiness gate lifted"
+      ],
+      "exit_conditions": [
+        "batch pass_rate >= 0.80",
+        "same_environment_score >= 0.95",
+        "hard-tier pass_rate >= hard.expected_pass_rate"
+      ],
+      "abort_conditions": [
+        "batch pass_rate < channel_abort_rules.environment_identity.abort_below (0.30)",
+        "two consecutive hard-tier failures on same environment_id"
+      ],
+      "retry_rules": {
+        "max_retry": 2,
+        "backoff_strategy": "linear_batch_delay",
+        "escalate_on_consecutive_fail": true
+      }
+    },
+    {
+      "stage": "temporal_preservation",
+      "stage_order": 2,
+      "max_retry": 2,
+      "entry_conditions": [
+        "environment_identity stage exit_criteria met",
+        "TEMPORAL_PRESERVATION_GPU_VALIDATION_PROTOCOL.json defined",
+        "temporal_preservation-validation-dataset.json coverage_ratio=1.0"
+      ],
+      "exit_conditions": [
+        "batch pass_rate >= 0.75",
+        "edit_rhythm_alignment_score >= 0.88",
+        "continuity_signature stable across batch"
+      ],
+      "abort_conditions": [
+        "batch pass_rate < channel_abort_rules.temporal_preservation.abort_below (0.35)",
+        "causal_transition_chain break on >50% hard-tier cases"
+      ],
+      "retry_rules": {
+        "max_retry": 2,
+        "backoff_strategy": "linear_batch_delay",
+        "escalate_on_consecutive_fail": true
+      }
+    },
+    {
+      "stage": "object_identity",
+      "stage_order": 3,
+      "max_retry": 2,
+      "entry_conditions": [
+        "temporal_preservation stage exit_criteria met",
+        "OBJECT_IDENTITY_GPU_VALIDATION_PROTOCOL.json defined",
+        "object_identity-validation-dataset.json coverage_ratio=1.0"
+      ],
+      "exit_conditions": [
+        "batch pass_rate >= 0.78",
+        "same_object_score >= 0.93",
+        "hero_prop tier pass_rate >= hero_prop_expected_pass_rate"
+      ],
+      "abort_conditions": [
+        "batch pass_rate < channel_abort_rules.object_identity.abort_below (0.40)",
+        "identity_swap detected on hero_prop_cases > 25%"
+      ],
+      "retry_rules": {
+        "max_retry": 2,
+        "backoff_strategy": "linear_batch_delay",
+        "escalate_on_consecutive_fail": true
+      }
+    }
+  ],
+  "retry_rules": {
+    "default_max_retry": 2,
+    "consecutive_fail_escalation_threshold": 2,
+    "note": "Retry rules apply at execution time only; max_retry=2 per stage."
+  }
+}

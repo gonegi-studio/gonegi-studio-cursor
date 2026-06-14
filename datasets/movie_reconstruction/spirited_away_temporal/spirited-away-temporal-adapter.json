@@ -1,0 +1,39 @@
+{
+  "adapter_id": "spirited-away-temporal-adapter-v1",
+  "phase": "PHASE-SPIRITED-AWAY-TEMPORAL-001",
+  "system_id": "SPIRITED_AWAY_TEMPORAL_RECONSTRUCTION_V1",
+  "adapter_version": "v1",
+  "target_app": "video_app",
+  "shared_movie_dataset": true,
+  "movie_id": "spirited_away",
+  "pipeline": [
+    "movie_dataset",
+    "temporal_flow",
+    "video_adapter"
+  ],
+  "input_sources": {
+    "shot_sequence_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-shot-sequence-registry.json",
+    "character_state_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-character-state-registry.json",
+    "environment_continuity_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-environment-continuity-registry.json",
+    "temporal_transition_registry": "datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-transition-registry.json",
+    "scene_registry": "datasets/movie_reconstruction/spirited_away/spirited-away-scene-registry.json",
+    "movie_bundle": "exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json"
+  },
+  "temporal_flow": {
+    "sequence_count": 300,
+    "transition_count": 2399,
+    "shots_per_scene": 8,
+    "average_transition_score": 0.9602
+  },
+  "output_blocks": [
+    "shot_sequence_block",
+    "character_state_block",
+    "environment_continuity_block",
+    "temporal_transition_block",
+    "gonegi_translation_block"
+  ],
+  "video_reconstruction_status": "READY",
+  "world_identity_source": "latest_v5",
+  "movie_temporal_source": "movie_dataset",
+  "adapter_ready": true
+}

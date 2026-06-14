@@ -1,0 +1,162 @@
+{
+  "blend_id": "gonegi-master-director-blend-v1",
+  "phase": "PHASE-SOURCE-VIDEO-006-DIRECTOR_GRAMMAR_BLEND_CONTRACT_V1",
+  "base_style_family": "GHIBLI",
+  "camera_family": "SHINKAI",
+  "lighting_family": "SHINKAI",
+  "blocking_family": "LIVE_ACTION",
+  "emotion_family": "GHIBLI",
+  "motion_family": "MORI",
+  "environment_family": "GHIBLI",
+  "priority_order": [
+    "identity_priority",
+    "visual_style",
+    "emotion_grammar",
+    "blocking_grammar",
+    "camera_grammar",
+    "lighting_grammar",
+    "motion_grammar",
+    "environment_grammar"
+  ],
+  "conflict_resolution": {
+    "strategy": "contract_priority_wins",
+    "resolved_conflicts": 0,
+    "unresolved_conflicts": 0,
+    "rules": [
+      "identity_priority_always_wins",
+      "contract_family_assignment_is_authoritative",
+      "no_cyclic_family_override",
+      "preserve_character_first_contract",
+      "mediterranean_world_identity_locked"
+    ]
+  },
+  "compatibility_score": 1,
+  "source_grammar_refs": {
+    "GHIBLI": "director_grammar_ghibli_v1",
+    "SHINKAI": "director_grammar_shinkai_v1",
+    "LIVE_ACTION": "director_grammar_live_action_v1",
+    "MORI": "director_grammar_mori_v1"
+  },
+  "blended_grammar": {
+    "visual_style": {
+      "summary": "Hand-painted warmth, domestic intimacy, and Mediterranean-adaptable pastoral clarity.",
+      "patterns": [
+        "soft-line character silhouettes",
+        "warm domestic interiors",
+        "readable environmental storytelling",
+        "gentle fantasy realism",
+        "harbor-and-village world cues"
+      ],
+      "constraints": [
+        "no-neon-city-tokens",
+        "no-hard-cgi-shine",
+        "preserve-handcrafted-surface-read"
+      ],
+      "source_family": "GHIBLI",
+      "source_grammar_id": "director_grammar_ghibli_v1"
+    },
+    "camera_grammar": {
+      "summary": "Composed vistas and intimate close-ups with strong horizon geometry.",
+      "patterns": [
+        "sky-dominant establishing frames",
+        "rail-and-window framing",
+        "tele-compressed depth",
+        "profile-close emotional holds",
+        "slow-push on revelation"
+      ],
+      "constraints": [
+        "no-unmotivated-zoom",
+        "horizon-must-anchor-composition"
+      ],
+      "source_family": "SHINKAI",
+      "source_grammar_id": "director_grammar_shinkai_v1"
+    },
+    "lighting_grammar": {
+      "summary": "Dramatic sky light, rain reflections, and twilight color separation.",
+      "patterns": [
+        "sunset-gradient backlight",
+        "rain-street reflection pools",
+        "blue-hour interior contrast",
+        "cloud-break god-rays",
+        "neon-free natural urban glow"
+      ],
+      "constraints": [
+        "no-flat-noon-exterior",
+        "light-must-motivate-mood-shift"
+      ],
+      "source_family": "SHINKAI",
+      "source_grammar_id": "director_grammar_shinkai_v1"
+    },
+    "blocking_grammar": {
+      "summary": "Family ensemble around hearth, table, and doorway social geometry.",
+      "patterns": [
+        "hearth-circle",
+        "dining-table-ensemble",
+        "doorway-greeting",
+        "writing-desk-focus",
+        "sibling-pair-counterpoint"
+      ],
+      "constraints": [
+        "no-empty-theater-staging",
+        "blocking-must-imply-relationship"
+      ],
+      "source_family": "LIVE_ACTION",
+      "source_grammar_id": "director_grammar_live_action_v1"
+    },
+    "emotion_grammar": {
+      "summary": "Quiet emotional arcs expressed through gesture, pause, and environmental reaction.",
+      "patterns": [
+        "warmth-through-routine",
+        "longing-in-departure",
+        "joy-in-small-discovery",
+        "calm-after-storm",
+        "reunion-in-shared-space"
+      ],
+      "constraints": [
+        "no-melodrama-exposition",
+        "subtext-over-dialogue-carry"
+      ],
+      "source_family": "GHIBLI",
+      "source_grammar_id": "director_grammar_ghibli_v1"
+    },
+    "motion_grammar": {
+      "summary": "Foraging, craft work, festival carry, ferry wait, and path walking.",
+      "patterns": [
+        "foraging-motion",
+        "loom-shuttle-task",
+        "bridge-cross",
+        "ferry-wait",
+        "festival-carry",
+        "rain-shelter-stand"
+      ],
+      "constraints": [
+        "no-chase-sequence-default",
+        "motion-tied-to-daily-life"
+      ],
+      "source_family": "MORI",
+      "source_grammar_id": "director_grammar_mori_v1"
+    },
+    "environment_grammar": {
+      "summary": "Lived-in villages, harbors, rooftops, and domestic rooms with tactile detail.",
+      "patterns": [
+        "mediterranean-harbor",
+        "village-street-life",
+        "domestic-kitchen",
+        "rooftop-horizon",
+        "workshop-craft-space"
+      ],
+      "constraints": [
+        "no-future-tech-props",
+        "no-identity-breaking-landmark-swap"
+      ],
+      "source_family": "GHIBLI",
+      "source_grammar_id": "director_grammar_ghibli_v1"
+    }
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false
+  },
+  "built_at": "2026-06-05T06:56:14.922Z"
+}

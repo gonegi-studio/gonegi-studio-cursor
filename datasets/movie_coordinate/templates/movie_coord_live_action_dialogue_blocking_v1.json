@@ -1,0 +1,109 @@
+{
+  "coordinate_id": "movie_coord_live_action_dialogue_blocking_v1",
+  "phase": "PHASE-SOURCE-VIDEO-004-MOVIE_SCENE_COORDINATE_SYSTEM_V1",
+  "source_video_id": "LITTLE_WOMEN_01",
+  "scene_index": 1,
+  "timestamp_start": 95,
+  "timestamp_end": 128,
+  "camera_coordinate": {
+    "position": "parlor-master-left",
+    "facing": "hearth-ensemble",
+    "height": "eye-level",
+    "fov_hint": "normal-neutral",
+    "shot_type": "master-two-shot"
+  },
+  "character_coordinates": [
+    {
+      "character_ref": "sister_a",
+      "position": "hearth-chair-left",
+      "facing": "sister_b",
+      "posture": "seated-upright",
+      "identity_anchor": "identity_anchor:sister_a_period_face_v1"
+    },
+    {
+      "character_ref": "sister_b",
+      "position": "hearth-chair-right",
+      "facing": "sister_a",
+      "posture": "seated-lean-forward",
+      "identity_anchor": "identity_anchor:sister_b_period_face_v1"
+    }
+  ],
+  "prop_coordinates": [
+    {
+      "prop_id": "writing_desk_letter",
+      "position": "side-table-mid",
+      "interaction_state": "reference-prop"
+    },
+    {
+      "prop_id": "fireplace_practical",
+      "position": "hearth-center-back",
+      "interaction_state": "lit-warm"
+    }
+  ],
+  "location_coordinates": {
+    "space_type": "period-parlor",
+    "anchor_point": "hearth-center",
+    "walkable_zone": "parlor-rug-zone"
+  },
+  "lighting_coordinates": {
+    "key_direction": "window-side-key",
+    "fill_level": "fireplace-warm-fill",
+    "color_temperature": "soft-day-interior"
+  },
+  "motion_vectors": [
+    {
+      "subject_ref": "sister_b",
+      "vector": "gesture-open-hand",
+      "duration_hint": "dialogue-beat"
+    }
+  ],
+  "blocking_map": {
+    "primary_focus": "sister-dialogue-pair",
+    "secondary_focus": "hearth-practical",
+    "negative_space": "window-wall-left"
+  },
+  "depth_layers": [
+    {
+      "layer_index": 0,
+      "layer_role": "foreground",
+      "content_hint": "side-table-props"
+    },
+    {
+      "layer_index": 1,
+      "layer_role": "midground",
+      "content_hint": "seated-ensemble"
+    },
+    {
+      "layer_index": 2,
+      "layer_role": "background",
+      "content_hint": "hearth-window-wall"
+    }
+  ],
+  "continuity_locks": {
+    "identity_locks": [
+      "identity_anchor:sister_a_period_face_v1",
+      "identity_anchor:sister_b_period_face_v1",
+      "identity_lock:preserve_period_costume_silhouette"
+    ],
+    "location_locks": [
+      "location_lock:period-parlor",
+      "walkable-zone:parlor-rug-zone"
+    ],
+    "composition_locks": [
+      "composition_lock:master-two-shot",
+      "prop_anchor:writing_desk_letter",
+      "prop_anchor:fireplace_practical"
+    ]
+  },
+  "director_grammar_refs": [
+    "director_grammar_live_action_v1"
+  ],
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "frame_extraction": false,
+    "external_call_allowed": false
+  },
+  "template_kind": "design_template",
+  "built_at": "2026-06-05T06:47:55.992Z"
+}

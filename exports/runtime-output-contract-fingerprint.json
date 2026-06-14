@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "RUNTIME-OUTPUT-CONTRACT-FINGERPRINT-v1",
+  "outputSchema": {
+    "topLevel": [
+      "compiled_shot_binding",
+      "compiled_transition_binding",
+      "continuity_glue"
+    ],
+    "compiled_shot_binding": [
+      "shot_id",
+      "framing",
+      "lens_behavior",
+      "camera_motion",
+      "subject_distance",
+      "cinematic_role"
+    ],
+    "compiled_transition_binding": [
+      "transition_id",
+      "from_state",
+      "to_state",
+      "emotional_bridge",
+      "motion_bridge",
+      "camera_shift",
+      "lighting_shift",
+      "pacing_shift",
+      "continuity_glue"
+    ],
+    "consumer_wrapper": [
+      "shot_bindings",
+      "transition_bindings",
+      "continuity_glue",
+      "consumer_handoff_ref"
+    ]
+  },
+  "requiredFields": [
+    "shot_bindings",
+    "transition_bindings",
+    "continuity_glue",
+    "consumer_handoff_ref"
+  ],
+  "consumerCompatibility": {
+    "consumerLayer": "video_runtime_consumer",
+    "handoffTargets": [
+      "image_app_v17_handoff",
+      "video_app_v82_6_handoff"
+    ],
+    "resolverFieldCoverage": {
+      "compiled_shot_binding": [
+        "shot_id",
+        "framing",
+        "lens_behavior",
+        "camera_motion",
+        "subject_distance",
+        "cinematic_role"
+      ],
+      "compiled_transition_binding": [
+        "transition_id",
+        "from_state",
+        "to_state",
+        "emotional_bridge",
+        "motion_bridge",
+        "camera_shift",
+        "lighting_shift",
+        "pacing_shift",
+        "continuity_glue"
+      ],
+      "continuity_glue": [
+        "continuity_glue"
+      ]
+    }
+  },
+  "outputDependencyGraph": {
+    "runtime_output": [
+      "runtime_resolver",
+      "video_runtime_consumer"
+    ],
+    "runtime_resolver": [
+      "selection_rules",
+      "cross_links"
+    ],
+    "video_runtime_consumer": [
+      "STAGE-8-consumer_integration"
+    ]
+  },
+  "outputMappingIds": [
+    "OUT-close-hand-hope-sadness",
+    "OUT-close-hand-sadness-hope",
+    "OUT-medium-emotional-confession",
+    "OUT-medium-emotional-hope-sadness",
+    "OUT-overhead-isolation-hope-sadness",
+    "OUT-overhead-isolation-sunset",
+    "OUT-rear-follow-reunion",
+    "OUT-rear-follow-walking",
+    "OUT-side-tracking-reunion",
+    "OUT-side-tracking-walking",
+    "OUT-silhouette-reunion",
+    "OUT-silhouette-sunset",
+    "OUT-wide-establishing-rain",
+    "OUT-wide-establishing-sunset",
+    "OUT-window-reflection-confession",
+    "OUT-window-reflection-hope"
+  ],
+  "resolverMappingReferences": [
+    "RES-close-hand-hope-sadness",
+    "RES-close-hand-sadness-hope",
+    "RES-medium-emotional-confession",
+    "RES-medium-emotional-hope-sadness",
+    "RES-overhead-isolation-hope-sadness",
+    "RES-overhead-isolation-sunset",
+    "RES-rear-follow-reunion",
+    "RES-rear-follow-walking",
+    "RES-side-tracking-reunion",
+    "RES-side-tracking-walking",
+    "RES-silhouette-reunion",
+    "RES-silhouette-sunset",
+    "RES-wide-establishing-rain",
+    "RES-wide-establishing-sunset",
+    "RES-window-reflection-confession",
+    "RES-window-reflection-hope"
+  ],
+  "resolverContractSchemaVersion": "RUNTIME-RESOLVER-CONTRACT-FINGERPRINT-v1",
+  "frozenAt": "2026-05-30T00:00:00.000Z"
+}

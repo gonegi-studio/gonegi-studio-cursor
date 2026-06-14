@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "RUNTIME-CONTRACT-FINGERPRINT-v1",
+  "boundary": "STAGE-8→STAGE-9",
+  "stageIds": [
+    "STAGE-8",
+    "STAGE-9"
+  ],
+  "contractIds": [
+    "consumer_integration",
+    "gpu_integration"
+  ],
+  "dependencyGraph": {
+    "STAGE-8": "STAGE-7",
+    "STAGE-9": "STAGE-8"
+  },
+  "plannedInputs": {
+    "STAGE-8": [
+      "image_dataset_export",
+      "video_dataset_export"
+    ],
+    "STAGE-9": [
+      "video_dataset_export",
+      "gpu_render_plan"
+    ]
+  },
+  "plannedOutputs": {
+    "STAGE-8": [
+      "image_app_v17_handoff",
+      "video_app_v82_6_handoff"
+    ],
+    "STAGE-9": [
+      "gpu_pipeline_handoff",
+      "future_gpu_pipeline_ref"
+    ]
+  },
+  "consumerContract": {
+    "stage_id": "STAGE-8",
+    "contract_id": "consumer_integration",
+    "depends_on": "STAGE-7",
+    "next_stage_hint": "STAGE-9",
+    "planned_inputs": [
+      "consumer_input_plan_stub",
+      "image_app_v17_reference_stub",
+      "video_app_v82_6_reference_stub",
+      "export_boundary_reference_stub"
+    ],
+    "planned_outputs": [
+      "image_app_handoff_plan_stub",
+      "video_app_handoff_plan_stub",
+      "consumer_boundary_report_stub",
+      "consumer_integration_bundle_stub"
+    ]
+  },
+  "frozenAt": "2026-05-30T00:00:00.000Z"
+}

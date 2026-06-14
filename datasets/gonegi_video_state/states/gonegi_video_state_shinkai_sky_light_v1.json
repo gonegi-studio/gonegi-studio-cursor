@@ -1,0 +1,270 @@
+{
+  "gonegi_video_state_id": "gonegi_video_state_shinkai_sky_light_v1",
+  "phase": "PHASE-SOURCE-VIDEO-014-GONEGI_STATE_TO_VIDEO_STATE_TRANSLATOR_V1",
+  "gonegi_state_id": "gonegi_state_shinkai_sky_light_v1",
+  "source_video_id": "SHINKAI_01",
+  "director_family": "SHINKAI",
+  "director_blend_ref": "gonegi-master-director-blend-v1",
+  "video_defaults_ref": "video-state-defaults-v1",
+  "identity_state": {
+    "identity_priority_rank": 1,
+    "identity_source": "exports/image_app/contracts/character-first-contract.json",
+    "character_first_contract": "exports/image_app/contracts/character-first-contract.json",
+    "protected_character_ids": [
+      "dana",
+      "aengdu"
+    ],
+    "identity_lock_tokens": [
+      "identity:character_identity:dana",
+      "character_reference:Dana",
+      "identity_lock:preserve_dana_silhouette",
+      "identity:character_identity:aengdu",
+      "character_reference:Aengdu",
+      "identity_lock:preserve_aengdu_silhouette"
+    ],
+    "location_lock_tokens": [
+      "location_id:olive_hill_overlook_01",
+      "layout_lock:horizon-line"
+    ],
+    "composition_lock_tokens": [
+      "prop_anchor:harbor_ferry_ticket_01"
+    ]
+  },
+  "character_state": {
+    "active_character_ids": [
+      "dana",
+      "aengdu"
+    ],
+    "primary_character_id": "dana",
+    "character_source": "datasets/character/character-simple-v1.json",
+    "character_tokens": [
+      "character:dana",
+      "character:aengdu"
+    ],
+    "companion_injected": [
+      "aengdu"
+    ]
+  },
+  "emotion_state": {
+    "emotion_id": "nostalgia",
+    "emotion_source": "datasets/emotion_acting/emotion-acting-dna-index-v1.json",
+    "intensity": 0.7,
+    "acting_visibility_weight": "medium",
+    "source_emotion_id": "longing"
+  },
+  "relationship_state": {
+    "relationship_id": "loneliness",
+    "relationship_source": "datasets/relationship/relationship-grammar-library.json",
+    "participant_ids": [
+      "dana",
+      "aengdu"
+    ],
+    "distance_behavior": "figure-sky-silhouette",
+    "gaze_pattern": "horizon",
+    "blocking_primary_focus": "figure-sky-silhouette"
+  },
+  "camera_state": {
+    "shot_type": "sky-dominant-wide",
+    "camera_source": "datasets/shot/coverage-grammar-index-v1.json",
+    "camera_position": "overlook-rail-center",
+    "camera_height": "chest-level",
+    "camera_direction": "horizon-sky",
+    "motion_vectors": [
+      "slow-lateral-drift",
+      "minimal-head-turn"
+    ]
+  },
+  "composition_state": {
+    "composition_id": "gonegi_composition_gonegi_state_shinkai_sky_light_v1",
+    "composition_source": "datasets/scene/scene-asset-composition-library-v1.json",
+    "prop_anchor_ids": [
+      "harbor_ferry_ticket_01"
+    ],
+    "character_positions": {
+      "dana": "rail-left-third",
+      "aengdu": "rail-left-third_companion_near"
+    },
+    "depth_layers": [
+      {
+        "layer_index": 0,
+        "layer_role": "foreground",
+        "content_hint": "rail-figure-silhouette"
+      },
+      {
+        "layer_index": 1,
+        "layer_role": "midground",
+        "content_hint": "city-depth-layer"
+      },
+      {
+        "layer_index": 2,
+        "layer_role": "background",
+        "content_hint": "sky-gradient-clouds"
+      }
+    ],
+    "negative_space": "upper-sky-dominant"
+  },
+  "location_state": {
+    "location_id": "olive_hill_overlook_01",
+    "location_name": "elevated-overlook",
+    "location_type": "elevated-overlook",
+    "domain": "gonegi_state_draft",
+    "location_source": "datasets/location/location-dna-index-v1.json",
+    "layout_lock_id": "layout_lock:olive_hill_overlook_01",
+    "walkable_zone": "overlook-platform",
+    "source_location_type": "elevated-overlook"
+  },
+  "lighting_state": {
+    "lighting_id": "gonegi_lighting_gonegi_state_shinkai_sky_light_v1",
+    "lighting_source": "datasets/lighting/lighting-dna-index-v1.json",
+    "direction": "sunset-backlight",
+    "intensity": "sky-gradient-fill"
+  },
+  "environment_state": {
+    "world_identity": "GONEGI_MEDITERRANEAN",
+    "world_type": "early-1900s mediterranean harbor town",
+    "environment_source": "datasets/location/location-dna-index-v1.json",
+    "time_setting_id": "golden_hour",
+    "weather_profile": "clear_mediterranean",
+    "supporting_elements": [
+      "rail-figure-silhouette",
+      "city-depth-layer",
+      "sky-gradient-clouds"
+    ],
+    "ambient_motion": [
+      "slow-lateral-drift"
+    ]
+  },
+  "video_parameters": {
+    "duration_seconds": 26,
+    "fps_target": 24,
+    "keyframe_count": 52,
+    "camera_motion": {
+      "motion_type": "slow_push_on_revelation",
+      "path_description": "slow-lateral-drift; minimal-head-turn",
+      "speed": "slow",
+      "identity_safe": true,
+      "shot_type_source": "sky-dominant-wide"
+    },
+    "character_motion": [
+      {
+        "character_id": "dana",
+        "motion_type": "walk",
+        "path_description": "Character motion preserving identity locks for dana",
+        "identity_lock_preserved": true,
+        "start_position": "rail-left-third",
+        "end_position": "rail-left-third"
+      },
+      {
+        "character_id": "aengdu",
+        "motion_type": "companion_reaction",
+        "path_description": "Minor supportive motion without crossing primary character foreground",
+        "identity_lock_preserved": true,
+        "start_position": "rail-left-third_companion_near",
+        "end_position": "rail-left-third_companion_near"
+      }
+    ],
+    "emotion_motion": {
+      "emotion_id": "nostalgia",
+      "arc_type": "steady_hope",
+      "intensity_start": 0.6,
+      "intensity_end": 0.75
+    },
+    "environment_motion": {
+      "motion_type": "ambient",
+      "path_description": "Background atmosphere only; no landmark relocation or layout mutation",
+      "location_lock_preserved": true,
+      "elements": [
+        "olive_hill_overlook_01",
+        "mediterranean-harbor",
+        "village-street-life"
+      ]
+    },
+    "visual_style_tokens": [
+      "hand-painted-warmth",
+      "mediterranean-pastoral",
+      "domestic-intimacy",
+      "readable-environmental-storytelling"
+    ],
+    "lighting_mood": "twilight_color_separation",
+    "blocking_geometry": "hearth-circle",
+    "family_provenance": {
+      "visual_style": "GHIBLI",
+      "camera": "SHINKAI",
+      "lighting": "SHINKAI",
+      "blocking": "LIVE_ACTION",
+      "emotion": "GHIBLI",
+      "motion": "MORI",
+      "environment": "GHIBLI"
+    },
+    "render_intent": {
+      "preparation_only": true,
+      "gpu_execution": false,
+      "target_pipeline": "gonegi_state_to_video_state_translator_v1",
+      "next_phase": "PHASE-SOURCE-VIDEO-015-VIDEO_STATE_TO_KEYFRAME_COMPILER_V2"
+    }
+  },
+  "translation_trace": {
+    "translation_id": "gonegi-master-world-translation-v1",
+    "source_world_type": "shinkai_urban_contemplative",
+    "target_world_identity": "GONEGI_MEDITERRANEAN",
+    "applied_dimensions": [
+      "character_translation",
+      "location_translation",
+      "prop_translation",
+      "emotion_translation",
+      "relationship_translation",
+      "environment_translation"
+    ],
+    "location_mapping": {
+      "elevated-overlook": "olive_hill_overlook_01"
+    },
+    "prop_mappings": {
+      "transit_ticket": "harbor_ferry_ticket_01"
+    },
+    "emotion_mapping": {
+      "longing": "nostalgia"
+    },
+    "video_state_translation": {
+      "translator_phase": "PHASE-SOURCE-VIDEO-014-GONEGI_STATE_TO_VIDEO_STATE_TRANSLATOR_V1",
+      "defaults_id": "video-state-defaults-v1",
+      "blend_id": "gonegi-master-director-blend-v1",
+      "director_family": "SHINKAI"
+    }
+  },
+  "continuity_locks": {
+    "identity_locks": [
+      "identity:character_identity:dana",
+      "character_reference:Dana",
+      "identity_lock:preserve_dana_silhouette",
+      "identity:character_identity:aengdu",
+      "character_reference:Aengdu",
+      "identity_lock:preserve_aengdu_silhouette"
+    ],
+    "location_locks": [
+      "location_id:olive_hill_overlook_01",
+      "location_lock:elevated-overlook",
+      "walkable-zone:overlook-platform"
+    ],
+    "composition_locks": [
+      "prop_anchor:harbor_ferry_ticket_01",
+      "composition_lock:sky-negative-space",
+      "composition_lock:horizon-third",
+      "prop_anchor:transit_ticket"
+    ]
+  },
+  "production_status": {
+    "isolated": true,
+    "storage_domain": "gonegi_video_state",
+    "production_registry": false,
+    "draft_status": "gonegi_video_state_translated_v1"
+  },
+  "execution_flags": {
+    "design_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "ocr": false,
+    "generation": false
+  },
+  "translated_at": "2026-06-05T10:21:05.259Z"
+}

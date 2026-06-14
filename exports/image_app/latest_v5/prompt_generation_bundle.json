@@ -1,0 +1,64 @@
+{
+  "bundle_id": "prompt-generation-bundle-v5",
+  "dataset_type": "production",
+  "production_grade": true,
+  "placeholder": false,
+  "materialized": true,
+  "prompt_templates": {
+    "compiled_generation_prompt_v1": {
+      "template": "compiled_generation_prompt_v1",
+      "inputs_bound": [
+        "shot",
+        "dna",
+        "continuity",
+        "memory"
+      ],
+      "trace_chain_ref": "exports/generation/generation-trace-specification.json"
+    },
+    "compilation_formula": "shot * dna * continuity * memory -> generation_prompt",
+    "prompt_version": "v1.0.0"
+  },
+  "prompt_layers": {
+    "shot_layer": "shot_fingerprint_binding",
+    "dna_layer": "character_location_style_dna",
+    "continuity_layer": "production_traceability",
+    "memory_layer": "temporal_memory_recall"
+  },
+  "adapter_injection_rules": {
+    "injection_order": [
+      "instrumental-mv-adapter",
+      "ballad-mv-adapter",
+      "emotion-acting-adapter",
+      "shot-grammar-adapter",
+      "indoor-location-anchor-adapter",
+      "lighting-anchor-adapter",
+      "living-world-core-v1-package",
+      "music-drama-image-adapter",
+      "location-lighting-image-adapter"
+    ],
+    "merge_policy": "inline_embed",
+    "token_prefix_required": true
+  },
+  "identity_lock_rules": {
+    "identity_score_minimum": 0.95,
+    "character_anchor_lock": true,
+    "location_anchor_lock": true,
+    "lighting_anchor_lock": true
+  },
+  "generation_constraints": {
+    "scores": {
+      "prompt_quality_score": 0.94,
+      "identity_score": 0.95,
+      "continuity_score": 0.93,
+      "memory_score": 0.92,
+      "generation_readiness_score": 0.94
+    },
+    "readiness_thresholds": {
+      "minimum_score": 0.8,
+      "target_score": 0.9,
+      "production_score": 0.95
+    },
+    "prompt_generation_readiness": "PASS"
+  },
+  "record_count": 4
+}

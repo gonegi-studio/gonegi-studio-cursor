@@ -1,0 +1,114 @@
+{
+  "report_id": "environment_evidence_collection_plan_mqd2289l",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-007A",
+  "system_id": "ENVIRONMENT_IDENTITY_EVIDENCE_COLLECTION_V1",
+  "generated_at": "2026-06-14T00:37:54.393Z",
+  "batch_plan_defined": true,
+  "target_sample_count": 50,
+  "collection_order": [
+    "easy_batch",
+    "medium_batch",
+    "hard_batch",
+    "stress_batch",
+    "identity_break_batch"
+  ],
+  "easy_batch": [
+    {
+      "case_id": "env_col_easy_001",
+      "environment_id": "titanic_staircase_001",
+      "reference_bank_id": "env_ref_001"
+    },
+    {
+      "case_id": "env_col_easy_002",
+      "environment_id": "ghibli_kitchen_001",
+      "reference_bank_id": "env_ref_002"
+    }
+  ],
+  "medium_batch": [
+    {
+      "case_id": "env_col_med_001",
+      "environment_id": "gonegi_harbor_dock_001",
+      "reference_bank_id": "env_ref_003"
+    },
+    {
+      "case_id": "env_col_med_002",
+      "environment_id": "mori_forest_clearing_001",
+      "reference_bank_id": "env_ref_004"
+    }
+  ],
+  "hard_batch": [
+    {
+      "case_id": "env_col_hard_001",
+      "environment_id": "titanic_staircase_001",
+      "failure_mode": "different_staircase"
+    },
+    {
+      "case_id": "env_col_hard_002",
+      "environment_id": "titanic_staircase_001",
+      "failure_mode": "missing_railing"
+    }
+  ],
+  "stress_batch": [
+    {
+      "case_id": "env_col_stress_001",
+      "environment_id": "titanic_staircase_001",
+      "stress_mode": "extreme_camera_rotation"
+    },
+    {
+      "case_id": "env_col_stress_002",
+      "environment_id": "ghibli_kitchen_001",
+      "stress_mode": "extreme_zoom_change"
+    },
+    {
+      "case_id": "env_col_stress_003",
+      "environment_id": "ghibli_kitchen_001",
+      "stress_mode": "lighting_shift"
+    }
+  ],
+  "identity_break_batch": [
+    {
+      "case_id": "env_col_break_001",
+      "environment_id": "titanic_staircase_001",
+      "break_mode": "extreme_camera_rotation"
+    },
+    {
+      "case_id": "env_col_break_002",
+      "environment_id": "titanic_staircase_001",
+      "break_mode": "heavy_occlusion"
+    },
+    {
+      "case_id": "env_col_break_003",
+      "environment_id": "ghibli_kitchen_001",
+      "break_mode": "major_lighting_shift"
+    }
+  ],
+  "analysis": {
+    "environment_evidence_protocol": "ENVIRONMENT_IDENTITY_EVIDENCE_PROTOCOL defines composite scoring, pass_threshold=0.98, and reference_bank recall rules; collection plan binds batch execution order without generating records in this phase.",
+    "environment_dataset": "ENVIRONMENT_IDENTITY_EVIDENCE_DATASET provides easy/medium/hard/stress batch seeds; collection plan adds identity_break_batch for boundary classification cases.",
+    "environment_reference_bank": "Four bank entries supply reference_bank_id and retrieval_signature templates per evidence record; no raster anchors populated.",
+    "environment_similarity_rules": "environment_similarity_v1 same_environment_threshold=0.98 governs environment_classification assignment in record spec."
+  },
+  "evidence_collection_contract": {
+    "contract_id": "environment_identity_evidence_collection_v1",
+    "contract_version": "1.0",
+    "scope": "Collection execution definition only — Collection Ready != Collection Executed.",
+    "evidence_protocol_ref": "reports/movie_reconstruction/ENVIRONMENT_IDENTITY_EVIDENCE_PROTOCOL.json",
+    "evidence_dataset_ref": "reports/movie_reconstruction/ENVIRONMENT_IDENTITY_EVIDENCE_DATASET.json",
+    "bank_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+    "evidence_collection_mode": "DEFINITION_ONLY",
+    "gpu_execution": "false — collection plan and record spec only; no evidence records generated.",
+    "assessment_note": "Evidence Records Generated = 0; do NOT claim ENVIRONMENT_EVIDENCE_COLLECTED."
+  },
+  "collection_batch_plan": {
+    "collection_order": "easy_batch → medium_batch → hard_batch → stress_batch → identity_break_batch",
+    "target_sample_count": "50",
+    "batch_note": "Sequential collection order; identity_break_batch runs last for classification boundary audit."
+  },
+  "collection_traceability_rules": {
+    "record_traceability": "Each evidence record must bind environment_id, reference_bank_id, retrieval_signature, and traceability_score.",
+    "batch_audit_signature": "Collection batch_id hashes case_id list for offline replay without GPU execution.",
+    "classification_audit": "environment_classification and classification_reason required on every record at collection time.",
+    "cross_ref_integrity": "reference_bank_id must resolve to bank spec; mismatch rejects record at validation.",
+    "collection_note": "Collection Ready != Collection Executed."
+  }
+}

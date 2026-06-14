@@ -1,0 +1,116 @@
+{
+  "protocol_id": "environment-identity-gpu-validation-protocol-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-005A",
+  "system_id": "ENVIRONMENT_IDENTITY_GPU_VALIDATION_V1",
+  "generated_at": "2026-06-13T23:50:59.689Z",
+  "environment_validation_defined": true,
+  "analysis": {
+    "environment_reference_bank": "Four seed entries (titanic_staircase_001, ghibli_kitchen_001, gonegi_harbor_dock_001, mori_forest_clearing_001) provide validation reference targets; recall rules require minimum anchor match against bank descriptors.",
+    "environment_similarity_binding": "environment_similarity_v1 governs same_environment_threshold=0.98 vs similarity_threshold=0.85; validation must not treat similar_environment scores as identity lock.",
+    "environment_traceability_binding": "traceability_signature links conditioning_map_ref and ENVIRONMENT_REFERENCE_BANK_SPECIFICATION for batch audit without GPU execution in this phase.",
+    "environment_runtime_channel": "STRICT environment_identity runtime channel from VIDEO_CONDITIONING_BACKEND; first campaign stage with batch_size=50 and hard-tier primary Movie Reconstruction target."
+  },
+  "environment_validation_contract": {
+    "contract_id": "environment_identity_gpu_validation_v1",
+    "contract_version": "1.0",
+    "scope": "Validation definition only — Validation Defined != Validation Executed.",
+    "binding_ref": "exports/movie_reconstruction_environment_identity/environment-identity-binding-package.json",
+    "bank_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+    "dataset_ref": "datasets/gpu_validation/environment_identity-validation-dataset.json",
+    "campaign_stage_ref": "reports/movie_reconstruction/GPU_VALIDATION_CAMPAIGN_REPORT.json",
+    "gpu_execution": "false — protocol and dataset plan only; execution deferred to future GPU-enabled phase."
+  },
+  "same_environment_criteria": {
+    "same_environment": "Score >= 0.98 required for same-environment identity lock certification.",
+    "reference_bank_match": "Exact environment_id or layout_signature match with reference_bank_match_score >= 0.98.",
+    "same_environment_score": "Primary measurement: reference_bank_match_score gated at same_environment threshold.",
+    "assessment_note": "Same Environment Defined != Same Environment Achieved."
+  },
+  "similar_environment_criteria": {
+    "similar_environment": "Score in [0.80, 0.98) classifies as similar but NOT same environment.",
+    "similarity_threshold": "Scores >= 0.85 trigger similar_environment degradation path review.",
+    "strict_environment": "Score in [0.95, 0.98) is strict-but-not-identical; logged for anchor tuning.",
+    "different_environment": "Score < 0.50 classifies as different_environment; triggers fallback_environment."
+  },
+  "environment_failure_criteria": {
+    "reference_drift": "reference_bank_match_score drops below similar_environment threshold.",
+    "geometry_mismatch": "Anchor normalized_position delta exceeds STRICT bound.",
+    "style_overrides_identity": "Style conditioning weight dominates IP-Adapter environment reference weight.",
+    "different_staircase": "Hard-tier failure example: wrong architectural identity.",
+    "missing_railing": "Hard-tier failure example: anchor descriptor missing from output.",
+    "hallucinated_architecture": "Hard-tier failure example: invented structure not in reference bank."
+  },
+  "environment_drift_levels": {
+    "same_environment": 0.98,
+    "strict_environment": 0.95,
+    "similar_environment": 0.8,
+    "different_environment": 0.5
+  },
+  "tiers": [
+    {
+      "difficulty_tier": "easy",
+      "measurement_method": [
+        "reference_bank_match_score",
+        "environment_traceability_score"
+      ],
+      "pass_threshold": 0.98,
+      "failure_examples": [
+        "minor_lighting_drift"
+      ],
+      "reference_bank_recall_rules": {
+        "required_reference_count": 5,
+        "minimum_anchor_match": 3
+      },
+      "exit_criteria": {
+        "pass_rate": 0.9,
+        "same_environment_score": 0.98
+      }
+    },
+    {
+      "difficulty_tier": "medium",
+      "measurement_method": [
+        "reference_bank_match_score",
+        "layout_signature_score"
+      ],
+      "pass_threshold": 0.95,
+      "failure_examples": [
+        "partial_anchor_occlusion",
+        "lighting_shift"
+      ],
+      "reference_bank_recall_rules": {
+        "required_reference_count": 5,
+        "minimum_anchor_match": 3
+      },
+      "exit_criteria": {
+        "pass_rate": 0.85,
+        "same_environment_score": 0.96
+      }
+    },
+    {
+      "difficulty_tier": "hard",
+      "measurement_method": [
+        "reference_bank_match_score",
+        "anchor_persistence_score"
+      ],
+      "pass_threshold": 0.92,
+      "failure_examples": [
+        "different_staircase",
+        "missing_railing",
+        "hallucinated_architecture"
+      ],
+      "reference_bank_recall_rules": {
+        "required_reference_count": 5,
+        "minimum_anchor_match": 3
+      },
+      "exit_criteria": {
+        "pass_rate": 0.8,
+        "same_environment_score": 0.95
+      }
+    }
+  ],
+  "reference_bank_recall_rules": {
+    "required_reference_count": 5,
+    "minimum_anchor_match": 3,
+    "recall_method": "Match generated output anchors against reference bank anchor_descriptors; count kind+importance matches >= minimum_anchor_match across required_reference_count bank entries per batch."
+  }
+}

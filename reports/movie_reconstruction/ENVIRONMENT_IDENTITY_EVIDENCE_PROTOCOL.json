@@ -1,0 +1,109 @@
+{
+  "protocol_id": "environment-identity-evidence-protocol-v1",
+  "phase": "PHASE-GPU-CONDITIONING-VALIDATION-006A",
+  "system_id": "ENVIRONMENT_IDENTITY_EVIDENCE_V1",
+  "generated_at": "2026-06-14T00:18:47.421Z",
+  "evidence_defined": true,
+  "analysis": {
+    "environment_validation_protocol": "ENVIRONMENT_IDENTITY_GPU_VALIDATION_PROTOCOL defines same_environment=0.98, reference_bank recall rules, and tier pass thresholds; evidence collection binds measurable scores to those criteria without GPU execution.",
+    "environment_dataset_plan": "ENVIRONMENT_IDENTITY_GPU_VALIDATION_DATASET_PLAN provides easy/medium/hard case seeds; evidence dataset extends with stress_batch for camera and lighting perturbations.",
+    "environment_reference_bank": "Four bank entries (titanic_staircase_001, ghibli_kitchen_001, gonegi_harbor_dock_001, mori_forest_clearing_001) supply reference_bank_id, retrieval_signature, and traceability_score targets per evidence record.",
+    "environment_similarity_binding": "environment_similarity_v1 same_environment_threshold=0.98 governs evidence scoring; similar_environment scores must not be classified as definitive evidence."
+  },
+  "evidence_collection_contract": {
+    "contract_id": "environment_identity_evidence_v1",
+    "contract_version": "1.0",
+    "scope": "Evidence definition only — Evidence Defined != Evidence Collected.",
+    "validation_protocol_ref": "reports/movie_reconstruction/ENVIRONMENT_IDENTITY_GPU_VALIDATION_PROTOCOL.json",
+    "dataset_plan_ref": "reports/movie_reconstruction/ENVIRONMENT_IDENTITY_GPU_VALIDATION_DATASET_PLAN.json",
+    "binding_ref": "exports/movie_reconstruction_environment_identity/environment-identity-binding-package.json",
+    "bank_spec_ref": "reports/movie_reconstruction/ENVIRONMENT_REFERENCE_BANK_SPECIFICATION.json",
+    "gpu_execution": "false — evidence protocol and dataset only; collection deferred.",
+    "gpu_authorization": "false — evidence_sufficient_for_gpu_authorization must remain false until execution phase.",
+    "assessment_note": "Evidence Collected != Environment Validated; Environment Validated != Movie Reconstruction Ready."
+  },
+  "evidence_measurement_rules": {
+    "reference_bank_match_score": "Primary measurement from layout_signature and anchor descriptor recall against reference bank.",
+    "environment_traceability_score": "Traceability signature match against conditioning_map_ref and bank spec path.",
+    "anchor_recall_score": "Count of anchor_descriptors kind+importance matches >= minimum_anchor_match.",
+    "retrieval_signature_match": "Hash equality on environment_retrieval_v1 primary_key lookup path.",
+    "measurement_note": "All measurements are schema-defined; no GPU raster comparison in this phase."
+  },
+  "evidence_scoring_rules": {
+    "composite_evidence_score": "weighted_sum(reference_bank_match_score * 0.45, traceability_score * 0.35, anchor_recall_score * 0.20)",
+    "pass_threshold": "composite_evidence_score >= 0.98 required for definitive same-environment evidence tier.",
+    "false_positive_penalty": "Scores above pass_threshold on different_environment cases trigger false_positive audit.",
+    "false_negative_tolerance": "same_staircase_with_lighting_variation permitted within strict_environment band [0.95, 0.98).",
+    "texture_included": "Layout and anchor texture consistency contributes to reference_bank_match_score component."
+  },
+  "environment_evidence_levels": [
+    {
+      "level_id": "definitive",
+      "min_traceability_score": 0.97,
+      "note": "Same environment evidence; traceability_score >= 0.97 with reference_bank_match >= 0.98."
+    },
+    {
+      "level_id": "strong",
+      "min_traceability_score": 0.95,
+      "note": "Strict environment band; sufficient for anchor tuning review but not identity lock."
+    },
+    {
+      "level_id": "weak",
+      "min_traceability_score": 0.85,
+      "note": "Similar environment band; logged for degradation path only."
+    },
+    {
+      "level_id": "insufficient",
+      "min_traceability_score": 0,
+      "note": "Below similar_environment threshold; evidence record rejected."
+    }
+  ],
+  "evidence_traceability_rules": {
+    "traceability_signature": "Must bind environment_id, reference_bank_id, conditioning_map_ref, and bank_spec_ref.",
+    "retrieval_signature": "Hash of environment_retrieval_v1 lookup path for audit replay without GPU execution.",
+    "batch_audit_path": "Evidence records written to ENVIRONMENT_IDENTITY_EVIDENCE_DATASET.json batches for offline review.",
+    "cross_ref_integrity": "reference_bank_id must resolve to bank spec entry; mismatch triggers traceability failure.",
+    "evidence_layer_note": "Evidence Defined != Evidence Collected."
+  },
+  "measurement_method": [
+    "reference_bank_match_score",
+    "environment_traceability_score",
+    "anchor_recall_score",
+    "retrieval_signature_match"
+  ],
+  "pass_threshold": 0.98,
+  "evidence_score": {
+    "composite_formula": "0.45 * reference_bank_match_score + 0.35 * traceability_score + 0.20 * anchor_recall_score",
+    "reference_bank_match_weight": 0.45,
+    "traceability_weight": 0.35,
+    "anchor_recall_weight": 0.2
+  },
+  "failure_examples": [
+    "different_staircase",
+    "missing_railing",
+    "hallucinated_architecture",
+    "reference_drift",
+    "geometry_mismatch"
+  ],
+  "false_positive_examples": [
+    "different_staircase_but_similar_architecture",
+    "shared_style_different_layout",
+    "hallucinated_railing_on_wrong_staircase"
+  ],
+  "false_negative_examples": [
+    "same_staircase_with_lighting_variation",
+    "same_kitchen_with_color_grade_shift",
+    "anchor_occlusion_but_identity_preserved"
+  ],
+  "reference_bank_recall_rules": {
+    "required_reference_count": 5,
+    "minimum_anchor_match": 3,
+    "recall_method": "Match evidence record anchors against reference bank anchor_descriptors; count kind+importance matches >= minimum_anchor_match."
+  },
+  "example_evidence_record": {
+    "environment_id": "titanic_staircase_001",
+    "reference_bank_id": "env_ref_001",
+    "retrieval_signature": "env_retrieval_v1:titanic_staircase_001:layout_sig_a1b2c3",
+    "traceability_score": 0.97
+  }
+}

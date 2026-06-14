@@ -1,0 +1,72 @@
+{
+  "report_id": "titanic-upload-integration-report-v1",
+  "phase": "PHASE-TITANIC-UPLOAD-INTEGRATION-001",
+  "integration_id": "TITANIC_DATASET_EXPORT_AND_UPLOAD_INTEGRATION_V1",
+  "generated_at": "2026-06-10T06:22:45.630Z",
+  "final_verdict": "PASS_TITANIC_UPLOAD_INTEGRATION_V1",
+  "integration_passed": true,
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "titanic_dataset_pass": true,
+      "titanic_scene_registry_exists": true,
+      "image_latest_v5_exists": true,
+      "video_latest_v5_exists": true
+    }
+  },
+  "validation_summary": {
+    "titanic_dataset_exported": true,
+    "image_app_registered": true,
+    "video_app_registered": true,
+    "upload_package_registered": true,
+    "consumption_contract_ready": true,
+    "movie_reconstruction_metadata_ready": true,
+    "critical_missing_count": 0,
+    "dataset_exists": true,
+    "export_exists": true,
+    "image_app_bundle_exists": true,
+    "video_app_bundle_exists": true,
+    "consumption_contract_exists": true,
+    "upload_package_registered_image": true,
+    "upload_package_registered_video": true,
+    "shared_registry_count": 30,
+    "gpu_execution": false,
+    "video_generation": false,
+    "next_order": "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001",
+    "policy": "SAFE_CREATE_ONLY",
+    "integration_passed": true
+  },
+  "issues": [],
+  "integration_pipeline": [
+    "Titanic Dataset",
+    "latest_v5 Export",
+    "Upload Package",
+    "App Upload",
+    "Prompt Consumption",
+    "Generation Metadata Trace"
+  ],
+  "export_paths": {
+    "shared": "exports/shared/latest_v5/titanic_movie_reconstruction_bundle.json",
+    "image_app": "exports/image_app/latest_v5/titanic_movie_reconstruction_bundle.json",
+    "video_app": "exports/video_app/latest_v5/titanic_movie_reconstruction_bundle.json"
+  },
+  "consumption_contract": "datasets/app_consumption/movie-reconstruction-consumption-contract.json",
+  "metadata_contract": "datasets/app_consumption/generation-metadata-contract.json",
+  "world_identity_policy": {
+    "gonegi_world_controls_appearance": true,
+    "movie_dataset_controls_structure": true,
+    "movie_world_override_forbidden": true
+  },
+  "production_readiness_gates": {
+    "titanic_dataset_exported": true,
+    "image_app_registered": true,
+    "video_app_registered": true,
+    "upload_package_registered": true,
+    "consumption_contract_ready": true,
+    "movie_reconstruction_metadata_ready": true,
+    "critical_missing_count_eq_0": true
+  },
+  "next_pipeline": [
+    "PHASE-TITANIC-IMAGE-RECONSTRUCTION-TEST-001"
+  ]
+}

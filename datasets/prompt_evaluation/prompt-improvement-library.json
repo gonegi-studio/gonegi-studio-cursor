@@ -1,0 +1,67 @@
+{
+  "library_id": "prompt-improvement-library-v1",
+  "asset_type": "prompt_improvement_library",
+  "asset_version": "v1",
+  "phase": "PHASE-QA-002",
+  "module": "PROMPT_EVALUATION_SYSTEM_V1",
+  "purpose": "Improvement recommendations derived from detected prompt risks.",
+  "upstream_checkpoint": "PASS_GENERATION_QA_AND_ERROR_CONTEXT_SYSTEM_V1",
+  "improvement_flow": [
+    "risk",
+    "cause",
+    "fix",
+    "recommended_prompt_change"
+  ],
+  "prompt_improvement_integrity": "PASS",
+  "improvements": [
+    {
+      "improvement_id": "imp-under-specified",
+      "risk_type": "under_specified",
+      "cause": "insufficient_dimension_binding_in_compiled_prompt",
+      "fix": "expand_shot_dna_continuity_memory_fusion",
+      "recommended_prompt_change": "add_explicit_identity_and_location_anchors"
+    },
+    {
+      "improvement_id": "imp-over-specified",
+      "risk_type": "over_specified",
+      "cause": "redundant_adapter_tokens_in_prompt",
+      "fix": "compress_adapter_binding_to_core_constraints",
+      "recommended_prompt_change": "trim_redundant_style_and_composition_tokens"
+    },
+    {
+      "improvement_id": "imp-conflicting-identity",
+      "risk_type": "conflicting_identity",
+      "cause": "dna_identity_anchor_mismatch_with_shot_registry",
+      "fix": "reconcile_identity_clarity_and_consistency_weights",
+      "recommended_prompt_change": "lock_character_identity_to_shot_continuity_refs"
+    },
+    {
+      "improvement_id": "imp-conflicting-adapter",
+      "risk_type": "conflicting_adapter",
+      "cause": "multiple_adapter_bindings_on_same_prompt_segment",
+      "fix": "select_single_primary_adapter_per_segment",
+      "recommended_prompt_change": "deduplicate_adapter_binding_chain"
+    },
+    {
+      "improvement_id": "imp-missing-continuity",
+      "risk_type": "missing_continuity",
+      "cause": "continuity_trace_not_bound_in_compilation",
+      "fix": "inject_production_traceability_continuity_refs",
+      "recommended_prompt_change": "bind_continuity_clarity_to_trace_chain"
+    },
+    {
+      "improvement_id": "imp-missing-memory",
+      "risk_type": "missing_memory",
+      "cause": "temporal_memory_horizon_not_referenced",
+      "fix": "attach_callback_and_world_state_memory_anchors",
+      "recommended_prompt_change": "bind_memory_clarity_to_temporal_memory_spec"
+    },
+    {
+      "improvement_id": "imp-missing-constraints",
+      "risk_type": "missing_generation_constraints",
+      "cause": "generation_constraints_not_in_prompt_output",
+      "fix": "add_generation_constraint_block_to_compiled_prompt",
+      "recommended_prompt_change": "append_negative_and_safety_constraint_tokens"
+    }
+  ]
+}

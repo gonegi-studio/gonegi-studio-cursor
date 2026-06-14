@@ -1,0 +1,226 @@
+{
+  "audit_id": "mv-production-blocker-audit-v1",
+  "phase": "PHASE-DIGITAL-STUDIO-016-MV_PRODUCTION_BLOCKER_AUDIT_V1",
+  "generated_at": "2026-06-07T23:14:58.457Z",
+  "source_readiness_certification_ref": "exports/mv_production_readiness_certification/mv-production-readiness-certification.json",
+  "remaining_blocker_count": 6,
+  "critical_blocker_count": 0,
+  "warning_blocker_count": 6,
+  "blocker_severity": {
+    "critical": 0,
+    "warning": 6,
+    "total": 6
+  },
+  "blocker_category_breakdown": {
+    "technical": 3,
+    "operational": 2,
+    "consistency": 1,
+    "quality": 0,
+    "workflow": 0
+  },
+  "production_ready_candidate": {
+    "candidate_ready": false,
+    "current_tier": "TEST_READY",
+    "target_tier": "PRODUCTION_READY",
+    "critical_blockers_clear": true,
+    "warning_blockers_remaining": 6,
+    "requirements": [
+      "Resolve all warning blockers through DS-017 blocker resolution certification",
+      "Confirm critical_blocker_count remains 0",
+      "Lift production_mode_blocked and real_generation_blocked under gated scope",
+      "Validate production runtime execution with external and GPU paths certified",
+      "Restore story_mv dataset refs and verify traceability continuity",
+      "Achieve production_readiness_tier=PRODUCTION_READY with score >= 90"
+    ]
+  },
+  "blocker_resolution_plan": [
+    {
+      "step_id": "blocker_resolution_step_1",
+      "blocker_id": "dataset_refs_empty_story_mv_generation_plan_v1",
+      "blocker_code": "DATASET_REFS_EMPTY",
+      "category": "consistency",
+      "severity": "warning",
+      "resolution_action": "Bind story_mv dataset refs and revalidate traceability continuity before production promotion",
+      "target_phase": "DS-017",
+      "plan_ready": true
+    },
+    {
+      "step_id": "blocker_resolution_step_2",
+      "blocker_id": "production_mode_blocked",
+      "blocker_code": "PRODUCTION_MODE_BLOCKED",
+      "category": "operational",
+      "severity": "warning",
+      "resolution_action": "Lift production_mode_blocked after DS-017 blocker resolution certification",
+      "target_phase": "DS-017",
+      "plan_ready": true
+    },
+    {
+      "step_id": "blocker_resolution_step_3",
+      "blocker_id": "real_generation_blocked",
+      "blocker_code": "REAL_GENERATION_BLOCKED",
+      "category": "operational",
+      "severity": "warning",
+      "resolution_action": "Enable controlled real generation scope after production safety certification",
+      "target_phase": "DS-017",
+      "plan_ready": true
+    },
+    {
+      "step_id": "blocker_resolution_step_4",
+      "blocker_id": "runtime_not_executed",
+      "blocker_code": "RUNTIME_NOT_EXECUTED",
+      "category": "technical",
+      "severity": "warning",
+      "resolution_action": "Execute production runtime validation under gated production scope",
+      "target_phase": "DS-017",
+      "plan_ready": true
+    },
+    {
+      "step_id": "blocker_resolution_step_5",
+      "blocker_id": "external_call_blocked",
+      "blocker_code": "EXTERNAL_CALL_BLOCKED",
+      "category": "technical",
+      "severity": "warning",
+      "resolution_action": "Authorize external provider calls through production runtime certification",
+      "target_phase": "DS-017",
+      "plan_ready": true
+    },
+    {
+      "step_id": "blocker_resolution_step_6",
+      "blocker_id": "gpu_execution_blocked",
+      "blocker_code": "GPU_EXECUTION_BLOCKED",
+      "category": "technical",
+      "severity": "warning",
+      "resolution_action": "Enable GPU execution path after production infrastructure certification",
+      "target_phase": "DS-017",
+      "plan_ready": true
+    }
+  ],
+  "audited_blockers": [
+    {
+      "blocker_id": "dataset_refs_empty_story_mv_generation_plan_v1",
+      "blocker_code": "DATASET_REFS_EMPTY",
+      "message": "Dataset refs empty for story_mv_generation_plan_v1",
+      "severity": "warning",
+      "category": "consistency",
+      "resolved": false
+    },
+    {
+      "blocker_id": "production_mode_blocked",
+      "blocker_code": "PRODUCTION_MODE_BLOCKED",
+      "message": "Production mode remains blocked pending DS-015+ promotion",
+      "severity": "warning",
+      "category": "operational",
+      "resolved": false
+    },
+    {
+      "blocker_id": "real_generation_blocked",
+      "blocker_code": "REAL_GENERATION_BLOCKED",
+      "message": "Real generation remains disabled under test_mode_only scope",
+      "severity": "warning",
+      "category": "operational",
+      "resolved": false
+    },
+    {
+      "blocker_id": "runtime_not_executed",
+      "blocker_code": "RUNTIME_NOT_EXECUTED",
+      "message": "Production runtime execution not yet activated",
+      "severity": "warning",
+      "category": "technical",
+      "resolved": false
+    },
+    {
+      "blocker_id": "external_call_blocked",
+      "blocker_code": "EXTERNAL_CALL_BLOCKED",
+      "message": "External calls remain blocked under test_mode_only scope",
+      "severity": "warning",
+      "category": "technical",
+      "resolved": false
+    },
+    {
+      "blocker_id": "gpu_execution_blocked",
+      "blocker_code": "GPU_EXECUTION_BLOCKED",
+      "message": "GPU execution remains blocked under test_mode_only scope",
+      "severity": "warning",
+      "category": "technical",
+      "resolved": false
+    }
+  ],
+  "next_stage_gate_label": "DS_017_ENTRY",
+  "traceability_chain": [
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "instrumental_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "instrumental_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "instrumental_mv_scene_assembly_v1",
+      "mv_blueprint_id": "instrumental_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/instrumental-mv-archetype-library-v1.json",
+        "datasets/mv/instrumental-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "ballad_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "ballad_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "ballad_mv_scene_assembly_v1",
+      "mv_blueprint_id": "ballad_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_mv_v1",
+      "dataset_refs": [
+        "datasets/mv/ballad-mv-archetype-library-v1.json",
+        "datasets/mv/ballad-mv-archetype-index-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "story_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "story_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "story_mv_scene_assembly_v1",
+      "mv_blueprint_id": "story_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_short_film_v1",
+      "dataset_refs": [],
+      "trace_integrity": "PASS"
+    },
+    {
+      "source_generation_plan_ref": "exports/mv_generation_planning_engine/mv-generation-planning-engine.json",
+      "generation_plan_id": "music_drama_mv_generation_plan_v1",
+      "mv_shot_assembly_id": "music_drama_mv_shot_assembly_v1",
+      "mv_scene_assembly_id": "music_drama_mv_scene_assembly_v1",
+      "mv_blueprint_id": "music_drama_mv_blueprint_v1",
+      "mv_foundation_id": "mv-production-system-foundation-v1",
+      "upstream_runtime_id": "production_runtime_episode_v1",
+      "dataset_refs": [
+        "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+        "datasets/music_drama_grammar/music-drama-grammar-v1.json"
+      ],
+      "trace_integrity": "PASS"
+    }
+  ],
+  "execution_scope": "test_mode_only",
+  "traceability_preserved": true,
+  "safe_create_policy": {
+    "policy": "SAFE_CREATE_ONLY",
+    "read_only_upstream_paths": [
+      "exports/mv_production_readiness_certification/mv-production-readiness-certification.json",
+      "exports/mv_production_readiness_certification/mv-production-readiness-certification-manifest.json"
+    ],
+    "write_paths": [
+      "reports/mv_production_blocker_audit",
+      "exports/mv_production_blocker_audit",
+      "reports/mv_production_blocker_audit/mv-production-blocker-audit-report.json",
+      "reports/mv_production_blocker_audit/MV_PRODUCTION_BLOCKER_AUDIT.md",
+      "exports/mv_production_blocker_audit/mv-production-blocker-audit-manifest.json",
+      "exports/mv_production_blocker_audit/mv-production-blocker-audit.json"
+    ],
+    "blocker_audit_artifact_write_scope": "exports/mv_production_blocker_audit/",
+    "upstream_artifacts_unchanged": true
+  },
+  "blocker_audit_complete": true,
+  "next_stage_ready": true
+}

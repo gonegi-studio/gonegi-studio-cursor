@@ -1,0 +1,76 @@
+{
+  "scene_detection_id": "scene_detection_mori_01_v1",
+  "phase": "PHASE-SOURCE-VIDEO-025-MOVIE_ANALYSIS_SCENE_DETECTION_DESIGN_V1",
+  "source_video_id": "MORI_01",
+  "analysis_plan_id": "analysis_plan_mori_01_v1",
+  "dry_run_id": "dry_run_mori_01_v1",
+  "sampling_plan_id": "frame_sampling_mori_01_v1",
+  "scene_candidate_count": 4,
+  "scene_detection_strategy": "LOCATION_CHANGE_CANDIDATE",
+  "scene_candidates": [
+    {
+      "candidate_id": "scene_detection_mori_01_v1_sc_001",
+      "estimated_start_seconds": 19.69,
+      "estimated_end_seconds": 26.25,
+      "candidate_role": "location_change",
+      "reads_frame": false,
+      "extracts_boundary": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_scene_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "scene_detection_mori_01_v1_sc_002",
+      "estimated_start_seconds": 25.81,
+      "estimated_end_seconds": 32.5,
+      "candidate_role": "location_change",
+      "reads_frame": false,
+      "extracts_boundary": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_scene_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "scene_detection_mori_01_v1_sc_003",
+      "estimated_start_seconds": 31.94,
+      "estimated_end_seconds": 38.75,
+      "candidate_role": "location_change",
+      "reads_frame": false,
+      "extracts_boundary": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_scene_candidate",
+      "estimated_only": true
+    },
+    {
+      "candidate_id": "scene_detection_mori_01_v1_sc_004",
+      "estimated_start_seconds": 37.56,
+      "estimated_end_seconds": 45,
+      "candidate_role": "location_change",
+      "reads_frame": false,
+      "extracts_boundary": false,
+      "validates_timestamp": false,
+      "candidate_type": "estimated_scene_candidate",
+      "estimated_only": true
+    }
+  ],
+  "coverage_goal": {
+    "segment_span_seconds": 25,
+    "coverage_percent": 100,
+    "purpose": "future_coordinate_extraction_preparation"
+  },
+  "identity_safety": {
+    "identity_lock_required": true,
+    "character_first_contract": true,
+    "estimated_only": true,
+    "no_boundary_extraction": true
+  },
+  "execution_flags": {
+    "planning_only": true,
+    "gpu_execution": false,
+    "external_call_allowed": false,
+    "frame_extraction": false,
+    "scene_extraction": false,
+    "ocr": false
+  },
+  "designed_at": "2026-06-05T22:38:57.955Z"
+}

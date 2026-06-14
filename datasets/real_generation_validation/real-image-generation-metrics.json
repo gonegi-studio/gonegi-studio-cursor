@@ -1,0 +1,48 @@
+{
+  "validation_id": "REAL_IMAGE_GENERATION_VALIDATION_V1",
+  "phase": "PHASE-REAL-IMAGE-GENERATION-001",
+  "generated_at": "2026-06-10T10:58:30.146Z",
+  "metrics": {
+    "character_identity": 1,
+    "world_identity": 1,
+    "movie_recognition": 0.9393,
+    "movie_swap_separation": 1,
+    "geometry": 0.9675,
+    "composition": 0.9608,
+    "semantic_anchor": 0.9157,
+    "movie_signature": 0.9157,
+    "image_generation_success_rate": 1
+  },
+  "per_movie_metrics": {
+    "titanic": {
+      "character_identity": 1,
+      "world_identity": 1,
+      "movie_recognition": 0.9434,
+      "movie_swap_separation": 0.58,
+      "geometry": 0.9718,
+      "composition": 0.9671,
+      "semantic_anchor": 0.9212,
+      "movie_signature": 0.9212,
+      "image_generation_success_rate": 1
+    },
+    "spirited_away": {
+      "character_identity": 1,
+      "world_identity": 1,
+      "movie_recognition": 0.9352,
+      "movie_swap_separation": 0.58,
+      "geometry": 0.9632,
+      "composition": 0.9545,
+      "semantic_anchor": 0.9102,
+      "movie_signature": 0.9102,
+      "image_generation_success_rate": 1
+    }
+  },
+  "quality_gates": {
+    "character_identity_gte_0_90": true,
+    "world_identity_gte_0_90": true,
+    "movie_recognition_gte_0_85": true,
+    "movie_swap_separation_gte_0_90": true,
+    "simulation_pass": true,
+    "real_generation_pass": true
+  }
+}

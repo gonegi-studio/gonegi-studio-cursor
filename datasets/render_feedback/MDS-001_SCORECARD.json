@@ -1,0 +1,174 @@
+{
+  "test_id": "MDS-001",
+  "test_name": "MUSIC_DRAMA_STUDIO_FULL_PRODUCTION_TEST",
+  "phase": "PHASE-MDS-001",
+  "generated_at": "2026-06-03T07:36:48.000Z",
+  "precheck": {
+    "rkb_009_verdict": "PASS_RKB_009_BALLAD_MV_PIPELINE_VALIDATION",
+    "export_governance_verdict": "PASS_IMAGE_APP_EXPORT_GOVERNANCE_V1",
+    "ballad_adapter_present": true,
+    "upload_manifest_present": true,
+    "upload_file_count": 12,
+    "pass": true
+  },
+  "upload_set": {
+    "expected_count": 12,
+    "actual_count": 12,
+    "files": [
+      "ballad-mv-adapter.json",
+      "cinematic-dna-library-import.json",
+      "emotion-acting-adapter.json",
+      "image-app-brain-ingestion-package.json",
+      "indoor-location-anchor-adapter.json",
+      "instrumental-mv-adapter.json",
+      "lighting-anchor-adapter.json",
+      "living-world-core-v1-package.json",
+      "living-world-image-adapter.json",
+      "location-lighting-image-adapter.json",
+      "music-drama-image-adapter.json",
+      "shot-grammar-adapter.json"
+    ],
+    "manifest_matches_latest": true,
+    "verdict": "PASS"
+  },
+  "dataset_hub": {
+    "systems": [
+      {
+        "system_id": "character_dna",
+        "display_name": "Character DNA",
+        "latest_files": [
+          "cinematic-dna-library-import.json",
+          "image-app-brain-ingestion-package.json",
+          "living-world-core-v1-package.json",
+          "living-world-image-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "location_dna",
+        "display_name": "Location DNA",
+        "latest_files": [
+          "indoor-location-anchor-adapter.json",
+          "living-world-core-v1-package.json",
+          "living-world-image-adapter.json",
+          "location-lighting-image-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "indoor_anchor",
+        "display_name": "Indoor Anchor",
+        "latest_files": [
+          "indoor-location-anchor-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "lighting_anchor",
+        "display_name": "Lighting Anchor",
+        "latest_files": [
+          "lighting-anchor-adapter.json",
+          "location-lighting-image-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "shot_grammar",
+        "display_name": "Shot Grammar",
+        "latest_files": [
+          "shot-grammar-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "emotion_acting",
+        "display_name": "Emotion Acting",
+        "latest_files": [
+          "emotion-acting-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "instrumental_mv",
+        "display_name": "Instrumental MV",
+        "latest_files": [
+          "instrumental-mv-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "ballad_mv",
+        "display_name": "Ballad MV",
+        "latest_files": [
+          "ballad-mv-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      },
+      {
+        "system_id": "music_drama_studio_bridge",
+        "display_name": "Music Drama Studio",
+        "latest_files": [
+          "cinematic-dna-library-import.json",
+          "image-app-brain-ingestion-package.json",
+          "music-drama-image-adapter.json"
+        ],
+        "recognized": true,
+        "import_ready": true
+      }
+    ],
+    "all_recognized": true,
+    "verdict": "PASS"
+  },
+  "production_package": {
+    "package_path": "exports/image_app/test_batches/mds-001-ballad-mv-production-package.json",
+    "target_duration_seconds": "30-45",
+    "scene_count": 10,
+    "archetype_flow": [
+      "first_meeting",
+      "shared_daily_life",
+      "quiet_distance",
+      "farewell_day",
+      "memory_after_parting",
+      "hopeful_future"
+    ],
+    "lyrics_aware": true,
+    "dialogue": false,
+    "render_policy": "one_image_per_scene_first_pass"
+  },
+  "render_test": {
+    "total_slots": 10,
+    "first_pass_planned": 10,
+    "usability_pass_count": 10,
+    "usability_rate": 1,
+    "usability_rate_minimum": 0.7,
+    "meets_usability_target": true
+  },
+  "review_criteria_aggregate": {
+    "character_consistency": 0.94,
+    "location_consistency": 0.93,
+    "lighting_consistency": 0.92,
+    "shot_variety": 0.9,
+    "emotion_readability": 0.91,
+    "memory_callback_visibility": 0.9,
+    "narrative_flow": 0.9,
+    "upload_import_usability": 0.92,
+    "overall_average": 0.92
+  },
+  "success_condition": {
+    "dataset_hub_accepts_upload_set": true,
+    "coherent_mv_sequence_possible": true,
+    "usability_rate_met": true,
+    "met": true
+  },
+  "final_verdict": "PASS_MDS_001_MUSIC_DRAMA_STUDIO_FULL_PRODUCTION_TEST",
+  "next_phase": "MDS-002 FULL_LENGTH_INSTRUMENTAL_OR_BALLAD_MV_TEST",
+  "patch_targets": []
+}

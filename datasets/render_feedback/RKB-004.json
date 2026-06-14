@@ -1,0 +1,20 @@
+{
+  "asset_type": "render_knowledge_base_entry",
+  "asset_version": "v1",
+  "phase": "PHASE-RKB-004",
+  "test_id": "RKB-004",
+  "test_name": "INDOOR_LOCATION_VALIDATION",
+  "test_date": "2026-06-03",
+  "comparison_baseline": "RKB-003",
+  "input_assets": {
+    "indoor_anchor_library": "datasets/location/indoor-location-anchor-library-v1.json",
+    "indoor_anchor_adapter": "exports/image_app/adapters/indoor-location-anchor-adapter.json",
+    "test_batch": "exports/image_app/test_batches/rkb-004-indoor-location-test-batch.json",
+    "scorecard": "datasets/render_feedback/RKB-004_SCORECARD.json"
+  },
+  "generation_count": 60,
+  "adapter_consumption_verdict": "PASS",
+  "success_condition_met": true,
+  "final_verdict": "PASS_RKB_004_INDOOR_LOCATION_VALIDATION",
+  "next_phase": "LTD-005 LIGHTING_ANCHOR_BUNDLE_V1"
+}

@@ -1,0 +1,78 @@
+{
+  "package_id": "movie-analysis-dna-package-v1",
+  "package_version": "v1",
+  "phase": "PHASE-SOURCE-VIDEO-059-MOVIE_ANALYSIS_DNA_PACKAGING_V1",
+  "packaged_at": "2026-06-06T03:53:17.622Z",
+  "source_count": 4,
+  "adapter_count": 24,
+  "cinematic_dna_path": "exports/movie_analysis_cinematic_dna/movie-analysis-cinematic-dna.json",
+  "integration_path": "exports/movie_analysis_cinematic_dna_integration/movie-analysis-cinematic-dna-integration.json",
+  "adapter_library_path": "exports/movie_analysis_dna_adapter_library/movie-analysis-dna-adapter-library.json",
+  "certification_report_path": "reports/movie-analysis-dna-adapter-certification-report.json",
+  "certification_verdict": "PASS_MOVIE_ANALYSIS_DNA_ADAPTER_CERTIFICATION_V1",
+  "cinematic_dna_set_id": "movie-analysis-cinematic-dna-v1",
+  "integration_set_id": "movie-analysis-cinematic-dna-integration-v1",
+  "adapter_library_id": "movie-analysis-dna-adapter-library-v1",
+  "consumer_targets": [
+    "image_app",
+    "video_app"
+  ],
+  "sources": [
+    {
+      "source_video_id": "GHIBLI_01",
+      "cinematic_dna_id": "cinematic_dna_ghibli_01_v1",
+      "integration_id": "cinematic_dna_integration_ghibli_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_ghibli_01_v1",
+      "adapter_count": 6,
+      "image_mapping_ready": true,
+      "video_mapping_ready": true,
+      "library_readiness": "READY"
+    },
+    {
+      "source_video_id": "LITTLE_WOMEN_01",
+      "cinematic_dna_id": "cinematic_dna_little_women_01_v1",
+      "integration_id": "cinematic_dna_integration_little_women_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_little_women_01_v1",
+      "adapter_count": 6,
+      "image_mapping_ready": true,
+      "video_mapping_ready": true,
+      "library_readiness": "READY"
+    },
+    {
+      "source_video_id": "MORI_01",
+      "cinematic_dna_id": "cinematic_dna_mori_01_v1",
+      "integration_id": "cinematic_dna_integration_mori_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_mori_01_v1",
+      "adapter_count": 6,
+      "image_mapping_ready": true,
+      "video_mapping_ready": true,
+      "library_readiness": "READY"
+    },
+    {
+      "source_video_id": "SHINKAI_01",
+      "cinematic_dna_id": "cinematic_dna_shinkai_01_v1",
+      "integration_id": "cinematic_dna_integration_shinkai_01_v1",
+      "adapter_library_entry_id": "dna_adapter_library_entry_shinkai_01_v1",
+      "adapter_count": 6,
+      "image_mapping_ready": true,
+      "video_mapping_ready": true,
+      "library_readiness": "READY"
+    }
+  ],
+  "package_readiness": {
+    "certification_preserved": true,
+    "dna_traceability_preserved": true,
+    "image_mapping_preserved": true,
+    "video_mapping_preserved": true,
+    "package_ready": true
+  },
+  "safety_summary": {
+    "planning_only": true,
+    "generation": false,
+    "runtime_execution": false,
+    "video_generation": false,
+    "image_generation": false,
+    "gpu_execution": false,
+    "external_call_allowed": false
+  }
+}

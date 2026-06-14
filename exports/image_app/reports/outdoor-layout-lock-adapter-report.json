@@ -1,0 +1,37 @@
+{
+  "report_type": "outdoor_layout_lock_adapter_audit",
+  "report_version": "v1",
+  "phase": "PHASE-OUTDOOR-LAYOUT-LOCK-001",
+  "generated_at": "2026-06-04T07:44:00.602Z",
+  "layout_count": 6,
+  "target_layout_count": 6,
+  "duplicate_ids": 0,
+  "runtime_fields_exported": {
+    "outdoor_layout_id": true,
+    "layout_tokens": true,
+    "render_payload": true,
+    "tokens_injected": true
+  },
+  "validation_target": "RKB-013 OUTDOOR_LAYOUT_CONTINUITY_VALIDATION",
+  "json_parse_result": "valid",
+  "validation": {
+    "all_target_layouts_present": true,
+    "duplicate_ids_zero": true,
+    "required_fields_complete": true,
+    "adapter_chain_complete": true,
+    "adapter_synced_to_latest": true,
+    "runtime_verification_exported": true,
+    "locations_resolve": true,
+    "forbidden_rules_include_core_four": true,
+    "tokens_injected": true
+  },
+  "export_path": "exports/image_app/adapters/outdoor-layout-lock-adapter.json",
+  "report_path": "exports/image_app/reports/outdoor-layout-lock-adapter-report.json",
+  "library_path": "datasets/location/outdoor-layout-lock-library-v1.json",
+  "index_path": "datasets/location/outdoor-layout-lock-index-v1.json",
+  "final_verdict": "PASS_OUTDOOR_LAYOUT_LOCK_SYSTEM_V1",
+  "violations": [],
+  "next_phases": [
+    "PHASE-RKB-013 OUTDOOR_LAYOUT_CONTINUITY_VALIDATION"
+  ]
+}

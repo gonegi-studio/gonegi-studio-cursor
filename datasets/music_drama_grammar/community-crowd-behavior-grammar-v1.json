@@ -1,0 +1,271 @@
+{
+  "asset_type": "community_crowd_behavior_grammar",
+  "asset_version": "v1",
+  "grammar_id": "community-crowd-behavior-grammar-v1",
+  "phase": "PHASE-MDG-003",
+  "world_identity": "GONEGI_MEDITERRANEAN",
+  "purpose": "Community and crowd behavior grammar for Music Drama background life. Makes villages, markets, bakeries, harbors, and streets feel alive while preserving protagonist readability.",
+  "scope": {
+    "generates_scenarios": false,
+    "generates_prompts": false,
+    "modifies_character_dna": false,
+    "modifies_style_core": false,
+    "modifies_living_world_core": false
+  },
+  "read_only_sources": {
+    "music_drama_grammar": "datasets/music_drama_grammar/music-drama-grammar-v1.json",
+    "shot_patterns": "datasets/music_drama_grammar/music-drama-shot-patterns-v1.json",
+    "scene_archetypes": "datasets/music_drama_grammar/music-drama-scene-archetypes-v1.json",
+    "daily_life_behavior_library": "datasets/music_drama_grammar/daily-life-behavior-library-v1.json",
+    "render_feedback": "datasets/render_feedback/RKB-001.json",
+    "living_world_core": "exports/shared/latest/living-world-core-v1-package.json"
+  },
+  "visibility_law": {
+    "summary": "Crowd exists to support world realism.",
+    "rules": [
+      "Crowd must never dominate frame.",
+      "Crowd must never become primary subject.",
+      "Crowd must never compete with Gonegi.",
+      "Crowd remains background support for protagonist readability."
+    ],
+    "protagonist_priority_required": true
+  },
+  "density_limits": {
+    "source": "RKB-001 + music-drama-grammar-v1",
+    "named_extras_max": 2,
+    "crowd_groups_max": 1,
+    "background_animals_max": 2,
+    "background_support_principle": true,
+    "character_readability_preservation": true
+  },
+  "rkb_integration": {
+    "test_id": "RKB-001",
+    "crowd_quality_score": 7.0,
+    "market_crowd_caution": "Use market groups sparingly; one crowd group maximum; keep Gonegi in clear foreground",
+    "crowd_deformation_risk": "MEDIUM in dense market scenes",
+    "lessons_encoded": [
+      "market crowd caution",
+      "crowd quality 7.0 lesson",
+      "background-support principle",
+      "character readability preservation"
+    ]
+  },
+  "community_behavior_types": [
+    "waiting",
+    "walking",
+    "talking",
+    "watching",
+    "working",
+    "shopping",
+    "resting",
+    "playing",
+    "eating",
+    "observing"
+  ],
+  "community_environments": [
+    "bakery",
+    "market",
+    "harbor",
+    "street",
+    "hilltop",
+    "village_square",
+    "seaside",
+    "festival_ground"
+  ],
+  "living_world_crowd_alignment": {
+    "reference_library": "crowd_grammar_library",
+    "aligned_crowd_ids": [
+      "market_crowd",
+      "dock_workers",
+      "children_playing",
+      "street_observers",
+      "harbor_commuters",
+      "bakery_queue",
+      "fish_market_group",
+      "festival_crowd"
+    ],
+    "note": "Read-only alignment reference; does not modify Living World Core"
+  },
+  "group_count": 12,
+  "groups": [
+    {
+      "group_id": "bakery_customers",
+      "label": "Bakery Customers",
+      "environment": "bakery",
+      "behavior_style": "waiting",
+      "behavior_types": ["waiting", "talking", "eating"],
+      "visibility_role": "background_queue_support",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["bakery_morning", "domestic_warmth"],
+      "recommended_archetypes": ["family_bakery_warmth"],
+      "protagonist_priority": true,
+      "ep01_compatible": true,
+      "rkb_note": "Keep queue behind protagonist; max one crowd group"
+    },
+    {
+      "group_id": "harbor_workers",
+      "label": "Harbor Workers",
+      "environment": "harbor",
+      "behavior_style": "working",
+      "behavior_types": ["working", "walking", "watching"],
+      "visibility_role": "distant_labor_background",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["harbor_edge_watch", "establishing_daily_life"],
+      "recommended_archetypes": ["harbor_edge_watch"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "dock_workers",
+      "label": "Dock Workers",
+      "environment": "harbor",
+      "behavior_style": "working",
+      "behavior_types": ["working", "watching", "talking"],
+      "visibility_role": "peripheral_labor_cluster",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["harbor_edge_watch", "establishing_daily_life"],
+      "recommended_archetypes": ["harbor_edge_watch"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "fishermen",
+      "label": "Fishermen",
+      "environment": "harbor",
+      "behavior_style": "working",
+      "behavior_types": ["working", "resting", "talking"],
+      "visibility_role": "harbor_activity_background",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["harbor_edge_watch", "establishing_daily_life"],
+      "recommended_archetypes": ["harbor_edge_watch", "gonegi_morning_routine"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "village_children",
+      "label": "Village Children",
+      "environment": "street",
+      "behavior_style": "playing",
+      "behavior_types": ["playing", "walking", "watching"],
+      "visibility_role": "peripheral_youth_motion",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["street_passage", "establishing_daily_life"],
+      "recommended_archetypes": ["village_lane_passage", "gonegi_morning_routine"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "market_visitors",
+      "label": "Market Visitors",
+      "environment": "market",
+      "behavior_style": "shopping",
+      "behavior_types": ["shopping", "walking", "watching"],
+      "visibility_role": "market_fringe_background",
+      "recommended_density": "MEDIUM",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["street_passage", "establishing_daily_life"],
+      "recommended_archetypes": ["market_edge_background", "village_lane_passage"],
+      "protagonist_priority": true,
+      "ep01_compatible": true,
+      "rkb_note": "RKB-001 market crowd caution — crowd quality 7.0; use only at market fringe"
+    },
+    {
+      "group_id": "market_vendors",
+      "label": "Market Vendors",
+      "environment": "market",
+      "behavior_style": "working",
+      "behavior_types": ["working", "talking", "observing"],
+      "visibility_role": "stall_background_support",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["street_passage", "establishing_daily_life"],
+      "recommended_archetypes": ["market_edge_background"],
+      "protagonist_priority": true,
+      "ep01_compatible": true,
+      "rkb_note": "Named extras only; never let vendor cluster dominate frame"
+    },
+    {
+      "group_id": "elderly_neighbors",
+      "label": "Elderly Neighbors",
+      "environment": "village_square",
+      "behavior_style": "talking",
+      "behavior_types": ["talking", "resting", "observing"],
+      "visibility_role": "doorway_shade_background",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["street_passage", "establishing_daily_life"],
+      "recommended_archetypes": ["village_lane_passage", "gonegi_morning_routine"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "street_observers",
+      "label": "Street Observers",
+      "environment": "street",
+      "behavior_style": "observing",
+      "behavior_types": ["observing", "watching", "resting"],
+      "visibility_role": "passive_witness_layer",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["street_passage", "establishing_daily_life"],
+      "recommended_archetypes": ["village_lane_passage", "market_edge_background"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "travelers",
+      "label": "Travelers",
+      "environment": "village_square",
+      "behavior_style": "walking",
+      "behavior_types": ["walking", "waiting", "watching"],
+      "visibility_role": "transient_pass_through",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["street_passage", "establishing_daily_life"],
+      "recommended_archetypes": ["village_lane_passage", "gonegi_morning_routine"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "seaside_resters",
+      "label": "Seaside Resters",
+      "environment": "seaside",
+      "behavior_style": "resting",
+      "behavior_types": ["resting", "watching", "observing"],
+      "visibility_role": "distant_harbor_edge_background",
+      "recommended_density": "LOW",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["harbor_edge_watch", "quiet_solitude"],
+      "recommended_archetypes": ["harbor_edge_watch"],
+      "protagonist_priority": true,
+      "ep01_compatible": true
+    },
+    {
+      "group_id": "festival_visitors",
+      "label": "Festival Visitors",
+      "environment": "festival_ground",
+      "behavior_style": "watching",
+      "behavior_types": ["watching", "walking", "talking"],
+      "visibility_role": "peripheral_celebration_background",
+      "recommended_density": "MEDIUM",
+      "max_visible_count": 2,
+      "recommended_shot_patterns": ["establishing_daily_life", "street_passage"],
+      "recommended_archetypes": ["market_edge_background", "village_lane_passage"],
+      "protagonist_priority": true,
+      "ep01_compatible": false,
+      "ep01_note": "Reserved for post-EP01 festival scenes; not for EP01 daily-life tests"
+    }
+  ],
+  "quality_targets": [
+    "EP01 daily life support",
+    "ordinary village realism",
+    "music drama background life",
+    "low-risk crowd rendering",
+    "high protagonist readability"
+  ]
+}
