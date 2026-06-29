@@ -1,0 +1,162 @@
+{
+  "project_knowledge_readiness_certification_v1_id": "project_knowledge_readiness_certification_v1",
+  "project_knowledge_readiness_certification_v1_version": "project_knowledge_readiness_certification_v1",
+  "generated_at": "2026-06-29T03:50:43.224Z",
+  "project_knowledge_validation_model_v1_ref": "datasets/project_knowledge/project-knowledge-validation-model-v1.json",
+  "project_knowledge_layer_verification_intelligence": {
+    "intelligence_id": "project_knowledge_layer_verification_intelligence_v1",
+    "project_knowledge_layer_verification_model": {
+      "model_id": "project_knowledge_layer_verification_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "verified": true,
+      "knowledge_model_v1_ref": "datasets/project_knowledge/project-knowledge-model-v1.json",
+      "knowledge_layer_verified": true
+    }
+  },
+  "project_ontology_layer_verification_intelligence": {
+    "intelligence_id": "project_ontology_layer_verification_intelligence_v1",
+    "project_ontology_layer_verification_model": {
+      "model_id": "project_ontology_layer_verification_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "verified": true,
+      "ontology_v1_ref": "datasets/project_knowledge/project-ontology-v1.json",
+      "ontology_layer_verified": true
+    }
+  },
+  "project_knowledge_graph_verification_intelligence": {
+    "intelligence_id": "project_knowledge_graph_verification_intelligence_v1",
+    "project_knowledge_graph_verification_model": {
+      "model_id": "project_knowledge_graph_verification_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "verified": true,
+      "semantic_relationship_model_v1_ref": "datasets/project_knowledge/project-semantic-relationship-model-v1.json",
+      "knowledge_graph_v1_ref": "datasets/project_knowledge/project-knowledge-graph-v1.json",
+      "knowledge_graph_verified": true
+    }
+  },
+  "project_context_reasoning_query_verification_intelligence": {
+    "intelligence_id": "project_context_reasoning_query_verification_intelligence_v1",
+    "project_context_reasoning_query_verification_model": {
+      "model_id": "project_context_reasoning_query_verification_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "verified": true,
+      "context_memory_v1_ref": "datasets/project_knowledge/project-context-memory-v1.json",
+      "reasoning_model_v1_ref": "datasets/project_knowledge/project-reasoning-model-v1.json",
+      "query_model_v1_ref": "datasets/project_knowledge/project-knowledge-query-model-v1.json",
+      "context_reasoning_query_verified": true
+    }
+  },
+  "project_validation_layer_verification_intelligence": {
+    "intelligence_id": "project_validation_layer_verification_intelligence_v1",
+    "project_validation_layer_verification_model": {
+      "model_id": "project_validation_layer_verification_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "verified": true,
+      "validation_model_v1_ref": "datasets/project_knowledge/project-knowledge-validation-model-v1.json",
+      "validation_layer_verified": true
+    }
+  },
+  "project_knowledge_readiness_report_intelligence": {
+    "intelligence_id": "project_knowledge_readiness_report_intelligence_v1",
+    "project_knowledge_readiness_report_model": {
+      "model_id": "project_knowledge_readiness_report_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "knowledge_ready": true,
+      "repository_bootstrap_ready": true,
+      "execution_mode_ready": true,
+      "rip_ready": true,
+      "knowledge_version": 1,
+      "all_knowledge_checks_passed": true,
+      "readiness_report_generated": true
+    }
+  },
+  "project_knowledge_readiness_certification_model_intelligence": {
+    "intelligence_id": "project_knowledge_readiness_certification_model_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "project_knowledge_readiness_certification_validation_intelligence": {
+    "intelligence_id": "project_knowledge_readiness_certification_validation_intelligence_v1",
+    "project_knowledge_readiness_certification_validation_model": {
+      "model_id": "project_knowledge_readiness_certification_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "project_knowledge_validation_model_available": {
+        "validated": true,
+        "validation_model_ref": "datasets/project_knowledge/project-knowledge-validation-model-v1.json"
+      }
+    }
+  },
+  "project_knowledge_readiness_certification_metrics": {
+    "metrics_id": "project_knowledge_readiness_certification_metrics_v1",
+    "project_knowledge_readiness_certification_score": {
+      "score_id": "project_knowledge_readiness_certification_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "project_knowledge_readiness_certification_status": {
+    "knowledge_layer_verified": true,
+    "ontology_layer_verified": true,
+    "knowledge_graph_verified": true,
+    "context_reasoning_query_verified": true,
+    "validation_layer_verified": true,
+    "readiness_report_generated": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "project_knowledge_certified": true,
+    "bootstrap_completed": false
+  }
+}

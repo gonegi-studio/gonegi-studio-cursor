@@ -1,0 +1,272 @@
+{
+  "project_semantic_relationship_model_v1_id": "project_semantic_relationship_model_v1",
+  "project_semantic_relationship_model_v1_version": "project_semantic_relationship_model_v1",
+  "generated_at": "2026-06-29T01:49:48.564Z",
+  "project_ontology_v1_ref": "datasets/project_knowledge/project-ontology-v1.json",
+  "project_semantic_relationship_model_intelligence": {
+    "intelligence_id": "project_semantic_relationship_model_intelligence_v1",
+    "critical_model": "project_semantic_relationship_model",
+    "project_semantic_relationship_model": {
+      "model_id": "project_semantic_relationship_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "relationship_model_id": "project_semantic_relationship_model_v1",
+      "relationship_version": 1,
+      "project_ontology_v1_ref": "datasets/project_knowledge/project-ontology-v1.json",
+      "project_semantic_relationship_model_defined": true,
+      "project_semantic_relationship_model_ready": true
+    }
+  },
+  "project_semantic_relationship_types_intelligence": {
+    "intelligence_id": "project_semantic_relationship_types_intelligence_v1",
+    "critical_model": "project_semantic_relationship_types_model",
+    "project_semantic_relationship_types_model": {
+      "model_id": "project_semantic_relationship_types_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "relationship_types": {
+        "depends_on": {
+          "relationship_type": "depends_on",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "imports": {
+          "relationship_type": "imports",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "exports": {
+          "relationship_type": "exports",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "generates": {
+          "relationship_type": "generates",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "validates": {
+          "relationship_type": "validates",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "references": {
+          "relationship_type": "references",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "belongs_to": {
+          "relationship_type": "belongs_to",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "derived_from": {
+          "relationship_type": "derived_from",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "extends": {
+          "relationship_type": "extends",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "replaces": {
+          "relationship_type": "replaces",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "semantic_relationship_types_defined": true,
+      "semantic_relationship_types_ready": true
+    }
+  },
+  "project_relationship_direction_intelligence": {
+    "intelligence_id": "project_relationship_direction_intelligence_v1",
+    "critical_model": "project_relationship_direction_model",
+    "project_relationship_direction_model": {
+      "model_id": "project_relationship_direction_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "direction_fields": {
+        "source_entity": {
+          "field_id": "source_entity",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "target_entity": {
+          "field_id": "target_entity",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "relationship_strength": {
+          "field_id": "relationship_strength",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "relationship_priority": {
+          "field_id": "relationship_priority",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "bidirectional_supported": {
+          "field_id": "bidirectional_supported",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true,
+          "value": true
+        }
+      },
+      "source_entity": true,
+      "target_entity": true,
+      "relationship_strength": true,
+      "relationship_priority": true,
+      "bidirectional_supported": true,
+      "relationship_direction_defined": true,
+      "relationship_direction_ready": true
+    }
+  },
+  "project_relationship_validation_intelligence": {
+    "intelligence_id": "project_relationship_validation_intelligence_v1",
+    "critical_model": "project_relationship_validation_model",
+    "project_relationship_validation_model": {
+      "model_id": "project_relationship_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "relationship_validation": true,
+      "semantic_graph_validation": true,
+      "cycle_detection_supported": true,
+      "orphan_relationship_check": true,
+      "relationship_validation_defined": true,
+      "relationship_validation_ready": true
+    }
+  },
+  "project_relationship_versioning_intelligence": {
+    "intelligence_id": "project_relationship_versioning_intelligence_v1",
+    "critical_model": "project_relationship_versioning_model",
+    "project_relationship_versioning_model": {
+      "model_id": "project_relationship_versioning_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "relationship_version": 1,
+      "lineage_supported": true,
+      "history_supported": true,
+      "relationship_versioning_defined": true,
+      "relationship_versioning_ready": true
+    }
+  },
+  "project_semantic_relationship_model_rip_intelligence": {
+    "intelligence_id": "project_semantic_relationship_model_rip_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "project_semantic_relationship_model_validation_intelligence": {
+    "intelligence_id": "project_semantic_relationship_model_validation_intelligence_v1",
+    "project_semantic_relationship_model_validation_model": {
+      "model_id": "project_semantic_relationship_model_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "project_ontology_available": {
+        "validated": true,
+        "ontology_ref": "datasets/project_knowledge/project-ontology-v1.json"
+      }
+    }
+  },
+  "project_semantic_relationship_model_metrics": {
+    "metrics_id": "project_semantic_relationship_model_metrics_v1",
+    "project_semantic_relationship_model_score": {
+      "score_id": "project_semantic_relationship_model_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "project_semantic_relationship_model_status": {
+    "project_semantic_relationship_model_defined": true,
+    "semantic_relationship_types_defined": true,
+    "relationship_direction_defined": true,
+    "relationship_validation_defined": true,
+    "relationship_versioning_defined": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "project_semantic_relationship_model_ready": true,
+    "bootstrap_completed": false
+  }
+}

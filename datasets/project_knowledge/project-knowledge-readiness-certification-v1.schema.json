@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/project_knowledge/project-knowledge-readiness-certification-v1.schema.json",
+  "title": "ProjectKnowledgeReadinessCertificationV1Engine",
+  "description": "Planning-only Project Knowledge Readiness Certification without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "project_knowledge_readiness_certification_v1_id",
+    "project_knowledge_readiness_certification_v1_version",
+    "generated_at",
+    "project_knowledge_validation_model_v1_ref",
+    "project_knowledge_layer_verification_intelligence",
+    "project_ontology_layer_verification_intelligence",
+    "project_knowledge_graph_verification_intelligence",
+    "project_context_reasoning_query_verification_intelligence",
+    "project_validation_layer_verification_intelligence",
+    "project_knowledge_readiness_report_intelligence",
+    "project_knowledge_readiness_certification_model_intelligence",
+    "project_knowledge_readiness_certification_validation_intelligence",
+    "project_knowledge_readiness_certification_metrics",
+    "project_knowledge_readiness_certification_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "project_knowledge_readiness_certification_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_knowledge_readiness_certification_v1_version": {
+      "type": "string",
+      "const": "project_knowledge_readiness_certification_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project_knowledge_validation_model_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_knowledge_layer_verification_intelligence": {
+      "type": "object"
+    },
+    "project_ontology_layer_verification_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_graph_verification_intelligence": {
+      "type": "object"
+    },
+    "project_context_reasoning_query_verification_intelligence": {
+      "type": "object"
+    },
+    "project_validation_layer_verification_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_readiness_report_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_readiness_certification_model_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_readiness_certification_validation_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_readiness_certification_metrics": {
+      "type": "object"
+    },
+    "project_knowledge_readiness_certification_status": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "project_knowledge_validation_model_v1_id": "project_knowledge_validation_model_v1",
+  "project_knowledge_validation_model_v1_version": "project_knowledge_validation_model_v1",
+  "generated_at": "2026-06-29T02:55:46.268Z",
+  "project_knowledge_query_model_v1_ref": "datasets/project_knowledge/project-knowledge-query-model-v1.json",
+  "project_knowledge_validation_model_intelligence": {
+    "intelligence_id": "project_knowledge_validation_model_intelligence_v1",
+    "critical_model": "project_knowledge_validation_model",
+    "project_knowledge_validation_model": {
+      "model_id": "project_knowledge_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "validation_model_id": "project_knowledge_validation_model_v1",
+      "validation_version": 1,
+      "project_knowledge_query_model_v1_ref": "datasets/project_knowledge/project-knowledge-query-model-v1.json",
+      "project_knowledge_validation_model_defined": true,
+      "project_knowledge_validation_model_ready": true
+    }
+  },
+  "project_knowledge_validation_types_intelligence": {
+    "intelligence_id": "project_knowledge_validation_types_intelligence_v1",
+    "critical_model": "project_knowledge_validation_types_model",
+    "project_knowledge_validation_types_model": {
+      "model_id": "project_knowledge_validation_types_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "validation_types": {
+        "knowledge_validation": {
+          "validation_type": "knowledge_validation",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "ontology_validation": {
+          "validation_type": "ontology_validation",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "graph_validation": {
+          "validation_type": "graph_validation",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "context_validation": {
+          "validation_type": "context_validation",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "reasoning_validation": {
+          "validation_type": "reasoning_validation",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "query_validation": {
+          "validation_type": "query_validation",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "validation_types_defined": true,
+      "validation_types_ready": true
+    }
+  },
+  "project_knowledge_validation_metrics_intelligence": {
+    "intelligence_id": "project_knowledge_validation_metrics_intelligence_v1",
+    "critical_model": "project_knowledge_validation_metrics_model",
+    "project_knowledge_validation_metrics_model": {
+      "model_id": "project_knowledge_validation_metrics_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "validation_metrics": {
+        "knowledge_completeness": {
+          "metric_id": "knowledge_completeness",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "relationship_integrity": {
+          "metric_id": "relationship_integrity",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "reasoning_accuracy": {
+          "metric_id": "reasoning_accuracy",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "query_accuracy": {
+          "metric_id": "query_accuracy",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "context_consistency": {
+          "metric_id": "context_consistency",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "validation_confidence": {
+          "metric_id": "validation_confidence",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "validation_metrics_defined": true,
+      "validation_metrics_ready": true
+    }
+  },
+  "project_knowledge_validation_rules_intelligence": {
+    "intelligence_id": "project_knowledge_validation_rules_intelligence_v1",
+    "critical_model": "project_knowledge_validation_rules_model",
+    "project_knowledge_validation_rules_model": {
+      "model_id": "project_knowledge_validation_rules_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "cross_validation": true,
+      "multi_layer_validation": true,
+      "consistency_validation": true,
+      "knowledge_gap_detection": true,
+      "validation_rules_defined": true,
+      "validation_rules_ready": true
+    }
+  },
+  "project_knowledge_validation_output_intelligence": {
+    "intelligence_id": "project_knowledge_validation_output_intelligence_v1",
+    "critical_model": "project_knowledge_validation_output_model",
+    "project_knowledge_validation_output_model": {
+      "model_id": "project_knowledge_validation_output_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "output_fields": {
+        "validation_score": {
+          "field_id": "validation_score",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "knowledge_readiness": {
+          "field_id": "knowledge_readiness",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "validation_trace": {
+          "field_id": "validation_trace",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "validation_result": {
+          "field_id": "validation_result",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "validation_score": true,
+      "knowledge_readiness": true,
+      "validation_trace": "project_knowledge_validation_trace_v1",
+      "validation_result": true,
+      "validation_output_defined": true,
+      "validation_output_ready": true
+    }
+  },
+  "project_knowledge_validation_model_rip_intelligence": {
+    "intelligence_id": "project_knowledge_validation_model_rip_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "project_knowledge_validation_model_contract_validation_intelligence": {
+    "intelligence_id": "project_knowledge_validation_model_contract_validation_intelligence_v1",
+    "project_knowledge_validation_model_contract_validation_model": {
+      "model_id": "project_knowledge_validation_model_contract_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "project_knowledge_query_model_available": {
+        "validated": true,
+        "query_model_ref": "datasets/project_knowledge/project-knowledge-query-model-v1.json"
+      }
+    }
+  },
+  "project_knowledge_validation_model_metrics": {
+    "metrics_id": "project_knowledge_validation_model_metrics_v1",
+    "project_knowledge_validation_model_score": {
+      "score_id": "project_knowledge_validation_model_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "project_knowledge_validation_model_status": {
+    "project_knowledge_validation_model_defined": true,
+    "validation_types_defined": true,
+    "validation_metrics_defined": true,
+    "validation_rules_defined": true,
+    "validation_output_defined": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "project_knowledge_validation_model_ready": true,
+    "bootstrap_completed": false
+  }
+}

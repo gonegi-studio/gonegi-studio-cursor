@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/project_knowledge/project-knowledge-graph-v1.schema.json",
+  "title": "ProjectKnowledgeGraphV1Engine",
+  "description": "Planning-only permanent Project Knowledge Graph without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "project_knowledge_graph_v1_id",
+    "project_knowledge_graph_v1_version",
+    "generated_at",
+    "project_semantic_relationship_model_v1_ref",
+    "project_knowledge_graph_model_intelligence",
+    "project_knowledge_graph_nodes_intelligence",
+    "project_knowledge_graph_edges_intelligence",
+    "project_graph_navigation_intelligence",
+    "project_graph_integrity_intelligence",
+    "project_knowledge_graph_rip_intelligence",
+    "project_knowledge_graph_validation_intelligence",
+    "project_knowledge_graph_metrics",
+    "project_knowledge_graph_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "project_knowledge_graph_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_knowledge_graph_v1_version": {
+      "type": "string",
+      "const": "project_knowledge_graph_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project_semantic_relationship_model_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_knowledge_graph_model_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_graph_nodes_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_graph_edges_intelligence": {
+      "type": "object"
+    },
+    "project_graph_navigation_intelligence": {
+      "type": "object"
+    },
+    "project_graph_integrity_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_graph_rip_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_graph_validation_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_graph_metrics": {
+      "type": "object"
+    },
+    "project_knowledge_graph_status": {
+      "type": "object"
+    }
+  }
+}

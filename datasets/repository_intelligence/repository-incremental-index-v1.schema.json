@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/repository_intelligence/repository-incremental-index-v1.schema.json",
+  "title": "ProjectRepositoryIncrementalIndexV1Engine",
+  "description": "Planning-only permanent Incremental Repository Index without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "repository_incremental_index_v1_id",
+    "repository_incremental_index_v1_version",
+    "generated_at",
+    "repository_bootstrap_policy_v1_ref",
+    "repository_incremental_index_intelligence",
+    "repository_change_detection_intelligence",
+    "repository_update_policy_intelligence",
+    "repository_consistency_intelligence",
+    "repository_incremental_index_model_intelligence",
+    "repository_incremental_index_validation_intelligence",
+    "repository_incremental_index_metrics",
+    "repository_incremental_index_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repository_incremental_index_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_incremental_index_v1_version": {
+      "type": "string",
+      "const": "repository_incremental_index_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_bootstrap_policy_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_incremental_index_intelligence": {
+      "type": "object"
+    },
+    "repository_change_detection_intelligence": {
+      "type": "object"
+    },
+    "repository_update_policy_intelligence": {
+      "type": "object"
+    },
+    "repository_consistency_intelligence": {
+      "type": "object"
+    },
+    "repository_incremental_index_model_intelligence": {
+      "type": "object"
+    },
+    "repository_incremental_index_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_incremental_index_metrics": {
+      "type": "object"
+    },
+    "repository_incremental_index_status": {
+      "type": "object"
+    }
+  }
+}

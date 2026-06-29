@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/repository_intelligence/repository-bootstrap-v1.schema.json",
+  "title": "ProjectRepositoryIntelligenceBootstrapV1Engine",
+  "description": "Planning-only permanent Repository Intelligence bootstrap architecture without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "repository_bootstrap_v1_id",
+    "repository_bootstrap_v1_version",
+    "generated_at",
+    "repository_real_cleanup_execution_audit_v10_ref",
+    "repository_intelligence_architecture_intelligence",
+    "repository_cache_structure_intelligence",
+    "repository_bootstrap_policy_intelligence",
+    "repository_continuous_intelligence_intelligence",
+    "repository_intelligence_bootstrap_model_intelligence",
+    "repository_intelligence_bootstrap_validation_intelligence",
+    "repository_intelligence_bootstrap_metrics",
+    "repository_intelligence_bootstrap_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repository_bootstrap_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_bootstrap_v1_version": {
+      "type": "string",
+      "const": "repository_bootstrap_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_real_cleanup_execution_audit_v10_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_intelligence_architecture_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_structure_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_policy_intelligence": {
+      "type": "object"
+    },
+    "repository_continuous_intelligence_intelligence": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_model_intelligence": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_metrics": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_status": {
+      "type": "object"
+    }
+  }
+}

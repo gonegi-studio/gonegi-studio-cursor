@@ -1,0 +1,196 @@
+{
+  "repository_bootstrap_execution_plan_v1_id": "repository_bootstrap_execution_plan_v1",
+  "repository_bootstrap_execution_plan_v1_version": "repository_bootstrap_execution_plan_v1",
+  "generated_at": "2026-06-29T01:07:09.880Z",
+  "repository_bootstrap_dry_run_v1_ref": "datasets/repository_intelligence/repository-bootstrap-dry-run-v1.json",
+  "repository_execution_stages_intelligence": {
+    "intelligence_id": "repository_execution_stages_intelligence_v1",
+    "critical_model": "repository_execution_stages_model",
+    "repository_execution_stages_model": {
+      "model_id": "repository_execution_stages_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "bootstrap_stage_order": {
+        "component_id": "bootstrap_stage_order",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "checkpoint_plan": {
+        "component_id": "checkpoint_plan",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "rollback_plan": {
+        "component_id": "rollback_plan",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "execution_manifest": {
+        "component_id": "execution_manifest",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_execution_stages_ready": true
+    }
+  },
+  "repository_scan_strategy_intelligence": {
+    "intelligence_id": "repository_scan_strategy_intelligence_v1",
+    "critical_model": "repository_scan_strategy_model",
+    "repository_scan_strategy_model": {
+      "model_id": "repository_scan_strategy_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "metadata_stage": {
+        "component_id": "metadata_stage",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "hash_stage": {
+        "component_id": "hash_stage",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "dependency_stage": {
+        "component_id": "dependency_stage",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "content_stage": {
+        "component_id": "content_stage",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "incremental_stage": {
+        "component_id": "incremental_stage",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_scan_strategy_ready": true
+    }
+  },
+  "repository_resource_strategy_intelligence": {
+    "intelligence_id": "repository_resource_strategy_intelligence_v1",
+    "critical_model": "repository_resource_strategy_model",
+    "repository_resource_strategy_model": {
+      "model_id": "repository_resource_strategy_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "batch_processing": true,
+      "checkpoint_supported": true,
+      "resume_supported": true,
+      "memory_safe": true,
+      "repository_resource_strategy_ready": true
+    }
+  },
+  "repository_failure_recovery_intelligence": {
+    "intelligence_id": "repository_failure_recovery_intelligence_v1",
+    "critical_model": "repository_failure_recovery_model",
+    "repository_failure_recovery_model": {
+      "model_id": "repository_failure_recovery_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "partial_failure_supported": true,
+      "resume_after_failure": true,
+      "checkpoint_validation": true,
+      "rollback_validation": true,
+      "repository_failure_recovery_ready": true
+    }
+  },
+  "repository_bootstrap_execution_plan_model_intelligence": {
+    "intelligence_id": "repository_bootstrap_execution_plan_model_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "repository_bootstrap_execution_plan_validation_intelligence": {
+    "intelligence_id": "repository_bootstrap_execution_plan_validation_intelligence_v1",
+    "repository_bootstrap_execution_plan_validation_model": {
+      "model_id": "repository_bootstrap_execution_plan_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "repository_bootstrap_dry_run_available": {
+        "validated": true,
+        "dry_run_ref": "datasets/repository_intelligence/repository-bootstrap-dry-run-v1.json"
+      }
+    }
+  },
+  "repository_bootstrap_execution_plan_metrics": {
+    "metrics_id": "repository_bootstrap_execution_plan_metrics_v1",
+    "repository_bootstrap_execution_plan_score": {
+      "score_id": "repository_bootstrap_execution_plan_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "repository_bootstrap_execution_plan_status": {
+    "repository_execution_stages_defined": true,
+    "repository_scan_strategy_defined": true,
+    "repository_resource_strategy_defined": true,
+    "repository_failure_recovery_defined": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "repository_bootstrap_execution_plan_ready": true,
+    "bootstrap_completed": false
+  }
+}

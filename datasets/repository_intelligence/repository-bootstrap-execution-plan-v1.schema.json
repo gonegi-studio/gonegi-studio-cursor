@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/repository_intelligence/repository-bootstrap-execution-plan-v1.schema.json",
+  "title": "ProjectRepositoryBootstrapExecutionPlanV1Engine",
+  "description": "Planning-only Repository Bootstrap Execution Plan without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "repository_bootstrap_execution_plan_v1_id",
+    "repository_bootstrap_execution_plan_v1_version",
+    "generated_at",
+    "repository_bootstrap_dry_run_v1_ref",
+    "repository_execution_stages_intelligence",
+    "repository_scan_strategy_intelligence",
+    "repository_resource_strategy_intelligence",
+    "repository_failure_recovery_intelligence",
+    "repository_bootstrap_execution_plan_model_intelligence",
+    "repository_bootstrap_execution_plan_validation_intelligence",
+    "repository_bootstrap_execution_plan_metrics",
+    "repository_bootstrap_execution_plan_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repository_bootstrap_execution_plan_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_bootstrap_execution_plan_v1_version": {
+      "type": "string",
+      "const": "repository_bootstrap_execution_plan_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_bootstrap_dry_run_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_execution_stages_intelligence": {
+      "type": "object"
+    },
+    "repository_scan_strategy_intelligence": {
+      "type": "object"
+    },
+    "repository_resource_strategy_intelligence": {
+      "type": "object"
+    },
+    "repository_failure_recovery_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_execution_plan_model_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_execution_plan_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_execution_plan_metrics": {
+      "type": "object"
+    },
+    "repository_bootstrap_execution_plan_status": {
+      "type": "object"
+    }
+  }
+}

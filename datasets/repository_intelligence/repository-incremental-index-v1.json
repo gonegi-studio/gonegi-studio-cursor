@@ -1,0 +1,216 @@
+{
+  "repository_incremental_index_v1_id": "repository_incremental_index_v1",
+  "repository_incremental_index_v1_version": "repository_incremental_index_v1",
+  "generated_at": "2026-06-29T00:22:12.446Z",
+  "repository_bootstrap_policy_v1_ref": "datasets/repository_intelligence/repository-bootstrap-policy-v1.json",
+  "repository_incremental_index_intelligence": {
+    "intelligence_id": "repository_incremental_index_intelligence_v1",
+    "critical_model": "repository_incremental_index_model",
+    "repository_incremental_index_model": {
+      "model_id": "repository_incremental_index_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "file_identity": {
+        "field_id": "file_identity",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "content_hash": {
+        "field_id": "content_hash",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "timestamp": {
+        "field_id": "timestamp",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "rename_tracking": {
+        "field_id": "rename_tracking",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "lineage_tracking": {
+        "field_id": "lineage_tracking",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_version": {
+        "field_id": "repository_version",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_incremental_index_ready": true
+    }
+  },
+  "repository_change_detection_intelligence": {
+    "intelligence_id": "repository_change_detection_intelligence_v1",
+    "critical_model": "repository_change_detection_model",
+    "repository_change_detection_model": {
+      "model_id": "repository_change_detection_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "new_file": {
+        "change_type_id": "new_file",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "modified_file": {
+        "change_type_id": "modified_file",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "deleted_file": {
+        "change_type_id": "deleted_file",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "renamed_file": {
+        "change_type_id": "renamed_file",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "unchanged_file": {
+        "change_type_id": "unchanged_file",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "hash_changed": {
+        "change_type_id": "hash_changed",
+        "defined": true,
+        "planning_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_change_detection_ready": true
+    }
+  },
+  "repository_update_policy_intelligence": {
+    "intelligence_id": "repository_update_policy_intelligence_v1",
+    "critical_model": "repository_update_policy_model",
+    "repository_update_policy_model": {
+      "model_id": "repository_update_policy_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "changed_files_only": true,
+      "incremental_update": true,
+      "full_rescan_required": false,
+      "incremental_checkpoint_supported": true,
+      "repository_update_policy_ready": true
+    }
+  },
+  "repository_consistency_intelligence": {
+    "intelligence_id": "repository_consistency_intelligence_v1",
+    "critical_model": "repository_consistency_model",
+    "repository_consistency_model": {
+      "model_id": "repository_consistency_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "cache_validation": true,
+      "incremental_consistency_check": true,
+      "cache_integrity_check": true,
+      "repository_consistency_ready": true
+    }
+  },
+  "repository_incremental_index_model_intelligence": {
+    "intelligence_id": "repository_incremental_index_model_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "repository_incremental_index_validation_intelligence": {
+    "intelligence_id": "repository_incremental_index_validation_intelligence_v1",
+    "repository_incremental_index_validation_model": {
+      "model_id": "repository_incremental_index_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "repository_intelligence_bootstrap_policy_available": {
+        "validated": true,
+        "policy_ref": "datasets/repository_intelligence/repository-bootstrap-policy-v1.json"
+      }
+    }
+  },
+  "repository_incremental_index_metrics": {
+    "metrics_id": "repository_incremental_index_metrics_v1",
+    "repository_incremental_index_score": {
+      "score_id": "repository_incremental_index_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "repository_incremental_index_status": {
+    "repository_incremental_index_defined": true,
+    "repository_change_detection_defined": true,
+    "repository_update_policy_defined": true,
+    "repository_consistency_defined": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "repository_incremental_index_ready": true,
+    "bootstrap_completed": false
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "project_knowledge_query_model_v1_id": "project_knowledge_query_model_v1",
+  "project_knowledge_query_model_v1_version": "project_knowledge_query_model_v1",
+  "generated_at": "2026-06-29T02:47:21.610Z",
+  "project_reasoning_model_v1_ref": "datasets/project_knowledge/project-reasoning-model-v1.json",
+  "project_knowledge_query_model_intelligence": {
+    "intelligence_id": "project_knowledge_query_model_intelligence_v1",
+    "critical_model": "project_knowledge_query_model",
+    "project_knowledge_query_model": {
+      "model_id": "project_knowledge_query_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "query_model_id": "project_knowledge_query_model_v1",
+      "query_version": 1,
+      "project_reasoning_model_v1_ref": "datasets/project_knowledge/project-reasoning-model-v1.json",
+      "project_knowledge_query_model_defined": true,
+      "project_knowledge_query_model_ready": true
+    }
+  },
+  "project_knowledge_query_types_intelligence": {
+    "intelligence_id": "project_knowledge_query_types_intelligence_v1",
+    "critical_model": "project_knowledge_query_types_model",
+    "project_knowledge_query_types_model": {
+      "model_id": "project_knowledge_query_types_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "query_types": {
+        "semantic_query": {
+          "query_type": "semantic_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "dependency_query": {
+          "query_type": "dependency_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "impact_query": {
+          "query_type": "impact_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "lineage_query": {
+          "query_type": "lineage_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "context_query": {
+          "query_type": "context_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "reasoning_query": {
+          "query_type": "reasoning_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "query_types_defined": true,
+      "query_types_ready": true
+    }
+  },
+  "project_knowledge_query_scope_intelligence": {
+    "intelligence_id": "project_knowledge_query_scope_intelligence_v1",
+    "critical_model": "project_knowledge_query_scope_model",
+    "project_knowledge_query_scope_model": {
+      "model_id": "project_knowledge_query_scope_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "query_scopes": {
+        "global_query": {
+          "scope_id": "global_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "domain_query": {
+          "scope_id": "domain_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "subgraph_query": {
+          "scope_id": "subgraph_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "entity_query": {
+          "scope_id": "entity_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "incremental_query": {
+          "scope_id": "incremental_query",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "query_scope_defined": true,
+      "query_scope_ready": true
+    }
+  },
+  "project_knowledge_query_flow_intelligence": {
+    "intelligence_id": "project_knowledge_query_flow_intelligence_v1",
+    "critical_model": "project_knowledge_query_flow_model",
+    "project_knowledge_query_flow_model": {
+      "model_id": "project_knowledge_query_flow_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "flow_fields": {
+        "query_input": {
+          "field_id": "query_input",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "query_plan": {
+          "field_id": "query_plan",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "query_result": {
+          "field_id": "query_result",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "query_confidence": {
+          "field_id": "query_confidence",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "query_trace_id": {
+          "field_id": "query_trace_id",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "query_input": true,
+      "query_plan": true,
+      "query_result": true,
+      "query_confidence": true,
+      "query_trace_id": "project_knowledge_query_trace_v1",
+      "query_flow_defined": true,
+      "query_flow_ready": true
+    }
+  },
+  "project_knowledge_query_rules_intelligence": {
+    "intelligence_id": "project_knowledge_query_rules_intelligence_v1",
+    "critical_model": "project_knowledge_query_rules_model",
+    "project_knowledge_query_rules_model": {
+      "model_id": "project_knowledge_query_rules_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "cache_first_query": true,
+      "knowledge_graph_query": true,
+      "multi_hop_query": true,
+      "semantic_filter_supported": true,
+      "query_rules_defined": true,
+      "query_rules_ready": true
+    }
+  },
+  "project_knowledge_query_validation_intelligence": {
+    "intelligence_id": "project_knowledge_query_validation_intelligence_v1",
+    "critical_model": "project_knowledge_query_validation_model",
+    "project_knowledge_query_validation_model": {
+      "model_id": "project_knowledge_query_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "query_validation": true,
+      "query_consistency_check": true,
+      "query_version": 1,
+      "query_validation_defined": true,
+      "query_validation_ready": true
+    }
+  },
+  "project_knowledge_query_model_rip_intelligence": {
+    "intelligence_id": "project_knowledge_query_model_rip_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "project_knowledge_query_model_contract_validation_intelligence": {
+    "intelligence_id": "project_knowledge_query_model_contract_validation_intelligence_v1",
+    "project_knowledge_query_model_contract_validation_model": {
+      "model_id": "project_knowledge_query_model_contract_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "project_reasoning_model_available": {
+        "validated": true,
+        "reasoning_model_ref": "datasets/project_knowledge/project-reasoning-model-v1.json"
+      }
+    }
+  },
+  "project_knowledge_query_model_metrics": {
+    "metrics_id": "project_knowledge_query_model_metrics_v1",
+    "project_knowledge_query_model_score": {
+      "score_id": "project_knowledge_query_model_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "project_knowledge_query_model_status": {
+    "project_knowledge_query_model_defined": true,
+    "query_types_defined": true,
+    "query_scope_defined": true,
+    "query_flow_defined": true,
+    "query_rules_defined": true,
+    "query_validation_defined": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "project_knowledge_query_model_ready": true,
+    "bootstrap_completed": false
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/project_knowledge/project-ontology-v1.schema.json",
+  "title": "ProjectOntologyV1Engine",
+  "description": "Planning-only permanent Project Ontology without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "project_ontology_v1_id",
+    "project_ontology_v1_version",
+    "generated_at",
+    "project_knowledge_model_v1_ref",
+    "project_ontology_model_intelligence",
+    "project_domains_intelligence",
+    "project_entity_roles_intelligence",
+    "project_semantic_categories_intelligence",
+    "project_knowledge_rules_intelligence",
+    "project_ontology_rip_intelligence",
+    "project_ontology_validation_intelligence",
+    "project_ontology_metrics",
+    "project_ontology_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "project_ontology_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_ontology_v1_version": {
+      "type": "string",
+      "const": "project_ontology_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project_knowledge_model_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_ontology_model_intelligence": {
+      "type": "object"
+    },
+    "project_domains_intelligence": {
+      "type": "object"
+    },
+    "project_entity_roles_intelligence": {
+      "type": "object"
+    },
+    "project_semantic_categories_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_rules_intelligence": {
+      "type": "object"
+    },
+    "project_ontology_rip_intelligence": {
+      "type": "object"
+    },
+    "project_ontology_validation_intelligence": {
+      "type": "object"
+    },
+    "project_ontology_metrics": {
+      "type": "object"
+    },
+    "project_ontology_status": {
+      "type": "object"
+    }
+  }
+}

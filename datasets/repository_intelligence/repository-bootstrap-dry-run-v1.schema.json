@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/repository_intelligence/repository-bootstrap-dry-run-v1.schema.json",
+  "title": "ProjectRepositoryBootstrapDryRunV1Engine",
+  "description": "Planning-only Repository Bootstrap Dry Run without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "repository_bootstrap_dry_run_v1_id",
+    "repository_bootstrap_dry_run_v1_version",
+    "generated_at",
+    "repository_cache_runtime_v1_ref",
+    "repository_bootstrap_dry_run_intelligence",
+    "repository_bootstrap_dry_run_output_intelligence",
+    "repository_bootstrap_dry_run_safety_intelligence",
+    "repository_bootstrap_dry_run_validation_intelligence",
+    "repository_bootstrap_dry_run_model_intelligence",
+    "repository_bootstrap_dry_run_rip_validation_intelligence",
+    "repository_bootstrap_dry_run_metrics",
+    "repository_bootstrap_dry_run_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repository_bootstrap_dry_run_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_bootstrap_dry_run_v1_version": {
+      "type": "string",
+      "const": "repository_bootstrap_dry_run_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_cache_runtime_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_bootstrap_dry_run_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_dry_run_output_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_dry_run_safety_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_dry_run_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_dry_run_model_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_dry_run_rip_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_dry_run_metrics": {
+      "type": "object"
+    },
+    "repository_bootstrap_dry_run_status": {
+      "type": "object"
+    }
+  }
+}

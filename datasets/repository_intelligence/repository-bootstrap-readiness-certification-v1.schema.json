@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/repository_intelligence/repository-bootstrap-readiness-certification-v1.schema.json",
+  "title": "ProjectRepositoryBootstrapReadinessCertificationV1Engine",
+  "description": "Planning-only Repository Bootstrap Readiness Certification without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "repository_bootstrap_readiness_certification_v1_id",
+    "repository_bootstrap_readiness_certification_v1_version",
+    "generated_at",
+    "repository_bootstrap_execution_plan_v1_ref",
+    "repository_architecture_completeness_intelligence",
+    "repository_bootstrap_policy_verification_intelligence",
+    "repository_incremental_strategy_verification_intelligence",
+    "repository_cache_runtime_verification_intelligence",
+    "repository_execution_plan_verification_intelligence",
+    "repository_bootstrap_readiness_report_intelligence",
+    "repository_bootstrap_readiness_certification_model_intelligence",
+    "repository_bootstrap_readiness_certification_validation_intelligence",
+    "repository_bootstrap_readiness_certification_metrics",
+    "repository_bootstrap_readiness_certification_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repository_bootstrap_readiness_certification_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_bootstrap_readiness_certification_v1_version": {
+      "type": "string",
+      "const": "repository_bootstrap_readiness_certification_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_bootstrap_execution_plan_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_architecture_completeness_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_policy_verification_intelligence": {
+      "type": "object"
+    },
+    "repository_incremental_strategy_verification_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_runtime_verification_intelligence": {
+      "type": "object"
+    },
+    "repository_execution_plan_verification_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_readiness_report_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_readiness_certification_model_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_readiness_certification_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_bootstrap_readiness_certification_metrics": {
+      "type": "object"
+    },
+    "repository_bootstrap_readiness_certification_status": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/project_knowledge/project-knowledge-model-v1.schema.json",
+  "title": "ProjectKnowledgeModelV1Engine",
+  "description": "Planning-only permanent Project Knowledge Model without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "project_knowledge_model_v1_id",
+    "project_knowledge_model_v1_version",
+    "generated_at",
+    "repository_bootstrap_execution_plan_v1_ref",
+    "project_knowledge_model_intelligence",
+    "project_knowledge_entity_types_intelligence",
+    "project_knowledge_relationships_intelligence",
+    "project_knowledge_identity_intelligence",
+    "project_knowledge_model_rip_intelligence",
+    "project_knowledge_model_validation_intelligence",
+    "project_knowledge_model_metrics",
+    "project_knowledge_model_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "project_knowledge_model_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_knowledge_model_v1_version": {
+      "type": "string",
+      "const": "project_knowledge_model_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_bootstrap_execution_plan_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_knowledge_model_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_entity_types_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_relationships_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_identity_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_model_rip_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_model_validation_intelligence": {
+      "type": "object"
+    },
+    "project_knowledge_model_metrics": {
+      "type": "object"
+    },
+    "project_knowledge_model_status": {
+      "type": "object"
+    }
+  }
+}

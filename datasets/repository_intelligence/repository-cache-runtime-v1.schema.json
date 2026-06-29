@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/repository_intelligence/repository-cache-runtime-v1.schema.json",
+  "title": "ProjectRepositoryCacheRuntimeV1Engine",
+  "description": "Planning-only Repository Cache Runtime without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "repository_cache_runtime_v1_id",
+    "repository_cache_runtime_v1_version",
+    "generated_at",
+    "repository_incremental_index_v1_ref",
+    "repository_cache_runtime_intelligence",
+    "repository_cache_read_policy_intelligence",
+    "repository_cache_update_policy_intelligence",
+    "repository_cache_safety_intelligence",
+    "repository_cache_runtime_model_intelligence",
+    "repository_cache_runtime_validation_intelligence",
+    "repository_cache_runtime_metrics",
+    "repository_cache_runtime_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repository_cache_runtime_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_cache_runtime_v1_version": {
+      "type": "string",
+      "const": "repository_cache_runtime_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_incremental_index_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_cache_runtime_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_read_policy_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_update_policy_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_safety_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_runtime_model_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_runtime_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_runtime_metrics": {
+      "type": "object"
+    },
+    "repository_cache_runtime_status": {
+      "type": "object"
+    }
+  }
+}

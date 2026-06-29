@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/repository_intelligence/repository-bootstrap-policy-v1.schema.json",
+  "title": "ProjectRepositoryIntelligenceBootstrapPolicyV1Engine",
+  "description": "Planning-only permanent Repository Bootstrap Policy without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "repository_bootstrap_policy_v1_id",
+    "repository_bootstrap_policy_v1_version",
+    "generated_at",
+    "repository_bootstrap_v1_ref",
+    "repository_scan_scope_intelligence",
+    "repository_scan_priority_intelligence",
+    "repository_incremental_policy_intelligence",
+    "repository_cache_policy_intelligence",
+    "repository_intelligence_bootstrap_policy_model_intelligence",
+    "repository_intelligence_bootstrap_policy_validation_intelligence",
+    "repository_intelligence_bootstrap_policy_metrics",
+    "repository_intelligence_bootstrap_policy_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "repository_bootstrap_policy_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_bootstrap_policy_v1_version": {
+      "type": "string",
+      "const": "repository_bootstrap_policy_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_bootstrap_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_scan_scope_intelligence": {
+      "type": "object"
+    },
+    "repository_scan_priority_intelligence": {
+      "type": "object"
+    },
+    "repository_incremental_policy_intelligence": {
+      "type": "object"
+    },
+    "repository_cache_policy_intelligence": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_policy_model_intelligence": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_policy_validation_intelligence": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_policy_metrics": {
+      "type": "object"
+    },
+    "repository_intelligence_bootstrap_policy_status": {
+      "type": "object"
+    }
+  }
+}

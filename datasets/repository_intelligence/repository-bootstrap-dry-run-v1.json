@@ -1,0 +1,187 @@
+{
+  "repository_bootstrap_dry_run_v1_id": "repository_bootstrap_dry_run_v1",
+  "repository_bootstrap_dry_run_v1_version": "repository_bootstrap_dry_run_v1",
+  "generated_at": "2026-06-29T01:00:25.162Z",
+  "repository_cache_runtime_v1_ref": "datasets/repository_intelligence/repository-cache-runtime-v1.json",
+  "repository_bootstrap_dry_run_intelligence": {
+    "intelligence_id": "repository_bootstrap_dry_run_intelligence_v1",
+    "critical_model": "repository_bootstrap_dry_run_model",
+    "repository_bootstrap_dry_run_model": {
+      "model_id": "repository_bootstrap_dry_run_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "dry_run_mode": true,
+      "read_only": true,
+      "preview_only": true,
+      "execution_enabled": false,
+      "repository_bootstrap_dry_run_ready": true
+    }
+  },
+  "repository_bootstrap_dry_run_output_intelligence": {
+    "intelligence_id": "repository_bootstrap_dry_run_output_intelligence_v1",
+    "critical_model": "repository_bootstrap_dry_run_output_model",
+    "repository_bootstrap_dry_run_output_model": {
+      "model_id": "repository_bootstrap_dry_run_output_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_snapshot_preview": {
+        "output_id": "repository_snapshot_preview",
+        "defined": true,
+        "planning_only": true,
+        "preview_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_hash_index_preview": {
+        "output_id": "repository_hash_index_preview",
+        "defined": true,
+        "planning_only": true,
+        "preview_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_dependency_preview": {
+        "output_id": "repository_dependency_preview",
+        "defined": true,
+        "planning_only": true,
+        "preview_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_duplicate_candidate_preview": {
+        "output_id": "repository_duplicate_candidate_preview",
+        "defined": true,
+        "planning_only": true,
+        "preview_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_statistics_preview": {
+        "output_id": "repository_statistics_preview",
+        "defined": true,
+        "planning_only": true,
+        "preview_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_incremental_index_preview": {
+        "output_id": "repository_incremental_index_preview",
+        "defined": true,
+        "planning_only": true,
+        "preview_only": true,
+        "populated": false,
+        "analysis_only": true
+      },
+      "repository_bootstrap_dry_run_outputs_ready": true
+    }
+  },
+  "repository_bootstrap_dry_run_safety_intelligence": {
+    "intelligence_id": "repository_bootstrap_dry_run_safety_intelligence_v1",
+    "critical_model": "repository_bootstrap_dry_run_safety_model",
+    "repository_bootstrap_dry_run_safety_model": {
+      "model_id": "repository_bootstrap_dry_run_safety_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "delete_enabled": false,
+      "merge_enabled": false,
+      "rename_enabled": false,
+      "move_enabled": false,
+      "archive_enabled": false,
+      "repository_bootstrap_dry_run_safety_ready": true
+    }
+  },
+  "repository_bootstrap_dry_run_validation_intelligence": {
+    "intelligence_id": "repository_bootstrap_dry_run_validation_intelligence_v1",
+    "critical_model": "repository_bootstrap_dry_run_validation_model",
+    "repository_bootstrap_dry_run_validation_model": {
+      "model_id": "repository_bootstrap_dry_run_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "bootstrap_validation": true,
+      "cache_validation": true,
+      "incremental_validation": true,
+      "rollback_supported": true,
+      "preview_consistency_check": true,
+      "repository_bootstrap_dry_run_validation_ready": true
+    }
+  },
+  "repository_bootstrap_dry_run_model_intelligence": {
+    "intelligence_id": "repository_bootstrap_dry_run_model_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "repository_bootstrap_dry_run_rip_validation_intelligence": {
+    "intelligence_id": "repository_bootstrap_dry_run_rip_validation_intelligence_v1",
+    "repository_bootstrap_dry_run_rip_validation_model": {
+      "model_id": "repository_bootstrap_dry_run_rip_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "repository_cache_runtime_available": {
+        "validated": true,
+        "cache_runtime_ref": "datasets/repository_intelligence/repository-cache-runtime-v1.json"
+      }
+    }
+  },
+  "repository_bootstrap_dry_run_metrics": {
+    "metrics_id": "repository_bootstrap_dry_run_metrics_v1",
+    "repository_bootstrap_dry_run_score": {
+      "score_id": "repository_bootstrap_dry_run_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "repository_bootstrap_dry_run_status": {
+    "repository_bootstrap_dry_run_defined": true,
+    "repository_bootstrap_dry_run_outputs_defined": true,
+    "repository_bootstrap_dry_run_safety_defined": true,
+    "repository_bootstrap_dry_run_validation_defined": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "repository_bootstrap_dry_run_ready": true,
+    "bootstrap_completed": false
+  }
+}

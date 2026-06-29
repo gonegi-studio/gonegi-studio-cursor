@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "datasets/project_knowledge/project-context-memory-v1.schema.json",
+  "title": "ProjectContextMemoryV1Engine",
+  "description": "Planning-only permanent Project Context Memory without repository scan or execution.",
+  "type": "object",
+  "required": [
+    "project_context_memory_v1_id",
+    "project_context_memory_v1_version",
+    "generated_at",
+    "project_knowledge_graph_v1_ref",
+    "project_context_memory_intelligence",
+    "project_context_links_intelligence",
+    "project_context_retrieval_intelligence",
+    "project_context_update_intelligence",
+    "project_context_memory_rip_intelligence",
+    "project_context_memory_validation_intelligence",
+    "project_context_memory_metrics",
+    "project_context_memory_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "project_context_memory_v1_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_context_memory_v1_version": {
+      "type": "string",
+      "const": "project_context_memory_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project_knowledge_graph_v1_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_context_memory_intelligence": {
+      "type": "object"
+    },
+    "project_context_links_intelligence": {
+      "type": "object"
+    },
+    "project_context_retrieval_intelligence": {
+      "type": "object"
+    },
+    "project_context_update_intelligence": {
+      "type": "object"
+    },
+    "project_context_memory_rip_intelligence": {
+      "type": "object"
+    },
+    "project_context_memory_validation_intelligence": {
+      "type": "object"
+    },
+    "project_context_memory_metrics": {
+      "type": "object"
+    },
+    "project_context_memory_status": {
+      "type": "object"
+    }
+  }
+}

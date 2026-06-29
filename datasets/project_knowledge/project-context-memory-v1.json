@@ -1,0 +1,217 @@
+{
+  "project_context_memory_v1_id": "project_context_memory_v1",
+  "project_context_memory_v1_version": "project_context_memory_v1",
+  "generated_at": "2026-06-29T02:12:33.657Z",
+  "project_knowledge_graph_v1_ref": "datasets/project_knowledge/project-knowledge-graph-v1.json",
+  "project_context_memory_intelligence": {
+    "intelligence_id": "project_context_memory_intelligence_v1",
+    "critical_model": "project_context_memory_model",
+    "project_context_memory_model": {
+      "model_id": "project_context_memory_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "memory_id": "project_context_memory_v1",
+      "context_version": 1,
+      "project_knowledge_graph_v1_ref": "datasets/project_knowledge/project-knowledge-graph-v1.json",
+      "context_fields": {
+        "context_id": {
+          "field_id": "context_id",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "context_scope": {
+          "field_id": "context_scope",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "context_summary": {
+          "field_id": "context_summary",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "context_priority": {
+          "field_id": "context_priority",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "context_timestamp": {
+          "field_id": "context_timestamp",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "context_id": "project_context_memory_v1",
+      "context_scope": "project_knowledge",
+      "context_summary": "permanent_project_context_memory_planning_only",
+      "context_priority": "core",
+      "context_timestamp": "2026-06-29T02:12:33.657Z",
+      "project_context_memory_defined": true,
+      "context_memory_fields_defined": true,
+      "project_context_memory_ready": true
+    }
+  },
+  "project_context_links_intelligence": {
+    "intelligence_id": "project_context_links_intelligence_v1",
+    "critical_model": "project_context_links_model",
+    "project_context_links_model": {
+      "model_id": "project_context_links_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "context_links": {
+        "knowledge_graph_link": {
+          "link_type": "knowledge_graph_link",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "ontology_link": {
+          "link_type": "ontology_link",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "semantic_link": {
+          "link_type": "semantic_link",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        },
+        "lineage_link": {
+          "link_type": "lineage_link",
+          "defined": true,
+          "planning_only": true,
+          "analysis_only": true,
+          "permanent": true
+        }
+      },
+      "context_links_defined": true,
+      "context_links_ready": true
+    }
+  },
+  "project_context_retrieval_intelligence": {
+    "intelligence_id": "project_context_retrieval_intelligence_v1",
+    "critical_model": "project_context_retrieval_model",
+    "project_context_retrieval_model": {
+      "model_id": "project_context_retrieval_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "semantic_context_query": true,
+      "multi_hop_context": true,
+      "partition_context": true,
+      "context_retrieval_defined": true,
+      "context_retrieval_ready": true
+    }
+  },
+  "project_context_update_intelligence": {
+    "intelligence_id": "project_context_update_intelligence_v1",
+    "critical_model": "project_context_update_model",
+    "project_context_update_model": {
+      "model_id": "project_context_update_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "permanent": true,
+      "incremental_context_update": true,
+      "context_validation": true,
+      "context_expiration_supported": true,
+      "context_version": 1,
+      "context_update_defined": true,
+      "context_update_ready": true
+    }
+  },
+  "project_context_memory_rip_intelligence": {
+    "intelligence_id": "project_context_memory_rip_intelligence_v1",
+    "critical_model": "repository_intelligence_protocol_model",
+    "repository_intelligence_protocol_model": {
+      "model_id": "repository_intelligence_protocol_model_v1",
+      "generated": true,
+      "protocol_id": "REPOSITORY_INTELLIGENCE_PROTOCOL_V1",
+      "protocol_version": "rip_v1",
+      "protocol_hash": "rip_v1_metadata_only_stable_contract",
+      "adapter_ready": true,
+      "backward_compatible": true,
+      "future_protocol_compatible": true,
+      "repository_intelligence_protocol_ready": true,
+      "analysis_only": true
+    }
+  },
+  "project_context_memory_validation_intelligence": {
+    "intelligence_id": "project_context_memory_validation_intelligence_v1",
+    "project_context_memory_validation_model": {
+      "model_id": "project_context_memory_validation_model_v1",
+      "generated": true,
+      "planning_only": true,
+      "analysis_only": true,
+      "repository_intelligence_protocol_available": {
+        "validated": true,
+        "adapter_ready": true
+      },
+      "protocol_contract_valid": {
+        "validated": true
+      },
+      "protocol_hash_valid": {
+        "validated": true
+      },
+      "contract_version_valid": {
+        "validated": true
+      },
+      "future_protocol_compatible": {
+        "validated": true,
+        "adapter_ready": true,
+        "backward_compatible": true
+      },
+      "project_knowledge_graph_available": {
+        "validated": true,
+        "knowledge_graph_ref": "datasets/project_knowledge/project-knowledge-graph-v1.json"
+      }
+    }
+  },
+  "project_context_memory_metrics": {
+    "metrics_id": "project_context_memory_metrics_v1",
+    "project_context_memory_score": {
+      "score_id": "project_context_memory_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": true
+    },
+    "repository_intelligence_protocol_score": {
+      "score_id": "repository_intelligence_protocol_score",
+      "generated": true,
+      "frozen": true,
+      "value": 0.985,
+      "master": false
+    }
+  },
+  "project_context_memory_status": {
+    "project_context_memory_defined": true,
+    "context_memory_fields_defined": true,
+    "context_links_defined": true,
+    "context_retrieval_defined": true,
+    "context_update_defined": true,
+    "repository_intelligence_protocol_generated": true,
+    "repository_intelligence_protocol_ready": true,
+    "future_protocol_compatible": true,
+    "project_context_memory_ready": true,
+    "bootstrap_completed": false
+  }
+}
