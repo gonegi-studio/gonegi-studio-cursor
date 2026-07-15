@@ -1,0 +1,52 @@
+{
+  "new_capabilities_v1_id": "vertical_ai_v2_new_capabilities_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-100",
+  "generated_at": "2026-07-15T03:51:10.521Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "capabilities": [
+    {
+      "capability_id": "cap_vai_v2_replaceable_runtime_modules",
+      "title": "Replaceable runtime modules",
+      "description": "Swap alternative understanding/planning/execution/validation/certification/improvement modules behind stable V2 APIs without breaking V1 contracts.",
+      "inherits_from_v1": true,
+      "implementation_priority": 1
+    },
+    {
+      "capability_id": "cap_vai_v2_additive_improvement_candidates",
+      "title": "Additive improvement candidates",
+      "description": "Select and rank improvement candidates from certified evidence only; candidates remain non-enacting until authorized.",
+      "inherits_from_v1": true,
+      "implementation_priority": 2
+    },
+    {
+      "capability_id": "cap_vai_v2_incremental_traceability",
+      "title": "Incremental traceability extensions",
+      "description": "Extend evidence chains with finer-grained fingerprints across lifecycle stages and consumer collaboration sessions.",
+      "inherits_from_v1": true,
+      "implementation_priority": 3
+    },
+    {
+      "capability_id": "cap_vai_v2_multi_repo_operation_profiles",
+      "title": "Multi-repository operation profiles",
+      "description": "Define scoped repository operation profiles for production pipelines while remaining reference-only until execute_authorized.",
+      "inherits_from_v1": false,
+      "implementation_priority": 4
+    },
+    {
+      "capability_id": "cap_vai_v2_consumer_session_orchestration",
+      "title": "Consumer session orchestration",
+      "description": "Coordinate Cursor/Claude/ChatGPT/Gemini/MCP collaboration sessions through CIL with reproducible session fingerprints.",
+      "inherits_from_v1": false,
+      "implementation_priority": 5
+    }
+  ],
+  "implementation_priorities": [
+    "cap_vai_v2_replaceable_runtime_modules",
+    "cap_vai_v2_additive_improvement_candidates",
+    "cap_vai_v2_incremental_traceability",
+    "cap_vai_v2_multi_repo_operation_profiles",
+    "cap_vai_v2_consumer_session_orchestration"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "execution_architecture_v1_id": "execution_architecture_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-005",
+  "generated_at": "2026-07-14T10:26:39.202Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Execution Foundation V1",
+  "capability_id": "vertical_ai_execution",
+  "layer_id": "execution",
+  "selected_architecture": "Evidence-to-Execution Vertical AI Foundation with Standardized Connector Selection",
+  "independence_statement": "Vertical AI Execution turns validated planning into evidence-traced execution descriptors. It consumes Platform Core V1, CIL V1, Repository Intelligence, certified Consumer Connectors, and Planning Runtime only — read-only and reference-only — and never mutates Platform Core or CIL. Connector selection is standardized to certified masters. Human approval is required before repository mutation. Evolution of this capability is independent of Platform Core and CIL.",
+  "stack": {
+    "platform_core": {
+      "role": "Semantic + structural + execution truth",
+      "interaction": "consume_v1_only"
+    },
+    "cil": {
+      "role": "Certified integration + runtime connector contracts",
+      "interaction": "consume_v1_only"
+    },
+    "repository_intelligence": {
+      "role": "Structural repository truth",
+      "interaction": "reference_only"
+    },
+    "certified_connectors": {
+      "role": "Reasoning-side certified consumers",
+      "interaction": "standardized_selection"
+    },
+    "planning_runtime": {
+      "role": "Validated plans and evidence",
+      "interaction": "consume_operational_plans"
+    },
+    "execution": {
+      "role": "Evidence-to-execution design before execution runtime",
+      "interaction": "design_only_foundation",
+      "owns_source_data": false
+    }
+  },
+  "component_model_ref": "datasets/vertical_ai_execution_foundation_v1/execution-component-model-v1.json",
+  "workflow_ref": "datasets/vertical_ai_execution_foundation_v1/execution-workflow-v1.json",
+  "boundary_model_ref": "datasets/vertical_ai_execution_foundation_v1/execution-boundary-model-v1.json",
+  "approval_gate_ref": "datasets/vertical_ai_execution_foundation_v1/execution-approval-gate-v1.json",
+  "evidence_model_ref": "datasets/vertical_ai_execution_foundation_v1/execution-evidence-model-v1.json",
+  "traceability_ref": "datasets/vertical_ai_execution_foundation_v1/execution-traceability-v1.json",
+  "connector_selection_ref": "datasets/vertical_ai_execution_foundation_v1/execution-connector-selection-v1.json",
+  "execution_runtime_ref": "datasets/vertical_ai_execution_foundation_v1/execution-runtime-ref-v1.json",
+  "proposed_phase_chain": [
+    {
+      "phase_id": "PHASE-VAI-003",
+      "title": "Planning foundation",
+      "focus": "Evidence-first planning design"
+    },
+    {
+      "phase_id": "PHASE-VAI-004",
+      "title": "Planning runtime",
+      "focus": "Operational planning runtime"
+    },
+    {
+      "phase_id": "PHASE-VAI-005",
+      "title": "Execution foundation",
+      "focus": "Design evidence-to-execution with standardized connector selection"
+    },
+    {
+      "phase_id": "PHASE-VAI-006",
+      "title": "Execution runtime",
+      "focus": "Implement execution runtime over certified foundation"
+    }
+  ],
+  "design_principles": [
+    "design_only",
+    "implementation_deferred",
+    "read_only",
+    "reference_only",
+    "repository_first",
+    "evidence_first",
+    "reuse_precedes_creation",
+    "evidence_to_execution_traceability",
+    "execution_reproducibility",
+    "connector_selection_standardized",
+    "human_approval_required_before_repository_mutation",
+    "consumes_platform_core_v1_only",
+    "consumes_cil_v1_only",
+    "consumes_repository_intelligence_only",
+    "consumes_certified_connectors_only",
+    "consumes_planning_runtime",
+    "execution_runtime_deferred",
+    "independently_evolvable"
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "project_understanding_component_model_v1_id": "project_understanding_component_model_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-001",
+  "generated_at": "2026-07-14T07:49:27.010Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Project Understanding Foundation V1",
+  "capability_id": "vertical_ai_project_understanding",
+  "layer_id": "project_understanding",
+  "responsibility": "Understand the existing repository before proposing or creating any implementation",
+  "components": [
+    {
+      "component_id": "repository_discovery",
+      "name": "Repository Discovery",
+      "responsibility": "Discover repository structure, certified baselines, and entry surfaces read-only via Repository Intelligence and Access references; never scans to mutate or invent capabilities.",
+      "interface_kind": "discovery",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "repository_inventory",
+      "name": "Repository Inventory",
+      "responsibility": "Inventory known modules, datasets, services, connectors, and frozen snapshots as an evidence-bound catalog; inventory is descriptive only and never creates repository assets.",
+      "interface_kind": "inventory",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "component_lookup",
+      "name": "Component Lookup",
+      "responsibility": "Locate existing components that may satisfy a need by querying inventory and Repository Intelligence references; lookup must complete before any create proposal.",
+      "interface_kind": "lookup",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "reference_resolution",
+      "name": "Reference Resolution",
+      "responsibility": "Resolve citations and artifact refs through Access / CIL reference contracts without copying payloads or mutating frozen Platform Core, CIL, or connector baselines.",
+      "interface_kind": "resolver",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "dependency_resolution",
+      "name": "Dependency Resolution",
+      "responsibility": "Resolve declared dependencies among inventoried components and frozen contracts so understanding describes coupling without proposing implementation.",
+      "interface_kind": "resolver",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "duplicate_detection",
+      "name": "Duplicate Detection",
+      "responsibility": "Detect likely duplicate modules, overlapping contracts, and redundant surfaces so reuse can be preferred over new creation; detection never deletes or rewrites existing code.",
+      "interface_kind": "analysis",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "reuse_candidate_analysis",
+      "name": "Reuse Candidate Analysis",
+      "responsibility": "Rank reuse candidates against gaps using inventory, lookup, and duplicate evidence; enforces reuse-before-create policy before any planning phase.",
+      "interface_kind": "analysis",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "understanding_report",
+      "name": "Understanding Report",
+      "responsibility": "Emit a structured repository-understanding report that aggregates discovery, inventory, refs, dependencies, duplicates, and reuse candidates; conclusions require evidence.",
+      "interface_kind": "report",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "gap_analysis",
+      "name": "Gap Analysis",
+      "responsibility": "Identify remaining gaps only after reuse candidates are exhausted in analysis; gaps feed planning readiness and never authorize silent creation.",
+      "interface_kind": "analysis",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "approval_gate",
+      "name": "Approval Gate",
+      "responsibility": "Require explicit human approval before any write action (planning package materialization or later implementation). Design/read understanding runs without write authority.",
+      "interface_kind": "gate",
+      "owns_source_data": false,
+      "mode": "human_approval_required",
+      "precedes_planning": true,
+      "write_authorized": false
+    },
+    {
+      "component_id": "understanding_evidence",
+      "name": "Understanding Evidence",
+      "responsibility": "Bind fingerprints, refs, and precondition citations so every understanding conclusion is evidence-preceded and reproducible without mutating source baselines.",
+      "interface_kind": "evidence",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "precedes_planning": true,
+      "write_authorized": false
+    }
+  ],
+  "principles": {
+    "design_only": true,
+    "implementation": false,
+    "implementation_deferred": true,
+    "read_only": true,
+    "reference_only": true,
+    "repository_understanding_precedes_planning": true,
+    "reuse_precedes_creation": true,
+    "evidence_precedes_conclusions": true,
+    "human_approval_required_before_write": true,
+    "consumes_platform_core_v1_only": true,
+    "consumes_cil_v1_only": true,
+    "consumes_repository_intelligence_only": true,
+    "consumes_certified_connectors_only": true,
+    "owns_source_data": false,
+    "platform_core_mutation": false,
+    "cil_mutation": false,
+    "repository_mutation": false,
+    "planning_deferred_until_understanding": true,
+    "independently_evolvable": true
+  },
+  "design_only": true,
+  "implementation": false
+}

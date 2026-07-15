@@ -1,0 +1,110 @@
+{
+  "planning_workflow_v1_id": "planning_workflow_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-003",
+  "generated_at": "2026-07-14T10:11:25.520Z",
+  "mode": "READ_ONLY",
+  "evidence_first_planning": true,
+  "repository_first": true,
+  "reuse_before_create": true,
+  "evidence_to_plan_traceability": true,
+  "plan_reproducibility": true,
+  "human_approval_required_before_write": true,
+  "planning_runtime_deferred": true,
+  "workflow": {
+    "workflow_id": "evidence_first_planning_v1",
+    "policy": "evidence_first_planning",
+    "reuse_policy": "reuse_before_create",
+    "repository_policy": "repository_first",
+    "evidence_policy": "evidence_precedes_plan_conclusions",
+    "write_policy": "human_approval_required_before_any_write",
+    "traceability_policy": "evidence_to_plan",
+    "steps": [
+      {
+        "step_id": "analyze_goals",
+        "component_id": "goal_analysis",
+        "write": false
+      },
+      {
+        "step_id": "build_context",
+        "component_id": "planning_context",
+        "write": false
+      },
+      {
+        "step_id": "generate_candidates",
+        "component_id": "candidate_generation",
+        "write": false
+      },
+      {
+        "step_id": "plan_reuse",
+        "component_id": "reuse_planning",
+        "write": false
+      },
+      {
+        "step_id": "plan_implementation",
+        "component_id": "implementation_planning",
+        "write": false
+      },
+      {
+        "step_id": "analyze_risks",
+        "component_id": "risk_analysis",
+        "write": false
+      },
+      {
+        "step_id": "compose_execution_plan",
+        "component_id": "execution_plan",
+        "write": false
+      },
+      {
+        "step_id": "validate_plan",
+        "component_id": "plan_validation",
+        "write": false
+      },
+      {
+        "step_id": "bind_evidence",
+        "component_id": "planning_evidence",
+        "write": false
+      },
+      {
+        "step_id": "trace_plan",
+        "component_id": "plan_traceability",
+        "write": false
+      },
+      {
+        "step_id": "check_reproducibility",
+        "component_id": "plan_reproducibility",
+        "write": false
+      },
+      {
+        "step_id": "approval",
+        "component_id": "approval_gate",
+        "write": false,
+        "blocks_write_until_human_approval": true
+      },
+      {
+        "step_id": "planning_runtime_handoff",
+        "deferred": true,
+        "requires": [
+          "planning_foundation_ready",
+          "human_approval_if_write"
+        ]
+      }
+    ],
+    "forbidden_before_evidence": [
+      "execute_plan_without_validation",
+      "create_before_reuse_planning",
+      "write_without_human_approval",
+      "mutate_repository"
+    ]
+  },
+  "readiness_for_planning_runtime": {
+    "requires": [
+      "planning_components_defined",
+      "evidence_to_plan_traceability",
+      "plan_reproducibility_designed",
+      "approval_gate_armed"
+    ],
+    "creates_implementation": false,
+    "mutates_repository": false
+  }
+}

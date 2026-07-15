@@ -1,0 +1,100 @@
+{
+  "project_understanding_workflow_v1_id": "project_understanding_workflow_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-001",
+  "generated_at": "2026-07-14T07:49:27.010Z",
+  "mode": "READ_ONLY",
+  "repository_first": true,
+  "reuse_before_create": true,
+  "evidence_precedes_conclusions": true,
+  "human_approval_required_before_write": true,
+  "planning_deferred_until_understanding": true,
+  "workflow": {
+    "workflow_id": "repository_first_understanding_v1",
+    "policy": "repository_understanding_precedes_planning",
+    "reuse_policy": "reuse_before_create",
+    "evidence_policy": "evidence_precedes_conclusions",
+    "write_policy": "human_approval_required_before_any_write",
+    "steps": [
+      {
+        "step_id": "discover",
+        "component_id": "repository_discovery",
+        "write": false
+      },
+      {
+        "step_id": "inventory",
+        "component_id": "repository_inventory",
+        "write": false
+      },
+      {
+        "step_id": "lookup",
+        "component_id": "component_lookup",
+        "write": false
+      },
+      {
+        "step_id": "resolve_refs",
+        "component_id": "reference_resolution",
+        "write": false
+      },
+      {
+        "step_id": "resolve_deps",
+        "component_id": "dependency_resolution",
+        "write": false
+      },
+      {
+        "step_id": "detect_duplicates",
+        "component_id": "duplicate_detection",
+        "write": false
+      },
+      {
+        "step_id": "analyze_reuse",
+        "component_id": "reuse_candidate_analysis",
+        "write": false
+      },
+      {
+        "step_id": "report",
+        "component_id": "understanding_report",
+        "write": false
+      },
+      {
+        "step_id": "gaps",
+        "component_id": "gap_analysis",
+        "write": false
+      },
+      {
+        "step_id": "evidence",
+        "component_id": "understanding_evidence",
+        "write": false
+      },
+      {
+        "step_id": "approval",
+        "component_id": "approval_gate",
+        "write": false,
+        "blocks_write_until_human_approval": true
+      },
+      {
+        "step_id": "planning_handoff",
+        "deferred": true,
+        "requires": [
+          "understanding_complete",
+          "human_approval_if_write"
+        ]
+      }
+    ],
+    "forbidden_before_understanding": [
+      "propose_implementation",
+      "create_implementation",
+      "mutate_repository"
+    ]
+  },
+  "readiness_for_planning": {
+    "requires": [
+      "repository_understanding_complete",
+      "reuse_candidates_analyzed",
+      "gaps_evidence_bound",
+      "approval_gate_armed"
+    ],
+    "creates_implementation": false,
+    "mutates_repository": false
+  }
+}

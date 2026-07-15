@@ -1,0 +1,55 @@
+{
+  "improvement_traceability_v1_id": "improvement_traceability_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-011",
+  "generated_at": "2026-07-14T11:25:26.359Z",
+  "mode": "READ_ONLY",
+  "evidence_to_improvement_traceability": true,
+  "chain": [
+    {
+      "from": "certification_runtime",
+      "to": "improvement_context"
+    },
+    {
+      "from": "improvement_context",
+      "to": "improvement_input_contract"
+    },
+    {
+      "from": "improvement_input_contract",
+      "to": "improvement_selector"
+    },
+    {
+      "from": "improvement_runtime_ref",
+      "to": "improvement_selector"
+    },
+    {
+      "from": "improvement_selector",
+      "to": "improvement_candidate_generation"
+    },
+    {
+      "from": "improvement_candidate_generation",
+      "to": "improvement_risk_analysis"
+    },
+    {
+      "from": "improvement_risk_analysis",
+      "to": "improvement_contract"
+    },
+    {
+      "from": "improvement_contract",
+      "to": "improvement_boundary"
+    },
+    {
+      "from": "improvement_evidence",
+      "to": "improvement_traceability"
+    },
+    {
+      "from": "improvement_traceability",
+      "to": "improvement_reproducibility"
+    },
+    {
+      "from": "improvement_boundary",
+      "to": "approval_gate"
+    }
+  ],
+  "reproducibility_fingerprint": "5fdfa313ed796541"
+}

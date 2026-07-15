@@ -1,0 +1,46 @@
+{
+  "certification_rules_v1_id": "certification_rules_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-009",
+  "generated_at": "2026-07-14T11:08:53.802Z",
+  "mode": "READ_ONLY",
+  "rule_catalog": [
+    {
+      "rule_id": "CR_VALIDATION_INTEGRITY",
+      "target": "certification_integrity",
+      "requires_evidence": true
+    },
+    {
+      "rule_id": "CR_CONTRACT_CONFORMANCE",
+      "target": "certification_contract",
+      "requires_evidence": true
+    },
+    {
+      "rule_id": "CR_BOUNDARY_INTEGRITY",
+      "target": "certification_boundary",
+      "requires_evidence": true
+    },
+    {
+      "rule_id": "CR_RECORD_COMPLETENESS",
+      "target": "certification_record",
+      "requires_evidence": true
+    },
+    {
+      "rule_id": "CR_REUSE_BEFORE_CREATE",
+      "target": "certification_rules",
+      "requires_evidence": true
+    },
+    {
+      "rule_id": "CR_CERTIFIED_CONNECTORS_ONLY",
+      "target": "certification_boundary",
+      "requires_evidence": true
+    },
+    {
+      "rule_id": "CR_WRITE_BLOCKED_WITHOUT_APPROVAL",
+      "target": "approval_gate",
+      "requires_evidence": true
+    }
+  ],
+  "deterministic": true,
+  "reusable": true
+}

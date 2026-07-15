@@ -1,0 +1,58 @@
+{
+  "migration_strategy_v1_id": "vertical_ai_v2_migration_strategy_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-100",
+  "generated_at": "2026-07-15T03:51:10.521Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "stages": [
+    {
+      "stage_id": "mig_a_freeze_guard",
+      "title": "Freeze guard",
+      "actions": [
+        "Treat Vertical AI V1 / master snapshot v2 as immutable references.",
+        "Reject any V2 work that mutates V1 fingerprints or PC/CIL baselines."
+      ]
+    },
+    {
+      "stage_id": "mig_b_parallel_v2_surfaces",
+      "title": "Parallel V2 surfaces",
+      "actions": [
+        "Introduce V2 datasets/APIs alongside V1 without replacing V1 paths.",
+        "Bind V2 design to certified V1 fingerprints for continuity evidence."
+      ]
+    },
+    {
+      "stage_id": "mig_c_module_swap_equivalence",
+      "title": "Module swap equivalence",
+      "actions": [
+        "Prove replaceable modules dual-run equivalent on certified fixtures.",
+        "Promote modules only after contract + reproducibility PASS."
+      ]
+    },
+    {
+      "stage_id": "mig_d_ops_profile_rollout",
+      "title": "Operation profile rollout",
+      "actions": [
+        "Adopt repository operation profiles in planning-only mode first.",
+        "Require human approval + execute_authorized before any enactment."
+      ]
+    },
+    {
+      "stage_id": "mig_e_consumer_session_enablement",
+      "title": "Consumer session enablement",
+      "actions": [
+        "Enable CIL-mediated collaboration sessions using certified connectors.",
+        "Keep connector master snapshots immutable during enablement."
+      ]
+    },
+    {
+      "stage_id": "mig_f_v2_certification",
+      "title": "V2 certification",
+      "actions": [
+        "Run V2 validation/certification campaign.",
+        "Freeze Vertical AI V2 master snapshot only after production operation readiness."
+      ]
+    }
+  ]
+}

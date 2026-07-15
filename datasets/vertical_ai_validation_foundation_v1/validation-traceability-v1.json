@@ -1,0 +1,55 @@
+{
+  "validation_traceability_v1_id": "validation_traceability_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-007",
+  "generated_at": "2026-07-14T10:52:31.028Z",
+  "mode": "READ_ONLY",
+  "evidence_to_validation_traceability": true,
+  "chain": [
+    {
+      "from": "execution_runtime",
+      "to": "validation_context"
+    },
+    {
+      "from": "validation_context",
+      "to": "validation_selector"
+    },
+    {
+      "from": "validation_runtime_ref",
+      "to": "validation_rules"
+    },
+    {
+      "from": "validation_selector",
+      "to": "contract_validation"
+    },
+    {
+      "from": "validation_rules",
+      "to": "contract_validation"
+    },
+    {
+      "from": "validation_rules",
+      "to": "boundary_validation"
+    },
+    {
+      "from": "validation_rules",
+      "to": "result_validation"
+    },
+    {
+      "from": "validation_contract",
+      "to": "validation_boundary_integrity"
+    },
+    {
+      "from": "validation_evidence",
+      "to": "validation_traceability"
+    },
+    {
+      "from": "validation_traceability",
+      "to": "validation_reproducibility"
+    },
+    {
+      "from": "validation_boundary_integrity",
+      "to": "approval_gate"
+    }
+  ],
+  "reproducibility_fingerprint": "43fe5721269243e1"
+}

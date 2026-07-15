@@ -1,0 +1,25 @@
+{
+  "improvement_approval_gate_v1_id": "improvement_approval_gate_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-011",
+  "generated_at": "2026-07-14T11:25:26.359Z",
+  "mode": "READ_ONLY",
+  "gate_policy": {
+    "repository_mutation_forbidden": true,
+    "platform_core_mutation_forbidden": true,
+    "cil_mutation_forbidden": true,
+    "candidate_auto_enactment_forbidden": true,
+    "improvement_foundation_runs_are_read_only": true,
+    "improvement_runtime_handoff_requires_foundation": true,
+    "certified_evidence_required": true
+  },
+  "write_actions_gated": [
+    "repository_create",
+    "repository_modify",
+    "repository_delete",
+    "improvement_candidate_enactment",
+    "improvement_runtime_materialization"
+  ],
+  "design_only": true,
+  "write_authorized": false
+}

@@ -1,0 +1,70 @@
+{
+  "validation_strategy_v1_id": "vertical_ai_v2_validation_strategy_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-101",
+  "generated_at": "2026-07-15T04:00:11.538Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "validation_mode": "stage_gated_evidence_campaign",
+  "stages": [
+    {
+      "stage_id": "val_architecture_integrity",
+      "applies_to": "v2_architecture_definition",
+      "checks": [
+        "architecture_present",
+        "v1_baseline_preserved",
+        "design_fingerprint_stable"
+      ]
+    },
+    {
+      "stage_id": "val_module_equivalence",
+      "applies_to": "replaceable_runtime_modules",
+      "checks": [
+        "dual_run_identical",
+        "contract_conformance",
+        "api_stability"
+      ]
+    },
+    {
+      "stage_id": "val_repository_operation_gates",
+      "applies_to": "repository_operation_profiles",
+      "checks": [
+        "reuse_before_create",
+        "human_approval_gate",
+        "mutation_forbidden"
+      ]
+    },
+    {
+      "stage_id": "val_consumer_collaboration",
+      "applies_to": "consumer_collaboration_sessions",
+      "checks": [
+        "cil_mediated_only",
+        "session_fingerprint",
+        "connector_snapshots_unchanged"
+      ]
+    },
+    {
+      "stage_id": "val_improvement_non_enacting",
+      "applies_to": "additive_improvement_runtime",
+      "checks": [
+        "certified_evidence_only",
+        "candidates_not_enacted",
+        "reproducible"
+      ]
+    },
+    {
+      "stage_id": "val_v2_certification_campaign",
+      "applies_to": "v2_validation_and_certification",
+      "checks": [
+        "full_lifecycle_integrity",
+        "baseline_protection",
+        "ready_for_ops_validation"
+      ]
+    }
+  ],
+  "evidence_policy": {
+    "evidence_first": true,
+    "dual_run_required": true,
+    "fingerprint_required": true
+  }
+}

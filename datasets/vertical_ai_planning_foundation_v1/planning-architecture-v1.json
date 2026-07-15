@@ -1,0 +1,81 @@
+{
+  "planning_architecture_v1_id": "planning_architecture_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-003",
+  "generated_at": "2026-07-14T10:11:25.520Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Planning Foundation V1",
+  "capability_id": "vertical_ai_planning",
+  "layer_id": "planning",
+  "selected_architecture": "Evidence-First Vertical AI Planning Foundation",
+  "independence_statement": "Vertical AI Planning turns repository understanding into reproducible, evidence-traced plans. It consumes Platform Core V1, CIL V1, Repository Intelligence, and Project Understanding Runtime only — read-only and reference-only — and never mutates those baselines. Reuse precedes create. Human approval is required before any write. Evolution of this capability is independent of Platform Core and CIL.",
+  "stack": {
+    "platform_core": {
+      "role": "Semantic + structural + execution truth",
+      "interaction": "consume_v1_only"
+    },
+    "cil": {
+      "role": "Certified integration contracts",
+      "interaction": "consume_v1_only"
+    },
+    "repository_intelligence": {
+      "role": "Structural repository truth",
+      "interaction": "reference_only"
+    },
+    "understanding_runtime": {
+      "role": "Repository understanding evidence",
+      "interaction": "consume_operational_understanding"
+    },
+    "planning": {
+      "role": "Evidence-first planning before planning runtime",
+      "interaction": "design_only_foundation",
+      "owns_source_data": false
+    }
+  },
+  "component_model_ref": "datasets/vertical_ai_planning_foundation_v1/planning-component-model-v1.json",
+  "workflow_ref": "datasets/vertical_ai_planning_foundation_v1/planning-workflow-v1.json",
+  "boundary_model_ref": "datasets/vertical_ai_planning_foundation_v1/planning-boundary-model-v1.json",
+  "approval_gate_ref": "datasets/vertical_ai_planning_foundation_v1/planning-approval-gate-v1.json",
+  "evidence_model_ref": "datasets/vertical_ai_planning_foundation_v1/planning-evidence-model-v1.json",
+  "traceability_ref": "datasets/vertical_ai_planning_foundation_v1/planning-traceability-v1.json",
+  "proposed_phase_chain": [
+    {
+      "phase_id": "PHASE-VAI-001",
+      "title": "Project Understanding foundation",
+      "focus": "Design repository-first understanding"
+    },
+    {
+      "phase_id": "PHASE-VAI-002",
+      "title": "Project Understanding runtime",
+      "focus": "Implement understanding runtime"
+    },
+    {
+      "phase_id": "PHASE-VAI-003",
+      "title": "Planning foundation",
+      "focus": "Design evidence-first planning capability"
+    },
+    {
+      "phase_id": "PHASE-VAI-004",
+      "title": "Planning runtime",
+      "focus": "Implement planning runtime over certified foundation"
+    }
+  ],
+  "design_principles": [
+    "design_only",
+    "implementation_deferred",
+    "read_only",
+    "reference_only",
+    "repository_first",
+    "reuse_precedes_creation",
+    "evidence_first_planning",
+    "evidence_to_plan_traceability",
+    "plan_reproducibility",
+    "human_approval_required_before_write",
+    "consumes_platform_core_v1_only",
+    "consumes_cil_v1_only",
+    "consumes_repository_intelligence_only",
+    "consumes_understanding_runtime",
+    "planning_runtime_deferred",
+    "independently_evolvable"
+  ]
+}

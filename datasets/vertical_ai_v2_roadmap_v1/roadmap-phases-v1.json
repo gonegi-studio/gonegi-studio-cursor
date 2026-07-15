@@ -1,0 +1,104 @@
+{
+  "roadmap_phases_v1_id": "vertical_ai_v2_roadmap_phases_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-100",
+  "generated_at": "2026-07-15T03:51:10.521Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "phases": [
+    {
+      "phase_id": "PHASE-VAI-201",
+      "track_id": "v2_architecture_definition",
+      "priority": 1,
+      "title": "Vertical AI V2 architecture definition",
+      "deliverable": "Stable V2 architecture, component model, and API surfaces while V1 remains frozen.",
+      "entry_criteria": [
+        "PASS_VERTICAL_AI_V2_ROADMAP_V1",
+        "planning_complete"
+      ],
+      "exit_criteria": [
+        "V2 architecture artifacts frozen",
+        "V1 snapshots unchanged"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-202",
+      "track_id": "replaceable_runtime_modules",
+      "priority": 2,
+      "title": "Replaceable runtime module contracts",
+      "deliverable": "Module-replaceability contracts for each lifecycle runtime with dual-run equivalence tests.",
+      "entry_criteria": [
+        "v2_architecture_definition PASS"
+      ],
+      "exit_criteria": [
+        "Module contracts certified",
+        "Fingerprint stability proven"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-203",
+      "track_id": "repository_operation_profiles",
+      "priority": 3,
+      "title": "Repository operation profile design",
+      "deliverable": "Scoped production repository operation profiles with reuse/gap/approval gates.",
+      "entry_criteria": [
+        "replaceable_runtime_modules PASS"
+      ],
+      "exit_criteria": [
+        "Profiles defined",
+        "Mutation policy attested"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-204",
+      "track_id": "consumer_collaboration_sessions",
+      "priority": 4,
+      "title": "Consumer collaboration session model",
+      "deliverable": "CIL-mediated multi-consumer session orchestration design with evidence fingerprints.",
+      "entry_criteria": [
+        "repository_operation_profiles PASS"
+      ],
+      "exit_criteria": [
+        "Session model defined",
+        "Consumer snapshots unchanged"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-205",
+      "track_id": "additive_improvement_runtime",
+      "priority": 5,
+      "title": "Additive improvement candidate runtime",
+      "deliverable": "V2 improvement selection/ranking from certified evidence only, non-enacting by default.",
+      "entry_criteria": [
+        "consumer_collaboration_sessions PASS"
+      ],
+      "exit_criteria": [
+        "Candidates reproducible",
+        "Repository mutation forbidden"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-206",
+      "track_id": "v2_validation_and_certification",
+      "priority": 6,
+      "title": "V2 validation and certification campaign",
+      "deliverable": "Validation/certification campaign proving V2 additives without V1/PC/CIL drift.",
+      "entry_criteria": [
+        "additive_improvement_runtime PASS"
+      ],
+      "exit_criteria": [
+        "V2 certification PASS",
+        "Ready for V2 production operation validation"
+      ]
+    }
+  ],
+  "recommended_build_order": [
+    "v2_architecture_definition",
+    "replaceable_runtime_modules",
+    "repository_operation_profiles",
+    "consumer_collaboration_sessions",
+    "additive_improvement_runtime",
+    "v2_validation_and_certification"
+  ],
+  "next_implementation_track": "v2_architecture_definition"
+}

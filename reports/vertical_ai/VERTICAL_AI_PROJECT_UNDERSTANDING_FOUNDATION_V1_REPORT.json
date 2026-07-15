@@ -1,0 +1,297 @@
+{
+  "report_id": "vertical_ai_project_understanding_foundation_v1_1784015367027",
+  "phase": "PHASE-VAI-001",
+  "system_id": "VERTICAL_AI_PROJECT_UNDERSTANDING_FOUNDATION_V1",
+  "generated_at": "2026-07-14T07:49:27.010Z",
+  "goal": "Design the Project Understanding foundation for Vertical AI so repository understanding precedes planning, reuse precedes creation, and human approval gates any write.",
+  "vertical_ai_project_understanding_foundation_v1_passed": true,
+  "final_verdict": "PASS_VERTICAL_AI_PROJECT_UNDERSTANDING_FOUNDATION_V1",
+  "status": "VERTICAL_AI_PROJECT_UNDERSTANDING_DEFINED",
+  "validation_passed": true,
+  "design_only": true,
+  "foundation_name": "Evidence-Bound Vertical AI Project Understanding Foundation V1",
+  "capability_id": "vertical_ai_project_understanding",
+  "layer_id": "project_understanding",
+  "decision_fingerprint": "aec0014f49a71dd7",
+  "design_fingerprint": "78b68e9c35c10e03",
+  "goal_truth_fingerprint": "goal_ghibli_production_pipeline:true:1|goal_production_runtime:true:1|goal_project_brain_operational:true:1|goal_repository_foundation:true:1|goal_semantic_quality:true:1",
+  "precondition_evidence": [
+    {
+      "precondition_id": "mcp_connector_complete",
+      "report_path": "reports/mcp_connector/MCP_CONNECTOR_PRODUCTION_CERTIFICATION_V1_REPORT.json",
+      "pass_verdict": "PASS_MCP_CONNECTOR_COMPLETE_V1",
+      "artifact_path": "datasets/mcp_connector_production_certification_v1/mcp-connector-production-certification-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "cil_complete",
+      "report_path": "reports/consumer_integration_layer/CONSUMER_INTEGRATION_PRODUCTION_CERTIFICATION_V1_REPORT.json",
+      "pass_verdict": "PASS_CONSUMER_INTEGRATION_COMPLETE_V1",
+      "artifact_path": "datasets/consumer_integration_production_certification_v1/consumer-integration-production-certification-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "project_brain_complete",
+      "report_path": "reports/project_brain/PROJECT_BRAIN_COMPLETE_V1_REPORT.json",
+      "pass_verdict": "PASS_PROJECT_BRAIN_COMPLETE_V1",
+      "artifact_path": "datasets/project_brain/brain_complete_v1/project-brain-complete-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "repository_intelligence_bundle_complete",
+      "report_path": "reports/repository_intelligence_bundle/REPOSITORY_INTELLIGENCE_BUNDLE_PRODUCTION_CERTIFICATION_V1_REPORT.json",
+      "pass_verdict": "PASS_REPOSITORY_INTELLIGENCE_BUNDLE_COMPLETE_V1",
+      "artifact_path": "datasets/repository_intelligence_bundle_production_certification_v1/production-certification-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "repository_intelligence_access_complete",
+      "report_path": "reports/repository_intelligence_access_layer/REPOSITORY_INTELLIGENCE_ACCESS_PRODUCTION_CERTIFICATION_V1_REPORT.json",
+      "pass_verdict": "PASS_REPOSITORY_INTELLIGENCE_ACCESS_COMPLETE_V1",
+      "artifact_path": "datasets/repository_intelligence_access_production_certification_v1/repository-intelligence-access-production-certification-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    }
+  ],
+  "brain_baseline_preserved": true,
+  "brain_baseline_drift": [],
+  "bundle_baseline_preserved": true,
+  "bundle_baseline_drift": [],
+  "access_baseline_preserved": true,
+  "access_baseline_drift": [],
+  "runtime_baseline_preserved": true,
+  "runtime_baseline_drift": [],
+  "cil_baseline_preserved": true,
+  "cil_baseline_drift": [],
+  "connector_baseline_preserved": true,
+  "connector_baseline_drift": [],
+  "platform_core_unchanged": true,
+  "cil_unchanged": true,
+  "repository_unchanged": true,
+  "components": [
+    "repository_discovery",
+    "repository_inventory",
+    "component_lookup",
+    "reference_resolution",
+    "dependency_resolution",
+    "duplicate_detection",
+    "reuse_candidate_analysis",
+    "understanding_report",
+    "gap_analysis",
+    "approval_gate",
+    "understanding_evidence"
+  ],
+  "foundation_ready": true,
+  "ready_for_planning": true,
+  "repository_first_workflow_established": true,
+  "reuse_before_create_policy_established": true,
+  "contract_validation": {
+    "contract_ids": [
+      "VAIPUF_MCP_CONNECTOR_COMPLETE_VERIFIED",
+      "VAIPUF_CIL_COMPLETE_VERIFIED",
+      "VAIPUF_PLATFORM_CORE_READY",
+      "VAIPUF_REPOSITORY_INTELLIGENCE_READY",
+      "VAIPUF_CERTIFIED_CONNECTORS_BOUND",
+      "VAIPUF_COMPONENTS_DEFINED",
+      "VAIPUF_REPOSITORY_FIRST_WORKFLOW",
+      "VAIPUF_REUSE_BEFORE_CREATE",
+      "VAIPUF_EVIDENCE_PRECEDES_CONCLUSIONS",
+      "VAIPUF_HUMAN_APPROVAL_BEFORE_WRITE",
+      "VAIPUF_CONSUMES_PLATFORM_CORE_V1_ONLY",
+      "VAIPUF_CONSUMES_CIL_V1_ONLY",
+      "VAIPUF_CONSUMES_REPOSITORY_INTELLIGENCE_ONLY",
+      "VAIPUF_CONSUMES_CERTIFIED_CONNECTORS_ONLY",
+      "VAIPUF_DESIGN_ONLY",
+      "VAIPUF_READ_ONLY",
+      "VAIPUF_REFERENCE_ONLY",
+      "VAIPUF_NO_SOURCE_DATA_OWNERSHIP",
+      "VAIPUF_NO_PLATFORM_CORE_MUTATION",
+      "VAIPUF_NO_CIL_MUTATION",
+      "VAIPUF_NO_REPOSITORY_MUTATION",
+      "VAIPUF_READY_FOR_PLANNING",
+      "VAIPUF_FOUNDATION_READY"
+    ],
+    "results": [
+      {
+        "contract_id": "VAIPUF_MCP_CONNECTOR_COMPLETE_VERIFIED",
+        "verdict": "PASS",
+        "evidence": "mcpConnectorCompleteVerified=true"
+      },
+      {
+        "contract_id": "VAIPUF_CIL_COMPLETE_VERIFIED",
+        "verdict": "PASS",
+        "evidence": "cilCompleteVerified=true"
+      },
+      {
+        "contract_id": "VAIPUF_PLATFORM_CORE_READY",
+        "verdict": "PASS",
+        "evidence": "platformCoreReady=true"
+      },
+      {
+        "contract_id": "VAIPUF_REPOSITORY_INTELLIGENCE_READY",
+        "verdict": "PASS",
+        "evidence": "repositoryIntelligenceReady=true"
+      },
+      {
+        "contract_id": "VAIPUF_CERTIFIED_CONNECTORS_BOUND",
+        "verdict": "PASS",
+        "evidence": "certifiedConnectorsBound=true"
+      },
+      {
+        "contract_id": "VAIPUF_COMPONENTS_DEFINED",
+        "verdict": "PASS",
+        "evidence": "componentsDefined=true"
+      },
+      {
+        "contract_id": "VAIPUF_REPOSITORY_FIRST_WORKFLOW",
+        "verdict": "PASS",
+        "evidence": "repositoryFirstWorkflow=true"
+      },
+      {
+        "contract_id": "VAIPUF_REUSE_BEFORE_CREATE",
+        "verdict": "PASS",
+        "evidence": "reuseBeforeCreate=true"
+      },
+      {
+        "contract_id": "VAIPUF_EVIDENCE_PRECEDES_CONCLUSIONS",
+        "verdict": "PASS",
+        "evidence": "evidencePrecedesConclusions=true"
+      },
+      {
+        "contract_id": "VAIPUF_HUMAN_APPROVAL_BEFORE_WRITE",
+        "verdict": "PASS",
+        "evidence": "humanApprovalBeforeWrite=true"
+      },
+      {
+        "contract_id": "VAIPUF_CONSUMES_PLATFORM_CORE_V1_ONLY",
+        "verdict": "PASS",
+        "evidence": "consumesPlatformCoreV1Only=true"
+      },
+      {
+        "contract_id": "VAIPUF_CONSUMES_CIL_V1_ONLY",
+        "verdict": "PASS",
+        "evidence": "consumesCilV1Only=true"
+      },
+      {
+        "contract_id": "VAIPUF_CONSUMES_REPOSITORY_INTELLIGENCE_ONLY",
+        "verdict": "PASS",
+        "evidence": "consumesRepositoryIntelligenceOnly=true"
+      },
+      {
+        "contract_id": "VAIPUF_CONSUMES_CERTIFIED_CONNECTORS_ONLY",
+        "verdict": "PASS",
+        "evidence": "consumesCertifiedConnectorsOnly=true"
+      },
+      {
+        "contract_id": "VAIPUF_DESIGN_ONLY",
+        "verdict": "PASS",
+        "evidence": "designOnly=true"
+      },
+      {
+        "contract_id": "VAIPUF_READ_ONLY",
+        "verdict": "PASS",
+        "evidence": "readOnly=true"
+      },
+      {
+        "contract_id": "VAIPUF_REFERENCE_ONLY",
+        "verdict": "PASS",
+        "evidence": "referenceOnly=true"
+      },
+      {
+        "contract_id": "VAIPUF_NO_SOURCE_DATA_OWNERSHIP",
+        "verdict": "PASS",
+        "evidence": "noSourceDataOwnership=true"
+      },
+      {
+        "contract_id": "VAIPUF_NO_PLATFORM_CORE_MUTATION",
+        "verdict": "PASS",
+        "evidence": "noPlatformCoreMutation=true"
+      },
+      {
+        "contract_id": "VAIPUF_NO_CIL_MUTATION",
+        "verdict": "PASS",
+        "evidence": "noCilMutation=true"
+      },
+      {
+        "contract_id": "VAIPUF_NO_REPOSITORY_MUTATION",
+        "verdict": "PASS",
+        "evidence": "noRepositoryMutation=true"
+      },
+      {
+        "contract_id": "VAIPUF_READY_FOR_PLANNING",
+        "verdict": "PASS",
+        "evidence": "readyForPlanning=true"
+      },
+      {
+        "contract_id": "VAIPUF_FOUNDATION_READY",
+        "verdict": "PASS",
+        "evidence": "foundationReady=true"
+      }
+    ],
+    "aggregate_verdict": "PASS"
+  },
+  "foundation_ref": "datasets/vertical_ai_project_understanding_foundation_v1/vertical-ai-project-understanding-foundation-v1.json",
+  "architecture_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-architecture-v1.json",
+  "component_model_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-component-model-v1.json",
+  "workflow_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-workflow-v1.json",
+  "boundary_model_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-boundary-model-v1.json",
+  "approval_gate_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-approval-gate-v1.json",
+  "evidence_model_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-evidence-model-v1.json",
+  "contracts_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-contracts-v1.json",
+  "registry_ref": "datasets/vertical_ai_project_understanding_foundation_v1/project-understanding-registry-v1.json",
+  "checks": {
+    "PRECONDITIONS_SATISFIED": true,
+    "MCP_CONNECTOR_COMPLETE": true,
+    "CIL_COMPLETE": true,
+    "PLATFORM_CORE_READY": true,
+    "REPOSITORY_INTELLIGENCE_READY": true,
+    "CERTIFIED_CONNECTORS_BOUND": true,
+    "COMPONENTS_DEFINED": true,
+    "REPOSITORY_FIRST_WORKFLOW": true,
+    "REUSE_BEFORE_CREATE": true,
+    "EVIDENCE_PRECEDES_CONCLUSIONS": true,
+    "HUMAN_APPROVAL_BEFORE_WRITE": true,
+    "DESIGN_ONLY": true,
+    "READ_ONLY": true,
+    "REFERENCE_ONLY": true,
+    "NO_SOURCE_DATA_OWNERSHIP": true,
+    "PLATFORM_CORE_UNCHANGED": true,
+    "CIL_UNCHANGED": true,
+    "REPOSITORY_UNCHANGED": true,
+    "READY_FOR_PLANNING": true,
+    "FOUNDATION_READY": true,
+    "CONTRACT_VALIDATION": true,
+    "GOAL_TRUTH_SATISFIED": true,
+    "EXECUTION": false,
+    "IMPLEMENTATION": false,
+    "WRITE_AUTHORIZED": false
+  },
+  "issues": [],
+  "execution_flags": {
+    "design_only": true,
+    "implementation": false,
+    "implementation_deferred": true,
+    "read_only": true,
+    "reference_only": true,
+    "repository_understanding_precedes_planning": true,
+    "reuse_precedes_creation": true,
+    "evidence_precedes_conclusions": true,
+    "human_approval_required_before_write": true,
+    "consumes_platform_core_v1_only": true,
+    "consumes_cil_v1_only": true,
+    "consumes_repository_intelligence_only": true,
+    "consumes_certified_connectors_only": true,
+    "owns_source_data": false,
+    "platform_core_mutation": false,
+    "cil_mutation": false,
+    "repository_mutation": false,
+    "planning_deferred_until_understanding": true,
+    "independently_evolvable": true,
+    "execute_authorized": false,
+    "write_authorized": false
+  }
+}

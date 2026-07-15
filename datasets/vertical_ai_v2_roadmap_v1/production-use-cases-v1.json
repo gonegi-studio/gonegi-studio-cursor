@@ -1,0 +1,40 @@
+{
+  "production_use_cases_v1_id": "vertical_ai_v2_production_use_cases_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-100",
+  "generated_at": "2026-07-15T03:51:10.521Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "use_cases": [
+    {
+      "use_case_id": "uc_ghibli_production_pipeline_ops",
+      "title": "Ghibli production pipeline Vertical AI operations",
+      "goal_ref": "goal_ghibli_production_pipeline",
+      "description": "Run understanding→planning→execution→validation→certification→improvement against the production pipeline repository surface without mutating Platform Core."
+    },
+    {
+      "use_case_id": "uc_production_runtime_alignment",
+      "title": "Production runtime alignment operations",
+      "goal_ref": "goal_production_runtime",
+      "description": "Align Vertical AI planning and validation with certified production runtime readiness using CIL connectors."
+    },
+    {
+      "use_case_id": "uc_project_brain_operational_queries",
+      "title": "Project Brain operational query assist",
+      "goal_ref": "goal_project_brain_operational",
+      "description": "Assist repository understanding and reuse decisions against Project Brain baselines as immutable reference evidence."
+    },
+    {
+      "use_case_id": "uc_repository_foundation_hardening",
+      "title": "Repository foundation hardening assist",
+      "goal_ref": "goal_repository_foundation",
+      "description": "Detect duplication/gaps and propose reuse-before-create plans with human approval gates before any write."
+    },
+    {
+      "use_case_id": "uc_semantic_quality_improvement",
+      "title": "Semantic quality improvement loops",
+      "goal_ref": "goal_semantic_quality",
+      "description": "Derive certified improvement candidates that improve semantic quality metrics without enacting repository mutations."
+    }
+  ]
+}

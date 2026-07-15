@@ -1,0 +1,25 @@
+{
+  "certification_record_v1_id": "certification_record_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-009",
+  "generated_at": "2026-07-14T11:08:53.802Z",
+  "mode": "READ_ONLY",
+  "record_design": {
+    "record_kind": "vertical_ai_certification_record",
+    "required_fields": [
+      "validation_result_fingerprint",
+      "validation_dispatch_fingerprint",
+      "certified_validation_integrity_preserved",
+      "certified_validation_operational",
+      "certification_contract_id",
+      "boundary_integrity",
+      "evidence_fingerprint",
+      "trace_fingerprint",
+      "reproducibility_fingerprint"
+    ],
+    "issued_by_runtime": false,
+    "design_only": true
+  },
+  "binds_validation_runtime": "datasets/vertical_ai_validation_runtime_v1/vertical-ai-validation-runtime-v1.json",
+  "write_authorized": false
+}

@@ -1,0 +1,22 @@
+{
+  "project_understanding_approval_gate_v1_id": "project_understanding_approval_gate_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-001",
+  "generated_at": "2026-07-14T07:49:27.010Z",
+  "mode": "READ_ONLY",
+  "gate_policy": {
+    "human_approval_required_before_any_write": true,
+    "understanding_runs_are_read_only": true,
+    "write_actions_blocked_until_approval": true,
+    "planning_handoff_requires_understanding": true,
+    "repository_mutation_forbidden_in_foundation": true
+  },
+  "write_actions_gated": [
+    "planning_package_materialization",
+    "implementation_proposal_persist",
+    "repository_create",
+    "repository_modify"
+  ],
+  "design_only": true,
+  "write_authorized": false
+}

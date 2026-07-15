@@ -1,0 +1,46 @@
+{
+  "risk_plan_v1_id": "vertical_ai_v2_risk_plan_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-101",
+  "generated_at": "2026-07-15T04:00:11.538Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "risks": [
+    {
+      "risk_id": "risk_v1_drift",
+      "severity": "critical",
+      "description": "Implementation accidentally mutates frozen Vertical AI V1 snapshots.",
+      "mitigation": "Protect V1/v2 master snapshot mtimes; fail on fingerprint drift."
+    },
+    {
+      "risk_id": "risk_pc_cil_mutation",
+      "severity": "critical",
+      "description": "Platform Core or CIL baselines change during V2 work.",
+      "mitigation": "Baseline mtime guards on every planning/implementation engine run."
+    },
+    {
+      "risk_id": "risk_unauthorized_repo_write",
+      "severity": "critical",
+      "description": "Repository writes occur before human approval / execute_authorized.",
+      "mitigation": "Hard-forbid mutation gates; approval strategy blocks enactment."
+    },
+    {
+      "risk_id": "risk_dependency_skip",
+      "severity": "high",
+      "description": "Tracks promoted out of dependency order.",
+      "mitigation": "Dependency plan enforces sequential entry_criteria checks."
+    },
+    {
+      "risk_id": "risk_uncertified_improvement",
+      "severity": "high",
+      "description": "Improvement candidates derived from uncertified evidence.",
+      "mitigation": "Require certified-evidence-only attestation in validation stage."
+    },
+    {
+      "risk_id": "risk_consumer_snapshot_breakage",
+      "severity": "medium",
+      "description": "Connector master snapshots rewritten during collaboration enablement.",
+      "mitigation": "Treat certified connectors as immutable references; verify mtimes."
+    }
+  ]
+}

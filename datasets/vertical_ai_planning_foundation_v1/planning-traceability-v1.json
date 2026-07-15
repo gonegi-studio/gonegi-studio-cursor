@@ -1,0 +1,55 @@
+{
+  "planning_traceability_v1_id": "planning_traceability_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-003",
+  "generated_at": "2026-07-14T10:11:25.520Z",
+  "mode": "READ_ONLY",
+  "evidence_to_plan_traceability": true,
+  "chain": [
+    {
+      "from": "understanding_runtime",
+      "to": "planning_context"
+    },
+    {
+      "from": "goal_analysis",
+      "to": "candidate_generation"
+    },
+    {
+      "from": "planning_context",
+      "to": "candidate_generation"
+    },
+    {
+      "from": "candidate_generation",
+      "to": "reuse_planning"
+    },
+    {
+      "from": "reuse_planning",
+      "to": "implementation_planning"
+    },
+    {
+      "from": "implementation_planning",
+      "to": "risk_analysis"
+    },
+    {
+      "from": "risk_analysis",
+      "to": "execution_plan"
+    },
+    {
+      "from": "execution_plan",
+      "to": "plan_validation"
+    },
+    {
+      "from": "planning_evidence",
+      "to": "plan_traceability"
+    },
+    {
+      "from": "plan_traceability",
+      "to": "plan_reproducibility"
+    },
+    {
+      "from": "plan_validation",
+      "to": "approval_gate"
+    }
+  ],
+  "reproducibility_fingerprint": "ba544174bf87011b"
+}

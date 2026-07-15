@@ -1,0 +1,120 @@
+{
+  "validation_workflow_v1_id": "validation_workflow_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-007",
+  "generated_at": "2026-07-14T10:52:31.028Z",
+  "mode": "READ_ONLY",
+  "evidence_first": true,
+  "repository_first": true,
+  "reuse_before_create": true,
+  "evidence_to_validation_traceability": true,
+  "validation_reproducibility": true,
+  "certified_validation_boundaries_defined": true,
+  "human_approval_required_before_repository_mutation": true,
+  "validation_runtime_deferred": true,
+  "workflow": {
+    "workflow_id": "evidence_to_validation_v1",
+    "policy": "evidence_first_validation",
+    "reuse_policy": "reuse_before_create",
+    "repository_policy": "repository_first",
+    "connector_policy": "certified_connectors_only",
+    "evidence_policy": "evidence_precedes_validation_conclusions",
+    "write_policy": "human_approval_required_before_repository_mutation",
+    "traceability_policy": "evidence_to_validation",
+    "steps": [
+      {
+        "step_id": "build_context",
+        "component_id": "validation_context",
+        "write": false
+      },
+      {
+        "step_id": "bind_runtime_ref",
+        "component_id": "validation_runtime_ref",
+        "write": false
+      },
+      {
+        "step_id": "select",
+        "component_id": "validation_selector",
+        "write": false
+      },
+      {
+        "step_id": "load_rules",
+        "component_id": "validation_rules",
+        "write": false
+      },
+      {
+        "step_id": "validate_contracts",
+        "component_id": "contract_validation",
+        "write": false
+      },
+      {
+        "step_id": "validate_boundaries",
+        "component_id": "boundary_validation",
+        "write": false
+      },
+      {
+        "step_id": "validate_results",
+        "component_id": "result_validation",
+        "write": false
+      },
+      {
+        "step_id": "declare_contract",
+        "component_id": "validation_contract",
+        "write": false
+      },
+      {
+        "step_id": "bind_evidence",
+        "component_id": "validation_evidence",
+        "write": false
+      },
+      {
+        "step_id": "trace",
+        "component_id": "validation_traceability",
+        "write": false
+      },
+      {
+        "step_id": "reproducibility",
+        "component_id": "validation_reproducibility",
+        "write": false
+      },
+      {
+        "step_id": "integrity",
+        "component_id": "validation_boundary_integrity",
+        "write": false
+      },
+      {
+        "step_id": "approval",
+        "component_id": "approval_gate",
+        "write": false,
+        "blocks_repository_mutation_until_human_approval": true
+      },
+      {
+        "step_id": "validation_runtime_handoff",
+        "deferred": true,
+        "requires": [
+          "validation_foundation_ready",
+          "human_approval_if_repository_mutation"
+        ]
+      }
+    ],
+    "forbidden_before_evidence": [
+      "pass_without_contract_validation",
+      "pass_without_boundary_validation",
+      "select_uncertified_connector",
+      "mutate_platform_core",
+      "mutate_cil",
+      "repository_mutation_without_human_approval"
+    ]
+  },
+  "readiness_for_validation_runtime": {
+    "requires": [
+      "validation_components_defined",
+      "certified_validation_boundaries_defined",
+      "evidence_to_validation_traceability",
+      "approval_gate_armed"
+    ],
+    "creates_implementation": false,
+    "mutates_platform_core": false,
+    "mutates_cil": false
+  }
+}

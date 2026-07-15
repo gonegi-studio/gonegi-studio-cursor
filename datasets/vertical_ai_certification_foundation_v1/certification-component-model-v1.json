@@ -1,0 +1,147 @@
+{
+  "certification_component_model_v1_id": "certification_component_model_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-009",
+  "generated_at": "2026-07-14T11:08:53.802Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Certification Foundation V1",
+  "capability_id": "vertical_ai_certification",
+  "layer_id": "certification",
+  "responsibility": "Design evidence-to-certification Vertical AI capacity that certifies validation integrity and boundaries without mutating Platform Core or CIL",
+  "components": [
+    {
+      "component_id": "certification_context",
+      "name": "Certification Context",
+      "responsibility": "Assemble a read-only certification context from validation runtime outputs, Platform Core, CIL, Repository Intelligence, and certified connector snapshots.",
+      "interface_kind": "context",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_selector",
+      "name": "Certification Selector",
+      "responsibility": "Select which validation results, contracts, and boundaries to certify using repository-first, evidence-first priority; never invents unauthorized writes.",
+      "interface_kind": "selection",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_rules",
+      "name": "Certification Rules",
+      "responsibility": "Declare reusable, deterministic certification rules for contracts, boundaries, integrity, and record issuance without owning source data.",
+      "interface_kind": "rules",
+      "owns_source_data": false,
+      "mode": "rule_catalog",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_contract",
+      "name": "Certification Contract",
+      "responsibility": "Declare the certification boundary contract: consumes PC/CIL/RI/certified connectors/validation runtime only; forbids PC/CIL mutation and unapproved repository mutation.",
+      "interface_kind": "contract",
+      "owns_source_data": false,
+      "mode": "boundary_contract",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_boundary",
+      "name": "Certification Boundary",
+      "responsibility": "Define certified certification boundaries: no PC/CIL mutation, certified connectors only, validation integrity required, write authorization blocked.",
+      "interface_kind": "boundary",
+      "owns_source_data": false,
+      "mode": "boundary_definition",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_evidence",
+      "name": "Certification Evidence",
+      "responsibility": "Bind fingerprints and refs so every certification conclusion is preceded by validation and execution evidence.",
+      "interface_kind": "evidence",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_traceability",
+      "name": "Certification Traceability",
+      "responsibility": "Maintain evidence-to-certification traceability from validation outputs through rules, contract/boundary checks, record design, and approval readiness.",
+      "interface_kind": "traceability",
+      "owns_source_data": false,
+      "mode": "evidence_to_certification",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_reproducibility",
+      "name": "Certification Reproducibility",
+      "responsibility": "Ensure identical evidence and validation inputs yield identical certification design fingerprints across dual runs.",
+      "interface_kind": "reproducibility",
+      "owns_source_data": false,
+      "mode": "deterministic",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_record",
+      "name": "Certification Record",
+      "responsibility": "Design the certification record shape binding validation fingerprints, boundary integrity, and contract conformance for future certification runtime issuance.",
+      "interface_kind": "record",
+      "owns_source_data": false,
+      "mode": "record_design",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_runtime_ref",
+      "name": "Certification Runtime Reference",
+      "responsibility": "Reference the certified surfaces future Certification Runtime will bind (validation runtime, Agent Runtime, CIL); reference-only, no mutation.",
+      "interface_kind": "reference",
+      "owns_source_data": false,
+      "mode": "runtime_ref",
+      "write_authorized": false
+    },
+    {
+      "component_id": "approval_gate",
+      "name": "Approval Gate",
+      "responsibility": "Require explicit human approval before any repository mutation that certification might later recommend; foundation runs remain read-only.",
+      "interface_kind": "gate",
+      "owns_source_data": false,
+      "mode": "human_approval_required",
+      "write_authorized": false
+    },
+    {
+      "component_id": "certification_integrity",
+      "name": "Certification Integrity",
+      "responsibility": "Codify and design integrity checks for certified certification boundaries across Platform Core, CIL, connectors, validation integrity, and repository mutation gates.",
+      "interface_kind": "integrity",
+      "owns_source_data": false,
+      "mode": "integrity_enforcement_design",
+      "write_authorized": false
+    }
+  ],
+  "principles": {
+    "design_only": true,
+    "implementation": false,
+    "implementation_deferred": true,
+    "read_only": true,
+    "reference_only": true,
+    "repository_first": true,
+    "evidence_first": true,
+    "reuse_precedes_creation": true,
+    "evidence_to_certification_traceability": true,
+    "certification_reproducibility": true,
+    "certified_certification_boundaries_defined": true,
+    "human_approval_required_before_repository_mutation": true,
+    "consumes_platform_core_v1_only": true,
+    "consumes_cil_v1_only": true,
+    "consumes_repository_intelligence_only": true,
+    "consumes_certified_connectors_only": true,
+    "consumes_validation_runtime": true,
+    "owns_source_data": false,
+    "platform_core_mutation": false,
+    "cil_mutation": false,
+    "certification_runtime_deferred": true,
+    "independently_evolvable": true
+  },
+  "design_only": true,
+  "implementation": false
+}

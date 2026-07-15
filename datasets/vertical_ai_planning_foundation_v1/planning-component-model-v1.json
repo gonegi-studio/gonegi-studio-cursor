@@ -1,0 +1,146 @@
+{
+  "planning_component_model_v1_id": "planning_component_model_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-003",
+  "generated_at": "2026-07-14T10:11:25.520Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Planning Foundation V1",
+  "capability_id": "vertical_ai_planning",
+  "layer_id": "planning",
+  "responsibility": "Design evidence-first Vertical AI planning that turns repository understanding into reproducible plans without repository mutation",
+  "components": [
+    {
+      "component_id": "goal_analysis",
+      "name": "Goal Analysis",
+      "responsibility": "Analyze active goal truth against repository understanding evidence so planning starts from certified goals, not invented intent.",
+      "interface_kind": "analysis",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "planning_context",
+      "name": "Planning Context",
+      "responsibility": "Assemble a read-only planning context from Platform Core, CIL, Repository Intelligence, and Project Understanding Runtime outputs without owning source data.",
+      "interface_kind": "context",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "candidate_generation",
+      "name": "Candidate Generation",
+      "responsibility": "Generate plan candidates from gaps and understanding evidence; candidates prefer reuse surfaces and never execute repository writes.",
+      "interface_kind": "generation",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "reuse_planning",
+      "name": "Reuse Planning",
+      "responsibility": "Prioritize reuse-plan steps over create-plan steps; enforces reuse-before-create for every candidate that reaches implementation planning.",
+      "interface_kind": "planning",
+      "owns_source_data": false,
+      "mode": "reuse_first",
+      "write_authorized": false
+    },
+    {
+      "component_id": "implementation_planning",
+      "name": "Implementation Planning",
+      "responsibility": "Shape implementation plan descriptors only after reuse planning; descriptors are design artifacts and do not authorize mutation.",
+      "interface_kind": "planning",
+      "owns_source_data": false,
+      "mode": "design_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "risk_analysis",
+      "name": "Risk Analysis",
+      "responsibility": "Identify planning risks (baseline drift, unapproved write, weak evidence, create-before-reuse) as evidence-bound risk records.",
+      "interface_kind": "analysis",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_plan",
+      "name": "Execution Plan",
+      "responsibility": "Compose an ordered execution plan for Agent Runtime handoff; the plan describes orchestration requests and never performs domain mutation itself.",
+      "interface_kind": "plan",
+      "owns_source_data": false,
+      "mode": "orchestration_descriptor",
+      "write_authorized": false
+    },
+    {
+      "component_id": "plan_validation",
+      "name": "Plan Validation",
+      "responsibility": "Validate plan structure, evidence citations, reuse precedence, and gate readiness before any approval or runtime handoff.",
+      "interface_kind": "validation",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "planning_evidence",
+      "name": "Planning Evidence",
+      "responsibility": "Bind fingerprints and refs so every plan conclusion is preceded by understanding and Platform Core evidence.",
+      "interface_kind": "evidence",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "plan_reproducibility",
+      "name": "Plan Reproducibility",
+      "responsibility": "Ensure identical evidence inputs yield identical plan fingerprints across dual runs; planning design must be deterministic.",
+      "interface_kind": "reproducibility",
+      "owns_source_data": false,
+      "mode": "deterministic",
+      "write_authorized": false
+    },
+    {
+      "component_id": "approval_gate",
+      "name": "Approval Gate",
+      "responsibility": "Require explicit human approval before any write action arising from a plan; foundation/design planning runs remain read-only.",
+      "interface_kind": "gate",
+      "owns_source_data": false,
+      "mode": "human_approval_required",
+      "write_authorized": false
+    },
+    {
+      "component_id": "plan_traceability",
+      "name": "Plan Traceability",
+      "responsibility": "Maintain evidence-to-plan traceability from goal analysis through candidates, reuse, risks, execution plan, and validation.",
+      "interface_kind": "traceability",
+      "owns_source_data": false,
+      "mode": "evidence_to_plan",
+      "write_authorized": false
+    }
+  ],
+  "principles": {
+    "design_only": true,
+    "implementation": false,
+    "implementation_deferred": true,
+    "read_only": true,
+    "reference_only": true,
+    "repository_first": true,
+    "reuse_precedes_creation": true,
+    "evidence_first_planning": true,
+    "evidence_to_plan_traceability": true,
+    "plan_reproducibility": true,
+    "human_approval_required_before_write": true,
+    "consumes_platform_core_v1_only": true,
+    "consumes_cil_v1_only": true,
+    "consumes_repository_intelligence_only": true,
+    "consumes_understanding_runtime": true,
+    "owns_source_data": false,
+    "platform_core_mutation": false,
+    "cil_mutation": false,
+    "repository_mutation": false,
+    "planning_runtime_deferred": true,
+    "independently_evolvable": true
+  },
+  "design_only": true,
+  "implementation": false
+}

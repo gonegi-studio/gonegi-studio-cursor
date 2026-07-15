@@ -1,0 +1,38 @@
+{
+  "repository_operation_scope_v1_id": "vertical_ai_v2_repository_operation_scope_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-100",
+  "generated_at": "2026-07-15T03:51:10.521Z",
+  "mode": "READ_ONLY_REFERENCE",
+  "planning_only": true,
+  "in_scope": [
+    "repository_surface_scan",
+    "component_resolution",
+    "reuse_before_create_analysis",
+    "gap_detection",
+    "planning_descriptor_generation",
+    "human_approval_gate_simulation",
+    "execution_dispatch_descriptor_only",
+    "validation_and_certification_evidence",
+    "improvement_candidate_selection"
+  ],
+  "out_of_scope": [
+    "platform_core_mutation",
+    "cil_mutation",
+    "vertical_ai_v1_master_snapshot_mutation",
+    "unauthorized_repository_writes",
+    "breaking_lifecycle_contract_changes_on_v1",
+    "uncertified_evidence_improvement"
+  ],
+  "mutation_policy": {
+    "repository_mutation_forbidden_by_default": true,
+    "human_approval_required_before_write": true,
+    "execute_authorized_required_for_enactment": true
+  },
+  "reference_baselines": [
+    "datasets/vertical_ai_master_snapshot_v1/vertical-ai-master-snapshot-v1.json",
+    "datasets/vertical_ai_v1_master_snapshot_v2/vertical-ai-v1-master-snapshot-v2.json",
+    "datasets/project_brain/master_snapshot_v1/project-brain-master-snapshot-v1.json",
+    "datasets/consumer_integration_master_snapshot_v1/consumer-integration-master-snapshot-v1.json"
+  ]
+}

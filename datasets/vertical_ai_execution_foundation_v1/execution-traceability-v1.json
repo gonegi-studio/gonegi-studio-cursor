@@ -1,0 +1,59 @@
+{
+  "execution_traceability_v1_id": "execution_traceability_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-005",
+  "generated_at": "2026-07-14T10:26:39.202Z",
+  "mode": "READ_ONLY",
+  "evidence_to_execution_traceability": true,
+  "chain": [
+    {
+      "from": "planning_runtime",
+      "to": "execution_context"
+    },
+    {
+      "from": "execution_context",
+      "to": "execution_selector"
+    },
+    {
+      "from": "execution_runtime_ref",
+      "to": "tool_selection"
+    },
+    {
+      "from": "execution_selector",
+      "to": "tool_selection"
+    },
+    {
+      "from": "execution_selector",
+      "to": "consumer_connector_selection"
+    },
+    {
+      "from": "tool_selection",
+      "to": "execution_dispatch"
+    },
+    {
+      "from": "consumer_connector_selection",
+      "to": "execution_dispatch"
+    },
+    {
+      "from": "execution_contract",
+      "to": "execution_validation"
+    },
+    {
+      "from": "execution_dispatch",
+      "to": "execution_validation"
+    },
+    {
+      "from": "execution_evidence",
+      "to": "execution_traceability"
+    },
+    {
+      "from": "execution_traceability",
+      "to": "execution_reproducibility"
+    },
+    {
+      "from": "execution_boundary",
+      "to": "approval_gate"
+    }
+  ],
+  "reproducibility_fingerprint": "926c3eeac8d3f61c"
+}

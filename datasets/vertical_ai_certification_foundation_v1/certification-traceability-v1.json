@@ -1,0 +1,59 @@
+{
+  "certification_traceability_v1_id": "certification_traceability_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-009",
+  "generated_at": "2026-07-14T11:08:53.802Z",
+  "mode": "READ_ONLY",
+  "evidence_to_certification_traceability": true,
+  "chain": [
+    {
+      "from": "validation_runtime",
+      "to": "certification_context"
+    },
+    {
+      "from": "certification_context",
+      "to": "certification_selector"
+    },
+    {
+      "from": "certification_runtime_ref",
+      "to": "certification_rules"
+    },
+    {
+      "from": "certification_selector",
+      "to": "certification_contract"
+    },
+    {
+      "from": "certification_rules",
+      "to": "certification_contract"
+    },
+    {
+      "from": "certification_rules",
+      "to": "certification_boundary"
+    },
+    {
+      "from": "certification_contract",
+      "to": "certification_record"
+    },
+    {
+      "from": "certification_boundary",
+      "to": "certification_record"
+    },
+    {
+      "from": "certification_evidence",
+      "to": "certification_traceability"
+    },
+    {
+      "from": "certification_traceability",
+      "to": "certification_reproducibility"
+    },
+    {
+      "from": "certification_integrity",
+      "to": "approval_gate"
+    },
+    {
+      "from": "certification_record",
+      "to": "certification_integrity"
+    }
+  ],
+  "reproducibility_fingerprint": "bf4777e4b70f9e32"
+}

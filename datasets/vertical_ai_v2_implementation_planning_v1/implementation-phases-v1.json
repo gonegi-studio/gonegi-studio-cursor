@@ -1,0 +1,132 @@
+{
+  "implementation_phases_v1_id": "vertical_ai_v2_implementation_phases_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-101",
+  "generated_at": "2026-07-15T04:00:11.538Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "phases": [
+    {
+      "phase_id": "PHASE-VAI-201",
+      "track_id": "v2_architecture_definition",
+      "order": 1,
+      "title": "Vertical AI V2 architecture definition",
+      "roadmap_track_ref": "v2_architecture_definition",
+      "work_packages": [
+        "Define V2 architecture layers and public API surfaces",
+        "Bind V2 design fingerprint to certified V1 master snapshots",
+        "Freeze V2 architecture artifacts without mutating V1 paths"
+      ],
+      "entry_criteria": [
+        "PASS_VERTICAL_AI_V2_IMPLEMENTATION_PLANNING_V1"
+      ],
+      "exit_criteria": [
+        "architecture_defined",
+        "v1_snapshots_unchanged"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-202",
+      "track_id": "replaceable_runtime_modules",
+      "order": 2,
+      "title": "Replaceable runtime module contracts",
+      "roadmap_track_ref": "replaceable_runtime_modules",
+      "work_packages": [
+        "Specify replaceable understanding/planning/execution/validation/certification/improvement modules",
+        "Define dual-run equivalence fixtures on certified evidence",
+        "Certify module contracts before promotion"
+      ],
+      "entry_criteria": [
+        "v2_architecture_definition PASS"
+      ],
+      "exit_criteria": [
+        "module_contracts_certified",
+        "fingerprint_stability_proven"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-203",
+      "track_id": "repository_operation_profiles",
+      "order": 3,
+      "title": "Repository operation profile implementation prep",
+      "roadmap_track_ref": "repository_operation_profiles",
+      "work_packages": [
+        "Materialize repository-first operation profiles from certified V1 scans",
+        "Encode reuse-before-create and human-approval gates",
+        "Attest mutation policy remains forbidden by default"
+      ],
+      "entry_criteria": [
+        "replaceable_runtime_modules PASS"
+      ],
+      "exit_criteria": [
+        "profiles_defined",
+        "mutation_policy_attested"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-204",
+      "track_id": "consumer_collaboration_sessions",
+      "order": 4,
+      "title": "Consumer collaboration session orchestration prep",
+      "roadmap_track_ref": "consumer_collaboration_sessions",
+      "work_packages": [
+        "Design CIL-mediated session orchestration across certified connectors",
+        "Require session evidence fingerprints",
+        "Keep connector master snapshots immutable"
+      ],
+      "entry_criteria": [
+        "repository_operation_profiles PASS"
+      ],
+      "exit_criteria": [
+        "session_model_defined",
+        "consumer_snapshots_unchanged"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-205",
+      "track_id": "additive_improvement_runtime",
+      "order": 5,
+      "title": "Additive improvement candidate runtime prep",
+      "roadmap_track_ref": "additive_improvement_runtime",
+      "work_packages": [
+        "Select/rank candidates from certified evidence only",
+        "Keep candidates non-enacting until approval",
+        "Prove reproducibility of candidate fingerprints"
+      ],
+      "entry_criteria": [
+        "consumer_collaboration_sessions PASS"
+      ],
+      "exit_criteria": [
+        "candidates_reproducible",
+        "repository_mutation_forbidden"
+      ]
+    },
+    {
+      "phase_id": "PHASE-VAI-206",
+      "track_id": "v2_validation_and_certification",
+      "order": 6,
+      "title": "V2 validation and certification campaign prep",
+      "roadmap_track_ref": "v2_validation_and_certification",
+      "work_packages": [
+        "Execute planned validation stages with per-stage evidence",
+        "Certify V2 additives without PC/CIL/V1 drift",
+        "Gate production operation validation readiness"
+      ],
+      "entry_criteria": [
+        "additive_improvement_runtime PASS"
+      ],
+      "exit_criteria": [
+        "v2_certification_pass",
+        "ready_for_v2_production_operation_validation"
+      ]
+    }
+  ],
+  "recommended_build_order": [
+    "v2_architecture_definition",
+    "replaceable_runtime_modules",
+    "repository_operation_profiles",
+    "consumer_collaboration_sessions",
+    "additive_improvement_runtime",
+    "v2_validation_and_certification"
+  ]
+}

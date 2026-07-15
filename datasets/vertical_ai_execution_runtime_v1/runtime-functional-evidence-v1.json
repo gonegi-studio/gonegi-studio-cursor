@@ -1,0 +1,41 @@
+{
+  "runtime_functional_evidence_v1_id": "execution_runtime_functional_evidence_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-006",
+  "generated_at": "2026-07-14T10:44:40.118Z",
+  "mode": "READ_ONLY",
+  "run_1_result_fingerprint": "252942848a53ec7b",
+  "run_2_result_fingerprint": "252942848a53ec7b",
+  "injected_run_result_fingerprint": "252942848a53ec7b",
+  "dispatch_fingerprint": "f3f7193ccb325417",
+  "planning_fingerprint": "9b6bd2b04cf13476",
+  "plan_fingerprint": "9f728af3dc068bc3",
+  "selected_connectors": [
+    "chatgpt_connector",
+    "claude_connector",
+    "cursor_connector",
+    "gemini_connector",
+    "mcp_connector"
+  ],
+  "tool_invocation_count": 8,
+  "validation_valid": true,
+  "contract_conforms": true,
+  "boundary_intact": true,
+  "evidence_fingerprint": "9c8cfc08cb3be046",
+  "trace_fingerprint": "866cdda2e0c5284a",
+  "mutation_gate": {
+    "authorized": false,
+    "reason": "Repository mutation 'create_file' blocked: human approval required; Execution Runtime is read-only",
+    "requires_human_approval": true
+  },
+  "reproducible": true,
+  "deterministic": true,
+  "modules_replaceable": true,
+  "evidence_to_execution_operational": true,
+  "certified_boundaries_preserved": true,
+  "repository_first": true,
+  "evidence_first": true,
+  "reuse_before_create": true,
+  "human_approval_before_repo_mutation": true,
+  "functional_verification": true
+}

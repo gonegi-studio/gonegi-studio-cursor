@@ -1,0 +1,24 @@
+{
+  "execution_approval_gate_v1_id": "execution_approval_gate_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-005",
+  "generated_at": "2026-07-14T10:26:39.202Z",
+  "mode": "READ_ONLY",
+  "gate_policy": {
+    "human_approval_required_before_repository_mutation": true,
+    "execution_foundation_runs_are_read_only": true,
+    "repository_mutation_blocked_until_approval": true,
+    "platform_core_mutation_forbidden": true,
+    "cil_mutation_forbidden": true,
+    "execution_runtime_handoff_requires_foundation": true
+  },
+  "write_actions_gated": [
+    "repository_create",
+    "repository_modify",
+    "repository_delete",
+    "execution_runtime_materialization",
+    "dispatch_enactment"
+  ],
+  "design_only": true,
+  "write_authorized": false
+}

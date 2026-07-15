@@ -1,0 +1,51 @@
+{
+  "approval_strategy_v1_id": "vertical_ai_v2_approval_strategy_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-101",
+  "generated_at": "2026-07-15T04:00:11.538Z",
+  "mode": "READ_ONLY",
+  "planning_only": true,
+  "strategy_id": "approval_human_gated_sequential",
+  "human_approval_required": true,
+  "gates": [
+    {
+      "gate_id": "gate_planning_complete",
+      "requires": [
+        "PASS_VERTICAL_AI_V2_IMPLEMENTATION_PLANNING_V1"
+      ],
+      "authorizes": "implementation_design_entry"
+    },
+    {
+      "gate_id": "gate_track_exit",
+      "requires": [
+        "track_exit_criteria_pass",
+        "validation_stage_pass"
+      ],
+      "authorizes": "next_track_entry"
+    },
+    {
+      "gate_id": "gate_execute_authorized",
+      "requires": [
+        "human_approval",
+        "execute_authorized=true"
+      ],
+      "authorizes": "enactment_only_after_planning"
+    },
+    {
+      "gate_id": "gate_repository_write",
+      "requires": [
+        "human_approval",
+        "execute_authorized=true",
+        "mutation_plan_approved"
+      ],
+      "authorizes": "repository_mutation",
+      "default": "denied"
+    }
+  ],
+  "execution_roadmap_approval": {
+    "approved_when": "all_planning_contracts_pass",
+    "approved_artifact": "vertical_ai_v2_implementation_planning_v1",
+    "execute_authorized_default": false
+  },
+  "execution_roadmap_approved": true
+}

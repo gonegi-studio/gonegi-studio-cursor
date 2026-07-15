@@ -1,0 +1,62 @@
+{
+  "export_id": "vertical_ai_project_understanding_runtime_export_v1",
+  "version": "1.0.0",
+  "component_ids": [
+    "repository_scanner",
+    "component_resolver",
+    "dependency_resolver",
+    "duplicate_detector",
+    "reuse_analyzer",
+    "gap_detector",
+    "understanding_runtime",
+    "understanding_cache",
+    "runtime_reproducibility",
+    "understanding_evidence",
+    "reference_resolver"
+  ],
+  "registry": {
+    "runtime_id": "vertical_ai_project_understanding_runtime",
+    "version": "1.0.0",
+    "component_ids": [
+      "repository_scanner",
+      "component_resolver",
+      "dependency_resolver",
+      "duplicate_detector",
+      "reuse_analyzer",
+      "gap_detector",
+      "understanding_runtime",
+      "understanding_cache",
+      "runtime_reproducibility",
+      "understanding_evidence",
+      "reference_resolver"
+    ],
+    "public_surface": "understanding_runtime"
+  },
+  "interface": {
+    "version": "1.0.0",
+    "component_ids": [
+      "repository_scanner",
+      "component_resolver",
+      "dependency_resolver",
+      "duplicate_detector",
+      "reuse_analyzer",
+      "gap_detector",
+      "understanding_runtime",
+      "understanding_cache",
+      "runtime_reproducibility",
+      "understanding_evidence",
+      "reference_resolver"
+    ],
+    "public_surface": "understanding_runtime",
+    "read_only": true,
+    "reference_only": true,
+    "repository_first": true,
+    "reuse_before_create": true,
+    "human_approval_required_before_write": true,
+    "write_authorized": false,
+    "implementation": true
+  },
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-002",
+  "generated_at": "2026-07-14T07:59:16.534Z"
+}

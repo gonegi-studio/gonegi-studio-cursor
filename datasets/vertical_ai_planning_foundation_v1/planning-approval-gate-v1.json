@@ -1,0 +1,23 @@
+{
+  "planning_approval_gate_v1_id": "planning_approval_gate_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-003",
+  "generated_at": "2026-07-14T10:11:25.520Z",
+  "mode": "READ_ONLY",
+  "gate_policy": {
+    "human_approval_required_before_any_write": true,
+    "planning_foundation_runs_are_read_only": true,
+    "write_actions_blocked_until_approval": true,
+    "planning_runtime_handoff_requires_foundation": true,
+    "repository_mutation_forbidden_in_foundation": true
+  },
+  "write_actions_gated": [
+    "planning_runtime_materialization",
+    "implementation_proposal_persist",
+    "repository_create",
+    "repository_modify",
+    "execution_plan_enactment"
+  ],
+  "design_only": true,
+  "write_authorized": false
+}

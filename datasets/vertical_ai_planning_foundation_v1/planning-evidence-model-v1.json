@@ -1,0 +1,91 @@
+{
+  "planning_evidence_model_v1_id": "planning_evidence_model_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-003",
+  "generated_at": "2026-07-14T10:11:25.520Z",
+  "mode": "READ_ONLY",
+  "evidence_policy": {
+    "evidence_first_planning": true,
+    "evidence_precedes_plan_conclusions": true,
+    "conclusions_without_evidence_forbidden": true,
+    "fingerprints_required": true,
+    "understanding_runtime_citations_required": true
+  },
+  "precondition_evidence": [
+    {
+      "precondition_id": "understanding_runtime",
+      "report_path": "reports/vertical_ai/VERTICAL_AI_PROJECT_UNDERSTANDING_RUNTIME_V1_REPORT.json",
+      "pass_verdict": "PASS_VERTICAL_AI_PROJECT_UNDERSTANDING_RUNTIME_V1",
+      "artifact_path": "datasets/vertical_ai_project_understanding_runtime_v1/vertical-ai-project-understanding-runtime-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "cil_complete",
+      "report_path": "reports/consumer_integration_layer/CONSUMER_INTEGRATION_PRODUCTION_CERTIFICATION_V1_REPORT.json",
+      "pass_verdict": "PASS_CONSUMER_INTEGRATION_COMPLETE_V1",
+      "artifact_path": "datasets/consumer_integration_production_certification_v1/consumer-integration-production-certification-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "project_brain_complete",
+      "report_path": "reports/project_brain/PROJECT_BRAIN_COMPLETE_V1_REPORT.json",
+      "pass_verdict": "PASS_PROJECT_BRAIN_COMPLETE_V1",
+      "artifact_path": "datasets/project_brain/brain_complete_v1/project-brain-complete-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "repository_intelligence_bundle_complete",
+      "report_path": "reports/repository_intelligence_bundle/REPOSITORY_INTELLIGENCE_BUNDLE_PRODUCTION_CERTIFICATION_V1_REPORT.json",
+      "pass_verdict": "PASS_REPOSITORY_INTELLIGENCE_BUNDLE_COMPLETE_V1",
+      "artifact_path": "datasets/repository_intelligence_bundle_production_certification_v1/production-certification-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    },
+    {
+      "precondition_id": "repository_intelligence_access_complete",
+      "report_path": "reports/repository_intelligence_access_layer/REPOSITORY_INTELLIGENCE_ACCESS_PRODUCTION_CERTIFICATION_V1_REPORT.json",
+      "pass_verdict": "PASS_REPOSITORY_INTELLIGENCE_ACCESS_COMPLETE_V1",
+      "artifact_path": "datasets/repository_intelligence_access_production_certification_v1/repository-intelligence-access-production-certification-v1.json",
+      "satisfied": true,
+      "artifact_present": true
+    }
+  ],
+  "consumed_refs": {
+    "platform_core": {
+      "project_brain_master_snapshot_ref": "datasets/project_brain/master_snapshot_v1/project-brain-master-snapshot-v1.json",
+      "bundle_master_snapshot_ref": "datasets/repository_intelligence_bundle_master_snapshot_v1/repository-intelligence-bundle-master-snapshot-v1.json",
+      "access_master_snapshot_ref": "datasets/repository_intelligence_access_master_snapshot_v1/repository-intelligence-access-master-snapshot-v1.json",
+      "runtime_master_snapshot_ref": "datasets/agent_runtime_master_snapshot_v1/agent-runtime-master-snapshot-v1.json"
+    },
+    "cil": {
+      "consumer_integration_master_snapshot_ref": "datasets/consumer_integration_master_snapshot_v1/consumer-integration-master-snapshot-v1.json",
+      "connector_contract_ref": "datasets/consumer_connector_contract_v1/consumer-connector-contract-v1.json",
+      "consumer_profile_ref": "datasets/consumer_profile_v1/consumer-profile-v1.json",
+      "runtime_connector_ref": "datasets/runtime_connector_v1/runtime-connector-v1.json"
+    },
+    "repository_intelligence": {
+      "bundle_ref": "datasets/repository_intelligence_bundle_v1/repository-intelligence-bundle-v1.json",
+      "access_contract_ref": "datasets/repository_intelligence_access_contract_v1/repository-intelligence-access-contract-v1.json",
+      "access_api_ref": "datasets/repository_intelligence_access_contract_v1/access-api-v1.json",
+      "access_impl_ref": "datasets/repository_intelligence_access_v1/repository-intelligence-access-v1.json"
+    },
+    "understanding": {
+      "foundation_ref": "datasets/vertical_ai_project_understanding_foundation_v1/vertical-ai-project-understanding-foundation-v1.json",
+      "runtime_ref": "datasets/vertical_ai_project_understanding_runtime_v1/vertical-ai-project-understanding-runtime-v1.json",
+      "runtime_result_fingerprint": "a054f90be634e9f1"
+    },
+    "reference_mode": "read_only",
+    "duplication_policy": "references_only",
+    "mutation_policy": "never_mutate_platform_core_cil_or_repository"
+  },
+  "objective_evidence": [
+    "understanding_runtime=true:PASS_VERTICAL_AI_PROJECT_UNDERSTANDING_RUNTIME_V1:artifact=true",
+    "cil_complete=true:PASS_CONSUMER_INTEGRATION_COMPLETE_V1:artifact=true",
+    "project_brain_complete=true:PASS_PROJECT_BRAIN_COMPLETE_V1:artifact=true",
+    "repository_intelligence_bundle_complete=true:PASS_REPOSITORY_INTELLIGENCE_BUNDLE_COMPLETE_V1:artifact=true",
+    "repository_intelligence_access_complete=true:PASS_REPOSITORY_INTELLIGENCE_ACCESS_COMPLETE_V1:artifact=true"
+  ]
+}

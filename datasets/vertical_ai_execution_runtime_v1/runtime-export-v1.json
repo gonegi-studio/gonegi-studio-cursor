@@ -1,0 +1,66 @@
+{
+  "export_id": "vertical_ai_execution_runtime_export_v1",
+  "version": "1.0.0",
+  "component_ids": [
+    "execution_runtime",
+    "execution_dispatcher",
+    "connector_selector",
+    "tool_executor",
+    "execution_validator",
+    "execution_cache",
+    "execution_traceability",
+    "execution_reproducibility",
+    "execution_evidence",
+    "execution_contract_conformance",
+    "runtime_determinism",
+    "execution_boundary_integrity"
+  ],
+  "registry": {
+    "runtime_id": "vertical_ai_execution_runtime",
+    "version": "1.0.0",
+    "component_ids": [
+      "execution_runtime",
+      "execution_dispatcher",
+      "connector_selector",
+      "tool_executor",
+      "execution_validator",
+      "execution_cache",
+      "execution_traceability",
+      "execution_reproducibility",
+      "execution_evidence",
+      "execution_contract_conformance",
+      "runtime_determinism",
+      "execution_boundary_integrity"
+    ],
+    "public_surface": "execution_runtime"
+  },
+  "interface": {
+    "version": "1.0.0",
+    "component_ids": [
+      "execution_runtime",
+      "execution_dispatcher",
+      "connector_selector",
+      "tool_executor",
+      "execution_validator",
+      "execution_cache",
+      "execution_traceability",
+      "execution_reproducibility",
+      "execution_evidence",
+      "execution_contract_conformance",
+      "runtime_determinism",
+      "execution_boundary_integrity"
+    ],
+    "public_surface": "execution_runtime",
+    "read_only": true,
+    "reference_only": true,
+    "repository_first": true,
+    "evidence_first": true,
+    "reuse_before_create": true,
+    "human_approval_required_before_repository_mutation": true,
+    "write_authorized": false,
+    "implementation": true
+  },
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-006",
+  "generated_at": "2026-07-14T10:44:40.118Z"
+}

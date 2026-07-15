@@ -1,0 +1,156 @@
+{
+  "validation_component_model_v1_id": "validation_component_model_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-007",
+  "generated_at": "2026-07-14T10:52:31.028Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Validation Foundation V1",
+  "capability_id": "vertical_ai_validation",
+  "layer_id": "validation",
+  "responsibility": "Design evidence-to-validation Vertical AI capacity that verifies contracts, boundaries, and results without mutating Platform Core or CIL",
+  "components": [
+    {
+      "component_id": "validation_context",
+      "name": "Validation Context",
+      "responsibility": "Assemble a read-only validation context from execution runtime outputs, Platform Core, CIL, Repository Intelligence, and certified connector snapshots.",
+      "interface_kind": "context",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_selector",
+      "name": "Validation Selector",
+      "responsibility": "Select which execution results, contracts, and boundaries to validate using repository-first, evidence-first priority; never invents unauthorized writes.",
+      "interface_kind": "selection",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_rules",
+      "name": "Validation Rules",
+      "responsibility": "Declare reusable, deterministic validation rules for contracts, boundaries, reuse-before-create, and result integrity without owning source data.",
+      "interface_kind": "rules",
+      "owns_source_data": false,
+      "mode": "rule_catalog",
+      "write_authorized": false
+    },
+    {
+      "component_id": "contract_validation",
+      "name": "Contract Validation",
+      "responsibility": "Validate conformance to certified Platform Core, CIL, connector, and Vertical AI contracts cited by execution outputs.",
+      "interface_kind": "validation",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "boundary_validation",
+      "name": "Boundary Validation",
+      "responsibility": "Validate that certified execution boundaries remain intact: no PC/CIL mutation, certified connectors only, write authorization blocked.",
+      "interface_kind": "validation",
+      "owns_source_data": false,
+      "mode": "boundary_check",
+      "write_authorized": false
+    },
+    {
+      "component_id": "result_validation",
+      "name": "Result Validation",
+      "responsibility": "Validate execution result fingerprints for reproducibility, determinism, and evidence precedence before any approval or runtime handoff.",
+      "interface_kind": "validation",
+      "owns_source_data": false,
+      "mode": "result_check",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_evidence",
+      "name": "Validation Evidence",
+      "responsibility": "Bind fingerprints and refs so every validation conclusion is preceded by execution and planning evidence.",
+      "interface_kind": "evidence",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_traceability",
+      "name": "Validation Traceability",
+      "responsibility": "Maintain evidence-to-validation traceability from execution outputs through rules, contract/boundary/result checks, and approval readiness.",
+      "interface_kind": "traceability",
+      "owns_source_data": false,
+      "mode": "evidence_to_validation",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_reproducibility",
+      "name": "Validation Reproducibility",
+      "responsibility": "Ensure identical evidence and execution inputs yield identical validation design fingerprints across dual runs.",
+      "interface_kind": "reproducibility",
+      "owns_source_data": false,
+      "mode": "deterministic",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_contract",
+      "name": "Validation Contract",
+      "responsibility": "Declare the validation boundary contract: consumes PC/CIL/RI/certified connectors/execution runtime only; forbids PC/CIL mutation and unapproved repository mutation.",
+      "interface_kind": "contract",
+      "owns_source_data": false,
+      "mode": "boundary_contract",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_runtime_ref",
+      "name": "Validation Runtime Reference",
+      "responsibility": "Reference the certified surfaces future Validation Runtime will bind (execution runtime, Agent Runtime, CIL); reference-only, no mutation.",
+      "interface_kind": "reference",
+      "owns_source_data": false,
+      "mode": "runtime_ref",
+      "write_authorized": false
+    },
+    {
+      "component_id": "approval_gate",
+      "name": "Approval Gate",
+      "responsibility": "Require explicit human approval before any repository mutation that validation might later recommend; foundation runs remain read-only.",
+      "interface_kind": "gate",
+      "owns_source_data": false,
+      "mode": "human_approval_required",
+      "write_authorized": false
+    },
+    {
+      "component_id": "validation_boundary_integrity",
+      "name": "Validation Boundary Integrity",
+      "responsibility": "Codify and design integrity checks for certified validation boundaries across Platform Core, CIL, connectors, and repository mutation gates.",
+      "interface_kind": "boundary",
+      "owns_source_data": false,
+      "mode": "boundary_enforcement_design",
+      "write_authorized": false
+    }
+  ],
+  "principles": {
+    "design_only": true,
+    "implementation": false,
+    "implementation_deferred": true,
+    "read_only": true,
+    "reference_only": true,
+    "repository_first": true,
+    "evidence_first": true,
+    "reuse_precedes_creation": true,
+    "evidence_to_validation_traceability": true,
+    "validation_reproducibility": true,
+    "certified_validation_boundaries_defined": true,
+    "human_approval_required_before_repository_mutation": true,
+    "consumes_platform_core_v1_only": true,
+    "consumes_cil_v1_only": true,
+    "consumes_repository_intelligence_only": true,
+    "consumes_certified_connectors_only": true,
+    "consumes_execution_runtime": true,
+    "owns_source_data": false,
+    "platform_core_mutation": false,
+    "cil_mutation": false,
+    "validation_runtime_deferred": true,
+    "independently_evolvable": true
+  },
+  "design_only": true,
+  "implementation": false
+}

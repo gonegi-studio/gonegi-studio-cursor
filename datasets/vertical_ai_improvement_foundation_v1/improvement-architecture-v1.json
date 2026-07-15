@@ -1,0 +1,90 @@
+{
+  "improvement_architecture_v1_id": "improvement_architecture_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-011",
+  "generated_at": "2026-07-14T11:25:26.359Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Improvement Foundation V1",
+  "capability_id": "vertical_ai_improvement",
+  "layer_id": "improvement",
+  "selected_architecture": "Certified-Evidence-Only Vertical AI Improvement Foundation with Hard No-Mutation Boundaries",
+  "independence_statement": "Vertical AI Improvement proposes improvement candidates only from frozen certified evidence produced by Certification Runtime. It consumes Platform Core V1, CIL V1, Repository Intelligence, certified Consumer Connectors, and Certification Runtime only — read-only and reference-only — and never mutates Platform Core, CIL, or the repository. Certified improvement boundaries forbid auto-enactment. Evolution of this capability is independent of Platform Core and CIL.",
+  "stack": {
+    "platform_core": {
+      "role": "Semantic + structural + execution truth",
+      "interaction": "consume_v1_only"
+    },
+    "cil": {
+      "role": "Certified integration contracts",
+      "interaction": "consume_v1_only"
+    },
+    "repository_intelligence": {
+      "role": "Structural repository truth",
+      "interaction": "reference_only"
+    },
+    "certified_connectors": {
+      "role": "Reasoning-side certified consumers",
+      "interaction": "reference_only"
+    },
+    "certification_runtime": {
+      "role": "Frozen certified evidence and certification records",
+      "interaction": "consume_certified_evidence_only"
+    },
+    "improvement": {
+      "role": "Certified-evidence-only improvement design before improvement runtime",
+      "interaction": "design_only_foundation",
+      "owns_source_data": false
+    }
+  },
+  "component_model_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-component-model-v1.json",
+  "workflow_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-workflow-v1.json",
+  "boundary_model_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-boundary-model-v1.json",
+  "approval_gate_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-approval-gate-v1.json",
+  "evidence_model_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-evidence-model-v1.json",
+  "traceability_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-traceability-v1.json",
+  "input_contract_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-input-contract-v1.json",
+  "improvement_runtime_ref": "datasets/vertical_ai_improvement_foundation_v1/improvement-runtime-ref-v1.json",
+  "proposed_phase_chain": [
+    {
+      "phase_id": "PHASE-VAI-009",
+      "title": "Certification foundation",
+      "focus": "Evidence-to-certification design"
+    },
+    {
+      "phase_id": "PHASE-VAI-010",
+      "title": "Certification runtime",
+      "focus": "Operational certification with frozen evidence"
+    },
+    {
+      "phase_id": "PHASE-VAI-011",
+      "title": "Improvement foundation",
+      "focus": "Design certified-evidence-only improvement with hard no-mutation boundaries"
+    },
+    {
+      "phase_id": "PHASE-VAI-012",
+      "title": "Improvement runtime",
+      "focus": "Implement improvement runtime over certified foundation"
+    }
+  ],
+  "design_principles": [
+    "design_only",
+    "implementation_deferred",
+    "read_only",
+    "reference_only",
+    "repository_first",
+    "evidence_first",
+    "improve_only_from_certified_evidence",
+    "evidence_to_improvement_traceability",
+    "improvement_reproducibility",
+    "certified_improvement_boundaries_defined",
+    "no_repository_mutation",
+    "human_approval_cannot_authorize_repository_mutation_in_foundation",
+    "consumes_platform_core_v1_only",
+    "consumes_cil_v1_only",
+    "consumes_repository_intelligence_only",
+    "consumes_certified_connectors_only",
+    "consumes_certification_runtime",
+    "improvement_runtime_deferred",
+    "independently_evolvable"
+  ]
+}

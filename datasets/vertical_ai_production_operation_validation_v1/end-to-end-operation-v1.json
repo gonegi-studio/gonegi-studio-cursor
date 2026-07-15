@@ -1,0 +1,25 @@
+{
+  "end_to_end_operation_v1_id": "vertical_ai_end_to_end_operation_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-014",
+  "generated_at": "2026-07-14T12:00:43.409Z",
+  "mode": "READ_ONLY",
+  "workflow_order": [
+    "repository_understanding",
+    "reuse_decision",
+    "gap_analysis",
+    "planning",
+    "human_approval",
+    "execution",
+    "validation",
+    "certification",
+    "improvement"
+  ],
+  "chain_bindings": {
+    "planning_to_execution": true,
+    "execution_to_validation": true,
+    "validation_to_certification": true,
+    "certification_to_improvement": true
+  },
+  "end_to_end_verified": true
+}

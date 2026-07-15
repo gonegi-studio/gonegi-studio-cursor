@@ -1,0 +1,84 @@
+{
+  "multi_ai_architecture_v1_id": "multi_ai_architecture_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-103",
+  "generated_at": "2026-07-15T06:46:29.614Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Multi-AI Operation Foundation V1",
+  "capability_id": "vertical_ai_multi_ai_operation",
+  "layer_id": "multi_ai_coordination",
+  "selected_architecture": "Evidence-Bound Multi-AI Operation Foundation with Certified Boundaries",
+  "independence_statement": "Vertical AI Multi-AI Operation Foundation designs how certified consumers (Claude, ChatGPT, Gemini, Cursor, MCP) coordinate through CIL, with Cursor as primary IDE operator and orchestrator host, reasoning owned by consumers, execution delegated to Agent Runtime, and repository operations delegated to the certified Repository Operation Engine. It consumes Platform Core V1, CIL V1, certified Consumer Connectors, and ROE only — read-only and reference-only — and never mutates Platform Core or CIL. Certified coordination boundaries are defined for contracts, handoffs, and repository mutation. Human approval is required before repository mutation. Evolution of this capability is independent of Platform Core and CIL.",
+  "stack": {
+    "platform_core": {
+      "role": "Semantic + structural + execution truth",
+      "interaction": "consume_v1_only"
+    },
+    "cil": {
+      "role": "Certified integration contracts + consumer collaboration",
+      "interaction": "consume_v1_only"
+    },
+    "certified_connectors": {
+      "role": "Reasoning-side certified consumers",
+      "interaction": "reference_only"
+    },
+    "repository_operation_engine": {
+      "role": "Certified repository operation runtime",
+      "interaction": "consume_operational_evidence"
+    },
+    "multi_ai_operation": {
+      "role": "Evidence-bound multi-AI coordination design before multi-AI runtime",
+      "interaction": "design_only_foundation",
+      "owns_source_data": false
+    }
+  },
+  "component_model_ref": "datasets/vertical_ai_multi_ai_operation_foundation_v1/multi-ai-component-model-v1.json",
+  "workflow_ref": "datasets/vertical_ai_multi_ai_operation_foundation_v1/multi-ai-workflow-v1.json",
+  "boundary_model_ref": "datasets/vertical_ai_multi_ai_operation_foundation_v1/multi-ai-boundary-model-v1.json",
+  "approval_gate_ref": "datasets/vertical_ai_multi_ai_operation_foundation_v1/approval-gate-v1.json",
+  "evidence_ref": "datasets/vertical_ai_multi_ai_operation_foundation_v1/coordination-evidence-v1.json",
+  "traceability_ref": "datasets/vertical_ai_multi_ai_operation_foundation_v1/coordination-traceability-v1.json",
+  "multi_ai_runtime_ref": "datasets/vertical_ai_multi_ai_operation_foundation_v1/multi-ai-runtime-ref-v1.json",
+  "proposed_phase_chain": [
+    {
+      "phase_id": "PHASE-VAI-100",
+      "title": "V2 roadmap",
+      "focus": "Vertical AI V2 planning and consumer collaboration"
+    },
+    {
+      "phase_id": "PHASE-VAI-102",
+      "title": "Repository Operation Engine",
+      "focus": "Operational repository operation runtime"
+    },
+    {
+      "phase_id": "PHASE-VAI-103",
+      "title": "Multi-AI operation foundation",
+      "focus": "Design evidence-bound multi-AI coordination with certified boundaries"
+    },
+    {
+      "phase_id": "PHASE-VAI-104",
+      "title": "Multi-AI operation runtime",
+      "focus": "Implement multi-AI operation runtime over certified foundation"
+    }
+  ],
+  "design_principles": [
+    "design_only",
+    "implementation_deferred",
+    "read_only",
+    "reference_only",
+    "repository_first",
+    "evidence_first",
+    "reuse_precedes_creation",
+    "coordination_evidence_traceability",
+    "coordination_reproducibility",
+    "coordination_boundaries_established",
+    "human_approval_required_before_repository_mutation",
+    "repository_mutation_forbidden",
+    "consumes_platform_core_v1_only",
+    "consumes_cil_v1_only",
+    "consumes_certified_connectors_only",
+    "consumes_repository_operation_engine",
+    "multi_ai_runtime_deferred",
+    "independently_evolvable"
+  ]
+}

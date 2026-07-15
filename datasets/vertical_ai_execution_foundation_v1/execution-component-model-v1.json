@@ -1,0 +1,156 @@
+{
+  "execution_component_model_v1_id": "execution_component_model_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-005",
+  "generated_at": "2026-07-14T10:26:39.202Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Execution Foundation V1",
+  "capability_id": "vertical_ai_execution",
+  "layer_id": "execution",
+  "responsibility": "Design evidence-to-execution Vertical AI capacity with standardized certified connector selection and gated repository mutation",
+  "components": [
+    {
+      "component_id": "execution_context",
+      "name": "Execution Context",
+      "responsibility": "Assemble a read-only execution context from planning runtime outputs, Platform Core, CIL, Repository Intelligence, and certified connector snapshots.",
+      "interface_kind": "context",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_selector",
+      "name": "Execution Selector",
+      "responsibility": "Select executable steps from validated execution plans using repository-first and reuse-before-create priority; never invents unauthorized writes.",
+      "interface_kind": "selection",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_dispatch",
+      "name": "Execution Dispatch",
+      "responsibility": "Describe how selected steps would be dispatched to Agent Runtime through CIL runtime connectors; dispatch descriptors are design-only and not enacted in foundation.",
+      "interface_kind": "dispatch",
+      "owns_source_data": false,
+      "mode": "orchestration_descriptor",
+      "write_authorized": false
+    },
+    {
+      "component_id": "tool_selection",
+      "name": "Tool Selection",
+      "responsibility": "Select Agent Runtime tools that may serve selected steps, using certified runtime contracts only; tools are references, never redefined here.",
+      "interface_kind": "selection",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "consumer_connector_selection",
+      "name": "Consumer Connector Selection",
+      "responsibility": "Standardize selection among certified consumer connectors (Claude, ChatGPT, Gemini, Cursor, MCP) for reasoning-side participation; selection is reference-bound to master snapshots.",
+      "interface_kind": "selection",
+      "owns_source_data": false,
+      "mode": "certified_connectors_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_contract",
+      "name": "Execution Contract",
+      "responsibility": "Declare the execution boundary contract: consumes Platform Core V1 / CIL V1 / RI / certified connectors only; forbids PC/CIL mutation and unapproved repository mutation.",
+      "interface_kind": "contract",
+      "owns_source_data": false,
+      "mode": "boundary_contract",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_validation",
+      "name": "Execution Validation",
+      "responsibility": "Validate execution descriptors for evidence citations, connector certification, reuse precedence, and approval readiness before runtime handoff.",
+      "interface_kind": "validation",
+      "owns_source_data": false,
+      "mode": "evidence_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_evidence",
+      "name": "Execution Evidence",
+      "responsibility": "Bind fingerprints and refs so every execution conclusion is preceded by planning and understanding evidence.",
+      "interface_kind": "evidence",
+      "owns_source_data": false,
+      "mode": "evidence_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_traceability",
+      "name": "Execution Traceability",
+      "responsibility": "Maintain evidence-to-execution traceability from planning outputs through selector, tools, connectors, dispatch, and validation.",
+      "interface_kind": "traceability",
+      "owns_source_data": false,
+      "mode": "evidence_to_execution",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_reproducibility",
+      "name": "Execution Reproducibility",
+      "responsibility": "Ensure identical evidence and plan inputs yield identical execution design fingerprints across dual runs.",
+      "interface_kind": "reproducibility",
+      "owns_source_data": false,
+      "mode": "deterministic",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_runtime_ref",
+      "name": "Execution Runtime Reference",
+      "responsibility": "Reference the certified Agent Runtime and CIL runtime connector surfaces that future Execution Runtime will bind; reference-only, no mutation.",
+      "interface_kind": "reference",
+      "owns_source_data": false,
+      "mode": "runtime_ref",
+      "write_authorized": false
+    },
+    {
+      "component_id": "approval_gate",
+      "name": "Approval Gate",
+      "responsibility": "Require explicit human approval before any repository mutation that execution might later propose; foundation runs remain read-only.",
+      "interface_kind": "gate",
+      "owns_source_data": false,
+      "mode": "human_approval_required",
+      "write_authorized": false
+    },
+    {
+      "component_id": "execution_boundary",
+      "name": "Execution Boundary",
+      "responsibility": "Codify immutable boundaries: no Platform Core mutation, no CIL mutation, certified-connector-only selection, repository mutation gated by human approval.",
+      "interface_kind": "boundary",
+      "owns_source_data": false,
+      "mode": "boundary_enforcement_design",
+      "write_authorized": false
+    }
+  ],
+  "principles": {
+    "design_only": true,
+    "implementation": false,
+    "implementation_deferred": true,
+    "read_only": true,
+    "reference_only": true,
+    "repository_first": true,
+    "evidence_first": true,
+    "reuse_precedes_creation": true,
+    "evidence_to_execution_traceability": true,
+    "execution_reproducibility": true,
+    "connector_selection_standardized": true,
+    "human_approval_required_before_repository_mutation": true,
+    "consumes_platform_core_v1_only": true,
+    "consumes_cil_v1_only": true,
+    "consumes_repository_intelligence_only": true,
+    "consumes_certified_connectors_only": true,
+    "consumes_planning_runtime": true,
+    "owns_source_data": false,
+    "platform_core_mutation": false,
+    "cil_mutation": false,
+    "execution_runtime_deferred": true,
+    "independently_evolvable": true
+  },
+  "design_only": true,
+  "implementation": false
+}

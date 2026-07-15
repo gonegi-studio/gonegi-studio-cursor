@@ -1,0 +1,59 @@
+{
+  "execution_connector_selection_v1_id": "execution_connector_selection_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-005",
+  "generated_at": "2026-07-14T10:26:39.202Z",
+  "mode": "READ_ONLY",
+  "selection_policy": "certified_connectors_only",
+  "standardized": true,
+  "connectors": [
+    {
+      "connector_id": "claude_connector",
+      "master_snapshot_ref": "datasets/claude_connector_master_snapshot_v1/claude-connector-master-snapshot-v1.json",
+      "present": true,
+      "selectable": true,
+      "uncertified_forbidden": true
+    },
+    {
+      "connector_id": "chatgpt_connector",
+      "master_snapshot_ref": "datasets/chatgpt_connector_master_snapshot_v1/chatgpt-connector-master-snapshot-v1.json",
+      "present": true,
+      "selectable": true,
+      "uncertified_forbidden": true
+    },
+    {
+      "connector_id": "gemini_connector",
+      "master_snapshot_ref": "datasets/gemini_connector_master_snapshot_v1/gemini-connector-master-snapshot-v1.json",
+      "present": true,
+      "selectable": true,
+      "uncertified_forbidden": true
+    },
+    {
+      "connector_id": "cursor_connector",
+      "master_snapshot_ref": "datasets/cursor_connector_master_snapshot_v1/cursor-connector-master-snapshot-v1.json",
+      "present": true,
+      "selectable": true,
+      "uncertified_forbidden": true
+    },
+    {
+      "connector_id": "mcp_connector",
+      "master_snapshot_ref": "datasets/mcp_connector_master_snapshot_v1/mcp-connector-master-snapshot-v1.json",
+      "present": true,
+      "selectable": true,
+      "uncertified_forbidden": true
+    }
+  ],
+  "selection_order": [
+    "claude_connector",
+    "chatgpt_connector",
+    "gemini_connector",
+    "cursor_connector",
+    "mcp_connector"
+  ],
+  "binds_to_cil": {
+    "connector_contract_ref": "datasets/consumer_connector_contract_v1/consumer-connector-contract-v1.json",
+    "connector_registry_ref": "datasets/consumer_connector_contract_v1/connector-contract-registry-v1.json",
+    "runtime_connector_ref": "datasets/runtime_connector_v1/runtime-connector-v1.json"
+  },
+  "connector_selection_standardized": true
+}

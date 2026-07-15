@@ -1,0 +1,149 @@
+{
+  "improvement_component_model_v1_id": "improvement_component_model_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-011",
+  "generated_at": "2026-07-14T11:25:26.359Z",
+  "mode": "READ_ONLY",
+  "foundation_name": "Evidence-Bound Vertical AI Improvement Foundation V1",
+  "capability_id": "vertical_ai_improvement",
+  "layer_id": "improvement",
+  "responsibility": "Design certified-evidence-only Vertical AI improvement capacity that never mutates Platform Core, CIL, or the repository",
+  "components": [
+    {
+      "component_id": "improvement_context",
+      "name": "Improvement Context",
+      "responsibility": "Assemble a read-only improvement context from certification runtime outputs (frozen certified evidence), Platform Core, CIL, Repository Intelligence, and certified connector snapshots.",
+      "interface_kind": "context",
+      "owns_source_data": false,
+      "mode": "reference_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_selector",
+      "name": "Improvement Selector",
+      "responsibility": "Select certified evidence fields eligible for improvement analysis using repository-first, evidence-first priority; rejects uncertified or unfrozen inputs.",
+      "interface_kind": "selection",
+      "owns_source_data": false,
+      "mode": "certified_evidence_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_candidate_generation",
+      "name": "Improvement Candidate Generation",
+      "responsibility": "Generate descriptive improvement candidates only from certified evidence fingerprints; candidates are non-enacted descriptors.",
+      "interface_kind": "generation",
+      "owns_source_data": false,
+      "mode": "descriptor_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_risk_analysis",
+      "name": "Improvement Risk Analysis",
+      "responsibility": "Analyze candidate risk against certified boundaries: no PC/CIL/repository mutation, certified connectors only, evidence integrity.",
+      "interface_kind": "analysis",
+      "owns_source_data": false,
+      "mode": "risk_bound",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_contract",
+      "name": "Improvement Contract",
+      "responsibility": "Declare the improvement boundary contract: consumes certified evidence / PC / CIL / RI / connectors only; forbids all repository, PC, and CIL mutation.",
+      "interface_kind": "contract",
+      "owns_source_data": false,
+      "mode": "boundary_contract",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_evidence",
+      "name": "Improvement Evidence",
+      "responsibility": "Bind fingerprints so every improvement conclusion is preceded by frozen certified evidence from certification runtime.",
+      "interface_kind": "evidence",
+      "owns_source_data": false,
+      "mode": "certified_evidence_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_traceability",
+      "name": "Improvement Traceability",
+      "responsibility": "Maintain evidence-to-improvement traceability from certified records through candidate generation, risk analysis, and approval gates.",
+      "interface_kind": "traceability",
+      "owns_source_data": false,
+      "mode": "evidence_to_improvement",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_reproducibility",
+      "name": "Improvement Reproducibility",
+      "responsibility": "Ensure identical certified evidence inputs yield identical improvement design fingerprints across dual runs.",
+      "interface_kind": "reproducibility",
+      "owns_source_data": false,
+      "mode": "deterministic",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_input_contract",
+      "name": "Improvement Input Contract",
+      "responsibility": "Declare the only accepted input: certified evidence records with frozen fingerprints from certification runtime; uncertified inputs rejected.",
+      "interface_kind": "input_contract",
+      "owns_source_data": false,
+      "mode": "certified_input_only",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_runtime_ref",
+      "name": "Improvement Runtime Reference",
+      "responsibility": "Reference surfaces future Improvement Runtime will bind (certification runtime, Agent Runtime, CIL); reference-only, no mutation.",
+      "interface_kind": "reference",
+      "owns_source_data": false,
+      "mode": "runtime_ref",
+      "write_authorized": false
+    },
+    {
+      "component_id": "approval_gate",
+      "name": "Approval Gate",
+      "responsibility": "Hard-block repository mutation and any enactment; improvement foundation and future runtime proposals remain non-mutative and read-only.",
+      "interface_kind": "gate",
+      "owns_source_data": false,
+      "mode": "mutation_forbidden",
+      "write_authorized": false
+    },
+    {
+      "component_id": "improvement_boundary",
+      "name": "Improvement Boundary",
+      "responsibility": "Define certified improvement boundaries: operate only on certified evidence; no PC/CIL/repository mutation; candidates never auto-enact.",
+      "interface_kind": "boundary",
+      "owns_source_data": false,
+      "mode": "boundary_definition",
+      "write_authorized": false
+    }
+  ],
+  "principles": {
+    "design_only": true,
+    "implementation": false,
+    "implementation_deferred": true,
+    "read_only": true,
+    "reference_only": true,
+    "repository_first": true,
+    "evidence_first": true,
+    "improve_only_from_certified_evidence": true,
+    "evidence_to_improvement_traceability": true,
+    "improvement_reproducibility": true,
+    "certified_improvement_boundaries_defined": true,
+    "no_repository_mutation": true,
+    "repository_mutation": false,
+    "human_approval_cannot_authorize_repository_mutation_in_foundation": true,
+    "consumes_platform_core_v1_only": true,
+    "consumes_cil_v1_only": true,
+    "consumes_repository_intelligence_only": true,
+    "consumes_certified_connectors_only": true,
+    "consumes_certification_runtime": true,
+    "owns_source_data": false,
+    "platform_core_mutation": false,
+    "cil_mutation": false,
+    "improvement_runtime_deferred": true,
+    "independently_evolvable": true
+  },
+  "design_only": true,
+  "implementation": false
+}

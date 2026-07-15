@@ -1,0 +1,80 @@
+{
+  "consumer_selection_v1_id": "multi_ai_consumer_selection_v1",
+  "architecture_version": "project_brain_architecture_v1",
+  "phase": "PHASE-VAI-103",
+  "generated_at": "2026-07-15T06:46:29.614Z",
+  "mode": "READ_ONLY",
+  "selection_id": "multi_ai_consumer_selection_v1",
+  "policy": "certified_connectors_only_via_cil",
+  "selection_inputs": [
+    "task_kind",
+    "required_role",
+    "cil_binding",
+    "certified_snapshot_presence"
+  ],
+  "fallback_policy": "no_selection_without_certified_snapshot",
+  "certified_connectors": [
+    {
+      "connector_id": "claude_connector",
+      "master_snapshot_ref": "datasets/claude_connector_master_snapshot_v1/claude-connector-master-snapshot-v1.json"
+    },
+    {
+      "connector_id": "chatgpt_connector",
+      "master_snapshot_ref": "datasets/chatgpt_connector_master_snapshot_v1/chatgpt-connector-master-snapshot-v1.json"
+    },
+    {
+      "connector_id": "gemini_connector",
+      "master_snapshot_ref": "datasets/gemini_connector_master_snapshot_v1/gemini-connector-master-snapshot-v1.json"
+    },
+    {
+      "connector_id": "cursor_connector",
+      "master_snapshot_ref": "datasets/cursor_connector_master_snapshot_v1/cursor-connector-master-snapshot-v1.json"
+    },
+    {
+      "connector_id": "mcp_connector",
+      "master_snapshot_ref": "datasets/mcp_connector_master_snapshot_v1/mcp-connector-master-snapshot-v1.json"
+    }
+  ],
+  "consumer_roles": [
+    {
+      "consumer_id": "consumer.cursor",
+      "role": "primary_ide_operator",
+      "secondary_role": "orchestrator_host",
+      "snapshot_ref": "datasets/cursor_connector_master_snapshot_v1/cursor-connector-master-snapshot-v1.json",
+      "reasoning_owner": "consumer.cursor",
+      "execution_delegate": "agent_runtime"
+    },
+    {
+      "consumer_id": "consumer.claude",
+      "role": "reasoning_peer",
+      "secondary_role": null,
+      "snapshot_ref": "datasets/claude_connector_master_snapshot_v1/claude-connector-master-snapshot-v1.json",
+      "reasoning_owner": "consumer.claude",
+      "execution_delegate": "agent_runtime"
+    },
+    {
+      "consumer_id": "consumer.chatgpt",
+      "role": "reasoning_peer",
+      "secondary_role": null,
+      "snapshot_ref": "datasets/chatgpt_connector_master_snapshot_v1/chatgpt-connector-master-snapshot-v1.json",
+      "reasoning_owner": "consumer.chatgpt",
+      "execution_delegate": "agent_runtime"
+    },
+    {
+      "consumer_id": "consumer.gemini",
+      "role": "reasoning_peer",
+      "secondary_role": null,
+      "snapshot_ref": "datasets/gemini_connector_master_snapshot_v1/gemini-connector-master-snapshot-v1.json",
+      "reasoning_owner": "consumer.gemini",
+      "execution_delegate": "agent_runtime"
+    },
+    {
+      "consumer_id": "consumer.mcp",
+      "role": "tool_protocol_peer",
+      "secondary_role": null,
+      "snapshot_ref": "datasets/mcp_connector_master_snapshot_v1/mcp-connector-master-snapshot-v1.json",
+      "reasoning_owner": null,
+      "execution_delegate": "agent_runtime"
+    }
+  ]
+}
