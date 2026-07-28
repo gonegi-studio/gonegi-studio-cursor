@@ -145,6 +145,19 @@ export function resolveScriptProjectRoot(importMetaUrl: string): string {
   return resolveProjectRoot(scriptDir);
 }
 
+/**
+ * Verify script cwd guard. Requires process.cwd() to equal the caller-supplied
+ * project root (each verify script computes its own root from import.meta.url,
+ * so this only centralizes the comparison/exit — it does not change what root
+ * a script resolves to).
+ */
+export function assertCwdMatchesProjectRoot(projectRoot: string): void {
+  if (path.resolve(process.cwd()) !== path.resolve(projectRoot)) {
+    console.error(`PRECHECK FAIL: process.cwd() must be ${projectRoot}`);
+    process.exit(1);
+  }
+}
+
 export function getProjectRootDiagnostics(startDir?: string): {
   process_cwd: string;
   resolved_project_root: string;
