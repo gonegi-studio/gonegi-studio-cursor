@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   IMAGE_APP_INGESTION_SPECIFICATION_PATH,
   IMAGE_APP_MAP_INGESTION_PASS_VERDICT,
@@ -9,16 +10,12 @@ import {
   writeImageAppMapIngestionReport,
 } from '../services/imageAppMapIngestion.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const REQUIRED_FALLBACK_BEHAVIOR =
   'If backend map ingestion is unavailable, degrade to text spatial compiler with NOT_PRODUCTION_REPLICA flag.';
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const report = writeImageAppMapIngestionReport(projectRoot);
 

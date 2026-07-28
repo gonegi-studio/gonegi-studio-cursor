@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import { SOURCE_VIDEO_IMPORT_ROOT } from '../services/sourceVideoFinalSetBuilder.js';
 import {
   EXPECTED_SOURCE_COUNT,
@@ -10,14 +11,9 @@ import {
   writeMovieAnalysisRealSourceIntegrationReport,
 } from '../services/movieAnalysisRealSourceIntegration.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 if (!fs.existsSync(path.join(projectRoot, SOURCE_VIDEO_IMPORT_ROOT))) {
   console.error(`Missing required upstream asset: ${SOURCE_VIDEO_IMPORT_ROOT}/`);

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   IMAGE_APP_EXPORT_OUTPUTS,
   MOVIE_IMAGE_APP_EXPORT_PASS_VERDICT,
@@ -9,13 +10,9 @@ import {
 } from '../services/movieImageAppExportBuilder.js';
 import { writeMovieImageAppExportReport } from '../services/movieImageAppExportValidation.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const report = writeMovieImageAppExportReport(projectRoot);
 const metrics = report.metrics;

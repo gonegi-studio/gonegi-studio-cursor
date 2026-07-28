@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   CHARACTER_EVOLUTION_VALIDATION_EXPORT_DIR,
   CHARACTER_EVOLUTION_VALIDATION_MANIFEST_PATH,
@@ -26,14 +27,9 @@ import { VIDEO_IDENTITY_DIR } from '../services/movieAnalysisRealVideoIdentityCo
 import { VIDEO_MOTION_DIR } from '../services/movieAnalysisRealVideoMotionConsistencyValidation.js';
 import { VIDEO_STYLE_DIR } from '../services/movieAnalysisRealVideoStyleConsistencyValidation.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 function assertUpstreamReport(
   reportPath: string,

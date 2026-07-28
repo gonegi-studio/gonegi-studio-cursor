@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   DATASET_NORMALIZATION_MD_PATH,
   DATASET_NORMALIZATION_PASS_VERDICT,
@@ -12,14 +13,9 @@ import {
 } from '../services/movieAnalysisDatasetNormalization.js';
 import { REDUNDANCY_DEDUP_FIX_REPORT_PATH } from '../services/movieAnalysisRedundancyDedupFix.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 if (!fs.existsSync(path.join(projectRoot, REDUNDANCY_DEDUP_FIX_REPORT_PATH))) {
   console.error(`Missing required upstream asset: ${REDUNDANCY_DEDUP_FIX_REPORT_PATH}`);

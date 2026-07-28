@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import { EXPECTED_ADAPTER_COUNT, EXPECTED_SOURCE_COUNT } from '../services/movieAnalysisDnaPackaging.js';
 import {
   LEVEL2E_FULLY_CERTIFIED_STATUS,
@@ -20,14 +21,9 @@ import {
   MULTI_EPISODE_CONSISTENCY_VALIDATION_STATUS_MESSAGE,
 } from '../services/movieAnalysisMultiEpisodeConsistencyValidation.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 for (const entry of LEVEL2E_PHASE_ENTRIES) {
   if (!fs.existsSync(path.join(projectRoot, entry.report_path))) {

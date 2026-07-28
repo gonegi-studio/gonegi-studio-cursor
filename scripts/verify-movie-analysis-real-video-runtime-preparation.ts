@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   LEVEL2_MASTER_SIMULATION_CERTIFICATION_DIR,
   LEVEL2_MASTER_SIMULATION_CERTIFICATION_REPORT_PATH,
@@ -22,14 +23,9 @@ import {
   VIDEO_RUNTIME_PACKAGE_PATH,
 } from '../services/movieAnalysisVideoRuntimePackage.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const imagePromptExportReportPath = path.join(projectRoot, REAL_IMAGE_PROMPT_EXPORT_REPORT_PATH);
 if (!fs.existsSync(imagePromptExportReportPath)) {

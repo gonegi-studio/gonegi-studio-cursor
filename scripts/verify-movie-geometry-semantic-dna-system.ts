@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   MOVIE_GEOMETRY_SEMANTIC_PASS_VERDICT,
   MOVIE_GEOMETRY_SEMANTIC_REPORT_PATH,
@@ -10,13 +11,9 @@ import {
   writeMovieGeometrySemanticDnaSystem,
 } from '../services/movieGeometrySemanticDnaSystem.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const report = writeMovieGeometrySemanticDnaSystem(projectRoot);
 const summary = report.validation_summary;

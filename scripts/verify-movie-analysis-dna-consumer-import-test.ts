@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   DNA_IMAGE_BRIDGE_PATH,
   DNA_VIDEO_BRIDGE_PATH,
@@ -13,14 +14,9 @@ import {
   writeMovieAnalysisDnaConsumerImportTestReport,
 } from '../services/movieAnalysisDnaConsumerImportTest.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 for (const required of [DNA_IMAGE_BRIDGE_PATH, DNA_VIDEO_BRIDGE_PATH]) {
   if (!fs.existsSync(path.join(projectRoot, required))) {

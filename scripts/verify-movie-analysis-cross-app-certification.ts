@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   CROSS_APP_CERTIFICATION_MD_PATH,
   CROSS_APP_CERTIFICATION_PASS_VERDICT,
@@ -13,14 +14,9 @@ import {
 import { IMAGE_APP_CERTIFICATION_REPORT_PATH } from '../services/movieAnalysisImageAppCertification.js';
 import { VIDEO_APP_CERTIFICATION_REPORT_PATH } from '../services/movieAnalysisVideoAppCertification.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 for (const required of [
   IMAGE_APP_CERTIFICATION_REPORT_PATH,

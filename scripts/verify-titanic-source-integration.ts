@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import { SOURCE_VIDEO_COVERAGE_REPORT_PATH } from '../services/exportRebuild/datasetMaterializer.js';
 import { SIGNATURE_DISTANCE_REPORT_PATH } from '../services/cinematicSignatureDifferentiation.js';
 import { SOURCE_VIDEO_DNA_DATASET_DIR, TITANIC_SOURCE_ID } from '../services/sourceVideoNumericalAndCinematicDna.js';
@@ -12,13 +13,9 @@ import {
   writeTitanicSourceIntegration,
 } from '../services/titanicSourceIntegration.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const report = writeTitanicSourceIntegration(projectRoot);
 const summary = report.integration_summary;

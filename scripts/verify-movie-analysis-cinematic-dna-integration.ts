@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   CINEMATIC_DNA_INTEGRATION_MD_PATH,
   CINEMATIC_DNA_INTEGRATION_PASS_VERDICT,
@@ -15,14 +16,9 @@ import {
   CINEMATIC_DNA_REPORT_PATH,
 } from '../services/movieAnalysisCinematicDnaExtraction.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 for (const required of [CINEMATIC_DNA_PATH, CINEMATIC_DNA_REPORT_PATH]) {
   if (!fs.existsSync(path.join(projectRoot, required))) {

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   LEVEL2_FINAL_CERTIFICATION_V2_PASS_VERDICT,
   LEVEL2_FINAL_CERTIFICATION_V2_REPORT_PATH,
@@ -25,14 +26,9 @@ import { VIDEO_STYLE_DIR } from '../services/movieAnalysisRealVideoStyleConsiste
 import { VIDEO_MOTION_DIR } from '../services/movieAnalysisRealVideoMotionConsistencyValidation.js';
 import { VIDEO_MASTER_CERTIFICATION_MANIFEST_PATH } from '../services/movieAnalysisRealVideoMasterCertification.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const level2FinalPath = path.join(projectRoot, LEVEL2_FINAL_CERTIFICATION_V2_REPORT_PATH);
 if (!fs.existsSync(level2FinalPath)) {

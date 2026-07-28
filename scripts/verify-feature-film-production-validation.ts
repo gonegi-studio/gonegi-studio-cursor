@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   FEATURE_FILM_ACT_MAP_PATH,
   FEATURE_FILM_ARC_NETWORK_PATH,
@@ -40,13 +41,9 @@ import {
   FEATURE_SHOT_SCALE_RULES_PATH,
 } from '../services/featureFilmShotAssembly.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const readOnlyPaths = [
   FEATURE_FILM_SHOT_SEQUENCE_PATH,

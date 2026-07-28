@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   MV_HIGH_PRIORITY_RESOLUTION_EXECUTION_CERTIFICATION_GATE_HARDENING_PASS_VERDICT,
   MV_HIGH_PRIORITY_RESOLUTION_EXECUTION_CERTIFICATION_GATE_HARDENED_STATUS,
@@ -14,13 +15,9 @@ import {
 } from '../services/mvProductionReadyGate.js';
 
 const EXPECTED_GATE_BLOCKER_COUNT = 3;
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const hardeningReportPath = path.join(
   projectRoot,

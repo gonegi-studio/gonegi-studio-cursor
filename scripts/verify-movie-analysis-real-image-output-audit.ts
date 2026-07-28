@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   REAL_IMAGE_GENERATION_TEST_MANIFEST_PATH,
   REAL_IMAGE_GENERATION_VALIDATION_PASS_VERDICT,
@@ -16,14 +17,9 @@ import {
   writeMovieAnalysisRealImageOutputAudit,
 } from '../services/movieAnalysisRealImageOutputAudit.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const validationReportPath = path.join(projectRoot, REAL_IMAGE_GENERATION_VALIDATION_REPORT_PATH);
 if (!fs.existsSync(validationReportPath)) {

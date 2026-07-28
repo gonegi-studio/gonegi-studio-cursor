@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import {
   DNA_CONSUMER_BRIDGE_PASS_VERDICT,
   DNA_CONSUMER_BRIDGE_REPORT_PATH,
@@ -12,14 +13,9 @@ import {
 import { writeMovieAnalysisDnaConsumerBridgeValidationReport } from '../services/movieAnalysisDnaConsumerBridgeValidator.js';
 import { DNA_PACKAGE_PATH } from '../services/movieAnalysisDnaPackaging.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 if (!fs.existsSync(path.join(projectRoot, DNA_PACKAGE_PATH))) {
   console.error(`Missing required upstream asset: ${DNA_PACKAGE_PATH}`);

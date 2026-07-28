@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import { EXPECTED_ADAPTER_COUNT, EXPECTED_SOURCE_COUNT } from '../services/movieAnalysisDnaPackaging.js';
 import {
   CHARACTER_EVOLUTION_VALIDATION_PASS_VERDICT,
@@ -40,7 +41,6 @@ import {
   WORLD_STATE_MEMORY_VALIDATION_STATUS_MESSAGE,
 } from '../services/movieAnalysisWorldStateMemoryValidation.js';
 
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const CLOSED_GAP_LABELS = [
   'Character Evolution',
   'Relationship Evolution',
@@ -51,11 +51,7 @@ const CLOSED_GAP_LABELS = [
 
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  console.error(`Got: ${process.cwd()}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 const priorAuditPath = path.join(projectRoot, LEVEL2_COMPLETENESS_AUDIT_REPORT_PATH);
 if (!fs.existsSync(priorAuditPath)) {

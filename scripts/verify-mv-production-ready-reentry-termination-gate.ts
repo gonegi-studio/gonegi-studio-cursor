@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js';
 import { EXPECTED_ADAPTER_COUNT, EXPECTED_SOURCE_COUNT } from '../services/movieAnalysisDnaPackaging.js';
 import { EXECUTION_SCOPE_TEST_MODE_ONLY } from '../services/mvTestModeExecutionAudit.js';
 import { writeMvProductionReadyGate } from '../services/mvProductionReadyGate.js';
@@ -32,13 +33,9 @@ import { PRODUCTION_READINESS_TIER_PRODUCTION_READY } from '../services/mvProduc
 import { MV_TYPE_COUNT } from '../services/mvProductionSystemFoundation.js';
 
 const EXPECTED_REMAINING_HIGH_PRIORITY_COUNT = 3;
-const EXPECTED_CWD = 'C:\\Users\\danie\\OneDrive\\바탕 화면\\Gonegi-Studio-Cursor';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-if (process.cwd() !== EXPECTED_CWD && path.resolve(process.cwd()) !== path.resolve(EXPECTED_CWD)) {
-  console.error(`PRECHECK FAIL: process.cwd() must be ${EXPECTED_CWD}`);
-  process.exit(1);
-}
+assertCwdMatchesProjectRoot(projectRoot);
 
 writeMvProductionReadyGate(projectRoot);
 writeMvProductionReadyGateReentryHardening(projectRoot);
