@@ -1,0 +1,56 @@
+{
+  "registry_id": "movie-analysis-direct-spatial-conditioning-packet-generation-implementation-registry-v1",
+  "phase": "PHASE-DSC-035",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+  "registry_version": "v1",
+  "status": "IMPLEMENTED",
+  "mode": "DESIGN_ONLY_GENERATION",
+  "scope": {
+    "generation_policy": "assemble_then_validate",
+    "assembly_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+    "validation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "runtime_package_phase": "PHASE-MOVIE-RECONSTRUCTION-027",
+    "generated_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "validated_packet_artifact_kind": "validated_conditioning_packet",
+    "note": "Generation specification only. Defines assemble-then-validate generation of a validated packet from the frozen assembly and validation designs, reusing the certified runtime package. No live packet instances are generated in this phase."
+  },
+  "schema_path": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-generation.schema.json",
+  "builder_service_path": "services/directSpatialConditioningPacketGenerationBuilder.ts",
+  "verify_script_path": "scripts/verify-direct-spatial-conditioning-packet-generation.ts",
+  "npm_verify_command": "verify:direct-spatial-conditioning-packet-generation",
+  "generation_root": "exports/direct_spatial_conditioning/v1",
+  "generation_path": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+  "validation_report_path": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_VALIDATION_REPORT.json",
+  "design_constraints": {
+    "generation_only": true,
+    "reuses_packet_assembly": true,
+    "reuses_certified_runtime_package": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "generates_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "explicitly_not_modified_this_phase": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+    "exports/numerical_reconstruction/v1/**",
+    "exports/movie_reconstruction_master/v1/**",
+    "exports/movie_reconstruction_certification/v1/**",
+    "datasets/movie_analysis/**"
+  ],
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+  "generated_at": "2026-07-25T11:00:00.000Z"
+}

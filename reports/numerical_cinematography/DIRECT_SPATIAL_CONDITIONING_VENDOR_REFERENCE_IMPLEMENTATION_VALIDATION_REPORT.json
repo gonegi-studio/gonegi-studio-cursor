@@ -1,0 +1,62 @@
+{
+  "report_id": "direct_spatial_conditioning_vendor_reference_implementation_ms122dps",
+  "phase": "PHASE-DSC-067",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_IMPLEMENTATION_V1",
+  "validation_passed": true,
+  "mode": "design_only_vendor_reference_implementation",
+  "implementation_id": "dsc-vendor-reference-implementation-v1",
+  "implementation_version": "1.0",
+  "implementation_kind": "reference_vendor_implementation",
+  "reference_implementation_schema": "dsc-vendor-reference-implementation-schema-v1",
+  "schema_fields": 12,
+  "deterministic_implementation_identity": "dsc-vendor-reference-implementation-deterministic-identity-v1",
+  "vendor_template_binding": "dsc-vendor-reference-implementation-template-binding-v1",
+  "extension_points_adopted": [
+    "EXT_VENDOR_DECLARE_CAPABILITIES",
+    "EXT_VENDOR_RESOLVE_COMPATIBILITY",
+    "EXT_VENDOR_BIND_CONDITIONING_INPUT",
+    "EXT_VENDOR_RELEASE_BINDING"
+  ],
+  "reference_implementation_profile": "dsc-vendor-reference-implementation-profile-v1",
+  "profile_steps": 4,
+  "capability_entries": 6,
+  "methods_required": [
+    "describe_capabilities",
+    "check_compatibility",
+    "bind_conditioning_input",
+    "release_conditioning_binding"
+  ],
+  "implemented_vendors": 0,
+  "sources_supported": 15,
+  "reuses_certified_vendor_template": true,
+  "reuses_certified_vendor_reference_profile": true,
+  "vendor_neutral": true,
+  "design_constraints": {
+    "reference_implementation_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_template": true,
+    "reuses_certified_vendor_reference_profile": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "implements_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "vendor_reference_implementation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-implementation-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-implementation.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-implementation-implementation-registry-v1.json",
+    "template": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+    "profile": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+    "profile_certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-26T00:24:12.023Z"
+}

@@ -1,0 +1,675 @@
+{
+  "assembly_specification_id": "direct-spatial-conditioning-packet-assembly-v1",
+  "phase": "PHASE-DSC-034",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1",
+  "mode": "design_only_assembly",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1",
+  "packet_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+  "validation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "runtime_package_phase": "PHASE-MOVIE-RECONSTRUCTION-027",
+  "runtime_consumption_layer": "consumption",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_inputs": [
+    {
+      "input_id": "certified_runtime_package",
+      "kind": "certified_artifact",
+      "ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "description": "Certified Movie Reconstruction runtime package (PHASE-027); read-only source of consumption records.",
+      "read_only": true
+    },
+    {
+      "input_id": "source_video_id",
+      "kind": "runtime_selector",
+      "ref": null,
+      "description": "One of the 15 certified corpus source ids selecting which consumption record to map.",
+      "read_only": true
+    },
+    {
+      "input_id": "packet_id",
+      "kind": "caller_value",
+      "ref": null,
+      "description": "Caller-assigned opaque packet identity written to packet metadata.",
+      "read_only": true
+    },
+    {
+      "input_id": "packet_specification",
+      "kind": "design_artifact",
+      "ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+      "description": "PHASE-032 packet specification defining the target packet shape.",
+      "read_only": true
+    },
+    {
+      "input_id": "packet_validation_specification",
+      "kind": "design_artifact",
+      "ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+      "description": "PHASE-033 validation specification applied as the post-assembly acceptance gate.",
+      "read_only": true
+    }
+  ],
+  "assembly_order": [
+    {
+      "step_index": 0,
+      "step_id": "resolve_source",
+      "description": "Validate source_video_id is a certified corpus id and locate its entry in the runtime package.",
+      "reads": [
+        "certified_runtime_package",
+        "source_video_id"
+      ],
+      "produces": "runtime_source_entry"
+    },
+    {
+      "step_index": 1,
+      "step_id": "load_consumption_record",
+      "description": "Load the consumption layer record referenced by runtime_package.sources[sid].layers.consumption.",
+      "reads": [
+        "runtime_source_entry"
+      ],
+      "produces": "consumption_record"
+    },
+    {
+      "step_index": 2,
+      "step_id": "assemble_metadata",
+      "description": "Populate packet metadata from constants, caller packet_id, and consumption record fields.",
+      "reads": [
+        "consumption_record",
+        "packet_id"
+      ],
+      "produces": "packet_metadata"
+    },
+    {
+      "step_index": 3,
+      "step_id": "assemble_channels_in_order",
+      "description": "For each channel in packet channel_order, copy envelope fields and map components from the named consumption slots.",
+      "reads": [
+        "consumption_record",
+        "packet_specification"
+      ],
+      "produces": "packet_channels"
+    },
+    {
+      "step_index": 4,
+      "step_id": "finalize_packet",
+      "description": "Combine metadata and ordered channels into a packet conforming to the PHASE-032 specification.",
+      "reads": [
+        "packet_metadata",
+        "packet_channels"
+      ],
+      "produces": "assembled_packet_candidate"
+    },
+    {
+      "step_index": 5,
+      "step_id": "apply_validation_gate",
+      "description": "Apply the PHASE-033 validation specification; accept only when zero rejection codes are emitted.",
+      "reads": [
+        "assembled_packet_candidate",
+        "packet_validation_specification"
+      ],
+      "produces": "validation_outcome"
+    }
+  ],
+  "metadata_assembly": [
+    {
+      "field": "packet_id",
+      "source_kind": "caller_provided",
+      "value": null,
+      "runtime_record_path": null,
+      "note": "Caller-assigned opaque runtime packet identity; not sourced from datasets."
+    },
+    {
+      "field": "packet_version",
+      "source_kind": "constant",
+      "value": "v1",
+      "runtime_record_path": null,
+      "note": "Fixed by the PHASE-032 packet specification."
+    },
+    {
+      "field": "source_video_id",
+      "source_kind": "runtime_record_field",
+      "value": null,
+      "runtime_record_path": "source_video_id",
+      "note": "Copied from the selected consumption record source_video_id."
+    },
+    {
+      "field": "spatial_frame_ref",
+      "source_kind": "constant",
+      "value": "normalized_image_plane_v1",
+      "runtime_record_path": null,
+      "note": "Locked spatial frame shared by every channel."
+    },
+    {
+      "field": "timebase",
+      "source_kind": "constant",
+      "value": "milliseconds",
+      "runtime_record_path": null,
+      "note": "All timestamps expressed in milliseconds."
+    },
+    {
+      "field": "contract_id",
+      "source_kind": "constant",
+      "value": "direct-spatial-conditioning-contract-v1",
+      "runtime_record_path": null,
+      "note": "References the PHASE-031 conditioning contract."
+    },
+    {
+      "field": "channel_count",
+      "source_kind": "constant",
+      "value": 6,
+      "runtime_record_path": null,
+      "note": "Fixed channel cardinality declared by the packet specification."
+    }
+  ],
+  "channel_assemblies": [
+    {
+      "channel_id": "camera_pose_field",
+      "order_index": 0,
+      "foundation_consumption_slot": "camera_pose",
+      "runtime_layer": "consumption",
+      "envelope_field_mappings": [
+        {
+          "field": "channel_id",
+          "source_kind": "constant",
+          "value": "camera_pose_field",
+          "runtime_record_path": null,
+          "note": "Fixed to the channel being assembled."
+        },
+        {
+          "field": "source_video_id",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "source_video_id",
+          "note": "Copied from the selected consumption record source_video_id."
+        },
+        {
+          "field": "spatial_frame_ref",
+          "source_kind": "constant",
+          "value": "normalized_image_plane_v1",
+          "runtime_record_path": null,
+          "note": "Locked spatial frame."
+        },
+        {
+          "field": "timestamp_ms",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "identity.source_timestamp_ms",
+          "note": "Copied from the consumption record anchor timestamp."
+        },
+        {
+          "field": "components",
+          "source_kind": "constant",
+          "value": "assembled_from_component_source_mappings",
+          "runtime_record_path": null,
+          "note": "Populated from component_source_mappings of this channel."
+        }
+      ],
+      "component_source_mappings": [
+        {
+          "packet_component": "translation_u",
+          "value_kind": "number",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.camera_translation.dx",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Normalized camera translation along u."
+        },
+        {
+          "packet_component": "translation_v",
+          "value_kind": "number",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.camera_translation.dy",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Normalized camera translation along v."
+        },
+        {
+          "packet_component": "rotation_rad",
+          "value_kind": "number",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.camera_rotation",
+          "additional_source_paths": [],
+          "extraction": "unit_normalize_degrees_to_radians",
+          "label_rule": null,
+          "note": "In-plane camera rotation; deterministic degrees to radians normalization."
+        },
+        {
+          "packet_component": "zoom_scale",
+          "value_kind": "number",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.zoom_strength",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Unitless zoom scale magnitude."
+        }
+      ]
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "order_index": 1,
+      "foundation_consumption_slot": "camera_temporal",
+      "runtime_layer": "consumption",
+      "envelope_field_mappings": [
+        {
+          "field": "channel_id",
+          "source_kind": "constant",
+          "value": "camera_temporal_track",
+          "runtime_record_path": null,
+          "note": "Fixed to the channel being assembled."
+        },
+        {
+          "field": "source_video_id",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "source_video_id",
+          "note": "Copied from the selected consumption record source_video_id."
+        },
+        {
+          "field": "spatial_frame_ref",
+          "source_kind": "constant",
+          "value": "normalized_image_plane_v1",
+          "runtime_record_path": null,
+          "note": "Locked spatial frame."
+        },
+        {
+          "field": "timestamp_ms",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "identity.source_timestamp_ms",
+          "note": "Copied from the consumption record anchor timestamp."
+        },
+        {
+          "field": "components",
+          "source_kind": "constant",
+          "value": "assembled_from_component_source_mappings",
+          "runtime_record_path": null,
+          "note": "Populated from component_source_mappings of this channel."
+        }
+      ],
+      "component_source_mappings": [
+        {
+          "packet_component": "motion_type",
+          "value_kind": "string",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.camera_motion_type",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Camera motion class label."
+        },
+        {
+          "packet_component": "magnitude",
+          "value_kind": "number",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.motion_magnitude",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Camera motion magnitude."
+        },
+        {
+          "packet_component": "translation_u",
+          "value_kind": "number",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.camera_translation.dx",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Pair translation along u."
+        },
+        {
+          "packet_component": "translation_v",
+          "value_kind": "number",
+          "source_consumption_slot": "camera_temporal",
+          "payload_path": "camera_motion.camera_translation.dy",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Pair translation along v."
+        }
+      ]
+    },
+    {
+      "channel_id": "subject_position_field",
+      "order_index": 2,
+      "foundation_consumption_slot": "subject_temporal",
+      "runtime_layer": "consumption",
+      "envelope_field_mappings": [
+        {
+          "field": "channel_id",
+          "source_kind": "constant",
+          "value": "subject_position_field",
+          "runtime_record_path": null,
+          "note": "Fixed to the channel being assembled."
+        },
+        {
+          "field": "source_video_id",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "source_video_id",
+          "note": "Copied from the selected consumption record source_video_id."
+        },
+        {
+          "field": "spatial_frame_ref",
+          "source_kind": "constant",
+          "value": "normalized_image_plane_v1",
+          "runtime_record_path": null,
+          "note": "Locked spatial frame."
+        },
+        {
+          "field": "timestamp_ms",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "identity.source_timestamp_ms",
+          "note": "Copied from the consumption record anchor timestamp."
+        },
+        {
+          "field": "components",
+          "source_kind": "constant",
+          "value": "assembled_from_component_source_mappings",
+          "runtime_record_path": null,
+          "note": "Populated from component_source_mappings of this channel."
+        }
+      ],
+      "component_source_mappings": [
+        {
+          "packet_component": "center_u",
+          "value_kind": "number",
+          "source_consumption_slot": "framing",
+          "payload_path": "composition_metrics.subject_screen_position.x",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Subject screen-position center u."
+        },
+        {
+          "packet_component": "center_v",
+          "value_kind": "number",
+          "source_consumption_slot": "framing",
+          "payload_path": "composition_metrics.subject_screen_position.y",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Subject screen-position center v."
+        },
+        {
+          "packet_component": "displacement_u",
+          "value_kind": "number",
+          "source_consumption_slot": "subject_temporal",
+          "payload_path": "subject_motion.subject_translation.dx",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Subject displacement along u."
+        },
+        {
+          "packet_component": "displacement_v",
+          "value_kind": "number",
+          "source_consumption_slot": "subject_temporal",
+          "payload_path": "subject_motion.subject_translation.dy",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Subject displacement along v."
+        }
+      ]
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "order_index": 3,
+      "foundation_consumption_slot": "framing",
+      "runtime_layer": "consumption",
+      "envelope_field_mappings": [
+        {
+          "field": "channel_id",
+          "source_kind": "constant",
+          "value": "framing_composition_map",
+          "runtime_record_path": null,
+          "note": "Fixed to the channel being assembled."
+        },
+        {
+          "field": "source_video_id",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "source_video_id",
+          "note": "Copied from the selected consumption record source_video_id."
+        },
+        {
+          "field": "spatial_frame_ref",
+          "source_kind": "constant",
+          "value": "normalized_image_plane_v1",
+          "runtime_record_path": null,
+          "note": "Locked spatial frame."
+        },
+        {
+          "field": "timestamp_ms",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "identity.source_timestamp_ms",
+          "note": "Copied from the consumption record anchor timestamp."
+        },
+        {
+          "field": "components",
+          "source_kind": "constant",
+          "value": "assembled_from_component_source_mappings",
+          "runtime_record_path": null,
+          "note": "Populated from component_source_mappings of this channel."
+        }
+      ],
+      "component_source_mappings": [
+        {
+          "packet_component": "shot_scale",
+          "value_kind": "string",
+          "source_consumption_slot": "framing",
+          "payload_path": "composition_metrics.subject_area_ratio",
+          "additional_source_paths": [],
+          "extraction": "deterministic_label",
+          "label_rule": {
+            "from_fields": [
+              "composition_metrics.subject_area_ratio"
+            ],
+            "bands": [
+              "area_ratio>=0.5:close",
+              "0.2<=area_ratio<0.5:medium",
+              "area_ratio<0.2:wide"
+            ]
+          },
+          "note": "Shot-scale label from subject area ratio bands (deterministic lookup, no inference)."
+        },
+        {
+          "packet_component": "composition_region",
+          "value_kind": "string",
+          "source_consumption_slot": "framing",
+          "payload_path": "composition_metrics.subject_screen_position.x",
+          "additional_source_paths": [
+            "composition_metrics.subject_screen_position.y"
+          ],
+          "extraction": "deterministic_label",
+          "label_rule": {
+            "from_fields": [
+              "composition_metrics.subject_screen_position.x",
+              "composition_metrics.subject_screen_position.y"
+            ],
+            "bands": [
+              "x<0.33:left",
+              "0.33<=x<0.66:center",
+              "x>=0.66:right",
+              "y<0.33:top",
+              "0.33<=y<0.66:middle",
+              "y>=0.66:bottom"
+            ]
+          },
+          "note": "Composition region from subject screen-position thirds (deterministic lookup, no inference)."
+        }
+      ]
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "order_index": 4,
+      "foundation_consumption_slot": "edit_rhythm",
+      "runtime_layer": "consumption",
+      "envelope_field_mappings": [
+        {
+          "field": "channel_id",
+          "source_kind": "constant",
+          "value": "edit_rhythm_boundaries",
+          "runtime_record_path": null,
+          "note": "Fixed to the channel being assembled."
+        },
+        {
+          "field": "source_video_id",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "source_video_id",
+          "note": "Copied from the selected consumption record source_video_id."
+        },
+        {
+          "field": "spatial_frame_ref",
+          "source_kind": "constant",
+          "value": "normalized_image_plane_v1",
+          "runtime_record_path": null,
+          "note": "Locked spatial frame."
+        },
+        {
+          "field": "timestamp_ms",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "identity.source_timestamp_ms",
+          "note": "Copied from the consumption record anchor timestamp."
+        },
+        {
+          "field": "components",
+          "source_kind": "constant",
+          "value": "assembled_from_component_source_mappings",
+          "runtime_record_path": null,
+          "note": "Populated from component_source_mappings of this channel."
+        }
+      ],
+      "component_source_mappings": [
+        {
+          "packet_component": "cut_timestamp_ms",
+          "value_kind": "number_array",
+          "source_consumption_slot": "edit_rhythm",
+          "payload_path": "camera_transition_metrics.cut_timestamps_ms",
+          "additional_source_paths": [],
+          "extraction": "rename_copy",
+          "label_rule": null,
+          "note": "Ordered cut boundary timestamps (source field cut_timestamps_ms)."
+        },
+        {
+          "packet_component": "shot_duration_ms",
+          "value_kind": "number_array",
+          "source_consumption_slot": "edit_rhythm",
+          "payload_path": "camera_transition_metrics.shot_duration_ms",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Per-shot durations aligned to cut boundaries."
+        }
+      ]
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "order_index": 5,
+      "foundation_consumption_slot": "scene_energy",
+      "runtime_layer": "consumption",
+      "envelope_field_mappings": [
+        {
+          "field": "channel_id",
+          "source_kind": "constant",
+          "value": "scene_energy_field",
+          "runtime_record_path": null,
+          "note": "Fixed to the channel being assembled."
+        },
+        {
+          "field": "source_video_id",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "source_video_id",
+          "note": "Copied from the selected consumption record source_video_id."
+        },
+        {
+          "field": "spatial_frame_ref",
+          "source_kind": "constant",
+          "value": "normalized_image_plane_v1",
+          "runtime_record_path": null,
+          "note": "Locked spatial frame."
+        },
+        {
+          "field": "timestamp_ms",
+          "source_kind": "runtime_record_field",
+          "value": null,
+          "runtime_record_path": "identity.source_timestamp_ms",
+          "note": "Copied from the consumption record anchor timestamp."
+        },
+        {
+          "field": "components",
+          "source_kind": "constant",
+          "value": "assembled_from_component_source_mappings",
+          "runtime_record_path": null,
+          "note": "Populated from component_source_mappings of this channel."
+        }
+      ],
+      "component_source_mappings": [
+        {
+          "packet_component": "motion_magnitude",
+          "value_kind": "number",
+          "source_consumption_slot": "scene_energy",
+          "payload_path": "scene_dynamics.visual_focus_shift.magnitude",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Scene motion magnitude from visual focus shift."
+        },
+        {
+          "packet_component": "camera_subject_relationship",
+          "value_kind": "string",
+          "source_consumption_slot": "scene_energy",
+          "payload_path": "scene_dynamics.motion_relationship",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Camera/subject relationship class."
+        },
+        {
+          "packet_component": "relative_velocity",
+          "value_kind": "number",
+          "source_consumption_slot": "scene_energy",
+          "payload_path": "scene_dynamics.relative_velocity.magnitude",
+          "additional_source_paths": [],
+          "extraction": "direct_copy",
+          "label_rule": null,
+          "note": "Camera vs subject relative velocity magnitude."
+        }
+      ]
+    }
+  ],
+  "design_constraints": {
+    "assembly_only": true,
+    "reuses_certified_runtime_package": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "assembles_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T07:34:59.228Z"
+}

@@ -1,0 +1,279 @@
+{
+  "generation_specification_id": "direct-spatial-conditioning-packet-generation-v1",
+  "phase": "PHASE-DSC-035",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+  "mode": "design_only_generation",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+  "assembly_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+  "assembly_phase": "PHASE-DSC-034",
+  "assembly_system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1",
+  "validation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+  "validation_phase": "PHASE-DSC-033",
+  "validation_system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1",
+  "packet_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "runtime_package_phase": "PHASE-MOVIE-RECONSTRUCTION-027",
+  "runtime_consumption_layer": "consumption",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "generation_procedure": {
+    "ordered_stages": [
+      {
+        "step_index": 0,
+        "step_id": "bind_generation_inputs",
+        "description": "Bind the certified runtime package, selected source_video_id, caller packet_id, and the frozen assembly/validation/packet specifications.",
+        "reads": [
+          "certified_runtime_package",
+          "source_video_id",
+          "packet_id",
+          "packet_assembly_specification",
+          "packet_validation_specification",
+          "packet_specification"
+        ],
+        "produces": "generation_context",
+        "reuses": "PHASE-DSC-034 required_inputs"
+      },
+      {
+        "step_index": 1,
+        "step_id": "execute_assembly_order",
+        "description": "Run the PHASE-034 assembly_order steps exactly (resolve_source through finalize_packet) to produce an assembled packet candidate.",
+        "reads": [
+          "generation_context",
+          "packet_assembly_specification"
+        ],
+        "produces": "assembled_packet_candidate",
+        "reuses": "PHASE-DSC-034 assembly_order"
+      },
+      {
+        "step_index": 2,
+        "step_id": "apply_packet_validation",
+        "description": "Apply the PHASE-033 ordered validation stages (structural, metadata, channel_payload, cross_channel) and collect all rejection codes.",
+        "reads": [
+          "assembled_packet_candidate",
+          "packet_validation_specification"
+        ],
+        "produces": "validation_result",
+        "reuses": "PHASE-DSC-033 validation_procedure"
+      },
+      {
+        "step_index": 3,
+        "step_id": "produce_validated_packet",
+        "description": "If zero rejection codes were emitted, emit an accepted validated packet embedding the generated instance; otherwise emit a rejected outcome with rejection codes.",
+        "reads": [
+          "assembled_packet_candidate",
+          "validation_result"
+        ],
+        "produces": "validated_packet",
+        "reuses": null
+      }
+    ],
+    "reuse_policy": {
+      "assembly": "mandatory_exact_reuse",
+      "validation": "mandatory_exact_reuse",
+      "runtime_package": "mandatory_certified_read_only"
+    },
+    "generation_policy": "assemble_then_validate",
+    "instance_materialization_in_this_phase": false
+  },
+  "generated_packet_instance": {
+    "packet_type": "direct_spatial_conditioning_packet",
+    "packet_version": "v1",
+    "encoding": "application/json",
+    "required_sections": [
+      "metadata",
+      "channels"
+    ],
+    "metadata_fields": [
+      "packet_id",
+      "packet_version",
+      "source_video_id",
+      "spatial_frame_ref",
+      "timebase",
+      "contract_id",
+      "channel_count"
+    ],
+    "channel_order": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "channel_envelope_fields": [
+      "channel_id",
+      "source_video_id",
+      "spatial_frame_ref",
+      "timestamp_ms",
+      "components"
+    ],
+    "component_fields_by_channel": {
+      "camera_pose_field": [
+        "translation_u",
+        "translation_v",
+        "rotation_rad",
+        "zoom_scale"
+      ],
+      "camera_temporal_track": [
+        "motion_type",
+        "magnitude",
+        "translation_u",
+        "translation_v"
+      ],
+      "subject_position_field": [
+        "center_u",
+        "center_v",
+        "displacement_u",
+        "displacement_v"
+      ],
+      "framing_composition_map": [
+        "shot_scale",
+        "composition_region"
+      ],
+      "edit_rhythm_boundaries": [
+        "cut_timestamp_ms",
+        "shot_duration_ms"
+      ],
+      "scene_energy_field": [
+        "motion_magnitude",
+        "camera_subject_relationship",
+        "relative_velocity"
+      ]
+    },
+    "spatial_frame_ref": "normalized_image_plane_v1"
+  },
+  "validated_packet_output": {
+    "artifact_kind": "validated_conditioning_packet",
+    "required_fields": [
+      "packet_id",
+      "source_video_id",
+      "spatial_frame_ref",
+      "outcome",
+      "rejection_codes",
+      "generated_packet",
+      "assembly_ref",
+      "validation_ref",
+      "runtime_package_ref"
+    ],
+    "outcome_values": [
+      "accepted",
+      "rejected"
+    ],
+    "accepted_requires": [
+      "outcome === \"accepted\"",
+      "rejection_codes.length === 0",
+      "generated_packet !== null"
+    ],
+    "rejected_requires": [
+      "outcome === \"rejected\"",
+      "rejection_codes.length > 0",
+      "generated_packet === null OR generated_packet retained_for_diagnostics_only"
+    ],
+    "embeds_generated_packet_on_accept": true,
+    "embeds_rejection_codes_on_reject": true,
+    "materializes_tensors": false,
+    "materializes_frames": false
+  },
+  "channel_generation_bindings": [
+    {
+      "channel_id": "camera_pose_field",
+      "order_index": 0,
+      "assembly_channel_ref": "camera_pose_field",
+      "foundation_consumption_slot": "camera_pose",
+      "component_count": 4,
+      "component_names": [
+        "translation_u",
+        "translation_v",
+        "rotation_rad",
+        "zoom_scale"
+      ]
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "order_index": 1,
+      "assembly_channel_ref": "camera_temporal_track",
+      "foundation_consumption_slot": "camera_temporal",
+      "component_count": 4,
+      "component_names": [
+        "motion_type",
+        "magnitude",
+        "translation_u",
+        "translation_v"
+      ]
+    },
+    {
+      "channel_id": "subject_position_field",
+      "order_index": 2,
+      "assembly_channel_ref": "subject_position_field",
+      "foundation_consumption_slot": "subject_temporal",
+      "component_count": 4,
+      "component_names": [
+        "center_u",
+        "center_v",
+        "displacement_u",
+        "displacement_v"
+      ]
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "order_index": 3,
+      "assembly_channel_ref": "framing_composition_map",
+      "foundation_consumption_slot": "framing",
+      "component_count": 2,
+      "component_names": [
+        "shot_scale",
+        "composition_region"
+      ]
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "order_index": 4,
+      "assembly_channel_ref": "edit_rhythm_boundaries",
+      "foundation_consumption_slot": "edit_rhythm",
+      "component_count": 2,
+      "component_names": [
+        "cut_timestamp_ms",
+        "shot_duration_ms"
+      ]
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "order_index": 5,
+      "assembly_channel_ref": "scene_energy_field",
+      "foundation_consumption_slot": "scene_energy",
+      "component_count": 3,
+      "component_names": [
+        "motion_magnitude",
+        "camera_subject_relationship",
+        "relative_velocity"
+      ]
+    }
+  ],
+  "design_constraints": {
+    "generation_only": true,
+    "reuses_packet_assembly": true,
+    "reuses_certified_runtime_package": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "generates_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T07:39:01.036Z"
+}

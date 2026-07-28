@@ -1,0 +1,53 @@
+{
+  "report_id": "direct_spatial_conditioning_vendor_profile_ms0zdgz1",
+  "phase": "PHASE-DSC-055",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_PROFILE_V1",
+  "validation_passed": true,
+  "mode": "design_only_vendor_profile",
+  "vendor_profile_id": "dsc-vendor-profile-generic-v1",
+  "vendor_profile_version": "1.0",
+  "vendor_profile_kind": "generic_vendor_profile",
+  "vendor_profile_schema": "dsc-vendor-profile-schema-v1",
+  "schema_fields": 11,
+  "deterministic_vendor_profile_identity": "dsc-vendor-profile-deterministic-identity-v1",
+  "backend_family_binding": "dsc-vendor-profile-backend-family-binding-v1",
+  "family_id": "dsc-backend-family-generic-v1",
+  "vendor_capability_interface": "dsc-vendor-capability-interface-v1",
+  "interface_methods": [
+    "describe_capabilities",
+    "check_compatibility",
+    "bind_conditioning_input",
+    "release_conditioning_binding"
+  ],
+  "required_capability_declarations": 6,
+  "bound_vendors": 0,
+  "sources_supported": 15,
+  "reuses_certified_backend_family": true,
+  "vendor_neutral": true,
+  "no_vendor_implementation": true,
+  "design_constraints": {
+    "vendor_profile_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_backend_family": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "binds_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "vendor_profile": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-profile.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-profile-implementation-registry-v1.json",
+    "family": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+    "family_certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T23:08:50.610Z"
+}

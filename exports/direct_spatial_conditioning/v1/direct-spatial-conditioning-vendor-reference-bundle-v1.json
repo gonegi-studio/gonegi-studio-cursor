@@ -1,0 +1,279 @@
+{
+  "vendor_reference_bundle_id": "direct-spatial-conditioning-vendor-reference-bundle-v1",
+  "phase": "PHASE-DSC-077",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_BUNDLE_V1",
+  "mode": "design_only_vendor_reference_bundle",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_BUNDLE_V1",
+  "bundle_id": "dsc-vendor-reference-bundle-v1",
+  "bundle_version": "1.0",
+  "bundle_kind": "vendor_reference_bundle",
+  "package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+  "package_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package.schema.json",
+  "package_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package-implementation-registry-v1.json",
+  "package_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_VALIDATION_REPORT.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "bundle_schema": {
+    "schema_id": "dsc-vendor-reference-bundle-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning vendor reference bundle. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. A bundle binds one Vendor Reference Package as its root, seals that package together with its schema and registry, and seals the package members transitively through the package digest.",
+    "encoding": "application/json",
+    "bundle_id_policy": "opaque_bundle_id_no_vendor_binding",
+    "package_ref": "dsc-vendor-reference-package-v1",
+    "required_fields": [
+      {
+        "field": "bundle_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "bundle_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor bundle version string"
+      },
+      {
+        "field": "bundle_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal vendor_reference_bundle"
+      },
+      {
+        "field": "package_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the vendor reference package dsc-vendor-reference-package-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_bundle_identity",
+        "type": "dsc-vendor-reference-bundle-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor name, framework, or device dependence"
+      },
+      {
+        "field": "vendor_reference_package_binding",
+        "type": "dsc-vendor-reference-bundle-package-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the passing Vendor Reference Package as the bundle root, gated on its recorded PASS verdict"
+      },
+      {
+        "field": "bundle_composition",
+        "type": "dsc-vendor-reference-bundle-composition-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "closed, fixed-order set of package, schema, and registry sections; vendor-specific sections forbidden and package members never re-listed"
+      },
+      {
+        "field": "bundle_manifest",
+        "type": "dsc-vendor-reference-bundle-manifest-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "content-addressed SHA256 manifest with one entry per section, plus the transitively sealed package digest and a bundle digest over both"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_bundle_identity": {
+    "identity_id": "dsc-vendor-reference-bundle-deterministic-identity-v1",
+    "description": "Deterministic identity of the vendor reference bundle. The bundle_id is a literal design-time constant with no seed, time, randomness, vendor name, framework, or device dependence.",
+    "bundle_id": "dsc-vendor-reference-bundle-v1",
+    "bundle_version": "1.0",
+    "identity_policy": "opaque_bundle_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "vendor_name": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "vendor_reference_package_binding": {
+    "binding_id": "dsc-vendor-reference-bundle-package-binding-v1",
+    "description": "Exact binding of the PHASE-075 Vendor Reference Package as the bundle root. The binding is gated at build time on the recorded PHASE-075 PASS verdict, and re-seals every package member and the package digest before the bundle is emitted.",
+    "package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+    "package_id": "dsc-vendor-reference-package-v1",
+    "package_version": "1.0",
+    "package_phase": "PHASE-DSC-075",
+    "package_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_V1",
+    "package_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_VALIDATION_REPORT.json",
+    "package_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_V1",
+    "package_evidence_mode": "phase_075_pass_verdict_gated_at_build_time",
+    "binding_mode": "exact_reuse",
+    "role": "bundle_root",
+    "sealed_package_digest": "1666006af4e2fd45401cd318c5904ff1df29b12d0a0f6c6ed8575b5fed29bd2f",
+    "sealed_component_count": 42,
+    "bundles_vendors_in_this_phase": false,
+    "implements_package_in_this_phase": false
+  },
+  "bundle_composition": {
+    "composition_id": "dsc-vendor-reference-bundle-composition-v1",
+    "description": "Closed, fixed-order composition of the distributable envelope around the Vendor Reference Package: the package artifact, its shape contract, and its provenance registry. The package members are sealed transitively through the package digest and are deliberately not re-listed here.",
+    "root_section_id": "vendor_reference_package",
+    "section_order": "fixed_declared_order",
+    "closed_set": true,
+    "sections": [
+      {
+        "section_id": "vendor_reference_package",
+        "role": "bundle_root_package",
+        "kind": "package_artifact",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+        "order": 1
+      },
+      {
+        "section_id": "vendor_reference_package_schema",
+        "role": "package_shape_contract",
+        "kind": "package_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package.schema.json",
+        "order": 2
+      },
+      {
+        "section_id": "vendor_reference_package_registry",
+        "role": "package_provenance_registry",
+        "kind": "package_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package-implementation-registry-v1.json",
+        "order": 3
+      }
+    ],
+    "transitive_seal": {
+      "policy": "package_members_sealed_via_package_digest",
+      "sealed_via": "dsc-vendor-reference-package-v1",
+      "sealed_component_count": 42,
+      "re_lists_package_members": false
+    },
+    "vendor_specific_sections": "forbidden",
+    "includes_implementations": false
+  },
+  "bundle_manifest": {
+    "manifest_id": "dsc-vendor-reference-bundle-manifest-v1",
+    "description": "Content-addressed SHA256 manifest of every bundle section. Digests are computed read-only from disk. The sealed package digest carries the package members transitively, and the bundle digest is the SHA256 of the ordered section digests followed by the sealed package digest. No implementation is verified in this phase.",
+    "integrity_method": "sha256_content_addressed_read_only",
+    "entry_count": 3,
+    "entries": [
+      {
+        "section_id": "vendor_reference_package",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+        "sha256": "b66284c52eb45695db431b34a5ff1aacd6c046c7a16db0dc56686d51dbe2d049",
+        "bytes": 37350,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_reference_package_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package.schema.json",
+        "sha256": "5e7456d85f9a35d41842585e54461a71f5c85d61c67e0312ba218500f7ac6eef",
+        "bytes": 14400,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_reference_package_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package-implementation-registry-v1.json",
+        "sha256": "0b14a8b01afa54fe8766ede84940edb6f51550a4ea33a407f7ec0b73166c9d30",
+        "bytes": 4278,
+        "content_addressed": true
+      }
+    ],
+    "sealed_package_digest": "1666006af4e2fd45401cd318c5904ff1df29b12d0a0f6c6ed8575b5fed29bd2f",
+    "sealed_component_count": 42,
+    "bundle_digest": "e798835ff025558311c00a4700336fff31ae8ea4a7221b4399f4dc855d2e11fc",
+    "bundle_digest_method": "sha256_of_ordered_section_digests_and_sealed_package_digest",
+    "verifies_implementations_in_this_phase": false
+  },
+  "bundled_vendors": {
+    "count": 0,
+    "entries": [],
+    "bundling_policy": "concrete vendors may be bundled against this reference bundle only in a future implementation phase; none are bundled here",
+    "bundles_vendors_in_this_phase": false
+  },
+  "design_constraints": {
+    "bundle_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_reference_package": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "bundles_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-26T04:36:48.943Z"
+}

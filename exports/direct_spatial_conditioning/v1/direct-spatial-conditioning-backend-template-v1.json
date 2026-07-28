@@ -1,0 +1,441 @@
+{
+  "backend_template_id": "direct-spatial-conditioning-backend-template-v1",
+  "phase": "PHASE-DSC-049",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+  "mode": "design_only_template",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+  "template_id": "dsc-backend-template-generic-v1",
+  "template_version": "1.0",
+  "template_kind": "generic_backend_template",
+  "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "profile_phase": "PHASE-DSC-047",
+  "profile_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1",
+  "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "backend_template_schema": {
+    "schema_id": "dsc-backend-template-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning generic backend template. Identity is opaque; no vendor, framework, or device binding is expressed. Templates declare an implementation skeleton, extension points, and a validation template without implementing a backend.",
+    "encoding": "application/json",
+    "template_id_policy": "opaque_template_id_no_vendor_binding",
+    "profile_ref": "dsc-backend-profile-reference-v1",
+    "required_fields": [
+      {
+        "field": "template_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor, framework, or device semantics"
+      },
+      {
+        "field": "template_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor template version string"
+      },
+      {
+        "field": "template_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal generic_backend_template"
+      },
+      {
+        "field": "profile_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the certified profile dsc-backend-profile-reference-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_implementation_skeleton",
+        "type": "dsc-backend-deterministic-implementation-skeleton-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "one ordered step per abstract adapter method with side_effects none"
+      },
+      {
+        "field": "extension_points",
+        "type": "dsc-backend-template-extension-points-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "closed set with one extension point per skeleton step"
+      },
+      {
+        "field": "validation_template",
+        "type": "dsc-backend-template-validation-template-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare mandatory conformance checks over skeleton and extension points"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_implementation_skeleton": {
+    "skeleton_id": "dsc-backend-deterministic-implementation-skeleton-v1",
+    "description": "Ordered deterministic skeleton a concrete backend adapter follows. Each step mirrors one abstract PHASE-039 method and is a pure function of its declared inputs. No step is implemented in this phase.",
+    "adapter_interface_ref": "dsc-backend-adapter-interface-v1",
+    "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+    "purity": "deterministic_pure_function_per_step",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "step_order": "fixed_declared_order",
+    "steps": [
+      {
+        "step_id": "STEP_DESCRIBE_CAPABILITIES",
+        "order": 1,
+        "method_id": "describe_capabilities",
+        "signature": "describe_capabilities() -> backend_capability_descriptor",
+        "description": "Concrete backend publishes its capability declarations for the registered capability set.",
+        "reads": [
+          "capability_registry.capability_schema.registered_capability_ids"
+        ],
+        "emits": "backend_capability_descriptor",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_DECLARE_CAPABILITIES",
+        "implemented_in_this_phase": false
+      },
+      {
+        "step_id": "STEP_CHECK_COMPATIBILITY",
+        "order": 2,
+        "method_id": "check_compatibility",
+        "signature": "check_compatibility(backend_capability_descriptor, dsc_adapted_conditioning_input_v1) -> compatibility_report",
+        "description": "Concrete backend resolves its descriptor against the compatibility matrix rows.",
+        "reads": [
+          "backend_capability_descriptor",
+          "capability_registry.compatibility_matrix.rows"
+        ],
+        "emits": "compatibility_report",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_RESOLVE_COMPATIBILITY",
+        "implemented_in_this_phase": false
+      },
+      {
+        "step_id": "STEP_BIND_CONDITIONING_INPUT",
+        "order": 3,
+        "method_id": "bind_conditioning_input",
+        "signature": "bind_conditioning_input(dsc_adapted_conditioning_input_v1) -> conditioning_binding_handle",
+        "description": "Concrete backend ingests the adapted conditioning input and issues an opaque binding handle.",
+        "reads": [
+          "dsc_adapted_conditioning_input_v1"
+        ],
+        "emits": "conditioning_binding_handle",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_BIND_ADAPTED_INPUT",
+        "implemented_in_this_phase": false
+      },
+      {
+        "step_id": "STEP_RELEASE_CONDITIONING_BINDING",
+        "order": 4,
+        "method_id": "release_conditioning_binding",
+        "signature": "release_conditioning_binding(conditioning_binding_handle) -> void",
+        "description": "Concrete backend releases a previously issued conditioning binding handle.",
+        "reads": [
+          "conditioning_binding_handle"
+        ],
+        "emits": "void",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_RELEASE_BINDING",
+        "implemented_in_this_phase": false
+      }
+    ],
+    "same_inputs_same_outcome": true,
+    "requires_gpu": false,
+    "performs_inference": false,
+    "implements_steps_in_this_phase": false
+  },
+  "extension_points": {
+    "extension_points_id": "dsc-backend-template-extension-points-v1",
+    "description": "Closed set of extension points a concrete backend fills. Every point is bound to exactly one skeleton step and inherits the deterministic constraints of the template.",
+    "closed_set": true,
+    "points": [
+      {
+        "extension_point_id": "EXT_DECLARE_CAPABILITIES",
+        "target_method_id": "describe_capabilities",
+        "category": "capability_declaration",
+        "description": "Concrete backend publishes its capability declarations for the registered capability set.",
+        "contract": "must emit one declaration per registered capability id in registry order and declare no unregistered id",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      },
+      {
+        "extension_point_id": "EXT_RESOLVE_COMPATIBILITY",
+        "target_method_id": "check_compatibility",
+        "category": "compatibility",
+        "description": "Concrete backend resolves its descriptor against the compatibility matrix rows.",
+        "contract": "must return a dsc-backend-compatibility-report-v1 whose outcome derives only from declared capabilities and matrix rows",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      },
+      {
+        "extension_point_id": "EXT_BIND_ADAPTED_INPUT",
+        "target_method_id": "bind_conditioning_input",
+        "category": "binding",
+        "description": "Concrete backend ingests the adapted conditioning input and issues an opaque binding handle.",
+        "contract": "must consume dsc_adapted_conditioning_input_v1 losslessly in the fixed channel order and mutate no certified artifact",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      },
+      {
+        "extension_point_id": "EXT_RELEASE_BINDING",
+        "target_method_id": "release_conditioning_binding",
+        "category": "lifecycle",
+        "description": "Concrete backend releases a previously issued conditioning binding handle.",
+        "contract": "must release the handle idempotently and leave no residual state or side effect",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      }
+    ],
+    "unknown_extension_policy": "reject_undeclared_extension_point",
+    "fills_extension_points_in_this_phase": false
+  },
+  "validation_template": {
+    "validation_template_id": "dsc-backend-template-validation-template-v1",
+    "description": "Conformance checks a templated backend implementation must pass. Declared only; no implementation is evaluated in this phase.",
+    "evaluation": "collect_all_failures",
+    "accept_condition": "zero failed checks",
+    "outcome_values": [
+      "conforms",
+      "non_conforming"
+    ],
+    "checks": [
+      {
+        "check_id": "CHK_TEMPLATE_IDENTITY_OPAQUE",
+        "target": "constraints",
+        "description": "template_id must be opaque with no vendor, framework, or device semantics.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "template_id equals dsc-backend-template-generic-v1",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_IDENTITY",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_PROFILE_BINDING",
+        "target": "profile_binding",
+        "description": "Template must bind the certified PHASE-047 profile by exact reference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "profile_ref equals exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json and the profile certification is certified",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_PROFILE_BINDING",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_SKELETON_STEP_COVERAGE",
+        "target": "skeleton",
+        "description": "Skeleton must declare exactly one step per abstract adapter method in interface order.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "skeleton step method_ids equal adapter_foundation.backend_interface.methods method_ids",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_STEP_COVERAGE",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_SKELETON_ORDER_FIXED",
+        "target": "skeleton",
+        "description": "Skeleton step order must be contiguous and fixed.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "step order values equal 1..n without gaps or duplicates",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_STEP_ORDER",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_SKELETON_SIDE_EFFECT_FREE",
+        "target": "skeleton",
+        "description": "Every skeleton step must declare side_effects none.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "every step.side_effects equals none",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_SIDE_EFFECTS",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_SKELETON_DETERMINISTIC",
+        "target": "skeleton",
+        "description": "Skeleton must be deterministic with no seed, time, or randomness dependence.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "purity equals deterministic_pure_function_per_step and seed/time/randomness equal none",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_NONDETERMINISTIC",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_EXTENSION_POINT_COVERAGE",
+        "target": "extension_point",
+        "description": "Every skeleton step must reference exactly one declared extension point and vice versa.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "step extension_point_ref values equal extension_points.points extension_point_ids",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_EXTENSION_COVERAGE",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_EXTENSION_SET_CLOSED",
+        "target": "extension_point",
+        "description": "Extension point set must be closed and reject undeclared points.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "closed_set equals true and unknown_extension_policy equals reject_undeclared_extension_point",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_EXTENSION_OPEN",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_EXTENSION_DETERMINISM_INHERITED",
+        "target": "extension_point",
+        "description": "Every extension point must inherit determinism and forbid GPU, inference, and artifact mutation.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "must_remain_deterministic equals true and may_require_gpu, may_perform_inference, may_modify_certified_artifacts equal false",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_EXTENSION_CONSTRAINTS",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_CHANNEL_ORDER_FOUNDATION",
+        "target": "constraints",
+        "description": "Template channels must match the foundation channel order.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "required_channels equals CONDITIONING_CHANNEL_IDS",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_CHANNEL_ORDER",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_SPATIAL_FRAME_LOCKED",
+        "target": "constraints",
+        "description": "Template must operate exclusively in normalized_image_plane_v1.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "spatial_frame_ref equals normalized_image_plane_v1",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_SPATIAL_FRAME",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_NO_GPU_NO_INFERENCE",
+        "target": "constraints",
+        "description": "Template must not require GPU or perform inference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "requires_gpu equals false and performs_inference equals false",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_GPU_INFERENCE",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_NO_BACKEND_TEMPLATED",
+        "target": "constraints",
+        "description": "Template must bind zero backends in this design-only phase.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "templated_backends.count equals 0 and templates_backends_in_this_phase equals false",
+        "fail_code": "DSC_BACKEND_TEMPLATE_FAIL_BACKEND_TEMPLATED",
+        "mandatory": true,
+        "status_in_this_phase": "not_evaluated"
+      }
+    ],
+    "profile_validation_ref": "dsc-backend-profile-validation-v1",
+    "requires_all_steps_declared": true,
+    "requires_all_extension_points_declared": true,
+    "validates_implementations_in_this_phase": false
+  },
+  "templated_backends": {
+    "count": 0,
+    "entries": [],
+    "templating_policy": "backends may adopt this template only in a future implementation phase; none are templated here",
+    "templates_backends_in_this_phase": false
+  },
+  "design_constraints": {
+    "template_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_certified_profile": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "templates_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T11:36:29.804Z"
+}

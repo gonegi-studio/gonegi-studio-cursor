@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation.schema.json",
+  "title": "DirectSpatialConditioningPacketValidationSpecification",
+  "description": "PHASE-DSC-033 design-only packet validation specification. Declares structural, metadata, channel payload, and cross-channel checks plus the rejection code catalog. Validates no packet instance and performs no backend, GPU, inference, or dataset access.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "validation_specification_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "packet_ref",
+    "packet_phase",
+    "packet_system_id",
+    "validation_procedure",
+    "kind_predicates",
+    "structural_checks",
+    "metadata_checks",
+    "channel_payload_validations",
+    "cross_channel_checks",
+    "rejection_codes",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "validation_specification_id": {
+      "type": "string",
+      "const": "direct-spatial-conditioning-packet-validation-v1"
+    },
+    "phase": { "type": "string", "const": "PHASE-DSC-033" },
+    "system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1"
+    },
+    "mode": { "type": "string", "const": "design_only_validation" },
+    "target": {
+      "type": "string",
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1"
+    },
+    "packet_ref": { "type": "string", "minLength": 1 },
+    "packet_phase": { "type": "string", "const": "PHASE-DSC-032" },
+    "packet_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_PACKET_V1"
+    },
+    "validation_procedure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ordered_stages", "evaluation", "accept_condition", "outcome_values"],
+      "properties": {
+        "ordered_stages": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            { "const": "structural" },
+            { "const": "metadata" },
+            { "const": "channel_payload" },
+            { "const": "cross_channel" }
+          ]
+        },
+        "evaluation": { "const": "collect_all_rejections" },
+        "accept_condition": { "type": "string", "minLength": 1 },
+        "outcome_values": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "accepted" }, { "const": "rejected" }]
+        }
+      }
+    },
+    "kind_predicates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["number", "string", "boolean", "number_array", "string_array"],
+      "properties": {
+        "number": { "type": "string", "minLength": 1 },
+        "string": { "type": "string", "minLength": 1 },
+        "boolean": { "type": "string", "minLength": 1 },
+        "number_array": { "type": "string", "minLength": 1 },
+        "string_array": { "type": "string", "minLength": 1 }
+      }
+    },
+    "structural_checks": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/validationCheck" }
+    },
+    "metadata_checks": {
+      "type": "array",
+      "minItems": 26,
+      "items": { "$ref": "#/$defs/validationCheck" }
+    },
+    "channel_payload_validations": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "channel_id",
+          "payload_id",
+          "envelope_checks",
+          "component_checks",
+          "closed_component_set"
+        ],
+        "properties": {
+          "channel_id": {
+            "enum": [
+              "camera_pose_field",
+              "camera_temporal_track",
+              "subject_position_field",
+              "framing_composition_map",
+              "edit_rhythm_boundaries",
+              "scene_energy_field"
+            ]
+          },
+          "payload_id": { "type": "string", "minLength": 1 },
+          "envelope_checks": {
+            "type": "array",
+            "minItems": 16,
+            "items": { "$ref": "#/$defs/validationCheck" }
+          },
+          "component_checks": {
+            "type": "array",
+            "minItems": 7,
+            "items": { "$ref": "#/$defs/validationCheck" }
+          },
+          "closed_component_set": { "const": true }
+        }
+      }
+    },
+    "cross_channel_checks": {
+      "type": "array",
+      "minItems": 7,
+      "items": { "$ref": "#/$defs/validationCheck" }
+    },
+    "rejection_codes": {
+      "type": "array",
+      "minItems": 25,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "category", "severity", "description", "remediation"],
+        "properties": {
+          "code": { "type": "string", "pattern": "^DSC_REJ_[A-Z0-9_]+$" },
+          "category": {
+            "enum": ["structural", "metadata", "channel_payload", "cross_channel"]
+          },
+          "severity": { "const": "reject" },
+          "description": { "type": "string", "minLength": 1 },
+          "remediation": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_only",
+        "backend",
+        "gpu",
+        "inference",
+        "validates_packet_instances_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "validation_only": { "const": true },
+        "backend": { "const": "none" },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "validates_packet_instances_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "validationCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "stage", "applies_to", "description", "predicate", "rejection_code"],
+      "properties": {
+        "check_id": { "type": "string", "minLength": 1 },
+        "stage": {
+          "enum": ["structural", "metadata", "channel_payload", "cross_channel"]
+        },
+        "applies_to": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "predicate": { "type": "string", "minLength": 1 },
+        "rejection_code": { "type": "string", "pattern": "^DSC_REJ_[A-Z0-9_]+$" }
+      }
+    }
+  }
+}

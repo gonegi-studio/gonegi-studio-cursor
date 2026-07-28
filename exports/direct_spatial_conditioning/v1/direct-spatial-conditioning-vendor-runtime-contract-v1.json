@@ -1,0 +1,319 @@
+{
+  "vendor_runtime_contract_id": "direct-spatial-conditioning-vendor-runtime-contract-v1",
+  "phase": "PHASE-DSC-097",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CONTRACT_V1",
+  "mode": "design_only_vendor_runtime_contract",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CONTRACT_V1",
+  "runtime_contract_id": "dsc-vendor-runtime-contract-v1",
+  "runtime_contract_version": "1.0",
+  "runtime_contract_kind": "vendor_runtime_contract",
+  "runtime_specification_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-specification-v1.json",
+  "runtime_specification_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification.schema.json",
+  "runtime_specification_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification-implementation-registry-v1.json",
+  "runtime_specification_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_SPECIFICATION_VALIDATION_REPORT.json",
+  "runtime_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-template-v1.json",
+  "runtime_template_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-template.schema.json",
+  "runtime_template_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-template-implementation-registry-v1.json",
+  "runtime_template_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_TEMPLATE_VALIDATION_REPORT.json",
+  "runtime_family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-family-v1.json",
+  "runtime_family_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-family.schema.json",
+  "runtime_family_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-family-implementation-registry-v1.json",
+  "runtime_family_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_FAMILY_VALIDATION_REPORT.json",
+  "runtime_catalog_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-catalog-v1.json",
+  "runtime_catalog_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog.schema.json",
+  "runtime_catalog_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog-implementation-registry-v1.json",
+  "runtime_catalog_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CATALOG_VALIDATION_REPORT.json",
+  "runtime_index_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-index-v1.json",
+  "runtime_index_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-index.schema.json",
+  "runtime_index_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-index-implementation-registry-v1.json",
+  "runtime_index_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_INDEX_VALIDATION_REPORT.json",
+  "runtime_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-registry-v1.json",
+  "runtime_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-v1.json",
+  "runtime_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json",
+  "runtime_package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-package-v1.json",
+  "reference_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-bundle-v1.json",
+  "package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json",
+  "numerical_runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "runtime_contract_schema": {
+    "schema_id": "dsc-vendor-runtime-contract-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning vendor runtime contract. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. A runtime contract binds one Vendor Runtime Specification as its root, seals the specification together with its schema and implementation registry, and seals the specification contents transitively through the runtime specification digest. It contracts no concrete runtime and declares no runtime execution.",
+    "encoding": "application/json",
+    "runtime_contract_id_policy": "opaque_runtime_contract_id_no_vendor_binding",
+    "runtime_specification_ref": "dsc-vendor-runtime-specification-v1",
+    "required_fields": [
+      {
+        "field": "runtime_contract_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "runtime_contract_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor runtime contract version string"
+      },
+      {
+        "field": "runtime_contract_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal vendor_runtime_contract"
+      },
+      {
+        "field": "runtime_specification_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the vendor runtime specification dsc-vendor-runtime-specification-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_runtime_contract_identity",
+        "type": "dsc-vendor-runtime-contract-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor name, framework, or device dependence"
+      },
+      {
+        "field": "vendor_runtime_specification_binding",
+        "type": "dsc-vendor-runtime-contract-specification-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the passing Vendor Runtime Specification as the runtime contract root, gated on its recorded PASS verdict"
+      },
+      {
+        "field": "runtime_contract_composition",
+        "type": "dsc-vendor-runtime-contract-composition-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "closed, fixed-order set of runtime specification artifact, schema, and implementation registry sections; vendor-specific sections forbidden and specification contents never re-listed"
+      },
+      {
+        "field": "runtime_contract_manifest",
+        "type": "dsc-vendor-runtime-contract-manifest-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "content-addressed SHA256 manifest with one entry per section, plus the transitively sealed runtime specification digest and a runtime contract digest over sections and that digest"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_runtime_contract_identity": {
+    "identity_id": "dsc-vendor-runtime-contract-deterministic-identity-v1",
+    "description": "Deterministic identity of the vendor runtime contract. The runtime_contract_id is a literal design-time constant with no seed, time, randomness, vendor name, framework, or device dependence.",
+    "runtime_contract_id": "dsc-vendor-runtime-contract-v1",
+    "runtime_contract_version": "1.0",
+    "identity_policy": "opaque_runtime_contract_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "vendor_name": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "vendor_runtime_specification_binding": {
+    "binding_id": "dsc-vendor-runtime-contract-specification-binding-v1",
+    "description": "Exact binding of the PHASE-095 Vendor Runtime Specification as the runtime contract root. The binding is gated at build time on the recorded PHASE-095 PASS verdict, and re-seals every runtime specification section and the runtime specification digest before the runtime contract is emitted.",
+    "runtime_specification_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-specification-v1.json",
+    "runtime_specification_id": "dsc-vendor-runtime-specification-v1",
+    "runtime_specification_version": "1.0",
+    "runtime_specification_phase": "PHASE-DSC-095",
+    "runtime_specification_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_SPECIFICATION_V1",
+    "runtime_specification_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_SPECIFICATION_VALIDATION_REPORT.json",
+    "runtime_specification_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_SPECIFICATION_V1",
+    "runtime_specification_evidence_mode": "phase_095_pass_verdict_gated_at_build_time",
+    "binding_mode": "exact_reuse",
+    "role": "runtime_contract_root",
+    "sealed_runtime_specification_digest": "c3841e6b3cacbf7bd14b70cae6340b430097920c70395a6eea4c1df6824a5eeb",
+    "sealed_runtime_template_digest": "c914fbd2c053957044dc8dd033119de734c573cf36a271d8608af9f4a2703075",
+    "sealed_runtime_family_digest": "d442261041d4569f872cba4e13897c3a855f568c62d6a29f83c7cc506d80784a",
+    "sealed_runtime_catalog_digest": "5f7068f0b517b26e6b8addb1e568624b90846bf6ec1b171312792e5eb290869b",
+    "sealed_runtime_index_digest": "a4353e1ea7cc7c8f709d47e581dd0287cb1e131b3babd53091219838e30687d9",
+    "sealed_runtime_registry_digest": "06ef1ea1b2d2c5d9b93c360eb71c543521cc72e07404c67cc206b8a4381f9be5",
+    "sealed_runtime_profile_digest": "36ed6ca10be91c27936023da66f1e6b595a636f368626c11f093a34c4b4653ce",
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "contracts_runtime_in_this_phase": false,
+    "implements_runtime_specification_in_this_phase": false
+  },
+  "runtime_contract_composition": {
+    "composition_id": "dsc-vendor-runtime-contract-composition-v1",
+    "description": "Closed, fixed-order composition of the publication envelope around the Vendor Runtime Specification: the runtime specification artifact, its shape contract, and its implementation registry. The runtime specification contents (and everything sealed beneath them) are sealed transitively through the runtime specification digest and are deliberately not re-listed here.",
+    "root_section_id": "vendor_runtime_specification",
+    "section_order": "fixed_declared_order",
+    "closed_set": true,
+    "sections": [
+      {
+        "section_id": "vendor_runtime_specification",
+        "role": "runtime_contract_root_specification",
+        "kind": "runtime_specification_artifact",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-specification-v1.json",
+        "order": 1
+      },
+      {
+        "section_id": "vendor_runtime_specification_schema",
+        "role": "runtime_specification_shape_contract",
+        "kind": "runtime_specification_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification.schema.json",
+        "order": 2
+      },
+      {
+        "section_id": "vendor_runtime_specification_implementation_registry",
+        "role": "runtime_specification_provenance_registry",
+        "kind": "runtime_specification_implementation_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification-implementation-registry-v1.json",
+        "order": 3
+      }
+    ],
+    "transitive_seal": {
+      "policy": "runtime_specification_contents_sealed_via_runtime_specification_digest",
+      "sealed_via": "dsc-vendor-runtime-specification-v1",
+      "sealed_component_count": 42,
+      "re_lists_runtime_specification_contents": false
+    },
+    "vendor_specific_sections": "forbidden",
+    "includes_implementations": false,
+    "declares_runtime_execution": false
+  },
+  "runtime_contract_manifest": {
+    "manifest_id": "dsc-vendor-runtime-contract-manifest-v1",
+    "description": "Content-addressed SHA256 manifest of every runtime contract section. Digests are computed read-only from disk. The sealed runtime specification digest carries the specification contents (and everything sealed beneath them) transitively, and the runtime contract digest is the SHA256 of the ordered section digests and the sealed runtime specification digest. No implementation is verified in this phase.",
+    "integrity_method": "sha256_content_addressed_read_only",
+    "entry_count": 3,
+    "entries": [
+      {
+        "section_id": "vendor_runtime_specification",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-specification-v1.json",
+        "sha256": "1d1c1d4b35041e149179f21514d548a4da8460a14816c6cda1eafab0b00aad42",
+        "bytes": 18057,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_specification_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification.schema.json",
+        "sha256": "c75afd7a2367930aa83f59fccfca709028f685ac912cea0760885e378bd62589",
+        "bytes": 22262,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_specification_implementation_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification-implementation-registry-v1.json",
+        "sha256": "6f58cffd40e17da75846a6da510cc49e6efee8af17adcd523cd20f1244095f24",
+        "bytes": 5751,
+        "content_addressed": true
+      }
+    ],
+    "sealed_runtime_specification_digest": "c3841e6b3cacbf7bd14b70cae6340b430097920c70395a6eea4c1df6824a5eeb",
+    "sealed_runtime_template_digest": "c914fbd2c053957044dc8dd033119de734c573cf36a271d8608af9f4a2703075",
+    "sealed_runtime_family_digest": "d442261041d4569f872cba4e13897c3a855f568c62d6a29f83c7cc506d80784a",
+    "sealed_runtime_catalog_digest": "5f7068f0b517b26e6b8addb1e568624b90846bf6ec1b171312792e5eb290869b",
+    "sealed_runtime_index_digest": "a4353e1ea7cc7c8f709d47e581dd0287cb1e131b3babd53091219838e30687d9",
+    "sealed_runtime_registry_digest": "06ef1ea1b2d2c5d9b93c360eb71c543521cc72e07404c67cc206b8a4381f9be5",
+    "sealed_runtime_profile_digest": "36ed6ca10be91c27936023da66f1e6b595a636f368626c11f093a34c4b4653ce",
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "runtime_contract_digest": "fb6d199eff66b9f5434c92ce45dc8ecc888450ecb1d35ed9f31cb7dad60a06f3",
+    "runtime_contract_digest_method": "sha256_of_ordered_section_digests_and_sealed_runtime_specification_digest",
+    "verifies_implementations_in_this_phase": false
+  },
+  "contracted_runtime_entries": {
+    "count": 0,
+    "entries": [],
+    "contracting_policy": "concrete vendor runtimes may be contracted from this runtime contract only in a future implementation phase; none are contracted here",
+    "contracts_runtime_in_this_phase": false
+  },
+  "design_constraints": {
+    "runtime_contract_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_runtime_specification": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "declares_runtime_execution": false,
+    "contracts_runtime_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-26T06:18:00.071Z"
+}

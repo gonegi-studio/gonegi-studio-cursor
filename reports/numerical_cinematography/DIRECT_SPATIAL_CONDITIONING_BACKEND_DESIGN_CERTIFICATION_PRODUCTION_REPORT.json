@@ -1,0 +1,129 @@
+{
+  "report_id": "dsc_backend_design_certification_ms05za1f",
+  "phase": "PHASE-DSC-046",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_DESIGN_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_BACKEND_DESIGN_STACK_V1",
+  "mode": "read_only_certification",
+  "layers_certified": [
+    "adapter_foundation",
+    "capability_registry",
+    "compatibility_engine",
+    "adapter_registration",
+    "runtime_router",
+    "execution_contract",
+    "implementation_spec"
+  ],
+  "checks_required": [
+    "adapter_foundation",
+    "capability_registry",
+    "compatibility_engine",
+    "adapter_registration",
+    "runtime_router",
+    "execution_contract",
+    "implementation_spec",
+    "evidence_chain",
+    "reproducibility",
+    "immutability"
+  ],
+  "checks": [
+    {
+      "check": "adapter_foundation",
+      "passed": true,
+      "detail": "adapter_foundation present at PHASE-DSC-039, backend agnostic with no bound backend",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "capability_registry",
+      "passed": true,
+      "detail": "capability_registry present at PHASE-DSC-040, backend agnostic with no bound backend",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "compatibility_engine",
+      "passed": true,
+      "detail": "compatibility_engine present at PHASE-DSC-041, backend agnostic with no bound backend",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "adapter_registration",
+      "passed": true,
+      "detail": "adapter_registration present at PHASE-DSC-042, backend agnostic with no bound backend",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "runtime_router",
+      "passed": true,
+      "detail": "runtime_router present at PHASE-DSC-043, backend agnostic with no bound backend",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "execution_contract",
+      "passed": true,
+      "detail": "execution_contract present at PHASE-DSC-044, backend agnostic with no bound backend",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "implementation_spec",
+      "passed": true,
+      "detail": "implementation_spec present at PHASE-DSC-045, backend agnostic with no bound backend",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "adapter_foundation -> capability_registry -> compatibility_engine -> adapter_registration -> runtime_router -> execution_contract -> implementation_spec, anchored to the certified DSC V1 runtime interface",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "every derived surface still matches its upstream layer and all backend design artifacts are byte-stable",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "all backend design layers plus the certified DSC V1 stack, its certification, and the Movie Reconstruction artifacts are unchanged",
+      "error_count": 0,
+      "errors": []
+    }
+  ],
+  "evidence_chain_links": 16,
+  "evidence_chain_unresolved": 0,
+  "artifact_digest_count": 19,
+  "protected_artifacts_unmodified": true,
+  "backend_neutral": true,
+  "backend_neutrality": {
+    "backend_agnostic": true,
+    "backends_implemented": 0,
+    "backends_registered": 0,
+    "backends_routed": 0,
+    "backends_executed": 0,
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0"
+  },
+  "upstream_certified_system": {
+    "dsc_certification_ref": "exports/direct_spatial_conditioning_certification/v1/direct-spatial-conditioning-production-certification-v1.json",
+    "dsc_certified": true,
+    "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "artifacts": {
+    "certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json"
+  },
+  "error_count": 0,
+  "missing_checks": [],
+  "generated_at": "2026-07-25T09:25:59.571Z"
+}

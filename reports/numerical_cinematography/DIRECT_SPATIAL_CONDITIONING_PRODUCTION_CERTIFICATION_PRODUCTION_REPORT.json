@@ -1,0 +1,127 @@
+{
+  "report_id": "dsc_production_certification_ms02nj2s",
+  "phase": "PHASE-DSC-038",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_PRODUCTION_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_V1",
+  "mode": "read_only_certification",
+  "layers_certified": [
+    "foundation",
+    "contract",
+    "packet",
+    "validation",
+    "assembly",
+    "generation",
+    "runtime_interface",
+    "runtime_validation"
+  ],
+  "checks_required": [
+    "foundation",
+    "contract",
+    "packet",
+    "validation",
+    "assembly",
+    "generation",
+    "runtime_interface",
+    "runtime_validation",
+    "evidence_chain",
+    "reproducibility",
+    "immutability"
+  ],
+  "checks": [
+    {
+      "check": "foundation",
+      "passed": true,
+      "detail": "foundation present at PHASE-MOVIE-RECONSTRUCTION-030 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "contract",
+      "passed": true,
+      "detail": "contract present at PHASE-DSC-031 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "packet",
+      "passed": true,
+      "detail": "packet present at PHASE-DSC-032 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "validation",
+      "passed": true,
+      "detail": "validation present at PHASE-DSC-033 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "assembly",
+      "passed": true,
+      "detail": "assembly present at PHASE-DSC-034 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "generation",
+      "passed": true,
+      "detail": "generation present at PHASE-DSC-035 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "runtime_interface",
+      "passed": true,
+      "detail": "runtime_interface present at PHASE-DSC-036 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "runtime_validation",
+      "passed": true,
+      "detail": "runtime_validation present at PHASE-DSC-037 with design constraints intact",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "foundation -> contract -> packet -> validation -> assembly -> generation -> runtime_interface -> runtime_validation, anchored to the certified Movie Reconstruction runtime package",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "every derived surface still matches its upstream layer and all artifacts are byte-stable",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "all DSC layers plus the certified runtime package, master package, and Movie Reconstruction certification are unchanged",
+      "error_count": 0,
+      "errors": []
+    }
+  ],
+  "evidence_chain_links": 14,
+  "evidence_chain_unresolved": 0,
+  "artifact_digest_count": 11,
+  "protected_artifacts_unmodified": true,
+  "upstream_certified_system": {
+    "movie_reconstruction_certification_ref": "exports/movie_reconstruction_certification/v1/movie-reconstruction-production-certification-v1.json",
+    "movie_reconstruction_certified": true,
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "artifacts": {
+    "certification": "exports/direct_spatial_conditioning_certification/v1/direct-spatial-conditioning-production-certification-v1.json"
+  },
+  "error_count": 0,
+  "missing_checks": [],
+  "generated_at": "2026-07-25T07:52:52.564Z"
+}

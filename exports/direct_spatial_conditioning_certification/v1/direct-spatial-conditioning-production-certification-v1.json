@@ -1,0 +1,324 @@
+{
+  "certification_id": "direct-spatial-conditioning-production-certification-v1",
+  "phase": "PHASE-DSC-038",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PRODUCTION_CERTIFICATION_V1",
+  "mode": "read_only_certification",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PRODUCTION_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_V1",
+  "layers_certified": [
+    "foundation",
+    "contract",
+    "packet",
+    "validation",
+    "assembly",
+    "generation",
+    "runtime_interface",
+    "runtime_validation"
+  ],
+  "checks": [
+    {
+      "check": "foundation",
+      "passed": true,
+      "detail": "foundation present at PHASE-MOVIE-RECONSTRUCTION-030 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+        "phase": "PHASE-MOVIE-RECONSTRUCTION-030",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+        "mode": "design_only",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "contract",
+      "passed": true,
+      "detail": "contract present at PHASE-DSC-031 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+        "phase": "PHASE-DSC-031",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1",
+        "mode": "design_only_contract",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "packet",
+      "passed": true,
+      "detail": "packet present at PHASE-DSC-032 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+        "phase": "PHASE-DSC-032",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_V1",
+        "mode": "design_only_packet",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "validation",
+      "passed": true,
+      "detail": "validation present at PHASE-DSC-033 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+        "phase": "PHASE-DSC-033",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1",
+        "mode": "design_only_validation",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "assembly",
+      "passed": true,
+      "detail": "assembly present at PHASE-DSC-034 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+        "phase": "PHASE-DSC-034",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1",
+        "mode": "design_only_assembly",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "generation",
+      "passed": true,
+      "detail": "generation present at PHASE-DSC-035 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+        "phase": "PHASE-DSC-035",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+        "mode": "design_only_generation",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "runtime_interface",
+      "passed": true,
+      "detail": "runtime_interface present at PHASE-DSC-036 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+        "phase": "PHASE-DSC-036",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1",
+        "mode": "design_only_interface",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "runtime_validation",
+      "passed": true,
+      "detail": "runtime_validation present at PHASE-DSC-037 with design constraints intact",
+      "evidence": {
+        "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-validation-v1.json",
+        "phase": "PHASE-DSC-037",
+        "system_id": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_V1",
+        "mode": "design_only_validation",
+        "target": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_V1"
+      },
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "foundation -> contract -> packet -> validation -> assembly -> generation -> runtime_interface -> runtime_validation, anchored to the certified Movie Reconstruction runtime package",
+      "evidence": {
+        "links_verified": 14,
+        "movie_reconstruction_certified": true,
+        "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+      },
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "every derived surface still matches its upstream layer and all artifacts are byte-stable",
+      "evidence": {
+        "channels_checked": 6,
+        "stable_artifacts": 8,
+        "spatial_frame": "normalized_image_plane_v1",
+        "method": "read_only_derived_parity"
+      },
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "all DSC layers plus the certified runtime package, master package, and Movie Reconstruction certification are unchanged",
+      "evidence": {
+        "protected_artifacts": 11,
+        "digests_recorded": 11
+      },
+      "errors": []
+    }
+  ],
+  "evidence_chain": [
+    {
+      "from_layer": "contract",
+      "field": "foundation_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "packet",
+      "field": "contract_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "validation",
+      "field": "packet_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "assembly",
+      "field": "packet_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "assembly",
+      "field": "validation_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "assembly",
+      "field": "runtime_package_ref",
+      "to_artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "generation",
+      "field": "assembly_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "generation",
+      "field": "validation_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "generation",
+      "field": "packet_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "generation",
+      "field": "runtime_package_ref",
+      "to_artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "runtime_interface",
+      "field": "generation_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "runtime_interface",
+      "field": "runtime_package_ref",
+      "to_artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "runtime_validation",
+      "field": "runtime_interface_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_layer": "runtime_validation",
+      "field": "generation_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    }
+  ],
+  "artifact_digests": [
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+      "sha256": "13b6e88b82c25802609abe2258207e74df872a31118c80584b142a0f83257ed8",
+      "bytes": 8039
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+      "sha256": "1b35f346b93d0f808e146dfc9132cc89b63bd53920e8e8d44d114725f6c22314",
+      "bytes": 25467
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+      "sha256": "aadb7fca0203504b2922d875451437b4a7f6d14d5883daad30ede054537016b1",
+      "bytes": 15678
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+      "sha256": "b6be99b2084117f580dcf4886f75684f76c43d015c990a8bca31ac4459427d34",
+      "bytes": 91377
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+      "sha256": "f8cc9a877a6313b7291d4e7f3712ef855da8cdd68a0739c7f0bced56f4fba715",
+      "bytes": 23801
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+      "sha256": "506be9e6fb89350847a59362900cc47baf8d70bcb710b39d99c7e4d21a0ce57a",
+      "bytes": 8516
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+      "sha256": "60af5bac8dc626630b2cfd006bc7b2cc32b7c536a60f88fa87c8dbe98ced7fa8",
+      "bytes": 7482
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-validation-v1.json",
+      "sha256": "a79577e5fe5218ecdf5380ad2cda51cea2cf0867655180f3b3fedd4715fed6d8",
+      "bytes": 22468
+    },
+    {
+      "artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "sha256": "59378bd179a2b79b13493125f28db2870fe512127bcc038f20e8ca665e7fc49b",
+      "bytes": 9006
+    },
+    {
+      "artifact": "exports/movie_reconstruction_master/v1/movie-reconstruction-master-package-v1.json",
+      "sha256": "a34ddefd0acdcc34fa1164251670bc3f2293700d49f398baaea71871a1b5cb6e",
+      "bytes": 40864
+    },
+    {
+      "artifact": "exports/movie_reconstruction_certification/v1/movie-reconstruction-production-certification-v1.json",
+      "sha256": "23398bf050bc375d08598f27e04a8ab737a6e0c6b5814010cc71b3185171738c",
+      "bytes": 4053
+    }
+  ],
+  "upstream_certified_system": {
+    "movie_reconstruction_certification_ref": "exports/movie_reconstruction_certification/v1/movie-reconstruction-production-certification-v1.json",
+    "movie_reconstruction_certified": true,
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "error_count": 0,
+  "created_at": "2026-07-25T07:52:52.547Z"
+}

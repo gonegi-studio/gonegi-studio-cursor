@@ -1,0 +1,385 @@
+{
+  "runtime_router_id": "direct-spatial-conditioning-backend-runtime-router-v1",
+  "phase": "PHASE-DSC-043",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_RUNTIME_ROUTER_V1",
+  "mode": "design_only_router",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_RUNTIME_ROUTER_V1",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "adapter_registration_phase": "PHASE-DSC-042",
+  "adapter_registration_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_REGISTRATION_V1",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "selection_flow": {
+    "flow_id": "dsc-backend-selection-flow-v1",
+    "description": "Ordered backend selection stages a future runtime router must execute. Stages are declared only; none are executed in this phase. Candidate source is exclusively the reused PHASE-042 adapter registration.",
+    "ordered_stages": [
+      {
+        "stage_id": "bind_routing_request",
+        "order": 1,
+        "description": "Bind the opaque routing request, adapted conditioning input reference, and optional preferred registration_id as immutable routing inputs. No backend is invoked.",
+        "inputs": [
+          "routing_request",
+          "adapted_conditioning_input_ref",
+          "optional_preferred_registration_id"
+        ],
+        "outputs": [
+          "bound_routing_inputs"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "lookup_active_registrations",
+        "order": 2,
+        "description": "Read the PHASE-042 registration surface and collect registrations whose lifecycle_state is active. Lookup is read-only and never mutates registration records.",
+        "inputs": [
+          "bound_routing_inputs",
+          "adapter_registration_ref"
+        ],
+        "outputs": [
+          "active_registration_snapshot"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "filter_eligible_adapters",
+        "order": 3,
+        "description": "Apply the deterministic routing eligibility rules (active lifecycle, compatible outcome, capability set, spatial frame, exact channel coverage).",
+        "inputs": [
+          "active_registration_snapshot",
+          "bound_routing_inputs"
+        ],
+        "outputs": [
+          "eligible_candidates",
+          "rejected_candidates"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "rank_candidates",
+        "order": 4,
+        "description": "Stable-sort eligible candidates by the declared ranking keys. Sorting is pure, seedless, and time-independent.",
+        "inputs": [
+          "eligible_candidates"
+        ],
+        "outputs": [
+          "ranked_candidates"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "select_primary_route",
+        "order": 5,
+        "description": "Select the first candidate after stable sort as the primary route. If a preferred registration_id is bound and still eligible, it is forced to rank first only when it already satisfies eligibility.",
+        "inputs": [
+          "ranked_candidates",
+          "bound_routing_inputs"
+        ],
+        "outputs": [
+          "primary_route_or_null"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "apply_fallback_if_needed",
+        "order": 6,
+        "description": "If no primary route exists, evaluate fallback branches in declaration order. Fallback never invents a backend and never bypasses registration.",
+        "inputs": [
+          "primary_route_or_null",
+          "rejected_candidates"
+        ],
+        "outputs": [
+          "routing_outcome",
+          "fallback_branch_or_null"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "emit_routing_report",
+        "order": 7,
+        "description": "Emit the routing report conforming to the routing report schema. Report emission is the only declared output of the flow.",
+        "inputs": [
+          "bound_routing_inputs",
+          "ranked_candidates",
+          "rejected_candidates",
+          "primary_route_or_null",
+          "routing_outcome",
+          "fallback_branch_or_null"
+        ],
+        "outputs": [
+          "routing_report"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      }
+    ],
+    "reuse_policy": {
+      "adapter_registration": "mandatory_exact_reuse",
+      "compatibility_engine": "mandatory_read_only_via_registration"
+    },
+    "accept_condition": "routing report outcome is routed or fallback with declared branch",
+    "reject_condition": "routing report outcome is unroutable",
+    "outcome_values": [
+      "routed",
+      "fallback",
+      "unroutable"
+    ]
+  },
+  "deterministic_routing_policy": {
+    "policy_id": "dsc-backend-deterministic-routing-policy-v1",
+    "description": "Pure, seedless, time-independent policy that ranks eligible active registrations and selects the first after stable sort. Declared only; never executed in this phase.",
+    "eligibility": {
+      "lifecycle_state_required": "active",
+      "compatibility_outcome_required": "compatible",
+      "capability_set_id_required": "dsc-backend-capability-set-v1",
+      "spatial_frame_required": "normalized_image_plane_v1",
+      "channel_coverage_required": "exact_foundation_order"
+    },
+    "ranking_keys": [
+      {
+        "key_id": "preferred_registration_first",
+        "order": 1,
+        "field": "matches_preferred_registration_id",
+        "direction": "descending",
+        "description": "Eligible preferred registration_id, when present, ranks before all other eligible candidates."
+      },
+      {
+        "key_id": "capability_set_version_desc",
+        "order": 2,
+        "field": "capability_set_version",
+        "direction": "descending",
+        "description": "Higher supported capability_set_version ranks first within the same major."
+      },
+      {
+        "key_id": "backend_version_asc",
+        "order": 3,
+        "field": "backend_version",
+        "direction": "ascending",
+        "description": "Lexicographically smaller backend_version ranks first to keep ties stable and backend-agnostic."
+      },
+      {
+        "key_id": "registration_id_asc",
+        "order": 4,
+        "field": "registration_id",
+        "direction": "ascending",
+        "description": "Opaque registration_id ascending is the final deterministic tie-breaker."
+      }
+    ],
+    "selection_rule": "first_after_stable_sort",
+    "tie_breakers": [
+      "stages execute strictly in selection_flow order",
+      "ranking keys apply in ascending key order",
+      "stable sort preserves relative order for equal keys until a later key decides",
+      "registration_id ascending is the final tie-breaker and never depends on wall clock"
+    ],
+    "purity": "deterministic_pure_function",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "backend_invocation": "none",
+    "selects_backends_in_this_phase": false
+  },
+  "fallback_policy": {
+    "policy_id": "dsc-backend-routing-fallback-policy-v1",
+    "description": "Ordered fallback branches evaluated only when select_primary_route yields no route. Fallback never invents a backend and never bypasses the PHASE-042 registration surface.",
+    "primary_exhausted_behavior": "evaluate_fallback_branches_in_order",
+    "branches": [
+      {
+        "branch_id": "no_active_registrations",
+        "condition": "active_registration_snapshot is empty",
+        "action": "emit unroutable report with DSC_BACKEND_ROUTING_NO_ACTIVE_REGISTRATION",
+        "outcome": "unroutable",
+        "rejection_or_code": "DSC_BACKEND_ROUTING_NO_ACTIVE_REGISTRATION"
+      },
+      {
+        "branch_id": "active_but_none_eligible",
+        "condition": "active registrations exist but eligible_candidates is empty",
+        "action": "emit unroutable report with DSC_BACKEND_ROUTING_NO_ELIGIBLE_ADAPTER",
+        "outcome": "unroutable",
+        "rejection_or_code": "DSC_BACKEND_ROUTING_NO_ELIGIBLE_ADAPTER"
+      },
+      {
+        "branch_id": "preferred_ineligible_use_next_ranked",
+        "condition": "preferred registration_id was bound but became ineligible; ranked eligible candidates remain",
+        "action": "select first ranked eligible candidate and mark outcome routed",
+        "outcome": "routed",
+        "rejection_or_code": null
+      },
+      {
+        "branch_id": "explicit_unroutable_terminal",
+        "condition": "no primary route and no earlier fallback branch matched",
+        "action": "emit unroutable report with DSC_BACKEND_ROUTING_UNROUTABLE",
+        "outcome": "unroutable",
+        "rejection_or_code": "DSC_BACKEND_ROUTING_UNROUTABLE"
+      }
+    ],
+    "forbidden": [
+      "inventing an unregistered backend",
+      "routing a pending, suspended, or deregistered registration",
+      "bypassing PHASE-042 registration uniqueness or lifecycle rules",
+      "gpu or inference execution during fallback",
+      "dataset modification during fallback",
+      "non-deterministic random selection among candidates"
+    ],
+    "never_invents_backend": true,
+    "never_bypasses_registration": true,
+    "executed_in_this_phase": false
+  },
+  "routing_report": {
+    "report_schema_id": "dsc-backend-routing-report-schema-v1",
+    "report_id": "dsc-backend-routing-report-v1",
+    "description": "Typed report schema for the routing decision emitted by emit_routing_report. Outcome is routed, fallback, or unroutable; additional fields are forbidden.",
+    "encoding": "application/json",
+    "required_fields": [
+      {
+        "field": "routing_request_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque caller-assigned routing request identity"
+      },
+      {
+        "field": "outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of outcome_values"
+      },
+      {
+        "field": "selected_registration_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque registration_id when outcome is routed; empty string when unroutable or when fallback does not select a registration"
+      },
+      {
+        "field": "selected_backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque backend_id copied from the selected registration when routed; empty string otherwise"
+      },
+      {
+        "field": "fallback_branch_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "fallback branch_id when outcome is fallback or an unroutable fallback branch fired; empty string when routed without fallback"
+      },
+      {
+        "field": "candidates_considered",
+        "type": "array<candidate_entry>",
+        "required": true,
+        "nullable": false,
+        "constraint": "eligible candidates after ranking, in ranking key order"
+      },
+      {
+        "field": "rejected_candidates",
+        "type": "array<candidate_entry>",
+        "required": true,
+        "nullable": false,
+        "constraint": "active but ineligible candidates, in ranking key order"
+      },
+      {
+        "field": "routing_codes",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "zero or more DSC_BACKEND_ROUTING_* codes; empty iff outcome is routed without fallback codes"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "capability_set_version of the selected registration, or empty when unroutable"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      }
+    ],
+    "outcome_values": [
+      "routed",
+      "fallback",
+      "unroutable"
+    ],
+    "candidate_entry_shape": {
+      "fields": [
+        "registration_id",
+        "backend_id",
+        "lifecycle_state",
+        "capability_set_version",
+        "eligibility",
+        "rank_index_or_null",
+        "rejection_code_or_null"
+      ]
+    },
+    "ordering": {
+      "candidates_considered": "ranking_key_order",
+      "rejected_candidates": "ranking_key_order"
+    },
+    "additional_fields": false,
+    "materializes_tensors": false,
+    "materializes_frames": false
+  },
+  "routed_backends": {
+    "count": 0,
+    "entries": [],
+    "routing_policy": "backend routing is performed by future phases; this phase defines the router surface only and binds to no backend",
+    "routes_backends_in_this_phase": false
+  },
+  "design_constraints": {
+    "router_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_adapter_registration": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "routes_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T09:04:59.335Z"
+}

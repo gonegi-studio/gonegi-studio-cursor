@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation.schema.json",
+  "title": "DirectSpatialConditioningBackendAdapterFoundation",
+  "description": "PHASE-DSC-039 design-only, backend-agnostic adapter foundation. Defines the abstract backend interface, the packet adapter mapping the PHASE-036 validated output surface to a neutral adapted conditioning input, and the backend capability contract. Implements no backend and performs no GPU, inference, tensor/frame materialization, or dataset modification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "adapter_foundation_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "runtime_interface_ref",
+    "runtime_interface_phase",
+    "runtime_interface_system_id",
+    "runtime_package_ref",
+    "sources_supported",
+    "backend_interface",
+    "packet_adapter",
+    "capability_contract",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "adapter_foundation_id": {
+      "type": "string",
+      "const": "direct-spatial-conditioning-backend-adapter-foundation-v1"
+    },
+    "phase": { "type": "string", "const": "PHASE-DSC-039" },
+    "system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_FOUNDATION_V1"
+    },
+    "mode": { "type": "string", "const": "design_only_abstraction" },
+    "target": {
+      "type": "string",
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_FOUNDATION_V1"
+    },
+    "runtime_interface_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json"
+    },
+    "runtime_interface_phase": { "type": "string", "const": "PHASE-DSC-036" },
+    "runtime_interface_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1"
+    },
+    "runtime_package_ref": {
+      "type": "string",
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "backend_interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "interface_id",
+        "version",
+        "transport",
+        "consumes",
+        "produces",
+        "methods"
+      ],
+      "properties": {
+        "interface_id": { "const": "dsc-backend-adapter-interface-v1" },
+        "version": { "const": "v1" },
+        "transport": { "const": "abstract_function_surface" },
+        "consumes": { "const": "validated_conditioning_packet" },
+        "produces": { "const": "conditioning_binding_handle" },
+        "methods": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "method_id",
+              "signature",
+              "description",
+              "input_ref",
+              "output_ref",
+              "side_effects",
+              "abstract",
+              "implemented_in_this_phase",
+              "requires_specific_backend",
+              "requires_gpu",
+              "performs_inference"
+            ],
+            "properties": {
+              "method_id": {
+                "enum": [
+                  "describe_capabilities",
+                  "check_compatibility",
+                  "bind_conditioning_input",
+                  "release_conditioning_binding"
+                ]
+              },
+              "signature": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "input_ref": { "type": "string", "minLength": 1 },
+              "output_ref": { "type": "string", "minLength": 1 },
+              "side_effects": { "const": "none" },
+              "abstract": { "const": true },
+              "implemented_in_this_phase": { "const": false },
+              "requires_specific_backend": { "const": false },
+              "requires_gpu": { "const": false },
+              "performs_inference": { "const": false }
+            }
+          }
+        }
+      }
+    },
+    "packet_adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapter_id",
+        "description",
+        "input_surface_ref",
+        "input_artifact_kind",
+        "runtime_interface_ref",
+        "output_shape",
+        "channel_mappings",
+        "passthrough_policy",
+        "accepts_outcome",
+        "rejects_outcome_handling",
+        "materializes_tensors",
+        "materializes_frames"
+      ],
+      "properties": {
+        "adapter_id": { "const": "dsc-packet-adapter-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "input_surface_ref": { "const": "dsc_runtime_validated_output_v1" },
+        "input_artifact_kind": { "const": "validated_conditioning_packet" },
+        "runtime_interface_ref": { "type": "string", "minLength": 1 },
+        "output_shape": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "shape_id",
+            "encoding",
+            "spatial_frame_ref",
+            "required_sections",
+            "channel_order"
+          ],
+          "properties": {
+            "shape_id": { "const": "dsc_adapted_conditioning_input_v1" },
+            "encoding": { "const": "backend_agnostic_structured" },
+            "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+            "required_sections": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [{ "const": "metadata" }, { "const": "channels" }]
+            },
+            "channel_order": { "type": "array", "minItems": 6, "maxItems": 6 }
+          }
+        },
+        "channel_mappings": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "channel_id",
+              "source_channel_ref",
+              "adapted_channel_key",
+              "component_names",
+              "value_space_ref",
+              "transform",
+              "lossless"
+            ],
+            "properties": {
+              "channel_id": { "type": "string", "minLength": 1 },
+              "source_channel_ref": { "type": "string", "minLength": 1 },
+              "adapted_channel_key": { "type": "string", "minLength": 1 },
+              "component_names": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "value_space_ref": { "const": "normalized_image_plane_v1" },
+              "transform": { "const": "identity_passthrough" },
+              "lossless": { "const": true }
+            }
+          }
+        },
+        "passthrough_policy": { "const": "structure_preserving_no_transform" },
+        "accepts_outcome": { "const": "accepted" },
+        "rejects_outcome_handling": {
+          "const": "not_adapted_backend_receives_rejection_report"
+        },
+        "materializes_tensors": { "const": false },
+        "materializes_frames": { "const": false }
+      }
+    },
+    "capability_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_id",
+        "description",
+        "backend_agnostic",
+        "spatial_frame_ref",
+        "required_channels",
+        "required_sources",
+        "adapted_input_shape_ref",
+        "required_capabilities",
+        "compatibility_rules",
+        "guarantees",
+        "forbidden"
+      ],
+      "properties": {
+        "contract_id": { "const": "dsc-backend-capability-contract-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "backend_agnostic": { "const": true },
+        "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+        "required_channels": { "type": "array", "minItems": 6, "maxItems": 6 },
+        "required_sources": { "type": "integer", "const": 15 },
+        "adapted_input_shape_ref": {
+          "const": "dsc_adapted_conditioning_input_v1"
+        },
+        "required_capabilities": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "capability_id",
+              "description",
+              "requirement",
+              "declared_by_backend",
+              "evaluated_at"
+            ],
+            "properties": {
+              "capability_id": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "requirement": { "const": "mandatory" },
+              "declared_by_backend": { "const": true },
+              "evaluated_at": { "const": "check_compatibility" }
+            }
+          }
+        },
+        "compatibility_rules": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "guarantees": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "forbidden": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "abstraction_only",
+        "backend_agnostic",
+        "reuses_runtime_interface",
+        "backend",
+        "no_backend_implementation",
+        "gpu",
+        "inference",
+        "materializes_tensors",
+        "materializes_frames",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "abstraction_only": { "const": true },
+        "backend_agnostic": { "const": true },
+        "reuses_runtime_interface": { "const": true },
+        "backend": { "const": "none" },
+        "no_backend_implementation": { "const": true },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "materializes_tensors": { "const": false },
+        "materializes_frames": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

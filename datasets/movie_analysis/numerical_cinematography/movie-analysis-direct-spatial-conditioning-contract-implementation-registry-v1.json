@@ -1,0 +1,46 @@
+{
+  "registry_id": "movie-analysis-direct-spatial-conditioning-contract-implementation-registry-v1",
+  "phase": "PHASE-DSC-031",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1",
+  "registry_version": "v1",
+  "status": "IMPLEMENTED",
+  "mode": "DESIGN_ONLY_CONTRACT",
+  "scope": {
+    "channel_contracts": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "foundation_system_id": "DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+    "validation_rule_count_min": 10,
+    "note": "Design-only / contract-only runtime conditioning contract. Defines per-channel input/output schemas and validation rules aligned to PHASE-030 foundation channels. No backend, no GPU, no inference, no dataset modification."
+  },
+  "schema_path": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-contract.schema.json",
+  "builder_service_path": "services/directSpatialConditioningContractBuilder.ts",
+  "verify_script_path": "scripts/verify-direct-spatial-conditioning-contract.ts",
+  "npm_verify_command": "verify:direct-spatial-conditioning-contract",
+  "contract_root": "exports/direct_spatial_conditioning/v1",
+  "contract_path": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+  "validation_report_path": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_CONTRACT_VALIDATION_REPORT.json",
+  "design_constraints": {
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false,
+    "contract_only": true
+  },
+  "explicitly_not_modified_this_phase": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "exports/movie_reconstruction_master/v1/**",
+    "exports/movie_reconstruction_certification/v1/**",
+    "exports/numerical_reconstruction/v1/**",
+    "datasets/movie_analysis/**"
+  ],
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1",
+  "generated_at": "2026-07-25T09:30:00.000Z"
+}

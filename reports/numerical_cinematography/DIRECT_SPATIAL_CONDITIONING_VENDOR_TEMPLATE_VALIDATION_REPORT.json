@@ -1,0 +1,58 @@
+{
+  "report_id": "direct_spatial_conditioning_vendor_template_ms11r7xw",
+  "phase": "PHASE-DSC-065",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_TEMPLATE_V1",
+  "validation_passed": true,
+  "mode": "design_only_vendor_template",
+  "template_id": "dsc-vendor-template-generic-v1",
+  "template_version": "1.0",
+  "template_kind": "generic_vendor_template",
+  "vendor_template_schema": "dsc-vendor-template-schema-v1",
+  "template_schema_fields": 11,
+  "deterministic_implementation_skeleton": "dsc-vendor-deterministic-implementation-skeleton-v1",
+  "skeleton_steps": 4,
+  "skeleton_methods": [
+    "describe_capabilities",
+    "check_compatibility",
+    "bind_conditioning_input",
+    "release_conditioning_binding"
+  ],
+  "extension_points": "dsc-vendor-template-extension-points-v1",
+  "extension_point_ids": [
+    "EXT_VENDOR_DECLARE_CAPABILITIES",
+    "EXT_VENDOR_RESOLVE_COMPATIBILITY",
+    "EXT_VENDOR_BIND_CONDITIONING_INPUT",
+    "EXT_VENDOR_RELEASE_BINDING"
+  ],
+  "validation_template": "dsc-vendor-template-validation-template-v1",
+  "validation_template_checks": 13,
+  "templated_vendors": 0,
+  "sources_supported": 15,
+  "reuses_certified_vendor_reference_profile": true,
+  "vendor_neutral": true,
+  "design_constraints": {
+    "template_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_reference_profile": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "templates_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "vendor_template": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-template.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-template-implementation-registry-v1.json",
+    "profile": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+    "profile_certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-26T00:15:31.323Z"
+}

@@ -1,0 +1,50 @@
+{
+  "report_id": "direct_spatial_conditioning_backend_runtime_router_ms0589n0",
+  "phase": "PHASE-DSC-043",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_RUNTIME_ROUTER_V1",
+  "validation_passed": true,
+  "mode": "design_only_router",
+  "selection_flow": "dsc-backend-selection-flow-v1",
+  "selection_stages": [
+    "bind_routing_request",
+    "lookup_active_registrations",
+    "filter_eligible_adapters",
+    "rank_candidates",
+    "select_primary_route",
+    "apply_fallback_if_needed",
+    "emit_routing_report"
+  ],
+  "deterministic_routing_policy": "dsc-backend-deterministic-routing-policy-v1",
+  "ranking_keys": 4,
+  "fallback_policy": "dsc-backend-routing-fallback-policy-v1",
+  "fallback_branches": 4,
+  "routing_report": "dsc-backend-routing-report-v1",
+  "routing_report_fields": 10,
+  "routed_backends": 0,
+  "sources_supported": 15,
+  "reuses_adapter_registration": true,
+  "backend_agnostic": true,
+  "design_constraints": {
+    "router_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_adapter_registration": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "routes_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "runtime_router": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-runtime-router.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-runtime-router-implementation-registry-v1.json",
+    "adapter_registration": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T09:04:59.343Z"
+}

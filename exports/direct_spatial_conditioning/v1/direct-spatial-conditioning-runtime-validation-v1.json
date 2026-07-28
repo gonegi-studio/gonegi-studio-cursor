@@ -1,0 +1,531 @@
+{
+  "validation_specification_id": "direct-spatial-conditioning-runtime-validation-v1",
+  "phase": "PHASE-DSC-037",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_V1",
+  "mode": "design_only_validation",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_V1",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_interface_phase": "PHASE-DSC-036",
+  "runtime_interface_system_id": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1",
+  "generation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+  "generation_phase": "PHASE-DSC-035",
+  "generation_system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+  "validation_procedure": {
+    "ordered_stages": [
+      "runtime_api",
+      "packet_flow",
+      "interface_contract",
+      "generation_reuse"
+    ],
+    "evaluation": "collect_all_failures",
+    "accept_condition": "zero failed checks across all stages",
+    "outcome_values": [
+      "accepted",
+      "rejected"
+    ]
+  },
+  "runtime_api_checks": [
+    {
+      "check_id": "API_IDENTITY",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api",
+      "description": "Runtime API must be dsc-runtime-api-v1 / v1 / in_process_function_surface.",
+      "predicate": "api_id === \"dsc-runtime-api-v1\" AND version === \"v1\" AND transport === \"in_process_function_surface\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_METHOD_COUNT",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods",
+      "description": "Runtime API must expose exactly four mandatory methods.",
+      "predicate": "methods.length === 4",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_METHOD_SET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods",
+      "description": "Runtime API method set must equal the mandatory method set.",
+      "predicate": "methods[].method_id === [list_sources, generate_packet, validate_packet, produce_validated_packet]",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIDE_EFFECTS_LIST_SOURCES",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.list_sources",
+      "description": "list_sources must declare side_effects=none.",
+      "predicate": "side_effects === \"none\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_BACKEND_LIST_SOURCES",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.list_sources",
+      "description": "list_sources must not require a backend.",
+      "predicate": "requires_backend === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_GPU_LIST_SOURCES",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.list_sources",
+      "description": "list_sources must not require a GPU.",
+      "predicate": "requires_gpu === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_INFERENCE_LIST_SOURCES",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.list_sources",
+      "description": "list_sources must not perform inference.",
+      "predicate": "performs_inference === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIGNATURE_LIST_SOURCES",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.list_sources",
+      "description": "list_sources must declare a non-empty signature and description.",
+      "predicate": "signature.length > 0 AND description.length > 0",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIDE_EFFECTS_GENERATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.generate_packet",
+      "description": "generate_packet must declare side_effects=none.",
+      "predicate": "side_effects === \"none\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_BACKEND_GENERATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.generate_packet",
+      "description": "generate_packet must not require a backend.",
+      "predicate": "requires_backend === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_GPU_GENERATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.generate_packet",
+      "description": "generate_packet must not require a GPU.",
+      "predicate": "requires_gpu === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_INFERENCE_GENERATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.generate_packet",
+      "description": "generate_packet must not perform inference.",
+      "predicate": "performs_inference === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIGNATURE_GENERATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.generate_packet",
+      "description": "generate_packet must declare a non-empty signature and description.",
+      "predicate": "signature.length > 0 AND description.length > 0",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIDE_EFFECTS_VALIDATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.validate_packet",
+      "description": "validate_packet must declare side_effects=none.",
+      "predicate": "side_effects === \"none\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_BACKEND_VALIDATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.validate_packet",
+      "description": "validate_packet must not require a backend.",
+      "predicate": "requires_backend === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_GPU_VALIDATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.validate_packet",
+      "description": "validate_packet must not require a GPU.",
+      "predicate": "requires_gpu === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_INFERENCE_VALIDATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.validate_packet",
+      "description": "validate_packet must not perform inference.",
+      "predicate": "performs_inference === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIGNATURE_VALIDATE_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.validate_packet",
+      "description": "validate_packet must declare a non-empty signature and description.",
+      "predicate": "signature.length > 0 AND description.length > 0",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIDE_EFFECTS_PRODUCE_VALIDATED_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.produce_validated_packet",
+      "description": "produce_validated_packet must declare side_effects=none.",
+      "predicate": "side_effects === \"none\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_BACKEND_PRODUCE_VALIDATED_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.produce_validated_packet",
+      "description": "produce_validated_packet must not require a backend.",
+      "predicate": "requires_backend === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_GPU_PRODUCE_VALIDATED_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.produce_validated_packet",
+      "description": "produce_validated_packet must not require a GPU.",
+      "predicate": "requires_gpu === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_NO_INFERENCE_PRODUCE_VALIDATED_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.produce_validated_packet",
+      "description": "produce_validated_packet must not perform inference.",
+      "predicate": "performs_inference === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "API_SIGNATURE_PRODUCE_VALIDATED_PACKET",
+      "stage": "runtime_api",
+      "applies_to": "runtime_api.methods.produce_validated_packet",
+      "description": "produce_validated_packet must declare a non-empty signature and description.",
+      "predicate": "signature.length > 0 AND description.length > 0",
+      "severity": "error"
+    }
+  ],
+  "packet_flow_checks": [
+    {
+      "check_id": "FLOW_INPUT_SURFACE",
+      "stage": "packet_flow",
+      "applies_to": "packet_input",
+      "description": "Packet input surface must be dsc_runtime_packet_input_v1.",
+      "predicate": "packet_input.surface_id === \"dsc_runtime_packet_input_v1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_INPUT_FIELDS",
+      "stage": "packet_flow",
+      "applies_to": "packet_input.required_fields",
+      "description": "Packet input must require exactly source_video_id and packet_id.",
+      "predicate": "required_fields[].field === [source_video_id, packet_id]",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_INPUT_NO_OPTIONAL",
+      "stage": "packet_flow",
+      "applies_to": "packet_input.optional_fields",
+      "description": "Packet input must declare no optional fields.",
+      "predicate": "optional_fields.length === 0",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_INPUT_CHANNEL_ORDER",
+      "stage": "packet_flow",
+      "applies_to": "packet_input.accepted_packet_shape.channel_order",
+      "description": "Accepted packet channel order must match the six foundation channels.",
+      "predicate": "channel_order === [\"camera_pose_field\",\"camera_temporal_track\",\"subject_position_field\",\"framing_composition_map\",\"edit_rhythm_boundaries\",\"scene_energy_field\"]",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_INPUT_SPATIAL_FRAME",
+      "stage": "packet_flow",
+      "applies_to": "packet_input.accepted_packet_shape.spatial_frame_ref",
+      "description": "Accepted packet spatial frame must equal the locked foundation frame.",
+      "predicate": "spatial_frame_ref === \"normalized_image_plane_v1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_GENERATE_TO_CANDIDATE",
+      "stage": "packet_flow",
+      "applies_to": "runtime_api.methods.generate_packet",
+      "description": "generate_packet must accept packet input and produce assembled_packet_candidate.",
+      "predicate": "input_ref === \"dsc_runtime_packet_input_v1\" AND output_ref === \"assembled_packet_candidate\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_VALIDATE_TO_RESULT",
+      "stage": "packet_flow",
+      "applies_to": "runtime_api.methods.validate_packet",
+      "description": "validate_packet must accept assembled_packet_candidate and produce validation_result.",
+      "predicate": "input_ref === \"assembled_packet_candidate\" AND output_ref === \"validation_result\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_PRODUCE_TO_VALIDATED",
+      "stage": "packet_flow",
+      "applies_to": "runtime_api.methods.produce_validated_packet",
+      "description": "produce_validated_packet must accept packet input and produce validated output surface.",
+      "predicate": "input_ref === \"dsc_runtime_packet_input_v1\" AND output_ref === \"dsc_runtime_validated_output_v1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_OUTPUT_SURFACE",
+      "stage": "packet_flow",
+      "applies_to": "validated_output",
+      "description": "Validated output surface must be dsc_runtime_validated_output_v1.",
+      "predicate": "validated_output.surface_id === \"dsc_runtime_validated_output_v1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_OUTPUT_KIND",
+      "stage": "packet_flow",
+      "applies_to": "validated_output.artifact_kind",
+      "description": "Validated output artifact kind must equal generation validated_packet_output.artifact_kind.",
+      "predicate": "artifact_kind === \"validated_conditioning_packet\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_OUTPUT_OUTCOMES",
+      "stage": "packet_flow",
+      "applies_to": "validated_output.outcome_values",
+      "description": "Validated output outcomes must be accepted and rejected.",
+      "predicate": "outcome_values === [\"accepted\", \"rejected\"]",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_OUTPUT_EMBEDDING",
+      "stage": "packet_flow",
+      "applies_to": "validated_output",
+      "description": "Validated output must embed accepted packets and rejection codes without materialization.",
+      "predicate": "accepted_packet_embedded === true AND rejection_codes_embedded === true AND materializes_tensors === false AND materializes_frames === false",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_INPUT_GENERATION_STEP",
+      "stage": "packet_flow",
+      "applies_to": "packet_input.generation_input_alignment",
+      "description": "Packet input must align to generation step bind_generation_inputs.",
+      "predicate": "maps_to_generation_step === \"bind_generation_inputs\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_OUTPUT_GENERATION_STEP",
+      "stage": "packet_flow",
+      "applies_to": "validated_output.generation_output_alignment",
+      "description": "Validated output must align to generation step produce_validated_packet.",
+      "predicate": "maps_to_generation_step === \"produce_validated_packet\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_METHOD_STEP_GENERATE",
+      "stage": "packet_flow",
+      "applies_to": "runtime_api.methods.generate_packet.generation_step_ref",
+      "description": "generate_packet must reuse generation step execute_assembly_order.",
+      "predicate": "generation_step_ref === \"execute_assembly_order\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_METHOD_STEP_VALIDATE",
+      "stage": "packet_flow",
+      "applies_to": "runtime_api.methods.validate_packet.generation_step_ref",
+      "description": "validate_packet must reuse generation step apply_packet_validation.",
+      "predicate": "generation_step_ref === \"apply_packet_validation\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_METHOD_STEP_PRODUCE",
+      "stage": "packet_flow",
+      "applies_to": "runtime_api.methods.produce_validated_packet.generation_step_ref",
+      "description": "produce_validated_packet must reuse generation step produce_validated_packet.",
+      "predicate": "generation_step_ref === \"produce_validated_packet\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "FLOW_SOURCES_COUNT",
+      "stage": "packet_flow",
+      "applies_to": "sources_supported",
+      "description": "Runtime interface must support the certified 15-source corpus.",
+      "predicate": "sources_supported.length === 15",
+      "severity": "error"
+    }
+  ],
+  "interface_contract_checks": [
+    {
+      "check_id": "CONTRACT_ID",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.contract_id",
+      "description": "Interface contract id must be dsc-runtime-interface-contract-v1.",
+      "predicate": "contract_id === \"dsc-runtime-interface-contract-v1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "CONTRACT_MANDATORY_METHODS",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.mandatory_methods",
+      "description": "Interface contract must lock all four mandatory API methods.",
+      "predicate": "mandatory_methods === [list_sources, generate_packet, validate_packet, produce_validated_packet]",
+      "severity": "error"
+    },
+    {
+      "check_id": "CONTRACT_PACKET_INPUT_REF",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.packet_input_surface_ref",
+      "description": "Interface contract must reference the packet input surface.",
+      "predicate": "packet_input_surface_ref === \"dsc_runtime_packet_input_v1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "CONTRACT_VALIDATED_OUTPUT_REF",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.validated_output_surface_ref",
+      "description": "Interface contract must reference the validated output surface.",
+      "predicate": "validated_output_surface_ref === \"dsc_runtime_validated_output_v1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "CONTRACT_GENERATION_REF",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.generation_ref",
+      "description": "Interface contract must reference the PHASE-035 generation specification.",
+      "predicate": "generation_ref === \"exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "CONTRACT_RUNTIME_PACKAGE_REF",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.runtime_package_ref",
+      "description": "Interface contract must reference the certified PHASE-027 runtime package.",
+      "predicate": "runtime_package_ref === \"exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "CONTRACT_GUARANTEES",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.guarantees",
+      "description": "Interface contract must declare at least five guarantees.",
+      "predicate": "guarantees.length >= 5",
+      "severity": "error"
+    },
+    {
+      "check_id": "CONTRACT_FORBIDDEN",
+      "stage": "interface_contract",
+      "applies_to": "interface_contract.forbidden",
+      "description": "Interface contract must forbid backend, GPU, inference, materialization, dataset modification, and placeholders.",
+      "predicate": "forbidden covers backend, gpu, inference, tensor/frame materialization, dataset modification, placeholders",
+      "severity": "error"
+    }
+  ],
+  "generation_reuse_checks": [
+    {
+      "check_id": "REUSE_GENERATION_REF",
+      "stage": "generation_reuse",
+      "applies_to": "generation_ref",
+      "description": "Runtime interface must reuse the PHASE-035 generation specification by exact path.",
+      "predicate": "generation_ref === \"exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_GENERATION_PHASE",
+      "stage": "generation_reuse",
+      "applies_to": "generation_phase",
+      "description": "Runtime interface generation_phase must equal PHASE-DSC-035.",
+      "predicate": "generation_phase === \"PHASE-DSC-035\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_GENERATION_SYSTEM",
+      "stage": "generation_reuse",
+      "applies_to": "generation_system_id",
+      "description": "Runtime interface generation_system_id must equal DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1.",
+      "predicate": "generation_system_id === \"DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_GENERATION_POLICY",
+      "stage": "generation_reuse",
+      "applies_to": "generation.generation_procedure.generation_policy",
+      "description": "Reused generation policy must remain assemble_then_validate.",
+      "predicate": "generation_policy === \"assemble_then_validate\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_OUTPUT_FIELDS",
+      "stage": "generation_reuse",
+      "applies_to": "validated_output.required_fields",
+      "description": "Validated output required fields must exactly match generation validated_packet_output.required_fields.",
+      "predicate": "validated_output.required_fields === generation.validated_packet_output.required_fields",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_OUTPUT_KIND",
+      "stage": "generation_reuse",
+      "applies_to": "validated_output.artifact_kind",
+      "description": "Validated output artifact kind must exactly match generation validated_packet_output.artifact_kind.",
+      "predicate": "artifact_kind === \"validated_conditioning_packet\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_PACKET_SHAPE",
+      "stage": "generation_reuse",
+      "applies_to": "packet_input.accepted_packet_shape",
+      "description": "Accepted packet shape must match generation generated_packet_instance type/version/sections.",
+      "predicate": "packet_type/version/required_sections equal generation.generated_packet_instance",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_RUNTIME_PACKAGE",
+      "stage": "generation_reuse",
+      "applies_to": "runtime_package_ref",
+      "description": "Runtime interface and generation must share the certified runtime package reference.",
+      "predicate": "runtime_package_ref === generation.runtime_package_ref === \"exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json\"",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_SOURCES",
+      "stage": "generation_reuse",
+      "applies_to": "sources_supported",
+      "description": "Runtime interface sources_supported must equal generation sources_supported.",
+      "predicate": "runtimeInterface.sources_supported === generation.sources_supported",
+      "severity": "error"
+    },
+    {
+      "check_id": "REUSE_CONSTRAINT_FLAG",
+      "stage": "generation_reuse",
+      "applies_to": "design_constraints.reuses_packet_generation",
+      "description": "Runtime interface must declare reuses_packet_generation=true.",
+      "predicate": "reuses_packet_generation === true",
+      "severity": "error"
+    }
+  ],
+  "expected_api_methods": [
+    "list_sources",
+    "generate_packet",
+    "validate_packet",
+    "produce_validated_packet"
+  ],
+  "expected_packet_flow": [
+    "packet_input -> generate_packet -> assembled_packet_candidate",
+    "assembled_packet_candidate -> validate_packet -> validation_result",
+    "packet_input -> produce_validated_packet -> validated_conditioning_packet",
+    "validated_conditioning_packet.outcome in [accepted, rejected]"
+  ],
+  "design_constraints": {
+    "validation_only": true,
+    "reuses_runtime_interface": true,
+    "reuses_packet_generation": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "executes_runtime_methods_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T07:45:59.713Z"
+}

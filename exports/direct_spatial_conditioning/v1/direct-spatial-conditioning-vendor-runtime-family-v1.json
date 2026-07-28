@@ -1,0 +1,301 @@
+{
+  "vendor_runtime_family_id": "direct-spatial-conditioning-vendor-runtime-family-v1",
+  "phase": "PHASE-DSC-091",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_FAMILY_V1",
+  "mode": "design_only_vendor_runtime_family",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_FAMILY_V1",
+  "runtime_family_id": "dsc-vendor-runtime-family-v1",
+  "runtime_family_version": "1.0",
+  "runtime_family_kind": "vendor_runtime_family",
+  "runtime_catalog_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-catalog-v1.json",
+  "runtime_catalog_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog.schema.json",
+  "runtime_catalog_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog-implementation-registry-v1.json",
+  "runtime_catalog_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CATALOG_VALIDATION_REPORT.json",
+  "runtime_index_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-index-v1.json",
+  "runtime_index_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-index.schema.json",
+  "runtime_index_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-index-implementation-registry-v1.json",
+  "runtime_index_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_INDEX_VALIDATION_REPORT.json",
+  "runtime_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-registry-v1.json",
+  "runtime_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-v1.json",
+  "runtime_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json",
+  "runtime_package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-package-v1.json",
+  "reference_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-bundle-v1.json",
+  "package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json",
+  "numerical_runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "runtime_family_schema": {
+    "schema_id": "dsc-vendor-runtime-family-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning vendor runtime family. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. A runtime family binds one Vendor Runtime Catalog as its root, seals the catalog together with its schema and implementation registry, and seals the catalog contents transitively through the runtime catalog digest. It families no concrete runtime and declares no runtime execution.",
+    "encoding": "application/json",
+    "runtime_family_id_policy": "opaque_runtime_family_id_no_vendor_binding",
+    "runtime_catalog_ref": "dsc-vendor-runtime-catalog-v1",
+    "required_fields": [
+      {
+        "field": "runtime_family_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "runtime_family_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor runtime family version string"
+      },
+      {
+        "field": "runtime_family_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal vendor_runtime_family"
+      },
+      {
+        "field": "runtime_catalog_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the vendor runtime catalog dsc-vendor-runtime-catalog-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_runtime_family_identity",
+        "type": "dsc-vendor-runtime-family-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor name, framework, or device dependence"
+      },
+      {
+        "field": "vendor_runtime_catalog_binding",
+        "type": "dsc-vendor-runtime-family-catalog-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the passing Vendor Runtime Catalog as the runtime family root, gated on its recorded PASS verdict"
+      },
+      {
+        "field": "runtime_family_composition",
+        "type": "dsc-vendor-runtime-family-composition-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "closed, fixed-order set of runtime catalog, schema, and implementation registry sections; vendor-specific sections forbidden and catalog contents never re-listed"
+      },
+      {
+        "field": "runtime_family_manifest",
+        "type": "dsc-vendor-runtime-family-manifest-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "content-addressed SHA256 manifest with one entry per section, plus the transitively sealed runtime catalog digest and a runtime family digest over sections and that digest"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_runtime_family_identity": {
+    "identity_id": "dsc-vendor-runtime-family-deterministic-identity-v1",
+    "description": "Deterministic identity of the vendor runtime family. The runtime_family_id is a literal design-time constant with no seed, time, randomness, vendor name, framework, or device dependence.",
+    "runtime_family_id": "dsc-vendor-runtime-family-v1",
+    "runtime_family_version": "1.0",
+    "identity_policy": "opaque_runtime_family_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "vendor_name": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "vendor_runtime_catalog_binding": {
+    "binding_id": "dsc-vendor-runtime-family-catalog-binding-v1",
+    "description": "Exact binding of the PHASE-089 Vendor Runtime Catalog as the runtime family root. The binding is gated at build time on the recorded PHASE-089 PASS verdict, and re-seals every runtime catalog section and the runtime catalog digest before the runtime family is emitted.",
+    "runtime_catalog_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-catalog-v1.json",
+    "runtime_catalog_id": "dsc-vendor-runtime-catalog-v1",
+    "runtime_catalog_version": "1.0",
+    "runtime_catalog_phase": "PHASE-DSC-089",
+    "runtime_catalog_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CATALOG_V1",
+    "runtime_catalog_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CATALOG_VALIDATION_REPORT.json",
+    "runtime_catalog_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CATALOG_V1",
+    "runtime_catalog_evidence_mode": "phase_089_pass_verdict_gated_at_build_time",
+    "binding_mode": "exact_reuse",
+    "role": "runtime_family_root",
+    "sealed_runtime_catalog_digest": "5f7068f0b517b26e6b8addb1e568624b90846bf6ec1b171312792e5eb290869b",
+    "sealed_runtime_index_digest": "a4353e1ea7cc7c8f709d47e581dd0287cb1e131b3babd53091219838e30687d9",
+    "sealed_runtime_registry_digest": "06ef1ea1b2d2c5d9b93c360eb71c543521cc72e07404c67cc206b8a4381f9be5",
+    "sealed_runtime_profile_digest": "36ed6ca10be91c27936023da66f1e6b595a636f368626c11f093a34c4b4653ce",
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "families_runtime_in_this_phase": false,
+    "implements_runtime_catalog_in_this_phase": false
+  },
+  "runtime_family_composition": {
+    "composition_id": "dsc-vendor-runtime-family-composition-v1",
+    "description": "Closed, fixed-order composition of the publication envelope around the Vendor Runtime Catalog: the runtime catalog artifact, its shape contract, and its implementation registry. The runtime catalog contents (and everything sealed beneath them) are sealed transitively through the runtime catalog digest and are deliberately not re-listed here.",
+    "root_section_id": "vendor_runtime_catalog",
+    "section_order": "fixed_declared_order",
+    "closed_set": true,
+    "sections": [
+      {
+        "section_id": "vendor_runtime_catalog",
+        "role": "runtime_family_root_catalog",
+        "kind": "runtime_catalog_artifact",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-catalog-v1.json",
+        "order": 1
+      },
+      {
+        "section_id": "vendor_runtime_catalog_schema",
+        "role": "runtime_catalog_shape_contract",
+        "kind": "runtime_catalog_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog.schema.json",
+        "order": 2
+      },
+      {
+        "section_id": "vendor_runtime_catalog_implementation_registry",
+        "role": "runtime_catalog_provenance_registry",
+        "kind": "runtime_catalog_implementation_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog-implementation-registry-v1.json",
+        "order": 3
+      }
+    ],
+    "transitive_seal": {
+      "policy": "runtime_catalog_contents_sealed_via_runtime_catalog_digest",
+      "sealed_via": "dsc-vendor-runtime-catalog-v1",
+      "sealed_component_count": 42,
+      "re_lists_runtime_catalog_contents": false
+    },
+    "vendor_specific_sections": "forbidden",
+    "includes_implementations": false,
+    "declares_runtime_execution": false
+  },
+  "runtime_family_manifest": {
+    "manifest_id": "dsc-vendor-runtime-family-manifest-v1",
+    "description": "Content-addressed SHA256 manifest of every runtime family section. Digests are computed read-only from disk. The sealed runtime catalog digest carries the catalog contents (and everything sealed beneath them) transitively, and the runtime family digest is the SHA256 of the ordered section digests and the sealed runtime catalog digest. No implementation is verified in this phase.",
+    "integrity_method": "sha256_content_addressed_read_only",
+    "entry_count": 3,
+    "entries": [
+      {
+        "section_id": "vendor_runtime_catalog",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-catalog-v1.json",
+        "sha256": "712d3e02eba5d2c5516dc44484fcb4b96b96956999bdff92079ec18267b47d88",
+        "bytes": 15005,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_catalog_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog.schema.json",
+        "sha256": "0cc6dbf1e75bb38f4afdadd1b47b9bd9bf92cb0cc7356bb9b8ec5c180c282401",
+        "bytes": 18199,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_catalog_implementation_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog-implementation-registry-v1.json",
+        "sha256": "9bffcd800ea70fb6e9974f3fe231e3bdc8f6d7dca1afdd93a05dfb2af484f3f9",
+        "bytes": 5181,
+        "content_addressed": true
+      }
+    ],
+    "sealed_runtime_catalog_digest": "5f7068f0b517b26e6b8addb1e568624b90846bf6ec1b171312792e5eb290869b",
+    "sealed_runtime_index_digest": "a4353e1ea7cc7c8f709d47e581dd0287cb1e131b3babd53091219838e30687d9",
+    "sealed_runtime_registry_digest": "06ef1ea1b2d2c5d9b93c360eb71c543521cc72e07404c67cc206b8a4381f9be5",
+    "sealed_runtime_profile_digest": "36ed6ca10be91c27936023da66f1e6b595a636f368626c11f093a34c4b4653ce",
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "runtime_family_digest": "d442261041d4569f872cba4e13897c3a855f568c62d6a29f83c7cc506d80784a",
+    "runtime_family_digest_method": "sha256_of_ordered_section_digests_and_sealed_runtime_catalog_digest",
+    "verifies_implementations_in_this_phase": false
+  },
+  "family_runtime_members": {
+    "count": 0,
+    "entries": [],
+    "membership_policy": "concrete vendor runtimes may be grouped into this runtime family only in a future implementation phase; none are grouped here",
+    "families_runtime_in_this_phase": false
+  },
+  "design_constraints": {
+    "runtime_family_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_runtime_catalog": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "declares_runtime_execution": false,
+    "families_runtime_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-26T05:49:12.917Z"
+}

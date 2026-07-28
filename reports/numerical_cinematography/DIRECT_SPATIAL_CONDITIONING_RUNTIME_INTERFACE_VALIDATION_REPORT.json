@@ -1,0 +1,38 @@
+{
+  "report_id": "direct_spatial_conditioning_runtime_interface_ms029vw7",
+  "phase": "PHASE-DSC-036",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1",
+  "validation_passed": true,
+  "mode": "design_only_interface",
+  "api_methods": [
+    "list_sources",
+    "generate_packet",
+    "validate_packet",
+    "produce_validated_packet"
+  ],
+  "packet_input_surface": "dsc_runtime_packet_input_v1",
+  "validated_output_surface": "dsc_runtime_validated_output_v1",
+  "interface_contract": "dsc-runtime-interface-contract-v1",
+  "sources_supported": 15,
+  "reuses_packet_generation": true,
+  "design_constraints": {
+    "interface_only": true,
+    "reuses_packet_generation": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "implements_runtime_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "runtime_interface": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-runtime-interface.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-runtime-interface-implementation-registry-v1.json",
+    "generation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:42:15.993Z"
+}

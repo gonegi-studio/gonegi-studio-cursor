@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract.schema.json",
+  "title": "DirectSpatialConditioningContract",
+  "description": "PHASE-DSC-031 design-only / contract-only runtime conditioning contract. Defines per-channel input/output schemas and validation rules for Direct Spatial Conditioning. No backend, no GPU, no inference, no dataset modification, no placeholders.",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "foundation_ref",
+    "foundation_phase",
+    "foundation_system_id",
+    "spatial_frame",
+    "channel_contracts",
+    "input_schema",
+    "output_schema",
+    "validation_rules",
+    "design_constraints",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract_id": { "type": "string" },
+    "phase": { "type": "string", "const": "PHASE-DSC-031" },
+    "system_id": { "type": "string", "const": "DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1" },
+    "mode": { "type": "string", "const": "design_only_contract" },
+    "target": { "type": "string", "const": "PASS_DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1" },
+    "foundation_ref": { "type": "string" },
+    "foundation_phase": { "type": "string", "const": "PHASE-MOVIE-RECONSTRUCTION-030" },
+    "foundation_system_id": { "type": "string", "const": "DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1" },
+    "spatial_frame": { "type": "object" },
+    "channel_contracts": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "channel_id",
+          "foundation_channel_ref",
+          "spatial_frame_ref",
+          "consumption_slot",
+          "integrated_layer",
+          "input_schema",
+          "output_schema",
+          "validation_rule_ids",
+          "requires_backend",
+          "requires_gpu",
+          "performs_inference"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "channel_id": {
+            "type": "string",
+            "enum": [
+              "camera_pose_field",
+              "camera_temporal_track",
+              "subject_position_field",
+              "framing_composition_map",
+              "edit_rhythm_boundaries",
+              "scene_energy_field"
+            ]
+          },
+          "foundation_channel_ref": { "type": "string" },
+          "spatial_frame_ref": { "type": "string", "const": "normalized_image_plane_v1" },
+          "consumption_slot": { "type": "string" },
+          "integrated_layer": { "type": "string" },
+          "input_schema": { "type": "object" },
+          "output_schema": {
+            "type": "object",
+            "required": ["materializes_tensors", "materializes_frames"],
+            "properties": {
+              "materializes_tensors": { "type": "boolean", "const": false },
+              "materializes_frames": { "type": "boolean", "const": false }
+            }
+          },
+          "validation_rule_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "requires_backend": { "type": "boolean", "const": false },
+          "requires_gpu": { "type": "boolean", "const": false },
+          "performs_inference": { "type": "boolean", "const": false }
+        }
+      }
+    },
+    "input_schema": {
+      "type": "object",
+      "required": [
+        "schema_id",
+        "description",
+        "required_top_level",
+        "required_channel_count",
+        "required_channel_ids",
+        "packet_shape"
+      ],
+      "properties": {
+        "required_channel_count": { "type": "integer", "const": 6 }
+      }
+    },
+    "output_schema": {
+      "type": "object",
+      "required": [
+        "schema_id",
+        "description",
+        "produces",
+        "required_fields",
+        "materializes_tensors",
+        "materializes_frames",
+        "emits_inference"
+      ],
+      "properties": {
+        "produces": { "type": "string", "const": "validated_conditioning_bundle" },
+        "materializes_tensors": { "type": "boolean", "const": false },
+        "materializes_frames": { "type": "boolean", "const": false },
+        "emits_inference": { "type": "boolean", "const": false }
+      }
+    },
+    "validation_rules": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "applies_to", "severity", "description", "predicate"],
+        "additionalProperties": false,
+        "properties": {
+          "rule_id": { "type": "string" },
+          "applies_to": { "type": "string" },
+          "severity": { "type": "string", "const": "error" },
+          "description": { "type": "string", "minLength": 1 },
+          "predicate": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "required": [
+        "backend",
+        "gpu",
+        "inference",
+        "modifies_existing_datasets",
+        "placeholders",
+        "contract_only"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "backend": { "type": "string", "const": "none" },
+        "gpu": { "type": "boolean", "const": false },
+        "inference": { "type": "boolean", "const": false },
+        "modifies_existing_datasets": { "type": "boolean", "const": false },
+        "placeholders": { "type": "boolean", "const": false },
+        "contract_only": { "type": "boolean", "const": true }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

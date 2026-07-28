@@ -1,0 +1,195 @@
+{
+  "runtime_interface_id": "direct-spatial-conditioning-runtime-interface-v1",
+  "phase": "PHASE-DSC-036",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1",
+  "mode": "design_only_interface",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1",
+  "generation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+  "generation_phase": "PHASE-DSC-035",
+  "generation_system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "runtime_api": {
+    "api_id": "dsc-runtime-api-v1",
+    "version": "v1",
+    "transport": "in_process_function_surface",
+    "methods": [
+      {
+        "method_id": "list_sources",
+        "signature": "list_sources() -> source_video_id[]",
+        "description": "Return the certified 15-source corpus identifiers available through the reused Movie Reconstruction runtime package.",
+        "input_ref": "none",
+        "output_ref": "source_video_id[]",
+        "generation_step_ref": null,
+        "side_effects": "none",
+        "requires_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      },
+      {
+        "method_id": "generate_packet",
+        "signature": "generate_packet(source_video_id, packet_id) -> assembled_packet_candidate",
+        "description": "Execute PHASE-035 generation steps bind_generation_inputs and execute_assembly_order to produce an assembled packet candidate from the certified runtime package.",
+        "input_ref": "dsc_runtime_packet_input_v1",
+        "output_ref": "assembled_packet_candidate",
+        "generation_step_ref": "execute_assembly_order",
+        "side_effects": "none",
+        "requires_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      },
+      {
+        "method_id": "validate_packet",
+        "signature": "validate_packet(assembled_packet_candidate) -> validation_result",
+        "description": "Execute PHASE-035 generation step apply_packet_validation against the PHASE-033 validation specification.",
+        "input_ref": "assembled_packet_candidate",
+        "output_ref": "validation_result",
+        "generation_step_ref": "apply_packet_validation",
+        "side_effects": "none",
+        "requires_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      },
+      {
+        "method_id": "produce_validated_packet",
+        "signature": "produce_validated_packet(source_video_id, packet_id) -> validated_conditioning_packet",
+        "description": "Run the full PHASE-035 assemble-then-validate generation procedure and return the validated packet outcome.",
+        "input_ref": "dsc_runtime_packet_input_v1",
+        "output_ref": "dsc_runtime_validated_output_v1",
+        "generation_step_ref": "produce_validated_packet",
+        "side_effects": "none",
+        "requires_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      }
+    ]
+  },
+  "packet_input": {
+    "surface_id": "dsc_runtime_packet_input_v1",
+    "description": "Caller inputs required to generate a packet through the PHASE-035 generation procedure.",
+    "required_fields": [
+      {
+        "field": "source_video_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of the certified 15-source corpus identifiers"
+      },
+      {
+        "field": "packet_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty caller-assigned opaque packet identity"
+      }
+    ],
+    "optional_fields": [],
+    "accepted_packet_shape": {
+      "packet_type": "direct_spatial_conditioning_packet",
+      "packet_version": "v1",
+      "required_sections": [
+        "metadata",
+        "channels"
+      ],
+      "channel_order": [
+        "camera_pose_field",
+        "camera_temporal_track",
+        "subject_position_field",
+        "framing_composition_map",
+        "edit_rhythm_boundaries",
+        "scene_energy_field"
+      ],
+      "spatial_frame_ref": "normalized_image_plane_v1"
+    },
+    "generation_input_alignment": {
+      "generation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+      "maps_to_generation_step": "bind_generation_inputs"
+    }
+  },
+  "validated_output": {
+    "surface_id": "dsc_runtime_validated_output_v1",
+    "description": "Validated packet outcome produced by the PHASE-035 produce_validated_packet generation step.",
+    "artifact_kind": "validated_conditioning_packet",
+    "required_fields": [
+      "packet_id",
+      "source_video_id",
+      "spatial_frame_ref",
+      "outcome",
+      "rejection_codes",
+      "generated_packet",
+      "assembly_ref",
+      "validation_ref",
+      "runtime_package_ref"
+    ],
+    "outcome_values": [
+      "accepted",
+      "rejected"
+    ],
+    "accepted_packet_embedded": true,
+    "rejection_codes_embedded": true,
+    "generation_output_alignment": {
+      "generation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+      "maps_to_generation_step": "produce_validated_packet",
+      "validated_packet_output_ref": "generation.validated_packet_output"
+    },
+    "materializes_tensors": false,
+    "materializes_frames": false
+  },
+  "interface_contract": {
+    "contract_id": "dsc-runtime-interface-contract-v1",
+    "description": "Interface contract locking the DSC runtime API methods, packet input, and validated output to the PHASE-035 generation design.",
+    "mandatory_methods": [
+      "list_sources",
+      "generate_packet",
+      "validate_packet",
+      "produce_validated_packet"
+    ],
+    "packet_input_surface_ref": "dsc_runtime_packet_input_v1",
+    "validated_output_surface_ref": "dsc_runtime_validated_output_v1",
+    "generation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "guarantees": [
+      "list_sources returns exactly the certified 15-source corpus",
+      "generate_packet follows PHASE-035 assemble-then-validate generation policy",
+      "validate_packet applies PHASE-033 rejection codes without mutation",
+      "produce_validated_packet returns validated_conditioning_packet with accepted or rejected outcome",
+      "all methods are side-effect free with respect to datasets and certified artifacts"
+    ],
+    "forbidden": [
+      "backend invocation",
+      "gpu execution",
+      "model inference",
+      "tensor materialization",
+      "frame materialization",
+      "dataset modification",
+      "placeholder packet fields"
+    ]
+  },
+  "design_constraints": {
+    "interface_only": true,
+    "reuses_packet_generation": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "implements_runtime_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T07:42:15.987Z"
+}

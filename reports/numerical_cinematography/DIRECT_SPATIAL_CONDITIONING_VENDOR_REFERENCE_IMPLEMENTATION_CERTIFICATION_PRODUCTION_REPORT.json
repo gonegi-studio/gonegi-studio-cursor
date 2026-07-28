@@ -1,0 +1,106 @@
+{
+  "report_id": "dsc_vendor_reference_implementation_certification_ms129xst",
+  "phase": "PHASE-DSC-068",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_IMPLEMENTATION_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_IMPLEMENTATION_V1",
+  "mode": "read_only_certification",
+  "implementation_id": "dsc-vendor-reference-implementation-v1",
+  "implementation_version": "1.0",
+  "surfaces_certified": [
+    "implementation_schema",
+    "identity",
+    "vendor_template_binding",
+    "reference_implementation_profile"
+  ],
+  "checks_required": [
+    "implementation_schema",
+    "identity",
+    "vendor_template_binding",
+    "reference_implementation_profile",
+    "evidence_chain",
+    "reproducibility",
+    "immutability"
+  ],
+  "checks": [
+    {
+      "check": "implementation_schema",
+      "passed": true,
+      "detail": "reference_implementation_schema present with opaque identity policy and twelve required fields",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "identity",
+      "passed": true,
+      "detail": "deterministic implementation identity is opaque, vendor-neutral, and free of seed/time/randomness",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "vendor_template_binding",
+      "passed": true,
+      "detail": "vendor template binding exactly reuses the certified Vendor Template and adopts its four extension points without filling any",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reference_implementation_profile",
+      "passed": true,
+      "detail": "reference implementation profile declares four unimplemented steps and inherits six certified capability declarations with four required methods",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "vendor reference implementation references certified Vendor Template, certified Vendor Reference Profile, and the full vendor/backend stack by exact path",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "profile steps, adopted extension points, capability entries, channels, sources, spatial frame, and capability set still match upstream exactly; implementation artifact is byte-stable",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "verified vendor reference implementation, certified Vendor Template, certified Vendor Reference Profile, and the DSC V1 stack are unchanged",
+      "error_count": 0,
+      "errors": []
+    }
+  ],
+  "evidence_chain_links": 23,
+  "evidence_chain_unresolved": 0,
+  "artifact_digest_count": 38,
+  "protected_artifacts_unmodified": true,
+  "vendor_neutral": true,
+  "vendor_neutrality": {
+    "vendor_neutral": true,
+    "vendors_bound": 0,
+    "vendors_implemented": 0,
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0"
+  },
+  "upstream_certified_system": {
+    "vendor_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+    "vendor_template_certified": true,
+    "vendor_reference_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+    "vendor_reference_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+    "vendor_reference_profile_certified": true,
+    "vendor_implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+    "vendor_design_certified": true,
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "artifacts": {
+    "certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-implementation-certification-v1.json"
+  },
+  "error_count": 0,
+  "missing_checks": [],
+  "generated_at": "2026-07-26T00:30:04.637Z"
+}

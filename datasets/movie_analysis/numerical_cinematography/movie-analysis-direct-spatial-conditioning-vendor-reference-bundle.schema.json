@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-bundle.schema.json",
+  "title": "DirectSpatialConditioningVendorReferenceBundle",
+  "description": "PHASE-DSC-077 design-only, read-only vendor reference bundle. Defines bundle schema, deterministic bundle identity, Vendor Reference Package binding, bundle composition, and content-addressed bundle manifest over the passing PHASE-075 package. Seals the package, its shape contract, and its provenance registry directly, and seals the package members transitively through the package digest. Bundles no vendor and binds to no vendor name, framework, or device.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "vendor_reference_bundle_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "bundle_id",
+    "bundle_version",
+    "bundle_kind",
+    "package_ref",
+    "package_schema_ref",
+    "package_registry_ref",
+    "package_evidence_ref",
+    "template_ref",
+    "template_certification_ref",
+    "runtime_package_ref",
+    "sources_supported",
+    "required_channels",
+    "spatial_frame_ref",
+    "capability_set_id",
+    "capability_set_version",
+    "bundle_schema",
+    "deterministic_bundle_identity",
+    "vendor_reference_package_binding",
+    "bundle_composition",
+    "bundle_manifest",
+    "bundled_vendors",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "vendor_reference_bundle_id": {
+      "const": "direct-spatial-conditioning-vendor-reference-bundle-v1"
+    },
+    "phase": { "const": "PHASE-DSC-077" },
+    "system_id": {
+      "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_BUNDLE_V1"
+    },
+    "mode": { "const": "design_only_vendor_reference_bundle" },
+    "target": {
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_BUNDLE_V1"
+    },
+    "bundle_id": { "const": "dsc-vendor-reference-bundle-v1" },
+    "bundle_version": { "const": "1.0" },
+    "bundle_kind": { "const": "vendor_reference_bundle" },
+    "package_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json"
+    },
+    "package_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package.schema.json"
+    },
+    "package_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-reference-package-implementation-registry-v1.json"
+    },
+    "package_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_VALIDATION_REPORT.json"
+    },
+    "template_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json"
+    },
+    "template_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json"
+    },
+    "runtime_package_ref": {
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "required_channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+    "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+    "capability_set_version": { "const": "1.0" },
+    "bundle_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "description",
+        "encoding",
+        "bundle_id_policy",
+        "package_ref",
+        "required_fields",
+        "optional_fields",
+        "additional_fields"
+      ],
+      "properties": {
+        "schema_id": { "const": "dsc-vendor-reference-bundle-schema-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "encoding": { "const": "application/json" },
+        "bundle_id_policy": { "const": "opaque_bundle_id_no_vendor_binding" },
+        "package_ref": { "const": "dsc-vendor-reference-package-v1" },
+        "required_fields": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "type", "required", "nullable", "constraint"],
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "required": { "const": true },
+              "nullable": { "const": false },
+              "constraint": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "optional_fields": { "type": "array", "maxItems": 0 },
+        "additional_fields": { "const": false }
+      }
+    },
+    "deterministic_bundle_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_id",
+        "description",
+        "bundle_id",
+        "bundle_version",
+        "identity_policy",
+        "derivation",
+        "purity",
+        "seed_dependence",
+        "time_dependence",
+        "randomness",
+        "vendor_binding",
+        "framework_binding",
+        "device_binding",
+        "vendor_name",
+        "capability_set_id",
+        "capability_set_version",
+        "spatial_frame_ref",
+        "required_channels"
+      ],
+      "properties": {
+        "identity_id": {
+          "const": "dsc-vendor-reference-bundle-deterministic-identity-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "bundle_id": { "const": "dsc-vendor-reference-bundle-v1" },
+        "bundle_version": { "const": "1.0" },
+        "identity_policy": { "const": "opaque_bundle_id_no_vendor_binding" },
+        "derivation": { "const": "literal_constant_declared_at_design_time" },
+        "purity": { "const": "deterministic_pure_constant" },
+        "seed_dependence": { "const": "none" },
+        "time_dependence": { "const": "none" },
+        "randomness": { "const": "none" },
+        "vendor_binding": { "const": "none" },
+        "framework_binding": { "const": "none" },
+        "device_binding": { "const": "none" },
+        "vendor_name": { "const": "none" },
+        "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+        "capability_set_version": { "const": "1.0" },
+        "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+        "required_channels": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "vendor_reference_package_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_id",
+        "description",
+        "package_ref",
+        "package_id",
+        "package_version",
+        "package_phase",
+        "package_system_id",
+        "package_evidence_ref",
+        "package_verdict",
+        "package_evidence_mode",
+        "binding_mode",
+        "role",
+        "sealed_package_digest",
+        "sealed_component_count",
+        "bundles_vendors_in_this_phase",
+        "implements_package_in_this_phase"
+      ],
+      "properties": {
+        "binding_id": { "const": "dsc-vendor-reference-bundle-package-binding-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "package_ref": {
+          "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json"
+        },
+        "package_id": { "const": "dsc-vendor-reference-package-v1" },
+        "package_version": { "const": "1.0" },
+        "package_phase": { "const": "PHASE-DSC-075" },
+        "package_system_id": {
+          "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_V1"
+        },
+        "package_evidence_ref": {
+          "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_VALIDATION_REPORT.json"
+        },
+        "package_verdict": {
+          "const": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PACKAGE_V1"
+        },
+        "package_evidence_mode": {
+          "const": "phase_075_pass_verdict_gated_at_build_time"
+        },
+        "binding_mode": { "const": "exact_reuse" },
+        "role": { "const": "bundle_root" },
+        "sealed_package_digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "sealed_component_count": { "const": 42 },
+        "bundles_vendors_in_this_phase": { "const": false },
+        "implements_package_in_this_phase": { "const": false }
+      }
+    },
+    "bundle_composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "composition_id",
+        "description",
+        "root_section_id",
+        "section_order",
+        "closed_set",
+        "sections",
+        "transitive_seal",
+        "vendor_specific_sections",
+        "includes_implementations"
+      ],
+      "properties": {
+        "composition_id": { "const": "dsc-vendor-reference-bundle-composition-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "root_section_id": { "const": "vendor_reference_package" },
+        "section_order": { "const": "fixed_declared_order" },
+        "closed_set": { "const": true },
+        "sections": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["section_id", "role", "kind", "artifact_ref", "order"],
+            "properties": {
+              "section_id": { "type": "string", "minLength": 1 },
+              "role": { "type": "string", "minLength": 1 },
+              "kind": {
+                "enum": ["package_artifact", "package_schema", "package_registry"]
+              },
+              "artifact_ref": { "type": "string", "minLength": 1 },
+              "order": { "type": "integer", "minimum": 1, "maximum": 3 }
+            }
+          }
+        },
+        "transitive_seal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policy",
+            "sealed_via",
+            "sealed_component_count",
+            "re_lists_package_members"
+          ],
+          "properties": {
+            "policy": { "const": "package_members_sealed_via_package_digest" },
+            "sealed_via": { "const": "dsc-vendor-reference-package-v1" },
+            "sealed_component_count": { "const": 42 },
+            "re_lists_package_members": { "const": false }
+          }
+        },
+        "vendor_specific_sections": { "const": "forbidden" },
+        "includes_implementations": { "const": false }
+      }
+    },
+    "bundle_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_id",
+        "description",
+        "integrity_method",
+        "entry_count",
+        "entries",
+        "sealed_package_digest",
+        "sealed_component_count",
+        "bundle_digest",
+        "bundle_digest_method",
+        "verifies_implementations_in_this_phase"
+      ],
+      "properties": {
+        "manifest_id": { "const": "dsc-vendor-reference-bundle-manifest-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "integrity_method": { "const": "sha256_content_addressed_read_only" },
+        "entry_count": { "const": 3 },
+        "entries": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "artifact_ref",
+              "sha256",
+              "bytes",
+              "content_addressed"
+            ],
+            "properties": {
+              "section_id": { "type": "string", "minLength": 1 },
+              "artifact_ref": { "type": "string", "minLength": 1 },
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+              "bytes": { "type": "integer", "minimum": 1 },
+              "content_addressed": { "const": true }
+            }
+          }
+        },
+        "sealed_package_digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "sealed_component_count": { "const": 42 },
+        "bundle_digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "bundle_digest_method": {
+          "const": "sha256_of_ordered_section_digests_and_sealed_package_digest"
+        },
+        "verifies_implementations_in_this_phase": { "const": false }
+      }
+    },
+    "bundled_vendors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "entries",
+        "bundling_policy",
+        "bundles_vendors_in_this_phase"
+      ],
+      "properties": {
+        "count": { "const": 0 },
+        "entries": { "type": "array", "maxItems": 0 },
+        "bundling_policy": { "type": "string", "minLength": 1 },
+        "bundles_vendors_in_this_phase": { "const": false }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_only",
+        "read_only",
+        "vendor_neutral",
+        "reuses_certified_vendor_reference_package",
+        "no_actual_implementation",
+        "no_vendor_implementation",
+        "backend",
+        "no_backend_implementation",
+        "gpu",
+        "inference",
+        "bundles_vendors_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "bundle_only": { "const": true },
+        "read_only": { "const": true },
+        "vendor_neutral": { "const": true },
+        "reuses_certified_vendor_reference_package": { "const": true },
+        "no_actual_implementation": { "const": true },
+        "no_vendor_implementation": { "const": true },
+        "backend": { "const": "none" },
+        "no_backend_implementation": { "const": true },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "bundles_vendors_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

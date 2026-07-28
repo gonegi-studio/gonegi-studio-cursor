@@ -1,0 +1,38 @@
+{
+  "report_id": "direct_spatial_conditioning_packet_validation_ms01otow",
+  "phase": "PHASE-DSC-033",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1",
+  "validation_passed": true,
+  "mode": "design_only_validation",
+  "stages": [
+    "structural",
+    "metadata",
+    "channel_payload",
+    "cross_channel"
+  ],
+  "structural_check_count": 4,
+  "metadata_check_count": 26,
+  "channel_payload_check_count": 159,
+  "cross_channel_check_count": 7,
+  "total_check_count": 196,
+  "rejection_code_count": 31,
+  "design_constraints": {
+    "validation_only": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "validates_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "validation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-validation.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-validation-implementation-registry-v1.json",
+    "packet": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:25:53.361Z"
+}

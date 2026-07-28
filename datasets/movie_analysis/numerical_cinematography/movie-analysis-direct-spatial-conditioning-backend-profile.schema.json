@@ -1,0 +1,388 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile.schema.json",
+  "title": "DirectSpatialConditioningBackendProfile",
+  "description": "PHASE-DSC-047 design-only, read-only first backend profile. Defines backend profile schema, deterministic capability mapping, adapter configuration, and profile validation over the frozen PHASE-045 implementation specification. Implements no backend and binds to no vendor, framework, or device.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "backend_profile_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "profile_id",
+    "profile_version",
+    "profile_kind",
+    "implementation_spec_ref",
+    "implementation_spec_phase",
+    "implementation_spec_system_id",
+    "backend_design_certification_ref",
+    "execution_contract_ref",
+    "runtime_router_ref",
+    "adapter_registration_ref",
+    "compatibility_engine_ref",
+    "capability_registry_ref",
+    "adapter_foundation_ref",
+    "runtime_interface_ref",
+    "runtime_package_ref",
+    "sources_supported",
+    "required_channels",
+    "spatial_frame_ref",
+    "capability_set_id",
+    "capability_set_version",
+    "backend_profile_schema",
+    "deterministic_capability_mapping",
+    "adapter_configuration",
+    "profile_validation",
+    "bound_backends",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "backend_profile_id": {
+      "type": "string",
+      "const": "direct-spatial-conditioning-backend-profile-v1"
+    },
+    "phase": { "type": "string", "const": "PHASE-DSC-047" },
+    "system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1"
+    },
+    "mode": { "type": "string", "const": "design_only_profile" },
+    "target": {
+      "type": "string",
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1"
+    },
+    "profile_id": { "const": "dsc-backend-profile-reference-v1" },
+    "profile_version": { "const": "1.0" },
+    "profile_kind": { "const": "reference_profile" },
+    "implementation_spec_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json"
+    },
+    "implementation_spec_phase": { "type": "string", "const": "PHASE-DSC-045" },
+    "implementation_spec_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_BACKEND_IMPLEMENTATION_SPEC_V1"
+    },
+    "backend_design_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json"
+    },
+    "execution_contract_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json"
+    },
+    "runtime_router_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json"
+    },
+    "adapter_registration_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json"
+    },
+    "compatibility_engine_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json"
+    },
+    "capability_registry_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json"
+    },
+    "adapter_foundation_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json"
+    },
+    "runtime_interface_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json"
+    },
+    "runtime_package_ref": {
+      "type": "string",
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "required_channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+    "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+    "capability_set_version": { "const": "1.0" },
+    "backend_profile_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "description",
+        "encoding",
+        "profile_id_policy",
+        "required_fields",
+        "optional_fields",
+        "additional_fields"
+      ],
+      "properties": {
+        "schema_id": { "const": "dsc-backend-profile-schema-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "encoding": { "const": "application/json" },
+        "profile_id_policy": { "const": "opaque_profile_id_no_vendor_binding" },
+        "required_fields": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "type", "required", "nullable", "constraint"],
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "required": { "const": true },
+              "nullable": { "const": false },
+              "constraint": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "optional_fields": { "type": "array", "maxItems": 0 },
+        "additional_fields": { "const": false }
+      }
+    },
+    "deterministic_capability_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_id",
+        "description",
+        "purity",
+        "seed_dependence",
+        "time_dependence",
+        "randomness",
+        "capability_set_id",
+        "capability_set_version",
+        "ordering",
+        "entries",
+        "undeclared_capability_policy",
+        "unknown_capability_policy",
+        "maps_capabilities_in_this_phase",
+        "evaluates_backends_in_this_phase"
+      ],
+      "properties": {
+        "mapping_id": {
+          "const": "dsc-backend-profile-deterministic-capability-mapping-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "purity": { "const": "deterministic_pure_function" },
+        "seed_dependence": { "const": "none" },
+        "time_dependence": { "const": "none" },
+        "randomness": { "const": "none" },
+        "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+        "capability_set_version": { "const": "1.0" },
+        "ordering": {
+          "const": "capability_registry_registered_capability_ids_order"
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "capability_id",
+              "declared_state",
+              "mapping_rule",
+              "capability_version",
+              "source_ref",
+              "deterministic",
+              "evaluated_at"
+            ],
+            "properties": {
+              "capability_id": { "type": "string", "minLength": 1 },
+              "declared_state": { "const": "supported" },
+              "mapping_rule": {
+                "const": "mandatory_capability_maps_to_supported"
+              },
+              "capability_version": { "const": "1.0" },
+              "source_ref": { "type": "string", "minLength": 1 },
+              "deterministic": { "const": true },
+              "evaluated_at": { "const": "profile_construction" }
+            }
+          }
+        },
+        "undeclared_capability_policy": { "const": "reject" },
+        "unknown_capability_policy": { "const": "reject" },
+        "maps_capabilities_in_this_phase": { "const": true },
+        "evaluates_backends_in_this_phase": { "const": false }
+      }
+    },
+    "adapter_configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "configuration_id",
+        "description",
+        "packet_adapter_ref",
+        "adapter_foundation_ref",
+        "adapted_input_shape_ref",
+        "spatial_frame_ref",
+        "channel_order",
+        "channel_transform",
+        "passthrough_policy",
+        "binding_policy",
+        "requires_gpu",
+        "performs_inference",
+        "materializes_tensors",
+        "materializes_frames",
+        "configures_adapter_in_this_phase",
+        "implements_adapter_in_this_phase"
+      ],
+      "properties": {
+        "configuration_id": {
+          "const": "dsc-backend-profile-adapter-configuration-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "packet_adapter_ref": { "const": "dsc-packet-adapter-v1" },
+        "adapter_foundation_ref": {
+          "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json"
+        },
+        "adapted_input_shape_ref": {
+          "const": "dsc_adapted_conditioning_input_v1"
+        },
+        "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+        "channel_order": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "channel_transform": { "const": "identity_passthrough" },
+        "passthrough_policy": { "const": "structure_preserving_no_transform" },
+        "binding_policy": { "const": "opaque_conditioning_binding_handle" },
+        "requires_gpu": { "const": false },
+        "performs_inference": { "const": false },
+        "materializes_tensors": { "const": false },
+        "materializes_frames": { "const": false },
+        "configures_adapter_in_this_phase": { "const": true },
+        "implements_adapter_in_this_phase": { "const": false }
+      }
+    },
+    "profile_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_id",
+        "description",
+        "evaluation",
+        "accept_condition",
+        "outcome_values",
+        "checks",
+        "requires_complete_capability_mapping",
+        "requires_adapter_configuration",
+        "validates_backends_in_this_phase"
+      ],
+      "properties": {
+        "validation_id": { "const": "dsc-backend-profile-validation-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "evaluation": { "const": "collect_all_failures" },
+        "accept_condition": { "const": "zero failed checks" },
+        "outcome_values": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "valid" }, { "const": "invalid" }]
+        },
+        "checks": {
+          "type": "array",
+          "minItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check_id",
+              "description",
+              "evaluation",
+              "pass_condition",
+              "fail_code",
+              "mandatory",
+              "status_in_this_phase"
+            ],
+            "properties": {
+              "check_id": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "evaluation": { "const": "design_time_declaration_only" },
+              "pass_condition": { "type": "string", "minLength": 1 },
+              "fail_code": {
+                "type": "string",
+                "pattern": "^DSC_BACKEND_PROFILE_FAIL_[A-Z0-9_]+$"
+              },
+              "mandatory": { "const": true },
+              "status_in_this_phase": {
+                "enum": ["not_evaluated", "passed_by_construction"]
+              }
+            }
+          }
+        },
+        "requires_complete_capability_mapping": { "const": true },
+        "requires_adapter_configuration": { "const": true },
+        "validates_backends_in_this_phase": { "const": false }
+      }
+    },
+    "bound_backends": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "entries",
+        "binding_policy",
+        "binds_backends_in_this_phase"
+      ],
+      "properties": {
+        "count": { "const": 0 },
+        "entries": { "type": "array", "maxItems": 0 },
+        "binding_policy": { "type": "string", "minLength": 1 },
+        "binds_backends_in_this_phase": { "const": false }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_only",
+        "read_only",
+        "backend_agnostic",
+        "reuses_implementation_spec",
+        "backend",
+        "no_backend_implementation",
+        "gpu",
+        "inference",
+        "binds_backends_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "profile_only": { "const": true },
+        "read_only": { "const": true },
+        "backend_agnostic": { "const": true },
+        "reuses_implementation_spec": { "const": true },
+        "backend": { "const": "none" },
+        "no_backend_implementation": { "const": true },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "binds_backends_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

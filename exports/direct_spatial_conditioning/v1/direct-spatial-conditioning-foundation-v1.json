@@ -1,0 +1,222 @@
+{
+  "foundation_id": "direct-spatial-conditioning-foundation-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-030",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+  "mode": "design_only",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+  "spatial_frame": {
+    "frame_id": "normalized_image_plane_v1",
+    "origin": "top_left",
+    "x_axis": {
+      "name": "u",
+      "range": [
+        0,
+        1
+      ],
+      "direction": "left_to_right"
+    },
+    "y_axis": {
+      "name": "v",
+      "range": [
+        0,
+        1
+      ],
+      "direction": "top_to_bottom"
+    },
+    "aspect_policy": "source_native_aspect_preserved",
+    "units": "normalized_fraction_of_frame",
+    "handedness": "image_raster"
+  },
+  "channels": [
+    {
+      "channel_id": "camera_pose_field",
+      "direction": "conditioning_input",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "representation": "per-anchor camera transform (translation in normalized frame, in-plane rotation, zoom scale)",
+      "value_space": {
+        "kind": "continuous",
+        "components": [
+          "translation_u",
+          "translation_v",
+          "rotation_rad",
+          "zoom_scale"
+        ],
+        "units": "normalized_fraction_of_frame + radians + unitless_scale",
+        "range_policy": "derived_from_verified_geometry_layer_no_recompute"
+      },
+      "upstream": {
+        "consumption_slot": "camera_pose",
+        "pipeline_stage": "camera_geometry_reconstruction",
+        "integrated_layer": "geometry",
+        "verified_source_verdict": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1"
+      },
+      "determinism": "design_only_no_inference",
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "direction": "conditioning_input",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "representation": "temporal sequence of camera motion vectors across adjacent frame pairs",
+      "value_space": {
+        "kind": "temporal_sequence",
+        "components": [
+          "motion_type",
+          "magnitude",
+          "translation_u",
+          "translation_v"
+        ],
+        "units": "normalized_fraction_of_frame_per_pair",
+        "range_policy": "derived_from_verified_camera_motion_layer_no_recompute"
+      },
+      "upstream": {
+        "consumption_slot": "camera_temporal",
+        "pipeline_stage": "camera_motion_reconstruction",
+        "integrated_layer": "camera_motion",
+        "verified_source_verdict": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1"
+      },
+      "determinism": "design_only_no_inference",
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "subject_position_field",
+      "direction": "conditioning_input",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "representation": "subject bounding-box center and displacement trajectory in normalized frame",
+      "value_space": {
+        "kind": "temporal_sequence",
+        "components": [
+          "center_u",
+          "center_v",
+          "displacement_u",
+          "displacement_v"
+        ],
+        "units": "normalized_fraction_of_frame",
+        "range_policy": "derived_from_verified_subject_motion_layer_no_recompute"
+      },
+      "upstream": {
+        "consumption_slot": "subject_temporal",
+        "pipeline_stage": "subject_motion_reconstruction",
+        "integrated_layer": "subject_motion",
+        "verified_source_verdict": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1"
+      },
+      "determinism": "design_only_no_inference",
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "direction": "conditioning_input",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "representation": "shot-scale class plus composition region occupancy over the normalized frame",
+      "value_space": {
+        "kind": "discrete",
+        "components": [
+          "shot_scale",
+          "composition_region"
+        ],
+        "units": "categorical_label + normalized_region_bounds",
+        "range_policy": "derived_from_verified_composition_layer_no_recompute"
+      },
+      "upstream": {
+        "consumption_slot": "framing",
+        "pipeline_stage": "composition_framing_reconstruction",
+        "integrated_layer": "composition",
+        "verified_source_verdict": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1"
+      },
+      "determinism": "design_only_no_inference",
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "direction": "conditioning_input",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "representation": "cut-boundary timestamps partitioning the timeline into spatially-continuous segments",
+      "value_space": {
+        "kind": "temporal_sequence",
+        "components": [
+          "cut_timestamp_ms",
+          "shot_duration_ms"
+        ],
+        "units": "milliseconds",
+        "range_policy": "derived_from_verified_transition_layer_no_recompute"
+      },
+      "upstream": {
+        "consumption_slot": "edit_rhythm",
+        "pipeline_stage": "temporal_edit_reconstruction",
+        "integrated_layer": "transition",
+        "verified_source_verdict": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1"
+      },
+      "determinism": "design_only_no_inference",
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "direction": "conditioning_input",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "representation": "scalar scene-energy derived from camera/subject relationship and relative velocity",
+      "value_space": {
+        "kind": "continuous",
+        "components": [
+          "motion_magnitude",
+          "camera_subject_relationship",
+          "relative_velocity"
+        ],
+        "units": "unitless_scalar + categorical_relationship",
+        "range_policy": "derived_from_verified_scene_dynamics_layer_no_recompute"
+      },
+      "upstream": {
+        "consumption_slot": "scene_energy",
+        "pipeline_stage": "scene_dynamics_reconstruction",
+        "integrated_layer": "scene_dynamics",
+        "verified_source_verdict": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1"
+      },
+      "determinism": "design_only_no_inference",
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    }
+  ],
+  "input_contract": {
+    "source_system": "MOVIE_RECONSTRUCTION_V1",
+    "certification_ref": "exports/movie_reconstruction_certification/v1/movie-reconstruction-production-certification-v1.json",
+    "certification_system_id": "MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1",
+    "master_package_ref": "exports/movie_reconstruction_master/v1/movie-reconstruction-master-package-v1.json",
+    "master_package_root": "exports/movie_reconstruction_master/v1",
+    "sources_supported": 15,
+    "read_only": true,
+    "no_dataset_modification": true
+  },
+  "output_contract": {
+    "produces": "spatial_conditioning_specification",
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "emitted_by_this_phase": false,
+    "downstream_consumer": "direct_spatial_conditioning_runtime (future phase)",
+    "channel_ids": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "design_constraints": {
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T07:12:37.044Z"
+}

@@ -1,0 +1,278 @@
+{
+  "certification_id": "direct-spatial-conditioning-backend-family-certification-v1",
+  "phase": "PHASE-DSC-054",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_CERTIFICATION_V1",
+  "mode": "read_only_certification",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_V1",
+  "certified_system_phase": "PHASE-DSC-053",
+  "surfaces_certified": [
+    "family_schema",
+    "family_identity",
+    "reference_binding",
+    "capability_contract"
+  ],
+  "family_id": "dsc-backend-family-generic-v1",
+  "family_version": "1.0",
+  "checks": [
+    {
+      "check": "family_schema",
+      "passed": true,
+      "detail": "backend_family_schema present with opaque family-id policy, eleven required fields, zero optional fields, no additional fields permitted",
+      "evidence": {
+        "schema_id": "dsc-backend-family-schema-v1",
+        "required_fields": 11,
+        "family_id_policy": "opaque_family_id_no_vendor_binding"
+      },
+      "errors": []
+    },
+    {
+      "check": "family_identity",
+      "passed": true,
+      "detail": "deterministic_family_identity is a literal design-time constant with no seed, time, randomness, vendor, framework, or device dependence, and declares the correct capability set, spatial frame, and six-channel set",
+      "evidence": {
+        "identity_id": "dsc-backend-family-deterministic-identity-v1",
+        "purity": "deterministic_pure_constant",
+        "vendor_binding": "none",
+        "framework_binding": "none",
+        "device_binding": "none"
+      },
+      "errors": []
+    },
+    {
+      "check": "reference_binding",
+      "passed": true,
+      "detail": "reference_backend_binding exactly reuses the certified PHASE-DSC-051 reference backend as the family archetype without instantiating members or implementing the reference backend in this phase",
+      "evidence": {
+        "binding_id": "dsc-backend-family-reference-backend-binding-v1",
+        "reference_backend_id": "dsc-reference-backend-v1",
+        "reference_backend_phase": "PHASE-DSC-051",
+        "binding_mode": "exact_reuse",
+        "role": "family_archetype",
+        "instantiates_members_in_this_phase": false,
+        "implements_reference_backend_in_this_phase": false,
+        "reference_backend_certified": true
+      },
+      "errors": []
+    },
+    {
+      "check": "capability_contract",
+      "passed": true,
+      "detail": "family_capability_contract covers all six mandatory capabilities inherited verbatim from the frozen capability registry in registered order, forbids vendor-specific capabilities, and evaluates no member in this phase",
+      "evidence": {
+        "contract_id": "dsc-backend-family-capability-contract-v1",
+        "required_capabilities": 6,
+        "vendor_specific_capabilities": "forbidden",
+        "evaluates_members_in_this_phase": false,
+        "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json"
+      },
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "backend family references the certified reference backend, its PHASE-DSC-052 certification, the certified template, its PHASE-DSC-050 certification, the certified profile, its PHASE-DSC-048 certification, and the backend design certification by exact path; the verify script's own precondition independently requires the reference backend certification to read certified:true before building",
+      "evidence": {
+        "links_verified": 7,
+        "reference_backend_certified": true,
+        "template_certified": true,
+        "profile_certified": true,
+        "backend_design_certified": true,
+        "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json"
+      },
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "scripts/verify-direct-spatial-conditioning-backend-family.ts re-executed live in this phase; rebuilt backend family produced the identical PASS verdict with zero errors and unchanged field counts",
+      "evidence": {
+        "command": "npm run verify:direct-spatial-conditioning-backend-family",
+        "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_V1",
+        "error_count": 0,
+        "method": "live_rerun_this_phase"
+      },
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "sha256 digests of the certified reference backend, its certification, the certified template, its certification, the certified profile, its certification, and the capability registry recomputed in this phase and found byte-identical to the digests recorded in the PHASE-DSC-052 reference backend certification chain; verify script's own pre/post hash diff over twenty-six protected paths also reported unmodified",
+      "evidence": {
+        "protected_artifacts_in_verify_script": 26,
+        "digests_recomputed_this_phase": 11,
+        "digests_matched_prior_certifications": 5,
+        "verify_script_upstream_protected_unmodified": true,
+        "integrity_method": "sha256_read_only_recheck"
+      },
+      "errors": []
+    }
+  ],
+  "evidence_chain": [
+    {
+      "from_surface": "backend_family",
+      "field": "reference_backend_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_family",
+      "field": "reference_backend_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_family",
+      "field": "template_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_family",
+      "field": "template_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_family",
+      "field": "profile_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_family",
+      "field": "profile_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_family",
+      "field": "backend_design_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    }
+  ],
+  "artifact_digests": [
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+      "sha256": "f6bdfb6aab7e99e53b96690083e34d33e8a8be3d09608f5e167e0499e280aff9",
+      "bytes": 12722,
+      "role": "certified_system"
+    },
+    {
+      "artifact": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-family.schema.json",
+      "sha256": "558370673a225fb655667a802ae1f209f0b18a2082d0ba5da3e693e24a8ad1a0",
+      "bytes": 15693,
+      "role": "certified_system"
+    },
+    {
+      "artifact": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-family-implementation-registry-v1.json",
+      "sha256": "646148f7fbcb1ae3b762eca24456658ad395661a9503076e77d8bfbf4d630edf",
+      "bytes": 4930,
+      "role": "certified_system"
+    },
+    {
+      "artifact": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_VALIDATION_REPORT.json",
+      "sha256": "976b49a2bb80d7cf4d3b80575767757c66c179dbcf49ff9461a44703c3471c71",
+      "bytes": 2199,
+      "role": "certified_system_validation_report_regenerated_this_phase"
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+      "sha256": "a2a477e72704a23e9e9c106b09951f55ae0555b6c2792330d763ae8b05629c69",
+      "bytes": 10598,
+      "role": "upstream_protected",
+      "matches_dsc_052_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+      "sha256": "5dfd1cf7197bb679482cf134c617a51750e12d32fb3e3e91bd07e69dcbcddcdc",
+      "bytes": 12323,
+      "role": "upstream_protected"
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+      "sha256": "7ccb281969514846bb126213d615c059c8d5ddc098447ac4f673967bc4f61940",
+      "bytes": 19942,
+      "role": "upstream_protected",
+      "matches_dsc_052_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+      "sha256": "22c76148927a5ac964255f8db9921b5d0a604948c109bac35964e343555113ba",
+      "bytes": 18875,
+      "role": "upstream_protected",
+      "matches_dsc_052_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+      "sha256": "c047a585bed7b4da691ba91f07750412e9bfae521ea0dc1c44a6132cf0b1252b",
+      "bytes": 16625,
+      "role": "upstream_protected",
+      "matches_dsc_052_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+      "sha256": "9edaf716fa81abb466408f791ad333aed92fcdefddcb1d2ec4147643d61643e3",
+      "bytes": 12456,
+      "role": "upstream_protected",
+      "matches_dsc_052_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+      "sha256": "2a3f15377413ba7192845c88d2ac6f3ecff6068797d3e9314104a69aa9b695b4",
+      "bytes": 15477,
+      "role": "upstream_protected"
+    }
+  ],
+  "digest_provenance_note": "The reference backend, template, template_certification, profile, and profile_certification digests were independently recomputed in this phase via sha256sum against the live files on disk and matched byte-for-byte against the digests recorded in exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json (PHASE-DSC-052), confirming no drift since that certification. The reference_backend_certification and capability_registry digests are recorded here for the first time (they were this phase's own upstream inputs not previously hashed in any certification artifact). The four certified_system digests (family, schema, registry, validation report) were computed fresh in this phase since PHASE-DSC-053 did not itself record digests for its own outputs.",
+  "reproducibility_rerun": {
+    "performed_this_phase": true,
+    "command": "npm run verify:direct-spatial-conditioning-backend-family",
+    "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_V1",
+    "error_count": 0,
+    "issues": [],
+    "upstream_protected_unmodified": true,
+    "note": "Live re-execution, not a cached/assumed result. The verify script rebuilds the backend family via buildDirectSpatialConditioningBackendFamily() and enforces as a precondition that the reference backend certification reads certified:true; it also performs its own sha256 pre/post diff over 26 protected paths covering the entire DSC design/profile/template/reference-backend stack. Both this rerun and the independent digest recomputation above agree."
+  },
+  "upstream_certified_system": {
+    "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+    "reference_backend_certified": true,
+    "backend_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+    "backend_template_certified": true,
+    "backend_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+    "backend_profile_certified": true,
+    "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+    "backend_design_certified": true,
+    "sources_supported": 15
+  },
+  "backend_neutrality": {
+    "backend_agnostic": true,
+    "backend": "none",
+    "family_members_instantiated_in_this_phase": 0,
+    "family_members": 0,
+    "no_vendor_specific_implementation": true,
+    "requires_gpu": false,
+    "performs_inference": false,
+    "placeholders": false
+  },
+  "not_performed_this_phase": [
+    "recalculation_of_business_metrics",
+    "modification_of_any_certified_artifact",
+    "vendor_implementation",
+    "family_member_instantiation",
+    "gpu_execution",
+    "model_inference"
+  ],
+  "integrity_method": "sha256_read_only_recheck",
+  "error_count": 0,
+  "created_at": "2026-07-25T00:00:00.000Z"
+}

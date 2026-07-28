@@ -1,0 +1,808 @@
+{
+  "contract_id": "direct-spatial-conditioning-contract-v1",
+  "phase": "PHASE-DSC-031",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1",
+  "mode": "design_only_contract",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1",
+  "foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+  "foundation_phase": "PHASE-MOVIE-RECONSTRUCTION-030",
+  "foundation_system_id": "DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+  "spatial_frame": {
+    "frame_id": "normalized_image_plane_v1",
+    "origin": "top_left",
+    "x_axis": {
+      "name": "u",
+      "range": [
+        0,
+        1
+      ],
+      "direction": "left_to_right"
+    },
+    "y_axis": {
+      "name": "v",
+      "range": [
+        0,
+        1
+      ],
+      "direction": "top_to_bottom"
+    },
+    "aspect_policy": "source_native_aspect_preserved",
+    "units": "normalized_fraction_of_frame",
+    "handedness": "image_raster"
+  },
+  "channel_contracts": [
+    {
+      "channel_id": "camera_pose_field",
+      "foundation_channel_ref": "camera_pose_field",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "consumption_slot": "camera_pose",
+      "integrated_layer": "geometry",
+      "input_schema": {
+        "schema_id": "dsc-channel-input-camera_pose_field-v1",
+        "channel_id": "camera_pose_field",
+        "required_fields": [
+          "channel_id",
+          "source_video_id",
+          "spatial_frame_ref",
+          "timestamp_ms",
+          "components"
+        ],
+        "fields": {
+          "channel_id": {
+            "const": "camera_pose_field"
+          },
+          "source_video_id": {
+            "type": "string",
+            "required": true
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          },
+          "timestamp_ms": {
+            "type": "number",
+            "required": true,
+            "min": 0
+          },
+          "components": [
+            {
+              "name": "translation_u",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Camera translation along u in normalized frame"
+            },
+            {
+              "name": "translation_v",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Camera translation along v in normalized frame"
+            },
+            {
+              "name": "rotation_rad",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "In-plane rotation in radians"
+            },
+            {
+              "name": "zoom_scale",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Unitless zoom scale factor"
+            }
+          ]
+        }
+      },
+      "output_schema": {
+        "schema_id": "dsc-channel-output-camera_pose_field-v1",
+        "channel_id": "camera_pose_field",
+        "produces": "validated_conditioning_packet",
+        "fields": {
+          "channel_id": {
+            "const": "camera_pose_field"
+          },
+          "validation_status": {
+            "enum": [
+              "accepted",
+              "rejected"
+            ]
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "rejection_codes": {
+            "type": "string_array"
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          }
+        },
+        "materializes_tensors": false,
+        "materializes_frames": false
+      },
+      "validation_rule_ids": [
+        "REQ_ALL_SIX_CHANNELS",
+        "REQ_SPATIAL_FRAME_LOCK",
+        "REQ_SOURCE_VIDEO_ID",
+        "REQ_TIMESTAMP_NONNEGATIVE",
+        "REQ_COMPONENTS_COMPLETE",
+        "REQ_NO_BACKEND",
+        "REQ_NO_GPU",
+        "REQ_NO_INFERENCE",
+        "REQ_NO_TENSOR_MATERIALIZATION",
+        "REQ_FOUNDATION_ALIGNMENT",
+        "REQ_CAMERA_POSE_COMPONENTS"
+      ],
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "foundation_channel_ref": "camera_temporal_track",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "consumption_slot": "camera_temporal",
+      "integrated_layer": "camera_motion",
+      "input_schema": {
+        "schema_id": "dsc-channel-input-camera_temporal_track-v1",
+        "channel_id": "camera_temporal_track",
+        "required_fields": [
+          "channel_id",
+          "source_video_id",
+          "spatial_frame_ref",
+          "timestamp_ms",
+          "components"
+        ],
+        "fields": {
+          "channel_id": {
+            "const": "camera_temporal_track"
+          },
+          "source_video_id": {
+            "type": "string",
+            "required": true
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          },
+          "timestamp_ms": {
+            "type": "number",
+            "required": true,
+            "min": 0
+          },
+          "components": [
+            {
+              "name": "motion_type",
+              "kind": "string",
+              "required": true,
+              "nullable": false,
+              "description": "Camera motion class label"
+            },
+            {
+              "name": "magnitude",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Motion magnitude over adjacent pair"
+            },
+            {
+              "name": "translation_u",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Pair translation along u"
+            },
+            {
+              "name": "translation_v",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Pair translation along v"
+            }
+          ]
+        }
+      },
+      "output_schema": {
+        "schema_id": "dsc-channel-output-camera_temporal_track-v1",
+        "channel_id": "camera_temporal_track",
+        "produces": "validated_conditioning_packet",
+        "fields": {
+          "channel_id": {
+            "const": "camera_temporal_track"
+          },
+          "validation_status": {
+            "enum": [
+              "accepted",
+              "rejected"
+            ]
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "rejection_codes": {
+            "type": "string_array"
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          }
+        },
+        "materializes_tensors": false,
+        "materializes_frames": false
+      },
+      "validation_rule_ids": [
+        "REQ_ALL_SIX_CHANNELS",
+        "REQ_SPATIAL_FRAME_LOCK",
+        "REQ_SOURCE_VIDEO_ID",
+        "REQ_TIMESTAMP_NONNEGATIVE",
+        "REQ_COMPONENTS_COMPLETE",
+        "REQ_NO_BACKEND",
+        "REQ_NO_GPU",
+        "REQ_NO_INFERENCE",
+        "REQ_NO_TENSOR_MATERIALIZATION",
+        "REQ_FOUNDATION_ALIGNMENT",
+        "REQ_CAMERA_TEMPORAL_COMPONENTS"
+      ],
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "subject_position_field",
+      "foundation_channel_ref": "subject_position_field",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "consumption_slot": "subject_temporal",
+      "integrated_layer": "subject_motion",
+      "input_schema": {
+        "schema_id": "dsc-channel-input-subject_position_field-v1",
+        "channel_id": "subject_position_field",
+        "required_fields": [
+          "channel_id",
+          "source_video_id",
+          "spatial_frame_ref",
+          "timestamp_ms",
+          "components"
+        ],
+        "fields": {
+          "channel_id": {
+            "const": "subject_position_field"
+          },
+          "source_video_id": {
+            "type": "string",
+            "required": true
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          },
+          "timestamp_ms": {
+            "type": "number",
+            "required": true,
+            "min": 0
+          },
+          "components": [
+            {
+              "name": "center_u",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Subject bbox center u"
+            },
+            {
+              "name": "center_v",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Subject bbox center v"
+            },
+            {
+              "name": "displacement_u",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Subject displacement along u"
+            },
+            {
+              "name": "displacement_v",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Subject displacement along v"
+            }
+          ]
+        }
+      },
+      "output_schema": {
+        "schema_id": "dsc-channel-output-subject_position_field-v1",
+        "channel_id": "subject_position_field",
+        "produces": "validated_conditioning_packet",
+        "fields": {
+          "channel_id": {
+            "const": "subject_position_field"
+          },
+          "validation_status": {
+            "enum": [
+              "accepted",
+              "rejected"
+            ]
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "rejection_codes": {
+            "type": "string_array"
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          }
+        },
+        "materializes_tensors": false,
+        "materializes_frames": false
+      },
+      "validation_rule_ids": [
+        "REQ_ALL_SIX_CHANNELS",
+        "REQ_SPATIAL_FRAME_LOCK",
+        "REQ_SOURCE_VIDEO_ID",
+        "REQ_TIMESTAMP_NONNEGATIVE",
+        "REQ_COMPONENTS_COMPLETE",
+        "REQ_NO_BACKEND",
+        "REQ_NO_GPU",
+        "REQ_NO_INFERENCE",
+        "REQ_NO_TENSOR_MATERIALIZATION",
+        "REQ_FOUNDATION_ALIGNMENT",
+        "REQ_SUBJECT_POSITION_COMPONENTS"
+      ],
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "foundation_channel_ref": "framing_composition_map",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "consumption_slot": "framing",
+      "integrated_layer": "composition",
+      "input_schema": {
+        "schema_id": "dsc-channel-input-framing_composition_map-v1",
+        "channel_id": "framing_composition_map",
+        "required_fields": [
+          "channel_id",
+          "source_video_id",
+          "spatial_frame_ref",
+          "timestamp_ms",
+          "components"
+        ],
+        "fields": {
+          "channel_id": {
+            "const": "framing_composition_map"
+          },
+          "source_video_id": {
+            "type": "string",
+            "required": true
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          },
+          "timestamp_ms": {
+            "type": "number",
+            "required": true,
+            "min": 0
+          },
+          "components": [
+            {
+              "name": "shot_scale",
+              "kind": "string",
+              "required": true,
+              "nullable": false,
+              "description": "Shot-scale categorical label"
+            },
+            {
+              "name": "composition_region",
+              "kind": "string",
+              "required": true,
+              "nullable": false,
+              "description": "Composition region occupancy descriptor"
+            }
+          ]
+        }
+      },
+      "output_schema": {
+        "schema_id": "dsc-channel-output-framing_composition_map-v1",
+        "channel_id": "framing_composition_map",
+        "produces": "validated_conditioning_packet",
+        "fields": {
+          "channel_id": {
+            "const": "framing_composition_map"
+          },
+          "validation_status": {
+            "enum": [
+              "accepted",
+              "rejected"
+            ]
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "rejection_codes": {
+            "type": "string_array"
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          }
+        },
+        "materializes_tensors": false,
+        "materializes_frames": false
+      },
+      "validation_rule_ids": [
+        "REQ_ALL_SIX_CHANNELS",
+        "REQ_SPATIAL_FRAME_LOCK",
+        "REQ_SOURCE_VIDEO_ID",
+        "REQ_TIMESTAMP_NONNEGATIVE",
+        "REQ_COMPONENTS_COMPLETE",
+        "REQ_NO_BACKEND",
+        "REQ_NO_GPU",
+        "REQ_NO_INFERENCE",
+        "REQ_NO_TENSOR_MATERIALIZATION",
+        "REQ_FOUNDATION_ALIGNMENT",
+        "REQ_FRAMING_COMPONENTS"
+      ],
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "foundation_channel_ref": "edit_rhythm_boundaries",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "consumption_slot": "edit_rhythm",
+      "integrated_layer": "transition",
+      "input_schema": {
+        "schema_id": "dsc-channel-input-edit_rhythm_boundaries-v1",
+        "channel_id": "edit_rhythm_boundaries",
+        "required_fields": [
+          "channel_id",
+          "source_video_id",
+          "spatial_frame_ref",
+          "timestamp_ms",
+          "components"
+        ],
+        "fields": {
+          "channel_id": {
+            "const": "edit_rhythm_boundaries"
+          },
+          "source_video_id": {
+            "type": "string",
+            "required": true
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          },
+          "timestamp_ms": {
+            "type": "number",
+            "required": true,
+            "min": 0
+          },
+          "components": [
+            {
+              "name": "cut_timestamp_ms",
+              "kind": "number_array",
+              "required": true,
+              "nullable": false,
+              "description": "Ordered cut boundary timestamps in ms"
+            },
+            {
+              "name": "shot_duration_ms",
+              "kind": "number_array",
+              "required": true,
+              "nullable": false,
+              "description": "Per-shot durations in ms"
+            }
+          ]
+        }
+      },
+      "output_schema": {
+        "schema_id": "dsc-channel-output-edit_rhythm_boundaries-v1",
+        "channel_id": "edit_rhythm_boundaries",
+        "produces": "validated_conditioning_packet",
+        "fields": {
+          "channel_id": {
+            "const": "edit_rhythm_boundaries"
+          },
+          "validation_status": {
+            "enum": [
+              "accepted",
+              "rejected"
+            ]
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "rejection_codes": {
+            "type": "string_array"
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          }
+        },
+        "materializes_tensors": false,
+        "materializes_frames": false
+      },
+      "validation_rule_ids": [
+        "REQ_ALL_SIX_CHANNELS",
+        "REQ_SPATIAL_FRAME_LOCK",
+        "REQ_SOURCE_VIDEO_ID",
+        "REQ_TIMESTAMP_NONNEGATIVE",
+        "REQ_COMPONENTS_COMPLETE",
+        "REQ_NO_BACKEND",
+        "REQ_NO_GPU",
+        "REQ_NO_INFERENCE",
+        "REQ_NO_TENSOR_MATERIALIZATION",
+        "REQ_FOUNDATION_ALIGNMENT",
+        "REQ_EDIT_RHYTHM_COMPONENTS"
+      ],
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "foundation_channel_ref": "scene_energy_field",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "consumption_slot": "scene_energy",
+      "integrated_layer": "scene_dynamics",
+      "input_schema": {
+        "schema_id": "dsc-channel-input-scene_energy_field-v1",
+        "channel_id": "scene_energy_field",
+        "required_fields": [
+          "channel_id",
+          "source_video_id",
+          "spatial_frame_ref",
+          "timestamp_ms",
+          "components"
+        ],
+        "fields": {
+          "channel_id": {
+            "const": "scene_energy_field"
+          },
+          "source_video_id": {
+            "type": "string",
+            "required": true
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          },
+          "timestamp_ms": {
+            "type": "number",
+            "required": true,
+            "min": 0
+          },
+          "components": [
+            {
+              "name": "motion_magnitude",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Scene motion magnitude scalar"
+            },
+            {
+              "name": "camera_subject_relationship",
+              "kind": "string",
+              "required": true,
+              "nullable": false,
+              "description": "Camera/subject relationship class"
+            },
+            {
+              "name": "relative_velocity",
+              "kind": "number",
+              "required": true,
+              "nullable": false,
+              "description": "Camera vs subject relative velocity"
+            }
+          ]
+        }
+      },
+      "output_schema": {
+        "schema_id": "dsc-channel-output-scene_energy_field-v1",
+        "channel_id": "scene_energy_field",
+        "produces": "validated_conditioning_packet",
+        "fields": {
+          "channel_id": {
+            "const": "scene_energy_field"
+          },
+          "validation_status": {
+            "enum": [
+              "accepted",
+              "rejected"
+            ]
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "rejection_codes": {
+            "type": "string_array"
+          },
+          "spatial_frame_ref": {
+            "const": "normalized_image_plane_v1"
+          }
+        },
+        "materializes_tensors": false,
+        "materializes_frames": false
+      },
+      "validation_rule_ids": [
+        "REQ_ALL_SIX_CHANNELS",
+        "REQ_SPATIAL_FRAME_LOCK",
+        "REQ_SOURCE_VIDEO_ID",
+        "REQ_TIMESTAMP_NONNEGATIVE",
+        "REQ_COMPONENTS_COMPLETE",
+        "REQ_NO_BACKEND",
+        "REQ_NO_GPU",
+        "REQ_NO_INFERENCE",
+        "REQ_NO_TENSOR_MATERIALIZATION",
+        "REQ_FOUNDATION_ALIGNMENT",
+        "REQ_SCENE_ENERGY_COMPONENTS"
+      ],
+      "requires_backend": false,
+      "requires_gpu": false,
+      "performs_inference": false
+    }
+  ],
+  "input_schema": {
+    "schema_id": "dsc-runtime-input-bundle-v1",
+    "description": "Runtime conditioning input bundle: one source_video_id + six channel packets over normalized_image_plane_v1.",
+    "required_top_level": [
+      "source_video_id",
+      "spatial_frame_ref",
+      "channels"
+    ],
+    "required_channel_count": 6,
+    "required_channel_ids": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "packet_shape": {
+      "source_video_id": "string (certified corpus id)",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "channels": "array[6] of channel input packets matching per-channel input_schema"
+    }
+  },
+  "output_schema": {
+    "schema_id": "dsc-runtime-output-bundle-v1",
+    "description": "Validated conditioning bundle: accept/reject per channel with rejection codes. No tensors, frames, or inference.",
+    "produces": "validated_conditioning_bundle",
+    "required_fields": [
+      "source_video_id",
+      "spatial_frame_ref",
+      "channel_results",
+      "bundle_accepted"
+    ],
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "emits_inference": false
+  },
+  "validation_rules": [
+    {
+      "rule_id": "REQ_ALL_SIX_CHANNELS",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "A conditioning packet MUST include exactly the six foundation channels.",
+      "predicate": "packet.channels.length === 6 AND set(packet.channels[].channel_id) === foundation.channel_ids"
+    },
+    {
+      "rule_id": "REQ_SPATIAL_FRAME_LOCK",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "Every channel MUST reference normalized_image_plane_v1.",
+      "predicate": "channel.spatial_frame_ref === \"normalized_image_plane_v1\""
+    },
+    {
+      "rule_id": "REQ_SOURCE_VIDEO_ID",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "source_video_id MUST be a non-empty string from the certified 15-source corpus.",
+      "predicate": "typeof source_video_id === \"string\" AND source_video_id.length > 0"
+    },
+    {
+      "rule_id": "REQ_TIMESTAMP_NONNEGATIVE",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "timestamp_ms MUST be a finite number >= 0.",
+      "predicate": "Number.isFinite(timestamp_ms) AND timestamp_ms >= 0"
+    },
+    {
+      "rule_id": "REQ_COMPONENTS_COMPLETE",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "All declared components for the channel MUST be present, non-null, and typed correctly.",
+      "predicate": "forall component in channel.input_schema.fields.components: present AND not null AND kind_matches"
+    },
+    {
+      "rule_id": "REQ_NO_BACKEND",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "Contract forbids backend invocation during validation.",
+      "predicate": "requires_backend === false"
+    },
+    {
+      "rule_id": "REQ_NO_GPU",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "Contract forbids GPU usage during validation.",
+      "predicate": "requires_gpu === false"
+    },
+    {
+      "rule_id": "REQ_NO_INFERENCE",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "Contract forbids inference / model execution.",
+      "predicate": "performs_inference === false"
+    },
+    {
+      "rule_id": "REQ_NO_TENSOR_MATERIALIZATION",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "Output MUST NOT materialize tensors or frames under this contract phase.",
+      "predicate": "output.materializes_tensors === false AND output.materializes_frames === false"
+    },
+    {
+      "rule_id": "REQ_FOUNDATION_ALIGNMENT",
+      "applies_to": "*",
+      "severity": "error",
+      "description": "Each channel_id MUST match a PHASE-030 foundation channel with identical component names.",
+      "predicate": "channel.foundation_channel_ref in foundation.channels AND components_equal"
+    },
+    {
+      "rule_id": "REQ_CAMERA_POSE_COMPONENTS",
+      "applies_to": "camera_pose_field",
+      "severity": "error",
+      "description": "camera_pose_field MUST carry translation_u, translation_v, rotation_rad, zoom_scale.",
+      "predicate": "components === [translation_u, translation_v, rotation_rad, zoom_scale]"
+    },
+    {
+      "rule_id": "REQ_CAMERA_TEMPORAL_COMPONENTS",
+      "applies_to": "camera_temporal_track",
+      "severity": "error",
+      "description": "camera_temporal_track MUST carry motion_type, magnitude, translation_u, translation_v.",
+      "predicate": "components === [motion_type, magnitude, translation_u, translation_v]"
+    },
+    {
+      "rule_id": "REQ_SUBJECT_POSITION_COMPONENTS",
+      "applies_to": "subject_position_field",
+      "severity": "error",
+      "description": "subject_position_field MUST carry center_u, center_v, displacement_u, displacement_v.",
+      "predicate": "components === [center_u, center_v, displacement_u, displacement_v]"
+    },
+    {
+      "rule_id": "REQ_FRAMING_COMPONENTS",
+      "applies_to": "framing_composition_map",
+      "severity": "error",
+      "description": "framing_composition_map MUST carry shot_scale, composition_region.",
+      "predicate": "components === [shot_scale, composition_region]"
+    },
+    {
+      "rule_id": "REQ_EDIT_RHYTHM_COMPONENTS",
+      "applies_to": "edit_rhythm_boundaries",
+      "severity": "error",
+      "description": "edit_rhythm_boundaries MUST carry cut_timestamp_ms and shot_duration_ms arrays of equal length.",
+      "predicate": "Array.isArray(cut_timestamp_ms) AND Array.isArray(shot_duration_ms) AND lengths_equal"
+    },
+    {
+      "rule_id": "REQ_SCENE_ENERGY_COMPONENTS",
+      "applies_to": "scene_energy_field",
+      "severity": "error",
+      "description": "scene_energy_field MUST carry motion_magnitude, camera_subject_relationship, relative_velocity.",
+      "predicate": "components === [motion_magnitude, camera_subject_relationship, relative_velocity]"
+    }
+  ],
+  "design_constraints": {
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false,
+    "contract_only": true
+  },
+  "created_at": "2026-07-25T07:15:53.971Z"
+}

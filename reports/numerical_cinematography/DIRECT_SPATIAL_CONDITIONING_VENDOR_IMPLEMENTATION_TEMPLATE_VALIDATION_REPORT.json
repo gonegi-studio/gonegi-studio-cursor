@@ -1,0 +1,52 @@
+{
+  "report_id": "direct_spatial_conditioning_vendor_implementation_template_ms13b03x",
+  "phase": "PHASE-DSC-073",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_TEMPLATE_V1",
+  "validation_passed": true,
+  "mode": "design_only_vendor_implementation_template",
+  "template_id": "dsc-vendor-implementation-template-generic-v1",
+  "template_version": "1.0",
+  "template_kind": "generic_vendor_implementation_template",
+  "implementation_template_schema": "dsc-vendor-implementation-template-schema-v1",
+  "schema_fields": 12,
+  "deterministic_template_identity": "dsc-vendor-implementation-template-deterministic-identity-v1",
+  "vendor_implementation_profile_binding": "dsc-vendor-implementation-template-profile-binding-v1",
+  "deterministic_implementation_skeleton": "dsc-vendor-implementation-deterministic-skeleton-v1",
+  "skeleton_steps": 4,
+  "extension_points": [
+    "EXT_VENDOR_DECLARE_CAPABILITIES",
+    "EXT_VENDOR_RESOLVE_COMPATIBILITY",
+    "EXT_VENDOR_BIND_CONDITIONING_INPUT",
+    "EXT_VENDOR_RELEASE_BINDING"
+  ],
+  "templated_implementations": 0,
+  "sources_supported": 15,
+  "reuses_certified_vendor_implementation_profile": true,
+  "vendor_neutral": true,
+  "design_constraints": {
+    "template_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_implementation_profile": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "templates_implementations_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "vendor_implementation_template": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-implementation-template.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-implementation-template-implementation-registry-v1.json",
+    "implementation_profile": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-profile-v1.json",
+    "implementation_profile_certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-profile-certification-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-26T00:58:53.909Z"
+}

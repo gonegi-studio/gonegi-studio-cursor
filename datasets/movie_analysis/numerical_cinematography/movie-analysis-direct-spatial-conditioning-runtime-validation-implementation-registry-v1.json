@@ -1,0 +1,58 @@
+{
+  "registry_id": "movie-analysis-direct-spatial-conditioning-runtime-validation-implementation-registry-v1",
+  "phase": "PHASE-DSC-037",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_V1",
+  "registry_version": "v1",
+  "status": "IMPLEMENTED",
+  "mode": "DESIGN_ONLY_VALIDATION",
+  "scope": {
+    "validation_stages": [
+      "runtime_api",
+      "packet_flow",
+      "interface_contract",
+      "generation_reuse"
+    ],
+    "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+    "generation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+    "expected_api_methods": [
+      "list_sources",
+      "generate_packet",
+      "validate_packet",
+      "produce_validated_packet"
+    ],
+    "note": "Validation specification only. Declares how the PHASE-036 runtime interface must be verified for API completeness, packet flow continuity, interface contract integrity, and PHASE-035 generation reuse. Executes no runtime methods."
+  },
+  "schema_path": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-runtime-validation.schema.json",
+  "builder_service_path": "services/directSpatialConditioningRuntimeValidationBuilder.ts",
+  "verify_script_path": "scripts/verify-direct-spatial-conditioning-runtime-validation.ts",
+  "npm_verify_command": "verify:direct-spatial-conditioning-runtime-validation",
+  "runtime_validation_root": "exports/direct_spatial_conditioning/v1",
+  "runtime_validation_path": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-validation-v1.json",
+  "validation_report_path": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_VALIDATION_REPORT.json",
+  "design_constraints": {
+    "validation_only": true,
+    "reuses_runtime_interface": true,
+    "reuses_packet_generation": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "executes_runtime_methods_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "explicitly_not_modified_this_phase": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+    "exports/numerical_reconstruction/v1/**",
+    "exports/movie_reconstruction_master/v1/**",
+    "exports/movie_reconstruction_certification/v1/**",
+    "datasets/movie_analysis/**"
+  ],
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_V1",
+  "generated_at": "2026-07-25T12:00:00.000Z"
+}

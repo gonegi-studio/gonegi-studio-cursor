@@ -1,0 +1,57 @@
+{
+  "report_id": "direct_spatial_conditioning_foundation_ms017r93",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-030",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+  "validation_passed": true,
+  "mode": "design_only",
+  "channels": [
+    {
+      "channel_id": "camera_pose_field",
+      "upstream_slot": "camera_pose",
+      "integrated_layer": "geometry"
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "upstream_slot": "camera_temporal",
+      "integrated_layer": "camera_motion"
+    },
+    {
+      "channel_id": "subject_position_field",
+      "upstream_slot": "subject_temporal",
+      "integrated_layer": "subject_motion"
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "upstream_slot": "framing",
+      "integrated_layer": "composition"
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "upstream_slot": "edit_rhythm",
+      "integrated_layer": "transition"
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "upstream_slot": "scene_energy",
+      "integrated_layer": "scene_dynamics"
+    }
+  ],
+  "channel_count": 6,
+  "spatial_frame": "normalized_image_plane_v1",
+  "design_constraints": {
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "foundation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-foundation.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-foundation-implementation-registry-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:12:37.048Z"
+}

@@ -1,0 +1,539 @@
+{
+  "implementation_spec_id": "direct-spatial-conditioning-backend-implementation-spec-v1",
+  "phase": "PHASE-DSC-045",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_IMPLEMENTATION_SPEC_V1",
+  "mode": "design_only_specification",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_IMPLEMENTATION_SPEC_V1",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "execution_contract_phase": "PHASE-DSC-044",
+  "execution_contract_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_EXECUTION_CONTRACT_V1",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "adapter_implementation_requirements": {
+    "requirements_id": "dsc-backend-adapter-implementation-requirements-v1",
+    "description": "Mandatory requirements a future backend adapter implementation must satisfy. Requirements are declared only; none are implemented in this phase.",
+    "requirements": [
+      {
+        "requirement_id": "REQ_OPAQUE_BACKEND_IDENTITY",
+        "category": "identity",
+        "description": "Adapter must publish an opaque backend_id with no vendor, framework, or device semantics.",
+        "mandatory": true,
+        "evidence_ref": "capability_registry.backend_descriptor.identity_policy",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_IMPLEMENT_ADAPTER_INTERFACE",
+        "category": "interface",
+        "description": "Adapter must implement all four PHASE-039 abstract methods without requiring GPU or inference.",
+        "mandatory": true,
+        "evidence_ref": "adapter_foundation.backend_interface.methods",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_CAPABILITY_DECLARATION_COMPLETE",
+        "category": "compatibility",
+        "description": "Adapter must declare every mandatory capability against dsc-backend-capability-set-v1.",
+        "mandatory": true,
+        "evidence_ref": "capability_registry.capability_schema.registered_capability_ids",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_COMPATIBILITY_ENGINE_PASS",
+        "category": "compatibility",
+        "description": "Adapter descriptor must resolve compatible under the PHASE-041 compatibility engine before registration.",
+        "mandatory": true,
+        "evidence_ref": "compatibility_engine.deterministic_algorithm",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_REGISTRATION_ACTIVE_ONLY",
+        "category": "registration",
+        "description": "Only PHASE-042 registrations in lifecycle active may be considered for routing and execution.",
+        "mandatory": true,
+        "evidence_ref": "adapter_registration.lifecycle.active_state",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_ROUTER_ROUTED_OUTCOME",
+        "category": "routing",
+        "description": "Execution may begin only after a PHASE-043 routing report with outcome routed.",
+        "mandatory": true,
+        "evidence_ref": "runtime_router.routing_report.outcome_values",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_EXECUTION_REQUEST_SHAPE",
+        "category": "execution",
+        "description": "Adapter execution entry must accept dsc-backend-execution-request-v1 exactly.",
+        "mandatory": true,
+        "evidence_ref": "execution_contract.execution_request",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_EXECUTION_RESPONSE_SHAPE",
+        "category": "execution",
+        "description": "Adapter execution exit must emit dsc-backend-execution-response-v1 exactly.",
+        "mandatory": true,
+        "evidence_ref": "execution_contract.execution_response",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_EXECUTION_LIFECYCLE",
+        "category": "execution",
+        "description": "Adapter must honor the PHASE-044 execution lifecycle transitions with side_effects none.",
+        "mandatory": true,
+        "evidence_ref": "execution_contract.execution_lifecycle",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "category": "determinism",
+        "description": "Identical requests against the same routed registration must yield the same outcome and result_digest.",
+        "mandatory": true,
+        "evidence_ref": "execution_contract.deterministic_execution_guarantees",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_SPATIAL_FRAME_LOCKED",
+        "category": "constraints",
+        "description": "Adapter must operate exclusively in normalized_image_plane_v1 without reprojection.",
+        "mandatory": true,
+        "evidence_ref": "adapter_foundation.capability_contract.spatial_frame_ref",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_NO_GPU_NO_INFERENCE",
+        "category": "constraints",
+        "description": "Adapter implementation under this specification must not require GPU or perform inference.",
+        "mandatory": true,
+        "evidence_ref": "design_constraints.gpu_inference",
+        "implemented_in_this_phase": false
+      }
+    ]
+  },
+  "required_interfaces": {
+    "interfaces_id": "dsc-backend-required-interfaces-v1",
+    "description": "Exact interface surface a backend adapter must implement. Methods are reused verbatim from the PHASE-039 adapter foundation; this phase adds no new methods and implements none.",
+    "adapter_interface_ref": "dsc-backend-adapter-interface-v1",
+    "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+    "methods": [
+      {
+        "method_id": "describe_capabilities",
+        "signature": "describe_capabilities() -> backend_capability_descriptor",
+        "source_interface": "dsc-backend-adapter-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_adapter": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      },
+      {
+        "method_id": "check_compatibility",
+        "signature": "check_compatibility(backend_capability_descriptor, dsc_adapted_conditioning_input_v1) -> compatibility_report",
+        "source_interface": "dsc-backend-adapter-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_adapter": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      },
+      {
+        "method_id": "bind_conditioning_input",
+        "signature": "bind_conditioning_input(dsc_adapted_conditioning_input_v1) -> conditioning_binding_handle",
+        "source_interface": "dsc-backend-adapter-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_adapter": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      },
+      {
+        "method_id": "release_conditioning_binding",
+        "signature": "release_conditioning_binding(conditioning_binding_handle) -> void",
+        "source_interface": "dsc-backend-adapter-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_adapter": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      }
+    ],
+    "surfaces": [
+      {
+        "surface_id": "dsc_adapted_conditioning_input_v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+        "purpose": "Adapted conditioning input accepted by bind_conditioning_input.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-backend-execution-request-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+        "purpose": "Execution request accepted after a routed routing report.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-backend-execution-response-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+        "purpose": "Execution response emitted at succeeded, failed, or cancelled.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-backend-routing-report-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+        "purpose": "Routing report proving selected_registration_id before execution.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-backend-compatibility-report-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+        "purpose": "Compatibility report required before registration becomes active.",
+        "mandatory": true
+      }
+    ],
+    "implements_interfaces_in_this_phase": false
+  },
+  "deterministic_compliance_checklist": {
+    "checklist_id": "dsc-backend-deterministic-compliance-checklist-v1",
+    "description": "Deterministic compliance checklist a future adapter implementation must pass. Every item is declared not_evaluated in this phase; no implementation is scored.",
+    "evaluation": "collect_all_failures",
+    "accept_condition": "zero failed checks",
+    "outcome_values": [
+      "compliant",
+      "non_compliant"
+    ],
+    "items": [
+      {
+        "check_id": "CHK_OPAQUE_BACKEND_IDENTITY",
+        "requirement_id": "REQ_OPAQUE_BACKEND_IDENTITY",
+        "description": "Adapter must publish an opaque backend_id with no vendor, framework, or device semantics.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_OPAQUE_BACKEND_IDENTITY evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_OPAQUE_BACKEND_IDENTITY",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_IMPLEMENT_ADAPTER_INTERFACE",
+        "requirement_id": "REQ_IMPLEMENT_ADAPTER_INTERFACE",
+        "description": "Adapter must implement all four PHASE-039 abstract methods without requiring GPU or inference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_IMPLEMENT_ADAPTER_INTERFACE evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_IMPLEMENT_ADAPTER_INTERFACE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_CAPABILITY_DECLARATION_COMPLETE",
+        "requirement_id": "REQ_CAPABILITY_DECLARATION_COMPLETE",
+        "description": "Adapter must declare every mandatory capability against dsc-backend-capability-set-v1.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_CAPABILITY_DECLARATION_COMPLETE evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_CAPABILITY_DECLARATION_COMPLETE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_COMPATIBILITY_ENGINE_PASS",
+        "requirement_id": "REQ_COMPATIBILITY_ENGINE_PASS",
+        "description": "Adapter descriptor must resolve compatible under the PHASE-041 compatibility engine before registration.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_COMPATIBILITY_ENGINE_PASS evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_COMPATIBILITY_ENGINE_PASS",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_REGISTRATION_ACTIVE_ONLY",
+        "requirement_id": "REQ_REGISTRATION_ACTIVE_ONLY",
+        "description": "Only PHASE-042 registrations in lifecycle active may be considered for routing and execution.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_REGISTRATION_ACTIVE_ONLY evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_REGISTRATION_ACTIVE_ONLY",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_ROUTER_ROUTED_OUTCOME",
+        "requirement_id": "REQ_ROUTER_ROUTED_OUTCOME",
+        "description": "Execution may begin only after a PHASE-043 routing report with outcome routed.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_ROUTER_ROUTED_OUTCOME evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_ROUTER_ROUTED_OUTCOME",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_EXECUTION_REQUEST_SHAPE",
+        "requirement_id": "REQ_EXECUTION_REQUEST_SHAPE",
+        "description": "Adapter execution entry must accept dsc-backend-execution-request-v1 exactly.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_EXECUTION_REQUEST_SHAPE evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_EXECUTION_REQUEST_SHAPE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_EXECUTION_RESPONSE_SHAPE",
+        "requirement_id": "REQ_EXECUTION_RESPONSE_SHAPE",
+        "description": "Adapter execution exit must emit dsc-backend-execution-response-v1 exactly.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_EXECUTION_RESPONSE_SHAPE evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_EXECUTION_RESPONSE_SHAPE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_EXECUTION_LIFECYCLE",
+        "requirement_id": "REQ_EXECUTION_LIFECYCLE",
+        "description": "Adapter must honor the PHASE-044 execution lifecycle transitions with side_effects none.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_EXECUTION_LIFECYCLE evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_EXECUTION_LIFECYCLE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_DETERMINISTIC_OUTCOME",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Identical requests against the same routed registration must yield the same outcome and result_digest.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_DETERMINISTIC_OUTCOME evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_DETERMINISTIC_OUTCOME",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_SPATIAL_FRAME_LOCKED",
+        "requirement_id": "REQ_SPATIAL_FRAME_LOCKED",
+        "description": "Adapter must operate exclusively in normalized_image_plane_v1 without reprojection.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_SPATIAL_FRAME_LOCKED evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_SPATIAL_FRAME_LOCKED",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_GPU_NO_INFERENCE",
+        "requirement_id": "REQ_NO_GPU_NO_INFERENCE",
+        "description": "Adapter implementation under this specification must not require GPU or perform inference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_NO_GPU_NO_INFERENCE evidence present and constraints satisfied",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_NO_GPU_NO_INFERENCE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_SEED_DEPENDENCE",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Implementation must declare seed_dependence none.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "seed_dependence equals none",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_SEED_DEPENDENCE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_TIME_DEPENDENCE",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Implementation must declare time_dependence none; audit timestamps must not affect result_digest.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "time_dependence equals none",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_TIME_DEPENDENCE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_RANDOMNESS",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Implementation must declare randomness none.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "randomness equals none",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_RANDOMNESS",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_CHANNEL_ORDER_FOUNDATION",
+        "requirement_id": "REQ_SPATIAL_FRAME_LOCKED",
+        "description": "Request and response channel_order must equal the foundation channel order.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "channel_order equals foundation channel order",
+        "fail_code": "DSC_BACKEND_IMPL_FAIL_CHANNEL_ORDER",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      }
+    ],
+    "evaluates_implementations_in_this_phase": false
+  },
+  "implementation_report": {
+    "report_schema_id": "dsc-backend-implementation-report-schema-v1",
+    "report_id": "dsc-backend-implementation-report-v1",
+    "description": "Typed report schema for a future implementation compliance evaluation. This phase defines the schema only and evaluates no implementation.",
+    "encoding": "application/json",
+    "required_fields": [
+      {
+        "field": "implementation_report_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque report identity with no vendor binding"
+      },
+      {
+        "field": "backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque backend_id under evaluation"
+      },
+      {
+        "field": "execution_contract_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the PHASE-044 execution contract path"
+      },
+      {
+        "field": "implementation_spec_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal this implementation specification path"
+      },
+      {
+        "field": "outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of outcome_values"
+      },
+      {
+        "field": "checklist_results",
+        "type": "array<checklist_entry>",
+        "required": true,
+        "nullable": false,
+        "constraint": "one entry per checklist item in checklist item order"
+      },
+      {
+        "field": "failed_checks",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "check_ids with status fail, in checklist item order"
+      },
+      {
+        "field": "fail_codes",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "fail codes collected from failed checks; empty iff outcome compliant"
+      },
+      {
+        "field": "methods_implemented",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must cover all required adapter interface method_ids when compliant"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be a supported version of dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "evaluated_at",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "ISO-8601 audit timestamp; must not affect deterministic checklist outcomes"
+      }
+    ],
+    "outcome_values": [
+      "compliant",
+      "non_compliant"
+    ],
+    "checklist_entry_shape": {
+      "fields": [
+        "check_id",
+        "requirement_id",
+        "status",
+        "fail_code_or_null",
+        "evidence_note"
+      ],
+      "status_values": [
+        "pass",
+        "fail",
+        "not_evaluated"
+      ]
+    },
+    "ordering": {
+      "checklist_results": "checklist_item_order",
+      "failed_checks": "checklist_item_order"
+    },
+    "additional_fields": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "evaluates_implementations_in_this_phase": false
+  },
+  "implemented_backends": {
+    "count": 0,
+    "entries": [],
+    "implementation_policy": "backend implementation is performed by future phases; this phase defines the specification only and binds to no backend",
+    "implements_backends_in_this_phase": false
+  },
+  "design_constraints": {
+    "specification_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_execution_contract": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "implements_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T09:17:21.859Z"
+}

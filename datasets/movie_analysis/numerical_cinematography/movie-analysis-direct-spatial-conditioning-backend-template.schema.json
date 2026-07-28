@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template.schema.json",
+  "title": "DirectSpatialConditioningBackendTemplate",
+  "description": "PHASE-DSC-049 design-only, read-only generic backend template. Defines backend template schema, deterministic implementation skeleton, extension points, and validation template over the certified PHASE-047 profile. Implements no backend, fills no extension point, and binds to no vendor, framework, or device.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "backend_template_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "template_id",
+    "template_version",
+    "template_kind",
+    "profile_ref",
+    "profile_phase",
+    "profile_system_id",
+    "profile_certification_ref",
+    "backend_design_certification_ref",
+    "implementation_spec_ref",
+    "execution_contract_ref",
+    "runtime_router_ref",
+    "adapter_registration_ref",
+    "compatibility_engine_ref",
+    "capability_registry_ref",
+    "adapter_foundation_ref",
+    "runtime_interface_ref",
+    "runtime_package_ref",
+    "sources_supported",
+    "required_channels",
+    "spatial_frame_ref",
+    "capability_set_id",
+    "capability_set_version",
+    "backend_template_schema",
+    "deterministic_implementation_skeleton",
+    "extension_points",
+    "validation_template",
+    "templated_backends",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "backend_template_id": {
+      "type": "string",
+      "const": "direct-spatial-conditioning-backend-template-v1"
+    },
+    "phase": { "type": "string", "const": "PHASE-DSC-049" },
+    "system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1"
+    },
+    "mode": { "type": "string", "const": "design_only_template" },
+    "target": {
+      "type": "string",
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1"
+    },
+    "template_id": { "const": "dsc-backend-template-generic-v1" },
+    "template_version": { "const": "1.0" },
+    "template_kind": { "const": "generic_backend_template" },
+    "profile_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json"
+    },
+    "profile_phase": { "type": "string", "const": "PHASE-DSC-047" },
+    "profile_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1"
+    },
+    "profile_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json"
+    },
+    "backend_design_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json"
+    },
+    "implementation_spec_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json"
+    },
+    "execution_contract_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json"
+    },
+    "runtime_router_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json"
+    },
+    "adapter_registration_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json"
+    },
+    "compatibility_engine_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json"
+    },
+    "capability_registry_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json"
+    },
+    "adapter_foundation_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json"
+    },
+    "runtime_interface_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json"
+    },
+    "runtime_package_ref": {
+      "type": "string",
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "required_channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+    "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+    "capability_set_version": { "const": "1.0" },
+    "backend_template_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "description",
+        "encoding",
+        "template_id_policy",
+        "profile_ref",
+        "required_fields",
+        "optional_fields",
+        "additional_fields"
+      ],
+      "properties": {
+        "schema_id": { "const": "dsc-backend-template-schema-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "encoding": { "const": "application/json" },
+        "template_id_policy": {
+          "const": "opaque_template_id_no_vendor_binding"
+        },
+        "profile_ref": { "const": "dsc-backend-profile-reference-v1" },
+        "required_fields": {
+          "type": "array",
+          "minItems": 11,
+          "maxItems": 11,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "type", "required", "nullable", "constraint"],
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "required": { "const": true },
+              "nullable": { "const": false },
+              "constraint": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "optional_fields": { "type": "array", "maxItems": 0 },
+        "additional_fields": { "const": false }
+      }
+    },
+    "deterministic_implementation_skeleton": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skeleton_id",
+        "description",
+        "adapter_interface_ref",
+        "implementation_spec_ref",
+        "purity",
+        "seed_dependence",
+        "time_dependence",
+        "randomness",
+        "step_order",
+        "steps",
+        "same_inputs_same_outcome",
+        "requires_gpu",
+        "performs_inference",
+        "implements_steps_in_this_phase"
+      ],
+      "properties": {
+        "skeleton_id": {
+          "const": "dsc-backend-deterministic-implementation-skeleton-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "adapter_interface_ref": {
+          "const": "dsc-backend-adapter-interface-v1"
+        },
+        "implementation_spec_ref": {
+          "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json"
+        },
+        "purity": { "const": "deterministic_pure_function_per_step" },
+        "seed_dependence": { "const": "none" },
+        "time_dependence": { "const": "none" },
+        "randomness": { "const": "none" },
+        "step_order": { "const": "fixed_declared_order" },
+        "steps": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "step_id",
+              "order",
+              "method_id",
+              "signature",
+              "description",
+              "reads",
+              "emits",
+              "side_effects",
+              "deterministic",
+              "extension_point_ref",
+              "implemented_in_this_phase"
+            ],
+            "properties": {
+              "step_id": { "type": "string", "minLength": 1 },
+              "order": { "type": "integer", "minimum": 1, "maximum": 4 },
+              "method_id": {
+                "enum": [
+                  "describe_capabilities",
+                  "check_compatibility",
+                  "bind_conditioning_input",
+                  "release_conditioning_binding"
+                ]
+              },
+              "signature": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "reads": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "emits": { "type": "string", "minLength": 1 },
+              "side_effects": { "const": "none" },
+              "deterministic": { "const": true },
+              "extension_point_ref": { "type": "string", "minLength": 1 },
+              "implemented_in_this_phase": { "const": false }
+            }
+          }
+        },
+        "same_inputs_same_outcome": { "const": true },
+        "requires_gpu": { "const": false },
+        "performs_inference": { "const": false },
+        "implements_steps_in_this_phase": { "const": false }
+      }
+    },
+    "extension_points": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "extension_points_id",
+        "description",
+        "closed_set",
+        "points",
+        "unknown_extension_policy",
+        "fills_extension_points_in_this_phase"
+      ],
+      "properties": {
+        "extension_points_id": {
+          "const": "dsc-backend-template-extension-points-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "closed_set": { "const": true },
+        "points": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "extension_point_id",
+              "target_method_id",
+              "category",
+              "description",
+              "contract",
+              "must_remain_deterministic",
+              "may_require_gpu",
+              "may_perform_inference",
+              "may_modify_certified_artifacts",
+              "filled_in_this_phase"
+            ],
+            "properties": {
+              "extension_point_id": {
+                "type": "string",
+                "pattern": "^EXT_[A-Z0-9_]+$"
+              },
+              "target_method_id": {
+                "enum": [
+                  "describe_capabilities",
+                  "check_compatibility",
+                  "bind_conditioning_input",
+                  "release_conditioning_binding"
+                ]
+              },
+              "category": {
+                "enum": [
+                  "capability_declaration",
+                  "compatibility",
+                  "binding",
+                  "lifecycle"
+                ]
+              },
+              "description": { "type": "string", "minLength": 1 },
+              "contract": { "type": "string", "minLength": 1 },
+              "must_remain_deterministic": { "const": true },
+              "may_require_gpu": { "const": false },
+              "may_perform_inference": { "const": false },
+              "may_modify_certified_artifacts": { "const": false },
+              "filled_in_this_phase": { "const": false }
+            }
+          }
+        },
+        "unknown_extension_policy": {
+          "const": "reject_undeclared_extension_point"
+        },
+        "fills_extension_points_in_this_phase": { "const": false }
+      }
+    },
+    "validation_template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_template_id",
+        "description",
+        "evaluation",
+        "accept_condition",
+        "outcome_values",
+        "checks",
+        "profile_validation_ref",
+        "requires_all_steps_declared",
+        "requires_all_extension_points_declared",
+        "validates_implementations_in_this_phase"
+      ],
+      "properties": {
+        "validation_template_id": {
+          "const": "dsc-backend-template-validation-template-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "evaluation": { "const": "collect_all_failures" },
+        "accept_condition": { "const": "zero failed checks" },
+        "outcome_values": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "const": "conforms" },
+            { "const": "non_conforming" }
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "minItems": 13,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check_id",
+              "target",
+              "description",
+              "evaluation",
+              "pass_condition",
+              "fail_code",
+              "mandatory",
+              "status_in_this_phase"
+            ],
+            "properties": {
+              "check_id": { "type": "string", "minLength": 1 },
+              "target": {
+                "enum": [
+                  "skeleton",
+                  "extension_point",
+                  "profile_binding",
+                  "constraints"
+                ]
+              },
+              "description": { "type": "string", "minLength": 1 },
+              "evaluation": { "const": "design_time_declaration_only" },
+              "pass_condition": { "type": "string", "minLength": 1 },
+              "fail_code": {
+                "type": "string",
+                "pattern": "^DSC_BACKEND_TEMPLATE_FAIL_[A-Z0-9_]+$"
+              },
+              "mandatory": { "const": true },
+              "status_in_this_phase": { "const": "not_evaluated" }
+            }
+          }
+        },
+        "profile_validation_ref": {
+          "const": "dsc-backend-profile-validation-v1"
+        },
+        "requires_all_steps_declared": { "const": true },
+        "requires_all_extension_points_declared": { "const": true },
+        "validates_implementations_in_this_phase": { "const": false }
+      }
+    },
+    "templated_backends": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "entries",
+        "templating_policy",
+        "templates_backends_in_this_phase"
+      ],
+      "properties": {
+        "count": { "const": 0 },
+        "entries": { "type": "array", "maxItems": 0 },
+        "templating_policy": { "type": "string", "minLength": 1 },
+        "templates_backends_in_this_phase": { "const": false }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_only",
+        "read_only",
+        "backend_agnostic",
+        "reuses_certified_profile",
+        "backend",
+        "no_backend_implementation",
+        "gpu",
+        "inference",
+        "templates_backends_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "template_only": { "const": true },
+        "read_only": { "const": true },
+        "backend_agnostic": { "const": true },
+        "reuses_certified_profile": { "const": true },
+        "backend": { "const": "none" },
+        "no_backend_implementation": { "const": true },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "templates_backends_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

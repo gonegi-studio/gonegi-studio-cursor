@@ -1,0 +1,555 @@
+{
+  "vendor_implementation_spec_id": "direct-spatial-conditioning-vendor-implementation-spec-v1",
+  "phase": "PHASE-DSC-061",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_SPEC_V1",
+  "mode": "design_only_vendor_implementation_spec",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_SPEC_V1",
+  "vendor_execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+  "vendor_execution_contract_phase": "PHASE-DSC-060",
+  "vendor_execution_contract_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_EXECUTION_CONTRACT_V1",
+  "vendor_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+  "vendor_compatibility_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+  "vendor_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json",
+  "vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+  "family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+  "family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json",
+  "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+  "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+  "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "vendor_implementation_requirements": {
+    "requirements_id": "dsc-vendor-implementation-requirements-v1",
+    "description": "Mandatory requirements a future vendor implementation must satisfy. Requirements are declared only; none are implemented in this phase.",
+    "requirements": [
+      {
+        "requirement_id": "REQ_OPAQUE_VENDOR_IDENTITY",
+        "category": "identity",
+        "description": "Vendor must publish opaque vendor_registration_id and opaque_vendor_handle with no vendor name, framework, or device semantics.",
+        "mandatory": true,
+        "evidence_ref": "vendor_registry.vendor_registration_record.identity_policy",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_IMPLEMENT_VENDOR_INTERFACE",
+        "category": "interface",
+        "description": "Vendor must implement all four PHASE-055 abstract capability interface methods without requiring GPU or inference.",
+        "mandatory": true,
+        "evidence_ref": "vendor_profile.vendor_capability_interface.methods",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_CAPABILITY_DECLARATION_COMPLETE",
+        "category": "compatibility",
+        "description": "Vendor must declare every mandatory capability against dsc-backend-capability-set-v1 via the vendor capability interface.",
+        "mandatory": true,
+        "evidence_ref": "vendor_profile.vendor_capability_interface.required_capability_declarations",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_VENDOR_COMPATIBILITY_PASS",
+        "category": "compatibility",
+        "description": "Vendor registration must resolve compatible under the PHASE-057 vendor compatibility specification before routing.",
+        "mandatory": true,
+        "evidence_ref": "vendor_compatibility.deterministic_compatibility_rules",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_REGISTRY_ACTIVE_ONLY",
+        "category": "registry",
+        "description": "Only PHASE-056 registrations in lifecycle active may be considered for routing and execution.",
+        "mandatory": true,
+        "evidence_ref": "vendor_registry.vendor_lifecycle.active_state",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_ROUTER_ROUTED_OUTCOME",
+        "category": "routing",
+        "description": "Execution may begin only after a PHASE-059 routing report with outcome routed.",
+        "mandatory": true,
+        "evidence_ref": "vendor_router.routing_report.outcome_values",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_EXECUTION_REQUEST_SHAPE",
+        "category": "execution",
+        "description": "Vendor execution entry must accept dsc-vendor-execution-request-v1 exactly.",
+        "mandatory": true,
+        "evidence_ref": "vendor_execution_contract.execution_request",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_EXECUTION_RESPONSE_SHAPE",
+        "category": "execution",
+        "description": "Vendor execution exit must emit dsc-vendor-execution-response-v1 exactly.",
+        "mandatory": true,
+        "evidence_ref": "vendor_execution_contract.execution_response",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_EXECUTION_LIFECYCLE",
+        "category": "execution",
+        "description": "Vendor must honor the PHASE-060 execution lifecycle transitions with side_effects none.",
+        "mandatory": true,
+        "evidence_ref": "vendor_execution_contract.execution_lifecycle",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "category": "determinism",
+        "description": "Identical requests against the same routed vendor registration must yield the same outcome and result_digest.",
+        "mandatory": true,
+        "evidence_ref": "vendor_execution_contract.deterministic_execution_guarantees",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_SPATIAL_FRAME_LOCKED",
+        "category": "constraints",
+        "description": "Vendor must operate exclusively in normalized_image_plane_v1 without reprojection.",
+        "mandatory": true,
+        "evidence_ref": "vendor_profile.vendor_capability_interface.spatial_frame_ref",
+        "implemented_in_this_phase": false
+      },
+      {
+        "requirement_id": "REQ_NO_GPU_NO_INFERENCE",
+        "category": "constraints",
+        "description": "Vendor implementation under this specification must not require GPU or perform inference.",
+        "mandatory": true,
+        "evidence_ref": "design_constraints.gpu_inference",
+        "implemented_in_this_phase": false
+      }
+    ]
+  },
+  "required_interfaces": {
+    "interfaces_id": "dsc-vendor-required-interfaces-v1",
+    "description": "Exact interface surface a vendor must implement. Methods are reused verbatim from the PHASE-055 vendor capability interface; this phase adds no new methods and implements none.",
+    "vendor_capability_interface_ref": "dsc-vendor-capability-interface-v1",
+    "vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+    "methods": [
+      {
+        "method_id": "describe_capabilities",
+        "signature": "describe_capabilities() -> backend_capability_descriptor",
+        "source_interface": "dsc-vendor-capability-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_vendor": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      },
+      {
+        "method_id": "check_compatibility",
+        "signature": "check_compatibility(backend_capability_descriptor, dsc_adapted_conditioning_input_v1) -> compatibility_report",
+        "source_interface": "dsc-vendor-capability-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_vendor": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      },
+      {
+        "method_id": "bind_conditioning_input",
+        "signature": "bind_conditioning_input(dsc_adapted_conditioning_input_v1) -> conditioning_binding_handle",
+        "source_interface": "dsc-vendor-capability-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_vendor": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      },
+      {
+        "method_id": "release_conditioning_binding",
+        "signature": "release_conditioning_binding(conditioning_binding_handle) -> void",
+        "source_interface": "dsc-vendor-capability-interface-v1",
+        "abstract": true,
+        "must_be_implemented_by_vendor": true,
+        "requires_gpu": false,
+        "performs_inference": false,
+        "implemented_in_this_phase": false
+      }
+    ],
+    "surfaces": [
+      {
+        "surface_id": "dsc_adapted_conditioning_input_v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+        "purpose": "Adapted conditioning input accepted by bind_conditioning_input.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-vendor-execution-request-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+        "purpose": "Execution request accepted after a routed vendor routing report.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-vendor-execution-response-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+        "purpose": "Execution response emitted at succeeded, failed, or cancelled.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-vendor-routing-report-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+        "purpose": "Routing report proving selected_vendor_registration_id before execution.",
+        "mandatory": true
+      },
+      {
+        "surface_id": "dsc-vendor-compatibility-report-v1",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+        "purpose": "Compatibility report required before a registration becomes eligible for routing.",
+        "mandatory": true
+      }
+    ],
+    "implements_interfaces_in_this_phase": false
+  },
+  "deterministic_compliance_checklist": {
+    "checklist_id": "dsc-vendor-deterministic-compliance-checklist-v1",
+    "description": "Deterministic compliance checklist a future vendor implementation must pass. Every item is declared not_evaluated in this phase; no implementation is scored.",
+    "evaluation": "collect_all_failures",
+    "accept_condition": "zero failed checks",
+    "outcome_values": [
+      "compliant",
+      "non_compliant"
+    ],
+    "items": [
+      {
+        "check_id": "CHK_OPAQUE_VENDOR_IDENTITY",
+        "requirement_id": "REQ_OPAQUE_VENDOR_IDENTITY",
+        "description": "Vendor must publish opaque vendor_registration_id and opaque_vendor_handle with no vendor name, framework, or device semantics.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_OPAQUE_VENDOR_IDENTITY evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_OPAQUE_VENDOR_IDENTITY",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_IMPLEMENT_VENDOR_INTERFACE",
+        "requirement_id": "REQ_IMPLEMENT_VENDOR_INTERFACE",
+        "description": "Vendor must implement all four PHASE-055 abstract capability interface methods without requiring GPU or inference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_IMPLEMENT_VENDOR_INTERFACE evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_IMPLEMENT_VENDOR_INTERFACE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_CAPABILITY_DECLARATION_COMPLETE",
+        "requirement_id": "REQ_CAPABILITY_DECLARATION_COMPLETE",
+        "description": "Vendor must declare every mandatory capability against dsc-backend-capability-set-v1 via the vendor capability interface.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_CAPABILITY_DECLARATION_COMPLETE evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_CAPABILITY_DECLARATION_COMPLETE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_VENDOR_COMPATIBILITY_PASS",
+        "requirement_id": "REQ_VENDOR_COMPATIBILITY_PASS",
+        "description": "Vendor registration must resolve compatible under the PHASE-057 vendor compatibility specification before routing.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_VENDOR_COMPATIBILITY_PASS evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_VENDOR_COMPATIBILITY_PASS",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_REGISTRY_ACTIVE_ONLY",
+        "requirement_id": "REQ_REGISTRY_ACTIVE_ONLY",
+        "description": "Only PHASE-056 registrations in lifecycle active may be considered for routing and execution.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_REGISTRY_ACTIVE_ONLY evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_REGISTRY_ACTIVE_ONLY",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_ROUTER_ROUTED_OUTCOME",
+        "requirement_id": "REQ_ROUTER_ROUTED_OUTCOME",
+        "description": "Execution may begin only after a PHASE-059 routing report with outcome routed.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_ROUTER_ROUTED_OUTCOME evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_ROUTER_ROUTED_OUTCOME",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_EXECUTION_REQUEST_SHAPE",
+        "requirement_id": "REQ_EXECUTION_REQUEST_SHAPE",
+        "description": "Vendor execution entry must accept dsc-vendor-execution-request-v1 exactly.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_EXECUTION_REQUEST_SHAPE evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_EXECUTION_REQUEST_SHAPE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_EXECUTION_RESPONSE_SHAPE",
+        "requirement_id": "REQ_EXECUTION_RESPONSE_SHAPE",
+        "description": "Vendor execution exit must emit dsc-vendor-execution-response-v1 exactly.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_EXECUTION_RESPONSE_SHAPE evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_EXECUTION_RESPONSE_SHAPE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_EXECUTION_LIFECYCLE",
+        "requirement_id": "REQ_EXECUTION_LIFECYCLE",
+        "description": "Vendor must honor the PHASE-060 execution lifecycle transitions with side_effects none.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_EXECUTION_LIFECYCLE evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_EXECUTION_LIFECYCLE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_DETERMINISTIC_OUTCOME",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Identical requests against the same routed vendor registration must yield the same outcome and result_digest.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_DETERMINISTIC_OUTCOME evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_DETERMINISTIC_OUTCOME",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_SPATIAL_FRAME_LOCKED",
+        "requirement_id": "REQ_SPATIAL_FRAME_LOCKED",
+        "description": "Vendor must operate exclusively in normalized_image_plane_v1 without reprojection.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_SPATIAL_FRAME_LOCKED evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_SPATIAL_FRAME_LOCKED",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_GPU_NO_INFERENCE",
+        "requirement_id": "REQ_NO_GPU_NO_INFERENCE",
+        "description": "Vendor implementation under this specification must not require GPU or perform inference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "REQ_NO_GPU_NO_INFERENCE evidence present and constraints satisfied",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_NO_GPU_NO_INFERENCE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_SEED_DEPENDENCE",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Implementation must declare seed_dependence none.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "seed_dependence equals none",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_SEED_DEPENDENCE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_TIME_DEPENDENCE",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Implementation must declare time_dependence none; audit timestamps must not affect result_digest.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "time_dependence equals none",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_TIME_DEPENDENCE",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_NO_RANDOMNESS",
+        "requirement_id": "REQ_DETERMINISTIC_OUTCOME",
+        "description": "Implementation must declare randomness none.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "randomness equals none",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_RANDOMNESS",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      },
+      {
+        "check_id": "CHK_CHANNEL_ORDER_FOUNDATION",
+        "requirement_id": "REQ_SPATIAL_FRAME_LOCKED",
+        "description": "Request and response channel_order must equal the foundation channel order.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "channel_order equals foundation channel order",
+        "fail_code": "DSC_VENDOR_IMPL_FAIL_CHANNEL_ORDER",
+        "status_in_this_phase": "not_evaluated",
+        "mandatory": true
+      }
+    ],
+    "evaluates_implementations_in_this_phase": false
+  },
+  "implementation_report": {
+    "report_schema_id": "dsc-vendor-implementation-report-schema-v1",
+    "report_id": "dsc-vendor-implementation-report-v1",
+    "description": "Typed report schema for a future vendor implementation compliance evaluation. This phase defines the schema only and evaluates no implementation.",
+    "encoding": "application/json",
+    "required_fields": [
+      {
+        "field": "implementation_report_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque report identity with no vendor name binding"
+      },
+      {
+        "field": "opaque_vendor_handle",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque_vendor_handle under evaluation"
+      },
+      {
+        "field": "vendor_execution_contract_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the PHASE-060 vendor execution contract path"
+      },
+      {
+        "field": "vendor_implementation_spec_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal this vendor implementation specification path"
+      },
+      {
+        "field": "outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of outcome_values"
+      },
+      {
+        "field": "checklist_results",
+        "type": "array<checklist_entry>",
+        "required": true,
+        "nullable": false,
+        "constraint": "one entry per checklist item in checklist item order"
+      },
+      {
+        "field": "failed_checks",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "check_ids with status fail, in checklist item order"
+      },
+      {
+        "field": "fail_codes",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "fail codes collected from failed checks; empty iff outcome compliant"
+      },
+      {
+        "field": "methods_implemented",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must cover all required vendor capability interface method_ids when compliant"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be a supported version of dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "evaluated_at",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "ISO-8601 audit timestamp; must not affect deterministic checklist outcomes"
+      }
+    ],
+    "outcome_values": [
+      "compliant",
+      "non_compliant"
+    ],
+    "checklist_entry_shape": {
+      "fields": [
+        "check_id",
+        "requirement_id",
+        "status",
+        "fail_code_or_null",
+        "evidence_note"
+      ],
+      "status_values": [
+        "pass",
+        "fail",
+        "not_evaluated"
+      ]
+    },
+    "ordering": {
+      "checklist_results": "checklist_item_order",
+      "failed_checks": "checklist_item_order"
+    },
+    "additional_fields": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "evaluates_implementations_in_this_phase": false
+  },
+  "implemented_vendors": {
+    "count": 0,
+    "entries": [],
+    "implementation_policy": "vendor implementation is performed by future phases; this phase defines the specification only and binds to no vendor",
+    "implements_vendors_in_this_phase": false
+  },
+  "design_constraints": {
+    "specification_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_vendor_execution_contract": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "implements_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T23:58:25.389Z"
+}

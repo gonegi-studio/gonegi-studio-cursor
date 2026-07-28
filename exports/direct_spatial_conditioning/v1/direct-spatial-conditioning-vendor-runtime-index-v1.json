@@ -1,0 +1,292 @@
+{
+  "vendor_runtime_index_id": "direct-spatial-conditioning-vendor-runtime-index-v1",
+  "phase": "PHASE-DSC-087",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_INDEX_V1",
+  "mode": "design_only_vendor_runtime_index",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_INDEX_V1",
+  "runtime_index_id": "dsc-vendor-runtime-index-v1",
+  "runtime_index_version": "1.0",
+  "runtime_index_kind": "vendor_runtime_index",
+  "runtime_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-registry-v1.json",
+  "runtime_registry_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-registry.schema.json",
+  "runtime_registry_implementation_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-registry-implementation-registry-v1.json",
+  "runtime_registry_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_REGISTRY_VALIDATION_REPORT.json",
+  "runtime_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-v1.json",
+  "runtime_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json",
+  "runtime_package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-package-v1.json",
+  "reference_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-bundle-v1.json",
+  "package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json",
+  "numerical_runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "runtime_index_schema": {
+    "schema_id": "dsc-vendor-runtime-index-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning vendor runtime index. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. A runtime index binds one Vendor Runtime Registry as its root, seals the registry together with its schema and implementation registry, and seals the registry contents transitively through the runtime registry digest. It indexes no concrete runtime and declares no runtime execution.",
+    "encoding": "application/json",
+    "runtime_index_id_policy": "opaque_runtime_index_id_no_vendor_binding",
+    "runtime_registry_ref": "dsc-vendor-runtime-registry-v1",
+    "required_fields": [
+      {
+        "field": "runtime_index_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "runtime_index_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor runtime index version string"
+      },
+      {
+        "field": "runtime_index_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal vendor_runtime_index"
+      },
+      {
+        "field": "runtime_registry_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the vendor runtime registry dsc-vendor-runtime-registry-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_runtime_index_identity",
+        "type": "dsc-vendor-runtime-index-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor name, framework, or device dependence"
+      },
+      {
+        "field": "vendor_runtime_registry_binding",
+        "type": "dsc-vendor-runtime-index-registry-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the passing Vendor Runtime Registry as the runtime index root, gated on its recorded PASS verdict"
+      },
+      {
+        "field": "runtime_index_composition",
+        "type": "dsc-vendor-runtime-index-composition-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "closed, fixed-order set of runtime registry, schema, and implementation registry sections; vendor-specific sections forbidden and registry contents never re-listed"
+      },
+      {
+        "field": "runtime_index_manifest",
+        "type": "dsc-vendor-runtime-index-manifest-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "content-addressed SHA256 manifest with one entry per section, plus the transitively sealed runtime registry digest and a runtime index digest over sections and that digest"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_runtime_index_identity": {
+    "identity_id": "dsc-vendor-runtime-index-deterministic-identity-v1",
+    "description": "Deterministic identity of the vendor runtime index. The runtime_index_id is a literal design-time constant with no seed, time, randomness, vendor name, framework, or device dependence.",
+    "runtime_index_id": "dsc-vendor-runtime-index-v1",
+    "runtime_index_version": "1.0",
+    "identity_policy": "opaque_runtime_index_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "vendor_name": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "vendor_runtime_registry_binding": {
+    "binding_id": "dsc-vendor-runtime-index-registry-binding-v1",
+    "description": "Exact binding of the PHASE-085 Vendor Runtime Registry as the runtime index root. The binding is gated at build time on the recorded PHASE-085 PASS verdict, and re-seals every runtime registry section and the runtime registry digest before the runtime index is emitted.",
+    "runtime_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-registry-v1.json",
+    "runtime_registry_id": "dsc-vendor-runtime-registry-v1",
+    "runtime_registry_version": "1.0",
+    "runtime_registry_phase": "PHASE-DSC-085",
+    "runtime_registry_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_REGISTRY_V1",
+    "runtime_registry_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_REGISTRY_VALIDATION_REPORT.json",
+    "runtime_registry_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_REGISTRY_V1",
+    "runtime_registry_evidence_mode": "phase_085_pass_verdict_gated_at_build_time",
+    "binding_mode": "exact_reuse",
+    "role": "runtime_index_root",
+    "sealed_runtime_registry_digest": "06ef1ea1b2d2c5d9b93c360eb71c543521cc72e07404c67cc206b8a4381f9be5",
+    "sealed_runtime_profile_digest": "36ed6ca10be91c27936023da66f1e6b595a636f368626c11f093a34c4b4653ce",
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "indexes_runtime_in_this_phase": false,
+    "implements_runtime_registry_in_this_phase": false
+  },
+  "runtime_index_composition": {
+    "composition_id": "dsc-vendor-runtime-index-composition-v1",
+    "description": "Closed, fixed-order composition of the lookup envelope around the Vendor Runtime Registry: the runtime registry artifact, its shape contract, and its implementation registry. The runtime registry contents (and everything sealed beneath them) are sealed transitively through the runtime registry digest and are deliberately not re-listed here.",
+    "root_section_id": "vendor_runtime_registry",
+    "section_order": "fixed_declared_order",
+    "closed_set": true,
+    "sections": [
+      {
+        "section_id": "vendor_runtime_registry",
+        "role": "runtime_index_root_registry",
+        "kind": "runtime_registry_artifact",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-registry-v1.json",
+        "order": 1
+      },
+      {
+        "section_id": "vendor_runtime_registry_schema",
+        "role": "runtime_registry_shape_contract",
+        "kind": "runtime_registry_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-registry.schema.json",
+        "order": 2
+      },
+      {
+        "section_id": "vendor_runtime_registry_implementation_registry",
+        "role": "runtime_registry_provenance_registry",
+        "kind": "runtime_registry_implementation_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-registry-implementation-registry-v1.json",
+        "order": 3
+      }
+    ],
+    "transitive_seal": {
+      "policy": "runtime_registry_contents_sealed_via_runtime_registry_digest",
+      "sealed_via": "dsc-vendor-runtime-registry-v1",
+      "sealed_component_count": 42,
+      "re_lists_runtime_registry_contents": false
+    },
+    "vendor_specific_sections": "forbidden",
+    "includes_implementations": false,
+    "declares_runtime_execution": false
+  },
+  "runtime_index_manifest": {
+    "manifest_id": "dsc-vendor-runtime-index-manifest-v1",
+    "description": "Content-addressed SHA256 manifest of every runtime index section. Digests are computed read-only from disk. The sealed runtime registry digest carries the registry contents (and everything sealed beneath them) transitively, and the runtime index digest is the SHA256 of the ordered section digests and the sealed runtime registry digest. No implementation is verified in this phase.",
+    "integrity_method": "sha256_content_addressed_read_only",
+    "entry_count": 3,
+    "entries": [
+      {
+        "section_id": "vendor_runtime_registry",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-registry-v1.json",
+        "sha256": "522acb96d464129ee06c59e9f9198ad227779b432e20276de5f3689544d6dc64",
+        "bytes": 14427,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_registry_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-registry.schema.json",
+        "sha256": "99f94ace032ce400e14f42faad5b58333f9e2f11e8ba27d3cf312086e71b2ee2",
+        "bytes": 17315,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_registry_implementation_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-registry-implementation-registry-v1.json",
+        "sha256": "d8dc4f857b07b23fc5775eac2c805de9ae0f2fd61f18c9f52f89990d3c8d6cce",
+        "bytes": 5041,
+        "content_addressed": true
+      }
+    ],
+    "sealed_runtime_registry_digest": "06ef1ea1b2d2c5d9b93c360eb71c543521cc72e07404c67cc206b8a4381f9be5",
+    "sealed_runtime_profile_digest": "36ed6ca10be91c27936023da66f1e6b595a636f368626c11f093a34c4b4653ce",
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "runtime_index_digest": "a4353e1ea7cc7c8f709d47e581dd0287cb1e131b3babd53091219838e30687d9",
+    "runtime_index_digest_method": "sha256_of_ordered_section_digests_and_sealed_runtime_registry_digest",
+    "verifies_implementations_in_this_phase": false
+  },
+  "indexed_runtime_entries": {
+    "count": 0,
+    "entries": [],
+    "indexing_policy": "concrete vendor runtimes may be indexed against this runtime index only in a future implementation phase; none are indexed here",
+    "indexes_runtime_in_this_phase": false
+  },
+  "design_constraints": {
+    "runtime_index_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_runtime_registry": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "declares_runtime_execution": false,
+    "indexes_runtime_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-26T05:33:34.719Z"
+}

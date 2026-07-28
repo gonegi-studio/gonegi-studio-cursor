@@ -1,0 +1,417 @@
+{
+  "certification_id": "direct-spatial-conditioning-backend-template-certification-v1",
+  "phase": "PHASE-DSC-050",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_CERTIFICATION_V1",
+  "mode": "read_only_certification",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+  "certified_system_phase": "PHASE-DSC-049",
+  "surfaces_certified": [
+    "template_schema",
+    "implementation_skeleton",
+    "extension_points",
+    "validation_template"
+  ],
+  "template_id": "dsc-backend-template-generic-v1",
+  "template_version": "1.0",
+  "checks": [
+    {
+      "check": "template_schema",
+      "passed": true,
+      "detail": "backend_template_schema present with opaque template-id policy, eleven required fields, zero optional fields, no additional fields permitted",
+      "evidence": {
+        "schema_id": "dsc-backend-template-schema-v1",
+        "required_fields": 11,
+        "template_id_policy": "opaque_template_id_no_vendor_binding"
+      },
+      "errors": []
+    },
+    {
+      "check": "implementation_skeleton",
+      "passed": true,
+      "detail": "deterministic_implementation_skeleton covers exactly the four PHASE-DSC-039 adapter methods in fixed declared order, each step side-effect free, deterministic, and not implemented in this phase",
+      "evidence": {
+        "skeleton_id": "dsc-backend-deterministic-implementation-skeleton-v1",
+        "steps": 4,
+        "methods": [
+          "describe_capabilities",
+          "check_compatibility",
+          "bind_conditioning_input",
+          "release_conditioning_binding"
+        ],
+        "purity": "deterministic_pure_function_per_step",
+        "implements_steps_in_this_phase": false
+      },
+      "errors": []
+    },
+    {
+      "check": "extension_points",
+      "passed": true,
+      "detail": "extension_points form a closed set of four, one per skeleton step, unknown extension points rejected, none filled in this phase",
+      "evidence": {
+        "extension_points_id": "dsc-backend-template-extension-points-v1",
+        "extension_point_ids": [
+          "EXT_DECLARE_CAPABILITIES",
+          "EXT_RESOLVE_COMPATIBILITY",
+          "EXT_BIND_ADAPTED_INPUT",
+          "EXT_RELEASE_BINDING"
+        ],
+        "closed_set": true,
+        "fills_extension_points_in_this_phase": false
+      },
+      "errors": []
+    },
+    {
+      "check": "validation_template",
+      "passed": true,
+      "detail": "validation_template declares thirteen mandatory design-time-only checks, zero duplicates, all correctly marked not_evaluated pending a future concrete backend implementation",
+      "evidence": {
+        "validation_template_id": "dsc-backend-template-validation-template-v1",
+        "checks": 13,
+        "validates_implementations_in_this_phase": false
+      },
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "template references profile, profile certification, backend design certification, and the full adapter stack by exact path; profile certification's own evidence_chain independently confirms all eleven upstream links resolved",
+      "evidence": {
+        "links_verified": 12,
+        "profile_certified": true,
+        "backend_design_certified": true,
+        "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+        "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json"
+      },
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "scripts/verify-direct-spatial-conditioning-backend-template.ts re-executed live in this phase; rebuilt template produced the identical PASS verdict with zero errors and unchanged field counts",
+      "evidence": {
+        "command": "npm run verify:direct-spatial-conditioning-backend-template",
+        "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+        "error_count": 0,
+        "method": "live_rerun_this_phase"
+      },
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "sha256 digests of all twenty-one upstream protected artifacts recomputed in this phase and found byte-identical to the digests recorded in the PHASE-DSC-048 profile certification; verify script's own pre/post hash diff also reported unmodified",
+      "evidence": {
+        "protected_artifacts": 21,
+        "digests_recomputed": 21,
+        "digests_matched_profile_certification": 21,
+        "verify_script_upstream_protected_unmodified": true,
+        "integrity_method": "sha256_read_only_recheck"
+      },
+      "errors": []
+    }
+  ],
+  "evidence_chain": [
+    {
+      "from_surface": "backend_template",
+      "field": "profile_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "profile_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "backend_design_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "implementation_spec_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "execution_contract_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "runtime_router_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "adapter_registration_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "compatibility_engine_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "capability_registry_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "adapter_foundation_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "runtime_interface_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "backend_template",
+      "field": "runtime_package_ref",
+      "to_artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    }
+  ],
+  "artifact_digests": [
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+      "sha256": "7ccb281969514846bb126213d615c059c8d5ddc098447ac4f673967bc4f61940",
+      "bytes": 19942,
+      "role": "certified_system"
+    },
+    {
+      "artifact": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-template.schema.json",
+      "sha256": "f0bba952055a0d4ccfc6cae51e829c9b081ef74e6a0355edecb5b485a42b8433",
+      "bytes": 16188,
+      "role": "certified_system"
+    },
+    {
+      "artifact": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-template-implementation-registry-v1.json",
+      "sha256": "06bd203128a5261eed02eb5d60c4be7d05a7c10893b79e324c24be0177832e10",
+      "bytes": 4985,
+      "role": "certified_system"
+    },
+    {
+      "artifact": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_VALIDATION_REPORT.json",
+      "sha256": "9a63a1c083f384d3e14fdf02aec497fbb2f01a7190fb463348bb027ba7ce05b3",
+      "bytes": 2378,
+      "role": "certified_system_validation_report_regenerated_this_phase"
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+      "sha256": "c047a585bed7b4da691ba91f07750412e9bfae521ea0dc1c44a6132cf0b1252b",
+      "bytes": 16625,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+      "sha256": "9edaf716fa81abb466408f791ad333aed92fcdefddcb1d2ec4147643d61643e3",
+      "bytes": 12456,
+      "role": "upstream_protected"
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+      "sha256": "51d44514b3ed88e65ecd95f309ea62417e143d872de304e093d7c2c96ccda310",
+      "bytes": 16173,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+      "sha256": "e81e2c91a65285808b8954acfd0e812f0032bf8a81c92791987eb0ff1d6c46d9",
+      "bytes": 12133,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+      "sha256": "2a3f15377413ba7192845c88d2ac6f3ecff6068797d3e9314104a69aa9b695b4",
+      "bytes": 15477,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+      "sha256": "50438aea18bdc1d2448e5a9c48ab47d570e9d0086ea17624eceb3debda33fa81",
+      "bytes": 17261,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+      "sha256": "7aac801b33c75cc9f40240fba7727f2e25b5b0ae070cbbbb331ffb2726b5e2c1",
+      "bytes": 16327,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+      "sha256": "93f34527ad1a853f5aaa688b02a53c494e1c91a07f7d91f3ecc27e50e595caf0",
+      "bytes": 14684,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+      "sha256": "72023a94abce17ee9d8747b546f8be17a1f712bac37e5d01f2cfc736dc16a9d3",
+      "bytes": 13388,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+      "sha256": "df5cf7d17a16bfe8d9c2295d6aeabab1ad45286da9b2c3157d7019504263802c",
+      "bytes": 23774,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+      "sha256": "13b6e88b82c25802609abe2258207e74df872a31118c80584b142a0f83257ed8",
+      "bytes": 8039,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+      "sha256": "1b35f346b93d0f808e146dfc9132cc89b63bd53920e8e8d44d114725f6c22314",
+      "bytes": 25467,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+      "sha256": "aadb7fca0203504b2922d875451437b4a7f6d14d5883daad30ede054537016b1",
+      "bytes": 15678,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+      "sha256": "b6be99b2084117f580dcf4886f75684f76c43d015c990a8bca31ac4459427d34",
+      "bytes": 91377,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+      "sha256": "f8cc9a877a6313b7291d4e7f3712ef855da8cdd68a0739c7f0bced56f4fba715",
+      "bytes": 23801,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+      "sha256": "506be9e6fb89350847a59362900cc47baf8d70bcb710b39d99c7e4d21a0ce57a",
+      "bytes": 8516,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+      "sha256": "60af5bac8dc626630b2cfd006bc7b2cc32b7c536a60f88fa87c8dbe98ced7fa8",
+      "bytes": 7482,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-validation-v1.json",
+      "sha256": "a79577e5fe5218ecdf5380ad2cda51cea2cf0867655180f3b3fedd4715fed6d8",
+      "bytes": 22468,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "sha256": "59378bd179a2b79b13493125f28db2870fe512127bcc038f20e8ca665e7fc49b",
+      "bytes": 9006,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/movie_reconstruction_master/v1/movie-reconstruction-master-package-v1.json",
+      "sha256": "a34ddefd0acdcc34fa1164251670bc3f2293700d49f398baaea71871a1b5cb6e",
+      "bytes": 40864,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/movie_reconstruction_certification/v1/movie-reconstruction-production-certification-v1.json",
+      "sha256": "23398bf050bc375d08598f27e04a8ab737a6e0c6b5814010cc71b3185171738c",
+      "bytes": 4053,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_certification/v1/direct-spatial-conditioning-production-certification-v1.json",
+      "sha256": "b245b950d50bcbceb546707433ff76e7db1cd56c69d9e91bec721b6ce62f1281",
+      "bytes": 12556,
+      "role": "upstream_protected",
+      "matches_profile_certification_digest": true
+    }
+  ],
+  "digest_provenance_note": "The twenty-one upstream_protected digests were independently recomputed in this phase via sha256sum against the live files on disk. All twenty-one matched byte-for-byte against the digests recorded in exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json (PHASE-DSC-048, created_at 2026-07-25T09:35:01.095Z), confirming no drift occurred between that certification and this one. The four certified_system digests (template, schema, registry, validation report) were computed fresh in this phase since PHASE-DSC-049 did not itself record digests for its own outputs.",
+  "reproducibility_rerun": {
+    "performed_this_phase": true,
+    "command": "npm run verify:direct-spatial-conditioning-backend-template",
+    "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+    "error_count": 0,
+    "issues": [],
+    "upstream_protected_unmodified": true,
+    "note": "Live re-execution, not a cached/assumed result. The verify script rebuilds the template via buildDirectSpatialConditioningBackendTemplate() and performs its own sha256 pre/post diff over the same 21-path protected set; both this rerun and the independent digest recomputation above agree."
+  },
+  "upstream_certified_system": {
+    "backend_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+    "backend_profile_certified": true,
+    "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+    "backend_design_certified": true,
+    "sources_supported": 15
+  },
+  "backend_neutrality": {
+    "backend_agnostic": true,
+    "backend": "none",
+    "backends_templated_in_this_phase": 0,
+    "backends_implemented": 0,
+    "no_backend_implementation": true,
+    "requires_gpu": false,
+    "performs_inference": false,
+    "placeholders": false
+  },
+  "not_performed_this_phase": [
+    "recalculation_of_business_metrics",
+    "modification_of_any_certified_artifact",
+    "backend_implementation",
+    "gpu_execution",
+    "model_inference"
+  ],
+  "integrity_method": "sha256_read_only_recheck",
+  "error_count": 0,
+  "created_at": "2026-07-25T00:00:00.000Z"
+}

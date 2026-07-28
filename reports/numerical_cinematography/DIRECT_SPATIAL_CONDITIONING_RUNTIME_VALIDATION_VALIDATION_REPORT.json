@@ -1,0 +1,50 @@
+{
+  "report_id": "direct_spatial_conditioning_runtime_validation_ms02eoit",
+  "phase": "PHASE-DSC-037",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_VALIDATION_V1",
+  "validation_passed": true,
+  "mode": "design_only_validation",
+  "stages": [
+    "runtime_api",
+    "packet_flow",
+    "interface_contract",
+    "generation_reuse"
+  ],
+  "runtime_api_check_count": 23,
+  "packet_flow_check_count": 18,
+  "interface_contract_check_count": 8,
+  "generation_reuse_check_count": 10,
+  "total_check_count": 59,
+  "failed_check_count": 0,
+  "failed_checks": [],
+  "expected_api_methods": [
+    "list_sources",
+    "generate_packet",
+    "validate_packet",
+    "produce_validated_packet"
+  ],
+  "reuses_runtime_interface": true,
+  "reuses_packet_generation": true,
+  "design_constraints": {
+    "validation_only": true,
+    "reuses_runtime_interface": true,
+    "reuses_packet_generation": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "executes_runtime_methods_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "validation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-validation-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-runtime-validation.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-runtime-validation-implementation-registry-v1.json",
+    "runtime_interface": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+    "generation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:45:59.719Z"
+}

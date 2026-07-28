@@ -1,0 +1,58 @@
+{
+  "report_id": "direct_spatial_conditioning_vendor_implementation_profile_ms131447",
+  "phase": "PHASE-DSC-071",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_PROFILE_V1",
+  "validation_passed": true,
+  "mode": "design_only_vendor_implementation_profile",
+  "profile_id": "dsc-vendor-implementation-profile-generic-v1",
+  "profile_version": "1.0",
+  "profile_kind": "generic_vendor_implementation_profile",
+  "implementation_profile_schema": "dsc-vendor-implementation-profile-schema-v1",
+  "schema_fields": 11,
+  "deterministic_profile_identity": "dsc-vendor-implementation-profile-deterministic-identity-v1",
+  "vendor_implementation_family_binding": "dsc-vendor-implementation-profile-family-binding-v1",
+  "implementation_capability_profile": "dsc-vendor-implementation-capability-profile-v1",
+  "required_capabilities": 6,
+  "required_methods": [
+    "describe_capabilities",
+    "check_compatibility",
+    "bind_conditioning_input",
+    "release_conditioning_binding"
+  ],
+  "required_extension_points": [
+    "EXT_VENDOR_DECLARE_CAPABILITIES",
+    "EXT_VENDOR_RESOLVE_COMPATIBILITY",
+    "EXT_VENDOR_BIND_CONDITIONING_INPUT",
+    "EXT_VENDOR_RELEASE_BINDING"
+  ],
+  "profiled_members": 0,
+  "sources_supported": 15,
+  "reuses_certified_vendor_implementation_family": true,
+  "vendor_neutral": true,
+  "design_constraints": {
+    "profile_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_implementation_family": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "measures_members_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "vendor_implementation_profile": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-profile-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-implementation-profile.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-implementation-profile-implementation-registry-v1.json",
+    "family": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-family-v1.json",
+    "family_certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-family-certification-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-26T00:51:12.542Z"
+}

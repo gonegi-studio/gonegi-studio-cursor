@@ -1,0 +1,57 @@
+{
+  "report_id": "direct_spatial_conditioning_backend_adapter_registration_ms052d9z",
+  "phase": "PHASE-DSC-042",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_REGISTRATION_V1",
+  "validation_passed": true,
+  "mode": "design_only_registration",
+  "registration_flow": "dsc-backend-adapter-registration-flow-v1",
+  "registration_stages": [
+    "bind_registration_request",
+    "run_compatibility_engine",
+    "validate_registration_payload",
+    "allocate_registration_identity",
+    "write_registration_record",
+    "emit_registration_receipt"
+  ],
+  "registration_schema": "dsc-backend-adapter-registration-record-v1",
+  "registration_fields": 12,
+  "lifecycle": "dsc-backend-adapter-registration-lifecycle-v1",
+  "lifecycle_states": [
+    "pending",
+    "active",
+    "suspended",
+    "deregistered"
+  ],
+  "lifecycle_transitions": 6,
+  "deregistration_policy": "dsc-backend-adapter-deregistration-policy-v1",
+  "deregistration_reasons": 5,
+  "registration_validation": "dsc-backend-adapter-registration-validation-v1",
+  "validation_checks": 9,
+  "registered_adapters": 0,
+  "sources_supported": 15,
+  "reuses_compatibility_engine": true,
+  "backend_agnostic": true,
+  "design_constraints": {
+    "registration_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_compatibility_engine": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "registers_adapters_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "adapter_registration": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-adapter-registration.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-adapter-registration-implementation-registry-v1.json",
+    "compatibility_engine": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T09:00:24.122Z"
+}

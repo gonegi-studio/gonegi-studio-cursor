@@ -1,0 +1,55 @@
+{
+  "report_id": "direct_spatial_conditioning_backend_compatibility_engine_ms04wkzn",
+  "phase": "PHASE-DSC-041",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_COMPATIBILITY_ENGINE_V1",
+  "validation_passed": true,
+  "mode": "design_only_engine",
+  "evaluation_flow": "dsc-backend-compatibility-evaluation-flow-v1",
+  "evaluation_stages": [
+    "bind_inputs",
+    "lookup_registry",
+    "validate_descriptor",
+    "resolve_version",
+    "resolve_rows",
+    "aggregate_outcome",
+    "emit_report"
+  ],
+  "registry_lookup": "dsc-backend-registry-lookup-v1",
+  "lookup_surfaces": [
+    "backend_descriptor",
+    "capability_schema",
+    "compatibility_matrix",
+    "capability_versioning"
+  ],
+  "deterministic_algorithm": "dsc-backend-compatibility-algorithm-v1",
+  "algorithm_steps": 7,
+  "report_schema": "dsc-backend-compatibility-report-schema-v1",
+  "report_fields": 6,
+  "expected_matrix_rows": 10,
+  "sources_supported": 15,
+  "reuses_capability_registry": true,
+  "backend_agnostic": true,
+  "design_constraints": {
+    "engine_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_capability_registry": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "evaluates_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "compatibility_engine": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-compatibility-engine.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-compatibility-engine-implementation-registry-v1.json",
+    "capability_registry": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T08:55:54.181Z"
+}

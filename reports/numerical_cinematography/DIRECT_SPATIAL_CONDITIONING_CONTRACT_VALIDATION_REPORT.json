@@ -1,0 +1,60 @@
+{
+  "report_id": "direct_spatial_conditioning_contract_ms01bz7a",
+  "phase": "PHASE-DSC-031",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1",
+  "validation_passed": true,
+  "mode": "design_only_contract",
+  "channel_contracts": [
+    {
+      "channel_id": "camera_pose_field",
+      "component_count": 4,
+      "validation_rule_count": 11
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "component_count": 4,
+      "validation_rule_count": 11
+    },
+    {
+      "channel_id": "subject_position_field",
+      "component_count": 4,
+      "validation_rule_count": 11
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "component_count": 2,
+      "validation_rule_count": 11
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "component_count": 2,
+      "validation_rule_count": 11
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "component_count": 3,
+      "validation_rule_count": 11
+    }
+  ],
+  "channel_count": 6,
+  "validation_rule_count": 16,
+  "spatial_frame": "normalized_image_plane_v1",
+  "design_constraints": {
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false,
+    "contract_only": true
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "contract": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+    "foundation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-contract.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-contract-implementation-registry-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:15:53.975Z"
+}

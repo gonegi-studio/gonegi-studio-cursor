@@ -1,0 +1,506 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry.schema.json",
+  "title": "DirectSpatialConditioningVendorRegistry",
+  "description": "PHASE-DSC-056 design-only, read-only, vendor-neutral vendor registry. Defines vendor registry schema, vendor registration record, vendor lifecycle, vendor deregistration policy, and vendor validation rules over the verified PHASE-055 vendor profile. Registers no vendor and implements no vendor.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "vendor_registry_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "vendor_profile_ref",
+    "vendor_profile_phase",
+    "vendor_profile_system_id",
+    "family_ref",
+    "family_certification_ref",
+    "reference_backend_ref",
+    "reference_backend_certification_ref",
+    "template_ref",
+    "template_certification_ref",
+    "profile_ref",
+    "profile_certification_ref",
+    "backend_design_certification_ref",
+    "implementation_spec_ref",
+    "execution_contract_ref",
+    "runtime_router_ref",
+    "adapter_registration_ref",
+    "compatibility_engine_ref",
+    "capability_registry_ref",
+    "adapter_foundation_ref",
+    "runtime_interface_ref",
+    "runtime_package_ref",
+    "sources_supported",
+    "required_channels",
+    "spatial_frame_ref",
+    "capability_set_id",
+    "capability_set_version",
+    "vendor_registry_schema",
+    "vendor_registration_record",
+    "vendor_lifecycle",
+    "vendor_deregistration_policy",
+    "vendor_validation_rules",
+    "registered_vendors",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "vendor_registry_id": {
+      "type": "string",
+      "const": "direct-spatial-conditioning-vendor-registry-v1"
+    },
+    "phase": { "type": "string", "const": "PHASE-DSC-056" },
+    "system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REGISTRY_V1"
+    },
+    "mode": { "type": "string", "const": "design_only_vendor_registry" },
+    "target": {
+      "type": "string",
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REGISTRY_V1"
+    },
+    "vendor_profile_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json"
+    },
+    "vendor_profile_phase": { "type": "string", "const": "PHASE-DSC-055" },
+    "vendor_profile_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_PROFILE_V1"
+    },
+    "family_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json"
+    },
+    "family_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json"
+    },
+    "reference_backend_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json"
+    },
+    "reference_backend_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json"
+    },
+    "template_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json"
+    },
+    "template_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json"
+    },
+    "profile_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json"
+    },
+    "profile_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json"
+    },
+    "backend_design_certification_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json"
+    },
+    "implementation_spec_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json"
+    },
+    "execution_contract_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json"
+    },
+    "runtime_router_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json"
+    },
+    "adapter_registration_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json"
+    },
+    "compatibility_engine_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json"
+    },
+    "capability_registry_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json"
+    },
+    "adapter_foundation_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json"
+    },
+    "runtime_interface_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json"
+    },
+    "runtime_package_ref": {
+      "type": "string",
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "required_channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+    "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+    "capability_set_version": { "const": "1.0" },
+    "vendor_registry_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "description",
+        "encoding",
+        "registry_id_policy",
+        "vendor_profile_ref",
+        "required_fields",
+        "optional_fields",
+        "additional_fields"
+      ],
+      "properties": {
+        "schema_id": { "const": "dsc-vendor-registry-schema-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "encoding": { "const": "application/json" },
+        "registry_id_policy": {
+          "const": "opaque_registry_id_no_vendor_binding"
+        },
+        "vendor_profile_ref": { "const": "dsc-vendor-profile-generic-v1" },
+        "required_fields": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "type", "required", "nullable", "constraint"],
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "required": { "const": true },
+              "nullable": { "const": false },
+              "constraint": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "optional_fields": { "type": "array", "maxItems": 0 },
+        "additional_fields": { "const": false }
+      }
+    },
+    "vendor_registration_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_schema_id",
+        "description",
+        "encoding",
+        "identity_policy",
+        "required_fields",
+        "uniqueness",
+        "additional_fields",
+        "writes_records_in_this_phase"
+      ],
+      "properties": {
+        "record_schema_id": { "const": "dsc-vendor-registration-record-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "encoding": { "const": "application/json" },
+        "identity_policy": {
+          "const": "opaque_vendor_registration_id_no_vendor_name_binding"
+        },
+        "required_fields": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "type", "required", "nullable", "constraint"],
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "required": { "const": true },
+              "nullable": { "const": false },
+              "constraint": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "uniqueness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["key", "active_key", "duplicate_policy", "duplicate_code"],
+          "properties": {
+            "key": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "prefixItems": [{ "const": "vendor_registration_id" }]
+            },
+            "active_key": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                { "const": "opaque_vendor_handle" },
+                { "const": "vendor_profile_id" }
+              ]
+            },
+            "duplicate_policy": {
+              "const": "reject_duplicate_active_registration"
+            },
+            "duplicate_code": {
+              "const": "DSC_VENDOR_REGISTRY_DUPLICATE_ACTIVE"
+            }
+          }
+        },
+        "additional_fields": { "const": false },
+        "writes_records_in_this_phase": { "const": false }
+      }
+    },
+    "vendor_lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lifecycle_id",
+        "description",
+        "states",
+        "initial_state",
+        "active_state",
+        "terminal_state",
+        "transitions",
+        "invariants",
+        "registers_vendors_in_this_phase"
+      ],
+      "properties": {
+        "lifecycle_id": { "const": "dsc-vendor-registry-lifecycle-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "states": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            { "const": "pending" },
+            { "const": "active" },
+            { "const": "suspended" },
+            { "const": "deregistered" }
+          ]
+        },
+        "initial_state": { "const": "pending" },
+        "active_state": { "const": "active" },
+        "terminal_state": { "const": "deregistered" },
+        "transitions": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "from",
+              "to",
+              "trigger",
+              "requires_vendor_profile_recheck",
+              "allowed"
+            ],
+            "properties": {
+              "from": {
+                "enum": ["pending", "active", "suspended", "deregistered"]
+              },
+              "to": {
+                "enum": ["pending", "active", "suspended", "deregistered"]
+              },
+              "trigger": { "type": "string", "minLength": 1 },
+              "requires_vendor_profile_recheck": { "type": "boolean" },
+              "allowed": { "const": true }
+            }
+          }
+        },
+        "invariants": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "registers_vendors_in_this_phase": { "const": false }
+      }
+    },
+    "vendor_deregistration_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "description",
+        "allowed_reasons",
+        "effects",
+        "forbidden",
+        "irreversible",
+        "executed_in_this_phase"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "dsc-vendor-registry-deregistration-policy-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "allowed_reasons": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "prefixItems": [
+            { "const": "operator_requested" },
+            { "const": "capability_set_incompatible" },
+            { "const": "vendor_profile_revoked" },
+            { "const": "lifecycle_expired" },
+            { "const": "validation_rejected" }
+          ]
+        },
+        "effects": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "lifecycle_state_becomes",
+            "registration_record_retained",
+            "re_registration_policy",
+            "vendor_handles_released"
+          ],
+          "properties": {
+            "lifecycle_state_becomes": { "const": "deregistered" },
+            "registration_record_retained": { "const": true },
+            "re_registration_policy": {
+              "const": "requires_new_registration_flow_and_fresh_vendor_validation"
+            },
+            "vendor_handles_released": { "const": true }
+          }
+        },
+        "forbidden": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "irreversible": { "const": true },
+        "executed_in_this_phase": { "const": false }
+      }
+    },
+    "vendor_validation_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_id",
+        "description",
+        "evaluation",
+        "accept_condition",
+        "outcome_values",
+        "checks",
+        "requires_vendor_profile_binding",
+        "requires_vendor_capability_interface",
+        "evaluates_vendors_in_this_phase"
+      ],
+      "properties": {
+        "validation_id": {
+          "const": "dsc-vendor-registry-validation-rules-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "evaluation": { "const": "collect_all_rejections" },
+        "accept_condition": {
+          "const": "zero rejection codes and vendor profile binding intact"
+        },
+        "outcome_values": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "accepted" }, { "const": "rejected" }]
+        },
+        "checks": {
+          "type": "array",
+          "minItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check_id",
+              "description",
+              "rejection_code",
+              "mandatory",
+              "evaluation",
+              "status_in_this_phase"
+            ],
+            "properties": {
+              "check_id": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "rejection_code": {
+                "type": "string",
+                "pattern": "^DSC_VENDOR_REGISTRY_[A-Z0-9_]+$"
+              },
+              "mandatory": { "const": true },
+              "evaluation": { "const": "design_time_declaration_only" },
+              "status_in_this_phase": { "const": "not_evaluated" }
+            }
+          }
+        },
+        "requires_vendor_profile_binding": { "const": true },
+        "requires_vendor_capability_interface": { "const": true },
+        "evaluates_vendors_in_this_phase": { "const": false }
+      }
+    },
+    "registered_vendors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "entries",
+        "registration_policy",
+        "registers_vendors_in_this_phase"
+      ],
+      "properties": {
+        "count": { "const": 0 },
+        "entries": { "type": "array", "maxItems": 0 },
+        "registration_policy": { "type": "string", "minLength": 1 },
+        "registers_vendors_in_this_phase": { "const": false }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_only",
+        "read_only",
+        "vendor_neutral",
+        "reuses_vendor_profile",
+        "no_vendor_implementation",
+        "backend",
+        "no_backend_implementation",
+        "gpu",
+        "inference",
+        "registers_vendors_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "registry_only": { "const": true },
+        "read_only": { "const": true },
+        "vendor_neutral": { "const": true },
+        "reuses_vendor_profile": { "const": true },
+        "no_vendor_implementation": { "const": true },
+        "backend": { "const": "none" },
+        "no_backend_implementation": { "const": true },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "registers_vendors_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

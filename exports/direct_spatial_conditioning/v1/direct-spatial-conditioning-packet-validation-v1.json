@@ -1,0 +1,1890 @@
+{
+  "validation_specification_id": "direct-spatial-conditioning-packet-validation-v1",
+  "phase": "PHASE-DSC-033",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1",
+  "mode": "design_only_validation",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1",
+  "packet_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+  "packet_phase": "PHASE-DSC-032",
+  "packet_system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_V1",
+  "validation_procedure": {
+    "ordered_stages": [
+      "structural",
+      "metadata",
+      "channel_payload",
+      "cross_channel"
+    ],
+    "evaluation": "collect_all_rejections",
+    "accept_condition": "zero rejection codes emitted across all stages",
+    "outcome_values": [
+      "accepted",
+      "rejected"
+    ]
+  },
+  "kind_predicates": {
+    "number": "typeof value === \"number\" AND Number.isFinite(value)",
+    "string": "typeof value === \"string\" AND value.length > 0",
+    "boolean": "typeof value === \"boolean\"",
+    "number_array": "Array.isArray(value) AND value.length > 0 AND value.every(Number.isFinite)",
+    "string_array": "Array.isArray(value) AND value.every(v => typeof v === \"string\" AND v.length > 0)"
+  },
+  "structural_checks": [
+    {
+      "check_id": "STRUCT_PACKET_IS_OBJECT",
+      "stage": "structural",
+      "applies_to": "packet",
+      "description": "Packet root must be a JSON object.",
+      "predicate": "typeof packet === \"object\" AND packet !== null AND !Array.isArray(packet)",
+      "rejection_code": "DSC_REJ_PACKET_NOT_OBJECT"
+    },
+    {
+      "check_id": "STRUCT_REQUIRED_SECTIONS_PRESENT",
+      "stage": "structural",
+      "applies_to": "packet",
+      "description": "Packet must contain the metadata and channels sections.",
+      "predicate": "has(packet, \"metadata\") AND has(packet, \"channels\")",
+      "rejection_code": "DSC_REJ_SECTION_MISSING"
+    },
+    {
+      "check_id": "STRUCT_NO_UNKNOWN_SECTIONS",
+      "stage": "structural",
+      "applies_to": "packet",
+      "description": "Packet must not carry sections beyond the declared required sections.",
+      "predicate": "keys(packet) subset_of [\"metadata\", \"channels\"]",
+      "rejection_code": "DSC_REJ_SECTION_UNKNOWN"
+    },
+    {
+      "check_id": "STRUCT_CHANNELS_IS_ARRAY",
+      "stage": "structural",
+      "applies_to": "packet.channels",
+      "description": "channels section must be an array of channel payloads.",
+      "predicate": "Array.isArray(packet.channels)",
+      "rejection_code": "DSC_REJ_CHANNELS_NOT_ARRAY"
+    }
+  ],
+  "metadata_checks": [
+    {
+      "check_id": "META_PRESENT_PACKET_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.packet_id",
+      "description": "metadata.packet_id must be present (non-empty caller-assigned runtime identity).",
+      "predicate": "has(packet.metadata, \"packet_id\")",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_MISSING"
+    },
+    {
+      "check_id": "META_NONNULL_PACKET_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.packet_id",
+      "description": "metadata.packet_id must not be null.",
+      "predicate": "packet.metadata.packet_id !== null",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_NULL"
+    },
+    {
+      "check_id": "META_TYPE_PACKET_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.packet_id",
+      "description": "metadata.packet_id must be of declared type string.",
+      "predicate": "type_of(packet.metadata.packet_id) === \"string\"",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_TYPE"
+    },
+    {
+      "check_id": "META_PRESENT_PACKET_VERSION",
+      "stage": "metadata",
+      "applies_to": "metadata.packet_version",
+      "description": "metadata.packet_version must be present (must equal v1).",
+      "predicate": "has(packet.metadata, \"packet_version\")",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_MISSING"
+    },
+    {
+      "check_id": "META_NONNULL_PACKET_VERSION",
+      "stage": "metadata",
+      "applies_to": "metadata.packet_version",
+      "description": "metadata.packet_version must not be null.",
+      "predicate": "packet.metadata.packet_version !== null",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_NULL"
+    },
+    {
+      "check_id": "META_TYPE_PACKET_VERSION",
+      "stage": "metadata",
+      "applies_to": "metadata.packet_version",
+      "description": "metadata.packet_version must be of declared type string.",
+      "predicate": "type_of(packet.metadata.packet_version) === \"string\"",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_TYPE"
+    },
+    {
+      "check_id": "META_PRESENT_SOURCE_VIDEO_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.source_video_id",
+      "description": "metadata.source_video_id must be present (non-empty certified corpus source id shared by every channel).",
+      "predicate": "has(packet.metadata, \"source_video_id\")",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_MISSING"
+    },
+    {
+      "check_id": "META_NONNULL_SOURCE_VIDEO_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.source_video_id",
+      "description": "metadata.source_video_id must not be null.",
+      "predicate": "packet.metadata.source_video_id !== null",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_NULL"
+    },
+    {
+      "check_id": "META_TYPE_SOURCE_VIDEO_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.source_video_id",
+      "description": "metadata.source_video_id must be of declared type string.",
+      "predicate": "type_of(packet.metadata.source_video_id) === \"string\"",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_TYPE"
+    },
+    {
+      "check_id": "META_PRESENT_SPATIAL_FRAME_REF",
+      "stage": "metadata",
+      "applies_to": "metadata.spatial_frame_ref",
+      "description": "metadata.spatial_frame_ref must be present (must equal normalized_image_plane_v1).",
+      "predicate": "has(packet.metadata, \"spatial_frame_ref\")",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_MISSING"
+    },
+    {
+      "check_id": "META_NONNULL_SPATIAL_FRAME_REF",
+      "stage": "metadata",
+      "applies_to": "metadata.spatial_frame_ref",
+      "description": "metadata.spatial_frame_ref must not be null.",
+      "predicate": "packet.metadata.spatial_frame_ref !== null",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_NULL"
+    },
+    {
+      "check_id": "META_TYPE_SPATIAL_FRAME_REF",
+      "stage": "metadata",
+      "applies_to": "metadata.spatial_frame_ref",
+      "description": "metadata.spatial_frame_ref must be of declared type string.",
+      "predicate": "type_of(packet.metadata.spatial_frame_ref) === \"string\"",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_TYPE"
+    },
+    {
+      "check_id": "META_PRESENT_TIMEBASE",
+      "stage": "metadata",
+      "applies_to": "metadata.timebase",
+      "description": "metadata.timebase must be present (must equal milliseconds).",
+      "predicate": "has(packet.metadata, \"timebase\")",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_MISSING"
+    },
+    {
+      "check_id": "META_NONNULL_TIMEBASE",
+      "stage": "metadata",
+      "applies_to": "metadata.timebase",
+      "description": "metadata.timebase must not be null.",
+      "predicate": "packet.metadata.timebase !== null",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_NULL"
+    },
+    {
+      "check_id": "META_TYPE_TIMEBASE",
+      "stage": "metadata",
+      "applies_to": "metadata.timebase",
+      "description": "metadata.timebase must be of declared type string.",
+      "predicate": "type_of(packet.metadata.timebase) === \"string\"",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_TYPE"
+    },
+    {
+      "check_id": "META_PRESENT_CONTRACT_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.contract_id",
+      "description": "metadata.contract_id must be present (must equal direct-spatial-conditioning-contract-v1).",
+      "predicate": "has(packet.metadata, \"contract_id\")",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_MISSING"
+    },
+    {
+      "check_id": "META_NONNULL_CONTRACT_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.contract_id",
+      "description": "metadata.contract_id must not be null.",
+      "predicate": "packet.metadata.contract_id !== null",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_NULL"
+    },
+    {
+      "check_id": "META_TYPE_CONTRACT_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.contract_id",
+      "description": "metadata.contract_id must be of declared type string.",
+      "predicate": "type_of(packet.metadata.contract_id) === \"string\"",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_TYPE"
+    },
+    {
+      "check_id": "META_PRESENT_CHANNEL_COUNT",
+      "stage": "metadata",
+      "applies_to": "metadata.channel_count",
+      "description": "metadata.channel_count must be present (must equal 6).",
+      "predicate": "has(packet.metadata, \"channel_count\")",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_MISSING"
+    },
+    {
+      "check_id": "META_NONNULL_CHANNEL_COUNT",
+      "stage": "metadata",
+      "applies_to": "metadata.channel_count",
+      "description": "metadata.channel_count must not be null.",
+      "predicate": "packet.metadata.channel_count !== null",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_NULL"
+    },
+    {
+      "check_id": "META_TYPE_CHANNEL_COUNT",
+      "stage": "metadata",
+      "applies_to": "metadata.channel_count",
+      "description": "metadata.channel_count must be of declared type integer.",
+      "predicate": "type_of(packet.metadata.channel_count) === \"integer\"",
+      "rejection_code": "DSC_REJ_METADATA_FIELD_TYPE"
+    },
+    {
+      "check_id": "META_VALUE_PACKET_VERSION",
+      "stage": "metadata",
+      "applies_to": "metadata.packet_version",
+      "description": "metadata.packet_version must equal the specified packet version.",
+      "predicate": "packet.metadata.packet_version === \"v1\"",
+      "rejection_code": "DSC_REJ_METADATA_PACKET_VERSION"
+    },
+    {
+      "check_id": "META_VALUE_SPATIAL_FRAME",
+      "stage": "metadata",
+      "applies_to": "metadata.spatial_frame_ref",
+      "description": "metadata.spatial_frame_ref must equal the locked spatial frame.",
+      "predicate": "packet.metadata.spatial_frame_ref === \"normalized_image_plane_v1\"",
+      "rejection_code": "DSC_REJ_METADATA_SPATIAL_FRAME"
+    },
+    {
+      "check_id": "META_VALUE_TIMEBASE",
+      "stage": "metadata",
+      "applies_to": "metadata.timebase",
+      "description": "metadata.timebase must be milliseconds.",
+      "predicate": "packet.metadata.timebase === \"milliseconds\"",
+      "rejection_code": "DSC_REJ_METADATA_TIMEBASE"
+    },
+    {
+      "check_id": "META_VALUE_CONTRACT_ID",
+      "stage": "metadata",
+      "applies_to": "metadata.contract_id",
+      "description": "metadata.contract_id must reference the PHASE-031 conditioning contract.",
+      "predicate": "packet.metadata.contract_id === \"direct-spatial-conditioning-contract-v1\"",
+      "rejection_code": "DSC_REJ_METADATA_CONTRACT_ID"
+    },
+    {
+      "check_id": "META_VALUE_CHANNEL_COUNT",
+      "stage": "metadata",
+      "applies_to": "metadata.channel_count",
+      "description": "metadata.channel_count must equal the declared channel cardinality.",
+      "predicate": "packet.metadata.channel_count === 6",
+      "rejection_code": "DSC_REJ_METADATA_CHANNEL_COUNT"
+    }
+  ],
+  "channel_payload_validations": [
+    {
+      "channel_id": "camera_pose_field",
+      "payload_id": "dsc-channel-payload-camera_pose_field-v1",
+      "envelope_checks": [
+        {
+          "check_id": "ENV_PRESENT_CAMERA_POSE_FIELD_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.channel_id",
+          "description": "camera_pose_field.channel_id must be present (must equal enclosing channel payload definition channel_id).",
+          "predicate": "has(channel, \"channel_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_POSE_FIELD_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.channel_id",
+          "description": "camera_pose_field.channel_id must not be null.",
+          "predicate": "channel.channel_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_POSE_FIELD_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.source_video_id",
+          "description": "camera_pose_field.source_video_id must be present (non-empty certified corpus source id).",
+          "predicate": "has(channel, \"source_video_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_POSE_FIELD_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.source_video_id",
+          "description": "camera_pose_field.source_video_id must not be null.",
+          "predicate": "channel.source_video_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_POSE_FIELD_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.spatial_frame_ref",
+          "description": "camera_pose_field.spatial_frame_ref must be present (must equal normalized_image_plane_v1).",
+          "predicate": "has(channel, \"spatial_frame_ref\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_POSE_FIELD_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.spatial_frame_ref",
+          "description": "camera_pose_field.spatial_frame_ref must not be null.",
+          "predicate": "channel.spatial_frame_ref !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_POSE_FIELD_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.timestamp_ms",
+          "description": "camera_pose_field.timestamp_ms must be present (greater than or equal to zero).",
+          "predicate": "has(channel, \"timestamp_ms\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_POSE_FIELD_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.timestamp_ms",
+          "description": "camera_pose_field.timestamp_ms must not be null.",
+          "predicate": "channel.timestamp_ms !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_POSE_FIELD_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components",
+          "description": "camera_pose_field.components must be present (exact component set declared by channel payload definition).",
+          "predicate": "has(channel, \"components\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_POSE_FIELD_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components",
+          "description": "camera_pose_field.components must not be null.",
+          "predicate": "channel.components !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_CHANNEL_ID_CAMERA_POSE_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.channel_id",
+          "description": "channel_id must equal camera_pose_field.",
+          "predicate": "channel.channel_id === \"camera_pose_field\"",
+          "rejection_code": "DSC_REJ_CHANNEL_ID_MISMATCH"
+        },
+        {
+          "check_id": "ENV_KNOWN_CHANNEL_CAMERA_POSE_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.channel_id",
+          "description": "channel_id must be one of the six declared conditioning channels.",
+          "predicate": "channel.channel_id in declared_channel_ids",
+          "rejection_code": "DSC_REJ_CHANNEL_UNKNOWN"
+        },
+        {
+          "check_id": "ENV_FRAME_CAMERA_POSE_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.spatial_frame_ref",
+          "description": "spatial_frame_ref must equal the locked spatial frame.",
+          "predicate": "channel.spatial_frame_ref === \"normalized_image_plane_v1\"",
+          "rejection_code": "DSC_REJ_CHANNEL_FRAME_MISMATCH"
+        },
+        {
+          "check_id": "ENV_SOURCE_ID_CAMERA_POSE_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.source_video_id",
+          "description": "source_video_id must be a non-empty string.",
+          "predicate": "typeof channel.source_video_id === \"string\" AND channel.source_video_id.length > 0",
+          "rejection_code": "DSC_REJ_CHANNEL_SOURCE_ID_EMPTY"
+        },
+        {
+          "check_id": "ENV_TIMESTAMP_CAMERA_POSE_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.timestamp_ms",
+          "description": "timestamp_ms must be a finite number greater than or equal to zero.",
+          "predicate": "Number.isFinite(channel.timestamp_ms) AND channel.timestamp_ms >= 0",
+          "rejection_code": "DSC_REJ_CHANNEL_TIMESTAMP_INVALID"
+        },
+        {
+          "check_id": "ENV_COMPONENTS_OBJECT_CAMERA_POSE_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components",
+          "description": "components must be a JSON object.",
+          "predicate": "typeof channel.components === \"object\" AND channel.components !== null AND !Array.isArray(channel.components)",
+          "rejection_code": "DSC_REJ_COMPONENTS_NOT_OBJECT"
+        }
+      ],
+      "component_checks": [
+        {
+          "check_id": "COMP_PRESENT_CAMERA_POSE_FIELD_TRANSLATION_U",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.translation_u",
+          "description": "translation_u must be present (Camera translation along u in normalized frame).",
+          "predicate": "has(channel.components, \"translation_u\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_POSE_FIELD_TRANSLATION_U",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.translation_u",
+          "description": "translation_u must not be null.",
+          "predicate": "channel.components.translation_u !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_POSE_FIELD_TRANSLATION_U",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.translation_u",
+          "description": "translation_u must satisfy value kind number.",
+          "predicate": "typeof channel.components.translation_u === \"number\" AND Number.isFinite(channel.components.translation_u)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_CAMERA_POSE_FIELD_TRANSLATION_V",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.translation_v",
+          "description": "translation_v must be present (Camera translation along v in normalized frame).",
+          "predicate": "has(channel.components, \"translation_v\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_POSE_FIELD_TRANSLATION_V",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.translation_v",
+          "description": "translation_v must not be null.",
+          "predicate": "channel.components.translation_v !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_POSE_FIELD_TRANSLATION_V",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.translation_v",
+          "description": "translation_v must satisfy value kind number.",
+          "predicate": "typeof channel.components.translation_v === \"number\" AND Number.isFinite(channel.components.translation_v)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_CAMERA_POSE_FIELD_ROTATION_RAD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.rotation_rad",
+          "description": "rotation_rad must be present (In-plane rotation in radians).",
+          "predicate": "has(channel.components, \"rotation_rad\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_POSE_FIELD_ROTATION_RAD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.rotation_rad",
+          "description": "rotation_rad must not be null.",
+          "predicate": "channel.components.rotation_rad !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_POSE_FIELD_ROTATION_RAD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.rotation_rad",
+          "description": "rotation_rad must satisfy value kind number.",
+          "predicate": "typeof channel.components.rotation_rad === \"number\" AND Number.isFinite(channel.components.rotation_rad)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_CAMERA_POSE_FIELD_ZOOM_SCALE",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.zoom_scale",
+          "description": "zoom_scale must be present (Unitless zoom scale factor).",
+          "predicate": "has(channel.components, \"zoom_scale\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_POSE_FIELD_ZOOM_SCALE",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.zoom_scale",
+          "description": "zoom_scale must not be null.",
+          "predicate": "channel.components.zoom_scale !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_POSE_FIELD_ZOOM_SCALE",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components.zoom_scale",
+          "description": "zoom_scale must satisfy value kind number.",
+          "predicate": "typeof channel.components.zoom_scale === \"number\" AND Number.isFinite(channel.components.zoom_scale)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_CLOSED_SET_CAMERA_POSE_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "camera_pose_field.components",
+          "description": "components must not carry names outside the declared component set.",
+          "predicate": "keys(channel.components) subset_of [\"translation_u\", \"translation_v\", \"rotation_rad\", \"zoom_scale\"]",
+          "rejection_code": "DSC_REJ_COMPONENT_UNKNOWN"
+        }
+      ],
+      "closed_component_set": true
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "payload_id": "dsc-channel-payload-camera_temporal_track-v1",
+      "envelope_checks": [
+        {
+          "check_id": "ENV_PRESENT_CAMERA_TEMPORAL_TRACK_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.channel_id",
+          "description": "camera_temporal_track.channel_id must be present (must equal enclosing channel payload definition channel_id).",
+          "predicate": "has(channel, \"channel_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_TEMPORAL_TRACK_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.channel_id",
+          "description": "camera_temporal_track.channel_id must not be null.",
+          "predicate": "channel.channel_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_TEMPORAL_TRACK_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.source_video_id",
+          "description": "camera_temporal_track.source_video_id must be present (non-empty certified corpus source id).",
+          "predicate": "has(channel, \"source_video_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_TEMPORAL_TRACK_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.source_video_id",
+          "description": "camera_temporal_track.source_video_id must not be null.",
+          "predicate": "channel.source_video_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_TEMPORAL_TRACK_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.spatial_frame_ref",
+          "description": "camera_temporal_track.spatial_frame_ref must be present (must equal normalized_image_plane_v1).",
+          "predicate": "has(channel, \"spatial_frame_ref\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_TEMPORAL_TRACK_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.spatial_frame_ref",
+          "description": "camera_temporal_track.spatial_frame_ref must not be null.",
+          "predicate": "channel.spatial_frame_ref !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_TEMPORAL_TRACK_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.timestamp_ms",
+          "description": "camera_temporal_track.timestamp_ms must be present (greater than or equal to zero).",
+          "predicate": "has(channel, \"timestamp_ms\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_TEMPORAL_TRACK_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.timestamp_ms",
+          "description": "camera_temporal_track.timestamp_ms must not be null.",
+          "predicate": "channel.timestamp_ms !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_CAMERA_TEMPORAL_TRACK_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components",
+          "description": "camera_temporal_track.components must be present (exact component set declared by channel payload definition).",
+          "predicate": "has(channel, \"components\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_CAMERA_TEMPORAL_TRACK_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components",
+          "description": "camera_temporal_track.components must not be null.",
+          "predicate": "channel.components !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_CHANNEL_ID_CAMERA_TEMPORAL_TRACK",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.channel_id",
+          "description": "channel_id must equal camera_temporal_track.",
+          "predicate": "channel.channel_id === \"camera_temporal_track\"",
+          "rejection_code": "DSC_REJ_CHANNEL_ID_MISMATCH"
+        },
+        {
+          "check_id": "ENV_KNOWN_CHANNEL_CAMERA_TEMPORAL_TRACK",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.channel_id",
+          "description": "channel_id must be one of the six declared conditioning channels.",
+          "predicate": "channel.channel_id in declared_channel_ids",
+          "rejection_code": "DSC_REJ_CHANNEL_UNKNOWN"
+        },
+        {
+          "check_id": "ENV_FRAME_CAMERA_TEMPORAL_TRACK",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.spatial_frame_ref",
+          "description": "spatial_frame_ref must equal the locked spatial frame.",
+          "predicate": "channel.spatial_frame_ref === \"normalized_image_plane_v1\"",
+          "rejection_code": "DSC_REJ_CHANNEL_FRAME_MISMATCH"
+        },
+        {
+          "check_id": "ENV_SOURCE_ID_CAMERA_TEMPORAL_TRACK",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.source_video_id",
+          "description": "source_video_id must be a non-empty string.",
+          "predicate": "typeof channel.source_video_id === \"string\" AND channel.source_video_id.length > 0",
+          "rejection_code": "DSC_REJ_CHANNEL_SOURCE_ID_EMPTY"
+        },
+        {
+          "check_id": "ENV_TIMESTAMP_CAMERA_TEMPORAL_TRACK",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.timestamp_ms",
+          "description": "timestamp_ms must be a finite number greater than or equal to zero.",
+          "predicate": "Number.isFinite(channel.timestamp_ms) AND channel.timestamp_ms >= 0",
+          "rejection_code": "DSC_REJ_CHANNEL_TIMESTAMP_INVALID"
+        },
+        {
+          "check_id": "ENV_COMPONENTS_OBJECT_CAMERA_TEMPORAL_TRACK",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components",
+          "description": "components must be a JSON object.",
+          "predicate": "typeof channel.components === \"object\" AND channel.components !== null AND !Array.isArray(channel.components)",
+          "rejection_code": "DSC_REJ_COMPONENTS_NOT_OBJECT"
+        }
+      ],
+      "component_checks": [
+        {
+          "check_id": "COMP_PRESENT_CAMERA_TEMPORAL_TRACK_MOTION_TYPE",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.motion_type",
+          "description": "motion_type must be present (Camera motion class label).",
+          "predicate": "has(channel.components, \"motion_type\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_TEMPORAL_TRACK_MOTION_TYPE",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.motion_type",
+          "description": "motion_type must not be null.",
+          "predicate": "channel.components.motion_type !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_TEMPORAL_TRACK_MOTION_TYPE",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.motion_type",
+          "description": "motion_type must satisfy value kind string.",
+          "predicate": "typeof channel.components.motion_type === \"string\" AND channel.components.motion_type.length > 0",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_CAMERA_TEMPORAL_TRACK_MAGNITUDE",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.magnitude",
+          "description": "magnitude must be present (Motion magnitude over adjacent pair).",
+          "predicate": "has(channel.components, \"magnitude\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_TEMPORAL_TRACK_MAGNITUDE",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.magnitude",
+          "description": "magnitude must not be null.",
+          "predicate": "channel.components.magnitude !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_TEMPORAL_TRACK_MAGNITUDE",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.magnitude",
+          "description": "magnitude must satisfy value kind number.",
+          "predicate": "typeof channel.components.magnitude === \"number\" AND Number.isFinite(channel.components.magnitude)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_CAMERA_TEMPORAL_TRACK_TRANSLATION_U",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.translation_u",
+          "description": "translation_u must be present (Pair translation along u).",
+          "predicate": "has(channel.components, \"translation_u\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_TEMPORAL_TRACK_TRANSLATION_U",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.translation_u",
+          "description": "translation_u must not be null.",
+          "predicate": "channel.components.translation_u !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_TEMPORAL_TRACK_TRANSLATION_U",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.translation_u",
+          "description": "translation_u must satisfy value kind number.",
+          "predicate": "typeof channel.components.translation_u === \"number\" AND Number.isFinite(channel.components.translation_u)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_CAMERA_TEMPORAL_TRACK_TRANSLATION_V",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.translation_v",
+          "description": "translation_v must be present (Pair translation along v).",
+          "predicate": "has(channel.components, \"translation_v\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_CAMERA_TEMPORAL_TRACK_TRANSLATION_V",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.translation_v",
+          "description": "translation_v must not be null.",
+          "predicate": "channel.components.translation_v !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_CAMERA_TEMPORAL_TRACK_TRANSLATION_V",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components.translation_v",
+          "description": "translation_v must satisfy value kind number.",
+          "predicate": "typeof channel.components.translation_v === \"number\" AND Number.isFinite(channel.components.translation_v)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_CLOSED_SET_CAMERA_TEMPORAL_TRACK",
+          "stage": "channel_payload",
+          "applies_to": "camera_temporal_track.components",
+          "description": "components must not carry names outside the declared component set.",
+          "predicate": "keys(channel.components) subset_of [\"motion_type\", \"magnitude\", \"translation_u\", \"translation_v\"]",
+          "rejection_code": "DSC_REJ_COMPONENT_UNKNOWN"
+        }
+      ],
+      "closed_component_set": true
+    },
+    {
+      "channel_id": "subject_position_field",
+      "payload_id": "dsc-channel-payload-subject_position_field-v1",
+      "envelope_checks": [
+        {
+          "check_id": "ENV_PRESENT_SUBJECT_POSITION_FIELD_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.channel_id",
+          "description": "subject_position_field.channel_id must be present (must equal enclosing channel payload definition channel_id).",
+          "predicate": "has(channel, \"channel_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SUBJECT_POSITION_FIELD_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.channel_id",
+          "description": "subject_position_field.channel_id must not be null.",
+          "predicate": "channel.channel_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SUBJECT_POSITION_FIELD_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.source_video_id",
+          "description": "subject_position_field.source_video_id must be present (non-empty certified corpus source id).",
+          "predicate": "has(channel, \"source_video_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SUBJECT_POSITION_FIELD_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.source_video_id",
+          "description": "subject_position_field.source_video_id must not be null.",
+          "predicate": "channel.source_video_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SUBJECT_POSITION_FIELD_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.spatial_frame_ref",
+          "description": "subject_position_field.spatial_frame_ref must be present (must equal normalized_image_plane_v1).",
+          "predicate": "has(channel, \"spatial_frame_ref\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SUBJECT_POSITION_FIELD_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.spatial_frame_ref",
+          "description": "subject_position_field.spatial_frame_ref must not be null.",
+          "predicate": "channel.spatial_frame_ref !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SUBJECT_POSITION_FIELD_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.timestamp_ms",
+          "description": "subject_position_field.timestamp_ms must be present (greater than or equal to zero).",
+          "predicate": "has(channel, \"timestamp_ms\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SUBJECT_POSITION_FIELD_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.timestamp_ms",
+          "description": "subject_position_field.timestamp_ms must not be null.",
+          "predicate": "channel.timestamp_ms !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SUBJECT_POSITION_FIELD_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components",
+          "description": "subject_position_field.components must be present (exact component set declared by channel payload definition).",
+          "predicate": "has(channel, \"components\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SUBJECT_POSITION_FIELD_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components",
+          "description": "subject_position_field.components must not be null.",
+          "predicate": "channel.components !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_CHANNEL_ID_SUBJECT_POSITION_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.channel_id",
+          "description": "channel_id must equal subject_position_field.",
+          "predicate": "channel.channel_id === \"subject_position_field\"",
+          "rejection_code": "DSC_REJ_CHANNEL_ID_MISMATCH"
+        },
+        {
+          "check_id": "ENV_KNOWN_CHANNEL_SUBJECT_POSITION_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.channel_id",
+          "description": "channel_id must be one of the six declared conditioning channels.",
+          "predicate": "channel.channel_id in declared_channel_ids",
+          "rejection_code": "DSC_REJ_CHANNEL_UNKNOWN"
+        },
+        {
+          "check_id": "ENV_FRAME_SUBJECT_POSITION_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.spatial_frame_ref",
+          "description": "spatial_frame_ref must equal the locked spatial frame.",
+          "predicate": "channel.spatial_frame_ref === \"normalized_image_plane_v1\"",
+          "rejection_code": "DSC_REJ_CHANNEL_FRAME_MISMATCH"
+        },
+        {
+          "check_id": "ENV_SOURCE_ID_SUBJECT_POSITION_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.source_video_id",
+          "description": "source_video_id must be a non-empty string.",
+          "predicate": "typeof channel.source_video_id === \"string\" AND channel.source_video_id.length > 0",
+          "rejection_code": "DSC_REJ_CHANNEL_SOURCE_ID_EMPTY"
+        },
+        {
+          "check_id": "ENV_TIMESTAMP_SUBJECT_POSITION_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.timestamp_ms",
+          "description": "timestamp_ms must be a finite number greater than or equal to zero.",
+          "predicate": "Number.isFinite(channel.timestamp_ms) AND channel.timestamp_ms >= 0",
+          "rejection_code": "DSC_REJ_CHANNEL_TIMESTAMP_INVALID"
+        },
+        {
+          "check_id": "ENV_COMPONENTS_OBJECT_SUBJECT_POSITION_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components",
+          "description": "components must be a JSON object.",
+          "predicate": "typeof channel.components === \"object\" AND channel.components !== null AND !Array.isArray(channel.components)",
+          "rejection_code": "DSC_REJ_COMPONENTS_NOT_OBJECT"
+        }
+      ],
+      "component_checks": [
+        {
+          "check_id": "COMP_PRESENT_SUBJECT_POSITION_FIELD_CENTER_U",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.center_u",
+          "description": "center_u must be present (Subject bbox center u).",
+          "predicate": "has(channel.components, \"center_u\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_SUBJECT_POSITION_FIELD_CENTER_U",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.center_u",
+          "description": "center_u must not be null.",
+          "predicate": "channel.components.center_u !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_SUBJECT_POSITION_FIELD_CENTER_U",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.center_u",
+          "description": "center_u must satisfy value kind number.",
+          "predicate": "typeof channel.components.center_u === \"number\" AND Number.isFinite(channel.components.center_u)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_SUBJECT_POSITION_FIELD_CENTER_V",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.center_v",
+          "description": "center_v must be present (Subject bbox center v).",
+          "predicate": "has(channel.components, \"center_v\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_SUBJECT_POSITION_FIELD_CENTER_V",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.center_v",
+          "description": "center_v must not be null.",
+          "predicate": "channel.components.center_v !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_SUBJECT_POSITION_FIELD_CENTER_V",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.center_v",
+          "description": "center_v must satisfy value kind number.",
+          "predicate": "typeof channel.components.center_v === \"number\" AND Number.isFinite(channel.components.center_v)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_SUBJECT_POSITION_FIELD_DISPLACEMENT_U",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.displacement_u",
+          "description": "displacement_u must be present (Subject displacement along u).",
+          "predicate": "has(channel.components, \"displacement_u\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_SUBJECT_POSITION_FIELD_DISPLACEMENT_U",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.displacement_u",
+          "description": "displacement_u must not be null.",
+          "predicate": "channel.components.displacement_u !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_SUBJECT_POSITION_FIELD_DISPLACEMENT_U",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.displacement_u",
+          "description": "displacement_u must satisfy value kind number.",
+          "predicate": "typeof channel.components.displacement_u === \"number\" AND Number.isFinite(channel.components.displacement_u)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_SUBJECT_POSITION_FIELD_DISPLACEMENT_V",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.displacement_v",
+          "description": "displacement_v must be present (Subject displacement along v).",
+          "predicate": "has(channel.components, \"displacement_v\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_SUBJECT_POSITION_FIELD_DISPLACEMENT_V",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.displacement_v",
+          "description": "displacement_v must not be null.",
+          "predicate": "channel.components.displacement_v !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_SUBJECT_POSITION_FIELD_DISPLACEMENT_V",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components.displacement_v",
+          "description": "displacement_v must satisfy value kind number.",
+          "predicate": "typeof channel.components.displacement_v === \"number\" AND Number.isFinite(channel.components.displacement_v)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_CLOSED_SET_SUBJECT_POSITION_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "subject_position_field.components",
+          "description": "components must not carry names outside the declared component set.",
+          "predicate": "keys(channel.components) subset_of [\"center_u\", \"center_v\", \"displacement_u\", \"displacement_v\"]",
+          "rejection_code": "DSC_REJ_COMPONENT_UNKNOWN"
+        }
+      ],
+      "closed_component_set": true
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "payload_id": "dsc-channel-payload-framing_composition_map-v1",
+      "envelope_checks": [
+        {
+          "check_id": "ENV_PRESENT_FRAMING_COMPOSITION_MAP_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.channel_id",
+          "description": "framing_composition_map.channel_id must be present (must equal enclosing channel payload definition channel_id).",
+          "predicate": "has(channel, \"channel_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_FRAMING_COMPOSITION_MAP_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.channel_id",
+          "description": "framing_composition_map.channel_id must not be null.",
+          "predicate": "channel.channel_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_FRAMING_COMPOSITION_MAP_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.source_video_id",
+          "description": "framing_composition_map.source_video_id must be present (non-empty certified corpus source id).",
+          "predicate": "has(channel, \"source_video_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_FRAMING_COMPOSITION_MAP_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.source_video_id",
+          "description": "framing_composition_map.source_video_id must not be null.",
+          "predicate": "channel.source_video_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_FRAMING_COMPOSITION_MAP_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.spatial_frame_ref",
+          "description": "framing_composition_map.spatial_frame_ref must be present (must equal normalized_image_plane_v1).",
+          "predicate": "has(channel, \"spatial_frame_ref\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_FRAMING_COMPOSITION_MAP_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.spatial_frame_ref",
+          "description": "framing_composition_map.spatial_frame_ref must not be null.",
+          "predicate": "channel.spatial_frame_ref !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_FRAMING_COMPOSITION_MAP_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.timestamp_ms",
+          "description": "framing_composition_map.timestamp_ms must be present (greater than or equal to zero).",
+          "predicate": "has(channel, \"timestamp_ms\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_FRAMING_COMPOSITION_MAP_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.timestamp_ms",
+          "description": "framing_composition_map.timestamp_ms must not be null.",
+          "predicate": "channel.timestamp_ms !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_FRAMING_COMPOSITION_MAP_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components",
+          "description": "framing_composition_map.components must be present (exact component set declared by channel payload definition).",
+          "predicate": "has(channel, \"components\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_FRAMING_COMPOSITION_MAP_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components",
+          "description": "framing_composition_map.components must not be null.",
+          "predicate": "channel.components !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_CHANNEL_ID_FRAMING_COMPOSITION_MAP",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.channel_id",
+          "description": "channel_id must equal framing_composition_map.",
+          "predicate": "channel.channel_id === \"framing_composition_map\"",
+          "rejection_code": "DSC_REJ_CHANNEL_ID_MISMATCH"
+        },
+        {
+          "check_id": "ENV_KNOWN_CHANNEL_FRAMING_COMPOSITION_MAP",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.channel_id",
+          "description": "channel_id must be one of the six declared conditioning channels.",
+          "predicate": "channel.channel_id in declared_channel_ids",
+          "rejection_code": "DSC_REJ_CHANNEL_UNKNOWN"
+        },
+        {
+          "check_id": "ENV_FRAME_FRAMING_COMPOSITION_MAP",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.spatial_frame_ref",
+          "description": "spatial_frame_ref must equal the locked spatial frame.",
+          "predicate": "channel.spatial_frame_ref === \"normalized_image_plane_v1\"",
+          "rejection_code": "DSC_REJ_CHANNEL_FRAME_MISMATCH"
+        },
+        {
+          "check_id": "ENV_SOURCE_ID_FRAMING_COMPOSITION_MAP",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.source_video_id",
+          "description": "source_video_id must be a non-empty string.",
+          "predicate": "typeof channel.source_video_id === \"string\" AND channel.source_video_id.length > 0",
+          "rejection_code": "DSC_REJ_CHANNEL_SOURCE_ID_EMPTY"
+        },
+        {
+          "check_id": "ENV_TIMESTAMP_FRAMING_COMPOSITION_MAP",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.timestamp_ms",
+          "description": "timestamp_ms must be a finite number greater than or equal to zero.",
+          "predicate": "Number.isFinite(channel.timestamp_ms) AND channel.timestamp_ms >= 0",
+          "rejection_code": "DSC_REJ_CHANNEL_TIMESTAMP_INVALID"
+        },
+        {
+          "check_id": "ENV_COMPONENTS_OBJECT_FRAMING_COMPOSITION_MAP",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components",
+          "description": "components must be a JSON object.",
+          "predicate": "typeof channel.components === \"object\" AND channel.components !== null AND !Array.isArray(channel.components)",
+          "rejection_code": "DSC_REJ_COMPONENTS_NOT_OBJECT"
+        }
+      ],
+      "component_checks": [
+        {
+          "check_id": "COMP_PRESENT_FRAMING_COMPOSITION_MAP_SHOT_SCALE",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components.shot_scale",
+          "description": "shot_scale must be present (Shot-scale categorical label).",
+          "predicate": "has(channel.components, \"shot_scale\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_FRAMING_COMPOSITION_MAP_SHOT_SCALE",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components.shot_scale",
+          "description": "shot_scale must not be null.",
+          "predicate": "channel.components.shot_scale !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_FRAMING_COMPOSITION_MAP_SHOT_SCALE",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components.shot_scale",
+          "description": "shot_scale must satisfy value kind string.",
+          "predicate": "typeof channel.components.shot_scale === \"string\" AND channel.components.shot_scale.length > 0",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_FRAMING_COMPOSITION_MAP_COMPOSITION_REGION",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components.composition_region",
+          "description": "composition_region must be present (Composition region occupancy descriptor).",
+          "predicate": "has(channel.components, \"composition_region\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_FRAMING_COMPOSITION_MAP_COMPOSITION_REGION",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components.composition_region",
+          "description": "composition_region must not be null.",
+          "predicate": "channel.components.composition_region !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_FRAMING_COMPOSITION_MAP_COMPOSITION_REGION",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components.composition_region",
+          "description": "composition_region must satisfy value kind string.",
+          "predicate": "typeof channel.components.composition_region === \"string\" AND channel.components.composition_region.length > 0",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_CLOSED_SET_FRAMING_COMPOSITION_MAP",
+          "stage": "channel_payload",
+          "applies_to": "framing_composition_map.components",
+          "description": "components must not carry names outside the declared component set.",
+          "predicate": "keys(channel.components) subset_of [\"shot_scale\", \"composition_region\"]",
+          "rejection_code": "DSC_REJ_COMPONENT_UNKNOWN"
+        }
+      ],
+      "closed_component_set": true
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "payload_id": "dsc-channel-payload-edit_rhythm_boundaries-v1",
+      "envelope_checks": [
+        {
+          "check_id": "ENV_PRESENT_EDIT_RHYTHM_BOUNDARIES_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.channel_id",
+          "description": "edit_rhythm_boundaries.channel_id must be present (must equal enclosing channel payload definition channel_id).",
+          "predicate": "has(channel, \"channel_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_EDIT_RHYTHM_BOUNDARIES_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.channel_id",
+          "description": "edit_rhythm_boundaries.channel_id must not be null.",
+          "predicate": "channel.channel_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_EDIT_RHYTHM_BOUNDARIES_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.source_video_id",
+          "description": "edit_rhythm_boundaries.source_video_id must be present (non-empty certified corpus source id).",
+          "predicate": "has(channel, \"source_video_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_EDIT_RHYTHM_BOUNDARIES_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.source_video_id",
+          "description": "edit_rhythm_boundaries.source_video_id must not be null.",
+          "predicate": "channel.source_video_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_EDIT_RHYTHM_BOUNDARIES_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.spatial_frame_ref",
+          "description": "edit_rhythm_boundaries.spatial_frame_ref must be present (must equal normalized_image_plane_v1).",
+          "predicate": "has(channel, \"spatial_frame_ref\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_EDIT_RHYTHM_BOUNDARIES_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.spatial_frame_ref",
+          "description": "edit_rhythm_boundaries.spatial_frame_ref must not be null.",
+          "predicate": "channel.spatial_frame_ref !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_EDIT_RHYTHM_BOUNDARIES_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.timestamp_ms",
+          "description": "edit_rhythm_boundaries.timestamp_ms must be present (greater than or equal to zero).",
+          "predicate": "has(channel, \"timestamp_ms\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_EDIT_RHYTHM_BOUNDARIES_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.timestamp_ms",
+          "description": "edit_rhythm_boundaries.timestamp_ms must not be null.",
+          "predicate": "channel.timestamp_ms !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_EDIT_RHYTHM_BOUNDARIES_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components",
+          "description": "edit_rhythm_boundaries.components must be present (exact component set declared by channel payload definition).",
+          "predicate": "has(channel, \"components\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_EDIT_RHYTHM_BOUNDARIES_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components",
+          "description": "edit_rhythm_boundaries.components must not be null.",
+          "predicate": "channel.components !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_CHANNEL_ID_EDIT_RHYTHM_BOUNDARIES",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.channel_id",
+          "description": "channel_id must equal edit_rhythm_boundaries.",
+          "predicate": "channel.channel_id === \"edit_rhythm_boundaries\"",
+          "rejection_code": "DSC_REJ_CHANNEL_ID_MISMATCH"
+        },
+        {
+          "check_id": "ENV_KNOWN_CHANNEL_EDIT_RHYTHM_BOUNDARIES",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.channel_id",
+          "description": "channel_id must be one of the six declared conditioning channels.",
+          "predicate": "channel.channel_id in declared_channel_ids",
+          "rejection_code": "DSC_REJ_CHANNEL_UNKNOWN"
+        },
+        {
+          "check_id": "ENV_FRAME_EDIT_RHYTHM_BOUNDARIES",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.spatial_frame_ref",
+          "description": "spatial_frame_ref must equal the locked spatial frame.",
+          "predicate": "channel.spatial_frame_ref === \"normalized_image_plane_v1\"",
+          "rejection_code": "DSC_REJ_CHANNEL_FRAME_MISMATCH"
+        },
+        {
+          "check_id": "ENV_SOURCE_ID_EDIT_RHYTHM_BOUNDARIES",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.source_video_id",
+          "description": "source_video_id must be a non-empty string.",
+          "predicate": "typeof channel.source_video_id === \"string\" AND channel.source_video_id.length > 0",
+          "rejection_code": "DSC_REJ_CHANNEL_SOURCE_ID_EMPTY"
+        },
+        {
+          "check_id": "ENV_TIMESTAMP_EDIT_RHYTHM_BOUNDARIES",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.timestamp_ms",
+          "description": "timestamp_ms must be a finite number greater than or equal to zero.",
+          "predicate": "Number.isFinite(channel.timestamp_ms) AND channel.timestamp_ms >= 0",
+          "rejection_code": "DSC_REJ_CHANNEL_TIMESTAMP_INVALID"
+        },
+        {
+          "check_id": "ENV_COMPONENTS_OBJECT_EDIT_RHYTHM_BOUNDARIES",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components",
+          "description": "components must be a JSON object.",
+          "predicate": "typeof channel.components === \"object\" AND channel.components !== null AND !Array.isArray(channel.components)",
+          "rejection_code": "DSC_REJ_COMPONENTS_NOT_OBJECT"
+        }
+      ],
+      "component_checks": [
+        {
+          "check_id": "COMP_PRESENT_EDIT_RHYTHM_BOUNDARIES_CUT_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components.cut_timestamp_ms",
+          "description": "cut_timestamp_ms must be present (Ordered cut boundary timestamps in ms).",
+          "predicate": "has(channel.components, \"cut_timestamp_ms\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_EDIT_RHYTHM_BOUNDARIES_CUT_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components.cut_timestamp_ms",
+          "description": "cut_timestamp_ms must not be null.",
+          "predicate": "channel.components.cut_timestamp_ms !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_EDIT_RHYTHM_BOUNDARIES_CUT_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components.cut_timestamp_ms",
+          "description": "cut_timestamp_ms must satisfy value kind number_array.",
+          "predicate": "Array.isArray(channel.components.cut_timestamp_ms) AND channel.components.cut_timestamp_ms.length > 0 AND channel.components.cut_timestamp_ms.every(Number.isFinite)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_EDIT_RHYTHM_BOUNDARIES_SHOT_DURATION_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components.shot_duration_ms",
+          "description": "shot_duration_ms must be present (Per-shot durations in ms).",
+          "predicate": "has(channel.components, \"shot_duration_ms\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_EDIT_RHYTHM_BOUNDARIES_SHOT_DURATION_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components.shot_duration_ms",
+          "description": "shot_duration_ms must not be null.",
+          "predicate": "channel.components.shot_duration_ms !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_EDIT_RHYTHM_BOUNDARIES_SHOT_DURATION_MS",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components.shot_duration_ms",
+          "description": "shot_duration_ms must satisfy value kind number_array.",
+          "predicate": "Array.isArray(channel.components.shot_duration_ms) AND channel.components.shot_duration_ms.length > 0 AND channel.components.shot_duration_ms.every(Number.isFinite)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_CLOSED_SET_EDIT_RHYTHM_BOUNDARIES",
+          "stage": "channel_payload",
+          "applies_to": "edit_rhythm_boundaries.components",
+          "description": "components must not carry names outside the declared component set.",
+          "predicate": "keys(channel.components) subset_of [\"cut_timestamp_ms\", \"shot_duration_ms\"]",
+          "rejection_code": "DSC_REJ_COMPONENT_UNKNOWN"
+        }
+      ],
+      "closed_component_set": true
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "payload_id": "dsc-channel-payload-scene_energy_field-v1",
+      "envelope_checks": [
+        {
+          "check_id": "ENV_PRESENT_SCENE_ENERGY_FIELD_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.channel_id",
+          "description": "scene_energy_field.channel_id must be present (must equal enclosing channel payload definition channel_id).",
+          "predicate": "has(channel, \"channel_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SCENE_ENERGY_FIELD_CHANNEL_ID",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.channel_id",
+          "description": "scene_energy_field.channel_id must not be null.",
+          "predicate": "channel.channel_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SCENE_ENERGY_FIELD_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.source_video_id",
+          "description": "scene_energy_field.source_video_id must be present (non-empty certified corpus source id).",
+          "predicate": "has(channel, \"source_video_id\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SCENE_ENERGY_FIELD_SOURCE_VIDEO_ID",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.source_video_id",
+          "description": "scene_energy_field.source_video_id must not be null.",
+          "predicate": "channel.source_video_id !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SCENE_ENERGY_FIELD_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.spatial_frame_ref",
+          "description": "scene_energy_field.spatial_frame_ref must be present (must equal normalized_image_plane_v1).",
+          "predicate": "has(channel, \"spatial_frame_ref\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SCENE_ENERGY_FIELD_SPATIAL_FRAME_REF",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.spatial_frame_ref",
+          "description": "scene_energy_field.spatial_frame_ref must not be null.",
+          "predicate": "channel.spatial_frame_ref !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SCENE_ENERGY_FIELD_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.timestamp_ms",
+          "description": "scene_energy_field.timestamp_ms must be present (greater than or equal to zero).",
+          "predicate": "has(channel, \"timestamp_ms\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SCENE_ENERGY_FIELD_TIMESTAMP_MS",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.timestamp_ms",
+          "description": "scene_energy_field.timestamp_ms must not be null.",
+          "predicate": "channel.timestamp_ms !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_PRESENT_SCENE_ENERGY_FIELD_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components",
+          "description": "scene_energy_field.components must be present (exact component set declared by channel payload definition).",
+          "predicate": "has(channel, \"components\")",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_MISSING"
+        },
+        {
+          "check_id": "ENV_NONNULL_SCENE_ENERGY_FIELD_COMPONENTS",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components",
+          "description": "scene_energy_field.components must not be null.",
+          "predicate": "channel.components !== null",
+          "rejection_code": "DSC_REJ_ENVELOPE_FIELD_NULL"
+        },
+        {
+          "check_id": "ENV_CHANNEL_ID_SCENE_ENERGY_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.channel_id",
+          "description": "channel_id must equal scene_energy_field.",
+          "predicate": "channel.channel_id === \"scene_energy_field\"",
+          "rejection_code": "DSC_REJ_CHANNEL_ID_MISMATCH"
+        },
+        {
+          "check_id": "ENV_KNOWN_CHANNEL_SCENE_ENERGY_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.channel_id",
+          "description": "channel_id must be one of the six declared conditioning channels.",
+          "predicate": "channel.channel_id in declared_channel_ids",
+          "rejection_code": "DSC_REJ_CHANNEL_UNKNOWN"
+        },
+        {
+          "check_id": "ENV_FRAME_SCENE_ENERGY_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.spatial_frame_ref",
+          "description": "spatial_frame_ref must equal the locked spatial frame.",
+          "predicate": "channel.spatial_frame_ref === \"normalized_image_plane_v1\"",
+          "rejection_code": "DSC_REJ_CHANNEL_FRAME_MISMATCH"
+        },
+        {
+          "check_id": "ENV_SOURCE_ID_SCENE_ENERGY_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.source_video_id",
+          "description": "source_video_id must be a non-empty string.",
+          "predicate": "typeof channel.source_video_id === \"string\" AND channel.source_video_id.length > 0",
+          "rejection_code": "DSC_REJ_CHANNEL_SOURCE_ID_EMPTY"
+        },
+        {
+          "check_id": "ENV_TIMESTAMP_SCENE_ENERGY_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.timestamp_ms",
+          "description": "timestamp_ms must be a finite number greater than or equal to zero.",
+          "predicate": "Number.isFinite(channel.timestamp_ms) AND channel.timestamp_ms >= 0",
+          "rejection_code": "DSC_REJ_CHANNEL_TIMESTAMP_INVALID"
+        },
+        {
+          "check_id": "ENV_COMPONENTS_OBJECT_SCENE_ENERGY_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components",
+          "description": "components must be a JSON object.",
+          "predicate": "typeof channel.components === \"object\" AND channel.components !== null AND !Array.isArray(channel.components)",
+          "rejection_code": "DSC_REJ_COMPONENTS_NOT_OBJECT"
+        }
+      ],
+      "component_checks": [
+        {
+          "check_id": "COMP_PRESENT_SCENE_ENERGY_FIELD_MOTION_MAGNITUDE",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.motion_magnitude",
+          "description": "motion_magnitude must be present (Scene motion magnitude scalar).",
+          "predicate": "has(channel.components, \"motion_magnitude\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_SCENE_ENERGY_FIELD_MOTION_MAGNITUDE",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.motion_magnitude",
+          "description": "motion_magnitude must not be null.",
+          "predicate": "channel.components.motion_magnitude !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_SCENE_ENERGY_FIELD_MOTION_MAGNITUDE",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.motion_magnitude",
+          "description": "motion_magnitude must satisfy value kind number.",
+          "predicate": "typeof channel.components.motion_magnitude === \"number\" AND Number.isFinite(channel.components.motion_magnitude)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_SCENE_ENERGY_FIELD_CAMERA_SUBJECT_RELATIONSHIP",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.camera_subject_relationship",
+          "description": "camera_subject_relationship must be present (Camera/subject relationship class).",
+          "predicate": "has(channel.components, \"camera_subject_relationship\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_SCENE_ENERGY_FIELD_CAMERA_SUBJECT_RELATIONSHIP",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.camera_subject_relationship",
+          "description": "camera_subject_relationship must not be null.",
+          "predicate": "channel.components.camera_subject_relationship !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_SCENE_ENERGY_FIELD_CAMERA_SUBJECT_RELATIONSHIP",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.camera_subject_relationship",
+          "description": "camera_subject_relationship must satisfy value kind string.",
+          "predicate": "typeof channel.components.camera_subject_relationship === \"string\" AND channel.components.camera_subject_relationship.length > 0",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_PRESENT_SCENE_ENERGY_FIELD_RELATIVE_VELOCITY",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.relative_velocity",
+          "description": "relative_velocity must be present (Camera vs subject relative velocity).",
+          "predicate": "has(channel.components, \"relative_velocity\")",
+          "rejection_code": "DSC_REJ_COMPONENT_MISSING"
+        },
+        {
+          "check_id": "COMP_NONNULL_SCENE_ENERGY_FIELD_RELATIVE_VELOCITY",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.relative_velocity",
+          "description": "relative_velocity must not be null.",
+          "predicate": "channel.components.relative_velocity !== null",
+          "rejection_code": "DSC_REJ_COMPONENT_NULL"
+        },
+        {
+          "check_id": "COMP_KIND_SCENE_ENERGY_FIELD_RELATIVE_VELOCITY",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components.relative_velocity",
+          "description": "relative_velocity must satisfy value kind number.",
+          "predicate": "typeof channel.components.relative_velocity === \"number\" AND Number.isFinite(channel.components.relative_velocity)",
+          "rejection_code": "DSC_REJ_COMPONENT_TYPE"
+        },
+        {
+          "check_id": "COMP_CLOSED_SET_SCENE_ENERGY_FIELD",
+          "stage": "channel_payload",
+          "applies_to": "scene_energy_field.components",
+          "description": "components must not carry names outside the declared component set.",
+          "predicate": "keys(channel.components) subset_of [\"motion_magnitude\", \"camera_subject_relationship\", \"relative_velocity\"]",
+          "rejection_code": "DSC_REJ_COMPONENT_UNKNOWN"
+        }
+      ],
+      "closed_component_set": true
+    }
+  ],
+  "cross_channel_checks": [
+    {
+      "check_id": "CROSS_CHANNEL_SET_COMPLETE",
+      "stage": "cross_channel",
+      "applies_to": "packet.channels",
+      "description": "All six declared conditioning channels must be present.",
+      "predicate": "set(packet.channels[].channel_id) === declared_channel_ids",
+      "rejection_code": "DSC_REJ_CHANNEL_SET_INCOMPLETE"
+    },
+    {
+      "check_id": "CROSS_CHANNEL_NO_DUPLICATES",
+      "stage": "cross_channel",
+      "applies_to": "packet.channels",
+      "description": "No channel_id may appear more than once.",
+      "predicate": "unique(packet.channels[].channel_id)",
+      "rejection_code": "DSC_REJ_CHANNEL_DUPLICATE"
+    },
+    {
+      "check_id": "CROSS_CHANNEL_ORDER_MATCHES",
+      "stage": "cross_channel",
+      "applies_to": "packet.channels",
+      "description": "Channel sequence must follow the declared channel order.",
+      "predicate": "packet.channels[].channel_id === declared_channel_order",
+      "rejection_code": "DSC_REJ_CHANNEL_ORDER"
+    },
+    {
+      "check_id": "CROSS_SOURCE_ID_CONSISTENT",
+      "stage": "cross_channel",
+      "applies_to": "packet",
+      "description": "Every channel source_video_id must equal metadata.source_video_id.",
+      "predicate": "packet.channels.every(c => c.source_video_id === packet.metadata.source_video_id)",
+      "rejection_code": "DSC_REJ_SOURCE_ID_DIVERGENT"
+    },
+    {
+      "check_id": "CROSS_SPATIAL_FRAME_CONSISTENT",
+      "stage": "cross_channel",
+      "applies_to": "packet",
+      "description": "Every channel spatial_frame_ref must equal metadata.spatial_frame_ref.",
+      "predicate": "packet.channels.every(c => c.spatial_frame_ref === packet.metadata.spatial_frame_ref)",
+      "rejection_code": "DSC_REJ_FRAME_DIVERGENT"
+    },
+    {
+      "check_id": "CROSS_CHANNEL_COUNT_CONSISTENT",
+      "stage": "cross_channel",
+      "applies_to": "packet",
+      "description": "metadata.channel_count must equal the number of channel payloads.",
+      "predicate": "packet.metadata.channel_count === packet.channels.length",
+      "rejection_code": "DSC_REJ_CHANNEL_COUNT_DIVERGENT"
+    },
+    {
+      "check_id": "CROSS_EDIT_RHYTHM_LENGTHS_ALIGN",
+      "stage": "cross_channel",
+      "applies_to": "edit_rhythm_boundaries",
+      "description": "edit_rhythm_boundaries must carry one shot duration per cut boundary timestamp.",
+      "predicate": "components.cut_timestamp_ms.length === components.shot_duration_ms.length",
+      "rejection_code": "DSC_REJ_EDIT_RHYTHM_LENGTH_MISMATCH"
+    }
+  ],
+  "rejection_codes": [
+    {
+      "code": "DSC_REJ_PACKET_NOT_OBJECT",
+      "category": "structural",
+      "severity": "reject",
+      "description": "Packet root is not a JSON object.",
+      "remediation": "Send an application/json object with metadata and channels sections."
+    },
+    {
+      "code": "DSC_REJ_SECTION_MISSING",
+      "category": "structural",
+      "severity": "reject",
+      "description": "A required top-level section (metadata or channels) is absent.",
+      "remediation": "Include both required sections declared by the packet specification."
+    },
+    {
+      "code": "DSC_REJ_SECTION_UNKNOWN",
+      "category": "structural",
+      "severity": "reject",
+      "description": "Packet carries a top-level section outside the declared required sections.",
+      "remediation": "Remove sections not declared by the packet specification."
+    },
+    {
+      "code": "DSC_REJ_CHANNELS_NOT_ARRAY",
+      "category": "structural",
+      "severity": "reject",
+      "description": "channels section is not an array.",
+      "remediation": "Encode channels as an array of channel payload objects."
+    },
+    {
+      "code": "DSC_REJ_METADATA_FIELD_MISSING",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "A required metadata field is absent.",
+      "remediation": "Populate every metadata field declared by the packet specification."
+    },
+    {
+      "code": "DSC_REJ_METADATA_FIELD_NULL",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "A required metadata field is null.",
+      "remediation": "Metadata fields are non-nullable; supply a concrete value."
+    },
+    {
+      "code": "DSC_REJ_METADATA_FIELD_TYPE",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "A metadata field violates its declared type.",
+      "remediation": "Match the declared metadata field type."
+    },
+    {
+      "code": "DSC_REJ_METADATA_PACKET_VERSION",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "metadata.packet_version does not equal the specified packet version.",
+      "remediation": "Set metadata.packet_version to v1."
+    },
+    {
+      "code": "DSC_REJ_METADATA_SPATIAL_FRAME",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "metadata.spatial_frame_ref does not equal the locked spatial frame.",
+      "remediation": "Set metadata.spatial_frame_ref to normalized_image_plane_v1."
+    },
+    {
+      "code": "DSC_REJ_METADATA_TIMEBASE",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "metadata.timebase is not milliseconds.",
+      "remediation": "Set metadata.timebase to milliseconds."
+    },
+    {
+      "code": "DSC_REJ_METADATA_CONTRACT_ID",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "metadata.contract_id does not reference the PHASE-031 conditioning contract.",
+      "remediation": "Set metadata.contract_id to direct-spatial-conditioning-contract-v1."
+    },
+    {
+      "code": "DSC_REJ_METADATA_CHANNEL_COUNT",
+      "category": "metadata",
+      "severity": "reject",
+      "description": "metadata.channel_count does not equal the declared channel cardinality.",
+      "remediation": "Set metadata.channel_count to 6."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_UNKNOWN",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "Packet carries a channel_id outside the six declared channels.",
+      "remediation": "Send only the six declared conditioning channels."
+    },
+    {
+      "code": "DSC_REJ_ENVELOPE_FIELD_MISSING",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "A required channel envelope field is absent.",
+      "remediation": "Populate every envelope field declared for the channel payload."
+    },
+    {
+      "code": "DSC_REJ_ENVELOPE_FIELD_NULL",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "A required channel envelope field is null.",
+      "remediation": "Envelope fields are non-nullable; supply a concrete value."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_ID_MISMATCH",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "Channel payload channel_id does not match its payload definition.",
+      "remediation": "Set channel_id to the channel the payload declares."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_FRAME_MISMATCH",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "Channel spatial_frame_ref does not equal the locked spatial frame.",
+      "remediation": "Set channel spatial_frame_ref to normalized_image_plane_v1."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_TIMESTAMP_INVALID",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "Channel timestamp_ms is not a finite number greater than or equal to zero.",
+      "remediation": "Send a finite non-negative millisecond timestamp."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_SOURCE_ID_EMPTY",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "Channel source_video_id is empty or not a string.",
+      "remediation": "Send a non-empty certified corpus source id."
+    },
+    {
+      "code": "DSC_REJ_COMPONENTS_NOT_OBJECT",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "Channel components is not a JSON object.",
+      "remediation": "Encode components as a JSON object keyed by component name."
+    },
+    {
+      "code": "DSC_REJ_COMPONENT_MISSING",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "A declared component is absent from the channel components object.",
+      "remediation": "Supply every component declared for the channel."
+    },
+    {
+      "code": "DSC_REJ_COMPONENT_NULL",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "A declared component is null.",
+      "remediation": "Components are non-nullable; supply a concrete value."
+    },
+    {
+      "code": "DSC_REJ_COMPONENT_TYPE",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "A component value violates its declared value kind.",
+      "remediation": "Match the component value kind declared by the packet specification."
+    },
+    {
+      "code": "DSC_REJ_COMPONENT_UNKNOWN",
+      "category": "channel_payload",
+      "severity": "reject",
+      "description": "Channel components object carries a component outside the declared set.",
+      "remediation": "The component set is closed; remove undeclared components."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_SET_INCOMPLETE",
+      "category": "cross_channel",
+      "severity": "reject",
+      "description": "Packet does not carry all six declared conditioning channels.",
+      "remediation": "Include every declared channel exactly once."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_DUPLICATE",
+      "category": "cross_channel",
+      "severity": "reject",
+      "description": "A channel_id appears more than once in the packet.",
+      "remediation": "Send each channel exactly once."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_ORDER",
+      "category": "cross_channel",
+      "severity": "reject",
+      "description": "Channel sequence does not follow the declared channel order.",
+      "remediation": "Order channels as declared by the packet specification."
+    },
+    {
+      "code": "DSC_REJ_SOURCE_ID_DIVERGENT",
+      "category": "cross_channel",
+      "severity": "reject",
+      "description": "Channel source_video_id values disagree with metadata.source_video_id.",
+      "remediation": "All channels must describe the same source video as the metadata."
+    },
+    {
+      "code": "DSC_REJ_FRAME_DIVERGENT",
+      "category": "cross_channel",
+      "severity": "reject",
+      "description": "Channel spatial_frame_ref values disagree with metadata.spatial_frame_ref.",
+      "remediation": "All channels must share the metadata spatial frame."
+    },
+    {
+      "code": "DSC_REJ_CHANNEL_COUNT_DIVERGENT",
+      "category": "cross_channel",
+      "severity": "reject",
+      "description": "metadata.channel_count disagrees with the number of channel payloads sent.",
+      "remediation": "Keep metadata.channel_count equal to channels.length."
+    },
+    {
+      "code": "DSC_REJ_EDIT_RHYTHM_LENGTH_MISMATCH",
+      "category": "cross_channel",
+      "severity": "reject",
+      "description": "edit_rhythm_boundaries cut_timestamp_ms and shot_duration_ms have different lengths.",
+      "remediation": "Send one duration per cut boundary."
+    }
+  ],
+  "design_constraints": {
+    "validation_only": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "validates_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T07:25:52.346Z"
+}

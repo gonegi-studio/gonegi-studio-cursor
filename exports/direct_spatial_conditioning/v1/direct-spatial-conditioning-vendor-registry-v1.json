@@ -1,0 +1,449 @@
+{
+  "vendor_registry_id": "direct-spatial-conditioning-vendor-registry-v1",
+  "phase": "PHASE-DSC-056",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REGISTRY_V1",
+  "mode": "design_only_vendor_registry",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REGISTRY_V1",
+  "vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+  "vendor_profile_phase": "PHASE-DSC-055",
+  "vendor_profile_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_PROFILE_V1",
+  "family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+  "family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json",
+  "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+  "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+  "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "vendor_registry_schema": {
+    "schema_id": "dsc-vendor-registry-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning vendor registry. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. The registry declares registration records, lifecycle, deregistration policy, and validation rules without registering any vendor.",
+    "encoding": "application/json",
+    "registry_id_policy": "opaque_registry_id_no_vendor_binding",
+    "vendor_profile_ref": "dsc-vendor-profile-generic-v1",
+    "required_fields": [
+      {
+        "field": "vendor_registry_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "vendor_profile_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the verified vendor profile dsc-vendor-profile-generic-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "vendor_registration_record",
+        "type": "dsc-vendor-registration-record-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare the opaque registration record shape"
+      },
+      {
+        "field": "vendor_lifecycle",
+        "type": "dsc-vendor-registry-lifecycle-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare pending/active/suspended/deregistered lifecycle"
+      },
+      {
+        "field": "vendor_deregistration_policy",
+        "type": "dsc-vendor-registry-deregistration-policy-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare irreversible deregistration with retained records"
+      },
+      {
+        "field": "vendor_validation_rules",
+        "type": "dsc-vendor-registry-validation-rules-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare mandatory validation checks over vendor profile binding and neutrality"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "vendor_registration_record": {
+    "record_schema_id": "dsc-vendor-registration-record-v1",
+    "description": "Shape of a single vendor registration record. Identity fields are opaque; no vendor name is stored. Records are declared only; none are written in this phase.",
+    "encoding": "application/json",
+    "identity_policy": "opaque_vendor_registration_id_no_vendor_name_binding",
+    "required_fields": [
+      {
+        "field": "vendor_registration_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque registration identity allocated at acceptance"
+      },
+      {
+        "field": "opaque_vendor_handle",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque vendor handle with no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "vendor_profile_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-vendor-profile-generic-v1"
+      },
+      {
+        "field": "vendor_profile_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "lifecycle_state",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of vendor_lifecycle.states"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "declared_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "vendor_capability_interface_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-vendor-capability-interface-v1"
+      },
+      {
+        "field": "requires_gpu",
+        "type": "boolean",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal false"
+      },
+      {
+        "field": "performs_inference",
+        "type": "boolean",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal false"
+      }
+    ],
+    "uniqueness": {
+      "key": [
+        "vendor_registration_id"
+      ],
+      "active_key": [
+        "opaque_vendor_handle",
+        "vendor_profile_id"
+      ],
+      "duplicate_policy": "reject_duplicate_active_registration",
+      "duplicate_code": "DSC_VENDOR_REGISTRY_DUPLICATE_ACTIVE"
+    },
+    "additional_fields": false,
+    "writes_records_in_this_phase": false
+  },
+  "vendor_lifecycle": {
+    "lifecycle_id": "dsc-vendor-registry-lifecycle-v1",
+    "description": "Lifecycle governing vendor registration records. States and transitions are declared only; no transition is executed in this phase.",
+    "states": [
+      "pending",
+      "active",
+      "suspended",
+      "deregistered"
+    ],
+    "initial_state": "pending",
+    "active_state": "active",
+    "terminal_state": "deregistered",
+    "transitions": [
+      {
+        "from": "pending",
+        "to": "active",
+        "trigger": "vendor_validation_accepted",
+        "requires_vendor_profile_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "pending",
+        "to": "deregistered",
+        "trigger": "vendor_validation_rejected_or_abandoned",
+        "requires_vendor_profile_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "active",
+        "to": "suspended",
+        "trigger": "temporary_policy_hold",
+        "requires_vendor_profile_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "suspended",
+        "to": "active",
+        "trigger": "policy_hold_cleared_with_valid_vendor_profile",
+        "requires_vendor_profile_recheck": true,
+        "allowed": true
+      },
+      {
+        "from": "active",
+        "to": "deregistered",
+        "trigger": "deregistration_policy_invoked",
+        "requires_vendor_profile_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "suspended",
+        "to": "deregistered",
+        "trigger": "deregistration_policy_invoked",
+        "requires_vendor_profile_recheck": false,
+        "allowed": true
+      }
+    ],
+    "invariants": [
+      "every registration begins in pending",
+      "only active registrations may be selected by downstream routing",
+      "deregistered is terminal and irreversible under the deregistration policy",
+      "suspended to active requires a vendor profile recheck",
+      "no lifecycle transition invokes a vendor implementation, GPU, or inference path"
+    ],
+    "registers_vendors_in_this_phase": false
+  },
+  "vendor_deregistration_policy": {
+    "policy_id": "dsc-vendor-registry-deregistration-policy-v1",
+    "description": "Irreversible deregistration policy for vendor registration records. Records are retained for audit; re-registration requires a fresh validation flow. Declared only; not executed in this phase.",
+    "allowed_reasons": [
+      "operator_requested",
+      "capability_set_incompatible",
+      "vendor_profile_revoked",
+      "lifecycle_expired",
+      "validation_rejected"
+    ],
+    "effects": {
+      "lifecycle_state_becomes": "deregistered",
+      "registration_record_retained": true,
+      "re_registration_policy": "requires_new_registration_flow_and_fresh_vendor_validation",
+      "vendor_handles_released": true
+    },
+    "forbidden": [
+      "vendor implementation during deregistration",
+      "gpu or inference execution during deregistration",
+      "dataset modification during deregistration",
+      "silent deletion of registration records",
+      "reactivation of a deregistered record without a new registration"
+    ],
+    "irreversible": true,
+    "executed_in_this_phase": false
+  },
+  "vendor_validation_rules": {
+    "validation_id": "dsc-vendor-registry-validation-rules-v1",
+    "description": "Validation rules a vendor registration must satisfy before becoming active. Declared only; no vendor is evaluated in this phase.",
+    "evaluation": "collect_all_rejections",
+    "accept_condition": "zero rejection codes and vendor profile binding intact",
+    "outcome_values": [
+      "accepted",
+      "rejected"
+    ],
+    "checks": [
+      {
+        "check_id": "CHK_VENDOR_PROFILE_BOUND",
+        "description": "Registration must bind the verified PHASE-055 vendor profile by exact reference.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_PROFILE_BINDING",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_VENDOR_IDENTITY_OPAQUE",
+        "description": "vendor_registration_id and opaque_vendor_handle must carry no vendor name, framework, or device semantics.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_IDENTITY",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_CAPABILITY_INTERFACE",
+        "description": "Vendor must declare intent to satisfy dsc-vendor-capability-interface-v1 without vendor-specific extensions.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_CAPABILITY_INTERFACE",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_CAPABILITY_SET_LOCKED",
+        "description": "Registration must bind the frozen capability set identity and version.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_CAPABILITY_SET",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_SPATIAL_FRAME_LOCKED",
+        "description": "Registration must operate exclusively in normalized_image_plane_v1.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_SPATIAL_FRAME",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_CHANNEL_ORDER_FOUNDATION",
+        "description": "Registration must declare the six foundation channels in fixed order.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_CHANNEL_ORDER",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_NO_GPU_NO_INFERENCE",
+        "description": "Registration must not require GPU or perform inference.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_GPU_INFERENCE",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_NO_VENDOR_NAME",
+        "description": "Registration must not embed a concrete vendor name.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_VENDOR_NAME",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_LIFECYCLE_STARTS_PENDING",
+        "description": "Newly allocated registrations must begin in the pending lifecycle state before activation.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_FAIL_LIFECYCLE_INITIAL",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      },
+      {
+        "check_id": "CHK_DUPLICATE_ACTIVE_REJECTED",
+        "description": "A second active registration for the same opaque_vendor_handle and vendor_profile_id must be rejected.",
+        "rejection_code": "DSC_VENDOR_REGISTRY_DUPLICATE_ACTIVE",
+        "mandatory": true,
+        "evaluation": "design_time_declaration_only",
+        "status_in_this_phase": "not_evaluated"
+      }
+    ],
+    "requires_vendor_profile_binding": true,
+    "requires_vendor_capability_interface": true,
+    "evaluates_vendors_in_this_phase": false
+  },
+  "registered_vendors": {
+    "count": 0,
+    "entries": [],
+    "registration_policy": "vendors may register only after a future acceptance flow against the vendor profile; none are registered here",
+    "registers_vendors_in_this_phase": false
+  },
+  "design_constraints": {
+    "registry_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_vendor_profile": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "registers_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T23:24:18.991Z"
+}

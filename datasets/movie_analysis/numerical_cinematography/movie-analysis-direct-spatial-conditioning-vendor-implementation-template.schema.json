@@ -1,0 +1,566 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template.schema.json",
+  "title": "DirectSpatialConditioningVendorImplementationTemplate",
+  "description": "PHASE-DSC-073 design-only, read-only generic vendor implementation template. Defines implementation template schema, deterministic template identity, certified Vendor Implementation Profile binding, deterministic implementation skeleton, and extension points over the certified PHASE-071 profile. Implements no vendor, fills no extension point, and binds to no vendor name, framework, or device.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "vendor_implementation_template_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "template_id",
+    "template_version",
+    "template_kind",
+    "implementation_profile_ref",
+    "implementation_profile_certification_ref",
+    "family_ref",
+    "family_certification_ref",
+    "reference_implementation_ref",
+    "reference_implementation_certification_ref",
+    "vendor_template_ref",
+    "vendor_reference_profile_ref",
+    "vendor_reference_profile_certification_ref",
+    "vendor_implementation_spec_ref",
+    "vendor_execution_contract_ref",
+    "vendor_router_ref",
+    "vendor_compatibility_ref",
+    "vendor_registry_ref",
+    "vendor_profile_ref",
+    "backend_family_ref",
+    "backend_family_certification_ref",
+    "reference_backend_ref",
+    "reference_backend_certification_ref",
+    "backend_template_ref",
+    "backend_template_certification_ref",
+    "backend_profile_ref",
+    "backend_profile_certification_ref",
+    "backend_design_certification_ref",
+    "implementation_spec_ref",
+    "execution_contract_ref",
+    "runtime_router_ref",
+    "adapter_registration_ref",
+    "compatibility_engine_ref",
+    "capability_registry_ref",
+    "adapter_foundation_ref",
+    "runtime_interface_ref",
+    "runtime_package_ref",
+    "sources_supported",
+    "required_channels",
+    "spatial_frame_ref",
+    "capability_set_id",
+    "capability_set_version",
+    "implementation_template_schema",
+    "deterministic_template_identity",
+    "vendor_implementation_profile_binding",
+    "deterministic_implementation_skeleton",
+    "extension_points",
+    "templated_implementations",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "vendor_implementation_template_id": {
+      "const": "direct-spatial-conditioning-vendor-implementation-template-v1"
+    },
+    "phase": { "const": "PHASE-DSC-073" },
+    "system_id": {
+      "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_TEMPLATE_V1"
+    },
+    "mode": { "const": "design_only_vendor_implementation_template" },
+    "target": {
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_TEMPLATE_V1"
+    },
+    "template_id": { "const": "dsc-vendor-implementation-template-generic-v1" },
+    "template_version": { "const": "1.0" },
+    "template_kind": { "const": "generic_vendor_implementation_template" },
+    "implementation_profile_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-profile-v1.json"
+    },
+    "implementation_profile_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-profile-certification-v1.json"
+    },
+    "family_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-family-v1.json"
+    },
+    "family_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-family-certification-v1.json"
+    },
+    "reference_implementation_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-implementation-v1.json"
+    },
+    "reference_implementation_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-implementation-certification-v1.json"
+    },
+    "vendor_template_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json"
+    },
+    "vendor_reference_profile_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json"
+    },
+    "vendor_reference_profile_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json"
+    },
+    "vendor_implementation_spec_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json"
+    },
+    "vendor_execution_contract_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json"
+    },
+    "vendor_router_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json"
+    },
+    "vendor_compatibility_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json"
+    },
+    "vendor_registry_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json"
+    },
+    "vendor_profile_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json"
+    },
+    "backend_family_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json"
+    },
+    "backend_family_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json"
+    },
+    "reference_backend_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json"
+    },
+    "reference_backend_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json"
+    },
+    "backend_template_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json"
+    },
+    "backend_template_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json"
+    },
+    "backend_profile_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json"
+    },
+    "backend_profile_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json"
+    },
+    "backend_design_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json"
+    },
+    "implementation_spec_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json"
+    },
+    "execution_contract_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json"
+    },
+    "runtime_router_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json"
+    },
+    "adapter_registration_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json"
+    },
+    "compatibility_engine_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json"
+    },
+    "capability_registry_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json"
+    },
+    "adapter_foundation_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json"
+    },
+    "runtime_interface_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json"
+    },
+    "runtime_package_ref": {
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "required_channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+    "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+    "capability_set_version": { "const": "1.0" },
+    "implementation_template_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "description",
+        "encoding",
+        "template_id_policy",
+        "profile_ref",
+        "required_fields",
+        "optional_fields",
+        "additional_fields"
+      ],
+      "properties": {
+        "schema_id": { "const": "dsc-vendor-implementation-template-schema-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "encoding": { "const": "application/json" },
+        "template_id_policy": { "const": "opaque_template_id_no_vendor_binding" },
+        "profile_ref": { "const": "dsc-vendor-implementation-profile-generic-v1" },
+        "required_fields": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "type", "required", "nullable", "constraint"],
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "required": { "const": true },
+              "nullable": { "const": false },
+              "constraint": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "optional_fields": { "type": "array", "maxItems": 0 },
+        "additional_fields": { "const": false }
+      }
+    },
+    "deterministic_template_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_id",
+        "description",
+        "template_id",
+        "template_version",
+        "identity_policy",
+        "derivation",
+        "purity",
+        "seed_dependence",
+        "time_dependence",
+        "randomness",
+        "vendor_binding",
+        "framework_binding",
+        "device_binding",
+        "vendor_name",
+        "capability_set_id",
+        "capability_set_version",
+        "spatial_frame_ref",
+        "required_channels"
+      ],
+      "properties": {
+        "identity_id": {
+          "const": "dsc-vendor-implementation-template-deterministic-identity-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "template_id": { "const": "dsc-vendor-implementation-template-generic-v1" },
+        "template_version": { "const": "1.0" },
+        "identity_policy": { "const": "opaque_template_id_no_vendor_binding" },
+        "derivation": { "const": "literal_constant_declared_at_design_time" },
+        "purity": { "const": "deterministic_pure_constant" },
+        "seed_dependence": { "const": "none" },
+        "time_dependence": { "const": "none" },
+        "randomness": { "const": "none" },
+        "vendor_binding": { "const": "none" },
+        "framework_binding": { "const": "none" },
+        "device_binding": { "const": "none" },
+        "vendor_name": { "const": "none" },
+        "capability_set_id": { "const": "dsc-backend-capability-set-v1" },
+        "capability_set_version": { "const": "1.0" },
+        "spatial_frame_ref": { "const": "normalized_image_plane_v1" },
+        "required_channels": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "vendor_implementation_profile_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_id",
+        "description",
+        "profile_ref",
+        "profile_id",
+        "profile_version",
+        "profile_phase",
+        "profile_system_id",
+        "profile_certification_ref",
+        "binding_mode",
+        "role",
+        "capability_profile_ref",
+        "family_ref",
+        "family_certification_ref",
+        "fills_extension_points_in_this_phase",
+        "implements_skeleton_in_this_phase"
+      ],
+      "properties": {
+        "binding_id": {
+          "const": "dsc-vendor-implementation-template-profile-binding-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "profile_ref": {
+          "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-profile-v1.json"
+        },
+        "profile_id": { "const": "dsc-vendor-implementation-profile-generic-v1" },
+        "profile_version": { "const": "1.0" },
+        "profile_phase": { "const": "PHASE-DSC-071" },
+        "profile_system_id": {
+          "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_PROFILE_V1"
+        },
+        "profile_certification_ref": {
+          "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-profile-certification-v1.json"
+        },
+        "binding_mode": { "const": "exact_reuse" },
+        "role": { "const": "implementation_conformance_template" },
+        "capability_profile_ref": {
+          "const": "dsc-vendor-implementation-capability-profile-v1"
+        },
+        "family_ref": {
+          "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-family-v1.json"
+        },
+        "family_certification_ref": {
+          "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-family-certification-v1.json"
+        },
+        "fills_extension_points_in_this_phase": { "const": false },
+        "implements_skeleton_in_this_phase": { "const": false }
+      }
+    },
+    "deterministic_implementation_skeleton": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skeleton_id",
+        "description",
+        "capability_profile_ref",
+        "vendor_capability_interface_ref",
+        "purity",
+        "seed_dependence",
+        "time_dependence",
+        "randomness",
+        "step_order",
+        "steps",
+        "same_inputs_same_outcome",
+        "requires_gpu",
+        "performs_inference",
+        "implements_steps_in_this_phase"
+      ],
+      "properties": {
+        "skeleton_id": {
+          "const": "dsc-vendor-implementation-deterministic-skeleton-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "capability_profile_ref": {
+          "const": "dsc-vendor-implementation-capability-profile-v1"
+        },
+        "vendor_capability_interface_ref": {
+          "const": "dsc-vendor-capability-interface-v1"
+        },
+        "purity": { "const": "deterministic_pure_function_per_step" },
+        "seed_dependence": { "const": "none" },
+        "time_dependence": { "const": "none" },
+        "randomness": { "const": "none" },
+        "step_order": { "const": "fixed_declared_order" },
+        "steps": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "step_id",
+              "order",
+              "method_id",
+              "signature",
+              "description",
+              "reads",
+              "emits",
+              "side_effects",
+              "deterministic",
+              "extension_point_ref",
+              "inherited_from",
+              "implemented_in_this_phase"
+            ],
+            "properties": {
+              "step_id": { "type": "string", "minLength": 1 },
+              "order": { "type": "integer", "minimum": 1, "maximum": 4 },
+              "method_id": {
+                "enum": [
+                  "describe_capabilities",
+                  "check_compatibility",
+                  "bind_conditioning_input",
+                  "release_conditioning_binding"
+                ]
+              },
+              "signature": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "reads": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "emits": { "type": "string", "minLength": 1 },
+              "side_effects": { "const": "none" },
+              "deterministic": { "const": true },
+              "extension_point_ref": {
+                "type": "string",
+                "pattern": "^EXT_VENDOR_[A-Z0-9_]+$"
+              },
+              "inherited_from": {
+                "const": "dsc-vendor-implementation-capability-profile-v1"
+              },
+              "implemented_in_this_phase": { "const": false }
+            }
+          }
+        },
+        "same_inputs_same_outcome": { "const": true },
+        "requires_gpu": { "const": false },
+        "performs_inference": { "const": false },
+        "implements_steps_in_this_phase": { "const": false }
+      }
+    },
+    "extension_points": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "extension_points_id",
+        "description",
+        "closed_set",
+        "points",
+        "unknown_extension_policy",
+        "fills_extension_points_in_this_phase"
+      ],
+      "properties": {
+        "extension_points_id": {
+          "const": "dsc-vendor-implementation-template-extension-points-v1"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "closed_set": { "const": true },
+        "points": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "extension_point_id",
+              "target_method_id",
+              "category",
+              "description",
+              "contract",
+              "inherited_from",
+              "must_remain_deterministic",
+              "may_require_gpu",
+              "may_perform_inference",
+              "may_modify_certified_artifacts",
+              "filled_in_this_phase"
+            ],
+            "properties": {
+              "extension_point_id": {
+                "enum": [
+                  "EXT_VENDOR_DECLARE_CAPABILITIES",
+                  "EXT_VENDOR_RESOLVE_COMPATIBILITY",
+                  "EXT_VENDOR_BIND_CONDITIONING_INPUT",
+                  "EXT_VENDOR_RELEASE_BINDING"
+                ]
+              },
+              "target_method_id": {
+                "enum": [
+                  "describe_capabilities",
+                  "check_compatibility",
+                  "bind_conditioning_input",
+                  "release_conditioning_binding"
+                ]
+              },
+              "category": {
+                "enum": [
+                  "capability_declaration",
+                  "compatibility",
+                  "binding",
+                  "lifecycle"
+                ]
+              },
+              "description": { "type": "string", "minLength": 1 },
+              "contract": { "type": "string", "minLength": 1 },
+              "inherited_from": {
+                "const": "dsc-vendor-implementation-capability-profile-v1"
+              },
+              "must_remain_deterministic": { "const": true },
+              "may_require_gpu": { "const": false },
+              "may_perform_inference": { "const": false },
+              "may_modify_certified_artifacts": { "const": false },
+              "filled_in_this_phase": { "const": false }
+            }
+          }
+        },
+        "unknown_extension_policy": {
+          "const": "reject_undeclared_extension_point"
+        },
+        "fills_extension_points_in_this_phase": { "const": false }
+      }
+    },
+    "templated_implementations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "entries",
+        "templating_policy",
+        "templates_implementations_in_this_phase"
+      ],
+      "properties": {
+        "count": { "const": 0 },
+        "entries": { "type": "array", "maxItems": 0 },
+        "templating_policy": { "type": "string", "minLength": 1 },
+        "templates_implementations_in_this_phase": { "const": false }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_only",
+        "read_only",
+        "vendor_neutral",
+        "reuses_certified_vendor_implementation_profile",
+        "no_actual_implementation",
+        "no_vendor_implementation",
+        "backend",
+        "no_backend_implementation",
+        "gpu",
+        "inference",
+        "templates_implementations_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "template_only": { "const": true },
+        "read_only": { "const": true },
+        "vendor_neutral": { "const": true },
+        "reuses_certified_vendor_implementation_profile": { "const": true },
+        "no_actual_implementation": { "const": true },
+        "no_vendor_implementation": { "const": true },
+        "backend": { "const": "none" },
+        "no_backend_implementation": { "const": true },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "templates_implementations_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

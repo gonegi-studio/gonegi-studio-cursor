@@ -1,0 +1,492 @@
+{
+  "vendor_router_id": "direct-spatial-conditioning-vendor-router-v1",
+  "phase": "PHASE-DSC-059",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_ROUTER_V1",
+  "mode": "design_only_vendor_router",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_ROUTER_V1",
+  "vendor_compatibility_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+  "vendor_compatibility_phase": "PHASE-DSC-057",
+  "vendor_compatibility_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_COMPATIBILITY_V1",
+  "vendor_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json",
+  "vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+  "family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+  "family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json",
+  "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+  "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+  "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "vendor_router_schema": {
+    "schema_id": "dsc-vendor-router-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning vendor router specification. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. The specification declares a routing policy, fallback policy, report shape, and ordered flow without routing any vendor.",
+    "encoding": "application/json",
+    "identity_policy": "opaque_router_id_no_vendor_binding",
+    "vendor_compatibility_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+    "required_fields": [
+      {
+        "field": "vendor_router_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "vendor_compatibility_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the certified PHASE-057 vendor compatibility specification"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_routing_policy",
+        "type": "dsc-vendor-deterministic-routing-policy-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare a pure deterministic routing policy with no seed, time, or randomness dependence"
+      },
+      {
+        "field": "fallback_policy",
+        "type": "dsc-vendor-routing-fallback-policy-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare ordered fallback branches that never invent a vendor"
+      },
+      {
+        "field": "routing_report",
+        "type": "dsc-vendor-routing-report-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare the routing report schema"
+      },
+      {
+        "field": "routing_flow",
+        "type": "dsc-vendor-routing-flow-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare an ordered side-effect-free routing flow"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "routing_flow": {
+    "flow_id": "dsc-vendor-routing-flow-v1",
+    "description": "Ordered vendor routing stages a future runtime router must execute. Stages are declared only; none are executed in this phase. Candidate source is exclusively the reused PHASE-057 vendor compatibility specification.",
+    "ordered_stages": [
+      {
+        "stage_id": "bind_routing_request",
+        "order": 1,
+        "description": "Bind the opaque routing request, adapted conditioning input reference, and optional preferred vendor_registration_id as immutable routing inputs. No vendor is invoked.",
+        "inputs": [
+          "routing_request",
+          "adapted_conditioning_input_ref",
+          "optional_preferred_vendor_registration_id"
+        ],
+        "outputs": [
+          "bound_routing_inputs"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "lookup_compatible_vendors",
+        "order": 2,
+        "description": "Read the PHASE-057 vendor compatibility surface and collect vendor registrations whose compatibility outcome is compatible. Lookup is read-only and never mutates records.",
+        "inputs": [
+          "bound_routing_inputs",
+          "vendor_compatibility_ref"
+        ],
+        "outputs": [
+          "compatible_vendor_snapshot"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "filter_eligible_vendors",
+        "order": 3,
+        "description": "Apply the deterministic routing eligibility rules (active lifecycle, compatible outcome, vendor profile binding, capability set, spatial frame, exact channel coverage).",
+        "inputs": [
+          "compatible_vendor_snapshot",
+          "bound_routing_inputs"
+        ],
+        "outputs": [
+          "eligible_candidates",
+          "rejected_candidates"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "rank_candidates",
+        "order": 4,
+        "description": "Stable-sort eligible candidates by the declared ranking keys. Sorting is pure, seedless, and time-independent.",
+        "inputs": [
+          "eligible_candidates"
+        ],
+        "outputs": [
+          "ranked_candidates"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "select_primary_route",
+        "order": 5,
+        "description": "Select the first candidate after stable sort as the primary route. A bound preferred vendor_registration_id is forced to rank first only when it already satisfies eligibility.",
+        "inputs": [
+          "ranked_candidates",
+          "bound_routing_inputs"
+        ],
+        "outputs": [
+          "primary_route_or_null"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "apply_fallback_if_needed",
+        "order": 6,
+        "description": "If no primary route exists, evaluate fallback branches in declaration order. Fallback never invents a vendor and never bypasses the vendor compatibility specification.",
+        "inputs": [
+          "primary_route_or_null",
+          "rejected_candidates"
+        ],
+        "outputs": [
+          "routing_outcome",
+          "fallback_branch_or_null"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "emit_routing_report",
+        "order": 7,
+        "description": "Emit the routing report conforming to the routing report schema. Report emission is the only declared output of the flow.",
+        "inputs": [
+          "bound_routing_inputs",
+          "ranked_candidates",
+          "rejected_candidates",
+          "primary_route_or_null",
+          "routing_outcome",
+          "fallback_branch_or_null"
+        ],
+        "outputs": [
+          "routing_report"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      }
+    ],
+    "reuse_policy": {
+      "vendor_compatibility": "mandatory_exact_reuse",
+      "vendor_registry": "mandatory_read_only_via_compatibility"
+    },
+    "accept_condition": "routing report outcome is routed or fallback with declared branch",
+    "reject_condition": "routing report outcome is unroutable",
+    "outcome_values": [
+      "routed",
+      "fallback",
+      "unroutable"
+    ],
+    "executes_flow_in_this_phase": false
+  },
+  "deterministic_routing_policy": {
+    "policy_id": "dsc-vendor-deterministic-routing-policy-v1",
+    "description": "Pure, seedless, time-independent policy that ranks eligible compatible vendor registrations and selects the first after stable sort. Declared only; never executed in this phase.",
+    "eligibility": {
+      "lifecycle_state_required": "active",
+      "compatibility_outcome_required": "compatible",
+      "vendor_profile_binding_required": true,
+      "capability_set_id_required": "dsc-backend-capability-set-v1",
+      "spatial_frame_required": "normalized_image_plane_v1",
+      "channel_coverage_required": "exact_foundation_order"
+    },
+    "ranking_keys": [
+      {
+        "key_id": "preferred_registration_first",
+        "order": 1,
+        "field": "matches_preferred_vendor_registration_id",
+        "direction": "descending",
+        "description": "Eligible preferred vendor_registration_id, when present, ranks before all other eligible candidates."
+      },
+      {
+        "key_id": "capability_set_version_desc",
+        "order": 2,
+        "field": "capability_set_version",
+        "direction": "descending",
+        "description": "Higher supported capability_set_version ranks first within the same major."
+      },
+      {
+        "key_id": "vendor_profile_version_desc",
+        "order": 3,
+        "field": "vendor_profile_version",
+        "direction": "descending",
+        "description": "Higher bound vendor_profile_version ranks first to prefer the most current profile binding."
+      },
+      {
+        "key_id": "vendor_registration_id_asc",
+        "order": 4,
+        "field": "vendor_registration_id",
+        "direction": "ascending",
+        "description": "Opaque vendor_registration_id ascending is the final deterministic tie-breaker."
+      }
+    ],
+    "selection_rule": "first_after_stable_sort",
+    "tie_breakers": [
+      "stages execute strictly in routing_flow order",
+      "ranking keys apply in ascending key order",
+      "stable sort preserves relative order for equal keys until a later key decides",
+      "vendor_registration_id ascending is the final tie-breaker and never depends on wall clock"
+    ],
+    "purity": "deterministic_pure_function",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_invocation": "none",
+    "routes_vendors_in_this_phase": false
+  },
+  "fallback_policy": {
+    "policy_id": "dsc-vendor-routing-fallback-policy-v1",
+    "description": "Ordered fallback branches evaluated only when select_primary_route yields no route. Fallback never invents a vendor and never bypasses the PHASE-057 vendor compatibility specification.",
+    "primary_exhausted_behavior": "evaluate_fallback_branches_in_order",
+    "branches": [
+      {
+        "branch_id": "no_compatible_vendors",
+        "order": 1,
+        "condition": "compatible_vendor_snapshot is empty",
+        "action": "emit unroutable report with DSC_VENDOR_ROUTING_NO_COMPATIBLE_VENDOR",
+        "outcome": "unroutable",
+        "routing_code": "DSC_VENDOR_ROUTING_NO_COMPATIBLE_VENDOR"
+      },
+      {
+        "branch_id": "compatible_but_none_eligible",
+        "order": 2,
+        "condition": "compatible vendors exist but eligible_candidates is empty",
+        "action": "emit unroutable report with DSC_VENDOR_ROUTING_NO_ELIGIBLE_VENDOR",
+        "outcome": "unroutable",
+        "routing_code": "DSC_VENDOR_ROUTING_NO_ELIGIBLE_VENDOR"
+      },
+      {
+        "branch_id": "preferred_ineligible_use_next_ranked",
+        "order": 3,
+        "condition": "preferred vendor_registration_id was bound but became ineligible; ranked eligible candidates remain",
+        "action": "select first ranked eligible candidate and mark outcome routed",
+        "outcome": "routed",
+        "routing_code": null
+      },
+      {
+        "branch_id": "explicit_unroutable_terminal",
+        "order": 4,
+        "condition": "no primary route and no earlier fallback branch matched",
+        "action": "emit unroutable report with DSC_VENDOR_ROUTING_UNROUTABLE",
+        "outcome": "unroutable",
+        "routing_code": "DSC_VENDOR_ROUTING_UNROUTABLE"
+      }
+    ],
+    "forbidden": [
+      "inventing an unregistered or incompatible vendor",
+      "routing a pending, suspended, or deregistered registration",
+      "routing a vendor whose compatibility outcome is incompatible",
+      "bypassing PHASE-057 vendor compatibility rules or the vendor profile binding",
+      "gpu or inference execution during fallback",
+      "dataset modification during fallback",
+      "non-deterministic random selection among candidates"
+    ],
+    "never_invents_vendor": true,
+    "never_bypasses_compatibility": true,
+    "executed_in_this_phase": false
+  },
+  "routing_report": {
+    "report_schema_id": "dsc-vendor-routing-report-schema-v1",
+    "report_id": "dsc-vendor-routing-report-v1",
+    "description": "Typed report schema for the routing decision emitted by emit_routing_report. Outcome is routed, fallback, or unroutable; additional fields are forbidden. Declared only; no report is produced in this phase.",
+    "encoding": "application/json",
+    "required_fields": [
+      {
+        "field": "routing_request_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque caller-assigned routing request identity"
+      },
+      {
+        "field": "outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of outcome_values"
+      },
+      {
+        "field": "selected_vendor_registration_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque vendor_registration_id when outcome is routed; empty string when unroutable or when fallback does not select a registration"
+      },
+      {
+        "field": "selected_vendor_handle",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque_vendor_handle copied from the selected registration when routed; empty string otherwise"
+      },
+      {
+        "field": "fallback_branch_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "fallback branch_id when outcome is fallback or an unroutable fallback branch fired; empty string when routed without fallback"
+      },
+      {
+        "field": "candidates_considered",
+        "type": "array<candidate_entry>",
+        "required": true,
+        "nullable": false,
+        "constraint": "eligible candidates after ranking, in ranking key order"
+      },
+      {
+        "field": "rejected_candidates",
+        "type": "array<candidate_entry>",
+        "required": true,
+        "nullable": false,
+        "constraint": "compatible but ineligible candidates, in ranking key order"
+      },
+      {
+        "field": "routing_codes",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "zero or more DSC_VENDOR_ROUTING_* codes; empty iff outcome is routed without fallback codes"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "capability_set_version of the selected registration, or empty when unroutable"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      }
+    ],
+    "outcome_values": [
+      "routed",
+      "fallback",
+      "unroutable"
+    ],
+    "candidate_entry_shape": {
+      "fields": [
+        "vendor_registration_id",
+        "opaque_vendor_handle",
+        "lifecycle_state",
+        "capability_set_version",
+        "compatibility_outcome",
+        "eligibility",
+        "rank_index_or_null",
+        "rejection_code_or_null"
+      ]
+    },
+    "ordering": {
+      "candidates_considered": "ranking_key_order",
+      "rejected_candidates": "ranking_key_order",
+      "routing_codes": "first_failure_order_then_lexicographic"
+    },
+    "additional_fields": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "routes_vendors_in_this_phase": false
+  },
+  "routed_vendors": {
+    "count": 0,
+    "entries": [],
+    "routing_policy": "vendor routing is performed by future phases; this phase defines the router surface only and binds to no vendor",
+    "routes_vendors_in_this_phase": false
+  },
+  "design_constraints": {
+    "router_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_vendor_compatibility": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "routes_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T23:46:51.150Z"
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation.schema.json",
+  "title": "DirectSpatialConditioningFoundation",
+  "description": "PHASE-MOVIE-RECONSTRUCTION-030 design-only foundation. Defines the spatial conditioning interfaces that expose certified Movie Reconstruction V1 outputs as conditioning inputs. No backend, no GPU, no inference, no dataset modification, no placeholders.",
+  "type": "object",
+  "required": [
+    "foundation_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "spatial_frame",
+    "channels",
+    "input_contract",
+    "output_contract",
+    "design_constraints",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "foundation_id": { "type": "string" },
+    "phase": { "type": "string", "const": "PHASE-MOVIE-RECONSTRUCTION-030" },
+    "system_id": { "type": "string", "const": "DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1" },
+    "mode": { "type": "string", "const": "design_only" },
+    "target": { "type": "string", "const": "PASS_DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1" },
+    "spatial_frame": {
+      "type": "object",
+      "required": ["frame_id", "origin", "x_axis", "y_axis", "units"],
+      "properties": {
+        "frame_id": { "type": "string" },
+        "origin": { "type": "string" },
+        "x_axis": { "type": "object" },
+        "y_axis": { "type": "object" },
+        "aspect_policy": { "type": "string" },
+        "units": { "type": "string" },
+        "handedness": { "type": "string" }
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "channel_id",
+          "direction",
+          "spatial_frame_ref",
+          "representation",
+          "value_space",
+          "upstream",
+          "determinism",
+          "requires_backend",
+          "requires_gpu",
+          "performs_inference"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "channel_id": {
+            "type": "string",
+            "enum": [
+              "camera_pose_field",
+              "camera_temporal_track",
+              "subject_position_field",
+              "framing_composition_map",
+              "edit_rhythm_boundaries",
+              "scene_energy_field"
+            ]
+          },
+          "direction": { "type": "string", "const": "conditioning_input" },
+          "spatial_frame_ref": { "type": "string" },
+          "representation": { "type": "string", "minLength": 1 },
+          "value_space": {
+            "type": "object",
+            "required": ["kind", "components", "units", "range_policy"],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": ["continuous", "discrete", "temporal_sequence"]
+              },
+              "components": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "units": { "type": "string", "minLength": 1 },
+              "range_policy": { "type": "string", "minLength": 1 }
+            }
+          },
+          "upstream": {
+            "type": "object",
+            "required": [
+              "consumption_slot",
+              "pipeline_stage",
+              "integrated_layer",
+              "verified_source_verdict"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "consumption_slot": { "type": "string" },
+              "pipeline_stage": { "type": "string" },
+              "integrated_layer": { "type": "string" },
+              "verified_source_verdict": {
+                "type": "string",
+                "const": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1"
+              }
+            }
+          },
+          "determinism": { "type": "string", "const": "design_only_no_inference" },
+          "requires_backend": { "type": "boolean", "const": false },
+          "requires_gpu": { "type": "boolean", "const": false },
+          "performs_inference": { "type": "boolean", "const": false }
+        }
+      }
+    },
+    "input_contract": {
+      "type": "object",
+      "required": [
+        "source_system",
+        "certification_ref",
+        "certification_system_id",
+        "master_package_ref",
+        "master_package_root",
+        "sources_supported",
+        "read_only",
+        "no_dataset_modification"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_system": { "type": "string", "const": "MOVIE_RECONSTRUCTION_V1" },
+        "certification_ref": { "type": "string" },
+        "certification_system_id": { "type": "string" },
+        "master_package_ref": { "type": "string" },
+        "master_package_root": { "type": "string" },
+        "sources_supported": { "type": "integer", "const": 15 },
+        "read_only": { "type": "boolean", "const": true },
+        "no_dataset_modification": { "type": "boolean", "const": true }
+      }
+    },
+    "output_contract": {
+      "type": "object",
+      "required": [
+        "produces",
+        "materializes_tensors",
+        "materializes_frames",
+        "emitted_by_this_phase",
+        "downstream_consumer",
+        "channel_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "produces": { "type": "string", "const": "spatial_conditioning_specification" },
+        "materializes_tensors": { "type": "boolean", "const": false },
+        "materializes_frames": { "type": "boolean", "const": false },
+        "emitted_by_this_phase": { "type": "boolean", "const": false },
+        "downstream_consumer": { "type": "string" },
+        "channel_ids": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "required": [
+        "backend",
+        "gpu",
+        "inference",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "backend": { "type": "string", "const": "none" },
+        "gpu": { "type": "boolean", "const": false },
+        "inference": { "type": "boolean", "const": false },
+        "modifies_existing_datasets": { "type": "boolean", "const": false },
+        "placeholders": { "type": "boolean", "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

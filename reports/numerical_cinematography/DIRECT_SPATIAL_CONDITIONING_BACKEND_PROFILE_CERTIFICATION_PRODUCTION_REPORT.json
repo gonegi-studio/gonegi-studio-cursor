@@ -1,0 +1,103 @@
+{
+  "report_id": "dsc_backend_profile_certification_ms06avw7",
+  "phase": "PHASE-DSC-048",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1",
+  "mode": "read_only_certification",
+  "profile_id": "dsc-backend-profile-reference-v1",
+  "profile_version": "1.0",
+  "surfaces_certified": [
+    "profile_schema",
+    "capability_mapping",
+    "adapter_configuration",
+    "profile_validation"
+  ],
+  "checks_required": [
+    "profile_schema",
+    "capability_mapping",
+    "adapter_configuration",
+    "profile_validation",
+    "evidence_chain",
+    "reproducibility",
+    "immutability"
+  ],
+  "checks": [
+    {
+      "check": "profile_schema",
+      "passed": true,
+      "detail": "backend_profile_schema present with opaque identity policy and ten required fields",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "capability_mapping",
+      "passed": true,
+      "detail": "deterministic capability mapping covers every mandatory capability as supported",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "adapter_configuration",
+      "passed": true,
+      "detail": "adapter configuration reuses dsc-packet-adapter-v1 with identity passthrough and no GPU or inference",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "profile_validation",
+      "passed": true,
+      "detail": "profile validation declares twelve mandatory checks passed by construction with no backend validation",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "backend profile references implementation_spec, backend design certification, and the full adapter stack by exact path",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "capability mapping, channels, sources, spatial frame, and capability set still match upstream exactly; profile artifact is byte-stable",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "verified backend profile, backend design certification, backend design layers, and certified DSC V1 stack are unchanged",
+      "error_count": 0,
+      "errors": []
+    }
+  ],
+  "evidence_chain_links": 11,
+  "evidence_chain_unresolved": 0,
+  "artifact_digest_count": 21,
+  "protected_artifacts_unmodified": true,
+  "backend_neutral": true,
+  "backend_neutrality": {
+    "backend_agnostic": true,
+    "backends_bound": 0,
+    "backends_implemented": 0,
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0"
+  },
+  "upstream_certified_system": {
+    "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+    "backend_design_certified": true,
+    "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+    "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "artifacts": {
+    "certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json"
+  },
+  "error_count": 0,
+  "missing_checks": [],
+  "generated_at": "2026-07-25T09:35:01.111Z"
+}

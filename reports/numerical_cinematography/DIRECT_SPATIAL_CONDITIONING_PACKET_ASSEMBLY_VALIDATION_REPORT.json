@@ -1,0 +1,38 @@
+{
+  "report_id": "direct_spatial_conditioning_packet_assembly_ms020iw4",
+  "phase": "PHASE-DSC-034",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1",
+  "validation_passed": true,
+  "mode": "design_only_assembly",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": 15,
+  "required_input_count": 5,
+  "assembly_step_count": 6,
+  "metadata_field_count": 7,
+  "channel_count": 6,
+  "component_mapping_count": 19,
+  "resolved_component_paths": 285,
+  "resolved_envelope_paths": 180,
+  "design_constraints": {
+    "assembly_only": true,
+    "reuses_certified_runtime_package": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "assembles_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "assembly": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-assembly.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-assembly-implementation-registry-v1.json",
+    "packet": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "validation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "runtime_package": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:34:59.238Z"
+}

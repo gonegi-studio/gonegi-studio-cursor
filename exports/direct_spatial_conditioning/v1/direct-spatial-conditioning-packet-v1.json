@@ -1,0 +1,514 @@
+{
+  "packet_specification_id": "direct-spatial-conditioning-packet-v1",
+  "phase": "PHASE-DSC-032",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_V1",
+  "mode": "design_only_packet",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_V1",
+  "contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+  "contract_phase": "PHASE-DSC-031",
+  "contract_system_id": "DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1",
+  "packet_structure": {
+    "packet_type": "direct_spatial_conditioning_packet",
+    "packet_version": "v1",
+    "encoding": "application/json",
+    "required_sections": [
+      "metadata",
+      "channels"
+    ],
+    "channel_cardinality": 6,
+    "channel_order": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "additional_channels": false
+  },
+  "metadata": {
+    "schema_id": "dsc-packet-metadata-v1",
+    "fields": [
+      {
+        "field": "packet_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty caller-assigned runtime identity"
+      },
+      {
+        "field": "packet_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal v1"
+      },
+      {
+        "field": "source_video_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty certified corpus source id shared by every channel"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "timebase",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal milliseconds"
+      },
+      {
+        "field": "contract_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal direct-spatial-conditioning-contract-v1"
+      },
+      {
+        "field": "channel_count",
+        "type": "integer",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 6"
+      }
+    ],
+    "spatial_frame_ref": "normalized_image_plane_v1"
+  },
+  "channel_payloads": [
+    {
+      "channel_id": "camera_pose_field",
+      "payload_id": "dsc-channel-payload-camera_pose_field-v1",
+      "contract_input_schema_ref": "dsc-channel-input-camera_pose_field-v1",
+      "envelope_fields": [
+        {
+          "field": "channel_id",
+          "type": "conditioning_channel_id",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal enclosing channel payload definition channel_id"
+        },
+        {
+          "field": "source_video_id",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "non-empty certified corpus source id"
+        },
+        {
+          "field": "spatial_frame_ref",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal normalized_image_plane_v1"
+        },
+        {
+          "field": "timestamp_ms",
+          "type": "finite_number",
+          "required": true,
+          "nullable": false,
+          "constraint": "greater than or equal to zero"
+        },
+        {
+          "field": "components",
+          "type": "json_object",
+          "required": true,
+          "nullable": false,
+          "constraint": "exact component set declared by channel payload definition"
+        }
+      ],
+      "component_fields": [
+        {
+          "name": "translation_u",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Camera translation along u in normalized frame"
+        },
+        {
+          "name": "translation_v",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Camera translation along v in normalized frame"
+        },
+        {
+          "name": "rotation_rad",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "In-plane rotation in radians"
+        },
+        {
+          "name": "zoom_scale",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Unitless zoom scale factor"
+        }
+      ],
+      "serialization": "json_object",
+      "additional_components": false
+    },
+    {
+      "channel_id": "camera_temporal_track",
+      "payload_id": "dsc-channel-payload-camera_temporal_track-v1",
+      "contract_input_schema_ref": "dsc-channel-input-camera_temporal_track-v1",
+      "envelope_fields": [
+        {
+          "field": "channel_id",
+          "type": "conditioning_channel_id",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal enclosing channel payload definition channel_id"
+        },
+        {
+          "field": "source_video_id",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "non-empty certified corpus source id"
+        },
+        {
+          "field": "spatial_frame_ref",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal normalized_image_plane_v1"
+        },
+        {
+          "field": "timestamp_ms",
+          "type": "finite_number",
+          "required": true,
+          "nullable": false,
+          "constraint": "greater than or equal to zero"
+        },
+        {
+          "field": "components",
+          "type": "json_object",
+          "required": true,
+          "nullable": false,
+          "constraint": "exact component set declared by channel payload definition"
+        }
+      ],
+      "component_fields": [
+        {
+          "name": "motion_type",
+          "kind": "string",
+          "required": true,
+          "nullable": false,
+          "description": "Camera motion class label"
+        },
+        {
+          "name": "magnitude",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Motion magnitude over adjacent pair"
+        },
+        {
+          "name": "translation_u",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Pair translation along u"
+        },
+        {
+          "name": "translation_v",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Pair translation along v"
+        }
+      ],
+      "serialization": "json_object",
+      "additional_components": false
+    },
+    {
+      "channel_id": "subject_position_field",
+      "payload_id": "dsc-channel-payload-subject_position_field-v1",
+      "contract_input_schema_ref": "dsc-channel-input-subject_position_field-v1",
+      "envelope_fields": [
+        {
+          "field": "channel_id",
+          "type": "conditioning_channel_id",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal enclosing channel payload definition channel_id"
+        },
+        {
+          "field": "source_video_id",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "non-empty certified corpus source id"
+        },
+        {
+          "field": "spatial_frame_ref",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal normalized_image_plane_v1"
+        },
+        {
+          "field": "timestamp_ms",
+          "type": "finite_number",
+          "required": true,
+          "nullable": false,
+          "constraint": "greater than or equal to zero"
+        },
+        {
+          "field": "components",
+          "type": "json_object",
+          "required": true,
+          "nullable": false,
+          "constraint": "exact component set declared by channel payload definition"
+        }
+      ],
+      "component_fields": [
+        {
+          "name": "center_u",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Subject bbox center u"
+        },
+        {
+          "name": "center_v",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Subject bbox center v"
+        },
+        {
+          "name": "displacement_u",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Subject displacement along u"
+        },
+        {
+          "name": "displacement_v",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Subject displacement along v"
+        }
+      ],
+      "serialization": "json_object",
+      "additional_components": false
+    },
+    {
+      "channel_id": "framing_composition_map",
+      "payload_id": "dsc-channel-payload-framing_composition_map-v1",
+      "contract_input_schema_ref": "dsc-channel-input-framing_composition_map-v1",
+      "envelope_fields": [
+        {
+          "field": "channel_id",
+          "type": "conditioning_channel_id",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal enclosing channel payload definition channel_id"
+        },
+        {
+          "field": "source_video_id",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "non-empty certified corpus source id"
+        },
+        {
+          "field": "spatial_frame_ref",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal normalized_image_plane_v1"
+        },
+        {
+          "field": "timestamp_ms",
+          "type": "finite_number",
+          "required": true,
+          "nullable": false,
+          "constraint": "greater than or equal to zero"
+        },
+        {
+          "field": "components",
+          "type": "json_object",
+          "required": true,
+          "nullable": false,
+          "constraint": "exact component set declared by channel payload definition"
+        }
+      ],
+      "component_fields": [
+        {
+          "name": "shot_scale",
+          "kind": "string",
+          "required": true,
+          "nullable": false,
+          "description": "Shot-scale categorical label"
+        },
+        {
+          "name": "composition_region",
+          "kind": "string",
+          "required": true,
+          "nullable": false,
+          "description": "Composition region occupancy descriptor"
+        }
+      ],
+      "serialization": "json_object",
+      "additional_components": false
+    },
+    {
+      "channel_id": "edit_rhythm_boundaries",
+      "payload_id": "dsc-channel-payload-edit_rhythm_boundaries-v1",
+      "contract_input_schema_ref": "dsc-channel-input-edit_rhythm_boundaries-v1",
+      "envelope_fields": [
+        {
+          "field": "channel_id",
+          "type": "conditioning_channel_id",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal enclosing channel payload definition channel_id"
+        },
+        {
+          "field": "source_video_id",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "non-empty certified corpus source id"
+        },
+        {
+          "field": "spatial_frame_ref",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal normalized_image_plane_v1"
+        },
+        {
+          "field": "timestamp_ms",
+          "type": "finite_number",
+          "required": true,
+          "nullable": false,
+          "constraint": "greater than or equal to zero"
+        },
+        {
+          "field": "components",
+          "type": "json_object",
+          "required": true,
+          "nullable": false,
+          "constraint": "exact component set declared by channel payload definition"
+        }
+      ],
+      "component_fields": [
+        {
+          "name": "cut_timestamp_ms",
+          "kind": "number_array",
+          "required": true,
+          "nullable": false,
+          "description": "Ordered cut boundary timestamps in ms"
+        },
+        {
+          "name": "shot_duration_ms",
+          "kind": "number_array",
+          "required": true,
+          "nullable": false,
+          "description": "Per-shot durations in ms"
+        }
+      ],
+      "serialization": "json_object",
+      "additional_components": false
+    },
+    {
+      "channel_id": "scene_energy_field",
+      "payload_id": "dsc-channel-payload-scene_energy_field-v1",
+      "contract_input_schema_ref": "dsc-channel-input-scene_energy_field-v1",
+      "envelope_fields": [
+        {
+          "field": "channel_id",
+          "type": "conditioning_channel_id",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal enclosing channel payload definition channel_id"
+        },
+        {
+          "field": "source_video_id",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "non-empty certified corpus source id"
+        },
+        {
+          "field": "spatial_frame_ref",
+          "type": "string",
+          "required": true,
+          "nullable": false,
+          "constraint": "must equal normalized_image_plane_v1"
+        },
+        {
+          "field": "timestamp_ms",
+          "type": "finite_number",
+          "required": true,
+          "nullable": false,
+          "constraint": "greater than or equal to zero"
+        },
+        {
+          "field": "components",
+          "type": "json_object",
+          "required": true,
+          "nullable": false,
+          "constraint": "exact component set declared by channel payload definition"
+        }
+      ],
+      "component_fields": [
+        {
+          "name": "motion_magnitude",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Scene motion magnitude scalar"
+        },
+        {
+          "name": "camera_subject_relationship",
+          "kind": "string",
+          "required": true,
+          "nullable": false,
+          "description": "Camera/subject relationship class"
+        },
+        {
+          "name": "relative_velocity",
+          "kind": "number",
+          "required": true,
+          "nullable": false,
+          "description": "Camera vs subject relative velocity"
+        }
+      ],
+      "serialization": "json_object",
+      "additional_components": false
+    }
+  ],
+  "packet_invariants": [
+    "metadata.source_video_id equals every channel source_video_id",
+    "metadata.spatial_frame_ref equals every channel spatial_frame_ref",
+    "channel payload set equals the six PHASE-031 contract channels",
+    "each channel components object contains exactly its declared component fields",
+    "timestamps use the metadata timebase and are finite non-negative milliseconds",
+    "packet carries data only and triggers no execution or inference"
+  ],
+  "design_constraints": {
+    "packet_only": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T07:19:55.110Z"
+}

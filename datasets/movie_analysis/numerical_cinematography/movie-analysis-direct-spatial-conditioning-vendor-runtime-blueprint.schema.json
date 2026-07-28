@@ -1,0 +1,885 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-blueprint.schema.json",
+  "title": "DirectSpatialConditioningVendorRuntimeBlueprint",
+  "description": "PHASE-DSC-103 design-only, read-only vendor runtime blueprint. Defines runtime blueprint schema, deterministic runtime blueprint identity, Vendor Runtime Definition binding, runtime blueprint composition, and content-addressed runtime blueprint manifest over the passing PHASE-101 runtime definition. Seals the runtime definition artifact, its shape contract, and its implementation registry directly, and seals the runtime definition contents transitively through the runtime definition digest. Defines no concrete runtime, declares no runtime execution, and binds to no vendor name, framework, or device.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "vendor_runtime_blueprint_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "runtime_definition_ref",
+    "runtime_definition_schema_ref",
+    "runtime_definition_implementation_registry_ref",
+    "runtime_definition_evidence_ref",
+    "runtime_blueprint_id",
+    "runtime_blueprint_version",
+    "runtime_blueprint_kind",
+    "runtime_descriptor_ref",
+    "runtime_descriptor_schema_ref",
+    "runtime_descriptor_implementation_registry_ref",
+    "runtime_descriptor_evidence_ref",
+    "runtime_contract_ref",
+    "runtime_contract_schema_ref",
+    "runtime_contract_implementation_registry_ref",
+    "runtime_contract_evidence_ref",
+    "runtime_specification_ref",
+    "runtime_specification_schema_ref",
+    "runtime_specification_implementation_registry_ref",
+    "runtime_specification_evidence_ref",
+    "runtime_template_ref",
+    "runtime_template_schema_ref",
+    "runtime_template_implementation_registry_ref",
+    "runtime_template_evidence_ref",
+    "runtime_family_ref",
+    "runtime_family_schema_ref",
+    "runtime_family_implementation_registry_ref",
+    "runtime_family_evidence_ref",
+    "runtime_catalog_ref",
+    "runtime_catalog_schema_ref",
+    "runtime_catalog_implementation_registry_ref",
+    "runtime_catalog_evidence_ref",
+    "runtime_index_ref",
+    "runtime_index_schema_ref",
+    "runtime_index_implementation_registry_ref",
+    "runtime_index_evidence_ref",
+    "runtime_registry_ref",
+    "runtime_profile_ref",
+    "runtime_bundle_ref",
+    "runtime_package_ref",
+    "reference_bundle_ref",
+    "package_ref",
+    "template_ref",
+    "template_certification_ref",
+    "numerical_runtime_package_ref",
+    "sources_supported",
+    "required_channels",
+    "spatial_frame_ref",
+    "capability_set_id",
+    "capability_set_version",
+    "runtime_blueprint_schema",
+    "deterministic_runtime_blueprint_identity",
+    "vendor_runtime_definition_binding",
+    "runtime_blueprint_composition",
+    "runtime_blueprint_manifest",
+    "blueprinted_runtime_entries",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "phase": {
+      "const": "PHASE-DSC-103"
+    },
+    "system_id": {
+      "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_BLUEPRINT_V1"
+    },
+    "mode": {
+      "const": "design_only_vendor_runtime_blueprint"
+    },
+    "target": {
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_BLUEPRINT_V1"
+    },
+    "runtime_descriptor_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-descriptor-v1.json"
+    },
+    "runtime_descriptor_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-descriptor.schema.json"
+    },
+    "runtime_descriptor_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-descriptor-implementation-registry-v1.json"
+    },
+    "runtime_descriptor_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_DESCRIPTOR_VALIDATION_REPORT.json"
+    },
+    "runtime_contract_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-contract-v1.json"
+    },
+    "runtime_contract_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-contract.schema.json"
+    },
+    "runtime_contract_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-contract-implementation-registry-v1.json"
+    },
+    "runtime_contract_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CONTRACT_VALIDATION_REPORT.json"
+    },
+    "runtime_specification_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-specification-v1.json"
+    },
+    "runtime_specification_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification.schema.json"
+    },
+    "runtime_specification_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-specification-implementation-registry-v1.json"
+    },
+    "runtime_specification_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_SPECIFICATION_VALIDATION_REPORT.json"
+    },
+    "runtime_template_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-template-v1.json"
+    },
+    "runtime_template_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-template.schema.json"
+    },
+    "runtime_template_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-template-implementation-registry-v1.json"
+    },
+    "runtime_template_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_TEMPLATE_VALIDATION_REPORT.json"
+    },
+    "runtime_family_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-family-v1.json"
+    },
+    "runtime_family_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-family.schema.json"
+    },
+    "runtime_family_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-family-implementation-registry-v1.json"
+    },
+    "runtime_family_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_FAMILY_VALIDATION_REPORT.json"
+    },
+    "runtime_catalog_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-catalog-v1.json"
+    },
+    "runtime_catalog_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog.schema.json"
+    },
+    "runtime_catalog_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-catalog-implementation-registry-v1.json"
+    },
+    "runtime_catalog_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_CATALOG_VALIDATION_REPORT.json"
+    },
+    "runtime_index_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-index-v1.json"
+    },
+    "runtime_index_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-index.schema.json"
+    },
+    "runtime_index_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-index-implementation-registry-v1.json"
+    },
+    "runtime_index_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_INDEX_VALIDATION_REPORT.json"
+    },
+    "runtime_registry_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-registry-v1.json"
+    },
+    "runtime_profile_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-v1.json"
+    },
+    "runtime_bundle_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json"
+    },
+    "runtime_package_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-package-v1.json"
+    },
+    "reference_bundle_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-bundle-v1.json"
+    },
+    "package_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json"
+    },
+    "template_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json"
+    },
+    "template_certification_ref": {
+      "const": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json"
+    },
+    "numerical_runtime_package_ref": {
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required_channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "spatial_frame_ref": {
+      "const": "normalized_image_plane_v1"
+    },
+    "capability_set_id": {
+      "const": "dsc-backend-capability-set-v1"
+    },
+    "capability_set_version": {
+      "const": "1.0"
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime_blueprint_only",
+        "read_only",
+        "vendor_neutral",
+        "reuses_certified_vendor_runtime_definition",
+        "no_actual_implementation",
+        "no_vendor_implementation",
+        "backend",
+        "no_backend_implementation",
+        "gpu",
+        "inference",
+        "declares_runtime_execution",
+        "blueprints_runtime_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "read_only": {
+          "const": true
+        },
+        "vendor_neutral": {
+          "const": true
+        },
+        "no_actual_implementation": {
+          "const": true
+        },
+        "no_vendor_implementation": {
+          "const": true
+        },
+        "backend": {
+          "const": "none"
+        },
+        "no_backend_implementation": {
+          "const": true
+        },
+        "gpu": {
+          "const": false
+        },
+        "inference": {
+          "const": false
+        },
+        "declares_runtime_execution": {
+          "const": false
+        },
+        "modifies_existing_datasets": {
+          "const": false
+        },
+        "placeholders": {
+          "const": false
+        },
+        "runtime_blueprint_only": {
+          "const": true
+        },
+        "reuses_certified_vendor_runtime_definition": {
+          "const": true
+        },
+        "blueprints_runtime_in_this_phase": {
+          "const": false
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "vendor_runtime_blueprint_id": {
+      "const": "direct-spatial-conditioning-vendor-runtime-blueprint-v1"
+    },
+    "runtime_definition_ref": {
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-definition-v1.json"
+    },
+    "runtime_definition_schema_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-definition.schema.json"
+    },
+    "runtime_definition_implementation_registry_ref": {
+      "const": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-definition-implementation-registry-v1.json"
+    },
+    "runtime_definition_evidence_ref": {
+      "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_DEFINITION_VALIDATION_REPORT.json"
+    },
+    "runtime_blueprint_id": {
+      "const": "dsc-vendor-runtime-blueprint-v1"
+    },
+    "runtime_blueprint_version": {
+      "const": "1.0"
+    },
+    "runtime_blueprint_kind": {
+      "const": "vendor_runtime_blueprint"
+    },
+    "runtime_blueprint_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "description",
+        "encoding",
+        "runtime_blueprint_id_policy",
+        "runtime_definition_ref",
+        "required_fields",
+        "optional_fields",
+        "additional_fields"
+      ],
+      "properties": {
+        "schema_id": {
+          "const": "dsc-vendor-runtime-blueprint-schema-v1"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encoding": {
+          "const": "application/json"
+        },
+        "required_fields": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field",
+              "type",
+              "required",
+              "nullable",
+              "constraint"
+            ],
+            "properties": {
+              "field": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "required": {
+                "const": true
+              },
+              "nullable": {
+                "const": false
+              },
+              "constraint": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "optional_fields": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "additional_fields": {
+          "const": false
+        },
+        "runtime_blueprint_id_policy": {
+          "const": "opaque_runtime_blueprint_id_no_vendor_binding"
+        },
+        "runtime_definition_ref": {
+          "const": "dsc-vendor-runtime-definition-v1"
+        }
+      }
+    },
+    "deterministic_runtime_blueprint_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_id",
+        "description",
+        "runtime_blueprint_id",
+        "runtime_blueprint_version",
+        "identity_policy",
+        "derivation",
+        "purity",
+        "seed_dependence",
+        "time_dependence",
+        "randomness",
+        "vendor_binding",
+        "framework_binding",
+        "device_binding",
+        "vendor_name",
+        "capability_set_id",
+        "capability_set_version",
+        "spatial_frame_ref",
+        "required_channels"
+      ],
+      "properties": {
+        "identity_id": {
+          "const": "dsc-vendor-runtime-blueprint-deterministic-identity-v1"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity_policy": {
+          "const": "opaque_runtime_blueprint_id_no_vendor_binding"
+        },
+        "derivation": {
+          "const": "literal_constant_declared_at_design_time"
+        },
+        "purity": {
+          "const": "deterministic_pure_constant"
+        },
+        "seed_dependence": {
+          "const": "none"
+        },
+        "time_dependence": {
+          "const": "none"
+        },
+        "randomness": {
+          "const": "none"
+        },
+        "vendor_binding": {
+          "const": "none"
+        },
+        "framework_binding": {
+          "const": "none"
+        },
+        "device_binding": {
+          "const": "none"
+        },
+        "vendor_name": {
+          "const": "none"
+        },
+        "capability_set_id": {
+          "const": "dsc-backend-capability-set-v1"
+        },
+        "capability_set_version": {
+          "const": "1.0"
+        },
+        "spatial_frame_ref": {
+          "const": "normalized_image_plane_v1"
+        },
+        "required_channels": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "runtime_blueprint_id": {
+          "const": "dsc-vendor-runtime-blueprint-v1"
+        },
+        "runtime_blueprint_version": {
+          "const": "1.0"
+        }
+      }
+    },
+    "vendor_runtime_definition_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_id",
+        "description",
+        "runtime_definition_ref",
+        "runtime_definition_id",
+        "runtime_definition_version",
+        "runtime_definition_phase",
+        "runtime_definition_system_id",
+        "runtime_definition_evidence_ref",
+        "runtime_definition_verdict",
+        "runtime_definition_evidence_mode",
+        "binding_mode",
+        "role",
+        "sealed_runtime_definition_digest",
+        "sealed_runtime_descriptor_digest",
+        "sealed_runtime_contract_digest",
+        "sealed_runtime_specification_digest",
+        "sealed_runtime_template_digest",
+        "sealed_runtime_family_digest",
+        "sealed_runtime_catalog_digest",
+        "sealed_runtime_index_digest",
+        "sealed_runtime_registry_digest",
+        "sealed_runtime_profile_digest",
+        "sealed_runtime_bundle_digest",
+        "sealed_runtime_package_digest",
+        "sealed_component_count",
+        "blueprints_runtime_in_this_phase",
+        "implements_runtime_definition_in_this_phase"
+      ],
+      "properties": {
+        "binding_id": {
+          "const": "dsc-vendor-runtime-blueprint-definition-binding-v1"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding_mode": {
+          "const": "exact_reuse"
+        },
+        "role": {
+          "const": "runtime_blueprint_root"
+        },
+        "sealed_runtime_descriptor_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_contract_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_specification_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_template_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_family_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_catalog_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_index_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_registry_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_profile_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_bundle_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_package_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_component_count": {
+          "const": 42
+        },
+        "runtime_definition_ref": {
+          "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-definition-v1.json"
+        },
+        "runtime_definition_id": {
+          "const": "dsc-vendor-runtime-definition-v1"
+        },
+        "runtime_definition_version": {
+          "const": "1.0"
+        },
+        "runtime_definition_phase": {
+          "const": "PHASE-DSC-101"
+        },
+        "runtime_definition_system_id": {
+          "const": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_DEFINITION_V1"
+        },
+        "runtime_definition_evidence_ref": {
+          "const": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_DEFINITION_VALIDATION_REPORT.json"
+        },
+        "runtime_definition_verdict": {
+          "const": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_DEFINITION_V1"
+        },
+        "runtime_definition_evidence_mode": {
+          "const": "phase_101_pass_verdict_gated_at_build_time"
+        },
+        "sealed_runtime_definition_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "blueprints_runtime_in_this_phase": {
+          "const": false
+        },
+        "implements_runtime_definition_in_this_phase": {
+          "const": false
+        }
+      }
+    },
+    "runtime_blueprint_composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "composition_id",
+        "description",
+        "root_section_id",
+        "section_order",
+        "closed_set",
+        "sections",
+        "transitive_seal",
+        "vendor_specific_sections",
+        "includes_implementations",
+        "declares_runtime_execution"
+      ],
+      "properties": {
+        "composition_id": {
+          "const": "dsc-vendor-runtime-blueprint-composition-v1"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root_section_id": {
+          "const": "vendor_runtime_definition"
+        },
+        "section_order": {
+          "const": "fixed_declared_order"
+        },
+        "closed_set": {
+          "const": true
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "role",
+              "kind",
+              "artifact_ref",
+              "order"
+            ],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "enum": [
+                  "runtime_definition_artifact",
+                  "runtime_definition_schema",
+                  "runtime_definition_implementation_registry"
+                ]
+              },
+              "artifact_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "order": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              }
+            }
+          }
+        },
+        "transitive_seal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policy",
+            "sealed_via",
+            "sealed_component_count",
+            "re_lists_runtime_definition_contents"
+          ],
+          "properties": {
+            "policy": {
+              "const": "runtime_definition_contents_sealed_via_runtime_definition_digest"
+            },
+            "sealed_via": {
+              "const": "dsc-vendor-runtime-definition-v1"
+            },
+            "sealed_component_count": {
+              "const": 42
+            },
+            "re_lists_runtime_definition_contents": {
+              "const": false
+            }
+          }
+        },
+        "vendor_specific_sections": {
+          "const": "forbidden"
+        },
+        "includes_implementations": {
+          "const": false
+        },
+        "declares_runtime_execution": {
+          "const": false
+        }
+      }
+    },
+    "runtime_blueprint_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_id",
+        "description",
+        "integrity_method",
+        "entry_count",
+        "entries",
+        "sealed_runtime_definition_digest",
+        "sealed_runtime_descriptor_digest",
+        "sealed_runtime_contract_digest",
+        "sealed_runtime_specification_digest",
+        "sealed_runtime_template_digest",
+        "sealed_runtime_family_digest",
+        "sealed_runtime_catalog_digest",
+        "sealed_runtime_index_digest",
+        "sealed_runtime_registry_digest",
+        "sealed_runtime_profile_digest",
+        "sealed_runtime_bundle_digest",
+        "sealed_runtime_package_digest",
+        "sealed_component_count",
+        "runtime_blueprint_digest",
+        "runtime_blueprint_digest_method",
+        "verifies_implementations_in_this_phase"
+      ],
+      "properties": {
+        "manifest_id": {
+          "const": "dsc-vendor-runtime-blueprint-manifest-v1"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "integrity_method": {
+          "const": "sha256_content_addressed_read_only"
+        },
+        "entry_count": {
+          "const": 3
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "artifact_ref",
+              "sha256",
+              "bytes",
+              "content_addressed"
+            ],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "content_addressed": {
+                "const": true
+              }
+            }
+          }
+        },
+        "sealed_runtime_descriptor_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_specification_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_template_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_family_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_catalog_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_index_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_registry_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_profile_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_bundle_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_package_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_component_count": {
+          "const": 42
+        },
+        "verifies_implementations_in_this_phase": {
+          "const": false
+        },
+        "sealed_runtime_contract_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sealed_runtime_definition_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "runtime_blueprint_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "runtime_blueprint_digest_method": {
+          "const": "sha256_of_ordered_section_digests_and_sealed_runtime_definition_digest"
+        }
+      }
+    },
+    "blueprinted_runtime_entries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "entries",
+        "blueprinting_policy",
+        "blueprints_runtime_in_this_phase"
+      ],
+      "properties": {
+        "count": {
+          "const": 0
+        },
+        "entries": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "blueprinting_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blueprints_runtime_in_this_phase": {
+          "const": false
+        }
+      }
+    }
+  }
+}

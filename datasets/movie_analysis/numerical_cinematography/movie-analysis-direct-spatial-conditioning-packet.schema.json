@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet.schema.json",
+  "title": "DirectSpatialConditioningPacketSpecification",
+  "description": "PHASE-DSC-032 design-only packet specification for six Direct Spatial Conditioning channel payloads. No runtime packet values, backend, GPU, inference, materialization, or dataset modification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_specification_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "contract_ref",
+    "contract_phase",
+    "contract_system_id",
+    "packet_structure",
+    "metadata",
+    "channel_payloads",
+    "packet_invariants",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "packet_specification_id": { "type": "string", "const": "direct-spatial-conditioning-packet-v1" },
+    "phase": { "type": "string", "const": "PHASE-DSC-032" },
+    "system_id": { "type": "string", "const": "DIRECT_SPATIAL_CONDITIONING_PACKET_V1" },
+    "mode": { "type": "string", "const": "design_only_packet" },
+    "target": { "type": "string", "const": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_V1" },
+    "contract_ref": { "type": "string" },
+    "contract_phase": { "type": "string", "const": "PHASE-DSC-031" },
+    "contract_system_id": { "type": "string", "const": "DIRECT_SPATIAL_CONDITIONING_CONTRACT_V1" },
+    "packet_structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_type",
+        "packet_version",
+        "encoding",
+        "required_sections",
+        "channel_cardinality",
+        "channel_order",
+        "additional_channels"
+      ],
+      "properties": {
+        "packet_type": { "type": "string", "const": "direct_spatial_conditioning_packet" },
+        "packet_version": { "type": "string", "const": "v1" },
+        "encoding": { "type": "string", "const": "application/json" },
+        "required_sections": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "metadata" },
+            { "const": "channels" }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "channel_cardinality": { "type": "integer", "const": 6 },
+        "channel_order": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "camera_pose_field",
+              "camera_temporal_track",
+              "subject_position_field",
+              "framing_composition_map",
+              "edit_rhythm_boundaries",
+              "scene_energy_field"
+            ]
+          }
+        },
+        "additional_channels": { "type": "boolean", "const": false }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_id", "fields", "spatial_frame_ref"],
+      "properties": {
+        "schema_id": { "const": "dsc-packet-metadata-v1" },
+        "fields": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": { "$ref": "#/$defs/fieldDefinition" }
+        },
+        "spatial_frame_ref": { "const": "normalized_image_plane_v1" }
+      }
+    },
+    "channel_payloads": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "channel_id",
+          "payload_id",
+          "contract_input_schema_ref",
+          "envelope_fields",
+          "component_fields",
+          "serialization",
+          "additional_components"
+        ],
+        "properties": {
+          "channel_id": {
+            "enum": [
+              "camera_pose_field",
+              "camera_temporal_track",
+              "subject_position_field",
+              "framing_composition_map",
+              "edit_rhythm_boundaries",
+              "scene_energy_field"
+            ]
+          },
+          "payload_id": { "type": "string", "minLength": 1 },
+          "contract_input_schema_ref": { "type": "string", "minLength": 1 },
+          "envelope_fields": {
+            "type": "array",
+            "minItems": 5,
+            "maxItems": 5,
+            "items": { "$ref": "#/$defs/fieldDefinition" }
+          },
+          "component_fields": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["name", "kind", "required", "nullable", "description"],
+              "additionalProperties": false,
+              "properties": {
+                "name": { "type": "string", "minLength": 1 },
+                "kind": {
+                  "enum": ["number", "string", "boolean", "number_array", "string_array"]
+                },
+                "required": { "const": true },
+                "nullable": { "const": false },
+                "description": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "serialization": { "const": "json_object" },
+          "additional_components": { "const": false }
+        }
+      }
+    },
+    "packet_invariants": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_only",
+        "backend",
+        "gpu",
+        "inference",
+        "materializes_tensors",
+        "materializes_frames",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "packet_only": { "const": true },
+        "backend": { "const": "none" },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "materializes_tensors": { "const": false },
+        "materializes_frames": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "fieldDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "type", "required", "nullable", "constraint"],
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "type": { "type": "string", "minLength": 1 },
+        "required": { "const": true },
+        "nullable": { "const": false },
+        "constraint": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

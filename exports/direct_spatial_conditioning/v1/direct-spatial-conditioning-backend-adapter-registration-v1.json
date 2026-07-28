@@ -1,0 +1,430 @@
+{
+  "adapter_registration_id": "direct-spatial-conditioning-backend-adapter-registration-v1",
+  "phase": "PHASE-DSC-042",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_REGISTRATION_V1",
+  "mode": "design_only_registration",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_REGISTRATION_V1",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "compatibility_engine_phase": "PHASE-DSC-041",
+  "compatibility_engine_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_COMPATIBILITY_ENGINE_V1",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "registration_flow": {
+    "flow_id": "dsc-backend-adapter-registration-flow-v1",
+    "description": "Ordered registration stages a future adapter registrar must execute. Stages are declared only; none are executed in this phase. Compatibility is decided exclusively by the reused PHASE-041 engine.",
+    "ordered_stages": [
+      {
+        "stage_id": "bind_registration_request",
+        "order": 1,
+        "description": "Bind the opaque backend_id, descriptor, and adapted conditioning input reference as immutable registration inputs. No backend is invoked.",
+        "inputs": [
+          "registration_request",
+          "backend_descriptor",
+          "adapted_conditioning_input_ref"
+        ],
+        "outputs": [
+          "bound_registration_inputs"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "run_compatibility_engine",
+        "order": 2,
+        "description": "Reuse the PHASE-041 compatibility engine evaluation flow by exact reference. Only a compatible outcome may proceed; incompatible reports reject registration.",
+        "inputs": [
+          "bound_registration_inputs",
+          "compatibility_engine_ref"
+        ],
+        "outputs": [
+          "compatibility_report"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "validate_registration_payload",
+        "order": 3,
+        "description": "Apply registration validation checks against the payload, compatibility report, and uniqueness policy before any identity is allocated.",
+        "inputs": [
+          "bound_registration_inputs",
+          "compatibility_report"
+        ],
+        "outputs": [
+          "validated_registration_payload",
+          "registration_rejection_codes"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "allocate_registration_identity",
+        "order": 4,
+        "description": "Allocate an opaque registration_id with no vendor, framework, or device semantics. Allocation is declared only; not performed in this phase.",
+        "inputs": [
+          "validated_registration_payload"
+        ],
+        "outputs": [
+          "registration_id"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "write_registration_record",
+        "order": 5,
+        "description": "Project the validated payload into the registration record schema and transition lifecycle from pending to active. Declared only; no record is written in this phase.",
+        "inputs": [
+          "registration_id",
+          "validated_registration_payload",
+          "compatibility_report"
+        ],
+        "outputs": [
+          "registration_record"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "emit_registration_receipt",
+        "order": 6,
+        "description": "Emit the registration receipt containing registration_id, lifecycle_state, and compatibility report outcome. Receipt emission is the only declared output of the flow.",
+        "inputs": [
+          "registration_record"
+        ],
+        "outputs": [
+          "registration_receipt"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      }
+    ],
+    "reuse_policy": {
+      "compatibility_engine": "mandatory_exact_reuse",
+      "capability_registry": "mandatory_read_only_via_engine"
+    },
+    "accept_condition": "registration validation accepted and record written",
+    "reject_condition": "one or more registration rejection codes emitted"
+  },
+  "registration_schema": {
+    "schema_id": "dsc-backend-adapter-registration-record-v1",
+    "description": "Shape of one backend adapter registration record. Identity is opaque; registration succeeds only after a compatible PHASE-041 report.",
+    "encoding": "application/json",
+    "required_fields": [
+      {
+        "field": "registration_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque registration identity; carries no vendor, framework, or device semantics"
+      },
+      {
+        "field": "backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque backend_id copied from the validated descriptor"
+      },
+      {
+        "field": "backend_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty backend-owned version string from the descriptor"
+      },
+      {
+        "field": "adapter_interface_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the PHASE-039 backend interface version"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be a supported version of dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "compatibility_report_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "reference to the PHASE-041 compatibility report that accepted this registration"
+      },
+      {
+        "field": "compatibility_outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal compatible"
+      },
+      {
+        "field": "lifecycle_state",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of lifecycle.states"
+      },
+      {
+        "field": "registered_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six required channels in fixed foundation order"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "created_at",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "ISO-8601 timestamp assigned at write_registration_record"
+      }
+    ],
+    "optional_fields": [],
+    "identity_policy": "opaque_registration_id_no_vendor_binding",
+    "uniqueness": {
+      "unique_on": [
+        "backend_id",
+        "adapter_interface_version",
+        "capability_set_version"
+      ],
+      "duplicate_policy": "reject_duplicate_active_registration",
+      "duplicate_code": "DSC_BACKEND_REGISTRATION_DUPLICATE_ACTIVE"
+    },
+    "additional_fields": false
+  },
+  "lifecycle": {
+    "lifecycle_id": "dsc-backend-adapter-registration-lifecycle-v1",
+    "description": "Lifecycle states and allowed transitions for a registered backend adapter. Terminal state is deregistered; re-entry requires a new registration flow.",
+    "states": [
+      "pending",
+      "active",
+      "suspended",
+      "deregistered"
+    ],
+    "initial_state": "pending",
+    "active_state": "active",
+    "terminal_state": "deregistered",
+    "transitions": [
+      {
+        "from": "pending",
+        "to": "active",
+        "trigger": "registration_validation_accepted",
+        "requires_compatibility_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "pending",
+        "to": "deregistered",
+        "trigger": "registration_validation_rejected_or_abandoned",
+        "requires_compatibility_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "active",
+        "to": "suspended",
+        "trigger": "temporary_policy_hold",
+        "requires_compatibility_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "suspended",
+        "to": "active",
+        "trigger": "policy_hold_cleared_with_compatible_report",
+        "requires_compatibility_recheck": true,
+        "allowed": true
+      },
+      {
+        "from": "active",
+        "to": "deregistered",
+        "trigger": "deregistration_policy_invoked",
+        "requires_compatibility_recheck": false,
+        "allowed": true
+      },
+      {
+        "from": "suspended",
+        "to": "deregistered",
+        "trigger": "deregistration_policy_invoked",
+        "requires_compatibility_recheck": false,
+        "allowed": true
+      }
+    ],
+    "invariants": [
+      "every registration begins in pending",
+      "only pending may transition to active after validation acceptance",
+      "deregistered is terminal and irreversible under the deregistration policy",
+      "suspended to active always requires a fresh compatible compatibility report",
+      "no lifecycle transition invokes a backend, GPU, or inference path"
+    ],
+    "registers_adapters_in_this_phase": false
+  },
+  "deregistration_policy": {
+    "policy_id": "dsc-backend-adapter-deregistration-policy-v1",
+    "description": "Rules governing how an active or suspended registration becomes deregistered. Records are retained; re-registration requires a full new flow and a fresh compatible report.",
+    "allowed_reasons": [
+      "caller_requested",
+      "capability_set_major_mismatch",
+      "compatibility_revoked",
+      "lifecycle_expired",
+      "policy_violation"
+    ],
+    "effects": {
+      "lifecycle_state_becomes": "deregistered",
+      "registration_record_retained": true,
+      "re_registration_policy": "requires_new_registration_flow_and_fresh_compatibility_report",
+      "binding_handles_released": true
+    },
+    "forbidden": [
+      "silent deletion of registration records",
+      "reactivation without a new registration flow",
+      "backend invocation during deregistration",
+      "gpu or inference execution during deregistration",
+      "dataset modification during deregistration"
+    ],
+    "irreversible": true,
+    "executed_in_this_phase": false
+  },
+  "registration_validation": {
+    "validation_id": "dsc-backend-adapter-registration-validation-v1",
+    "description": "Mandatory checks a registration request must pass after a compatible PHASE-041 report. Checks are declared only; no registration is evaluated in this phase.",
+    "evaluation": "collect_all_rejections",
+    "accept_condition": "zero rejection codes and compatibility outcome compatible",
+    "outcome_values": [
+      "accepted",
+      "rejected"
+    ],
+    "checks": [
+      {
+        "check_id": "compatibility_outcome_must_be_compatible",
+        "stage_ref": "run_compatibility_engine",
+        "description": "PHASE-041 compatibility report outcome must equal compatible before registration may continue.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_INCOMPATIBLE",
+        "mandatory": true
+      },
+      {
+        "check_id": "descriptor_identity_opaque",
+        "stage_ref": "validate_registration_payload",
+        "description": "backend_id must be a non-empty opaque identifier with no vendor, framework, or device semantics.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_IDENTITY_INVALID",
+        "mandatory": true
+      },
+      {
+        "check_id": "capability_set_version_supported",
+        "stage_ref": "validate_registration_payload",
+        "description": "declared capability_set_version must be one of the supported versions of dsc-backend-capability-set-v1.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_CAPABILITY_SET_UNSUPPORTED",
+        "mandatory": true
+      },
+      {
+        "check_id": "adapter_interface_version_matches",
+        "stage_ref": "validate_registration_payload",
+        "description": "adapter_interface_version must equal the PHASE-039 backend interface version reused by the engine.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_INTERFACE_VERSION_MISMATCH",
+        "mandatory": true
+      },
+      {
+        "check_id": "spatial_frame_locked",
+        "stage_ref": "validate_registration_payload",
+        "description": "declared_spatial_frame must equal normalized_image_plane_v1.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_SPATIAL_FRAME_MISMATCH",
+        "mandatory": true
+      },
+      {
+        "check_id": "channel_coverage_complete",
+        "stage_ref": "validate_registration_payload",
+        "description": "declared_channels must equal the six required channels in the fixed foundation order.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_CHANNEL_COVERAGE_INCOMPLETE",
+        "mandatory": true
+      },
+      {
+        "check_id": "no_duplicate_active_registration",
+        "stage_ref": "validate_registration_payload",
+        "description": "an active registration with the same backend_id, adapter_interface_version, and capability_set_version is rejected.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_DUPLICATE_ACTIVE",
+        "mandatory": true
+      },
+      {
+        "check_id": "lifecycle_starts_pending",
+        "stage_ref": "allocate_registration_identity",
+        "description": "newly allocated registrations must begin in the pending lifecycle state before activation.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_LIFECYCLE_INVALID",
+        "mandatory": true
+      },
+      {
+        "check_id": "no_backend_implementation_required",
+        "stage_ref": "cross_stage",
+        "description": "registration must not require a concrete backend, GPU, or inference implementation to succeed.",
+        "rejection_code": "DSC_BACKEND_REGISTRATION_BACKEND_IMPLEMENTATION_FORBIDDEN",
+        "mandatory": true
+      }
+    ],
+    "requires_compatible_engine_outcome": true,
+    "evaluates_registrations_in_this_phase": false
+  },
+  "registered_adapters": {
+    "count": 0,
+    "entries": [],
+    "registration_policy": "adapter registration is performed by future phases; this phase defines the registration surface only and binds to no backend",
+    "registers_adapters_in_this_phase": false
+  },
+  "design_constraints": {
+    "registration_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_compatibility_engine": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "registers_adapters_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T09:00:24.114Z"
+}

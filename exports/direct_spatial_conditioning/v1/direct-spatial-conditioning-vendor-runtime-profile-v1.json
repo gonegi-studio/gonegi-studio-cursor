@@ -1,0 +1,337 @@
+{
+  "vendor_runtime_profile_id": "direct-spatial-conditioning-vendor-runtime-profile-v1",
+  "phase": "PHASE-DSC-083",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_V1",
+  "mode": "design_only_vendor_runtime_profile",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_V1",
+  "runtime_profile_id": "dsc-vendor-runtime-profile-v1",
+  "runtime_profile_version": "1.0",
+  "runtime_profile_kind": "vendor_runtime_profile",
+  "runtime_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json",
+  "runtime_bundle_schema_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-bundle.schema.json",
+  "runtime_bundle_registry_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-bundle-registry-v1.json",
+  "runtime_bundle_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_BUNDLE_VALIDATION_REPORT.json",
+  "runtime_package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-package-v1.json",
+  "reference_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-bundle-v1.json",
+  "package_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-package-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json",
+  "numerical_runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "runtime_profile_schema": {
+    "schema_id": "dsc-vendor-runtime-profile-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning vendor runtime profile. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. A runtime profile binds one Vendor Runtime Bundle as its root, declares a closed set of vendor-neutral capability surfaces, seals the bundle together with its schema and registry, and seals the bundle contents transitively through the runtime bundle digest. It selects no concrete surface and declares no runtime execution.",
+    "encoding": "application/json",
+    "runtime_profile_id_policy": "opaque_runtime_profile_id_no_vendor_binding",
+    "runtime_bundle_ref": "dsc-vendor-runtime-bundle-v1",
+    "required_fields": [
+      {
+        "field": "runtime_profile_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "runtime_profile_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor runtime profile version string"
+      },
+      {
+        "field": "runtime_profile_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal vendor_runtime_profile"
+      },
+      {
+        "field": "runtime_bundle_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the vendor runtime bundle dsc-vendor-runtime-bundle-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_runtime_profile_identity",
+        "type": "dsc-vendor-runtime-profile-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor name, framework, or device dependence"
+      },
+      {
+        "field": "vendor_runtime_bundle_binding",
+        "type": "dsc-vendor-runtime-profile-bundle-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the passing Vendor Runtime Bundle as the runtime profile root, gated on its recorded PASS verdict"
+      },
+      {
+        "field": "runtime_profile_composition",
+        "type": "dsc-vendor-runtime-profile-composition-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "closed, fixed-order set of runtime bundle, schema, and registry sections plus a vendor-neutral capability profile; vendor-specific sections forbidden and bundle contents never re-listed"
+      },
+      {
+        "field": "runtime_profile_manifest",
+        "type": "dsc-vendor-runtime-profile-manifest-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "content-addressed SHA256 manifest with one entry per section, plus the transitively sealed runtime bundle digest and a runtime profile digest over sections, surfaces, and that digest"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_runtime_profile_identity": {
+    "identity_id": "dsc-vendor-runtime-profile-deterministic-identity-v1",
+    "description": "Deterministic identity of the vendor runtime profile. The runtime_profile_id is a literal design-time constant with no seed, time, randomness, vendor name, framework, or device dependence.",
+    "runtime_profile_id": "dsc-vendor-runtime-profile-v1",
+    "runtime_profile_version": "1.0",
+    "identity_policy": "opaque_runtime_profile_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "vendor_name": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "vendor_runtime_bundle_binding": {
+    "binding_id": "dsc-vendor-runtime-profile-bundle-binding-v1",
+    "description": "Exact binding of the PHASE-081 Vendor Runtime Bundle as the runtime profile root. The binding is gated at build time on the recorded PHASE-081 PASS verdict, and re-seals every runtime bundle section and the runtime bundle digest before the runtime profile is emitted.",
+    "runtime_bundle_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json",
+    "runtime_bundle_id": "dsc-vendor-runtime-bundle-v1",
+    "runtime_bundle_version": "1.0",
+    "runtime_bundle_phase": "PHASE-DSC-081",
+    "runtime_bundle_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_BUNDLE_V1",
+    "runtime_bundle_evidence_ref": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_BUNDLE_VALIDATION_REPORT.json",
+    "runtime_bundle_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_BUNDLE_V1",
+    "runtime_bundle_evidence_mode": "phase_081_pass_verdict_gated_at_build_time",
+    "binding_mode": "exact_reuse",
+    "role": "runtime_profile_root",
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "profiles_runtime_in_this_phase": false,
+    "implements_runtime_bundle_in_this_phase": false
+  },
+  "runtime_profile_composition": {
+    "composition_id": "dsc-vendor-runtime-profile-composition-v1",
+    "description": "Closed, fixed-order composition of the profiling envelope around the Vendor Runtime Bundle: the runtime bundle artifact, its shape contract, and its provenance registry, together with a vendor-neutral capability profile. The runtime bundle contents (and everything sealed beneath them) are sealed transitively through the runtime bundle digest and are deliberately not re-listed here.",
+    "root_section_id": "vendor_runtime_bundle",
+    "section_order": "fixed_declared_order",
+    "closed_set": true,
+    "sections": [
+      {
+        "section_id": "vendor_runtime_bundle",
+        "role": "runtime_profile_root_bundle",
+        "kind": "runtime_bundle_artifact",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json",
+        "order": 1
+      },
+      {
+        "section_id": "vendor_runtime_bundle_schema",
+        "role": "runtime_bundle_shape_contract",
+        "kind": "runtime_bundle_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-bundle.schema.json",
+        "order": 2
+      },
+      {
+        "section_id": "vendor_runtime_bundle_registry",
+        "role": "runtime_bundle_provenance_registry",
+        "kind": "runtime_bundle_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-bundle-registry-v1.json",
+        "order": 3
+      }
+    ],
+    "capability_profile": {
+      "capability_profile_id": "dsc-vendor-runtime-capability-profile-v1",
+      "description": "Closed, fixed-order set of vendor-neutral deployment surfaces the runtime profile declares support for. Each surface is an abstract capability tier that binds no concrete device, framework, or vendor, requires no GPU, performs no inference, and is not selected in this phase.",
+      "capability_set_id": "dsc-backend-capability-set-v1",
+      "capability_set_version": "1.0",
+      "surface_order": "fixed_declared_order",
+      "closed_set": true,
+      "surfaces": [
+        {
+          "surface_id": "reference_cpu_surface",
+          "order": 1,
+          "description": "Deterministic reference surface with no acceleration; vendor-neutral and device-agnostic.",
+          "requires_gpu": false,
+          "performs_inference": false,
+          "vendor_binding": "none",
+          "device_binding": "none",
+          "selected_in_this_phase": false
+        },
+        {
+          "surface_id": "accelerated_surface",
+          "order": 2,
+          "description": "Abstract accelerated capability tier; declares no concrete device, framework, or vendor.",
+          "requires_gpu": false,
+          "performs_inference": false,
+          "vendor_binding": "none",
+          "device_binding": "none",
+          "selected_in_this_phase": false
+        },
+        {
+          "surface_id": "batch_surface",
+          "order": 3,
+          "description": "Abstract batch-oriented capability tier; declares no concrete device, framework, or vendor.",
+          "requires_gpu": false,
+          "performs_inference": false,
+          "vendor_binding": "none",
+          "device_binding": "none",
+          "selected_in_this_phase": false
+        }
+      ],
+      "required_channels": [
+        "camera_pose_field",
+        "camera_temporal_track",
+        "subject_position_field",
+        "framing_composition_map",
+        "edit_rhythm_boundaries",
+        "scene_energy_field"
+      ],
+      "binds_concrete_surface_in_this_phase": false
+    },
+    "transitive_seal": {
+      "policy": "runtime_bundle_contents_sealed_via_runtime_bundle_digest",
+      "sealed_via": "dsc-vendor-runtime-bundle-v1",
+      "sealed_component_count": 42,
+      "re_lists_runtime_bundle_contents": false
+    },
+    "vendor_specific_sections": "forbidden",
+    "includes_implementations": false,
+    "declares_runtime_execution": false
+  },
+  "runtime_profile_manifest": {
+    "manifest_id": "dsc-vendor-runtime-profile-manifest-v1",
+    "description": "Content-addressed SHA256 manifest of every runtime profile section. Digests are computed read-only from disk. The sealed runtime bundle digest carries the bundle contents (and everything sealed beneath them) transitively, and the runtime profile digest is the SHA256 of the ordered section digests, the capability surface ids, and the sealed runtime bundle digest. No implementation is verified in this phase.",
+    "integrity_method": "sha256_content_addressed_read_only",
+    "entry_count": 3,
+    "entries": [
+      {
+        "section_id": "vendor_runtime_bundle",
+        "artifact_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-bundle-v1.json",
+        "sha256": "83b08c82912243d16d09a4f00c61443714378de6f76df40f33ca7a8d55e30cb8",
+        "bytes": 14021,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_bundle_schema",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-bundle.schema.json",
+        "sha256": "f7c5ec43ab14900a0acafc126108bfeea1a68aa52ee418cdc5433d1db1ac1b23",
+        "bytes": 16628,
+        "content_addressed": true
+      },
+      {
+        "section_id": "vendor_runtime_bundle_registry",
+        "artifact_ref": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-runtime-bundle-registry-v1.json",
+        "sha256": "90d671bf1ff36fc2e8373e97ffc45de64baba28c16dbb43137e52fea2996194e",
+        "bytes": 5239,
+        "content_addressed": true
+      }
+    ],
+    "sealed_runtime_bundle_digest": "91faa68da391149f365fcfaad4d48cbd1f3359c460464bfb9aec14182341f0c6",
+    "sealed_runtime_package_digest": "c0900f27c578361b7fcdc337663d30e1566b77f29e157fea0139afdf34ab5e43",
+    "sealed_component_count": 42,
+    "capability_surface_count": 3,
+    "runtime_profile_digest": "36ed6ca10be91c27936023da66f1e6b595a636f368626c11f093a34c4b4653ce",
+    "runtime_profile_digest_method": "sha256_of_ordered_section_digests_surfaces_and_sealed_runtime_bundle_digest",
+    "verifies_implementations_in_this_phase": false
+  },
+  "profiled_runtime_vendors": {
+    "count": 0,
+    "entries": [],
+    "profiling_policy": "concrete vendor runtimes may be profiled against this runtime profile only in a future implementation phase; none are profiled here",
+    "profiles_runtime_in_this_phase": false
+  },
+  "design_constraints": {
+    "runtime_profile_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_runtime_bundle": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "declares_runtime_execution": false,
+    "binds_concrete_surface_in_this_phase": false,
+    "profiles_runtime_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-26T05:15:10.301Z"
+}

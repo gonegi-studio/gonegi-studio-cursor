@@ -1,0 +1,275 @@
+{
+  "backend_family_id": "direct-spatial-conditioning-backend-family-v1",
+  "phase": "PHASE-DSC-053",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_V1",
+  "mode": "design_only_family",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_FAMILY_V1",
+  "family_id": "dsc-backend-family-generic-v1",
+  "family_version": "1.0",
+  "family_kind": "generic_backend_family",
+  "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+  "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+  "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "backend_family_schema": {
+    "schema_id": "dsc-backend-family-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning generic backend family. Identity is opaque; no vendor, framework, or device binding is expressed. A family binds the certified reference backend as its archetype and publishes a family capability contract without instantiating members.",
+    "encoding": "application/json",
+    "family_id_policy": "opaque_family_id_no_vendor_binding",
+    "reference_backend_ref": "dsc-reference-backend-v1",
+    "required_fields": [
+      {
+        "field": "family_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor, framework, or device semantics"
+      },
+      {
+        "field": "family_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor family version string"
+      },
+      {
+        "field": "family_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal generic_backend_family"
+      },
+      {
+        "field": "reference_backend_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the certified reference backend dsc-reference-backend-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_family_identity",
+        "type": "dsc-backend-family-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor, framework, or device dependence"
+      },
+      {
+        "field": "reference_backend_binding",
+        "type": "dsc-backend-family-reference-backend-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the certified reference backend as the family archetype"
+      },
+      {
+        "field": "family_capability_contract",
+        "type": "dsc-backend-family-capability-contract-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must cover every registered mandatory capability and forbid vendor-specific capabilities"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_family_identity": {
+    "identity_id": "dsc-backend-family-deterministic-identity-v1",
+    "description": "Deterministic identity of the generic backend family. The family_id is a literal design-time constant with no seed, time, randomness, vendor, framework, or device dependence.",
+    "family_id": "dsc-backend-family-generic-v1",
+    "family_version": "1.0",
+    "identity_policy": "opaque_family_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "reference_backend_binding": {
+    "binding_id": "dsc-backend-family-reference-backend-binding-v1",
+    "description": "Exact binding of the certified PHASE-051 reference backend as the family archetype. The family inherits the reference backend template and profile bindings without instantiating members or implementing the reference backend.",
+    "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+    "backend_id": "dsc-reference-backend-v1",
+    "backend_version": "1.0",
+    "reference_backend_phase": "PHASE-DSC-051",
+    "reference_backend_system_id": "DIRECT_SPATIAL_CONDITIONING_REFERENCE_BACKEND_V1",
+    "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+    "binding_mode": "exact_reuse",
+    "role": "family_archetype",
+    "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+    "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+    "instantiates_members_in_this_phase": false,
+    "implements_reference_backend_in_this_phase": false
+  },
+  "family_capability_contract": {
+    "contract_id": "dsc-backend-family-capability-contract-v1",
+    "description": "Capability contract every member of the generic backend family must satisfy. Inherited from the frozen capability registry and the certified profile capability mapping. Vendor-specific capabilities are forbidden; no member evaluation occurs in this phase.",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "capability_contract_ref": "dsc-backend-capability-contract-v1",
+    "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+    "profile_capability_mapping_ref": "dsc-backend-profile-deterministic-capability-mapping-v1",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "required_sources": 15,
+    "adapted_input_shape_ref": "dsc_adapted_conditioning_input_v1",
+    "required_capabilities": [
+      {
+        "capability_id": "accepts_validated_conditioning_packet",
+        "requirement": "mandatory",
+        "inherited_from": "capability_registry.capability_schema.registered_capability_ids",
+        "declared_state_required": "supported",
+        "family_member_must_declare": true
+      },
+      {
+        "capability_id": "supports_spatial_frame_normalized_image_plane_v1",
+        "requirement": "mandatory",
+        "inherited_from": "capability_registry.capability_schema.registered_capability_ids",
+        "declared_state_required": "supported",
+        "family_member_must_declare": true
+      },
+      {
+        "capability_id": "supports_all_six_conditioning_channels",
+        "requirement": "mandatory",
+        "inherited_from": "capability_registry.capability_schema.registered_capability_ids",
+        "declared_state_required": "supported",
+        "family_member_must_declare": true
+      },
+      {
+        "capability_id": "structure_preserving_ingestion",
+        "requirement": "mandatory",
+        "inherited_from": "capability_registry.capability_schema.registered_capability_ids",
+        "declared_state_required": "supported",
+        "family_member_must_declare": true
+      },
+      {
+        "capability_id": "side_effect_free_ingestion",
+        "requirement": "mandatory",
+        "inherited_from": "capability_registry.capability_schema.registered_capability_ids",
+        "declared_state_required": "supported",
+        "family_member_must_declare": true
+      },
+      {
+        "capability_id": "source_corpus_agnostic",
+        "requirement": "mandatory",
+        "inherited_from": "capability_registry.capability_schema.registered_capability_ids",
+        "declared_state_required": "supported",
+        "family_member_must_declare": true
+      }
+    ],
+    "inheritance_rule": "every_family_member_must_satisfy_all_mandatory_capabilities",
+    "aggregation_rule": "all_mandatory_capabilities_supported",
+    "vendor_specific_capabilities": "forbidden",
+    "requires_gpu": false,
+    "performs_inference": false,
+    "evaluates_members_in_this_phase": false
+  },
+  "family_members": {
+    "count": 0,
+    "entries": [],
+    "membership_policy": "family members may join only in a future design or implementation phase; none are instantiated here beyond the reference backend archetype binding",
+    "instantiates_members_in_this_phase": false
+  },
+  "design_constraints": {
+    "family_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_certified_reference_backend": true,
+    "no_vendor_specific_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "instantiates_members_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T12:21:00.716Z"
+}

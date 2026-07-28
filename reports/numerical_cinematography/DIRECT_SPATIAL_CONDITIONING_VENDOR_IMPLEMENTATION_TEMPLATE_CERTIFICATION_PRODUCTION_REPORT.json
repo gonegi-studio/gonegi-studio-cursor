@@ -1,0 +1,125 @@
+{
+  "report_id": "dsc_vendor_implementation_template_certification_ms13f47t",
+  "phase": "PHASE-DSC-074",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_TEMPLATE_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_TEMPLATE_V1",
+  "mode": "read_only_certification",
+  "template_id": "dsc-vendor-implementation-template-generic-v1",
+  "template_version": "1.0",
+  "surfaces_certified": [
+    "implementation_template_schema",
+    "identity",
+    "vendor_implementation_profile_binding",
+    "implementation_skeleton",
+    "extension_points"
+  ],
+  "checks_required": [
+    "implementation_template_schema",
+    "identity",
+    "vendor_implementation_profile_binding",
+    "implementation_skeleton",
+    "extension_points",
+    "evidence_chain",
+    "reproducibility",
+    "immutability"
+  ],
+  "checks": [
+    {
+      "check": "implementation_template_schema",
+      "passed": true,
+      "detail": "implementation_template_schema present with opaque template identity policy and twelve required fields",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "identity",
+      "passed": true,
+      "detail": "deterministic template identity is opaque, vendor-neutral, and free of seed/time/randomness",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "vendor_implementation_profile_binding",
+      "passed": true,
+      "detail": "vendor implementation profile binding exactly reuses the certified Vendor Implementation Profile as the conformance basis without filling extension points",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "implementation_skeleton",
+      "passed": true,
+      "detail": "deterministic implementation skeleton declares four fixed-order unimplemented steps matching the certified capability profile methods",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "extension_points",
+      "passed": true,
+      "detail": "closed set of four unfilled extension points matches the skeleton steps and certified capability profile",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "vendor implementation template references certified Vendor Implementation Profile, certified Vendor Implementation Family, certified Vendor Reference Implementation, certified Vendor Template, certified Vendor Reference Profile, and the full vendor/backend stack by exact path",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "skeleton methods, extension points, channels, sources, spatial frame, and capability set still match the certified Vendor Implementation Profile exactly; template artifact is byte-stable",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "verified vendor implementation template, certified Vendor Implementation Profile, certified Vendor Implementation Family, certified Vendor Reference Implementation, certified Vendor Template, certified Vendor Reference Profile, and the DSC V1 stack are unchanged",
+      "error_count": 0,
+      "errors": []
+    }
+  ],
+  "evidence_chain_links": 37,
+  "evidence_chain_unresolved": 0,
+  "artifact_digest_count": 44,
+  "protected_artifacts_unmodified": true,
+  "vendor_neutral": true,
+  "vendor_neutrality": {
+    "vendor_neutral": true,
+    "vendors_bound": 0,
+    "vendors_implemented": 0,
+    "templated_implementations": 0,
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0"
+  },
+  "upstream_certified_system": {
+    "vendor_implementation_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-profile-v1.json",
+    "vendor_implementation_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-profile-certification-v1.json",
+    "vendor_implementation_profile_certified": true,
+    "vendor_implementation_family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-family-v1.json",
+    "vendor_implementation_family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-family-certification-v1.json",
+    "vendor_implementation_family_certified": true,
+    "vendor_reference_implementation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-implementation-v1.json",
+    "vendor_reference_implementation_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-implementation-certification-v1.json",
+    "vendor_reference_implementation_certified": true,
+    "vendor_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+    "vendor_template_certified": true,
+    "vendor_reference_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+    "vendor_reference_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+    "vendor_reference_profile_certified": true,
+    "vendor_implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+    "vendor_design_certified": true,
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "artifacts": {
+    "certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-template-certification-v1.json"
+  },
+  "error_count": 0,
+  "missing_checks": [],
+  "generated_at": "2026-07-26T01:02:05.849Z"
+}

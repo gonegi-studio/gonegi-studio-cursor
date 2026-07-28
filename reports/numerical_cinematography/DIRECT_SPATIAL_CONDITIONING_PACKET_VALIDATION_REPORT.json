@@ -1,0 +1,32 @@
+{
+  "report_id": "direct_spatial_conditioning_packet_ms01h59l",
+  "phase": "PHASE-DSC-032",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_V1",
+  "validation_passed": true,
+  "mode": "design_only_packet",
+  "packet_type": "direct_spatial_conditioning_packet",
+  "metadata_field_count": 7,
+  "channel_payload_count": 6,
+  "component_field_count": 19,
+  "packet_invariant_count": 6,
+  "design_constraints": {
+    "packet_only": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "packet": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-implementation-registry-v1.json",
+    "contract": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:19:55.114Z"
+}

@@ -1,0 +1,45 @@
+{
+  "registry_id": "movie-analysis-direct-spatial-conditioning-foundation-implementation-registry-v1",
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-030",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+  "registry_version": "v1",
+  "status": "IMPLEMENTED",
+  "mode": "DESIGN_ONLY",
+  "scope": {
+    "conditioning_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "upstream_source_system": "MOVIE_RECONSTRUCTION_V1",
+    "upstream_certification": "PASS_VERIFIED_MOVIE_RECONSTRUCTION_PRODUCTION_CERTIFICATION_V1",
+    "official_sources": 15,
+    "note": "Design-only foundation defining the spatial conditioning interfaces that expose the certified Movie Reconstruction V1 consumption slots as conditioning inputs over a shared normalized image plane. No backend, no GPU, no inference, no tensor/frame materialization, no dataset modification."
+  },
+  "spatial_frame": "normalized_image_plane_v1",
+  "schema_path": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-foundation.schema.json",
+  "builder_service_path": "services/directSpatialConditioningFoundationBuilder.ts",
+  "verify_script_path": "scripts/verify-direct-spatial-conditioning-foundation.ts",
+  "npm_verify_command": "verify:direct-spatial-conditioning-foundation",
+  "foundation_root": "exports/direct_spatial_conditioning/v1",
+  "foundation_path": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+  "validation_report_path": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_FOUNDATION_VALIDATION_REPORT.json",
+  "design_constraints": {
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "explicitly_not_modified_this_phase": [
+    "exports/movie_reconstruction_master/v1/**",
+    "exports/movie_reconstruction_certification/v1/**",
+    "exports/numerical_reconstruction/v1/**",
+    "datasets/movie_analysis/**"
+  ],
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_FOUNDATION_V1",
+  "generated_at": "2026-07-25T09:00:00.000Z"
+}

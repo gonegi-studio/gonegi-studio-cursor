@@ -1,0 +1,298 @@
+{
+  "adapter_foundation_id": "direct-spatial-conditioning-backend-adapter-foundation-v1",
+  "phase": "PHASE-DSC-039",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_FOUNDATION_V1",
+  "mode": "design_only_abstraction",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_FOUNDATION_V1",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_interface_phase": "PHASE-DSC-036",
+  "runtime_interface_system_id": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "backend_interface": {
+    "interface_id": "dsc-backend-adapter-interface-v1",
+    "version": "v1",
+    "transport": "abstract_function_surface",
+    "consumes": "validated_conditioning_packet",
+    "produces": "conditioning_binding_handle",
+    "methods": [
+      {
+        "method_id": "describe_capabilities",
+        "signature": "describe_capabilities() -> backend_capability_descriptor",
+        "description": "Backend publishes the capability descriptor it satisfies against the DSC capability contract. Declared abstractly; no backend implements it in this phase.",
+        "input_ref": "none",
+        "output_ref": "backend_capability_descriptor",
+        "side_effects": "none",
+        "abstract": true,
+        "implemented_in_this_phase": false,
+        "requires_specific_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      },
+      {
+        "method_id": "check_compatibility",
+        "signature": "check_compatibility(backend_capability_descriptor, dsc_adapted_conditioning_input_v1) -> compatibility_report",
+        "description": "Evaluate a backend capability descriptor against the adapted conditioning input using the capability contract compatibility rules. Pure comparison, no backend invocation.",
+        "input_ref": "backend_capability_descriptor + dsc_adapted_conditioning_input_v1",
+        "output_ref": "compatibility_report",
+        "side_effects": "none",
+        "abstract": true,
+        "implemented_in_this_phase": false,
+        "requires_specific_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      },
+      {
+        "method_id": "bind_conditioning_input",
+        "signature": "bind_conditioning_input(dsc_adapted_conditioning_input_v1) -> conditioning_binding_handle",
+        "description": "Backend receives the structure-preserving adapted conditioning input and returns an opaque binding handle. Abstract only; this phase materializes nothing.",
+        "input_ref": "dsc_adapted_conditioning_input_v1",
+        "output_ref": "conditioning_binding_handle",
+        "side_effects": "none",
+        "abstract": true,
+        "implemented_in_this_phase": false,
+        "requires_specific_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      },
+      {
+        "method_id": "release_conditioning_binding",
+        "signature": "release_conditioning_binding(conditioning_binding_handle) -> void",
+        "description": "Backend releases a previously issued binding handle. Abstract lifecycle method; not implemented in this phase.",
+        "input_ref": "conditioning_binding_handle",
+        "output_ref": "void",
+        "side_effects": "none",
+        "abstract": true,
+        "implemented_in_this_phase": false,
+        "requires_specific_backend": false,
+        "requires_gpu": false,
+        "performs_inference": false
+      }
+    ]
+  },
+  "packet_adapter": {
+    "adapter_id": "dsc-packet-adapter-v1",
+    "description": "Backend-agnostic mapping from the PHASE-036 validated output surface to a neutral adapted conditioning input. Identity passthrough only; no transform, tensor, or frame materialization.",
+    "input_surface_ref": "dsc_runtime_validated_output_v1",
+    "input_artifact_kind": "validated_conditioning_packet",
+    "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+    "output_shape": {
+      "shape_id": "dsc_adapted_conditioning_input_v1",
+      "encoding": "backend_agnostic_structured",
+      "spatial_frame_ref": "normalized_image_plane_v1",
+      "required_sections": [
+        "metadata",
+        "channels"
+      ],
+      "channel_order": [
+        "camera_pose_field",
+        "camera_temporal_track",
+        "subject_position_field",
+        "framing_composition_map",
+        "edit_rhythm_boundaries",
+        "scene_energy_field"
+      ]
+    },
+    "channel_mappings": [
+      {
+        "channel_id": "camera_pose_field",
+        "source_channel_ref": "camera_pose_field",
+        "adapted_channel_key": "adapted_camera_pose_field",
+        "component_names": [
+          "translation_u",
+          "translation_v",
+          "rotation_rad",
+          "zoom_scale"
+        ],
+        "value_space_ref": "normalized_image_plane_v1",
+        "transform": "identity_passthrough",
+        "lossless": true
+      },
+      {
+        "channel_id": "camera_temporal_track",
+        "source_channel_ref": "camera_temporal_track",
+        "adapted_channel_key": "adapted_camera_temporal_track",
+        "component_names": [
+          "motion_type",
+          "magnitude",
+          "translation_u",
+          "translation_v"
+        ],
+        "value_space_ref": "normalized_image_plane_v1",
+        "transform": "identity_passthrough",
+        "lossless": true
+      },
+      {
+        "channel_id": "subject_position_field",
+        "source_channel_ref": "subject_position_field",
+        "adapted_channel_key": "adapted_subject_position_field",
+        "component_names": [
+          "center_u",
+          "center_v",
+          "displacement_u",
+          "displacement_v"
+        ],
+        "value_space_ref": "normalized_image_plane_v1",
+        "transform": "identity_passthrough",
+        "lossless": true
+      },
+      {
+        "channel_id": "framing_composition_map",
+        "source_channel_ref": "framing_composition_map",
+        "adapted_channel_key": "adapted_framing_composition_map",
+        "component_names": [
+          "shot_scale",
+          "composition_region"
+        ],
+        "value_space_ref": "normalized_image_plane_v1",
+        "transform": "identity_passthrough",
+        "lossless": true
+      },
+      {
+        "channel_id": "edit_rhythm_boundaries",
+        "source_channel_ref": "edit_rhythm_boundaries",
+        "adapted_channel_key": "adapted_edit_rhythm_boundaries",
+        "component_names": [
+          "cut_timestamp_ms",
+          "shot_duration_ms"
+        ],
+        "value_space_ref": "normalized_image_plane_v1",
+        "transform": "identity_passthrough",
+        "lossless": true
+      },
+      {
+        "channel_id": "scene_energy_field",
+        "source_channel_ref": "scene_energy_field",
+        "adapted_channel_key": "adapted_scene_energy_field",
+        "component_names": [
+          "motion_magnitude",
+          "camera_subject_relationship",
+          "relative_velocity"
+        ],
+        "value_space_ref": "normalized_image_plane_v1",
+        "transform": "identity_passthrough",
+        "lossless": true
+      }
+    ],
+    "passthrough_policy": "structure_preserving_no_transform",
+    "accepts_outcome": "accepted",
+    "rejects_outcome_handling": "not_adapted_backend_receives_rejection_report",
+    "materializes_tensors": false,
+    "materializes_frames": false
+  },
+  "capability_contract": {
+    "contract_id": "dsc-backend-capability-contract-v1",
+    "description": "Backend-agnostic capabilities a conditioning backend must declare and satisfy to be considered compatible with the DSC adapted conditioning input.",
+    "backend_agnostic": true,
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "required_sources": 15,
+    "adapted_input_shape_ref": "dsc_adapted_conditioning_input_v1",
+    "required_capabilities": [
+      {
+        "capability_id": "accepts_validated_conditioning_packet",
+        "description": "Backend consumes the PHASE-036 validated conditioning packet via the adapted input; it never reads datasets directly.",
+        "requirement": "mandatory",
+        "declared_by_backend": true,
+        "evaluated_at": "check_compatibility"
+      },
+      {
+        "capability_id": "supports_spatial_frame_normalized_image_plane_v1",
+        "description": "Backend operates in the locked normalized_image_plane_v1 spatial frame without reprojection.",
+        "requirement": "mandatory",
+        "declared_by_backend": true,
+        "evaluated_at": "check_compatibility"
+      },
+      {
+        "capability_id": "supports_all_six_conditioning_channels",
+        "description": "Backend accepts all six conditioning channels in the fixed channel order defined by the foundation.",
+        "requirement": "mandatory",
+        "declared_by_backend": true,
+        "evaluated_at": "check_compatibility"
+      },
+      {
+        "capability_id": "structure_preserving_ingestion",
+        "description": "Backend ingests the adapted input losslessly; the adapter applies only identity passthrough and performs no transform.",
+        "requirement": "mandatory",
+        "declared_by_backend": true,
+        "evaluated_at": "check_compatibility"
+      },
+      {
+        "capability_id": "side_effect_free_ingestion",
+        "description": "Ingestion mutates no certified artifact or dataset and produces only an opaque binding handle.",
+        "requirement": "mandatory",
+        "declared_by_backend": true,
+        "evaluated_at": "check_compatibility"
+      },
+      {
+        "capability_id": "source_corpus_agnostic",
+        "description": "Backend works uniformly across the certified 15-source corpus without per-source specialization.",
+        "requirement": "mandatory",
+        "declared_by_backend": true,
+        "evaluated_at": "check_compatibility"
+      }
+    ],
+    "compatibility_rules": [
+      "backend must declare every mandatory capability in required_capabilities",
+      "backend declared spatial frame must equal normalized_image_plane_v1",
+      "backend declared channels must cover all six required_channels in fixed order",
+      "backend must accept the adapted input losslessly under identity passthrough",
+      "backend must be source-agnostic across the certified 15-source corpus",
+      "a missing or unequal declaration yields an incompatible compatibility_report"
+    ],
+    "guarantees": [
+      "the abstraction binds to no specific backend, framework, or device",
+      "the packet adapter preserves packet structure with identity passthrough only",
+      "only accepted validated packets are adapted; rejected outcomes are passed through as rejection reports",
+      "compatibility is decided purely by declaration comparison with no backend invocation",
+      "no capability requires GPU, inference, tensor, or frame materialization"
+    ],
+    "forbidden": [
+      "concrete backend implementation",
+      "framework or device binding",
+      "gpu execution",
+      "model inference",
+      "tensor materialization",
+      "frame materialization",
+      "dataset modification",
+      "placeholder capability declarations"
+    ]
+  },
+  "design_constraints": {
+    "abstraction_only": true,
+    "backend_agnostic": true,
+    "reuses_runtime_interface": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T08:03:39.893Z"
+}

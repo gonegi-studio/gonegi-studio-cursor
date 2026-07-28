@@ -1,0 +1,403 @@
+{
+  "capability_registry_id": "direct-spatial-conditioning-backend-capability-registry-v1",
+  "phase": "PHASE-DSC-040",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_CAPABILITY_REGISTRY_V1",
+  "mode": "design_only_registry",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_CAPABILITY_REGISTRY_V1",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "adapter_foundation_phase": "PHASE-DSC-039",
+  "adapter_foundation_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_ADAPTER_FOUNDATION_V1",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "backend_descriptor": {
+    "descriptor_id": "dsc-backend-descriptor-v1",
+    "description": "Shape a backend must publish from the PHASE-039 describe_capabilities method in order to be evaluated against the capability contract. Identity is opaque; no vendor, framework, or device binding is expressed.",
+    "produced_by_method": "describe_capabilities",
+    "adapter_interface_ref": "dsc-backend-adapter-interface-v1",
+    "required_fields": [
+      {
+        "field": "backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor, framework, or device semantics"
+      },
+      {
+        "field": "backend_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty backend-owned version string"
+      },
+      {
+        "field": "adapter_interface_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the PHASE-039 backend interface version v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of the supported capability set versions of dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "declared_capabilities",
+        "type": "array<dsc-backend-capability-declaration-v1>",
+        "required": true,
+        "nullable": false,
+        "constraint": "one declaration per registered capability id; unregistered or duplicate ids are rejected"
+      },
+      {
+        "field": "declared_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six required channels in the fixed foundation order"
+      },
+      {
+        "field": "declared_spatial_frame",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "declared_adapted_input_shape",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc_adapted_conditioning_input_v1"
+      }
+    ],
+    "optional_fields": [],
+    "identity_policy": "opaque_backend_id_no_vendor_binding",
+    "additional_fields": false
+  },
+  "capability_schema": {
+    "schema_id": "dsc-backend-capability-declaration-v1",
+    "description": "Shape of a single capability declaration inside a backend descriptor, bound to the registered capability ids of the PHASE-039 capability contract.",
+    "capability_contract_ref": "dsc-backend-capability-contract-v1",
+    "fields": [
+      {
+        "field": "capability_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of registered_capability_ids"
+      },
+      {
+        "field": "declared",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of declaration_values"
+      },
+      {
+        "field": "capability_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor version of the capability as published by the capability set"
+      }
+    ],
+    "registered_capability_ids": [
+      "accepts_validated_conditioning_packet",
+      "supports_spatial_frame_normalized_image_plane_v1",
+      "supports_all_six_conditioning_channels",
+      "structure_preserving_ingestion",
+      "side_effect_free_ingestion",
+      "source_corpus_agnostic"
+    ],
+    "declaration_values": [
+      "supported",
+      "unsupported"
+    ],
+    "unknown_capability_policy": "reject_unregistered_capability_id",
+    "duplicate_capability_policy": "reject_duplicate_capability_id",
+    "missing_capability_policy": "treated_as_undeclared",
+    "additional_fields": false
+  },
+  "compatibility_matrix": {
+    "matrix_id": "dsc-backend-compatibility-matrix-v1",
+    "description": "Resolution table mapping each mandatory registry row against a backend declaration state to a compatibility outcome. Evaluated by the PHASE-039 check_compatibility method; no backend is evaluated in this phase.",
+    "evaluated_by_method": "check_compatibility",
+    "declaration_states": [
+      "supported",
+      "unsupported",
+      "undeclared"
+    ],
+    "state_semantics": {
+      "supported": "backend declared the row and the declaration equals the required value",
+      "unsupported": "backend declared the row but the declaration does not equal the required value",
+      "undeclared": "backend descriptor omitted the row entirely"
+    },
+    "outcome_values": [
+      "compatible",
+      "incompatible"
+    ],
+    "rows": [
+      {
+        "row_id": "accepts_validated_conditioning_packet",
+        "row_kind": "capability",
+        "requirement": "mandatory",
+        "required_value": "supported",
+        "source_ref": "capability_contract.required_capabilities.accepts_validated_conditioning_packet",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_ACCEPTS_VALIDATED_CONDITIONING_PACKET"
+      },
+      {
+        "row_id": "supports_spatial_frame_normalized_image_plane_v1",
+        "row_kind": "capability",
+        "requirement": "mandatory",
+        "required_value": "supported",
+        "source_ref": "capability_contract.required_capabilities.supports_spatial_frame_normalized_image_plane_v1",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_SUPPORTS_SPATIAL_FRAME_NORMALIZED_IMAGE_PLANE_V1"
+      },
+      {
+        "row_id": "supports_all_six_conditioning_channels",
+        "row_kind": "capability",
+        "requirement": "mandatory",
+        "required_value": "supported",
+        "source_ref": "capability_contract.required_capabilities.supports_all_six_conditioning_channels",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_SUPPORTS_ALL_SIX_CONDITIONING_CHANNELS"
+      },
+      {
+        "row_id": "structure_preserving_ingestion",
+        "row_kind": "capability",
+        "requirement": "mandatory",
+        "required_value": "supported",
+        "source_ref": "capability_contract.required_capabilities.structure_preserving_ingestion",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_STRUCTURE_PRESERVING_INGESTION"
+      },
+      {
+        "row_id": "side_effect_free_ingestion",
+        "row_kind": "capability",
+        "requirement": "mandatory",
+        "required_value": "supported",
+        "source_ref": "capability_contract.required_capabilities.side_effect_free_ingestion",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_SIDE_EFFECT_FREE_INGESTION"
+      },
+      {
+        "row_id": "source_corpus_agnostic",
+        "row_kind": "capability",
+        "requirement": "mandatory",
+        "required_value": "supported",
+        "source_ref": "capability_contract.required_capabilities.source_corpus_agnostic",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_SOURCE_CORPUS_AGNOSTIC"
+      },
+      {
+        "row_id": "structural_spatial_frame",
+        "row_kind": "structural",
+        "requirement": "mandatory",
+        "required_value": "normalized_image_plane_v1",
+        "source_ref": "capability_contract.spatial_frame_ref",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_STRUCTURAL_SPATIAL_FRAME"
+      },
+      {
+        "row_id": "structural_channel_coverage",
+        "row_kind": "structural",
+        "requirement": "mandatory",
+        "required_value": "camera_pose_field,camera_temporal_track,subject_position_field,framing_composition_map,edit_rhythm_boundaries,scene_energy_field",
+        "source_ref": "capability_contract.required_channels",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_STRUCTURAL_CHANNEL_COVERAGE"
+      },
+      {
+        "row_id": "structural_adapted_input_shape",
+        "row_kind": "structural",
+        "requirement": "mandatory",
+        "required_value": "dsc_adapted_conditioning_input_v1",
+        "source_ref": "capability_contract.adapted_input_shape_ref",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_STRUCTURAL_ADAPTED_INPUT_SHAPE"
+      },
+      {
+        "row_id": "structural_adapter_interface_version",
+        "row_kind": "structural",
+        "requirement": "mandatory",
+        "required_value": "v1",
+        "source_ref": "backend_interface.version",
+        "outcome_by_state": {
+          "supported": "compatible",
+          "unsupported": "incompatible",
+          "undeclared": "incompatible"
+        },
+        "incompatibility_code": "DSC_BACKEND_INCOMPATIBLE_STRUCTURAL_ADAPTER_INTERFACE_VERSION"
+      }
+    ],
+    "aggregation_rule": "all_rows_must_resolve_compatible",
+    "evaluation": "collect_all_incompatibility_codes",
+    "report_shape": {
+      "report_id": "dsc-backend-compatibility-report-v1",
+      "required_fields": [
+        "backend_id",
+        "capability_set_version",
+        "evaluated_rows",
+        "failed_rows",
+        "incompatibility_codes",
+        "outcome"
+      ],
+      "outcome_values": [
+        "compatible",
+        "incompatible"
+      ]
+    },
+    "evaluates_backends_in_this_phase": false
+  },
+  "capability_versioning": {
+    "versioning_id": "dsc-backend-capability-versioning-v1",
+    "description": "Version policy governing how the registered capability set evolves and how a backend declared capability_set_version is resolved against it.",
+    "scheme": "major_minor",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "current_capability_set_version": "1.0",
+    "supported_capability_set_versions": [
+      "1.0"
+    ],
+    "capability_versions": [
+      {
+        "capability_id": "accepts_validated_conditioning_packet",
+        "introduced_in_capability_set_version": "1.0",
+        "current_version": "1.0",
+        "status": "active"
+      },
+      {
+        "capability_id": "supports_spatial_frame_normalized_image_plane_v1",
+        "introduced_in_capability_set_version": "1.0",
+        "current_version": "1.0",
+        "status": "active"
+      },
+      {
+        "capability_id": "supports_all_six_conditioning_channels",
+        "introduced_in_capability_set_version": "1.0",
+        "current_version": "1.0",
+        "status": "active"
+      },
+      {
+        "capability_id": "structure_preserving_ingestion",
+        "introduced_in_capability_set_version": "1.0",
+        "current_version": "1.0",
+        "status": "active"
+      },
+      {
+        "capability_id": "side_effect_free_ingestion",
+        "introduced_in_capability_set_version": "1.0",
+        "current_version": "1.0",
+        "status": "active"
+      },
+      {
+        "capability_id": "source_corpus_agnostic",
+        "introduced_in_capability_set_version": "1.0",
+        "current_version": "1.0",
+        "status": "active"
+      }
+    ],
+    "compatibility_policy": {
+      "major_change": "breaking: removing a capability, tightening a required value, or changing a structural row requires a new major capability_set_version",
+      "minor_change": "additive only: introducing a new optional capability or clarifying a description stays backward compatible within the same major",
+      "major_mismatch": "incompatible",
+      "minor_mismatch": "compatible_if_major_matches_and_all_mandatory_rows_supported"
+    },
+    "rules": [
+      "every registered capability carries a version drawn from the capability set version line",
+      "a backend declaring an unsupported capability_set_version major is incompatible regardless of its declarations",
+      "a newer backend minor version is accepted while every mandatory row still resolves compatible",
+      "capability ids are immutable once published; renaming requires a major increment",
+      "the registry never silently upgrades a backend declaration to a newer capability version"
+    ],
+    "deprecation_policy": {
+      "deprecated_capabilities": [],
+      "removal_requires": "major_capability_set_version_increment",
+      "notice_window": "one_minor_version"
+    }
+  },
+  "registered_backends": {
+    "count": 0,
+    "entries": [],
+    "registration_policy": "descriptor registration is performed by future phases; this phase defines the registry surface only and binds to no backend",
+    "registers_backends_in_this_phase": false
+  },
+  "design_constraints": {
+    "registry_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_adapter_foundation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "evaluates_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T08:12:47.067Z"
+}

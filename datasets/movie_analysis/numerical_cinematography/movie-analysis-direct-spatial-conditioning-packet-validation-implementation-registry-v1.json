@@ -1,0 +1,49 @@
+{
+  "registry_id": "movie-analysis-direct-spatial-conditioning-packet-validation-implementation-registry-v1",
+  "phase": "PHASE-DSC-033",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1",
+  "registry_version": "v1",
+  "status": "IMPLEMENTED",
+  "mode": "DESIGN_ONLY_VALIDATION",
+  "scope": {
+    "validation_stages": ["structural", "metadata", "channel_payload", "cross_channel"],
+    "validated_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "packet_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "rejection_code_prefix": "DSC_REJ_",
+    "note": "Validation specification only. Declares how a future runtime must validate a PHASE-032 conditioning packet and which rejection code each failed check emits. No packet instance is validated in this phase."
+  },
+  "schema_path": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-validation.schema.json",
+  "builder_service_path": "services/directSpatialConditioningPacketValidationBuilder.ts",
+  "verify_script_path": "scripts/verify-direct-spatial-conditioning-packet-validation.ts",
+  "npm_verify_command": "verify:direct-spatial-conditioning-packet-validation",
+  "validation_root": "exports/direct_spatial_conditioning/v1",
+  "validation_path": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+  "validation_report_path": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_VALIDATION_REPORT.json",
+  "design_constraints": {
+    "validation_only": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "validates_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "explicitly_not_modified_this_phase": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "exports/movie_reconstruction_master/v1/**",
+    "exports/movie_reconstruction_certification/v1/**",
+    "exports/numerical_reconstruction/v1/**",
+    "datasets/movie_analysis/**"
+  ],
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1",
+  "generated_at": "2026-07-25T10:00:00.000Z"
+}

@@ -1,0 +1,230 @@
+{
+  "reference_backend_id": "direct-spatial-conditioning-reference-backend-v1",
+  "phase": "PHASE-DSC-051",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_REFERENCE_BACKEND_V1",
+  "mode": "design_only_reference_backend",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_REFERENCE_BACKEND_V1",
+  "backend_id": "dsc-reference-backend-v1",
+  "backend_version": "1.0",
+  "backend_kind": "reference_backend",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+  "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "reference_backend_schema": {
+    "schema_id": "dsc-reference-backend-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning reference backend. Identity is opaque; no vendor, framework, or device binding is expressed. A reference backend binds the certified generic template and certified profile without implementing adapter methods.",
+    "encoding": "application/json",
+    "backend_id_policy": "opaque_backend_id_no_vendor_binding",
+    "template_ref": "dsc-backend-template-generic-v1",
+    "profile_ref": "dsc-backend-profile-reference-v1",
+    "required_fields": [
+      {
+        "field": "backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor, framework, or device semantics"
+      },
+      {
+        "field": "backend_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor backend version string"
+      },
+      {
+        "field": "backend_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal reference_backend for the first concrete backend"
+      },
+      {
+        "field": "template_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the certified template dsc-backend-template-generic-v1"
+      },
+      {
+        "field": "profile_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the certified profile dsc-backend-profile-reference-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_backend_identity",
+        "type": "dsc-reference-backend-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor, framework, or device dependence"
+      },
+      {
+        "field": "template_binding",
+        "type": "dsc-reference-backend-template-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the certified generic template without filling extension points"
+      },
+      {
+        "field": "profile_binding",
+        "type": "dsc-reference-backend-profile-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the certified backend profile without implementing the profile"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_backend_identity": {
+    "identity_id": "dsc-reference-backend-deterministic-identity-v1",
+    "description": "Deterministic identity of the first reference backend. The backend_id is a literal design-time constant with no seed, time, randomness, vendor, framework, or device dependence.",
+    "backend_id": "dsc-reference-backend-v1",
+    "backend_version": "1.0",
+    "identity_policy": "opaque_backend_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "adapter_interface_version": "v1",
+    "declared_spatial_frame": "normalized_image_plane_v1",
+    "declared_adapted_input_shape": "dsc_adapted_conditioning_input_v1",
+    "declared_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "template_binding": {
+    "binding_id": "dsc-reference-backend-template-binding-v1",
+    "description": "Exact binding of the certified PHASE-049 generic backend template. The reference backend adopts the deterministic skeleton and closed extension point set without implementing any step or filling any extension point.",
+    "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+    "template_id": "dsc-backend-template-generic-v1",
+    "template_version": "1.0",
+    "template_phase": "PHASE-DSC-049",
+    "template_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+    "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+    "binding_mode": "exact_reuse",
+    "skeleton_ref": "dsc-backend-deterministic-implementation-skeleton-v1",
+    "extension_points_ref": "dsc-backend-template-extension-points-v1",
+    "validation_template_ref": "dsc-backend-template-validation-template-v1",
+    "fills_extension_points_in_this_phase": false,
+    "implements_skeleton_in_this_phase": false
+  },
+  "profile_binding": {
+    "binding_id": "dsc-reference-backend-profile-binding-v1",
+    "description": "Exact binding of the certified PHASE-047 backend profile. The reference backend inherits the deterministic capability mapping and adapter configuration without implementing the profile or binding a live backend.",
+    "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+    "profile_id": "dsc-backend-profile-reference-v1",
+    "profile_version": "1.0",
+    "profile_phase": "PHASE-DSC-047",
+    "profile_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1",
+    "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+    "binding_mode": "exact_reuse",
+    "capability_mapping_ref": "dsc-backend-profile-deterministic-capability-mapping-v1",
+    "adapter_configuration_ref": "dsc-backend-profile-adapter-configuration-v1",
+    "profile_validation_ref": "dsc-backend-profile-validation-v1",
+    "inherits_capability_declarations": true,
+    "binds_profile_in_this_phase": true,
+    "implements_profile_in_this_phase": false
+  },
+  "implemented_backends": {
+    "count": 0,
+    "entries": [],
+    "implementation_policy": "the reference backend is declared as a design binding only; adapter methods are not implemented in this phase",
+    "implements_backends_in_this_phase": false
+  },
+  "design_constraints": {
+    "reference_backend_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_backend_template": true,
+    "reuses_certified_profile": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "implements_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T12:05:06.128Z"
+}

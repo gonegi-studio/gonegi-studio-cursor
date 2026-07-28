@@ -1,0 +1,379 @@
+{
+  "execution_contract_id": "direct-spatial-conditioning-backend-execution-contract-v1",
+  "phase": "PHASE-DSC-044",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_EXECUTION_CONTRACT_V1",
+  "mode": "design_only_contract",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_EXECUTION_CONTRACT_V1",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "runtime_router_phase": "PHASE-DSC-043",
+  "runtime_router_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_RUNTIME_ROUTER_V1",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "execution_request": {
+    "request_schema_id": "dsc-backend-execution-request-v1",
+    "description": "Shape of one backend execution request. Execution is accepted only after a PHASE-043 routing report with outcome routed and a selected active registration.",
+    "encoding": "application/json",
+    "required_fields": [
+      {
+        "field": "execution_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque execution identity; carries no vendor, framework, or device semantics"
+      },
+      {
+        "field": "routing_report_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "reference to the PHASE-043 routing report that selected the registration"
+      },
+      {
+        "field": "routing_outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal routed"
+      },
+      {
+        "field": "selected_registration_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque registration_id copied from the routing report selected_registration_id"
+      },
+      {
+        "field": "selected_backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque backend_id copied from the routing report selected_backend_id"
+      },
+      {
+        "field": "adapted_conditioning_input_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "reference to dsc_adapted_conditioning_input_v1 produced by the packet adapter"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be a supported version of dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "channel_order",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six required channels in fixed foundation order"
+      },
+      {
+        "field": "requested_at",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "ISO-8601 timestamp recorded for audit only; must not affect deterministic outcome"
+      }
+    ],
+    "optional_fields": [],
+    "preconditions": [
+      "routing report outcome must equal routed",
+      "selected registration must still be lifecycle active at bind time",
+      "adapted conditioning input must reference dsc_adapted_conditioning_input_v1",
+      "spatial frame must equal normalized_image_plane_v1",
+      "channel order must equal the foundation channel order",
+      "no backend implementation, GPU, or inference path is required to accept the request"
+    ],
+    "requires_routed_outcome": true,
+    "additional_fields": false
+  },
+  "execution_response": {
+    "response_schema_id": "dsc-backend-execution-response-v1",
+    "description": "Shape of one backend execution response. Outcomes are succeeded, failed, or cancelled; response emission materializes no tensors or frames.",
+    "encoding": "application/json",
+    "required_fields": [
+      {
+        "field": "execution_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque execution_id copied from the request"
+      },
+      {
+        "field": "outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of outcome_values"
+      },
+      {
+        "field": "selected_registration_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque registration_id copied from the request"
+      },
+      {
+        "field": "selected_backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque backend_id copied from the request"
+      },
+      {
+        "field": "lifecycle_state",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be succeeded, failed, or cancelled at response emission; released follows later"
+      },
+      {
+        "field": "routing_report_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "same routing_report_ref as the request"
+      },
+      {
+        "field": "result_digest",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "sha256 hex digest of the canonical response payload excluding requested_at and wall-clock fields; empty string when outcome is cancelled before bind"
+      },
+      {
+        "field": "failure_codes",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "zero or more DSC_BACKEND_EXECUTION_* codes; empty iff outcome is succeeded"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "channel_order",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the request channel_order"
+      },
+      {
+        "field": "completed_at",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "ISO-8601 timestamp recorded for audit only; must not affect deterministic outcome"
+      }
+    ],
+    "optional_fields": [],
+    "outcome_values": [
+      "succeeded",
+      "failed",
+      "cancelled"
+    ],
+    "additional_fields": false,
+    "materializes_tensors": false,
+    "materializes_frames": false
+  },
+  "execution_lifecycle": {
+    "lifecycle_id": "dsc-backend-execution-lifecycle-v1",
+    "description": "Lifecycle states and allowed transitions for one backend execution. Terminal business outcomes are succeeded, failed, and cancelled; released is the terminal resource state after handle release.",
+    "states": [
+      "accepted",
+      "bound",
+      "running",
+      "succeeded",
+      "failed",
+      "cancelled",
+      "released"
+    ],
+    "initial_state": "accepted",
+    "terminal_states": [
+      "succeeded",
+      "failed",
+      "cancelled",
+      "released"
+    ],
+    "transitions": [
+      {
+        "from": "accepted",
+        "to": "bound",
+        "trigger": "conditioning_input_bound_to_selected_registration",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "bound",
+        "to": "running",
+        "trigger": "execution_started_against_routed_adapter",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "running",
+        "to": "succeeded",
+        "trigger": "execution_completed_with_valid_response",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "running",
+        "to": "failed",
+        "trigger": "execution_failed_with_declared_failure_code",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "running",
+        "to": "cancelled",
+        "trigger": "execution_cancelled_by_caller_or_policy",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "accepted",
+        "to": "cancelled",
+        "trigger": "execution_cancelled_before_bind",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "bound",
+        "to": "cancelled",
+        "trigger": "execution_cancelled_before_running",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "succeeded",
+        "to": "released",
+        "trigger": "binding_handle_released_after_success",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "failed",
+        "to": "released",
+        "trigger": "binding_handle_released_after_failure",
+        "allowed": true,
+        "side_effects": "none"
+      },
+      {
+        "from": "cancelled",
+        "to": "released",
+        "trigger": "binding_handle_released_after_cancellation",
+        "allowed": true,
+        "side_effects": "none"
+      }
+    ],
+    "invariants": [
+      "every execution begins in accepted after request validation",
+      "bound requires a routed registration and an adapted conditioning input binding",
+      "running may transition only to succeeded, failed, or cancelled",
+      "succeeded, failed, and cancelled always release to released",
+      "no lifecycle transition invokes GPU, inference, or dataset modification",
+      "requested_at and completed_at are audit fields and never gate transitions"
+    ],
+    "executes_backends_in_this_phase": false
+  },
+  "deterministic_execution_guarantees": {
+    "guarantees_id": "dsc-backend-deterministic-execution-guarantees-v1",
+    "description": "Determinism rules a future execution implementation must satisfy. Guarantees are declared only; no backend is executed in this phase.",
+    "purity": "deterministic_pure_function_of_request_and_routed_registration",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "backend_agnostic": true,
+    "same_inputs_same_outcome": true,
+    "ordering": {
+      "channel_order": "foundation_channel_order",
+      "response_fields": "response_schema_field_order",
+      "lifecycle_events": "lifecycle_transition_order"
+    },
+    "forbidden": [
+      "non-deterministic selection among equal registrations",
+      "wall-clock dependence in outcome or result_digest",
+      "random sampling during execution",
+      "gpu or inference execution in this contract phase",
+      "tensor or frame materialization in the response",
+      "dataset modification during execution",
+      "bypassing the PHASE-043 routed registration"
+    ],
+    "guarantees": [
+      "identical execution requests against the same routed registration produce the same outcome and result_digest",
+      "channel order in request and response equals the foundation channel order",
+      "failure_codes are empty if and only if outcome is succeeded",
+      "unroutable or fallback routing outcomes never enter accepted",
+      "audit timestamps may differ across runs without changing result_digest",
+      "execution never invents a backend outside the routed registration"
+    ],
+    "executes_backends_in_this_phase": false
+  },
+  "executed_backends": {
+    "count": 0,
+    "entries": [],
+    "execution_policy": "backend execution is performed by future phases; this phase defines the execution contract only and binds to no backend",
+    "executes_backends_in_this_phase": false
+  },
+  "design_constraints": {
+    "contract_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_runtime_router": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "executes_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T09:12:54.496Z"
+}

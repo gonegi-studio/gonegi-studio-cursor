@@ -1,0 +1,118 @@
+{
+  "report_id": "dsc_backend_template_certification_ph050",
+  "phase": "PHASE-DSC-050",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+  "certified_system_phase": "PHASE-DSC-049",
+  "mode": "read_only_certification",
+  "template_id": "dsc-backend-template-generic-v1",
+  "template_version": "1.0",
+  "surfaces_certified": [
+    "template_schema",
+    "implementation_skeleton",
+    "extension_points",
+    "validation_template"
+  ],
+  "checks_required": [
+    "template_schema",
+    "implementation_skeleton",
+    "extension_points",
+    "validation_template",
+    "evidence_chain",
+    "reproducibility",
+    "immutability"
+  ],
+  "checks": [
+    {
+      "check": "template_schema",
+      "passed": true,
+      "detail": "backend_template_schema present with opaque template-id policy, eleven required fields, zero optional fields, no additional fields permitted",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "implementation_skeleton",
+      "passed": true,
+      "detail": "deterministic_implementation_skeleton covers exactly the four PHASE-DSC-039 adapter methods in fixed declared order, each step side-effect free and deterministic, none implemented in this phase",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "extension_points",
+      "passed": true,
+      "detail": "extension_points form a closed set of four, one per skeleton step, unknown extension points rejected, none filled in this phase",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "validation_template",
+      "passed": true,
+      "detail": "validation_template declares thirteen mandatory design-time-only checks, zero duplicate check_ids or fail_codes, all correctly marked not_evaluated",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "backend template references profile, profile certification, backend design certification, and the full adapter stack by exact path; profile certification's own evidence_chain independently confirms the eleven upstream links it shares with the template",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "npm run verify:direct-spatial-conditioning-backend-template re-executed live in this phase; rebuilt template produced the identical PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1 verdict with zero errors",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "sha256 digests of all twenty-one upstream protected artifacts recomputed in this phase and matched byte-for-byte against the digests recorded in the PHASE-DSC-048 profile certification; verify script's own pre/post hash diff independently agreed",
+      "error_count": 0,
+      "errors": []
+    }
+  ],
+  "evidence_chain_links": 12,
+  "evidence_chain_unresolved": 0,
+  "artifact_digest_count": 25,
+  "protected_artifacts_unmodified": true,
+  "reproducibility_rerun_performed": true,
+  "reproducibility_rerun_command": "npm run verify:direct-spatial-conditioning-backend-template",
+  "reproducibility_rerun_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_TEMPLATE_V1",
+  "backend_neutral": true,
+  "backend_neutrality": {
+    "backend_agnostic": true,
+    "backend": "none",
+    "backends_templated_in_this_phase": 0,
+    "backends_implemented": 0,
+    "requires_gpu": false,
+    "performs_inference": false,
+    "placeholders": false
+  },
+  "upstream_certified_system": {
+    "backend_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+    "backend_profile_certified": true,
+    "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+    "backend_design_certified": true,
+    "sources_supported": 15
+  },
+  "not_performed_this_phase": [
+    "recalculation_of_business_metrics",
+    "modification_of_any_certified_artifact",
+    "backend_implementation",
+    "gpu_execution",
+    "model_inference"
+  ],
+  "integrity_method": "sha256_read_only_recheck",
+  "artifacts": {
+    "certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+    "certified_template": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+    "certified_schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-template.schema.json",
+    "certified_registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-template-implementation-registry-v1.json"
+  },
+  "error_count": 0,
+  "missing_checks": [],
+  "generated_at": "2026-07-25T00:00:00.000Z"
+}

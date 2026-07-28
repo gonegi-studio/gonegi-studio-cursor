@@ -1,0 +1,317 @@
+{
+  "vendor_reference_profile_artifact_id": "direct-spatial-conditioning-vendor-reference-profile-v1",
+  "phase": "PHASE-DSC-063",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PROFILE_V1",
+  "mode": "design_only_vendor_reference_profile",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_PROFILE_V1",
+  "vendor_profile_id": "dsc-vendor-profile-reference-v1",
+  "vendor_profile_version": "1.0",
+  "vendor_profile_kind": "reference_vendor_profile",
+  "vendor_implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+  "vendor_implementation_spec_phase": "PHASE-DSC-061",
+  "vendor_implementation_spec_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_SPEC_V1",
+  "vendor_execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+  "vendor_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+  "vendor_compatibility_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+  "vendor_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json",
+  "vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+  "family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+  "family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json",
+  "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+  "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+  "template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+  "template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+  "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "reference_vendor_profile_schema": {
+    "schema_id": "dsc-vendor-reference-profile-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning reference vendor profile. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. A reference profile binds the certified Vendor Design and publishes a reference capability profile without implementing any vendor.",
+    "encoding": "application/json",
+    "vendor_profile_id_policy": "opaque_vendor_profile_id_no_vendor_binding",
+    "generic_vendor_profile_ref": "dsc-vendor-profile-generic-v1",
+    "required_fields": [
+      {
+        "field": "vendor_profile_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "vendor_profile_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor vendor profile version string"
+      },
+      {
+        "field": "vendor_profile_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal reference_vendor_profile for the first reference profile"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_vendor_identity",
+        "type": "dsc-vendor-reference-profile-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor name, framework, or device dependence"
+      },
+      {
+        "field": "vendor_design_binding",
+        "type": "dsc-vendor-reference-profile-vendor-design-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the certified Vendor Design as the reference profile design anchor"
+      },
+      {
+        "field": "reference_vendor_capability_profile",
+        "type": "dsc-vendor-reference-capability-profile-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must map every mandatory vendor capability declaration to supported; vendor-specific extensions are forbidden"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_vendor_identity": {
+    "identity_id": "dsc-vendor-reference-profile-deterministic-identity-v1",
+    "description": "Deterministic identity of the reference vendor profile. The vendor_profile_id is a literal design-time constant with no seed, time, randomness, vendor name, framework, or device dependence.",
+    "vendor_profile_id": "dsc-vendor-profile-reference-v1",
+    "vendor_profile_version": "1.0",
+    "identity_policy": "opaque_vendor_profile_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "vendor_name": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "vendor_design_binding": {
+    "binding_id": "dsc-vendor-reference-profile-vendor-design-binding-v1",
+    "description": "Exact binding of the certified Vendor Design stack as the reference vendor profile design anchor. The certified design is the PHASE-061 vendor implementation specification whose PASS target certifies the vendor design layers from generic vendor profile through implementation specification.",
+    "vendor_implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+    "vendor_implementation_spec_phase": "PHASE-DSC-061",
+    "vendor_implementation_spec_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_SPEC_V1",
+    "certified_target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_SPEC_V1",
+    "vendor_execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+    "vendor_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+    "vendor_compatibility_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+    "vendor_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json",
+    "generic_vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+    "generic_vendor_profile_id": "dsc-vendor-profile-generic-v1",
+    "generic_vendor_profile_version": "1.0",
+    "binding_mode": "exact_reuse",
+    "role": "vendor_reference_profile_design_anchor",
+    "design_layers_bound": [
+      "vendor_profile",
+      "vendor_registry",
+      "vendor_compatibility",
+      "vendor_router",
+      "vendor_execution_contract",
+      "vendor_implementation_spec"
+    ],
+    "instantiates_vendors_in_this_phase": false,
+    "implements_design_in_this_phase": false
+  },
+  "reference_vendor_capability_profile": {
+    "capability_profile_id": "dsc-vendor-reference-capability-profile-v1",
+    "description": "Reference vendor capability profile derived deterministically from the PHASE-055 vendor capability interface. Every mandatory capability declaration maps to supported; no vendor-specific extension is permitted and nothing is implemented in this phase.",
+    "vendor_capability_interface_ref": "dsc-vendor-capability-interface-v1",
+    "generic_vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "purity": "deterministic_pure_function",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "ordering": "vendor_capability_interface_required_capability_declarations_order",
+    "entries": [
+      {
+        "capability_id": "accepts_validated_conditioning_packet",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "inherited_from": "dsc-vendor-capability-interface-v1",
+        "source_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json#vendor_capability_interface.required_capability_declarations",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "supports_spatial_frame_normalized_image_plane_v1",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "inherited_from": "dsc-vendor-capability-interface-v1",
+        "source_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json#vendor_capability_interface.required_capability_declarations",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "supports_all_six_conditioning_channels",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "inherited_from": "dsc-vendor-capability-interface-v1",
+        "source_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json#vendor_capability_interface.required_capability_declarations",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "structure_preserving_ingestion",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "inherited_from": "dsc-vendor-capability-interface-v1",
+        "source_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json#vendor_capability_interface.required_capability_declarations",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "side_effect_free_ingestion",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "inherited_from": "dsc-vendor-capability-interface-v1",
+        "source_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json#vendor_capability_interface.required_capability_declarations",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "source_corpus_agnostic",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "inherited_from": "dsc-vendor-capability-interface-v1",
+        "source_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json#vendor_capability_interface.required_capability_declarations",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      }
+    ],
+    "methods_required": [
+      "describe_capabilities",
+      "check_compatibility",
+      "bind_conditioning_input",
+      "release_conditioning_binding"
+    ],
+    "undeclared_capability_policy": "reject",
+    "unknown_capability_policy": "reject",
+    "vendor_specific_extensions": "forbidden",
+    "requires_gpu": false,
+    "performs_inference": false,
+    "maps_capabilities_in_this_phase": true,
+    "implements_capabilities_in_this_phase": false
+  },
+  "bound_vendors": {
+    "count": 0,
+    "entries": [],
+    "binding_policy": "vendors may bind to this reference profile only in a future design or implementation phase; none are bound here",
+    "binds_vendors_in_this_phase": false
+  },
+  "design_constraints": {
+    "profile_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_design": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "binds_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-26T00:04:14.236Z"
+}

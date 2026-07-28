@@ -1,0 +1,369 @@
+{
+  "backend_profile_id": "direct-spatial-conditioning-backend-profile-v1",
+  "phase": "PHASE-DSC-047",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1",
+  "mode": "design_only_profile",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_PROFILE_V1",
+  "profile_id": "dsc-backend-profile-reference-v1",
+  "profile_version": "1.0",
+  "profile_kind": "reference_profile",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "implementation_spec_phase": "PHASE-DSC-045",
+  "implementation_spec_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_IMPLEMENTATION_SPEC_V1",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "backend_profile_schema": {
+    "schema_id": "dsc-backend-profile-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning backend profile. Identity is opaque; no vendor, framework, or device binding is expressed. Profiles declare capability mappings and adapter configuration without implementing a backend.",
+    "encoding": "application/json",
+    "profile_id_policy": "opaque_profile_id_no_vendor_binding",
+    "required_fields": [
+      {
+        "field": "profile_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor, framework, or device semantics"
+      },
+      {
+        "field": "profile_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor profile version string"
+      },
+      {
+        "field": "profile_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal reference_profile for the first profile"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_capability_mapping",
+        "type": "dsc-backend-profile-deterministic-capability-mapping-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "one supported entry per registered capability id in registry order"
+      },
+      {
+        "field": "adapter_configuration",
+        "type": "dsc-backend-profile-adapter-configuration-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reuse dsc-packet-adapter-v1 with identity passthrough and no GPU or inference"
+      },
+      {
+        "field": "profile_validation",
+        "type": "dsc-backend-profile-validation-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare mandatory validation checks for the profile"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_capability_mapping": {
+    "mapping_id": "dsc-backend-profile-deterministic-capability-mapping-v1",
+    "description": "Deterministic mapping from each registered mandatory capability to a supported declaration for the first reference profile. Pure function of the capability registry order; no seed, time, or randomness dependence.",
+    "purity": "deterministic_pure_function",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "ordering": "capability_registry_registered_capability_ids_order",
+    "entries": [
+      {
+        "capability_id": "accepts_validated_conditioning_packet",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "source_ref": "capability_registry.capability_schema.registered_capability_ids",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "supports_spatial_frame_normalized_image_plane_v1",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "source_ref": "capability_registry.capability_schema.registered_capability_ids",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "supports_all_six_conditioning_channels",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "source_ref": "capability_registry.capability_schema.registered_capability_ids",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "structure_preserving_ingestion",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "source_ref": "capability_registry.capability_schema.registered_capability_ids",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "side_effect_free_ingestion",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "source_ref": "capability_registry.capability_schema.registered_capability_ids",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      },
+      {
+        "capability_id": "source_corpus_agnostic",
+        "declared_state": "supported",
+        "mapping_rule": "mandatory_capability_maps_to_supported",
+        "capability_version": "1.0",
+        "source_ref": "capability_registry.capability_schema.registered_capability_ids",
+        "deterministic": true,
+        "evaluated_at": "profile_construction"
+      }
+    ],
+    "undeclared_capability_policy": "reject",
+    "unknown_capability_policy": "reject",
+    "maps_capabilities_in_this_phase": true,
+    "evaluates_backends_in_this_phase": false
+  },
+  "adapter_configuration": {
+    "configuration_id": "dsc-backend-profile-adapter-configuration-v1",
+    "description": "Adapter configuration bound to the PHASE-039 packet adapter for the first reference profile. Declares identity passthrough over the six conditioning channels in foundation order. Configures no backend implementation and requires neither GPU nor inference.",
+    "packet_adapter_ref": "dsc-packet-adapter-v1",
+    "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+    "adapted_input_shape_ref": "dsc_adapted_conditioning_input_v1",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "channel_order": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "channel_transform": "identity_passthrough",
+    "passthrough_policy": "structure_preserving_no_transform",
+    "binding_policy": "opaque_conditioning_binding_handle",
+    "requires_gpu": false,
+    "performs_inference": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "configures_adapter_in_this_phase": true,
+    "implements_adapter_in_this_phase": false
+  },
+  "profile_validation": {
+    "validation_id": "dsc-backend-profile-validation-v1",
+    "description": "Validation rules the first backend profile must satisfy at design time. Checks are passed by construction for this reference profile; no backend is validated in this phase.",
+    "evaluation": "collect_all_failures",
+    "accept_condition": "zero failed checks",
+    "outcome_values": [
+      "valid",
+      "invalid"
+    ],
+    "checks": [
+      {
+        "check_id": "CHK_PROFILE_IDENTITY_OPAQUE",
+        "description": "profile_id must be opaque with no vendor, framework, or device semantics.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "profile_id equals dsc-backend-profile-reference-v1",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_IDENTITY",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_CAPABILITY_SET_LOCKED",
+        "description": "Profile must bind the frozen capability set identity and version.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "capability_set_id equals dsc-backend-capability-set-v1 and capability_set_version equals 1.0",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_CAPABILITY_SET",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_CAPABILITY_MAPPING_COMPLETE",
+        "description": "Deterministic capability mapping must cover every registered capability id exactly once in registry order.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "mapping entry ids equal capability_registry.capability_schema.registered_capability_ids",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_MAPPING_INCOMPLETE",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_CAPABILITY_MAPPING_SUPPORTED",
+        "description": "Every mapped mandatory capability must declare state supported under the reference profile rule.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "every entry.declared_state equals supported",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_MAPPING_UNSUPPORTED",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_MAPPING_DETERMINISTIC",
+        "description": "Capability mapping must be a pure deterministic function with no seed, time, or randomness dependence.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "purity equals deterministic_pure_function and seed/time/randomness equal none",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_MAPPING_NONDETERMINISTIC",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_ADAPTER_PACKET_ADAPTER",
+        "description": "Adapter configuration must reuse dsc-packet-adapter-v1 exactly.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "packet_adapter_ref equals dsc-packet-adapter-v1",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_ADAPTER_REF",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_ADAPTER_CHANNEL_ORDER",
+        "description": "Adapter configuration channel order must match foundation channel order.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "channel_order equals CONDITIONING_CHANNEL_IDS",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_CHANNEL_ORDER",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_ADAPTER_IDENTITY_PASSTHROUGH",
+        "description": "Adapter configuration must declare identity passthrough with structure-preserving policy.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "channel_transform equals identity_passthrough and passthrough_policy equals structure_preserving_no_transform",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_TRANSFORM",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_SPATIAL_FRAME_LOCKED",
+        "description": "Profile must operate exclusively in normalized_image_plane_v1.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "spatial_frame_ref equals normalized_image_plane_v1",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_SPATIAL_FRAME",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_NO_GPU_NO_INFERENCE",
+        "description": "Profile adapter configuration must not require GPU or perform inference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "requires_gpu equals false and performs_inference equals false",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_GPU_INFERENCE",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_NO_BACKEND_BOUND",
+        "description": "Profile must bind zero backends in this design-only phase.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "bound_backends.count equals 0 and binds_backends_in_this_phase equals false",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_BACKEND_BOUND",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      },
+      {
+        "check_id": "CHK_REUSES_IMPLEMENTATION_SPEC",
+        "description": "Profile must reuse the frozen PHASE-045 implementation specification by exact reference.",
+        "evaluation": "design_time_declaration_only",
+        "pass_condition": "implementation_spec_ref equals BACKEND_IMPLEMENTATION_SPEC_PATH",
+        "fail_code": "DSC_BACKEND_PROFILE_FAIL_SPEC_REF",
+        "mandatory": true,
+        "status_in_this_phase": "passed_by_construction"
+      }
+    ],
+    "requires_complete_capability_mapping": true,
+    "requires_adapter_configuration": true,
+    "validates_backends_in_this_phase": false
+  },
+  "bound_backends": {
+    "count": 0,
+    "entries": [],
+    "binding_policy": "backends may bind to this profile only after a future implementation phase; none are bound here",
+    "binds_backends_in_this_phase": false
+  },
+  "design_constraints": {
+    "profile_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_implementation_spec": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "binds_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T09:31:28.686Z"
+}

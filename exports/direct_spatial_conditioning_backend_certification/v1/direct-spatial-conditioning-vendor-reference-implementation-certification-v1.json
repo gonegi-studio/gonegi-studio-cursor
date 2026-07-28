@@ -1,0 +1,476 @@
+{
+  "certification_id": "direct-spatial-conditioning-vendor-reference-implementation-certification-v1",
+  "phase": "PHASE-DSC-068",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_IMPLEMENTATION_CERTIFICATION_V1",
+  "mode": "read_only_certification",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_IMPLEMENTATION_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_VENDOR_REFERENCE_IMPLEMENTATION_V1",
+  "surfaces_certified": [
+    "implementation_schema",
+    "identity",
+    "vendor_template_binding",
+    "reference_implementation_profile"
+  ],
+  "implementation_id": "dsc-vendor-reference-implementation-v1",
+  "implementation_version": "1.0",
+  "checks": [
+    {
+      "check": "implementation_schema",
+      "passed": true,
+      "detail": "reference_implementation_schema present with opaque identity policy and twelve required fields",
+      "evidence": {
+        "schema_id": "dsc-vendor-reference-implementation-schema-v1",
+        "required_fields": 12,
+        "implementation_id_policy": "opaque_implementation_id_no_vendor_binding"
+      },
+      "errors": []
+    },
+    {
+      "check": "identity",
+      "passed": true,
+      "detail": "deterministic implementation identity is opaque, vendor-neutral, and free of seed/time/randomness",
+      "evidence": {
+        "identity_id": "dsc-vendor-reference-implementation-deterministic-identity-v1",
+        "implementation_id": "dsc-vendor-reference-implementation-v1",
+        "implementation_version": "1.0",
+        "vendor_name": "none"
+      },
+      "errors": []
+    },
+    {
+      "check": "vendor_template_binding",
+      "passed": true,
+      "detail": "vendor template binding exactly reuses the certified Vendor Template and adopts its four extension points without filling any",
+      "evidence": {
+        "binding_id": "dsc-vendor-reference-implementation-template-binding-v1",
+        "certified_target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_TEMPLATE_V1",
+        "extension_points_adopted": 4,
+        "binding_mode": "exact_reuse"
+      },
+      "errors": []
+    },
+    {
+      "check": "reference_implementation_profile",
+      "passed": true,
+      "detail": "reference implementation profile declares four unimplemented steps and inherits six certified capability declarations with four required methods",
+      "evidence": {
+        "implementation_profile_id": "dsc-vendor-reference-implementation-profile-v1",
+        "steps": 4,
+        "capability_entries": 6,
+        "methods_required": 4
+      },
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "vendor reference implementation references certified Vendor Template, certified Vendor Reference Profile, and the full vendor/backend stack by exact path",
+      "evidence": {
+        "links_verified": 23,
+        "vendor_template_certified": true,
+        "vendor_reference_profile_certified": true,
+        "vendor_design_certified": true
+      },
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "profile steps, adopted extension points, capability entries, channels, sources, spatial frame, and capability set still match upstream exactly; implementation artifact is byte-stable",
+      "evidence": {
+        "steps_tracked": 4,
+        "capabilities_tracked": 6,
+        "channels_tracked": 6,
+        "method": "read_only_derived_parity"
+      },
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "verified vendor reference implementation, certified Vendor Template, certified Vendor Reference Profile, and the DSC V1 stack are unchanged",
+      "evidence": {
+        "protected_artifacts": 38,
+        "digests_recorded": 38
+      },
+      "errors": []
+    }
+  ],
+  "evidence_chain": [
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "template_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "profile_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "profile_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "vendor_implementation_spec_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "vendor_execution_contract_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "vendor_router_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "vendor_compatibility_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "vendor_registry_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "vendor_profile_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "family_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "family_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "reference_backend_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "reference_backend_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "backend_template_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "backend_template_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "backend_profile_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "backend_profile_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "backend_design_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "runtime_interface_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_reference_implementation",
+      "field": "runtime_package_ref",
+      "to_artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "vendor_template_binding",
+      "field": "template_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "reference_implementation_profile",
+      "field": "vendor_reference_profile_ref",
+      "to_artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    },
+    {
+      "from_surface": "reference_implementation_profile",
+      "field": "profile_certification_ref",
+      "to_artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+      "resolved": true,
+      "matches_expected": true
+    }
+  ],
+  "artifact_digests": [
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-implementation-v1.json",
+      "sha256": "ccb7c4a2c8703b7a98d53442b24112878a65139848e5498c4fc477fe465b2258",
+      "bytes": 19490
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+      "sha256": "9352cacea5fe46148def6891902d5c14cce289c22510166dc94999447bda1bdc",
+      "bytes": 22174
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+      "sha256": "71b3146098c549b4d198fdbfd06585a95dd7166f0353ae8bfd073e45b93ce837",
+      "bytes": 16283
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+      "sha256": "630cf1b53ee74c5b72fcb7a6068ba09f595bf00dc47bde4eca05bda53b5185e4",
+      "bytes": 17323
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+      "sha256": "b0e36da1ec8b917da15d10e589a45821b130f5fbb967335d456c9f67f900a618",
+      "bytes": 26142
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+      "sha256": "b829a5d6fe896db7e9bcd7bf196fd603aabe17792c91b66b1bb96680dc1e2653",
+      "bytes": 15888
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+      "sha256": "b59abe1b1c34065058c63da20d1a26033bba5b3277ba28b90845c1423ebad889",
+      "bytes": 20286
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+      "sha256": "e55df6c14dcb2774a50160a542e021e8c6ad8d8d56a1a35aa5c8a032ed9e6a9a",
+      "bytes": 20999
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json",
+      "sha256": "5ef4d0c66e53d38893610f0dbf9314a2b2ed6587721e962189374a261d12931f",
+      "bytes": 17939
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+      "sha256": "201ca1edeb02cf9504f28cfad8a9aa3a04317061badb7205f1700c7cfe02870c",
+      "bytes": 14337
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+      "sha256": "13b6e88b82c25802609abe2258207e74df872a31118c80584b142a0f83257ed8",
+      "bytes": 8039
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+      "sha256": "1b35f346b93d0f808e146dfc9132cc89b63bd53920e8e8d44d114725f6c22314",
+      "bytes": 25467
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+      "sha256": "aadb7fca0203504b2922d875451437b4a7f6d14d5883daad30ede054537016b1",
+      "bytes": 15678
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+      "sha256": "b6be99b2084117f580dcf4886f75684f76c43d015c990a8bca31ac4459427d34",
+      "bytes": 91377
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+      "sha256": "f8cc9a877a6313b7291d4e7f3712ef855da8cdd68a0739c7f0bced56f4fba715",
+      "bytes": 23801
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+      "sha256": "506be9e6fb89350847a59362900cc47baf8d70bcb710b39d99c7e4d21a0ce57a",
+      "bytes": 8516
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+      "sha256": "60af5bac8dc626630b2cfd006bc7b2cc32b7c536a60f88fa87c8dbe98ced7fa8",
+      "bytes": 7482
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-validation-v1.json",
+      "sha256": "a79577e5fe5218ecdf5380ad2cda51cea2cf0867655180f3b3fedd4715fed6d8",
+      "bytes": 22468
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+      "sha256": "e81e2c91a65285808b8954acfd0e812f0032bf8a81c92791987eb0ff1d6c46d9",
+      "bytes": 12133
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+      "sha256": "2a3f15377413ba7192845c88d2ac6f3ecff6068797d3e9314104a69aa9b695b4",
+      "bytes": 15477
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+      "sha256": "50438aea18bdc1d2448e5a9c48ab47d570e9d0086ea17624eceb3debda33fa81",
+      "bytes": 17261
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+      "sha256": "7aac801b33c75cc9f40240fba7727f2e25b5b0ae070cbbbb331ffb2726b5e2c1",
+      "bytes": 16327
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+      "sha256": "93f34527ad1a853f5aaa688b02a53c494e1c91a07f7d91f3ecc27e50e595caf0",
+      "bytes": 14684
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+      "sha256": "72023a94abce17ee9d8747b546f8be17a1f712bac37e5d01f2cfc736dc16a9d3",
+      "bytes": 13388
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+      "sha256": "df5cf7d17a16bfe8d9c2295d6aeabab1ad45286da9b2c3157d7019504263802c",
+      "bytes": 23774
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+      "sha256": "c047a585bed7b4da691ba91f07750412e9bfae521ea0dc1c44a6132cf0b1252b",
+      "bytes": 16625
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+      "sha256": "7ccb281969514846bb126213d615c059c8d5ddc098447ac4f673967bc4f61940",
+      "bytes": 19942
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+      "sha256": "a2a477e72704a23e9e9c106b09951f55ae0555b6c2792330d763ae8b05629c69",
+      "bytes": 10598
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+      "sha256": "f6bdfb6aab7e99e53b96690083e34d33e8a8be3d09608f5e167e0499e280aff9",
+      "bytes": 12722
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+      "sha256": "51d44514b3ed88e65ecd95f309ea62417e143d872de304e093d7c2c96ccda310",
+      "bytes": 16173
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+      "sha256": "9edaf716fa81abb466408f791ad333aed92fcdefddcb1d2ec4147643d61643e3",
+      "bytes": 12456
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+      "sha256": "22c76148927a5ac964255f8db9921b5d0a604948c109bac35964e343555113ba",
+      "bytes": 18875
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+      "sha256": "5dfd1cf7197bb679482cf134c617a51750e12d32fb3e3e91bd07e69dcbcddcdc",
+      "bytes": 12323
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json",
+      "sha256": "48a7e33d1456500a4102dccbedc8ec13039e687a969d59718d749e747df8cb60",
+      "bytes": 13873
+    },
+    {
+      "artifact": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+      "sha256": "59378bd179a2b79b13493125f28db2870fe512127bcc038f20e8ca665e7fc49b",
+      "bytes": 9006
+    },
+    {
+      "artifact": "exports/direct_spatial_conditioning_certification/v1/direct-spatial-conditioning-production-certification-v1.json",
+      "sha256": "b245b950d50bcbceb546707433ff76e7db1cd56c69d9e91bec721b6ce62f1281",
+      "bytes": 12556
+    },
+    {
+      "artifact": "exports/movie_reconstruction_master/v1/movie-reconstruction-master-package-v1.json",
+      "sha256": "a34ddefd0acdcc34fa1164251670bc3f2293700d49f398baaea71871a1b5cb6e",
+      "bytes": 40864
+    },
+    {
+      "artifact": "exports/movie_reconstruction_certification/v1/movie-reconstruction-production-certification-v1.json",
+      "sha256": "23398bf050bc375d08598f27e04a8ab737a6e0c6b5814010cc71b3185171738c",
+      "bytes": 4053
+    }
+  ],
+  "upstream_certified_system": {
+    "vendor_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+    "vendor_template_certified": true,
+    "vendor_reference_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+    "vendor_reference_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+    "vendor_reference_profile_certified": true,
+    "vendor_implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+    "vendor_design_certified": true,
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "vendor_neutrality": {
+    "vendor_neutral": true,
+    "vendors_bound": 0,
+    "vendors_implemented": 0,
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0"
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "error_count": 0,
+  "created_at": "2026-07-26T00:30:04.607Z"
+}

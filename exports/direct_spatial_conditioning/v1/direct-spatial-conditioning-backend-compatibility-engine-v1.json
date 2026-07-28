@@ -1,0 +1,442 @@
+{
+  "compatibility_engine_id": "direct-spatial-conditioning-backend-compatibility-engine-v1",
+  "phase": "PHASE-DSC-041",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_COMPATIBILITY_ENGINE_V1",
+  "mode": "design_only_engine",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_COMPATIBILITY_ENGINE_V1",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "capability_registry_phase": "PHASE-DSC-040",
+  "capability_registry_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_CAPABILITY_REGISTRY_V1",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "evaluation_flow": {
+    "flow_id": "dsc-backend-compatibility-evaluation-flow-v1",
+    "description": "Ordered evaluation stages a future check_compatibility implementation must execute. Stages are declared only; none are executed in this phase.",
+    "ordered_stages": [
+      {
+        "stage_id": "bind_inputs",
+        "order": 1,
+        "description": "Bind the backend descriptor and the adapted conditioning input reference as immutable evaluation inputs. No backend is invoked.",
+        "inputs": [
+          "backend_descriptor",
+          "adapted_conditioning_input_ref"
+        ],
+        "outputs": [
+          "bound_evaluation_inputs"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "lookup_registry",
+        "order": 2,
+        "description": "Load the frozen PHASE-040 capability registry surfaces required by the algorithm through the registry lookup specification.",
+        "inputs": [
+          "bound_evaluation_inputs",
+          "capability_registry_ref"
+        ],
+        "outputs": [
+          "registry_snapshot"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "validate_descriptor",
+        "order": 3,
+        "description": "Validate descriptor completeness against the backend descriptor and capability declaration schemas; reject unknown or duplicate capability ids.",
+        "inputs": [
+          "bound_evaluation_inputs",
+          "registry_snapshot"
+        ],
+        "outputs": [
+          "validated_descriptor",
+          "descriptor_rejection_codes"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "resolve_version",
+        "order": 4,
+        "description": "Resolve the declared capability_set_version against the registry versioning policy before any matrix row is evaluated.",
+        "inputs": [
+          "validated_descriptor",
+          "registry_snapshot"
+        ],
+        "outputs": [
+          "version_resolution",
+          "version_rejection_codes"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "resolve_rows",
+        "order": 5,
+        "description": "For every mandatory matrix row, determine the declaration state and map it to a compatibility outcome using the frozen outcome table.",
+        "inputs": [
+          "validated_descriptor",
+          "registry_snapshot",
+          "version_resolution"
+        ],
+        "outputs": [
+          "evaluated_rows",
+          "row_incompatibility_codes"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "aggregate_outcome",
+        "order": 6,
+        "description": "Aggregate descriptor, version, and row codes under all_rows_must_resolve_compatible; collect every code without short-circuit mutation of inputs.",
+        "inputs": [
+          "descriptor_rejection_codes",
+          "version_rejection_codes",
+          "row_incompatibility_codes",
+          "evaluated_rows"
+        ],
+        "outputs": [
+          "outcome",
+          "failed_rows",
+          "incompatibility_codes"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      },
+      {
+        "stage_id": "emit_report",
+        "order": 7,
+        "description": "Emit the compatibility report conforming to the report schema. Report emission is the only output of the engine.",
+        "inputs": [
+          "validated_descriptor",
+          "version_resolution",
+          "evaluated_rows",
+          "failed_rows",
+          "incompatibility_codes",
+          "outcome"
+        ],
+        "outputs": [
+          "compatibility_report"
+        ],
+        "side_effects": "none",
+        "executed_in_this_phase": false
+      }
+    ],
+    "accept_condition": "zero incompatibility codes after aggregate_outcome",
+    "reject_condition": "one or more incompatibility codes collected",
+    "outcome_values": [
+      "compatible",
+      "incompatible"
+    ]
+  },
+  "registry_lookup": {
+    "lookup_id": "dsc-backend-registry-lookup-v1",
+    "description": "Read-only lookup of the frozen PHASE-040 capability registry surfaces required by the compatibility algorithm. Lookup never mutates the registry and never caches across evaluations.",
+    "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+    "capability_registry_phase": "PHASE-DSC-040",
+    "capability_registry_system_id": "DIRECT_SPATIAL_CONDITIONING_BACKEND_CAPABILITY_REGISTRY_V1",
+    "access_mode": "read_only_exact_reuse",
+    "surfaces": [
+      {
+        "surface_id": "backend_descriptor",
+        "registry_path": "backend_descriptor",
+        "fields_read": [
+          "descriptor_id",
+          "required_fields",
+          "produced_by_method",
+          "identity_policy"
+        ],
+        "access": "read_only",
+        "purpose": "Validate that the inbound descriptor matches the registered shape."
+      },
+      {
+        "surface_id": "capability_schema",
+        "registry_path": "capability_schema",
+        "fields_read": [
+          "registered_capability_ids",
+          "declaration_values",
+          "unknown_capability_policy",
+          "duplicate_capability_policy",
+          "missing_capability_policy"
+        ],
+        "access": "read_only",
+        "purpose": "Index and validate declared capabilities against registered ids."
+      },
+      {
+        "surface_id": "compatibility_matrix",
+        "registry_path": "compatibility_matrix",
+        "fields_read": [
+          "rows",
+          "outcome_values",
+          "aggregation_rule",
+          "evaluation",
+          "report_shape"
+        ],
+        "access": "read_only",
+        "purpose": "Provide mandatory rows and the frozen outcome table for row resolution."
+      },
+      {
+        "surface_id": "capability_versioning",
+        "registry_path": "capability_versioning",
+        "fields_read": [
+          "capability_set_id",
+          "current_capability_set_version",
+          "supported_capability_set_versions",
+          "compatibility_policy"
+        ],
+        "access": "read_only",
+        "purpose": "Resolve the declared capability_set_version before matrix evaluation."
+      }
+    ],
+    "lookup_rules": [
+      "lookup always reads BACKEND_CAPABILITY_REGISTRY_PATH by exact path",
+      "missing registry artifact fails closed with no outcome emitted",
+      "registry phase and system_id must equal PHASE-DSC-040 identities",
+      "lookup returns an immutable snapshot; algorithm steps never write back",
+      "no network, device, or backend call is permitted during lookup"
+    ],
+    "fails_closed_on": [
+      "missing_capability_registry",
+      "phase_or_system_id_mismatch",
+      "backend_agnostic_constraint_violated",
+      "matrix_or_versioning_identity_drift"
+    ],
+    "caches": false,
+    "mutates_registry": false
+  },
+  "deterministic_algorithm": {
+    "algorithm_id": "dsc-backend-compatibility-algorithm-v1",
+    "description": "Pure, seedless, time-independent algorithm that resolves a backend descriptor against the PHASE-040 matrix and versioning surfaces. Declared only; never executed in this phase.",
+    "evaluated_by_method": "check_compatibility",
+    "purity": "deterministic_pure_function",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "backend_invocation": "none",
+    "steps": [
+      {
+        "step_id": "assert_descriptor_fields_present",
+        "order": 1,
+        "description": "Require every backend_descriptor.required_fields entry to be present and non-null; missing fields emit DSC_BACKEND_INCOMPATIBLE_INCOMPLETE_DESCRIPTOR.",
+        "determinism": "pure_function_of_inputs_and_registry",
+        "executed_in_this_phase": false
+      },
+      {
+        "step_id": "index_declared_capabilities",
+        "order": 2,
+        "description": "Build a capability_id -> declaration map; reject unregistered ids and duplicate ids before any row is resolved.",
+        "determinism": "pure_function_of_inputs_and_registry",
+        "executed_in_this_phase": false
+      },
+      {
+        "step_id": "resolve_capability_set_version",
+        "order": 3,
+        "description": "Compare declared capability_set_version major against the registry current major; unsupported or major-mismatched versions are incompatible.",
+        "determinism": "pure_function_of_inputs_and_registry",
+        "executed_in_this_phase": false
+      },
+      {
+        "step_id": "resolve_capability_rows",
+        "order": 4,
+        "description": "For each capability matrix row, state = supported if declared==supported, unsupported if declared==unsupported, undeclared if missing; map through outcome_by_state.",
+        "determinism": "pure_function_of_inputs_and_registry",
+        "executed_in_this_phase": false
+      },
+      {
+        "step_id": "resolve_structural_rows",
+        "order": 5,
+        "description": "For each structural matrix row, compare the declared structural field to the frozen required_value; equality yields supported, inequality unsupported, absence undeclared.",
+        "determinism": "pure_function_of_inputs_and_registry",
+        "executed_in_this_phase": false
+      },
+      {
+        "step_id": "collect_and_aggregate",
+        "order": 6,
+        "description": "Concatenate all incompatibility codes in first-failure order then lexicographic within a stage; outcome is compatible iff the code list is empty.",
+        "determinism": "pure_function_of_inputs_and_registry",
+        "executed_in_this_phase": false
+      },
+      {
+        "step_id": "project_report",
+        "order": 7,
+        "description": "Project the aggregated result into the fixed report schema fields without adding, omitting, or reordering beyond the declared ordering policy.",
+        "determinism": "pure_function_of_inputs_and_registry",
+        "executed_in_this_phase": false
+      }
+    ],
+    "version_resolution": {
+      "capability_set_id": "dsc-backend-capability-set-v1",
+      "supported_versions_source": "capability_versioning.supported_capability_set_versions",
+      "major_mismatch_outcome": "incompatible",
+      "major_mismatch_code": "DSC_BACKEND_INCOMPATIBLE_CAPABILITY_SET_MAJOR",
+      "unsupported_version_outcome": "incompatible",
+      "unsupported_version_code": "DSC_BACKEND_INCOMPATIBLE_CAPABILITY_SET_VERSION",
+      "minor_policy": "compatible_if_major_matches_and_all_mandatory_rows_supported"
+    },
+    "row_resolution": {
+      "matrix_ref": "dsc-backend-compatibility-matrix-v1",
+      "aggregation_rule": "all_rows_must_resolve_compatible",
+      "evaluation": "collect_all_incompatibility_codes",
+      "rules": [
+        {
+          "row_kind": "capability",
+          "declaration_source": "declared_capabilities[capability_id].declared",
+          "supported_condition": "declaration equals supported",
+          "unsupported_condition": "declaration equals unsupported",
+          "undeclared_condition": "capability_id absent from declared_capabilities",
+          "outcome_table_ref": "compatibility_matrix.rows[].outcome_by_state"
+        },
+        {
+          "row_kind": "structural",
+          "declaration_source": "declared_spatial_frame | declared_channels | declared_adapted_input_shape | adapter_interface_version",
+          "supported_condition": "declared value equals row.required_value",
+          "unsupported_condition": "declared value present but not equal to row.required_value",
+          "undeclared_condition": "structural field absent from descriptor",
+          "outcome_table_ref": "compatibility_matrix.rows[].outcome_by_state"
+        }
+      ],
+      "expected_row_count": 10,
+      "expected_capability_rows": 6,
+      "expected_structural_rows": 4
+    },
+    "descriptor_validation": {
+      "unknown_capability_policy": "reject_unregistered_capability_id",
+      "duplicate_capability_policy": "reject_duplicate_capability_id",
+      "missing_capability_policy": "treated_as_undeclared",
+      "unknown_capability_code": "DSC_BACKEND_INCOMPATIBLE_UNKNOWN_CAPABILITY",
+      "duplicate_capability_code": "DSC_BACKEND_INCOMPATIBLE_DUPLICATE_CAPABILITY",
+      "incomplete_descriptor_code": "DSC_BACKEND_INCOMPATIBLE_INCOMPLETE_DESCRIPTOR"
+    },
+    "tie_breakers": [
+      "stages execute strictly in evaluation_flow order",
+      "matrix rows resolve in registry matrix row order",
+      "within a stage, incompatibility codes sort lexicographically after first-failure order",
+      "empty incompatibility_codes is the sole compatible outcome"
+    ],
+    "evaluates_backends_in_this_phase": false
+  },
+  "report_schema": {
+    "report_schema_id": "dsc-backend-compatibility-report-schema-v1",
+    "report_id": "dsc-backend-compatibility-report-v1",
+    "description": "Typed report schema for the compatibility report emitted by emit_report. Field set is locked to the PHASE-040 matrix report_shape; additional fields are forbidden.",
+    "encoding": "application/json",
+    "registry_report_shape_ref": "compatibility_matrix.report_shape",
+    "required_fields": [
+      {
+        "field": "backend_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque backend_id copied from the validated descriptor"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "declared capability_set_version after version resolution"
+      },
+      {
+        "field": "evaluated_rows",
+        "type": "array<row_result>",
+        "required": true,
+        "nullable": false,
+        "constraint": "one entry per matrix row, ordered by registry matrix row order"
+      },
+      {
+        "field": "failed_rows",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "row_ids whose outcome is incompatible, in registry matrix row order"
+      },
+      {
+        "field": "incompatibility_codes",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "collected codes in first-failure order then lexicographic; empty iff outcome is compatible"
+      },
+      {
+        "field": "outcome",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must be one of outcome_values"
+      }
+    ],
+    "outcome_values": [
+      "compatible",
+      "incompatible"
+    ],
+    "row_result_shape": {
+      "fields": [
+        "row_id",
+        "row_kind",
+        "declaration_state",
+        "outcome",
+        "incompatibility_code_or_null"
+      ],
+      "declaration_states": [
+        "supported",
+        "unsupported",
+        "undeclared"
+      ],
+      "outcome_values": [
+        "compatible",
+        "incompatible"
+      ]
+    },
+    "ordering": {
+      "evaluated_rows": "registry_matrix_row_order",
+      "failed_rows": "registry_matrix_row_order",
+      "incompatibility_codes": "first_failure_order_then_lexicographic"
+    },
+    "additional_fields": false,
+    "materializes_tensors": false,
+    "materializes_frames": false
+  },
+  "design_constraints": {
+    "engine_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_capability_registry": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "evaluates_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-25T08:55:54.174Z"
+}

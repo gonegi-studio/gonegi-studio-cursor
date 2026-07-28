@@ -1,0 +1,38 @@
+{
+  "report_id": "direct_spatial_conditioning_packet_generation_ms025pgx",
+  "phase": "PHASE-DSC-035",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1",
+  "validation_passed": true,
+  "mode": "design_only_generation",
+  "generation_policy": "assemble_then_validate",
+  "generation_step_count": 4,
+  "channel_binding_count": 6,
+  "sources_supported": 15,
+  "validated_packet_artifact_kind": "validated_conditioning_packet",
+  "reuses_packet_assembly": true,
+  "reuses_certified_runtime_package": true,
+  "design_constraints": {
+    "generation_only": true,
+    "reuses_packet_assembly": true,
+    "reuses_certified_runtime_package": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "generates_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "generation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-generation.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-generation-implementation-registry-v1.json",
+    "assembly": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+    "validation": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "packet": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "runtime_package": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T07:39:01.043Z"
+}

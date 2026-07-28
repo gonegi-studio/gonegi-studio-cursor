@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface.schema.json",
+  "title": "DirectSpatialConditioningRuntimeInterface",
+  "description": "PHASE-DSC-036 design-only runtime interface. Defines the DSC runtime API, packet input surface, validated output surface, and interface contract. Reuses PHASE-035 packet generation. Implements no runtime and performs no backend, GPU, inference, or dataset modification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "runtime_interface_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "generation_ref",
+    "generation_phase",
+    "generation_system_id",
+    "runtime_package_ref",
+    "sources_supported",
+    "runtime_api",
+    "packet_input",
+    "validated_output",
+    "interface_contract",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "runtime_interface_id": {
+      "type": "string",
+      "const": "direct-spatial-conditioning-runtime-interface-v1"
+    },
+    "phase": { "type": "string", "const": "PHASE-DSC-036" },
+    "system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1"
+    },
+    "mode": { "type": "string", "const": "design_only_interface" },
+    "target": {
+      "type": "string",
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_RUNTIME_INTERFACE_V1"
+    },
+    "generation_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation-v1.json"
+    },
+    "generation_phase": { "type": "string", "const": "PHASE-DSC-035" },
+    "generation_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1"
+    },
+    "runtime_package_ref": {
+      "type": "string",
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "runtime_api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_id", "version", "transport", "methods"],
+      "properties": {
+        "api_id": { "const": "dsc-runtime-api-v1" },
+        "version": { "const": "v1" },
+        "transport": { "const": "in_process_function_surface" },
+        "methods": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "method_id",
+              "signature",
+              "description",
+              "input_ref",
+              "output_ref",
+              "generation_step_ref",
+              "side_effects",
+              "requires_backend",
+              "requires_gpu",
+              "performs_inference"
+            ],
+            "properties": {
+              "method_id": {
+                "enum": [
+                  "list_sources",
+                  "generate_packet",
+                  "validate_packet",
+                  "produce_validated_packet"
+                ]
+              },
+              "signature": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "input_ref": { "type": "string", "minLength": 1 },
+              "output_ref": { "type": "string", "minLength": 1 },
+              "generation_step_ref": { "type": ["string", "null"] },
+              "side_effects": { "const": "none" },
+              "requires_backend": { "const": false },
+              "requires_gpu": { "const": false },
+              "performs_inference": { "const": false }
+            }
+          }
+        }
+      }
+    },
+    "packet_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface_id",
+        "description",
+        "required_fields",
+        "optional_fields",
+        "accepted_packet_shape",
+        "generation_input_alignment"
+      ],
+      "properties": {
+        "surface_id": { "const": "dsc_runtime_packet_input_v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "required_fields": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "type", "required", "nullable", "constraint"],
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "required": { "const": true },
+              "nullable": { "const": false },
+              "constraint": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "optional_fields": { "type": "array", "maxItems": 0 },
+        "accepted_packet_shape": {
+          "type": "object",
+          "required": [
+            "packet_type",
+            "packet_version",
+            "required_sections",
+            "channel_order",
+            "spatial_frame_ref"
+          ],
+          "properties": {
+            "packet_type": { "const": "direct_spatial_conditioning_packet" },
+            "packet_version": { "const": "v1" },
+            "required_sections": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "channel_order": { "type": "array", "minItems": 6, "maxItems": 6 },
+            "spatial_frame_ref": { "const": "normalized_image_plane_v1" }
+          }
+        },
+        "generation_input_alignment": {
+          "type": "object",
+          "required": ["generation_ref", "maps_to_generation_step"],
+          "properties": {
+            "generation_ref": { "type": "string", "minLength": 1 },
+            "maps_to_generation_step": { "const": "bind_generation_inputs" }
+          }
+        }
+      }
+    },
+    "validated_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface_id",
+        "description",
+        "artifact_kind",
+        "required_fields",
+        "outcome_values",
+        "accepted_packet_embedded",
+        "rejection_codes_embedded",
+        "generation_output_alignment",
+        "materializes_tensors",
+        "materializes_frames"
+      ],
+      "properties": {
+        "surface_id": { "const": "dsc_runtime_validated_output_v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "artifact_kind": { "const": "validated_conditioning_packet" },
+        "required_fields": {
+          "type": "array",
+          "minItems": 9,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "outcome_values": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "accepted" }, { "const": "rejected" }]
+        },
+        "accepted_packet_embedded": { "const": true },
+        "rejection_codes_embedded": { "const": true },
+        "generation_output_alignment": {
+          "type": "object",
+          "required": [
+            "generation_ref",
+            "maps_to_generation_step",
+            "validated_packet_output_ref"
+          ],
+          "properties": {
+            "generation_ref": { "type": "string", "minLength": 1 },
+            "maps_to_generation_step": { "const": "produce_validated_packet" },
+            "validated_packet_output_ref": { "type": "string", "minLength": 1 }
+          }
+        },
+        "materializes_tensors": { "const": false },
+        "materializes_frames": { "const": false }
+      }
+    },
+    "interface_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_id",
+        "description",
+        "mandatory_methods",
+        "packet_input_surface_ref",
+        "validated_output_surface_ref",
+        "generation_ref",
+        "runtime_package_ref",
+        "guarantees",
+        "forbidden"
+      ],
+      "properties": {
+        "contract_id": { "const": "dsc-runtime-interface-contract-v1" },
+        "description": { "type": "string", "minLength": 1 },
+        "mandatory_methods": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "enum": [
+              "list_sources",
+              "generate_packet",
+              "validate_packet",
+              "produce_validated_packet"
+            ]
+          }
+        },
+        "packet_input_surface_ref": { "const": "dsc_runtime_packet_input_v1" },
+        "validated_output_surface_ref": {
+          "const": "dsc_runtime_validated_output_v1"
+        },
+        "generation_ref": { "type": "string", "minLength": 1 },
+        "runtime_package_ref": { "type": "string", "minLength": 1 },
+        "guarantees": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "forbidden": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "interface_only",
+        "reuses_packet_generation",
+        "backend",
+        "gpu",
+        "inference",
+        "implements_runtime_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "interface_only": { "const": true },
+        "reuses_packet_generation": { "const": true },
+        "backend": { "const": "none" },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "implements_runtime_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

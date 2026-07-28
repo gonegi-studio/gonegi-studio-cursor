@@ -1,0 +1,135 @@
+{
+  "report_id": "direct_spatial_conditioning_repository_integrity_remediation_phase_dsc_190",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_REPOSITORY_INTEGRITY_REMEDIATION_V1",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_REPOSITORY_INTEGRITY_REMEDIATION_V1",
+  "validation_passed": true,
+  "source_findings": "PHASE-DSC-189 (inferred, audit not persisted)",
+  "findings": [
+    {
+      "id": "DSC-189-F1",
+      "description": "PHASE-DSC-168 (Vendor Runtime Profile Runtime Release Runtime Bundle) binds a shared artifact path (exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-final-certification-report-v1.json) via a generated builder module filename (services/directSpatialConditioningVendorRuntimeProfileRuntimeReleaseFinalCertificationReportBuilder.ts) that the phase-name generation pattern later reused/retargeted for PHASE-DSC-179 (12 phases later, same suffix family). The module now exports phase 'PHASE-DSC-179' identity constants, but PHASE-DSC-168's embedded binding literal 'runtime_profile_runtime_release_final_certification_report_evidence_mode' still hardcoded the stale label 'phase_167_pass_verdict_gated_at_build_time', and PHASE-DSC-168's docstrings / error strings still referenced the vanished PHASE-DSC-167 / PHASE-DSC-166 identities.",
+      "root_cause": "Generated-artifact filename collision across two logically distinct phases (167 and 179) sharing the same suffix-cycle name; PHASE-DSC-168 was never rebuilt after PHASE-DSC-179 retargeted the shared file, so its sealed report digest (1f4a70576284618563735d020ca5dfb0c97e4af61d165dc2b3e0a70e4763859b) drifted from the live PHASE-DSC-179 report digest (9c3c1a7518683088b8325a09bed18bf305f9116781eac30f6d0afc527ca29946).",
+      "impact": "Broken binding digest chain at 168 -> shared report, and transitively 169 -> 168 -> shared report; downstream sealed digests (170, 171, 172, 173) drifted in lockstep since each seals the immediately preceding phase's export digest.",
+      "status": "REMEDIATED"
+    },
+    {
+      "id": "DSC-189-F2",
+      "description": "Binding digest chain broken for 168 -> report, and transitively 169 -> 168.",
+      "status": "REMEDIATED"
+    },
+    {
+      "id": "DSC-189-F3",
+      "description": "DSC-180+ already correctly binds 179 (no action required).",
+      "status": "CONFIRMED_UNCHANGED"
+    }
+  ],
+  "remediation_actions": [
+    {
+      "action": "Updated evidence_mode / phase identity labels in PHASE-DSC-168 builder",
+      "file": "services/directSpatialConditioningVendorRuntimeProfileRuntimeReleaseRuntimeBundleBuilder.ts",
+      "detail": "Changed the type-literal and runtime value of runtime_profile_runtime_release_final_certification_report_evidence_mode from 'phase_167_pass_verdict_gated_at_build_time' to 'phase_179_pass_verdict_gated_at_build_time', and updated docstring / error-message text from PHASE-DSC-167 / PHASE-DSC-166 to PHASE-DSC-179 / PHASE-DSC-178 to match the identity of the module actually imported (directSpatialConditioningVendorRuntimeProfileRuntimeReleaseFinalCertificationReportBuilder.ts, whose own DSC_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_FINAL_CERTIFICATION_REPORT_PHASE constant is 'PHASE-DSC-179'). SELF phase constant DSC_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_BUNDLE_PHASE was left unchanged at 'PHASE-DSC-168'. No functional gating logic changed: evidence.phase / evidence.final_verdict / evidence.error_count checks already referenced the correctly-imported PHASE-DSC-179 constants."
+    },
+    {
+      "action": "Updated matching hardcoded assertion in PHASE-DSC-168 verify script",
+      "file": "scripts/verify-direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-bundle.ts",
+      "detail": "Changed the binding.runtime_profile_runtime_release_final_certification_report_evidence_mode equality check from 'phase_167_pass_verdict_gated_at_build_time' to 'phase_179_pass_verdict_gated_at_build_time' so verification matches the corrected builder output."
+    },
+    {
+      "action": "Rebuilt PHASE-DSC-168 export + validation report via existing build/verify",
+      "command": "npm run verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-bundle",
+      "result": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_BUNDLE_V1"
+    },
+    {
+      "action": "Rebuilt PHASE-DSC-169 (seals PHASE-DSC-168 digest) via existing build/verify",
+      "command": "npm run verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-package",
+      "result": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_PACKAGE_V1"
+    },
+    {
+      "action": "Checked PHASE-DSC-170 sealed PHASE-DSC-169 digest for drift, found drift, rebuilt",
+      "command": "npm run verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-certification-package",
+      "result": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_CERTIFICATION_PACKAGE_V1"
+    },
+    {
+      "action": "Checked PHASE-DSC-171 sealed PHASE-DSC-170 digest for drift, found drift, rebuilt",
+      "command": "npm run verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-certification-report",
+      "result": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_CERTIFICATION_REPORT_V1"
+    },
+    {
+      "action": "Checked PHASE-DSC-172 sealed PHASE-DSC-171 digest for drift, found drift, rebuilt",
+      "command": "npm run verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-archive",
+      "result": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_ARCHIVE_V1"
+    },
+    {
+      "action": "Checked PHASE-DSC-173 sealed PHASE-DSC-172 digest for drift, found drift, rebuilt",
+      "command": "npm run verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-archive-package",
+      "result": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_ARCHIVE_PACKAGE_V1"
+    },
+    {
+      "action": "Checked PHASE-DSC-174 sealed-upstream reference; confirmed it binds a different, unrelated legacy phase (PHASE-DSC-161, via directSpatialConditioningVendorRuntimeProfileRuntimeReleaseArchivePackageBuilder.ts, a distinct non-'runtime'-qualified naming branch) and does not seal PHASE-DSC-173's digest at all",
+      "result": "NO_DRIFT_NO_REBUILD_NEEDED (174-188 left untouched per remediation constraints)"
+    },
+    {
+      "action": "Verified PHASE-DSC-180 unaffected (control check)",
+      "command": "npm run verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-delivery-package",
+      "result": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_DELIVERY_PACKAGE_V1 (digest unchanged, as expected)"
+    }
+  ],
+  "binding_fixes_applied": [
+    {
+      "phase": "PHASE-DSC-168",
+      "self_phase_unchanged": "PHASE-DSC-168",
+      "binding_target_before": "labelled phase_167 / PHASE-DSC-167 (stale, file retargeted)",
+      "binding_target_after": "PHASE-DSC-179 / phase_179_pass_verdict_gated_at_build_time / PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_FINAL_CERTIFICATION_REPORT_V1",
+      "sealed_report_digest_before": "1f4a70576284618563735d020ca5dfb0c97e4af61d165dc2b3e0a70e4763859b",
+      "sealed_report_digest_after": "9c3c1a7518683088b8325a09bed18bf305f9116781eac30f6d0afc527ca29946",
+      "live_report_digest": "9c3c1a7518683088b8325a09bed18bf305f9116781eac30f6d0afc527ca29946",
+      "digest_match": true
+    }
+  ],
+  "files_with_integrity_metadata_regenerated": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-bundle-v1.json",
+    "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_BUNDLE_VALIDATION_REPORT.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-package-v1.json",
+    "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_PACKAGE_VALIDATION_REPORT.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-certification-package-v1.json",
+    "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_CERTIFICATION_PACKAGE_VALIDATION_REPORT.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-certification-report-v1.json",
+    "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_CERTIFICATION_REPORT_VALIDATION_REPORT.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-archive-v1.json",
+    "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_ARCHIVE_VALIDATION_REPORT.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-archive-package-v1.json",
+    "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_ARCHIVE_PACKAGE_VALIDATION_REPORT.json"
+  ],
+  "source_files_edited": [
+    "services/directSpatialConditioningVendorRuntimeProfileRuntimeReleaseRuntimeBundleBuilder.ts",
+    "scripts/verify-direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-bundle.ts"
+  ],
+  "files_confirmed_unchanged": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-final-certification-report-v1.json (PHASE-DSC-179, digest unchanged: 9c3c1a7518683088b8325a09bed18bf305f9116781eac30f6d0afc527ca29946)",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-delivery-package-v1.json (PHASE-DSC-180)",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-runtime-profile-runtime-release-archive-certification-package-v1.json (PHASE-DSC-174, binds unrelated PHASE-DSC-161, no drift)"
+  ],
+  "constraints_confirmed": {
+    "no_schema_json_files_edited": true,
+    "no_implementation_registry_json_files_edited": true,
+    "no_new_artifact_path_families_created": true,
+    "no_feature_or_behavioral_changes": true,
+    "phase_dsc_168_self_identity_preserved": true,
+    "phase_dsc_179_self_identity_preserved": true,
+    "deterministic_rebuild_confirmed": "each verify script's internal rebuild-and-diff self-check (NON_REPRODUCIBLE guard) passed for all rebuilt phases",
+    "temp_scripts_created_and_deleted": false
+  },
+  "verification": [
+    { "phase": "PHASE-DSC-168", "npm_script": "verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-bundle", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_BUNDLE_V1" },
+    { "phase": "PHASE-DSC-169", "npm_script": "verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-package", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_PACKAGE_V1" },
+    { "phase": "PHASE-DSC-170", "npm_script": "verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-certification-package", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_CERTIFICATION_PACKAGE_V1" },
+    { "phase": "PHASE-DSC-171", "npm_script": "verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-certification-report", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_CERTIFICATION_REPORT_V1" },
+    { "phase": "PHASE-DSC-172", "npm_script": "verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-archive", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_ARCHIVE_V1" },
+    { "phase": "PHASE-DSC-173", "npm_script": "verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-archive-package", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_ARCHIVE_PACKAGE_V1" },
+    { "phase": "PHASE-DSC-180", "npm_script": "verify:direct-spatial-conditioning-vendor-runtime-profile-runtime-release-runtime-delivery-package", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_RUNTIME_DELIVERY_PACKAGE_V1 (control, unchanged)" },
+    { "phase": "PHASE-DSC-179", "note": "rebuilt as a deterministic side-effect of PHASE-DSC-168's build call chain; content byte-identical, digest unchanged", "verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_RUNTIME_PROFILE_RUNTIME_RELEASE_FINAL_CERTIFICATION_REPORT_V1" }
+  ],
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-27T12:50:00.000Z"
+}

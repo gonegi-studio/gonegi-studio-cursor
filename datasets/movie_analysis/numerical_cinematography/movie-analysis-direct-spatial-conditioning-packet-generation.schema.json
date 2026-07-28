@@ -1,0 +1,292 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-generation.schema.json",
+  "title": "DirectSpatialConditioningPacketGenerationSpecification",
+  "description": "PHASE-DSC-035 design-only packet generation specification. Defines assemble-then-validate generation from the PHASE-034 assembly and PHASE-033 validation designs, reusing the certified PHASE-027 runtime package. Generates no live packet instances and performs no backend, GPU, inference, or dataset modification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "generation_specification_id",
+    "phase",
+    "system_id",
+    "mode",
+    "target",
+    "assembly_ref",
+    "assembly_phase",
+    "assembly_system_id",
+    "validation_ref",
+    "validation_phase",
+    "validation_system_id",
+    "packet_ref",
+    "runtime_package_ref",
+    "runtime_package_phase",
+    "runtime_consumption_layer",
+    "sources_supported",
+    "generation_procedure",
+    "generated_packet_instance",
+    "validated_packet_output",
+    "channel_generation_bindings",
+    "design_constraints",
+    "created_at"
+  ],
+  "properties": {
+    "generation_specification_id": {
+      "type": "string",
+      "const": "direct-spatial-conditioning-packet-generation-v1"
+    },
+    "phase": { "type": "string", "const": "PHASE-DSC-035" },
+    "system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1"
+    },
+    "mode": { "type": "string", "const": "design_only_generation" },
+    "target": {
+      "type": "string",
+      "const": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_GENERATION_V1"
+    },
+    "assembly_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json"
+    },
+    "assembly_phase": { "type": "string", "const": "PHASE-DSC-034" },
+    "assembly_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1"
+    },
+    "validation_ref": {
+      "type": "string",
+      "const": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json"
+    },
+    "validation_phase": { "type": "string", "const": "PHASE-DSC-033" },
+    "validation_system_id": {
+      "type": "string",
+      "const": "DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_V1"
+    },
+    "packet_ref": { "type": "string", "minLength": 1 },
+    "runtime_package_ref": {
+      "type": "string",
+      "const": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json"
+    },
+    "runtime_package_phase": {
+      "type": "string",
+      "const": "PHASE-MOVIE-RECONSTRUCTION-027"
+    },
+    "runtime_consumption_layer": { "type": "string", "const": "consumption" },
+    "sources_supported": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "generation_procedure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordered_stages",
+        "reuse_policy",
+        "generation_policy",
+        "instance_materialization_in_this_phase"
+      ],
+      "properties": {
+        "ordered_stages": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["step_index", "step_id", "description", "reads", "produces", "reuses"],
+            "properties": {
+              "step_index": { "type": "integer", "minimum": 0 },
+              "step_id": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "reads": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "produces": { "type": "string", "minLength": 1 },
+              "reuses": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "reuse_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["assembly", "validation", "runtime_package"],
+          "properties": {
+            "assembly": { "const": "mandatory_exact_reuse" },
+            "validation": { "const": "mandatory_exact_reuse" },
+            "runtime_package": { "const": "mandatory_certified_read_only" }
+          }
+        },
+        "generation_policy": { "const": "assemble_then_validate" },
+        "instance_materialization_in_this_phase": { "const": false }
+      }
+    },
+    "generated_packet_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_type",
+        "packet_version",
+        "encoding",
+        "required_sections",
+        "metadata_fields",
+        "channel_order",
+        "channel_envelope_fields",
+        "component_fields_by_channel",
+        "spatial_frame_ref"
+      ],
+      "properties": {
+        "packet_type": { "const": "direct_spatial_conditioning_packet" },
+        "packet_version": { "const": "v1" },
+        "encoding": { "const": "application/json" },
+        "required_sections": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "metadata" }, { "const": "channels" }]
+        },
+        "metadata_fields": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "channel_order": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "enum": [
+              "camera_pose_field",
+              "camera_temporal_track",
+              "subject_position_field",
+              "framing_composition_map",
+              "edit_rhythm_boundaries",
+              "scene_energy_field"
+            ]
+          }
+        },
+        "channel_envelope_fields": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "component_fields_by_channel": { "type": "object" },
+        "spatial_frame_ref": { "const": "normalized_image_plane_v1" }
+      }
+    },
+    "validated_packet_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_kind",
+        "required_fields",
+        "outcome_values",
+        "accepted_requires",
+        "rejected_requires",
+        "embeds_generated_packet_on_accept",
+        "embeds_rejection_codes_on_reject",
+        "materializes_tensors",
+        "materializes_frames"
+      ],
+      "properties": {
+        "artifact_kind": { "const": "validated_conditioning_packet" },
+        "required_fields": {
+          "type": "array",
+          "minItems": 9,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "outcome_values": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "accepted" }, { "const": "rejected" }]
+        },
+        "accepted_requires": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "rejected_requires": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "embeds_generated_packet_on_accept": { "const": true },
+        "embeds_rejection_codes_on_reject": { "const": true },
+        "materializes_tensors": { "const": false },
+        "materializes_frames": { "const": false }
+      }
+    },
+    "channel_generation_bindings": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "channel_id",
+          "order_index",
+          "assembly_channel_ref",
+          "foundation_consumption_slot",
+          "component_count",
+          "component_names"
+        ],
+        "properties": {
+          "channel_id": {
+            "enum": [
+              "camera_pose_field",
+              "camera_temporal_track",
+              "subject_position_field",
+              "framing_composition_map",
+              "edit_rhythm_boundaries",
+              "scene_energy_field"
+            ]
+          },
+          "order_index": { "type": "integer", "minimum": 0, "maximum": 5 },
+          "assembly_channel_ref": { "type": "string", "minLength": 1 },
+          "foundation_consumption_slot": { "type": "string", "minLength": 1 },
+          "component_count": { "type": "integer", "minimum": 2 },
+          "component_names": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "design_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation_only",
+        "reuses_packet_assembly",
+        "reuses_certified_runtime_package",
+        "backend",
+        "gpu",
+        "inference",
+        "generates_packet_instances_in_this_phase",
+        "modifies_existing_datasets",
+        "placeholders"
+      ],
+      "properties": {
+        "generation_only": { "const": true },
+        "reuses_packet_assembly": { "const": true },
+        "reuses_certified_runtime_package": { "const": true },
+        "backend": { "const": "none" },
+        "gpu": { "const": false },
+        "inference": { "const": false },
+        "generates_packet_instances_in_this_phase": { "const": false },
+        "modifies_existing_datasets": { "const": false },
+        "placeholders": { "const": false }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

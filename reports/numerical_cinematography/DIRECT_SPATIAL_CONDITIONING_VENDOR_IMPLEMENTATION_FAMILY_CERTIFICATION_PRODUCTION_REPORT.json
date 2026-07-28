@@ -1,0 +1,110 @@
+{
+  "report_id": "dsc_vendor_implementation_family_certification_ms12ra9p",
+  "phase": "PHASE-DSC-070",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_FAMILY_CERTIFICATION_V1",
+  "certified": true,
+  "certified_system": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_FAMILY_V1",
+  "mode": "read_only_certification",
+  "family_id": "dsc-vendor-implementation-family-generic-v1",
+  "family_version": "1.0",
+  "surfaces_certified": [
+    "implementation_family_schema",
+    "identity",
+    "reference_implementation_binding",
+    "implementation_family_contract"
+  ],
+  "checks_required": [
+    "implementation_family_schema",
+    "identity",
+    "reference_implementation_binding",
+    "implementation_family_contract",
+    "evidence_chain",
+    "reproducibility",
+    "immutability"
+  ],
+  "checks": [
+    {
+      "check": "implementation_family_schema",
+      "passed": true,
+      "detail": "implementation_family_schema present with opaque family identity policy and eleven required fields",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "identity",
+      "passed": true,
+      "detail": "deterministic family identity is opaque, vendor-neutral, and free of seed/time/randomness",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reference_implementation_binding",
+      "passed": true,
+      "detail": "reference implementation binding exactly reuses the certified Vendor Reference Implementation as the family archetype without instantiating members",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "implementation_family_contract",
+      "passed": true,
+      "detail": "implementation family contract declares six mandatory capabilities and four mandatory methods without evaluating any member",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "evidence_chain",
+      "passed": true,
+      "detail": "vendor implementation family references certified Vendor Reference Implementation, certified Vendor Template, certified Vendor Reference Profile, and the full vendor/backend stack by exact path",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "reproducibility",
+      "passed": true,
+      "detail": "contract capabilities, methods, extension points, channels, sources, spatial frame, and capability set still match the certified Vendor Reference Implementation exactly; family artifact is byte-stable",
+      "error_count": 0,
+      "errors": []
+    },
+    {
+      "check": "immutability",
+      "passed": true,
+      "detail": "verified vendor implementation family, certified Vendor Reference Implementation, certified Vendor Template, certified Vendor Reference Profile, and the DSC V1 stack are unchanged",
+      "error_count": 0,
+      "errors": []
+    }
+  ],
+  "evidence_chain_links": 34,
+  "evidence_chain_unresolved": 0,
+  "artifact_digest_count": 40,
+  "protected_artifacts_unmodified": true,
+  "vendor_neutral": true,
+  "vendor_neutrality": {
+    "vendor_neutral": true,
+    "vendors_bound": 0,
+    "vendors_implemented": 0,
+    "family_members": 0,
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0"
+  },
+  "upstream_certified_system": {
+    "vendor_reference_implementation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-implementation-v1.json",
+    "vendor_reference_implementation_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-implementation-certification-v1.json",
+    "vendor_reference_implementation_certified": true,
+    "vendor_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+    "vendor_template_certified": true,
+    "vendor_reference_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+    "vendor_reference_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+    "vendor_reference_profile_certified": true,
+    "vendor_implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+    "vendor_design_certified": true,
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "sources_supported": 15
+  },
+  "integrity_method": "sha256_read_only_recheck",
+  "artifacts": {
+    "certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-family-certification-v1.json"
+  },
+  "error_count": 0,
+  "missing_checks": [],
+  "generated_at": "2026-07-26T00:43:33.949Z"
+}

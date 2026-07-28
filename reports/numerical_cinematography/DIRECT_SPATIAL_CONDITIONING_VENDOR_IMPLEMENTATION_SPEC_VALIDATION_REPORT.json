@@ -1,0 +1,52 @@
+{
+  "report_id": "direct_spatial_conditioning_vendor_implementation_spec_ms1158c5",
+  "phase": "PHASE-DSC-061",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_SPEC_V1",
+  "validation_passed": true,
+  "mode": "design_only_vendor_implementation_spec",
+  "vendor_implementation_requirements": "dsc-vendor-implementation-requirements-v1",
+  "requirement_count": 12,
+  "required_interfaces": "dsc-vendor-required-interfaces-v1",
+  "required_methods": [
+    "describe_capabilities",
+    "check_compatibility",
+    "bind_conditioning_input",
+    "release_conditioning_binding"
+  ],
+  "required_surfaces": 5,
+  "deterministic_compliance_checklist": "dsc-vendor-deterministic-compliance-checklist-v1",
+  "checklist_items": 16,
+  "implementation_report": "dsc-vendor-implementation-report-v1",
+  "implementation_report_fields": 12,
+  "implemented_vendors": 0,
+  "sources_supported": 15,
+  "reuses_vendor_execution_contract": true,
+  "vendor_neutral": true,
+  "no_vendor_implementation": true,
+  "design_constraints": {
+    "specification_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_vendor_execution_contract": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "implements_vendors_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "vendor_implementation_spec": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-implementation-spec.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-vendor-implementation-spec-implementation-registry-v1.json",
+    "vendor_execution_contract": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+    "vendor_router": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+    "family_certification": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T23:58:25.402Z"
+}

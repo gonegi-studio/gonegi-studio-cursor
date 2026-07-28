@@ -1,0 +1,378 @@
+{
+  "vendor_implementation_template_id": "direct-spatial-conditioning-vendor-implementation-template-v1",
+  "phase": "PHASE-DSC-073",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_TEMPLATE_V1",
+  "mode": "design_only_vendor_implementation_template",
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_TEMPLATE_V1",
+  "template_id": "dsc-vendor-implementation-template-generic-v1",
+  "template_version": "1.0",
+  "template_kind": "generic_vendor_implementation_template",
+  "implementation_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-profile-v1.json",
+  "implementation_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-profile-certification-v1.json",
+  "family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-family-v1.json",
+  "family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-family-certification-v1.json",
+  "reference_implementation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-implementation-v1.json",
+  "reference_implementation_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-implementation-certification-v1.json",
+  "vendor_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-template-v1.json",
+  "vendor_reference_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-reference-profile-v1.json",
+  "vendor_reference_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-reference-profile-certification-v1.json",
+  "vendor_implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-spec-v1.json",
+  "vendor_execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-execution-contract-v1.json",
+  "vendor_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-router-v1.json",
+  "vendor_compatibility_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-compatibility-v1.json",
+  "vendor_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-registry-v1.json",
+  "vendor_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-profile-v1.json",
+  "backend_family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-family-v1.json",
+  "backend_family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-family-certification-v1.json",
+  "reference_backend_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-reference-backend-v1.json",
+  "reference_backend_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-reference-backend-certification-v1.json",
+  "backend_template_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-template-v1.json",
+  "backend_template_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-template-certification-v1.json",
+  "backend_profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-profile-v1.json",
+  "backend_profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-profile-certification-v1.json",
+  "backend_design_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-backend-design-certification-v1.json",
+  "implementation_spec_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+  "execution_contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json",
+  "runtime_router_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-runtime-router-v1.json",
+  "adapter_registration_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-registration-v1.json",
+  "compatibility_engine_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-compatibility-engine-v1.json",
+  "capability_registry_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-capability-registry-v1.json",
+  "adapter_foundation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-adapter-foundation-v1.json",
+  "runtime_interface_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-runtime-interface-v1.json",
+  "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+  "sources_supported": [
+    "GHIBLI_01",
+    "GHIBLI_02",
+    "GHIBLI_03",
+    "GHIBLI_04",
+    "GHIBLI_05",
+    "GHIBLI_06",
+    "GHIBLI_07",
+    "SHINKAI_01",
+    "SHINKAI_02",
+    "LITTLE_WOMEN_01",
+    "MORI_01",
+    "MORI_02",
+    "MORI_03",
+    "MORI_04",
+    "MORI_05"
+  ],
+  "required_channels": [
+    "camera_pose_field",
+    "camera_temporal_track",
+    "subject_position_field",
+    "framing_composition_map",
+    "edit_rhythm_boundaries",
+    "scene_energy_field"
+  ],
+  "spatial_frame_ref": "normalized_image_plane_v1",
+  "capability_set_id": "dsc-backend-capability-set-v1",
+  "capability_set_version": "1.0",
+  "implementation_template_schema": {
+    "schema_id": "dsc-vendor-implementation-template-schema-v1",
+    "description": "Shape of a Direct Spatial Conditioning generic vendor implementation template. Identity is opaque and vendor-neutral; no vendor name, framework, or device binding is expressed. A template binds the certified Vendor Implementation Profile and publishes a deterministic skeleton with closed extension points, without implementing any vendor.",
+    "encoding": "application/json",
+    "template_id_policy": "opaque_template_id_no_vendor_binding",
+    "profile_ref": "dsc-vendor-implementation-profile-generic-v1",
+    "required_fields": [
+      {
+        "field": "template_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "non-empty opaque identifier; carries no vendor name, framework, or device semantics"
+      },
+      {
+        "field": "template_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "major_minor template version string"
+      },
+      {
+        "field": "template_kind",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal generic_vendor_implementation_template"
+      },
+      {
+        "field": "implementation_profile_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must reference the certified vendor implementation profile dsc-vendor-implementation-profile-generic-v1"
+      },
+      {
+        "field": "capability_set_id",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal dsc-backend-capability-set-v1"
+      },
+      {
+        "field": "capability_set_version",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal 1.0"
+      },
+      {
+        "field": "spatial_frame_ref",
+        "type": "string",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal normalized_image_plane_v1"
+      },
+      {
+        "field": "required_channels",
+        "type": "array<string>",
+        "required": true,
+        "nullable": false,
+        "constraint": "must equal the six foundation channels in fixed order"
+      },
+      {
+        "field": "deterministic_template_identity",
+        "type": "dsc-vendor-implementation-template-deterministic-identity-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "opaque deterministic identity with no seed, time, randomness, vendor name, framework, or device dependence"
+      },
+      {
+        "field": "vendor_implementation_profile_binding",
+        "type": "dsc-vendor-implementation-template-profile-binding-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "exact reuse of the certified Vendor Implementation Profile as the conformance basis"
+      },
+      {
+        "field": "deterministic_implementation_skeleton",
+        "type": "dsc-vendor-implementation-deterministic-skeleton-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare four fixed-order skeleton steps matching the certified capability profile methods"
+      },
+      {
+        "field": "extension_points",
+        "type": "dsc-vendor-implementation-template-extension-points-v1",
+        "required": true,
+        "nullable": false,
+        "constraint": "must declare a closed set of four extension points matching the certified capability profile; none may be filled in this phase"
+      }
+    ],
+    "optional_fields": [],
+    "additional_fields": false
+  },
+  "deterministic_template_identity": {
+    "identity_id": "dsc-vendor-implementation-template-deterministic-identity-v1",
+    "description": "Deterministic identity of the generic vendor implementation template. The template_id is a literal design-time constant with no seed, time, randomness, vendor name, framework, or device dependence.",
+    "template_id": "dsc-vendor-implementation-template-generic-v1",
+    "template_version": "1.0",
+    "identity_policy": "opaque_template_id_no_vendor_binding",
+    "derivation": "literal_constant_declared_at_design_time",
+    "purity": "deterministic_pure_constant",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "vendor_binding": "none",
+    "framework_binding": "none",
+    "device_binding": "none",
+    "vendor_name": "none",
+    "capability_set_id": "dsc-backend-capability-set-v1",
+    "capability_set_version": "1.0",
+    "spatial_frame_ref": "normalized_image_plane_v1",
+    "required_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ]
+  },
+  "vendor_implementation_profile_binding": {
+    "binding_id": "dsc-vendor-implementation-template-profile-binding-v1",
+    "description": "Exact binding of the certified PHASE-071 Vendor Implementation Profile as the conformance basis. The template adopts the capability profile methods and extension points without filling any extension point or implementing any skeleton step.",
+    "profile_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-profile-v1.json",
+    "profile_id": "dsc-vendor-implementation-profile-generic-v1",
+    "profile_version": "1.0",
+    "profile_phase": "PHASE-DSC-071",
+    "profile_system_id": "DIRECT_SPATIAL_CONDITIONING_VENDOR_IMPLEMENTATION_PROFILE_V1",
+    "profile_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-profile-certification-v1.json",
+    "binding_mode": "exact_reuse",
+    "role": "implementation_conformance_template",
+    "capability_profile_ref": "dsc-vendor-implementation-capability-profile-v1",
+    "family_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-vendor-implementation-family-v1.json",
+    "family_certification_ref": "exports/direct_spatial_conditioning_backend_certification/v1/direct-spatial-conditioning-vendor-implementation-family-certification-v1.json",
+    "fills_extension_points_in_this_phase": false,
+    "implements_skeleton_in_this_phase": false
+  },
+  "deterministic_implementation_skeleton": {
+    "skeleton_id": "dsc-vendor-implementation-deterministic-skeleton-v1",
+    "description": "Fixed-order deterministic skeleton every vendor implementation written against this template must declare. Steps mirror the certified Vendor Implementation Profile capability methods exactly; none are implemented in this phase.",
+    "capability_profile_ref": "dsc-vendor-implementation-capability-profile-v1",
+    "vendor_capability_interface_ref": "dsc-vendor-capability-interface-v1",
+    "purity": "deterministic_pure_function_per_step",
+    "seed_dependence": "none",
+    "time_dependence": "none",
+    "randomness": "none",
+    "step_order": "fixed_declared_order",
+    "steps": [
+      {
+        "step_id": "step_01_describe_capabilities",
+        "order": 1,
+        "method_id": "describe_capabilities",
+        "signature": "describe_capabilities() -> dsc_vendor_capability_declaration_set_v1",
+        "description": "Concrete vendor implementation publishes its capability declarations for the registered capability set.",
+        "reads": [
+          "capability_registry",
+          "capability_set"
+        ],
+        "emits": "dsc_vendor_capability_declaration_set_v1",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_VENDOR_DECLARE_CAPABILITIES",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "implemented_in_this_phase": false
+      },
+      {
+        "step_id": "step_02_check_compatibility",
+        "order": 2,
+        "method_id": "check_compatibility",
+        "signature": "check_compatibility(vendor_descriptor) -> dsc_vendor_compatibility_report_v1",
+        "description": "Concrete vendor implementation resolves its descriptor against the vendor compatibility matrix rows.",
+        "reads": [
+          "vendor_descriptor",
+          "compatibility_matrix",
+          "capability_declarations"
+        ],
+        "emits": "dsc_vendor_compatibility_report_v1",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_VENDOR_RESOLVE_COMPATIBILITY",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "implemented_in_this_phase": false
+      },
+      {
+        "step_id": "step_03_bind_conditioning_input",
+        "order": 3,
+        "method_id": "bind_conditioning_input",
+        "signature": "bind_conditioning_input(dsc_adapted_conditioning_input_v1) -> dsc_vendor_binding_handle_v1",
+        "description": "Concrete vendor implementation ingests the adapted conditioning input and issues an opaque binding handle.",
+        "reads": [
+          "dsc_adapted_conditioning_input_v1",
+          "spatial_frame"
+        ],
+        "emits": "dsc_vendor_binding_handle_v1",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_VENDOR_BIND_CONDITIONING_INPUT",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "implemented_in_this_phase": false
+      },
+      {
+        "step_id": "step_04_release_conditioning_binding",
+        "order": 4,
+        "method_id": "release_conditioning_binding",
+        "signature": "release_conditioning_binding(dsc_vendor_binding_handle_v1) -> void",
+        "description": "Concrete vendor implementation releases a previously issued conditioning binding handle.",
+        "reads": [
+          "dsc_vendor_binding_handle_v1"
+        ],
+        "emits": "void",
+        "side_effects": "none",
+        "deterministic": true,
+        "extension_point_ref": "EXT_VENDOR_RELEASE_BINDING",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "implemented_in_this_phase": false
+      }
+    ],
+    "same_inputs_same_outcome": true,
+    "requires_gpu": false,
+    "performs_inference": false,
+    "implements_steps_in_this_phase": false
+  },
+  "extension_points": {
+    "extension_points_id": "dsc-vendor-implementation-template-extension-points-v1",
+    "description": "Closed set of extension points for the vendor implementation template. One point per skeleton step, inherited from the certified Vendor Implementation Profile capability methods. None are filled in this phase.",
+    "closed_set": true,
+    "points": [
+      {
+        "extension_point_id": "EXT_VENDOR_DECLARE_CAPABILITIES",
+        "target_method_id": "describe_capabilities",
+        "category": "capability_declaration",
+        "description": "Concrete vendor implementation publishes its capability declarations for the registered capability set.",
+        "contract": "must emit one declaration per registered capability id in registry order and declare no unregistered id",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      },
+      {
+        "extension_point_id": "EXT_VENDOR_RESOLVE_COMPATIBILITY",
+        "target_method_id": "check_compatibility",
+        "category": "compatibility",
+        "description": "Concrete vendor implementation resolves its descriptor against the vendor compatibility matrix rows.",
+        "contract": "must return a dsc-vendor-compatibility-report-v1 whose outcome derives only from declared capabilities and matrix rows",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      },
+      {
+        "extension_point_id": "EXT_VENDOR_BIND_CONDITIONING_INPUT",
+        "target_method_id": "bind_conditioning_input",
+        "category": "binding",
+        "description": "Concrete vendor implementation ingests the adapted conditioning input and issues an opaque binding handle.",
+        "contract": "must consume dsc_adapted_conditioning_input_v1 losslessly in the fixed channel order and mutate no certified artifact",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      },
+      {
+        "extension_point_id": "EXT_VENDOR_RELEASE_BINDING",
+        "target_method_id": "release_conditioning_binding",
+        "category": "lifecycle",
+        "description": "Concrete vendor implementation releases a previously issued conditioning binding handle.",
+        "contract": "must release the handle idempotently and leave no residual state or side effect",
+        "inherited_from": "dsc-vendor-implementation-capability-profile-v1",
+        "must_remain_deterministic": true,
+        "may_require_gpu": false,
+        "may_perform_inference": false,
+        "may_modify_certified_artifacts": false,
+        "filled_in_this_phase": false
+      }
+    ],
+    "unknown_extension_policy": "reject_undeclared_extension_point",
+    "fills_extension_points_in_this_phase": false
+  },
+  "templated_implementations": {
+    "count": 0,
+    "entries": [],
+    "templating_policy": "vendor implementations may be written against this template only in a future implementation phase; none are templated here",
+    "templates_implementations_in_this_phase": false
+  },
+  "design_constraints": {
+    "template_only": true,
+    "read_only": true,
+    "vendor_neutral": true,
+    "reuses_certified_vendor_implementation_profile": true,
+    "no_actual_implementation": true,
+    "no_vendor_implementation": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "templates_implementations_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "created_at": "2026-07-26T00:58:53.889Z"
+}

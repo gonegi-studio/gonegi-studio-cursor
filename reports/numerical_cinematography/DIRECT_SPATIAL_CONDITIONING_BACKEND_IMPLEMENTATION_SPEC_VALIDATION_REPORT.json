@@ -1,0 +1,48 @@
+{
+  "report_id": "direct_spatial_conditioning_backend_implementation_spec_ms05o6kp",
+  "phase": "PHASE-DSC-045",
+  "final_verdict": "PASS_DIRECT_SPATIAL_CONDITIONING_BACKEND_IMPLEMENTATION_SPEC_V1",
+  "validation_passed": true,
+  "mode": "design_only_specification",
+  "adapter_implementation_requirements": "dsc-backend-adapter-implementation-requirements-v1",
+  "requirement_count": 12,
+  "required_interfaces": "dsc-backend-required-interfaces-v1",
+  "required_methods": [
+    "describe_capabilities",
+    "check_compatibility",
+    "bind_conditioning_input",
+    "release_conditioning_binding"
+  ],
+  "required_surfaces": 5,
+  "deterministic_compliance_checklist": "dsc-backend-deterministic-compliance-checklist-v1",
+  "checklist_items": 16,
+  "implementation_report": "dsc-backend-implementation-report-v1",
+  "implementation_report_fields": 12,
+  "implemented_backends": 0,
+  "sources_supported": 15,
+  "reuses_execution_contract": true,
+  "backend_agnostic": true,
+  "design_constraints": {
+    "specification_only": true,
+    "read_only": true,
+    "backend_agnostic": true,
+    "reuses_execution_contract": true,
+    "backend": "none",
+    "no_backend_implementation": true,
+    "gpu": false,
+    "inference": false,
+    "implements_backends_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "upstream_protected_unmodified": true,
+  "artifacts": {
+    "implementation_spec": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-implementation-spec-v1.json",
+    "schema": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-implementation-spec.schema.json",
+    "registry": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-backend-implementation-spec-implementation-registry-v1.json",
+    "execution_contract": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-backend-execution-contract-v1.json"
+  },
+  "error_count": 0,
+  "issues": [],
+  "generated_at": "2026-07-25T09:17:21.868Z"
+}

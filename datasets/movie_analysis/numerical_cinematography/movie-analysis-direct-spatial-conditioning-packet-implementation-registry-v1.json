@@ -1,0 +1,51 @@
+{
+  "registry_id": "movie-analysis-direct-spatial-conditioning-packet-implementation-registry-v1",
+  "phase": "PHASE-DSC-032",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_V1",
+  "registry_version": "v1",
+  "status": "IMPLEMENTED",
+  "mode": "DESIGN_ONLY_PACKET",
+  "scope": {
+    "packet_type": "direct_spatial_conditioning_packet",
+    "packet_version": "v1",
+    "encoding": "application/json",
+    "required_sections": ["metadata", "channels"],
+    "channel_payloads": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "contract_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+    "note": "Packet specification only. Defines the runtime packet envelope, metadata fields, and six channel payload definitions without creating packet instances or executing a runtime."
+  },
+  "schema_path": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet.schema.json",
+  "builder_service_path": "services/directSpatialConditioningPacketBuilder.ts",
+  "verify_script_path": "scripts/verify-direct-spatial-conditioning-packet.ts",
+  "npm_verify_command": "verify:direct-spatial-conditioning-packet",
+  "packet_root": "exports/direct_spatial_conditioning/v1",
+  "packet_path": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+  "validation_report_path": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_PACKET_VALIDATION_REPORT.json",
+  "design_constraints": {
+    "packet_only": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "materializes_tensors": false,
+    "materializes_frames": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "explicitly_not_modified_this_phase": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+    "exports/movie_reconstruction_master/v1/**",
+    "exports/movie_reconstruction_certification/v1/**",
+    "exports/numerical_reconstruction/v1/**",
+    "datasets/movie_analysis/**"
+  ],
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_V1",
+  "generated_at": "2026-07-25T09:45:00.000Z"
+}

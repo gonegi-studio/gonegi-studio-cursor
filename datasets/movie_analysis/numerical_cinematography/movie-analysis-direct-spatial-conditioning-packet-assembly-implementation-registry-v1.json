@@ -1,0 +1,53 @@
+{
+  "registry_id": "movie-analysis-direct-spatial-conditioning-packet-assembly-implementation-registry-v1",
+  "phase": "PHASE-DSC-034",
+  "system_id": "DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1",
+  "registry_version": "v1",
+  "status": "IMPLEMENTED",
+  "mode": "DESIGN_ONLY_ASSEMBLY",
+  "scope": {
+    "runtime_package_ref": "exports/numerical_reconstruction/v1/numerical-reconstruction-runtime-package-v1.json",
+    "runtime_package_phase": "PHASE-MOVIE-RECONSTRUCTION-027",
+    "runtime_consumption_layer": "consumption",
+    "assembled_channels": [
+      "camera_pose_field",
+      "camera_temporal_track",
+      "subject_position_field",
+      "framing_composition_map",
+      "edit_rhythm_boundaries",
+      "scene_energy_field"
+    ],
+    "packet_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "validation_ref": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "note": "Assembly specification only. Maps the certified runtime package consumption slots into the packet surface with field-level source paths, ordered steps, and required inputs. No packet instance is assembled in this phase."
+  },
+  "schema_path": "datasets/movie_analysis/numerical_cinematography/movie-analysis-direct-spatial-conditioning-packet-assembly.schema.json",
+  "builder_service_path": "services/directSpatialConditioningPacketAssemblyBuilder.ts",
+  "verify_script_path": "scripts/verify-direct-spatial-conditioning-packet-assembly.ts",
+  "npm_verify_command": "verify:direct-spatial-conditioning-packet-assembly",
+  "assembly_root": "exports/direct_spatial_conditioning/v1",
+  "assembly_path": "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-assembly-v1.json",
+  "validation_report_path": "reports/numerical_cinematography/DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_VALIDATION_REPORT.json",
+  "design_constraints": {
+    "assembly_only": true,
+    "reuses_certified_runtime_package": true,
+    "backend": "none",
+    "gpu": false,
+    "inference": false,
+    "assembles_packet_instances_in_this_phase": false,
+    "modifies_existing_datasets": false,
+    "placeholders": false
+  },
+  "explicitly_not_modified_this_phase": [
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-foundation-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-contract-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-v1.json",
+    "exports/direct_spatial_conditioning/v1/direct-spatial-conditioning-packet-validation-v1.json",
+    "exports/numerical_reconstruction/v1/**",
+    "exports/movie_reconstruction_master/v1/**",
+    "exports/movie_reconstruction_certification/v1/**",
+    "datasets/movie_analysis/**"
+  ],
+  "target": "PASS_DIRECT_SPATIAL_CONDITIONING_PACKET_ASSEMBLY_V1",
+  "generated_at": "2026-07-25T10:30:00.000Z"
+}
