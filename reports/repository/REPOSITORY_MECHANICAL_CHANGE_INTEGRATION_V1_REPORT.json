@@ -1,0 +1,161 @@
+{
+  "report_id": "repository_mechanical_change_integration_v1",
+  "phase": "PHASE-REPOSITORY-006",
+  "system_id": "REPOSITORY_MECHANICAL_CHANGE_INTEGRATION_V1",
+  "generated_at": "2026-07-28T02:10:00.000Z",
+  "base_commit": "8c6e933e33d18b1073f42fdff1a14c3921476f0f",
+  "predecessor_refs": [
+    "reports/repository_intelligence/REPOSITORY_HIGH_RISK_CHANGE_REVIEW_V1_REPORT.json (PHASE-REPOSITORY-004)",
+    "reports/repository_intelligence/SOURCE_VIDEO_DNA_SCHEMA_SYNCHRONIZATION_V1_REPORT.json (PHASE-REPOSITORY-005)"
+  ],
+  "objective": "Split the remaining uncommitted mechanical/portability drift (developer-machine hardcoded cwd checks) into small, verifiable commits, while explicitly excluding anything schema/registry/behavioral, anything entangled with untracked feature trees, and the one outlier verify script whose diff mixes portability with a real behavioral change.",
+  "final_verdict": "PASS_REPOSITORY_MECHANICAL_CHANGE_INTEGRATION_V1",
+  "validation_passed": true,
+  "error_count": 0,
+  "commits": [
+    {
+      "order": 1,
+      "sha": "1d8280ae9190843a2ec94a0d1dfcbbc6d1c43700",
+      "subject": "Add assertCwdMatchesProjectRoot portability helper.",
+      "files_changed": 1,
+      "insertions": 13,
+      "deletions": 0,
+      "files": ["services/projectRootResolver.ts"],
+      "description": "Adds the assertCwdMatchesProjectRoot(projectRoot) helper only. Centralizes the cwd-equality check + exit(1) that every verify script previously duplicated inline against a hardcoded developer path. Does not change what root any script resolves to."
+    },
+    {
+      "order": 2,
+      "sha": "ee95d2e3916a9ef7aadbe9c17b601b5d1b4a4594",
+      "subject": "Replace hardcoded developer paths in verify scripts with portable cwd guard.",
+      "files_changed": 337,
+      "insertions": 674,
+      "deletions": 1859,
+      "description": "Every one of the 337 files replaces a hardcoded 'C:\\\\Users\\\\danie\\\\OneDrive\\\\...\\\\Gonegi-Studio-Cursor' EXPECTED_CWD literal + inline if/exit(1) block with a single call to assertCwdMatchesProjectRoot(projectRoot), plus the corresponding import. Verified via numstat before committing: 163 files at +2/-5 lines and 174 files at +2/-6 lines (comma-formatting variance only) -- i.e. exactly 337 uniform mechanical diffs, 0 files with any other change mixed in.",
+      "excluded_outlier": {
+        "file": "scripts/verify-source-video-numerical-and-cinematic-dna.ts",
+        "diff_stat": "+4/-6",
+        "reason": "Same portability edit is present, but the diff also imports TOTAL_SOURCE_VIDEO_COUNT from services/sourceVideoNumericalAndCinematicDna.ts and changes a hardcoded 'source_video_count=15' check to use that constant -- a real behavioral/coverage change tied to PHASE-REPOSITORY-005 work, not mechanical portability. Left uncommitted and out of scope for this phase; explicitly git reset before commit 2."
+      }
+    },
+    {
+      "order": 3,
+      "sha": "ab21418242713e963cb32453431b5a6613bddfff",
+      "subject": "Wire package.json verify scripts for already-tracked Direct Spatial Conditioning and related scripts.",
+      "files_changed": 1,
+      "insertions": 111,
+      "deletions": 1,
+      "description": "Surgical (option-b) edit, not a raw commit of the full working package.json. See package_json_decision below for full analysis."
+    },
+    {
+      "order": 4,
+      "sha": "PENDING_AT_REPORT_WRITE_TIME_SEE_NOTE",
+      "subject": "Add PHASE-REPOSITORY-006 mechanical change integration report.",
+      "files_changed": 1,
+      "insertions": null,
+      "deletions": 0,
+      "description": "This report file, committed alone as the 4th granular commit immediately after this file is written. The actual SHA is recorded by the caller after `git commit`; see the command's returned commit output for the final hash."
+    }
+  ],
+  "package_json_decision": {
+    "raw_working_diff_before_analysis": "1029 insertions(+), 495 deletions(-) touching the entire file (line-shifted diff of every line after the first insertion point)",
+    "root_cause_of_large_raw_diff": "Not a reformat or reordering of existing content -- JSON-level comparison confirmed 0 removed scripts, 0 changed values for all 481 pre-existing script keys, and 0 changes to any other top-level key (name/private/version/type/devDependencies). The apparent full-file diff is a line-numbering artifact: 535 new 'verify:*' entries were inserted at alphabetically-appropriate positions in the middle of the scripts block (first new key at position 336 of 1016), which shifts every following line by one in a naive line diff.",
+    "added_script_entries_total": 535,
+    "added_entries_pointing_to_tracked_files": 111,
+    "added_entries_pointing_to_untracked_feature_scripts": 424,
+    "conclusion": "535 new entries, 424 of them (~79%) point at untracked feature scripts (e.g. verify-expression-dna-*, verify-gaze-dna-*, verify-project-brain-agent-ecosystem-v10/11-*, verify-project-repository-real-cleanup-*, etc. -- entire untracked WIP trees). Per the phase instruction, the full package.json was NOT committed as-is.",
+    "decision": "(b) surgical edit -- included",
+    "why_b_was_chosen_over_a": "The edit was mechanically safe and easy to verify exactly: each script entry is a single self-contained JSON line (\"key\": \"tsx scripts/file.ts\",) with no multi-line values, so the 424 untracked-target lines could be removed by exact key-name match with zero risk of touching any other line. Post-edit JSON-level validation confirmed byte-for-byte preservation of all 481 original entries (values unchanged, order unchanged) and all other top-level keys/devDependencies untouched.",
+    "final_diff_committed": "+111/-1 lines. +111 = the 111 verify:* entries whose target .ts file is already tracked in git at HEAD (all under scripts/verify-direct-spatial-conditioning-*.ts and related, coming from the already-committed PHASE-DSC-193 commit 8c6e933). -1 = a trailing comma added to the entry that was previously last before the new block.",
+    "incidental_fix_noted": "HEAD's package.json already contained a pre-existing duplicate key 'verify:source-video-numerical-dna-audit' (2 identical lines, same value, likely a manual-edit artifact from an earlier commit). The uncommitted working copy had already naturally de-duplicated it to 1 occurrence before this phase touched the file. The committed result therefore has exactly 1 occurrence of that key (same value as both original occurrences) -- a harmless, non-functional side effect of the source working copy being JSON-clean, not a change this phase introduced deliberately.",
+    "no_schema_or_registry_changes": true,
+    "verification": "node -e \"JSON.parse(readFileSync('package.json'))\" succeeded; script-count and script-value diff assertions (all pre-existing entries identical, all 111 additions present, 0 unexpected keys) passed before commit."
+  },
+  "regenerated_metadata": {
+    "bucket_checked": true,
+    "finding": "empty for this integration",
+    "detail": "No datasets/**, exports/**, or reports/** behavioral artifacts were regenerated, modified, or committed as part of this phase. DSC (Direct Spatial Conditioning) integrity metadata referenced in prior planning was already committed upstream at 8c6e933 (PHASE-DSC-193). This phase touched only services/projectRootResolver.ts, 337 scripts/verify-*.ts files, and package.json."
+  },
+  "included": [
+    "services/projectRootResolver.ts -- new assertCwdMatchesProjectRoot() portability helper (additive only)",
+    "337 scripts/verify-*.ts files -- hardcoded EXPECTED_CWD literal + inline guard replaced with assertCwdMatchesProjectRoot(projectRoot) call",
+    "package.json -- 111 verify:* npm script entries added for already-tracked (already-committed) Direct Spatial Conditioning and related scripts; 0 existing entries removed or changed"
+  ],
+  "excluded": [
+    {
+      "item": "scripts/verify-source-video-numerical-and-cinematic-dna.ts",
+      "reason": "Outlier: portability edit is entangled with a real behavioral change (TOTAL_SOURCE_VIDEO_COUNT-based dynamic coverage check replacing a hardcoded 15), tied to PHASE-REPOSITORY-005 scope, not this phase"
+    },
+    {
+      "item": "424 package.json verify:* script entries targeting untracked files",
+      "reason": "Would wire npm scripts to feature-tree files (expression-dna, gaze-dna, pose-dna, interaction-dna pilots, project-brain-agent-ecosystem v10/v11, project-repository-real-cleanup execution/finalization/restore chains, movie-brain, stage7, etc.) that are not tracked in git and are out of scope for a mechanical-change integration"
+    },
+    {
+      "item": "620 untracked scripts/verify-*.ts files (feature scripts)",
+      "reason": "Never staged -- `git add -u` only ever touches already-tracked/modified paths, so these were untouched by construction; explicitly confirmed 0 untracked scripts were staged in commit 2"
+    },
+    {
+      "item": "Schemas, registries, and behavioral service files",
+      "reason": "Out of scope per phase constraints; no datasets/**, schemas/**, or registry files were touched"
+    },
+    {
+      "item": "Regenerated behavioral datasets/exports/reports",
+      "reason": "Bucket confirmed empty for this phase -- see regenerated_metadata above; DSC integrity metadata already committed at 8c6e933"
+    }
+  ],
+  "constraints_confirmed": {
+    "no_schema_or_registry_changes": true,
+    "no_feature_or_behavioral_changes": true,
+    "outlier_verify_script_excluded": true,
+    "no_untracked_files_staged": true,
+    "package_json_not_committed_wholesale": true,
+    "no_git_config_changes": true,
+    "no_secrets_committed": true,
+    "no_no_verify_flag_used": true,
+    "no_amend_used": true,
+    "no_push_performed": true,
+    "detail": "Verified via git status/git diff/numstat inspection before every commit: commit 2 staged exactly 337 tracked-modified scripts/verify-*.ts paths (0 untracked, 0 the excluded outlier); commit 3 staged a hand-built surgical package.json (validated at the JSON-object level: 592 = 481 original + 111 added script keys, 0 mismatches, 0 missing, 0 unexpected extras, devDependencies and all other top-level keys byte-identical to HEAD)."
+  },
+  "verification": {
+    "helper_import_sample_check": {
+      "method": "grep for 'assertCwdMatchesProjectRoot' import + call site in sample committed scripts",
+      "samples_checked": [
+        "scripts/verify-adapter-translation-validation.ts",
+        "scripts/verify-spatial-ab-test.ts"
+      ],
+      "result": "PASS -- both import { assertCwdMatchesProjectRoot } from '../services/projectRootResolver.js' and call assertCwdMatchesProjectRoot(projectRoot) in place of the removed inline guard"
+    },
+    "smoke_tests": [
+      {
+        "script": "verify:spatial-ab-test",
+        "result": "PASS",
+        "verdict": "PASS_SPATIAL_AB_TEST_V1",
+        "note": "validation_passed=true | ab_test_ready=true | scene_count=2"
+      },
+      {
+        "script": "verify:movie-bundle-normalization",
+        "result": "PASS",
+        "verdict": "PASS_MOVIE_BUNDLE_NORMALIZATION_V1",
+        "note": "normalization_passed=true | precheck_passed=true | critical_layer_missing_count=0"
+      },
+      {
+        "script": "verify:movie-image-import-test",
+        "result": "PASS",
+        "verdict": "PASS_IMAGE_IMPORT_TEST_PACKAGE_V1",
+        "note": "validation_passed=true | source_scene_count=300"
+      },
+      {
+        "script": "verify:generation-qa-and-error-context",
+        "result": "FAIL (pre-existing, unrelated to this phase)",
+        "verdict": "N/A -- crashed before producing a verdict",
+        "note": "cwd guard passed (no PRECHECK FAIL emitted); crash is ENOENT on reports/story_engine/STORY_TO_BLUEPRINT_ENGINE_REPORT.json, a missing upstream pipeline-stage dependency unrelated to the portability edit"
+      },
+      {
+        "script": "verify:movie-image-import-compat",
+        "result": "FAIL (pre-existing, unrelated to this phase)",
+        "verdict": "N/A -- crashed before producing a verdict",
+        "note": "cwd guard passed (no PRECHECK FAIL emitted); crash is 'Missing source export: exports/movie_spatial/tests/titanic-import-test-single-scene.json', a missing upstream pipeline artifact unrelated to the portability edit"
+      }
+    ],
+    "smoke_test_summary": "5 scripts sampled from the 337 committed in commit 2, chosen as the shortest tracked files for fast iteration. 3/5 PASS end-to-end. The 2 failures both fail on missing pre-existing pipeline-stage input files (not present in this working copy) and, critically, neither hit the assertCwdMatchesProjectRoot guard -- both scripts ran past the cwd check successfully, confirming the portability fix itself works correctly; the failures are pre-existing missing-dependency conditions unrelated to this phase's change."
+  }
+}
