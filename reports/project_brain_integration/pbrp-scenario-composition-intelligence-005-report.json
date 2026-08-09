@@ -1,0 +1,122 @@
+{
+  "phase": "PHASE-PBRP-SCENARIO-COMPOSITION-INTELLIGENCE-005",
+  "generated_at": "2026-08-09T23:44:01.297Z",
+  "results": {
+    "1_uses_004.titanic_scenario_passes": "PASS",
+    "1_uses_004.spirited_scenario_passes": "PASS",
+    "6_native_structure.build_pass": "PASS",
+    "6_native_structure.two_slots_produced": "PASS",
+    "6_native_structure.no_top_level_fields_beyond_slots": "PASS",
+    "6_native_structure.recognized_by_real_import_logic": "PASS",
+    "6_native_structure.slot_count_preserved_through_real_handler": "PASS",
+    "6_native_structure.round_trip_through_json_still_recognized": "PASS",
+    "6_native_structure.pass_through_unmodified_since_versions_already_present": "PASS",
+    "6_native_structure.artstyle_correctly_omitted_not_fabricated": "PASS",
+    "visual_dna.titanic_character_field_contains_real_visual_dna": "PASS",
+    "visual_dna.titanic_character_field_contains_dana": "PASS",
+    "visual_dna.spirited_character_field_contains_gonegi_and_dana_per_phase_003": "PASS",
+    "visual_dna.field_is_verbatim_not_semantic_only": "PASS",
+    "visual_dna.scenario_text_also_carries_character_direction": "PASS",
+    "visual_dna.character_book_companion_deduplicated": "PASS",
+    "visual_dna.character_book_companion_shape_matches_real_schema": "PASS",
+    "character_book_companion": {
+      "characters": [
+        {
+          "id": "char_1-1",
+          "name": "Gonegi",
+          "visual_dna": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+          "master_image_id": "dna_master",
+          "elite_image_id": "elite-image-gonegi-main-v1",
+          "type": "main",
+          "grid_position": "1-1"
+        },
+        {
+          "id": "char_1-2",
+          "name": "Dana",
+          "visual_dna": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+          "master_image_id": "dna_master",
+          "elite_image_id": "elite-image-dana-companion-v1",
+          "type": "main",
+          "grid_position": "1-2"
+        }
+      ]
+    },
+    "not_derivable.titanic_timeSetting_discloses_gap": "PASS",
+    "not_derivable.spirited_timeSetting_discloses_gap": "PASS",
+    "not_derivable.titanic_scenario_text_discloses_location_gap": "PASS",
+    "not_derivable.spirited_scenario_text_discloses_location_gap": "PASS",
+    "not_derivable.both_scenario_texts_disclose_style_gap": "PASS",
+    "not_derivable.no_fabricated_artstyle_field": "PASS",
+    "not_derivable.no_fabricated_location_id_field": "PASS",
+    "positive_path.timeSetting_carries_real_lighting_text_when_derived": "PASS",
+    "provenance.slot_sources_cite_phase_004": "PASS",
+    "provenance.slot_sources_cite_real_scene_ids": "PASS",
+    "provenance.character_source_discloses_visual_dna_not_semantic": "PASS",
+    "input_guard.rejects_failed_scenario": "PASS",
+    "input_guard.rejects_empty_input": "PASS",
+    "determinism.3x_identical": "PASS",
+    "regression.production_assembler_untouched": "PASS",
+    "regression.old_native_adapter_untouched": "PASS",
+    "regression.no_ai_studio_import": "PASS",
+    "regression.new_adapter_api_free": "PASS",
+    "regression.new_adapter_no_path_b": "PASS",
+    "regression.new_adapter_read_only": "PASS"
+  },
+  "issues": [],
+  "sample_document": {
+    "slots": [
+      {
+        "id": 1,
+        "activeVersionIndex": 0,
+        "versions": [
+          {
+            "id": "1_v0",
+            "scenario": "Character: Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.\nBlocking: rail_parallel, intercepted_gaze (2 positions)\nCamera: push_in_emotion (medium_shot, height=low, movement=static, fov=50mm_equivalent)\nComposition: narrative priority (horizon_weight=0.62, subject_scale=balanced_two_shot, negative_space=sky_dominant)\nLocation: NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.\nLighting: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.)\nStyle: NOT_DERIVABLE",
+            "character": "Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "timeSetting": "NOT_DERIVABLE: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.)",
+            "status": "idle",
+            "finalPrompt": "Character: Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.\nBlocking: rail_parallel, intercepted_gaze (2 positions)\nCamera: push_in_emotion (medium_shot, height=low, movement=static, fov=50mm_equivalent)\nComposition: narrative priority (horizon_weight=0.62, subject_scale=balanced_two_shot, negative_space=sky_dominant)\nLocation: NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.\nLighting: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.)\nStyle: NOT_DERIVABLE",
+            "version": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "activeVersionIndex": 0,
+        "versions": [
+          {
+            "id": "2_v0",
+            "scenario": "Character: Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.\nBlocking: pair_offset, left_third (participant_count=2)\nCamera: tracking_follow (medium_two_shot, movement=lateral_track, perspective=low_angle, energy=0.62)\nComposition: foreground=architectural_frame, midground=ritual_activity, background=memory_sky_plane (composition_score=0.92)\nLocation: NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.\nLighting: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.)\nStyle: NOT_DERIVABLE",
+            "character": "Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+            "timeSetting": "NOT_DERIVABLE: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.)",
+            "status": "idle",
+            "finalPrompt": "Character: Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.\nBlocking: pair_offset, left_third (participant_count=2)\nCamera: tracking_follow (medium_two_shot, movement=lateral_track, perspective=low_angle, energy=0.62)\nComposition: foreground=architectural_frame, midground=ritual_activity, background=memory_sky_plane (composition_score=0.92)\nLocation: NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.\nLighting: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.)\nStyle: NOT_DERIVABLE",
+            "version": 1
+          }
+        ]
+      }
+    ]
+  },
+  "slot_sources": [
+    {
+      "scenario_source": "ProductionScenario.final_text (PHASE-004, scene_id=scene_titanic_02_dining_salon_008)",
+      "timeSetting_source": "ProductionScenario.lighting_direction.text (real gap reason, disclosed as NOT_DERIVABLE, not fabricated)",
+      "character_source": "ProductionScenario.character_direction.cast (real, resolved Character Visual DNA -- visual_dna verbatim, NOT semantic/emotional anchor data)",
+      "finalPrompt_source": "same as scenario_source (PHASE-004 produces one deterministic text, not a separate optimized prompt stage)",
+      "omitted_slot_fields": [
+        "artStyle (Gonegi Style DNA confirmed absent -- PHASE-002/003/004; app falls back to its own default when this field is absent)",
+        "seed (no PBRP data source)"
+      ]
+    },
+    {
+      "scenario_source": "ProductionScenario.final_text (PHASE-004, scene_id=scene_spirited_away_bathhouse_arrival_0001)",
+      "timeSetting_source": "ProductionScenario.lighting_direction.text (real gap reason, disclosed as NOT_DERIVABLE, not fabricated)",
+      "character_source": "ProductionScenario.character_direction.cast (real, resolved Character Visual DNA -- visual_dna verbatim, NOT semantic/emotional anchor data)",
+      "finalPrompt_source": "same as scenario_source (PHASE-004 produces one deterministic text, not a separate optimized prompt stage)",
+      "omitted_slot_fields": [
+        "artStyle (Gonegi Style DNA confirmed absent -- PHASE-002/003/004; app falls back to its own default when this field is absent)",
+        "seed (no PBRP data source)"
+      ]
+    }
+  ]
+}
