@@ -1,0 +1,833 @@
+{
+  "phase": "PHASE-PBRP-SCENARIO-COMPOSITION-INTELLIGENCE-003",
+  "generated_at": "2026-08-09T23:22:59.372Z",
+  "results": {
+    "1_priority.titanic_ground_truth_applied": "PASS",
+    "1_priority.titanic_applied_camera_is_real_scene_bound": "PASS",
+    "2_priority.titanic_conflict_with_selector_resolved_by_priority": "PASS",
+    "2_priority.titanic_emotion_selector_never_applied": "PASS",
+    "1_priority.spirited_ground_truth_applied": "PASS",
+    "1_priority.spirited_applied_composition_is_real_scene_bound": "PASS",
+    "2_priority.spirited_conflict_with_selector_resolved_by_priority": "PASS",
+    "1_priority.fallback_path_used_for_unresolvable_scene": "PASS",
+    "1_priority.fallback_is_disclosed_not_silent": "PASS",
+    "1-2_scene_aware_selection_samples": {
+      "titanic": {
+        "scene_id": "scene_titanic_02_dining_salon_008",
+        "source": "titanic",
+        "priority_reason": "GROUND_TRUTH_RESOLVED_AND_APPLIED",
+        "applied_source_registry": "scene_ground_truth",
+        "applied_camera_id": "titanic_cam_009",
+        "applied_composition_id": "titanic_comp_009",
+        "applied_blocking_id": "titanic_blk_009",
+        "ground_truth_binding": {
+          "source": "titanic",
+          "scene_id": "scene_titanic_02_dining_salon_008",
+          "pass": true,
+          "errors": [],
+          "camera_id": "titanic_cam_009",
+          "composition_id": "titanic_comp_009",
+          "blocking_id": "titanic_blk_009",
+          "camera": {
+            "camera_pattern_id": "titanic_cam_009",
+            "source_video_id": "TITANIC_02",
+            "scene_type": "bow_deck",
+            "camera_language": "push_in_emotion",
+            "shot_type": "medium_shot",
+            "camera_height": "low",
+            "camera_movement": "static",
+            "fov_hint": "50mm_equivalent",
+            "framing_intent": "preserve_scene_grammar_not_world_identity",
+            "world_identity_control": "FORBIDDEN"
+          },
+          "composition": {
+            "composition_id": "titanic_comp_009",
+            "source_video_id": "TITANIC_02",
+            "composition_priority": "narrative",
+            "horizon_weight": 0.62,
+            "subject_scale": "balanced_two_shot",
+            "negative_space_policy": "sky_dominant",
+            "visibility_requirements": [
+              "semantic_anchor_visible",
+              "blocking_geometry_visible"
+            ],
+            "world_identity_control": "FORBIDDEN"
+          },
+          "blocking": {
+            "blocking_pattern_id": "titanic_blk_009",
+            "source_video_id": "TITANIC_02",
+            "group_layout": "rail_parallel",
+            "spatial_relationship": "intercepted_gaze",
+            "character_positions": [
+              {
+                "character_ref": "lead_a",
+                "position": [
+                  0.62,
+                  0.45
+                ]
+              },
+              {
+                "character_ref": "lead_b",
+                "position": [
+                  0.6100000000000001,
+                  0.52
+                ]
+              }
+            ],
+            "movement_path_bound": true,
+            "emotion_staging": "longing, social tension, destiny",
+            "world_identity_control": "FORBIDDEN"
+          },
+          "all_listed_anchor_ids": [
+            "titanic_bow_pose"
+          ],
+          "primary_anchor_id": "titanic_bow_pose",
+          "primary_anchor_resolution": "direct_field",
+          "primary_anchor": {
+            "anchor_id": "titanic_bow_pose",
+            "anchor_type": "iconic_pose",
+            "semantic_meaning": "shared wonder at open horizon; freedom through forward-facing embrace of the world",
+            "emotion": "freedom, romance, wonder",
+            "participants": 2,
+            "relative_distance": "arms_linked_close",
+            "orientation": "forward_facing_open_horizon",
+            "interaction_type": "shared_gaze_and_pose_hold",
+            "iconic_score": 0.98,
+            "source_video_id": "TITANIC_02",
+            "source_scene_id": "scene_titanic_02_deck_014",
+            "gonegi_translation_ref": "gonegi_dana_harbor_bow_pose_v1",
+            "gonegi_characters": [
+              "CHAR-gonagi",
+              "CHAR-dana"
+            ],
+            "preserved_meaning": [
+              "freedom",
+              "romance",
+              "wonder"
+            ],
+            "geometry_refs": [
+              "blocking_dna",
+              "frame_coordinate_dna",
+              "camera_tracking_medium"
+            ]
+          },
+          "target_location_id": "gonegi_harbor_lane_01",
+          "provenance": {
+            "camera": "datasets/movie_reconstruction/titanic/titanic-camera-registry.json -> titanic_cam_009",
+            "composition": "datasets/movie_reconstruction/titanic/titanic-composition-registry.json -> titanic_comp_009",
+            "blocking": "datasets/movie_reconstruction/titanic/titanic-blocking-registry.json -> titanic_blk_009",
+            "primary_anchor": "datasets/movie_reconstruction/titanic/titanic-semantic-anchor-registry.json -> titanic_bow_pose (direct_field)"
+          }
+        },
+        "emotion_selector_reference": {
+          "composition_id": "titanic_comp_001",
+          "shot_id": "shot_titanic_00078"
+        },
+        "divergence": {
+          "ground_truth_composition_id": "titanic_comp_009",
+          "selector_composition_id": "titanic_comp_001",
+          "composition_diverges": true,
+          "ground_truth_shot_reference": "titanic_cam_009",
+          "selector_shot_id": "shot_titanic_00078",
+          "shot_reference_diverges": true,
+          "divergence_note": "Ground truth's camera/shot reference is a camera_pattern_id from *-camera-registry.json (scene-bound); the emotion selector's shot reference is a shot_id from the separate *-shot-registry.json (emotion-matched). These are two different real registries with non-overlapping id namespaces -- not simply \"right vs wrong answer\" but two genuinely different data sources; the composition_id namespace IS shared between both paths, so composition_diverges is the more direct apples-to-apples divergence signal."
+        },
+        "provenance": "scene-bound ground truth from scene_titanic_02_dining_salon_008's own real registry fields (PHASE-002 binder); emotion selector run for comparison only, never applied while ground truth resolves"
+      },
+      "spirited_away": {
+        "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+        "source": "spirited_away",
+        "priority_reason": "GROUND_TRUTH_RESOLVED_AND_APPLIED",
+        "applied_source_registry": "scene_ground_truth",
+        "applied_camera_id": "spirited_cam_0001",
+        "applied_composition_id": "spirited_comp_0001",
+        "applied_blocking_id": "spirited_blk_0001",
+        "ground_truth_binding": {
+          "source": "spirited_away",
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "pass": true,
+          "errors": [],
+          "camera_id": "spirited_cam_0001",
+          "composition_id": "spirited_comp_0001",
+          "blocking_id": "spirited_blk_0001",
+          "camera": {
+            "camera_id": "spirited_cam_0001",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "camera_grammar": "tracking_follow",
+            "camera_movement": "lateral_track",
+            "camera_framing": "medium_two_shot",
+            "camera_perspective": "low_angle",
+            "camera_energy": 0.62,
+            "movie_dataset_control": true,
+            "world_identity_control": "FORBIDDEN"
+          },
+          "composition": {
+            "composition_id": "spirited_comp_0001",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "foreground": "architectural_frame",
+            "midground": "ritual_activity",
+            "background": "memory_sky_plane",
+            "visual_balance": 0.892,
+            "composition_score": 0.92,
+            "movie_dataset_control": true,
+            "world_identity_control": "FORBIDDEN"
+          },
+          "blocking": {
+            "blocking_id": "spirited_blk_0001",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "character_placement": "left_third",
+            "distance": 0.2,
+            "orientation": "profile_to_path",
+            "group_blocking": "pair_offset",
+            "participant_count": 2,
+            "movie_dataset_control": true,
+            "world_identity_control": "FORBIDDEN"
+          },
+          "all_listed_anchor_ids": [
+            "bathhouse_arrival",
+            "bridge_crossing"
+          ],
+          "primary_anchor_id": "bathhouse_arrival",
+          "primary_anchor_resolution": "scene_category_match",
+          "primary_anchor": {
+            "anchor_id": "bathhouse_arrival",
+            "source_video_id": "GHIBLI_01",
+            "movie_id": "spirited_away",
+            "semantic_meaning": "threshold crossing into overwhelming spirit commerce; small self against vast ritual order",
+            "emotion": "wonder, disorientation, courage",
+            "participants": 1,
+            "interaction_type": "threshold_ingress",
+            "iconic_score": 0.96,
+            "gonegi_translation_ref": "gonegi_spirited_bathhouse_arrival_v1",
+            "gonegi_characters": [
+              "CHAR-gonagi"
+            ],
+            "generic_harbor_regression": false
+          },
+          "target_location_id": null,
+          "provenance": {
+            "camera": "datasets/movie_reconstruction/spirited_away/spirited-away-camera-registry.json -> spirited_cam_0001",
+            "composition": "datasets/movie_reconstruction/spirited_away/spirited-away-composition-registry.json -> spirited_comp_0001",
+            "blocking": "datasets/movie_reconstruction/spirited_away/spirited-away-blocking-registry.json -> spirited_blk_0001",
+            "primary_anchor": "datasets/movie_reconstruction/spirited_away/spirited-away-semantic-anchor-registry.json -> bathhouse_arrival (scene_category_match)"
+          }
+        },
+        "emotion_selector_reference": {
+          "composition_id": "spirited_comp_0005",
+          "shot_id": "shot_spirited_00162"
+        },
+        "divergence": {
+          "ground_truth_composition_id": "spirited_comp_0001",
+          "selector_composition_id": "spirited_comp_0005",
+          "composition_diverges": true,
+          "ground_truth_shot_reference": "spirited_cam_0001",
+          "selector_shot_id": "shot_spirited_00162",
+          "shot_reference_diverges": true,
+          "divergence_note": "Ground truth's camera/shot reference is a camera_pattern_id from *-camera-registry.json (scene-bound); the emotion selector's shot reference is a shot_id from the separate *-shot-registry.json (emotion-matched). These are two different real registries with non-overlapping id namespaces -- not simply \"right vs wrong answer\" but two genuinely different data sources; the composition_id namespace IS shared between both paths, so composition_diverges is the more direct apples-to-apples divergence signal."
+        },
+        "provenance": "scene-bound ground truth from scene_spirited_away_bathhouse_arrival_0001's own real registry fields (PHASE-002 binder); emotion selector run for comparison only, never applied while ground truth resolves"
+      }
+    },
+    "3_conflict_state.titanic_has_unresolved_conflicts": "PASS",
+    "3_conflict_state.titanic_policy_is_none_auto_resolved": "PASS",
+    "3_conflict_state.titanic_both_real_values_preserved": "PASS",
+    "3_conflict_state.spirited_has_unresolved_conflicts": "PASS",
+    "3_conflict_state.dual_anchor_checks_both_real_ids": "PASS",
+    "3_conflict_state.dual_anchor_participant_conflict_matches_expectation": "PASS",
+    "3_conflict_state_samples": {
+      "titanic": {
+        "has_unresolved_conflicts": true,
+        "conflicts": [
+          {
+            "type": "EMOTION_ANCHOR_VS_BLOCKING",
+            "scene_id": "scene_titanic_02_dining_salon_008",
+            "detail": "The semantic anchor's own emotion and the bound blocking pattern's emotion field share no keyword.",
+            "value_a": {
+              "source": "semantic_anchor.emotion",
+              "value": "freedom, romance, wonder"
+            },
+            "value_b": {
+              "source": "blocking_pattern.emotion_staging",
+              "value": "longing, social tension, destiny"
+            }
+          }
+        ],
+        "resolution_policy": "NONE_AUTO_RESOLVED",
+        "note": "1 real conflict(s) detected between sourced fields for this scene; none merged, tie-broken, or discarded -- both real values are carried forward as explicit unresolved state."
+      },
+      "spirited_away": {
+        "has_unresolved_conflicts": true,
+        "conflicts": [
+          {
+            "type": "EMOTION_ANCHOR_VS_SCENE",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "detail": "The semantic anchor's own emotion and the scene's own emotion field share no keyword.",
+            "value_a": {
+              "source": "semantic_anchor.emotion",
+              "value": "wonder, disorientation, courage"
+            },
+            "value_b": {
+              "source": "scene.emotion_state",
+              "value": "loneliness, longing, vulnerability"
+            }
+          },
+          {
+            "type": "PARTICIPANT_ANCHOR_VS_BLOCKING",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "detail": "The primary semantic anchor's own participant count and the bound blocking pattern's participant_count disagree.",
+            "value_a": {
+              "source": "semantic_anchor.participants",
+              "value": "1"
+            },
+            "value_b": {
+              "source": "blocking_pattern.participant_count",
+              "value": "2"
+            }
+          },
+          {
+            "type": "CAMERA_FRAMING_VS_ANCHOR_SOLO",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "detail": "The bound camera pattern's own framing implies more than one figure, but the primary semantic anchor's own participant count is 1 (solo).",
+            "value_a": {
+              "source": "semantic_anchor.participants",
+              "value": "1"
+            },
+            "value_b": {
+              "source": "camera.camera_framing",
+              "value": "medium_two_shot"
+            }
+          }
+        ],
+        "resolution_policy": "NONE_AUTO_RESOLVED",
+        "note": "3 real conflict(s) detected between sourced fields for this scene; none merged, tie-broken, or discarded -- both real values are carried forward as explicit unresolved state."
+      },
+      "dual_anchor": {
+        "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+        "listed_anchor_ids": [
+          "bathhouse_arrival",
+          "bridge_crossing"
+        ],
+        "emotion_conflict": true,
+        "participant_conflict": false,
+        "detail": "Checked against all 2 real listed anchor(s) for this scene (not a single arbitrarily-chosen primary) -- see analyzeCastAuthoritySource() for why a single scene-level primary is not a real, determinable concept for this source."
+      }
+    },
+    "4_location_reverify.dock_coarse_type_found_via_cross_reference": "PASS",
+    "4_location_reverify.hill_coarse_type_found_via_cross_reference": "PASS",
+    "4_location_reverify.dock_full_dna_still_not_resolvable": "PASS",
+    "4_location_reverify.hill_full_dna_still_not_resolvable": "PASS",
+    "4_location_reverify.lane_remains_fully_unresolvable": "PASS",
+    "4_location_reverify_samples": {
+      "gonegi_harbor_lane_01": {
+        "target_location_id": "gonegi_harbor_lane_01",
+        "original_gap": {
+          "target_location_id": "gonegi_harbor_lane_01",
+          "scope": "per_scene",
+          "exact_match_found": false,
+          "matched_library": null,
+          "near_name_candidates": [
+            {
+              "location_id": "harbor_main_dock_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_small_pier_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_boatyard_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_fish_market_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_stairway_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_seawall_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_watch_point_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_warehouse_edge_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_lighthouse_base_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_mooring_post_row_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_net_mending_shed_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_ticket_shelter_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "village_bakery_lane_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "lane"
+              ]
+            },
+            {
+              "location_id": "village_harbor_road_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "stone_path_to_harbor_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "shared_harbor_meeting_bench_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "shared_memory_lane_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "lane"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_watch_point_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_sunset_bench_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_cliff_path_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            }
+          ],
+          "resolvable": false,
+          "resolution_note": "No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution."
+        },
+        "cross_reference_location_type": null,
+        "full_dna_resolvable": false,
+        "coarse_type_resolvable": false,
+        "verdict_note": "No exact match and no cross-reference in any other real repository source found for this id -- remains fully NOT_RESOLVABLE."
+      },
+      "gonegi_harbor_dock_01": {
+        "target_location_id": "gonegi_harbor_dock_01",
+        "original_gap": {
+          "target_location_id": "gonegi_harbor_dock_01",
+          "scope": "per_scene",
+          "exact_match_found": false,
+          "matched_library": null,
+          "near_name_candidates": [
+            {
+              "location_id": "harbor_main_dock_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor",
+                "dock"
+              ]
+            },
+            {
+              "location_id": "harbor_small_pier_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_boatyard_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_fish_market_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_stairway_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_seawall_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_watch_point_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_warehouse_edge_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_lighthouse_base_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_mooring_post_row_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_net_mending_shed_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_ticket_shelter_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "village_harbor_road_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "stone_path_to_harbor_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "shared_harbor_meeting_bench_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_watch_point_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_sunset_bench_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_cliff_path_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            }
+          ],
+          "resolvable": false,
+          "resolution_note": "No real exact id match in any of 4 real location libraries. 18 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_dock_01' to any of them, so adopting one would be an invented mapping, not a resolution."
+        },
+        "cross_reference_location_type": "exterior_harbor",
+        "full_dna_resolvable": false,
+        "coarse_type_resolvable": true,
+        "verdict_note": "No exact Location DNA library match, but a second, independent, real repository source (services/shotGrammar.ts, a different subsystem) uses this exact id with a real coarse location_type ('exterior_harbor'). This resolves a coarse TYPE classification only -- it supplies no visual_anchors/architectural_anchors/color_anchors, so full Location DNA remains NOT_RESOLVABLE."
+      },
+      "gonegi_olive_hill_01": {
+        "target_location_id": "gonegi_olive_hill_01",
+        "original_gap": {
+          "target_location_id": "gonegi_olive_hill_01",
+          "scope": "per_scene",
+          "exact_match_found": false,
+          "matched_library": null,
+          "near_name_candidates": [
+            {
+              "location_id": "olive_hill_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "olive",
+                "hill"
+              ]
+            },
+            {
+              "location_id": "olive_hill_lunch_spot_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "olive",
+                "hill"
+              ]
+            },
+            {
+              "location_id": "olive_tree_rest_area_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "olive"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_olive_hill_overlook_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "olive",
+                "hill"
+              ]
+            }
+          ],
+          "resolvable": false,
+          "resolution_note": "No real exact id match in any of 4 real location libraries. 4 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_olive_hill_01' to any of them, so adopting one would be an invented mapping, not a resolution."
+        },
+        "cross_reference_location_type": "exterior_hill",
+        "full_dna_resolvable": false,
+        "coarse_type_resolvable": true,
+        "verdict_note": "No exact Location DNA library match, but a second, independent, real repository source (services/shotGrammar.ts, a different subsystem) uses this exact id with a real coarse location_type ('exterior_hill'). This resolves a coarse TYPE classification only -- it supplies no visual_anchors/architectural_anchors/color_anchors, so full Location DNA remains NOT_RESOLVABLE."
+      }
+    },
+    "5_lighting_correction.bakery_dining_now_resolvable_via_affinity": "PASS",
+    "5_lighting_correction.dana_window_corner_still_genuinely_unresolvable": "PASS",
+    "5_lighting_correction.corrected_titanic_scene_count_higher_than_phase_002": "PASS",
+    "5_lighting_correction.old_phase_002_coverage_still_reproducible_for_diff": "PASS",
+    "5_lighting_correction_samples": {
+      "family_bakery_dining_01": {
+        "location_id": "family_bakery_dining_01",
+        "resolved_via_pairing_table": false,
+        "resolved_via_location_affinity": true,
+        "resolvable": true,
+        "matched_lighting_ids": [
+          "sunrise_bakery_bedroom"
+        ],
+        "correction_note": "PHASE-002 checked only section_4_location_pairing.pairings; this phase additionally checks each lighting_profile's own real location_affinity array (a second, independent real field in the same file) and unions both. This is a real correction to PHASE-002's own coverage numbers, not a new capability."
+      },
+      "dana_window_corner_01": {
+        "location_id": "dana_window_corner_01",
+        "resolved_via_pairing_table": false,
+        "resolved_via_location_affinity": false,
+        "resolvable": false,
+        "matched_lighting_ids": [],
+        "correction_note": "PHASE-002 checked only section_4_location_pairing.pairings; this phase additionally checks each lighting_profile's own real location_affinity array (a second, independent real field in the same file) and unions both. This is a real correction to PHASE-002's own coverage numbers, not a new capability."
+      },
+      "corrected_titanic_light_ok_scene_count": 13,
+      "phase_002_pairing_only_count": 8
+    },
+    "6_cast_authority.all_300_scenes_checked": "PASS",
+    "6_cast_authority.zero_scenes_have_scene_level_authority": "PASS",
+    "6_cast_authority.all_300_scenes_show_dual_anchor_usage": "PASS",
+    "6_cast_authority.shot_level_authority_is_100_percent_real": "PASS",
+    "6_cast_authority.total_real_shots_matches_known_dataset_size": "PASS",
+    "6_cast_authority.titanic_has_no_ambiguity_to_analyze": "PASS",
+    "6_cast_authority_analysis": {
+      "total_scenes_checked": 300,
+      "scenes_with_scene_level_authority": 0,
+      "scenes_with_dual_anchor_usage": 300,
+      "total_real_shots_checked": 2400,
+      "sample": [
+        {
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "listed_anchor_ids": [
+            "bathhouse_arrival",
+            "bridge_crossing"
+          ],
+          "shot_count": 8,
+          "anchor_usage_counts": {
+            "bridge_crossing": 4,
+            "bathhouse_arrival": 4
+          },
+          "both_anchors_genuinely_used": true,
+          "scene_level_single_authoritative_anchor_possible": false
+        },
+        {
+          "scene_id": "scene_spirited_away_bridge_crossing_0002",
+          "listed_anchor_ids": [
+            "bridge_crossing",
+            "river_spirit_departure"
+          ],
+          "shot_count": 8,
+          "anchor_usage_counts": {
+            "river_spirit_departure": 4,
+            "bridge_crossing": 4
+          },
+          "both_anchors_genuinely_used": true,
+          "scene_level_single_authoritative_anchor_possible": false
+        },
+        {
+          "scene_id": "scene_spirited_away_river_spirit_departure_0003",
+          "listed_anchor_ids": [
+            "river_spirit_departure",
+            "no_face_loneliness"
+          ],
+          "shot_count": 8,
+          "anchor_usage_counts": {
+            "no_face_loneliness": 4,
+            "river_spirit_departure": 4
+          },
+          "both_anchors_genuinely_used": true,
+          "scene_level_single_authoritative_anchor_possible": false
+        },
+        {
+          "scene_id": "scene_spirited_away_no_face_loneliness_0004",
+          "listed_anchor_ids": [
+            "no_face_loneliness",
+            "train_memory_scene"
+          ],
+          "shot_count": 8,
+          "anchor_usage_counts": {
+            "train_memory_scene": 4,
+            "no_face_loneliness": 4
+          },
+          "both_anchors_genuinely_used": true,
+          "scene_level_single_authoritative_anchor_possible": false
+        },
+        {
+          "scene_id": "scene_spirited_away_boiler_room_0005",
+          "listed_anchor_ids": [
+            "train_memory_scene",
+            "bathhouse_arrival"
+          ],
+          "shot_count": 8,
+          "anchor_usage_counts": {
+            "bathhouse_arrival": 4,
+            "train_memory_scene": 4
+          },
+          "both_anchors_genuinely_used": true,
+          "scene_level_single_authoritative_anchor_possible": false
+        }
+      ]
+    },
+    "7_style_final.no_live_structured_gonegi_keyed_library": "PASS",
+    "7_style_final.style_dna_bundle_confirmed_live_correction_applied": "PASS",
+    "7_style_final.numerical_dna_found_but_source_video_keyed_only": "PASS",
+    "7_style_final.approved_artstyle_text_found_and_disclosed": "PASS",
+    "7_style_final.still_not_resolvable_for_pbrp_style_slot": "PASS",
+    "7_style_final.no_style_data_generated_by_this_check": "PASS",
+    "7_style_final_verification": {
+      "live_structured_gonegi_keyed_library_found": false,
+      "style_dna_bundle_live_at_exports": true,
+      "style_dna_bundle_correction_note": "CORRECTION of PHASE-002: exports/image_app/latest_v5/style_dna_bundle.json is confirmed LIVE (git-tracked, not pending deletion, unmodified since before the cleanup-rollback-snapshot was even taken) -- PHASE-002 incorrectly inferred from its presence in cleanup-rollback-snapshot-v1 that it was deleted/non-live. That snapshot records cleanup CANDIDATES, not confirmed deletions, and this exact file is absent from the real cleanup-execution record. Its CONTENT classification from PHASE-002 stands unchanged: a Music Drama Grammar Core adapter/reference bundle with zero color/palette/texture/render-style fields -- not a visual Style DNA library, live or not.",
+      "numerical_style_dna_found": true,
+      "numerical_style_dna_source_video_ids": [
+        "GHIBLI_01",
+        "GHIBLI_02",
+        "GHIBLI_03",
+        "GHIBLI_04",
+        "GHIBLI_05",
+        "GHIBLI_06",
+        "GHIBLI_07",
+        "LITTLE_WOMEN_01",
+        "MORI_01",
+        "MORI_02",
+        "MORI_03",
+        "MORI_04",
+        "MORI_05",
+        "SHINKAI_01",
+        "SHINKAI_02",
+        "TITANIC_02"
+      ],
+      "numerical_style_dna_note": "Real, structured, numerical visual-style curves (color_palette_curve, saturation_curve, contrast_curve, brightness_curve, lighting_curve, shadow_curve, color_temperature_curve, fog_density_curve, depth_separation_curve) exist for 16 SOURCE VIDEOS -- but every one is keyed by source_video_id (the ORIGINAL analyzed movie, e.g. GHIBLI_01, TITANIC_02), never by a GONEGI_MEDITERRANEAN/Gonegi-world identity. None of them answers \"what should a Gonegi-world render look like\" -- only \"what did this source movie look like\".",
+      "approved_artstyle_text_found": true,
+      "approved_artstyle_text": "Studio Ghibli hand-painted gouache style, clean and crisp black ink outlines, enhanced with Vitreous Paradox (combination of dry matte chalky textures and high-gloss translucent enamel varnishing), using deep layered oil glazing techniques for luminous ambient light refraction.",
+      "approved_artstyle_note": "A real, live, single global plain-text art-style description exists (loadable via the real services/approvedOriginalsLoader.ts), and is a genuine, non-fabricated candidate for a global, non-scene-specific Style Direction value. It is NOT a structured, per-id/per-scene-queryable DNA library the way Character/Location/Lighting DNA are (no metadata fields, no id-based lookup, no world_identity tagging). Its only confirmed real consumers in this repository are movie_spatial (Path-B) exports -- PBRP has never consumed it, and wiring it in would be a new plumbing decision this phase does not make, given this phase's own Path-B boundary. Reported here, not integrated.",
+      "resolvable": false,
+      "final_verdict": "No live, structured, Gonegi-world-keyed Style DNA library exists (confirmed across BOTH datasets/ and exports/, correcting and extending PHASE-002's datasets/-only search). One real, live, unconditional global plain-text style descriptor exists but is structurally unlike the other DNA libraries and is not wired to PBRP. GAP remains NOT_RESOLVABLE for PBRP's Style Direction slot as originally scoped."
+    },
+    "8_provenance.scene_aware_selection_has_provenance_string": "PASS",
+    "8_provenance.location_reverify_cites_cross_reference_source": "PASS",
+    "8_provenance.lighting_correction_cites_what_changed": "PASS",
+    "regression.binder_file_untouched_by_this_phase": "PASS",
+    "regression.selector_still_has_no_reconciliation_import": "PASS",
+    "regression.composer_still_has_no_reconciliation_import": "PASS",
+    "regression.reconciliation_module_api_free": "PASS",
+    "regression.reconciliation_module_no_path_b": "PASS",
+    "regression.reconciliation_module_read_only": "PASS",
+    "regression.phase_002_titanic_scan_still_30_scenes": "PASS",
+    "regression.phase_002_spirited_scan_still_300_scenes": "PASS",
+    "compliance.no_ai_studio_import": "PASS",
+    "compliance.no_pbrp_contract_file_reference": "PASS",
+    "compliance.no_shotgrammar_import_only_cross_reference": "PASS"
+  },
+  "issues": []
+}
