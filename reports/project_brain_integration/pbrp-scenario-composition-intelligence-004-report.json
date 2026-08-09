@@ -1,0 +1,762 @@
+{
+  "phase": "PHASE-PBRP-SCENARIO-COMPOSITION-INTELLIGENCE-004",
+  "generated_at": "2026-08-09T23:35:48.369Z",
+  "results": {
+    "titanic.assembly_pass": "PASS",
+    "titanic.ground_truth_priority_applied": "PASS",
+    "titanic.camera_is_real_scene_bound": "PASS",
+    "titanic.composition_is_real_scene_bound": "PASS",
+    "titanic.blocking_is_real_scene_bound": "PASS",
+    "titanic.character_visual_dna_included": "PASS",
+    "titanic.character_visual_dna_second_cast_member_included": "PASS",
+    "titanic.character_fully_resolved": "PASS",
+    "titanic.location_not_derivable_with_real_reason": "PASS",
+    "titanic.lighting_not_derivable_with_real_reason": "PASS",
+    "titanic.style_not_derivable": "PASS",
+    "titanic.conflict_preserved_not_dropped": "PASS",
+    "titanic.no_conflict_falsely_cleared_by_trivial_mirror_field": "PASS",
+    "titanic.final_text_contains_all_seven_directions": "PASS",
+    "titanic.provenance_present_for_every_direction": "PASS",
+    "spirited.assembly_pass": "PASS",
+    "spirited.ground_truth_priority_applied": "PASS",
+    "spirited.camera_is_real_scene_bound": "PASS",
+    "spirited.composition_is_real_scene_bound": "PASS",
+    "spirited.blocking_is_real_scene_bound": "PASS",
+    "spirited.character_visual_dna_gonegi_included": "PASS",
+    "spirited.character_visual_dna_dana_included_per_phase_003_finding": "PASS",
+    "spirited.character_fully_resolved": "PASS",
+    "spirited.location_not_derivable_structural": "PASS",
+    "spirited.lighting_not_derivable": "PASS",
+    "spirited.style_not_derivable": "PASS",
+    "spirited.conflict_preserved_emotion_and_camera_framing": "PASS",
+    "spirited.participant_conflict_correctly_cleared_by_dual_anchor": "PASS",
+    "spirited.corrected_conflict_still_visible_in_net_conflicts": "PASS",
+    "spirited.final_text_contains_all_seven_directions": "PASS",
+    "ground_truth_priority.titanic_applied_differs_from_raw_selector": "PASS",
+    "ground_truth_priority.spirited_applied_differs_from_raw_selector": "PASS",
+    "positive_path.location_derived_when_real_match_exists": "PASS",
+    "positive_path.location_text_uses_real_verbatim_fields": "PASS",
+    "positive_path.lighting_derived_when_real_pairing_exists": "PASS",
+    "positive_path.style_still_not_derivable_even_when_location_resolves": "PASS",
+    "regression.deterministic_output": "PASS",
+    "regression.missing_scene_fails_cleanly": "PASS",
+    "regression.selector_untouched": "PASS",
+    "regression.composer_untouched": "PASS",
+    "regression.binder_untouched": "PASS",
+    "regression.reconciliation_untouched": "PASS",
+    "regression.character_visual_dna_library_untouched": "PASS",
+    "regression.assembler_api_free": "PASS",
+    "regression.assembler_no_path_b": "PASS",
+    "regression.assembler_read_only": "PASS"
+  },
+  "issues": [],
+  "sample_scenarios": {
+    "titanic": {
+      "scene_id": "scene_titanic_02_dining_salon_008",
+      "source": "titanic",
+      "pass": true,
+      "errors": [],
+      "ground_truth_priority": {
+        "applied_source_registry": "scene_ground_truth",
+        "priority_reason": "GROUND_TRUTH_RESOLVED_AND_APPLIED"
+      },
+      "character_direction": {
+        "cast": [
+          {
+            "raw_id": "CHAR-gonagi",
+            "resolved": {
+              "id": "char_1-1",
+              "name": "Gonegi",
+              "visual_dna": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+              "master_image_id": "dna_master",
+              "elite_image_id": "elite-image-gonegi-main-v1",
+              "type": "main",
+              "grid_position": "1-1"
+            },
+            "resolution_note": "matched by name (case-insensitive) after stripping 'CHAR-' prefix (applied known spelling variant 'gonagi' -> 'gonegi')"
+          },
+          {
+            "raw_id": "CHAR-dana",
+            "resolved": {
+              "id": "char_1-2",
+              "name": "Dana",
+              "visual_dna": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+              "master_image_id": "dna_master",
+              "elite_image_id": "elite-image-dana-companion-v1",
+              "type": "main",
+              "grid_position": "1-2"
+            },
+            "resolution_note": "matched by name (case-insensitive) after stripping 'CHAR-' prefix"
+          }
+        ],
+        "cast_raw_ids": [
+          "CHAR-gonagi",
+          "CHAR-dana"
+        ],
+        "cast_source_note": "gonegi_characters from this scene's single, directly-named anchor (titanic_bow_pose).",
+        "fully_resolved": true
+      },
+      "camera_direction": {
+        "id": "titanic_cam_009",
+        "text": "push_in_emotion (medium_shot, height=low, movement=static, fov=50mm_equivalent)",
+        "raw": {
+          "camera_pattern_id": "titanic_cam_009",
+          "source_video_id": "TITANIC_02",
+          "scene_type": "bow_deck",
+          "camera_language": "push_in_emotion",
+          "shot_type": "medium_shot",
+          "camera_height": "low",
+          "camera_movement": "static",
+          "fov_hint": "50mm_equivalent",
+          "framing_intent": "preserve_scene_grammar_not_world_identity",
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "composition_direction": {
+        "id": "titanic_comp_009",
+        "text": "narrative priority (horizon_weight=0.62, subject_scale=balanced_two_shot, negative_space=sky_dominant)",
+        "raw": {
+          "composition_id": "titanic_comp_009",
+          "source_video_id": "TITANIC_02",
+          "composition_priority": "narrative",
+          "horizon_weight": 0.62,
+          "subject_scale": "balanced_two_shot",
+          "negative_space_policy": "sky_dominant",
+          "visibility_requirements": [
+            "semantic_anchor_visible",
+            "blocking_geometry_visible"
+          ],
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "blocking_direction": {
+        "id": "titanic_blk_009",
+        "text": "rail_parallel, intercepted_gaze (2 positions)",
+        "raw": {
+          "blocking_pattern_id": "titanic_blk_009",
+          "source_video_id": "TITANIC_02",
+          "group_layout": "rail_parallel",
+          "spatial_relationship": "intercepted_gaze",
+          "character_positions": [
+            {
+              "character_ref": "lead_a",
+              "position": [
+                0.62,
+                0.45
+              ]
+            },
+            {
+              "character_ref": "lead_b",
+              "position": [
+                0.6100000000000001,
+                0.52
+              ]
+            }
+          ],
+          "movement_path_bound": true,
+          "emotion_staging": "longing, social tension, destiny",
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "location_direction": {
+        "location_id": "gonegi_harbor_lane_01",
+        "status": "NOT_DERIVABLE",
+        "text": "NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.",
+        "gap": {
+          "target_location_id": "gonegi_harbor_lane_01",
+          "scope": "per_scene",
+          "exact_match_found": false,
+          "matched_library": null,
+          "near_name_candidates": [
+            {
+              "location_id": "harbor_main_dock_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_small_pier_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_boatyard_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_fish_market_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_stairway_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_seawall_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_watch_point_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_warehouse_edge_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_lighthouse_base_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_mooring_post_row_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_net_mending_shed_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "harbor_ticket_shelter_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "village_bakery_lane_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "lane"
+              ]
+            },
+            {
+              "location_id": "village_harbor_road_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "stone_path_to_harbor_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "shared_harbor_meeting_bench_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "shared_memory_lane_01",
+              "source_library": "datasets/location/location-dna-library-v1.json",
+              "shared_tokens": [
+                "lane"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_watch_point_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_sunset_bench_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            },
+            {
+              "location_id": "outdoor_layout_lock_harbor_cliff_path_01",
+              "source_library": "datasets/location/outdoor-layout-lock-library-v1.json",
+              "shared_tokens": [
+                "harbor"
+              ]
+            }
+          ],
+          "resolvable": false,
+          "resolution_note": "No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution."
+        }
+      },
+      "lighting_direction": {
+        "status": "NOT_DERIVABLE",
+        "text": "NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.)",
+        "correction": null
+      },
+      "style_direction": {
+        "status": "NOT_DERIVABLE",
+        "text": "NOT_DERIVABLE",
+        "note": "No live, structured, Gonegi-world-keyed Style DNA library exists (confirmed across BOTH datasets/ and exports/, correcting and extending PHASE-002's datasets/-only search). One real, live, unconditional global plain-text style descriptor exists but is structurally unlike the other DNA libraries and is not wired to PBRP. GAP remains NOT_RESOLVABLE for PBRP's Style Direction slot as originally scoped."
+      },
+      "conflict_state": {
+        "has_unresolved_conflicts": true,
+        "conflicts": [
+          {
+            "type": "EMOTION_ANCHOR_VS_BLOCKING",
+            "scene_id": "scene_titanic_02_dining_salon_008",
+            "detail": "The semantic anchor's own emotion and the bound blocking pattern's emotion field share no keyword.",
+            "value_a": {
+              "source": "semantic_anchor.emotion",
+              "value": "freedom, romance, wonder"
+            },
+            "value_b": {
+              "source": "blocking_pattern.emotion_staging",
+              "value": "longing, social tension, destiny"
+            }
+          }
+        ],
+        "resolution_policy": "NONE_AUTO_RESOLVED",
+        "note": "1 real conflict(s) detected between sourced fields for this scene; none merged, tie-broken, or discarded -- both real values are carried forward as explicit unresolved state."
+      },
+      "net_conflicts": [
+        {
+          "type": "EMOTION_ANCHOR_VS_BLOCKING",
+          "scene_id": "scene_titanic_02_dining_salon_008",
+          "detail": "The semantic anchor's own emotion and the bound blocking pattern's emotion field share no keyword.",
+          "value_a": {
+            "source": "semantic_anchor.emotion",
+            "value": "freedom, romance, wonder"
+          },
+          "value_b": {
+            "source": "blocking_pattern.emotion_staging",
+            "value": "longing, social tension, destiny"
+          }
+        }
+      ],
+      "final_text": "Character: Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.\nBlocking: rail_parallel, intercepted_gaze (2 positions)\nCamera: push_in_emotion (medium_shot, height=low, movement=static, fov=50mm_equivalent)\nComposition: narrative priority (horizon_weight=0.62, subject_scale=balanced_two_shot, negative_space=sky_dominant)\nLocation: NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.\nLighting: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.)\nStyle: NOT_DERIVABLE",
+      "provenance": {
+        "ground_truth_priority": "scene-bound ground truth from scene_titanic_02_dining_salon_008's own real registry fields (PHASE-002 binder); emotion selector run for comparison only, never applied while ground truth resolves",
+        "character": "gonegi_characters from this scene's single, directly-named anchor (titanic_bow_pose).",
+        "camera": "datasets/movie_reconstruction/titanic/titanic-camera-registry.json -> titanic_cam_009",
+        "composition": "datasets/movie_reconstruction/titanic/titanic-composition-registry.json -> titanic_comp_009",
+        "blocking": "datasets/movie_reconstruction/titanic/titanic-blocking-registry.json -> titanic_blk_009",
+        "location": "NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.",
+        "lighting": "NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: No real exact id match in any of 4 real location libraries. 20 lexically-related real id(s) exist (e.g. shared domain tokens), listed as candidates only -- no field anywhere links 'gonegi_harbor_lane_01' to any of them, so adopting one would be an invented mapping, not a resolution.)",
+        "style": "No live, structured, Gonegi-world-keyed Style DNA library exists (confirmed across BOTH datasets/ and exports/, correcting and extending PHASE-002's datasets/-only search). One real, live, unconditional global plain-text style descriptor exists but is structurally unlike the other DNA libraries and is not wired to PBRP. GAP remains NOT_RESOLVABLE for PBRP's Style Direction slot as originally scoped.",
+        "conflicts": "PHASE-002 detectSceneConflicts + PHASE-003 detectDualAnchorConflicts, reconciled without silent removal (see net_conflicts)"
+      }
+    },
+    "spirited_away": {
+      "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+      "source": "spirited_away",
+      "pass": true,
+      "errors": [],
+      "ground_truth_priority": {
+        "applied_source_registry": "scene_ground_truth",
+        "priority_reason": "GROUND_TRUTH_RESOLVED_AND_APPLIED"
+      },
+      "character_direction": {
+        "cast": [
+          {
+            "raw_id": "CHAR-gonagi",
+            "resolved": {
+              "id": "char_1-1",
+              "name": "Gonegi",
+              "visual_dna": "[Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes.",
+              "master_image_id": "dna_master",
+              "elite_image_id": "elite-image-gonegi-main-v1",
+              "type": "main",
+              "grid_position": "1-1"
+            },
+            "resolution_note": "matched by name (case-insensitive) after stripping 'CHAR-' prefix (applied known spelling variant 'gonagi' -> 'gonegi')"
+          },
+          {
+            "raw_id": "CHAR-dana",
+            "resolved": {
+              "id": "char_1-2",
+              "name": "Dana",
+              "visual_dna": "[Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.",
+              "master_image_id": "dna_master",
+              "elite_image_id": "elite-image-dana-companion-v1",
+              "type": "main",
+              "grid_position": "1-2"
+            },
+            "resolution_note": "matched by name (case-insensitive) after stripping 'CHAR-' prefix"
+          }
+        ],
+        "cast_raw_ids": [
+          "CHAR-gonagi",
+          "CHAR-dana"
+        ],
+        "cast_source_note": "Union of gonegi_characters across all 2 of this scene's real listed anchors (bathhouse_arrival, bridge_crossing) -- PHASE-003 confirmed both are genuinely, evenly used by this scene's real shots, so no single anchor is treated as sole cast authority.",
+        "fully_resolved": true
+      },
+      "camera_direction": {
+        "id": "spirited_cam_0001",
+        "text": "tracking_follow (medium_two_shot, movement=lateral_track, perspective=low_angle, energy=0.62)",
+        "raw": {
+          "camera_id": "spirited_cam_0001",
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "camera_grammar": "tracking_follow",
+          "camera_movement": "lateral_track",
+          "camera_framing": "medium_two_shot",
+          "camera_perspective": "low_angle",
+          "camera_energy": 0.62,
+          "movie_dataset_control": true,
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "composition_direction": {
+        "id": "spirited_comp_0001",
+        "text": "foreground=architectural_frame, midground=ritual_activity, background=memory_sky_plane (composition_score=0.92)",
+        "raw": {
+          "composition_id": "spirited_comp_0001",
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "foreground": "architectural_frame",
+          "midground": "ritual_activity",
+          "background": "memory_sky_plane",
+          "visual_balance": 0.892,
+          "composition_score": 0.92,
+          "movie_dataset_control": true,
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "blocking_direction": {
+        "id": "spirited_blk_0001",
+        "text": "pair_offset, left_third (participant_count=2)",
+        "raw": {
+          "blocking_id": "spirited_blk_0001",
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "character_placement": "left_third",
+          "distance": 0.2,
+          "orientation": "profile_to_path",
+          "group_blocking": "pair_offset",
+          "participant_count": 2,
+          "movie_dataset_control": true,
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "location_direction": {
+        "location_id": null,
+        "status": "NOT_DERIVABLE",
+        "text": "NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.",
+        "gap": {
+          "target_location_id": null,
+          "scope": "structural_dataset_wide",
+          "exact_match_found": false,
+          "matched_library": null,
+          "near_name_candidates": [],
+          "resolvable": false,
+          "resolution_note": "Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic."
+        }
+      },
+      "lighting_direction": {
+        "status": "NOT_DERIVABLE",
+        "text": "NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.)",
+        "correction": null
+      },
+      "style_direction": {
+        "status": "NOT_DERIVABLE",
+        "text": "NOT_DERIVABLE",
+        "note": "No live, structured, Gonegi-world-keyed Style DNA library exists (confirmed across BOTH datasets/ and exports/, correcting and extending PHASE-002's datasets/-only search). One real, live, unconditional global plain-text style descriptor exists but is structurally unlike the other DNA libraries and is not wired to PBRP. GAP remains NOT_RESOLVABLE for PBRP's Style Direction slot as originally scoped."
+      },
+      "conflict_state": {
+        "has_unresolved_conflicts": true,
+        "conflicts": [
+          {
+            "type": "EMOTION_ANCHOR_VS_SCENE",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "detail": "The semantic anchor's own emotion and the scene's own emotion field share no keyword.",
+            "value_a": {
+              "source": "semantic_anchor.emotion",
+              "value": "wonder, disorientation, courage"
+            },
+            "value_b": {
+              "source": "scene.emotion_state",
+              "value": "loneliness, longing, vulnerability"
+            }
+          },
+          {
+            "type": "CAMERA_FRAMING_VS_ANCHOR_SOLO",
+            "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+            "detail": "The bound camera pattern's own framing implies more than one figure, but the primary semantic anchor's own participant count is 1 (solo).",
+            "value_a": {
+              "source": "semantic_anchor.participants",
+              "value": "1"
+            },
+            "value_b": {
+              "source": "camera.camera_framing",
+              "value": "medium_two_shot"
+            }
+          }
+        ],
+        "resolution_policy": "NONE_AUTO_RESOLVED",
+        "note": "2 real conflict(s) detected between sourced fields for this scene; none merged, tie-broken, or discarded -- both real values are carried forward as explicit unresolved state."
+      },
+      "net_conflicts": [
+        {
+          "type": "EMOTION_ANCHOR_VS_SCENE",
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "detail": "The semantic anchor's own emotion and the scene's own emotion field share no keyword.",
+          "value_a": {
+            "source": "semantic_anchor.emotion",
+            "value": "wonder, disorientation, courage"
+          },
+          "value_b": {
+            "source": "scene.emotion_state",
+            "value": "loneliness, longing, vulnerability"
+          }
+        },
+        {
+          "type": "PARTICIPANT_ANCHOR_VS_BLOCKING",
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "detail": "The primary semantic anchor's own participant count and the bound blocking pattern's participant_count disagree.",
+          "value_a": {
+            "source": "semantic_anchor.participants",
+            "value": "1"
+          },
+          "value_b": {
+            "source": "blocking_pattern.participant_count",
+            "value": "2"
+          },
+          "corrected_by_dual_anchor_check": true
+        },
+        {
+          "type": "CAMERA_FRAMING_VS_ANCHOR_SOLO",
+          "scene_id": "scene_spirited_away_bathhouse_arrival_0001",
+          "detail": "The bound camera pattern's own framing implies more than one figure, but the primary semantic anchor's own participant count is 1 (solo).",
+          "value_a": {
+            "source": "semantic_anchor.participants",
+            "value": "1"
+          },
+          "value_b": {
+            "source": "camera.camera_framing",
+            "value": "medium_two_shot"
+          }
+        }
+      ],
+      "final_text": "Character: Gonegi: [Gonegi (고네기)] Core Identity: Soulful and determined 11yo boy. 164cm. [Relational Anchor: Gamja is always nearby at his side or at his feet]. 1:6.5 slender ratio with a slightly larger head to maximize facial expression density. Face & Eyes: Mature and refined Pazu-lookalike. Eyes: Classic Ghibli shape with deep, large expressive pupils and a single, sharp crystalline highlight (#FFFFF0). Hair: Messy matte jet-black hair. Skin: Healthy sun-kissed tan (#F2D1B3). Outfit: Off-white henley shirt (sleeves rolled up), High-waisted deep navy-blue trousers (#000080), and Dark umber-brown suspenders. Footwear: Simple dark brown worn leather work boots. Protagonist Aura, expressive eyes. / Dana: [Dana (다나)] Core Identity: Pure, nostalgic, and airy 11yo girl. 152cm. [Relational Anchor: Aengdu is always nearby, sitting by her side or peering from behind her]. 1:6.3 slender ratio. Face & Eyes: Mature but soft facial structure. Eyes: Large, clear oceanic blue (#2E5894) with a look of longing. Hair: Long flowing soft chestnut hair (#8B5A2B) in low twin ponytails tied with thin blue strings. Skin: Fair and clear complexion with sharp-edged lavender-tinted shadows (#967BB6). Outfit: One-piece sleeveless shift dress in Solid Pale Cornflower Blue (#ABCDEF). Accessory: Single small seashell pendant. Footwear: Simple flat dark-brown leather sandals (thin straps). Protagonist Aura, expressive eyes.\nBlocking: pair_offset, left_third (participant_count=2)\nCamera: tracking_follow (medium_two_shot, movement=lateral_track, perspective=low_angle, energy=0.62)\nComposition: foreground=architectural_frame, midground=ritual_activity, background=memory_sky_plane (composition_score=0.92)\nLocation: NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.\nLighting: NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.)\nStyle: NOT_DERIVABLE",
+      "provenance": {
+        "ground_truth_priority": "scene-bound ground truth from scene_spirited_away_bathhouse_arrival_0001's own real registry fields (PHASE-002 binder); emotion selector run for comparison only, never applied while ground truth resolves",
+        "character": "Union of gonegi_characters across all 2 of this scene's real listed anchors (bathhouse_arrival, bridge_crossing) -- PHASE-003 confirmed both are genuinely, evenly used by this scene's real shots, so no single anchor is treated as sole cast authority.",
+        "camera": "datasets/movie_reconstruction/spirited_away/spirited-away-camera-registry.json -> spirited_cam_0001",
+        "composition": "datasets/movie_reconstruction/spirited_away/spirited-away-composition-registry.json -> spirited_comp_0001",
+        "blocking": "datasets/movie_reconstruction/spirited_away/spirited-away-blocking-registry.json -> spirited_blk_0001",
+        "location": "NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.",
+        "lighting": "NOT_DERIVABLE: no real matched location to pair lighting against (NOT_DERIVABLE: Structural: gonegi_translation has no target_location_id key on ANY of this source's 300 real scenes (confirmed by exhaustive scan, not a single-scene omission) -- there is no real field to bind, so this cannot be resolved by better connection logic.)",
+        "style": "No live, structured, Gonegi-world-keyed Style DNA library exists (confirmed across BOTH datasets/ and exports/, correcting and extending PHASE-002's datasets/-only search). One real, live, unconditional global plain-text style descriptor exists but is structurally unlike the other DNA libraries and is not wired to PBRP. GAP remains NOT_RESOLVABLE for PBRP's Style Direction slot as originally scoped.",
+        "conflicts": "PHASE-002 detectSceneConflicts + PHASE-003 detectDualAnchorConflicts, reconciled without silent removal (see net_conflicts)"
+      }
+    },
+    "positive_location_demo": {
+      "scene_id": "scene_titanic_02_crowd_departure_005",
+      "source": "titanic",
+      "pass": true,
+      "errors": [],
+      "ground_truth_priority": {
+        "applied_source_registry": "scene_ground_truth",
+        "priority_reason": "GROUND_TRUTH_RESOLVED_AND_APPLIED"
+      },
+      "character_direction": {
+        "cast": [],
+        "cast_raw_ids": [],
+        "cast_source_note": "gonegi_characters from this scene's single, directly-named anchor (titanic_deck_to_interior_transition).",
+        "fully_resolved": true
+      },
+      "camera_direction": {
+        "id": "titanic_cam_006",
+        "text": "crane_descent (medium_shot, height=low, movement=crane, fov=35mm_equivalent)",
+        "raw": {
+          "camera_pattern_id": "titanic_cam_006",
+          "source_video_id": "TITANIC_02",
+          "scene_type": "bow_deck",
+          "camera_language": "crane_descent",
+          "shot_type": "medium_shot",
+          "camera_height": "low",
+          "camera_movement": "crane",
+          "fov_hint": "35mm_equivalent",
+          "framing_intent": "preserve_scene_grammar_not_world_identity",
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "composition_direction": {
+        "id": "titanic_comp_006",
+        "text": "narrative priority (horizon_weight=0.53, subject_scale=balanced_two_shot, negative_space=sky_dominant)",
+        "raw": {
+          "composition_id": "titanic_comp_006",
+          "source_video_id": "TITANIC_02",
+          "composition_priority": "narrative",
+          "horizon_weight": 0.53,
+          "subject_scale": "balanced_two_shot",
+          "negative_space_policy": "sky_dominant",
+          "visibility_requirements": [
+            "semantic_anchor_visible",
+            "blocking_geometry_visible"
+          ],
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "blocking_direction": {
+        "id": "titanic_blk_006",
+        "text": "two_shot_balanced, companionship_parallel (2 positions)",
+        "raw": {
+          "blocking_pattern_id": "titanic_blk_006",
+          "source_video_id": "TITANIC_02",
+          "group_layout": "two_shot_balanced",
+          "spatial_relationship": "companionship_parallel",
+          "character_positions": [
+            {
+              "character_ref": "lead_a",
+              "position": [
+                0.38,
+                0.45
+              ]
+            },
+            {
+              "character_ref": "lead_b",
+              "position": [
+                0.67,
+                0.48
+              ]
+            }
+          ],
+          "movement_path_bound": true,
+          "emotion_staging": "joy, discovery",
+          "world_identity_control": "FORBIDDEN"
+        }
+      },
+      "location_direction": {
+        "location_id": "gonegi_bedroom_01",
+        "status": "DERIVED",
+        "text": "Gonegi Bedroom (domestic_interior): low wooden bed frame, sun-washed whitewash walls, single east-facing window, plaster wall texture, simple timber lintel, worn floorboards; color anchors: warm cream walls, soft blue morning fill, navy textile accent",
+        "gap": {
+          "target_location_id": "gonegi_bedroom_01",
+          "scope": "per_scene",
+          "exact_match_found": true,
+          "matched_library": "datasets/location/location-dna-library-v1.json",
+          "near_name_candidates": [],
+          "resolvable": true,
+          "resolution_note": "Real exact match found in datasets/location/location-dna-library-v1.json."
+        }
+      },
+      "lighting_direction": {
+        "status": "DERIVED",
+        "text": "Sunrise Bakery Bedroom: soft pink morning mist with gentle golden edge on whitewash (key_light=#FFD1DC, contrast=soft_low) | Blue Hour Window Corner: blue hour window corner with cool exterior fill (key_light=#9FB4C7, contrast=soft_cool)",
+        "correction": {
+          "location_id": "gonegi_bedroom_01",
+          "resolved_via_pairing_table": true,
+          "resolved_via_location_affinity": true,
+          "resolvable": true,
+          "matched_lighting_ids": [
+            "sunrise_bakery_bedroom",
+            "blue_hour_window_corner"
+          ],
+          "correction_note": "PHASE-002 checked only section_4_location_pairing.pairings; this phase additionally checks each lighting_profile's own real location_affinity array (a second, independent real field in the same file) and unions both. This is a real correction to PHASE-002's own coverage numbers, not a new capability."
+        }
+      },
+      "style_direction": {
+        "status": "NOT_DERIVABLE",
+        "text": "NOT_DERIVABLE",
+        "note": "No live, structured, Gonegi-world-keyed Style DNA library exists (confirmed across BOTH datasets/ and exports/, correcting and extending PHASE-002's datasets/-only search). One real, live, unconditional global plain-text style descriptor exists but is structurally unlike the other DNA libraries and is not wired to PBRP. GAP remains NOT_RESOLVABLE for PBRP's Style Direction slot as originally scoped."
+      },
+      "conflict_state": {
+        "has_unresolved_conflicts": true,
+        "conflicts": [
+          {
+            "type": "EMOTION_ANCHOR_VS_BLOCKING",
+            "scene_id": "scene_titanic_02_crowd_departure_005",
+            "detail": "The semantic anchor's own emotion and the bound blocking pattern's emotion field share no keyword.",
+            "value_a": {
+              "source": "semantic_anchor.emotion",
+              "value": "shift, anticipation, constraint"
+            },
+            "value_b": {
+              "source": "blocking_pattern.emotion_staging",
+              "value": "joy, discovery"
+            }
+          },
+          {
+            "type": "PARTICIPANT_ANCHOR_VS_BLOCKING",
+            "scene_id": "scene_titanic_02_crowd_departure_005",
+            "detail": "The semantic anchor's own participant count and the bound blocking pattern's character_positions length disagree.",
+            "value_a": {
+              "source": "semantic_anchor.participants",
+              "value": "1"
+            },
+            "value_b": {
+              "source": "blocking_pattern.character_positions.length",
+              "value": "2"
+            }
+          }
+        ],
+        "resolution_policy": "NONE_AUTO_RESOLVED",
+        "note": "2 real conflict(s) detected between sourced fields for this scene; none merged, tie-broken, or discarded -- both real values are carried forward as explicit unresolved state."
+      },
+      "net_conflicts": [
+        {
+          "type": "EMOTION_ANCHOR_VS_BLOCKING",
+          "scene_id": "scene_titanic_02_crowd_departure_005",
+          "detail": "The semantic anchor's own emotion and the bound blocking pattern's emotion field share no keyword.",
+          "value_a": {
+            "source": "semantic_anchor.emotion",
+            "value": "shift, anticipation, constraint"
+          },
+          "value_b": {
+            "source": "blocking_pattern.emotion_staging",
+            "value": "joy, discovery"
+          }
+        },
+        {
+          "type": "PARTICIPANT_ANCHOR_VS_BLOCKING",
+          "scene_id": "scene_titanic_02_crowd_departure_005",
+          "detail": "The semantic anchor's own participant count and the bound blocking pattern's character_positions length disagree.",
+          "value_a": {
+            "source": "semantic_anchor.participants",
+            "value": "1"
+          },
+          "value_b": {
+            "source": "blocking_pattern.character_positions.length",
+            "value": "2"
+          }
+        }
+      ],
+      "final_text": "Character: NOT_DERIVABLE\nBlocking: two_shot_balanced, companionship_parallel (2 positions)\nCamera: crane_descent (medium_shot, height=low, movement=crane, fov=35mm_equivalent)\nComposition: narrative priority (horizon_weight=0.53, subject_scale=balanced_two_shot, negative_space=sky_dominant)\nLocation: Gonegi Bedroom (domestic_interior): low wooden bed frame, sun-washed whitewash walls, single east-facing window, plaster wall texture, simple timber lintel, worn floorboards; color anchors: warm cream walls, soft blue morning fill, navy textile accent\nLighting: Sunrise Bakery Bedroom: soft pink morning mist with gentle golden edge on whitewash (key_light=#FFD1DC, contrast=soft_low) | Blue Hour Window Corner: blue hour window corner with cool exterior fill (key_light=#9FB4C7, contrast=soft_cool)\nStyle: NOT_DERIVABLE",
+      "provenance": {
+        "ground_truth_priority": "scene-bound ground truth from scene_titanic_02_crowd_departure_005's own real registry fields (PHASE-002 binder); emotion selector run for comparison only, never applied while ground truth resolves",
+        "character": "gonegi_characters from this scene's single, directly-named anchor (titanic_deck_to_interior_transition).",
+        "camera": "datasets/movie_reconstruction/titanic/titanic-camera-registry.json -> titanic_cam_006",
+        "composition": "datasets/movie_reconstruction/titanic/titanic-composition-registry.json -> titanic_comp_006",
+        "blocking": "datasets/movie_reconstruction/titanic/titanic-blocking-registry.json -> titanic_blk_006",
+        "location": "datasets/location/location-dna-library-v1.json -> gonegi_bedroom_01",
+        "lighting": "datasets/lighting/lighting-dna-library-v1.json -> sunrise_bakery_bedroom, blue_hour_window_corner",
+        "style": "No live, structured, Gonegi-world-keyed Style DNA library exists (confirmed across BOTH datasets/ and exports/, correcting and extending PHASE-002's datasets/-only search). One real, live, unconditional global plain-text style descriptor exists but is structurally unlike the other DNA libraries and is not wired to PBRP. GAP remains NOT_RESOLVABLE for PBRP's Style Direction slot as originally scoped.",
+        "conflicts": "PHASE-002 detectSceneConflicts + PHASE-003 detectDualAnchorConflicts, reconciled without silent removal (see net_conflicts)"
+      }
+    }
+  }
+}
