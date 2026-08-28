@@ -1,1 +1,10 @@
 node_modules/
+
+# Nested-repo isolation prep: AIStudio-App (its own independent git repo,
+# currently at E:\Gonegi-AIStudio\AIStudio-App) may be relocated into this
+# tree. Ignored ahead of any move so outer `git add` can never sweep its
+# files in as plain blobs -- exactly what already happened to
+# nexus_project_migration_v82.6_clean/nexus_project_migration_v82.6/ (a
+# nested repo whose files got tracked here as regular 100644 blobs instead
+# of staying isolated).
+/Gonegi-AIStudio/
