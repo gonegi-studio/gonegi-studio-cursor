@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_ssi_s16_capability_signal_independent_validation_01",
+  "phase": "PHASE-SSI-S16",
+  "generated_at": "2026-08-24T11:47:43.515Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Independently validated PHASE-SSI-S15's cap_dataset_management capability-axis candidate by re-deriving the real entity-concentration figure directly from the current LPM (not trusting the records' own cited number), cross-checking the current functional-status overlay and trace chain, and verifying the records' 'same root cause' claim against that independent re-derivation",
+    "candidate_id": "sig_altaxis_capability_cap_dataset_management"
+  },
+  "problem": "PHASE-SSI-S15 found a capability-axis signal grounded in 2 real Experience records whose own text asserts a shared root cause (946: 'Same as exp_phase942's cause'), but that assertion had only ever been checked against the records' own self-reported numbers -- it was unverified whether the underlying cap_dataset_management concentration and functional-status claims still hold against a fresh, independent recomputation from the current real LPM/overlay/trace data.",
+  "decision": {
+    "decision_summary": "Fresh recompute: cap_dataset_management=2117/2787 entities (76.0%), matches originally-cited absolute count=true. Overlay functional_status=pending matches 946's claim=true. Trace still cites this capability=true. Duplicate/conflict=false. 2 distinct real goals=true, 2 distinct kinds=true. Same-root-cause claim grounded in real data=true. 0 promotion, 0 policy-ization, 0 execution. Verdict: VALIDATED_CANDIDATE.",
+    "decided_at_phase": "PHASE-SSI-S16",
+    "verdict": "VALIDATED_CANDIDATE"
+  },
+  "action": {
+    "action_type": "capability_signal_independent_validation",
+    "action_summary": "Fresh-read both core Experience records; independently recomputed cap_dataset_management's real entity share from the current LPM; cross-checked the current functional-status overlay and the goal_semantic_quality trace chain; re-ran the E12/E23/E33+S-series/S1/S4 duplication-and-conflict check; confirmed the 2 goals and 2 experience_kinds are genuinely distinct; verified the records' own same-root-cause claim against the independently re-derived real data.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s16-capability-signal-validation-v1.json + project-brain-ssi-s16-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=VALIDATED_CANDIDATE, concentration_still_real=true, functional_status_matches=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Independent recomputation from the current real LPM/overlay/trace data corroborates both records' shared root-cause claim -- VALIDATED_CANDIDATE, still not promoted, not policy-ized, not executed."
+  },
+  "cause": {
+    "root_cause_summary": "A signal built from 2 records that assert a shared cause in their own text is only as trustworthy as that text, until an independent phase re-derives the same real numbers from the current source of truth (the LPM itself, not a prior phase's citation of it) and confirms they still agree -- self-consistency between 2 records is not the same evidentiary strength as agreement between a record's claim and a fresh, independent recomputation.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Validating a cross-goal, cross-kind capability signal requires re-deriving its central numeric claim from the actual current source data, not re-reading the two records' citations of it -- an assertion that a correction 'used the same cause' is corroborated, not merely repeated, when the real concentration and functional-status figures it depends on are recomputed fresh and still match.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

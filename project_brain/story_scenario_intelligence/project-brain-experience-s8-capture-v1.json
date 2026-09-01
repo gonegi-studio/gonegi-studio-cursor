@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s8_studio_intelligence_execution_boundary_01",
+  "phase": "PHASE-S8",
+  "generated_at": "2026-08-23T11:12:38.894Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Generalized S7's single-goal actionability judgment to all real execution units across the 4 production goals, using the full existing convention (owner_domain + explicitly_not_executed_this_phase/why_not_executed gating), not a new rule",
+    "execution_units_judged": 3
+  },
+  "problem": "S7 established DEFERRED for one goal's infrastructure-owned action, but it was unverified whether that was the only real blocker in the system, or whether some OTHER internal (non-infrastructure) execution unit was actually sitting genuinely executable and simply never checked.",
+  "decision": {
+    "decision_summary": "Judged 3 real execution units: goal_ghibli_production_pipeline=NOT_PENDING_ALREADY_RESOLVED, goal_production_runtime=DEFERRED_EXTERNAL_INFRASTRUCTURE, goal_semantic_quality=DEFERRED_EXPLICIT_SCOPE_GATE. Internally actionable: 0. No candidate generated -- none genuinely executable within this automation's boundary. External infrastructure dependency (goal_production_runtime) preserved DEFERRED: true. 0 new rule/score invented, 0 automatic execution, 0 forced bypass.",
+    "decided_at_phase": "PHASE-S8",
+    "verdict": "EXECUTION_BOUNDARY_VERIFIED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_execution_boundary_verification",
+    "action_summary": "Re-examined every real execution_unit on the 4 production goals' trace chains against the full existing owner_domain + explicit-gating convention; generated a candidate only for a genuinely executable internal unit if one existed; preserved all external/gated units as DEFERRED.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s8-execution-boundary-v1.json + project-brain-s8-verification-v1.json (this phase)",
+    "evidence_detail": "execution_units_judged=3, internally_actionable=0, external_infra_preserved=true, regression_all_passed=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Every real execution unit is either already resolved, externally infrastructure-blocked, or explicitly scope-gated -- 0 forced/invented candidates."
+  },
+  "cause": {
+    "root_cause_summary": "An execution boundary is only meaningfully verified once every real candidate action in the system has been checked against it, not just the one action a prior phase happened to select -- this phase closes that gap by checking all of them.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Owner-domain alone (infrastructure vs. not) is not the complete existing convention for what this automation may execute -- an internal action can still be explicitly gated (requiring a separately-scoped future phase or explicit user authorization), and honoring that gate is as much a part of the real execution boundary as the infrastructure/code distinction is.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_e6_goal_production_runtime_improvement_01",
+  "phase": "PHASE-E6",
+  "generated_at": "2026-08-22T12:02:05.139Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_production_runtime",
+    "capability_ids": [
+      "cap_production_runtime"
+    ],
+    "state_before": {
+      "functional_status": "blocked"
+    }
+  },
+  "problem": "PB had no mechanism to notice, on its own, that a Gap had been honestly re-confirmed multiple times with no state change (previously required a human to notice the pattern across separate phase reports).",
+  "decision": {
+    "decision_summary": "Reviewed candidate cand_exp_phase_e2_goal_production_runtime_04__execution_strategy_improvement (E5): ACCEPT and execute -- implement a real repeat_count + escalation_signal mechanism.",
+    "decided_at_phase": "PHASE-E6"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Implemented computeRepeatEscalationSignal() and applied it to all 3 real chains (trace v15, additive).",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-goal-gap-dependency-trace-v15.json (this phase) + 3 real deterministic tests (A/B/C, this phase)",
+    "evidence_detail": "Test results: [{\"test\":\"A_independent_recount_matches\",\"passed\":true},{\"test\":\"B_escalation_signal_true_when_threshold_met\",\"passed\":true},{\"test\":\"C_no_false_positive_for_unrelated_goal\",\"passed\":true}]"
+  },
+  "result": {
+    "functional_status_before": "blocked",
+    "functional_status_after": "blocked",
+    "note": "This result describes the IMPROVEMENT MECHANISM's own outcome (does repeat-tracking now exist and work), NOT goal_production_runtime's real GPU-dependent functional_status, which is unchanged and still genuinely blocked -- the improvement adds visibility, it does not (and does not claim to) resolve the underlying infrastructure dependency."
+  },
+  "cause": {
+    "root_cause_summary": "The real, ongoing GPU/infra dependency causes repeated honest re-verifications; PB previously had no structural mechanism to surface that repetition itself as a signal.",
+    "cause_type": "real_infra_dependency"
+  },
+  "lesson": "A self-improvement candidate grounded in real, corroborating evidence (4 independent honest re-confirmations) was reviewed, accepted, implemented as real code, and verified correct via 3 deterministic tests including a false-positive check -- the full Experience->Candidate->Decision->Action->Evidence->Experience loop closes successfully end to end.",
+  "links": {
+    "goal_ref": "goal_production_runtime",
+    "gap_ref": "gap_phase940_numerical_dna_gpu_production_unavailable",
+    "dependency_ref": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+    "capability_refs": [
+      "cap_production_runtime"
+    ]
+  }
+}

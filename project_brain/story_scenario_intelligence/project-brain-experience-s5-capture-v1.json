@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s5_studio_intelligence_decision_context_gap_resolution_01",
+  "phase": "PHASE-S5",
+  "generated_at": "2026-08-23T10:59:12.416Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Re-checked S4's Decision=null finding for goal_character_narrative_intelligence by broadening the search to PHASE-966/967/968/970 and related real artifacts",
+    "target_goal_id": "goal_character_narrative_intelligence"
+  },
+  "problem": "S4's search for structured EC-03 classification data was scoped only to PHASE-966's own classification_result array, which predates goal_character_narrative_intelligence and was never re-run to include it -- leaving Decision=null even though the same classification may exist elsewhere in structured form.",
+  "decision": {
+    "decision_summary": "Broadened search found 1 candidate real files; verified PHASE-968's promotion-impact-simulation carries a real structured field (impact.chain_impact.reason) explicitly applying EC-03/PERMANENT_BY_DESIGN to this exact goal, confirmed by candidate_goal_id match. Verdict: RESOLVED. Other 3 production goals untouched. 0 new structure, 0 modifications to PB/Goal/Gap/LPM/SSI/S0-S4.",
+    "decided_at_phase": "PHASE-S5",
+    "verdict": "RESOLVED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_decision_context_gap_resolution",
+    "action_summary": "Broadened S4's search scope to PHASE-966/967/968/970 and related artifacts; verified a real structured field resolves the Decision=null gap; reused it without creating new structure.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s5-decision-gap-resolution-v1.json + project-brain-s5-verification-v1.json (this phase)",
+    "evidence_detail": "structured_decision_found=true, verdict=RESOLVED, target_context_now_complete=true, regression_all_passed=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Resolved by reuse: PHASE-968's own impact.chain_impact.reason field is real, structured, and directly applicable -- no fabrication needed."
+  },
+  "cause": {
+    "root_cause_summary": "S4's search checked only the ORIGINAL classification source (PHASE-966), not the later phases that re-applied the same rule to a new case (PHASE-967/968) -- a search scoped to 'where the rule was first defined' misses 'where the rule was later re-applied'.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "When a rule is defined once and re-applied later to a new case, structured evidence of that re-application can live in a different phase's output than the rule's original definition -- searching only the origin point of a rule, not its later real applications, is a narrower search than it looks.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

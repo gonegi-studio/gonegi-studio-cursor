@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_e22_cross_domain_principle_execution_01",
+  "phase": "PHASE-E22",
+  "generated_at": "2026-08-22T23:34:13.741Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_semantic_quality",
+    "capability_ids": [
+      "cap_dataset_management"
+    ],
+    "state_before": {
+      "functional_status": "blocked"
+    }
+  },
+  "problem": "E21's validated principle (search existing artifacts before new content) had only been observed in 2 domains (video_production, pb_self_improvement) -- it was not yet empirically tested on a genuinely different real task.",
+  "decision": {
+    "decision_summary": "Applied the principle to goal_semantic_quality's real, on-record reclassification gate: searched existing artifacts first (found 0 relevant), re-verified (not re-trusted) PHASE-961's gate sub-conditions, both still unmet -- correct action per the principle is to author 0 new reclassification content, exactly what was done.",
+    "decided_at_phase": "PHASE-E22"
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Automated filename+substance search + re-verification of a real, existing gate-check finding. 0 new reclassification content authored, 0 Goal/Gap/Policy modified.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e22-pre-verification-v1.json + project-brain-e22-real-application-v1.json + project-brain-e22-effect-verification-v1.json (this phase)",
+    "evidence_detail": "gate_satisfied=false, rework_avoided=true, duplicate_investigation_avoided=true, effective=true"
+  },
+  "result": {
+    "functional_status_before": "blocked",
+    "functional_status_after": "blocked",
+    "note": "goal_semantic_quality remains genuinely blocked (real approval still not given) -- this phase validates the PRINCIPLE's reusability, it does not (and does not claim to) resolve the underlying Goal."
+  },
+  "cause": {
+    "root_cause_summary": "The cross-domain principle (E21) had real evidence from only 2 closely-related domains (both eventually tracing to the same original ghibli-pipeline fix) -- a genuinely independent 3rd-domain test had not been performed.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "The principle held up under real, independent application to a 3rd domain -- and the application itself surfaced a real refinement (verify substance, not just filename/label match) that strengthens rather than merely confirms it, exactly the kind of honest, evidence-based generalization this whole validation arc has required at every step.",
+  "links": {
+    "goal_ref": "goal_semantic_quality",
+    "gap_ref": "gap_phase941_semantic_quality_catch_all_capability_violation",
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_dataset_management"
+    ]
+  }
+}

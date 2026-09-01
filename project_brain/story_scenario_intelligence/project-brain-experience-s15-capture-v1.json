@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s15_studio_intelligence_candidate_validation_01",
+  "phase": "PHASE-S15",
+  "generated_at": "2026-08-23T11:45:37.465Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Completed the candidate validation path (S12..S14): re-confirmed the Trigger a 4th independent time and added a formal 3-criteria Gate (evidence_refs reality, non-duplicate vs E33 registry, executability via the existing owner_domain/explicit-gate convention) for any generated candidate",
+    "changes_detected": 0
+  },
+  "problem": "S12..S14 established that the Trigger correctly gates the Decision pipeline, but no phase had yet formally validated a generated candidate against real, checkable criteria (evidence existence, non-duplication, executability) rather than just recording it -- this phase closes that gap.",
+  "decision": {
+    "decision_summary": "Re-confirmed Trigger (4th independent derivation): 0 changes. NO_STATE_CHANGE -- Gate not exercised. 0 existing DEFERRED/RESOLVED verdicts force-changed, 0 automatic execution. Verdict: NO_STATE_CHANGE.",
+    "decided_at_phase": "PHASE-S15",
+    "verdict": "NO_STATE_CHANGE"
+  },
+  "action": {
+    "action_type": "studio_intelligence_candidate_validation",
+    "action_summary": "Re-confirmed the Trigger independently a 4th time; added and exercised (conditionally) a formal 3-criteria Gate for any generated candidate: evidence_refs reality, non-duplication against the real E33 registry, and executability via the existing owner_domain/explicit-gate convention.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s15-candidate-validation-v1.json + project-brain-s15-verification-v1.json (this phase)",
+    "evidence_detail": "changes_detected=0, verdict=NO_STATE_CHANGE, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Correctly stopped at NO_STATE_CHANGE -- the Gate mechanism is real code, ready and correct, but exercising it without a real trigger would be forcing work where none exists."
+  },
+  "cause": {
+    "root_cause_summary": "A candidate recorded without passing real evidence/novelty/executability checks is not meaningfully different from an unverified assertion -- this phase closes the loop from Trigger to a genuinely gated, checkable candidate.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Completing a validation path means the Gate criteria must be checkable against real files and real registries (evidence existence, the E33 candidate registry, the owner_domain convention), not just present as fields on a candidate object -- otherwise 'validated' is a label, not a fact.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

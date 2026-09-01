@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s10_self_improving_studio_real_application_trigger_01",
+  "phase": "PHASE-SSI-S10",
+  "generated_at": "2026-08-24T11:16:22.428Z",
+  "experience_kind": "honest_negative_reconfirmation",
+  "context": {
+    "exploration_scope": "Connected PHASE-SSI-S9's operationally-ready Principle to the real SSI flow as a change-gated trigger: compared the last known real state (through S9) against a fresh read of the same real files, and only performed a Principle-vs-independent comparison if an actual change was found",
+    "principle_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "real_state_changed": false
+  },
+  "problem": "A Principle that re-evaluates on every run regardless of whether anything real changed is not being applied to real application flow, it is just being re-asserted -- connecting it correctly required a real change-detection gate, checked against the actual current state of the same real files this automation has been reading since S5, not a standing always-on re-check.",
+  "decision": {
+    "decision_summary": "No real state change detected since PHASE-SSI-S9 (chain_status, gpu_available, and hold_status all unchanged) -- correctly ended without performing any Principle-vs-independent comparison.",
+    "decided_at_phase": "PHASE-SSI-S10",
+    "verdict": "NO_REAL_TRIGGER"
+  },
+  "action": {
+    "action_type": "self_improving_studio_real_application_trigger",
+    "action_summary": "Compared the last known real state (recorded through S9) against a fresh read of the real trace chain and PRODUCTION_VALIDATION_HOLD.json; gated all further comparison strictly on an actual detected change; on change, computed the independent judgment before the Principle-guided judgment and compared them; never wrote to the real chain/hold files.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s10-real-application-trigger-v1.json + project-brain-ssi-s10-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=NO_REAL_TRIGGER, real_state_changed=false, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Correctly reported NO_REAL_TRIGGER -- the Principle is connected to the real flow but stayed inert because nothing real actually changed, which is the intended change-gated behavior, not a failure."
+  },
+  "cause": {
+    "root_cause_summary": "Wiring a validated Principle into a real flow without a real change gate would make every run re-litigate the same already-settled state -- the gate is what keeps \"connected to the real operational flow\" from silently meaning \"runs a no-op comparison every time,\" and what makes an eventual real trigger meaningful rather than routine.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Connecting a Principle to a real operational flow is only meaningfully different from testing it in isolation if the connection includes an honest gate on whether anything real actually changed -- reporting NO_REAL_TRIGGER when nothing changed is the correct, non-lazy answer, not a shortcut past doing the check.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

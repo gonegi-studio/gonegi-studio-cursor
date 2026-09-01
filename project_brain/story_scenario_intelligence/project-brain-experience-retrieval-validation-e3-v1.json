@@ -1,0 +1,87 @@
+{
+  "validation_id": "project_brain_experience_retrieval_validation_e3_v1",
+  "phase": "PHASE-E3",
+  "generated_at": "2026-08-22T11:49:30.682Z",
+  "representative_case_results": {
+    "case1_success": {
+      "results": [
+        "exp_phase959_ghibli_production_pipeline_01"
+      ],
+      "correct": true
+    },
+    "case2_misjudgment_correction": {
+      "gap_results": [
+        "exp_phase942_semantic_quality_capability_overapplication_01"
+      ],
+      "correction_target": "exp_phase942_semantic_quality_capability_overapplication_01",
+      "correct": true
+    },
+    "case3_honest_retries": {
+      "results": [
+        "exp_phase_953_production_runtime_reverification_01",
+        "exp_phase_960_production_runtime_reverification_02",
+        "exp_phase_962_production_runtime_reverification_03",
+        "exp_phase_e2_goal_production_runtime_04"
+      ],
+      "correct": true
+    }
+  },
+  "all_cases_correct": true,
+  "precision_checks": [
+    {
+      "query": "retrieveByGoal('goal_ghibli_production_pipeline')",
+      "results": [
+        "exp_phase959_ghibli_production_pipeline_01"
+      ],
+      "must_not_contain_substring": "production_runtime"
+    },
+    {
+      "query": "retrieveByCapability('cap_dataset_management')",
+      "results": [
+        "exp_phase942_semantic_quality_capability_overapplication_01",
+        "exp_phase946_semantic_quality_capability_correction_01"
+      ],
+      "expected_count": 2
+    },
+    {
+      "query": "retrieveByCapability('cap_movie_reconstruction')",
+      "results": [
+        "exp_phase959_ghibli_production_pipeline_01"
+      ],
+      "expected_count": 1
+    },
+    {
+      "query": "retrieveByKind('successful_resolution')",
+      "results": [
+        "exp_phase959_ghibli_production_pipeline_01"
+      ],
+      "expected_count": 1
+    },
+    {
+      "query": "retrieveByKind('honest_negative_reconfirmation')",
+      "results": [
+        "exp_phase_953_production_runtime_reverification_01",
+        "exp_phase_960_production_runtime_reverification_02",
+        "exp_phase_962_production_runtime_reverification_03",
+        "exp_phase_e2_goal_production_runtime_04"
+      ],
+      "expected_count": 4
+    },
+    {
+      "query": "retrieveByKind('misjudgment_correction')",
+      "results": [
+        "exp_phase946_semantic_quality_capability_correction_01"
+      ],
+      "expected_count": 1
+    }
+  ],
+  "all_precision_checks_passed": true,
+  "dangling_reference_check": {
+    "dangling_experience_ids": [],
+    "dangling_goal_keys": [],
+    "dangling_gap_keys": [],
+    "dangling_dependency_keys": [],
+    "dangling_capability_keys": [],
+    "total_dangling": 0
+  }
+}

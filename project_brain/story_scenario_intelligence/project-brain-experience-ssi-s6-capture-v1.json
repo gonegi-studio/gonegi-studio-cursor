@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s6_self_improving_studio_principle_guided_decision_01",
+  "phase": "PHASE-SSI-S6",
+  "generated_at": "2026-08-24T11:00:00.631Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Reused PHASE-SSI-S5's operationally-validated Principle in a real SSI decision flow: computed an independent judgment first (no reference to the Principle), then a Principle-guided judgment, then compared them before deciding whether to let the Principle inform the real decision",
+    "principle_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "decision_case_id": "ssi_s6_decision_case_01"
+  },
+  "problem": "PHASE-SSI-S5 proved the Principle agrees with the independent convention on one test case, but the Principle had never actually been let anywhere near a real decision this automation would act on -- reusing it required first re-proving, on this real occasion, that it still is not the thing deciding whether it is trustworthy.",
+  "decision": {
+    "decision_summary": "Principle principle_goal_production_runtime_successful_resolution_ssi_s4_v1 re-confirmed real scope (goal_ref=goal_production_runtime) and non-conflict with E12's confirmed Pattern registry (conflicts=false). Real decision case (Is goal_production_runtime actionable right now?): independent_verdict_computed_first=DEFERRED, principle_guided_verdict=DEFERRED, match=true. Adopted decision this phase: DEFERRED (principle_applied=true). 0 CI wiring, 0 automatic policy, 0 automatic execution, 0 real project modifications. Verdict: PRINCIPLE_GUIDED_DECISION_CONFIRMED.",
+    "decided_at_phase": "PHASE-SSI-S6",
+    "verdict": "PRINCIPLE_GUIDED_DECISION_CONFIRMED"
+  },
+  "action": {
+    "action_type": "self_improving_studio_principle_guided_decision",
+    "action_summary": "Computed the independent judgment first from the pre-existing owner_domain convention and a fresh PRODUCTION_VALIDATION_HOLD.json read (no reference to the Principle), then computed the Principle-guided judgment from the Principle's own stated logic, then compared -- applying the Principle to the real decision only on agreement, and falling back to the independent verdict on any mismatch.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s6-principle-guided-decision-v1.json + project-brain-ssi-s6-verification-v1.json (this phase)",
+    "evidence_detail": "independent_verdict=DEFERRED, principle_guided_verdict=DEFERRED, verdicts_match=true, conflicts_with_e12_pattern=false, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The Principle-guided judgment matched the independently-computed judgment on a real decision case -- the Principle was allowed to inform (corroborate, not override) the real decision, still with 0 CI/policy/execution wiring."
+  },
+  "cause": {
+    "root_cause_summary": "Letting a Principle participate in a real decision without first computing an independent judgment blind to it would make any future agreement uninformative -- the independent judgment has to exist before the Principle is consulted, or \"the Principle was right\" and \"the Principle was the only opinion asked\" become indistinguishable.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Reusing a validated Principle in a real decision is safe only if the decision process still produces an independent answer on its own first -- the Principle is then evidence to compare against that answer, not a replacement for computing it, and a mismatch has to be able to actually block the Principle from being applied rather than being logged and overridden anyway.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

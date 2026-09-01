@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_ssi_s26_studio_intelligence_real_trigger_execution_01",
+  "phase": "PHASE-SSI-S26",
+  "generated_at": "2026-08-25T11:22:02.811Z",
+  "experience_kind": "honest_negative_reconfirmation",
+  "context": {
+    "exploration_scope": "Executed the final real path from S25's TRIGGER_READY: compared each Principle's own real state against S25's gated checkpoint (not its readiness probe), and for any Principle whose state actually changed, ran Independent->Principle->Compare->Outcome with the independent verdict winning on any disagreement",
+    "principle_one_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "principle_two_id": "principle_cap_dataset_management_ssi_s18_v1",
+    "p1_real_state_changed": false,
+    "p2_real_state_changed": false
+  },
+  "problem": "S25 proved the Independent->Principle->Compare pipeline was mechanically operable via a read-only probe, but a probe is explicitly not an applied outcome -- the final real path still had to be exercised through its actual gate (checkpoint vs live state) with a genuine, recorded, advisory-only Outcome, and had to keep the S25 probe cleanly separate from the S25 gated checkpoint so this phase does not accidentally treat a dry-run value as if it were the last real recorded state.",
+  "decision": {
+    "decision_summary": "P1 real_state_changed=false (left untouched). P2 real_state_changed=false (left untouched). synthetic_change_injected=false. no_real_file_written=true. 0 automatic real project modification, 0 CI wiring, 0 automatic policy, 0 automatic execution. Overall verdict: NO_REAL_TRIGGER.",
+    "decided_at_phase": "PHASE-SSI-S26",
+    "verdict": "NO_REAL_TRIGGER"
+  },
+  "action": {
+    "action_type": "studio_intelligence_real_trigger_execution",
+    "action_summary": "Compared each Principle's own last recorded gated checkpoint (from S25, explicitly not the S25 readiness probe) against a fresh read of the real trace/hold/overlay files; executed Independent->Principle->Compare->Outcome only for a Principle whose real state changed; on any disagreement, used the independent verdict as the Outcome's recommended_disposition; never wrote any Outcome back to a real file and never forced an existing status to change.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s26-real-trigger-execution-v1.json + project-brain-ssi-s26-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=NO_REAL_TRIGGER, p1_real_state_changed=false, p2_real_state_changed=false, synthetic_change_injected=false, no_real_file_written=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Correctly reported NO_REAL_TRIGGER against the S25 gated checkpoint, with no synthetic change substituted -- neither Principle executed its judgment loop, which is the correct final-path behavior when real data has not moved."
+  },
+  "cause": {
+    "root_cause_summary": "The final real path differs from every prior trigger check in one respect: it is the point where a recommended Outcome is actually produced for a real change, so it is also the point where accidentally treating S25's non-applied readiness probe as if it were a real checkpoint would be most consequential -- keeping the probe and the gated checkpoint as two structurally distinct fields in S25's own output (and reading only the gated one here) is what prevents that conflation.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "A final real-trigger-execution phase has to draw its checkpoint from the OTHER phase's actual applied trigger state, never from a readiness probe or dry-run value computed alongside it, even when both were computed from the same real data and would happen to agree -- the two serve different claims (one asserts nothing, one is a genuine checkpoint), and only one of them is safe to advance the loop's baseline from.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

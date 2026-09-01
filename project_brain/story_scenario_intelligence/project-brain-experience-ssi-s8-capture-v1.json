@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s8_self_improving_studio_principle_boundary_validation_01",
+  "phase": "PHASE-SSI-S8",
+  "generated_at": "2026-08-24T11:07:38.808Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Finalized the Principle's application boundary using S7's real PRINCIPLE_MISMATCH finding: stated the application/non-application conditions explicitly, then validated the unmodified boundary rule against a third real, previously-untested case",
+    "principle_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "third_case_goal": "goal_ghibli_production_pipeline"
+  },
+  "problem": "PHASE-SSI-S7 showed the Principle correctly refuses to apply to one different real case, but a boundary demonstrated on exactly one counter-example is not yet a stated, checkable rule -- and had not been tested against any further real case to see whether it generalizes correctly rather than having been tuned to that single example.",
+  "decision": {
+    "decision_summary": "Boundary rule (reused verbatim from S7, not modified): applies only when chain_status=BLOCKED AND owner_domain matches an infrastructure keyword AND action_type=\"infra_restoration\". Tested against all 3 real cases: goal_production_runtime(applies=true,expected=true,correct=true), goal_semantic_quality(applies=false,expected=false,correct=true), goal_ghibli_production_pipeline(applies=false,expected=false,correct=true). All correct: true. Principle's own content: unmodified. 0 CI wiring, 0 automatic policy, 0 automatic execution, 0 real project modifications. Verdict: PRINCIPLE_BOUNDARY_VALIDATED.",
+    "decided_at_phase": "PHASE-SSI-S8",
+    "verdict": "PRINCIPLE_BOUNDARY_VALIDATED"
+  },
+  "action": {
+    "action_type": "self_improving_studio_principle_boundary_validation",
+    "action_summary": "Re-confirmed the 2 existing real cases, stated the application/non-application boundary explicitly as the same mechanical rule S7 already used, and tested that unmodified rule against a third real, previously-untested chain (goal_ghibli_production_pipeline, status=RESOLVED) to confirm it classifies correctly without needing adjustment.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s8-principle-boundary-validation-v1.json + project-brain-ssi-s8-verification-v1.json (this phase)",
+    "evidence_detail": "all_real_cases_correctly_classified=true, third_case_goal=goal_ghibli_production_pipeline, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The same unmodified boundary rule correctly classified all 3 real cases (1 where the Principle applies, 2 where it correctly does not, for two different real reasons) -- the boundary is now a stated, checkable rule, not just a single counter-example."
+  },
+  "cause": {
+    "root_cause_summary": "A rule inferred from a single counter-example (S7) risks being an ad hoc description of that one case rather than a real boundary -- it only becomes trustworthy once it is stated explicitly and then checked, unmodified, against further real data it was not built from.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Validating a boundary means writing the rule down before testing it further, then running it -- unchanged -- against a real case that had no part in deriving it; if the rule needs adjusting to fit the new case, it was never a boundary, only a description of the one example that produced it.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

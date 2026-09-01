@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e12_pattern_detection_01",
+  "phase": "PHASE-E12",
+  "generated_at": "2026-08-22T12:43:34.062Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "PB could record individual Experiences but had no mechanism to detect when the SAME structural situation (goal + experience_kind) repeated across multiple real cycles.",
+  "decision": {
+    "decision_summary": "Implemented detectPatterns() -- pure exact-key grouping, threshold >= 2 -- and connected confirmed patterns to Improvement Candidates.",
+    "decided_at_phase": "PHASE-E12"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Implemented Pattern Detection + Registry; found 2 confirmed patterns (GPU repeat-failure x4, already addressed; ghibli repeat-success x4, new candidate generated) among 12 real experiences.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-experience-pattern-registry-e12-v1.json (this phase, 0 false patterns found)",
+    "evidence_detail": "confirmed_patterns=2, false_patterns=0"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Adds a new Experience Layer capability; does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "Pattern-level learning did not previously exist -- only individual-Experience retrieval (E3) and guidance (E4) did.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Requiring count>=2 with an EXACT structural key (not similarity) keeps Pattern Detection honest -- it found exactly the 2 patterns a manual review would also find (GPU repeats, ghibli successes), and correctly declined to call the single misjudgment_correction instance a \"pattern\" yet.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

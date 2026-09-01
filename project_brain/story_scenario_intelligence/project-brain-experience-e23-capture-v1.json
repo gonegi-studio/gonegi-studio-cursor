@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e23_cross_domain_principle_promotion_01",
+  "phase": "PHASE-E23",
+  "generated_at": "2026-08-22T23:42:58.857Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E22 empirically validated the search-existing-artifacts principle in a 3rd real domain, but whether that evidence was actually sufficient to formally promote it (vs. just \"a good idea that worked 3 times\") had not been judged.",
+  "decision": {
+    "decision_summary": "Re-verified all 3-domain provenance (exact citation, broadened to a phase's full real artifact set for E22, an honest methodological refinement); re-confirmed confidence/novelty; checked for duplication against E17's policy (none) and forced generalization (none -- reused E21's own exclusion precedent). VERDICT: ACCEPT. Promotion RECORDED (not enforced).",
+    "decided_at_phase": "PHASE-E23"
+  },
+  "action": {
+    "action_type": "process_redesign",
+    "action_summary": "Wrote 1 real promotion-registry record. 0 Goal/Gap/Pattern/existing-Policy modified. 0 enforcement mechanism wired in.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e23-provenance-reverification-v1.json + project-brain-e23-candidate-review-v1.json + project-brain-e23-verification-v1.json (this phase)",
+    "evidence_detail": "same_principle_confirmed=true, no_forced_generalization=true, verdict=ACCEPT, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Records (does not enforce) a Cross-Domain Principle promotion; does not change this Goal's own real status, does not modify the Experience Layer, Pattern Registry, or E17's locked policy."
+  },
+  "cause": {
+    "root_cause_summary": "A 3-domain empirical success (E22) is evidence for promotion, but promotion itself requires an explicit review step -- otherwise \"it worked\" silently becomes \"it is now a rule\" without ever being checked for duplication, forced generalization, or genuine novelty.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Promotion and enforcement are two different decisions -- recording a principle as formally recognized, while explicitly declining to wire it into any real project rule this phase, keeps the same Decision/Action separation this whole arc has relied on since E6/E13, applied here to knowledge itself rather than to code.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

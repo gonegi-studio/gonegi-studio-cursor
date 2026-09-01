@@ -1,0 +1,52 @@
+{
+  "experience_id": "exp_genie_legacy_evidence_reference_retrieval_resolution_v1",
+  "phase": "GENIE-LEGACY-EVIDENCE-REFERENCE-RETRIEVAL-RESOLUTION-V1",
+  "generated_at": "2026-09-01T01:51:01.865Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-legacy-evidence-reference-retrieval-resolution-2026-09-01T01-51-01-865Z/assignment.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-legacy-evidence-reference-retrieval-resolution-2026-09-01T01-51-01-865Z/development-trace.json",
+    "outcome_ref": "project_brain/antigravity_agent_trial_v1/genie-legacy-evidence-reference-retrieval-resolution-2026-09-01T01-51-01-865Z/outcome.json"
+  },
+  "problem": "A confirmed legacy reference gap: a pre-CR-15 canonical Experience's bare-filename evidence_source was treated as repo-root-relative by retrieveCanonicalHistoryByProblem, so a correct literal-phrase match still failed the whole call with ok:false/INVALID_SOURCE instead of resolving or gracefully reporting that one reference as unresolved.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Add one narrow, general fallback: a bare (path-separator-free) reference is additionally tried under CANONICAL_HISTORY_DOCUMENT_DIRECTORY, the one directory already established as the canonical Experience/History document home; accepted only when uniquely resolved and SHA-consistent. Any unresolved, ambiguous, or SHA-mismatched legacy reference fails closed for that one History node only, never for the whole call, and never contaminates a sibling reference that does resolve. References that already carry a path keep their prior strict, hard-failing contract unchanged. No historical Experience file, index, store, schema, or semantic/vector/RAG mechanism was added.",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "legacy_evidence_reference_retrieval_resolution",
+    "action_summary": "Extended the existing genieCanonicalLearningRetrieval.mjs and its existing verifier; added one positive fixture, three negative fixtures (missing, ambiguous, wrong-SHA), one mixed no-contamination fixture, and re-verified the real Incident A case live against the repository; ran all existing GENIE regressions.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "legacy_reference_resolution_and_negative_controls",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-legacy-evidence-reference-retrieval-resolution-2026-09-01T01-51-01-865Z/outcome.json",
+    "evidence_sha256": "ccafa45833fae1503db376bd6393a9aa6cb892a2963c33552edd2bd39c3d1a15",
+    "evidence_detail": "Incident A live-reverified OK with sha256 18ca34ba022e60af3d3c3326483fca59972d25a88837212b6db7905eac87a8db via CANONICAL_HISTORY_DIRECTORY_FALLBACK; missing/ambiguous/wrong-SHA negative controls and a mixed-sibling no-contamination control all pass; fixture checks 37->43; 11/11 GENIE regressions passed; zero bytes changed on disk during the run."
+  },
+  "result": {
+    "status": "LEGACY_EVIDENCE_REFERENCE_RETRIEVAL_GAP_RESOLVED",
+    "problem_resolved": true,
+    "unresolved_legacy_reference_kills_whole_call": false,
+    "resolved_evidence_contaminated_by_unresolved_sibling": false,
+    "historical_experiences_modified": false,
+    "semantic_vector_rag_created": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "A bare (directory-free) legacy evidence_source value predating the CR-15 evidence-reference convention was resolved only against the repository root; since it never lived there, the read threw and the exception propagated past the function's own try/catch, failing the entire call rather than the one reference.",
+    "cause_type": "unscoped_reference_resolution_failure_propagation"
+  },
+  "lesson": "A single unresolved legacy reference should fail closed for itself, not for the whole retrieval: try one additional, already-established real location (never repo-root by blind assumption), accept only a unique SHA-consistent match, and report anything else (missing, ambiguous, wrong-SHA) as an explicit unresolved node instead of throwing or guessing.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-legacy-evidence-reference-retrieval-resolution-2026-09-01T01-51-01-865Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

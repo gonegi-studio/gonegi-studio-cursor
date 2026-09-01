@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s13_studio_intelligence_decision_trigger_integration_01",
+  "phase": "PHASE-S13",
+  "generated_at": "2026-08-23T11:39:41.081Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Wired S12's Trigger-first check into the actual Decision-candidate search pipeline: re-confirmed state via the same E40+S11 baselines, and only if changed would re-search Decision Context and generate a verified candidate",
+    "changes_detected": 0
+  },
+  "problem": "S12 established the Trigger check in isolation; it was unverified whether that check actually gates the downstream Decision-candidate search correctly, i.e. whether a real change would correctly flow into a verified candidate, and whether no-change correctly skips that search entirely rather than running it wastefully.",
+  "decision": {
+    "decision_summary": "Re-confirmed state via the same E40+S11 baselines (reused, not re-derived): 0 changes. NO_STATE_CHANGE maintained -- Decision Context search not exercised. 0 existing DEFERRED/RESOLVED verdicts force-changed, 0 automatic execution. Verdict: NO_STATE_CHANGE.",
+    "decided_at_phase": "PHASE-S13",
+    "verdict": "NO_STATE_CHANGE"
+  },
+  "action": {
+    "action_type": "studio_intelligence_decision_trigger_integration",
+    "action_summary": "Re-confirmed real-state change using S12's exact baseline method; gated the Decision Context re-search and candidate generation behind that Trigger; verified evidence_refs and provenance for any generated candidate before recording it.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s13-decision-trigger-integration-v1.json + project-brain-s13-verification-v1.json (this phase)",
+    "evidence_detail": "changes_detected=0, verdict=NO_STATE_CHANGE, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "No real change correctly skipped the downstream Decision Context search entirely, matching the Trigger-first discipline established at S12/E45."
+  },
+  "cause": {
+    "root_cause_summary": "A Trigger check that exists but is not actually wired to gate the expensive downstream search is not yet load-bearing -- this phase closes that gap by making the search conditional on the Trigger result, not just informed by it.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "A Trigger-first check only pays off once it actually gates the expensive work downstream. Verifying that gating explicitly -- not just running the check and the search unconditionally side by side -- is what makes the discipline real rather than decorative.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

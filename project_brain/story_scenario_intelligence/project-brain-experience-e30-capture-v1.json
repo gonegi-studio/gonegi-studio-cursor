@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e30_currency_integrated_readiness_01",
+  "phase": "PHASE-E30",
+  "generated_at": "2026-08-23T00:25:21.737Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E11..E29 each validated 1 piece of the Currency Layer in isolation (a Guard, the Contract, the classifier, or 1 real target at a time) -- whether the FULL pipeline holds together across BOTH real targets in ONE integrated pass had not been checked.",
+  "decision": {
+    "decision_summary": "Ran the full, unmodified Currency pipeline (Guard -> Contract -> classifier -> operational rule) against both real subjects simultaneously: Experience Index=EXPECTED_SELF_CAPTURE_STALE (MAINTAIN_NO_REFRESH), PB Pointer=CURRENT (REUSE_AS_IS). Full agreement confirmed at every link. 0 modification either way.",
+    "decided_at_phase": "PHASE-E30"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Reused currencyGuard, pointerCurrencyGuard, Contract adapters, classifyStalenessTransition verbatim; applied applyOperationalRule() (a direct restatement of the already-established rule, not new logic) to both real results in 1 integrated pass.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e30-integrated-real-execution-v1.json + project-brain-e30-integration-consistency-v1.json (this phase)",
+    "evidence_detail": "index_classification=EXPECTED_SELF_CAPTURE_STALE, pointer_classification=CURRENT, integration_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Confirms integrated operational readiness of the Currency Layer; does not refresh the Index, does not modify the pointer chain, does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "Each Currency sub-mechanism (E11, E25, E26, E28) had only ever been exercised individually or with 1 target at a time -- a combined, both-targets-at-once real pass had not yet been run.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Integrated readiness is not implied by each individual piece having already been verified separately -- running the whole real chain together, once, is what actually confirms the pieces compose correctly; here they did, with 0 new logic required.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

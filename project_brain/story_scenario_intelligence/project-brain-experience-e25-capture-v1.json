@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e25_pointer_currency_guard_01",
+  "phase": "PHASE-E25",
+  "generated_at": "2026-08-22T23:54:54.394Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E24 manually inlined a one-off currency check for PB's canonical goal-judgment pointer chain -- no real, reusable, named Guard existed for it, unlike the Experience Index (E11).",
+  "decision": {
+    "decision_summary": "Executed cand_exp_phase_e24_cross_domain_principle_real_application_01__process_improvement: implemented pointerCurrencyGuard() (real, deterministic, reusable, generalized from E24's exact inline logic) + generatePointerRefreshCandidate() (E11's detect-propose-never-auto-apply discipline, reused). Applied once to the real current pointer (project-brain-standard-goal-judgment-output-v3.json): CURRENT, 0 modification. Verified the STALE path + false-positive resistance via 3 deterministic tests on synthetic fixtures.",
+    "decided_at_phase": "PHASE-E25"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Implemented pointerCurrencyGuard() + generatePointerRefreshCandidate(); applied to real data (1 execution, CURRENT, no change); verified via 3 tests (A/B/C, all synthetic fixtures except B which re-confirms the real result).",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e25-real-guard-application-v1.json + project-brain-e25-guard-tests-v1.json + project-brain-e25-verification-v1.json (this phase)",
+    "evidence_detail": "real_guard_status=CURRENT, tests_passed=3/3, false_positive_count=0, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Adds a real, reusable currency-check mechanism for the pointer chain; does not change this Goal's own real status, the pointer chain itself, or any locked policy."
+  },
+  "cause": {
+    "root_cause_summary": "The pointer-currency check existed only as inline, phase-specific code (E24) -- not yet a named, reusable, independently-callable mechanism, exactly the same gap E9/E10 had for the Experience Index before E11.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Generalizing a one-off manual check into a real, reusable function (same move as E11) works cleanly when the manual check was already rigorous (E24's substance+currency cross-check, not filename-only) -- the reusable version inherits that rigor rather than regressing to a simpler, false-positive-prone shortcut.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

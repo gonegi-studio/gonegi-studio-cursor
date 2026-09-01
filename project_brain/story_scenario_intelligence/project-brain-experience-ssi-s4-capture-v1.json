@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s4_self_improving_studio_principle_adoption_01",
+  "phase": "PHASE-SSI-S4",
+  "generated_at": "2026-08-24T10:52:21.856Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Judged PHASE-SSI-S3's sole PROMOTION_CANDIDATE_ONLY signal for real adoption: re-derived its evidence fresh, re-ran the E12/E23/E33/S-series duplication/conflict check, and ran a mechanical scope-boundedness check to confirm the draft principle statement claims nothing beyond its 3 real evidence records",
+    "candidate_signals_judged": 1,
+    "adopted_principles": 1
+  },
+  "problem": "PHASE-SSI-S3 recorded sig_goal_production_runtime_successful_resolution as a promotion candidate with a draft principle statement, but never checked whether that statement's generalization claims (across action types and phases) stayed within what its 3 evidence records actually support, or whether adopting it now would still be evidentially and non-conflictingly sound.",
+  "decision": {
+    "decision_summary": "1 PROMOTION_CANDIDATE_ONLY signal(s) from S3 judged for adoption. 1 passed fresh evidence re-derivation, non-duplication/non-conflict, and scope-boundedness re-verification: sig_goal_production_runtime_successful_resolution, recorded as PROMOTED_PRINCIPLE_RECORDED_NOT_ENFORCED. 0 rejected on recheck. 0 automatic policy adoption, 0 CI wiring, 0 automatic execution, 0 real project modifications. Verdict: PROMOTED_PRINCIPLE_RECORDED_NOT_ENFORCED.",
+    "decided_at_phase": "PHASE-SSI-S4",
+    "verdict": "PROMOTED_PRINCIPLE_RECORDED_NOT_ENFORCED"
+  },
+  "action": {
+    "action_type": "self_improving_studio_principle_adoption_judgment",
+    "action_summary": "Re-derived each PROMOTION_CANDIDATE_ONLY signal's evidence directly from the canonical Experience Layer, re-ran the E12/E23/E33+S-series duplication/conflict check, and mechanically verified the draft principle statement's generalization claims (action-type count, phase count, and absence of unbounded quantifiers) match what the freshly re-derived evidence actually supports before recording adoption.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s4-principle-adoption-v1.json + project-brain-ssi-s4-verification-v1.json (this phase)",
+    "evidence_detail": "candidate_signals_judged=1, adopted_principle_count=1, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "1 principle(s) adopted as PROMOTED_PRINCIPLE_RECORDED_NOT_ENFORCED -- recorded, but not CI-linked, not auto-policy-applied, not auto-executed."
+  },
+  "cause": {
+    "root_cause_summary": "A promotion candidate can pass every duplication and generalizability check from the prior phase and still overclaim at adoption time if its statement text was never checked word-for-word against what the underlying evidence count actually supports -- scope-boundedness has to be its own explicit, mechanical check at the moment of adoption, not assumed from an earlier generalizability pass.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Adopting a principle is the point where overclaiming becomes cheapest and most dangerous -- checking the adopted statement text itself (not just its underlying member count) against the freshly re-derived evidence, and recording the result as explicitly not-enforced, keeps a real adoption honest without silently becoming a binding rule.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

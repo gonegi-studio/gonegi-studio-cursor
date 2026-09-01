@@ -1,0 +1,380 @@
+{
+  "simulation_id": "project_brain_experience_mapping_simulation_e1_v1",
+  "phase": "PHASE-E1",
+  "generated_at": "2026-08-22T08:01:43.281Z",
+  "status": "MAPPED_AND_VALIDATED_AGAINST_REAL_DATA_NO_PB_STATE_CHANGED",
+  "representative_cases": [
+    {
+      "case": 1,
+      "experience_kind": "successful_resolution",
+      "source_phase": "PHASE-959",
+      "experience_ids": [
+        "exp_phase959_ghibli_production_pipeline_01"
+      ]
+    },
+    {
+      "case": 2,
+      "experience_kind": "misjudgment_correction",
+      "source_phases": [
+        "PHASE-942",
+        "PHASE-946"
+      ],
+      "experience_ids": [
+        "exp_phase942_semantic_quality_capability_overapplication_01",
+        "exp_phase946_semantic_quality_capability_correction_01"
+      ]
+    },
+    {
+      "case": 3,
+      "experience_kind": "honest_negative_reconfirmation",
+      "source_phases": [
+        "PHASE-953",
+        "PHASE-960",
+        "PHASE-962"
+      ],
+      "experience_ids": [
+        "exp_phase_953_production_runtime_reverification_01",
+        "exp_phase_960_production_runtime_reverification_02",
+        "exp_phase_962_production_runtime_reverification_03"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "experience_id": "exp_phase959_ghibli_production_pipeline_01",
+      "phase": "PHASE-959",
+      "generated_at": "2026-08-22T06:55:51.142Z",
+      "experience_kind": "successful_resolution",
+      "context": {
+        "goal_id": "goal_ghibli_production_pipeline",
+        "capability_ids": [
+          "cap_movie_reconstruction",
+          "cap_cinematic_generation"
+        ],
+        "state_before": {
+          "functional_status": "blocked",
+          "execution_state": "NOT_STARTED"
+        }
+      },
+      "problem": "movie-factory-validation-report.json showed image_adapter_valid=false and video_adapter_valid=false -- the #1-ranked Development Priority item.",
+      "decision": {
+        "decision_summary": "Trace the validator's real adapter-resolution code path to find the actual root cause before attempting any fix.",
+        "decided_at_phase": "PHASE-959"
+      },
+      "action": {
+        "action_type": "code_fix",
+        "action_summary": "Wired 3 missing bundle_ref fields (image_adapter_ref, video_adapter_v2_ref, motion_adapter_ref) in titanic-standardized-dataset.json to 3 real, pre-existing, already-adapter_ready:true files -- purely additive, no new adapter content fabricated.",
+        "real_or_simulated": "real"
+      },
+      "evidence": {
+        "evidence_kind": "hard_pass",
+        "evidence_category": "hard_pass",
+        "evidence_source": "reports/movie_factory_validation/movie-factory-validation-report.json (regenerated PHASE-959)",
+        "evidence_detail": "PASS_MOVIE_DATASET_FACTORY_VALIDATION_V1, image_adapter_valid=true, video_adapter_valid=true, factory_certified=true"
+      },
+      "result": {
+        "functional_status_before": "blocked",
+        "functional_status_after": "satisfied",
+        "execution_state_before": "NOT_STARTED",
+        "execution_state_after": "VERIFIED"
+      },
+      "cause": {
+        "root_cause_summary": "A reference-wiring bug, not a missing capability -- the real adapter files already existed and were already valid; nothing pointed to them.",
+        "cause_type": "code_data_wiring_bug"
+      },
+      "lesson": "Before assuming new work is needed to unblock a goal, search for real, already-existing artifacts that satisfy the requirement -- the fix may be a missing reference, not missing content.",
+      "links": {
+        "goal_ref": "goal_ghibli_production_pipeline",
+        "gap_ref": "gap_phase941_ghibli_pipeline_factory_validation_fail",
+        "dependency_ref": "dependency_phase941_goal_ghibli_pipeline_on_movie_factory_adapter_validation",
+        "capability_refs": [
+          "cap_movie_reconstruction",
+          "cap_cinematic_generation"
+        ]
+      }
+    },
+    {
+      "experience_id": "exp_phase942_semantic_quality_capability_overapplication_01",
+      "phase": "PHASE-942",
+      "generated_at": "2026-08-22T00:00:00.000Z",
+      "experience_kind": "partial_progress",
+      "context": {
+        "goal_id": "goal_semantic_quality",
+        "capability_ids": [
+          "cap_dataset_management"
+        ],
+        "state_before": {
+          "functional_status": "blocked"
+        }
+      },
+      "problem": "cap_dataset_management held 72.6% of all LPM entities (a real, correctly-identified catch-all/taxonomy finding).",
+      "decision": {
+        "decision_summary": "Apply the catch-all finding directly to mark cap_dataset_management's own CAPABILITY-level functional_status as 'blocked'.",
+        "decided_at_phase": "PHASE-942"
+      },
+      "action": {
+        "action_type": "process_redesign",
+        "action_summary": "Set overlay entry cap_dataset_management: blocked, evidence=concentration-rootcause-v1.json.",
+        "real_or_simulated": "real"
+      },
+      "evidence": {
+        "evidence_kind": "hard_fail",
+        "evidence_category": "taxonomy_quality_only",
+        "evidence_source": "project-brain-cap-dataset-management-concentration-rootcause-v1.json",
+        "evidence_detail": "2117/2917 (72.6%) entities in one capability bucket."
+      },
+      "result": {
+        "functional_status_before": "unknown",
+        "functional_status_after": "blocked"
+      },
+      "cause": {
+        "root_cause_summary": "A Goal-criterion-level finding (violates goal_semantic_quality's own \"no catch-all\" criterion) was over-applied to set a Capability-level functional judgment -- conflating two different kinds of claims.",
+        "cause_type": "evidence_misapplication"
+      },
+      "lesson": "(superseded -- see exp_phase946_semantic_quality_capability_correction_01)",
+      "links": {
+        "goal_ref": "goal_semantic_quality",
+        "gap_ref": "gap_phase941_semantic_quality_catch_all_capability_violation",
+        "dependency_ref": "dependency_phase941_goal_semantic_quality_on_cap_dataset_management_reclassification",
+        "capability_refs": [
+          "cap_dataset_management"
+        ]
+      }
+    },
+    {
+      "experience_id": "exp_phase946_semantic_quality_capability_correction_01",
+      "phase": "PHASE-946",
+      "generated_at": "2026-08-22T08:01:43.280Z",
+      "experience_kind": "misjudgment_correction",
+      "context": {
+        "goal_id": "goal_repository_foundation",
+        "capability_ids": [
+          "cap_dataset_management"
+        ],
+        "state_before": {
+          "functional_status": "satisfied"
+        }
+      },
+      "problem": "PHASE-945's new automatic Goal<->Capability contradiction detector found goal_repository_foundation (satisfied) backed by cap_dataset_management (blocked) -- a real, detected inconsistency.",
+      "decision": {
+        "decision_summary": "Re-check the original 'blocked' evidence against PHASE-943's fixed semantics (blocked requires hard_failure-category evidence) rather than force-correcting either side blindly.",
+        "decided_at_phase": "PHASE-946",
+        "corrects_experience_id": "exp_phase942_semantic_quality_capability_overapplication_01"
+      },
+      "action": {
+        "action_type": "investigation",
+        "action_summary": "Re-read goal_model.json directly: confirmed \"no catch-all capabilities\" is goal_semantic_quality's own criterion, not goal_repository_foundation's. Corrected cap_dataset_management overlay: blocked -> pending.",
+        "real_or_simulated": "real"
+      },
+      "evidence": {
+        "evidence_kind": "attempted_incomplete",
+        "evidence_category": "taxonomy_quality_only",
+        "evidence_source": "datasets/repository_intelligence/project-entity-extraction-v1.json + concentration-rootcause-v1.json (evidence re-scoped)",
+        "evidence_detail": "Population evidence real and complete; taxonomy concern real but does not show functional failure -- pending, not blocked."
+      },
+      "result": {
+        "functional_status_before": "blocked",
+        "functional_status_after": "pending"
+      },
+      "cause": {
+        "root_cause_summary": "Same as exp_phase942's cause, now correctly attributed and fixed at the right layer (capability, not goal).",
+        "cause_type": "evidence_misapplication"
+      },
+      "lesson": "A Goal-level criterion violation does not automatically imply the underlying Capability is functionally broken -- always check whether evidence is being applied to the layer (Goal vs Capability) it actually supports before propagating a 'blocked' status.",
+      "links": {
+        "goal_ref": "goal_repository_foundation",
+        "gap_ref": null,
+        "dependency_ref": null,
+        "capability_refs": [
+          "cap_dataset_management"
+        ]
+      }
+    },
+    {
+      "experience_id": "exp_phase_953_production_runtime_reverification_01",
+      "phase": "PHASE-953",
+      "generated_at": "2026-08-22T06:32:44.145Z",
+      "experience_kind": "honest_negative_reconfirmation",
+      "context": {
+        "goal_id": "goal_production_runtime",
+        "capability_ids": [
+          "cap_production_runtime"
+        ],
+        "state_before": {
+          "functional_status": "blocked",
+          "execution_state": "NOT_STARTED"
+        }
+      },
+      "problem": "Is the GPU/ComfyUI server reachable yet? (Real, repeatable question -- not assumed answered by a prior negative result.)",
+      "decision": {
+        "decision_summary": "Re-run the exact same real, read-only connectivity check named in the chain's own verification_method; accept whatever the real result is.",
+        "decided_at_phase": "PHASE-953"
+      },
+      "action": {
+        "action_type": "reverification",
+        "action_summary": "curl -s -m 5 http://127.0.0.1:8188/system_stats (read-only, no code/infra change).",
+        "real_or_simulated": "real"
+      },
+      "evidence": {
+        "evidence_kind": "hard_fail",
+        "evidence_category": "hard_failure",
+        "evidence_source": "Direct read-only network check (PHASE-953)",
+        "evidence_detail": "curl exit 7, Failed to connect to host."
+      },
+      "result": {
+        "functional_status_before": "blocked",
+        "functional_status_after": "blocked",
+        "execution_state_before": "NOT_STARTED",
+        "execution_state_after": "NOT_STARTED"
+      },
+      "cause": {
+        "root_cause_summary": "GPU/ComfyUI infrastructure genuinely unavailable in this environment -- not a PB judgment error.",
+        "cause_type": "real_infra_dependency"
+      },
+      "lesson": "A repeated real negative result is itself valuable evidence (confirms stability of the block, rules out transient failure) -- it should be recorded as its own experience, not discarded as \"nothing happened\".",
+      "links": {
+        "goal_ref": "goal_production_runtime",
+        "gap_ref": "gap_phase940_numerical_dna_gpu_production_unavailable",
+        "dependency_ref": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+        "capability_refs": [
+          "cap_production_runtime"
+        ]
+      }
+    },
+    {
+      "experience_id": "exp_phase_960_production_runtime_reverification_02",
+      "phase": "PHASE-960",
+      "generated_at": "2026-08-22T08:01:43.280Z",
+      "experience_kind": "honest_negative_reconfirmation",
+      "context": {
+        "goal_id": "goal_production_runtime",
+        "capability_ids": [
+          "cap_production_runtime"
+        ],
+        "state_before": {
+          "functional_status": "blocked",
+          "execution_state": "NOT_STARTED"
+        }
+      },
+      "problem": "Is the GPU/ComfyUI server reachable yet? (Real, repeatable question -- not assumed answered by a prior negative result.)",
+      "decision": {
+        "decision_summary": "Re-run the exact same real, read-only connectivity check named in the chain's own verification_method; accept whatever the real result is.",
+        "decided_at_phase": "PHASE-960"
+      },
+      "action": {
+        "action_type": "reverification",
+        "action_summary": "curl -s -m 5 http://127.0.0.1:8188/system_stats (read-only, no code/infra change).",
+        "real_or_simulated": "real"
+      },
+      "evidence": {
+        "evidence_kind": "hard_fail",
+        "evidence_category": "hard_failure",
+        "evidence_source": "Direct read-only network check (PHASE-960)",
+        "evidence_detail": "curl exit 7, Failed to connect to host."
+      },
+      "result": {
+        "functional_status_before": "blocked",
+        "functional_status_after": "blocked",
+        "execution_state_before": "NOT_STARTED",
+        "execution_state_after": "NOT_STARTED"
+      },
+      "cause": {
+        "root_cause_summary": "GPU/ComfyUI infrastructure genuinely unavailable in this environment -- not a PB judgment error.",
+        "cause_type": "real_infra_dependency"
+      },
+      "lesson": "A repeated real negative result is itself valuable evidence (confirms stability of the block, rules out transient failure) -- it should be recorded as its own experience, not discarded as \"nothing happened\".",
+      "links": {
+        "goal_ref": "goal_production_runtime",
+        "gap_ref": "gap_phase940_numerical_dna_gpu_production_unavailable",
+        "dependency_ref": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+        "capability_refs": [
+          "cap_production_runtime"
+        ]
+      }
+    },
+    {
+      "experience_id": "exp_phase_962_production_runtime_reverification_03",
+      "phase": "PHASE-962",
+      "generated_at": "2026-08-22T08:01:43.280Z",
+      "experience_kind": "honest_negative_reconfirmation",
+      "context": {
+        "goal_id": "goal_production_runtime",
+        "capability_ids": [
+          "cap_production_runtime"
+        ],
+        "state_before": {
+          "functional_status": "blocked",
+          "execution_state": "NOT_STARTED"
+        }
+      },
+      "problem": "Is the GPU/ComfyUI server reachable yet? (Real, repeatable question -- not assumed answered by a prior negative result.)",
+      "decision": {
+        "decision_summary": "Re-run the exact same real, read-only connectivity check named in the chain's own verification_method; accept whatever the real result is.",
+        "decided_at_phase": "PHASE-962"
+      },
+      "action": {
+        "action_type": "reverification",
+        "action_summary": "curl -s -m 5 http://127.0.0.1:8188/system_stats (read-only, no code/infra change).",
+        "real_or_simulated": "real"
+      },
+      "evidence": {
+        "evidence_kind": "hard_fail",
+        "evidence_category": "hard_failure",
+        "evidence_source": "Direct read-only network check (PHASE-962)",
+        "evidence_detail": "curl exit 7, Failed to connect to host."
+      },
+      "result": {
+        "functional_status_before": "blocked",
+        "functional_status_after": "blocked",
+        "execution_state_before": "NOT_STARTED",
+        "execution_state_after": "NOT_STARTED"
+      },
+      "cause": {
+        "root_cause_summary": "GPU/ComfyUI infrastructure genuinely unavailable in this environment -- not a PB judgment error.",
+        "cause_type": "real_infra_dependency"
+      },
+      "lesson": "A repeated real negative result is itself valuable evidence (confirms stability of the block, rules out transient failure) -- it should be recorded as its own experience, not discarded as \"nothing happened\".",
+      "links": {
+        "goal_ref": "goal_production_runtime",
+        "gap_ref": "gap_phase940_numerical_dna_gpu_production_unavailable",
+        "dependency_ref": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+        "capability_refs": [
+          "cap_production_runtime"
+        ]
+      }
+    }
+  ],
+  "validation_results": [
+    {
+      "experience_id": "exp_phase959_ghibli_production_pipeline_01",
+      "valid": true,
+      "violations": []
+    },
+    {
+      "experience_id": "exp_phase942_semantic_quality_capability_overapplication_01",
+      "valid": true,
+      "violations": []
+    },
+    {
+      "experience_id": "exp_phase946_semantic_quality_capability_correction_01",
+      "valid": true,
+      "violations": []
+    },
+    {
+      "experience_id": "exp_phase_953_production_runtime_reverification_01",
+      "valid": true,
+      "violations": []
+    },
+    {
+      "experience_id": "exp_phase_960_production_runtime_reverification_02",
+      "valid": true,
+      "violations": []
+    },
+    {
+      "experience_id": "exp_phase_962_production_runtime_reverification_03",
+      "valid": true,
+      "violations": []
+    }
+  ],
+  "all_valid": true
+}

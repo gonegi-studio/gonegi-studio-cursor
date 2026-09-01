@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_s29_self_improving_studio_real_gap_assessment_01",
+  "phase": "PHASE-S29",
+  "generated_at": "2026-08-25T12:12:52.000Z",
+  "experience_kind": "partial_progress",
+  "context": {
+    "exploration_scope": "Went one level deeper than PHASE-S28: checked whether the foundation model's own declared references actually resolve, and traced Experience->Signal->Principle->Decision->Outcome connectivity for both adopted Principles -- checked reusability first for any finding, built nothing regardless of outcome",
+    "minimal_gap_found": true,
+    "gap_type": "citation_accuracy_only"
+  },
+  "problem": "PHASE-S28 confirmed the foundation exists, is unduplicated, and its production_goals_mapping is accurate -- but never checked whether the foundation model's OWN internal citations (the specific files and principle IDs it names as evidence for its core_relationships) actually resolve. A citation that looks plausible but does not resolve is a real, if narrow, gap in the foundation's actual composition, distinct from whether the foundation exists at all.",
+  "decision": {
+    "decision_summary": "Ingestion channels resolve: true. Chain lens source resolves: true. Boundary references resolve: false (real S11 file=true, PRIN-001/E23 citation accurate=false -- E23 actually registers \"principle_search_existing_artifacts_verify_substance_reuse_before_new_work_v1\"). Underlying capability already covered by adopted principle_goal_production_runtime_successful_resolution_ssi_s4_v1: true. Both Principle lifecycles connected end-to-end: true. 0 new structure/Architecture, 0 existing artifacts modified, 0 synthetic change/Experience, 0 CI wiring, 0 automatic policy, 0 automatic execution. Verdict: MINIMAL_GAP_DEFINED.",
+    "decided_at_phase": "PHASE-S29",
+    "verdict": "MINIMAL_GAP_DEFINED"
+  },
+  "action": {
+    "action_type": "self_improving_studio_real_gap_assessment",
+    "action_summary": "Resolved every reference the foundation model itself declares (3 ingestion-channel example_refs against the canonical Experience Layer, the chain-lens source file, and the boundary relationship's two source components) against real, current records; found the PRIN-001/E23 citation does not resolve as stated; checked reusability first by confirming the real underlying capability is already covered by the adopted, operationally-ready SSI-S4 Principle; traced Experience->Signal->Principle->Decision->Outcome connectivity for both Principle lifecycles.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s29-self-improving-studio-real-gap-assessment-v1.json + project-brain-s29-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=MINIMAL_GAP_DEFINED, failed_checks=boundary_references_resolve, prin_001_citation_accurate=false, underlying_capability_covered=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Found one narrow, non-functional gap (citation_accuracy_only): the foundation model's PRIN-001/E23 citation does not resolve as stated, but the real capability it names is already fully covered by the adopted PHASE-SSI-S4 Principle -- recorded as exactly that scope, not inflated into a capability gap, and not remediated here."
+  },
+  "cause": {
+    "root_cause_summary": "A foundation model built by citing several real, separately-generated phases (S10, S11, E23, S18) is only as accurate as each of those individual citations -- PRIN-001 was a real, consistently-used informal label across PHASE-E36/E38/E40/E44 describing a real, already-adopted capability (later formalized as the SSI-S4 Principle), but it was never itself registered in E23, so citing it as \"(E23)\" was inaccurate even though the underlying concept it named was completely real and already covered elsewhere.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Checking whether a foundation's own citations resolve is a different, necessary check from checking whether the foundation exists -- and reusability has to be checked FIRST when a citation fails: the honest question is not just \"does this reference resolve\" but \"is the real thing it was trying to name already covered somewhere else,\" because conflating a citation-accuracy issue with a missing-capability gap would have wrongly justified building something that already exists.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

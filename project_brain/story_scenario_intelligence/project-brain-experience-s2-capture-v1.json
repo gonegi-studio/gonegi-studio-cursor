@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s2_studio_intelligence_provenance_resolution_01",
+  "phase": "PHASE-S2",
+  "generated_at": "2026-08-23T07:41:16.470Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Verified S1's provenance-gap candidate against real data by broadening the search beyond the Experience-record shape S1's structural loader recognizes",
+    "target_goal_id": "goal_character_narrative_intelligence"
+  },
+  "problem": "S1 correctly measured 0 Experience-shaped records and 0 trace chain for goal_character_narrative_intelligence, but interpreted that as a provenance gap without searching for real provenance in other, differently-shaped PB artifacts.",
+  "decision": {
+    "decision_summary": "Broad search found real provenance in the SSI incorporation chain (PHASE-938 growth-delta closure, PHASE-940 capability sidecar status=closed_and_verified, PHASE-966 EC-03 chain-less-goal classification rule, PHASE-970 formal incorporation + EC-02 verdict + v12 goal satisfaction assessment) -- all real, pre-existing, verified files, none created by this phase. Verdict: RESOLVED. 0 new structure created, 0 existing files modified.",
+    "decided_at_phase": "PHASE-S2",
+    "verdict": "RESOLVED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_provenance_verification",
+    "action_summary": "Searched for real provenance outside the Experience-record shape; verified the specific cited artifacts (PHASE-938/940/966/970) are real and directly relevant; resolved the S1 candidate by reuse, exactly 1 action, no new structure.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s2-provenance-resolution-v1.json + project-brain-s2-verification-v1.json (this phase)",
+    "evidence_detail": "real_provenance_confirmed=true, verdict=RESOLVED, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Candidate resolved by reusing existing real artifacts; no new Experience or structure needed."
+  },
+  "cause": {
+    "root_cause_summary": "S1's search was correctly scoped to the Experience-record shape for its own purpose, but that scope is narrower than 'all real provenance' -- this goal's provenance legitimately lives in a different, equally-governed artifact family (the SSI incorporation phase chain).",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "A '0 records found' result is only as complete as the search scope that produced it. Before treating an absence as a gap, check whether the search itself was scoped too narrowly -- here, broadening from 'Experience-shaped records' to 'any real artifact referencing this goal/capability' found substantial, already-real, already-governed provenance (including an explicit rule, EC-03, that predicts and justifies exactly this goal having no chain).",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "experience_id": "exp_genie_projectbrain_verify_coverage_reverification_v1",
+  "phase": "PHASE-GENIE-PROJECTBRAIN-VERIFY-COVERAGE-V1",
+  "generated_at": "2026-08-31T12:25:01.418Z",
+  "experience_kind": "honest_negative_reconfirmation",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/assignment.json",
+    "retrieval_ref": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/retrieval.json"
+  },
+  "problem": "Determine whether the live 270 projectBrain direct-import omissions are actual verification gaps, inspecting existing verifier/test and indirect execution paths.",
+  "decision": {
+    "status": "final",
+    "decided_by": "Codex",
+    "decision_summary": "The live 270 is correct under the existing documented registered-verifier direct-import metric. Do not change 270 services, bulk-register verifiers, or count static reachability as tests. 48 registered-indirect and 176 standalone-verifier paths disprove interpreting the whole list as absent verification paths; 46 execution-only paths remain unresolved for independent verification. No demonstrated implementation defect justifies a source repair in this bounded assessment.",
+    "retrieval_contribution": "Applied the S31 lesson to distinguish a heuristic limitation from an actual false judgment: inspected both the gap definition and its consumer before proposing edits.",
+    "source_experience_id": "exp_phase_s31_self_improving_studio_integrity_assessment_01",
+    "lesson": "Auditing a prior phase's heuristic for real impact means two separate checks, not one: first confirm what the heuristic's output actually feeds (by reading the real gap_checks/decision logic, not by assuming), then independently re-run the heuristic itself against current data. A heuristic can be a legitimate design weakness and still be provably harmless to every judgment made so far -- both facts can be true at once, and only checking one of them would have produced either false alarm or false confidence.",
+    "direct_support_evidence": [
+      {
+        "evidence_ref": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/path-audit.json",
+        "evidence_sha256": "8d552625c950e98202b60284111b524edc2cd9a2257be2dd3a0f8ac1ba9569bd",
+        "evidence_location": "/summary",
+        "quote": {
+          "baseline_target_count": 270,
+          "registered_roots": 658,
+          "standalone_verifier_roots": 662,
+          "test_roots": 0,
+          "registered_direct": 0,
+          "registered_indirect": 48,
+          "standalone_only": 176,
+          "test_only": 0,
+          "other_script_only": 46,
+          "no_static_path": 0
+        },
+        "scope_claim": "Static path categories for the actual 270 target files; not proof that all paths execute or assert service behavior.",
+        "used": true
+      },
+      {
+        "evidence_ref": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/retrieval.json",
+        "evidence_sha256": "8ddffedb96fb1c5105cd93a314ba830ce46cc6ebca13c8904f17a263a1967d6a",
+        "evidence_location": "/0/result/results/30/record/lesson",
+        "quote": "Auditing a prior phase's heuristic for real impact means two separate checks, not one: first confirm what the heuristic's output actually feeds (by reading the real gap_checks/decision logic, not by assuming), then independently re-run the heuristic itself against current data. A heuristic can be a legitimate design weakness and still be provably harmless to every judgment made so far -- both facts can be true at once, and only checking one of them would have produced either false alarm or false confidence.",
+        "scope_claim": "REFERENCE_ONLY: inspect both the metric and the actual decision consumer before calling the heuristic a defect.",
+        "used": true
+      }
+    ]
+  },
+  "action": {
+    "action_type": "reverification",
+    "action_summary": "Reproduced current verifier; inspected static paths for all 270, checked actual indirect invocation via existing adaptive-learning validator, reran four ProjectBrain verifiers; no service/analyzer repair justified.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "attempted_incomplete",
+    "evidence_category": "verification_scope_assessment",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/outcome.json",
+    "evidence_detail": "48 registered indirect paths, 176 standalone verifier paths and 46 execution-only paths; static reachability is not behavioral coverage. Independent verification for the 46 remains unresolved.",
+    "outcome_evidence_ref": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/outcome.json",
+    "outcome_evidence_sha256": "b81c0e203102bb5dfdec3d42881b0695b158ab6fcd8784c3a0254c8fd649eab9"
+  },
+  "result": {
+    "status": "BLOCKER_CONFIRMED",
+    "implementation_defect_confirmed": false,
+    "full_verification_coverage_proven": false,
+    "projectbrain_verifier_runs_passed": 4
+  },
+  "lesson": "A service absent from registered verifier direct imports is not thereby untested. Follow existing validator calls and standalone verification paths, and keep static reachability, generator self-checks, and independent runtime assertions distinct before changing code.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

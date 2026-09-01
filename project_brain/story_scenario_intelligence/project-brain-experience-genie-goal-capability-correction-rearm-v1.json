@@ -1,0 +1,53 @@
+{
+  "experience_id": "exp_genie_goal_capability_correction_rearm_v1",
+  "phase": "GENIE-GOAL-CAPABILITY-CORRECTION-REARM-V1",
+  "generated_at": "2026-09-01T03:44:56.689Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-goal-capability-correction-rearm-2026-09-01T03-44-56-689Z/assignment.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-goal-capability-correction-rearm-2026-09-01T03-44-56-689Z/development-trace.json",
+    "outcome_ref": "project_brain/antigravity_agent_trial_v1/genie-goal-capability-correction-rearm-2026-09-01T03-44-56-689Z/outcome.json"
+  },
+  "problem": "The only known autonomous self-correction (PHASE-945's Goal<->Capability contradiction detector catching 942's overapplication error, corrected at 946) was a one-time script execution never re-armed; later avoidance of the same error class depended entirely on an agent manually retrieving and applying the historical lesson, with no structural guarantee it would happen again.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Reuse detectGoalCapabilityContradictions() verbatim (extracted via the same AST/VM technique readCaptureState() already uses, never duplicated, never modifying the original PHASE-945 file) as a synchronous, zero-threshold, 5-goal structural check. No contradiction leaves the existing flow fully unaffected. A contradiction triggers targeted capability_ref retrieval, filtered to real corrects_experience_id links only, followed by an independent exact-key re-verification of the corrected Experience and evidence/SHA resolution of its real original evidence. No status is ever auto-modified; the guard only forces correction memory to be read and verified before a judgment proceeds.",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "self_correction_rearm_minimal_implementation",
+    "action_summary": "Added services/genieGoalCapabilityCorrectionRearm.mjs and its verifier. Ran the real detector plus the real live 117-record canonical Experience store against a throwaway fixture recreating the exact 942 condition (positive control), against the real current repository state (normal-state negative control), and against a fixture recreating a contradiction for a capability with no real correction (unrelated-correction negative control). Ran all pre-existing GENIE regressions.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "goal_capability_rearm_real_and_negative_controls",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-goal-capability-correction-rearm-2026-09-01T03-44-56-689Z/outcome.json",
+    "evidence_sha256": "1308bd61ae4d7b2a225588b21f7c22cb0f30f712f551366a320e576a9b393f89",
+    "evidence_detail": "Positive control: recreated 942 condition -> exp_phase946_semantic_quality_capability_correction_01 found, corrects_experience_id exp_phase942_... re-verified via exact-key lookup, original evidence resolved with sha256 18ca34ba022e60af3d3c3326483fca59972d25a88837212b6db7905eac87a8db. Normal-state negative: real live data shows contradiction_detected:false today. Unrelated-correction negative: contradiction for cap_production_runtime correctly yields forced_reads:[] (no hallucinated correction). 11/11 pre-existing GENIE regressions plus 5 new fixture checks passed. Original PHASE-945 source file unmodified (mtime and git status confirmed)."
+  },
+  "result": {
+    "status": "GOAL_CAPABILITY_SELF_CORRECTION_REARM_PROVEN",
+    "problem_resolved": true,
+    "detector_duplicated": false,
+    "automatic_status_modification": false,
+    "full_memory_scan_or_daemon_introduced": false,
+    "unexpected_real_gap_encountered": false,
+    "scope_expanded_beyond_942_946": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "The original PHASE-945 detector was a one-off phase-materialization script, never re-invoked after its single run, so nothing structurally re-checked whether the same Goal<->Capability contradiction shape could recur; its own general-purpose detection logic was real and reusable but simply never wired to fire again.",
+    "cause_type": "dormant_reusable_logic_never_rearmed"
+  },
+  "lesson": "A one-time autonomous detector does not need to be reinvented to be re-armed -- extracting its exact existing logic (via the same side-effect-free AST/VM technique already used elsewhere in this codebase) and wiring it to the existing targeted retrieval and evidence/SHA chain closes the durability gap with zero new detection logic, zero full-memory scanning, and zero arbitrary thresholds.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-goal-capability-correction-rearm-2026-09-01T03-44-56-689Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

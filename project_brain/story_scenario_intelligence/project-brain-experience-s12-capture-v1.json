@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s12_studio_intelligence_real_state_change_detection_01",
+  "phase": "PHASE-S12",
+  "generated_at": "2026-08-23T11:35:36.731Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Applied E45's Trigger-first pattern to Studio Intelligence: compared current real state against the E40 PB baseline and S11's per-goal classification baseline, reusing both as-is",
+    "changes_detected": 0
+  },
+  "problem": "S11 established that Studio Intelligence correctly finds nothing to execute right now, but that alone does not establish an operating discipline for WHEN to check again -- without a Trigger-first check, every future phase would have to redo the full S1..S11 pipeline regardless of whether anything actually changed.",
+  "decision": {
+    "decision_summary": "Compared current state against E40's fixed baseline (goals/capabilities/trace/priority/currency) and S11's per-goal classification baseline: 0 changes detected. NO_STATE_CHANGE -- downstream Decision pipeline not exercised. 0 existing DEFERRED/RESOLVED verdicts force-changed, 0 automatic execution. Verdict: NO_STATE_CHANGE.",
+    "decided_at_phase": "PHASE-S12",
+    "verdict": "NO_STATE_CHANGE"
+  },
+  "action": {
+    "action_type": "studio_intelligence_real_state_change_detection",
+    "action_summary": "Re-derived current Goal/Capability/Trace/Priority state and each production goal's Decision/Boundary classification fresh; compared against the existing E40 and S11 baselines (reused, not re-derived); generated at most 1 candidate only if real change was found.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s12-state-change-detection-v1.json + project-brain-s12-verification-v1.json (this phase)",
+    "evidence_detail": "changes_detected=0, verdict=NO_STATE_CHANGE, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "No real change since S10/S11 -- correctly stopped at NO_STATE_CHANGE rather than re-running the full Decision pipeline for no reason."
+  },
+  "cause": {
+    "root_cause_summary": "Without an explicit Trigger-first check, an operational system either re-verifies everything on every run (wasteful) or silently assumes nothing changed (risky) -- reusing the exact E45 pattern for Studio Intelligence closes that gap the same way it was closed for Project Evolution.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "The same Trigger-first discipline that made Project Evolution's operational loop (E45..E51) sustainable applies directly to Studio Intelligence's decision loop: check for real change first, and only pay the cost of the full Decision pipeline when there is something real to react to.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

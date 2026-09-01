@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s21_studio_intelligence_principle_operational_readiness_01",
+  "phase": "PHASE-SSI-S21",
+  "generated_at": "2026-08-25T10:54:04.807Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Final combined operational-readiness confirmation for both recorded Principles (S4-adopted goal-scoped, S18-adopted capability-scoped): re-verified each fresh, re-confirmed S5/S8/S19/S20 results, checked the two for conflict/duplication against each other, and re-applied both boundary rules to all 3 real trace chains",
+    "principle_one_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "principle_two_id": "principle_cap_dataset_management_ssi_s18_v1"
+  },
+  "problem": "Two independently-adopted Principles (S4, goal-scoped; S18, capability-scoped) had each separately passed operational validation and boundary validation on their own track, but had never been checked against EACH OTHER for evidence/scope conflict or simultaneous, contradictory application to the same real trace case -- readiness of the pair as a whole is not automatically implied by readiness of each part alone.",
+  "decision": {
+    "decision_summary": "P1 fresh evidence match=true, P2 fresh evidence match=true. S5=PRINCIPLE_OPERATIONALLY_VALIDATED(ok=true), S8=PRINCIPLE_BOUNDARY_VALIDATED(ok=true), S19=PRINCIPLE_GUIDED_DECISION_CONFIRMED(ok=true), S20=PRINCIPLE_BOUNDARY_VALIDATED(ok=true). Cross-Principle conflict/duplication=false. All 3 real trace chains re-tested against both boundary rules: p1_correct=true, p2_correct=true, no_simultaneous_application=true, no_additional_untested_cases=true. 0 CI wiring, 0 automatic policy, 0 automatic execution, 0 real project modifications. Verdict: PRINCIPLES_OPERATIONALLY_READY.",
+    "decided_at_phase": "PHASE-SSI-S21",
+    "verdict": "PRINCIPLES_OPERATIONALLY_READY"
+  },
+  "action": {
+    "action_type": "studio_intelligence_dual_principle_operational_readiness_check",
+    "action_summary": "Re-derived both Principles' evidence groupings fresh from the canonical Experience Layer, re-read S5/S8/S19/S20's own final_state fresh, checked the two Principles' evidence and goal scope for overlap, and re-applied both unmodified boundary rules to all 3 real trace v16 chains to confirm complete, correct, non-overlapping coverage.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s21-principle-operational-readiness-v1.json + project-brain-ssi-s21-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=PRINCIPLES_OPERATIONALLY_READY, cross_principle_duplicate_or_conflict=false, no_simultaneous_application=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Both Principles independently re-verified and jointly checked for conflict/duplication: disjoint evidence, disjoint goal scope, and mutually exclusive, correct application across all 3 real trace chains -- the pair is operationally ready, still recorded read-only, not CI/policy/execution-wired."
+  },
+  "cause": {
+    "root_cause_summary": "Each Principle passing its own operational-validation and boundary-validation track independently only proves each is internally coherent -- it says nothing about whether the two, applied together to the same real data, would ever fire on the same case in contradictory ways or silently share evidence; that joint claim requires its own explicit, mechanical check.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Readiness of a set of Principles is not the sum of each Principle's individual readiness -- it additionally requires a cross-Principle check run against the same real data both were validated on: disjoint evidence/scope, and no real case where both boundary rules would fire at once. Here that check confirmed the goal-scoped and capability-scoped Principles cover disjoint real cases (goal_production_runtime vs goal_semantic_quality) with goal_ghibli_production_pipeline correctly excluded by both -- a clean, non-overlapping partition of the 3 real trace chains, not an accident of the check never having been run.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

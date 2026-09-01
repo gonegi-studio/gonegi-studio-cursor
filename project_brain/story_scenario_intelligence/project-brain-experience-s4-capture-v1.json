@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_s4_studio_intelligence_decision_context_01",
+  "phase": "PHASE-S4",
+  "generated_at": "2026-08-23T07:49:05.657Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Tested whether real provenance (S2/S3) composes into a coherent Goal->Evidence->Provenance->Decision->Outcome Decision Context, using only real fields, for all 4 production goals",
+    "production_goal_count": 4,
+    "goals_with_complete_context": 3
+  },
+  "problem": "S2/S3 confirmed provenance EXISTS for all 4 production goals, but existence of provenance does not by itself prove it composes into a usable, linked Decision Context -- that had to be tested empirically, not assumed.",
+  "decision": {
+    "decision_summary": "Extracted Evidence/Decision/Outcome for all 4 goals: goal_ghibli_production_pipeline(complete=true), goal_production_runtime(complete=true), goal_semantic_quality(complete=true), goal_character_narrative_intelligence(complete=false). Empirically demonstrated a fully-real, fully-linked Decision Context for goal_ghibli_production_pipeline. Verdict: DECISION_CONTEXT_VERIFIED. Goal<->Capability<->Provenance<->Decision consistency: true. 0 new structure, 0 real modifications, 0 automatic executions.",
+    "decided_at_phase": "PHASE-S4",
+    "verdict": "DECISION_CONTEXT_VERIFIED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_decision_context_empirical_test",
+    "action_summary": "Extracted Goal->Evidence->Provenance->Decision->Outcome for all 4 production goals from real trace-chain and SSI-incorporation-chain fields; empirically demonstrated 1 complete real chain; verified consistency.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s4-decision-context-v1.json + project-brain-s4-verification-v1.json (this phase)",
+    "evidence_detail": "complete_contexts=3/4, demonstrated_goal=goal_ghibli_production_pipeline, consistency_ok=true, regression_all_passed=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "goal_ghibli_production_pipeline's Decision Context is real and fully linked: evidence_source=trace_chain.real_fix_record.verification_result."
+  },
+  "cause": {
+    "root_cause_summary": "Provenance existing (S2/S3) and provenance composing into a usable Decision Context are two different claims -- the second required actually extracting and linking the fields, which this phase did empirically rather than assuming from the first.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Confirming a prerequisite exists (provenance) is not the same as confirming the thing built on top of it (a linked Decision Context) actually works -- each layer needs its own empirical test.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

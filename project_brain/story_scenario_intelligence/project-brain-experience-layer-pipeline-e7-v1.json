@@ -1,0 +1,63 @@
+{
+  "pipeline_id": "project_brain_experience_layer_pipeline_v1",
+  "stages": [
+    {
+      "stage": "Capture",
+      "origin_phase": "E2",
+      "real_artifact": "materializeProjectBrainPhaseE2ExperienceCaptureV1.ts (captureExperience(), classifyExperienceKind())",
+      "reused_this_phase": false,
+      "note": "Not re-invoked -- no new capture this phase."
+    },
+    {
+      "stage": "Index",
+      "origin_phase": "E3",
+      "real_artifact": "project-brain-experience-index-v1.json (by_goal/gap/dependency/capability/kind)",
+      "reused_this_phase": true,
+      "note": "Consolidated into Index v2 this phase (step [2] below), covering all 8 experiences now on record."
+    },
+    {
+      "stage": "Retrieval",
+      "origin_phase": "E3",
+      "real_artifact": "retrieveByGoal/Gap/Dependency/Capability/Kind (exact structural lookup, no similarity matching)",
+      "reused_this_phase": true
+    },
+    {
+      "stage": "Guidance",
+      "origin_phase": "E4",
+      "real_artifact": "project-brain-experience-guided-development-plan-e4-v1.json (recommended_considerations, additive reference only)",
+      "reused_this_phase": false
+    },
+    {
+      "stage": "Candidate",
+      "origin_phase": "E5",
+      "real_artifact": "project-brain-improvement-candidates-e5-v1.json (4 candidates, evidence_refs + confidence + novelty_check)",
+      "reused_this_phase": true
+    },
+    {
+      "stage": "Review",
+      "origin_phase": "E6",
+      "real_artifact": "project-brain-candidate-review-e6-v1.json (ACCEPT/REJECT/DEFER)",
+      "reused_this_phase": true
+    },
+    {
+      "stage": "Execution",
+      "origin_phase": "E6",
+      "real_artifact": "computeRepeatEscalationSignal() + trace v15 (1 candidate executed, additive)",
+      "reused_this_phase": true,
+      "note": "Replayed (not re-executed) this phase -- see step [4]."
+    },
+    {
+      "stage": "Evidence",
+      "origin_phase": "E6",
+      "real_artifact": "3 deterministic tests (A/B/C)",
+      "reused_this_phase": true
+    },
+    {
+      "stage": "Experience (feedback)",
+      "origin_phase": "E6",
+      "real_artifact": "exp_phase_e6_goal_production_runtime_improvement_01",
+      "reused_this_phase": true
+    }
+  ],
+  "no_stage_reimplemented": true
+}

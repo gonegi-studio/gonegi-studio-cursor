@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_ssi_s22_studio_intelligence_real_change_trigger_01",
+  "phase": "PHASE-SSI-S22",
+  "generated_at": "2026-08-25T11:00:11.706Z",
+  "experience_kind": "honest_negative_reconfirmation",
+  "context": {
+    "exploration_scope": "Connected both S21-ready Principles to the real SSI flow as independent, per-Principle change-gated triggers: compared each Principle's own last known real state against a fresh read, and ran a judgment loop only for the Principle(s) whose real state actually changed",
+    "principle_one_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "principle_two_id": "principle_cap_dataset_management_ssi_s18_v1",
+    "p1_real_state_changed": false,
+    "p2_real_state_changed": false
+  },
+  "problem": "PHASE-SSI-S21 confirmed both Principles ready as a pair, but readiness alone does not connect either one to the real operational flow -- and wiring both in as a single combined trigger (rather than two independent ones) would risk running a Principle's judgment loop even when only the OTHER Principle's real state had actually changed, re-litigating settled state under the guise of the pair being \"connected.\"",
+  "decision": {
+    "decision_summary": "P1 real_state_changed=false (left untouched). P2 real_state_changed=false (left untouched). 0 forced status changes. 0 CI wiring, 0 automatic policy, 0 automatic execution. Overall verdict: NO_REAL_TRIGGER.",
+    "decided_at_phase": "PHASE-SSI-S22",
+    "verdict": "NO_REAL_TRIGGER"
+  },
+  "action": {
+    "action_type": "studio_intelligence_real_change_trigger",
+    "action_summary": "Compared each Principle's own last known real state (S21's fresh checkpoint plus the S5/S19 sub-field baselines) against a fresh read of the real trace/hold/overlay files; gated each Principle's judgment loop strictly on its OWN detected change; on change, computed the independent verdict before the Principle-guided verdict and compared them; never wrote to any real file.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s22-real-change-trigger-v1.json + project-brain-ssi-s22-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=NO_REAL_TRIGGER, p1_real_state_changed=false, p2_real_state_changed=false, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Correctly reported NO_REAL_TRIGGER -- neither Principle's real state changed since S21, so neither judgment loop ran; both Principles stayed inert, which is the intended change-gated behavior, not a failure."
+  },
+  "cause": {
+    "root_cause_summary": "Two Principles confirmed ready as a pair (S21) are still two separate real-world triggers -- a single shared change gate would either miss a real change specific to one Principle's own scope or spuriously re-run the other Principle's judgment loop for a change that was never actually within its scope; keeping the two change checks and the two judgment loops fully independent is what lets 'connected to the real flow' mean what it says for each Principle individually.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Generalizing a change-gated trigger from one Principle to two is not just running the same check twice -- each Principle needs its own last-known-state checkpoint (sourced from the specific prior phase that actually recorded it: S21's fresh trace read for chain_status, S5 for the gpu/hold baseline, S19 for the capability overlay/clarification baseline) and its own independent judgment loop, so that a change relevant to only one Principle correctly triggers only that one, and PRINCIPLE_REJECTED on one Principle never silently discards a valid PRINCIPLE_APPLICABLE result on the other.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s13_improvement_signal_validation_01",
+  "phase": "PHASE-SSI-S13",
+  "generated_at": "2026-08-24T11:31:49.660Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Independently re-verified PHASE-SSI-S12's sole CANDIDATE_ONLY signal against the current canonical Experience Layer, the current E12/E23/E33/S1/S4 registries, and a new independence check against the S4-adopted Principle's own real-world root cause",
+    "candidate_signals_reviewed": 1,
+    "validated_signals": 0
+  },
+  "problem": "PHASE-SSI-S12 found a structurally new grouping key (goal_project_brain_operational::honest_negative_reconfirmation, from the S10/S11 NO_REAL_TRIGGER records) that had never been surfaced before, but a new grouping key alone does not prove a new underlying phenomenon -- it was unverified whether this signal reflects a genuinely independent pattern or is simply the same GPU/ComfyUI infrastructure blocker the S4 Principle already covers, observed one layer up in the trigger mechanism itself.",
+  "decision": {
+    "decision_summary": "1 S12 candidate(s) re-checked. 0 passed evidence re-verification, non-duplication/non-conflict, and independence-from-the-S4-Principle checks (VALIDATED_CANDIDATE): none. 1 rejected. 0 promotion, 0 policy-ization, 0 execution. Verdict: REJECTED.",
+    "decided_at_phase": "PHASE-SSI-S13",
+    "verdict": "REJECTED"
+  },
+  "action": {
+    "action_type": "improvement_signal_validation",
+    "action_summary": "Re-derived each S12 candidate's evidence fresh from the canonical Experience Layer, re-ran the E12/E23/E33+S-series/S1/S4 duplication-and-conflict check, and mechanically checked whether every evidence record's own full JSON text references the same real-world root-cause facts (gpu_available, PRODUCTION_VALIDATION_HOLD.json, GPU/ComfyUI) that ground the already-adopted S4 Principle.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s13-signal-validation-v1.json + project-brain-ssi-s13-verification-v1.json (this phase)",
+    "evidence_detail": "candidate_signals_reviewed=1, validated_signal_count=0, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The S12 candidate mechanically traces back to the same real GPU/ComfyUI root cause the S4 Principle already covers -- correctly REJECTED as not independent rather than treated as a second, separate signal."
+  },
+  "cause": {
+    "root_cause_summary": "A signal built entirely from two Experience records that exist specifically because a change-detection gate compared the same real infrastructure fact twice will, by construction, reference that same fact both times -- a structurally new (goal_ref, experience_kind) grouping key is a necessary but not sufficient condition for a genuinely new improvement signal; the underlying cause has to be checked too, or the same real dependency would get counted, and potentially later adopted, as two unrelated principles.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Validating a \"new\" signal requires checking not just whether its grouping key is unseen, but whether its evidence is causally independent of every already-adopted Principle -- a meta-level echo of an existing, already-covered real dependency is not a second improvement signal, even when it clears every structural/duplication check on its own terms.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

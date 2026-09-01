@@ -1,0 +1,51 @@
+{
+  "overlay_id": "project_brain_lpm_capability_functional_status_overlay_v1",
+  "phase": "PHASE-941",
+  "generated_at": "2026-08-22T04:44:46.584Z",
+  "mode": "ADDITIVE_NO_LPM_MODIFICATION_DIRECT_EVIDENCE_ONLY",
+  "applies_alongside": "datasets/project_brain/lpm_v1/living-project-model-v1.json (entity_ids/capabilities arrays kept fully as-is; this file is a separate, additive read next to it)",
+  "rule": "Only capabilities with a DIRECT (not goal-aggregated/inherited) real evidence source this phase or PHASE-940 are given a functional_status. Capabilities without direct evidence are intentionally omitted rather than inferred, per the no-forced-inference instruction.",
+  "capabilities": [
+    {
+      "capability_id": "cap_production_runtime",
+      "functional_status": "blocked",
+      "evidence_source": "project_brain/real_generation/PRODUCTION_VALIDATION_HOLD.json (PHASE-940)"
+    },
+    {
+      "capability_id": "cap_movie_reconstruction",
+      "functional_status": "blocked",
+      "evidence_source": "reports/movie_factory_validation/movie-factory-validation-report.json (PHASE-941)"
+    },
+    {
+      "capability_id": "cap_cinematic_generation",
+      "functional_status": "blocked",
+      "evidence_source": "reports/movie_factory_validation/movie-factory-validation-report.json (PHASE-941, video_adapter_valid=false)"
+    },
+    {
+      "capability_id": "cap_repository_intelligence",
+      "functional_status": "satisfied",
+      "evidence_source": "datasets/repository_intelligence/project-entity-extraction-v1.json (PHASE-941)"
+    },
+    {
+      "capability_id": "cap_dataset_management",
+      "functional_status": "blocked",
+      "evidence_source": "project-brain-cap-dataset-management-concentration-rootcause-v1.json (PHASE-940) -- catch-all pattern confirmed, not a re-classification, a status flag only"
+    },
+    {
+      "capability_id": "cap_project_brain_intelligence",
+      "functional_status": "satisfied",
+      "evidence_source": "scripts/verify-project-brain-real-project-integration.ts real run (PHASE-941) -- satisfied at this goal/capability's own existence-level criteria, see v3 assessment caveat"
+    },
+    {
+      "capability_id": "cap_verification_and_audit",
+      "functional_status": "satisfied",
+      "evidence_source": "scripts/verify-project-brain-real-project-integration.ts real run (PHASE-941)"
+    }
+  ],
+  "capabilities_intentionally_not_assessed_this_phase": [
+    "cap_narrative_production",
+    "cap_source_video_analysis",
+    "cap_export_materialization",
+    "and any of the LPM's remaining capabilities not listed above"
+  ]
+}

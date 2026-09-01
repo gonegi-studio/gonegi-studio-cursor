@@ -1,0 +1,52 @@
+{
+  "experience_id": "exp_phase_ssi_s20_studio_intelligence_principle_boundary_validation_01",
+  "phase": "PHASE-SSI-S20",
+  "generated_at": "2026-08-24T12:14:21.782Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Independently validated the application boundary of PHASE-SSI-S19's confirmed capability Principle against the real Goal/Capability landscape beyond cap_dataset_management, deliberately including goal_production_runtime as a surface-similar-but-different-real-cause trap case",
+    "principle_id": "principle_cap_dataset_management_ssi_s18_v1",
+    "other_goals_tested": [
+      "goal_production_runtime",
+      "goal_ghibli_production_pipeline"
+    ]
+  },
+  "problem": "PHASE-SSI-S19 confirmed the capability Principle works correctly on its own evidenced case (goal_semantic_quality), but a Principle checked only against the case it came from hasn't demonstrated it knows its own boundary -- specifically whether it would misfire on goal_production_runtime, which shares the same surface shape (blocked, tied to a capability) but has a completely unrelated real cause.",
+  "decision": {
+    "decision_summary": "Boundary rule (mechanical, grounded in trace v16's own capability_status_clarification field): applies only when that field is present and non-empty. Tested against all 3 real chains: goal_semantic_quality(applies=true,expected=true,correct=true), goal_production_runtime(applies=false,expected=false,correct=true), goal_ghibli_production_pipeline(applies=false,expected=false,correct=true). All correct: true. Duplication/conflict against E12/S4: false. Verdict: PRINCIPLE_BOUNDARY_VALIDATED.",
+    "decided_at_phase": "PHASE-SSI-S20",
+    "verdict": "PRINCIPLE_BOUNDARY_VALIDATED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_principle_boundary_validation",
+    "action_summary": "Re-checked duplication/conflict against E12's confirmed Pattern registry and the S4 Principle; stated the application/non-application boundary as a mechanical rule grounded in trace v16's own structure; tested that rule against all 3 real chains, including goal_production_runtime as a deliberate surface-similar trap case.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s20-principle-boundary-validation-v1.json + project-brain-ssi-s20-verification-v1.json (this phase)",
+    "evidence_detail": "all_real_cases_correctly_classified=true, is_duplicate_or_conflict=false, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The boundary rule correctly applied to goal_semantic_quality and correctly refused goal_production_runtime (the surface-similar trap case) and goal_ghibli_production_pipeline -- the capability Principle's boundary is real, not just untested."
+  },
+  "cause": {
+    "root_cause_summary": "goal_production_runtime and goal_semantic_quality share an identical surface shape (blocked, tied to a named capability) while differing completely on real cause (external infrastructure vs internal entity-concentration misattribution) -- exactly the kind of pair that would fool a boundary rule based on surface status alone, which is why it was deliberately included rather than testing only cases already known to be safe.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Validating a second Principle's boundary means deliberately hunting for the surface-similar trap case, not just re-confirming cases already known to pass -- goal_production_runtime looked exactly like a case this Principle might wrongly claim, and the mechanical, structure-grounded rule (capability_status_clarification presence, not \"blocked\" status) correctly refused it.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

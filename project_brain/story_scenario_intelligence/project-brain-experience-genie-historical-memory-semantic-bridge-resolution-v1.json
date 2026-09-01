@@ -1,0 +1,54 @@
+{
+  "experience_id": "exp_genie_historical_memory_semantic_bridge_resolution_v1",
+  "phase": "GENIE-HISTORICAL-MEMORY-SEMANTIC-BRIDGE-RESOLUTION-V1",
+  "generated_at": "2026-09-01T01:27:14.404Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-historical-memory-semantic-bridge-resolution-2026-09-01T01-27-14-404Z/assignment.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-historical-memory-semantic-bridge-resolution-2026-09-01T01-27-14-404Z/development-trace.json",
+    "outcome_ref": "project_brain/antigravity_agent_trial_v1/genie-historical-memory-semantic-bridge-resolution-2026-09-01T01-27-14-404Z/outcome.json"
+  },
+  "problem": "A natural current Project Intelligence problem could select a recent canonical Experience, yet still fail to recover the initial differently-keyed historical Experience because problem-only History retrieval did not traverse existing Experience provenance or exact assignment identity.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Add only a read-only structural bridge over explicit source/correction Experience IDs and exact shared assignment_ref. Preserve every original goal_ref and CR-15/16/17 provenance contract; do not introduce semantic search, vectors, RAG, keyword tags or incident-specific rules.",
+    "source_experience_id": "exp_genie_cross_context_memory_retrieval_gap_resolution_v1",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "historical_memory_structural_bridge_resolution",
+    "action_summary": "Extended the existing canonical History retrieval service and verifier; proved Incident #2/#3 retrieval and a real unrelated negative control; ran all existing GENIE regressions.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "explicit_provenance_bridge_and_negative_control",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-historical-memory-semantic-bridge-resolution-2026-09-01T01-27-14-404Z/outcome.json",
+    "evidence_detail": "Incident #2 and #3 recovered the initial differently-keyed Experience through explicit canonical edges; unrelated GPU/ComfyUI controls returned zero bridge records; 11/11 pre-capture GENIE regressions passed at 114 canonical Experiences."
+  },
+  "result": {
+    "status": "HISTORICAL_MEMORY_SEMANTIC_BRIDGE_RESOLVED",
+    "problem_resolved": true,
+    "canonical_experience_count_after": 115,
+    "final_genie_regressions_passed": 11,
+    "historical_experiences_modified": false,
+    "historical_goal_refs_reclassified": false,
+    "semantic_vector_rag_created": false,
+    "keyword_tags_created": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "The necessary relationships already existed in canonical records, but the problem-only History operation stopped at repository JSON evidence and exposed no Experience-to-Experience traversal path.",
+    "cause_type": "missing_existing_experience_provenance_traversal"
+  },
+  "lesson": "A key mismatch does not require reclassification when canonical records already preserve exact relational evidence: keep the historical key intact and add a bounded traversal over explicit provenance and shared real assignment identity, with an unrelated negative control to prevent relevance inflation.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-historical-memory-semantic-bridge-resolution-2026-09-01T01-27-14-404Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

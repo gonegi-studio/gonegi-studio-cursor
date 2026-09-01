@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e32_cross_domain_stage_closure_01",
+  "phase": "PHASE-E32",
+  "generated_at": "2026-08-23T00:37:55.372Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E31 validated the Currency->Experience->Decision flow on a case where the real, correct outcome was \"still open\" -- whether it also correctly handles the opposite real outcome (\"already resolved,\" where incorrectly reporting \"unresolved\" would be a real, meaningful failure mode) was unverified.",
+  "decision": {
+    "decision_summary": "Ran Search->Pointer->Currency->Experience->Decision once for cand_exp_phase_e16_structural_limitation_exploration_01__knowledge_gap: Currency (Index=EXPECTED_SELF_CAPTURE_STALE, Pointer=CURRENT) correctly triggered the direct canonical-set compensation (E31's procedure, reused), which correctly found the real resolving Experience (exp_phase_e17_candidate_review_decision_01) and correctly avoided a false \"unresolved\" verdict.",
+    "decided_at_phase": "PHASE-E32"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Reused the full Currency Layer + Experience retrieval + Decision flow verbatim; ran 1 integrated real check; made 0 modifications.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e32-real-execution-v1.json + project-brain-e32-verification-v1.json (this phase)",
+    "evidence_detail": "candidate_resolved=true, wrong_unresolved_verdicts=0, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Re-validates the Currency->Experience->Decision flow on a 2nd real, differently-shaped case; does not modify the Index, pointer chain, or the target candidate; does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "A flow proven correct on 1 real outcome type (\"still open,\" E31) is not automatically proven correct on the opposite real outcome type (\"already resolved\") -- that required an independent real test.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "The flow's value is proven precisely by correctly reporting \"already resolved\" here and \"still open\" at E31 -- the same mechanism producing the correct, DIFFERENT real answer each time, rather than a fixed default either way, is what makes it trustworthy as a real operational decision layer.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

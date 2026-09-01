@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_s0_studio_intelligence_foundation_01",
+  "phase": "PHASE-S0",
+  "generated_at": "2026-08-23T07:32:57.041Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "First phase of the Studio Intelligence arc: defined the Studio State Model as connection points into existing real PB/Experience data, after confirming (fresh search) that no prior Studio Intelligence structure exists to duplicate",
+    "production_scoped_goal_count": 4,
+    "production_scoped_experience_count": 38
+  },
+  "problem": "E51 opened a candidate for a Studio Intelligence Foundation but deliberately left its scope and design undecided. Building it naively as 7 new parallel data structures (Studio Goal / Production State / Production Capability / Production Gap / Production Experience / Production Decision / Production Outcome) would duplicate the real Goal Model, LPM capability overlay, trace chains, and Experience Layer that already track exactly this information.",
+  "decision": {
+    "decision_summary": "Fresh search confirmed no prior Studio Intelligence structure exists (only E51's own transition outputs). Designed all 7 Studio State Model entities as naming lenses over existing real data, scoped to the 4 production-scoped goals (of 6 total) rather than as new structures. Connection verification: true. Full canonical Experience integrity: dangling=0, duplicates=0. 0 real PB/Goal/Gap/LPM/SSI/CHAR modifications, 0 automatic executions, 0 new persisted instance data.",
+    "decided_at_phase": "PHASE-S0",
+    "verdict": "DESIGN_ONLY_NO_DUPLICATION"
+  },
+  "action": {
+    "action_type": "studio_intelligence_foundation_design",
+    "action_summary": "Defined the Studio State Model as 7 connection-point lenses over the real Goal Model, LPM capability overlay, Goal-Gap-Dependency trace, and Experience Layer; verified every referenced id resolves to a real record; ran full 7-axis regression + dangling/duplicate checks.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-studio-state-model-s0-v1.json + project-brain-s0-connection-verification-v1.json + project-brain-s0-verification-v1.json (this phase)",
+    "evidence_detail": "production_goals_real=true, production_capabilities_real=true, connection_ok=true, regression_all_passed=true, no_duplicate_structure=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Studio Intelligence Foundation is now designed (not implemented): every entity has a concrete, verified connection point into real data, and zero new parallel structures or instance data were created."
+  },
+  "cause": {
+    "root_cause_summary": "A newly-opened arc risks re-deriving structures that already exist under different names -- the fix is to design connection points before any implementation, so duplication is ruled out structurally rather than discovered later.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Naming a new concept ('Studio Goal', 'Production Experience', etc.) does not require building a new structure for it -- when the underlying data already exists (as it did here, for every one of the 7 entities), the correct design is a lens, not a duplicate.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

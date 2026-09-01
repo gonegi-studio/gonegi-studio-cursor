@@ -1,0 +1,25 @@
+{
+  "pointer_id": "project_brain_standard_goal_judgment_output_v3",
+  "phase": "PHASE-E9",
+  "status": "CANONICAL_CURRENT_STANDARD_OUTPUT",
+  "supersedes_in_scope_not_in_file": "project-brain-standard-goal-judgment-output-v2.json (PHASE-956, pointed at v8) stays on disk unmodified -- it was found stale this phase (predates PHASE-970's 6th Goal, SSI incorporation).",
+  "points_to": "project-brain-goal-satisfaction-v12-ssi-incorporated-v1.json (PHASE-970, all 6 goals including the SSI addition, the most current real assessment)",
+  "conforms_to_schema": "project-brain-two-tier-standard-schema-v1.json (PHASE-950, unchanged)",
+  "goal_model_source": "datasets/project_brain/goal_model_v1/project-brain-goal-model-v1.json (read-only)",
+  "summary_snapshot": {
+    "satisfied": 3,
+    "pending": 1,
+    "blocked": 2,
+    "unknown": 0,
+    "total_goals": 6
+  },
+  "entries_summary": [
+    { "goal_id": "goal_production_runtime", "existence": "satisfied", "functional": "blocked", "evidence_category": "hard_failure", "real_evidence_backed": true },
+    { "goal_id": "goal_ghibli_production_pipeline", "existence": "satisfied", "functional": "satisfied", "evidence_category": "hard_pass", "real_evidence_backed": true },
+    { "goal_id": "goal_project_brain_operational", "existence": "satisfied", "functional": "pending", "evidence_category": "coverage_gap", "real_evidence_backed": false },
+    { "goal_id": "goal_repository_foundation", "existence": "satisfied", "functional": "satisfied", "evidence_category": "population_only", "real_evidence_backed": false },
+    { "goal_id": "goal_semantic_quality", "existence": "satisfied", "functional": "blocked", "evidence_category": "taxonomy_quality_only", "real_evidence_backed": true },
+    { "goal_id": "goal_character_narrative_intelligence", "existence": "not_satisfied", "functional": "satisfied", "evidence_category": "hard_pass", "real_evidence_backed": false }
+  ],
+  "usage_note": "Future phases should read Goal-judgment state from THIS v3 pointer rather than v1/v2/any direct v-series filename. Lesson from PHASE-E9 (exp_phase_e8_discovery_phase964_stale_reference_crash_01): a pointer that is never re-checked can itself go stale -- when producing a new full assessment (like v12 was at PHASE-970), also update the canonical pointer in the SAME phase, not as an afterthought."
+}

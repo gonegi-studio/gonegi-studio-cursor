@@ -1,0 +1,50 @@
+{
+  "experience_id": "exp_phase_e9_fix_phase964_stale_reference_01",
+  "phase": "PHASE-E9",
+  "generated_at": "2026-08-22T12:18:43.599Z",
+  "experience_kind": "successful_resolution",
+  "decision": {
+    "corrects_experience_id": "exp_phase_e8_discovery_phase964_stale_reference_crash_01"
+  },
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "PHASE-964's script crashed on a stale hardcoded reference (discovered at E8, formalized as exp_phase_e8_discovery_phase964_stale_reference_crash_01).",
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Created v3 canonical pointer (points to the real, current v12 assessment) and repointed PHASE-964's data-loading through it instead of a hardcoded filename.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "Full real execution of materializeProjectBrainPhase964....ts (this phase, not an isolated test)",
+    "evidence_detail": "  provenance_policy_v1 unchanged: true |   gap_scoring_rules_v1 unchanged: true |   remaining_gaps_v1 unchanged: true |   transition_conditions_v1 unchanged: true |   check_4layer_v962 unchanged: true |  | OK -- PHASE-964 complete. Autonomous Chain Registration mechanism designed and implemented as a function. Real run: 0 candidates (correct -- duplicate prevention fired for all 3 existing chains). Simulated dry-run: 1 hypothetical candidate correctly generated and flowed through the existing priority/gate pipeline. No real chain added. All out-of-scope files unchanged: true. | "
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Fixes a PB-mechanism defect; does not change goal_ghibli_production_pipeline's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "Same root cause as the original discovery -- resolved by routing through the existing (now also-repaired) canonical pointer mechanism instead of a hardcoded filename.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Fixing a stale-reference bug by routing through an ALREADY-EXISTING pointer mechanism (rather than inventing new resolution logic) is both the minimal fix and a direct reuse of the \"search existing artifacts first\" lesson -- and doing so surfaced that the pointer itself needed the same fix, one layer up.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

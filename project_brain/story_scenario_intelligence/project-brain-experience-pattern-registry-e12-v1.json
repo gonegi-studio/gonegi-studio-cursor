@@ -1,0 +1,66 @@
+{
+  "registry_id": "project_brain_experience_pattern_registry_v1",
+  "phase": "PHASE-E12",
+  "generated_at": "2026-08-22T12:43:34.059Z",
+  "detection_method": "Exact structural grouping by (goal_ref, experience_kind) only -- no similarity/embedding/fuzzy inference of any kind. A grouping is a confirmed Pattern only once member count >= 2; single occurrences are listed separately under monitoring.",
+  "experiences_analyzed": 12,
+  "confirmed_patterns": [
+    {
+      "pattern_id": "pattern_goal_ghibli_production_pipeline_successful_resolution",
+      "pattern_type": "repeated_success",
+      "grouping_key": {
+        "goal_ref": "goal_ghibli_production_pipeline",
+        "experience_kind": "successful_resolution"
+      },
+      "count": 4,
+      "member_experience_ids": [
+        "exp_phase959_ghibli_production_pipeline_01",
+        "exp_phase_e11_currency_guard_01",
+        "exp_phase_e8_goal_ghibli_production_pipeline_process_improvement_01",
+        "exp_phase_e9_fix_phase964_stale_reference_01"
+      ],
+      "first_occurrence_phase": "PHASE-959",
+      "last_occurrence_phase": "PHASE-E9"
+    },
+    {
+      "pattern_id": "pattern_goal_production_runtime_honest_negative_reconfirmation",
+      "pattern_type": "repeated_failure",
+      "grouping_key": {
+        "goal_ref": "goal_production_runtime",
+        "experience_kind": "honest_negative_reconfirmation"
+      },
+      "count": 4,
+      "member_experience_ids": [
+        "exp_phase_953_production_runtime_reverification_01",
+        "exp_phase_960_production_runtime_reverification_02",
+        "exp_phase_962_production_runtime_reverification_03",
+        "exp_phase_e2_goal_production_runtime_04"
+      ],
+      "first_occurrence_phase": "PHASE-953",
+      "last_occurrence_phase": "PHASE-E2"
+    }
+  ],
+  "monitoring_single_occurrences": [
+    {
+      "grouping_key": {
+        "goal_ref": "goal_repository_foundation",
+        "experience_kind": "misjudgment_correction"
+      },
+      "count": 1,
+      "member_experience_ids": [
+        "exp_phase946_semantic_quality_capability_correction_01"
+      ]
+    },
+    {
+      "grouping_key": {
+        "goal_ref": "goal_production_runtime",
+        "experience_kind": "successful_resolution"
+      },
+      "count": 1,
+      "member_experience_ids": [
+        "exp_phase_e6_goal_production_runtime_improvement_01"
+      ]
+    }
+  ],
+  "false_patterns_found": 0
+}

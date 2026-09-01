@@ -1,0 +1,20 @@
+{
+  "manifest_id": "project_brain_experience_layer_v1_manifest",
+  "phase": "PHASE-E7",
+  "generated_at": "2026-08-22T12:06:06.407Z",
+  "status": "STABLE_V1_LOCKED",
+  "version": "v1",
+  "entry_points": {
+    "schema": "project-brain-experience-model-schema-v1.json (E1)",
+    "connection_rules": "project-brain-experience-connection-rules-v1.json (E1)",
+    "canonical_experience_store": "e1_mapping.experiences (6) + e2_capture_report.live_capture.experience (1) + e6_experience (1) = 8 total, assembled as shown in this phase's scripts -- no single physical file holds all 8; consumers assemble via this documented union.",
+    "index": "project-brain-experience-index-v2.json (E7, consolidated, supersedes E3's v1 in scope)",
+    "retrieval_functions": "retrieveByGoal/Gap/Dependency/Capability/Kind -- exact structural lookup only (defined in E3, reused unmodified since)",
+    "guidance": "project-brain-experience-guided-development-plan-e4-v1.json (E4)",
+    "candidates": "project-brain-improvement-candidates-e5-v1.json (E5)",
+    "review_and_execution_pattern": "project-brain-candidate-review-e6-v1.json + project-brain-self-improvement-closed-loop-e6-v1.json (E6, the reference implementation of a full closed loop)",
+    "safety_gate": "project-brain-self-improvement-safety-gate-e7-v1.json (E7, locked)"
+  },
+  "e1_through_e6_outputs_preserved": true,
+  "future_usage_note": "From this phase forward, the Experience Layer is not redesigned -- it is USED: new real PB events should flow through Capture (extending the canonical store), Index should be refreshed additively (new version, e.g. v3) as new experiences accumulate, and any new Improvement Candidate must go through the same Review->Execute(1 at a time)->Verify->Feedback loop proven at E6, gated by the locked safety policy (E7)."
+}

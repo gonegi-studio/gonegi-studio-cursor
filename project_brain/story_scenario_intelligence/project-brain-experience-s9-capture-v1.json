@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s9_studio_intelligence_actionability_integration_01",
+  "phase": "PHASE-S9",
+  "generated_at": "2026-08-23T11:16:05.927Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Independently re-derived S8's 3 execution-boundary classifications from scratch and integrated them into the full Decision->Action->Boundary->Outcome chain per goal, to confirm S8's judgment is load-bearing in the real Studio Decision flow",
+    "execution_units_judged": 3
+  },
+  "problem": "S8 established a correct execution-boundary judgment, but confirming it once is not the same as confirming it integrates correctly into the broader Decision->Action->Boundary->Outcome flow this arc has been building since S1 -- that had to be tested by independent re-derivation, not by trusting S8's own recorded output.",
+  "decision": {
+    "decision_summary": "Independently re-derived all 3 classifications from scratch: matches S8's recorded verdicts=true. All 3 Decision->Action->Boundary->Outcome chains fully linked: true. Internally actionable: 0. 0 execution, 0 candidate. External infrastructure DEFERRED condition reused as-is: true. Verdict: NO_ACTIONABLE_UNIT_FOUND. 0 new rule/score, 0 automatic execution, 0 modifications.",
+    "decided_at_phase": "PHASE-S9",
+    "verdict": "NO_ACTIONABLE_UNIT_FOUND"
+  },
+  "action": {
+    "action_type": "studio_intelligence_actionability_integration_verification",
+    "action_summary": "Re-derived execution-boundary classifications independently (not by reading S8's verdict as ground truth); built and verified the full Decision->Action->Boundary->Outcome chain per goal; reconfirmed 0 internally-actionable units.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s9-actionability-integration-v1.json + project-brain-s9-verification-v1.json (this phase)",
+    "evidence_detail": "matches_s8=true, all_linked=true, internally_actionable=0, regression_all_passed=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Independent re-derivation agrees with S8 on every classification (true), and all 3 chains integrate cleanly end-to-end (true) -- this is real continuity evidence, not a repeated assumption."
+  },
+  "cause": {
+    "root_cause_summary": "A boundary judgment proven once in the phase that computed it is not yet proven to be the real, load-bearing signal the rest of the Studio Decision flow depends on -- independent re-derivation plus full chain integration is what actually establishes that.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Re-deriving a prior phase's classification from scratch, rather than reading its recorded verdict as ground truth, is the real test of whether that judgment is durable and correctly integrated -- not just locally correct.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

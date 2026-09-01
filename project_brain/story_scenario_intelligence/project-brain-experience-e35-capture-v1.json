@@ -1,0 +1,59 @@
+{
+  "experience_id": "exp_phase_e35_project_evolution_reconciliation_01",
+  "phase": "PHASE-E35",
+  "generated_at": "2026-08-23T02:16:35.929Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "trace_status": "BLOCKED",
+      "priority_rank": 1
+    },
+    "state_after": {
+      "trace_status": "RESOLVED",
+      "priority_rank": "RESOLVED_REMOVED"
+    }
+  },
+  "problem": "ghibli_pipeline trace status and Development Priority ranking were stale (BLOCKED / Rank 1) relative to real PHASE-959 hard_pass evidence and overlay v6 satisfied capabilities.",
+  "decision": {
+    "decision_summary": "Reconciled goal_ghibli_production_pipeline status in trace v16 to RESOLVED and removed it from active development priority ranking in priority v2. Confirmed stale discrepancy = 0. Applied candidate cand_evolution_trace_v15_ghibli_status_staleness_v1.",
+    "decided_at_phase": "PHASE-E35",
+    "candidate_status": "APPLIED_AND_RESOLVED"
+  },
+  "action": {
+    "action_type": "code_data_reconciliation",
+    "action_summary": "Created trace v16 and development-priority-v2; updated ghibli_pipeline status to RESOLVED and promoted production_runtime to #1 priority without touching Goal/Capability/LPM sources.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-goal-gap-dependency-trace-v16.json + project-brain-development-priority-v2.json + project-brain-e35-verification-v1.json",
+    "evidence_detail": "modification_success=true, problem_resolved=true, stale_discrepancy_count=0, alignment_passed=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS",
+    "resolution_verdict": "RESOLVED",
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Trace and Priority state now fully match real Capability and Experience evidence. Goal and Capability statuses remain untouched."
+  },
+  "cause": {
+    "root_cause_summary": "PHASE-959 resolved ghibli_pipeline at the code and overlay level, but subsequent trace increments (v11-v15) carried forward the initial BLOCKED status, leaving trace and priority un-refreshed.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Project Evolution closing the loop between real Experience evidence and project tracking artifacts eliminates phantom blockers from the development priority queue.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": "gap_phase941_ghibli_pipeline_factory_validation_fail",
+    "dependency_ref": "dependency_phase941_goal_ghibli_pipeline_on_movie_factory_adapter_validation",
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

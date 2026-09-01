@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e31_currency_experience_operational_integration_01",
+  "phase": "PHASE-E31",
+  "generated_at": "2026-08-23T00:29:30.055Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E30 proved the Currency Layer's internal pieces compose correctly, but it had never been wired into an actual real development-target-selection decision -- the locked Pre-Execution Procedure's step 3 (verify_currency) had only ever meant \"1 bare Guard call,\" not the full integrated Layer.",
+  "decision": {
+    "decision_summary": "Ran the full 4-step Pre-Execution Procedure once for a real question (is cand_exp_phase942_semantic_quality_capability_overapplication_01__knowledge_gap still open?), with step 3 powered by the complete Currency Layer (both real subjects) and step 4 explicitly compensating for the Index's known EXPECTED_SELF_CAPTURE_STALE limitation by also checking the full canonical Experience set directly. Finding: candidate is still genuinely open -- no development action taken.",
+    "decided_at_phase": "PHASE-E31"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Reused the full Currency Layer + Index retrieval + Experience Capture verbatim; ran 1 integrated real flow; made 0 modifications, 0 automatic refreshes, 0 candidate executions.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e31-real-operational-flow-v1.json + project-brain-e31-verification-v1.json (this phase)",
+    "evidence_detail": "candidate_still_open=true, index_classification=EXPECTED_SELF_CAPTURE_STALE, pointer_classification=CURRENT, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Connects Currency to the real development-decision flow; does not modify the Index, pointer chain, or the target candidate; does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "Currency-checking (E11..E30) and Experience retrieval (E3) had always been correct individually but had never been explicitly composed into 1 real, traceable operational decision before this phase.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Currency-awareness earns its real operational value precisely at the retrieval step: knowing the Index is EXPECTED_SELF_CAPTURE_STALE (not just \"somehow stale\") is what correctly prompted a direct full-canonical-set check instead of trusting a known-incomplete index lookup -- the Currency Layer and the Experience retrieval layer are more useful connected than either is alone.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

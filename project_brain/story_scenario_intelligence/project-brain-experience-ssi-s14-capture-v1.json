@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s14_improvement_signal_reexploration_01",
+  "phase": "PHASE-SSI-S14",
+  "generated_at": "2026-08-24T11:37:06.155Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Re-ran E12's exact pattern-detection method over the full current Experience Layer (87 records) without re-litigating S13's REJECTED_NOT_INDEPENDENT_SAME_ROOT_CAUSE verdict, excluding every already-known grouping key and, per S13's finding, any group whose evidence is entirely GPU/ComfyUI-root-caused",
+    "qualifying_groups": 5,
+    "new_signals": 0
+  },
+  "problem": "PHASE-SSI-S13 correctly rejected the one candidate PHASE-SSI-S12 found, but rejecting a signal is not the same as concluding there is nothing left to find -- it was unverified whether the Experience Layer's growth since S12 (S12's and S13's own captures) contained any group that is both structurally new AND causally independent of the GPU/ComfyUI root cause already covered by the S4 Principle.",
+  "decision": {
+    "decision_summary": "5 groups qualify under E12's count>=2 method. All 5 non-candidate groups were excluded as already-known (E12/S1/S4/S13) -- none newly failed the GPU-root-cause filter this run, because no new grouping key emerged since S12/S13 (their own captures joined already-excluded groups). 0 genuinely new, independent-root-cause signals found: none. 0 promotion/policy-ization, 0 execution. Verdict: NO_NEW_IMPROVEMENT_SIGNAL.",
+    "decided_at_phase": "PHASE-SSI-S14",
+    "verdict": "NO_NEW_IMPROVEMENT_SIGNAL"
+  },
+  "action": {
+    "action_type": "improvement_signal_reexploration",
+    "action_summary": "Re-ran E12's exact pattern-detection method over the full current Experience Layer; excluded every group already known via E12/E23/E33+S-series/S1/S4/S13; applied S13's GPU-root-cause filter to any remaining structurally-new group; classified the remainder as CANDIDATE_ONLY only if both structurally new and causally independent, with real evidence_refs only.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s14-signal-reexploration-v1.json + project-brain-ssi-s14-verification-v1.json (this phase)",
+    "evidence_detail": "qualifying_groups=5, new_signals=0, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Every qualifying group was already known or shared the existing GPU root cause -- correctly reported NO_NEW_IMPROVEMENT_SIGNAL rather than re-proposing S13s rejected signal or fabricating a new one."
+  },
+  "cause": {
+    "root_cause_summary": "S12/S13s own real Experience captures joined already-excluded grouping keys rather than forming any new one, so re-running the same detection method over a slightly larger Experience Layer correctly finds nothing new this time -- the absence of a new signal is itself the honest, expected result of a real dataset that has not yet produced a genuinely different real cause.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Re-exploring for new signals after a rejection means running the same honest method again over the grown dataset and checking the GPU-root-cause filter against every remaining candidate, not silently re-trying the same rejected grouping key hoping a different independence verdict emerges -- and reporting NO_NEW_IMPROVEMENT_SIGNAL is the correct outcome when that is genuinely what the current real data supports.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e20_cross_domain_preparation_01",
+  "phase": "PHASE-E20",
+  "generated_at": "2026-08-22T23:22:43.083Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E19 declared the Experience Layer V1 operationally stable and closed further E-series design, but no minimal bridge existed yet for connecting Experience across real domains (PB self-improvement vs. actual video-production work) as future real development accumulates more of it.",
+  "decision": {
+    "decision_summary": "Classified all 19 real Experiences into domains by exact keyword rule (no forced mapping); found exactly 1 real, exact-match cross-domain structural signature (successful_resolution + code_fix + hard_pass) spanning 2 domains, 7 real Experiences. Generated 1 CANDIDATE_ONLY cross-domain principle from it. Outcome: CROSS_DOMAIN_PATTERN_FOUND.",
+    "decided_at_phase": "PHASE-E20"
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Domain inventory + exact structural signature join across domains; 1 candidate written, 0 code executed, 0 auto-applied.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e20-domain-experience-inventory-v1.json + project-brain-e20-cross-domain-exploration-v1.json + project-brain-e20-verification-v1.json (this phase)",
+    "evidence_detail": "domains_with_2plus_experiences=2, qualifying_signatures=1, candidates_generated=1, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Prepares a minimal cross-domain bridge; does not change this Goal's own real status, does not modify the Experience Layer, and does not touch E17's locked UNRESOLVED tie-break policy."
+  },
+  "cause": {
+    "root_cause_summary": "Every real Experience captured through E18 was analyzed only within its own single goal/phase context -- no mechanism had yet compared real structure ACROSS domains.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "An exact-match structural join (the same discipline E12's Pattern Detection already proved) generalizes cleanly from single-domain pattern detection to cross-domain principle discovery without inventing any new inference mechanism -- the minimal bridge E-series needed was a join key, not a new design.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

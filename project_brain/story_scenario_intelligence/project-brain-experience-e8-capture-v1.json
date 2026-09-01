@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e8_goal_ghibli_production_pipeline_process_improvement_01",
+  "phase": "PHASE-E8",
+  "generated_at": "2026-08-22T12:11:26.662Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E5's process_improvement candidate (codify search-first-for-existing-artifacts) was ACCEPTed at E6 but its execution was deferred (only 1 candidate executable per phase). It remained un-executed.",
+  "decision": {
+    "decision_summary": "Selected this deferred, ACCEPTed candidate as PHASE-E8's real task, per Priority+Experience-informed selection (see project-brain-e8-task-selection-v1.json).",
+    "decided_at_phase": "PHASE-E8"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "generateChainCandidates()'s code_fix concrete_steps template now includes a search-existing-artifacts-first step, citing exp_phase959_ghibli_production_pipeline_01.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e8-real-development-verification-v1.json (this phase, 2 isolated deterministic tests)",
+    "evidence_detail": "testA(code_fix includes step)=true, testB(infra_restoration excludes it)=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "goal_ghibli_production_pipeline was already satisfied (PHASE-959) and remains so -- this action improves PB's own future chain-generation behavior, it does not change this goal's own status."
+  },
+  "cause": {
+    "root_cause_summary": "A real, evidenced lesson (exp_phase959) existed but was only documented as guidance text (E4), not yet encoded into the mechanism that generates future execution units (PHASE-964).",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "A deferred, previously-ACCEPTed Improvement Candidate can be picked up and executed in a later real operational cycle without needing to be re-reviewed from scratch -- the Review decision persists as real, reusable state.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

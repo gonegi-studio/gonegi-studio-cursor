@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_s30_self_improving_studio_citation_resolution_01",
+  "phase": "PHASE-S30",
+  "generated_at": "2026-08-26T01:18:12.227Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Resolved PHASE-S29's citation_accuracy_only minimal gap: corrected PHASE-SSI-S0's boundary relationship citation for PRIN-001, re-verified real provenance and the SSI-S4/S9 relationship directly, and confirmed no structural drift",
+    "gap_ref_from": "PHASE-S29",
+    "gap_type": "citation_accuracy_only"
+  },
+  "problem": "PHASE-S29 found that PHASE-SSI-S0's foundation model cited \"Principle PRIN-001 (E23)\" for its Improvement Decision & Execution Boundary relationship, but E23 registers a different, real principle and never registered PRIN-001 -- an inaccurate citation left unremediated pending a future, dedicated phase.",
+  "decision": {
+    "decision_summary": "Corrected the 2 citation strings naming PRIN-001 in PHASE-SSI-S0's boundary relationship so they no longer claim E23 registration and instead cite PRIN-001's real source phases (E36/E38/E40/E44) and its real, formal home (adopted PHASE-SSI-S4/S9 Principle principle_goal_production_runtime_successful_resolution_ssi_s4_v1). Re-verified PRIN-001 provenance directly from the 4 real E-phase files: true. Re-verified E23 still registers only \"principle_search_existing_artifacts_verify_substance_reuse_before_new_work_v1\" and no PRIN-001: true. Re-confirmed SSI-S4/S9 relationship: true. Citation now accurate: true. Scope held (no new Principle/Capability/Architecture, no other field changed): true. 7-axis regression: true. Verdict: CITATION_RESOLVED.",
+    "decided_at_phase": "PHASE-S30",
+    "verdict": "CITATION_RESOLVED"
+  },
+  "action": {
+    "action_type": "self_improving_studio_citation_resolution",
+    "action_summary": "Corrected 2 string fields (source_reference, boundaries_enforced[0]) in PHASE-SSI-S0's \"Improvement Decision & Execution Boundary\" relationship to remove the false PRIN-001/E23 registration claim while preserving PRIN-001's real historical label and pointing to its real, formal covering Principle; re-verified provenance, the E23 registry, and the SSI-S4/S9 relationship directly from real files; ran full 7-axis regression and Experience integrity verification.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s30-self-improving-studio-citation-resolution-v1.json + project-brain-s30-verification-v1.json (this phase)",
+    "evidence_detail": "citation_now_accurate=true, relationship_confirmed=true, scope_held=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_MINIMAL_CITATION_CORRECTION_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "PHASE-S29's citation_accuracy_only gap is now closed: PRIN-001 is cited by its real historical label and real source phases without the false E23 registration claim, and the citation now correctly points to its real, formal home in the adopted PHASE-SSI-S4/S9 Principle. No new Principle/Capability/Architecture was created; no other field or artifact was touched."
+  },
+  "cause": {
+    "root_cause_summary": "PHASE-SSI-S0's foundation model cited a real, consistently-used informal label (PRIN-001) alongside a plausible-looking but incorrect formal registration claim (\"(E23)\") -- the underlying concept was always real and, by the time S29 checked, already independently formalized elsewhere (PHASE-SSI-S4/S9); only the citation text itself was wrong.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "A citation-accuracy gap should be closed with the smallest possible edit: keep the real historical label intact, remove only the false attribution, and point to where the concept is actually, formally registered today -- never invent a new registration to \"fix\" an old one, and never let closing one small citation ripple into touching unrelated fields or artifacts.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

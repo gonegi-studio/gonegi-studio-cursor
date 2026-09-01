@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_e48_canonical_experience_integrity_application_01",
+  "phase": "PHASE-E48",
+  "generated_at": "2026-08-23T07:12:25.411Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Applied E47's structural loader and problem-text-strengthened duplicate key to a fresh real Evolution run, verbatim (ELP-04); confirmed the E9 composite-key collision class does not resurface as an unhandled duplicate",
+    "canonical_experience_count": 50
+  },
+  "problem": "E47 fixed the Experience-loading defect and the composite-key collision it exposed, but had not yet been exercised as the operational default for a subsequent real Evolution run -- E48 confirms the fix is actually load-bearing in practice, not just correct in the phase that introduced it.",
+  "decision": {
+    "decision_summary": "Canonical Load: 50 real records via E47's loader (verbatim). Integrity: dangling=0, duplicates=0, cross-file-duplicate-ids=0, E47 fix holds=true. Evolution: 0 changes since E40, 0 genuinely new. NO_NEW_EVOLUTION_FOUND. 0 real Goal/LPM/Trace/Overlay modifications.",
+    "decided_at_phase": "PHASE-E48",
+    "verdict": "NO_NEW_EVOLUTION_FOUND"
+  },
+  "action": {
+    "action_type": "canonical_experience_integrity_operational_application",
+    "action_summary": "Reused E47's structural loader and strengthened duplicate key verbatim as the real operational default; ran full Trigger/Evolution/Verification pipeline on top of the now-complete, now-integrity-checked Experience dataset.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e48-canonical-load-v1.json + project-brain-e48-integrity-v1.json + project-brain-e48-evolution-v1.json + project-brain-e48-verification-v1.json (this phase)",
+    "evidence_detail": "canonical_count=50, dangling=0, duplicates=0, e47_fix_holds=true, alignment=true, verification_all_clear=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "E47's fix (structural loader + strengthened duplicate key) held under a fresh real application: the known E9 collision remains correctly non-flagged, and no new completeness gaps or false duplicates were introduced by this phase's own capture."
+  },
+  "cause": {
+    "root_cause_summary": "A one-off fix verified only in the phase that introduced it is not yet proven operational -- confirming it holds under the very next real run is what makes it load-bearing rather than incidental.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Verifying a fix once, in the phase that discovers it, is not the same as verifying it operationally. Re-confirming E47's loader and duplicate key against a fresh real run -- including the specific collision case that motivated the fix -- is what actually closes the loop.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

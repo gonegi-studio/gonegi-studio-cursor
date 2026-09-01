@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e26_unified_currency_contract_01",
+  "phase": "PHASE-E26",
+  "generated_at": "2026-08-22T23:59:10.512Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E11's Experience Index Guard and E25's Pointer Guard shared the same real concept (CURRENT/STALE, missing/current target, cached-vs-live mismatch) but returned differently-shaped results -- no common reporting layer existed.",
+  "decision": {
+    "decision_summary": "Defined a 6-field CurrencyContract, adapted (never re-derived) both real guards' outputs into it, applied the unified layer once to both real subjects (Experience Index: STALE, expected; PB pointer: CURRENT), and generated exactly 1 CANDIDATE_ONLY refresh candidate for the STALE subject via a single unified generator.",
+    "decided_at_phase": "PHASE-E26"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Implemented CurrencyContract + 2 adapters + 1 unified refresh-candidate generator. Reused currencyGuard() (E11) and pointerCurrencyGuard() (E25) verbatim, 0 verdict logic changed. Applied once to real data; verified adapters via 3 synthetic-fixture tests.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e26-real-application-v1.json + project-brain-e26-adapter-tests-v1.json + project-brain-e26-verification-v1.json (this phase)",
+    "evidence_detail": "index_status=STALE, pointer_status=CURRENT, adapter_tests_passed=3/3, matches_e25_recorded=true, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Adds a reporting-layer integration; does not change either Guard's verdict logic, does not refresh the Index or the pointer, does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "2 real, independently-built Guards (E11, E25) converged on the same underlying concept without ever being connected by a shared contract -- future consumers would have had to know 2 different result shapes for the same idea.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Integration does not require building a 3rd mechanism -- a thin adapter layer that reshapes 2 already-correct, already-verified real outputs into 1 common contract achieves the stated goal without touching (and therefore without risking) either original Guard's real, hard-won correctness.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

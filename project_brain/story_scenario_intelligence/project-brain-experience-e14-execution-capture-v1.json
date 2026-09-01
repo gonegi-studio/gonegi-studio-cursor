@@ -1,0 +1,52 @@
+{
+  "experience_id": "exp_phase_e14_tie_breaker_execution_01",
+  "phase": "PHASE-E14",
+  "generated_at": "2026-08-22T22:46:49.454Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E13 ACCEPTed a candidate proposing a real-track-record tie-breaker for candidate prioritization, but stopped at Decision -- no real code implementing or verifying it existed yet.",
+  "decision": {
+    "decision_summary": "Executed exec_unit_e13_pattern_weighted_prioritization_v1 (E13's own plan, unmodified): implemented and applied the tie-breaker exactly as specified, nothing beyond it.",
+    "decided_at_phase": "PHASE-E13",
+    "executed_at_phase": "PHASE-E14"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Implemented computeGoalTrackRecord() + applyTrackRecordTieBreaker(); applied to the real ranking of all 6 real Improvement Candidates (E5+E8+E12); verified via 3 real deterministic tests.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e14-candidate-priority-ranking-v1.json + project-brain-e14-verification-tests-v1.json (this phase)",
+    "evidence_detail": "Test results: [{\"test\":\"A_tie_resolved_by_higher_real_track_record\",\"passed\":true},{\"test\":\"B_no_spurious_preference_when_track_records_equal\",\"passed\":true},{\"test\":\"C_margin_exceeded_real_score_ordering_stands\",\"passed\":true}]. Real ranking found 1 tied pair(s) within margin 0.02."
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Describes the IMPROVEMENT MECHANISM's own outcome (does the tie-breaker now exist and work correctly), NOT goal_ghibli_production_pipeline's own real status, which is unchanged. No real Goal/Gap/Status was modified by this action."
+  },
+  "cause": {
+    "root_cause_summary": "Candidate prioritization (E13) had no mechanism to break real ties fairly using real track-record evidence -- either arbitrary ordering or no ranking at all for tied candidates.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "The full closed loop (Experience -> Pattern -> Candidate -> Decision(ACCEPT) -> 1 real Execution -> Evidence -> Experience) closes correctly end to end -- exactly 1 candidate executed, no chained auto-execution, and the honest real-data application (a genuine tie that correctly resolved to \"not broken\" because track records were also equal) proved more informative than a forced demonstration would have been.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e21_cross_domain_principle_validation_01",
+  "phase": "PHASE-E21",
+  "generated_at": "2026-08-22T23:27:50.502Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E20 found a real cross-domain categorical signature shared by 7 Experiences, but a shared category label is not by itself evidence of a shared development principle -- this had not yet been validated.",
+  "decision": {
+    "decision_summary": "Applied an exact-citation rule (not similarity) to check which of the 7 actually evidence the same principle: only 2 do (exp_phase959 -> exp_phase_e8). Rejected full-cluster promotion (5 of 7 lack evidence). Verified via 1 real, minimal execution that the validated principle is still live in real production code today. Generated 1 CANDIDATE_ONLY cross-domain principle from the validated 2-Experience lineage.",
+    "decided_at_phase": "PHASE-E21"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Exact-citation domain-independence check + 1 minimal live-code reusability check (read materializeProjectBrainPhase964AutonomousChainRegistrationDesignV1.ts, confirmed expected text present). 0 Goal/Gap/Pattern/Policy modified.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e21-domain-independence-check-v1.json + project-brain-e21-reusability-verification-v1.json + project-brain-e21-verification-v1.json (this phase)",
+    "evidence_detail": "full_cluster_promoted=false, narrower_lineage_promoted=true, reusability_verified=true, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Validates (does not create) a cross-domain principle; does not change this Goal's own real status, does not modify the Experience Layer, Pattern Registry, or E17's locked policy."
+  },
+  "cause": {
+    "root_cause_summary": "E20's exact structural signature match proved category identity, not principle identity -- these are different claims requiring different evidence.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "A shared categorical label across domains is a hypothesis, not a proof -- an exact-citation rule (does the later Experience literally reference the earlier one's ID) is a stronger, still-non-inferential form of evidence for \"same principle\" than co-occurrence in the same category, and rejecting the majority of an initially-promising cluster is the correct outcome when only a minority carries that stronger evidence.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

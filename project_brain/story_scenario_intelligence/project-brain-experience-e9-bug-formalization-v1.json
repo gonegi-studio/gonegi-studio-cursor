@@ -1,0 +1,52 @@
+{
+  "experience_id": "exp_phase_e8_discovery_phase964_stale_reference_crash_01",
+  "phase": "PHASE-E8",
+  "generated_at": "2026-08-22T12:18:42.476Z",
+  "experience_kind": "partial_progress",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "While verifying an unrelated real edit, re-running PHASE-964's full script crashed: it hardcodes a reference to project-brain-goal-satisfaction-v11-....json, which predates PHASE-970's addition of a 6th Goal (SSI) -- the script could not find that 6th goal's entry and crashed.",
+  "decision": {
+    "decision_summary": "Recorded as a discovered issue and generated a verification_improvement candidate (E8), execution deferred to a later real cycle.",
+    "decided_at_phase": "PHASE-E8"
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Discovered via full-script re-run attempt during E8's verification step; not fixed at E8 (out of that phase's single-task scope).",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_fail",
+    "evidence_category": "hard_failure",
+    "evidence_source": "project-brain-e8-real-development-verification-v1.json (real crash observed, PHASE-E8)",
+    "evidence_detail": "TypeError: Cannot read properties of undefined (reading 'functional_tier') -- goal_model.json has 6 goals, the hardcoded v11 assessment file only covers 5."
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Does not affect goal_ghibli_production_pipeline's own real status -- this experience is about a PB-mechanism defect discovered while working in that goal's domain."
+  },
+  "cause": {
+    "root_cause_summary": "A materialize script hardcoded a specific v-series assessment filename instead of resolving \"the current one\" via the canonical pointer mechanism (which already existed, PHASE-956) -- so it silently went stale as soon as a newer assessment (v12, PHASE-970) was produced without the pointer being updated to match.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "A hardcoded reference to a specific versioned file will always eventually go stale as new versions are produced -- prefer resolving through the canonical pointer file, and treat \"does the pointer itself still point at the truly latest version\" as part of what \"search for existing artifacts first\" means in practice.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  },
+  "connected_candidate_id": "cand_issue_e8_phase964_stale_reference_crash__verification_improvement"
+}

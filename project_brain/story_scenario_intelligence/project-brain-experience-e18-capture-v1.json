@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e18_extended_axis_exploration_01",
+  "phase": "PHASE-E18",
+  "generated_at": "2026-08-22T23:07:37.500Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E17 formally locked the non-forcing tie-break policy, but had not exhaustively checked every remaining real, structural Experience/Candidate relationship for a possible symmetric distinguishing signal.",
+  "decision": {
+    "decision_summary": "Examined 6 further real relationships (dependency_ref, action_type, evidence_category, cause_type, correction-graph in-degree, novelty_check.checked_against.length). 1 excluded as a confirmed duplicate of the already-rejected gap axis; the remaining 5 all tie identically (0 distinguish). DECISION: NO_NEW_AXIS_KEEP_E17_POLICY_NO_EXECUTION -- E17's locked policy kept exactly as-is, no code executed.",
+    "decided_at_phase": "PHASE-E18"
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Read-only exploration of 6 real relational axes against the real tied pair; no production code touched, no candidate executed.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e18-extended-axis-exploration-v1.json + project-brain-e18-verification-v1.json (this phase)",
+    "evidence_detail": "axes_considered=5, axes_excluded_as_duplicate=1, any_axis_distinguishes=false, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Completes the exploration arc opened at E15; does not change this Goal's own real status, and does not resolve the real tie -- UNRESOLVED remains final."
+  },
+  "cause": {
+    "root_cause_summary": "Whether the goal-scoped tie-break limitation was truly exhaustive (a real structural ceiling) or just under-searched had not yet been checked against every remaining real relational field on record.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "A final, honest \"we checked everything real and found nothing\" is a legitimate and valuable terminal state for an exploration arc -- it converts an open question into a closed, evidenced one (the limitation is real and exhaustively confirmed) without ever needing to force an unjustified decision.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

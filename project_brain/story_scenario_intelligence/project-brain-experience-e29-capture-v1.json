@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e29_currency_layer_realworld_validation_01",
+  "phase": "PHASE-E29",
+  "generated_at": "2026-08-23T00:21:52.198Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E28's classifyStalenessTransition() had only ever been applied to the Experience Index -- whether it generalizes correctly to a structurally different real PB artifact (a single points_to reference, not a growing coverage list) was unverified.",
+  "decision": {
+    "decision_summary": "Applied the unmodified classifier to the real, independent PB pointer chain (project-brain-standard-goal-judgment-output-v3.json): classification=CURRENT (real, honest, non-forced -- the pointer's currency is causally independent of Experience captures). Verified EXPECTED-vs-UNEXPECTED discrimination for this subject shape via 2 synthetic fixtures: 2/2 passed.",
+    "decided_at_phase": "PHASE-E29"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Reused Contract, classifier, and pointerCurrencyGuard() verbatim; applied once to real data (0 modification); ran 2 discrimination tests on synthetic fixtures.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e29-real-execution-v1.json + project-brain-e29-discrimination-tests-v1.json + project-brain-e29-verification-v1.json (this phase)",
+    "evidence_detail": "real_classification=CURRENT, discrimination_tests_passed=2/2, contract_matches_raw_guard=true, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Validates the classifier's generalization to a 2nd real, independent artifact; does not refresh anything, does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "A classifier proven correct on 1 real subject is not automatically proven correct on a structurally different one -- that required an independent real test, not an assumption.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "The classifier correctly reported CURRENT (not a spurious \"expected stale\") for a real target whose currency is genuinely unrelated to this phase's own capture -- confirming it distinguishes causally-linked staleness from causally-unrelated non-staleness, not just \"staleness happened around the same time as a capture.\"",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

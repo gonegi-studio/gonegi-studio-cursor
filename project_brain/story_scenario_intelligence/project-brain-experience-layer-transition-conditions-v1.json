@@ -1,0 +1,34 @@
+{
+  "conditions_id": "project_brain_experience_layer_transition_conditions_v1",
+  "generated_at": "2026-08-22T07:20:39.038Z",
+  "status": "CONDITIONS_DEFINED_NOT_YET_MET_NO_EXPERIENCE_LAYER_DESIGN_PERFORMED_THIS_PHASE",
+  "conditions": [
+    {
+      "condition_id": "EC-01",
+      "title": "Autonomous chain registration exists",
+      "description": "PB can create a new Goal->Gap->Dependency chain from a real detected block, without a human hand-authoring it in a dedicated phase (addresses remaining_gap_1).",
+      "currently_met": false
+    },
+    {
+      "condition_id": "EC-02",
+      "title": "At least 2 independent real domains flow through the Development Intelligence loop",
+      "description": "Currently only the movie-factory/GPU domain (3 chains) does. SSI (or another real domain) must have at least one real Goal/Gap/chain flowing through the same Priority/Execution/Evidence Contract machinery before an Experience Layer's lessons could generalize beyond one domain (addresses remaining_gap_2).",
+      "currently_met": false
+    },
+    {
+      "condition_id": "EC-03",
+      "title": "Chain-less goals' status is explicitly classified",
+      "description": "goal_repository_foundation and goal_project_brain_operational's lack of a chain must be explicitly marked as either \"permanent by design\" or \"pending instrumentation\" so an Experience Layer does not silently misinterpret their absence of data (addresses remaining_gap_3).",
+      "currently_met": false
+    },
+    {
+      "condition_id": "EC-04",
+      "title": "4-layer + provenance + execution consistency holds at time of transition",
+      "description": "Standard closing condition already used every phase since PHASE-943 -- must still pass with 0 violations at the moment Experience Layer work begins.",
+      "currently_met": true,
+      "evidence": "project-brain-4layer-consistency-check-phase962-v1.json"
+    }
+  ],
+  "overall_ready": false,
+  "next_step": "PHASE-964 onward (up to PHASE-970 per this arc's stated horizon) should address EC-01, EC-02, EC-03 in roughly that priority order -- EC-01 unblocks everything downstream (without it, EC-02's SSI connection would still require manual chain-authoring); EC-02 and EC-03 can likely proceed in parallel once EC-01 exists. No Experience Layer design or implementation should begin before all 4 conditions are met."
+}

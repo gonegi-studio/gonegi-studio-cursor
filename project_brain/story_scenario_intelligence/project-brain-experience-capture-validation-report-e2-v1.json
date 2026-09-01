@@ -1,0 +1,173 @@
+{
+  "report_id": "project_brain_experience_capture_validation_report_e2_v1",
+  "phase": "PHASE-E2",
+  "generated_at": "2026-08-22T11:46:15.432Z",
+  "dry_run": {
+    "total": 6,
+    "all_match_e1": true,
+    "results": [
+      {
+        "captured_experience_id": "exp_phase_959_goal_ghibli_production_pipeline_01",
+        "e1_experience_id": "exp_phase959_ghibli_production_pipeline_01",
+        "field_matches": {
+          "experience_kind": true,
+          "goal_ref": true,
+          "gap_ref": true,
+          "dependency_ref": true,
+          "capability_refs": true,
+          "result": true
+        },
+        "all_auto_computed_fields_match": true,
+        "capture_validation": {
+          "valid": true,
+          "violations": []
+        }
+      },
+      {
+        "captured_experience_id": "exp_phase_942_goal_semantic_quality_01",
+        "e1_experience_id": "exp_phase942_semantic_quality_capability_overapplication_01",
+        "field_matches": {
+          "experience_kind": true,
+          "goal_ref": true,
+          "gap_ref": true,
+          "dependency_ref": true,
+          "capability_refs": true,
+          "result": true
+        },
+        "all_auto_computed_fields_match": true,
+        "capture_validation": {
+          "valid": true,
+          "violations": []
+        }
+      },
+      {
+        "captured_experience_id": "exp_phase_946_goal_repository_foundation_01",
+        "e1_experience_id": "exp_phase946_semantic_quality_capability_correction_01",
+        "field_matches": {
+          "experience_kind": true,
+          "goal_ref": true,
+          "gap_ref": true,
+          "dependency_ref": true,
+          "capability_refs": true,
+          "result": true
+        },
+        "all_auto_computed_fields_match": true,
+        "capture_validation": {
+          "valid": true,
+          "violations": []
+        }
+      },
+      {
+        "captured_experience_id": "exp_phase_953_goal_production_runtime_01",
+        "e1_experience_id": "exp_phase_953_production_runtime_reverification_01",
+        "field_matches": {
+          "experience_kind": true,
+          "goal_ref": true,
+          "gap_ref": true,
+          "dependency_ref": true,
+          "capability_refs": true,
+          "result": true
+        },
+        "all_auto_computed_fields_match": true,
+        "capture_validation": {
+          "valid": true,
+          "violations": []
+        }
+      },
+      {
+        "captured_experience_id": "exp_phase_960_goal_production_runtime_02",
+        "e1_experience_id": "exp_phase_960_production_runtime_reverification_02",
+        "field_matches": {
+          "experience_kind": true,
+          "goal_ref": true,
+          "gap_ref": true,
+          "dependency_ref": true,
+          "capability_refs": true,
+          "result": true
+        },
+        "all_auto_computed_fields_match": true,
+        "capture_validation": {
+          "valid": true,
+          "violations": []
+        }
+      },
+      {
+        "captured_experience_id": "exp_phase_962_goal_production_runtime_03",
+        "e1_experience_id": "exp_phase_962_production_runtime_reverification_03",
+        "field_matches": {
+          "experience_kind": true,
+          "goal_ref": true,
+          "gap_ref": true,
+          "dependency_ref": true,
+          "capability_refs": true,
+          "result": true
+        },
+        "all_auto_computed_fields_match": true,
+        "capture_validation": {
+          "valid": true,
+          "violations": []
+        }
+      }
+    ]
+  },
+  "live_capture": {
+    "experience": {
+      "experience_id": "exp_phase_e2_goal_production_runtime_04",
+      "phase": "PHASE-E2",
+      "generated_at": "2026-08-22T11:46:15.432Z",
+      "experience_kind": "honest_negative_reconfirmation",
+      "context": {
+        "goal_id": "goal_production_runtime",
+        "capability_ids": [
+          "cap_production_runtime"
+        ],
+        "state_before": {
+          "functional_status": "blocked",
+          "execution_state": "NOT_STARTED"
+        }
+      },
+      "problem": "Is the GPU/ComfyUI server reachable yet? (Live, real, freshly re-asked -- not assumed from prior phases.)",
+      "decision": {
+        "decision_summary": "Feed this phase's own real re-check through the new captureExperience() pipeline instead of hand-authoring the record, to prove live automatic capture.",
+        "decided_at_phase": "PHASE-E2",
+        "corrects_experience_id": null
+      },
+      "action": {
+        "action_type": "reverification",
+        "action_summary": "curl -s -m 5 http://127.0.0.1:8188/system_stats (read-only, no code/infra change).",
+        "real_or_simulated": "real"
+      },
+      "evidence": {
+        "evidence_kind": "hard_fail",
+        "evidence_category": "hard_failure",
+        "evidence_source": "Direct read-only network check: http://127.0.0.1:8188/system_stats (this phase, 2026-08-22T11:46:15.432Z) -- 4th consecutive real check (PHASE-953/960/962, now E2)",
+        "evidence_detail": "HTTP_STATUS:000 CONNECT_TIME:0.000000, curl exit code 7 (Failed to connect to host). GPU/ComfyUI still unreachable."
+      },
+      "result": {
+        "functional_status_before": "blocked",
+        "functional_status_after": "blocked",
+        "execution_state_before": "NOT_STARTED",
+        "execution_state_after": "NOT_STARTED"
+      },
+      "cause": {
+        "root_cause_summary": "GPU/ComfyUI infrastructure still genuinely unavailable in this environment.",
+        "cause_type": "real_infra_dependency"
+      },
+      "lesson": "The capture pipeline correctly classifies a 4th consecutive honest negative result the same way as the first 3, without needing a human to re-author the record by hand.",
+      "links": {
+        "goal_ref": "goal_production_runtime",
+        "gap_ref": "gap_phase940_numerical_dna_gpu_production_unavailable",
+        "dependency_ref": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+        "capability_refs": [
+          "cap_production_runtime"
+        ]
+      }
+    },
+    "validation": {
+      "valid": true,
+      "violations": []
+    },
+    "is_new_real_event_not_a_replay": true
+  },
+  "conclusion": "Experience Capture V1 correctly reproduces all 6 of E1's hand-authored records from the same real underlying data, AND correctly captured one brand-new, live real execution result end-to-end -- proving the capture mechanism works for real, previously-unseen input, not just known history."
+}

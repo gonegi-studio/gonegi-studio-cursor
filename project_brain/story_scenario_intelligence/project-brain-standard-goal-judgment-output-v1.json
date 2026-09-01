@@ -1,0 +1,50 @@
+{
+  "pointer_id": "project_brain_standard_goal_judgment_output_v1",
+  "phase": "PHASE-950",
+  "generated_at": "2026-08-22T06:21:34.811Z",
+  "status": "CANONICAL_CURRENT_STANDARD_OUTPUT",
+  "points_to": "project-brain-goal-satisfaction-v5-two-tier-applied-assessment-v1.json (PHASE-949, unmodified, not duplicated here -- this is a pointer + summary, not an independent computation)",
+  "conforms_to_schema": "project-brain-two-tier-standard-schema-v1.json (this phase)",
+  "goal_model_source": "datasets/project_brain/goal_model_v1/project-brain-goal-model-v1.json (read-only, unmodified by any phase in this session)",
+  "summary_snapshot": {
+    "satisfied": 1,
+    "pending": 1,
+    "blocked": 3,
+    "unknown": 0,
+    "existence_tier_all_satisfied": true,
+    "functional_tier_diverges_from_existence_tier_count": 4
+  },
+  "entries_summary": [
+    {
+      "goal_id": "goal_production_runtime",
+      "existence": "satisfied",
+      "functional": "blocked",
+      "evidence_category": "hard_failure"
+    },
+    {
+      "goal_id": "goal_ghibli_production_pipeline",
+      "existence": "satisfied",
+      "functional": "blocked",
+      "evidence_category": "hard_failure"
+    },
+    {
+      "goal_id": "goal_project_brain_operational",
+      "existence": "satisfied",
+      "functional": "pending",
+      "evidence_category": "coverage_gap"
+    },
+    {
+      "goal_id": "goal_repository_foundation",
+      "existence": "satisfied",
+      "functional": "satisfied",
+      "evidence_category": "population_only"
+    },
+    {
+      "goal_id": "goal_semantic_quality",
+      "existence": "satisfied",
+      "functional": "blocked",
+      "evidence_category": "taxonomy_quality_only"
+    }
+  ],
+  "usage_note": "Future phases should read Goal-judgment state from THIS pointer (or directly from the v5 file it names) rather than any earlier version (v1-v4), all of which remain on disk for audit history but are superseded."
+}

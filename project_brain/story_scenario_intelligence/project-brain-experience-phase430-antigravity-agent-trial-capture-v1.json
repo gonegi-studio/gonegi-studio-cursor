@@ -1,0 +1,78 @@
+{
+  "experience_id": "exp_phase430_antigravity_agent_trial_claude_baseline_01",
+  "phase": "PHASE-430",
+  "generated_at": "2026-08-31T00:52:23.000Z",
+  "experience_kind": "partial_progress",
+  "capture_scope_note": "Only the 6 stages with real, cited evidence are recorded (Context, Judgment, Agent Selection, Assignment, Result, Audit/Repair). User Decision and Outcome are NOT recorded -- no such decision or final outcome exists yet for this event (see antigravity-agent-trial-comparison-scorecard-v1.json.evaluation_readiness.can_be_evaluated_now: false). Nothing here is inferred or synthesized.",
+
+  "context": {
+    "goal_id": null,
+    "capability_ids": [],
+    "state_before": {
+      "functional_status": "n/a -- this is a development-agent-comparison readiness trial, not a goal/capability remediation event; source: antigravity-agent-trial-task-brief-v1.json (no goal_id/capability_id declared anywhere in that document)"
+    }
+  },
+
+  "problem": "Prepare a first, safe, isolated trial comparing Claude/Antigravity/Codex as independent development agents on one identical task, without any tool/environment in this session to actually invoke Antigravity or Codex -- and produce a real (not simulated) Claude baseline for the task. Source: antigravity-agent-trial-task-brief-v1.json.purpose.",
+
+  "decision": {
+    "decision_summary": "Defined one small, isolated, non-core task (task_print_autoloop_v2_status_v1: a read-only AutoLoop V2 status printer script) with an explicit scope boundary forbidding V1/PHASE-199/Registry/existing-V2 intrusion, 5 comparison_axes (accuracy, existing_structure_understanding, regression, token_work_efficiency, instruction_adherence), and a verification_method (full before/after file-system diff). Source: antigravity-agent-trial-task-brief-v1.json.task_definition + .scope_boundary + .comparison_axes.",
+    "decided_at_phase": "PHASE-430",
+    "corrects_experience_id": null
+  },
+
+  "agent_selection": {
+    "note": "Not a standard schema field -- included because it is the one primitive this event actually evidences that the locked schema has no dedicated slot for (see GENIE_COORDINATOR_EXPERIENCE_CONTRACT assessment). Left in place rather than dropped or folded into 'decision', since folding it in would blur which agent acted from what was decided.",
+    "claude": { "status": "EXECUTED this phase", "environment": "this session" },
+    "antigravity": { "status": "NOT_EXECUTED -- no invocation tool/environment available in this session" },
+    "codex": { "status": "NOT_EXECUTED -- same reason as antigravity" },
+    "source": "antigravity-agent-trial-task-brief-v1.json.agents_in_scope"
+  },
+
+  "action": {
+    "action_type": "agent_trial_readiness_package_and_real_baseline_execution",
+    "action_summary": "Authored the task brief, scope boundary, onboarding brief (for a human to hand to Antigravity separately), and an empty-but-ready comparison scorecard; then Claude actually performed task_print_autoloop_v2_status_v1 in this session (not a simulation) and recorded its own baseline report.",
+    "real_or_simulated": "real"
+  },
+
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/antigravity-agent-trial-claude-baseline-report-v1.json + antigravity-agent-trial-comparison-scorecard-v1.json (rows[0], agent_id=claude)",
+    "evidence_detail": "definition_of_done_met: 5/5 true (script_at_exact_path, runs_with_exit_code_0, output_reflects_real_current_content, correct_frozen_warning_conditional, no_other_file_touched); test.command exit_code=0; regression_check: full project_brain/ file-listing diff (1,986 -> 1,987 files) shows exactly one addition (the new script), no pre-existing file modified or deleted; one disclosed minor cosmetic finding (gap_kind_distribution column-alignment overflow for a 49-char name, non-blocking)."
+  },
+
+  "result": {
+    "functional_status_before": "n/a -- no prior functional_status for this event (see context.state_before)",
+    "functional_status_after": "CLAUDE_ROW_ONLY: PASS -- Claude's single agent row on the comparison scorecard is PASS across all 5 axes. This is NOT an overall multi-agent comparison result: antigravity and codex rows remain run_status=NOT_EXECUTED, scores=null in antigravity-agent-trial-comparison-scorecard-v1.json. No comparison verdict exists.",
+    "note": "comparison-scorecard.json itself states evaluation_readiness.can_be_evaluated_now=false and evaluation_readiness.reason='Only one of three agent rows is filled.' -- recorded verbatim, not paraphrased into a stronger claim."
+  },
+
+  "audit_repair": {
+    "note": "Not a standard schema field -- see agent_selection.note for the same reasoning. No repair occurred because none was needed; the audit step itself (diff verification) is the entirety of this stage's real content.",
+    "verification_method": "Before/after diff of the full project_brain/ file listing (scope_boundary.verification_method).",
+    "outcome": "0 regressions: exactly 1 new file (the assigned script) added, 0 pre-existing files modified or deleted.",
+    "source": "antigravity-agent-trial-task-brief-v1.json.scope_boundary.verification_method + antigravity-agent-trial-claude-baseline-report-v1.json.test.regression_check"
+  },
+
+  "user_decision": null,
+  "final_outcome": null,
+  "not_yet_recorded_reason": "No human/user decision has been made on this trial and no final outcome exists. antigravity-agent-trial-comparison-scorecard-v1.json.next_phase_note: 'No PHASE-431 is committed or started by this document. The next real step is external (a human running Antigravity/Codex against the onboarding brief) -- not something this session can perform.' This is stated exactly as found; nothing is inferred about what a future decision or outcome will be.",
+
+  "cause": {
+    "root_cause_summary": "n/a -- this experience does not represent a defect being diagnosed; it represents a readiness-package preparation plus one real agent execution.",
+    "cause_type": "coherent_baseline_state"
+  },
+
+  "lesson": "A real, single-agent baseline (Claude) can be captured immediately and honestly the moment it exists, without waiting for the other agent rows or the eventual human decision -- provided the record makes unmistakably explicit which rows are real (1 of 3) and which pipeline stages (User Decision, Outcome) have not happened yet, rather than rounding a partial trial up to a completed comparison.",
+
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/antigravity-agent-trial-task-brief-v1.json"
+  },
+
+  "loader_compatibility_note": "links.goal_ref is null because no real goal_id applies to this event (not inferred/fabricated) -- see PHASE-E47's canonical structural loader (isExperienceShaped), which requires typeof links.goal_ref === 'string' for a record to be recognized as canonical. This record is therefore expected to be excluded from the canonical Experience count under the existing loader as-is. See the accompanying regression-check report for the measured result, not an assumption."
+}

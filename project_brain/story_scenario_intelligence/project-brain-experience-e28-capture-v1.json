@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e28_recursive_staleness_stabilization_01",
+  "phase": "PHASE-E28",
+  "generated_at": "2026-08-23T00:16:25.146Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E27 found the self-capture -> immediate STALE recursion but had no formal way to distinguish \"stale for the expected, self-caused reason\" from \"stale for some other, real reason\" -- both looked identical as a bare STALE verdict.",
+  "decision": {
+    "decision_summary": "Locked the Recursive Staleness Policy (4 rules, proven by real E11..E27 behavior): self-capture-induced staleness is not an error, STALE never triggers auto-refresh, known-pattern staleness never spawns a new candidate, and distinguishing expected-vs-unexpected staleness requires a real before/after comparison. Implemented classifyStalenessTransition() and applied it once to this phase's own real before/after transition: EXPECTED_SELF_CAPTURE_STALE.",
+    "decided_at_phase": "PHASE-E28"
+  },
+  "action": {
+    "action_type": "process_redesign",
+    "action_summary": "Wrote 1 locked policy (4 rules) + implemented 1 real, minimal, reusable classifier function; applied once to real before/after Index state; recorded 4 real operational metrics. 0 Index refresh, 0 new candidate.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-recursive-staleness-policy-e28-v1.json + project-brain-e28-real-execution-v1.json + project-brain-e28-operational-metrics-v1.json + project-brain-e28-verification-v1.json (this phase)",
+    "evidence_detail": "classification=EXPECTED_SELF_CAPTURE_STALE, known_stale_recurrence_count=15, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Formalizes an operational characteristic and adds a real classification capability; does not refresh the Index, does not modify the pointer chain, does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "A bare STALE/CURRENT verdict alone cannot distinguish an expected, self-caused, permanent condition from a genuinely new, unexpected one -- that distinction did not exist as a real, computable capability until this phase.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Not every recurring \"problem\" needs a new mechanism to eliminate it -- some are the correct, permanent shape of a system that keeps growing. The real, valuable capability here was not making the recursion go away, but making it formally recognizable and distinguishable from an actual anomaly, so future phases can tell the two apart without re-deriving this reasoning from scratch each time.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

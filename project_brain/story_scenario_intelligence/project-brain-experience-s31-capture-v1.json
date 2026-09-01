@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s31_self_improving_studio_integrity_assessment_01",
+  "phase": "PHASE-S31",
+  "generated_at": "2026-08-27T01:01:15.557Z",
+  "experience_kind": "honest_negative_reconfirmation",
+  "context": {
+    "exploration_scope": "Independently judged whether a real Integrity Gap remains in the Self-Improving Studio Foundation after PHASE-S30's CITATION_RESOLVED closure, by re-verifying every reference the SSI-S0 foundation model declares and by specifically checking whether PHASE-S28's duplicate-detection heuristic had a real bug that impacted PHASE-S28's actual Foundation judgment -- built and fixed nothing regardless of outcome",
+    "minimal_gap_found": false
+  },
+  "problem": "PHASE-S28's Experience-dedup heuristic (goal_ref::phase::experience_kind::problem) is a loose, narrow-scope key -- assuming without checking that this made PHASE-S28's NO_REAL_GAP verdict unreliable (or, conversely, assuming without checking that it was fine) would have been ungrounded either way; the only way to know is to read what PHASE-S28's final_state actually depends on and re-run the checks fresh.",
+  "decision": {
+    "decision_summary": "S30 fresh-read: final_state=CITATION_RESOLVED. All SSI-S0 foundation model references independently resolve: true. S28 duplicate-heuristic bug check: final_state_duplicate_input_is_filename_heuristic_only=true, bug_impacted_real_foundation_judgment=false. Production goals mapping still accurate: true. SSI arc still closed complete: true. 7-axis regression: true. Experience integrity: dangling=0, duplicates(loose)=0, duplicates(strict)=0, cross-file=0. 0 new structure, 0 existing artifacts modified, 0 synthetic change/Experience, 0 CI wiring, 0 automatic policy, 0 automatic execution. Verdict: NO_REAL_GAP.",
+    "decided_at_phase": "PHASE-S31",
+    "verdict": "NO_REAL_GAP"
+  },
+  "action": {
+    "action_type": "self_improving_studio_integrity_reassessment",
+    "action_summary": "Fresh-read PHASE-S30's result; independently re-verified all 4 reused_upstream_foundations, the chain-lens source, all 3 ingestion example_refs against a fresh canonical Experience reload, the boundary relation's S11 and post-S30 PRIN-001 citations, the learning relation, and all 4 production_goals_mapping evidence_refs by checking real file existence directly rather than trusting prior phases' reads; read PHASE-S28's own gap_checks array to confirm its final_state never depends on the loose Experience-dedup heuristic, only a separate filename-based foundation-artifact-count check; independently re-ran both the loose heuristic and a stricter, independent full-content-hash duplicate definition against the current canonical Experience Layer; re-ran PHASE-S28's actual filename heuristic fresh against the current, larger repository.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s31-self-improving-studio-integrity-assessment-v1.json + project-brain-s31-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=NO_REAL_GAP, failed_checks=none, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The Self-Improving Studio Foundation remains real, intact, fully reference-accurate, and reusable after PHASE-S30's citation correction. PHASE-S28's Experience-dedup heuristic, while a narrow-scope design (a real but non-live limitation), is architecturally decoupled from PHASE-S28's actual final_state and did not affect the Foundation judgment -- correctly reported NO_REAL_GAP rather than opening a new remediation phase against a non-issue."
+  },
+  "cause": {
+    "root_cause_summary": "A heuristic that is loose in principle (a narrow dedup key) is not automatically a heuristic that is broken in practice -- whether it actually matters depends entirely on (a) what real decision it feeds, which required reading PHASE-S28's own code rather than assuming, and (b) whether it currently produces a wrong answer, which required an independent re-run rather than assuming either \"it must be fine\" or \"it must be broken\".",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Auditing a prior phase's heuristic for real impact means two separate checks, not one: first confirm what the heuristic's output actually feeds (by reading the real gap_checks/decision logic, not by assuming), then independently re-run the heuristic itself against current data. A heuristic can be a legitimate design weakness and still be provably harmless to every judgment made so far -- both facts can be true at once, and only checking one of them would have produced either false alarm or false confidence.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

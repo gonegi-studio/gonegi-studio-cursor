@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_ssi_s18_studio_intelligence_principle_adoption_01",
+  "phase": "PHASE-SSI-S18",
+  "generated_at": "2026-08-24T12:05:32.617Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Judged PHASE-SSI-S17's PROMOTION_CANDIDATE_ONLY capability Principle for adoption: re-verified both evidence records fresh, re-ran the final duplication/conflict check, and re-verified the statement's scope against the freshly re-derived evidence",
+    "candidate_id": "cand_ssi_s17_cap_dataset_management_principle_promotion_v1"
+  },
+  "problem": "PHASE-SSI-S17 drafted a scope-bounded Principle statement and recorded it as a promotion candidate, but adoption is a further, distinct decision that required an independent re-derivation of the same evidence and re-check of the same scope claim in this phase, not merely carrying S17s own verdict forward.",
+  "decision": {
+    "decision_summary": "Fresh recompute reproduces the same 2 content-grounded evidence records: true. Real linkage: true. Duplicate/conflict: false. Statement scope-bounded: true. 0 CI wiring, 0 automatic policy, 0 automatic execution, 0 real project modifications. Verdict: RECORDED_NOT_ENFORCED.",
+    "decided_at_phase": "PHASE-SSI-S18",
+    "verdict": "RECORDED_NOT_ENFORCED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_principle_adoption_judgment",
+    "action_summary": "Recomputed the content-grounded cap_dataset_management evidence group from scratch; re-ran the E12/E23/E33+S-series/S1/S4 duplication-and-conflict check; re-verified the S17 statement contains no unbounded quantifier and every numeric claim matches the fresh recount; recorded RECORDED_NOT_ENFORCED on success.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s18-principle-adoption-v1.json + project-brain-ssi-s18-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=RECORDED_NOT_ENFORCED, evidence_matches_fresh_recompute=true, scope_bounded=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Second Principle adopted as RECORDED_NOT_ENFORCED (cap_dataset_management-scoped) alongside the first (goal_production_runtime-scoped from S4) -- neither CI-wired, neither auto-policy-applied, neither auto-executed."
+  },
+  "cause": {
+    "root_cause_summary": "Adoption is the point where a Principle stops being a draft and starts being something future phases could cite as settled -- re-deriving its evidence and re-checking its scope claim independently in this phase, rather than trusting S17s own computation, is what keeps that step from being a rubber stamp.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "A second, independently-derived Principle (capability-scoped) now coexists with the first (goal-scoped) -- both RECORDED_NOT_ENFORCED, both reached through the same disciplined signal->validation->promotion->adoption arc, which is itself evidence that the arc generalizes across different relationship axes (goal+kind vs capability), not just the one case it was first built around.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "doc_id": "project_brain_experience_canonical_loading_integrity_policy_e47_v1",
+  "phase": "PHASE-E47",
+  "generated_at": "2026-08-23T07:08:20.578Z",
+  "status": "LOCKED",
+  "finding": "Filename/suffix-based enumeration of canonical Experience records (used through E46) silently omitted 4 real records that existed in files whose names did not match the assumed pattern (project-brain-experience-e10-capture-v1.json, project-brain-experience-e19-capture-v1.json, project-brain-experience-e47-capture-v1.json, project-brain-experience-e10-e9-result-capture-v1.json).",
+  "rules": [
+    {
+      "rule_id": "ELP-01",
+      "statement": "Canonical Experience loading MUST use structural signature matching (experience_id/phase/experience_kind/links.goal_ref/decision/result all present) over every .json file in the directory, never a filename or suffix pattern."
+    },
+    {
+      "rule_id": "ELP-02",
+      "statement": "Any experience_id containing \"test_fixture\" MUST be excluded from the canonical set regardless of where it is stored, to prevent synthetic test data (e.g. E43-style fixtures) from being counted as real."
+    },
+    {
+      "rule_id": "ELP-03",
+      "statement": "A cross-file duplicate experience_id (same id found via structural scan in more than one file) is a fail-closed condition and must be reported, never silently deduplicated by overwrite."
+    },
+    {
+      "rule_id": "ELP-04",
+      "statement": "Every future phase that must enumerate canonical Experience records reuses this structural loader verbatim; it must not reintroduce filename-keyed enumeration as the primary loading mechanism."
+    }
+  ],
+  "historical_gap_closed": {
+    "missing_from_legacy_enumeration": [
+      "exp_phase_e10_index_currency_fix_01",
+      "exp_phase_e19_operational_stabilization_01",
+      "exp_phase_e47_project_evolution_drift_detection_reliability_01",
+      "exp_phase_e9_self_improvement_effect_01"
+    ],
+    "first_detected_phase": "PHASE-E47"
+  }
+}

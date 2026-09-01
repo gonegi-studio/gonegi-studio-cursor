@@ -1,0 +1,53 @@
+{
+  "experience_id": "exp_genie_memory_semantic_target_preservation_v1",
+  "phase": "GENIE-MEMORY-SEMANTIC-TARGET-PRESERVATION-V1",
+  "generated_at": "2026-09-01T04:26:30.637Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-memory-semantic-target-preservation-2026-09-01T04-26-30-637Z/assignment.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-memory-semantic-target-preservation-2026-09-01T04-26-30-637Z/development-trace.json",
+    "outcome_ref": "project_brain/antigravity_agent_trial_v1/genie-memory-semantic-target-preservation-2026-09-01T04-26-30-637Z/outcome.json"
+  },
+  "problem": "A minimal-fix assessment found that exposing two already-existing fields (context.goal_id, decision.decision_summary) in the rearm guards' forced_reads output was sufficient to let a consumer distinguish exp_phase946_...(cap_dataset_management's own status) from exp_phase_e22_...(goal_semantic_quality's separate reclassification gate) as different real semantic targets, without any new ontology, schema, or ranking.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Add goal_id and decision_summary (both already present on every Experience) to both rearm guards' forced_reads entries only. Keep the LPM overlay and pointerCurrencyGuard() as the sole authoritative current-status sources, unchanged. Never read Experience result.functional_status fields as a global capability-level fact independent of context.goal_id, and never rank/score/latest-wins between differently-goaled records.",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "memory_semantic_target_preservation_minimal_implementation",
+    "action_summary": "Edited genieGoalCapabilityCorrectionRearm.mjs and geniePointerCurrencyCorrectionRearm.mjs to expose goal_id + decision_summary in forced_reads. Extended both existing verifiers' fixtures with these fields and added a real, live positive control confirming exp_phase946_... and exp_phase_e22_... remain distinguishable via context.goal_id today. Ran both existing Self-Correction guards plus the full pre-existing GENIE regression suite.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "semantic_target_field_exposure_and_regression",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-memory-semantic-target-preservation-2026-09-01T04-26-30-637Z/outcome.json",
+    "evidence_sha256": "d4494aa2c6aeb00faf4b8fed4b4ebc024545e526de74bf9de7984e758132e5a2",
+    "evidence_detail": "Live retrieveCanonicalLearning(capability_ref=cap_dataset_management) returns both 946 (goal_id=goal_repository_foundation) and E22 (goal_id=goal_semantic_quality) with contradictory-looking result.functional_status_after values but genuinely distinct goal_id, proving semantic-target distinguishability via an existing field alone. 11/11 pre-existing GENIE regressions plus 6+5 fixture checks (both rearm guards) passed. No retrieval API, historical Experience, or authoritative-status-source logic modified."
+  },
+  "result": {
+    "status": "MEMORY_SEMANTIC_TARGET_PRESERVATION_PROVEN",
+    "problem_resolved": true,
+    "new_schema_or_ontology_created": false,
+    "ranking_or_score_or_latest_wins_introduced": false,
+    "historical_experience_modified": false,
+    "unexpected_real_gap_encountered": false,
+    "scope_expanded": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "The same field name (result.functional_status_after) is used across the corpus for both capability-level and goal-scoped-gate facts, but the discriminating field (context.goal_id) already exists on every record -- it was simply never surfaced by the two rearm guards' narrow forced_reads shape.",
+    "cause_type": "existing_discriminator_field_not_yet_surfaced"
+  },
+  "lesson": "An apparent memory contradiction between two real, unrelated Experiences can sometimes be resolved by exposing a field the corpus already carries on every record (context.goal_id), rather than by inventing a new ontology, ranking scheme, or rewriting history -- the fix was surfacing existing structure, not creating new structure.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-memory-semantic-target-preservation-2026-09-01T04-26-30-637Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

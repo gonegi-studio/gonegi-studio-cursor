@@ -1,0 +1,61 @@
+{
+  "design_id": "project_brain_experience_capture_design_e2_v1",
+  "phase": "PHASE-E2",
+  "generated_at": "2026-08-22T11:46:15.428Z",
+  "reuses_e1_schema_unmodified": true,
+  "field_automation_split": {
+    "auto_computed_from_real_data": [
+      "experience_id",
+      "experience_kind (via classifyExperienceKind)",
+      "context.state_before",
+      "result",
+      "links.gap_ref/dependency_ref (via real trace lookup by goal_id)"
+    ],
+    "caller_supplied_and_validated": [
+      "links.capability_refs -- the caller (who is reading/writing the specific overlay entry) supplies which capability/capabilities the evidence concerns; auto-deriving \"every capability the goal requires\" was tried and rejected (see auto_linking_rule) -- captureExperience() still validates each ref against the goal's real required_capability_refs AND the real overlay, rejecting any that don't resolve."
+    ],
+    "still_author_supplied_v1": [
+      "problem",
+      "decision.decision_summary",
+      "action.action_type/action_summary",
+      "cause.root_cause_summary/cause_type",
+      "lesson",
+      "evidence.source/detail (the raw real evidence text itself)"
+    ],
+    "rationale": "Narrative/causal-judgment fields require human or agent reasoning about WHY something happened and what it means -- V1 automates only what is deterministically derivable from real structured data (status transitions, real Goal/Gap/Capability references). A future phase could add narrative generation; this phase does not."
+  },
+  "classification_rule_table": [
+    {
+      "priority": 1,
+      "condition": "corrects_experience_id provided",
+      "result": "misjudgment_correction"
+    },
+    {
+      "priority": 2,
+      "condition": "evidence.kind === 'hard_pass'",
+      "result": "successful_resolution"
+    },
+    {
+      "priority": 3,
+      "condition": "evidence.kind === 'hard_fail' AND status unchanged",
+      "result": "honest_negative_reconfirmation"
+    },
+    {
+      "priority": 4,
+      "condition": "evidence.kind === 'hard_fail' AND status changed",
+      "result": "partial_progress"
+    },
+    {
+      "priority": 5,
+      "condition": "evidence.kind === 'attempted_incomplete'",
+      "result": "partial_progress"
+    },
+    {
+      "priority": 6,
+      "condition": "evidence.kind === 'no_evidence'",
+      "result": "REJECTED -- no Experience is ever created without real evidence"
+    }
+  ],
+  "auto_linking_rule": "links.gap_ref/dependency_ref are looked up from the REAL trace file by goal_id at capture time (never manually supplied) -- absent if the goal has no chain (e.g. a satisfied goal, consistent with PHASE-966 EC-03). links.capability_refs is caller-supplied and validated (see caller_supplied_and_validated above) -- NOT derived by scanning every capability the goal requires: PHASE-E2's own dry-run first tried that and found it over-broadly linked all 10 of goal_semantic_quality's required capabilities to an event that was really only ever about 1, so the design was corrected before this document was finalized.",
+  "corrects_experience_id_auto_validation": "If corrects_experience_id is supplied, captureExperience() checks it resolves to a real, already-captured experience in the same run's prior-experience set -- fabricated or dangling references are rejected as validation violations, not silently accepted."
+}

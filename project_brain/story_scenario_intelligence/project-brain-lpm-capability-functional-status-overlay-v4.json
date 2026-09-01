@@ -1,0 +1,65 @@
+{
+  "overlay_id": "project_brain_lpm_capability_functional_status_overlay_v4",
+  "phase": "PHASE-946",
+  "generated_at": "2026-08-22T06:08:02.428Z",
+  "mode": "ADDITIVE_CORRECTION_OF_OVERLAY_V3_NOT_A_REPLACEMENT_V3_UNCHANGED_ON_DISK",
+  "rule": "A capability is added to this overlay only if it is directly named by an existing Gap/Dependency chain in trace v2 AND has its own direct evidence source (not inherited/aggregated). No inference beyond that.",
+  "correction_this_phase": {
+    "capability_id": "cap_dataset_management",
+    "previous_status": "blocked (PHASE-942)",
+    "corrected_status": "pending (PHASE-946)",
+    "reason": "Evidence re-scoping -- see investigation section. Not a re-classification of the underlying entities/taxonomy (explicitly forbidden this phase)."
+  },
+  "capabilities": [
+    {
+      "capability_id": "cap_production_runtime",
+      "functional_status": "blocked",
+      "evidence_source": "project_brain/real_generation/PRODUCTION_VALIDATION_HOLD.json (PHASE-940)"
+    },
+    {
+      "capability_id": "cap_movie_reconstruction",
+      "functional_status": "blocked",
+      "evidence_source": "reports/movie_factory_validation/movie-factory-validation-report.json (PHASE-941)"
+    },
+    {
+      "capability_id": "cap_cinematic_generation",
+      "functional_status": "blocked",
+      "evidence_source": "reports/movie_factory_validation/movie-factory-validation-report.json (PHASE-941, video_adapter_valid=false)"
+    },
+    {
+      "capability_id": "cap_repository_intelligence",
+      "functional_status": "satisfied",
+      "evidence_source": "datasets/repository_intelligence/project-entity-extraction-v1.json (PHASE-941)"
+    },
+    {
+      "capability_id": "cap_dataset_management",
+      "functional_status": "pending",
+      "evidence_source": "datasets/repository_intelligence/project-entity-extraction-v1.json + project-brain-cap-dataset-management-concentration-rootcause-v1.json (evidence re-scoped, PHASE-946)",
+      "note": "Population evidence is real and complete (datasets/repository_intelligence/project-entity-extraction-v1.json: datasets_extracted=true, project_entity_extraction_complete=true) -- the capability is real and materialized, not failing or unreachable. The concentration/taxonomy-quality concern from project-brain-cap-dataset-management-concentration-rootcause-v1.json (PHASE-940) is real and unresolved, but it evidences a PB classification-quality issue, not a functional failure of dataset management itself -- that finding is correctly scoped to goal_semantic_quality's own criterion (still blocked, unaffected by this phase), not to this capability's own functional operability. Net: real evidence exists, attempted and unresolved, neither a clear functional pass nor a hard functional failure -- 'pending' per PHASE-943's fixed semantics, not 'blocked'."
+    },
+    {
+      "capability_id": "cap_project_brain_intelligence",
+      "functional_status": "pending",
+      "evidence_source": "scripts/verify-project-brain-real-project-understanding.ts (run once, PHASE-944, minimal single sample)",
+      "note": "Updated PHASE-944 from 'satisfied' (PHASE-942, existence-only evidence) to 'pending' using the same real coverage-gap evidence applied to goal_project_brain_operational, to keep Goal<->Capability status consistent (a goal now 'pending' should not be backed by a capability still marked 'satisfied' on weaker existence-only grounds)."
+    },
+    {
+      "capability_id": "cap_verification_and_audit",
+      "functional_status": "pending",
+      "evidence_source": "scripts/verify-project-brain-real-project-understanding.ts (run once, PHASE-944, minimal single sample)",
+      "note": "Updated PHASE-944 from 'satisfied' (PHASE-942, existence-only evidence) to 'pending' using the same real coverage-gap evidence applied to goal_project_brain_operational, to keep Goal<->Capability status consistent (a goal now 'pending' should not be backed by a capability still marked 'satisfied' on weaker existence-only grounds)."
+    },
+    {
+      "capability_id": "cap_numerical_dna_gpu_bottleneck",
+      "functional_status": "blocked",
+      "evidence_source": "project-brain-lpm-numerical-dna-gpu-bottleneck-sidecar-v1.json (PHASE-940 sidecar capability) + project_brain/real_generation/PRODUCTION_VALIDATION_HOLD.json",
+      "note": "This is the sidecar capability PHASE-940 introduced specifically to represent this blocker; it was not yet present in the v1 overlay because v1 only covered the original 11 LPM capabilities. Added here because trace v2 explicitly names it as the blocking capability for goal_production_runtime's Dependency."
+    }
+  ],
+  "capabilities_intentionally_not_assessed_this_phase": [
+    "cap_narrative_production",
+    "cap_source_video_analysis",
+    "cap_export_materialization",
+    "and any of the LPM's remaining capabilities not listed above"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e11_currency_guard_01",
+  "phase": "PHASE-E11",
+  "generated_at": "2026-08-22T12:32:55.918Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E10's currency check was a one-off, manually-written comparison specific to that phase -- not a reusable mechanism other phases (or future automated cycles) could call.",
+  "decision": {
+    "decision_summary": "Generalize it into currencyGuard(), a real, typed function comparing indexed vs. real experience_ids, connected as the concrete backing for the locked Pre-Execution Procedure's step 3.",
+    "decided_at_phase": "PHASE-E11"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Implemented currencyGuard() + generateIndexRefreshCandidate() (reusing buildIndex() verbatim), and connected them to the E10 procedure.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "This phase's own real currencyGuard() runs (see [1] and [5])",
+    "evidence_detail": "Guard correctly reported CURRENT before this experience existed, and (see [4]/[5]) correctly reports STALE once this real experience exists but is not yet indexed."
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Improves the Experience Layer's own self-consistency mechanism; does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "Currency-checking existed only as inline, phase-specific code (E9, E10) -- not yet a named, reusable, independently-callable mechanism.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "The very act of recording this improvement as a new Experience immediately and honestly makes the prior Index stale by exactly one -- this is not a bug to work around, it is the real, expected dynamic the Currency Guard exists to detect every time, without needing an artificial demonstration.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

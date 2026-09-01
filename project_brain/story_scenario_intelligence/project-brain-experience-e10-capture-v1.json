@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e10_index_currency_fix_01",
+  "phase": "PHASE-E10",
+  "generated_at": "2026-08-22T12:24:15.736Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "Applying the locked Pre-Execution Search & Currency Procedure's step 3 (verify currency) to the Experience Layer's OWN Index (E7's v2) found it stale: 8/11 real experiences covered.",
+  "decision": {
+    "decision_summary": "Refresh the Index proactively (before it causes a real consumer failure, unlike PHASE-964's case which was caught reactively via a crash) by reusing E7's exact indexing logic.",
+    "decided_at_phase": "PHASE-E10"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Built Experience Index v3 (additive) covering all 11 real experiences, using buildIndex() reused verbatim from E7.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-experience-index-v3-validation-e10-v1.json (this phase, real dangling/duplicate checks)",
+    "evidence_detail": "total_dangling=0, duplicates=0"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Fixes an Experience Layer maintenance defect; does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "The same class of defect as PHASE-964's (a snapshot artifact not kept in sync with a growing real data source) recurring in a DIFFERENT component (the Index itself) -- but this time caught proactively via the locked procedure's currency-check step, before any real consumer crashed on it.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "The \"verify currency\" procedure step generalizes beyond the specific case it was invented for (PHASE-964's hardcoded filename) -- applying it to the Experience Layer's own Index caught the identical class of defect proactively. Any artifact that summarizes a growing real data source needs its OWN currency to be periodically re-checked, including the Experience Layer's own components.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

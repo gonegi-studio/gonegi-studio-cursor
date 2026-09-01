@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e19_operational_stabilization_01",
+  "phase": "PHASE-E19",
+  "generated_at": "2026-08-22T23:15:52.625Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E18 closed the tie-break exploration arc, but the Experience Layer as a whole (E1..E18) had not yet had a dedicated operational-stability audit covering every real connection, every reused mechanism's reproducibility, and full safety, in one pass.",
+  "decision": {
+    "decision_summary": "Audited canonical state (19 Experiences, 2 Patterns, 9 Candidates, 1 locked Policy), re-verified operational reproducibility (Currency Guard, Pattern Registry, candidate dedup/novelty, E14 ranking regression) and operational safety (dangling/duplicate/false-link, no chained auto-execution, PB/Goal/Gap/LPM unmodified) against current real data. All clean: true. Declaring Experience Layer V1 operational_stable=true.",
+    "decided_at_phase": "PHASE-E19"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Read-only audit; reused currencyGuard (E11), prioritizeCandidate (E13), computeGoalTrackRecord/applyTrackRecordTieBreaker (E14), and E12's false-pattern validation logic verbatim. No new mechanism, no code execution.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e19-canonical-state-check-v1.json + project-brain-e19-operational-reproducibility-verification-v1.json + project-brain-e19-operational-safety-verification-v1.json (this phase)",
+    "evidence_detail": "reproducibility_all_reproducible=true, operational_safety_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Confirms the Experience Layer's own operational stability; does not change this Goal's own real status. No tie-break attempted, no code executed beyond read-only verification."
+  },
+  "cause": {
+    "root_cause_summary": "A multi-phase self-improvement arc (E12..E18) had never been audited end-to-end in a single pass for reproducibility and safety before declaring it stable.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "A long chain of individually-honest phases (each fully verified in isolation) still benefits from one final, dedicated end-to-end audit before being declared operationally stable -- it is the difference between \"every step was checked\" and \"the whole system was checked\".",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

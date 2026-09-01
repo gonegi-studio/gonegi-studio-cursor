@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s6_studio_intelligence_decision_selection_01",
+  "phase": "PHASE-S6",
+  "generated_at": "2026-08-23T11:02:09.976Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Selected exactly 1 real next-Decision candidate among the 4 production goals, using only the existing E35 priority ranking (no new scoring), now that all 4 have complete Decision Context",
+    "production_goal_count": 4
+  },
+  "problem": "Having 4 goals each with a complete, real Decision Context (S4/S5) does not by itself indicate which one should be acted on next -- that requires an actual selection step, and the risk was inventing a new ad hoc scoring scheme instead of reusing the real one that already exists.",
+  "decision": {
+    "decision_summary": "Compared all 4 goals on context completeness + existing priority-queue membership. 2 eligible (context-complete AND in the real E35 priority queue). Selected goal_production_runtime (existing rank=1, matches existing top_recommendation=true). 0 new scoring invented, 0 existing Priority/Decision structure modified, 0 automatic execution.",
+    "decided_at_phase": "PHASE-S6",
+    "verdict": "DECISION_SELECTION_VERIFIED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_decision_selection",
+    "action_summary": "Built a Goal->Context->Decision->Outcome comparison across all 4 production goals; selected exactly 1 using only the existing E35 priority ranking; recorded selection basis + evidence_refs explicitly.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s6-decision-selection-v1.json + project-brain-s6-verification-v1.json (this phase)",
+    "evidence_detail": "eligible_count=2, selected=goal_production_runtime, matches_top_recommendation=true, regression_all_passed=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Selection reuses E35's real priority_score/rank verbatim -- and independently reconfirms the same top_recommendation E35 already reached."
+  },
+  "cause": {
+    "root_cause_summary": "Selection among several context-complete goals needs a real, already-governed ranking signal, not a new one invented for this phase -- reusing E35's scoring keeps the selection traceable to the same evidence-based process every other ranking decision in this project has used.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "When multiple real candidates are all individually well-supported, resist inventing a new comparison metric -- check whether a real, already-established ranking already answers the question, and if so, reuse it verbatim rather than re-deriving a parallel one.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

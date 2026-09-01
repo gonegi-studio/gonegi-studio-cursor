@@ -1,0 +1,73 @@
+{
+  "experience_id": "exp_genie_dataset_domain_classification_reverification_v1",
+  "phase": "PHASE-GENIE-DATASET-DOMAIN-CLASSIFICATION-V1",
+  "generated_at": "2026-08-31T11:53:19.172Z",
+  "experience_kind": "partial_progress",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/assignment.json",
+    "retrieval_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/retrieval.json",
+    "lpm_snapshot_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/lpm-before.json"
+  },
+  "problem": "Reverify PHASE-940 dataset/schema/registry catch-all classification using current LPM and explicit semantic evidence, without name-inferred domains.",
+  "decision": {
+    "status": "final",
+    "decided_by": "Codex",
+    "decision_summary": "No grounded classifier edit is justified in the checked sources. Preserve LPM; neither partial retag nor regeneration can supply missing authoritative domain assignments. This is a blocker, not a successful semantic repair.",
+    "direct_support_evidence": [
+      {
+        "evidence_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/phase940.json",
+        "evidence_sha256": "18ca34ba022e60af3d3c3326483fca59972d25a88837212b6db7905eac87a8db",
+        "evidence_location": "/observed",
+        "quote": "cap_dataset_management holds 2117/2917 (72.6%) of all LPM entities.",
+        "scope_claim": "Historical concentration observation, not current count or proof of functional failure.",
+        "used": true
+      },
+      {
+        "evidence_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/semantic-audit.stdout.bin",
+        "evidence_sha256": "a8a6d2cb188eaeee678b886ef62be0250f3df51b0343b7666862b54f8457976b",
+        "evidence_location": "/outcome",
+        "quote": "NO_DIRECT_DOMAIN_ASSIGNMENT_IN_CHECKED_SOURCES",
+        "scope_claim": "The completed audit found no direct domain assignments in its explicitly bounded source families; this does not prove universal absence.",
+        "used": true
+      },
+      {
+        "evidence_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/retrieval.json",
+        "evidence_sha256": "6a9d4593de8affab42cd98a6275c80abc57c2d28c4d1211360bb508ad0c0155f",
+        "evidence_location": "/result/results/1/record/lesson",
+        "quote": "A Goal-level criterion violation does not automatically imply the underlying Capability is functionally broken -- always check whether evidence is being applied to the layer (Goal vs Capability) it actually supports before propagating a 'blocked' status.",
+        "scope_claim": "REFERENCE_ONLY: distinguish taxonomy quality from functional capability failure; retain the lesson verbatim.",
+        "used": true
+      }
+    ],
+    "retrieval_contribution": "Applied exp_phase946_semantic_quality_capability_correction_01 to avoid propagating taxonomy uncertainty into a functional failure; exp_phase942 is superseded. This is explicit use, not improved-effect proof.",
+    "independent_contribution": "Read classifier scoring and content-index inferCapabilities; rejected filename-derived mappings and nested mentions as transfer authority."
+  },
+  "action": {
+    "action_type": "reverification",
+    "action_summary": "Read current classifier and source evidence; executed read-only semantic evidence audit; no retag, classifier change or regeneration justified.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "attempted_incomplete",
+    "evidence_category": "taxonomy_quality_only",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/outcome.json",
+    "evidence_detail": "Audit completed, but requested classification repair remains blocked; concentration is not a success metric.",
+    "outcome_evidence_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/outcome.json",
+    "outcome_evidence_sha256": "6c874900de85571815b98cca5a74222d6b186a6d5e45954d919f33e85340f746",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/development-trace-v1.json"
+  },
+  "result": {
+    "status": "BLOCKER_CONFIRMED",
+    "classification_corrected": false,
+    "execution_exit_code": 0
+  },
+  "lesson": "A nested capability mention or filename-derived search index mapping is not sufficient authority to reassign the containing dataset/schema/registry. Preserve taxonomy/functional-status separation and report the bounded evidence gap instead of reducing concentration by guesswork.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/dataset-domain-classification-2026-08-31T11-48-38-620Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

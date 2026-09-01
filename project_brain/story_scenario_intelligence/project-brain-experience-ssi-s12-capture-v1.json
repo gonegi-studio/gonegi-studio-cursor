@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s12_self_improving_studio_new_signal_exploration_01",
+  "phase": "PHASE-SSI-S12",
+  "generated_at": "2026-08-24T11:23:14.162Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Stopped repeating S10/S11's dormant trigger and re-ran E12's exact pattern-detection method over the full current Experience Layer (85 records, grown from S1's 74), excluding every group already known via E12/S1/S4/E23/E33+S-series",
+    "qualifying_groups": 5,
+    "new_signals": 1
+  },
+  "problem": "PHASE-SSI-S10 and PHASE-SSI-S11 both correctly reported NO_REAL_TRIGGER against the same dormant GPU/infra blocker -- continuing to re-poll that same trigger a third time would add no new information, while the canonical Experience Layer itself had grown by 11 real records (S1..S11) since E12s method was last run over it in S1, some of which form a grouping shape never checked before.",
+  "decision": {
+    "decision_summary": "5 groups qualify under E12's count>=2 method over the full current Experience Layer. 4 are duplicates of E12/S1/S4/E23/E33+S-series already-known signals. 1 are genuinely new: sig_new_goal_project_brain_operational_honest_negative_reconfirmation (2 members). 0 automatic promotion/policy-ization, 0 existing Principle modification. Verdict: CANDIDATE_ONLY.",
+    "decided_at_phase": "PHASE-SSI-S12",
+    "verdict": "CANDIDATE_ONLY"
+  },
+  "action": {
+    "action_type": "self_improving_studio_new_signal_exploration",
+    "action_summary": "Re-ran E12's exact pattern-detection method over the full current Experience Layer; checked every qualifying group against E12's patterns, E23's principle, E33+S-series candidates, S1's own already-surfaced signal grouping keys (any verdict), and the S4-adopted Principle's own scope; classified each as REJECTED_DUPLICATE_EXISTING or CANDIDATE_ONLY with real evidence_refs only.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s12-new-signal-exploration-v1.json + project-brain-ssi-s12-verification-v1.json (this phase)",
+    "evidence_detail": "qualifying_groups=5, new_signals=1, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "1 genuinely new improvement signal(s) found and recorded as CANDIDATE_ONLY -- not applied, not auto-promoted, existing Principle untouched."
+  },
+  "cause": {
+    "root_cause_summary": "Re-polling a trigger that has already twice reported no real-world change adds nothing; the actual new information this run is that the SSI phases themselves (S1..S11) are now real Experience records in their own right, and E12's method had never been re-run over them to see whether they form any new repeated shape.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "When a real trigger goes dormant, the correct move is not to keep re-checking it -- it is to redirect the same honest detection method at a part of the real data that has actually grown since it was last checked, and to exclude everything already known (by grouping key, not just by description text) before calling anything 'new'.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "experience_id": "exp_genie_second_real_tutor_ojt_evidence_capture_v1",
+  "phase": "PHASE-GENIE-SECOND-REAL-TUTOR-OJT-EVIDENCE-CAPTURE-V1",
+  "generated_at": "2026-08-31T05:43:13.019Z",
+  "experience_kind": "partial_progress",
+  "context": {
+    "consultation_candidate_ref": "project_brain/story_scenario_intelligence/project-brain-tutor-consultation-codex_tutor_20260831T052527969Z_27a4787b.json",
+    "consultation_generated_at": "2026-08-31T05:26:50.266Z",
+    "post_consultation_execution_completed_at": "2026-08-31T05:34:33.987Z"
+  },
+  "problem": "The real canonical OJT links.verifies_external_experience_id currently resolves to an EXTERNAL Tutor Candidate, but canonical loader/capture and coordinator regression do not validate that relationship. How can Candidate loader reuse minimally fail closed on missing references or non-EXTERNAL provenance? This is an existing validation gap, not a claim that the current real reference is dangling.",
+  "decision": {
+    "decision_summary": "Record the user-specified three contribution assessments against the implemented CR-14 supplement and preserved real regression execution; do not assign an overall Tutor outcome or authorize promotion."
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Captured the second real consultation contribution by fresh-checking its query, Candidate, before/after implementation snapshots and existing post-consultation execution evidence. The integration was performed in the preceding task; no new repair is claimed here.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/integration-evidence.json",
+    "evidence_detail": "The pre-change verifier already passed but omitted this relationship check. The post-change verifier passed with CR-14 checks and 15 in-memory fixture cases; this is added integrity coverage, not recovery from an existing live failure.",
+    "integration_evidence_ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/integration-evidence.json",
+    "integration_evidence_sha256": "27bdccaeee2df97a0485d6e9b5c69753696c3ede02d92eefdd99d7e431e09c8d",
+    "candidate_ref": "project_brain/story_scenario_intelligence/project-brain-tutor-consultation-codex_tutor_20260831T052527969Z_27a4787b.json",
+    "candidate_sha256": "482e53251a24e8b3e90e6976a3f4437ba410385c0f171e3ec2110544c78e1e0b",
+    "query_evidence_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T052527969Z_27a4787b/query.json",
+    "query_evidence_sha256": "4059d36ec24474e1fb209161d9aed4c0490bff0c1bf4ea63741769cb0e398d88",
+    "response_evidence_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T052527969Z_27a4787b/run/response.json",
+    "response_evidence_sha256": "1b02b2a4b5bc2efc25bf73d24b2dbd115d0554d411c413c2eaae8e3108bda542",
+    "execution_evidence_ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/coordinator-experience-contract-execution.json",
+    "execution_evidence_sha256": "ca0238fda85ed6b38dd5794095265ab5b6d826287f8fff9d7a7fdbe7398268ca",
+    "executed_verifier_ref": "scripts/verify-genie-coordinator-experience-contract-v1.mjs",
+    "executed_verifier_sha256": "53624f227d2b95e741d782fd682e3f21a4b30d681b3c0c75cf10a812fe17292f",
+    "executed_verifier_snapshot": {
+      "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/after-sources.json",
+      "sha256": "52842c1b4990ff556f3bf2aaef68d77e664f5a4160fb1e6bba5ee5b8543c545e",
+      "location": "/0/content"
+    },
+    "axis_grounding": {
+      "validation": {
+        "assessment": "CONFIRMED_CORRECT",
+        "rationale": "The implemented verifier reuses the existing Candidate loader, rejects loader errors, and verifies a unique EXTERNAL Candidate reference; actual regression and negative fixtures passed.",
+        "sources": [
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T052527969Z_27a4787b/run/response.json",
+            "sha256": "1b02b2a4b5bc2efc25bf73d24b2dbd115d0554d411c413c2eaae8e3108bda542",
+            "location": "/validation"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/after-sources.json",
+            "sha256": "52842c1b4990ff556f3bf2aaef68d77e664f5a4160fb1e6bba5ee5b8543c545e",
+            "location": "/0/content"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/after-sources.json",
+            "sha256": "52842c1b4990ff556f3bf2aaef68d77e664f5a4160fb1e6bba5ee5b8543c545e",
+            "location": "/1/content"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/coordinator-experience-contract-execution.json",
+            "sha256": "ca0238fda85ed6b38dd5794095265ab5b6d826287f8fff9d7a7fdbe7398268ca",
+            "location": ""
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/coordinator-experience-contract.stdout.bin",
+            "sha256": "3af2648642f4bd9d25e30c643721c143951852aeabf9df85e65b8d9387db2bf2",
+            "location": ""
+          }
+        ]
+      },
+      "missing_knowledge": {
+        "assessment": "WAS_USEFUL",
+        "rationale": "The response emphasized the authority and namespace boundary. The integration retained CR-11 unchanged and added a separate CR-14 Candidate supplement. This was useful clarification, not a claim that the Tutor first discovered the already-described namespace concern.",
+        "sources": [
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T052527969Z_27a4787b/run/response.json",
+            "sha256": "1b02b2a4b5bc2efc25bf73d24b2dbd115d0554d411c413c2eaae8e3108bda542",
+            "location": "/missing_knowledge"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T052527969Z_27a4787b/query.json",
+            "sha256": "4059d36ec24474e1fb209161d9aed4c0490bff0c1bf4ea63741769cb0e398d88",
+            "location": "/provisional_judgment"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/after-sources.json",
+            "sha256": "52842c1b4990ff556f3bf2aaef68d77e664f5a4160fb1e6bba5ee5b8543c545e",
+            "location": "/0/content"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/after-sources.json",
+            "sha256": "52842c1b4990ff556f3bf2aaef68d77e664f5a4160fb1e6bba5ee5b8543c545e",
+            "location": "/1/content"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/coordinator-experience-contract-execution.json",
+            "sha256": "ca0238fda85ed6b38dd5794095265ab5b6d826287f8fff9d7a7fdbe7398268ca",
+            "location": ""
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/coordinator-experience-contract.stdout.bin",
+            "sha256": "3af2648642f4bd9d25e30c643721c143951852aeabf9df85e65b8d9387db2bf2",
+            "location": ""
+          }
+        ]
+      },
+      "alternative_reasoning": {
+        "assessment": "IMPROVED_OUTCOME",
+        "rationale": "The implemented checks retain canonical Experience targets under CR-11, reject Experience/Candidate ID ambiguity, and fail closed for missing or non-EXTERNAL Candidate targets. Improvement is limited to demonstrated reference-integrity coverage, not measured global Tutor efficacy.",
+        "sources": [
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T052527969Z_27a4787b/run/response.json",
+            "sha256": "1b02b2a4b5bc2efc25bf73d24b2dbd115d0554d411c413c2eaae8e3108bda542",
+            "location": "/alternative_reasoning"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/after-sources.json",
+            "sha256": "52842c1b4990ff556f3bf2aaef68d77e664f5a4160fb1e6bba5ee5b8543c545e",
+            "location": "/0/content"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/after-sources.json",
+            "sha256": "52842c1b4990ff556f3bf2aaef68d77e664f5a4160fb1e6bba5ee5b8543c545e",
+            "location": "/1/content"
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/coordinator-experience-contract-execution.json",
+            "sha256": "ca0238fda85ed6b38dd5794095265ab5b6d826287f8fff9d7a7fdbe7398268ca",
+            "location": ""
+          },
+          {
+            "ref": "project_brain/antigravity_agent_trial_v1/tutor-external-reference-integrity-20260831T053231924Z/coordinator-experience-contract.stdout.bin",
+            "sha256": "3af2648642f4bd9d25e30c643721c143951852aeabf9df85e65b8d9387db2bf2",
+            "location": ""
+          }
+        ]
+      }
+    }
+  },
+  "result": {
+    "validation_assessment": "CONFIRMED_CORRECT",
+    "missing_knowledge_assessment": "WAS_USEFUL",
+    "alternative_reasoning_assessment": "IMPROVED_OUTCOME",
+    "contribution_scope": "Evidence-grounded contribution observations for the completed CR-14 integration, not a complete tutor_outcome_evaluation contract object.",
+    "post_consultation_verifier_exit_code": 0,
+    "external_reference_fixture_checks": 15,
+    "tutor_external_references_checked_at_integration": 1,
+    "regression_scripts_passed_at_integration": 7,
+    "tutor_non_contributions": [
+      "The repository gap and loader-reuse provisional judgment already existed before the consultation.",
+      "The query already raised CR-11 namespace compatibility; the Tutor did not uniquely discover that issue.",
+      "The user authorized the separate auxiliary rule; the implementing agent wrote and executed the change, not the Tutor.",
+      "No shared production resolver or capture-path enforcement was implemented; Candidate maps and the full suggested dual-namespace design were not adopted wholesale.",
+      "No broken live reference was repaired, no causal score was measured, and the first consultation pre-PASS is not used as contribution evidence."
+    ]
+  },
+  "lesson": "Preserve the difference between a Tutor suggestion, the authorized subset actually implemented, and independently recorded execution. Reference integrity does not itself establish answer correctness or promotion eligibility.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T052527969Z_27a4787b/query.json",
+    "provenance_source": "OJT",
+    "verifies_external_experience_id": "codex_tutor_20260831T052527969Z_27a4787b"
+  }
+}

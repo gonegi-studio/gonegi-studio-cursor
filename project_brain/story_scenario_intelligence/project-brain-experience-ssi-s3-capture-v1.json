@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s3_self_improving_studio_signal_promotion_01",
+  "phase": "PHASE-SSI-S3",
+  "generated_at": "2026-08-24T10:48:56.315Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Judged PHASE-SSI-S2's sole VALIDATED_CANDIDATE signal for promotion-worthiness: re-derived its evidence fresh, re-ran the E12/E23/E33/S-series duplication check, ran a mechanical generalization check, and a conflict check against existing confirmed Pattern/Principle on the same goal",
+    "candidate_signals_judged": 1,
+    "promotion_candidates": 1
+  },
+  "problem": "PHASE-SSI-S2 validated sig_goal_production_runtime_successful_resolution as evidentially intact, but validation alone does not establish whether the signal represents a real, generalizable principle worth promoting, or is a conflict-free addition to the existing Pattern/Principle set -- that judgment had not yet been made.",
+  "decision": {
+    "decision_summary": "1 VALIDATED_CANDIDATE signal(s) from S2 judged. 1 passed fresh evidence re-derivation, non-duplication, real-linkage, no-conflict, and mechanical generalization checks (PROMOTION_CANDIDATE_ONLY): sig_goal_production_runtime_successful_resolution. 0 rejected on recheck. 0 automatic policy adoption, 0 automatic execution, 0 real project modifications. Verdict: PROMOTION_CANDIDATE_ONLY.",
+    "decided_at_phase": "PHASE-SSI-S3",
+    "verdict": "PROMOTION_CANDIDATE_ONLY"
+  },
+  "action": {
+    "action_type": "self_improving_studio_signal_promotion_judgment",
+    "action_summary": "Re-derived each VALIDATED_CANDIDATE signal's evidence directly from the canonical Experience Layer (not trusting S2's list), re-ran the E12/E23/E33+S-series duplication check, tested for a real shared theme across genuinely different action types and phases (mechanical keyword check grounded in the members' own text), and checked for conflict against existing confirmed Patterns on the same goal.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s3-signal-promotion-v1.json + project-brain-ssi-s3-verification-v1.json (this phase)",
+    "evidence_detail": "candidate_signals_judged=1, promotion_candidate_count=1, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "1 signal(s) judged genuinely generalizable and conflict-free, recorded as PROMOTION_CANDIDATE_ONLY -- not adopted as policy, not auto-executed."
+  },
+  "cause": {
+    "root_cause_summary": "A VALIDATED_CANDIDATE signal is confirmed evidentially intact, but intactness is not the same as generalizability -- 3 real, repeated occurrences on one goal could still just be 3 instances of the same single event shape rather than a principle that recurs across genuinely different contexts, so that distinction has to be checked mechanically rather than assumed from the member count alone.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Promotion-worthiness requires more than intact evidence: the same underlying claim must independently recur across genuinely different action types and phases, and must not silently contradict an already-confirmed Pattern on the same goal -- checking both mechanically, from the evidence records own text and IDs, keeps a promotion candidate grounded rather than asserted.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s15_alternative_signal_exploration_01",
+  "phase": "PHASE-SSI-S15",
+  "generated_at": "2026-08-24T11:43:06.905Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Explored the Capability relationship axis (exact capability_refs set grouping) instead of E12's (goal_ref, experience_kind) method, over the full current Experience Layer (88 records)",
+    "qualifying_capability_groups": 5,
+    "new_signals": 1
+  },
+  "problem": "PHASE-SSI-S12/S14 exhausted E12's (goal_ref, experience_kind) grouping method without finding any real, independent new signal -- but that method only ever looks at one relationship axis; the real Experience Layer also carries a Capability axis (links.capability_refs) that had never been grouped on, and might reveal a real repeated pattern spanning different goals and different experience_kinds that E12's method structurally cannot see.",
+  "decision": {
+    "decision_summary": "5 capability-groups qualify (count>=2). 4 excluded (already-known via E12/S4/S1/candidate overlap, GPU-root-caused, or insufficient content-grounded evidence after filtering out tag-only members). 1 genuinely new signals: sig_altaxis_capability_cap_dataset_management (2 grounded members). 0 promotion/policy-ization, 0 execution. Verdict: CANDIDATE_ONLY.",
+    "decided_at_phase": "PHASE-SSI-S15",
+    "verdict": "CANDIDATE_ONLY"
+  },
+  "action": {
+    "action_type": "self_improving_studio_alternative_signal_exploration",
+    "action_summary": "Grouped the full current Experience Layer by exact capability_refs set; excluded every group overlapping E12 Pattern members, the S4 Principle evidence, S1-surfaced evidence, or existing candidate descriptions; excluded any group entirely GPU-root-caused; applied a content-grounding filter requiring the capability to be literally named in each members own problem/cause text before counting as real evidence; classified survivors with count>=2 grounded evidence as CANDIDATE_ONLY.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s15-alternative-signal-exploration-v1.json + project-brain-ssi-s15-verification-v1.json (this phase)",
+    "evidence_detail": "qualifying_capability_groups=5, new_signals=1, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "1 genuinely new, content-grounded, capability-axis improvement signal(s) found -- CANDIDATE_ONLY, not applied, not promoted."
+  },
+  "cause": {
+    "root_cause_summary": "E12's method groups by (goal_ref, experience_kind) only, so two Experience records that share a real underlying capability-level cause but differ on both goal and kind are structurally invisible to it -- switching the grouping axis to capability_refs, while still requiring real evidence-ref overlap exclusion and content-grounding (not just a shared tag), is what makes this a genuinely different, still-honest search rather than a relabeled repeat of E12.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "When one honest detection method has been run to exhaustion, the correct next step is a genuinely different real relationship axis (Capability, not Goal+Kind) rather than re-running the same method with cosmetic changes -- and a shared tag across two records is not evidence on its own; the underlying real content has to actually mention the shared thing before it counts as grounded evidence for a signal.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

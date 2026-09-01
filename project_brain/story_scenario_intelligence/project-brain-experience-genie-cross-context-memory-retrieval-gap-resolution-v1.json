@@ -1,0 +1,54 @@
+{
+  "experience_id": "exp_genie_cross_context_memory_retrieval_gap_resolution_v1",
+  "phase": "GENIE-CROSS-CONTEXT-MEMORY-RETRIEVAL-GAP-RESOLUTION-V1",
+  "generated_at": "2026-09-01T01:01:55.012Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-cross-context-memory-retrieval-gap-resolution-2026-09-01T01-01-55-012Z/assignment.json",
+    "retrieval_ref": "project_brain/antigravity_agent_trial_v1/genie-cross-context-memory-retrieval-gap-resolution-2026-09-01T01-01-55-012Z/retrieval.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-cross-context-memory-retrieval-gap-resolution-2026-09-01T01-01-55-012Z/development-trace.json"
+  },
+  "problem": "GENIE could retrieve canonical Experience only when the caller already knew a structural key, so a problem-only cross-context request could not discover important History reachable through indirect evidence references.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Add one read-only literal-problem History lookup beside the unchanged exact-key API. Select only canonical Experience by its problem phrase, then follow only its explicit repository JSON references with in-place byte resolution and SHA enforcement.",
+    "retrieval_contribution": "The real OOM query independently recovered July evidence and used it to reject heap-only retry and coverage-reducing exclusions.",
+    "source_experience_id": "exp_genie_persistent_memory_real_world_ojt_continuation_v1",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "cross_context_history_retrieval_connection_repair",
+    "action_summary": "Extended the existing canonical retrieval service and its existing verifier without creating an index, semantic/vector/RAG system, or copying reports into Experience.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "real_problem_only_history_resolution",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-cross-context-memory-retrieval-gap-resolution-2026-09-01T01-01-55-012Z/outcome.json",
+    "evidence_detail": "Problem-only OOM query found canonical Experience and resolved the 2026-07-28 source report with exact SHA and original 8GB caveat; all 11 regressions passed before capture at 113 Experiences and after capture at 114."
+  },
+  "result": {
+    "status": "CROSS_CONTEXT_MEMORY_RETRIEVAL_GAP_RESOLVED",
+    "problem_resolved": true,
+    "existing_experience_compatibility_preserved": true,
+    "canonical_experience_count_after": 114,
+    "final_genie_regressions_passed": 11,
+    "semantic_vector_rag_created": false,
+    "reports_copied": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "The July History existed and a later canonical Experience already referenced it indirectly, but exact-key selection and evidence resolution were separate operations with no problem-only bridge. Repository inventory was metadata-only and older than the History.",
+    "cause_type": "missing_problem_to_explicit_history_reference_bridge"
+  },
+  "lesson": "Cross-context recall does not require semantic infrastructure when canonical Experience already names the problem and preserves explicit provenance: literal selection plus strict reference-chain resolution can recover original History without duplicating it.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-cross-context-memory-retrieval-gap-resolution-2026-09-01T01-01-55-012Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

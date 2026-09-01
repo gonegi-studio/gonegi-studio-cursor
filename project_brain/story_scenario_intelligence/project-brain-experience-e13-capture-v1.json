@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e13_improvement_decision_01",
+  "phase": "PHASE-E13",
+  "generated_at": "2026-08-22T22:39:05.005Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E12 could detect repeated structural Patterns and connect them to candidate-only Improvement Candidates, but had no mechanism to actually evaluate and decide on those candidates -- Decision remained implicit/manual.",
+  "decision": {
+    "decision_summary": "Reviewed cand_pattern_pattern_goal_ghibli_production_pipeline_successful_resolution__process_improvement (E12's own new candidate) independently: ACCEPT. Built (but did not execute) an execution unit for PHASE-E14.",
+    "decided_at_phase": "PHASE-E13"
+  },
+  "action": {
+    "action_type": "code_fix",
+    "action_summary": "Implemented checkResultConsistency(), prioritizeCandidate(), and a full Decision pipeline (evaluate -> dedup -> prioritize -> decide -> link execution unit).",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-improvement-decision-e13-v1.json (this phase)",
+    "evidence_detail": "verdict=ACCEPT, all_evidence_verified=true, duplicate_candidate_count=0, priority_score=0.63"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Adds a new Experience Layer capability (Decision); does not change this Goal's own real status. No code executed this phase."
+  },
+  "cause": {
+    "root_cause_summary": "Pattern -> Candidate connection (E12) stopped short of an actual, auditable Decision step.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Keeping Decision (this phase) strictly separate from Action/Execution (deferred to E14) mirrors E6's own successful loop discipline -- it lets the decision be reviewed and audited on its own evidence before any code changes, rather than conflating \"worth doing\" with \"already done\".",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

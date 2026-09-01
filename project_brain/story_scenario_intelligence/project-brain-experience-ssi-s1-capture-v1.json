@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s1_self_improving_studio_improvement_signal_01",
+  "phase": "PHASE-SSI-S1",
+  "generated_at": "2026-08-23T12:19:20.528Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Extracted real improvement signals from the full 74-record canonical Experience Layer using E12's own exact grouping method (never a new threshold), checked against E12/E23/E33/S-series for duplication",
+    "qualifying_groups": 4,
+    "accepted_signals": 2
+  },
+  "problem": "E12's pattern registry was intentionally left stale after analyzing only its first 12 Experience records; the Experience Layer has since grown to 74 records (E13..E51, S0..S18, SSI-S0), and it was unverified whether re-running E12's own method over the full set would surface real signals E12 never saw, or just re-confirm what it already found.",
+  "decision": {
+    "decision_summary": "4 groups qualify under E12's count>=2 method. 2 are duplicates of E12's already-confirmed patterns (REJECTED). 2 are genuinely new, evidenced signals never previously registered (CANDIDATE_ONLY): sig_goal_project_brain_operational_successful_resolution (34 members), sig_goal_production_runtime_successful_resolution (3 members). 0 new rule/score/auto-learning, 0 real project modifications. Verdict: IMPROVEMENT_SIGNAL_FOUND.",
+    "decided_at_phase": "PHASE-SSI-S1",
+    "verdict": "IMPROVEMENT_SIGNAL_FOUND"
+  },
+  "action": {
+    "action_type": "self_improving_studio_improvement_signal_extraction",
+    "action_summary": "Re-ran E12's exact pattern-detection method over the full current Experience Layer; checked every qualifying group against E12's patterns, E23's principle, E33's candidates, and every real S-series candidate file for duplication; classified each as REJECTED or CANDIDATE_ONLY with real evidence_refs.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s1-improvement-signal-v1.json + project-brain-ssi-s1-verification-v1.json (this phase)",
+    "evidence_detail": "qualifying_groups=4, accepted_signals=2, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "2 genuinely new improvement signal(s) found and recorded as candidates only -- not applied, not auto-learned."
+  },
+  "cause": {
+    "root_cause_summary": "E12's registry was correctly left stale by design (E12's own decision), but 'stale by design' does not mean 'never worth re-checking' -- re-running its exact method later, once real growth has occurred, is how a stale registry's coverage gap gets honestly measured rather than assumed away.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Re-applying an existing, already-validated detection method to a grown dataset is not the same as inventing a new one -- it is how a deliberately-stale registry gets checked for real coverage gaps without introducing any new scoring or learning mechanism.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

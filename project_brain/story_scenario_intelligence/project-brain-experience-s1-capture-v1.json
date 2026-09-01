@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s1_studio_intelligence_decision_foundation_01",
+  "phase": "PHASE-S1",
+  "generated_at": "2026-08-23T07:36:50.335Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Extracted the real Goal->State->Gap->Experience->Decision->Outcome relationship for all 4 production-scoped goals from S0's naming lenses, using only real, already-existing fields",
+    "production_goal_count": 4
+  },
+  "problem": "S0 defined the Studio State Model's 7 entities as connection points but never traced an actual per-goal relationship through them -- without doing so, it was unverified whether the 'lens' design actually holds together end-to-end for real data, or only in the abstract.",
+  "decision": {
+    "decision_summary": "Extracted relationship chain for 4 production goals from real trace-chain blocked_by_capability, overlay functional_status, and Experience decision/result fields. Relationship integrity: goals_real=true, state_caps_real=true, gaps_real=true, experiences_real=true. Found 1 production goal(s) with 0 Gap/Experience provenance despite a \"satisfied\" state (goal_character_narrative_intelligence). 1 Studio Decision Candidate recorded: cand_studio_decision_s1_goal_character_narrative_intelligence_provenance_gap (not applied). 0 real PB/Goal/Gap/LPM/SSI/CHAR modifications, 0 automatic executions.",
+    "decided_at_phase": "PHASE-S1",
+    "verdict": "CANDIDATE_RECORDED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_decision_foundation_extraction",
+    "action_summary": "Extracted the real Goal->State->Gap->Experience->Decision->Outcome chain for all production-scoped goals; verified every referenced id resolves to a real record; generated exactly 1 grounded Studio Decision Candidate from what the extraction itself surfaced.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s1-relationship-chain-v1.json + project-brain-s1-decision-candidate-v1.json + project-brain-s1-relationship-integrity-v1.json + project-brain-s1-verification-v1.json (this phase)",
+    "evidence_detail": "relationship_integrity_ok=true, no_duplicate_structure=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Real asymmetry found and recorded as a candidate (not acted on): goal_character_narrative_intelligence has a satisfied capability status but 0 recorded decision provenance."
+  },
+  "cause": {
+    "root_cause_summary": "A naming-lens design (S0) is only proven correct once real data is actually traced through it end-to-end; doing so here surfaced a genuine, previously-unnoticed provenance gap rather than a hypothetical one.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Extracting a real relationship chain, rather than just defining connection points, is what surfaces genuine asymmetries (like a 'satisfied' goal with zero decision provenance) that a purely structural design review would miss.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

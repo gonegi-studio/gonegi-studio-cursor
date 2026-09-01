@@ -1,0 +1,81 @@
+{
+  "experience_id": "exp_genie_first_real_tutor_ojt_evidence_capture_v1",
+  "phase": "PHASE-GENIE-FIRST-REAL-TUTOR-OJT-EVIDENCE-CAPTURE-V1",
+  "generated_at": "2026-08-31T04:50:48.170Z",
+  "experience_kind": "partial_progress",
+  "context": {
+    "consultation_candidate_ref": "project_brain/story_scenario_intelligence/project-brain-tutor-consultation-codex_tutor_20260831T043429074Z_868938c5.json",
+    "consultation_status": "RECEIVED",
+    "attested_execution_at": "2026-08-31T00:25:19.111Z",
+    "consultation_generated_at": "2026-08-31T04:35:38.678Z"
+  },
+  "problem": "Historical stale exact-match track.status !== 'FOUNDATION_COMPLETE' rejected the legitimate successor PRODUCTION_VALIDATED. Fresh-read target now already accepts FOUNDATION_COMPLETE and PRODUCTION_VALIDATED; assess the accepted-states repair and reuse of RUNTIME_TRACK_ACCEPTED_STATUSES as a pattern, without claiming the stale condition still exists.",
+  "decision": {
+    "decision_summary": "User-specified GENIE judgment: replace stale exact-match with accepted states FOUNDATION_COMPLETE + PRODUCTION_VALIDATED, reusing the RUNTIME_TRACK_ACCEPTED_STATUSES pattern. Fresh read qualification: the target already implements the two accepted values inline; assess that existing repair, do not claim it remains unfixed.",
+    "status": "provisional"
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Fresh-read the existing real Tutor Candidate and existing production verifier execution attestation; compare query, response, raw evidence, source and current verifier SHA-256 without executing the target or calling a Tutor.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "datasets/project_brain/verification_execution_attestation_v1/project-brain-verification-execution-attestation-v1.json",
+    "evidence_detail": "Only entries[0] is used as recorded execution Outcome evidence. Its PASS predates the consultation; it corroborates the same verifier bytes, not consultation usefulness, causality, all lifecycle cases, or a new live execution.",
+    "outcome_evidence_ref": "datasets/project_brain/verification_execution_attestation_v1/project-brain-verification-execution-attestation-v1.json",
+    "outcome_evidence_sha256": "5e070baad980f3408d34376c7077c8774d5d3e3dc2e1792e1aa706197d2314c1",
+    "outcome_evidence_location": "/entries/0",
+    "recorded_execution": {
+      "capability_id": "cap_narrative_production",
+      "inventory_ref": "scripts/verify-production-pipeline-foundation-v1.ts",
+      "verifier_exists": true,
+      "verifier_sha256": "b45d1a918fbc855be8411e36df058d1a169253da92c511127fa0e91bef654900",
+      "executed_at": "2026-08-31T00:25:19.111Z",
+      "exit_code": 0,
+      "result": "PASS",
+      "not_run_reason": null,
+      "result_evidence_sha256": "aa86fb9920d8ac65781909a3bf380e395fcf2f666d17bed3e10c443176745668",
+      "stdout_tail": "PASS_PRODUCTION_PIPELINE_FOUNDATION_V1\n",
+      "stderr_tail": null
+    },
+    "candidate_ref": "project_brain/story_scenario_intelligence/project-brain-tutor-consultation-codex_tutor_20260831T043429074Z_868938c5.json",
+    "candidate_sha256": "74573135f6cfda4eb6d0632daa8af80fcf3e66cf3b149021f1f2fd22b599a021",
+    "external_record_type": "CANDIDATE",
+    "query_evidence_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/query.json",
+    "query_evidence_sha256": "0c357ac3bf623da18ddaa4332f44b00352ddf52b694100330fe2543d6628967a",
+    "response_evidence_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/run/response.json",
+    "response_evidence_sha256": "71dd027591d61e81086ddd0999cadd77b89264d1643176d04369296c390eec92",
+    "source_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/problem-source.json",
+    "source_sha256": "aa1943cc530d36e2d7da695f07658b71fe3de19aa70f4f5e38c13e29a3e4d19e",
+    "current_verifier_sha256": "b45d1a918fbc855be8411e36df058d1a169253da92c511127fa0e91bef654900",
+    "raw_evidence": {
+      "stdout_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/run/stdout.bin",
+      "stdout_sha256": "3694572d56a5c82673442ae893cd6c1903b0c6e1eb8631bd97d8d34bb9e06f09",
+      "stderr_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/run/stderr.bin",
+      "stderr_sha256": "4ca303e6ea372b55c4da63130de55187fff1cb8766c28c7b712e08b7084493a5",
+      "exit_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/run/exit.json",
+      "exit_sha256": "f8bd49bc100a0173d2c258c345e20bfd495924ac2b28bdc0b36ce091c5f08158",
+      "invocation_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/run/invocation.json",
+      "invocation_sha256": "35f045dc1c7df105333a9130f16cc88e75aed2ae5419ebcb50c48db8b1f5f173"
+    }
+  },
+  "result": {
+    "recorded_verifier_result": "PASS",
+    "recorded_exit_code": 0,
+    "new_target_execution": false,
+    "new_tutor_call": false,
+    "consultation_effect_evaluated": false
+  },
+  "lesson": "An existing independent PASS for identical verifier bytes can ground a recorded state. Because this execution preceded the consultation, it cannot establish that the Tutor improved the outcome or resolved missing knowledge. No Tutor outcome evaluation or knowledge promotion is made.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/query.json",
+    "provenance_source": "OJT",
+    "verifies_external_experience_id": "codex_tutor_20260831T043429074Z_868938c5"
+  }
+}

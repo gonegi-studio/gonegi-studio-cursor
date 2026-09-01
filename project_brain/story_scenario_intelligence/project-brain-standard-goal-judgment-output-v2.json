@@ -1,0 +1,55 @@
+{
+  "pointer_id": "project_brain_standard_goal_judgment_output_v2",
+  "phase": "PHASE-956",
+  "generated_at": "2026-08-22T06:44:51.616Z",
+  "status": "CANONICAL_CURRENT_STANDARD_OUTPUT",
+  "supersedes_in_scope_not_in_file": "project-brain-standard-goal-judgment-output-v1.json (PHASE-950, pointed at v5) stays on disk unmodified.",
+  "points_to": "project-brain-goal-satisfaction-v8-all-3-chains-real-evidence-closed-v1.json (PHASE-955, all 3 blocked-goal chains now backed by real evidence)",
+  "conforms_to_schema": "project-brain-two-tier-standard-schema-v1.json (PHASE-950, unchanged)",
+  "goal_model_source": "datasets/project_brain/goal_model_v1/project-brain-goal-model-v1.json (read-only, unmodified across all 17 phases of this session, PHASE-940..956)",
+  "summary_snapshot": {
+    "satisfied": 1,
+    "pending": 1,
+    "blocked": 3,
+    "unknown": 0,
+    "all_3_chains_closed_with_real_evidence": true
+  },
+  "entries_summary": [
+    {
+      "goal_id": "goal_production_runtime",
+      "existence": "satisfied",
+      "functional": "blocked",
+      "evidence_category": "hard_failure",
+      "real_evidence_backed": true
+    },
+    {
+      "goal_id": "goal_ghibli_production_pipeline",
+      "existence": "satisfied",
+      "functional": "blocked",
+      "evidence_category": "hard_failure",
+      "real_evidence_backed": true
+    },
+    {
+      "goal_id": "goal_project_brain_operational",
+      "existence": "satisfied",
+      "functional": "pending",
+      "evidence_category": "coverage_gap",
+      "real_evidence_backed": false
+    },
+    {
+      "goal_id": "goal_repository_foundation",
+      "existence": "satisfied",
+      "functional": "satisfied",
+      "evidence_category": "population_only",
+      "real_evidence_backed": false
+    },
+    {
+      "goal_id": "goal_semantic_quality",
+      "existence": "satisfied",
+      "functional": "blocked",
+      "evidence_category": "taxonomy_quality_only",
+      "real_evidence_backed": true
+    }
+  ],
+  "usage_note": "Future phases should read Goal-judgment state from THIS v2 pointer (or directly from v8) rather than v1/v5 or any earlier version, all of which remain on disk for audit history but are now superseded."
+}

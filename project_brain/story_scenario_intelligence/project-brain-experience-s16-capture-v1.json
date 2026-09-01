@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s16_studio_intelligence_real_candidate_execution_01",
+  "phase": "PHASE-S16",
+  "generated_at": "2026-08-23T11:48:29.276Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "First real exercise of S15's completed Candidate Gate, distinguishing NO_STATE_CHANGE / CANDIDATE_DEFERRED / REAL_DECISION_EXECUTED as 3 real, distinct outcomes; 5th independent Trigger re-derivation in this arc (S12..S16)",
+    "changes_detected": 0
+  },
+  "problem": "The Candidate Gate had been built and described (S15) but never actually run to distinguish \"nothing changed\" from \"something changed but is not executable\" from \"something changed and was executed\" -- collapsing those into a 2-way result would hide real information about WHY nothing was executed.",
+  "decision": {
+    "decision_summary": "Trigger (5th independent derivation): 0 changes. Candidate Gate not exercised. 0 existing DEFERRED/RESOLVED verdicts force-changed, 0 external infra/scope gate bypassed. Verdict: NO_STATE_CHANGE.",
+    "decided_at_phase": "PHASE-S16",
+    "verdict": "NO_STATE_CHANGE"
+  },
+  "action": {
+    "action_type": "studio_intelligence_real_candidate_execution",
+    "action_summary": "Re-derived the Trigger independently a 5th time; ran the Candidate Gate only if triggered; distinguished CANDIDATE_DEFERRED from REAL_DECISION_EXECUTED based on the real executability check rather than collapsing both into one outcome.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s16-real-candidate-execution-v1.json + project-brain-s16-verification-v1.json (this phase)",
+    "evidence_detail": "changes_detected=0, verdict=NO_STATE_CHANGE, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Verdict=NO_STATE_CHANGE. This run found 0 real change, so the 3-way distinction was exercised only up to the Trigger check -- the Gate/Execution/Deferred branches are real, correct code paths, ready for the run that does find a change."
+  },
+  "cause": {
+    "root_cause_summary": "A 2-way NO_STATE_CHANGE/DECISION_CANDIDATE_READY outcome cannot express the real difference between \"nothing changed\" and \"something changed but is correctly blocked\" -- collapsing them would make a correctly-deferred candidate look identical to an idle system.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Distinguishing DEFERRED-with-a-real-reason from NO_STATE_CHANGE preserves real information for whoever reads this phase later -- a system that always reports the same 2 states regardless of whether it found and correctly blocked something is less honest than one that reports 3.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

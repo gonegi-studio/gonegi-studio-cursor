@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_e50_canonical_integrity_operational_stability_01",
+  "phase": "PHASE-E50",
+  "generated_at": "2026-08-23T07:21:38.297Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Final operational stability check for E47..E49's Canonical Experience integrity work, explicitly folding in E49's own re-run incident: dedup self-exclusion built in from the start, and re-run safety proven in-process rather than assumed",
+    "canonical_experience_count_before_own_capture": 52
+  },
+  "problem": "E49 discovered, mid-run, that its dedup check falsely conflicted with its own already-written capture from an earlier same-session re-run. E50 needed to confirm that lesson is durable: does the self-exclusion design actually prevent that class of false conflict when tested for real, not just assumed to work because the code looks right?",
+  "decision": {
+    "decision_summary": "Canonical Load: 52 real records (E47 loader, verbatim). Integrity: dangling=0, duplicates=0, cross-file-duplicate-ids=0, record_loss=0, E47 collision-avoidance holds=true. Evolution: 0 changes since E40, 0 genuinely new. NO_NEW_EVOLUTION_FOUND, candidate=0. 0 real Goal/LPM/Trace/Overlay modifications.",
+    "decided_at_phase": "PHASE-E50",
+    "verdict": "NO_NEW_EVOLUTION_FOUND"
+  },
+  "action": {
+    "action_type": "canonical_integrity_operational_stability_with_rerun_safety_proof",
+    "action_summary": "Built the dedup self-exclusion in from the start; after capturing, re-scanned the directory fresh and re-ran the same dedup check against the pool that now includes this phase's own just-written record, proving no false conflict and exact +1 growth in-process.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e50-integrity-v1.json + project-brain-e50-verification-v1.json + project-brain-e50-rerun-safety-v1.json (this phase)",
+    "evidence_detail": "canonical_count_before=52, dangling=0, duplicates=0, e47_collision_avoidance_holds=true, alignment=true, verification_all_clear=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "E47's policy held for a third independent operational cycle; the E49 re-run incident's lesson (self-exclusion) was designed in from the start here and proven in-process, not merely inspected."
+  },
+  "cause": {
+    "root_cause_summary": "E49's incident happened because self-exclusion was added reactively, after the false conflict occurred. Designing it in from the start, then testing it in-process rather than trusting the design by inspection, is what actually closes this class of bug.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "A fix for a re-run/idempotency bug is only proven once it is actually exercised on a re-run, not merely reasoned about. Re-scanning after writing and re-running the identical dedup check in the same execution is a cheap, real way to test that -- without needing an actual second process invocation.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

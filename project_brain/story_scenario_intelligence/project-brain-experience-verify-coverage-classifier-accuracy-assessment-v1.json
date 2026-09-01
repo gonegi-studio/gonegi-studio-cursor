@@ -1,0 +1,47 @@
+{
+  "experience_id": "exp_genie_verify_coverage_classifier_accuracy_assessment_v1",
+  "phase": "PROJECTBRAIN-VERIFY-COVERAGE-CLASSIFIER-ACCURACY-ASSESSMENT-V1",
+  "generated_at": "2026-09-01T00:06:52.330Z",
+  "captured_at": "2026-09-01T00:31:45.358Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "development_trace_ref": "reports/project_brain_real_project_understanding/VERIFY_COVERAGE_CLASSIFIER_ACCURACY_ASSESSMENT_V1_DEVELOPMENT_TRACE.json",
+    "outcome_ref": "reports/project_brain_real_project_understanding/VERIFY_COVERAGE_CLASSIFIER_ACCURACY_ASSESSMENT_V1_OUTCOME.json",
+    "capture_reason": "Backfilled after the next real-world OJT exact-key retrieval honestly returned NOT_FOUND."
+  },
+  "problem": "The verify-coverage classifier counted only registered verify:* direct imports and missed real assert-and-exit paths.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Use filename-independent AST/dataflow semantics; reject name-only and arbitrary transitive coverage; admit one-hop verify* helpers only when their result reaches returned passed.",
+    "memory_used": false
+  },
+  "action": {
+    "action_type": "classifier_accuracy_repair",
+    "action_summary": "Implemented semantic assert-and-exit classification and bounded helper dataflow; resolved all historical 46 execution-only cases.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "real_classifier_regression",
+    "evidence_source": "reports/project_brain_real_project_understanding/VERIFY_COVERAGE_CLASSIFIER_ACCURACY_ASSESSMENT_V1_OUTCOME.json",
+    "evidence_sha256": "b421242609ab81e2ceb48409efa9445e19d9dee5527d3891ef9a98afc458b764",
+    "evidence_detail": "historical_46_resolved=46, historical_46_unresolved=0, ProjectBrain regressions passed=4"
+  },
+  "result": {
+    "status": "VERIFY_COVERAGE_CLASSIFIER_REAL_GAP_RESOLVED",
+    "problem_resolved": true,
+    "historical_execution_only_resolved": 46,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "lesson": "Verification coverage must be based on the service result controlling failure, not on a verify-* filename; helper coverage additionally requires evidence that the helper result reaches the returned pass gate.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/projectbrain-verify-coverage-2026-08-31T12-13-01-336Z/assignment.json",
+    "provenance_source": "OJT",
+    "source_outcome_ref": "reports/project_brain_real_project_understanding/VERIFY_COVERAGE_CLASSIFIER_ACCURACY_ASSESSMENT_V1_OUTCOME.json"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_e47_project_evolution_drift_detection_reliability_01",
+  "phase": "PHASE-E47",
+  "generated_at": "2026-08-23T07:08:20.593Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Replaced filename/suffix-dependent Experience enumeration with a structural, directory-wide signature-matching loader; measured the true historical gap left by the legacy approach used through E46",
+    "canonical_experience_count_legacy": 46,
+    "canonical_experience_count_true": 50
+  },
+  "problem": "E46 fixed one instance of filename-dependent Experience loading (a `.endsWith('_capture')` filter), but the underlying bug CLASS -- deciding canonical membership by filename pattern instead of by real record structure -- was never eliminated. Reconstructing E46's exact legacy enumeration and comparing it against a structural, filename-independent scan proved it: 4 real records (exp_phase_e10_index_currency_fix_01, exp_phase_e19_operational_stabilization_01, exp_phase_e47_project_evolution_drift_detection_reliability_01, exp_phase_e9_self_improvement_effect_01) were silently missing from BOTH E45's and E46's canonical Experience counts, undetected until this phase.",
+  "decision": {
+    "decision_summary": "Adopted a structural (signature-matching, directory-wide) Experience loader as the fix, and confirmed it finds all 50 real records with 0 cross-file duplicates and 0 false inclusions from synthetic test_fixture_* data. Goal/Capability/Trace/Priority axis: 0 changes since E40 -- not triggered. Genuinely new discrepancies (Drift): 1. Gate passed for 1: cand_evolution_e47_experience_loading_completeness, executed as a locked policy (ELP-01..04), 0 real Goal/LPM/Trace/Overlay modifications.",
+    "decided_at_phase": "PHASE-E47",
+    "verdict": "EXECUTED"
+  },
+  "action": {
+    "action_type": "experience_loading_reliability_fix",
+    "action_summary": "Replaced filename-keyed Experience enumeration with structural signature matching; measured and closed the historical completeness gap; locked ELP-01..04 policy for all future phases to reuse.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e47-experience-completeness-v1.json + project-brain-e47-drift-v1.json + project-brain-e47-gate-execution-v1.json + project-brain-e47-verification-v1.json (this phase)",
+    "evidence_detail": "structural_count=50, legacy_count=46, missing_from_legacy=4, cross_file_duplicates=0, verification_all_clear=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_1_POLICY_ARTIFACT_0_REAL_DATA_MODIFICATIONS",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The E46 bug class recurred silently in a different, previously-undetected form (3 additional missing records). Structural loading closes the whole class, not just the one instance E46 patched."
+  },
+  "cause": {
+    "root_cause_summary": "Deciding canonical Experience membership by matching filenames or suffixes is inherently incomplete -- any record stored under a filename that does not match the assumed pattern is silently dropped with no error, and the composite dedup/dangling checks used through E46 were not designed to catch omissions, only literal duplicates and dangling references within whatever set was loaded.",
+    "cause_type": "structural_enumeration_method_flaw"
+  },
+  "lesson": "A completeness bug of this shape does not announce itself -- every downstream check (dangling=0, duplicates=0, regression clean) can still report green while the canonical set itself is quietly incomplete. The fix is to stop deciding membership by name at all: match by real structural shape, scan everything, and exclude only by an explicit, content-based synthetic-data marker (test_fixture_*). Loading the true set also surfaced a second, related limitation: the goal_ref::phase::experience_kind composite dedup key (valid for E11+, one-capture-per-phase records) is not unique for pre-E11 historical records -- exp_phase_e9_fix_phase964_stale_reference_01 and exp_phase_e9_self_improvement_effect_01 share that key while describing two entirely different real events. Strengthened the duplicate check with an exact problem-text component (no fuzzy matching) rather than forcing either record to be treated as a false duplicate.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

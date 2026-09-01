@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s7_studio_intelligence_decision_actionability_01",
+  "phase": "PHASE-S7",
+  "generated_at": "2026-08-23T11:05:14.679Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Judged whether S6's selected top Decision (goal_production_runtime) is actionable right now, using only the existing owner_domain convention (PHASE-943), no new rule",
+    "target_goal_id": "goal_production_runtime",
+    "experience_count": 6
+  },
+  "problem": "S6 selected a real top-priority Decision using the existing priority ranking, but selection alone does not establish whether that Decision can actually be acted on -- this had to be judged against the existing real actionability convention, not assumed.",
+  "decision": {
+    "decision_summary": "Action candidate: exec_unit_phase943_production_runtime_gpu_restoration (owner_domain=\"infrastructure (not code, not LPM)\"). Existing owner_domain convention: infrastructure_owned=true. Fresh read of PRODUCTION_VALIDATION_HOLD.json: gpu_available=false, status=PENDING. Existing DEFERRED condition preserved: true. Verdict: DEFERRED. 0 new scoring/rule invented, 0 automatic execution, 0 modifications.",
+    "decided_at_phase": "PHASE-S7",
+    "verdict": "DEFERRED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_decision_actionability_judgment",
+    "action_summary": "Verified Decision->Action->Outcome linkage via the real trace chain execution_unit; judged actionability using only the existing owner_domain convention; preserved the existing GPU-blocker DEFERRED status rather than overriding it.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s7-actionability-v1.json + project-brain-s7-verification-v1.json (this phase) + project_brain/real_generation/PRODUCTION_VALIDATION_HOLD.json (fresh read)",
+    "evidence_detail": "is_infrastructure_owned=true, gpu_still_unavailable=true, verdict=DEFERRED, regression_all_passed=true"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Correctly preserved the existing, still-real GPU/ComfyUI infrastructure blocker as DEFERRED rather than inventing a new rule to force ACTIONABLE."
+  },
+  "cause": {
+    "root_cause_summary": "The real blocking condition (GPU/ComfyUI unreachable) is external infrastructure, not something this automation's code changes can resolve -- the existing owner_domain field already encodes exactly this distinction, so reusing it (rather than re-deriving a new actionability heuristic) keeps the judgment consistent with every prior phase that reached the same DEFERRED conclusion.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Actionability and priority are different questions -- a Decision can be top-priority (S6) and still correctly DEFERRED (S7) when the real blocker is outside this automation's execution boundary. Reusing the existing owner_domain convention keeps that distinction honest rather than papering over it with a new, more permissive rule.",
+  "links": {
+    "goal_ref": "goal_production_runtime",
+    "gap_ref": "gap_phase940_numerical_dna_gpu_production_unavailable",
+    "dependency_ref": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+    "capability_refs": [
+      "cap_numerical_dna_gpu_bottleneck"
+    ]
+  }
+}

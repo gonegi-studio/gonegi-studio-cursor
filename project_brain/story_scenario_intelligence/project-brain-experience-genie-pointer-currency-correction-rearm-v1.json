@@ -1,0 +1,53 @@
+{
+  "experience_id": "exp_genie_pointer_currency_correction_rearm_v1",
+  "phase": "GENIE-POINTER-CURRENCY-CORRECTION-REARM-V1",
+  "generated_at": "2026-09-01T04:03:32.205Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-pointer-currency-correction-rearm-2026-09-01T04-03-32-205Z/assignment.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-pointer-currency-correction-rearm-2026-09-01T04-03-32-205Z/development-trace.json",
+    "outcome_ref": "project_brain/antigravity_agent_trial_v1/genie-pointer-currency-correction-rearm-2026-09-01T04-03-32-205Z/outcome.json"
+  },
+  "problem": "A generalization assessment found that E8/E9's stale-hardcoded-pointer error class had an already-existing, dormant, general detector (PHASE-E25's pointerCurrencyGuard()) that was never re-armed after its one real execution; this phase implements that re-arm using the exact same minimal architecture already proven for 942/946.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Reuse pointerCurrencyGuard() verbatim (extracted via the same AST/VM technique already used twice, never modifying PHASE-E25's source) as a synchronous, zero-threshold, single-pointer check. CURRENT leaves the existing flow fully unaffected. STALE triggers a targeted retrieval keyed on the pointer's own real 'phase' field (an exact structural match, chosen only after confirming E9's capability_refs are unrelated bootstrap artifacts and not a usable key), filtered to real corrects_experience_id links, followed by an independent exact-key re-verification of the corrected Experience and an evidence/SHA bridge attempt against its real original evidence. No pointer is ever auto-modified.",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "self_correction_rearm_minimal_implementation",
+    "action_summary": "Added services/geniePointerCurrencyCorrectionRearm.mjs and its verifier. Ran the real guard plus the real live 118-record canonical Experience store against a throwaway fixture recreating the exact E8 stale-pointer condition (positive control), against the real current repository pointer state (current-valid-pointer negative control), and against a fixture recreating staleness for a fictional phase with no real correction (unrelated-correction negative control). Ran all pre-existing GENIE regressions.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "pointer_currency_rearm_real_and_negative_controls",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-pointer-currency-correction-rearm-2026-09-01T04-03-32-205Z/outcome.json",
+    "evidence_sha256": "5f293a3f8af2d88871b3f0e0b515999af5830770ff0ead9388a71b8cc5579ec3",
+    "evidence_detail": "Positive control: recreated E8 stale-pointer condition -> exp_phase_e9_fix_phase964_stale_reference_01 found via exact phase match, corrects_experience_id exp_phase_e8_... re-verified via exact-key lookup, evidence bridge honestly attempted (OK status, empty resolution reflects E8's own compound non-bare evidence_source, not a fabricated result). Current-valid-pointer negative: real live pointer shows CURRENT today. Unrelated-correction negative: fictional-phase staleness correctly yields forced_reads:[] (no hallucination). 12/12 pre-existing GENIE regressions plus 5 new fixture checks passed. Original PHASE-E25 source file unmodified (mtime and git status confirmed)."
+  },
+  "result": {
+    "status": "POINTER_CURRENCY_SELF_CORRECTION_REARM_PROVEN",
+    "problem_resolved": true,
+    "detector_duplicated": false,
+    "automatic_pointer_modification": false,
+    "full_memory_scan_or_daemon_introduced": false,
+    "unexpected_real_gap_encountered": false,
+    "scope_expanded_beyond_e8_e9": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "PHASE-E25's pointerCurrencyGuard() was a real, general, reusable detector but was itself a one-off phase-materialization script, never re-invoked after its single run -- its own general logic simply had never been wired to fire again, exactly mirroring the 942/946 case.",
+    "cause_type": "dormant_reusable_logic_never_rearmed"
+  },
+  "lesson": "The 942/946 re-arm architecture generalizes beyond its origin case: a second, independently-evidenced dormant detector (pointerCurrencyGuard) was re-armed with the same technique, but the correct correction-linking key had to be independently re-derived per error class -- capability_ref worked for 942/946, but E9's capability_refs were unrelated bootstrap artifacts, and the real structural link here was the pointer's own 'phase' field matching the correction Experience's 'phase' field instead.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-pointer-currency-correction-rearm-2026-09-01T04-03-32-205Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

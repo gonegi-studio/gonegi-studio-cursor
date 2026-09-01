@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e33_project_evolution_transition_design_01",
+  "phase": "PHASE-E33",
+  "generated_at": "2026-08-23T00:43:52.126Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E32 closed the Cross-Domain/Experience-Layer-enhancement stage, but no minimal input model or measurable target set existed yet for the next real focus: evolving the PROJECT itself using Experience, rather than continuing to enhance the Experience Layer.",
+  "decision": {
+    "decision_summary": "Built the Evolution input model by reading only existing real artifacts (Goal/Capability/Gap/Priority/Experience/Pattern/Principle/Currency). Defined 5 measurable Evolution axes, all backed by real data. Applied the judgment rules (Experience=grounds, Currency=freshness, PB state=now) to the strongest real finding: trace v15's goal_ghibli_production_pipeline chain is stale relative to 2 independent already-current real artifacts. Generated exactly 1 real Evolution Candidate (cand_evolution_trace_v15_ghibli_status_staleness_v1), not applied.",
+    "decided_at_phase": "PHASE-E33"
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Read-only aggregation across overlay v1-v6, trace v1-v15, development-priority-v1, Pattern Registry, Principle Registry, Currency readiness manifest, and the full canonical Experience set. 0 files modified.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e33-evolution-input-model-v1.json + project-brain-e33-evolution-targets-v1.json + project-brain-e33-evolution-candidates-v1.json + project-brain-e33-verification-v1.json (this phase)",
+    "evidence_detail": "all_5_axes_measurable=true, evolution_candidate=cand_evolution_trace_v15_ghibli_status_staleness_v1, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Establishes the Project Evolution input model and target set; does not modify any Goal/Capability/Gap/Priority data, does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "Every real self-improvement mechanism built E1..E32 targeted PB's own tooling; only 1 real Experience (PHASE-959) ever changed the actual project's Goal/Capability state -- the infrastructure for driving further real project evolution via Experience did not yet exist.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Reading existing real artifacts together, rather than in isolation, surfaced a genuine 3-way corroborated staleness (Experience + overlay agree, trace + development-priority do not) that no single-artifact check across the whole E1..E32 arc had ever surfaced -- because none of those phases cross-referenced Gap-tracking data against Capability-tracking data for the same real chain.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

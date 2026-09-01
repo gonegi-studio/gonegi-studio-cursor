@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s2_self_improving_studio_signal_validation_01",
+  "phase": "PHASE-SSI-S2",
+  "generated_at": "2026-08-24T10:44:02.660Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Independently re-verified PHASE-SSI-S1's 2 CANDIDATE_ONLY improvement signals against the current canonical Experience Layer, current E12/E23/E33/S-series registries, and each signal's own real/simulated action linkage",
+    "candidate_signals_reviewed": 2,
+    "validated_signals": 1
+  },
+  "problem": "PHASE-SSI-S1 found 2 CANDIDATE_ONLY improvement signals but explicitly did not validate, adopt, or apply either -- it was unverified whether those 2 signals' evidence still held up, were still non-duplicate, and were still tied to real (not simulated) project actions once independently re-checked.",
+  "decision": {
+    "decision_summary": "2 CANDIDATE_ONLY signal(s) from S1 re-checked. 1 passed evidence-existence, fresh re-grouping equality, non-duplication, and real-linkage re-verification (VALIDATED_CANDIDATE): sig_goal_production_runtime_successful_resolution. 1 rejected on recheck. 0 automatic adoption, 0 rule-ization, 0 real project modifications. Verdict: VALIDATED_SIGNAL_FOUND.",
+    "decided_at_phase": "PHASE-SSI-S2",
+    "verdict": "VALIDATED_SIGNAL_FOUND"
+  },
+  "action": {
+    "action_type": "self_improving_studio_signal_validation",
+    "action_summary": "Re-verified each of S1's CANDIDATE_ONLY signals: confirmed every evidence_ref still exists, recomputed the (goal_ref, experience_kind) grouping fresh and required an exact member-set match, re-ran S1's own E12/E23/E33+S-series duplication check, and checked every evidence record's action.real_or_simulated field for real linkage.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s2-signal-validation-v1.json + project-brain-ssi-s2-verification-v1.json (this phase)",
+    "evidence_detail": "candidate_signals_reviewed=2, validated_signal_count=1, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "1 signal(s) independently re-verified and classified VALIDATED_CANDIDATE -- still not applied, not auto-adopted, not rule-ized."
+  },
+  "cause": {
+    "root_cause_summary": "A CANDIDATE_ONLY signal from one phase is a snapshot, not a standing fact -- without an independent re-check in a later phase, evidence drift, duplication against something registered since, or accidental reliance on simulated (not real) actions could all pass silently into an eventual real adoption decision.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Validating a candidate signal means re-deriving its evidence from scratch and re-running the same non-duplication checks independently, not re-reading the prior phase's own verdict -- a signal that still holds up under a fresh, independent recomputation is meaningfully stronger evidence than one that was merely asserted once.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

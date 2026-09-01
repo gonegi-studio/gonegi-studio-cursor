@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_ssi_s17_capability_signal_promotion_01",
+  "phase": "PHASE-SSI-S17",
+  "generated_at": "2026-08-24T11:59:09.556Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Judged PHASE-SSI-S16's VALIDATED_CANDIDATE capability signal for promotion: re-verified its evidence from scratch, re-ran the final duplication/conflict check, drafted an evidence-grounded Principle statement, and verified it does not claim more than its 2 real evidence records support",
+    "candidate_id": "sig_altaxis_capability_cap_dataset_management"
+  },
+  "problem": "PHASE-SSI-S16 validated the cap_dataset_management signal's evidence and root-cause claim, but validation is not the same as promotion-worthiness -- it remained unverified whether a Principle statement grounded in only 2 real records could be drafted without silently claiming more (e.g. 'every capability', 'always') than those 2 records actually support.",
+  "decision": {
+    "decision_summary": "Fresh recompute reproduces the same 2 content-grounded evidence records: true. Real linkage: true. Duplicate/conflict: false. Draft Principle statement scope-bounded (no unbounded quantifier, names cap_dataset_management, counts match: 2 goals, 2 kinds): true. 0 policy application, 0 CI wiring, 0 automatic execution. Verdict: PROMOTION_CANDIDATE_ONLY.",
+    "decided_at_phase": "PHASE-SSI-S17",
+    "verdict": "PROMOTION_CANDIDATE_ONLY"
+  },
+  "action": {
+    "action_type": "capability_signal_promotion_judgment",
+    "action_summary": "Recomputed the content-grounded cap_dataset_management evidence group from scratch; re-ran the E12/E23/E33+S-series/S1/S4 duplication-and-conflict check; drafted a Principle statement citing only the 2 real evidenced goals/kinds; mechanically verified the statement contains no unbounded quantifier and every numeric claim matches the fresh recount.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s17-capability-signal-promotion-v1.json + project-brain-ssi-s17-verification-v1.json (this phase)",
+    "evidence_detail": "final_state=PROMOTION_CANDIDATE_ONLY, evidence_matches_fresh_recompute=true, scope_bounded=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "A scope-bounded, evidence-grounded Principle statement was drafted and recorded as PROMOTION_CANDIDATE_ONLY -- not adopted, not policy-applied, not CI-wired, not auto-executed."
+  },
+  "cause": {
+    "root_cause_summary": "Drafting a Principle statement from real evidence is easy to get subtly wrong at exactly 2 records, where a single unbounded word (\"always\", \"every capability\") turns 2 real, narrow observations into an unsupported general claim -- checking the drafted text itself, not just the underlying evidence count, is what catches that before promotion.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Promotion-worthiness for a 2-record signal requires drafting the actual candidate statement and then checking that specific text for overclaiming, not just re-confirming the 2 records still exist -- a scope-bounded statement that names its capability and cites its real counts is meaningfully different from a vaguer one that would read as true even without the evidence behind it.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

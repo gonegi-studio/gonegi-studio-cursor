@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s19_studio_intelligence_principle_operational_validation_01",
+  "phase": "PHASE-SSI-S19",
+  "generated_at": "2026-08-24T12:09:11.718Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Operationally validated PHASE-SSI-S18's newly-adopted capability Principle by re-verifying its evidence, freshly reading cap_dataset_management's current state, and applying one real judgment case with the independent verdict computed first",
+    "principle_id": "principle_cap_dataset_management_ssi_s18_v1",
+    "case_id": "ssi_s19_decision_case_01"
+  },
+  "problem": "PHASE-SSI-S18 recorded a second Principle as adopted but not enforced -- it had never been applied to a real judgment to see whether the verdict it predicts matches the pre-existing real convention (PHASE-946's own Goal<->Capability layer separation, already on record before this Principle existed) that is independent of the new Principle.",
+  "decision": {
+    "decision_summary": "Principle principle_cap_dataset_management_ssi_s18_v1 evidence re-verified: exists=true, real_linked=true. Real judgment case (When a Goal<->Capability inconsistency exists for a goal backed by cap_dataset_management, which layer absorbs the correction?): independent_verdict_computed_first=CAPABILITY_FUNCTIONAL_STATUS_LAYER (from PHASE-946s own pre-existing record), principle_guided_verdict=CAPABILITY_FUNCTIONAL_STATUS_LAYER, match=true. 0 CI wiring, 0 automatic policy, 0 automatic execution. Verdict: PRINCIPLE_GUIDED_DECISION_CONFIRMED.",
+    "decided_at_phase": "PHASE-SSI-S19",
+    "verdict": "PRINCIPLE_GUIDED_DECISION_CONFIRMED"
+  },
+  "action": {
+    "action_type": "studio_intelligence_principle_operational_validation",
+    "action_summary": "Re-verified both evidence records fresh; freshly read cap_dataset_management's current overlay functional_status and trace chain state; computed the independent verdict first from trace v16's own pre-existing capability_status_clarification text (PHASE-946, predating this Principle); computed the Principle-guided verdict from the Principle's own stated logic; compared them.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s19-principle-operational-validation-v1.json + project-brain-ssi-s19-verification-v1.json (this phase)",
+    "evidence_detail": "independent_verdict=CAPABILITY_FUNCTIONAL_STATUS_LAYER, principle_guided_verdict=CAPABILITY_FUNCTIONAL_STATUS_LAYER, verdicts_match=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The Principle, applied to a real current judgment case, produced the same verdict as the pre-existing independent PHASE-946 convention -- operationally validated, still not CI/policy/execution-wired."
+  },
+  "cause": {
+    "root_cause_summary": "A second Principle adopted from a different relationship axis (capability, not goal) has not demonstrated operational correctness just because its evidence re-verifies and its scope is bounded -- it has to be run against a real judgment and checked against an independently-derived verdict, the same discipline the first (goal-scoped) Principle was held to in S5.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Operational validation generalizes the same way promotion and adoption did: a capability-scoped Principle is checked against a real case using a pre-existing, Principle-independent convention (here, PHASE-946's own already-recorded Goal<->Capability layer separation) exactly as the goal-scoped Principle was checked against PHASE-943's owner_domain convention in S5 -- the specific convention differs, but the discipline of computing the independent answer first does not.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

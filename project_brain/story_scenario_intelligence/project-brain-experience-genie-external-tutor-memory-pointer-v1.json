@@ -1,0 +1,52 @@
+{
+  "experience_id": "exp_genie_external_tutor_memory_pointer_v1",
+  "phase": "GENIE-EXTERNAL-TUTOR-MEMORY-POINTER-V1",
+  "generated_at": "2026-09-01T02:18:41.733Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-external-tutor-memory-pointer-2026-09-01T02-18-41-733Z/assignment.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-external-tutor-memory-pointer-2026-09-01T02-18-41-733Z/development-trace.json",
+    "outcome_ref": "project_brain/antigravity_agent_trial_v1/genie-external-tutor-memory-pointer-2026-09-01T02-18-41-733Z/outcome.json"
+  },
+  "problem": "Incident #3 (the E37 five-axis reconciliation-sweep methodology) had real History that neither exact-key structural retrieval nor literal-phrase-plus-bridge retrieval could ever find from a natural-language description, and no safe deterministic keyword rule could close that gap without becoming either useless (all-words-required) or unsafe (arbitrary partial-match threshold).",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Added CR-18: an External Tutor consultation is permitted for selection_reason NATURAL_LANGUAGE_RETRIEVAL_FALLBACK only after exact-key and literal-phrase-plus-bridge retrieval both return NOT_FOUND. The Tutor is given only {experience_id, problem} pairs of live canonical Experiences and must answer with exactly one field, selected_experience_id, either NONE or one of the offered ids -- never a score, rank, or multiple ids. A non-NONE answer is never trusted directly: it is independently re-resolved through the unchanged retrieveCanonicalLearning exact-key lookup and then the unchanged retrieveCanonicalHistoryByProblem evidence/SHA bridge before it may be cited. An id outside the offered set fails closed to NONE. No vector DB, embedding store, RAG system, new index, or new store was created; existing exact-key/literal/bridge retrieval and every other Tutor selection_reason are unchanged.",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "external_tutor_memory_pointer_minimal_implementation",
+    "action_summary": "Verified a live Codex CLI call was actually possible before implementing anything. Added CR-18 (additive only). Extended validateTutorCandidate with a narrow selection_reason-gated branch and added parseCodexMemoryPointerJsonl / runCodexCliMemoryPointerAdapter to the existing adapter, reusing captureProcess, appendOnlyTutorEvidenceStore, and the fixed safety argv verbatim. Added 9 fixture checks (positive, NONE, hallucinated-id fail-closed, 4 malformed-response variants, duplicate candidates, empty candidates). Ran two real Codex CLI calls: a positive control for Incident #3 and an unrelated negative control, both against the same live 116-candidate pool, then independently re-verified the positive result through the unchanged exact-key and evidence/SHA bridge chain.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "external_tutor_memory_pointer_real_and_negative_controls",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-external-tutor-memory-pointer-2026-09-01T02-18-41-733Z/outcome.json",
+    "evidence_sha256": "ebe6b107e099d6dbd5192052c2ca4f2a77826949e0865ad53cba0adc2fc6ee34",
+    "evidence_detail": "Real Codex CLI (gpt-5.6-sol) positive control correctly selected exp_phase_e37_new_evolution_exploration_01 from 116 live candidates given only a natural-language paraphrase; independently re-verified via exact-key lookup (OK, 1 result) and evidence/SHA bridge (OK, same id). Real unrelated negative control on the same pool returned NONE. Fixture negative controls proved hallucinated/unknown ids, malformed responses, duplicate candidates, and empty candidate arrays all fail closed. 11/11 GENIE regressions passed; 33+29 fixture checks passed."
+  },
+  "result": {
+    "status": "EXTERNAL_TUTOR_MEMORY_POINTER_REAL_RETRIEVAL_PROVEN",
+    "problem_resolved": true,
+    "hallucinated_memory_accepted": false,
+    "arbitrary_threshold_used": false,
+    "vector_rag_embedding_created": false,
+    "existing_priority_order_changed": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "Genuine paraphrase shares almost no literal vocabulary with the terse original problem text (e.g. 'unresolved' vs 'un-reconciled'), so no deterministic substring rule -- however constructed -- could both find real natural-language matches and reject unrelated ones without either failing to help or crossing into arbitrary partial-match scoring.",
+    "cause_type": "deterministic_literal_matching_capability_boundary"
+  },
+  "lesson": "A natural-language memory-discovery gap that is structurally unsolvable by deterministic string matching can still be closed safely without new infrastructure: give an already-governed external Tutor only bare {id, problem} candidates and a binary NONE-or-id answer contract, then treat its answer as a mere pointer that must independently re-earn trust through the exact same deterministic evidence/SHA chain used everywhere else -- the Tutor never supplies memory content, it only narrows where to look.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-external-tutor-memory-pointer-2026-09-01T02-18-41-733Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

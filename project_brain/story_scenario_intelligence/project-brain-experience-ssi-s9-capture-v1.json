@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s9_self_improving_studio_principle_operational_readiness_01",
+  "phase": "PHASE-SSI-S9",
+  "generated_at": "2026-08-24T11:10:44.175Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Final operational-readiness confirmation for the Principle: re-verified all 3 real trace cases fully from real source files, re-applied the unmodified boundary rule, confirmed consistency, and confirmed no additional real chain remains untested",
+    "principle_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "real_trace_chain_count": 3
+  },
+  "problem": "PHASE-SSI-S8 validated the boundary against 3 real cases using values it computed in that same phase run -- operational readiness required an independent re-verification, this phase, reading the real source files fresh rather than trusting S8's own numbers, plus an explicit check that no further real case had appeared that S8 never saw.",
+  "decision": {
+    "decision_summary": "Re-verified all 3 real trace cases fresh from source: boundary_consistent=true. Confirmed no additional untested real chain exists: no_additional_untested_cases=true (untested_goal_ids=[]). Principle content modified: false. 0 CI wiring, 0 automatic policy, 0 automatic execution, 0 real project modifications. Verdict: PRINCIPLE_OPERATIONALLY_READY.",
+    "decided_at_phase": "PHASE-SSI-S9",
+    "verdict": "PRINCIPLE_OPERATIONALLY_READY"
+  },
+  "action": {
+    "action_type": "self_improving_studio_principle_operational_readiness_check",
+    "action_summary": "Re-read the real trace v16 chains and the real action-candidate/execution-unit data fresh (not S8s cached values), re-applied the unmodified boundary rule to all 3, confirmed consistency, and confirmed the real trace data set contains no further chain beyond the 3 already covered.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s9-principle-operational-readiness-v1.json + project-brain-ssi-s9-verification-v1.json (this phase)",
+    "evidence_detail": "boundary_consistent=true, no_additional_untested_cases=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Independent re-verification from real source files confirmed the boundary holds on all 3 real cases with no untested case remaining -- the Principle is operationally ready, still recorded read-only, not CI/policy/execution-wired."
+  },
+  "cause": {
+    "root_cause_summary": "A boundary validated once, using numbers computed in the same phase that validated it, has not yet been checked for whether that computation and the real data it read from still agree -- re-deriving from the real source files independently, in a later phase, is what actually rules out a stale or mistaken cached result.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Operational readiness is not the same claim as boundary validation -- it additionally requires re-deriving the same result from the real source data independently (not reusing the prior phase's own computed values) and explicitly checking that the real data has not grown a new, still-untested case since the boundary was last validated.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

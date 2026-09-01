@@ -1,0 +1,55 @@
+{
+  "experience_id": "exp_genie_persistent_memory_real_world_ojt_continuation_v1",
+  "phase": "GENIE-PERSISTENT-MEMORY-REAL-WORLD-OJT-CONTINUATION-V1",
+  "generated_at": "2026-09-01T00:31:45.358Z",
+  "experience_kind": "bounded_no_safe_fix_with_memory_reuse",
+  "context": {
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-persistent-memory-real-world-ojt-continuation-2026-09-01T00-31-45-358Z/assignment.json",
+    "retrieval_ref": "project_brain/antigravity_agent_trial_v1/genie-persistent-memory-real-world-ojt-continuation-2026-09-01T00-31-45-358Z/retrieval.json",
+    "development_trace_ref": "project_brain/antigravity_agent_trial_v1/genie-persistent-memory-real-world-ojt-continuation-2026-09-01T00-31-45-358Z/development-trace.json"
+  },
+  "problem": "Determine whether the naturally occurring full-project TypeScript OOM left by the preceding classifier work has a safe minimal fix, after retrieving relevant past Experience and original evidence.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Do not raise the heap again and do not exclude repository areas merely to obtain a green build. Historical evidence already shows 8GB failure and establishes targeted transitive compilation as the honest bounded verification method.",
+    "retrieval_contribution": "The recovered original evidence directly prevented two unsafe changes: an unsupported heap-only package.json edit and coverage-reducing tsconfig exclusions.",
+    "source_experience_id": "exp_genie_projectbrain_verify_coverage_reverification_v1",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "real_development_problem_assessment_and_minimal_persistence_repair",
+    "action_summary": "Fresh-counted 4,711 TypeScript inputs, inspected the largest files and build configuration, followed prior evidence to the 8GB reproduction, made no build/source change, and backfilled only the missing Experience record.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "attempted_incomplete",
+    "evidence_category": "real_build_constraint_and_memory_reuse",
+    "evidence_source": "project_brain/antigravity_agent_trial_v1/genie-persistent-memory-real-world-ojt-continuation-2026-09-01T00-31-45-358Z/outcome.json",
+    "evidence_detail": "exact-key NOT_FOUND disclosed; related Experience retrieved; prior 8GB OOM evidence followed; memory changed the decision; no unsafe build configuration change; 112 canonical records and all 11 GENIE regressions passed after existing-index currency repair."
+  },
+  "result": {
+    "status": "REAL_OJT_COMPLETED_NO_SAFE_BUILD_FIX",
+    "problem_resolved": false,
+    "unsafe_change_avoided": true,
+    "memory_gap_repaired": true,
+    "canonical_experience_count_after": 112,
+    "genie_regressions_passed": 11,
+    "memory_infrastructure_changed": false,
+    "production_image_video_hold_maintained": true,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "The full-project program includes thousands of large WIP/generated TypeScript files; prior evidence reproduces OOM even at 8GB. The retrieval miss was caused by the prior task ending with Trace+Outcome but no canonical Experience, not by a retrieval-engine failure.",
+    "cause_type": "repository_scale_constraint_plus_missing_experience_capture"
+  },
+  "lesson": "A remembered limitation should change development behavior: when original evidence already disproves a heap-only retry, preserve honest targeted verification instead of weakening scope for a green signal; separately backfill a real uncaptured outcome without redesigning memory infrastructure.",
+  "links": {
+    "goal_ref": "GOAL_LESS",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [],
+    "assignment_ref": "project_brain/antigravity_agent_trial_v1/genie-persistent-memory-real-world-ojt-continuation-2026-09-01T00-31-45-358Z/assignment.json",
+    "provenance_source": "OJT"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e34_project_evolution_candidate_verification_01",
+  "phase": "PHASE-E34",
+  "generated_at": "2026-08-23T00:47:17.114Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E33 found a real discrepancy from a single read-through, but that finding had not yet been independently re-verified with fresh reads before being trusted as the basis for a real Evolution Candidate.",
+  "decision": {
+    "decision_summary": "Independently re-read all 4 real artifacts (Experience, overlay, trace, priority) fresh. Discrepancy confirmed still real and unchanged: Experience+overlay say satisfied, trace+priority still say otherwise. Evolution judgment: EVOLUTION_CANDIDATE. E33's existing candidate (cand_evolution_trace_v15_ghibli_status_staleness_v1) re-validated, not duplicated -- 0 new candidates.",
+    "decided_at_phase": "PHASE-E34"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Re-read exp_phase959, overlay v6, trace v15, development-priority-v1 fresh; recorded only literal field disagreement (no new inference); made 0 corrections to any file.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e34-evidence-reconfirmation-v1.json + project-brain-e34-real-verification-v1.json + project-brain-e34-evolution-judgment-v1.json + project-brain-e34-verification-v1.json (this phase)",
+    "evidence_detail": "discrepancy_confirmed=true, evolution_verdict=EVOLUTION_CANDIDATE, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Independently re-verifies E33's finding; does not modify trace v15, overlay v6, or development-priority-v1; does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "A single-pass finding (E33) had not yet been independently re-derived from fresh reads to rule out a transcription error or a since-changed real state before being treated as confirmed.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Independent re-verification from fresh reads (not trusting a prior phase's own summary) is what actually confirms a finding is real -- here it held exactly as reported, which is itself evidence the original E33 read was accurate, not merely evidence that this phase copied it correctly.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": "gap_phase941_ghibli_pipeline_factory_validation_fail",
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

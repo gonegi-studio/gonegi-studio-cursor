@@ -1,0 +1,79 @@
+{
+  "rules_id": "project_brain_experience_connection_rules_v1",
+  "phase": "PHASE-E1",
+  "generated_at": "2026-08-22T08:01:43.279Z",
+  "rules": [
+    {
+      "id": "CR-01",
+      "rule": "links.goal_ref MUST equal a real goal_id present in goal_model.json's goals array at the time the Experience is recorded."
+    },
+    {
+      "id": "CR-02",
+      "rule": "links.gap_ref, if non-null, MUST equal a real gap_id from an existing Goal->Gap->Dependency chain (trace file). Experiences about goals that never had a chain (satisfied/pending, PHASE-966 EC-03) MUST use gap_ref: null -- never fabricate one."
+    },
+    {
+      "id": "CR-03",
+      "rule": "links.dependency_ref follows the same rule as CR-02, paired with gap_ref."
+    },
+    {
+      "id": "CR-04",
+      "rule": "links.capability_refs MUST be a subset of the goal's own required_capability_refs in goal_model.json -- an Experience cannot claim relevance to a capability the goal does not actually require."
+    },
+    {
+      "id": "CR-05",
+      "rule": "evidence.evidence_category MUST be one of PHASE-948's 6 locked categories -- never invented per-experience."
+    },
+    {
+      "id": "CR-06",
+      "rule": "decision.corrects_experience_id, if present, MUST reference a real, earlier experience_id in the same Experience set -- this is what makes misjudgment_correction structurally distinct from a fresh, unrelated experience."
+    },
+    {
+      "id": "CR-07",
+      "rule": "Multiple Experience records MAY share the same goal_ref/gap_ref (representing a time series of real events on the same axis, e.g. repeated honest re-verifications) -- this is expected and valid, not a duplicate to be merged."
+    },
+    {
+      "id": "CR-08",
+      "rule": "Additive GOAL_LESS exception to the goal-bound contract: links.goal_ref MUST equal the exact sentinel 'GOAL_LESS', links.assignment_ref MUST reference an existing real assignment file using a repository-relative path, and links.capability_refs MUST be an empty array. GOAL_LESS is not a Goal and MUST NOT be registered in the goal model or indexed in by_goal; index these experiences separately in by_goal_less keyed by assignment_ref. CR-01 through CR-07 remain unchanged for goal-bound experiences; all other existing integrity checks remain active. This exception does not validate nonstandard fields or assert completion."
+    },
+    {
+      "id": "CR-09",
+      "rule": "links.provenance_source is optional and, if present, MUST be exactly one of 'LEGACY' | 'OJT' | 'EXTERNAL'. Absence of this field is the state UNCLASSIFIED and MUST NOT be treated by any loader, verifier, or promotion gate as equivalent to LEGACY (or to OJT or EXTERNAL). LEGACY MUST always be an explicit, positively-written value; it MUST NEVER be inferred or auto-assigned from generated_at, phase number, or any other date/ordering signal. This field does not retroactively apply to, and MUST NOT be backfilled onto, any existing canonical Experience/Candidate/Principle record."
+    },
+    {
+      "id": "CR-10",
+      "rule": "links.provenance_source === 'OJT' is valid only if every id in links.provenance_experience_ids resolves, via the existing unmodified structural loader, to a real canonical Experience record, AND at least one of those resolved records itself carries links.provenance_source === 'OJT'. A Candidate or Principle MUST NOT self-assert OJT provenance without an underlying, already-canonical OJT-tagged Experience to inherit it from."
+    },
+    {
+      "id": "CR-11",
+      "rule": "links.provenance_source === 'EXTERNAL' is valid only if a companion object links.external_source = { provider: string, model: string, response_evidence_ref: string, response_evidence_sha256?: string } is present and response_evidence_ref resolves to a real, existing file on disk. Once any record is recorded with provenance_source 'EXTERNAL', that same record's provenance_source MUST NEVER later be overwritten to 'OJT' or any other value -- an external original's lineage is permanent and immutable at its own experience_id. Independent verification of EXTERNAL content MUST be captured as a separate, new Experience record (its own experience_id, its own links.provenance_source: 'OJT', grounded per CR-10) whose links.verifies_external_experience_id names the EXTERNAL record -- never by mutating the EXTERNAL record itself."
+    },
+    {
+      "id": "CR-12",
+      "rule": "A Candidate or Principle MUST NOT be promoted to Principle if its provenance_source is 'EXTERNAL', or if its provenance_experience_ids resolve only to EXTERNAL-tagged Experiences with no accompanying independent verification. Promotion of EXTERNAL-sourced content additionally requires ALL of: (a) at least one real, canonical, OJT-tagged Experience whose links.verifies_external_experience_id names the EXTERNAL record; (b) that EXTERNAL record's provenance_source remains exactly 'EXTERNAL', unmutated (CR-11); (c) the existing confidence/novelty_check/no-duplication promotion gate (PHASE-E21..E23, unchanged) also passes. This is evaluated as an additional precondition before that existing gate runs, not a replacement for it. Missing any of (a)-(c) is a fail-closed rejection -- never a best-effort or partial promotion."
+    },
+    {
+      "id": "CR-13",
+      "rule": "Additive scope clarification: CR-10 applies only to Candidate/Principle provenance inheritance, not to the first real OJT Experience itself; real Experience evidence and canonical integrity remain required, with no inferred OJT tag. decision.status is optional and, when present, exactly 'provisional' or 'final'; missing means unspecified, never final. External Tutor consultation is an EXTERNAL CANDIDATE only, never an Experience or promoted knowledge by virtue of receiving a response. Preserve a pre-query provisional judgment, selection_reason, one pinned provider/model, query_evidence_ref + query_evidence_sha256, and response_evidence_ref + response_evidence_sha256. A received response requires explicit non-empty validation, missing_knowledge, and alternative_reasoning matching the response evidence; no missing-field defaults. Tutor Validation is a claim, NOT CR-12 independent verification. Automatic provider fallback is forbidden. Failed attempts and any reconsultation are separate Candidates with a distinct candidate_id and a reference to the previous Candidate; never overwrite its evidence. Second opinion is permitted only for REPOSITORY_EVIDENCE_CONFLICT or UNRESOLVED_CORE_EVIDENCE, with evidence of that reason; neither transport failure nor a wish for consensus qualifies. Failed response evidence records the actual failure without fabricated Tutor response fields. The contract validator in services/genieExternalTutorConsultationContract.mjs is read-only and provides no dispatch or promotion capability. CR-01 through CR-12 and existing promotion gates are unchanged."
+    },
+    {
+      "id": "CR-14",
+      "rule": "Candidate-namespace external-reference integrity supplement only; CR-11 is unchanged and is not reinterpreted. At the coordinator Experience verifier, reuse genieTutorCandidateLoader.mjs once and reject a non-ok result or any loader errors without partial-result fallback. An absent links.verifies_external_experience_id remains allowed. When present, the reference MUST be a non-empty string matched exactly, without normalization. A reference already resolving in the canonical Experience namespace remains under the existing CR-11 contract; a simultaneous Candidate match is ambiguous and MUST fail closed. Otherwise the Candidate-namespace reference MUST resolve to exactly one validated Candidate with links.provenance_source === 'EXTERNAL'; missing, duplicate, or non-EXTERNAL targets MUST fail. This check establishes reference integrity only, never independent verification, Tutor correctness, Outcome success, or CR-12 promotion authorization. No existing Experience or Candidate is migrated or modified."
+    },
+    {
+      "id": "CR-15",
+      "rule": "Additive causal-evidence reference-resolution integrity, prospective only. cause.evidence_ref, cause.evidence_sha256, and cause.evidence_location are optional and, if any one is present, all three MUST be present (never partially inferred or completed). Absence of all three requires nothing and MUST NOT be inferred, generated, filled from a similar/near-match filename, or backfilled onto any existing canonical Experience -- this is a no-op for every one of the 108 pre-existing records, none of which carry this sub-object, and none of which are migrated, modified, or retroactively marked invalid by this rule. When all three are present they MUST resolve exactly like problem_context's existing pattern (CR-13 / genieExternalTutorConsultationContract.mjs, reused verbatim): evidence_ref is a real, existing repository file; evidence_sha256 matches its exact current bytes; evidence_location is an RFC 6901 JSON Pointer that resolves within that file to a real, existing value. This validates ONLY that a cited evidence reference genuinely and uniquely resolves. It does NOT validate that cause_type is the correct classification, does NOT require or check any relationship between cause_type and action.action_type or result, and does NOT assert causal correctness -- causal correctness remains a separate, unproven, higher-level capability. This rule applies prospectively to newly created Experience records only."
+    },
+    {
+      "id": "CR-16",
+      "rule": "Prospective optional causal Outcome feedback only. decision.cause_review_note, when present, MUST be non-empty text and MUST accompany a valid CR-06 corrects_experience_id resolving exactly to one real, earlier canonical Experience, never self or an ambiguous reference. decision.intervention_tested_claimed_cause, when present, MUST be boolean; absence remains unspecified, never false by default. These fields are explicitly supplied assertions and MUST NOT be inferred from action, result, Outcome, cause_type or any other field. No new causal verdict enum is introduced. A review may explain why an earlier cause judgment is retained, limited or reconsidered without requiring any particular conclusion. The original Experience and its Cause remain unchanged; no historical migration or backfill. Field presence, true/false, successful reference validation or Outcome success never proves autonomous causal reassessment, causal correctness or Knowledge/Principle promotion. CR-01 through CR-15 are unchanged."
+    },
+    {
+      "id": "CR-17",
+      "rule": "Prospective direct-support evidence consumption integrity only. Optional decision.direct_support_evidence is an array of explicitly declared direct judgment supports; do not apply it to all evidence or repository files. Each entry MUST contain evidence_ref, evidence_sha256, evidence_location, quote, scope_claim and used. Reuse the contained repository read + SHA + RFC6901 pointer pattern of CR-13/15. quote MUST exactly equal the resolved JSON value, preserving types, string whitespace, object content and array order; no coercion or summarization. scope_claim MUST be non-empty author-written text; only presence is checked, never semantic correctness. used MUST be explicitly boolean, never inferred or defaulted from quote, status, Outcome or other fields. used:false does not bypass quote/reference validation. A summary/status alone cannot justify expanding the claim beyond its evidenced scope. Absence or an empty array makes no consumption-coverage claim; no historical migration, inference of omitted supports, recursive evidence discovery or forced uptake. Passing establishes declared quotation integrity, not evidence comprehension, truth of scope_claim, actual mental use, or Knowledge/Principle promotion. CR-01 through CR-16 remain unchanged. Requiredness supplement: for a NEW Experience whose declared action.action_type is exactly reverification, decision.direct_support_evidence MUST exist as a non-empty array (at least one entry), with every entry validated by the unchanged CR-17 validator. No requiredness applies to other action types. Existing Experience IDs in the immutable project-brain-experience-index-v6.json (SHA256 b60aae6cc563fff05581419e12057f1e588fba2343124581a0993ea016426498) are exempt only from this new requiredness; this fixed historical boundary is not canonical discovery or a latest-index pointer and MUST NOT advance with later indexes. No historical migration/invalidation. No action-type inference, enum enforcement, normalization, relabeling or automatic support creation. ACTION_TYPE_DECLARATIVE_BYPASS_NOT_RESOLVED; a valid declaration still does not prove comprehension or adequate scope."
+    },
+    {
+      "id": "CR-18",
+      "rule": "Additive natural-language memory-pointer fallback scope for CR-13 Tutor consultation only; CR-01 through CR-17 remain entirely unchanged, and no vector, embedding, index or store is introduced by this rule. selection_reason 'NATURAL_LANGUAGE_RETRIEVAL_FALLBACK' is valid only when both the existing exact-key structural retrieval (genieCanonicalLearningRetrieval.mjs retrieveCanonicalLearning) and the existing literal-phrase-plus-bridge retrieval (retrieveCanonicalHistoryByProblem) already returned NOT_FOUND / zero results for the same natural-language problem. The Tutor query for this reason MUST include a candidates array of {experience_id, problem} pairs drawn only from the live canonical Experience set at query time -- never lesson text, decision text, links, or any other field -- and MUST NOT include a provisional_judgment (this reason is memory discovery, not a second opinion on a judgment). The Tutor response for this reason MUST contain exactly one field, selected_experience_id, whose value is either the exact literal string 'NONE' or a string equal to one of the experience_id values already present in that same query's candidates array; any other value, any additional field, any score, rank, confidence, or multiple identifiers is INVALID_REFERENCE and MUST fail closed, meaning treated exactly as NONE for the purpose of this consultation and never accepted as a pointer. consultation_kind for this reason is NATURAL_LANGUAGE_POINTER. A non-NONE selected_experience_id is never itself Evidence, Knowledge, a Principle, or a resolved memory: before any decision may cite it, it MUST be independently re-resolved through the unchanged exact-key retrieveCanonicalLearning({kind:'experience', key:'experience_id', value:selected_experience_id}) lookup against the live canonical set, and its History/original evidence MUST still pass through the unchanged retrieveCanonicalHistoryByProblem literal-phrase-plus-bridge evidence/SHA resolution using that record's own real problem text. A Tutor pointer that does not independently re-resolve this way MUST be discarded and treated as NONE. This rule introduces no new consultation_kind value: a natural-language pointer lookup is recorded with the existing consultation_kind 'FIRST' (or 'RECONSULTATION' if a prior attempt for the same query already exists, under the unchanged existing lineage rule); selection_reason alone (not consultation_kind) carries this rule's distinguishing signal, and validateTutorCandidate's existing consultation_kind/second_opinion checks are unmodified. Passing this rule establishes only that a disclosed, re-verified structural pointer was obtained; it proves neither evidence comprehension, causal correctness, Outcome success, nor Knowledge/Principle promotion authorization. No historical Experience is migrated, modified, or backfilled by this rule."
+    }
+  ]
+}

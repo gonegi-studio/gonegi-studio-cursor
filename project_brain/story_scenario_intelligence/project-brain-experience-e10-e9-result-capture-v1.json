@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e9_self_improvement_effect_01",
+  "phase": "PHASE-E9",
+  "generated_at": "2026-08-22T12:24:15.731Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "Whether applying the \"search existing artifacts + check canonical pointer\" procedure actually reduces rework, measurably, compared to not applying it.",
+  "decision": {
+    "decision_summary": "Measured E9's real fix cycle against E8's own recorded rework_count baseline.",
+    "decided_at_phase": "PHASE-E9"
+  },
+  "action": {
+    "action_type": "investigation",
+    "action_summary": "Compared E8's rework_count (1, an isolated test had to substitute for a failed full-script run) against E9's (0, the full script succeeded on first real re-run after the fix).",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e9-self-improvement-effect-v1.json (real measurement, PHASE-E9)",
+    "evidence_detail": "e8_rework_count=1, e9_rework_count=0, rework_reduced=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Describes the improvement PROCESS's own measured effect, not a change to this Goal's real status."
+  },
+  "cause": {
+    "root_cause_summary": "The E9 fix (routing through an existing pointer mechanism instead of a hardcoded filename) directly eliminated the failure mode that caused E8's rework.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "A self-improvement action's effect should be measured against the SAME real metric the problem was originally observed in (rework_count), not merely asserted -- this is what turns \"we think it helped\" into \"we measured that it helped\".",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

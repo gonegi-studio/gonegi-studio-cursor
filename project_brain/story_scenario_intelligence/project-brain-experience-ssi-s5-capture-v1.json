@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s5_self_improving_studio_principle_operational_validation_01",
+  "phase": "PHASE-SSI-S5",
+  "generated_at": "2026-08-24T10:56:04.098Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Operationally validated PHASE-SSI-S4's adopted, not-enforced Principle by re-confirming its scope and role differentiation, then applying its own stated logic to one real, current judgment case and comparing against an independently-derived verdict",
+    "principle_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "application_case_id": "ssi_s5_judgment_case_01"
+  },
+  "problem": "PHASE-SSI-S4 recorded a Principle as adopted but explicitly not enforced -- it had never actually been applied to a real judgment to see whether the verdict it predicts matches what the existing, already-established decision convention (independent of the new Principle) would produce.",
+  "decision": {
+    "decision_summary": "Principle principle_goal_production_runtime_successful_resolution_ssi_s4_v1 scope re-confirmed real (goal_ref=goal_production_runtime), role differentiation from E12's confirmed Pattern on the same goal maintained (true). Applied to 1 real judgment case (Is goal_production_runtime actionable right now?): principle_predicted_verdict=DEFERRED, independent_verdict=DEFERRED, match=true. 0 CI wiring, 0 automatic policy, 0 automatic execution, 0 real project modifications. Verdict: PRINCIPLE_OPERATIONALLY_VALIDATED.",
+    "decided_at_phase": "PHASE-SSI-S5",
+    "verdict": "PRINCIPLE_OPERATIONALLY_VALIDATED"
+  },
+  "action": {
+    "action_type": "self_improving_studio_principle_operational_validation",
+    "action_summary": "Re-searched the canonical Experience Layer fresh for the Principle grouping, re-verified its scope against the real goal model, re-checked role differentiation against E12s confirmed Pattern registry, then manually applied the Principle to one real judgment case and compared its predicted verdict against an independently-derived verdict from the pre-existing owner_domain convention and a fresh PRODUCTION_VALIDATION_HOLD.json read.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s5-principle-operational-validation-v1.json + project-brain-ssi-s5-verification-v1.json (this phase)",
+    "evidence_detail": "principle_predicted_verdict=DEFERRED, independent_verdict=DEFERRED, verdicts_match=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The Principle, applied by hand to a real current judgment case, produced the same verdict as the independent, already-established owner_domain convention -- operationally validated, still not wired into CI/policy/execution."
+  },
+  "cause": {
+    "root_cause_summary": "An adopted-but-unenforced Principle is only a hypothesis about how future judgments should go until it is actually run against one real case and checked against a verdict derived independently of it -- agreement on paper (evidence count, scope, non-conflict) does not by itself prove operational correctness.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Validating a Principle operationally means applying its own stated logic to a real case and checking the output against a verdict computed by a method that does not itself depend on the Principle -- if both independently-derived paths agree, that is real corroboration; if this phase had instead compared the Principle's prediction only against itself, agreement would have been guaranteed and meaningless.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e17_candidate_review_decision_01",
+  "phase": "PHASE-E17",
+  "generated_at": "2026-08-22T23:03:22.387Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E16 generated cand_exp_phase_e16_structural_limitation_exploration_01__knowledge_gap (a knowledge_gap about the asymmetric gap-scoped signal) but left it as an open question for a future phase to explicitly decide.",
+  "decision": {
+    "decision_summary": "Reviewed the candidate: no conflict with PB's locked schema (gap_ref documented nullable), still novel, and 2 additional real axes (recency, candidate_type-implied confidence) considered and rejected. VERDICT: ACCEPT. Real execution (1 of 1): locked project-brain-tie-break-non-forcing-policy-e17-v1.json, formally closing the open question WITHOUT breaking the real tie.",
+    "decided_at_phase": "PHASE-E17"
+  },
+  "action": {
+    "action_type": "process_redesign",
+    "action_summary": "Reviewed 1 candidate; wrote 1 locked policy document (4 rules, each proven by real E14..E17 behavior); executed no code that touches the real tie-break decision path.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e17-candidate-review-v1.json + project-brain-tie-break-non-forcing-policy-e17-v1.json + project-brain-e17-verification-v1.json (this phase)",
+    "evidence_detail": "verdict=ACCEPT, policy_locked=true, verification_all_clear=true, tie_still_unresolved=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Formally closes an open self-improvement question; does not change this Goal's own real status, and does not resolve the real tie between the 2 real Improvement Candidates -- UNRESOLVED remains the correct, final answer."
+  },
+  "cause": {
+    "root_cause_summary": "E16 surfaced real information but explicitly deferred the decision on whether to adopt it -- deferred decisions accumulate risk of future re-litigation or accidental drift unless formally closed.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Reviewing and ACCEPTing a candidate does not always mean executing the literal thing the candidate describes -- here, the correct real execution was to formally lock the principle that justifies NOT resolving the tie, closing the open question while still refusing to force an unevidenced decision.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

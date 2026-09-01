@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e15_learning_effect_verification_01",
+  "phase": "PHASE-E15",
+  "generated_at": "2026-08-22T22:52:23.530Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E14 executed a real self-improvement once -- it was not yet known whether that result was a one-time success or a reproducible mechanism that holds as real data grows.",
+  "decision": {
+    "decision_summary": "Replayed E14's exact functions against the same real data (byte-identical reproduction check), then re-applied them to the real, grown data set (E1..E14) to check consistency, then re-ran the 3 regression conditions and full safety checks. No new execution performed.",
+    "decided_at_phase": "PHASE-E15"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Reused currencyGuard (E11), prioritizeCandidate (E13), computeGoalTrackRecord + applyTrackRecordTieBreaker (E14) verbatim; added no new weight or signal.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e15-reproducibility-verification-v1.json + project-brain-e15-track-record-effect-verification-v1.json + project-brain-e15-regression-safety-verification-v1.json (this phase)",
+    "evidence_detail": "deterministic_reproduction_confirmed=true, track_record_effect_consistent=true, regression_safety_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Verifies PB's own improvement mechanism; does not change this Goal's own real status. No code executed, no candidate applied."
+  },
+  "cause": {
+    "root_cause_summary": "A single successful self-improvement execution (E14) does not by itself prove the mechanism is reproducible or that it will keep behaving consistently as real data grows -- that required a dedicated verification pass.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "E14's tie-breaker reproduces deterministically on the same data, and remains internally consistent on grown real data without any new weighting -- and this verification pass itself surfaced a genuine, previously-undocumented structural fact (an intra-goal_ref tie can never be broken by a goal-scoped track record, since both sides always move together), which is more useful than a verification that had found nothing.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

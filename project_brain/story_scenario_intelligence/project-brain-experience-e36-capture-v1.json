@@ -1,0 +1,57 @@
+{
+  "experience_id": "exp_phase_e36_experience_guided_execution_01",
+  "phase": "PHASE-E36",
+  "generated_at": "2026-08-23T02:25:27.286Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_production_runtime",
+    "capability_ids": [
+      "cap_numerical_dna_gpu_bottleneck"
+    ],
+    "state_before": {
+      "trace_status": "BLOCKED",
+      "priority_rank": 1
+    },
+    "state_after": {
+      "trace_status": "BLOCKED",
+      "priority_rank": 1,
+      "evaluation_status": "DEFERRED_AWAITING_INFRA"
+    }
+  },
+  "problem": "Top priority goal goal_production_runtime required evaluation to determine if it is executable within the project without repeating known uninformative infrastructure probes.",
+  "decision": {
+    "decision_summary": "Experience Layer cross-referencing confirmed goal_production_runtime is blocked by external GPU infrastructure and subject to Principle PRIN-001 (repeated probes yield 0 new info). Determined verdict DEFERRED, performing 0 code modifications and preserving system stability.",
+    "decided_at_phase": "PHASE-E36",
+    "feasibility_verdict": "DEFERRED"
+  },
+  "action": {
+    "action_type": "experience_guided_evaluation",
+    "action_summary": "Evaluated goal_production_runtime against canonical Experiences, Principle PRIN-001, and PRODUCTION_VALIDATION_HOLD.json evidence; correctly deferred execution without redundant GPU checks or code modifications.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e36-experience-evaluation-v1.json + project-brain-e36-feasibility-verdict-v1.json + project-brain-e36-verification-v1.json",
+    "evidence_detail": "feasibility_verdict=DEFERRED, experience_guided=true, code_modifications=0, verification_all_clear=true"
+  },
+  "result": {
+    "real_project_problem_resolved": false,
+    "meta_mechanism_improved": false,
+    "experience_influenced_decision": true,
+    "note": "Experience directly prevented redundant GPU pinging and ungrounded code changes, affirming that DEFERRED is the correct operational decision."
+  },
+  "cause": {
+    "root_cause_summary": "External ComfyUI/GPU server remains unstarted at 127.0.0.1:8188; cannot be resolved via internal application code or data modifications.",
+    "cause_type": "external_infrastructure_blocker"
+  },
+  "lesson": "Experience Layer actively guiding operational execution prevents wasteful churn on external infrastructure blockers and enforces disciplined non-execution when appropriate.",
+  "links": {
+    "goal_ref": "goal_production_runtime",
+    "gap_ref": "gap_phase940_numerical_dna_gpu_production_unavailable",
+    "dependency_ref": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+    "capability_refs": [
+      "cap_numerical_dna_gpu_bottleneck"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e27_currency_contract_real_decision_01",
+  "phase": "PHASE-E27",
+  "generated_at": "2026-08-23T00:03:18.169Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E26 built a common Currency Contract reporting shape but had not yet been used to actually DRIVE a real development decision -- only to describe 2 real subjects side by side.",
+  "decision": {
+    "decision_summary": "Re-applied the Contract to both real subjects (Index=STALE, Pointer=CURRENT, both identical to their raw Guard results). Applied the Currency-aware rule (STALE=not authoritative, CURRENT=reusable) as the actual real decision input, then used it to re-validate E26's own cached refresh candidate: CANDIDATE_STALE_BUT_EXPECTED_DYNAMIC_NOT_CHASED. Index NOT refreshed (unbounded self-improvement explicitly avoided).",
+    "decided_at_phase": "PHASE-E27"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Re-ran both real Guards unmodified; confirmed Contract<->raw-Guard full agreement; compared E26's cached candidate against fresh real data (candidate_still_valid=false); made 0 modifications to the Index or pointer chain.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e27-real-decision-v1.json + project-brain-e27-verification-v1.json (this phase)",
+    "evidence_detail": "contract_matches_raw_guards=true, candidate_still_valid=false, decision=CANDIDATE_STALE_BUT_EXPECTED_DYNAMIC_NOT_CHASED, verification_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Uses the Contract as a real decision input; does not refresh the Index, does not modify the pointer chain, does not change this Goal's own real status."
+  },
+  "cause": {
+    "root_cause_summary": "A reporting contract (E26) is only useful once something real actually consumes it to make a decision -- that consumption step had not yet happened.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Using a Currency Contract as a real decision input surfaced a genuine, self-referential edge case (a cached refresh candidate going stale the moment new real data arrives) -- and the correct, mature response was to recognize it as the SAME already-understood dynamic and deliberately decline to chase it further, rather than spawning an endless chain of ever-staler refresh candidates.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

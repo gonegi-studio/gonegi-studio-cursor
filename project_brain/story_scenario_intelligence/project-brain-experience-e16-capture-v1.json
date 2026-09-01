@@ -1,0 +1,51 @@
+{
+  "experience_id": "exp_phase_e16_structural_limitation_exploration_01",
+  "phase": "PHASE-E16",
+  "generated_at": "2026-08-22T22:58:46.493Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "goal_id": "goal_ghibli_production_pipeline",
+    "capability_ids": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ],
+    "state_before": {
+      "functional_status": "satisfied"
+    }
+  },
+  "problem": "E15 found that E14's goal_ref-scoped track record can never break a tie between candidates sharing the same goal_ref, but did not yet test whether other real, already-existing Experience relationships (capability/gap/result) could.",
+  "decision": {
+    "decision_summary": "Explored 3 real relational axes (capability-scoped, gap-scoped, result/experience_kind-scoped) against the actual real tied pair. 2 axes tie identically to the goal axis (no new information). The gap axis is asymmetric (1 side inapplicable) -- real, new information, but not a clean resolution, so NOT adopted. E14's mechanism is left completely unchanged.",
+    "decided_at_phase": "PHASE-E16"
+  },
+  "action": {
+    "action_type": "verification",
+    "action_summary": "Implemented computeScopedTrackRecord() (1 real, minimal generalization of computeGoalTrackRecord(), exploration-only, not wired into any applied decision path) and evaluated it along 3 real axes.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-e16-alternative-axis-exploration-v1.json + project-brain-e16-simulation-comparison-v1.json + project-brain-e16-regression-safety-verification-v1.json (this phase)",
+    "evidence_detail": "any_axis_cleanly_distinguishes=false, gap_axis_surfaced_real_asymmetry=true, regression_safety_all_clear=true"
+  },
+  "result": {
+    "functional_status_before": "satisfied",
+    "functional_status_after": "satisfied",
+    "note": "Verifies whether E14's structural limitation can be resolved with real data; does not change this Goal's own real status. No code executed beyond the 1 exploratory function; no production tie-break logic modified."
+  },
+  "cause": {
+    "root_cause_summary": "A goal-scoped track record is, by construction, blind to any distinction between 2 candidates that share the same goal -- this phase tested whether other real relational data could see what the goal axis cannot.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "Correctly declining to force a resolution from an asymmetric or degenerate signal -- rather than defaulting a missing value to 0 just because a number was needed -- is itself the successful outcome this phase was designed to produce; a real, honestly-reported \"no clean answer, but here is what we learned\" is more valuable than a confident but unjustified tie-break.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_movie_reconstruction",
+      "cap_cinematic_generation"
+    ]
+  }
+}

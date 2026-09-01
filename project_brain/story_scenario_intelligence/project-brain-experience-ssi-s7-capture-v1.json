@@ -1,0 +1,49 @@
+{
+  "experience_id": "exp_phase_ssi_s7_self_improving_studio_principle_conflict_generalization_01",
+  "phase": "PHASE-SSI-S7",
+  "generated_at": "2026-08-24T11:04:27.735Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Tested whether PHASE-SSI-S6's confirmed Principle would be a groundless generalization if applied to a different real goal (goal_semantic_quality) in a different real situation (a taxonomy-reclassification blocker, not an infrastructure blocker) -- the only other real BLOCKED chain, not cherry-picked",
+    "principle_id": "principle_goal_production_runtime_successful_resolution_ssi_s4_v1",
+    "other_goal": "goal_semantic_quality"
+  },
+  "problem": "PHASE-SSI-S6 confirmed the Principle works correctly on its own goal, but a Principle that has only ever been checked against the situation it was derived from hasn't demonstrated it knows its own boundary -- whether it would silently overreach onto a real but different goal/situation had never been tested against real data.",
+  "decision": {
+    "decision_summary": "Precondition check against the only other real BLOCKED chain (goal_semantic_quality, owner_domain=\"PB taxonomy design (separately-scoped future phase)\", action_type=\"process_redesign\") vs the Principle's evidenced precondition (owner_domain=\"infrastructure (not code, not LPM)\", action_type=\"infra_restoration\"): precondition_satisfied=false. independent_verdict=DEFERRED_BY_SCOPE_EXCLUSION, principle_guided_verdict=NOT_APPLICABLE_PRECONDITION_NOT_MET, match=false. A precondition-blind generalization would have concluded \"DEFERRED\" (coincidentally matching the surface BLOCKED label without matching the real reason) -- shown for contrast, not used as grounds for agreement. Application REFUSED. 0 CI wiring, 0 automatic policy, 0 automatic execution, 0 real project modifications. Verdict: PRINCIPLE_MISMATCH.",
+    "decided_at_phase": "PHASE-SSI-S7",
+    "verdict": "PRINCIPLE_MISMATCH"
+  },
+  "action": {
+    "action_type": "self_improving_studio_principle_conflict_generalization_test",
+    "action_summary": "Fresh-read the Principle and the only other real BLOCKED chain in trace v16, mechanically compared owner_domain/action_type against the Principle's evidenced precondition, computed an independent verdict from the real trace data alone, computed the Principle-guided verdict honestly (precondition-checked, not blindly applied), and compared the two -- explicitly also computing what a precondition-blind generalization would have concluded, to document why a surface-level label match alone would not have been real corroboration.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-ssi-s7-principle-conflict-generalization-v1.json + project-brain-ssi-s7-verification-v1.json (this phase)",
+    "evidence_detail": "other_goal=goal_semantic_quality, precondition_satisfied=false, verdicts_match=false, final_state=PRINCIPLE_MISMATCH, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "The Principle's real precondition (external infrastructure blocker) is not met by goal_semantic_quality's real situation (an internal taxonomy-reclassification deferral) -- correctly identified as ungrounded generalization and application was refused, even though a careless surface-level check (both chains are 'BLOCKED') would have looked like a match."
+  },
+  "cause": {
+    "root_cause_summary": "Two real chains sharing a surface-level status label (both 'BLOCKED') does not mean they share a cause -- goal_production_runtime is blocked by something genuinely outside this automation's execution boundary (unreachable external GPU hardware), while goal_semantic_quality is blocked by an internal design task that was deliberately scoped out of earlier phases, which this automation could in principle act on. Conflating the two would let a narrow, correctly-scoped Principle silently license inaction on a goal it was never evidenced against.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "A Principle's boundary is only real once it has been checked against a genuinely different real case and shown to correctly refuse (or correctly extend) rather than merely re-confirmed on the case it came from -- and the check has to compare the underlying precondition, not just the surface-level verdict label, or a coincidental label match on two unrelated situations would be mistaken for validation.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

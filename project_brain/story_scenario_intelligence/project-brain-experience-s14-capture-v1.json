@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s14_studio_intelligence_decision_pipeline_activation_01",
+  "phase": "PHASE-S14",
+  "generated_at": "2026-08-23T11:42:39.709Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Independent, third re-verification (after S12, S13) that the Trigger Gate governs the full Decision Context->Provenance->Candidate pipeline, re-derived from scratch rather than trusting S13's recorded output",
+    "changes_detected": 0
+  },
+  "problem": "S13 wired the Trigger to gate the Decision pipeline once; confirming it a second time under independent re-derivation (not reading S13's verdict as ground truth) is what establishes the gating is durable, not a one-off correct run.",
+  "decision": {
+    "decision_summary": "Independently re-derived the Trigger result from the same E40+S11 baselines: 0 changes, matches S13's recorded verdict=true. Pipeline correctly NOT exercised (proof by construction). 0 existing DEFERRED/RESOLVED verdicts force-changed, 0 automatic execution. Verdict: NO_STATE_CHANGE.",
+    "decided_at_phase": "PHASE-S14",
+    "verdict": "NO_STATE_CHANGE"
+  },
+  "action": {
+    "action_type": "studio_intelligence_decision_pipeline_activation_verification",
+    "action_summary": "Re-derived the Trigger result independently from S13's exact baselines; confirmed it matches; re-confirmed the downstream pipeline is real code correctly gated behind it, not merely described as gated.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s14-decision-pipeline-activation-v1.json + project-brain-s14-verification-v1.json (this phase)",
+    "evidence_detail": "changes_detected=0, matches_s13=true, verdict=NO_STATE_CHANGE, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "Independent re-derivation agrees with S13 (true) and the pipeline gating held again under a fresh, separate run."
+  },
+  "cause": {
+    "root_cause_summary": "Gating logic proven correct once (S13) could still coincidentally pass a single time -- a second, independent re-derivation that agrees is what actually distinguishes a durable gate from a lucky run.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Verifying a gate mechanism is durable requires re-deriving its trigger condition from scratch on a separate run, not re-reading the prior run's recorded verdict -- agreement across independent derivations is the real continuity evidence.",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}

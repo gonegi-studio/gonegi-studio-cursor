@@ -1,0 +1,71 @@
+{
+  "overlay_id": "project_brain_lpm_capability_functional_status_overlay_v6",
+  "phase": "PHASE-970",
+  "generated_at": "2026-08-22T07:44:30.941Z",
+  "mode": "ADDITIVE_EXTENSION_OF_OVERLAY_V5_NOT_A_REPLACEMENT_V5_UNCHANGED_ON_DISK",
+  "rule": "A capability is added to this overlay only if it is directly named by an existing Gap/Dependency chain in trace v2 AND has its own direct evidence source (not inherited/aggregated). No inference beyond that.",
+  "addition_this_phase": {
+    "capability_id": "cap_character_narrative_intelligence",
+    "reason": "First-ever assessment of this capability -- newly connected to a real Goal this phase (PHASE-970)."
+  },
+  "capabilities": [
+    {
+      "capability_id": "cap_production_runtime",
+      "functional_status": "blocked",
+      "evidence_source": "project_brain/real_generation/PRODUCTION_VALIDATION_HOLD.json (PHASE-940)"
+    },
+    {
+      "capability_id": "cap_movie_reconstruction",
+      "functional_status": "satisfied",
+      "evidence_source": "reports/movie_factory_validation/movie-factory-validation-report.json (regenerated this phase after real fix, generated_at=2026-08-22T06:55:51.142Z) via npx tsx scripts/verify-movie-dataset-factory-validation.ts -- SAME verification_method already named in this chain's execution unit since PHASE-943",
+      "note": "Updated PHASE-959 from 'blocked' (PHASE-942/946) to 'satisfied' using the same real hard_pass evidence that resolved goal_ghibli_production_pipeline (adapter reference wiring fix + re-verification): final_verdict=PASS_MOVIE_DATASET_FACTORY_VALIDATION_V1, validation_passed=true, image_adapter_valid=true, video_adapter_valid=true, critical_missing_count=0, factory_certified=true. Root cause fixed: adapter references wired to pre-existing, already-ready adapter files."
+    },
+    {
+      "capability_id": "cap_cinematic_generation",
+      "functional_status": "satisfied",
+      "evidence_source": "reports/movie_factory_validation/movie-factory-validation-report.json (regenerated this phase after real fix, generated_at=2026-08-22T06:55:51.142Z) via npx tsx scripts/verify-movie-dataset-factory-validation.ts -- SAME verification_method already named in this chain's execution unit since PHASE-943",
+      "note": "Updated PHASE-959 from 'blocked' (PHASE-942/946) to 'satisfied' using the same real hard_pass evidence that resolved goal_ghibli_production_pipeline (adapter reference wiring fix + re-verification): final_verdict=PASS_MOVIE_DATASET_FACTORY_VALIDATION_V1, validation_passed=true, image_adapter_valid=true, video_adapter_valid=true, critical_missing_count=0, factory_certified=true. Root cause fixed: adapter references wired to pre-existing, already-ready adapter files."
+    },
+    {
+      "capability_id": "cap_repository_intelligence",
+      "functional_status": "satisfied",
+      "evidence_source": "datasets/repository_intelligence/project-entity-extraction-v1.json (PHASE-941)"
+    },
+    {
+      "capability_id": "cap_dataset_management",
+      "functional_status": "pending",
+      "evidence_source": "datasets/repository_intelligence/project-entity-extraction-v1.json + project-brain-cap-dataset-management-concentration-rootcause-v1.json (evidence re-scoped, PHASE-946)",
+      "note": "Population evidence is real and complete (datasets/repository_intelligence/project-entity-extraction-v1.json: datasets_extracted=true, project_entity_extraction_complete=true) -- the capability is real and materialized, not failing or unreachable. The concentration/taxonomy-quality concern from project-brain-cap-dataset-management-concentration-rootcause-v1.json (PHASE-940) is real and unresolved, but it evidences a PB classification-quality issue, not a functional failure of dataset management itself -- that finding is correctly scoped to goal_semantic_quality's own criterion (still blocked, unaffected by this phase), not to this capability's own functional operability. Net: real evidence exists, attempted and unresolved, neither a clear functional pass nor a hard functional failure -- 'pending' per PHASE-943's fixed semantics, not 'blocked'."
+    },
+    {
+      "capability_id": "cap_project_brain_intelligence",
+      "functional_status": "pending",
+      "evidence_source": "scripts/verify-project-brain-real-project-understanding.ts (run once, PHASE-944, minimal single sample)",
+      "note": "Updated PHASE-944 from 'satisfied' (PHASE-942, existence-only evidence) to 'pending' using the same real coverage-gap evidence applied to goal_project_brain_operational, to keep Goal<->Capability status consistent (a goal now 'pending' should not be backed by a capability still marked 'satisfied' on weaker existence-only grounds)."
+    },
+    {
+      "capability_id": "cap_verification_and_audit",
+      "functional_status": "pending",
+      "evidence_source": "scripts/verify-project-brain-real-project-understanding.ts (run once, PHASE-944, minimal single sample)",
+      "note": "Updated PHASE-944 from 'satisfied' (PHASE-942, existence-only evidence) to 'pending' using the same real coverage-gap evidence applied to goal_project_brain_operational, to keep Goal<->Capability status consistent (a goal now 'pending' should not be backed by a capability still marked 'satisfied' on weaker existence-only grounds)."
+    },
+    {
+      "capability_id": "cap_numerical_dna_gpu_bottleneck",
+      "functional_status": "blocked",
+      "evidence_source": "project-brain-lpm-numerical-dna-gpu-bottleneck-sidecar-v1.json (PHASE-940 sidecar capability) + project_brain/real_generation/PRODUCTION_VALIDATION_HOLD.json",
+      "note": "This is the sidecar capability PHASE-940 introduced specifically to represent this blocker; it was not yet present in the v1 overlay because v1 only covered the original 11 LPM capabilities. Added here because trace v2 explicitly names it as the blocking capability for goal_production_runtime's Dependency."
+    },
+    {
+      "capability_id": "cap_character_narrative_intelligence",
+      "functional_status": "satisfied",
+      "evidence_source": "project_memory/PHASE-938_SSI_CHAR_DANA_SPIRITED_AWAY_GROWTH_DELTA_BACKFILL_30_FINAL_CLOSURE.json (real, closed record)",
+      "note": "CHAR-dana unscoped spirited_away arc: deltaSpecs 152/152, computed_growth_delta 152/152 -- both fully closed and byte-verified against CHAR-gonagi's own already-closed reference values across PHASE-907..938 (60 batch phases total). axis_closed=true in the source record."
+    }
+  ],
+  "capabilities_intentionally_not_assessed_this_phase": [
+    "cap_narrative_production",
+    "cap_source_video_analysis",
+    "cap_export_materialization",
+    "and any of the LPM's remaining capabilities not listed above"
+  ]
+}

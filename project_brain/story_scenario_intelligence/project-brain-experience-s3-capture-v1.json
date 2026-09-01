@@ -1,0 +1,48 @@
+{
+  "experience_id": "exp_phase_s3_studio_intelligence_provenance_generalization_01",
+  "phase": "PHASE-S3",
+  "generated_at": "2026-08-23T07:45:35.424Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "exploration_scope": "Re-applied S2's broadened provenance search (Experience-shaped + non-Experience-shaped, excluding this arc's own meta-outputs) to all 4 production-scoped goals, to test whether the method generalizes beyond the one case S2 fixed",
+    "production_goal_count": 4
+  },
+  "problem": "S2 resolved one goal's provenance gap by broadening the search scope, but it was unverified whether that was a one-off fix for that specific goal or whether the same broadened method holds up when applied systematically to every production goal.",
+  "decision": {
+    "decision_summary": "Re-checked all 4 production goals: goal_ghibli_production_pipeline(exp=30,artifact=130), goal_production_runtime(exp=6,artifact=136), goal_semantic_quality(exp=3,artifact=124), goal_character_narrative_intelligence(exp=0,artifact=16). Genuine gaps surviving both searches: 0. No candidate generated (not forced). provenance<->Goal/Capability/Gap consistency: true. Verdict: NO_NEW_PROVENANCE_GAP_FOUND. 0 real modifications, 0 automatic executions, 0 new structure.",
+    "decided_at_phase": "PHASE-S3",
+    "verdict": "NO_NEW_PROVENANCE_GAP_FOUND"
+  },
+  "action": {
+    "action_type": "studio_intelligence_provenance_generalization_check",
+    "action_summary": "Re-ran S2's broadened provenance search across all 4 production goals; verified provenance<->Goal/Capability/Gap consistency; generated a candidate only where a genuine gap survived both search methods.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "hard_pass",
+    "evidence_source": "project-brain-s3-provenance-generalization-v1.json + project-brain-s3-verification-v1.json (this phase)",
+    "evidence_detail": "gaps_found=0, consistency_ok=true, regression_all_passed=true, dangling=0, duplicates=0"
+  },
+  "result": {
+    "modification_verdict": "SUCCESS_ZERO_CODE_MODIFICATIONS_GROUNDED",
+    "problem_resolved": true,
+    "experience_influenced_decision": true,
+    "rework_detected": false,
+    "note": "S2's broadened search method generalizes cleanly: all 4 production goals have real provenance (3 via Experience records, 1 -- character_narrative_intelligence -- via the SSI incorporation chain S2 found). No gap forced where none exists."
+  },
+  "cause": {
+    "root_cause_summary": "A fix proven for one case isn't proven general until it's re-applied systematically to every comparable case -- here, the 3 other production goals already had Experience-shaped provenance, so the generalized check mainly re-confirmed S2's fix held rather than finding new problems.",
+    "cause_type": "coherent_baseline_state"
+  },
+  "lesson": "Generalizing a fix means re-testing it against every case it should apply to, including the ones that were already passing -- this is what distinguishes 'the method works for this one case' from 'the method is the right general approach.'",
+  "links": {
+    "goal_ref": "goal_project_brain_operational",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": [
+      "cap_project_brain_intelligence",
+      "cap_verification_and_audit"
+    ]
+  }
+}
