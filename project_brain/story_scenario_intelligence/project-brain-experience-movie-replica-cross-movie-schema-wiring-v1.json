@@ -1,0 +1,53 @@
+{
+  "experience_id": "exp_movie_replica_cross_movie_schema_wiring_v1",
+  "phase": "PHASE-MOVIE-REPLICA-CROSS-MOVIE-SCHEMA-WIRING-V1",
+  "generated_at": "2026-09-03T06:41:41.890Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "outcome_ref": "project_brain/story_scenario_intelligence/project-brain-movie-replica-cross-movie-schema-wiring-v1-outcome.json",
+    "capture_reason": "Adding Spirited Away as a second real movie into the shared movie_replica -> spatial_engine -> spatial_graph -> replica_accuracy pipeline produced three independent zero-cascades (scene count, motion/timeline/temporal counts, and scene_transition_link graph edges), each traced and fixed by the same diagnostic and repair pattern; worth capturing once the three-stage arc closed with a clean PASS chain and zero Titanic regression, rather than per stage."
+  },
+  "problem": "Spirited Away, the second real movie added to the movie_replica pipeline, produced silent zero-value cascades through consumer code shared with Titanic (the first, already-passing movie): 0 scenes reached MOVIE_SPATIAL_ENGINE_V1/GRAPH/REPLICA_ACCURACY; after that was fixed, all 300 scene entries showed TRAJECTORY_COUNT_ZERO/POSE_COUNT_ZERO/CAMERA_TIMELINE_COUNT_ZERO/TEMPORAL_SEGMENT_COUNT_ZERO; after that was fixed, count-based validation PASSed but 2399 real transition records still produced 0 scene_transition_link graph edges, invisible to any PASS/FAIL gate.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "For each of the 3 zero-cascades, diagnose by diffing the failing movie's real bundle schema against the already-passing movie's real bundle schema at the exact point the shared consumer reads it, rather than inspecting the consumer code in isolation. Apply the smallest fallback that lets the consumer's existing contract read the failing movie's real data unchanged, never inventing placeholder/synthetic values and never touching Titanic's already-working path. Before trusting any PASS verdict as proof of complete evidence consumption, count per evidence-type/edge-type directly in the built output artifact -- an aggregate count-only gate can be satisfied by a substitute real evidence type while the intended real evidence type remains completely unconsumed. When a compatibility fallback bridges two differently-shaped real sources, first check whether the alternate source encodes a semantic partition (here: inter-scene vs. intra-scene shot-cut) that the original field naming assumed away -- aliasing field names alone would have flooded the graph with 2100 meaningless self-loop edges."
+  },
+  "action": {
+    "action_type": "cross_movie_schema_wiring_diagnosis_and_minimal_compatibility_repair",
+    "action_summary": "Across 3 read-only-assessment-then-minimal-fix cycles: (1) added a scene_registry_ref fallback to movieReplicaDatasetBuilder.ts::resolveSceneList(); (2) embedded 5 already-real, already-generated motion/shot/temporal registries into spiritedAwayMovieDataset.ts::buildBundle()'s motion_layer/shot_layer/temporal_layer; (3) added from_scene_id/to_scene_id fallback with self-loop exclusion to filterTransitionsByScene() and the scene_transition_link edge builder in movieReplicaSceneGraphBuilder.ts. Rebuilt and re-verified the real 5-script chain (replica dataset, scene graph, spatial engine, spatial graph, replica accuracy) after every fix; confirmed Titanic byte-for-byte unaffected at every stage via live regression.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "cross_movie_schema_wiring_diagnosis_and_verified_compatibility_repair",
+    "evidence_source": "project_brain/story_scenario_intelligence/project-brain-movie-replica-cross-movie-schema-wiring-v1-outcome.json",
+    "evidence_sha256": "52ad67c1c3339c8bbc8c6a8f05a8607e462594f492510b94152c61213e3740fa",
+    "evidence_detail": "scene_count 300->600 (PASS_MOVIE_REPLICA_DATASET_V1); trajectory/pose/camera_timeline/temporal_segment counts all recovered from 0 to real per-scene values matching titanic's structure; spirited_away scene_transition_link edges 0->598 (titanic unchanged at 598), self_loop_count=0 for both movies; 0 titanic errors across all 5 rebuilt verify stages at every step, avg_replica_score unchanged at 0.9768 before/after; final chain state PASS_MOVIE_REPLICA_DATASET_V1/PASS_MOVIE_REPLICA_SCENE_GRAPH_V1/PASS_MOVIE_SPATIAL_ENGINE_V1/PASS_MOVIE_SPATIAL_GRAPH_V1/PASS_MOVIE_REPLICA_ACCURACY_V1 with movie_count=2 throughout; retrieveCanonicalHistoryByProblem live dedup check across 23 query phrases found no duplicate lesson; 20/20 GENIE regression scripts passed post-capture with duplicate_ids=0, duplicate_keys=0, dangling_refs=0."
+  },
+  "result": {
+    "status": "MOVIE_REPLICA_CROSS_MOVIE_SCHEMA_WIRING_PROVEN",
+    "problem_resolved": true,
+    "scene_recovery": "300_to_600",
+    "transition_recovery": "0_to_598",
+    "self_loop_count": 0,
+    "titanic_regression": "none",
+    "synthetic_fallback_used": false,
+    "new_data_generated": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "Titanic's real bundle and its consumer contract co-evolved through many incremental patch phases (PHASE-TITANIC-MOTION-GRAMMAR-001, PHASE-TITANIC-SHOT-GRAMMAR-001, etc.) that added layer keys (camera_motion_layer, titanic_dense_layer, shot_layer, temporal_layer) and real from_scene/to_scene-shaped transitions one at a time. Spirited Away's bundle builder was written once, later, to a different convention (ref-pointer fields instead of embedded layers; shot-level from_scene_id/to_scene_id instead of scene-level from_scene/to_scene) and was never brought up to the same wiring maturity as Titanic's, even though the equivalent real source data existed on disk before each of the 3 fixes.",
+    "cause_type": "second_entity_schema_maturity_asymmetry_against_shared_consumer_contract"
+  },
+  "lesson": "When a shared consumer produces a silent zero-cascade for one entity in a multi-entity pipeline while an already-passing sibling entity works, the fastest reliable diagnosis is not reading the consumer in isolation -- it is diffing the failing entity's real bundle schema against the already-passing entity's real bundle schema at the exact key the consumer reads. A PASS verdict at an aggregate, count-only validation gate does not prove every intended real evidence type was consumed: a structurally different but still-real evidence type (e.g. sequences) can silently satisfy the same count gate while a separate real evidence type (e.g. transitions) remains completely unconsumed -- this can only be caught by counting per evidence-type/edge-type directly in the built output artifact, not by trusting the aggregate PASS/FAIL. When bridging two differently-shaped real sources with a compatibility fallback, check first whether the alternate source's field naming encodes a semantic partition the original naming assumed away (here, scene-level vs. shot-level, inter-scene vs. intra-scene) -- a naive field-name alias without that check does not just fail to fix the gap, it can actively pollute the result with meaningless entries (self-loop edges) while still returning PASS.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": ["cap_movie_reconstruction"],
+    "provenance_source": "OJT",
+    "source_outcome_ref": "project_brain/story_scenario_intelligence/project-brain-movie-replica-cross-movie-schema-wiring-v1-outcome.json",
+    "related_but_distinct_from": "exp_movie_factory_evidence_integrity_correction_v1 (that lesson: a real, exit-0 PASS can certify self-referential/synthetic VALUES as if grounded in reality, diagnosed by tracing each certified field back to its generating code and classifying Real/Derived/Synthetic; this lesson: a real, exit-0 PASS at an aggregate count-only gate can be silently satisfied by a substitute real evidence type while a separate, intended real evidence type remains 100% unconsumed, diagnosed by counting per evidence-type/edge-type in the actual built output artifact and cross-diffing the failing entity's bundle schema against an already-passing sibling entity's schema -- both distrust PASS-by-itself, but neither the failure mechanism nor the diagnostic method overlaps)"
+  }
+}

@@ -104,9 +104,17 @@ function filterByScene(items: JsonRecord[], sceneId: string): JsonRecord[] {
 }
 
 function filterTransitionsByScene(items: JsonRecord[], sceneId: string): JsonRecord[] {
-  return items.filter(
-    (item) => String(item.from_scene ?? '') === sceneId || String(item.to_scene ?? '') === sceneId
-  );
+  return items.filter((item) => {
+    // PHASE-SPIRITED-AWAY-MOTION-TEMPORAL-WIRING-001: some movies (e.g. spirited_away)
+    // record transitions with from_scene_id/to_scene_id instead of from_scene/to_scene.
+    // Titanic's real data always populates from_scene/to_scene directly, so this fallback
+    // is a no-op for it. Self-loop entries (from === to, e.g. spirited_away's intra-scene
+    // shot-cut transitions) are excluded -- they are not scene-to-scene transitions.
+    const from = firstString(item.from_scene, item.from_scene_id);
+    const to = firstString(item.to_scene, item.to_scene_id);
+    if (from === to) return false;
+    return from === sceneId || to === sceneId;
+  });
 }
 
 function firstString(...values: unknown[]): string {
@@ -120,6 +128,13 @@ function resolveSceneList(root: string, movieId: string, bundle: JsonRecord): Js
   if (movieId === 'titanic' && fs.existsSync(path.join(root, TITANIC_SCENE_MASTER_REGISTRY_PATH))) {
     const master = readJson<JsonRecord>(root, TITANIC_SCENE_MASTER_REGISTRY_PATH);
     const scenes = asArray(master.scenes);
+    if (scenes.length > 0) return scenes;
+  }
+
+  const sceneRegistryRef = bundle.scene_registry_ref;
+  if (typeof sceneRegistryRef === 'string' && fs.existsSync(path.join(root, sceneRegistryRef))) {
+    const registry = readJson<JsonRecord>(root, sceneRegistryRef);
+    const scenes = asArray(registry.scenes);
     if (scenes.length > 0) return scenes;
   }
 

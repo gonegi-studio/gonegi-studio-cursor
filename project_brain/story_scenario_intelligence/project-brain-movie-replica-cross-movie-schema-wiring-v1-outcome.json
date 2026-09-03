@@ -1,0 +1,107 @@
+{
+  "report_id": "movie_replica_cross_movie_schema_wiring_v1_outcome",
+  "record_type": "OUTCOME",
+  "phase": "PHASE-MOVIE-REPLICA-CROSS-MOVIE-SCHEMA-WIRING-V1",
+  "system_id": "MOVIE_REPLICA_CROSS_MOVIE_SCHEMA_WIRING_V1",
+  "generated_at": "2026-09-03T06:41:41.890Z",
+  "verdict": "MOVIE_REPLICA_CROSS_MOVIE_SCHEMA_WIRING_PROVEN",
+  "all_clear": true,
+  "production_hold_preserved": true,
+  "diagnosis_phase": {
+    "problem_1_scene_wiring": {
+      "symptom": "MOVIE_SPATIAL_ENGINE_V1 / MOVIE_SPATIAL_GRAPH_V1 / MOVIE_REPLICA_ACCURACY_V1 reports showed spirited_away at 0 scenes/coordinates/nodes while titanic showed 300 across every metric.",
+      "method": "Read services/movieReplicaDatasetBuilder.ts::resolveSceneList() and diffed the real on-disk titanic and spirited_away reconstruction bundles field-by-field.",
+      "finding": "resolveSceneList()'s non-titanic fallback reads bundle.scene_registry as an embedded object (matches titanic's bundle shape). exports/movie_datasets/spirited_away/spirited_away_movie_reconstruction_bundle.json instead carries only scene_registry_ref (a path string) -- bundle.scene_registry is undefined, so the fallback silently returns []."
+    },
+    "problem_2_motion_temporal_layer_wiring": {
+      "symptom": "After fixing problem_1, spirited_away's 300 replica entries all showed TRAJECTORY_COUNT_ZERO / POSE_COUNT_ZERO / CAMERA_TIMELINE_COUNT_ZERO / TEMPORAL_SEGMENT_COUNT_ZERO.",
+      "method": "Traced titanic's real motion/timeline/temporal sources (bundle.camera_motion_layer.registry_ref, bundle.titanic_dense_layer.body_pose_registry_ref, bundle.shot_layer.shot_registry, bundle.temporal_layer.*), then checked whether an equivalent real source existed for spirited_away before assuming MISSING_REAL_SOURCE.",
+      "finding": "Real, already-generated registries existed on disk (datasets/movie_reconstruction/spirited_away_motion/*.json: camera_motion_count=300, subject_motion_count=600; datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json: shot_count=2400; datasets/movie_reconstruction/spirited_away_temporal/*.json: sequence_count=300, transition_count=2399) but spiritedAwayMovieDataset.ts::buildBundle() never added the corresponding motion_layer/shot_layer/temporal_layer keys, even though the bundle was regenerated (2026-09-02T02:25:20Z) after all of those source registries already existed (2026-08-09 / 2026-09-01). Confirmed as a wiring gap, not MISSING_REAL_SOURCE."
+    },
+    "problem_3_transition_consumption": {
+      "symptom": "After fixing problem_1 and problem_2, all count-based validations PASSed, but a targeted audit of the built scene-graph artifacts showed spirited_away's timeline_edges contained 0 edge_type:'scene_transition_link' entries versus titanic's 598, despite spirited_away's temporal_transition_registry holding 2399 real transition records.",
+      "method": "Traced movieReplicaSceneGraphBuilder.ts's consumption of temporal_registry_v2.segments and confirmed field-name divergence between titanic's real transitions (from_scene/to_scene) and spirited_away's real transitions (from_scene_id/to_scene_id, plus from_shot/to_shot at a finer shot-level granularity).",
+      "finding": "299 of the 2399 spirited_away transition records are genuine inter-scene transitions (from_scene_id !== to_scene_id) -- exactly matching titanic's 299 scene-to-scene transitions in count and semantic role. The remaining 2100 are intra-scene shot-cut transitions (from_scene_id === to_scene_id), a finer-grained unit titanic's registry does not carry. A PASS verdict at the count-only temporal_segment_count gate was already satisfied by the sequences data alone, silently masking the fact that the entire real transitions evidence type was unconsumed."
+    }
+  },
+  "repair_phase": {
+    "fix_1_scene_registry_ref_fallback": {
+      "file": "services/movieReplicaDatasetBuilder.ts",
+      "function": "resolveSceneList()",
+      "change": "Added one fallback branch between the titanic special case and the existing bundle.scene_registry fallback: if bundle.scene_registry_ref is a string and the referenced file exists, read it and return its .scenes array.",
+      "lines_changed": 1
+    },
+    "fix_2_motion_shot_temporal_layer_embedding": {
+      "file": "services/spiritedAwayMovieDataset.ts",
+      "function": "buildBundle()",
+      "change": "Added a root parameter; embedded the already-existing real registries (spirited_away_motion/spirited-away-camera-motion-registry.json, spirited_away_motion/spirited-away-subject-motion-registry.json, spirited_away_shots/spirited-away-shot-registry.json, spirited_away_temporal/spirited-away-shot-sequence-registry.json, spirited_away_temporal/spirited-away-temporal-transition-registry.json) under bundle.motion_layer / bundle.shot_layer / bundle.temporal_layer, matching the exact key shapes movieReplicaDatasetBuilder.ts's existing non-titanic fallbacks already expect. No new data generated; only existing files read and re-embedded.",
+      "call_site_updated": "materializeDataset(): buildBundle(scenes, anchors, generatedAt) -> buildBundle(root, scenes, anchors, generatedAt)"
+    },
+    "fix_3_transition_inter_scene_compatibility": {
+      "files": ["services/movieReplicaDatasetBuilder.ts", "services/movieReplicaSceneGraphBuilder.ts"],
+      "change": "filterTransitionsByScene() extended to fall back to from_scene_id/to_scene_id when from_scene/to_scene are absent, and to exclude any entry where the resolved from/to values are equal (excludes spirited_away's 2100 intra-scene shot-cut entries as self-loops, not scene transitions). movieReplicaSceneGraphBuilder.ts's scene_transition_link edge builder given the same from_scene_id/to_scene_id fallback for source_ref/target_ref. Titanic's from_scene/to_scene path is checked first and is a no-op change for it.",
+      "lines_changed_approx": 10
+    }
+  },
+  "verification": {
+    "method": "Live re-execution via tsx of the real verify scripts (scripts/verify-movie-replica-dataset.ts, verify-movie-replica-scene-graph.ts, verify-movie-spatial-engine.ts, verify-movie-spatial-graph.ts, verify-movie-replica-accuracy.ts) after each fix, plus direct field counts read from the resulting dataset/report JSON on disk.",
+    "scene_recovery": { "before": { "scene_count": 300, "spirited_away_scenes": 0 }, "after": { "scene_count": 600, "spirited_away_scenes": 300 }, "report": "reports/movie_replica/MOVIE_REPLICA_DATASET_REPORT.json", "verdict": "PASS_MOVIE_REPLICA_DATASET_V1" },
+    "motion_temporal_recovery": {
+      "before": { "trajectory_count": 300, "pose_count": 300, "camera_timeline_count": 3300, "temporal_segment_count": 598 },
+      "after_fix_2": { "trajectory_count": 600, "pose_count": 900, "camera_timeline_count": 5700, "temporal_segment_count": 898 },
+      "after_fix_3": { "temporal_segment_count": 1496 }
+    },
+    "transition_recovery": {
+      "before": { "spirited_away_scene_transition_link_edges": 0, "titanic_scene_transition_link_edges": 598 },
+      "after": { "spirited_away_scene_transition_link_edges": 598, "titanic_scene_transition_link_edges": 598 },
+      "self_loop_count": { "spirited_away": 0, "titanic": 0 },
+      "source": "datasets/movie_replica/{titanic,spirited_away}/*-movie-replica-scene-graph.json, counted directly from scene_graphs[].timeline_edges[] where edge_type=='scene_transition_link'"
+    },
+    "titanic_regression": {
+      "errors_across_all_5_rebuilt_stages": 0,
+      "avg_replica_score_before": 0.9768,
+      "avg_replica_score_after": 0.9768,
+      "note": "Byte-for-byte unaffected: titanic's bundle carries no scene_registry_ref/motion_layer-shaped-differently/from_scene_id keys, so every new fallback branch is a no-op for it."
+    },
+    "final_chain_state": {
+      "MOVIE_REPLICA_DATASET_V1": "PASS", "MOVIE_REPLICA_SCENE_GRAPH_V1": "PASS",
+      "MOVIE_SPATIAL_ENGINE_V1": "PASS", "MOVIE_SPATIAL_GRAPH_V1": "PASS", "MOVIE_REPLICA_ACCURACY_V1": "PASS",
+      "movie_count_all_stages": 2
+    }
+  },
+  "canonical_history_dedup_check": {
+    "method": "retrieveCanonicalHistoryByProblem({ problem }) invoked live against the real canonical corpus (default readers, no fixtures) for 23 distinct query phrases covering the three candidate lessons.",
+    "queries_not_found": ["spirited_away", "scene_transition_link", "temporal_registry_v2", "movie replica", "self-loop", "fallback", "movie_spatial_engine", "moviereplicadatasetbuilder", "resolvescenelist", "cross-movie", "second movie", "wiring gap", "intra-scene", "inter-scene", "evidence consumption", "graph edge", "consumer boundary", "scene_registry_ref"],
+    "queries_found_reviewed_and_distinct": {
+      "bundle": ["exp_secret_exposure_client_bundle_fail_closed_guard_v1", "exp_spirited_away_git_head_diff_mutation_verification_v1", "exp_spirited_away_read_only_revalidation_separation_v1"],
+      "titanic": ["exp_titanic_growth_delta_non_derivability_v1"],
+      "pass": ["exp_movie_factory_evidence_integrity_correction_v1 (closest neighbor -- see links.related_but_distinct_from)", "6 other unrelated matches"]
+    },
+    "conclusion": "No duplicate. exp_movie_factory_evidence_integrity_correction_v1 shares the broader 'PASS is not proof of ground truth' family but diagnoses a different failure mechanism (self-referential/synthetic VALUES vs. a substitute real evidence-type masking non-consumption of the intended real evidence-type) -- linked via related_but_distinct_from rather than treated as a duplicate."
+  },
+  "regression": {
+    "genie_regression_all_passed": true,
+    "genie_regression_script_count": 20,
+    "genie_regression_scripts": [
+      "verify-genie-apprenticeship-development-trace-v1.mjs", "verify-genie-autonomous-read-only-drift-monitor-v1.mjs",
+      "verify-genie-canonical-learning-retrieval-v1.mjs", "verify-genie-chain-ranked-classification-bridge-v1.mjs",
+      "verify-genie-codex-cli-model-provenance-v1.mjs", "verify-genie-codex-cli-tutor-adapter-v1.mjs",
+      "verify-genie-continuous-ojt-capture-v1.mjs", "verify-genie-coordinator-experience-contract-v1.mjs",
+      "verify-genie-delegated-outcome-experience-link-v1.mjs", "verify-genie-delegated-responsibility-outcome-capture-v1.mjs",
+      "verify-genie-evidence-consumption-integrity-v1.mjs", "verify-genie-external-tutor-contract-v1.mjs",
+      "verify-genie-goal-capability-correction-rearm-v1.mjs", "verify-genie-goal-current-state-reader-v1.mjs",
+      "verify-genie-mechanical-actionability-filter-v1.mjs", "verify-genie-operational-report-compiler-v1.mjs",
+      "verify-genie-pointer-currency-correction-rearm-v1.mjs", "verify-genie-retrieved-learning-decision-usage-v1.mjs",
+      "verify-genie-tutor-candidate-loading-v1.mjs", "verify-genie-tutor-outcome-contract-v1.mjs"
+    ],
+    "duplicate_ids": 0,
+    "duplicate_keys": 0,
+    "dangling_refs": 0,
+    "canonical_experience_count_before": 132,
+    "canonical_experience_count_after": 133,
+    "index_version": "project_brain_experience_index_v8",
+    "note": "Actual pass/fail per-script output captured at capture time; see the session's tool transcript for raw stdout of each script."
+  },
+  "knowledge_promoted": false,
+  "principle_promoted": false
+}

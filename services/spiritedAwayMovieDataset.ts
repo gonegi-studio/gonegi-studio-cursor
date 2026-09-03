@@ -314,10 +314,38 @@ function buildWorldTranslationRules(): Record<string, unknown> {
 }
 
 function buildBundle(
+  root: string,
   scenes: Record<string, unknown>[],
   anchors: Record<string, unknown>[],
   generatedAt: string
 ): Record<string, unknown> {
+  // PHASE-SPIRITED-AWAY-MOTION-TEMPORAL-WIRING-001: motion_layer/shot_layer/temporal_layer
+  // embed the already-generated real registries (spirited_away_motion/, spirited_away_shots/,
+  // spirited_away_temporal/) so movieReplicaDatasetBuilder.ts's existing non-titanic fallback
+  // paths (bundle.motion_layer.camera_motion_registry / .subject_motion_registry,
+  // bundle.shot_layer.shot_registry, bundle.temporal_layer.shot_sequence_registry /
+  // .temporal_transition_registry) resolve real data instead of falling through to [].
+  const cameraMotionRegistry = readJson<Record<string, unknown>>(
+    root,
+    'datasets/movie_reconstruction/spirited_away_motion/spirited-away-camera-motion-registry.json'
+  );
+  const subjectMotionRegistry = readJson<Record<string, unknown>>(
+    root,
+    'datasets/movie_reconstruction/spirited_away_motion/spirited-away-subject-motion-registry.json'
+  );
+  const shotRegistry = readJson<Record<string, unknown>>(
+    root,
+    'datasets/movie_reconstruction/spirited_away_shots/spirited-away-shot-registry.json'
+  );
+  const shotSequenceRegistry = readJson<Record<string, unknown>>(
+    root,
+    'datasets/movie_reconstruction/spirited_away_temporal/spirited-away-shot-sequence-registry.json'
+  );
+  const temporalTransitionRegistry = readJson<Record<string, unknown>>(
+    root,
+    'datasets/movie_reconstruction/spirited_away_temporal/spirited-away-temporal-transition-registry.json'
+  );
+
   return {
     bundle_id: 'spirited-away-movie-reconstruction-bundle-v1',
     phase: SPIRITED_AWAY_PHASE,
@@ -339,6 +367,17 @@ function buildBundle(
     semantic_anchor_registry_ref: SPIRITED_AWAY_SEMANTIC_ANCHOR_REGISTRY_PATH,
     world_translation_rules_ref: SPIRITED_AWAY_WORLD_TRANSLATION_RULES_PATH,
     semantic_anchors: anchors,
+    motion_layer: {
+      camera_motion_registry: cameraMotionRegistry,
+      subject_motion_registry: subjectMotionRegistry,
+    },
+    shot_layer: {
+      shot_registry: shotRegistry,
+    },
+    temporal_layer: {
+      shot_sequence_registry: shotSequenceRegistry,
+      temporal_transition_registry: temporalTransitionRegistry,
+    },
     philosophy: {
       movie_dataset_controls_structure: true,
       gonegi_world_controls_appearance: true,
@@ -478,7 +517,7 @@ function materializeDataset(root: string): {
 
   writeJson(root, SPIRITED_AWAY_WORLD_TRANSLATION_RULES_PATH, worldRules);
 
-  const bundle = buildBundle(scenes, anchors, generatedAt);
+  const bundle = buildBundle(root, scenes, anchors, generatedAt);
   writeJson(root, SPIRITED_AWAY_BUNDLE_PATH, bundle);
 
   const standardized = buildStandardizedFromMaterialized(SPIRITED_AWAY_BUNDLE_PATH);

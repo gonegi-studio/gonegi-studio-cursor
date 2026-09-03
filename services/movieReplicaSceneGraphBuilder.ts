@@ -276,8 +276,8 @@ function buildTimelineEdges(entry: MovieReplicaEntry): JsonRecord[] {
     if ('transition_id' in segment) {
       edges.push({
         edge_id: `timeline_${entry.replica_id}_trans_${firstString(segment.transition_id)}`,
-        source_ref: firstString(segment.from_scene, entry.scene_id),
-        target_ref: firstString(segment.to_scene),
+        source_ref: firstString(segment.from_scene, segment.from_scene_id, entry.scene_id),
+        target_ref: firstString(segment.to_scene, segment.to_scene_id),
         edge_type: 'scene_transition_link',
         transition_type: firstString(segment.transition_type, 'continuity_hold'),
         duration: null,
