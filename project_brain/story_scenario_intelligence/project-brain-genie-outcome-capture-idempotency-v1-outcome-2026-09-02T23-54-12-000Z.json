@@ -1,0 +1,50 @@
+{
+  "report_id": "genie_outcome_capture_idempotency_v1_outcome",
+  "record_type": "OUTCOME",
+  "phase": "PHASE-GENIE-OUTCOME-CAPTURE-IDEMPOTENCY-V1",
+  "system_id": "GENIE_OUTCOME_CAPTURE_IDEMPOTENCY_V1",
+  "generated_at": "2026-09-02T23:54:12.000Z",
+  "verdict": "GENIE_OUTCOME_CAPTURE_IDEMPOTENCY_V1_PROVEN",
+  "all_clear": true,
+  "real_gap_found": {
+    "statement": "writeDelegatedResponsibilityOutcomeDocument() (services/genieDelegatedResponsibilityOutcomeCapture.mjs) always writes a new, millisecond-timestamped file with no existence/content check, and its only caller (scripts/verify-genie-delegated-responsibility-outcome-capture-v1.mjs) always performed both real checks and both writes unconditionally, with no prior check of assessPhaseCapture(). Because assessPhaseCapture()'s CAPTURED rule (services/genieOjtCaptureEnforcement.mjs) only ever depends on the canonical Experience's fixed evidence.evidence_source file still being present -- never on how many other documents exist for that phase -- every write after the very first one on 2026-09-01T06:55Z-ish was provably inert.",
+    "audit_method": "Cross-referenced all project-brain-genie-{regression,production-runtime}-responsibility-v1-outcome-*.json files in this directory (93 total, 2026-09-01T06:54Z..2026-09-02T12:39Z) against every evidence_source string in every project-brain-experience-*.json file. Exactly 2 of the 93 (the earliest of each family) are referenced by any canonical Experience; the other 91 are byte-identical to their family's original except generated_at and are referenced nowhere.",
+    "orphan_count_confirmed": 91,
+    "orphans_committed_to_git": false
+  },
+  "fix": {
+    "file_modified": "scripts/verify-genie-delegated-responsibility-outcome-capture-v1.mjs",
+    "file_sha256_after_fix": "82a63504ec755e8665ed0876c8a15cfe5c23efa3294012dac9b88f380f58f866",
+    "method": "Before each of the two real-execution blocks, call the existing, unmodified assessPhaseCapture(readCaptureState(root), completion). If status is already CAPTURED, skip the real check (drift monitor / operational report compile / 19-script regression spawn) and the write entirely, and instead call a small local reverifyCapturedEvidence() helper that re-reads the canonical Experience's evidence.evidence_source path and asserts the file still exists on disk. Only run the real check and write a new document when the phase is not yet CAPTURED.",
+    "writer_modified": false,
+    "enforcement_modified": false,
+    "original_evidence_files_modified": false,
+    "orphans_deleted": false,
+    "rolling_log_introduced": false
+  },
+  "verification": {
+    "protected_file_hashes_before": {
+      "services/genieDelegatedResponsibilityOutcomeCapture.mjs": "4b5fe87d8029ba2bd23d9e06a6a731e8165fb8a8df992e3d2f5eaca6dfca28e2",
+      "services/genieOjtCaptureEnforcement.mjs": "3786222d2ae346df0c3e7f3d1d4edeb46541baa0682d4dfdc3d02c137df0929e",
+      "project_brain/story_scenario_intelligence/project-brain-experience-genie-regression-responsibility-v1.json": "847a4d55e93bff3e88f7b686c7daefbebfb5c9beff4163a09972d907c01eef18",
+      "project_brain/story_scenario_intelligence/project-brain-experience-genie-production-runtime-responsibility-v1.json": "8920bdeaa1e2ea8981e03bc763e5a23bb0e73193d4a7836820c2a63262f804ef"
+    },
+    "protected_file_hashes_after_two_runs": "identical to before, all 4 files -- diff of before/after sha256sum output was empty (PROTECTED_FILES_UNCHANGED)",
+    "consecutive_runs": {
+      "outcome_file_count_before_any_run": 93,
+      "run_1": { "command": "node scripts/verify-genie-delegated-responsibility-outcome-capture-v1.mjs", "exit_code": 0, "files_written": [], "runtime_write_skipped_already_captured": true, "regression_write_skipped_already_captured": true, "runtime_assessment_status": "CAPTURED", "regression_assessment_status": "CAPTURED" },
+      "run_2": { "command": "node scripts/verify-genie-delegated-responsibility-outcome-capture-v1.mjs", "exit_code": 0, "files_written": [], "runtime_write_skipped_already_captured": true, "regression_write_skipped_already_captured": true, "runtime_assessment_status": "CAPTURED", "regression_assessment_status": "CAPTURED" },
+      "run_1_and_run_2_stdout_byte_identical": true,
+      "outcome_file_count_after_two_runs": 93,
+      "canonical_experience_ids_unchanged": ["exp_genie_production_runtime_responsibility_v1", "exp_genie_regression_responsibility_v1"]
+    },
+    "genie_regression_suite": {
+      "scripts_run": 20,
+      "all_passed": true,
+      "outcome_file_count_after_full_suite_run_third_invocation": 93
+    },
+    "orphan_files_untouched": { "count_before": 91, "count_after": 91, "any_deleted": false, "any_modified": false }
+  },
+  "knowledge_promoted": false,
+  "principle_promoted": false
+}

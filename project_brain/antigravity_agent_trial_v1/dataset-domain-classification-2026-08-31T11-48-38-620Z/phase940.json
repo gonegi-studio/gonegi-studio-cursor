@@ -1,0 +1,17 @@
+{
+  "finding_id": "project_brain_cap_dataset_management_concentration_rootcause_v1",
+  "phase": "PHASE-940",
+  "generated_at": "2026-08-22T04:36:07.417Z",
+  "mode": "READ_ONLY_ANALYSIS_NO_TAXONOMY_CHANGE",
+  "observed": "cap_dataset_management holds 2117/2917 (72.6%) of all LPM entities.",
+  "entity_type_distribution_within_cap_dataset_management": {
+    "service": 47,
+    "dataset": 1109,
+    "schema": 461,
+    "registry": 499,
+    "script": 1
+  },
+  "root_cause": "The ontology classifier's domain-specific capability buckets (cap_narrative_production, cap_movie_reconstruction, etc.) are populated primarily from `service`-typed entities, which are distributed across capabilities roughly by which functional area of code they belong to. Non-service entity kinds -- dataset, schema, registry -- appear to be funneled into cap_dataset_management largely regardless of which domain the underlying data actually belongs to (e.g. a movie_reconstruction dataset file and a narrative_production dataset file both land in cap_dataset_management rather than their respective domain capabilities). This is a classification-by-ENTITY-KIND-not-DOMAIN pattern for non-service entities, not a bug in the sense of misclassifying any individual file, but a coarse-graining choice that concentrates the vast majority of the repo's ~8,449 real datasets/**/*.json files (of which the LPM only captured 3,016) into one generic bucket instead of distributing them by actual domain the way services were.",
+  "confidence": "MEDIUM -- based on a representative sample of the 2,117-entity bucket's entity_type distribution, not an exhaustive per-entity domain re-classification.",
+  "recommended_follow_up_not_acted_on_this_phase": "Re-classifying ~2,000 dataset/schema/registry entities by actual domain (rather than by entity-kind) would be a real taxonomy change with meaningful blast radius -- explicitly deferred per this phase's instruction to avoid destructive PB restructuring. If pursued, it should be scoped as its own dedicated phase, likely bundled with the deferred full-LPM-regeneration decision (Option A) rather than attempted as a partial in-place reclassification of the historical snapshot."
+}

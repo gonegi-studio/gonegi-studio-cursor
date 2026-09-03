@@ -1,0 +1,157 @@
+{
+  "trace_id": "project_brain_goal_gap_dependency_trace_v16",
+  "phase": "PHASE-E35",
+  "generated_at": "2026-08-23T02:16:35.892Z",
+  "mode": "PROJECT_EVOLUTION_RECONCILIATION_GHIBLI_STALENESS_RESOLVED",
+  "note": "trace v15 stays on disk unmodified. This version reconciles the stale status of goal_ghibli_production_pipeline from BLOCKED to RESOLVED, aligning with the real hard_pass evidence from PHASE-959 and overlay v6 (cap_movie_reconstruction and cap_cinematic_generation satisfied). The other 2 chains carry forward unmodified.",
+  "applied_candidate_id": "cand_evolution_trace_v15_ghibli_status_staleness_v1",
+  "chains": [
+    {
+      "goal_id": "goal_production_runtime",
+      "gap_id": "gap_phase940_numerical_dna_gpu_production_unavailable",
+      "dependency_id": "dependency_phase940_goal_production_runtime_on_numerical_dna_gpu_bottleneck",
+      "blocking_reason": "The real GPU/ComfyUI production runtime is unreachable -- an actual attempted network connection failed, not a missing/unbuilt feature.",
+      "evidence": "project_brain/real_generation/PRODUCTION_VALIDATION_HOLD.json: status=PENDING, gpu_available=false, reason.code=COMFYUI_SERVER_GPU_NOT_AVAILABLE, detail=\"Real ComfyUI at http://127.0.0.1:8188 returned ECONNREFUSED\"",
+      "next_action": "Restore a reachable GPU/ComfyUI execution environment at the configured endpoint, then re-run the existing PRODUCTION_VALIDATION_HOLD revalidation path -- this is an infrastructure/environment action, not a code or LPM change.",
+      "blocked_by_capability": "cap_numerical_dna_gpu_bottleneck",
+      "status": "BLOCKED",
+      "next_action_execution_unit": {
+        "unit_id": "exec_unit_phase943_production_runtime_gpu_restoration",
+        "action_type": "infra_restoration",
+        "concrete_steps": [
+          "Bring up a reachable GPU/ComfyUI server at the endpoint PRODUCTION_VALIDATION_HOLD.json expects (http://127.0.0.1:8188 per its last recorded attempt)",
+          "Re-run the existing production validation path that produced PRODUCTION_VALIDATION_HOLD.json"
+        ],
+        "verification_method": "PRODUCTION_VALIDATION_HOLD.json (or its successor) shows status != PENDING and gpu_available=true",
+        "owner_domain": "infrastructure (not code, not LPM)",
+        "explicitly_not_executed_this_phase": true,
+        "why_not_executed": "PHASE-943 explicitly excludes \"GPU 복구 자체\" from its scope."
+      },
+      "execution_state": "NOT_STARTED",
+      "execution_state_last_checked_at": "2026-08-22T07:11:32.403Z",
+      "execution_state_evidence_ref": "Direct read-only network check: http://127.0.0.1:8188/system_stats (this phase, 2026-08-22T07:11:32.403Z) -- 3rd consecutive real check (PHASE-953, PHASE-960, PHASE-962), same result each time",
+      "execution_state_transitioned_this_phase": false,
+      "execution_state_resolution_reason": "Hard failure, not progress: HTTP_STATUS:000 CONNECT_TIME:0.000000, curl exit code 7 (Failed to connect to host). GPU/ComfyUI server still unreachable in this environment. No code was modified while waiting -- this phase's own instruction explicitly forbids code changes until the infrastructure is actually restored.",
+      "execution_state_evidence_this_phase": "no_evidence -- PHASE-945 explicitly forbids performing the actual GPU/adapter/reclassification work",
+      "gap_type": "external_infrastructure_blocker",
+      "gap_type_capability_consistency": {
+        "requires_blocked_capability": true,
+        "capability_statuses": [
+          "blocked"
+        ],
+        "consistent": true
+      },
+      "first_real_evidence_applied_at_phase": "PHASE-953",
+      "real_reverification_at_phase": "PHASE-962",
+      "consecutive_identical_real_result_count": 3,
+      "repeat_count": 4,
+      "escalation_signal": true,
+      "escalation_threshold": 3
+    },
+    {
+      "goal_id": "goal_ghibli_production_pipeline",
+      "gap_id": "gap_phase941_ghibli_pipeline_factory_validation_fail",
+      "dependency_id": "dependency_phase941_goal_ghibli_pipeline_on_movie_factory_adapter_validation",
+      "blocking_reason": "Resolved via PHASE-959 real fix (titanic-standardized-dataset adapter reference wiring); independently confirmed PASS_MOVIE_DATASET_FACTORY_VALIDATION_V1 (image_adapter_valid=true, video_adapter_valid=true, factory_certified=true).",
+      "evidence": "reports/movie_factory_validation/movie-factory-validation-report.json: final_verdict=FAIL_MOVIE_DATASET_FACTORY_VALIDATION_V1, validation_passed=false, validation_summary.image_adapter_valid=false, validation_summary.video_adapter_valid=false; datasets/movie_factory/movie-dataset-quality-gates.json: factory_certified=false",
+      "next_action": "Fix the image_adapter and video_adapter validation failures reported in movie-factory-validation-report.json (their specific failing checks are already itemized inside that report's validation_areas/issues fields), then re-run the existing factory validation pipeline -- this is a fix to existing adapter code/config, not a new LPM entity or capability.",
+      "blocked_by_capability": "cap_movie_reconstruction, cap_cinematic_generation (both confirmed via LPM entity_id lookup: adapter-named entities in these two buckets)",
+      "status": "RESOLVED",
+      "next_action_execution_unit": {
+        "unit_id": "exec_unit_phase943_ghibli_pipeline_adapter_fix",
+        "action_type": "code_fix",
+        "concrete_steps": [
+          "Address the image_adapter_valid=false failure itemized in reports/movie_factory_validation/movie-factory-validation-report.json's own validation_areas/issues fields",
+          "Address the video_adapter_valid=false failure likewise",
+          "Re-run the same factory validation pipeline that produced that report"
+        ],
+        "verification_method": "movie-factory-validation-report.json (regenerated) shows validation_passed=true and both adapters valid=true; datasets/movie_factory/movie-dataset-quality-gates.json factory_certified=true",
+        "owner_domain": "application code (adapter implementations)",
+        "explicitly_not_executed_this_phase": true,
+        "why_not_executed": "PHASE-943 explicitly excludes \"movie-factory 실패 수정 자체\" from its scope."
+      },
+      "execution_state": "VERIFIED",
+      "execution_state_last_checked_at": "2026-08-22T06:58:07.736Z",
+      "execution_state_evidence_ref": "reports/movie_factory_validation/movie-factory-validation-report.json (regenerated this phase after real fix, generated_at=2026-08-22T06:55:51.142Z) via npx tsx scripts/verify-movie-dataset-factory-validation.ts -- SAME verification_method already named in this chain's execution unit since PHASE-943",
+      "execution_state_transitioned_this_phase": true,
+      "execution_state_resolution_reason": "Independently confirmed success: final_verdict=PASS_MOVIE_DATASET_FACTORY_VALIDATION_V1, validation_passed=true, image_adapter_valid=true, video_adapter_valid=true, critical_missing_count=0, factory_certified=true. Root cause fixed: adapter references wired to pre-existing, already-ready adapter files.",
+      "execution_state_evidence_this_phase": "no_evidence -- PHASE-945 explicitly forbids performing the actual GPU/adapter/reclassification work",
+      "gap_type": "capability_functional_failure",
+      "gap_type_capability_consistency": {
+        "requires_blocked_capability": false,
+        "capability_statuses": [
+          "satisfied",
+          "satisfied"
+        ],
+        "consistent": true
+      },
+      "first_real_evidence_applied_at_phase": "PHASE-954",
+      "real_fix_applied_at_phase": "PHASE-959",
+      "real_fix_record": {
+        "fix_id": "project_brain_phase959_ghibli_pipeline_adapter_wiring_fix_v1",
+        "root_cause": "titanic-standardized-dataset.json's shot_layer.bundle_ref and temporal_layer.bundle_ref were null (no adapter reference wired); motion_layer.bundle_ref had an embedded 'motion_adapter' object but no 'motion_adapter_ref' string field, which is what the validator actually reads.",
+        "real_files_used_all_pre_existing_and_already_adapter_ready": [
+          "datasets/movie_reconstruction/titanic_shots/titanic-image-adapter.json",
+          "datasets/movie_reconstruction/titanic_video/titanic-video-adapter-v2.json",
+          "datasets/movie_reconstruction/titanic_motion/titanic-motion-adapter.json"
+        ],
+        "change_made": "datasets/movie_factory/outputs/titanic-standardized-dataset.json: 3 fields added (shot_layer.bundle_ref.image_adapter_ref, temporal_layer.bundle_ref.video_adapter_v2_ref, motion_layer.bundle_ref.motion_adapter_ref) -- purely additive wiring, no adapter content fabricated, no other field in the 2.9MB file touched.",
+        "verification_command": "npx tsx scripts/verify-movie-dataset-factory-validation.ts",
+        "verification_result": {
+          "final_verdict": "PASS_MOVIE_DATASET_FACTORY_VALIDATION_V1",
+          "validation_passed": true,
+          "image_adapter_valid": true,
+          "video_adapter_valid": true,
+          "critical_missing_count": 0,
+          "factory_certified": true,
+          "generated_at": "2026-08-22T06:55:51.142Z"
+        }
+      },
+      "repeat_count": 0,
+      "escalation_signal": false,
+      "escalation_threshold": 3
+    },
+    {
+      "goal_id": "goal_semantic_quality",
+      "gap_id": "gap_phase941_semantic_quality_catch_all_capability_violation",
+      "dependency_id": "dependency_phase941_goal_semantic_quality_on_cap_dataset_management_reclassification",
+      "blocking_reason": "One of this goal's own literal success_criteria (\"No catch-all capabilities\") is actively violated by a real, measured structural pattern, not an unverified assumption.",
+      "evidence": "project-brain-cap-dataset-management-concentration-rootcause-v1.json (PHASE-940): cap_dataset_management holds 2117/2917 (72.6%) of all LPM entities; entity_type distribution {dataset:1109, schema:461, registry:499, service:47, script:1} shows non-service entity kinds are funneled into this one bucket by kind, not by domain.",
+      "next_action": "Re-classify the ~2,000 dataset/schema/registry entities currently in cap_dataset_management by actual domain instead of entity-kind. Explicitly NOT attempted in PHASE-940, 941, or this phase (PHASE-942 forbids catch-all 전면 재분류) -- this remains a deferred, separately-scoped future phase, likely bundled with the deferred full-LPM-regeneration decision.",
+      "blocked_by_capability": "cap_dataset_management",
+      "status": "BLOCKED",
+      "next_action_execution_unit": {
+        "unit_id": "exec_unit_phase943_cap_dataset_management_reclassification_design",
+        "action_type": "process_redesign",
+        "concrete_steps": [
+          "Design a domain-based (not entity-kind-based) reclassification scheme for the ~2,000 dataset/schema/registry entities currently bucketed under cap_dataset_management",
+          "Have that scheme reviewed and approved as its own separately-scoped future phase",
+          "Apply the reclassification to capability membership only (not a full LPM regeneration)"
+        ],
+        "verification_method": "re-run project-brain-cap-dataset-management-concentration-rootcause-v1.json's underlying computation and confirm cap_dataset_management's entity share drops materially below 72.6%",
+        "owner_domain": "PB taxonomy design (separately-scoped future phase)",
+        "explicitly_not_executed_this_phase": true,
+        "why_not_executed": "PHASE-943 explicitly excludes \"cap_dataset_management 전면 재분류\" from its scope."
+      },
+      "execution_state": "NOT_STARTED",
+      "execution_state_last_checked_at": "2026-08-22T06:41:27.031Z",
+      "execution_state_evidence_ref": "Read-only recomputation over datasets/project_brain/lpm_v1/living-project-model-v1.json (this phase, 2026-08-22T06:41:27.031Z), reproducing project-brain-cap-dataset-management-concentration-rootcause-v1.json (PHASE-940)'s methodology exactly",
+      "execution_state_transitioned_this_phase": false,
+      "execution_state_resolution_reason": "Hard failure/re-confirmed violation, not progress: cap_dataset_management: 2117/2917 (72.6%) of all LPM entities, distribution={\"service\":47,\"dataset\":1109,\"schema\":461,\"registry\":499,\"script\":1}. Identical to PHASE-940's original finding -- no drift. This goal's own success_criteria (\"No catch-all capabilities\") remains genuinely violated by real, re-confirmed evidence.",
+      "execution_state_evidence_this_phase": "no_evidence -- PHASE-945 explicitly forbids performing the actual GPU/adapter/reclassification work",
+      "capability_status_clarification": "cap_dataset_management's functional_status is now 'pending' (PHASE-946, corrected from 'blocked'), but this Gap/chain remains valid: goal_semantic_quality is blocked by its OWN criterion ('No catch-all capabilities') being violated -- a Goal-level finding, independent of the underlying capability's functional operability label.",
+      "gap_type": "goal_criterion_violation",
+      "gap_type_capability_consistency": {
+        "requires_blocked_capability": false,
+        "capability_statuses": [
+          "pending"
+        ],
+        "consistent": true
+      },
+      "first_real_evidence_applied_at_phase": "PHASE-955",
+      "repeat_count": 0,
+      "escalation_signal": false,
+      "escalation_threshold": 3
+    }
+  ]
+}

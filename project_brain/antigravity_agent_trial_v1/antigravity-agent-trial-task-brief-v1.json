@@ -1,0 +1,61 @@
+{
+  "antigravity_agent_trial_task_brief_id": "antigravity_agent_trial_task_brief",
+  "phase": "PHASE-430",
+  "generated_at": "2026-08-16",
+  "mode": "READINESS_PACKAGE_ONLY",
+  "status": "PREPARED_NOT_EXECUTED_BY_ANTIGRAVITY",
+
+  "purpose": "Prepares (does not execute) a first, safe, isolated trial of Antigravity as an independent development agent, comparable to Claude/Codex on the same task. This phase does NOT invoke Antigravity — no tool or environment to do so exists in this session. It produces: (1) one small, isolated, non-core task; (2) an explicit scope boundary forbidding V1/PHASE-199/Registry/existing-V2 intrusion; (3) a REAL Claude baseline — this phase actually performed the task, not a simulation; (4) a self-contained onboarding brief a human can hand to Antigravity in a separate environment; (5) an empty-but-ready comparison scorecard Development Intelligence can fill in once Antigravity (and optionally Codex) results exist. Antigravity is explicitly NOT connected to AutoLoop V2 by this or any future automatic mechanism this phase creates.",
+
+  "task_definition": {
+    "task_id": "task_print_autoloop_v2_status_v1",
+    "title": "Read-only AutoLoop V2 status printer",
+    "description": "Write ONE new, small, read-only TypeScript script at project_brain/antigravity_agent_trial_v1/printAutoLoopV2Status.ts that: (a) loads project_brain/story_scenario_intelligence/v2_development_intelligence/auto_loop_cycle_summary_exports/export__v2_phase427_auto_loop_cycle_summary_v1.json and .../auto_loop_resumption_trigger_boundaries/boundary__v2_phase429_resumption_trigger_v1.json; (b) prints a human-readable status table to stdout showing: total cycle count, each cycle's gap_kind and execution_outcome, the gap_kind_distribution, and the current any_trigger_fired/branch_taken state; (c) if any_trigger_fired is true OR branch_taken is not 'FROZEN', prints a clearly visible WARNING line — otherwise prints a clearly visible 'FROZEN — no action needed' line. This conditional is the actual test of whether the agent understood the schema, not merely dumped it.",
+    "why_this_task": "Small enough to complete and compare in one sitting; requires genuinely reading and understanding two real, already-existing JSON record shapes (proving real project comprehension, not boilerplate); produces a verifiable, deterministic output; touches zero pre-existing files.",
+    "definition_of_done": [
+      "The new script exists at the exact path above and runs via `npx tsx project_brain/antigravity_agent_trial_v1/printAutoLoopV2Status.ts` with exit code 0",
+      "Its output correctly reflects the real, current content of both source files (no fabricated or guessed values)",
+      "It prints the correct FROZEN/WARNING line for the CURRENT real state",
+      "No other file in the repository is created, modified, or deleted"
+    ]
+  },
+
+  "scope_boundary": {
+    "read_access_allowed": [
+      "project_brain/story_scenario_intelligence/ (all files, read-only — this is how the agent is expected to build project understanding)",
+      "project_brain/antigravity_agent_trial_v1/ (this trial's own files)"
+    ],
+    "write_access_allowed": [
+      "project_brain/antigravity_agent_trial_v1/ ONLY — the new script must be created here, nowhere else"
+    ],
+    "explicitly_forbidden": [
+      "Any write to project_brain/story_scenario_intelligence/authored_content/callback_chains/ (Foundation V1, 281 real chains, frozen)",
+      "Any write to project_brain/story_scenario_intelligence/v2_development_intelligence/ (AutoLoop V2's own frozen record chain — read-only input only)",
+      "Any write to storyScenarioIntelligenceV2Engine.ts or storyScenarioIntelligenceV2Persistence.ts",
+      "Any reference to or invocation of a CallbackChain persistence function (createOpenCallbackChain / extendOpenCallbackChain / authorPersistedCallbackSignificance)",
+      "Any write to TRUSTED_SOURCE_REGISTRY.json or any Registry-resolving code",
+      "Any write to services/, scripts/, package.json, or any file outside project_brain/antigravity_agent_trial_v1/",
+      "Registering any new npm script",
+      "Connecting this task's output to AutoLoop V2's automatic trigger/gate mechanism in any way"
+    ],
+    "verification_method": "A file-system diff (before/after snapshot of the entire repository, restricted in practice to the directories above) confirms only project_brain/antigravity_agent_trial_v1/ received new files."
+  },
+
+  "comparison_axes": [
+    { "axis_id": "accuracy", "description": "Does the printed status table exactly match the real, current content of both source JSON files? Any fabricated/guessed value is a failure." },
+    { "axis_id": "existing_structure_understanding", "description": "Did the agent correctly infer the AutoLoopV2CycleSummaryExport / AutoLoopResumptionTriggerBoundary shapes from reading the real files, or did it require external hints? Did it respect the repo's established TypeScript/ESM (.js import extension) conventions?" },
+    { "axis_id": "regression", "description": "Did the agent modify, delete, or otherwise disturb any pre-existing file? Verified via the scope_boundary's file-system diff." },
+    { "axis_id": "token_work_efficiency", "description": "How many tool calls / turns / tokens (whatever the agent's own environment reports) did the task take, end to end, from being handed the brief to reporting done?" },
+    { "axis_id": "instruction_adherence", "description": "Did the agent follow the definition_of_done exactly (single new file, exact path, exact conditional behavior), or did it add unrequested scope (extra files, extra features, extra dependencies)?" }
+  ],
+
+  "agents_in_scope": {
+    "claude": { "status": "EXECUTED this phase — see antigravity-agent-trial-claude-baseline-report-v1.json", "environment": "this session" },
+    "antigravity": { "status": "NOT EXECUTED — no invocation tool/environment available in this session. See antigravity-agent-trial-onboarding-brief-for-antigravity-v1.md for the self-contained brief a human would hand it separately.", "environment": "external, not available here" },
+    "codex": { "status": "NOT EXECUTED — same reason as Antigravity, also not available in this session.", "environment": "external, not available here" }
+  },
+
+  "autoloop_v2_connection": "NONE. This trial is fully isolated from AutoLoop V2's own trigger/gate/cycle-generation mechanism (PHASE-417..429). No automatic connection is created by this phase, and none is planned.",
+
+  "next_phase_note": "Once Antigravity (and optionally Codex) actually complete this task in their own environment, their real reports should be added to antigravity-agent-trial-comparison-scorecard-v1.json under the matching agent_id, and a future phase can evaluate the filled scorecard. No such phase is started or scheduled by this document."
+}

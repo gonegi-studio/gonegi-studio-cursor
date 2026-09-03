@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-08-31T11:52:06.368Z",
+  "lpm_ref": "datasets/project_brain/lpm_v1/living-project-model-v1.json",
+  "lpm_sha256": "e271902769b507bef9aa14c9ba9d077acd177ad41064e68c8439ec8e8d2f6e8d",
+  "lpm_generated_at": "2026-08-31T07:37:32.327Z",
+  "ontology_ref": "datasets/project_brain/vertical_ontology_v1/project-brain-vertical-ontology-v1.json",
+  "ontology_sha256": "bc426d709d1818d66bb0512aaba85039477726f2ce8573c32c10c6e2bedb6665",
+  "entities": 2917,
+  "bucket_entities": 2118,
+  "target_entities": 2069,
+  "direct_declarations": [],
+  "nested_mentions": [
+    {
+      "entity_id": "entity_dataset_datasets_project_content_brain_index_project-content-brain-index-v2_json",
+      "ref": "datasets/project_content_brain/index/project-content-brain-index-v2.json",
+      "location": "/semantic_relationship_index/capability_relationships/6/capability_id",
+      "value": "movie_reconstruction"
+    },
+    {
+      "entity_id": "entity_dataset_datasets_project_content_brain_index_project-content-brain-index-v2_json",
+      "ref": "datasets/project_content_brain/index/project-content-brain-index-v2.json",
+      "location": "/capability_index/capabilities/6/capability_id",
+      "value": "movie_reconstruction"
+    },
+    {
+      "entity_id": "entity_dataset_datasets_project_content_brain_index_project-content-brain-index-v2_json",
+      "ref": "datasets/project_content_brain/index/project-content-brain-index-v2.json",
+      "location": "/content_navigation_layer/capability_neighbors/6/capability_id",
+      "value": "movie_reconstruction"
+    },
+    {
+      "entity_id": "entity_dataset_datasets_project_knowledge_project-ontology-v1_json",
+      "ref": "datasets/project_knowledge/project-ontology-v1.json",
+      "location": "/project_domains_intelligence/project_domains_model/domains/movie_reconstruction/domain_id",
+      "value": "movie_reconstruction"
+    },
+    {
+      "entity_id": "entity_dataset_datasets_project_knowledge_project-ontology-v1_json",
+      "ref": "datasets/project_knowledge/project-ontology-v1.json",
+      "location": "/project_domains_intelligence/project_domains_model/domains/repository_intelligence/domain_id",
+      "value": "repository_intelligence"
+    }
+  ],
+  "explicit_domain_documents": 755,
+  "external_references": [],
+  "source_errors": [],
+  "dataset_parse_errors": [],
+  "scope": "Existing catch-all dataset/schema/registry source documents and datasets documents with explicit ontology capability_id/domain_id pairs. Nested mentions and dependency references are not ownership proof. No exhaustive claim about all possible human-authored repository evidence.",
+  "classification_corrected": false,
+  "concentration_is_success_metric": false,
+  "outcome": "NO_DIRECT_DOMAIN_ASSIGNMENT_IN_CHECKED_SOURCES"
+}

@@ -1,0 +1,53 @@
+{
+  "antigravity_agent_trial_comparison_scorecard_id": "antigravity_agent_trial_comparison_scorecard",
+  "phase": "PHASE-430",
+  "generated_at": "2026-08-16",
+  "mode": "READY_FOR_DEVELOPMENT_INTELLIGENCE_EVALUATION",
+  "task_id": "task_print_autoloop_v2_status_v1",
+  "task_brief_ref": "project_brain/antigravity_agent_trial_v1/antigravity-agent-trial-task-brief-v1.json",
+
+  "purpose": "A pre-structured record Development Intelligence (or a human) can read to compare agents on the identical task, once results exist for more than one agent. Filled in for Claude (real, this phase). Left explicitly empty/pending for Antigravity and Codex, who have not run this task in this session — never backfilled with invented numbers.",
+
+  "rows": [
+    {
+      "agent_id": "claude",
+      "run_status": "EXECUTED_THIS_PHASE",
+      "report_ref": "project_brain/antigravity_agent_trial_v1/antigravity-agent-trial-claude-baseline-report-v1.json",
+      "scores": {
+        "accuracy": { "result": "PASS", "note": "Output cross-checked field-by-field against real source JSON; exact match." },
+        "existing_structure_understanding": { "result": "PASS", "note": "Correctly used ESM .js-extension convention and node:fs/path/url pattern matching the rest of project_brain/story_scenario_intelligence/. Caveat: this session had prior context from having designed the two source schemas in earlier phases — not a cold read, disclosed in the baseline report." },
+        "regression": { "result": "PASS, 0 incidents", "note": "Full project_brain/ file-listing diff (1,986 -> 1,987 files) shows exactly one addition, the new script itself. Verified mechanically, not just claimed." },
+        "token_work_efficiency": { "result": "5 tool calls for the task itself (2 Read + 1 Write + 1 Bash run + 1 Bash diff-check)", "note": "Excludes readiness-package documents authored around the task. Prior-context advantage not quantified — see baseline report caveat." },
+        "instruction_adherence": { "result": "PASS", "note": "Single file, exact path, no unrequested scope, no npm registration, no writes outside the allowed directory." }
+      }
+    },
+    {
+      "agent_id": "antigravity",
+      "run_status": "NOT_EXECUTED",
+      "report_ref": null,
+      "scores": null,
+      "note": "No invocation tool/environment available in this session (see task_brief's agents_in_scope.antigravity.status). A human would need to hand antigravity-agent-trial-onboarding-brief-for-antigravity-v1.md to Antigravity in its own environment and record its real report_ref + scores here."
+    },
+    {
+      "agent_id": "codex",
+      "run_status": "NOT_EXECUTED",
+      "report_ref": null,
+      "scores": null,
+      "note": "Same reason as Antigravity — not available in this session. Not run, not simulated."
+    }
+  ],
+
+  "known_findings_from_claude_run": [
+    "Minor cosmetic column-alignment issue in the gap-kind-distribution table for the longest gap_kind name (49 chars) — output remains correct and unambiguous, disclosed honestly rather than polished away."
+  ],
+
+  "evaluation_readiness": {
+    "can_be_evaluated_now": false,
+    "reason": "Only one of three agent rows is filled. A meaningful comparison requires at least a second real, independently-executed row.",
+    "what_would_make_it_evaluable": "A human runs the onboarding brief against Antigravity (and optionally Codex) in their own environment, fills in the matching row's run_status/report_ref/scores with real data, and re-reads this file."
+  },
+
+  "autoloop_v2_connection": "NONE — this scorecard and the underlying trial are fully isolated from AutoLoop V2's automatic trigger/gate/cycle-generation mechanism. No phase in this trial reads from or writes to that mechanism.",
+  "v1_foundation_phase199_registry_protected": true,
+  "next_phase_note": "No PHASE-431 is committed or started by this document. The next real step is external (a human running Antigravity/Codex against the onboarding brief) — not something this session can perform."
+}

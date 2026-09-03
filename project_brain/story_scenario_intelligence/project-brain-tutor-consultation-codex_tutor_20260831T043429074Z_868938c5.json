@@ -1,0 +1,34 @@
+{
+  "record_type": "CANDIDATE",
+  "candidate_id": "codex_tutor_20260831T043429074Z_868938c5",
+  "decision": {
+    "status": "provisional"
+  },
+  "knowledge_status": "CANDIDATE_ONLY",
+  "automatic_fallback": false,
+  "consultation_kind": "FIRST",
+  "consultation_status": "RECEIVED",
+  "selected_tutor": {
+    "provider": "openai",
+    "model": "gpt-5.6-sol"
+  },
+  "links": {
+    "provenance_source": "EXTERNAL",
+    "external_source": {
+      "provider": "openai",
+      "model": "gpt-5.6-sol",
+      "access_path": "CLI_SUBSCRIPTION",
+      "requested_model": "gpt-5.6-sol",
+      "actual_model": "UNKNOWN",
+      "selection_reason": "User explicitly selected official Codex CLI and gpt-5.6-sol for this single consultation; no comparative Best Tutor claim.",
+      "query_evidence_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/query.json",
+      "query_evidence_sha256": "0c357ac3bf623da18ddaa4332f44b00352ddf52b694100330fe2543d6628967a",
+      "response_evidence_ref": "project_brain/antigravity_agent_trial_v1/codex_tutor_20260831T043429074Z_868938c5/run/response.json",
+      "response_evidence_sha256": "71dd027591d61e81086ddd0999cadd77b89264d1643176d04369296c390eec92",
+      "validation": "The historical bug was the stale exact-match check that accepted only FOUNDATION_COMPLETE and therefore rejected the legitimate successor state PRODUCTION_VALIDATED. The supplied current snapshot is already repaired: it accepts exactly FOUNDATION_COMPLETE and PRODUCTION_VALIDATED for track_production_pipeline. This is sound if those states mean, respectively, that the required foundation exists and that the same track has advanced beyond it without invalidating it. The change remains narrow and does not weaken the other verifier gates: pipeline materialization and connections, required connected nodes, per-contract PASS results, aggregate contract PASS, every report check being true, the foundation pass flag and verdict, and the expected report status are still independently enforced. Using a named immutable accepted-status constant, modeled after RUNTIME_TRACK_ACCEPTED_STATUSES, would improve readability, type narrowing, and centralized maintenance; it should be a production-track-specific constant containing FOUNDATION_COMPLETE and PRODUCTION_VALIDATED, not the runtime constant or its runtime-specific values.",
+      "missing_knowledge": "The snapshot does not provide the authoritative production-track state machine, transition rules, artifact schemas, data samples, test cases, or guarantees that PRODUCTION_VALIDATED is monotonic and cannot coexist with a regressed or invalid foundation. It also does not show whether unknown statuses must fail closed, whether duplicate track_production_pipeline entries are prohibited, whether JSON parsing and structural validation occur elsewhere, or whether report and implementation artifacts are freshness- or provenance-bound. Consequently, the accepted-state semantics can be judged internally coherent from the supplied evidence, but live behavior, test passage, repository-wide consistency, and Outcome success cannot be asserted.",
+      "alternative_reasoning": "An alternative is to require only PRODUCTION_VALIDATED, but that would incorrectly reject legitimate foundation-only artifacts if this verifier is intended to validate both the completed foundation and its validated successor. Another option is ordinal or transition-based status comparison, but that requires a canonical state model and can accidentally admit unrelated future states. A production-specific constant such as PRODUCTION_PIPELINE_TRACK_ACCEPTED_STATUSES, used with the same typed includes pattern as the runtime constant, best expresses the current policy while keeping the tracks semantically separate. For stronger assurance, the repository could centralize each track's accepted states beside its authoritative lifecycle definition and add cases proving FOUNDATION_COMPLETE and PRODUCTION_VALIDATED are accepted, while an earlier state, an unrelated track status, a missing track, and failures in every preserved verifier gate are rejected."
+    }
+  },
+  "generated_at": "2026-08-31T04:35:38.678Z"
+}

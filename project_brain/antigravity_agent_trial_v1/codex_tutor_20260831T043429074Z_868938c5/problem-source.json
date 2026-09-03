@@ -1,0 +1,65 @@
+{
+  "recorded_at": "2026-08-31T04:34:29.078Z",
+  "problem": "Historical stale exact-match track.status !== 'FOUNDATION_COMPLETE' rejected the legitimate successor PRODUCTION_VALIDATED. Fresh-read target now already accepts FOUNDATION_COMPLETE and PRODUCTION_VALIDATED; assess the accepted-states repair and reuse of RUNTIME_TRACK_ACCEPTED_STATUSES as a pattern, without claiming the stale condition still exists.",
+  "target_ref": "scripts/verify-production-pipeline-foundation-v1.ts",
+  "target_sha256": "b45d1a918fbc855be8411e36df058d1a169253da92c511127fa0e91bef654900",
+  "target_source": "import fs from 'node:fs';\nimport path from 'node:path';\nimport { fileURLToPath } from 'node:url';\nimport {\n  PPC_CONTRACT_IDS,\n  PRODUCTION_PIPELINE_CONTRACTS_V1_PATH,\n  PRODUCTION_PIPELINE_FOUNDATION_V1_PASS_VERDICT,\n  PRODUCTION_PIPELINE_FOUNDATION_V1_REPORT_PATH,\n  PRODUCTION_PIPELINE_FOUNDATION_V1_STATUS,\n  PRODUCTION_PIPELINE_V1_PATH,\n} from '../services/productionPipelineFoundationV1Engine.js';\n\nconst __dirname = path.dirname(fileURLToPath(import.meta.url));\nconst root = path.resolve(__dirname, '..');\n\nfunction assertExists(rel: string): void {\n  if (!fs.existsSync(path.join(root, rel))) {\n    console.error(`MISSING: ${rel}`);\n    process.exit(1);\n  }\n}\n\nfor (const rel of [\n  PRODUCTION_PIPELINE_V1_PATH,\n  PRODUCTION_PIPELINE_CONTRACTS_V1_PATH,\n  PRODUCTION_PIPELINE_FOUNDATION_V1_REPORT_PATH,\n  'datasets/stage7/stage7_implementation_v1/stage7-implementation-v1.json',\n]) {\n  assertExists(rel);\n}\n\nconst report = JSON.parse(\n  fs.readFileSync(path.join(root, PRODUCTION_PIPELINE_FOUNDATION_V1_REPORT_PATH), 'utf8')\n) as {\n  production_pipeline_foundation_v1_passed: boolean;\n  final_verdict: string;\n  status: string;\n  checks: Record<string, boolean>;\n  contract_results: Array<{ contract_id: string; verdict: string }>;\n};\n\nconst pipeline = JSON.parse(\n  fs.readFileSync(path.join(root, PRODUCTION_PIPELINE_V1_PATH), 'utf8')\n) as {\n  materialized: boolean;\n  nodes: Array<{ stage: string; connected: boolean }>;\n  connections: unknown[];\n};\n\nconst contracts = JSON.parse(\n  fs.readFileSync(path.join(root, PRODUCTION_PIPELINE_CONTRACTS_V1_PATH), 'utf8')\n) as { aggregate_verdict: string };\n\nconst implementation = JSON.parse(\n  fs.readFileSync(path.join(root, 'datasets/stage7/stage7_implementation_v1/stage7-implementation-v1.json'), 'utf8')\n) as {\n  implementation_tracks: Array<{ track_id: string; status: string }>;\n  production_pipeline_ref?: string;\n};\n\nif (!pipeline.materialized || pipeline.connections.length < 3) {\n  console.error('PIPELINE FAIL');\n  process.exit(1);\n}\n\nfor (const stage of ['movie_analysis', 'movie_reconstruction', 'spatial_runtime']) {\n  const node = pipeline.nodes.find((n) => n.stage === stage);\n  if (!node?.connected) {\n    console.error(`NODE FAIL: ${stage}`);\n    process.exit(1);\n  }\n}\n\nfor (const contractId of PPC_CONTRACT_IDS) {\n  const result = report.contract_results.find((r) => r.contract_id === contractId);\n  if (!result || result.verdict !== 'PASS') {\n    console.error(`CONTRACT FAIL: ${contractId}`);\n    process.exit(1);\n  }\n}\n\nif (contracts.aggregate_verdict !== 'PASS') {\n  console.error('CONTRACTS AGGREGATE FAIL');\n  process.exit(1);\n}\n\nconst track = implementation.implementation_tracks.find((t) => t.track_id === 'track_production_pipeline');\nif (!track || !['FOUNDATION_COMPLETE', 'PRODUCTION_VALIDATED'].includes(track.status)) {\n  console.error('TRACK STATUS FAIL');\n  process.exit(1);\n}\n\nfor (const [key, value] of Object.entries(report.checks)) {\n  if (value !== true) {\n    console.error(`CHECK FAIL: ${key}`);\n    process.exit(1);\n  }\n}\n\nif (\n  !report.production_pipeline_foundation_v1_passed ||\n  report.final_verdict !== PRODUCTION_PIPELINE_FOUNDATION_V1_PASS_VERDICT\n) {\n  console.error('VERDICT FAIL');\n  process.exit(1);\n}\n\nif (report.status !== PRODUCTION_PIPELINE_FOUNDATION_V1_STATUS) {\n  console.error('STATUS FAIL');\n  process.exit(1);\n}\n\nconsole.log(PRODUCTION_PIPELINE_FOUNDATION_V1_PASS_VERDICT);\n",
+  "pattern_ref": "services/projectBrainAuditV1Engine.ts",
+  "pattern_sha256": "18ada6e7a851d03d1938e33a3b82775e31d1df79bb1e7fc9854be4b71663f9f8",
+  "pattern_excerpts": [
+    {
+      "line": 92,
+      "text": "const RUNTIME_TRACK_ACCEPTED_STATUSES = ['FOUNDATION_COMPLETE', 'RUNTIME_VALIDATED'] as const;"
+    },
+    {
+      "line": 340,
+      "text": "    return { phase: step.phase, report_path: step.report, exists, passed };"
+    },
+    {
+      "line": 341,
+      "text": "  });"
+    },
+    {
+      "line": 342,
+      "text": ""
+    },
+    {
+      "line": 343,
+      "text": "  const tracks = implementation.implementation_tracks;"
+    },
+    {
+      "line": 344,
+      "text": "  const productionValidated = tracks.find((t) => t.track_id === 'track_production_pipeline')?.status === 'PRODUCTION_VALIDATED';"
+    },
+    {
+      "line": 345,
+      "text": "  const fidelityIntegrated = tracks.find((t) => t.track_id === 'track_cinematic_fidelity')?.status === 'INTEGRATED';"
+    },
+    {
+      "line": 346,
+      "text": "  const runtimeStatus = tracks.find((t) => t.track_id === 'track_generation_runtime')?.status ?? '';"
+    },
+    {
+      "line": 347,
+      "text": "  const runtimeValidated = RUNTIME_TRACK_ACCEPTED_STATUSES.includes("
+    },
+    {
+      "line": 348,
+      "text": "    runtimeStatus as (typeof RUNTIME_TRACK_ACCEPTED_STATUSES)[number]"
+    },
+    {
+      "line": 349,
+      "text": "  );"
+    },
+    {
+      "line": 350,
+      "text": "  const handoffStatus = tracks.find((t) => t.track_id === 'track_brain_handoff')?.status ?? '';"
+    },
+    {
+      "line": 351,
+      "text": "  const handoffReady = BRAIN_HANDOFF_TRACK_ACCEPTED_STATUSES.includes("
+    }
+  ],
+  "observed_current_condition": "if (!track || !['FOUNDATION_COMPLETE', 'PRODUCTION_VALIDATED'].includes(track.status))",
+  "historical_condition_is_user_supplied": true
+}

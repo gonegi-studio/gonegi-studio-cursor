@@ -1,0 +1,181 @@
+{
+  "architecture_version": "project_brain_architecture_v1",
+  "goal_model": {
+    "goal_model_id": "project_brain_goal_model_v1",
+    "goals": [
+      {
+        "goal_id": "goal_ghibli_production_pipeline",
+        "name": "ghibli_production_pipeline",
+        "description": "End-to-end Ghibli-style video production pipeline operational",
+        "priority": "critical",
+        "active": true,
+        "required_capability_refs": [
+          "cap_narrative_production",
+          "cap_cinematic_generation",
+          "cap_movie_reconstruction",
+          "cap_source_video_analysis"
+        ],
+        "required_workflow_refs": [
+          "workflow_narrative_production_v1",
+          "workflow_movie_reconstruction_v1"
+        ],
+        "success_criteria": [
+          "Narrative and cinematic capabilities bound with entities",
+          "Movie reconstruction workflow precheck chain valid"
+        ]
+      },
+      {
+        "goal_id": "goal_project_brain_operational",
+        "name": "project_brain_operational",
+        "description": "Project Brain materialization and intelligence layers operational",
+        "priority": "critical",
+        "active": true,
+        "required_capability_refs": [
+          "cap_project_brain_intelligence",
+          "cap_verification_and_audit"
+        ],
+        "required_workflow_refs": [
+          "workflow_verification_and_audit_v1"
+        ],
+        "success_criteria": [
+          "Project Brain capability materialized",
+          "Verification workflow available"
+        ]
+      },
+      {
+        "goal_id": "goal_repository_foundation",
+        "name": "repository_foundation",
+        "description": "Repository intelligence and dataset management foundation stable",
+        "priority": "high",
+        "active": true,
+        "required_capability_refs": [
+          "cap_repository_intelligence",
+          "cap_dataset_management"
+        ],
+        "required_workflow_refs": [
+          "workflow_repository_intelligence_v1",
+          "workflow_dataset_management_v1"
+        ],
+        "success_criteria": [
+          "Repository and dataset capabilities populated"
+        ]
+      },
+      {
+        "goal_id": "goal_production_runtime",
+        "name": "production_runtime",
+        "description": "GPU production runtime and export materialization ready",
+        "priority": "high",
+        "active": true,
+        "required_capability_refs": [
+          "cap_production_runtime",
+          "cap_export_materialization"
+        ],
+        "required_workflow_refs": [],
+        "success_criteria": [
+          "Production runtime entities classified",
+          "Export paths materialized"
+        ]
+      },
+      {
+        "goal_id": "goal_semantic_quality",
+        "name": "semantic_quality",
+        "description": "Semantic understanding quality sustained across LPM",
+        "priority": "medium",
+        "active": true,
+        "required_capability_refs": [
+          "cap_narrative_production",
+          "cap_cinematic_generation",
+          "cap_movie_reconstruction",
+          "cap_source_video_analysis",
+          "cap_repository_intelligence",
+          "cap_project_brain_intelligence",
+          "cap_verification_and_audit",
+          "cap_dataset_management",
+          "cap_production_runtime",
+          "cap_export_materialization"
+        ],
+        "required_workflow_refs": [],
+        "success_criteria": [
+          "No catch-all capabilities",
+          "Knowledge atoms with provenance"
+        ]
+      }
+    ]
+  },
+  "goal_intelligence_result": {
+    "result_id": "goal_intelligence_1788161852452",
+    "alignment_report": {
+      "evaluated_goals": 5,
+      "active_critical_high": 4,
+      "satisfies_edge_count": 25,
+      "entries": [
+        {
+          "goal_id": "goal_ghibli_production_pipeline",
+          "priority": "critical",
+          "satisfaction_score": 1,
+          "satisfied": true,
+          "satisfied_refs": [
+            "cap_narrative_production",
+            "cap_cinematic_generation",
+            "cap_movie_reconstruction",
+            "cap_source_video_analysis",
+            "workflow_narrative_production_v1",
+            "workflow_movie_reconstruction_v1"
+          ]
+        },
+        {
+          "goal_id": "goal_project_brain_operational",
+          "priority": "critical",
+          "satisfaction_score": 1,
+          "satisfied": true,
+          "satisfied_refs": [
+            "cap_project_brain_intelligence",
+            "cap_verification_and_audit",
+            "workflow_verification_and_audit_v1"
+          ]
+        },
+        {
+          "goal_id": "goal_repository_foundation",
+          "priority": "high",
+          "satisfaction_score": 1,
+          "satisfied": true,
+          "satisfied_refs": [
+            "cap_repository_intelligence",
+            "cap_dataset_management",
+            "workflow_repository_intelligence_v1",
+            "workflow_dataset_management_v1"
+          ]
+        },
+        {
+          "goal_id": "goal_production_runtime",
+          "priority": "high",
+          "satisfaction_score": 1,
+          "satisfied": true,
+          "satisfied_refs": [
+            "cap_production_runtime",
+            "cap_export_materialization"
+          ]
+        },
+        {
+          "goal_id": "goal_semantic_quality",
+          "priority": "medium",
+          "satisfaction_score": 1,
+          "satisfied": true,
+          "satisfied_refs": [
+            "cap_narrative_production",
+            "cap_cinematic_generation",
+            "cap_movie_reconstruction",
+            "cap_source_video_analysis",
+            "cap_repository_intelligence",
+            "cap_project_brain_intelligence",
+            "cap_verification_and_audit",
+            "cap_dataset_management",
+            "cap_production_runtime",
+            "cap_export_materialization"
+          ]
+        }
+      ]
+    },
+    "verdict": "PASS"
+  }
+}

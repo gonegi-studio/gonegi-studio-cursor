@@ -1,0 +1,221 @@
+{
+  "input": {
+    "kind": "experience",
+    "key": "capability_ref",
+    "value": "cap_dataset_management"
+  },
+  "started_at": "2026-08-31T11:48:38.622Z",
+  "completed_at": "2026-08-31T11:48:39.182Z",
+  "result": {
+    "ok": true,
+    "status": "OK",
+    "canonical_count": 108,
+    "results": [
+      {
+        "kind": "experience",
+        "id": "exp_phase942_semantic_quality_capability_overapplication_01",
+        "record": {
+          "experience_id": "exp_phase942_semantic_quality_capability_overapplication_01",
+          "phase": "PHASE-942",
+          "generated_at": "2026-08-22T00:00:00.000Z",
+          "experience_kind": "partial_progress",
+          "context": {
+            "goal_id": "goal_semantic_quality",
+            "capability_ids": [
+              "cap_dataset_management"
+            ],
+            "state_before": {
+              "functional_status": "blocked"
+            }
+          },
+          "problem": "cap_dataset_management held 72.6% of all LPM entities (a real, correctly-identified catch-all/taxonomy finding).",
+          "decision": {
+            "decision_summary": "Apply the catch-all finding directly to mark cap_dataset_management's own CAPABILITY-level functional_status as 'blocked'.",
+            "decided_at_phase": "PHASE-942"
+          },
+          "action": {
+            "action_type": "process_redesign",
+            "action_summary": "Set overlay entry cap_dataset_management: blocked, evidence=concentration-rootcause-v1.json.",
+            "real_or_simulated": "real"
+          },
+          "evidence": {
+            "evidence_kind": "hard_fail",
+            "evidence_category": "taxonomy_quality_only",
+            "evidence_source": "project-brain-cap-dataset-management-concentration-rootcause-v1.json",
+            "evidence_detail": "2117/2917 (72.6%) entities in one capability bucket."
+          },
+          "result": {
+            "functional_status_before": "unknown",
+            "functional_status_after": "blocked"
+          },
+          "cause": {
+            "root_cause_summary": "A Goal-criterion-level finding (violates goal_semantic_quality's own \"no catch-all\" criterion) was over-applied to set a Capability-level functional judgment -- conflating two different kinds of claims.",
+            "cause_type": "evidence_misapplication"
+          },
+          "lesson": "(superseded -- see exp_phase946_semantic_quality_capability_correction_01)",
+          "links": {
+            "goal_ref": "goal_semantic_quality",
+            "gap_ref": "gap_phase941_semantic_quality_catch_all_capability_violation",
+            "dependency_ref": "dependency_phase941_goal_semantic_quality_on_cap_dataset_management_reclassification",
+            "capability_refs": [
+              "cap_dataset_management"
+            ]
+          }
+        },
+        "matched_key": "capability_ref",
+        "matched_value": "cap_dataset_management",
+        "provenance_source": null,
+        "resolved_references": [],
+        "verification": {
+          "canonical_membership": true,
+          "candidate_contract_validated": false,
+          "reference_integrity": "RESOLVED",
+          "reference_scope": "Canonical loader checks plus correction, external-target and Principle Experience-provenance links; not arbitrary evidence paths or historical promotion lineage.",
+          "substantive_evidence": "NOT_EVALUATED",
+          "knowledge_verified": false,
+          "promotion_authorized": false
+        }
+      },
+      {
+        "kind": "experience",
+        "id": "exp_phase946_semantic_quality_capability_correction_01",
+        "record": {
+          "experience_id": "exp_phase946_semantic_quality_capability_correction_01",
+          "phase": "PHASE-946",
+          "generated_at": "2026-08-22T08:01:43.280Z",
+          "experience_kind": "misjudgment_correction",
+          "context": {
+            "goal_id": "goal_repository_foundation",
+            "capability_ids": [
+              "cap_dataset_management"
+            ],
+            "state_before": {
+              "functional_status": "satisfied"
+            }
+          },
+          "problem": "PHASE-945's new automatic Goal<->Capability contradiction detector found goal_repository_foundation (satisfied) backed by cap_dataset_management (blocked) -- a real, detected inconsistency.",
+          "decision": {
+            "decision_summary": "Re-check the original 'blocked' evidence against PHASE-943's fixed semantics (blocked requires hard_failure-category evidence) rather than force-correcting either side blindly.",
+            "decided_at_phase": "PHASE-946",
+            "corrects_experience_id": "exp_phase942_semantic_quality_capability_overapplication_01"
+          },
+          "action": {
+            "action_type": "investigation",
+            "action_summary": "Re-read goal_model.json directly: confirmed \"no catch-all capabilities\" is goal_semantic_quality's own criterion, not goal_repository_foundation's. Corrected cap_dataset_management overlay: blocked -> pending.",
+            "real_or_simulated": "real"
+          },
+          "evidence": {
+            "evidence_kind": "attempted_incomplete",
+            "evidence_category": "taxonomy_quality_only",
+            "evidence_source": "datasets/repository_intelligence/project-entity-extraction-v1.json + concentration-rootcause-v1.json (evidence re-scoped)",
+            "evidence_detail": "Population evidence real and complete; taxonomy concern real but does not show functional failure -- pending, not blocked."
+          },
+          "result": {
+            "functional_status_before": "blocked",
+            "functional_status_after": "pending"
+          },
+          "cause": {
+            "root_cause_summary": "Same as exp_phase942's cause, now correctly attributed and fixed at the right layer (capability, not goal).",
+            "cause_type": "evidence_misapplication"
+          },
+          "lesson": "A Goal-level criterion violation does not automatically imply the underlying Capability is functionally broken -- always check whether evidence is being applied to the layer (Goal vs Capability) it actually supports before propagating a 'blocked' status.",
+          "links": {
+            "goal_ref": "goal_repository_foundation",
+            "gap_ref": null,
+            "dependency_ref": null,
+            "capability_refs": [
+              "cap_dataset_management"
+            ]
+          }
+        },
+        "matched_key": "capability_ref",
+        "matched_value": "cap_dataset_management",
+        "provenance_source": null,
+        "resolved_references": [
+          {
+            "kind": "experience",
+            "id": "exp_phase942_semantic_quality_capability_overapplication_01"
+          }
+        ],
+        "verification": {
+          "canonical_membership": true,
+          "candidate_contract_validated": false,
+          "reference_integrity": "RESOLVED",
+          "reference_scope": "Canonical loader checks plus correction, external-target and Principle Experience-provenance links; not arbitrary evidence paths or historical promotion lineage.",
+          "substantive_evidence": "NOT_EVALUATED",
+          "knowledge_verified": false,
+          "promotion_authorized": false
+        }
+      },
+      {
+        "kind": "experience",
+        "id": "exp_phase_e22_cross_domain_principle_execution_01",
+        "record": {
+          "experience_id": "exp_phase_e22_cross_domain_principle_execution_01",
+          "phase": "PHASE-E22",
+          "generated_at": "2026-08-22T23:34:13.741Z",
+          "experience_kind": "successful_resolution",
+          "context": {
+            "goal_id": "goal_semantic_quality",
+            "capability_ids": [
+              "cap_dataset_management"
+            ],
+            "state_before": {
+              "functional_status": "blocked"
+            }
+          },
+          "problem": "E21's validated principle (search existing artifacts before new content) had only been observed in 2 domains (video_production, pb_self_improvement) -- it was not yet empirically tested on a genuinely different real task.",
+          "decision": {
+            "decision_summary": "Applied the principle to goal_semantic_quality's real, on-record reclassification gate: searched existing artifacts first (found 0 relevant), re-verified (not re-trusted) PHASE-961's gate sub-conditions, both still unmet -- correct action per the principle is to author 0 new reclassification content, exactly what was done.",
+            "decided_at_phase": "PHASE-E22"
+          },
+          "action": {
+            "action_type": "investigation",
+            "action_summary": "Automated filename+substance search + re-verification of a real, existing gate-check finding. 0 new reclassification content authored, 0 Goal/Gap/Policy modified.",
+            "real_or_simulated": "real"
+          },
+          "evidence": {
+            "evidence_kind": "hard_pass",
+            "evidence_category": "hard_pass",
+            "evidence_source": "project-brain-e22-pre-verification-v1.json + project-brain-e22-real-application-v1.json + project-brain-e22-effect-verification-v1.json (this phase)",
+            "evidence_detail": "gate_satisfied=false, rework_avoided=true, duplicate_investigation_avoided=true, effective=true"
+          },
+          "result": {
+            "functional_status_before": "blocked",
+            "functional_status_after": "blocked",
+            "note": "goal_semantic_quality remains genuinely blocked (real approval still not given) -- this phase validates the PRINCIPLE's reusability, it does not (and does not claim to) resolve the underlying Goal."
+          },
+          "cause": {
+            "root_cause_summary": "The cross-domain principle (E21) had real evidence from only 2 closely-related domains (both eventually tracing to the same original ghibli-pipeline fix) -- a genuinely independent 3rd-domain test had not been performed.",
+            "cause_type": "code_data_wiring_bug"
+          },
+          "lesson": "The principle held up under real, independent application to a 3rd domain -- and the application itself surfaced a real refinement (verify substance, not just filename/label match) that strengthens rather than merely confirms it, exactly the kind of honest, evidence-based generalization this whole validation arc has required at every step.",
+          "links": {
+            "goal_ref": "goal_semantic_quality",
+            "gap_ref": "gap_phase941_semantic_quality_catch_all_capability_violation",
+            "dependency_ref": null,
+            "capability_refs": [
+              "cap_dataset_management"
+            ]
+          }
+        },
+        "matched_key": "capability_ref",
+        "matched_value": "cap_dataset_management",
+        "provenance_source": null,
+        "resolved_references": [],
+        "verification": {
+          "canonical_membership": true,
+          "candidate_contract_validated": false,
+          "reference_integrity": "RESOLVED",
+          "reference_scope": "Canonical loader checks plus correction, external-target and Principle Experience-provenance links; not arbitrary evidence paths or historical promotion lineage.",
+          "substantive_evidence": "NOT_EVALUATED",
+          "knowledge_verified": false,
+          "promotion_authorized": false
+        }
+      }
+    ],
+    "errors": [],
+    "scope": "Current canonical Experiences, validated Tutor Candidates, existing E23 Principle registry"
+  },
+  "usage": "REFERENCE_ONLY"
+}
