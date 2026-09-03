@@ -1,0 +1,93 @@
+{
+  "report_id": "output_location_governance_remediation_v1_outcome",
+  "record_type": "OUTCOME",
+  "phase": "PHASE-OUTPUT-LOCATION-GOVERNANCE-REMEDIATION-V1",
+  "system_id": "OUTPUT_LOCATION_GOVERNANCE_REMEDIATION_V1",
+  "generated_at": "2026-09-03T07:26:22.134Z",
+  "verdict": "OUTPUT_LOCATION_GOVERNANCE_REMEDIATION_PROVEN",
+  "all_clear": true,
+  "production_hold_preserved": true,
+  "diagnosis_phase": {
+    "candidate_selection": {
+      "method": "Broad reports/ FAIL-verdict scan, staleness-checked by rebuild-first before treating as a real candidate.",
+      "finding": "OUTPUT_LOCATION_AUDIT_REPORT was current (not stale) -- 6 image-app native-import files (titanic/spirited_away x v2/v3/v4) sat directly under exports/movie_spatial/ root instead of ACTIVE/TEST/MANUAL/ARCHIVE."
+    },
+    "root_cause": {
+      "method": "Static source trace (grep + read) of the 3 writer services and the audit's own scanner.",
+      "finding": "movieScenarioHardening.ts (v2), movieCharacterDNALock.ts (v3), movieTimeSettingLock.ts (v4) each hardcoded output_path directly under exports/movie_spatial/ root. Simultaneously, outputLocationAudit.ts::scanBuilderViolations()'s IMAGE_APP_BUILDER_FILES allowlist -- the mechanism specifically built to catch this class of violation -- did not include any of these 3 files, so the static scan could never have caught it."
+    },
+    "policy_precedent": {
+      "method": "Compared with v5/v6/v7 (movieImageAppNativeImportBuilder.ts), the next stages in the same v2->v8 pipeline.",
+      "finding": "v5/v6/v7 already write to legacy/exports/movie_spatial/ (an already-ALLOWED_BUILDER_OUTPUT_PATTERNS location), establishing the correct precedent for v2/v3/v4 rather than ACTIVE (reserved for v8 only) or TEST/MANUAL/ARCHIVE (semantically wrong)."
+    },
+    "downstream_consumer_trace": {
+      "method": "Repo-wide grep for the 6 exact filenames across services/ and scripts/.",
+      "finding": "v2.json and v3.json are never re-read from disk anywhere (only their generator functions are reused in-memory). v4.json IS re-read, via loadMovieImageAppNativeImportV4Dataset() in movieTimeSettingLock.ts itself (self-consistent with the builder's own output_path array). One separate, independently-hardcoded duplicate reference found: movieMasterImportAudit.ts::MASTER_IMPORT_V4_PATH, used only as a report label/error-message string (not a functional file read), which would go stale if not updated alongside the relocation."
+    },
+    "relocation_collision_check": {
+      "method": "Before treating the path fix as low-risk, checked whether the precedented target (legacy/exports/movie_spatial/) already held content under the same 6 filenames.",
+      "finding": "All 6 target filenames already existed there, dated 2026-06-12 (an untracked, never-committed, ~3-month-old snapshot from the same deterministic builder, structurally identical schema/phase/system_id to the current output, differing only in content because upstream source data had since changed). Zero git history, zero functional reads anywhere (services/scripts/project_brain/project_memory all checked), zero references beyond generic whole-repo file-inventory scanners -- judged stale orphan, safe to overwrite. This check was necessary because a naive path-only fix would have silently destroyed this snapshot on the next build."
+    },
+    "v4_blocking_dependency_chain": {
+      "method": "Live rebuild attempts after the wiring fix, root-caused each crash via stack trace + static source trace rather than working around it.",
+      "finding_1": "buildNativeImportV4Slot() crashed reading datasets/generation_context/artstyle/canonical-artstyle.txt (missing). Traced: v2/v3 already use a different, live, working mechanism (canonicalGonegiArtStyle.ts -> master_style_core/canonical-artstyle.json, phase PHASE-MOVIE-SPATIAL-013A) that v4 never migrated to; v4 alone still called the older generationContextLoader.ts::copyCanonicalArtStyle() (phase PHASE-GENERATION-CONTEXT-001, chronologically earlier). Confirmed via legacy/datasets/generation_context/artstyle/canonical-artstyle.txt: the whole old copy-only generation-context system had been formally archived to a legacy/ mirror, matching the same archival convention as the exports/ case, but v4's one call site was never repointed.",
+      "finding_2": "After fixing artStyle, the very next line crashed identically on copyCanonicalTimeSetting() (3 call sites total, 1 more than initially estimated) reading datasets/generation_context/timesetting/canonical-timesetting-library.json (also missing, also archived to legacy/datasets/generation_context/timesetting/). v2 was independently confirmed to already resolve its own timeSetting field from a different, live, working source (TIME_SETTING_LIBRARY_PATH via scenario-generator-foundation.js). movieTimeSettingLock.ts already contained its own exported, live replacement (buildLockedTimeSettingFieldFromGraph(), already consumed by movieMasterImportAudit.ts for its own independent audit slot construction) -- the same repeated pattern as the artStyle case, confirming it as a proven, reusable diagnostic method rather than a one-off."
+    }
+  },
+  "repair_phase": {
+    "builder_path_relocation": {
+      "files": ["services/movieScenarioHardening.ts", "services/movieCharacterDNALock.ts", "services/movieTimeSettingLock.ts"],
+      "change": "output_path changed from 'exports/movie_spatial/...' (root) to `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/...` (imported from generationOutputPaths.ts), matching v5/v6/v7's existing precedent exactly."
+    },
+    "scanner_coverage_fix": {
+      "file": "services/outputLocationAudit.ts",
+      "change": "Added the 3 builder filenames to IMAGE_APP_BUILDER_FILES so scanBuilderViolations() actually watches them going forward."
+    },
+    "stale_label_sync": {
+      "file": "services/movieMasterImportAudit.ts",
+      "change": "MASTER_IMPORT_V4_PATH synced to the new legacy path so report output no longer names a path the file does not live at."
+    },
+    "artstyle_wiring_fix": {
+      "file": "services/movieTimeSettingLock.ts",
+      "change": "artStyle field production switched from the dead generationContextLoader.ts::copyCanonicalArtStyle() to the live, already-used-elsewhere canonicalGonegiArtStyle.ts::resolveCanonicalGonegiArtStyle(root).value."
+    },
+    "timesetting_wiring_fix": {
+      "file": "services/movieTimeSettingLock.ts",
+      "change": "All 3 copyCanonicalTimeSetting() call sites (field production, evaluateTimeSettingLockChecks's expected value, validateTimeSettingSlot's expected value) switched to the live, already-used-elsewhere buildLockedTimeSettingFieldFromGraph(graph, root).value. The now-unused generationContextLoader.js import was removed."
+    },
+    "orphan_cleanup": {
+      "pre_delete_fresh_check": "Immediately before deletion, re-ran a repo-wide grep for the 6 exact root filenames across services/ and scripts/ (zero matches) and re-confirmed the 6 legacy replacements existed with fresh content -- not relying on the earlier turn's assessment alone.",
+      "action": "Deleted the 6 now-orphaned root files (exports/movie_spatial/{titanic,spirited-away}-image-app-native-import-v{2,3,4}.json)."
+    }
+  },
+  "verification": {
+    "illegal_exports": { "before": 6, "after": 0 },
+    "builder_violations": { "before_scanner_fix": "not applicable (files not scanned)", "after": 0 },
+    "output_location_audit": { "before": "FAIL_GENERATION_OUTPUT_LOCK_V1", "after": "PASS_GENERATION_OUTPUT_LOCK_V1", "validation_passed": true },
+    "v2_v3_v4_rebuild": { "v2": "PASS_MOVIE_SCENARIO_HARDENING_V1", "v3": "PASS_MOVIE_CHARACTER_DNA_LOCK_V1", "v4": "PASS_MOVIE_TIMESETTING_LOCK_V1 (time_library_locked=true)" },
+    "master_import_audit": {
+      "verdict": "PASS_MOVIE_MASTER_IMPORT_AUDIT_V1",
+      "artStyle_score": 1, "timeSetting_score": 1, "character_score": 1, "overall_import_score": 0.9994,
+      "regression": "unchanged before/after root deletion -- confirms zero downstream dependency on the deleted root files"
+    },
+    "legacy_replacement_confirmed": "All 6 legacy/exports/movie_spatial/*-v{2,3,4}.json files confirmed present with 2026-09-03 generated_at (not the prior 2026-06-12 stale content) before the root originals were deleted."
+  },
+  "canonical_history_dedup_check": {
+    "method": "retrieveCanonicalHistoryByProblem live against the real canonical corpus for 10 query phrases, plus a repo-wide keyword grep across every project-brain-experience-*.json file's full content (not just the problem field) for output_location/scanBuilderViolations/IMAGE_APP_BUILDER_FILES/legacy-exports/orphan/canonical-artstyle/canonical-timesetting/generationContextLoader.",
+    "queries_not_found": ["output location governance", "uncontrolled root export", "scanner coverage blind spot", "builder file was never added to the scan list", "relocate a file to a directory that already contains unrelated content", "orphan file deletion", "stale API call to a deprecated canonical source", "two independent mechanisms for the same canonical value", "legacy directory already contains a different snapshot under the same filename", "deprecated dependency replaced by a live canonical resolver"],
+    "keyword_grep_result": "1 match (exp_genie_outcome_capture_idempotency_v1), confirmed unrelated (GENIE's own outcome-capture idempotency, not output-location governance)",
+    "conclusion": "No duplicate anywhere in the canonical corpus for this domain/pattern."
+  },
+  "regression": {
+    "genie_regression_all_passed": true,
+    "genie_regression_script_count": 20,
+    "duplicate_ids": 0,
+    "duplicate_keys": 0,
+    "dangling_refs": 0,
+    "canonical_experience_count_before": 133,
+    "canonical_experience_count_after": 134,
+    "index_version": "project_brain_experience_index_v8"
+  },
+  "knowledge_promoted": false,
+  "principle_promoted": false
+}

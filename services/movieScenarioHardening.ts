@@ -20,6 +20,7 @@ import {
   loadAllMovieSpatialEngineDatasets,
 } from './movieSpatialEngineBuilder.js';
 import { writeMovieArtstyleLockReport } from './movieArtstyleLockValidation.js';
+import { LEGACY_MOVIE_SPATIAL_EXPORT_ROOT } from './generationOutputPaths.js';
 import { SAFE_CREATE_POLICY } from './mvProductionSystemFoundation.js';
 import { resolveProjectRoot } from './projectRootResolver.js';
 
@@ -36,11 +37,11 @@ export const MOVIE_SCENARIO_HARDENING_SCHEMA_PATH =
 export const NATIVE_IMPORT_V2_OUTPUTS = [
   {
     movie_id: 'titanic',
-    output_path: 'exports/movie_spatial/titanic-image-app-native-import-v2.json',
+    output_path: `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/titanic-image-app-native-import-v2.json`,
   },
   {
     movie_id: 'spirited_away',
-    output_path: 'exports/movie_spatial/spirited-away-image-app-native-import-v2.json',
+    output_path: `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/spirited-away-image-app-native-import-v2.json`,
   },
 ] as const;
 

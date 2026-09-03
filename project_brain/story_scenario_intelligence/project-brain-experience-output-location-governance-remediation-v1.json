@@ -1,0 +1,54 @@
+{
+  "experience_id": "exp_output_location_governance_remediation_v1",
+  "phase": "PHASE-OUTPUT-LOCATION-GOVERNANCE-REMEDIATION-V1",
+  "generated_at": "2026-09-03T07:26:22.134Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "outcome_ref": "project_brain/story_scenario_intelligence/project-brain-output-location-governance-remediation-v1-outcome.json",
+    "capture_reason": "A real, current (non-stale) governance violation was traced through a multi-stage arc -- policy scanner blind spot, cross-directory relocation with a pre-existing collision risk, two independent instances of the same dead-dependency-to-live-replacement diagnostic, and a final pre-delete safety re-check -- and closed with a clean PASS and zero downstream regression; worth capturing once as one coherent playbook rather than per stage."
+  },
+  "problem": "OUTPUT_LOCATION_AUDIT_REPORT showed a real, current violation: 6 image-app native-import files (titanic/spirited_away x v2/v3/v4) written directly under exports/movie_spatial/ root by 3 separate builders, none of which the audit's own scanBuilderViolations() scanner covered. Fixing the path alone was not safe: the precedented target directory already held differently-dated content under the same 6 filenames, and the v4 builder additionally crashed on two separate missing dependencies (artStyle, then timeSetting) that turned out to be dead references into a formally-archived subsystem rather than genuinely lost sources.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Fix the violating output paths and the scanner's coverage gap together -- a policy violation in build output and a blind spot in the mechanism meant to catch that class of violation are two separate failures that must both be closed, or the same class of violation can recur undetected. Before executing any cross-directory relocation, check both directions: whether anything still functionally reads the old location, and whether the new (precedented) location already holds different content that a naive write would silently overwrite. When a build step crashes on a missing dependency, do not try to restore or recreate the missing file -- first check whether a live, already-used-elsewhere replacement for the same concept exists in the same codebase (found by comparing what already-working sibling call sites use), and rewire to that. Before any irreversible cleanup (deleting now-orphaned files), redo the safety check fresh at the moment of deletion rather than relying on an assessment made earlier in the investigation."
+  },
+  "action": {
+    "action_type": "output_location_governance_remediation_with_dead_dependency_rewiring",
+    "action_summary": "Relocated 3 builders' output_path from exports/movie_spatial/ root to the already-precedented legacy/exports/movie_spatial/ (matching v5/v6/v7); added the 3 builder files to the audit's scanner allowlist; synced a duplicated stale path label in a downstream consumer; rewired v4's artStyle and timeSetting field production (4 call sites total across 2 dead APIs) to already-live replacement functions used elsewhere in the same codebase; re-verified the full chain (builders, master import audit, output location audit) after each step; re-confirmed zero remaining references immediately before deleting the 6 now-orphaned root files.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "output_location_governance_remediation_and_verified_dead_dependency_rewiring",
+    "evidence_source": "project_brain/story_scenario_intelligence/project-brain-output-location-governance-remediation-v1-outcome.json",
+    "evidence_sha256": "9d3104dfd69504c73351698fae39bd407a2835ae58b4e871894672eaaf115c54",
+    "evidence_detail": "illegal_exports 6->0; builder_violations 0 (scanner coverage confirmed working); final_verdict FAIL_GENERATION_OUTPUT_LOCK_V1 -> PASS_GENERATION_OUTPUT_LOCK_V1; v2/v3/v4 all rebuilt PASS (v4 time_library_locked=true, self-consistency confirmed); Master Import Audit PASS with artStyle_score=1/timeSetting_score=1/character_score=1/overall=0.9994, identical before and after the root-file deletion (zero downstream dependency confirmed); all 6 legacy replacement files confirmed present with fresh 2026-09-03 content before deletion of the 6 root originals; retrieveCanonicalHistoryByProblem (10 queries) plus a full-corpus keyword grep found no duplicate; 20/20 GENIE regression scripts passed with duplicate_ids=0/duplicate_keys=0/dangling_refs=0."
+  },
+  "result": {
+    "status": "OUTPUT_LOCATION_GOVERNANCE_REMEDIATION_PROVEN",
+    "problem_resolved": true,
+    "illegal_exports_recovery": "6_to_0",
+    "builder_violations": 0,
+    "dead_dependencies_rewired": 2,
+    "orphans_removed": 6,
+    "downstream_regression": "none",
+    "synthetic_fallback_used": false,
+    "new_source_invented": false,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "Three separate builders (v2/v3/v4) were written or evolved independently and never aligned to the output-location convention their later siblings (v5/v6/v7) already followed; the governance scanner meant to catch exactly this class of drift was never updated to watch these 3 files. Separately, v4 alone never migrated off an early, since-archived generation-context subsystem (PHASE-GENERATION-CONTEXT-001) when the rest of the pipeline moved to newer, self-contained canonical resolvers (PHASE-MOVIE-SPATIAL-013A and movieTimeSettingLock.ts's own lock system) -- two unrelated migrations left behind in the same file, discovered only because fixing the output-location issue required actually running the builder end to end.",
+    "cause_type": "incremental_pipeline_evolution_leaving_unmigrated_call_sites_and_an_unwatched_scanner_allowlist"
+  },
+  "lesson": "A build-output governance violation and the coverage gap in the scanner meant to catch it are two independent failures -- closing only the data violation without also closing the scanner's blind spot leaves the same class of violation free to recur undetected. Before relocating where a builder writes its output, check both directions: whether anything still functionally reads the old location (not just greps of the literal path, but tracing which loader actually resolves the file at runtime), and whether the precedented new location already holds different content under the same filename that a naive write would silently destroy -- provenance (age, git history, real references) is what distinguishes a safe-to-overwrite stale orphan from something that must be preserved. When a build step crashes on a missing dependency, the fix is not to restore the missing file -- check first whether a live, already-used-elsewhere replacement for the same concept exists in the same codebase (found by diffing what already-working sibling call sites use), and rewire to that; this diagnostic reproduced identically twice in the same file (artStyle, then timeSetting), proving it is a repeatable method rather than a one-off. Finally, an earlier-turn safety assessment is not permission to skip re-checking at the moment of an irreversible action -- redo the reference check fresh immediately before deleting now-orphaned files.",
+  "links": {
+    "goal_ref": "goal_ghibli_production_pipeline",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": ["cap_movie_reconstruction", "cap_verification_and_audit"],
+    "provenance_source": "OJT",
+    "source_outcome_ref": "project_brain/story_scenario_intelligence/project-brain-output-location-governance-remediation-v1-outcome.json",
+    "related_but_distinct_from": "exp_movie_replica_cross_movie_schema_wiring_v1 (same session's prior arc: that lesson diagnoses cross-movie DATA SCHEMA divergence between two producers feeding one shared consumer; this lesson diagnoses a dead vs. live API pair coexisting inside one file, found by comparing sibling call sites, plus a separate governance-scanner-coverage and relocation-collision discipline neither of those data-schema fixes needed); exp_spirited_away_git_head_diff_mutation_verification_v1 (both touch mutation-safety, but that lesson is about not using git-HEAD-diff as change-scope evidence in a repo with legitimate long-lived uncommitted state, while this lesson's safety gate is about re-validating a stale-orphan judgment immediately before an irreversible delete rather than trusting an earlier-turn assessment -- different point in time, different failure mode)"
+  }
+}

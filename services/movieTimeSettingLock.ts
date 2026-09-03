@@ -1,10 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  copyCanonicalArtStyle,
   copyCanonicalCharacterFieldFromGraph,
-  copyCanonicalTimeSetting,
 } from './generationContextLoader.js';
+import { resolveCanonicalGonegiArtStyle } from './canonicalGonegiArtStyle.js';
 import { ImageAppNativeImportSlot } from './movieMasterDatasetBinding.js';
 import {
   evaluateCharacterDNAChecks,
@@ -27,6 +26,7 @@ import {
   loadTimeSettingLibrary,
 } from './scenarioGenerator/scenario-generator-foundation.js';
 import { SAFE_CREATE_POLICY } from './mvProductionSystemFoundation.js';
+import { LEGACY_MOVIE_SPATIAL_EXPORT_ROOT } from './generationOutputPaths.js';
 import { resolveProjectRoot } from './projectRootResolver.js';
 
 export const MOVIE_TIMESETTING_LOCK_PHASE = 'PHASE-MOVIE-SPATIAL-013D' as const;
@@ -42,11 +42,11 @@ export const MOVIE_TIMESETTING_LOCK_SCHEMA_PATH =
 export const NATIVE_IMPORT_V4_OUTPUTS = [
   {
     movie_id: 'titanic',
-    output_path: 'exports/movie_spatial/titanic-image-app-native-import-v4.json',
+    output_path: `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/titanic-image-app-native-import-v4.json`,
   },
   {
     movie_id: 'spirited_away',
-    output_path: 'exports/movie_spatial/spirited-away-image-app-native-import-v4.json',
+    output_path: `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/spirited-away-image-app-native-import-v4.json`,
   },
 ] as const;
 
@@ -316,8 +316,7 @@ export function evaluateTimeSettingLockChecks(
   root?: string
 ): TimeSettingLockChecks {
   const projectRoot = root ?? resolveProjectRoot();
-  const timeSettingId = resolveLockedTimeSettingId(graph);
-  const expected = copyCanonicalTimeSetting(timeSettingId, projectRoot);
+  const expected = buildLockedTimeSettingFieldFromGraph(graph, projectRoot).value;
   const generatedTimeSetting = detectFreeformTimeSetting(timeSetting);
 
   return {
@@ -334,10 +333,9 @@ function buildNativeImportV4Slot(
   spatialScene: MovieSpatialSceneRecord | null,
   root: string
 ): ImageAppNativeImportSlot {
-  const timeSettingId = resolveLockedTimeSettingId(graph);
   return {
-    artStyle: copyCanonicalArtStyle(root),
-    timeSetting: copyCanonicalTimeSetting(timeSettingId, root),
+    artStyle: resolveCanonicalGonegiArtStyle(root).value,
+    timeSetting: buildLockedTimeSettingFieldFromGraph(graph, root).value,
     scenario: generateHardenedScenarioFromSpatialGraph(graph, spatialScene),
     character: copyCanonicalCharacterFieldFromGraph(graph, root),
   };
@@ -349,7 +347,7 @@ function validateTimeSettingSlot(
   root: string
 ): { issues: ValidationIssue[]; result: TimeSettingSlotResult } {
   const timeSettingId = resolveLockedTimeSettingId(graph);
-  const expectedTimeSetting = copyCanonicalTimeSetting(timeSettingId, root);
+  const expectedTimeSetting = buildLockedTimeSettingFieldFromGraph(graph, root).value;
   const checks = evaluateTimeSettingLockChecks(graph, slot.timeSetting, root);
   const issues: ValidationIssue[] = [];
 

@@ -32,6 +32,7 @@ import {
   writeMovieTimeSettingLockReport,
 } from './movieTimeSettingLock.js';
 import { SAFE_CREATE_POLICY } from './mvProductionSystemFoundation.js';
+import { LEGACY_MOVIE_SPATIAL_EXPORT_ROOT } from './generationOutputPaths.js';
 import { resolveProjectRoot } from './projectRootResolver.js';
 
 export const MOVIE_MASTER_IMPORT_AUDIT_PHASE = 'PHASE-MOVIE-SPATIAL-014' as const;
@@ -43,7 +44,7 @@ export const MOVIE_MASTER_IMPORT_AUDIT_REPORT_PATH =
   'reports/movie_spatial/MOVIE_MASTER_IMPORT_AUDIT_REPORT.json' as const;
 
 export const MASTER_IMPORT_V4_PATH =
-  'exports/movie_spatial/titanic-image-app-native-import-v4.json' as const;
+  `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/titanic-image-app-native-import-v4.json` as const;
 
 export const MASTER_IMPORT_AUDIT_SLOTS = [
   {

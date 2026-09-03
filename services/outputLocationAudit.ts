@@ -52,6 +52,9 @@ const IMAGE_APP_BUILDER_FILES = [
   'movieImageAppExportBuilder.ts',
   'movieRealImageAppValidation.ts',
   'movieRealImageAudit.ts',
+  'movieScenarioHardening.ts',
+  'movieCharacterDNALock.ts',
+  'movieTimeSettingLock.ts',
 ] as const;
 
 interface AuditIssue {

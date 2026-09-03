@@ -24,8 +24,8 @@ import {
 import { SAFE_CREATE_POLICY } from './mvProductionSystemFoundation.js';
 import {
   copyCanonicalCharacterFieldFromGraph,
-  GENERATION_CONTEXT_CHARACTER_REF,
 } from './generationContextLoader.js';
+import { LEGACY_MOVIE_SPATIAL_EXPORT_ROOT } from './generationOutputPaths.js';
 import { resolveProjectRoot } from './projectRootResolver.js';
 
 export const MOVIE_CHARACTER_DNA_LOCK_PHASE = 'PHASE-MOVIE-SPATIAL-013C' as const;
@@ -41,11 +41,11 @@ export const MOVIE_CHARACTER_DNA_LOCK_SCHEMA_PATH =
 export const NATIVE_IMPORT_V3_OUTPUTS = [
   {
     movie_id: 'titanic',
-    output_path: 'exports/movie_spatial/titanic-image-app-native-import-v3.json',
+    output_path: `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/titanic-image-app-native-import-v3.json`,
   },
   {
     movie_id: 'spirited_away',
-    output_path: 'exports/movie_spatial/spirited-away-image-app-native-import-v3.json',
+    output_path: `${LEGACY_MOVIE_SPATIAL_EXPORT_ROOT}/spirited-away-image-app-native-import-v3.json`,
   },
 ] as const;
 
