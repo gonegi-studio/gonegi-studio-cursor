@@ -140,6 +140,30 @@ const repositoryJsonRef = value => text(value) && /^[A-Za-z0-9_./-]+\.json$/.tes
   !value.startsWith('/') && !value.split('/').includes('..');
 const normalizedPhrase = value => value.trim().replace(/\s+/g, ' ').toLowerCase();
 
+// Structural, non-scoring fallback (see below): plain word tokens, no stopword
+// list, no stemming. Used only to measure (a) unique corpus-wide overlap count
+// and (b) whether the query and a candidate share an actual contiguous phrase
+// (run length >= 2), never as a tunable relevance score.
+const tokenize = value => normalizedPhrase(value).match(/[a-z0-9]+/g) || [];
+
+function longestContiguousRun(queryTokens, candidateTokens) {
+  let best = 0;
+  for (let i = 0; i < queryTokens.length; i += 1) {
+    let len = 0;
+    while (i + len < queryTokens.length) {
+      const window = queryTokens.slice(i, i + len + 1);
+      let found = false;
+      for (let j = 0; j + window.length <= candidateTokens.length; j += 1) {
+        if (window.every((t, k) => candidateTokens[j + k] === t)) { found = true; break; }
+      }
+      if (!found) break;
+      len += 1;
+    }
+    if (len > best) best = len;
+  }
+  return best;
+}
+
 // The one directory this module and readCaptureState() already treat as the
 // canonical home of every Experience/History document -- reused here, not a
 // new or incident-specific location.
@@ -270,8 +294,29 @@ export function retrieveCanonicalHistoryByProblem(request, readers = {
     const experiences = uniqueMap(readers.canonical().records, 'experience_id', 'Experience');
     canonicalCount = experiences.size;
     const phrase = normalizedPhrase(request.problem);
-    const matched = [...experiences].filter(([, record]) => text(record.problem) &&
+    let matched = [...experiences].filter(([, record]) => text(record.problem) &&
       normalizedPhrase(record.problem).includes(phrase)).sort(([a], [b]) => a.localeCompare(b));
+    let matchContract = 'CASE_INSENSITIVE_LITERAL_PHRASE_NO_SCORING';
+
+    // Structural fallback, substring-first contract unchanged: only tried when
+    // the literal phrase match above found nothing. Not a relevance score --
+    // fail-closed on any ambiguity (tie for the corpus-wide max overlap) and
+    // requires an actual shared phrase (contiguous run >= 2 tokens), not just
+    // scattered single-word coincidences, before ever returning a match.
+    if (matched.length === 0) {
+      const queryTokens = tokenize(request.problem);
+      const candidates = [...experiences]
+        .filter(([, record]) => text(record.problem))
+        .map(([id, record]) => ({ id, record, tokens: tokenize(record.problem) }))
+        .map((c) => ({ ...c, overlap: queryTokens.filter((t) => c.tokens.includes(t)).length }));
+      const maxOverlap = candidates.reduce((m, c) => Math.max(m, c.overlap), 0);
+      const atMax = maxOverlap > 0 ? candidates.filter((c) => c.overlap === maxOverlap) : [];
+      if (atMax.length === 1 && longestContiguousRun(queryTokens, atMax[0].tokens) >= 2) {
+        matched = [[atMax[0].id, atMax[0].record]];
+        matchContract = 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_CONTIGUOUS_RUN_GE_2';
+      }
+    }
+
     const results = [];
     for (const [experienceId, record] of matched) {
       const queue = collectRepositoryJsonRefs(record).map(entry => ({ ...entry, depth: 1, parent_ref: experienceId }));
@@ -349,7 +394,7 @@ export function retrieveCanonicalHistoryByProblem(request, readers = {
       results.push({
         experience_id: experienceId,
         matched_problem: record.problem,
-        match_contract: 'CASE_INSENSITIVE_LITERAL_PHRASE_NO_SCORING',
+        match_contract: matchContract,
         historical_experience_bridge: collectExperienceBridge(experiences, experienceId),
         history,
         unresolved_legacy_reference_count: history.filter((h) => h.resolved === false).length,
