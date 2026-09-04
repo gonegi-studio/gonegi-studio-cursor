@@ -13,6 +13,7 @@ import {
   findObservationsByProblem,
   retrieveGenieMemory,
   assessTaskClosureMemoryNeed,
+  isMetaObservation,
 } from '../services/genieUnifiedMemoryRetrieval.mjs';
 import { appendObservation, OBSERVATION_LOG_PATH } from '../services/genieObservationLog.mjs';
 
@@ -70,6 +71,31 @@ try {
     assert.equal(tie.match_contract, 'STRUCTURAL_TOKEN_FALLBACK_GENUINE_TIE_MULTI_MATCH_CONTIGUOUS_RUN_GE_2_RATIO_GE_0.6');
   }
 
+  // --- Meta-memory isolation: a diagnostic entry ABOUT the memory system
+  // itself (every related_ref points at the memory system's own files) must
+  // be excluded from the default (project-history) candidate pool, even
+  // when it would otherwise win outright -- but must still be findable when
+  // the caller explicitly asks a memory-diagnostic question via
+  // { includeMeta: true }. No topic word is checked anywhere in this rule. ---
+  appendObservation({
+    context: 'GENIE Retrieval Meta Diagnostic Entry: a record entirely about the memory/retrieval system\'s own behavior, not about any real production event.',
+    finding: 'This entry exists only to verify meta-memory isolation -- it must not surface for an ordinary project-history query.',
+    disposition: 'expanding_scope_hold',
+    related_refs: ['services/genieUnifiedMemoryRetrieval.mjs', 'scripts/verify-genie-memory-recall-benchmark-v1.mjs'],
+  }, scratchRoot);
+  const metaEntry = { related_refs: ['services/genieUnifiedMemoryRetrieval.mjs', 'scripts/verify-genie-memory-recall-benchmark-v1.mjs'] };
+  const substantiveEntry = { related_refs: ['services/realImageBatchValidation.ts'] };
+  const noRefsEntry = { related_refs: [] };
+  assert.equal(isMetaObservation(metaEntry), true);
+  assert.equal(isMetaObservation(substantiveEntry), false);
+  assert.equal(isMetaObservation(noRefsEntry), false, 'an entry with no related_refs is not classified as meta');
+
+  const defaultExcluded = findObservationsByProblem('GENIE Retrieval Meta Diagnostic Entry own behavior', scratchRoot);
+  assert.equal(defaultExcluded.matched.length, 0, 'default search must not surface a meta-only match');
+
+  const explicitlyIncluded = findObservationsByProblem('GENIE Retrieval Meta Diagnostic Entry own behavior', scratchRoot, { includeMeta: true });
+  assert.ok(explicitlyIncluded.matched.length >= 1, 'includeMeta:true must still find the meta entry when asked for explicitly');
+
   // --- No match at all still returns a clean, typed empty result ---
   const noMatch = findObservationsByProblem('completely unrelated query xyz123', scratchRoot);
   assert.equal(noMatch.matched.length, 0);
@@ -112,10 +138,11 @@ try {
 
   console.log(JSON.stringify({
     verdict: 'GENIE_UNIFIED_MEMORY_RETRIEVAL_V1_SELFTEST_PASS',
-    checks_run: 13,
+    checks_run: 18,
     zero_writes_confirmed: true,
     fail_closed_on_ratio_guard_confirmed: true,
     honest_multi_match_on_genuine_tie_confirmed: true,
+    meta_memory_isolation_confirmed: true,
   }, null, 2));
 } finally {
   rmSync(scratchRoot, { recursive: true, force: true });

@@ -44,6 +44,20 @@ function longestContiguousRun(queryTokens, candidateTokens) {
   return best;
 }
 
+// An Observation's provenance, not its content: every one of its
+// related_refs points at the memory system's own files (this module, its
+// verify scripts, or the Observation Log itself) rather than at any real
+// production file. No topic word is named anywhere in this rule -- it is
+// purely "what is this record ABOUT," derived from the same related_refs
+// field every Observation already carries, not a new field and not a
+// keyword scan of context/finding text.
+const GENIE_SELF_REF = /^services\/genie|^scripts\/verify-genie|^project_brain\/observation_log/;
+export function isMetaObservation(record) {
+  const refs = record.related_refs ?? [];
+  if (refs.length === 0) return false;
+  return refs.every((ref) => GENIE_SELF_REF.test(ref));
+}
+
 // Minimum fraction of the query's own tokens that a candidate must share to
 // even be considered by the structural fallback below. Root-caused against a
 // fixed 16-event recall benchmark (see
@@ -69,19 +83,33 @@ const MIN_OVERLAP_RATIO = 0.6;
 
 /**
  * Observation-tier search: literal substring first (delegates to the
- * existing findRelatedObservations, unchanged), then -- only if that finds
- * nothing -- a structural token-overlap fallback over context/finding/
- * related_refs, mirroring the same fail-closed contiguous-run>=2 discipline
- * genieCanonicalLearningRetrieval.mjs already applies to Experience records,
- * plus the MIN_OVERLAP_RATIO guard above. When multiple candidates
- * genuinely tie at the corpus-wide max overlap AND all of them individually
- * clear both the contiguous-run and ratio bars, every one of them is
- * returned -- an honest "these are equally the best match," not a guess at
- * picking one (if even one tied candidate fails either bar, the whole query
- * still fails closed to no match, exactly as before).
+ * existing findRelatedObservations, unchanged, then locally re-filtered by
+ * provenance), then -- only if that finds nothing -- a structural
+ * token-overlap fallback over context/finding/related_refs, mirroring the
+ * same fail-closed contiguous-run>=2 discipline genieCanonicalLearningRetrieval.mjs
+ * already applies to Experience records, plus the MIN_OVERLAP_RATIO guard
+ * above. When multiple candidates genuinely tie at the corpus-wide max
+ * overlap AND all of them individually clear both the contiguous-run and
+ * ratio bars, every one of them is returned -- an honest "these are equally
+ * the best match," not a guess at picking one (if even one tied candidate
+ * fails either bar, the whole query still fails closed to no match, exactly
+ * as before).
+ *
+ * By default, meta Observations (see isMetaObservation above) are excluded
+ * from the candidate pool entirely -- ordinary project-history questions
+ * should recall the substantive record the memory system is ABOUT, not a
+ * later diagnostic note that happens to discuss it at length and out-competes
+ * it on raw token overlap. Root-caused in "GENIE Retrieval Source Priority
+ * Assessment V1": meta entries repeatedly won or coincidentally matched
+ * ties/uniques ahead of the real events they described, and this got worse,
+ * not better, as more meta entries accumulated. Pass { includeMeta: true }
+ * explicitly when the query IS about the memory/retrieval system's own
+ * behavior -- the caller already knows which kind of question it's asking;
+ * this is a scope switch, not a keyword-based intent guess.
  */
-export function findObservationsByProblem(problem, projectRoot) {
-  const literal = findRelatedObservations(problem, projectRoot);
+export function findObservationsByProblem(problem, projectRoot, { includeMeta = false } = {}) {
+  const literalRaw = findRelatedObservations(problem, projectRoot);
+  const literal = includeMeta ? literalRaw : literalRaw.filter((r) => !isMetaObservation(r));
   if (literal.length > 0) {
     return { matched: literal, match_contract: 'CASE_INSENSITIVE_LITERAL_SUBSTRING' };
   }
@@ -91,7 +119,8 @@ export function findObservationsByProblem(problem, projectRoot) {
     return { matched: [], match_contract: 'NO_MATCH_EMPTY_QUERY' };
   }
 
-  const all = readObservations(projectRoot);
+  const allRaw = readObservations(projectRoot);
+  const all = includeMeta ? allRaw : allRaw.filter((r) => !isMetaObservation(r));
   const candidates = all.map((record) => {
     const haystack = [record.context, record.finding, ...(record.related_refs ?? [])].join(' ');
     const tokens = tokenize(haystack);
@@ -119,15 +148,22 @@ export function findObservationsByProblem(problem, projectRoot) {
  * know anything about this problem, in either tier?" Merges both retrieval
  * paths; changes nothing about either store, adds no new failure mode to
  * either (a read error in one tier does not suppress the other's result).
+ *
+ * includeMeta defaults to false -- ordinary project-history questions.
+ * Pass { includeMeta: true } only when the question is actually about the
+ * memory/retrieval system's own behavior (e.g. another memory-diagnostic
+ * task like this one). The Experience tier has no meta records today, so
+ * this only affects the Observation tier; if that ever changes, this is the
+ * one place to extend the same filter to retrieveCanonicalHistoryByProblem.
  */
-export function retrieveGenieMemory(problem, projectRoot) {
+export function retrieveGenieMemory(problem, projectRoot, { includeMeta = false } = {}) {
   let experience;
   try {
     experience = retrieveCanonicalHistoryByProblem({ problem });
   } catch (e) {
     experience = { ok: false, error: e instanceof Error ? e.message : String(e), results: [] };
   }
-  const observation = findObservationsByProblem(problem, projectRoot);
+  const observation = findObservationsByProblem(problem, projectRoot, { includeMeta });
 
   const experienceMatches = Array.isArray(experience?.results) ? experience.results.length : 0;
   const observationMatches = observation.matched.length;
