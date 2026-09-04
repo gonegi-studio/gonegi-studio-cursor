@@ -146,6 +146,42 @@ const normalizedPhrase = value => value.trim().replace(/\s+/g, ' ').toLowerCase(
 // (run length >= 2), never as a tunable relevance score.
 const tokenize = value => normalizedPhrase(value).match(/[a-z0-9]+/g) || [];
 
+// "Natural Language Retrieval Gap Assessment V1" (2026-09-04) root-caused 4
+// wrong-match failures against this module's own structural fallback below:
+// unlike the sibling Observation-tier fallback (genieUnifiedMemoryRetrieval.mjs),
+// this one had no ratio/density guard at all -- only "unique corpus-wide max
+// overlap" + "contiguous run>=2" -- so on a genuinely natural (long,
+// connective-heavy) query against the full canonical corpus, generic-word
+// overlap alone could produce a confident, uniquely-selected, topically
+// unrelated match (diagnosed live: 4/4 of the queried natural questions
+// measured raw overlap ratios of 0.29-0.64 against their WRONG unique-max
+// candidate). "Observation Natural Retrieval Repair V1" fixed the sibling
+// fallback's own separate ratio-denominator problem (stopwords diluting the
+// ratio on natural queries) using the same content-word approach; this
+// constant and STOPWORDS below apply that same, independently-verified
+// design to this fallback's missing guard. Swept against all 4 diagnosed
+// wrong-match queries (0/4 still wrong at minRatio>=0.55) and the fixed
+// 16-event recall benchmark (0 regressions); every live query this file's
+// own self-test (scripts/verify-genie-canonical-learning-retrieval-v1.mjs)
+// exercises against real data resolves via the literal-phrase path above,
+// never reaching this fallback, so existing verified recall is structurally
+// unaffected by this guard. Duplicated (not imported) from the sibling
+// module deliberately, matching longestContiguousRun's own established
+// duplication rationale directly below.
+const STOPWORDS = new Set([
+  'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'am',
+  'do', 'does', 'did', 'done', 'doing', 'has', 'have', 'had', 'having',
+  'i', 'we', 'you', 'your', 'our', 'it', 'its', 'this', 'that', 'these', 'those',
+  'he', 'she', 'they', 'them', 'his', 'her', 'their',
+  'to', 'of', 'in', 'on', 'at', 'for', 'from', 'by', 'with', 'about', 'as', 'into', 'onto', 'over', 'under',
+  'and', 'or', 'but', 'if', 'so', 'than', 'then', 'not', 'no', 'nor',
+  'what', 'who', 'when', 'where', 'why', 'how', 'which', 'whose',
+  'ever', 'anyone', 'any', 'all', 'some', 'someone', 'something', 'somewhere',
+  'there', 'here', 'can', 'could', 'will', 'would', 'should', 'shall', 'may', 'might', 'must',
+  'just', 'also', 'still', 'yet', 'already', 'actually', 'really',
+]);
+const MIN_OVERLAP_RATIO = 0.55;
+
 function longestContiguousRun(queryTokens, candidateTokens) {
   let best = 0;
   for (let i = 0; i < queryTokens.length; i += 1) {
@@ -305,15 +341,23 @@ export function retrieveCanonicalHistoryByProblem(request, readers = {
     // scattered single-word coincidences, before ever returning a match.
     if (matched.length === 0) {
       const queryTokens = tokenize(request.problem);
+      // Content (non-stopword) subset of the query, used only for the ratio
+      // guard below -- candidate SELECTION (overlap / maxOverlap / unique-max
+      // detection) is unchanged and still runs over the full raw token set.
+      const queryContentTokens = queryTokens.filter((t) => !STOPWORDS.has(t));
       const candidates = [...experiences]
         .filter(([, record]) => text(record.problem))
         .map(([id, record]) => ({ id, record, tokens: tokenize(record.problem) }))
         .map((c) => ({ ...c, overlap: queryTokens.filter((t) => c.tokens.includes(t)).length }));
       const maxOverlap = candidates.reduce((m, c) => Math.max(m, c.overlap), 0);
       const atMax = maxOverlap > 0 ? candidates.filter((c) => c.overlap === maxOverlap) : [];
-      if (atMax.length === 1 && longestContiguousRun(queryTokens, atMax[0].tokens) >= 2) {
-        matched = [[atMax[0].id, atMax[0].record]];
-        matchContract = 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_CONTIGUOUS_RUN_GE_2';
+      if (atMax.length === 1) {
+        const contentOverlapCount = queryContentTokens.filter((t) => atMax[0].tokens.includes(t)).length;
+        const contentRatio = queryContentTokens.length > 0 ? contentOverlapCount / queryContentTokens.length : 0;
+        if (longestContiguousRun(queryTokens, atMax[0].tokens) >= 2 && contentRatio >= MIN_OVERLAP_RATIO) {
+          matched = [[atMax[0].id, atMax[0].record]];
+          matchContract = 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_CONTIGUOUS_RUN_GE_2_CONTENT_RATIO_GE_0.55';
+        }
       }
     }
 

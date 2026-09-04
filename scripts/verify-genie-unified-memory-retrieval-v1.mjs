@@ -37,7 +37,7 @@ try {
   // (ratio >=0.6) to clear the collision guard ---
   const rephrased = findObservationsByProblem('scorer floor asymmetry artifact', scratchRoot);
   assert.equal(rephrased.matched.length, 1, 'structural fallback should find the rephrased query');
-  assert.equal(rephrased.match_contract, 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_PHRASE_OR_CANONICAL_RATIO_GE_0.6');
+  assert.equal(rephrased.match_contract, 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_PHRASE_OR_CANONICAL_OR_STRONG_CONTENT_RATIO');
 
   // --- Ratio guard: a short, generic 2-token coincidence inside an otherwise
   // long, unrelated query must NOT match -- this is the exact false-positive

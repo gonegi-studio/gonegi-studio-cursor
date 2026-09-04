@@ -58,9 +58,9 @@ export function isMetaObservation(record) {
   return refs.every((ref) => GENIE_SELF_REF.test(ref));
 }
 
-// Minimum fraction of the query's own tokens that a candidate must share to
-// even be considered by the structural fallback below. Root-caused against a
-// fixed 16-event recall benchmark (see
+// Minimum fraction of the query's own CONTENT tokens that a candidate must
+// share to even be considered by the structural fallback below. Root-caused
+// against a fixed 16-event recall benchmark (see
 // scripts/verify-genie-memory-recall-benchmark-v1.mjs): the prior version of
 // this fallback (raw overlap count + a bare contiguous-run>=2 requirement,
 // with no ratio floor) produced 4 false negatives -- forced fail-closed
@@ -71,15 +71,88 @@ export function isMetaObservation(record) {
 // problem was fixable by tuning contiguous-run length alone: raising it
 // traded the false positive for *more* false negatives, and multi-match
 // alone (returning every tied candidate) fixed all 4 false negatives but
-// let one new false positive through. This ratio requirement -- a
-// candidate's overlap must cover at least 60% of the query's own token
-// count, evaluated against the SAME raw (unfiltered) tokens already used for
-// overlap/contiguous-run, no stopword list or corpus-frequency filtering
-// needed -- was swept from 0 to 0.75 against the fixed benchmark and found
-// stable (0 false negatives, 0 false positives) across [0.6, 0.65]; 0.6 was
-// chosen as the more recall-favoring edge of that stable range. This is
-// still a plain count/ratio threshold, not a scored or fuzzy match.
-const MIN_OVERLAP_RATIO = 0.6;
+// let one new false positive through. This ratio requirement was swept from
+// 0 to 0.75 against the fixed benchmark and found stable (0 false
+// negatives, 0 false positives) across [0.6, 0.65]; 0.6 was chosen as the
+// more recall-favoring edge of that stable range.
+//
+// "Natural Language Retrieval Gap Assessment V1" (2026-09-04) root-caused a
+// SEPARATE later problem with this same guard: it was originally computed
+// against the query's RAW (unfiltered) token count, which is correct for
+// short, keyword-dense queries (the benchmark's own style) but fails closed
+// on genuinely natural questions, where 60-70% of the tokens are
+// connectives ("was," "did," "the," "a," "to," "it") that inflate the
+// denominator without being real signal -- 11 of 13 diagnosed real-world
+// no-match failures were ratio-limited this way, several by a single point
+// (e.g. ratio 0.59 against the exact right record). STOPWORDS below is a
+// minimal, closed, corpus-independent set of standard English function
+// words (articles, pronouns, common auxiliaries, prepositions, conjunctions,
+// question words) -- not tuned to any specific query or record. The ratio
+// is now computed over CONTENT tokens only (stopwords counted in neither
+// numerator nor denominator), which both recovers ratio-limited real
+// matches AND strengthens the false-positive guard (a candidate sharing only
+// stopwords with the query now scores 0, not a deceptively high raw ratio --
+// this is why 2 of the diagnosed wrong-matches, which passed the old raw
+// gate on stopword volume alone, no longer qualify). Swept jointly with
+// STRONG_CONTENT_RATIO below against both the fixed 16-benchmark and a
+// separate 19-query natural-language set; found stable at 0 benchmark
+// regressions across [0.52, 0.57], with 0.55 chosen as a non-edge point in
+// that stable range, mirroring the original threshold's own selection
+// discipline.
+const MIN_OVERLAP_RATIO = 0.55;
+
+const STOPWORDS = new Set([
+  'a', 'an', 'the', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'am',
+  'do', 'does', 'did', 'done', 'doing', 'has', 'have', 'had', 'having',
+  'i', 'we', 'you', 'your', 'our', 'it', 'its', 'this', 'that', 'these', 'those',
+  'he', 'she', 'they', 'them', 'his', 'her', 'their',
+  'to', 'of', 'in', 'on', 'at', 'for', 'from', 'by', 'with', 'about', 'as', 'into', 'onto', 'over', 'under',
+  'and', 'or', 'but', 'if', 'so', 'than', 'then', 'not', 'no', 'nor',
+  'what', 'who', 'when', 'where', 'why', 'how', 'which', 'whose',
+  'ever', 'anyone', 'any', 'all', 'some', 'someone', 'something', 'somewhere',
+  'there', 'here', 'can', 'could', 'will', 'would', 'should', 'shall', 'may', 'might', 'must',
+  'just', 'also', 'still', 'yet', 'already', 'actually', 'really',
+]);
+
+// A small, individually hand-verified table of true single-word synonyms --
+// NOT stemming (no suffix rules) and NOT concept-aliasing (no word maps to
+// an unrelated technical term). "Semantic Retrieval Strategy Assessment V1"
+// (2026-09-04) scratch-simulated three candidate approaches against the
+// diagnosed natural-language gap: blanket suffix-stemming caused a NET
+// recall loss and a new false positive even from a minimal stripper
+// (rejected); a broader concept-alias set (e.g. "fake"->"self-certifying")
+// fixed one query but broke another via new false ties (rejected); this
+// exact 7-pair table was the only candidate that improved recall with zero
+// new false positives or benchmark regressions when swept. Each pair was
+// individually verified against a real diagnosed query, not chosen
+// generically -- a word not in this list gets no synonym credit. Applied as
+// query-side-only expansion: a query token additionally counts as
+// overlapping if any of its listed synonyms appear in the candidate's own
+// tokens (not reciprocated in the other direction, since the candidate side
+// is already covered by canonical-identity terms where relevant).
+const SYNONYMS = {
+  old: ['legacy'], legacy: ['old'],
+  started: ['genesis'], genesis: ['started'],
+  try: ['attempt'], tried: ['attempted'], attempt: ['try'],
+  connecting: ['connection'], connection: ['connecting'],
+  finished: ['completed'], completed: ['finished'],
+  generating: ['generation'], generation: ['generating'],
+  upscaling: ['upscale'], upscale: ['upscaling'],
+};
+
+// A sufficiently high CONTENT ratio can substitute for the phrase/canonical
+// run≥2 signal below, rather than being vetoed by it. Root-caused as a
+// distinct failure mode from the ratio-denominator problem above: query C1
+// in the Natural Language Retrieval Gap Assessment ("when GENIE was asked
+// what to do next did it actually give a useful answer") scored a strong
+// 0.73 raw ratio against the exact right record, yet still failed closed
+// because natural grammar scatters content words instead of keeping them
+// adjacent (rawRun=1, canonicalMatchCount=0) -- proof that run≥2 can veto an
+// otherwise-decisive match. This is an ADDITIONAL qualifying path, not a
+// replacement for run≥2/canonicalMatchCount>=2 -- MIN_OVERLAP_RATIO above
+// still applies unconditionally either way. Swept jointly with
+// MIN_OVERLAP_RATIO; stable at 0 benchmark regressions across [0.56, 0.60].
+const STRONG_CONTENT_RATIO = 0.6;
 
 /**
  * Observation-tier search: literal substring first (delegates to the
@@ -124,6 +197,11 @@ export function findObservationsByProblem(problem, projectRoot, { includeMeta = 
   // split sub-words are eligible signal too, symmetric with how a record's
   // own canonical terms are matched below.
   const queryCanonicalTerms = extractCanonicalIdentityTerms(problem);
+  // Content-word subset of the query, used only for the ratio computation
+  // below -- corpus-wide candidate SELECTION (overlap / maxOverlap / tie
+  // detection) is unchanged and still runs over the full raw token set, so
+  // which record(s) are even considered is not affected by this list.
+  const queryContentTokens = queryTokens.filter((t) => !STOPWORDS.has(t));
 
   const allRaw = readObservations(projectRoot);
   const all = includeMeta ? allRaw : allRaw.filter((r) => !isMetaObservation(r));
@@ -141,37 +219,47 @@ export function findObservationsByProblem(problem, projectRoot, { includeMeta = 
     for (const t of queryTokens) {
       if (tokens.includes(t)) overlapTokens.add(t);
       else if (canonicalTerms.includes(t)) { overlapTokens.add(t); canonicalMatchCount += 1; }
+      else if ((SYNONYMS[t] ?? []).some((syn) => tokens.includes(syn))) overlapTokens.add(t);
     }
     for (const t of queryCanonicalTerms) {
       if (tokens.includes(t) || canonicalTerms.includes(t)) overlapTokens.add(t);
     }
 
     const rawRun = longestContiguousRun(queryTokens, tokens);
-    return { record, tokens, overlap: overlapTokens.size, rawRun, canonicalMatchCount, ratio: overlapTokens.size / queryTokens.length };
+    // contentRatio: numerator and denominator both restricted to the query's
+    // own content (non-stopword) tokens -- see MIN_OVERLAP_RATIO above. A
+    // query made entirely of stopwords (queryContentTokens.length === 0)
+    // fails closed to ratio 0, same fail-closed posture as the empty-query
+    // case above.
+    const contentOverlapCount = queryContentTokens.filter((t) => overlapTokens.has(t)).length;
+    const contentRatio = queryContentTokens.length > 0 ? contentOverlapCount / queryContentTokens.length : 0;
+    return { record, tokens, overlap: overlapTokens.size, rawRun, canonicalMatchCount, ratio: contentRatio };
   });
   const maxOverlap = candidates.reduce((m, c) => Math.max(m, c.overlap), 0);
   const atMax = maxOverlap > 0 ? candidates.filter((c) => c.overlap === maxOverlap) : [];
 
-  // Two independent, equally-valid "this is a real shared phrase, not a
+  // Three independent, equally-valid "this is a real shared phrase, not a
   // coincidence" signals: the existing raw contiguous-run>=2, OR at least 2
   // distinct query tokens matching via canonical-identity terms (a record's
-  // stored/derived canonical terms, or the query's own). A canonical-identity
-  // match is not a substitute for the ratio guard -- MIN_OVERLAP_RATIO still
-  // applies to the combined overlap count either way. Root-caused and swept
-  // against the fixed 16-event benchmark in "GENIE Memory Identity
-  // Canonicalization Assessment/Implementation V1": requiring the phrase
-  // signal to come from raw contiguous tokens only meant a candidate whose
-  // only strong signal was a canonical-identity match could never qualify on
-  // its own, and could even drag an otherwise-unique correct match into a
-  // failing tie.
-  const qualifies = (c) => (c.rawRun >= 2 || c.canonicalMatchCount >= 2) && c.ratio >= MIN_OVERLAP_RATIO;
+  // stored/derived canonical terms, or the query's own), OR (added by
+  // "Observation Natural Retrieval Repair V1") a STRONG_CONTENT_RATIO --
+  // see that constant's own comment for the C1 counter-example this
+  // addresses. None of the three signals is a substitute for the ratio
+  // guard -- MIN_OVERLAP_RATIO still applies to the combined overlap count
+  // either way. The first two were root-caused and swept against the fixed
+  // 16-event benchmark in "GENIE Memory Identity Canonicalization
+  // Assessment/Implementation V1": requiring the phrase signal to come from
+  // raw contiguous tokens only meant a candidate whose only strong signal
+  // was a canonical-identity match could never qualify on its own, and
+  // could even drag an otherwise-unique correct match into a failing tie.
+  const qualifies = (c) => (c.rawRun >= 2 || c.canonicalMatchCount >= 2 || c.ratio >= STRONG_CONTENT_RATIO) && c.ratio >= MIN_OVERLAP_RATIO;
   if (atMax.length > 0 && atMax.every(qualifies)) {
     return {
       matched: atMax.map((c) => c.record),
       match_contract:
         atMax.length === 1
-          ? 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_PHRASE_OR_CANONICAL_RATIO_GE_0.6'
-          : 'STRUCTURAL_TOKEN_FALLBACK_GENUINE_TIE_MULTI_MATCH_PHRASE_OR_CANONICAL_RATIO_GE_0.6',
+          ? 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_PHRASE_OR_CANONICAL_OR_STRONG_CONTENT_RATIO'
+          : 'STRUCTURAL_TOKEN_FALLBACK_GENUINE_TIE_MULTI_MATCH_PHRASE_OR_CANONICAL_OR_STRONG_CONTENT_RATIO',
     };
   }
   return { matched: [], match_contract: 'NO_MATCH' };
