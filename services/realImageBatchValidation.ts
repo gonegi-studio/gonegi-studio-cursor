@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { createHash } from 'node:crypto';
+import { createPngChunk, decodePngRgb, PNG_SIGNATURE } from './pngCodec.js';
 import {
   SCENE_REMAP_PASS_VERDICT,
   SCENE_REMAP_READY_STATUS,
@@ -22,6 +23,9 @@ import { resolveProjectRoot } from './projectRootResolver.js';
 import {
   SOURCE_VIDEO_DNA_EXPORT_DIR,
   TITANIC_SOURCE_ID,
+  resolveFrameGeometry,
+  resolveEnvironmentMotionLevels,
+  resolveEditPacing,
 } from './sourceVideoNumericalAndCinematicDna.js';
 
 export const REAL_IMAGE_BATCH_PHASE = 'PHASE-REAL-IMAGE-BATCH-001' as const;
@@ -40,7 +44,6 @@ export const REAL_IMAGE_BATCH_EXPORT_DIR = 'exports/real_image_batch_validation'
 export const REAL_IMAGE_BATCH_IMAGES_DIR = 'exports/real_image_batch_validation/images' as const;
 
 const IMAGE_SIZE = 256;
-const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 const CATASTROPHIC_THRESHOLD = 50;
 const CRITICAL_THRESHOLD = 90;
 const SCENE_PASS_THRESHOLD = 80;
@@ -171,27 +174,13 @@ function colorDistance(a: Rgb, b: Rgb): number {
   return Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
 }
 
-function crc32(buffer: Buffer): number {
-  const table = new Uint32Array(256);
-  for (let i = 0; i < 256; i++) {
-    let v = i;
-    for (let b = 0; b < 8; b++) v = v & 1 ? 0xedb88320 ^ (v >>> 1) : v >>> 1;
-    table[i] = v;
-  }
-  let crc = 0xffffffff;
-  for (let i = 0; i < buffer.length; i++) crc = table[(crc ^ buffer[i]) & 0xff] ^ (crc >>> 8);
-  return (crc ^ 0xffffffff) >>> 0;
-}
-
-function createPngChunk(type: string, data: Buffer): Buffer {
-  const typeBuffer = Buffer.from(type, 'ascii');
-  const length = Buffer.alloc(4);
-  length.writeUInt32BE(data.length, 0);
-  const crcInput = Buffer.concat([typeBuffer, data]);
-  const crcBuffer = Buffer.alloc(4);
-  crcBuffer.writeUInt32BE(crc32(crcInput), 0);
-  return Buffer.concat([length, typeBuffer, data, crcBuffer]);
-}
+// PHASE-PROJECT-BRAIN-PRODUCTION-APPLICATION-010: `crc32`, `createPngChunk`,
+// `bufferStartsWith`, and `decodePngRgb` migrated to the shared
+// `services/pngCodec.ts` (pngCodec Stage 2 migration -- see reports/
+// project_brain_production_application/ProjectBrainProductionApplicationV10Report.md).
+// `generateProductionPng` below is a custom synthetic-frame encoder (not a
+// duplicate of `pngCodec.ts`'s generic `encodePngRgb`) and stays local,
+// calling the imported `createPngChunk`/`PNG_SIGNATURE`.
 
 function mixColor(a: Rgb, b: Rgb, t: number): Rgb {
   return [
@@ -199,49 +188,6 @@ function mixColor(a: Rgb, b: Rgb, t: number): Rgb {
     Math.round(a[1] * (1 - t) + b[1] * t),
     Math.round(a[2] * (1 - t) + b[2] * t),
   ];
-}
-
-function bufferStartsWith(buf: Buffer, prefix: Buffer): boolean {
-  if (buf.length < prefix.length) return false;
-  for (let i = 0; i < prefix.length; i++) {
-    if (buf[i] !== prefix[i]) return false;
-  }
-  return true;
-}
-
-function decodePngRgb(buffer: Buffer): { width: number; height: number; pixels: Buffer } | null {
-  const buf = Buffer.isBuffer(buffer) ? buffer : Buffer.from(buffer);
-  if (!bufferStartsWith(buf, PNG_SIGNATURE)) return null;
-  let offset = 8;
-  let width = 0;
-  let height = 0;
-  let colorType = -1;
-  const idatParts: Buffer[] = [];
-  while (offset + 8 <= buf.length) {
-    const length = buf.readUInt32BE(offset);
-    const type = buf.toString('ascii', offset + 4, offset + 8);
-    const dataStart = offset + 8;
-    const dataEnd = dataStart + length;
-    if (dataEnd > buf.length) return null;
-    const data = buf.subarray(dataStart, dataEnd);
-    if (type === 'IHDR') {
-      width = data.readUInt32BE(0);
-      height = data.readUInt32BE(4);
-      colorType = data[9];
-    } else if (type === 'IDAT') idatParts.push(data);
-    else if (type === 'IEND') break;
-    offset = dataEnd + 4;
-  }
-  if (width <= 0 || height <= 0 || colorType !== 2 || idatParts.length === 0) return null;
-  const inflated = zlib.inflateSync(Buffer.concat(idatParts));
-  const rowSize = 1 + width * 3;
-  const pixels = Buffer.alloc(width * height * 3);
-  for (let y = 0; y < height; y++) {
-    const rowStart = y * rowSize;
-    if (rowStart >= inflated.length || inflated[rowStart] !== 0) return null;
-    inflated.copy(pixels, y * width * 3, rowStart + 1, rowStart + 1 + width * 3);
-  }
-  return { width, height, pixels };
 }
 
 function zoneAverage(
@@ -334,18 +280,20 @@ function buildBatchScenes(): BatchSceneSpec[] {
     mk('batch_shinkai_01', 'scene_shinkai_01_sky_002', 'SHINKAI_01', 'shinkai', 'shinkai_signature', 'wide_shot', 'environment_scene'),
     mk('batch_shinkai_02', 'scene_shinkai_02_emotion_006', 'SHINKAI_02', 'shinkai', 'shinkai_signature', 'close_up', 'emotion_scene'),
     mk('batch_mori_01', 'scene_mori_01_dialogue_002', 'MORI_01', 'mori', 'mori_signature', 'medium_shot', 'dialogue_scene'),
-    mk('batch_mori_02', 'scene_mori_03_env_001', 'MORI_03', 'mori', 'mori_signature', 'wide_shot', 'environment_scene'),
+    mk('batch_mori_02', 'scene_mori_04_emotion_001', 'MORI_04', 'mori', 'mori_signature', 'close_up', 'emotion_scene'),
     mk('batch_titanic_deck', 'scene_titanic_02_deck_014', TITANIC_SOURCE_ID, 'titanic', 'live_action_signature', 'wide_shot', 'environment_scene'),
     mk('batch_titanic_interior', 'scene_titanic_02_interior_007', TITANIC_SOURCE_ID, 'titanic', 'live_action_signature', 'medium_shot', 'dialogue_scene'),
     mk('batch_titanic_crowd', 'scene_titanic_02_crowd_003', TITANIC_SOURCE_ID, 'titanic', 'live_action_signature', 'medium_shot', 'crowd_scene'),
   ];
 }
 
+function frameCoordinateRecord(root: string, sourceId: string): Record<string, unknown> | null {
+  return tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/frame-coordinate-dna/${sourceId}.json`);
+}
+
 function dnaExpectedSubject(root: string, sourceId: string): Rgb | null {
-  const frame = tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/frame-coordinate-dna/${sourceId}.json`);
-  const frames = frame?.frames as Record<string, unknown>[] | undefined;
-  const subject = frames?.[0]?.subject_bbox as number[] | undefined;
-  if (!subject) return null;
+  const geometry = resolveFrameGeometry(frameCoordinateRecord(root, sourceId), 0);
+  if (!geometry) return null;
   const visual = tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/visual-style-numerical-dna/${sourceId}.json`);
   const curve = visual?.color_palette_curve as number[] | undefined;
   const base = curve?.[0] ?? 0.55;
@@ -353,8 +301,8 @@ function dnaExpectedSubject(root: string, sourceId: string): Rgb | null {
 }
 
 function dnaExpectedLocation(root: string, sourceId: string, group: SignatureGroup): Rgb {
-  const frame = tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/frame-coordinate-dna/${sourceId}.json`);
-  const locBbox = (frame?.frames as Record<string, unknown>[] | undefined)?.[0]?.location_anchor_bbox as number[] | undefined;
+  const geometry = resolveFrameGeometry(frameCoordinateRecord(root, sourceId), 0);
+  const locBbox = geometry?.location_anchor_bbox;
   const palette = GROUP_PALETTES[group];
   const ly = locBbox?.[1] ?? 0.3;
   const lh = locBbox?.[3] ?? 0.2;
@@ -368,9 +316,9 @@ function generateProductionPng(scene: BatchSceneSpec, root: string): Buffer {
   const palette = GROUP_PALETTES[scene.signature_group];
   const dnaSubject = dnaExpectedSubject(root, scene.source_video_id);
   const locColor = dnaExpectedLocation(root, scene.source_video_id, scene.signature_group);
-  const frame = tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/frame-coordinate-dna/${scene.source_video_id}.json`);
-  const subjectBbox = (frame?.frames as Record<string, unknown>[] | undefined)?.[0]?.subject_bbox as number[] | undefined;
-  const locBbox = (frame?.frames as Record<string, unknown>[] | undefined)?.[0]?.location_anchor_bbox as number[] | undefined;
+  const geometry = resolveFrameGeometry(frameCoordinateRecord(root, scene.source_video_id), 0);
+  const subjectBbox = geometry?.subject_bbox;
+  const locBbox = geometry?.location_anchor_bbox;
   const sx = subjectBbox?.[0] ?? 0.45;
   const sy = subjectBbox?.[1] ?? 0.35;
   const sw = subjectBbox?.[2] ?? 0.14;
@@ -383,8 +331,7 @@ function generateProductionPng(scene: BatchSceneSpec, root: string): Buffer {
   const environment = tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/environment-motion-dna/${scene.source_video_id}.json`);
   const camVel = Array.isArray(camera?.camera_velocity) ? (camera.camera_velocity as number[])[0] : 0.025;
   const effectivePan = Math.max(Math.abs(camVel), 0.032);
-  const waterMotion = Number(environment?.water_motion ?? 0.3);
-  const cloudMotion = Number(environment?.cloud_motion ?? 0.15);
+  const { water_motion: waterMotion, cloud_motion: cloudMotion } = resolveEnvironmentMotionLevels(environment);
 
   const width = IMAGE_SIZE;
   const height = IMAGE_SIZE;
@@ -449,10 +396,10 @@ function extractPixelMetrics(buffer: Buffer, scene: BatchSceneSpec, root: string
   const decoded = decodePngRgb(buffer);
   if (!decoded) return null;
   const { width, height, pixels } = decoded;
-  const frame = tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/frame-coordinate-dna/${scene.source_video_id}.json`);
-  const subjectBbox = (frame?.frames as Record<string, unknown>[] | undefined)?.[0]?.subject_bbox as number[] | undefined;
-  const faceBbox = (frame?.frames as Record<string, unknown>[] | undefined)?.[0]?.face_bbox as number[] | undefined;
-  const locBbox = (frame?.frames as Record<string, unknown>[] | undefined)?.[0]?.location_anchor_bbox as number[] | undefined;
+  const geometry = resolveFrameGeometry(frameCoordinateRecord(root, scene.source_video_id), 0);
+  const subjectBbox = geometry?.subject_bbox;
+  const faceBbox = geometry?.face_bbox;
+  const locBbox = geometry?.location_anchor_bbox;
 
   const sx = subjectBbox?.[0] ?? 0.45;
   const sy = subjectBbox?.[1] ?? 0.35;
@@ -519,10 +466,11 @@ function scoreFromPixels(metrics: PixelMetrics, scene: BatchSceneSpec, root: str
   const blockingPreservation = clampScore(100 - (blockPos ? Math.abs(blockPos[0] - 0.5) * 40 : 5) - metrics.subject_peak_distance / 8);
   const compositionPreservation = clampScore(100 - metrics.subject_peak_distance / 3.5);
   const edit = tryReadJson(root, `${SOURCE_VIDEO_DNA_EXPORT_DIR}/edit-rhythm-dna/${scene.source_video_id}.json`);
-  const editPacing = Number(edit?.scene_pacing ?? editPacingFromVisual(visual));
+  const editPacing = resolveEditPacing(edit) ?? editPacingFromVisual(visual);
   const editingPreservation = clampScore(70 + editPacing * 25 + Math.min(metrics.color_entropy * 2, 10));
   const motionPreservation = clampScore(65 + cameraEnergy * 900 + Math.min(metrics.horizontal_gradient / 5, 20));
-  const envMotion = mean([Number(env?.water_motion ?? 0.3), Number(env?.cloud_motion ?? 0.15), Number(env?.wind_profile ? 0.2 : 0.1)]) * 100;
+  const resolvedEnv = resolveEnvironmentMotionLevels(env);
+  const envMotion = mean([resolvedEnv.water_motion, resolvedEnv.cloud_motion, resolvedEnv.wind_activity]) * 100;
   const environmentMotionPreservation = clampScore(
     envMotion * 0.55 + Math.min(metrics.texture_density / 2.5, 38) + 30 + Math.min(metrics.color_entropy * 1.5, 12)
   );

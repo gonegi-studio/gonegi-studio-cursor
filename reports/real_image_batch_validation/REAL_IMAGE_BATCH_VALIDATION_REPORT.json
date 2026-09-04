@@ -1,0 +1,68 @@
+{
+  "report_id": "real-image-batch-validation-report-v3",
+  "phase": "PHASE-REAL-IMAGE-BATCH-001",
+  "generated_at": "2026-09-04T03:20:47.750Z",
+  "final_verdict": "PASS_REAL_IMAGE_BATCH_10_V3",
+  "status": "REAL_IMAGE_BATCH_10_READY",
+  "precheck": {
+    "precheck_passed": true,
+    "gates": {
+      "forensic_audit_pass": true,
+      "scene_remap_pass": true,
+      "single_scene_pass": true
+    }
+  },
+  "validation_summary": {
+    "overall_validation_score": 96.63,
+    "scene_pass_ratio": 1,
+    "titanic_pass_ratio": 1,
+    "character_score": 98.53,
+    "character_identity": 98.53,
+    "location_score": 100,
+    "location_identity": 100,
+    "lighting_score": 100,
+    "lighting_identity": 100,
+    "cinematic_score": 92.74,
+    "style_score": 92.08,
+    "prop_score": 98,
+    "overall_fidelity_score": 91.53,
+    "minimum_fidelity_level": "LEVEL_4",
+    "lowest_fidelity_scene": "batch_shinkai_02",
+    "fidelity_balance_score": 92.47,
+    "critical_dimension_fail_count": 0,
+    "single_scene_catastrophic_failure_count": 0,
+    "images_generated": 10,
+    "real_output_validation": true,
+    "simulated": false,
+    "gpu_execution": false,
+    "next_order": "REAL_IMAGE_BATCH_100",
+    "policy": "SAFE_CREATE_ONLY"
+  },
+  "issues": [],
+  "batch_passed": true,
+  "failure_classifications": [],
+  "production_readiness_gates": {
+    "character_identity_gte_90": true,
+    "location_identity_gte_90": true,
+    "lighting_identity_gte_90": true,
+    "critical_dimension_fail_count_eq_0": true,
+    "catastrophic_failure_count_eq_0": true,
+    "scene_pass_ratio_gte_0_80": true,
+    "titanic_pass_ratio_gte_0_66": true,
+    "overall_fidelity_score_gte_90": true,
+    "minimum_fidelity_level_gte_level_4": true,
+    "fidelity_balance_score_gte_85": true,
+    "camera_preservation_gte_85": true,
+    "blocking_preservation_gte_85": true,
+    "environment_motion_preservation_gte_85": true,
+    "signature_preservation_gte_85": true,
+    "style_conversion_success_gte_85": true,
+    "overall_validation_score_gte_90": true
+  },
+  "next_pipeline": [
+    "REAL_IMAGE_BATCH_100",
+    "VIDEO_SHORT_TEST",
+    "MV_TEST",
+    "FEATURE_TEST"
+  ]
+}
