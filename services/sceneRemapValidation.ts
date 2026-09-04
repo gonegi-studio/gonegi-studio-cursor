@@ -7,9 +7,9 @@ import {
   SIGNATURE_DISTANCE_REPORT_PATH,
 } from './cinematicSignatureDifferentiation.js';
 import {
-  NUMERICAL_DNA_AUDIT_PASS_VERDICT,
-  NUMERICAL_DNA_AUDIT_READY_STATUS,
-  NUMERICAL_DNA_AUDIT_REPORT_PATH,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_STATUS,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH,
 } from './sourceVideoNumericalDnaAudit.js';
 import {
   NUMERICAL_DNA_PASS_VERDICT,
@@ -369,15 +369,15 @@ function runPrecheck(root: string): {
     issues.push({ code: 'EXTRACTION_PRECHECK_FAIL', message: 'Extraction not PASS', severity: 'error' });
   }
 
-  const auditPath = path.join(root, NUMERICAL_DNA_AUDIT_REPORT_PATH);
+  const auditPath = path.join(root, SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH);
   if (!fs.existsSync(auditPath)) {
     issues.push({ code: 'AUDIT_REPORT_MISSING', message: 'Missing numerical DNA audit report', severity: 'error' });
     return { precheck_passed: false, gates, issues, auditScores: {}, signatureAudit: {} };
   }
-  const audit = readJson<Record<string, unknown>>(root, NUMERICAL_DNA_AUDIT_REPORT_PATH);
+  const audit = readJson<Record<string, unknown>>(root, SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH);
   gates.audit_pass =
-    String(audit.final_verdict ?? '') === NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
-    String(audit.status ?? '') === NUMERICAL_DNA_AUDIT_READY_STATUS;
+    String(audit.final_verdict ?? '') === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
+    String(audit.status ?? '') === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_STATUS;
   if (!gates.audit_pass) {
     issues.push({ code: 'AUDIT_PRECHECK_FAIL', message: 'Numerical DNA audit not PASS', severity: 'error' });
   }
