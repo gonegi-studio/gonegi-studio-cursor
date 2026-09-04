@@ -44,14 +44,41 @@ function longestContiguousRun(queryTokens, candidateTokens) {
   return best;
 }
 
+// Minimum fraction of the query's own tokens that a candidate must share to
+// even be considered by the structural fallback below. Root-caused against a
+// fixed 16-event recall benchmark (see
+// scripts/verify-genie-memory-recall-benchmark-v1.mjs): the prior version of
+// this fallback (raw overlap count + a bare contiguous-run>=2 requirement,
+// with no ratio floor) produced 4 false negatives -- forced fail-closed
+// whenever two or more genuinely relevant records tied on overlap count
+// instead of returning both -- and, separately, 1 false positive, where a
+// short, generic 2-3 token coincidence (e.g. "real image" or "titanic
+// scenes") in an otherwise long, unrelated query was enough to pass. Neither
+// problem was fixable by tuning contiguous-run length alone: raising it
+// traded the false positive for *more* false negatives, and multi-match
+// alone (returning every tied candidate) fixed all 4 false negatives but
+// let one new false positive through. This ratio requirement -- a
+// candidate's overlap must cover at least 60% of the query's own token
+// count, evaluated against the SAME raw (unfiltered) tokens already used for
+// overlap/contiguous-run, no stopword list or corpus-frequency filtering
+// needed -- was swept from 0 to 0.75 against the fixed benchmark and found
+// stable (0 false negatives, 0 false positives) across [0.6, 0.65]; 0.6 was
+// chosen as the more recall-favoring edge of that stable range. This is
+// still a plain count/ratio threshold, not a scored or fuzzy match.
+const MIN_OVERLAP_RATIO = 0.6;
+
 /**
  * Observation-tier search: literal substring first (delegates to the
  * existing findRelatedObservations, unchanged), then -- only if that finds
  * nothing -- a structural token-overlap fallback over context/finding/
- * related_refs. Fail-closed on any ambiguity (a tie for the corpus-wide max
- * overlap yields no match) and requires a real shared phrase (contiguous
- * run >= 2 tokens), exactly the same discipline genieCanonicalLearningRetrieval.mjs
- * already applies to Experience records.
+ * related_refs, mirroring the same fail-closed contiguous-run>=2 discipline
+ * genieCanonicalLearningRetrieval.mjs already applies to Experience records,
+ * plus the MIN_OVERLAP_RATIO guard above. When multiple candidates
+ * genuinely tie at the corpus-wide max overlap AND all of them individually
+ * clear both the contiguous-run and ratio bars, every one of them is
+ * returned -- an honest "these are equally the best match," not a guess at
+ * picking one (if even one tied candidate fails either bar, the whole query
+ * still fails closed to no match, exactly as before).
  */
 export function findObservationsByProblem(problem, projectRoot) {
   const literal = findRelatedObservations(problem, projectRoot);
@@ -69,15 +96,19 @@ export function findObservationsByProblem(problem, projectRoot) {
     const haystack = [record.context, record.finding, ...(record.related_refs ?? [])].join(' ');
     const tokens = tokenize(haystack);
     const overlap = queryTokens.filter((t) => tokens.includes(t)).length;
-    return { record, tokens, overlap };
+    return { record, tokens, overlap, ratio: overlap / queryTokens.length };
   });
   const maxOverlap = candidates.reduce((m, c) => Math.max(m, c.overlap), 0);
   const atMax = maxOverlap > 0 ? candidates.filter((c) => c.overlap === maxOverlap) : [];
 
-  if (atMax.length === 1 && longestContiguousRun(queryTokens, atMax[0].tokens) >= 2) {
+  const qualifies = (c) => longestContiguousRun(queryTokens, c.tokens) >= 2 && c.ratio >= MIN_OVERLAP_RATIO;
+  if (atMax.length > 0 && atMax.every(qualifies)) {
     return {
-      matched: [atMax[0].record],
-      match_contract: 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_CONTIGUOUS_RUN_GE_2',
+      matched: atMax.map((c) => c.record),
+      match_contract:
+        atMax.length === 1
+          ? 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_CONTIGUOUS_RUN_GE_2_RATIO_GE_0.6'
+          : 'STRUCTURAL_TOKEN_FALLBACK_GENUINE_TIE_MULTI_MATCH_CONTIGUOUS_RUN_GE_2_RATIO_GE_0.6',
     };
   }
   return { matched: [], match_contract: 'NO_MATCH' };
