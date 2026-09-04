@@ -22,9 +22,6 @@ import {
   loadTimeSettingLibrary,
 } from './scenarioGenerator/scenario-generator-foundation.js';
 import { SAFE_CREATE_POLICY } from './mvProductionSystemFoundation.js';
-import {
-  copyCanonicalCharacterFieldFromGraph,
-} from './generationContextLoader.js';
 import { LEGACY_MOVIE_SPATIAL_EXPORT_ROOT } from './generationOutputPaths.js';
 import { resolveProjectRoot } from './projectRootResolver.js';
 
@@ -240,7 +237,18 @@ export function buildLockedCharacterFieldFromGraph(
   graph: MovieSpatialGraph,
   root?: string
 ): string {
-  return copyCanonicalCharacterFieldFromGraph(graph, root);
+  const projectRoot = root ?? resolveProjectRoot();
+  const characterLibrary = loadFullCharacterSimpleLibrary(projectRoot);
+  const activeIds = graph.character_nodes.map((node) => resolveCharacterId(node.character_id));
+  return activeIds
+    .map((characterId) => {
+      const profile = characterLibrary.characters.find((entry) => entry.character_id === characterId);
+      if (!profile) {
+        throw new Error(`Missing character profile for character_id=${characterId}`);
+      }
+      return serializeFullCharacterDNA(profile);
+    })
+    .join(' || ');
 }
 
 export function detectSummarizedCharacterField(character: string): boolean {

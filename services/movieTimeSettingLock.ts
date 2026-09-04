@@ -1,11 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import {
-  copyCanonicalCharacterFieldFromGraph,
-} from './generationContextLoader.js';
 import { resolveCanonicalGonegiArtStyle } from './canonicalGonegiArtStyle.js';
 import { ImageAppNativeImportSlot } from './movieMasterDatasetBinding.js';
 import {
+  buildLockedCharacterFieldFromGraph,
   evaluateCharacterDNAChecks,
   writeMovieCharacterDNALockReport,
 } from './movieCharacterDNALock.js';
@@ -337,7 +335,7 @@ function buildNativeImportV4Slot(
     artStyle: resolveCanonicalGonegiArtStyle(root).value,
     timeSetting: buildLockedTimeSettingFieldFromGraph(graph, root).value,
     scenario: generateHardenedScenarioFromSpatialGraph(graph, spatialScene),
-    character: copyCanonicalCharacterFieldFromGraph(graph, root),
+    character: buildLockedCharacterFieldFromGraph(graph, root),
   };
 }
 
