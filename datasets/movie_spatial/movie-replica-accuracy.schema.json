@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/movie-spatial/movie-replica-accuracy.schema.json",
+  "title": "Gonegi Studio Movie Replica Accuracy Audit",
+  "description": "Schema for PHASE-MOVIE-SPATIAL-005 per-scene replica accuracy audit records, comparing spatial-engine coordinates against the master scenario package to score camera/blocking/composition/depth/gaze/environment preservation.",
+  "type": "object",
+  "required": [
+    "audit_id",
+    "movie_id",
+    "scene_id",
+    "spatial_id",
+    "package_id",
+    "scene_geometry_score",
+    "camera_score",
+    "blocking_score",
+    "composition_score",
+    "spatial_depth_score",
+    "gaze_score",
+    "environment_score",
+    "overall_replica_score",
+    "audit_result",
+    "preservation_checks",
+    "audited_at"
+  ],
+  "properties": {
+    "audit_id": { "type": "string", "minLength": 1 },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "scene_id": { "type": "string", "minLength": 1 },
+    "spatial_id": { "type": "string", "minLength": 1 },
+    "package_id": { "type": "string", "minLength": 1 },
+    "scene_geometry_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "camera_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "blocking_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "composition_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "spatial_depth_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "gaze_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "environment_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "overall_replica_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "audit_result": { "enum": ["PASS", "FAIL"] },
+    "preservation_checks": {
+      "type": "object",
+      "required": [
+        "camera_preservation",
+        "blocking_preservation",
+        "composition_preservation",
+        "depth_preservation",
+        "semantic_preservation"
+      ],
+      "properties": {
+        "camera_preservation": { "type": "boolean" },
+        "blocking_preservation": { "type": "boolean" },
+        "composition_preservation": { "type": "boolean" },
+        "depth_preservation": { "type": "boolean" },
+        "semantic_preservation": { "type": "boolean" }
+      }
+    },
+    "audited_at": { "type": "string", "format": "date-time" }
+  }
+}

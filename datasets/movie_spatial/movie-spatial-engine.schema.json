@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/movie-spatial/movie-spatial-engine.schema.json",
+  "title": "Gonegi Studio Movie Spatial Engine Dataset",
+  "description": "Schema for PHASE-MOVIE-SPATIAL-001 per-movie spatial coordinate datasets (camera, character, prop, gaze, and depth layout per scene).",
+  "type": "object",
+  "required": [
+    "dataset_id",
+    "phase",
+    "system_id",
+    "movie_id",
+    "source_production_package_id",
+    "source_production_package_ref",
+    "generated_at",
+    "scene_spatial_count",
+    "spatial_scenes",
+    "execution_flags"
+  ],
+  "properties": {
+    "dataset_id": { "type": "string", "minLength": 1 },
+    "phase": { "const": "PHASE-MOVIE-SPATIAL-001" },
+    "system_id": { "const": "MOVIE_SPATIAL_ENGINE_V1" },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "source_production_package_id": { "type": "string", "minLength": 1 },
+    "source_production_package_ref": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "scene_spatial_count": { "type": "integer", "minimum": 0 },
+    "spatial_scenes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/spatialSceneRecord" }
+    },
+    "execution_flags": { "$ref": "#/definitions/executionFlags" }
+  },
+  "definitions": {
+    "vec3": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "depthLayout": {
+      "type": "object",
+      "required": ["layer_id", "depth_range", "element_ids"],
+      "properties": {
+        "layer_id": { "type": "string" },
+        "depth_range": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "element_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "characterCoordinate": {
+      "type": "object",
+      "required": ["character_id", "position", "rotation", "depth_layer"],
+      "properties": {
+        "character_id": { "type": "string" },
+        "position": { "$ref": "#/definitions/vec3" },
+        "rotation": { "$ref": "#/definitions/vec3" },
+        "depth_layer": { "type": "string" }
+      }
+    },
+    "propCoordinate": {
+      "type": "object",
+      "required": ["prop_id", "position", "depth_layer"],
+      "properties": {
+        "prop_id": { "type": "string" },
+        "position": { "$ref": "#/definitions/vec3" },
+        "depth_layer": { "type": "string" }
+      }
+    },
+    "gazeVector": {
+      "type": "object",
+      "required": ["character_id", "origin", "direction"],
+      "properties": {
+        "character_id": { "type": "string" },
+        "origin": { "$ref": "#/definitions/vec3" },
+        "direction": { "$ref": "#/definitions/vec3" }
+      }
+    },
+    "spatialDepthProfile": {
+      "type": "object",
+      "required": ["profile_id", "near_plane", "far_plane", "layer_count"],
+      "properties": {
+        "profile_id": { "type": "string" },
+        "near_plane": { "type": "number" },
+        "far_plane": { "type": "number" },
+        "layer_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "environmentAnchor": {
+      "type": "object",
+      "required": ["anchor_id", "anchor_type", "position", "environment_type", "scene_category"],
+      "properties": {
+        "anchor_id": { "type": "string" },
+        "anchor_type": { "type": "string" },
+        "position": { "$ref": "#/definitions/vec3" },
+        "environment_type": { "type": "string" },
+        "scene_category": { "type": "string" }
+      }
+    },
+    "spatialSceneRecord": {
+      "type": "object",
+      "required": [
+        "spatial_id",
+        "movie_id",
+        "scene_id",
+        "camera_position",
+        "camera_rotation",
+        "camera_distance",
+        "camera_height",
+        "camera_target",
+        "character_coordinates",
+        "prop_coordinates",
+        "foreground_layout",
+        "midground_layout",
+        "background_layout",
+        "gaze_vectors",
+        "spatial_depth_profile",
+        "environment_anchor"
+      ],
+      "properties": {
+        "spatial_id": { "type": "string" },
+        "movie_id": { "type": "string" },
+        "scene_id": { "type": "string" },
+        "camera_position": { "$ref": "#/definitions/vec3" },
+        "camera_rotation": { "$ref": "#/definitions/vec3" },
+        "camera_distance": { "type": "number" },
+        "camera_height": { "type": "string" },
+        "camera_target": { "$ref": "#/definitions/vec3" },
+        "character_coordinates": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/characterCoordinate" }
+        },
+        "prop_coordinates": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/propCoordinate" }
+        },
+        "foreground_layout": { "$ref": "#/definitions/depthLayout" },
+        "midground_layout": { "$ref": "#/definitions/depthLayout" },
+        "background_layout": { "$ref": "#/definitions/depthLayout" },
+        "gaze_vectors": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/gazeVector" }
+        },
+        "spatial_depth_profile": { "$ref": "#/definitions/spatialDepthProfile" },
+        "environment_anchor": { "$ref": "#/definitions/environmentAnchor" }
+      }
+    },
+    "executionFlags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "image_generation", "video_generation", "rendering"],
+      "properties": {
+        "design_only": { "type": "boolean" },
+        "gpu_execution": { "type": "boolean" },
+        "image_generation": { "type": "boolean" },
+        "video_generation": { "type": "boolean" },
+        "rendering": { "type": "boolean" }
+      }
+    }
+  }
+}

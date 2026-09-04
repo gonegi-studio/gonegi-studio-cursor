@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/movie-spatial/movie-image-app-native-import.schema.json",
+  "title": "Gonegi Studio Movie Image App Native Import",
+  "description": "Schema for PHASE-MOVIE-SPATIAL-008 per-movie native Image App import slots (artStyle/timeSetting/scenario/character strings), one slot per generation-ready scene.",
+  "type": "object",
+  "required": [
+    "native_import_id",
+    "phase",
+    "system_id",
+    "movie_id",
+    "source_binding_ref",
+    "generated_at",
+    "slot_count",
+    "music_drama_import_ready",
+    "slots",
+    "execution_flags"
+  ],
+  "properties": {
+    "native_import_id": { "type": "string", "minLength": 1 },
+    "phase": { "const": "PHASE-MOVIE-SPATIAL-008" },
+    "system_id": { "const": "MOVIE_IMAGE_APP_NATIVE_IMPORT_V1" },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "source_binding_ref": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "slot_count": { "type": "integer", "minimum": 0 },
+    "music_drama_import_ready": { "type": "boolean" },
+    "slots": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/nativeImportSlot" }
+    },
+    "execution_flags": { "$ref": "#/definitions/executionFlags" }
+  },
+  "definitions": {
+    "nativeImportSlot": {
+      "type": "object",
+      "required": ["artStyle", "timeSetting", "scenario", "character"],
+      "properties": {
+        "artStyle": { "type": "string" },
+        "timeSetting": { "type": "string" },
+        "scenario": { "type": "string" },
+        "character": { "type": "string" }
+      }
+    },
+    "executionFlags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "image_generation", "video_generation", "rendering"],
+      "properties": {
+        "design_only": { "type": "boolean" },
+        "gpu_execution": { "type": "boolean" },
+        "image_generation": { "type": "boolean" },
+        "video_generation": { "type": "boolean" },
+        "rendering": { "type": "boolean" }
+      }
+    }
+  }
+}

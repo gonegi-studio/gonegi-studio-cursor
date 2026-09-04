@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/movie-spatial/movie-image-app-export.schema.json",
+  "title": "Gonegi Studio Movie Image App Export",
+  "description": "Schema for PHASE-MOVIE-SPATIAL-006 per-movie, per-scene Image App generation exports combining the master scenario payload with spatial, camera, blocking, and composition context.",
+  "type": "object",
+  "required": [
+    "export_dataset_id",
+    "phase",
+    "system_id",
+    "movie_id",
+    "source_master_scenario_ref",
+    "generated_at",
+    "scene_export_count",
+    "direct_generation_ready",
+    "scene_exports",
+    "execution_flags"
+  ],
+  "properties": {
+    "export_dataset_id": { "type": "string", "minLength": 1 },
+    "phase": { "const": "PHASE-MOVIE-SPATIAL-006" },
+    "system_id": { "const": "MOVIE_IMAGE_APP_EXPORT_V1" },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "source_master_scenario_ref": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "scene_export_count": { "type": "integer", "minimum": 0 },
+    "direct_generation_ready": { "type": "boolean" },
+    "scene_exports": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/sceneExport" }
+    },
+    "execution_flags": { "$ref": "#/definitions/executionFlags" }
+  },
+  "definitions": {
+    "vec3": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "spatialContext": {
+      "type": "object",
+      "required": ["scene_id", "camera_position", "camera_target", "character_positions", "depth_layers", "environment_anchor"],
+      "properties": {
+        "scene_id": { "type": "string" },
+        "camera_position": { "$ref": "#/definitions/vec3" },
+        "camera_target": { "$ref": "#/definitions/vec3" },
+        "character_positions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["character_id", "position"],
+            "properties": {
+              "character_id": { "type": "string" },
+              "position": { "$ref": "#/definitions/vec3" }
+            }
+          }
+        },
+        "depth_layers": {
+          "type": "object",
+          "required": ["foreground", "midground", "background"],
+          "properties": {
+            "foreground": { "type": "array", "items": { "type": "string" } },
+            "midground": { "type": "array", "items": { "type": "string" } },
+            "background": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "environment_anchor": {
+          "type": "object",
+          "required": ["anchor_id", "anchor_type", "position", "environment_type", "scene_category"],
+          "properties": {
+            "anchor_id": { "type": "string" },
+            "anchor_type": { "type": "string" },
+            "position": { "$ref": "#/definitions/vec3" },
+            "environment_type": { "type": "string" },
+            "scene_category": { "type": "string" }
+          }
+        }
+      }
+    },
+    "cameraContext": {
+      "type": "object",
+      "required": [
+        "camera_position", "camera_rotation", "camera_distance", "camera_height",
+        "camera_target", "camera_angle", "camera_distance_label", "gaze_direction", "gaze_vectors"
+      ],
+      "properties": {
+        "camera_position": { "$ref": "#/definitions/vec3" },
+        "camera_rotation": { "$ref": "#/definitions/vec3" },
+        "camera_distance": { "type": "number" },
+        "camera_height": { "type": "string" },
+        "camera_target": { "$ref": "#/definitions/vec3" },
+        "camera_angle": { "type": "string" },
+        "camera_distance_label": { "type": "string" },
+        "gaze_direction": { "type": "string" },
+        "gaze_vectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["character_id", "origin", "direction"],
+            "properties": {
+              "character_id": { "type": "string" },
+              "origin": { "$ref": "#/definitions/vec3" },
+              "direction": { "$ref": "#/definitions/vec3" }
+            }
+          }
+        }
+      }
+    },
+    "blockingContext": {
+      "type": "object",
+      "required": ["subject_blocking", "body_action", "hand_action", "posture_variation", "character_coordinates"],
+      "properties": {
+        "subject_blocking": { "type": "string" },
+        "body_action": { "type": "string" },
+        "hand_action": { "type": "string" },
+        "posture_variation": { "type": "string" },
+        "character_coordinates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["character_id", "position", "rotation", "depth_layer"],
+            "properties": {
+              "character_id": { "type": "string" },
+              "position": { "$ref": "#/definitions/vec3" },
+              "rotation": { "$ref": "#/definitions/vec3" },
+              "depth_layer": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "depthLayout": {
+      "type": "object",
+      "required": ["layer_id", "depth_range", "element_ids"],
+      "properties": {
+        "layer_id": { "type": "string" },
+        "depth_range": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "element_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "compositionContext": {
+      "type": "object",
+      "required": ["foreground_layout", "midground_layout", "background_layout", "spatial_depth_profile", "prop_coordinates"],
+      "properties": {
+        "foreground_layout": { "$ref": "#/definitions/depthLayout" },
+        "midground_layout": { "$ref": "#/definitions/depthLayout" },
+        "background_layout": { "$ref": "#/definitions/depthLayout" },
+        "spatial_depth_profile": {
+          "type": "object",
+          "required": ["profile_id", "near_plane", "far_plane", "layer_count"],
+          "properties": {
+            "profile_id": { "type": "string" },
+            "near_plane": { "type": "number" },
+            "far_plane": { "type": "number" },
+            "layer_count": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "prop_coordinates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["prop_id", "position", "depth_layer"],
+            "properties": {
+              "prop_id": { "type": "string" },
+              "position": { "$ref": "#/definitions/vec3" },
+              "depth_layer": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "generationPayload": {
+      "type": "object",
+      "required": [
+        "version", "artStyle", "timeSetting", "scenario", "character", "payload_id", "storyboard_id",
+        "scene_order", "image_prompt_pack_id", "acting_camera_id", "image_prompt", "negative_prompt",
+        "acting_intent", "body_action", "gaze_direction", "hand_action", "posture_variation",
+        "camera_angle", "camera_distance", "subject_blocking", "environment_interaction",
+        "location_variation", "character_continuity_anchors", "location_continuity_anchors",
+        "world_continuity_anchors", "spatial_context", "camera_context", "blocking_context", "composition_context"
+      ],
+      "properties": {
+        "version": { "const": "v1" },
+        "artStyle": { "type": "string" },
+        "timeSetting": { "type": "string" },
+        "scenario": { "type": "string" },
+        "character": { "type": "string" },
+        "payload_id": { "type": "string" },
+        "storyboard_id": { "type": "string" },
+        "scene_order": { "type": "integer" },
+        "image_prompt_pack_id": { "type": "string" },
+        "acting_camera_id": { "type": "string" },
+        "image_prompt": { "type": "string" },
+        "negative_prompt": { "type": "string" },
+        "acting_intent": { "type": "string" },
+        "body_action": { "type": "string" },
+        "gaze_direction": { "type": "string" },
+        "hand_action": { "type": "string" },
+        "posture_variation": { "type": "string" },
+        "camera_angle": { "type": "string" },
+        "camera_distance": { "type": "string" },
+        "subject_blocking": { "type": "string" },
+        "environment_interaction": { "type": "string" },
+        "location_variation": { "type": "string" },
+        "character_continuity_anchors": { "type": "array", "items": { "type": "string" } },
+        "location_continuity_anchors": { "type": "array", "items": { "type": "string" } },
+        "world_continuity_anchors": { "type": "array", "items": { "type": "string" } },
+        "spatial_context": { "$ref": "#/definitions/spatialContext" },
+        "camera_context": { "$ref": "#/definitions/cameraContext" },
+        "blocking_context": { "$ref": "#/definitions/blockingContext" },
+        "composition_context": { "$ref": "#/definitions/compositionContext" }
+      }
+    },
+    "sceneExport": {
+      "type": "object",
+      "required": [
+        "export_id", "movie_id", "scene_id", "package_id", "artStyle", "timeSetting", "character",
+        "scenario", "spatial_context", "camera_context", "blocking_context", "composition_context",
+        "generation_payload", "generation_ready"
+      ],
+      "properties": {
+        "export_id": { "type": "string" },
+        "movie_id": { "type": "string" },
+        "scene_id": { "type": "string" },
+        "package_id": { "type": "string" },
+        "artStyle": { "type": "string" },
+        "timeSetting": { "type": "string" },
+        "character": { "type": "string" },
+        "scenario": { "type": "string" },
+        "spatial_context": { "$ref": "#/definitions/spatialContext" },
+        "camera_context": { "$ref": "#/definitions/cameraContext" },
+        "blocking_context": { "$ref": "#/definitions/blockingContext" },
+        "composition_context": { "$ref": "#/definitions/compositionContext" },
+        "generation_payload": { "$ref": "#/definitions/generationPayload" },
+        "generation_ready": { "type": "boolean" }
+      }
+    },
+    "executionFlags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "image_generation", "video_generation", "rendering"],
+      "properties": {
+        "design_only": { "type": "boolean" },
+        "gpu_execution": { "type": "boolean" },
+        "image_generation": { "type": "boolean" },
+        "video_generation": { "type": "boolean" },
+        "rendering": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/movie-spatial/movie-master-dataset-binding.schema.json",
+  "title": "Gonegi Studio Movie Master Dataset Binding",
+  "description": "Schema for PHASE-MOVIE-SPATIAL-007 per-movie scene bindings of art style, time setting, character, and scenario fields to their approved-originals source of truth.",
+  "type": "object",
+  "required": [
+    "binding_dataset_id",
+    "phase",
+    "system_id",
+    "movie_id",
+    "source_spatial_graph_ref",
+    "generated_at",
+    "binding_count",
+    "master_binding_policy",
+    "scene_bindings",
+    "execution_flags"
+  ],
+  "properties": {
+    "binding_dataset_id": { "type": "string", "minLength": 1 },
+    "phase": { "const": "PHASE-MOVIE-SPATIAL-007" },
+    "system_id": { "const": "MOVIE_MASTER_DATASET_BINDING_V1" },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "source_spatial_graph_ref": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "binding_count": { "type": "integer", "minimum": 0 },
+    "master_binding_policy": {
+      "type": "object",
+      "required": ["artStyle", "timeSetting", "character", "scenario"],
+      "properties": {
+        "artStyle": {
+          "type": "object",
+          "required": ["source", "generation", "rewrite", "summarization"],
+          "properties": {
+            "source": { "type": "string" },
+            "generation": { "const": false },
+            "rewrite": { "const": false },
+            "summarization": { "const": false }
+          }
+        },
+        "timeSetting": {
+          "type": "object",
+          "required": ["source", "generation"],
+          "properties": {
+            "source": { "type": "string" },
+            "generation": { "const": false }
+          }
+        },
+        "character": {
+          "type": "object",
+          "required": ["source", "generation"],
+          "properties": {
+            "source": { "type": "string" },
+            "generation": { "const": false }
+          }
+        },
+        "scenario": {
+          "type": "object",
+          "required": ["source", "generation"],
+          "properties": {
+            "source": { "const": "movie_spatial_graph" },
+            "generation": { "const": true }
+          }
+        }
+      }
+    },
+    "scene_bindings": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/sceneBinding" }
+    },
+    "execution_flags": { "$ref": "#/definitions/executionFlags" }
+  },
+  "definitions": {
+    "fieldBindingRecord": {
+      "type": "object",
+      "required": ["generated", "value", "source_ref"],
+      "properties": {
+        "generated": { "type": "boolean" },
+        "value": { "type": "string" },
+        "source_ref": { "type": "string" }
+      }
+    },
+    "imageAppNativeScenarioFormat": {
+      "type": "object",
+      "required": ["artStyle", "timeSetting", "scenario", "character"],
+      "properties": {
+        "artStyle": { "type": "string" },
+        "timeSetting": { "type": "string" },
+        "scenario": { "type": "string" },
+        "character": { "type": "string" }
+      }
+    },
+    "sceneBinding": {
+      "type": "object",
+      "required": [
+        "binding_id",
+        "movie_id",
+        "scene_id",
+        "art_style_ref",
+        "time_setting_ref",
+        "character_ref",
+        "scenario_ref",
+        "binding_status",
+        "field_binding",
+        "image_app_native_format"
+      ],
+      "properties": {
+        "binding_id": { "type": "string" },
+        "movie_id": { "type": "string" },
+        "scene_id": { "type": "string" },
+        "art_style_ref": { "type": "string" },
+        "time_setting_ref": { "type": "string" },
+        "character_ref": { "type": "string" },
+        "scenario_ref": { "type": "string" },
+        "binding_status": { "enum": ["bound", "unbound"] },
+        "field_binding": {
+          "type": "object",
+          "required": ["artStyle", "timeSetting", "scenario", "character"],
+          "properties": {
+            "artStyle": { "$ref": "#/definitions/fieldBindingRecord" },
+            "timeSetting": { "$ref": "#/definitions/fieldBindingRecord" },
+            "scenario": { "$ref": "#/definitions/fieldBindingRecord" },
+            "character": { "$ref": "#/definitions/fieldBindingRecord" }
+          }
+        },
+        "image_app_native_format": { "$ref": "#/definitions/imageAppNativeScenarioFormat" }
+      }
+    },
+    "executionFlags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "image_generation", "video_generation", "rendering"],
+      "properties": {
+        "design_only": { "type": "boolean" },
+        "gpu_execution": { "type": "boolean" },
+        "image_generation": { "type": "boolean" },
+        "video_generation": { "type": "boolean" },
+        "rendering": { "type": "boolean" }
+      }
+    }
+  }
+}

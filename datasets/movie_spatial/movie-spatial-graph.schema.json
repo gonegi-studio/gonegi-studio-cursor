@@ -1,0 +1,188 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gonegi.studio/schemas/movie-spatial/movie-spatial-graph.schema.json",
+  "title": "Gonegi Studio Movie Spatial Graph Dataset",
+  "description": "Schema for PHASE-MOVIE-SPATIAL-002 per-movie spatial graph datasets (node/edge graph derived from the spatial engine coordinates per scene).",
+  "type": "object",
+  "required": [
+    "graph_dataset_id",
+    "phase",
+    "system_id",
+    "movie_id",
+    "source_spatial_engine_id",
+    "source_spatial_engine_ref",
+    "generated_at",
+    "scene_spatial_graph_count",
+    "spatial_graphs",
+    "execution_flags"
+  ],
+  "properties": {
+    "graph_dataset_id": { "type": "string", "minLength": 1 },
+    "phase": { "const": "PHASE-MOVIE-SPATIAL-002" },
+    "system_id": { "const": "MOVIE_SPATIAL_GRAPH_V1" },
+    "movie_id": { "type": "string", "minLength": 1 },
+    "source_spatial_engine_id": { "type": "string", "minLength": 1 },
+    "source_spatial_engine_ref": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "scene_spatial_graph_count": { "type": "integer", "minimum": 0 },
+    "spatial_graphs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/spatialGraph" }
+    },
+    "execution_flags": { "$ref": "#/definitions/executionFlags" }
+  },
+  "definitions": {
+    "vec3": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "cameraNode": {
+      "type": "object",
+      "required": ["node_id", "position", "rotation", "camera_distance", "camera_height", "camera_target"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "position": { "$ref": "#/definitions/vec3" },
+        "rotation": { "$ref": "#/definitions/vec3" },
+        "camera_distance": { "type": "number" },
+        "camera_height": { "type": "string" },
+        "camera_target": { "$ref": "#/definitions/vec3" }
+      }
+    },
+    "characterNode": {
+      "type": "object",
+      "required": ["node_id", "character_id", "position", "rotation", "depth_layer"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "character_id": { "type": "string" },
+        "position": { "$ref": "#/definitions/vec3" },
+        "rotation": { "$ref": "#/definitions/vec3" },
+        "depth_layer": { "type": "string" }
+      }
+    },
+    "propNode": {
+      "type": "object",
+      "required": ["node_id", "prop_id", "position", "depth_layer"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "prop_id": { "type": "string" },
+        "position": { "$ref": "#/definitions/vec3" },
+        "depth_layer": { "type": "string" }
+      }
+    },
+    "environmentNode": {
+      "type": "object",
+      "required": ["node_id", "anchor_id", "position", "environment_type", "scene_category"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "anchor_id": { "type": "string" },
+        "position": { "$ref": "#/definitions/vec3" },
+        "environment_type": { "type": "string" },
+        "scene_category": { "type": "string" }
+      }
+    },
+    "spatialEdge": {
+      "type": "object",
+      "required": ["edge_id", "source_node_id", "target_node_id", "edge_type"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "target_node_id": { "type": "string" },
+        "edge_type": { "type": "string" },
+        "distance_hint": { "type": "string" }
+      }
+    },
+    "visibilityEdge": {
+      "type": "object",
+      "required": ["edge_id", "observer_node_id", "target_node_id", "visible", "occlusion_hint"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "observer_node_id": { "type": "string" },
+        "target_node_id": { "type": "string" },
+        "visible": { "type": "boolean" },
+        "occlusion_hint": { "type": "string" }
+      }
+    },
+    "gazeEdge": {
+      "type": "object",
+      "required": ["edge_id", "source_node_id", "target_node_id", "origin", "direction"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "target_node_id": { "type": ["string", "null"] },
+        "origin": { "$ref": "#/definitions/vec3" },
+        "direction": { "$ref": "#/definitions/vec3" }
+      }
+    },
+    "depthEdge": {
+      "type": "object",
+      "required": ["edge_id", "source_node_id", "depth_layer", "depth_range"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "depth_layer": { "type": "string" },
+        "depth_range": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "interactionEdge": {
+      "type": "object",
+      "required": ["edge_id", "source_node_id", "target_node_id", "interaction_type"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source_node_id": { "type": "string" },
+        "target_node_id": { "type": "string" },
+        "interaction_type": { "type": "string" }
+      }
+    },
+    "spatialGraph": {
+      "type": "object",
+      "required": [
+        "graph_id",
+        "movie_id",
+        "scene_id",
+        "spatial_id",
+        "camera_nodes",
+        "character_nodes",
+        "prop_nodes",
+        "environment_nodes",
+        "spatial_edges",
+        "visibility_edges",
+        "gaze_edges",
+        "depth_edges",
+        "interaction_edges"
+      ],
+      "properties": {
+        "graph_id": { "type": "string" },
+        "movie_id": { "type": "string" },
+        "scene_id": { "type": "string" },
+        "spatial_id": { "type": "string" },
+        "camera_nodes": { "type": "array", "items": { "$ref": "#/definitions/cameraNode" } },
+        "character_nodes": { "type": "array", "items": { "$ref": "#/definitions/characterNode" } },
+        "prop_nodes": { "type": "array", "items": { "$ref": "#/definitions/propNode" } },
+        "environment_nodes": { "type": "array", "items": { "$ref": "#/definitions/environmentNode" } },
+        "spatial_edges": { "type": "array", "items": { "$ref": "#/definitions/spatialEdge" } },
+        "visibility_edges": { "type": "array", "items": { "$ref": "#/definitions/visibilityEdge" } },
+        "gaze_edges": { "type": "array", "items": { "$ref": "#/definitions/gazeEdge" } },
+        "depth_edges": { "type": "array", "items": { "$ref": "#/definitions/depthEdge" } },
+        "interaction_edges": { "type": "array", "items": { "$ref": "#/definitions/interactionEdge" } }
+      }
+    },
+    "executionFlags": {
+      "type": "object",
+      "required": ["design_only", "gpu_execution", "image_generation", "video_generation", "rendering"],
+      "properties": {
+        "design_only": { "type": "boolean" },
+        "gpu_execution": { "type": "boolean" },
+        "image_generation": { "type": "boolean" },
+        "video_generation": { "type": "boolean" },
+        "rendering": { "type": "boolean" }
+      }
+    }
+  }
+}
