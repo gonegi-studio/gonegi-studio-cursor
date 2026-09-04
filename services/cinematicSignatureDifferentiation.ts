@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  NUMERICAL_DNA_AUDIT_PASS_VERDICT,
-  NUMERICAL_DNA_AUDIT_READY_STATUS,
-  NUMERICAL_DNA_AUDIT_REPORT_PATH,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_STATUS,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH,
 } from './sourceVideoNumericalDnaAudit.js';
 import {
   SOURCE_VIDEO_DNA_DATASET_DIR,
@@ -345,15 +345,15 @@ function runPrecheck(root: string): {
   issues: ValidationIssue[];
 } {
   const issues: ValidationIssue[] = [];
-  const reportPath = path.join(root, NUMERICAL_DNA_AUDIT_REPORT_PATH);
+  const reportPath = path.join(root, SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH);
   if (!fs.existsSync(reportPath)) {
     issues.push({ code: 'AUDIT_REPORT_MISSING', message: 'Missing numerical DNA audit report', severity: 'error' });
     return { audit_pass: false, precheck_passed: false, issues };
   }
   const report = JSON.parse(fs.readFileSync(reportPath, 'utf8')) as Record<string, unknown>;
   const pass =
-    String(report.final_verdict ?? '') === NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
-    String(report.status ?? '') === NUMERICAL_DNA_AUDIT_READY_STATUS;
+    String(report.final_verdict ?? '') === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
+    String(report.status ?? '') === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_STATUS;
   if (!pass) {
     issues.push({ code: 'AUDIT_PRECHECK_FAIL', message: 'Numerical DNA audit not PASS', severity: 'error' });
   }

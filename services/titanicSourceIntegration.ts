@@ -20,10 +20,10 @@ import {
   TOTAL_SOURCE_VIDEO_COUNT,
 } from './sourceVideoNumericalAndCinematicDna.js';
 import {
-  NUMERICAL_DNA_AUDIT_PASS_VERDICT,
-  NUMERICAL_DNA_AUDIT_READY_STATUS,
-  NUMERICAL_DNA_AUDIT_REPORT_PATH,
-  writeSourceVideoNumericalDnaAudit,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_STATUS,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH,
+  writeSourceVideoNumericalDnaAuditReport,
 } from './sourceVideoNumericalDnaAudit.js';
 
 export const TITANIC_INTEGRATION_PHASE = 'PHASE-SOURCE-VIDEO-DNA-REFRESH-001' as const;
@@ -181,7 +181,7 @@ export function writeTitanicSourceIntegration(projectRoot?: string): TitanicSour
 
   const signatureReport = writeCinematicSignatureDifferentiation(root);
   const coverageReport = refreshSourceVideoCoverageReport(root);
-  const auditReport = writeSourceVideoNumericalDnaAudit(root);
+  const auditReport = writeSourceVideoNumericalDnaAuditReport(root);
 
   const registry = readJson<Record<string, unknown>>(
     root,
@@ -202,7 +202,7 @@ export function writeTitanicSourceIntegration(projectRoot?: string): TitanicSour
     Number(registry.source_video_count) === TOTAL_SOURCE_VIDEO_COUNT &&
     signatureConfusion <= 10 &&
     minPairwiseDistance >= 0.3 &&
-    String(auditReport.final_verdict) === NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
+    String(auditReport.final_verdict) === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
     String(signatureReport.final_verdict) === SIGNATURE_DIFF_PASS_VERDICT;
 
   const integrationSummary: Record<string, string | number | boolean> = {
@@ -214,7 +214,7 @@ export function writeTitanicSourceIntegration(projectRoot?: string): TitanicSour
     minimum_pairwise_distance: minPairwiseDistance,
     titanic_remap_source: TITANIC_SOURCE_ID,
     coverage_report_refreshed: true,
-    audit_report_refreshed: String(auditReport.final_verdict) === NUMERICAL_DNA_AUDIT_PASS_VERDICT,
+    audit_report_refreshed: String(auditReport.final_verdict) === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT,
     signature_report_refreshed: String(signatureReport.final_verdict) === SIGNATURE_DIFF_PASS_VERDICT,
     coverage_live_action: Number(coverageReport.live_action ?? 0),
     gpu_execution: false,
@@ -240,7 +240,7 @@ export function writeTitanicSourceIntegration(projectRoot?: string): TitanicSour
       'exports/source_video_dna/source-video-registry-v2.json',
       'datasets/source_video_dna/cinematic-signature-library.json',
       SOURCE_VIDEO_COVERAGE_REPORT_PATH,
-      NUMERICAL_DNA_AUDIT_REPORT_PATH,
+      SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH,
       SIGNATURE_DIFF_REPORT_PATH,
       SIGNATURE_DISTANCE_REPORT_PATH,
       TITANIC_IMPORT_MANIFEST_PATH,
