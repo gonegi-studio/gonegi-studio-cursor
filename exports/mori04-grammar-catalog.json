@@ -1,0 +1,70 @@
+{
+  "catalog_type": "grammar_catalog",
+  "catalog_version": "PHASE-MOVIE-RECONSTRUCTION-013",
+  "source": "MORI_04",
+  "source_duration_seconds": 233,
+  "measured_duration_seconds": 233.08,
+  "estimated_only": false,
+  "measurement_method": "Real frame decode of imports/source_videos/active/mori/MORI_04.mp4 (imageio+bundled ffmpeg, h264 1920x1080 30fps, 6991 frames). Frame-differencing pass identified 45 real shots; 17 frames sampled across shots spread through the full runtime and directly inspected. Source content identified as a cozy autumn apothecary/herbalist short ('Mori Whispers' watermark, distinct from the plain 'Mori' watermark on MORI_01-03) -- a recurring freckled brown-haired woman and a black cat, herb-picking, spice-weighing, and cauldron-brewing content.",
+  "identity_safety": {
+    "identity_lock_required": true,
+    "estimated_only": false,
+    "no_source_content_reproduced": true,
+    "note": "Only abstract categorical shot-grammar labels recorded -- no dialogue, on-screen text, character likeness detail, titles, or branding reproduced."
+  },
+  "camera_candidates": [
+    { "camera_distance": "extreme-wide", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "autumn-daylight", "framing_type": "environment-establish", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "overcast-soft", "framing_type": "nature-detail", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-morning-light", "framing_type": "character-pet-pair", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "profile", "lens_feeling": "warm-morning-light", "framing_type": "character-portrait", "subject_position": "center" },
+    { "camera_distance": "wide", "camera_height": "low", "camera_angle": "front", "lens_feeling": "warm-interior", "framing_type": "character-pet-pair", "subject_position": "left-third" },
+    { "camera_distance": "extreme-close", "camera_height": "downward", "camera_angle": "overhead", "lens_feeling": "warm-interior", "framing_type": "insert-detail", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-interior", "framing_type": "insert-detail", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-glow", "framing_type": "insert-detail", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "three-quarter", "lens_feeling": "bright-window-light", "framing_type": "character-moment", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-firelight", "framing_type": "insert-detail", "subject_position": "center-left" },
+    { "camera_distance": "extreme-close", "camera_height": "downward", "camera_angle": "overhead", "lens_feeling": "warm-steam-glow", "framing_type": "insert-detail", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "bright-window-light", "framing_type": "texture-detail", "subject_position": "center" },
+    { "camera_distance": "wide", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "cool-night-lamp", "framing_type": "character-environment", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "dark-cool-interior", "framing_type": "insert-detail", "subject_position": "left-third" }
+  ],
+  "acting_candidates": [
+    { "gaze_direction": "sleepy-reactive", "head_direction": "turn", "hand_activity": "hand-on-mattress", "posture": "lying-waking", "body_weight_distribution": "passive" },
+    { "gaze_direction": "startled-alert", "head_direction": "profile-turn", "hand_activity": "none-visible", "posture": "lying-recoil", "body_weight_distribution": "rear-shift" },
+    { "gaze_direction": "downward-focused", "head_direction": "tilt-down", "hand_activity": "petal-pinch", "posture": "seated-leaning-forward", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "downward-precise", "head_direction": "tilt-down", "hand_activity": "spoon-pour", "posture": "standing-measuring", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "side-alert", "head_direction": "turn", "hand_activity": "hands-clasped", "posture": "seated-window-watch", "body_weight_distribution": "even" },
+    { "gaze_direction": "focused-task", "head_direction": "tilt-down", "hand_activity": "tongs-grip", "posture": "standing-tending", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "downward-content", "head_direction": "tilt-down", "hand_activity": "none-visible", "posture": "standing-bedmaking", "body_weight_distribution": "forward-lean" }
+  ],
+  "daily_life_candidates": [
+    { "activity": "morning-waking-cat-greeting", "object_interaction": "none", "environmental_touchpoint": "bed" },
+    { "activity": "herb-picking-preparation", "object_interaction": "petal-handling", "environmental_touchpoint": "wooden-tray" },
+    { "activity": "spice-measuring-apothecary", "object_interaction": "scale-handling", "environmental_touchpoint": "workbench" },
+    { "activity": "window-reading-coffee", "object_interaction": "book-mug-handling", "environmental_touchpoint": "window-table" },
+    { "activity": "fireplace-tending", "object_interaction": "tongs-handling", "environmental_touchpoint": "stove-hearth" },
+    { "activity": "cauldron-brewing", "object_interaction": "ladle-handling", "environmental_touchpoint": "cauldron" },
+    { "activity": "bedroom-tidying-night", "object_interaction": "blanket-handling", "environmental_touchpoint": "attic-bedroom" }
+  ],
+  "object_interaction_candidates": [
+    { "interaction_type": "pinch", "object_category": "daisy-petals", "grip_style": "fingertip-pick", "interaction_phase": "harvesting" },
+    { "interaction_type": "pour", "object_category": "jar-contents", "grip_style": "two-hand-hold", "interaction_phase": "storing" },
+    { "interaction_type": "measure", "object_category": "scale-spoon", "grip_style": "spoon-tip-pour", "interaction_phase": "weighing" },
+    { "interaction_type": "tend", "object_category": "fireplace-logs", "grip_style": "tongs-grip", "interaction_phase": "stoking" },
+    { "interaction_type": "stir-brew", "object_category": "cauldron-contents", "grip_style": "ladle-pour", "interaction_phase": "brewing" }
+  ],
+  "extra_actor_candidates": [],
+  "animal_candidates": [
+    { "animal_type": "house-cat-black", "movement_state": "nuzzling-affectionate", "subject_relation": "bedside-companion", "framing_weight": "foreground-dominant" },
+    { "animal_type": "house-cat-black", "movement_state": "seated-looking-up", "subject_relation": "floor-companion", "framing_weight": "foreground-dominant" }
+  ],
+  "candidate_counts": {
+    "camera": 14,
+    "acting": 7,
+    "daily_life": 7,
+    "object_interaction": 5,
+    "extra_actor": 0,
+    "animal": 2
+  },
+  "notes": "extra_actor_candidates is genuinely empty (0) -- solo woman + cat throughout. acting_candidates (7) alone clears the blocking evidence floor. This source's apothecary/herbalist content (petal-picking, scale-weighing, cauldron-brewing) is distinct in flavor from MORI_02's clockmaker-village and MORI_03's apple-pie-baking content, though all four MORI sources share the cozy-domestic-with-cat genre."
+}

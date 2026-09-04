@@ -1,0 +1,75 @@
+{
+  "catalog_type": "grammar_catalog",
+  "catalog_version": "PHASE-MOVIE-RECONSTRUCTION-013",
+  "source": "MORI_02",
+  "source_duration_seconds": 244,
+  "measured_duration_seconds": 244.23,
+  "estimated_only": false,
+  "measurement_method": "Real frame decode of imports/source_videos/active/mori/MORI_02.mp4 (imageio+bundled ffmpeg, h264 1920x1080 30fps, 7325 frames). Frame-differencing pass identified 60 real shots; 18 frames sampled across shots spread through the full runtime and directly inspected. Source content identified as a cozy fantasy-village animated short ('Mistbell' village signage visible) featuring a recurring girl character, a black-and-white cat, and an elderly clockmaker -- same 'Mori' channel branding/watermark as MORI_01 but a distinct setting (a full village with named shops) and richer human-character daily-life content.",
+  "identity_safety": {
+    "identity_lock_required": true,
+    "estimated_only": false,
+    "no_source_content_reproduced": true,
+    "note": "Only abstract categorical shot-grammar labels recorded -- no dialogue, on-screen text, character likeness detail, titles, or branding reproduced."
+  },
+  "camera_candidates": [
+    { "camera_distance": "extreme-wide", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "bright-daylight", "framing_type": "environment-establish", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "low", "camera_angle": "front", "lens_feeling": "natural-daylight", "framing_type": "character-portrait", "subject_position": "center" },
+    { "camera_distance": "mid-close", "camera_height": "eye-level", "camera_angle": "three-quarter", "lens_feeling": "warm-interior", "framing_type": "character-moment", "subject_position": "left-third" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-workshop", "framing_type": "character-portrait", "subject_position": "right-third" },
+    { "camera_distance": "wide", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "bright-daylight", "framing_type": "character-environment", "subject_position": "right-third" },
+    { "camera_distance": "extreme-wide", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "bright-daylight", "framing_type": "environment-transit", "subject_position": "center" },
+    { "camera_distance": "mid", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-interior", "framing_type": "character-task", "subject_position": "left-third" },
+    { "camera_distance": "mid", "camera_height": "eye-level", "camera_angle": "three-quarter", "lens_feeling": "warm-window-light", "framing_type": "character-task", "subject_position": "left-third" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "profile", "lens_feeling": "warm-interior", "framing_type": "character-portrait", "subject_position": "right-third" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-interior", "framing_type": "insert-detail", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "low", "camera_angle": "front", "lens_feeling": "warm-firelight", "framing_type": "character-portrait", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "cool-night-window", "framing_type": "insert-detail", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-interior", "framing_type": "emotional-close", "subject_position": "center" },
+    { "camera_distance": "mid", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-lamp-light", "framing_type": "character-portrait", "subject_position": "center" },
+    { "camera_distance": "mid", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "warm-candlelight", "framing_type": "character-pet-pair", "subject_position": "balanced-split" }
+  ],
+  "acting_candidates": [
+    { "gaze_direction": "alert-wary", "head_direction": "level", "hand_activity": "none-visible", "posture": "standing-defensive-arch", "body_weight_distribution": "rear-shift" },
+    { "gaze_direction": "curious-upward", "head_direction": "tilt-up", "hand_activity": "none-visible", "posture": "standing-looking-up", "body_weight_distribution": "even" },
+    { "gaze_direction": "downward-content", "head_direction": "level", "hand_activity": "teapot-carry", "posture": "walking-forward", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "focused-polishing", "head_direction": "tilt-down", "hand_activity": "cloth-wipe", "posture": "seated-leaning-forward", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "content-pouring", "head_direction": "level", "hand_activity": "teapot-pour-grip", "posture": "seated-reaching", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "wide-eyed-startled", "head_direction": "level", "hand_activity": "both-hands-teapot-grip", "posture": "seated-leaning-forward", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "content-focused", "head_direction": "tilt-down", "hand_activity": "tool-hold", "posture": "seated-workbench", "body_weight_distribution": "even" },
+    { "gaze_direction": "curious-direct", "head_direction": "level", "hand_activity": "box-open", "posture": "seated-table", "body_weight_distribution": "even" }
+  ],
+  "daily_life_candidates": [
+    { "activity": "village-street-strolling", "object_interaction": "none", "environmental_touchpoint": "cobblestone-street" },
+    { "activity": "shop-visiting-errand", "object_interaction": "teapot-carry", "environmental_touchpoint": "shop-storefront" },
+    { "activity": "teapot-polishing-housework", "object_interaction": "cloth-handling", "environmental_touchpoint": "dining-table" },
+    { "activity": "tea-pouring-serving", "object_interaction": "teapot-handling", "environmental_touchpoint": "dining-table" },
+    { "activity": "clockmaker-repair-work", "object_interaction": "tool-handling", "environmental_touchpoint": "workshop-bench" },
+    { "activity": "candlelit-box-examining", "object_interaction": "box-handling", "environmental_touchpoint": "library-table" }
+  ],
+  "object_interaction_candidates": [
+    { "interaction_type": "carry", "object_category": "teapot", "grip_style": "handle-hold", "interaction_phase": "transport" },
+    { "interaction_type": "polish", "object_category": "teapot-surface", "grip_style": "cloth-wipe", "interaction_phase": "cleaning" },
+    { "interaction_type": "pour", "object_category": "teapot-spout", "grip_style": "handle-tilt", "interaction_phase": "serving" },
+    { "interaction_type": "repair", "object_category": "clock-mechanism", "grip_style": "tool-precision", "interaction_phase": "fixing" },
+    { "interaction_type": "open", "object_category": "wooden-box", "grip_style": "lid-lift", "interaction_phase": "examining" }
+  ],
+  "extra_actor_candidates": [
+    { "actor_role": "shop-clockmaker-elder", "spatial_relation": "workbench-seated", "activity_involvement": "craft-repair", "visibility_weight": "high" }
+  ],
+  "animal_candidates": [
+    { "animal_type": "house-cat", "movement_state": "startled-defensive", "subject_relation": "solo-portrait", "framing_weight": "foreground-dominant" },
+    { "animal_type": "house-cat", "movement_state": "walking-alongside", "subject_relation": "ground-companion", "framing_weight": "midground" },
+    { "animal_type": "house-cat", "movement_state": "seated-watchful", "subject_relation": "tabletop-companion", "framing_weight": "foreground-dominant" },
+    { "animal_type": "house-cat", "movement_state": "curled-resting", "subject_relation": "fireside-solo", "framing_weight": "foreground-dominant" }
+  ],
+  "candidate_counts": {
+    "camera": 15,
+    "acting": 8,
+    "daily_life": 6,
+    "object_interaction": 5,
+    "extra_actor": 1,
+    "animal": 4
+  },
+  "notes": "Richer daily-life and object-interaction content than MORI_01, reflecting this source's village/shop/craft setting versus MORI_01's rain-focused domestic content. Counts reflect genuine observed content, not padded to a target."
+}

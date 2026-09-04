@@ -1,19 +1,46 @@
 {
-  "dna_id": "environment-motion-dna-shinkai_02-v2",
-  "source_video_id": "SHINKAI_02",
-  "source_group": "shinkai",
-  "materialized": true,
-  "placeholder": false,
-  "water_motion": 0.37,
-  "cloud_motion": 0.17,
-  "rain_motion": 0.07,
-  "grass_motion": 0.24,
-  "tree_motion": 0.2,
-  "dust_motion": 0.1,
-  "steam_motion": 0.14,
-  "wind_profile": {
-    "speed": 0.3,
-    "direction_deg": 28.8,
-    "gust": 0.12
-  }
+  "source": "SHINKAI_02",
+  "source_duration_seconds": 120,
+  "measured_duration_seconds": 120.06,
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-013",
+  "artifact_type": "environment_motion_dna",
+  "estimated_only": false,
+  "measurement_method": "Real frame decode of imports/source_videos/active/shinkai/SHINKAI_02.mp4 (imageio+bundled ffmpeg, h264 1920x1080 24fps). This source has the richest, most direct rain evidence measured under PHASE-011/012/013 -- near-continuous animated rain visible across most sampled frames. Candidates visually confirmed by inspecting the actual frames.",
+  "environment_motion_candidates": [
+    {
+      "candidate_id": "envmotion_shinkai02_ec_001",
+      "start_ms": 42500,
+      "end_ms": 43500,
+      "duration_ms": 1000,
+      "mean_motion_energy": 7.396,
+      "max_motion_energy": 10.523,
+      "std_motion_energy": 0.946,
+      "element_type": "rain_macro",
+      "element_description": "extreme close-up ground-level rain droplets striking wet foliage, glowing green highlight streaks",
+      "camera_state": "static",
+      "confidence": "high",
+      "visual_confirmation_frames": [1032],
+      "note": "A macro shot with no character present, showing individual rain streaks and splash droplets against wet ground foliage -- the very low std (0.946) alongside real nonzero mean energy indicates sustained, continuous rain motion rather than a single spike, i.e. genuine rainfall, not a one-off effect."
+    },
+    {
+      "candidate_id": "envmotion_shinkai02_ec_002",
+      "start_ms": 34917,
+      "end_ms": 36792,
+      "duration_ms": 1875,
+      "mean_motion_energy": 1.135,
+      "max_motion_energy": 3.856,
+      "element_type": "rain_ambient",
+      "element_description": "rooftop shrine and overgrown garden in soft, diffuse rainfall",
+      "camera_state": "static",
+      "confidence": "medium",
+      "visual_confirmation_frames": [860],
+      "note": "Wide static shot of a girl standing under an umbrella on a rooftop shrine in light rain -- the shot's low but consistently nonzero motion energy is consistent with the visible falling rain rather than character movement, which is minimal (she stands mostly still). Confidence medium: the umbrella and character occupy part of the frame, so the energy signal is not purely attributable to rain alone."
+    }
+  ],
+  "candidate_counts": {
+    "environment_motion": 2
+  },
+  "candidate_type": "extracted_environment_motion_candidate",
+  "reads_frame": true,
+  "validates_timestamp": true
 }

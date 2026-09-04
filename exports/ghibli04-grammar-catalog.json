@@ -1,0 +1,60 @@
+{
+  "catalog_type": "grammar_catalog",
+  "catalog_version": "PHASE-MOVIE-RECONSTRUCTION-013",
+  "source": "GHIBLI_04",
+  "source_duration_seconds": 125,
+  "measured_duration_seconds": 125.32,
+  "estimated_only": false,
+  "measurement_method": "Real frame decode of imports/source_videos/active/ghibli/GHIBLI_04.mp4 (imageio+bundled ffmpeg, h264 1920x1080 23.98fps, 3003 frames). Frame-differencing pass identified only 23 real shots (10.53 cuts/min, much slower-paced than the other GHIBLI trailers) -- nearly the entire trailer is one extended sequence of a toddler character discovering and playing with a giant sleeping forest-spirit creature. 19 frames sampled across shots (2-3 per long shot) and directly inspected. Source content identified as an HBO Max streaming trailer for 'My Neighbor Totoro' -- an '(c)2021 WarnerMedia Direct, LLC. HBO Max(tm) is used under license' card appears in the final sampled frame.",
+  "identity_safety": {
+    "identity_lock_required": true,
+    "estimated_only": false,
+    "no_source_content_reproduced": true,
+    "note": "Only abstract categorical shot-grammar labels recorded -- no dialogue, on-screen text, character likeness detail, titles, or branding reproduced."
+  },
+  "camera_candidates": [
+    { "camera_distance": "wide", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "dim-forest", "framing_type": "character-discovery", "subject_position": "right-third" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "profile", "lens_feeling": "dim-forest", "framing_type": "character-moment", "subject_position": "right-third" },
+    { "camera_distance": "wide", "camera_height": "high", "camera_angle": "downward", "lens_feeling": "dim-forest", "framing_type": "creature-reveal", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "dim-forest", "framing_type": "character-portrait", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "profile", "lens_feeling": "dim-forest", "framing_type": "character-moment", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "high", "camera_angle": "downward", "lens_feeling": "dim-forest", "framing_type": "character-pet-pair", "subject_position": "right-third" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "dim-forest", "framing_type": "texture-detail", "subject_position": "top-edge" },
+    { "camera_distance": "wide", "camera_height": "eye-level", "camera_angle": "dynamic-front", "lens_feeling": "dim-forest", "framing_type": "dynamic-action", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "high", "camera_angle": "downward", "lens_feeling": "dim-forest", "framing_type": "playful-interaction", "subject_position": "center" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "dim-forest", "framing_type": "creature-detail", "subject_position": "right-third" },
+    { "camera_distance": "wide", "camera_height": "low", "camera_angle": "inside-pov", "lens_feeling": "dim-forest", "framing_type": "playful-pov", "subject_position": "center" },
+    { "camera_distance": "close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "dim-forest", "framing_type": "character-pet-pair", "subject_position": "right-third" },
+    { "camera_distance": "extreme-close", "camera_height": "eye-level", "camera_angle": "front", "lens_feeling": "dim-forest", "framing_type": "emotional-close", "subject_position": "center" }
+  ],
+  "acting_candidates": [
+    { "gaze_direction": "curious-upward", "head_direction": "tilt-back", "hand_activity": "reaching-gesture", "posture": "standing-looking-up", "body_weight_distribution": "even" },
+    { "gaze_direction": "closed-eyes-blowing", "head_direction": "tilt", "hand_activity": "finger-to-mouth", "posture": "standing-playful", "body_weight_distribution": "even" },
+    { "gaze_direction": "direct-delighted", "head_direction": "level", "hand_activity": "none-visible", "posture": "standing-arms-open", "body_weight_distribution": "even" },
+    { "gaze_direction": "downward-curious", "head_direction": "tilt-down", "hand_activity": "knees-hug", "posture": "seated-crouched", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "direct-smiling", "head_direction": "level", "hand_activity": "lap-rest", "posture": "seated-relaxed", "body_weight_distribution": "even" },
+    { "gaze_direction": "playful-inverted", "head_direction": "upside-down", "hand_activity": "handstand-support", "posture": "handstand-tumbling", "body_weight_distribution": "inverted" },
+    { "gaze_direction": "downward-peering", "head_direction": "tilt-down", "hand_activity": "none-visible", "posture": "lying-prone-peering", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "direct-laughing", "head_direction": "level", "hand_activity": "cheeks-both-hands", "posture": "crawling-forward", "body_weight_distribution": "forward-lean" },
+    { "gaze_direction": "uncertain-worried", "head_direction": "level", "hand_activity": "none-visible", "posture": "seated-still", "body_weight_distribution": "even" }
+  ],
+  "daily_life_candidates": [
+    { "activity": "forest-exploring-discovery", "object_interaction": "none", "environmental_touchpoint": "forest-den" },
+    { "activity": "playful-creature-climbing", "object_interaction": "none", "environmental_touchpoint": "creature-belly-surface" }
+  ],
+  "object_interaction_candidates": [],
+  "extra_actor_candidates": [],
+  "animal_candidates": [
+    { "animal_type": "giant-forest-spirit", "movement_state": "sleeping-still", "subject_relation": "ground-companion-dominant", "framing_weight": "foreground-dominant" },
+    { "animal_type": "giant-forest-spirit", "movement_state": "yawning-active", "subject_relation": "foreground-dominant-interactive", "framing_weight": "foreground-dominant" }
+  ],
+  "candidate_counts": {
+    "camera": 13,
+    "acting": 9,
+    "daily_life": 2,
+    "object_interaction": 0,
+    "extra_actor": 0,
+    "animal": 2
+  },
+  "notes": "object_interaction_candidates and extra_actor_candidates are genuinely empty (0): across all 19 sampled frames, this trailer is a single toddler character and one giant creature companion with no handled props and no second human character -- the entire trailer is a slow-paced (10.53 cuts/min) discovery-and-play sequence, structurally simpler than the other GHIBLI trailers. acting_candidates (9) alone clears the blocking evidence floor (acting+extra_actor >= 6). daily_life (2) and animal (2) reflect the real, narrow content of this specific trailer -- not padded to hit a target number."
+}

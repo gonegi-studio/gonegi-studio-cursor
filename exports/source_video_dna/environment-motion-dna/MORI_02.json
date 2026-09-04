@@ -1,19 +1,37 @@
 {
-  "dna_id": "environment-motion-dna-mori_02-v2",
-  "source_video_id": "MORI_02",
-  "source_group": "mori",
-  "materialized": true,
-  "placeholder": false,
-  "water_motion": 0.498,
-  "cloud_motion": 0.298,
-  "rain_motion": 0.198,
-  "grass_motion": 0.368,
-  "tree_motion": 0.328,
-  "dust_motion": 0.228,
-  "steam_motion": 0.268,
-  "wind_profile": {
-    "speed": 0.428,
-    "direction_deg": 213.11999999999998,
-    "gust": 0.248
-  }
+  "source": "MORI_02",
+  "source_duration_seconds": 244,
+  "measured_duration_seconds": 244.23,
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-013",
+  "artifact_type": "environment_motion_dna",
+  "estimated_only": false,
+  "measurement_method": "Real frame decode of imports/source_videos/active/mori/MORI_02.mp4 (imageio+bundled ffmpeg, h264 1920x1080 30fps). Genuine attempt made to find independent environmental motion across this source's mostly-interior, village/shop-focused content: checked the highest-energy static-classified shots plus additional targeted frame comparisons within window/forest-visible interior shots.",
+  "environment_motion_candidates": [
+    {
+      "candidate_id": "envmotion_mori02_ec_001",
+      "start_ms": 94000,
+      "end_ms": 99900,
+      "duration_ms": 5900,
+      "mean_motion_energy": 0.724,
+      "max_motion_energy": 4.667,
+      "element_type": "ambiguous_low_signal",
+      "element_description": "static interior tea-pouring shot with a forest visible through a window in the background",
+      "camera_state": "static",
+      "confidence": "low",
+      "visual_confirmation_frames": [2908],
+      "note": "Real nonzero motion energy present, but at this low a magnitude it cannot be reliably distinguished from the primary character's own small movements (hand/head shifts while pouring tea) -- not confidently attributed to independent background/forest motion."
+    }
+  ],
+  "candidate_counts": {
+    "environment_motion": 1
+  },
+  "known_limitations": [
+    {
+      "code": "INSUFFICIENT_EVIDENCE",
+      "note": "Unlike MORI_01 (rain-dominant) or the trailer sources, this source's sampled content is predominantly static interior/shop scenes with no clearly independent environmental element (wind, water, wildlife) directly observed. Only 1 (low-confidence) candidate is recorded rather than fabricating a second to clear the LOW-tier evidence floor -- consistent with the honest-limitation pattern already applied to GHIBLI_04 in this same phase. This dimension will correctly remain below LOW-tier credit for MORI_02 (validateEnvironmentMotionDnaSignal requires >=2 real candidates)."
+    }
+  ],
+  "candidate_type": "extracted_environment_motion_candidate",
+  "reads_frame": true,
+  "validates_timestamp": true
 }

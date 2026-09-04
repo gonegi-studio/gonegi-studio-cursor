@@ -1,19 +1,45 @@
 {
-  "dna_id": "environment-motion-dna-mori_04-v2",
-  "source_video_id": "MORI_04",
-  "source_group": "mori",
-  "materialized": true,
-  "placeholder": false,
-  "water_motion": 0.3935,
-  "cloud_motion": 0.1935,
-  "rain_motion": 0.0935,
-  "grass_motion": 0.2635,
-  "tree_motion": 0.2235,
-  "dust_motion": 0.1235,
-  "steam_motion": 0.1635,
-  "wind_profile": {
-    "speed": 0.3235,
-    "direction_deg": 62.63999999999999,
-    "gust": 0.1435
-  }
+  "source": "MORI_04",
+  "source_duration_seconds": 233,
+  "measured_duration_seconds": 233.08,
+  "phase": "PHASE-MOVIE-RECONSTRUCTION-013",
+  "artifact_type": "environment_motion_dna",
+  "estimated_only": false,
+  "measurement_method": "Real frame decode of imports/source_videos/active/mori/MORI_04.mp4 (imageio+bundled ffmpeg, h264 1920x1080 30fps). Candidates visually confirmed by inspecting the actual frames.",
+  "environment_motion_candidates": [
+    {
+      "candidate_id": "envmotion_mori04_ec_001",
+      "start_ms": 11067,
+      "end_ms": 14967,
+      "duration_ms": 3900,
+      "mean_motion_energy": 0.561,
+      "max_motion_energy": 3.363,
+      "element_type": "wind_driven_debris",
+      "element_description": "a wilted potted sunflower on a windowsill with fallen leaves scattered around the pot",
+      "camera_state": "static",
+      "confidence": "medium",
+      "visual_confirmation_frames": [390],
+      "note": "A static exterior windowsill shot with autumn leaves visibly scattered on the sill -- the low but nonzero motion energy is consistent with mild wind disturbing the loose leaves/wilted petals, though not as dramatic as the fireplace/cauldron shots. Confidence medium: identified from a single frame, no before/after comparison of leaf positions was made."
+    },
+    {
+      "candidate_id": "envmotion_mori04_ec_002",
+      "start_ms": 137633,
+      "end_ms": 145333,
+      "duration_ms": 7700,
+      "mean_motion_energy": 1.742,
+      "max_motion_energy": 17.677,
+      "element_type": "fire",
+      "element_description": "flickering flames inside a wood stove",
+      "camera_state": "static",
+      "confidence": "high",
+      "visual_confirmation_frames": [4244],
+      "note": "Real, visibly flickering fire consuming logs inside a stove -- the fire itself is an independent environmental motion source layered with the hand/tongs motion also recorded in this shot under motion-vector-dna.json's mc_001 (same shot, two different real motion sources)."
+    }
+  ],
+  "candidate_counts": {
+    "environment_motion": 2
+  },
+  "candidate_type": "extracted_environment_motion_candidate",
+  "reads_frame": true,
+  "validates_timestamp": true
 }
