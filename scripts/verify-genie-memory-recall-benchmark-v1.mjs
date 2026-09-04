@@ -3,15 +3,21 @@
 // This is the exact 16-event natural-language recall benchmark from
 // "GENIE Historical Memory Bootstrap Assessment V1" (2026-09-04), promoted
 // to a permanent, fixed regression test per "GENIE Retrieval Reliability
-// Repair V1". Every case is a REAL event: 10 that real memory exists for
-// (either an Experience or a backfilled Observation) and 6 that are true
-// negatives (real events with no memory recorded yet -- pre-08-15 commits,
-// events that never happened, or categories with no accessible evidence).
-// Do NOT add cases with fabricated/synthetic content; only real, verified
-// events belong here. This benchmark is the pass/fail bar for any future
-// change to services/genieUnifiedMemoryRetrieval.mjs or the Observation
-// Log's own retrieval path -- a change that regresses this file is a
-// regression, full stop, regardless of what else it improves.
+// Repair V1". The 16 QUERIES are fixed; each one's expect: 'FIND'/'EMPTY'
+// classification is a snapshot of ground truth and is meant to be updated
+// -- honestly, with a note explaining why -- when real work legitimately
+// changes that truth (e.g. a query correctly flips EMPTY->FIND once the
+// event it asks about is genuinely captured as memory; that is a successful
+// outcome, not a regression). What must NEVER happen without investigation
+// is a query returning the WRONG record, or an EMPTY case matching
+// something irrelevant -- that is what "regression" means here. As of
+// "GENIE Historical Memory Bootstrap Pilot V1" (2026-09-04): 13 cases are
+// real events with real memory (Experience, backfilled Observation, or a
+// verified Historical Observation restoration) and 3 remain true negatives
+// (a real event with genuinely no memory tier covering it yet, an event
+// that never happened, or a category with no accessible evidence). Do NOT
+// add cases with fabricated/synthetic content; only real, verified events
+// belong here.
 import { retrieveGenieMemory } from '../services/genieUnifiedMemoryRetrieval.mjs';
 
 const CASES = [
@@ -26,9 +32,9 @@ const CASES = [
   { q: 'next real production task selection ai studio nexus veo', expect: 'FIND', note: 'AIStudio-App path discovery' },
   { q: 'camera preservation alignment commit decision', expect: 'FIND', note: 'commit persistence decision' },
   { q: 'numerical DNA evidence persistence grammar catalog environment motion', expect: 'EMPTY', note: 'real event, predates Observation Log existing at all' },
-  { q: 'PR-01 ProductionOS v83 types scaffold', expect: 'EMPTY', note: 'real commit 2026-05-23, pre-08-15, no memory tier covers it' },
-  { q: 'GPU conditioning validation phase 007C', expect: 'EMPTY', note: 'real commit 2026-06-14, origin of the panEnergy floor bug, never captured as memory' },
-  { q: 'PBRP scenario composition intelligence AI Studio ready scenario output', expect: 'EMPTY', note: 'real commit 2026-08-10, direct precursor to this session\'s AIStudio work, never captured' },
+  { q: 'PR-01 ProductionOS v83 types scaffold', expect: 'FIND', mustIncludeContext: 'Historical Episode Restoration (pilot, 1/5)', note: 'FLIPPED 2026-09-04 by "GENIE Historical Memory Bootstrap Pilot V1": commit 182c275c genuinely restored as a verified Historical Observation (git show --stat evidence). Was EMPTY before this restoration.' },
+  { q: 'GPU conditioning validation phase 007C', expect: 'FIND', mustIncludeContext: 'Historical Episode Restoration (pilot, 3/5)', note: 'FLIPPED 2026-09-04: commit 3f186ba genuinely restored (partially -- 2959-file commit honestly scoped to only its verified panEnergy-origin connection). Was EMPTY before this restoration.' },
+  { q: 'PBRP scenario composition intelligence AI Studio ready scenario output', expect: 'FIND', mustIncludeContext: 'Historical Episode Restoration (pilot, 5/5)', note: 'FLIPPED 2026-09-04: commit 5cb9067d genuinely restored as a verified Historical Observation. Was EMPTY before this restoration.' },
   { q: 'user completed real image app manual review titanic scenes', expect: 'EMPTY', note: 'real intake/report infrastructure exists (FAIL_REAL_IMAGE_APP_MANUAL_V1) but was never actually completed' },
   { q: 'important decisions from chatgpt conversation', expect: 'EMPTY', note: 'only a connector contract/schema exists; zero real conversation content in the repo' },
 ];
