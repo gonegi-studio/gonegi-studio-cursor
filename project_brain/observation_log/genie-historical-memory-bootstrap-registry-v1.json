@@ -1,0 +1,43 @@
+{
+  "registry_id": "genie-historical-memory-bootstrap-registry-v1",
+  "generated_at": "2026-09-04T04:47:00.000Z",
+  "purpose": "Explicitly mark the two known classes of real project history that exist but are not yet covered by any GENIE canonical memory tier (Experience or Observation), so they are tracked as a known, bounded, deferred restoration scope -- not silently forgotten, and not mass-converted into synthetic memory records right now.",
+  "status": "DEFERRED_NOT_YET_RESTORED",
+  "hard_guardrails": {
+    "no_automatic_knowledge_or_principle_promotion_from_this_registry": true,
+    "no_synthetic_experience_generation": true,
+    "this_registry_is_a_scope_marker_only": "Entries here are NOT Experience records and NOT Observation Log entries -- they carry no problem/decision/lesson content, only scope, counts, and a deferred restoration method. Nothing here should ever be cited by retrieveCanonicalHistoryByProblem() or the Observation tier as if it were a real, evidence-backed memory record.",
+    "restoration_when_it_happens_must_be_evidence_based": "Any future restoration of either scope below must be built from real, re-verified evidence (actual commit diffs, actual session transcripts) at the time it happens -- never fabricated or inferred from the scope description alone."
+  },
+  "scopes": [
+    {
+      "scope_id": "repository_history_pre_experience_system",
+      "description": "Every commit before the Experience tier's earliest real record. This is the vast majority of the project's development history, currently retrievable only via raw git log/diff archaeology -- invisible to retrieveCanonicalHistoryByProblem() and to the Observation tier entirely.",
+      "boundary_date": "2026-08-15",
+      "boundary_basis": "real:earliest generated_at/captured_at found across all project_brain/story_scenario_intelligence/*.json Experience-tier files, as of the 2026-09-04 GENIE Historical & Persistent Memory Integrity Assessment V1",
+      "commits_before_boundary": 260,
+      "total_commits_at_assessment_time": 290,
+      "coverage_ratio_before_boundary": 0.0,
+      "current_retrievability": "git_log_and_diff_only -- zero Experience or Observation coverage",
+      "explicit_non_goal": "Do NOT mass-convert these 260 commits into Experience records now. That volume cannot be safely evidence-verified in bulk; each would need the same real investigation discipline as any single OJT-captured Experience.",
+      "deferred_restoration_method": "TBD -- when picked up, should sample representative real commits (not all 260), verify each against actual diffs/outcomes the same way OJT captures verify real Experience today, and explicitly re-run this same commit_count/coverage_ratio accounting to show real progress, not just record count growth.",
+      "restoration_status": "NOT_STARTED"
+    },
+    {
+      "scope_id": "conversation_and_production_history_outside_git",
+      "description": "Real production decisions, derivations, and results that existed only in a conversation/session transcript and were never written to any repository file at all -- so even a full git-history restoration (scope above) would never recover them. The concrete case that surfaced this: AIStudio First Real Generation Trial V1's real PBRP-to-AIStudio translated contract (scenario/timeKey/negative_prompt/layoutBlueprint/character_reference) was derived live and presented to the user, but never written to disk anywhere until backfilled into the Observation Log during this same assessment.",
+      "known_instances": [
+        {
+          "instance": "AIStudio First Real Generation Trial V1 contract derivation",
+          "recovered": true,
+          "recovery_method": "Backfilled into project_brain/observation_log/genie-observation-log-v1.jsonl during GENIE Memory Recovery Foundation V1 (this task) -- content was still available in-session, so this one instance did not require deferral.",
+          "related_ref": "project_brain/observation_log/genie-observation-log-v1.jsonl"
+        }
+      ],
+      "unrecovered_estimate": "UNKNOWN -- no systematic way yet exists to know how many prior sessions produced real, undocumented conversation-only decisions before this pattern was even recognized. Not estimated here rather than guessed at.",
+      "explicit_non_goal": "Do NOT attempt to reconstruct or infer past conversation-only decisions that no longer have any real transcript or evidence available -- that would produce fabricated, not evidence-based, memory.",
+      "deferred_restoration_method": "TBD -- going forward, the real mitigation is the persistence discipline established in this same task (assessTaskClosureMemoryNeed in services/genieUnifiedMemoryRetrieval.mjs), which prevents new instances of this class from occurring, rather than a backward-looking recovery mechanism for instances that already have no surviving evidence.",
+      "restoration_status": "PARTIALLY_ADDRESSED_GOING_FORWARD"
+    }
+  ]
+}
