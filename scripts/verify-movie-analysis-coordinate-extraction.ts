@@ -47,7 +47,7 @@ if (sceneDetectionReport.final_verdict !== SCENE_DETECTION_PASS_VERDICT) {
   process.exit(1);
 }
 
-const { plans, written } = writeMovieAnalysisCoordinateExtractionPlans(projectRoot);
+const { plans, written, preserved } = writeMovieAnalysisCoordinateExtractionPlans(projectRoot);
 const report = writeMovieAnalysisCoordinateExtractionReport(projectRoot);
 
 console.log(report.final_verdict);
@@ -69,6 +69,7 @@ for (const plan of plans) {
   );
 }
 console.log(`written_plans=${written.join(', ')}`);
+console.log(`preserved_real_plans=${preserved.join(', ')}`);
 console.log(`registry=${COORDINATE_EXTRACTION_REGISTRY_PATH}`);
 console.log(`report=${COORDINATE_EXTRACTION_REPORT_PATH}`);
 console.log(`markdown=${COORDINATE_EXTRACTION_MD_PATH}`);

@@ -285,9 +285,26 @@ export function buildSeedSceneDetectionPlans(
   return plans;
 }
 
+function isProtectedRealSceneDetectionPlan(absPath: string): boolean {
+  if (!fs.existsSync(absPath)) return false;
+  try {
+    const existing = JSON.parse(fs.readFileSync(absPath, 'utf8')) as {
+      extraction_method?: string;
+      extraction_summary?: { candidates_estimated?: number };
+    };
+    return (
+      existing.extraction_method === 'real_frame_read_v1' &&
+      existing.extraction_summary?.candidates_estimated === 0
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function writeMovieAnalysisSceneDetectionPlans(projectRoot?: string): {
   plans: MovieAnalysisSceneDetectionPlan[];
   written: string[];
+  preserved: string[];
 } {
   const root = resolveProjectRoot(projectRoot);
   const plans = buildSeedSceneDetectionPlans(root);
@@ -295,9 +312,15 @@ export function writeMovieAnalysisSceneDetectionPlans(projectRoot?: string): {
   fs.mkdirSync(outDir, { recursive: true });
 
   const written: string[] = [];
+  const preserved: string[] = [];
   for (const plan of plans) {
     const rel = `${SCENE_DETECTION_PLANS_DIR}/${plan.scene_detection_id}.json`;
-    fs.writeFileSync(path.join(root, rel), `${JSON.stringify(plan, null, 2)}\n`, 'utf8');
+    const abs = path.join(root, rel);
+    if (isProtectedRealSceneDetectionPlan(abs)) {
+      preserved.push(rel);
+      continue;
+    }
+    fs.writeFileSync(abs, `${JSON.stringify(plan, null, 2)}\n`, 'utf8');
     written.push(rel);
   }
 
@@ -327,7 +350,7 @@ export function writeMovieAnalysisSceneDetectionPlans(projectRoot?: string): {
     'utf8'
   );
 
-  return { plans, written };
+  return { plans, written, preserved };
 }
 
 export function loadMovieAnalysisSceneDetectionPlan(

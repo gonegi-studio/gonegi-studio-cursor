@@ -112,30 +112,58 @@ function validateExecutionFlags(
 ): CoordinateExtractionValidationIssue[] {
   const issues: CoordinateExtractionValidationIssue[] = [];
   const flags = plan.execution_flags;
+  const isRealPlan = plan.extraction_method === 'real_frame_read_v1';
 
-  if (flags.planning_only !== true) {
-    issues.push({
-      code: 'PLANNING_ONLY_FALSE',
-      message: 'execution_flags.planning_only must be true',
-      severity: 'error',
-      coordinate_extraction_id: plan.coordinate_extraction_id,
-    });
-  }
-  if (flags.coordinate_extraction !== false) {
-    issues.push({
-      code: 'COORDINATE_EXTRACTION_ENABLED',
-      message: 'execution_flags.coordinate_extraction must be false',
-      severity: 'error',
-      coordinate_extraction_id: plan.coordinate_extraction_id,
-    });
-  }
-  if (flags.frame_extraction !== false) {
-    issues.push({
-      code: 'FRAME_EXTRACTION_ENABLED',
-      message: 'execution_flags.frame_extraction must be false',
-      severity: 'error',
-      coordinate_extraction_id: plan.coordinate_extraction_id,
-    });
+  if (isRealPlan) {
+    if (flags.planning_only !== false) {
+      issues.push({
+        code: 'REAL_PLANNING_ONLY_TRUE',
+        message: 'execution_flags.planning_only must be false for a real_frame_read_v1 plan',
+        severity: 'error',
+        coordinate_extraction_id: plan.coordinate_extraction_id,
+      });
+    }
+    if (flags.coordinate_extraction !== true) {
+      issues.push({
+        code: 'REAL_COORDINATE_EXTRACTION_DISABLED',
+        message: 'execution_flags.coordinate_extraction must be true for a real_frame_read_v1 plan',
+        severity: 'error',
+        coordinate_extraction_id: plan.coordinate_extraction_id,
+      });
+    }
+    if (flags.frame_extraction !== true) {
+      issues.push({
+        code: 'REAL_FRAME_EXTRACTION_DISABLED',
+        message: 'execution_flags.frame_extraction must be true for a real_frame_read_v1 plan',
+        severity: 'error',
+        coordinate_extraction_id: plan.coordinate_extraction_id,
+      });
+    }
+  } else {
+    if (flags.planning_only !== true) {
+      issues.push({
+        code: 'PLANNING_ONLY_FALSE',
+        message: 'execution_flags.planning_only must be true',
+        severity: 'error',
+        coordinate_extraction_id: plan.coordinate_extraction_id,
+      });
+    }
+    if (flags.coordinate_extraction !== false) {
+      issues.push({
+        code: 'COORDINATE_EXTRACTION_ENABLED',
+        message: 'execution_flags.coordinate_extraction must be false',
+        severity: 'error',
+        coordinate_extraction_id: plan.coordinate_extraction_id,
+      });
+    }
+    if (flags.frame_extraction !== false) {
+      issues.push({
+        code: 'FRAME_EXTRACTION_ENABLED',
+        message: 'execution_flags.frame_extraction must be false',
+        severity: 'error',
+        coordinate_extraction_id: plan.coordinate_extraction_id,
+      });
+    }
   }
   if (flags.scene_extraction !== false) {
     issues.push({
@@ -226,47 +254,111 @@ function validateCoordinateCandidates(
     return issues;
   }
 
+  const isRealPlan = plan.extraction_method === 'real_frame_read_v1';
+
   for (const candidate of plan.coordinate_candidates) {
-    if (candidate.reads_frame !== false) {
-      issues.push({
-        code: 'CANDIDATE_READS_FRAME',
-        message: `Candidate ${candidate.candidate_id} must not read frames`,
-        severity: 'error',
-        coordinate_extraction_id: plan.coordinate_extraction_id,
-      });
+    if (isRealPlan) {
+      if (candidate.reads_frame !== true) {
+        issues.push({
+          code: 'REAL_CANDIDATE_DOES_NOT_READ_FRAME',
+          message: `Candidate ${candidate.candidate_id} in a real_frame_read_v1 plan must have reads_frame=true`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.extracts_coordinate !== true) {
+        issues.push({
+          code: 'REAL_CANDIDATE_DOES_NOT_EXTRACT_COORDINATE',
+          message: `Candidate ${candidate.candidate_id} in a real_frame_read_v1 plan must have extracts_coordinate=true`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.validates_timestamp !== true) {
+        issues.push({
+          code: 'REAL_CANDIDATE_DOES_NOT_VALIDATE_TIMESTAMP',
+          message: `Candidate ${candidate.candidate_id} in a real_frame_read_v1 plan must have validates_timestamp=true`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.candidate_type !== 'extracted_coordinate_candidate') {
+        issues.push({
+          code: 'INVALID_CANDIDATE_TYPE',
+          message: `Candidate ${candidate.candidate_id} must be extracted_coordinate_candidate in a real_frame_read_v1 plan`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.estimated_only !== false) {
+        issues.push({
+          code: 'REAL_CANDIDATE_ESTIMATED_ONLY_TRUE',
+          message: `Candidate ${candidate.candidate_id} in a real_frame_read_v1 plan must have estimated_only=false`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      const measuredValue = (candidate as { measured_value?: string }).measured_value;
+      if (!measuredValue) {
+        issues.push({
+          code: 'INVALID_MEASURED_VALUE',
+          message: `Candidate ${candidate.candidate_id} must have a real measured_value`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+    } else {
+      if (candidate.reads_frame !== false) {
+        issues.push({
+          code: 'CANDIDATE_READS_FRAME',
+          message: `Candidate ${candidate.candidate_id} must not read frames`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.extracts_coordinate !== false) {
+        issues.push({
+          code: 'CANDIDATE_EXTRACTS_COORDINATE',
+          message: `Candidate ${candidate.candidate_id} must not extract coordinates`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.validates_timestamp !== false) {
+        issues.push({
+          code: 'CANDIDATE_VALIDATES_TIMESTAMP',
+          message: `Candidate ${candidate.candidate_id} must not validate timestamps from frames`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.candidate_type !== 'estimated_coordinate_candidate') {
+        issues.push({
+          code: 'INVALID_CANDIDATE_TYPE',
+          message: `Candidate ${candidate.candidate_id} must be estimated_coordinate_candidate only`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      if (candidate.estimated_only !== true) {
+        issues.push({
+          code: 'ESTIMATED_ONLY_FALSE',
+          message: `Candidate ${candidate.candidate_id} must have estimated_only=true`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
+      const estimatedValue = (candidate as { estimated_value?: string }).estimated_value;
+      if (!estimatedValue || !estimatedValue.startsWith('estimated_')) {
+        issues.push({
+          code: 'INVALID_ESTIMATED_VALUE',
+          message: `Candidate ${candidate.candidate_id} must have estimated placeholder value`,
+          severity: 'error',
+          coordinate_extraction_id: plan.coordinate_extraction_id,
+        });
+      }
     }
-    if (candidate.extracts_coordinate !== false) {
-      issues.push({
-        code: 'CANDIDATE_EXTRACTS_COORDINATE',
-        message: `Candidate ${candidate.candidate_id} must not extract coordinates`,
-        severity: 'error',
-        coordinate_extraction_id: plan.coordinate_extraction_id,
-      });
-    }
-    if (candidate.validates_timestamp !== false) {
-      issues.push({
-        code: 'CANDIDATE_VALIDATES_TIMESTAMP',
-        message: `Candidate ${candidate.candidate_id} must not validate timestamps from frames`,
-        severity: 'error',
-        coordinate_extraction_id: plan.coordinate_extraction_id,
-      });
-    }
-    if (candidate.candidate_type !== 'estimated_coordinate_candidate') {
-      issues.push({
-        code: 'INVALID_CANDIDATE_TYPE',
-        message: `Candidate ${candidate.candidate_id} must be estimated_coordinate_candidate only`,
-        severity: 'error',
-        coordinate_extraction_id: plan.coordinate_extraction_id,
-      });
-    }
-    if (candidate.estimated_only !== true) {
-      issues.push({
-        code: 'ESTIMATED_ONLY_FALSE',
-        message: `Candidate ${candidate.candidate_id} must have estimated_only=true`,
-        severity: 'error',
-        coordinate_extraction_id: plan.coordinate_extraction_id,
-      });
-    }
+
     if (!ALL_COORDINATE_TYPES.includes(candidate.coordinate_type)) {
       issues.push({
         code: 'INVALID_COORDINATE_TYPE',
@@ -275,23 +367,17 @@ function validateCoordinateCandidates(
         coordinate_extraction_id: plan.coordinate_extraction_id,
       });
     }
-    if (!candidate.estimated_value || !candidate.estimated_value.startsWith('estimated_')) {
-      issues.push({
-        code: 'INVALID_ESTIMATED_VALUE',
-        message: `Candidate ${candidate.candidate_id} must have estimated placeholder value`,
-        severity: 'error',
-        coordinate_extraction_id: plan.coordinate_extraction_id,
-      });
-    }
 
-    for (const key of FORBIDDEN_CANDIDATE_KEYS) {
-      if (key in (candidate as Record<string, unknown>)) {
-        issues.push({
-          code: 'FORBIDDEN_CANDIDATE_FIELD',
-          message: `Candidate ${candidate.candidate_id} must not contain ${key}`,
-          severity: 'error',
-          coordinate_extraction_id: plan.coordinate_extraction_id,
-        });
+    if (!isRealPlan) {
+      for (const key of FORBIDDEN_CANDIDATE_KEYS) {
+        if (key in (candidate as Record<string, unknown>)) {
+          issues.push({
+            code: 'FORBIDDEN_CANDIDATE_FIELD',
+            message: `Candidate ${candidate.candidate_id} must not contain ${key}`,
+            severity: 'error',
+            coordinate_extraction_id: plan.coordinate_extraction_id,
+          });
+        }
       }
     }
   }
@@ -437,7 +523,21 @@ function validatePlan(
     });
   }
 
-  if (!plan.identity_safety.estimated_only || !plan.identity_safety.no_coordinate_extraction) {
+  if (plan.extraction_method === 'real_frame_read_v1') {
+    if (
+      plan.identity_safety.estimated_only !== false ||
+      plan.identity_safety.no_coordinate_extraction !== false ||
+      plan.identity_safety.no_source_content_reproduced !== true
+    ) {
+      issues.push({
+        code: 'IDENTITY_SAFETY_INVALID',
+        message:
+          'identity_safety for a real_frame_read_v1 plan must set estimated_only=false, no_coordinate_extraction=false, and no_source_content_reproduced=true',
+        severity: 'error',
+        coordinate_extraction_id: plan.coordinate_extraction_id,
+      });
+    }
+  } else if (!plan.identity_safety.estimated_only || !plan.identity_safety.no_coordinate_extraction) {
     issues.push({
       code: 'IDENTITY_SAFETY_INVALID',
       message: 'identity_safety must enforce estimated_only and no_coordinate_extraction',
@@ -692,8 +792,23 @@ export function writeMovieAnalysisCoordinateExtractionReport(
 
   const estimatedOnly =
     plans.length === 4 &&
-    plans.every(
-      (p) =>
+    plans.every((p) => {
+      if (p.extraction_method === 'real_frame_read_v1') {
+        return (
+          p.coordinate_candidates.every(
+            (c) =>
+              c.candidate_type === 'extracted_coordinate_candidate' &&
+              c.estimated_only === false &&
+              c.reads_frame === true &&
+              c.extracts_coordinate === true &&
+              c.validates_timestamp === true
+          ) &&
+          p.identity_safety.estimated_only === false &&
+          p.identity_safety.no_coordinate_extraction === false &&
+          p.identity_safety.no_source_content_reproduced === true
+        );
+      }
+      return (
         p.coordinate_candidates.every(
           (c) =>
             c.candidate_type === 'estimated_coordinate_candidate' &&
@@ -704,7 +819,8 @@ export function writeMovieAnalysisCoordinateExtractionReport(
         ) &&
         p.identity_safety.estimated_only &&
         p.identity_safety.no_coordinate_extraction
-    )
+      );
+    })
       ? 'PASS'
       : 'FAIL';
 

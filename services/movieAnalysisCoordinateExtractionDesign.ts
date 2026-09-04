@@ -33,7 +33,7 @@ export type CoordinateType =
   | 'emotion_state'
   | 'transition_hint';
 
-export type CoordinateCandidate = {
+export type EstimatedCoordinateCandidate = {
   candidate_id: string;
   scene_candidate_id: string;
   coordinate_type: CoordinateType;
@@ -45,14 +45,35 @@ export type CoordinateCandidate = {
   estimated_only: true;
 };
 
+export type RealCoordinateCandidate = {
+  candidate_id: string;
+  scene_candidate_id: string;
+  coordinate_type: CoordinateType;
+  measured_value: string;
+  source_timestamp_ms: number;
+  reads_frame: true;
+  extracts_coordinate: true;
+  validates_timestamp: true;
+  candidate_type: 'extracted_coordinate_candidate';
+  estimated_only: false;
+  measurement_status: 'REAL';
+  overlay_present: boolean;
+  overlay_obscures_subject: boolean;
+  confidence: 'high' | 'medium' | 'low';
+  prior_estimated_value?: string;
+  note?: string;
+};
+
+export type CoordinateCandidate = EstimatedCoordinateCandidate | RealCoordinateCandidate;
+
 export type CoordinateExtractionExecutionFlags = {
-  planning_only: true;
-  gpu_execution: false;
-  external_call_allowed: false;
-  coordinate_extraction: false;
-  frame_extraction: false;
-  scene_extraction: false;
-  ocr: false;
+  planning_only: boolean;
+  gpu_execution: boolean;
+  external_call_allowed: boolean;
+  coordinate_extraction: boolean;
+  frame_extraction: boolean;
+  scene_extraction: boolean;
+  ocr: boolean;
 };
 
 export type MovieAnalysisCoordinateExtractionPlan = {
@@ -75,11 +96,25 @@ export type MovieAnalysisCoordinateExtractionPlan = {
   identity_safety: {
     identity_lock_required: true;
     character_first_contract: true;
-    estimated_only: true;
-    no_coordinate_extraction: true;
+    estimated_only: boolean;
+    no_coordinate_extraction: boolean;
+    no_source_content_reproduced?: boolean;
+    note?: string;
   };
   execution_flags: CoordinateExtractionExecutionFlags;
   designed_at: string;
+  extraction_method?: 'real_frame_read_v1';
+  extraction_notes?: string;
+  extraction_summary?: {
+    candidates_real: number;
+    candidates_estimated: number;
+    real_candidate_ids: string[];
+    estimated_candidate_ids: string[];
+    partially_real: boolean;
+    completion_note?: string;
+  };
+  real_extraction_performed_at?: string;
+  real_extraction_completed_at?: string;
 };
 
 export const ALL_COORDINATE_TYPES: readonly CoordinateType[] = [
@@ -342,9 +377,26 @@ export function buildSeedCoordinateExtractionPlans(
   return plans;
 }
 
+function isProtectedRealCoordinateExtractionPlan(absPath: string): boolean {
+  if (!fs.existsSync(absPath)) return false;
+  try {
+    const existing = JSON.parse(fs.readFileSync(absPath, 'utf8')) as {
+      extraction_method?: string;
+      extraction_summary?: { candidates_estimated?: number };
+    };
+    return (
+      existing.extraction_method === 'real_frame_read_v1' &&
+      existing.extraction_summary?.candidates_estimated === 0
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function writeMovieAnalysisCoordinateExtractionPlans(projectRoot?: string): {
   plans: MovieAnalysisCoordinateExtractionPlan[];
   written: string[];
+  preserved: string[];
 } {
   const root = resolveProjectRoot(projectRoot);
   const plans = buildSeedCoordinateExtractionPlans(root);
@@ -352,9 +404,15 @@ export function writeMovieAnalysisCoordinateExtractionPlans(projectRoot?: string
   fs.mkdirSync(outDir, { recursive: true });
 
   const written: string[] = [];
+  const preserved: string[] = [];
   for (const plan of plans) {
     const rel = `${COORDINATE_EXTRACTION_PLANS_DIR}/${plan.coordinate_extraction_id}.json`;
-    fs.writeFileSync(path.join(root, rel), `${JSON.stringify(plan, null, 2)}\n`, 'utf8');
+    const abs = path.join(root, rel);
+    if (isProtectedRealCoordinateExtractionPlan(abs)) {
+      preserved.push(rel);
+      continue;
+    }
+    fs.writeFileSync(abs, `${JSON.stringify(plan, null, 2)}\n`, 'utf8');
     written.push(rel);
   }
 
@@ -385,7 +443,7 @@ export function writeMovieAnalysisCoordinateExtractionPlans(projectRoot?: string
     'utf8'
   );
 
-  return { plans, written };
+  return { plans, written, preserved };
 }
 
 export function loadMovieAnalysisCoordinateExtractionPlan(

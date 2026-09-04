@@ -47,7 +47,7 @@ if (frameSamplingReport.final_verdict !== FRAME_SAMPLING_PASS_VERDICT) {
   process.exit(1);
 }
 
-const { plans, written } = writeMovieAnalysisSceneDetectionPlans(projectRoot);
+const { plans, written, preserved } = writeMovieAnalysisSceneDetectionPlans(projectRoot);
 const report = writeMovieAnalysisSceneDetectionReport(projectRoot);
 
 console.log(report.final_verdict);
@@ -69,6 +69,7 @@ for (const plan of plans) {
   );
 }
 console.log(`written_plans=${written.join(', ')}`);
+console.log(`preserved_real_plans=${preserved.join(', ')}`);
 console.log(`registry=${SCENE_DETECTION_REGISTRY_PATH}`);
 console.log(`report=${SCENE_DETECTION_REPORT_PATH}`);
 console.log(`markdown=${SCENE_DETECTION_MD_PATH}`);
