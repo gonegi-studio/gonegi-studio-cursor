@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  NUMERICAL_DNA_AUDIT_PASS_VERDICT,
-  NUMERICAL_DNA_AUDIT_READY_STATUS,
-  NUMERICAL_DNA_AUDIT_REPORT_PATH,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_STATUS,
+  SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH,
 } from './sourceVideoNumericalDnaAudit.js';
 import { SAFE_CREATE_POLICY } from './mvProductionSystemFoundation.js';
 import { resolveProjectRoot } from './projectRootResolver.js';
@@ -175,10 +175,10 @@ function runPrecheck(root: string): {
     issues.push({ code: 'EXTRACTION_PRECHECK_FAIL', message: 'Extraction not PASS', severity: 'error' });
   }
 
-  const audit = tryReadJson(root, NUMERICAL_DNA_AUDIT_REPORT_PATH);
+  const audit = tryReadJson(root, SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_REPORT_PATH);
   gates.numerical_audit_pass =
-    String(audit?.final_verdict ?? '') === NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
-    String(audit?.status ?? '') === NUMERICAL_DNA_AUDIT_READY_STATUS;
+    String(audit?.final_verdict ?? '') === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_PASS_VERDICT &&
+    String(audit?.status ?? '') === SOURCE_VIDEO_NUMERICAL_DNA_AUDIT_STATUS;
   if (!gates.numerical_audit_pass) {
     issues.push({ code: 'NUMERICAL_AUDIT_PRECHECK_FAIL', message: 'Numerical DNA audit not PASS', severity: 'error' });
   }
