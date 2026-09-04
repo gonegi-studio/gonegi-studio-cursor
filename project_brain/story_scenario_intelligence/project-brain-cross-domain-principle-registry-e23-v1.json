@@ -1,0 +1,35 @@
+{
+  "registry_id": "project_brain_cross_domain_principle_registry_v1",
+  "phase": "PHASE-E23",
+  "status": "PROMOTED_PRINCIPLE_RECORDED_NOT_ENFORCED",
+  "generated_at": "2026-08-22T23:42:58.843Z",
+  "principle": {
+    "principle_id": "principle_search_existing_artifacts_verify_substance_reuse_before_new_work_v1",
+    "statement": "Before authoring new content/code to address a real problem, (1) search for real, already-existing artifacts that may already satisfy the requirement; (2) verify SUBSTANCE, not just a name/label/category match -- a filename or categorical hit is a lead to investigate, never proof of relevance by itself; (3) only if no substantively relevant artifact is found, author new content -- reusing what already exists otherwise.",
+    "anti_surface_matching_clause": "A candidate artifact found via name/label/category matching alone MUST NOT be treated as satisfying step 1 until its actual content is checked against the real requirement. Required because a real application of this principle (PHASE-E22) found 2 filename matches (PHASE-494/503, \"*reclassif*\") that were confirmed, by content, to be entirely unrelated to the real task at hand.",
+    "domains_validated": [
+      "pb_self_improvement",
+      "video_production",
+      "semantic_quality_domain"
+    ],
+    "provenance_experience_ids": [
+      "exp_phase_e8_goal_ghibli_production_pipeline_process_improvement_01",
+      "exp_phase959_ghibli_production_pipeline_01",
+      "exp_phase_e22_cross_domain_principle_execution_01"
+    ]
+  },
+  "promoted_from_candidate": "cand_cross_domain_principle_promotion_e22_v1",
+  "original_candidate_lineage": [
+    "cand_cross_domain_principle_search_existing_artifacts_before_new_content_v1",
+    "cand_cross_domain_principle_promotion_e22_v1"
+  ],
+  "confidence": 0.7,
+  "confidence_method": "base(0.5, reused unmodified from E21/E5) + corroboration_bonus(min(0.4, 0.1*(3-1)))=0.20, capped at 0.9.",
+  "enforcement_status": "NOT_ENFORCED -- this is a recognized, evidenced, domain-independent development principle available for voluntary future reference; it is not (yet) a mandatory rule, lint check, or CI gate. Adopting it as binding is a separate, future decision.",
+  "review_summary": {
+    "confidence_reconfirmed": true,
+    "novelty_reconfirmed": true,
+    "no_duplication_with_e17_policy": true,
+    "no_forced_generalization": true
+  }
+}
