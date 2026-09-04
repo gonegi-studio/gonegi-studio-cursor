@@ -1,0 +1,50 @@
+{
+  "registry_id": "GENERATION_OUTPUT_RULES",
+  "phase": "PHASE-PROJECT-GOVERNANCE-004",
+  "system_id": "GENERATION_OUTPUT_LOCK_V1",
+  "version": "v1",
+  "generation_output_locked": true,
+  "single_output_root_required": true,
+  "arbitrary_output_forbidden": true,
+  "official_output_root": "exports/movie_spatial/",
+  "controlled_subdirectories": [
+    "ACTIVE",
+    "TEST",
+    "MANUAL",
+    "ARCHIVE"
+  ],
+  "active_exports": [
+    "exports/movie_spatial/ACTIVE/titanic-image-app-native-import-v8.json",
+    "exports/movie_spatial/ACTIVE/spirited-away-image-app-native-import-v8.json"
+  ],
+  "test_packs": [
+    "exports/movie_spatial/TEST/titanic-test-1scene.json",
+    "exports/movie_spatial/TEST/titanic-test-3scene.json",
+    "exports/movie_spatial/TEST/spirited-away-test-1scene.json",
+    "exports/movie_spatial/TEST/spirited-away-test-3scene.json"
+  ],
+  "manual_assets": [
+    "exports/movie_spatial/MANUAL/real_scene_001.png",
+    "exports/movie_spatial/MANUAL/real_scene_002.png",
+    "exports/movie_spatial/MANUAL/real_scene_003.png",
+    "exports/movie_spatial/MANUAL/REAL_IMAGE_APP_MANUAL_REPORT.json"
+  ],
+  "forbidden_output_roots": [
+    "datasets/**",
+    "reports/**",
+    "schemas/**"
+  ],
+  "forbidden_patterns": [
+    "exports/movie_spatial/*.json",
+    "exports/movie_spatial/*.png"
+  ],
+  "builder_policy": {
+    "derived_paths_only": true,
+    "path_module": "services/generationOutputPaths.ts",
+    "custom_output_paths_forbidden": true
+  },
+  "archive_policy": {
+    "delete_on_relocate": false,
+    "archive_root": "exports/movie_spatial/ARCHIVE/"
+  }
+}
