@@ -15,7 +15,7 @@
 // real chance of matching instead of requiring near-verbatim substring
 // reuse). No writes, no synthetic records, no scoring/ranking ambiguity.
 import { retrieveCanonicalHistoryByProblem } from './genieCanonicalLearningRetrieval.mjs';
-import { readObservations, findRelatedObservations } from './genieObservationLog.mjs';
+import { readObservations, findRelatedObservations, extractCanonicalIdentityTerms } from './genieObservationLog.mjs';
 
 function tokenize(value) {
   return String(value ?? '').toLowerCase().match(/[a-z0-9]+/g) ?? [];
@@ -118,26 +118,60 @@ export function findObservationsByProblem(problem, projectRoot, { includeMeta = 
   if (queryTokens.length === 0) {
     return { matched: [], match_contract: 'NO_MATCH_EMPTY_QUERY' };
   }
+  // Same source of identifier-shaped terms as the write path (see
+  // "GENIE Memory Identity Canonicalization Implementation V1") -- if the
+  // query itself contains a compound identifier (e.g. bare "AIStudio"), its
+  // split sub-words are eligible signal too, symmetric with how a record's
+  // own canonical terms are matched below.
+  const queryCanonicalTerms = extractCanonicalIdentityTerms(problem);
 
   const allRaw = readObservations(projectRoot);
   const all = includeMeta ? allRaw : allRaw.filter((r) => !isMetaObservation(r));
   const candidates = all.map((record) => {
     const haystack = [record.context, record.finding, ...(record.related_refs ?? [])].join(' ');
     const tokens = tokenize(haystack);
-    const overlap = queryTokens.filter((t) => tokens.includes(t)).length;
-    return { record, tokens, overlap, ratio: overlap / queryTokens.length };
+    // canonical_identity_terms is stored at write time by appendObservation();
+    // records written before this field existed fall back to computing it
+    // fresh here, from the same haystack, via the same shared function -- no
+    // migration or rewrite of the stored record is needed or performed.
+    const canonicalTerms = record.canonical_identity_terms ?? extractCanonicalIdentityTerms(haystack);
+
+    const overlapTokens = new Set();
+    let canonicalMatchCount = 0;
+    for (const t of queryTokens) {
+      if (tokens.includes(t)) overlapTokens.add(t);
+      else if (canonicalTerms.includes(t)) { overlapTokens.add(t); canonicalMatchCount += 1; }
+    }
+    for (const t of queryCanonicalTerms) {
+      if (tokens.includes(t) || canonicalTerms.includes(t)) overlapTokens.add(t);
+    }
+
+    const rawRun = longestContiguousRun(queryTokens, tokens);
+    return { record, tokens, overlap: overlapTokens.size, rawRun, canonicalMatchCount, ratio: overlapTokens.size / queryTokens.length };
   });
   const maxOverlap = candidates.reduce((m, c) => Math.max(m, c.overlap), 0);
   const atMax = maxOverlap > 0 ? candidates.filter((c) => c.overlap === maxOverlap) : [];
 
-  const qualifies = (c) => longestContiguousRun(queryTokens, c.tokens) >= 2 && c.ratio >= MIN_OVERLAP_RATIO;
+  // Two independent, equally-valid "this is a real shared phrase, not a
+  // coincidence" signals: the existing raw contiguous-run>=2, OR at least 2
+  // distinct query tokens matching via canonical-identity terms (a record's
+  // stored/derived canonical terms, or the query's own). A canonical-identity
+  // match is not a substitute for the ratio guard -- MIN_OVERLAP_RATIO still
+  // applies to the combined overlap count either way. Root-caused and swept
+  // against the fixed 16-event benchmark in "GENIE Memory Identity
+  // Canonicalization Assessment/Implementation V1": requiring the phrase
+  // signal to come from raw contiguous tokens only meant a candidate whose
+  // only strong signal was a canonical-identity match could never qualify on
+  // its own, and could even drag an otherwise-unique correct match into a
+  // failing tie.
+  const qualifies = (c) => (c.rawRun >= 2 || c.canonicalMatchCount >= 2) && c.ratio >= MIN_OVERLAP_RATIO;
   if (atMax.length > 0 && atMax.every(qualifies)) {
     return {
       matched: atMax.map((c) => c.record),
       match_contract:
         atMax.length === 1
-          ? 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_CONTIGUOUS_RUN_GE_2_RATIO_GE_0.6'
-          : 'STRUCTURAL_TOKEN_FALLBACK_GENUINE_TIE_MULTI_MATCH_CONTIGUOUS_RUN_GE_2_RATIO_GE_0.6',
+          ? 'STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_PHRASE_OR_CANONICAL_RATIO_GE_0.6'
+          : 'STRUCTURAL_TOKEN_FALLBACK_GENUINE_TIE_MULTI_MATCH_PHRASE_OR_CANONICAL_RATIO_GE_0.6',
     };
   }
   return { matched: [], match_contract: 'NO_MATCH' };

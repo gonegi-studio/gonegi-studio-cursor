@@ -32,10 +32,43 @@ function resolveLogPath(projectRoot) {
 }
 
 /**
+ * Write-path canonical identity (see "GENIE Memory Identity Canonicalization
+ * Assessment V1"): scans for identifier-SHAPED runs only -- a single
+ * alphanumeric run containing an internal camelCase/PascalCase casing
+ * transition (e.g. "AIStudio", "pbrpAiStudioInputTranslator") -- and, for
+ * each one found, emits its casing-split, lowercased sub-words. Plain
+ * English words (no internal casing transition -- "scenario", "real",
+ * "output") are never touched or included; they were never ambiguous, and
+ * including them was exactly what caused the collateral false positives
+ * when full-corpus casing normalization was tried directly against raw text
+ * in "GENIE Retrieval Identity Normalization V1". This is purely additive
+ * metadata -- it never modifies context/finding/related_refs, and the same
+ * function is used at write time (here) and, as a fallback for records
+ * written before this field existed, at read time in
+ * genieUnifiedMemoryRetrieval.mjs -- one definition, not two that could
+ * silently drift apart.
+ */
+export function extractCanonicalIdentityTerms(text) {
+  const runs = String(text ?? '').match(/[A-Za-z0-9]+/g) ?? [];
+  const terms = new Set();
+  for (const run of runs) {
+    const isIdentifierShaped = /[a-z0-9][A-Z]/.test(run) || /[A-Z]{2,}[a-z]/.test(run);
+    if (!isIdentifierShaped) continue;
+    const split = run
+      .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+      .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+    for (const term of split.toLowerCase().match(/[a-z0-9]+/g) ?? []) terms.add(term);
+  }
+  return [...terms];
+}
+
+/**
  * Appends one observation as a single JSONL line. Intentionally minimal
  * validation (required fields, valid disposition, related_refs is a string
  * array) -- no schema beyond that, no cross-file resolution, no SHA pinning.
  * That cost difference from a canonical Experience is the entire point.
+ * canonical_identity_terms is computed here and stored alongside the
+ * original fields -- additive only, never a substitute for or edit to them.
  */
 export function appendObservation(entry, projectRoot = defaultRoot) {
   const { context, finding, disposition, related_refs = [] } = entry ?? {};
@@ -58,6 +91,7 @@ export function appendObservation(entry, projectRoot = defaultRoot) {
     finding,
     disposition,
     related_refs,
+    canonical_identity_terms: extractCanonicalIdentityTerms([context, finding, ...related_refs].join(' ')),
   };
 
   const fullPath = resolveLogPath(projectRoot);
