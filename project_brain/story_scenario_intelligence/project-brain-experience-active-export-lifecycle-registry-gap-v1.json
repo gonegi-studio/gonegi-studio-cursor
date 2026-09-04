@@ -1,0 +1,53 @@
+{
+  "experience_id": "exp_active_export_lifecycle_registry_gap_v1",
+  "phase": "GENIE-REAL-WORK-OJT-REPOSITORY-DECISION-V1",
+  "generated_at": "2026-09-04T10:00:49.000Z",
+  "experience_kind": "successful_resolution",
+  "context": {
+    "outcome_ref": "project_brain/story_scenario_intelligence/project-brain-active-export-lifecycle-registry-gap-v1-outcome.json",
+    "capture_reason": "First real (non-persistence) OJT task this session: GENIE autonomously retrieved a relevant past Experience via retrieveCanonicalHistoryByProblem before any code was read, the retrieved lesson correctly predicted the shape of the bug, and the resulting judgment was independently verified against real repository evidence and led to a real, verified fix -- worth capturing as a concrete instance of memory actually informing a real decision, not just being present in the corpus."
+  },
+  "problem": "verify:project-governance reported ACTIVE_EXPORT_COUNT_INVALID (found 0, not 1) for both titanic and spirited-away, despite their real v8 ACTIVE exports (exports/movie_spatial/ACTIVE/*-v8.json) existing on disk and passing verify:generation-output-lock independently. Selected via a broad reports/ FAIL-verdict scan; confirmed genuinely current (not stale) by rebuilding first -- 5 other FAIL-verdict reports found in the same scan turned out to already pass on rebuild and were not pursued.",
+  "decision": {
+    "status": "final",
+    "decision_summary": "Diagnose this as a tracking-registry gap, not a missing-file gap, per the retrieved memory's lesson that a data violation and the coverage gap in the mechanism meant to catch it are two independent failures. Trace the actual code path (not assume which of two similarly-named registry files is authoritative) before editing anything, then add exactly the missing lifecycle entries rather than any broader registry rewrite.",
+    "retrieval_contribution": "The retrieved lesson from exp_output_location_governance_remediation_v1 correctly predicted, before any of this task's own code was read, that the fix would require finding and updating a tracking/allowlist mechanism that was never taught about the new files -- not merely confirming the export files exist. That framing directed the diagnosis straight at the governance registries rather than re-verifying file presence, which had already been separately confirmed.",
+    "source_experience_id": "exp_output_location_governance_remediation_v1",
+    "memory_used": true
+  },
+  "action": {
+    "action_type": "lifecycle_registry_gap_repair_informed_by_retrieved_memory",
+    "action_summary": "Retrieved relevant memory via retrieveCanonicalHistoryByProblem (7 query phrasings, 1 match). Initially inspected project_governance/ACTIVE_ASSETS_REGISTRY.json (active_exports:[]) as the apparent culprit, then code-traced validateActiveExportVersionRule's real `entries` source and found it is actually driven by the separate project_governance/ASSET_LIFECYCLE_REGISTRY.json, correcting course before editing. Found that registry (dated 2026-08-06) predates the ACTIVE/TEST/MANUAL/ARCHIVE export-root restructure and has no entry for the new ACTIVE-path v8 exports. Added exactly 2 new ACTIVE lifecycle entries for the real, already-passing v8 export paths.",
+    "real_or_simulated": "real"
+  },
+  "evidence": {
+    "evidence_kind": "hard_pass",
+    "evidence_category": "governance_registry_gap_repair_informed_by_canonical_retrieval",
+    "evidence_source": "project_brain/story_scenario_intelligence/project-brain-active-export-lifecycle-registry-gap-v1-outcome.json",
+    "evidence_sha256": "3458b0a96bef0263c1e7d39001d0361adc37f91b881424d9d6fcb34b5b8a5e7f",
+    "evidence_detail": "active_export_count 0->2; active_export_version_rule false->true; final_verdict FAIL_PROJECT_GOVERNANCE_V1 -> PASS_PROJECT_GOVERNANCE_V1. 5 other FAIL-verdict candidates found in the same task-selection scan confirmed stale on rebuild and correctly not pursued. Retrieval matched exp_output_location_governance_remediation_v1 via the structural token-overlap fallback on 1 of 8 query phrasings tried."
+  },
+  "result": {
+    "status": "ACTIVE_EXPORT_LIFECYCLE_REGISTRY_GAP_RESOLVED",
+    "problem_resolved": true,
+    "active_export_count_before": 0,
+    "active_export_count_after": 2,
+    "memory_retrieved": true,
+    "memory_contribution_verified": true,
+    "wrong_file_avoided": true,
+    "knowledge_promoted": false,
+    "principle_promoted": false
+  },
+  "cause": {
+    "root_cause_summary": "project_governance/ASSET_LIFECYCLE_REGISTRY.json was never updated when the exports/movie_spatial/{ACTIVE,TEST,MANUAL,ARCHIVE} export-root restructure (PHASE-PROJECT-GOVERNANCE-004) superseded the flat export-path layout it still describes -- the registry still marks the old flat v8 paths LEGACY and has no entry at all for the new ACTIVE-path v8 exports, so the live inventory scan defaults the real files to UNTRACKED.",
+    "cause_type": "code_data_wiring_bug"
+  },
+  "lesson": "When a governance/tracking check reports a count that contradicts directly-observed reality (the files exist and independently pass their own verifier, yet the audit says 0), suspect the tracking registry itself before the underlying artifact -- and when more than one similarly-named registry/allowlist file exists, trace the actual code path to confirm which one is authoritative before editing either; two files can share a near-identical purpose while only one is actually wired into the check that's failing. A retrieved past Experience's specific mechanism need not match the current bug for its lesson to be useful -- the transferable pattern (data-fix and registry-coverage-fix are two independent failures) correctly predicted this bug's shape even though the concrete file differed entirely from the retrieved record's own.",
+  "links": {
+    "goal_ref": "goal_repository_foundation",
+    "gap_ref": null,
+    "dependency_ref": null,
+    "capability_refs": ["cap_repository_intelligence", "cap_verification_and_audit"],
+    "provenance_source": "OJT"
+  }
+}

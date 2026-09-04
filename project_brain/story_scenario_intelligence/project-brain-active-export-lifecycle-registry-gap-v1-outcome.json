@@ -1,0 +1,66 @@
+{
+  "report_id": "active_export_lifecycle_registry_gap_v1_outcome",
+  "record_type": "OUTCOME",
+  "phase": "GENIE-REAL-WORK-OJT-REPOSITORY-DECISION-V1",
+  "system_id": "PROJECT_GOVERNANCE_ACTIVE_EXPORT_LIFECYCLE_FIX_V1",
+  "generated_at": "2026-09-04T10:00:49.000Z",
+  "verdict": "ACTIVE_EXPORT_LIFECYCLE_REGISTRY_GAP_RESOLVED",
+  "all_clear": true,
+  "task_selection_phase": {
+    "method": "Broad reports/ FAIL-verdict scan (grep for final_verdict/verdict containing FAIL across reports/), staleness-checked by rebuild-first before treating any candidate as real -- the same method exp_output_location_governance_remediation_v1's diagnosis_phase.candidate_selection used.",
+    "candidates_scanned": 13,
+    "candidates_ruled_out_as_stale_on_rebuild": [
+      "reports/movie_reconstruction/SPIRITED_AWAY_MOTION_RECONSTRUCTION_REPORT.json (verify:spirited-away-motion-reconstruction now PASS)",
+      "reports/movie_reconstruction/SPIRITED_AWAY_SHOT_RECONSTRUCTION_REPORT.json (verify:spirited-away-shot-reconstruction now PASS)",
+      "reports/movie_reconstruction/SPIRITED_AWAY_TEMPORAL_RECONSTRUCTION_REPORT.json (verify:spirited-away-temporal-reconstruction now PASS)",
+      "reports/real_image_batch_validation/REAL_IMAGE_BATCH_VALIDATION_REPORT.json (root verify:single-scene-validation now PASS)",
+      "reports/video_architecture/VIDEO_GENERATION_ARCHITECTURE_REVIEW_REPORT.json (same root cause as above)",
+      "reports/export_coverage/EXPORT_COVERAGE_AUDIT_REPORT.json (same root cause as above)"
+    ],
+    "candidate_selected": "reports/project_governance/PROJECT_GOVERNANCE_REPORT.json (FAIL_PROJECT_GOVERNANCE_V1, confirmed still FAIL on rebuild via npm run verify:project-governance)"
+  },
+  "genie_retrieval_phase": {
+    "method": "retrieveCanonicalHistoryByProblem (services/genieCanonicalLearningRetrieval.mjs), called before any code was read for the selected candidate.",
+    "queries_tried_not_found": [
+      "active export registry not updated",
+      "governance registry allowlist missing entry",
+      "scanner never updated to cover new files",
+      "hand-curated registry omission",
+      "active assets registry",
+      "project governance audit FAIL",
+      "exactly one ACTIVE export"
+    ],
+    "query_matched": "ACTIVE native import export",
+    "matched_experience_id": "exp_output_location_governance_remediation_v1",
+    "match_contract": "STRUCTURAL_TOKEN_FALLBACK_UNIQUE_MAX_OVERLAP_CONTIGUOUS_RUN_GE_2",
+    "retrieved_lesson_applied": "A build-output governance violation and the coverage gap in the scanner meant to catch it are two independent failures -- closing only the data violation without also closing the scanner's blind spot leaves the same class of violation free to recur undetected.",
+    "prediction_made_before_reading_relevant_code": "The fix would require finding and updating some tracking/allowlist mechanism that was never taught about the new files, not merely confirming the export files themselves exist on disk."
+  },
+  "diagnosis_phase": {
+    "initial_hypothesis_and_self_correction": "First inspected project_governance/ACTIVE_ASSETS_REGISTRY.json, whose active_exports:[] looked like the obvious culprit. Before editing it, traced validateActiveExportVersionRule (services/projectGovernanceAudit.ts) to find its actual `entries` source: buildProjectInventory (services/projectInventoryBuilder.ts), which is driven by ASSET_LIFECYCLE_REGISTRY.json, a separate file -- not ACTIVE_ASSETS_REGISTRY.json, which is unused by this specific check. Corrected course before making any edit.",
+    "root_cause": "project_governance/ASSET_LIFECYCLE_REGISTRY.json (dated 2026-08-06, phase PHASE-PROJECT-GOVERNANCE-001) predates the exports/movie_spatial/{ACTIVE,TEST,MANUAL,ARCHIVE} export-root restructure (phase PHASE-PROJECT-GOVERNANCE-004, generationOutputPaths.ts). It lists the pre-restructure flat-path exports/movie_spatial/{titanic,spirited-away}-image-app-native-import-v8.json as LEGACY with replacement:null, and has no entry at all for the new exports/movie_spatial/ACTIVE/*-v8.json paths those files actually live at today. projectInventoryBuilder.ts's live filesystem walk (exports is a scanned root) discovers the new files but defaults any path absent from this lifecycle registry to status UNTRACKED, so validateActiveExportVersionRule's ACTIVE-status filter counted 0 for both movies despite the real, passing v8 exports existing on disk (confirmed separately via verify:generation-output-lock PASS)."
+  },
+  "repair_phase": {
+    "file": "project_governance/ASSET_LIFECYCLE_REGISTRY.json",
+    "change": "Added exactly 2 new entries (status: ACTIVE, owner_phase: PHASE-PROJECT-GOVERNANCE-004) for exports/movie_spatial/ACTIVE/titanic-image-app-native-import-v8.json and exports/movie_spatial/ACTIVE/spirited-away-image-app-native-import-v8.json.",
+    "deliberately_not_changed": "The existing LEGACY entries' replacement pointers, which all still point at the old flat-path v8 export (not the new ACTIVE path) -- a related but separate completeness gap, left out of this minimal fix."
+  },
+  "verification": {
+    "before": {
+      "final_verdict": "FAIL_PROJECT_GOVERNANCE_V1",
+      "active_export_count": 0,
+      "active_export_version_rule": false
+    },
+    "after": {
+      "final_verdict": "PASS_PROJECT_GOVERNANCE_V1",
+      "active_export_count": 2,
+      "active_export_version_rule": true
+    },
+    "environment_note": "Verified in the main working tree via npm run verify:project-governance. Fresh-worktree isolation for this specific verify script was not pursued: it separately depends on project_governance/PROJECT_GOVERNANCE_RULES.json, itself untracked and unrelated to this fix, and this task was explicitly scoped to real GENIE OJT work, not a return to persistence-gap hunting."
+  },
+  "memory_effectiveness_assessment": {
+    "helped": true,
+    "how": "The retrieved lesson correctly predicted the shape of the bug -- a tracking/allowlist mechanism never updated alongside a real change -- before any of this task's specific code was read, and directed the diagnosis toward finding a registry rather than merely re-confirming the export files exist. The specific mechanism differed from the retrieved record's own (ASSET_LIFECYCLE_REGISTRY.json here vs. outputLocationAudit.ts's IMAGE_APP_BUILDER_FILES scanner allowlist there) -- the retrieval surfaced a transferable diagnostic pattern, not a literally reusable fix.",
+    "limitation_observed": "7 of the query phrasings tried (paraphrases closer to how the problem is described in English/governance terms) returned NOT_FOUND; only a phrasing close to the retrieved record's own vocabulary (\"ACTIVE native import export\") matched via the structural token-overlap fallback. Literal/structural retrieval remains sensitive to query wording even when a genuinely relevant record exists in the corpus."
+  }
+}
