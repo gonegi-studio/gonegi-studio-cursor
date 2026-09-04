@@ -171,7 +171,7 @@ ${SYNTHETIC_TIME_ENV_DNA}
 // 6. negative_prompt 비의존성 확인 (regression from PHASE-002's finding)
 // =========================================================================
 {
-  const AI_STUDIO_GEMINI_SERVICE = 'E:/Gonegi-AIStudio/AIStudio-App/services/geminiService.ts';
+  const AI_STUDIO_GEMINI_SERVICE = 'E:/Gonegi-Studio-Cursor/Gonegi-AIStudio/AIStudio-App/services/geminiService.ts';
   let content = '';
   try {
     content = fs.readFileSync(AI_STUDIO_GEMINI_SERVICE, 'utf8');
