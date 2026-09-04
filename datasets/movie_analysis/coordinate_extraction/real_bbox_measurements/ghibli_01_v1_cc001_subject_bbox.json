@@ -1,0 +1,61 @@
+{
+  "measurement_id": "ghibli_01_v1_cc001_subject_bbox_v1",
+  "phase": "PHASE-688-TD-C001-REAL-NUMERICAL-DNA-SINGLE-FRAME",
+  "purpose": "PHASE-687 found datasets/movie_analysis/coordinate_extraction/plans/*.json (real, honest, frame-grounded SEMANTIC labels) trustworthy, but exports/source_video_numerical_dna_full/source-video-numerical-dna-full.json's claimed NUMERIC frame_coordinates fabricated (formulaic +0.0001/frame deltas, identical 0.96 confidence across all frames). This file is the minimal real replacement: exactly one genuinely-measured numeric subject bounding box, for the exact frame the existing real plan candidate coordinate_extraction_ghibli_01_v1_cc_001 already identifies, measured directly from the real decoded frame image. It does not modify, extend, or reuse any value from the fabricated file.",
+  "source_candidate_ref": {
+    "file": "datasets/movie_analysis/coordinate_extraction/plans/coordinate_extraction_ghibli_01_v1.json",
+    "candidate_id": "coordinate_extraction_ghibli_01_v1_cc_001",
+    "declared_coordinate_type": "shot_scale",
+    "declared_measured_value": "close",
+    "declared_source_timestamp_ms": 47700,
+    "note": "this measurement targets the exact same real frame that candidate already references; the source plan file itself was NOT modified"
+  },
+  "frame_extraction": {
+    "source_video_path": "imports/source_videos/active/ghibli/GHIBLI_01.mp4",
+    "source_video_confirmed_present_on_disk": true,
+    "requested_timestamp_ms": 47700,
+    "fps_used": 24.0,
+    "fps_source": "coordinate_extraction_ghibli_01_v1.json's own extraction_notes ('confirmed h264, 1920x1080, 24fps')",
+    "computed_frame_index": 1145,
+    "computed_frame_index_formula": "round(47700 / 1000 * 24.0)",
+    "extraction_tool": "Python 3.13.12 + imageio 2.37.3, plugin='FFMPEG' (imageio_ffmpeg bundled ffmpeg-win-x86_64-v7.1.exe) -- the same 'imageio+bundled ffmpeg' toolchain the source plan file's own extraction_notes describe using",
+    "frame_dimensions_confirmed": { "width": 1920, "height": 1080, "channels": 3 },
+    "reproducibility_check": {
+      "method": "invoked the extraction twice, in two independent subprocess calls, writing two separate PNG files",
+      "extract_1_sha256": "f9bb2cc75694fb7559e23f64ee6860ed032949e779d25503007c674050fed2d9",
+      "extract_2_sha256": "f9bb2cc75694fb7559e23f64ee6860ed032949e779d25503007c674050fed2d9",
+      "result": "byte-for-byte identical -- frame extraction from the real source video is fully deterministic and reproducible",
+      "persisted_evidence_file": "datasets/movie_analysis/coordinate_extraction/real_bbox_measurements/ghibli_01_v1_cc001_frame_1145.png",
+      "persisted_evidence_sha256_reverified": "f9bb2cc75694fb7559e23f64ee6860ed032949e779d25503007c674050fed2d9"
+    }
+  },
+  "frame_content_confirms_real_and_matches_prior_note": {
+    "visible_overlays": "Korean-language logo '마녀배달부 키키' (top-left), '4월 15일 4K 리마스터링 개봉' release-date banner (top-right), song/composer credit bar (bottom-right, 'A Town with an Ocean View' / Joe Hisaishi) -- matches the source plan's own disclosed overlay_present:true for this candidate",
+    "subject_description": "the character (Kiki) seen from above/behind in flight, arms spread wide, filling most of the frame -- matches the source candidate's own note ('character fills most of the frame (rear/aerial view), not a wide establishing composition') and its measured_value:'close', which the source plan recorded as a correction from an earlier, wrong estimate ('estimated_wide')",
+    "conclusion": "this is confirmed to be the same real frame the existing trustworthy plan candidate already describes -- not a different or mismatched frame"
+  },
+  "subject_bounding_box_measurement": {
+    "method": "direct visual inspection of the real decoded frame image by the AI model performing this phase (no algorithmic/thresholding pipeline, no heuristic scoring system, no formula) -- the same direct-observation discipline the source coordinate_extraction plans themselves already used for their categorical fields, extended here to numeric pixel coordinates",
+    "subject": "the character's full visible body silhouette (outstretched arms, torso, dress, visible head/hair/bow), i.e. the same subject the source candidate's shot_scale judgment was made about",
+    "coordinate_space": "pixel (top-left origin), on the real 1920x1080 decoded frame",
+    "pass_1": { "x_min": 350, "x_max": 1568, "y_min": 8, "y_max": 1080 },
+    "pass_2": { "x_min": 345, "x_max": 1572, "y_min": 6, "y_max": 1080 },
+    "pass_deltas_px": { "x_min": 5, "x_max": 4, "y_min": 2, "y_max": 0 },
+    "reconciled_bbox_px": { "x_min": 348, "x_max": 1570, "y_min": 7, "y_max": 1080 },
+    "reconciled_bbox_normalized_screen": { "x_min": 0.1812, "x_max": 0.8177, "y_min": 0.0065, "y_max": 1.0 },
+    "y_max_note": "the subject's dress/skirt is visually cut off by the bottom frame edge (not a soft/uncertain boundary) -- both measurement passes independently and unambiguously placed y_max at the frame's own height (1080), which is why its delta is exactly 0, unlike the other 3 edges which carry real, disclosed visual-estimation uncertainty"
+  },
+  "honest_limitations": {
+    "measurement_precision": "this is AI-model direct visual pixel estimation, not an algorithmic/computer-vision-measured bounding box -- precision is approximate, on the order of +/-5px (~0.3% of frame width/height) based on the two-pass delta observed here, not sub-pixel or algorithmically guaranteed",
+    "independence_of_the_two_passes_is_partial": "both passes were performed by the same model within the same session; true independence (e.g. two separate human annotators, or two separate model sessions with no shared context) was not achieved -- the close agreement between the passes should be read as evidence of measurement STABILITY under this method, not as proof of independent-observer agreement",
+    "single_frame_single_subject_only": "this measurement covers exactly one frame, one subject, one bounding box -- it is a proof that a genuinely non-fabricated numeric measurement can be produced with this toolchain and discipline, not a template that has been applied at scale. Extending to more frames/subjects/coordinate types (camera_path, motion_vectors, edit_rhythm, scene_remap) is explicitly out of scope for this phase (per PHASE-687's minimum-unit design)."
+  },
+  "explicit_non_reuse_of_fabricated_layer": {
+    "fabricated_file_untouched": "exports/source_video_numerical_dna_full/source-video-numerical-dna-full.json was not read, modified, corrected, or referenced for any value in this file",
+    "fabricated_logic_untouched": "services/sourceVideoNumericalDnaFullExtraction.ts was not modified, called, or reused"
+  },
+  "measurement_status": "REAL",
+  "estimated_only": false,
+  "fabricated": false,
+  "generated_at": "2026-08-18T02:48:45.000Z"
+}

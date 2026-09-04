@@ -1,0 +1,112 @@
+{
+  "measurement_id": "ghibli_01_v1_multi_frame_pilot_v1",
+  "phase": "PHASE-689-TD-C001-REAL-NUMERICAL-DNA-MULTI-FRAME-PILOT",
+  "purpose": "Extends PHASE-688's single-frame real measurement (ghibli_01_v1_cc001_subject_bbox.json) to 3 additional, already-identified real candidates from the same source (GHIBLI_01), using the exact same real toolchain and direct-visual-measurement discipline -- a minimal REPRODUCIBILITY PILOT across varied frame content, not a bulk/automated extraction and not an expansion into camera_path/motion_vectors/edit_rhythm/scene_remap or additional sources.",
+  "toolchain": "identical to PHASE-688: Python 3.13.12 + imageio 2.37.3, plugin='FFMPEG' (imageio_ffmpeg bundled ffmpeg), against imports/source_videos/active/ghibli/GHIBLI_01.mp4, fps=24.0 (per the source plan's own extraction_notes)",
+  "fabricated_layer_touched": false,
+  "existing_plan_or_export_files_modified": false,
+  "measurements": [
+    {
+      "source_candidate_ref": {
+        "candidate_id": "coordinate_extraction_ghibli_01_v1_cc_003",
+        "declared_coordinate_type": "camera_motion",
+        "declared_measured_value": "push_in",
+        "declared_source_timestamp_ms": 48500
+      },
+      "frame_extraction": {
+        "requested_timestamp_ms": 48500,
+        "computed_frame_index": 1164,
+        "reproducibility_check": {
+          "extract_1_sha256": "cbfb8a22efc74b68c37ce54b6a5bb53b151a39e6ba8188e8b7ba09e92e3e9b62",
+          "extract_2_sha256": "cbfb8a22efc74b68c37ce54b6a5bb53b151a39e6ba8188e8b7ba09e92e3e9b62",
+          "result": "byte-identical"
+        },
+        "persisted_evidence_file": "datasets/movie_analysis/coordinate_extraction/real_bbox_measurements/ghibli_01_v1_cc003_frame_1164.png"
+      },
+      "frame_content_matches_declared_value": "the subject (Kiki) appears as a small, distant figure against a wide aerial townscape -- consistent with a camera that has begun to push in from an even wider prior framing; matches the declared camera_motion:'push_in' judgment",
+      "subject_bounding_box_measurement": {
+        "subject": "the single visible character (small figure, arms outstretched, red bow visible)",
+        "coordinate_space": "pixel (top-left origin), 1920x1080 frame",
+        "pass_1": { "x_min": 893, "x_max": 1012, "y_min": 588, "y_max": 772 },
+        "pass_2": { "x_min": 898, "x_max": 1008, "y_min": 592, "y_max": 768 },
+        "deltas_px": { "x_min": 5, "x_max": 4, "y_min": 4, "y_max": 4 },
+        "reconciled_bbox_px": { "x_min": 896, "x_max": 1010, "y_min": 590, "y_max": 770 },
+        "reconciled_bbox_normalized": { "x_min": 0.4667, "x_max": 0.526, "y_min": 0.5463, "y_max": 0.713 }
+      }
+    },
+    {
+      "source_candidate_ref": {
+        "candidate_id": "coordinate_extraction_ghibli_01_v1_cc_004_005_006",
+        "declared_coordinate_type": "transition_hint / subject_position / blocking",
+        "declared_measured_value": "cut / right_third / pair_exchange",
+        "declared_source_timestamp_ms": 53320
+      },
+      "frame_extraction": {
+        "requested_timestamp_ms": 53320,
+        "computed_frame_index": 1280,
+        "reproducibility_check": {
+          "extract_1_sha256": "4d0e7584bf6207c11a5d9e81ed4b9f16daf110c8a88188a021ec3672efd8f400",
+          "extract_2_sha256": "4d0e7584bf6207c11a5d9e81ed4b9f16daf110c8a88188a021ec3672efd8f400",
+          "result": "byte-identical"
+        },
+        "persisted_evidence_file": "datasets/movie_analysis/coordinate_extraction/real_bbox_measurements/ghibli_01_v1_cc004_frame_1280.png"
+      },
+      "frame_content_matches_declared_value": "TWO characters visible: a boy reaching for a bundle at screen-left, and Kiki holding the bundle positioned in the right third of frame -- matches blocking:'pair_exchange' and subject_position:'right_third' (referring to Kiki) precisely",
+      "two_subject_disclosure": "this frame genuinely contains two distinct characters (matching its own declared blocking:'pair_exchange'); per the plan's own subject_position:'right_third' label (which names Kiki, not the boy, as the positionally-referenced subject), this measurement covers ONLY Kiki (the right-third subject) for consistency with the single-subject methodology used in PHASE-688 and this pilot's other two measurements. The boy is a second, unmeasured subject -- explicitly disclosed, not silently omitted.",
+      "subject_bounding_box_measurement": {
+        "subject": "Kiki (the right-third character), body/head silhouette only -- excludes the separately-held bundle she carries",
+        "coordinate_space": "pixel (top-left origin), 1920x1080 frame",
+        "pass_1": { "x_min": 1080, "x_max": 1392, "y_min": 68, "y_max": 1080 },
+        "pass_2": { "x_min": 1075, "x_max": 1388, "y_min": 72, "y_max": 1080 },
+        "deltas_px": { "x_min": 5, "x_max": 4, "y_min": 4, "y_max": 0 },
+        "reconciled_bbox_px": { "x_min": 1078, "x_max": 1390, "y_min": 70, "y_max": 1080 },
+        "reconciled_bbox_normalized": { "x_min": 0.5615, "x_max": 0.724, "y_min": 0.0648, "y_max": 1.0 },
+        "y_max_note": "again cut off by the frame's own bottom edge, hence the zero delta on that one boundary -- same pattern PHASE-688's single frame showed"
+      }
+    },
+    {
+      "source_candidate_ref": {
+        "candidate_id": "coordinate_extraction_ghibli_01_v1_cc_010",
+        "declared_coordinate_type": "shot_scale",
+        "declared_measured_value": "extreme-close",
+        "declared_source_timestamp_ms": 64550,
+        "declared_overlay_obscures_subject": true
+      },
+      "frame_extraction": {
+        "requested_timestamp_ms": 64550,
+        "computed_frame_index": 1549,
+        "reproducibility_check": {
+          "extract_1_sha256": "bddb9cf44f5d1bd0aeceecaae5e20861433830d81c788c03b990022f08584362",
+          "extract_2_sha256": "bddb9cf44f5d1bd0aeceecaae5e20861433830d81c788c03b990022f08584362",
+          "result": "byte-identical"
+        },
+        "persisted_evidence_file": "datasets/movie_analysis/coordinate_extraction/real_bbox_measurements/ghibli_01_v1_cc010_frame_1549.png"
+      },
+      "frame_content_matches_declared_value": "an extreme close-up, subject genuinely hard to identify unambiguously (a dark rounded shape resembling Kiki's witch hat, seen from a high angle, with a wicker basket weave in the foreground partially framing/occluding it on both sides, plus a bare foot visible at bottom) -- this frame's own difficulty directly confirms the source plan's own honest overlay_obscures_subject:true disclosure for this candidate; this pilot did not find it any easier to resolve than the original plan did",
+      "subject_identification_caveat": "unlike the other 2 measurements in this pilot, the 'subject' here is genuinely ambiguous (dark hat-shaped mass is the most confident candidate, but it is not certain this is the coordinate the original shot_scale:'extreme-close' judgment was made about) -- this measurement targets the most visually confident single dark mass, disclosed explicitly as lower-confidence than the other 2 measurements in this pilot",
+      "subject_bounding_box_measurement": {
+        "subject": "the dominant dark rounded mass in the upper-left/center of frame (most likely the witch hat), NOT a fully confident identification",
+        "coordinate_space": "pixel (top-left origin), 1920x1080 frame",
+        "pass_1": { "x_min": 195, "x_max": 885, "y_min": 0, "y_max": 463 },
+        "pass_2": { "x_min": 200, "x_max": 878, "y_min": 0, "y_max": 468 },
+        "deltas_px": { "x_min": 5, "x_max": 7, "y_min": 0, "y_max": 5 },
+        "reconciled_bbox_px": { "x_min": 198, "x_max": 882, "y_min": 0, "y_max": 466 },
+        "reconciled_bbox_normalized": { "x_min": 0.1031, "x_max": 0.4594, "y_min": 0.0, "y_max": 0.4315 },
+        "y_min_note": "the mass is cut off by the frame's own top edge (zero delta), same cut-off pattern observed at bottom edges elsewhere in this pilot"
+      }
+    }
+  ],
+  "cross_frame_reproducibility_summary": {
+    "all_4_measurements_now_available": ["cc_001 (PHASE-688)", "cc_003", "cc_004/005/006", "cc_010"],
+    "delta_range_px_across_all_4": "0 to 7 px (all edges, all frames)",
+    "delta_pattern": "small, non-zero, non-constant deltas on genuinely-uncertain edges; exact zero deltas ONLY where the subject is unambiguously cut off by the frame's own border (observed 3 times: PHASE-688's y_max, this pilot's cc_004 y_max, this pilot's cc_010 y_min) -- this zero-only-at-hard-boundaries pattern is itself evidence of genuine measurement (a formula would not know to produce exactly zero only at real frame edges), consistent across all 4 independent measurements now on record",
+    "no_fabrication_signature_found": "none of the 4 measurements show the PHASE-687-identified fabrication signature (constant delta, e.g. exactly +0.0001, or identical confidence value across records) -- each frame's deltas differ from the others'"
+  },
+  "scope_boundary_maintained": {
+    "sources_covered": "1 of 15/16 real sources (GHIBLI_01 only) -- not expanded",
+    "coordinate_types_covered": "subject bounding box only -- shot_scale/camera_angle/camera_motion/etc. remain semantic-only, not converted to numbers",
+    "subsystems_covered": "0 of the fabricated layer's claimed 7 (frame_coordinates partially demonstrated for 4 frames; composition_coordinates, camera_path, blocking_data, motion_vectors, edit_rhythm, scene_remap all untouched)",
+    "automation": "none -- every measurement in this pilot was performed by direct AI visual inspection of a real, individually-extracted frame, exactly as PHASE-688 established; no batch/automated pipeline was built or run"
+  },
+  "generated_at": "2026-08-18T02:58:07.000Z"
+}
