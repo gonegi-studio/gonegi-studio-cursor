@@ -1,0 +1,625 @@
+{
+  "registry_id": "ASSET_LIFECYCLE_REGISTRY",
+  "phase": "PHASE-PROJECT-GOVERNANCE-001",
+  "system_id": "PROJECT_GOVERNANCE_V1",
+  "version": "v1",
+  "generated_at": "2026-08-06T12:34:04.412Z",
+  "assets": [
+    {
+      "path": "project_governance/PROJECT_GOVERNANCE_RULES.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "project_governance/ACTIVE_ASSETS_REGISTRY.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "project_governance/ASSET_LIFECYCLE_REGISTRY.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/generation_context/approved_originals/APPROVED_ORIGINALS_MANIFEST.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/generation_context/approved_originals/artstyle-approved.txt",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/generation_context/approved_originals/character-approved.txt",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/generation_context/approved_originals/timesetting-approved.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "services/approvedOriginalsLoader.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/sourceOfTruthLoader.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.413Z"
+    },
+    {
+      "path": "services/finalSourceLockValidation.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/finalSourceLockAudit.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/forbiddenLegacySourcePaths.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/projectInventoryBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/projectGovernanceAudit.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieImageAppNativeImportBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieMasterDatasetBinding.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieMasterScenarioPackageBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-004",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieScenarioHardening.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-006",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/imageAppPromptLoader.ts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-002",
+      "replacement": "services/approvedOriginalsLoader.ts",
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/imageAppPromptBuilder.ts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-002",
+      "replacement": "services/approvedOriginalsLoader.ts",
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/sourceOfTruthFreezeBuilder.ts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-004",
+      "replacement": "services/approvedOriginalsLoader.ts",
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/approvedOriginalsFreezeBuilder.ts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-005",
+      "replacement": "services/approvedOriginalsLoader.ts",
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/sourceOfTruthAudit.ts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-004",
+      "replacement": "services/finalSourceLockAudit.ts",
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/approvedOriginalAudit.ts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-005",
+      "replacement": "services/finalSourceLockAudit.ts",
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/generationContextLoader.ts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-001",
+      "replacement": "services/approvedOriginalsLoader.ts",
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "datasets/generation_context/prompts",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-002",
+      "replacement": "datasets/generation_context/approved_originals",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/generation_context/source_of_truth",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-004",
+      "replacement": "datasets/generation_context/approved_originals",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/ACTIVE/titanic-image-app-native-import-v8.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-004",
+      "replacement": null,
+      "last_verified": "2026-09-04T09:50:00.000Z"
+    },
+    {
+      "path": "exports/movie_spatial/ACTIVE/spirited-away-image-app-native-import-v8.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-004",
+      "replacement": null,
+      "last_verified": "2026-09-04T09:50:00.000Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import-v7.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-005",
+      "replacement": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import-v7.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-005",
+      "replacement": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import-v6.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-004",
+      "replacement": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import-v6.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-004",
+      "replacement": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import-v5.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-002",
+      "replacement": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import-v5.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-002",
+      "replacement": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import-v4.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import-v4.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import-v3.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import-v3.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import-v2.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import-v2.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/titanic-image-app-native-import.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/titanic-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "exports/movie_spatial/spirited-away-image-app-native-import.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": "exports/movie_spatial/spirited-away-image-app-native-import-v8.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "reports/generation_context/FINAL_SOURCE_LOCK_REPORT.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.413Z"
+    },
+    {
+      "path": "reports/generation_context/REAL_SOURCE_RECOVERY_REPORT.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-005",
+      "replacement": "reports/generation_context/FINAL_SOURCE_LOCK_REPORT.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "reports/generation_context/SOURCE_OF_TRUTH_AUDIT_REPORT.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-004",
+      "replacement": "reports/generation_context/FINAL_SOURCE_LOCK_REPORT.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "reports/generation_context/SOURCE_PROMPT_LOCK_AUDIT_REPORT.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-003",
+      "replacement": "reports/generation_context/FINAL_SOURCE_LOCK_REPORT.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "reports/generation_context/IMAGE_APP_PROMPT_REPORT.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-002",
+      "replacement": "reports/generation_context/FINAL_SOURCE_LOCK_REPORT.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "reports/generation_context/GENERATION_CONTEXT_REPORT.json",
+      "status": "LEGACY",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-001",
+      "replacement": "reports/generation_context/FINAL_SOURCE_LOCK_REPORT.json",
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "reports/project_governance/PROJECT_INVENTORY_REPORT.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "reports/project_governance/PROJECT_GOVERNANCE_REPORT.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.413Z"
+    },
+    {
+      "path": "datasets/movie_spatial/titanic/titanic-master-dataset-binding.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-007",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/spirited_away/spirited-away-master-dataset-binding.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-007",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/movie-image-app-native-import.schema.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/movie-master-dataset-binding.schema.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-MOVIE-SPATIAL-007",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "scripts/verify-final-source-lock.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-GENERATION-CONTEXT-008",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "scripts/verify-project-governance.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-001",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "datasets/movie_spatial/movie-master-scenario-package.schema.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/movie-spatial-engine.schema.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/movie-spatial-graph.schema.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/spirited_away/spirited-away-master-scenario-package.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/spirited_away/spirited-away-movie-spatial-engine.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/spirited_away/spirited-away-movie-spatial-graph.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/titanic/titanic-master-scenario-package.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/titanic/titanic-movie-spatial-engine.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "datasets/movie_spatial/titanic/titanic-movie-spatial-graph.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.411Z"
+    },
+    {
+      "path": "scripts/verify-movie-image-app-native-import.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "scripts/verify-movie-master-dataset-binding.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "scripts/verify-movie-master-scenario-package.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "scripts/verify-movie-spatial-engine.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "scripts/verify-movie-spatial-graph.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "scripts/verify-project-restructure.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieCharacterDNALock.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieSpatialEngineBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieSpatialEngineValidation.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieSpatialGraphBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieSpatialGraphValidation.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/movieTimeSettingLock.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/mvProductionSystemFoundation.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/projectClassificationBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/projectRestructureAudit.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.413Z"
+    },
+    {
+      "path": "services/projectRestructureBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.413Z"
+    },
+    {
+      "path": "services/projectRootResolver.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.413Z"
+    },
+    {
+      "path": "services/projectActiveConsolidationAudit.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "services/projectActiveConsolidationBuilder.ts",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.412Z"
+    },
+    {
+      "path": "reports/project_governance/ACTIVE_CONSOLIDATION_REPORT.json",
+      "status": "ACTIVE",
+      "owner_phase": "PHASE-PROJECT-GOVERNANCE-003",
+      "replacement": null,
+      "last_verified": "2026-08-06T12:34:04.413Z"
+    }
+  ]
+}
