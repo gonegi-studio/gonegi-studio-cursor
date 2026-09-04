@@ -476,7 +476,9 @@ export function scoreFromPixels(
 
   const cameraVelocity = camera?.camera_velocity as number[] | undefined;
   const cameraEnergy = Array.isArray(cameraVelocity) ? mean(cameraVelocity) : 0.02;
-  const panEnergy = Array.isArray(cameraVelocity) ? Math.abs(cameraVelocity[0]) : 0.02;
+  // Same floor as generateProductionPng()'s effectivePan -- panEnergy must reflect what was
+  // actually rendered (which is floored), not the raw pre-floor DNA value.
+  const panEnergy = Math.max(Math.abs(Array.isArray(cameraVelocity) ? cameraVelocity[0] : 0.025), 0.032);
   const cameraPreservation = clampScore(
     Math.min(metrics.horizontal_gradient / 2.2, 48) + panEnergy * 1200 + cameraEnergy * 400 + 32
   );
