@@ -117,6 +117,9 @@ export interface ChangeHistoryEntry {
   drift_detail: string | null;
 }
 
+/** Editorial decision state; absent preserves every pre-Canon document unchanged. */
+export type CanonStatus = 'CANON' | 'PLANNED' | 'CANDIDATE' | 'REJECTED';
+
 
 /**
  * PHASE-731/732: content-axis dependency bookkeeping, per docs/architecture/
@@ -157,6 +160,7 @@ export interface PersistedDocument<T = unknown> {
   // PHASE-731/732: optional, additive — absent on every document created before this phase
   // (Rule DB6: no retroactive population, ever, for those documents).
   dependency_ledger?: Record<string, ContentDependency[]>;
+  canon_status?: CanonStatus;
 }
 
 function readDocumentRaw<T>(kind: DocumentKind, objectId: string): PersistedDocument<T> | null {
@@ -248,6 +252,14 @@ export function reverifyStructuralSnapshot<S>(
 
 export function loadRawDocument<T>(kind: DocumentKind, objectId: string): PersistedDocument<T> | null {
   return readDocumentRaw<T>(kind, objectId);
+}
+
+/** Uses the same version gate and change-history semantics as every persisted update. */
+export function updateDocumentCanonStatus<T>(kind: DocumentKind, objectId: string, expectedVersion: number, canonStatus: CanonStatus, authorship: AuthorshipProvenance | null): PersistedDocument<T> {
+  const doc = updateDocument(kind, objectId, expectedVersion, (content) => content, ['canon_status'], authorship);
+  doc.canon_status = canonStatus;
+  writeDocumentRaw(kind, doc);
+  return doc;
 }
 
 
