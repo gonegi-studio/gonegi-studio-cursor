@@ -1,0 +1,81 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_titanic_salon_farewell",
+  "content": {
+    "episode_id": "episode_titanic_salon_farewell",
+    "movie_id": "titanic",
+    "scene_ids": [
+      "scene_titanic_02_first_class_salon_015"
+    ],
+    "shot_ids": [],
+    "character_growth_spec": null,
+    "authored_narrative": {
+      "episode_purpose": "The crowd's own departure (the season's third episode) sharpens here into something closer to parting -- the scene's own recorded emotion tag (anxiety, separation) reads as a real escalation from the prior episode's shift and anticipation, staged around the scene's own recorded semantic_anchor_id (titanic_lifeboat_threshold_pose).",
+      "scene_purposes": {
+        "scene_titanic_02_first_class_salon_015": {
+          "purpose": "A salon moment where the crossing's earlier anticipation gives way to the scene's own recorded anxiety and separation -- staged between the two of them, not a new conflict introduced from outside the real data.",
+          "conflict_type": "relational",
+          "stakes": "whether the two of them can stay oriented toward each other while the crossing itself keeps pulling them toward separation",
+          "opposing_force": "the scene's own recorded semantic_anchor_id, titanic_lifeboat_threshold_pose -- the same real pointer this scene actually carries, read here as the threshold the crossing keeps pushing them toward"
+        }
+      },
+      "shot_intents": {}
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_titanic_salon_farewell",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 1,
+    "total_count": 1,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "titanic",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-20T11:19:43.764Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-20T11:19:43.762Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T11:19:43.754Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-20T11:19:43.764Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T11:19:43.754Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

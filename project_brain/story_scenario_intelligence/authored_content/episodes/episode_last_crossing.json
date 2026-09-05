@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_last_crossing",
+  "content": {
+    "episode_id": "episode_last_crossing",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_bridge_crossing_0038",
+      "scene_spirited_away_boiler_room_0041"
+    ],
+    "shot_ids": [
+      "shot_spirited_00297",
+      "shot_spirited_00321"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "A last bridge crossing and a last pass through the boiler room close out the two settings that first tested Gonagi and Dana — not as a farewell tour, but because a Story about crossing thresholds owes its ending to the thresholds themselves.",
+      "scene_purposes": {
+        "scene_spirited_away_bridge_crossing_0038": {
+          "purpose": "The bridge that once demanded an irreversible commitment, and was later crossed a second time without ceremony, is crossed a third time here — the anchor's final appearance, now simply part of how they move through the world.",
+          "conflict_type": "internal",
+          "stakes": "whether a third crossing has anything left to say that the first two did not already establish",
+          "opposing_force": "the risk of repetition for its own sake, answered only by the fact that this crossing genuinely completes something the first two left open"
+        },
+        "scene_spirited_away_boiler_room_0041": {
+          "purpose": "The boiler room, once solitary duty and later shared labor, appears a third time as neither — simply a place they pass through together on the way to somewhere else.",
+          "conflict_type": "relational",
+          "stakes": "whether a setting can stop being meaningful once it stops being difficult",
+          "opposing_force": "the room's own unchanged, indifferent scale — it was never going to notice the difference, only they were"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00297": {
+          "intent": "A brief, unlingering pass across the bridge — the first shot in this Story that treats the crossing as simply transit, not a moment to hold on.",
+          "serves_scene_id": "scene_spirited_away_bridge_crossing_0038"
+        },
+        "shot_spirited_00321": {
+          "intent": "A wide, unhurried walk-through of the boiler room, camera moving with them rather than holding on the room itself — the setting is no longer the subject.",
+          "serves_scene_id": "scene_spirited_away_boiler_room_0041"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_last_crossing",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:49:16.182Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:16.181Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.168Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:16.182Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.168Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_memory_settled",
+  "content": {
+    "chain_id": "chain_memory_settled",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_dragon_flight_0045",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_guest_hall_0054",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "The train-memory anchor's final real appearance here carries no charge at all — its earlier uses always marked isolation or labor; this one marks nothing, which is the clearest sign the Story has genuinely moved past needing it to."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.424Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:16.336Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.305Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:16.337Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.305Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:16.338Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.305Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.424Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.424Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

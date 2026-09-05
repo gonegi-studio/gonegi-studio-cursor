@@ -1,0 +1,99 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_063_persist",
+  "content": {
+    "chain_id": "chain_063_persist",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_spirit_bath_0007",
+        "semantic_anchor_id": "river_spirit_departure",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_dragon_flight_0009",
+        "semantic_anchor_id": "river_spirit_departure",
+        "role": "reference"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_meadow_flower_0008",
+        "semantic_anchor_id": "river_spirit_departure",
+        "role": "payoff"
+      }
+    ]
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 3
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.018Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:39:02.108Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "human",
+        "tool": null,
+        "reviewed_by_human": true,
+        "authored_at": "2026-08-19T04:39:01.915Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:39:02.110Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "human",
+        "tool": null,
+        "reviewed_by_human": true,
+        "authored_at": "2026-08-19T04:39:01.915Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:39:02.111Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "human",
+        "tool": null,
+        "reviewed_by_human": true,
+        "authored_at": "2026-08-19T04:39:01.915Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.018Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.018Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

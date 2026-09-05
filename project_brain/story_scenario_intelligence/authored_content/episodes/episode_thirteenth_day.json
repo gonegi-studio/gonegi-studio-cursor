@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_thirteenth_day",
+  "content": {
+    "episode_id": "episode_thirteenth_day",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_river_spirit_departure_0063",
+      "scene_spirited_away_boiler_room_0065"
+    ],
+    "shot_ids": [
+      "shot_spirited_00497",
+      "shot_spirited_00513"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "The thirteenth real episode asks nothing new of this Story — a spirit's departure and a pass through the boiler room, both motifs this Story has already answered fully, appear once more simply because days keep happening.",
+      "scene_purposes": {
+        "scene_spirited_away_river_spirit_departure_0063": {
+          "purpose": "The spirit-departure motif that opened this Story's first real ethical test in Episode 1 appears a fourth time here, carrying no test at all — witnessed, not participated in.",
+          "conflict_type": "internal",
+          "stakes": "whether witnessing without participating still counts as presence",
+          "opposing_force": "none — the scene deliberately asks nothing of Gonagi this time"
+        },
+        "scene_spirited_away_boiler_room_0065": {
+          "purpose": "A third pass through the boiler room finds it exactly as unremarkable as the second — the room has fully exhausted its narrative utility, and this Story lets it.",
+          "conflict_type": "external",
+          "stakes": "whether a setting can be revisited without needing to justify the revisit",
+          "opposing_force": "the room's own continued existence, indifferent to how many times this Story returns to it"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00497": {
+          "intent": "A distant, observational framing — Gonagi is present in the frame but not centered in it, watching rather than acting.",
+          "serves_scene_id": "scene_spirited_away_river_spirit_departure_0063"
+        },
+        "shot_spirited_00513": {
+          "intent": "A plain pass-through shot, the third such treatment of this room, with nothing new added to the visual vocabulary.",
+          "serves_scene_id": "scene_spirited_away_boiler_room_0065"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_thirteenth_day",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:49:16.423Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:16.422Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.404Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:16.423Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.404Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

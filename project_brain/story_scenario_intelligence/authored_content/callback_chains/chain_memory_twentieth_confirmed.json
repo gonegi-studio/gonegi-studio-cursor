@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_memory_twentieth_confirmed",
+  "content": {
+    "chain_id": "chain_memory_twentieth_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_meadow_flower_0020",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_train_memory_0240",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase performed the first-ever registry-confirmed reuse-candidate + payoff fresh+real-tag survey for train_memory_scene. The reuse-candidate search found 20 usable candidates (not zero, so no STOP was required). The payoff fresh+real-tag check found TWO valid payoffs remaining (not zero, no STOP) — train_memory_scene's payoff pool is confirmed NOT exhausted, with 1 remaining after this phase, unlike bridge_crossing/river_spirit_departure/no_face_loneliness (all exhausted). This chain, named 'twentieth_confirmed' extending the established chain_memory_* naming discipline one ordinal further, gives train_memory_scene its twentieth dedicated real chain. bridge_crossing, river_spirit_departure, and no_face_loneliness were excluded as targets this phase (all three payoff pools already exhausted); bathhouse_arrival was held in reserve (3 fresh+real-tagged payoffs per PHASE-192, not re-surveyed here)."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.453Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:30.165Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:29.972Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:30.166Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:29.972Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:30.167Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:29.972Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.453Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.453Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

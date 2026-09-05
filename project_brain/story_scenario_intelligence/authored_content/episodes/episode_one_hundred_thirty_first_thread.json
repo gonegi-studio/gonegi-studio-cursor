@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_one_hundred_thirty_first_thread",
+  "content": {
+    "episode_id": "episode_one_hundred_thirty_first_thread",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_bridge_crossing_0242",
+      "scene_spirited_away_no_face_loneliness_0172"
+    ],
+    "shot_ids": [
+      "shot_spirited_01929",
+      "shot_spirited_01369"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "One hundred and thirty-one real episodes on, this Story pairs an unremarked bridge crossing with a familiar loneliness — neither reopens an argument this arc closed long ago.",
+      "scene_purposes": {
+        "scene_spirited_away_bridge_crossing_0242": {
+          "purpose": "Another crossing, held without new consequence — plain continuation, not argument.",
+          "conflict_type": "external",
+          "stakes": "none named",
+          "opposing_force": "none named"
+        },
+        "scene_spirited_away_no_face_loneliness_0172": {
+          "purpose": "A quiet return to a familiar loneliness, held without new consequence — plain continuation, not argument.",
+          "conflict_type": "internal",
+          "stakes": "none named",
+          "opposing_force": "none named"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_01929": {
+          "intent": "A close, unremarkable hold — no new visual claim.",
+          "serves_scene_id": "scene_spirited_away_bridge_crossing_0242"
+        },
+        "shot_spirited_01369": {
+          "intent": "A close, unremarkable hold — no new visual claim.",
+          "serves_scene_id": "scene_spirited_away_no_face_loneliness_0172"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_one_hundred_thirty_first_thread",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:49:37.234Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:37.232Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:37.108Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:37.234Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:37.108Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

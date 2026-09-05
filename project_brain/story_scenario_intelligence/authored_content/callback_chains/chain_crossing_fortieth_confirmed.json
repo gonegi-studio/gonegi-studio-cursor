@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_crossing_fortieth_confirmed",
+  "content": {
+    "chain_id": "chain_crossing_fortieth_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_boiler_room_0101",
+        "semantic_anchor_id": "bridge_crossing",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_spirit_bath_0151",
+        "semantic_anchor_id": "bridge_crossing",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase's target, bridge_crossing, was selected by re-evaluating the live two-way tie at 39 (bathhouse_arrival, bridge_crossing) under the established dedicated-chain-minimum tie-break: primary criterion (fewest existing dedicated real chains) found bridge_crossing (39) fewer than bathhouse_arrival (40), so it was adopted directly — no secondary alphabetical tiebreak was needed. A registry-confirmed reuse-candidate search performed before this phase's authoring found 55 usable candidates for bridge_crossing (not zero, so no STOP was required); the lowest, boiler_room_0101, was checked against the used-as-a-leg-anywhere set FIRST (per explicit instruction) and confirmed already a leg once (payoff in chain_arrival_twenty_fourth_confirmed under bathhouse_arrival), reused here citing its real, uncited bridge_crossing tag. A payoff search under the PHASE-199 policy found 39 valid candidates before the plant leg was written (not zero, so no STOP was required); because the plant scene was already excluded from this pool before this phase (it was already used as a leg, under a different anchor, before PHASE-277 began), the payoff is simply the lowest of the 39: spirit_bath_0151, which carries REAL tags for both bridge_crossing and bathhouse_arrival. This chain, named 'fortieth_confirmed' extending the established chain_crossing_* naming discipline, gives bridge_crossing its fortieth dedicated real chain. FULL cross-anchor payoff-pool accounting, correctly distinguishing the plant's REUSE (already-excluded, no additional reduction) from the payoff's GENUINELY NEW consumption, per the same discipline PHASE-237 through PHASE-276 established: bridge_crossing itself drops by only ONE, not two (39 -> 38); bathhouse_arrival drops by one because the payoff scene carries a real bathhouse_arrival tag (39 -> 38), a cross-anchor reduction from the PAYOFF leg only; no_face_loneliness (38), river_spirit_departure (38), and train_memory_scene (38) are unaffected by this leg's own tags. Full record after this phase, RECONFIRMED BY A DIRECT POST-PHASE RECOUNT with explicit attention to whether the TARGET's own post-reduction value joins the top tier (the standing discipline PHASE-248 established): bathhouse_arrival 38 (cross-anchor), bridge_crossing 38 (this phase's target), no_face_loneliness 38, river_spirit_departure 38, train_memory_scene 38. NOTABLE OUTCOME this phase: all five anchors converge to the exact same value, 38 — a full FIVE-WAY TIE across every anchor, the first occurrence of this in the recorded phase history. Next priority by the largest-pool convention: bathhouse_arrival, bridge_crossing, no_face_loneliness, river_spirit_departure, and train_memory_scene, FIVE-WAY TIED at 38 — the established tie-break will need to be applied across all five anchors on the next phase. No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged. Episode-fresh remains at 0 for all five anchors per this phase's explicit instruction; no Episode authored, no reserve reopened, no new scene source invented."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.137Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:52.118Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:51.966Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:52.119Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:51.966Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:52.120Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:51.966Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.137Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.136Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

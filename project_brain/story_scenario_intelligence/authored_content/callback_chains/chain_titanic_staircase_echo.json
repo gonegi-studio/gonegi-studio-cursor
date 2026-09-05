@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_titanic_staircase_echo",
+  "content": {
+    "chain_id": "chain_titanic_staircase_echo",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "titanic",
+        "scene_id": "scene_titanic_02_promenade_deck_001",
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "role": "plant"
+      },
+      {
+        "movie_id": "titanic",
+        "scene_id": "scene_titanic_02_corridor_encounter_009",
+        "semantic_anchor_id": "titanic_staircase_encounter",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "The plant leg's staircase encounter on the promenade deck is a class-boundary crossing through vertical ascent and intercepted gaze -- longing, social tension, destiny, per the anchor's own real tagging. The payoff never re-explains any of that; per episode_titanic_corridor_encounter's own authored_narrative, the same anchor and the same three emotions simply carry into a corridor, unannounced, narrowing the encounter from the promenade's open deck into a passage. The chain's real question -- whether the first crossing was a single moment or the start of something that keeps finding a way to happen again, exactly as that episode's own scene_purposes already frames it -- is answered by the anchor's own verbatim recurrence: it happens again."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-08-20T01:49:25.930Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-20T01:35:05.565Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T01:35:05.558Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-20T01:35:05.567Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T01:35:05.558Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-20T01:41:34.824Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T01:41:34.817Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-08-20T01:49:25.930Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T01:49:25.875Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

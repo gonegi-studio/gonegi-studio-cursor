@@ -1,0 +1,118 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_weight_of_duty",
+  "content": {
+    "episode_id": "episode_weight_of_duty",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_no_face_loneliness_0004",
+      "scene_spirited_away_boiler_room_0005",
+      "scene_spirited_away_guest_hall_0006"
+    ],
+    "shot_ids": [
+      "shot_spirited_00025",
+      "shot_spirited_00033",
+      "shot_spirited_00041"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "Isolation curdles into labor, and the threshold anchor from Episode 1 returns twice — first as exhausting work, then as something closer to belonging.",
+      "scene_purposes": {
+        "scene_spirited_away_no_face_loneliness_0004": {
+          "purpose": "The threshold behind them, the meadow's openness turns from relief into isolation — arriving somewhere is not the same as belonging there.",
+          "conflict_type": "internal",
+          "stakes": "whether unfamiliar openness reads as freedom or as exposure",
+          "opposing_force": "the loneliness that follows crossing over — no one here to confirm they made it"
+        },
+        "scene_spirited_away_boiler_room_0005": {
+          "purpose": "Exhausted and unnoticed, Gonagi takes on the bathhouse's own rhythm of duty — the threshold from scene one returns, this time as work rather than wonder.",
+          "conflict_type": "external",
+          "stakes": "keeping pace with a labor that doesn't pause to explain its rules",
+          "opposing_force": "the boiler room's indifferent, mechanical demand for output"
+        },
+        "scene_spirited_away_guest_hall_0006": {
+          "purpose": "In the guest hall the threshold anchor closes its loop: what began as disorientation at an entrance becomes, here, a place Gonagi and Dana have actually earned the right to stand in.",
+          "conflict_type": "relational",
+          "stakes": "whether the bond formed under duty (scene 5) still holds now that the pressure is off",
+          "opposing_force": "the guest hall's own grandeur, easy to be swallowed by if the two don't hold onto what they built between them"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00025": {
+          "intent": "Open meadow framing with negative space around the pair, so the openness itself reads as isolation rather than relief.",
+          "serves_scene_id": "scene_spirited_away_no_face_loneliness_0004"
+        },
+        "shot_spirited_00033": {
+          "intent": "Tight, mechanical framing on the labor itself — the room's own rhythm sets the shot's pace, not the characters'.",
+          "serves_scene_id": "scene_spirited_away_boiler_room_0005"
+        },
+        "shot_spirited_00041": {
+          "intent": "A wide return to scale, echoing shot 00001's framing on purpose — same visual language, now earned rather than overwhelming.",
+          "serves_scene_id": "scene_spirited_away_guest_hall_0006"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_weight_of_duty",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 7,
+    "total_count": 7,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:46:49.352Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:46:49.350Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:46:49.332Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:46:49.352Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:46:49.332Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

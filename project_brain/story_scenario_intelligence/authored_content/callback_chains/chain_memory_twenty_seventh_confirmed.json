@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_memory_twenty_seventh_confirmed",
+  "content": {
+    "chain_id": "chain_memory_twenty_seventh_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_bathhouse_arrival_0265",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_boiler_room_0149",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase's target was resolved from a live no_face_loneliness/train_memory_scene payoff-pool tie at 61. The PHASE-222 tie-break's two readings diverged for the first time (alphabetical favors no_face_loneliness; fewest existing dedicated chains favors train_memory_scene, 26 vs 27); this phase established and disclosed that fewest-chains takes precedence as the more substantively meaningful reading, selecting train_memory_scene. A registry-confirmed reuse-candidate search performed before this phase's authoring found 19 usable candidates for train_memory_scene (not zero, so no STOP was required). A payoff search under the PHASE-199 policy found 61 valid candidates, matching this phase's live pre-authoring recount exactly (not zero, so no STOP was required). This chain, named 'twenty_seventh_confirmed' extending the established chain_memory_* naming discipline, gives train_memory_scene its twenty-seventh dedicated real chain. Cross-anchor payoff-pool reduction computed and recorded: no_face_loneliness (not this phase's target) drops from 61 to 60 because this chain's payoff scene also carries a real no_face_loneliness tag. Full record after this phase: bathhouse_arrival 60, bridge_crossing 60, no_face_loneliness 60 (cross-anchor reduction, NOT the target), river_spirit_departure 60, train_memory_scene 60 (this phase's target) — all FIVE anchors now tied at 60, the first full five-way tie in this arc. No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.465Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:39.560Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:39.343Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:39.561Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:39.343Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:39.563Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:39.343Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.465Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.465Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_arrival_fifty_seventh_confirmed",
+  "content": {
+    "chain_id": "chain_arrival_fifty_seventh_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_bridge_crossing_0230",
+        "semantic_anchor_id": "bathhouse_arrival",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_parental_transformation_0251",
+        "semantic_anchor_id": "bathhouse_arrival",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase's target, bathhouse_arrival, emerged from PHASE-344's closing record with bathhouse_arrival ALONE at the top, pool 12, no tie — bridge_crossing, no_face_loneliness, river_spirit_departure, and train_memory_scene sat lower, four-way tied at 11. Since bathhouse_arrival is the sole largest pool, it is this phase's target with no tie-break needed. A registry-confirmed reuse-candidate search performed before this phase's authoring found only 9 usable candidates for bathhouse_arrival (the same small reuse pool this arc first saw at PHASE-340, but not zero, so no STOP was required); the lowest, bridge_crossing_0230, was checked against the used-as-a-leg-anywhere set FIRST (per explicit instruction) and confirmed already a leg once (payoff in chain_memory_fortieth_confirmed under train_memory_scene), reused here citing its real, uncited bathhouse_arrival tag. A payoff search under the PHASE-199 policy found 12 valid candidates before the plant leg was written (not zero, so no STOP was required); because the plant scene was already excluded from this pool before this phase (it was already used as a leg, under a different anchor, before PHASE-345 began), the payoff is simply the lowest of the 12: parental_transformation_0251, which carries REAL tags for both bathhouse_arrival and bridge_crossing. This chain, named 'fifty_seventh_confirmed' (underscore-separated, per this phase's explicit naming instruction) extending the established chain_arrival_* naming discipline, gives bathhouse_arrival its fifty-seventh dedicated real chain (of its 56 predecessors, 54 carry the chain_arrival_* name — including its own early non-ordinal sub-name chain_arrival_fourth_time — and 2, chain_threshold_completed and chain_threshold_echo, are fully differently-named early-era legacy chains — as established at PHASE-340, bathhouse_arrival remains the only anchor with two such legacy names; all three count identically toward the ordinal). FULL cross-anchor payoff-pool accounting, correctly distinguishing the plant's REUSE (already-excluded, no additional reduction) from the payoff's GENUINELY NEW consumption, per the same discipline PHASE-237 through PHASE-344 established: bathhouse_arrival itself drops by only ONE, not two (12 -> 11); bridge_crossing drops by one because the payoff scene carries a real bridge_crossing tag (11 -> 10), a cross-anchor reduction from the PAYOFF leg only; no_face_loneliness (11), river_spirit_departure (11), and train_memory_scene (11) are unaffected by this leg's own tags. Full record after this phase, RECONFIRMED BY A DIRECT POST-PHASE RECOUNT: bathhouse_arrival 11 (this phase's target), bridge_crossing 10 (cross-anchor), no_face_loneliness 11, river_spirit_departure 11, train_memory_scene 11. New top tier: a FOUR-WAY TIE at 11 among bathhouse_arrival, no_face_loneliness, river_spirit_departure, and train_memory_scene; bridge_crossing sits lowest, alone at 10. Next priority by the largest-pool convention, primary tie-break (fewest dedicated real chains) applied among the four: bathhouse_arrival=57, no_face_loneliness=49, river_spirit_departure=52, train_memory_scene=43 — train_memory_scene is the sole fewest, so it is next priority. No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged. Episode-fresh remains at 0 for all five anchors per this phase's explicit instruction; no Episode authored, no reserve reopened, no new scene source invented. Per this phase's explicit instruction, PHASE-346 is not started by this phase."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.040Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:50:07.795Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:07.627Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:50:07.796Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:07.627Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:50:07.797Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:07.627Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.040Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.040Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

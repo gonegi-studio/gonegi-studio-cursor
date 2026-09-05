@@ -1,0 +1,608 @@
+{
+  "schema_version": "1",
+  "object_id": "season_titanic_harbor_crossing__season_titanic_open_deck",
+  "content": {
+    "from_season_scenario_id": "season_titanic_harbor_crossing",
+    "to_season_scenario_id": "season_titanic_open_deck",
+    "from_resolution": {
+      "season_scenario_id": "season_titanic_harbor_crossing",
+      "aggregate_status": "RESOLVED",
+      "resolved_count": 1,
+      "total_count": 1,
+      "provenance_ledger": [
+        {
+          "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+          "registry_generated_at": "2026-08-11T01:50:40.000Z",
+          "movie_id": "titanic",
+          "movie_entry_found": true,
+          "movie_entry_verified_by_phase": [
+            "PHASE-038",
+            "PHASE-039",
+            "PHASE-040"
+          ]
+        }
+      ],
+      "known_gaps": [],
+      "leaf_failures": [],
+      "warnings": []
+    },
+    "to_resolution": {
+      "season_scenario_id": "season_titanic_open_deck",
+      "aggregate_status": "RESOLVED",
+      "resolved_count": 1,
+      "total_count": 1,
+      "provenance_ledger": [
+        {
+          "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+          "registry_generated_at": "2026-08-11T01:50:40.000Z",
+          "movie_id": "titanic",
+          "movie_entry_found": true,
+          "movie_entry_verified_by_phase": [
+            "PHASE-038",
+            "PHASE-039",
+            "PHASE-040"
+          ]
+        }
+      ],
+      "known_gaps": [],
+      "leaf_failures": [],
+      "warnings": []
+    },
+    "series_anchor": {
+      "identity_signature": "75101c29496c",
+      "location_signature": "38f03b50f5bf",
+      "series_memory_signature": "NOT_DERIVABLE: resolver provides pointer resolution only (registry_ref + field_path), not value dereferencing — see docs/architecture/StoryScenarioResolverFinalContract.md §6 pointer-only discipline; populating this field requires a future dereferencing capability, not yet implemented",
+      "growth_score": "NOT_DERIVABLE: no real numeric character-growth value could be dereferenced for any of the 9 unique scene(s) referenced by \"story_gonagi_dana_titanic__CHAR-gonagi\"'s deltaSpecs — the character_growth_source registry may use a different scene_id namespace than this arc's own scenes (PHASE-782 finding: this is the case for titanic, whose subject-motion registry uses scene_titanic_dense_* while this arc's scenes use scene_titanic_02_*)",
+      "relationship_stage": "Carrying over continuously across this season boundary -- the real CHAR-gonagi x CHAR-dana relationship (story_gonagi_dana_titanic__CHAR-dana__CHAR-gonagi) is the same record this carryover's own relationship_carryover check already confirmed has 5 supporting scenes spanning all 5 real Episodes across both seasons; this field restates that same already-verified fact as a stage label, asserting no new claim."
+    },
+    "carryover_checks": {
+      "season_to_season_consistency": "Both seasons resolve fully RESOLVED against real, registry-verified titanic scene data under the same movie_id and the same Story; season_titanic_harbor_crossing's promenade-deck scene and season_titanic_open_deck's bow-deck scene both trace to real TITANIC_02 source-video scenes and the same gonegi_translation.target_characters (CHAR-gonagi, CHAR-dana) -- no contradiction found at the structural level checked.",
+      "character_growth_carryover": "CHAR-gonagi's story-scoped titanic arc (story_gonagi_dana_titanic__CHAR-gonagi) has 28 real deltas spanning both seasons -- grown from the original 4 (PHASE-709/710/711) through 24 additional real deltas, each added one real, previously-unconsumed titanic scene at a time (PHASE-799 through PHASE-818, closing all 20 real titanic scenes PHASE-798 found unconsumed) -- confirming real character-growth carryover across the season boundary remains true at this larger, scene-exhausted scale. CHAR-dana's story-scoped titanic arc (story_gonagi_dana_titanic__CHAR-dana, PHASE-713/714) now has 29 real deltas -- her original 2 within season_titanic_harbor_crossing only, plus 27 further real deltas added across PHASE-821 through PHASE-845: 10 one-at-a-time (PHASE-821-839) plus 5 three-item batches culminating in PHASE-845's final batch of 5 (episode_titanic_grand_staircase_026, salon_reflection, engine_room_028, crowd_departure_029, lifeboat_discovery), each selected by the same lowest-scene_index rule PHASE-799-818 established for CHAR-gonagi. As of PHASE-845, CHAR-dana's episode-backed titanic extension axis is formally CLOSED -- 0 episode-backed candidates remain (re-verified programmatically this phase). This check confirms real character-growth carryover across the season boundary for BOTH CHAR-gonagi and CHAR-dana at this now-fully-consumed scale (29 deltas for CHAR-dana vs 28 for CHAR-gonagi -- her coverage remains smaller in count but is now complete across every real episode-backed scene available to her). One separate, structurally distinct item remains genuinely open: scene_titanic_02_grand_staircase_002 (scene_index=2), a real scene that no existing Episode references at all (disclosed PHASE-833, reconfirmed through PHASE-845) -- not part of this closure, not tracked by this dependency, and awaiting a separate future decision on whether to wrap it in a new Episode.",
+      "relationship_carryover": "The story-scoped CHAR-gonagi x CHAR-dana relationship (story_gonagi_dana_titanic__CHAR-dana__CHAR-gonagi) now has 5 supporting scenes spanning all 5 real Episodes across both seasons -- season_titanic_harbor_crossing's 3 episodes and season_titanic_open_deck's 2 episodes -- confirming real relationship-level carryover across the season boundary, current as of PHASE-713's catch-up.",
+      "world_state_carryover": "NOT_DERIVABLE: world_state_carryover is permanently out of scope — blocked on WorldIdentityIndex (PHASE-037 GAP 1 / PHASE-057 §7), never an authoring surface (Rule SC4)",
+      "series_arc_continuity": "Season 1's authored arc (main_arc: \"three staged episodes -- the promenade encounter, the corridor encounter, and the crowd's departure -- told as one connected crossing sequence, not a single minimal unit\"; theme_arc: \"proximity without continuity -- what three connected real encounters can hold together as one season, independent of any other Story\") and season 2's authored arc (main_arc: \"two real moments on the ship's bow deck -- an awakening and a departure into freedom -- connected to the first season only by belonging to the same Story container\") both still frame the Story as a container for standalone real-content units, not a merged plot -- season 1's theme_arc states this directly (\"independent of any other Story\") and season 2's main_arc states it from the other direction (\"connected to the first season only by belonging to the same Story container\"). The two seasons' own current authored arcs agree with each other on exactly this point, the same conclusion this check has held since PHASE-702/716 -- only the quoted phrasing is updated here (PHASE-727) to match PHASE-718's real rewrite of both seasons' text, which grew from describing a single scene/moment to describing the real multi-episode sequences each season now has."
+    },
+    "character_growth_carryover_detail": [],
+    "callback_chains_spanning_seasons": []
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "from_status": "RESOLVED",
+    "to_status": "RESOLVED"
+  },
+  "last_resolved_at": "2026-08-21T05:51:02.566Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:50:14.782Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:14.771Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:50:14.783Z",
+      "changed_fields": [
+        "content.carryover_checks.season_to_season_consistency"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:14.771Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:50:14.785Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:14.771Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-08-19T04:50:14.786Z",
+      "changed_fields": [
+        "content.carryover_checks.relationship_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:14.771Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 5,
+      "changed_at": "2026-08-19T04:50:14.788Z",
+      "changed_fields": [
+        "content.carryover_checks.series_arc_continuity"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:14.771Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 6,
+      "changed_at": "2026-08-19T05:48:58.934Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T05:48:58.922Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 7,
+      "changed_at": "2026-08-19T05:48:58.937Z",
+      "changed_fields": [
+        "content.carryover_checks.relationship_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T05:48:58.922Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 8,
+      "changed_at": "2026-08-20T06:25:28.762Z",
+      "changed_fields": [
+        "content.carryover_checks.series_arc_continuity"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T06:25:28.751Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 9,
+      "changed_at": "2026-08-20T06:56:10.468Z",
+      "changed_fields": [
+        "content.carryover_checks.series_arc_continuity",
+        "dependency_ledger.content.carryover_checks.series_arc_continuity"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T06:56:10.394Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 10,
+      "changed_at": "2026-08-20T07:02:58.945Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T07:02:58.871Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 11,
+      "changed_at": "2026-08-20T07:05:36.890Z",
+      "changed_fields": [
+        "content.carryover_checks.relationship_carryover",
+        "dependency_ledger.content.carryover_checks.relationship_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T07:05:36.816Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 12,
+      "changed_at": "2026-08-20T08:48:57.009Z",
+      "changed_fields": [
+        "content.series_anchor.relationship_stage"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T08:48:56.928Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 13,
+      "changed_at": "2026-08-20T12:11:44.323Z",
+      "changed_fields": [
+        "content.series_anchor.growth_score"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T12:11:44.304Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 14,
+      "changed_at": "2026-08-20T22:41:39.036Z",
+      "changed_fields": [
+        "content.series_anchor.identity_signature"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T22:41:39.026Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 15,
+      "changed_at": "2026-08-20T22:57:00.471Z",
+      "changed_fields": [
+        "content.series_anchor.location_signature"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-20T22:57:00.460Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 16,
+      "changed_at": "2026-08-21T04:03:31.205Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T04:03:31.190Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 17,
+      "changed_at": "2026-08-21T04:19:48.393Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T04:19:48.378Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 18,
+      "changed_at": "2026-08-21T04:25:14.827Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T04:25:14.810Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 19,
+      "changed_at": "2026-08-21T04:30:50.222Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T04:30:50.206Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 20,
+      "changed_at": "2026-08-21T04:36:40.393Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T04:36:40.376Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 21,
+      "changed_at": "2026-08-21T04:43:20.539Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T04:43:20.523Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 22,
+      "changed_at": "2026-08-21T04:48:59.512Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T04:48:59.496Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 23,
+      "changed_at": "2026-08-21T05:09:32.072Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:09:32.056Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 24,
+      "changed_at": "2026-08-21T05:16:21.882Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:16:21.866Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 25,
+      "changed_at": "2026-08-21T05:26:54.482Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:26:54.465Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 26,
+      "changed_at": "2026-08-21T05:32:36.723Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:32:36.706Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 27,
+      "changed_at": "2026-08-21T05:36:56.415Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:36:56.385Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 28,
+      "changed_at": "2026-08-21T05:40:38.044Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:40:38.014Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 29,
+      "changed_at": "2026-08-21T05:43:56.302Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:43:56.270Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 30,
+      "changed_at": "2026-08-21T05:47:34.398Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:47:34.365Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 31,
+      "changed_at": "2026-08-21T05:51:02.566Z",
+      "changed_fields": [
+        "content.carryover_checks.character_growth_carryover",
+        "dependency_ledger.content.carryover_checks.character_growth_carryover"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-21T05:51:02.520Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ],
+  "dependency_ledger": {
+    "content.carryover_checks.series_arc_continuity": [
+      {
+        "kind": "document",
+        "object_kind": "seasons",
+        "object_id": "season_titanic_harbor_crossing",
+        "tracked_field": "content.authored_arc.main_arc",
+        "comparison": "exact_value",
+        "value_at_authoring": "three staged episodes -- the promenade encounter, the corridor encounter, and the crowd's departure -- told as one connected crossing sequence, not a single minimal unit"
+      },
+      {
+        "kind": "document",
+        "object_kind": "seasons",
+        "object_id": "season_titanic_open_deck",
+        "tracked_field": "content.authored_arc.main_arc",
+        "comparison": "exact_value",
+        "value_at_authoring": "two real moments on the ship's bow deck -- an awakening and a departure into freedom -- connected to the first season only by belonging to the same Story container"
+      }
+    ],
+    "content.carryover_checks.character_growth_carryover": [
+      {
+        "kind": "document",
+        "object_kind": "character_arcs",
+        "object_id": "story_gonagi_dana_titanic__CHAR-gonagi",
+        "tracked_field": "content.deltaSpecs",
+        "comparison": "count",
+        "count_at_authoring": 28
+      },
+      {
+        "kind": "document",
+        "object_kind": "character_arcs",
+        "object_id": "story_gonagi_dana_titanic__CHAR-dana",
+        "tracked_field": "content.deltaSpecs",
+        "comparison": "count",
+        "count_at_authoring": 29
+      }
+    ],
+    "content.carryover_checks.relationship_carryover": [
+      {
+        "kind": "document",
+        "object_kind": "relationships",
+        "object_id": "story_gonagi_dana_titanic__CHAR-dana__CHAR-gonagi",
+        "tracked_field": "content.sceneSpecs",
+        "comparison": "count",
+        "count_at_authoring": 5
+      }
+    ]
+  }
+}

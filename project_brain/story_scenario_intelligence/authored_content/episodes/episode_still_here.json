@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_still_here",
+  "content": {
+    "episode_id": "episode_still_here",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_meadow_flower_0068",
+      "scene_spirited_away_parental_transformation_0071"
+    ],
+    "shot_ids": [
+      "shot_spirited_00537",
+      "shot_spirited_00561"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "Fourteen real episodes deep, this Story's only remaining question is whether it still has a reason to keep going — and its answer, again, is simply that Gonagi and Dana are still here, still moving through a world that stopped testing them a long time ago.",
+      "scene_purposes": {
+        "scene_spirited_away_meadow_flower_0068": {
+          "purpose": "A meadow scene with nothing riding on it — the openness this Story once used to measure isolation, then relief, now measures nothing at all, which is its own kind of resolution.",
+          "conflict_type": "internal",
+          "stakes": "whether repetition this far into a Story still earns its place on the page",
+          "opposing_force": "none — by design, consistent with every recent episode"
+        },
+        "scene_spirited_away_parental_transformation_0071": {
+          "purpose": "A space named for transformation holds two people who finished transforming episodes ago — the irony is quiet, not pointed, and the scene doesn't need to comment on it.",
+          "conflict_type": "relational",
+          "stakes": "whether the Story's restraint (not manufacturing new stakes) is itself becoming the point",
+          "opposing_force": "none named"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00537": {
+          "intent": "A loose, undirected frame, no visual argument attached.",
+          "serves_scene_id": "scene_spirited_away_meadow_flower_0068"
+        },
+        "shot_spirited_00561": {
+          "intent": "A plain medium shot in a space whose name promises more drama than the frame delivers — deliberately.",
+          "serves_scene_id": "scene_spirited_away_parental_transformation_0071"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_still_here",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:49:16.478Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:16.476Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.460Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:16.478Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.460Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_threshold_arrival",
+  "content": {
+    "episode_id": "episode_threshold_arrival",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_bathhouse_arrival_0001",
+      "scene_spirited_away_bridge_crossing_0002",
+      "scene_spirited_away_river_spirit_departure_0003"
+    ],
+    "shot_ids": [
+      "shot_spirited_00001",
+      "shot_spirited_00009",
+      "shot_spirited_00017"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "The pair crosses from the world they know into one that owes them nothing, and makes first contact with what this world actually asks of visitors.",
+      "scene_purposes": {
+        "scene_spirited_away_bathhouse_arrival_0001": {
+          "purpose": "Gonagi and Dana arrive at the threshold of a world that doesn't belong to them, and the story's central question opens: what does it cost to enter somewhere you weren't invited?",
+          "conflict_type": "internal",
+          "stakes": "orientation and trust in an unfamiliar place, with no way to ask for directions",
+          "opposing_force": "the sheer unfamiliarity of the bathhouse threshold itself — nothing here confirms they're welcome"
+        },
+        "scene_spirited_away_bridge_crossing_0002": {
+          "purpose": "The pair commits to the crossing. Once they're on the bridge there's no version of this story where they turn back — the choice becomes irreversible.",
+          "conflict_type": "external",
+          "stakes": "physical exposure on a crossing with no railing to hide behind",
+          "opposing_force": "the bridge's own openness — every step is visible, there's nowhere on it to be small"
+        },
+        "scene_spirited_away_river_spirit_departure_0003": {
+          "purpose": "A spirit's quiet departure gives Gonagi and Dana their first real taste of what this world asks of visitors — not spectacle, but attention paid to someone else's need.",
+          "conflict_type": "internal",
+          "stakes": "whether to notice a stranger's need at all, when noticing costs something",
+          "opposing_force": "their own instinct to keep moving, to treat the crossing as something to survive rather than something to be present for"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00001": {
+          "intent": "Wide establishing framing that lets the threshold's scale carry the disorientation — the characters are small against it, not the other way around.",
+          "serves_scene_id": "scene_spirited_away_bathhouse_arrival_0001"
+        },
+        "shot_spirited_00009": {
+          "intent": "A suspended, exposed framing over the bridge, nothing to anchor the eye but the two of them and the drop — visually commits to the point of no return.",
+          "serves_scene_id": "scene_spirited_away_bridge_crossing_0002"
+        },
+        "shot_spirited_00017": {
+          "intent": "A held, quiet frame on the departing spirit rather than a reaction shot — let the release breathe before cutting back to the pair.",
+          "serves_scene_id": "scene_spirited_away_river_spirit_departure_0003"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_threshold_arrival",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 7,
+    "total_count": 7,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:46:49.349Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:46:49.347Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:46:49.332Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:46:49.349Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:46:49.332Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

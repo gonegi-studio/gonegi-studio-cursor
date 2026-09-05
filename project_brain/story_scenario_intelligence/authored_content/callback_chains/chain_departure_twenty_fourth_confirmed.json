@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_departure_twenty_fourth_confirmed",
+  "content": {
+    "chain_id": "chain_departure_twenty_fourth_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_bathhouse_arrival_0073",
+        "semantic_anchor_id": "river_spirit_departure",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_bathhouse_arrival_0133",
+        "semantic_anchor_id": "river_spirit_departure",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase's target was resolved from a full live five-way payoff-pool tie at 60 across all 5 anchors, applying the PHASE-227-established precedence (fewest existing dedicated chains as primary tiebreak): river_spirit_departure's 23 dedicated chains were clearly fewest among the tied five, so no secondary alphabetical tiebreak was needed. A registry-confirmed reuse-candidate search performed before this phase's authoring found 28 usable candidates for river_spirit_departure (not zero, so no STOP was required). A payoff search under the PHASE-199 policy found 60 valid candidates, matching this phase's live pre-authoring recount exactly (not zero, so no STOP was required). This chain, named 'twenty_fourth_confirmed' extending the established chain_departure_* naming discipline, gives river_spirit_departure its twenty-fourth dedicated real chain. Cross-anchor payoff-pool reduction computed and recorded: no_face_loneliness (not this phase's target) drops from 60 to 59 because this chain's payoff scene also carries a real no_face_loneliness tag, becoming sole smallest. Full record after this phase: bathhouse_arrival 60, bridge_crossing 60, no_face_loneliness 59 (cross-anchor reduction, NOT the target, sole smallest), river_spirit_departure 59 (this phase's target), train_memory_scene 60. Next priority by the largest-pool convention: bathhouse_arrival, bridge_crossing, and train_memory_scene, three-way tied at 60. Separately, on the episode-fresh side: no_face_loneliness's episode-fresh pool is now confirmed fully exhausted (0) after this phase's Episode consumed its last remaining scene, the second of the 5 anchor categories to reach true exhaustion after bridge_crossing (bathhouse_arrival's single scene remains deliberately reserved, not exhausted). No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.293Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:39.886Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:39.666Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:39.887Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:39.666Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:39.888Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:39.666Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.293Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.292Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

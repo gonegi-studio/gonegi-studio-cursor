@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_quiet_company",
+  "content": {
+    "episode_id": "episode_quiet_company",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_meadow_flower_0044",
+      "scene_spirited_away_dragon_flight_0045"
+    ],
+    "shot_ids": [
+      "shot_spirited_00345",
+      "shot_spirited_00353"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "The open meadow that once measured isolation and, later, simple openness, appears a third time carrying neither meaning — just a place Gonagi and Dana happen to be, together, without the scene needing to argue for anything.",
+      "scene_purposes": {
+        "scene_spirited_away_meadow_flower_0044": {
+          "purpose": "No threshold to cross, no labor to share, no isolation to answer — the meadow finally gets to be only a meadow, and that itself is the point this late in the Story.",
+          "conflict_type": "internal",
+          "stakes": "whether a scene can hold real weight without conflict driving it",
+          "opposing_force": "the habit of expecting every space in this Story to mean something, even after eight episodes of evidence that not every space still needs to"
+        },
+        "scene_spirited_away_dragon_flight_0045": {
+          "purpose": "A brief, unremarkable moment of motion — not a crossing, not a threshold, not a callback waiting to happen. Two people moving through a space together, which by now is simply what they do.",
+          "conflict_type": "relational",
+          "stakes": "whether the relationship needs anything left to demonstrate at all",
+          "opposing_force": "none — this scene is deliberately the first in the Story with no opposing force to name"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00345": {
+          "intent": "A loose, unhurried frame with no particular subject held — the composition itself relaxes, matching the scene's lack of stakes.",
+          "serves_scene_id": "scene_spirited_away_meadow_flower_0044"
+        },
+        "shot_spirited_00353": {
+          "intent": "A short, plain traveling shot — no echo of an earlier composition this time, because the moment doesn't need one to justify its place in the Story.",
+          "serves_scene_id": "scene_spirited_away_dragon_flight_0045"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_quiet_company",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:49:16.227Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:16.226Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.212Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:16.227Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.212Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

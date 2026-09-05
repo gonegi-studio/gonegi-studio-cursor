@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_eighteenth_pass",
+  "content": {
+    "episode_id": "episode_eighteenth_pass",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_boiler_room_0089",
+      "scene_spirited_away_dragon_flight_0093"
+    ],
+    "shot_ids": [
+      "shot_spirited_00705",
+      "shot_spirited_00737"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "Eighteen real episodes on, the boiler room and a brief flight through open air recur one more time — both settings this Story once used to mark real change, now simply part of an unremarkable pass through an ordinary day.",
+      "scene_purposes": {
+        "scene_spirited_away_boiler_room_0089": {
+          "purpose": "A fourth pass through the boiler room finds it exactly as settled as the third — solitary duty, then shared labor, then absence of either, now simply a room passed through.",
+          "conflict_type": "internal",
+          "stakes": "none — the room has nothing left to ask of Gonagi",
+          "opposing_force": "none named"
+        },
+        "scene_spirited_away_dragon_flight_0093": {
+          "purpose": "A brief passage through open air, unremarkable, the way most of this Story's recent scenes have been by design.",
+          "conflict_type": "relational",
+          "stakes": "none named",
+          "opposing_force": "none named"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00705": {
+          "intent": "A plain pass-through shot, the fourth real treatment of this room, unchanged.",
+          "serves_scene_id": "scene_spirited_away_boiler_room_0089"
+        },
+        "shot_spirited_00737": {
+          "intent": "A short traveling shot, no visual argument attached.",
+          "serves_scene_id": "scene_spirited_away_dragon_flight_0093"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_eighteenth_pass",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:49:16.710Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:16.709Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.689Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:16.710Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.689Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

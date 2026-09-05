@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_memory_forty_sixth_confirmed",
+  "content": {
+    "chain_id": "chain_memory_forty_sixth_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_meadow_flower_0104",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_tunnel_threshold_0274",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase's target, train_memory_scene, emerged from PHASE-352's closing FIVE-WAY TIE at 8 across every anchor — the fourth five-way tie this arc has seen (the first at PHASE-327/328, the second at PHASE-332/333, the third at PHASE-337/338); primary tie-break (fewest dedicated real chains) applied among all five gave bathhouse_arrival=58, bridge_crossing=54, no_face_loneliness=50, river_spirit_departure=54, train_memory_scene=45 — train_memory_scene is the sole fewest, so it is this phase's target (no secondary alphabetical tiebreak needed). A registry-confirmed reuse-candidate search performed before this phase's authoring found 34 usable candidates for train_memory_scene (not zero, so no STOP was required); the lowest, meadow_flower_0104, was checked against the used-as-a-leg-anywhere set FIRST (per explicit instruction) and confirmed already a leg once (payoff in chain_isolation_thirty_third_confirmed under no_face_loneliness), reused here citing its real, uncited train_memory_scene tag. A payoff search under the PHASE-199 policy found 8 valid candidates before the plant leg was written (not zero, so no STOP was required); because the plant scene was already excluded from this pool before this phase (it was already used as a leg, under a different anchor, before PHASE-353 began), the payoff is simply the lowest of the 8: tunnel_threshold_0274, which carries REAL tags for both train_memory_scene and no_face_loneliness. This chain, named 'forty_sixth_confirmed' (underscore-separated, per this phase's explicit naming instruction) extending the established chain_memory_* naming discipline, gives train_memory_scene its forty-sixth dedicated real chain (of its 45 predecessors, 44 carry the chain_memory_* name and 1, chain_labor_recognized, is an early-era legacy name — both count identically toward the ordinal). FULL cross-anchor payoff-pool accounting, correctly distinguishing the plant's REUSE (already-excluded, no additional reduction) from the payoff's GENUINELY NEW consumption, per the same discipline PHASE-237 through PHASE-352 established: train_memory_scene itself drops by only ONE, not two (8 -> 7); no_face_loneliness drops by one because the payoff scene carries a real no_face_loneliness tag (8 -> 7), a cross-anchor reduction from the PAYOFF leg only; bathhouse_arrival (8), bridge_crossing (8), and river_spirit_departure (8) are unaffected by this leg's own tags. Full record after this phase, RECONFIRMED BY A DIRECT POST-PHASE RECOUNT: bathhouse_arrival 8, bridge_crossing 8, no_face_loneliness 7 (cross-anchor), river_spirit_departure 8, train_memory_scene 7 (this phase's target). New top tier: a THREE-WAY TIE at 8 among bathhouse_arrival, bridge_crossing, and river_spirit_departure; no_face_loneliness and train_memory_scene form a second tier, two-way tied at 7. Next priority by the largest-pool convention, primary tie-break (fewest dedicated real chains) applied among the three: bathhouse_arrival=58, bridge_crossing=54, river_spirit_departure=54 — bridge_crossing and river_spirit_departure tie for fewest at 54, so a secondary alphabetical tie-break applies, exactly as this arc first needed at PHASE-349 — bridge_crossing precedes river_spirit_departure, making bridge_crossing next priority. No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged. Episode-fresh remains at 0 for all five anchors per this phase's explicit instruction; no Episode authored, no reserve reopened, no new scene source invented. Per this phase's explicit instruction, PHASE-354 is not started by this phase."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.414Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:50:09.865Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:09.701Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:50:09.866Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:09.701Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:50:09.867Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:50:09.701Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.414Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.413Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

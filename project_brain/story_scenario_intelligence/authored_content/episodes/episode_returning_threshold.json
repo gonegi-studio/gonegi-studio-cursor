@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_returning_threshold",
+  "content": {
+    "episode_id": "episode_returning_threshold",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_bathhouse_arrival_0013",
+      "scene_spirited_away_bridge_crossing_0014"
+    ],
+    "shot_ids": [
+      "shot_spirited_00097",
+      "shot_spirited_00105"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "The threshold and crossing motifs return a third time, now read through everything Episodes 1 and 2 earned — recognition and choice replacing disorientation and necessity.",
+      "scene_purposes": {
+        "scene_spirited_away_bathhouse_arrival_0013": {
+          "purpose": "A second bathhouse-shaped space appears, but Gonagi and Dana no longer read it as a threshold to fear — the river-spirit thread from Episode 1 quietly resurfaces, this time recognized rather than endured.",
+          "conflict_type": "internal",
+          "stakes": "whether the growth from the first threshold actually held, now that a similar space asks the same question again",
+          "opposing_force": "the temptation to treat this second arrival as identical to the first, rather than as evidence of how far they've come"
+        },
+        "scene_spirited_away_bridge_crossing_0014": {
+          "purpose": "A second crossing, this one deliberate rather than desperate — Episode 2's isolation and labor both echo here, but chosen this time, not endured.",
+          "conflict_type": "external",
+          "stakes": "whether a crossing made freely carries the same weight as one made out of necessity",
+          "opposing_force": "the industrial boiler-room setting's own echo of Episode 2's exhausting labor, threatening to make this feel like more of the same rather than a real return"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00097": {
+          "intent": "A framing that deliberately echoes shot 00001's wide establishing composition, but this time holds a beat longer — long enough to register recognition, not just scale.",
+          "serves_scene_id": "scene_spirited_away_bathhouse_arrival_0013"
+        },
+        "shot_spirited_00105": {
+          "intent": "A steadier, more grounded framing than the original bridge crossing (shot 00009) — same exposure, but no longer treated as a precipice.",
+          "serves_scene_id": "scene_spirited_away_bridge_crossing_0014"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_returning_threshold",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:46:49.387Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:46:49.384Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:46:49.384Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:46:49.387Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:46:49.384Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}

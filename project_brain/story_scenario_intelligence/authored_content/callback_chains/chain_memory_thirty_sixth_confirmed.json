@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_memory_thirty_sixth_confirmed",
+  "content": {
+    "chain_id": "chain_memory_thirty_sixth_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_parental_transformation_0059",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_spirit_bath_0199",
+        "semantic_anchor_id": "train_memory_scene",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase's target, train_memory_scene, was selected by re-evaluating the live four-way tie at 27 (bathhouse_arrival, no_face_loneliness, river_spirit_departure, train_memory_scene) under the established tie-break: primary criterion (fewest existing dedicated real chains) found train_memory_scene (35) the sole fewest by a wide margin among the tied quartet (bathhouse_arrival=49, no_face_loneliness=40, river_spirit_departure=44), so it was adopted directly — no secondary alphabetical tiebreak was needed. A registry-confirmed reuse-candidate search performed before this phase's authoring found 35 usable candidates for train_memory_scene (not zero, so no STOP was required) — again the largest recent candidate pool, reflecting this anchor's much smaller dedicated-chain count; the lowest, parental_transformation_0059, was checked against the used-as-a-leg-anywhere set FIRST (per explicit instruction) and confirmed already a leg once (payoff in chain_isolation_twenty_ninth_confirmed under no_face_loneliness), reused here citing its real, uncited train_memory_scene tag. A payoff search under the PHASE-199 policy found 27 valid candidates before the plant leg was written (not zero, so no STOP was required); because the plant scene was already excluded from this pool before this phase (it was already used as a leg, under a different anchor, before PHASE-306 began), the payoff is simply the lowest of the 27: spirit_bath_0199, which carries REAL tags for both train_memory_scene and no_face_loneliness. This chain, named 'thirty_sixth_confirmed' extending the established chain_memory_* naming discipline, gives train_memory_scene its thirty-sixth dedicated real chain. FULL cross-anchor payoff-pool accounting, correctly distinguishing the plant's REUSE (already-excluded, no additional reduction) from the payoff's GENUINELY NEW consumption, per the same discipline PHASE-237 through PHASE-305 established: train_memory_scene itself drops by only ONE, not two (27 -> 26); no_face_loneliness drops by one because the payoff scene carries a real no_face_loneliness tag (27 -> 26), a cross-anchor reduction from the PAYOFF leg only; bathhouse_arrival (27), bridge_crossing (26), and river_spirit_departure (27) are unaffected by this leg's own tags. Full record after this phase, RECONFIRMED BY A DIRECT POST-PHASE RECOUNT with explicit attention to whether the TARGET's own post-reduction value joins the top tier (the standing discipline PHASE-248 established): bathhouse_arrival 27, bridge_crossing 26, no_face_loneliness 26 (cross-anchor), river_spirit_departure 27, train_memory_scene 26 (this phase's target). This time the target's own post-reduction value does NOT join the top tier — bathhouse_arrival and river_spirit_departure remain TWO-WAY TIED at 27 (the top tier); train_memory_scene (the target) ties with bridge_crossing and no_face_loneliness one level below at 26, which is not itself next priority. Next priority by the largest-pool convention, primary tie-break (fewest dedicated real chains) applied between the two: bathhouse_arrival=49, river_spirit_departure=44 — river_spirit_departure is the sole fewest, so it is next priority. No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged. Episode-fresh remains at 0 for all five anchors per this phase's explicit instruction; no Episode authored, no reserve reopened, no new scene source invented."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.449Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:58.650Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:58.495Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:58.651Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:58.495Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:58.653Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:58.495Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.449Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.448Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

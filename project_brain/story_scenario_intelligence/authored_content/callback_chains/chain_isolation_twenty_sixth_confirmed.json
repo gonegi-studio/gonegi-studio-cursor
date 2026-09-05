@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_isolation_twenty_sixth_confirmed",
+  "content": {
+    "chain_id": "chain_isolation_twenty_sixth_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_guest_hall_0054",
+        "semantic_anchor_id": "no_face_loneliness",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_spirit_bath_0043",
+        "semantic_anchor_id": "no_face_loneliness",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "A registry-confirmed reuse-candidate search performed before this phase's authoring found 16 usable candidates for no_face_loneliness (not zero, so no STOP was required). A payoff search under the PHASE-199 policy found 66 valid candidates, matching this phase's pre-authoring reconfirmation exactly. This chain, named 'twenty_sixth_confirmed' extending the established chain_isolation_* naming discipline one ordinal further, gives no_face_loneliness its twenty-sixth dedicated real chain. Cross-anchor payoff-pool reduction computed and recorded: river_spirit_departure (not this phase's target, already sole smallest) drops from 64 to 63 because this chain's payoff scene also carries a real river_spirit_departure tag. Full record after this phase: bathhouse_arrival 65 (untouched, tied smallest), bridge_crossing 65 (untouched, tied smallest), no_face_loneliness 65 (this phase's target, tied smallest), river_spirit_departure 63 (cross-anchor reduction, sole smallest), train_memory_scene 66 (untouched, sole largest). Next priority by the largest-pool convention: train_memory_scene. No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.384Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:35.799Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:35.601Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:35.800Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:35.601Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:35.801Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:35.601Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.384Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.383Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

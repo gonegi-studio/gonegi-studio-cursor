@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "object_id": "chain_arrival_twenty_ninth_confirmed",
+  "content": {
+    "chain_id": "chain_arrival_twenty_ninth_confirmed",
+    "callback_type": "memory_callback",
+    "open": false,
+    "legSpecs": [
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_tunnel_threshold_0010",
+        "semantic_anchor_id": "bathhouse_arrival",
+        "role": "plant"
+      },
+      {
+        "movie_id": "spirited_away",
+        "scene_id": "scene_spirited_away_guest_hall_0030",
+        "semantic_anchor_id": "bathhouse_arrival",
+        "role": "payoff"
+      }
+    ],
+    "narrative_significance": "This phase's target, bathhouse_arrival, was selected by re-evaluating the live three-way tie at 58 (bathhouse_arrival, bridge_crossing, train_memory_scene) under the established tie-break: primary criterion (fewest existing dedicated real chains) eliminated bridge_crossing (34) but left bathhouse_arrival and train_memory_scene tied at 28; the secondary alphabetical tiebreak then selected bathhouse_arrival (b < t). A registry-confirmed reuse-candidate search performed before this phase's authoring found 77 usable candidates for bathhouse_arrival (not zero, so no STOP was required). A payoff search under the PHASE-199 policy found 58 valid candidates, matching this phase's live pre-authoring recount exactly (not zero, so no STOP was required). This chain, named 'twenty_ninth_confirmed' extending the established chain_arrival_* naming discipline, gives bathhouse_arrival its twenty-ninth dedicated real chain. Cross-anchor payoff-pool reduction computed and recorded: train_memory_scene (not this phase's target) drops from 58 to 57 because this chain's payoff scene also carries a real train_memory_scene tag, joining no_face_loneliness and river_spirit_departure at the new smallest. Full record after this phase: bathhouse_arrival 57 (this phase's target), bridge_crossing 58, no_face_loneliness 57, river_spirit_departure 57, train_memory_scene 57 (cross-anchor reduction, NOT the target). Next priority by the largest-pool convention: bridge_crossing, sole largest at 58. No new payoff rule, contract, or algorithm introduced — the PHASE-199 policy is unchanged. Separately, this phase's Episode-fresh recount (episode-usage domain) found the incoming instruction's train_memory=2 figure stale relative to the real, current authored_content/ state (PHASE-233 had already consumed one of those two); the real current value, 1, was used instead, disclosed in this file's header comment, and Episode 145 consumed it — train_memory's episode-fresh pool is now fully exhausted at 0, the third of five anchors to reach that state."
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "aggregate_status": "RESOLVED",
+    "leg_count": 2
+  },
+  "last_resolved_at": "2026-09-02T04:31:24.106Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:42.057Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:41.830Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:42.058Z",
+      "changed_fields": [
+        "content.legSpecs",
+        "content.open"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:41.830Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 3,
+      "changed_at": "2026-08-19T04:49:42.059Z",
+      "changed_fields": [
+        "content.narrative_significance"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:41.830Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 4,
+      "changed_at": "2026-09-02T04:31:24.106Z",
+      "changed_fields": [
+        "structural_snapshot"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-09-02T04:31:24.106Z"
+      },
+      "drift_detected": true,
+      "drift_detail": "refresh corrected stored aggregate_status from \"PARTIAL\" to \"RESOLVED\""
+    }
+  ]
+}

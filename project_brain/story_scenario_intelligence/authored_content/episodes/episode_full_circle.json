@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "object_id": "episode_full_circle",
+  "content": {
+    "episode_id": "episode_full_circle",
+    "movie_id": "spirited_away",
+    "scene_ids": [
+      "scene_spirited_away_parental_transformation_0035",
+      "scene_spirited_away_train_memory_0036"
+    ],
+    "shot_ids": [
+      "shot_spirited_00273",
+      "shot_spirited_00281"
+    ],
+    "character_growth_spec": {
+      "character_id": "CHAR-gonagi",
+      "fields": [
+        "pose_state"
+      ]
+    },
+    "authored_narrative": {
+      "episode_purpose": "Every motif this Story has tracked converges here — threshold, duty, recognition, return, stillness, shared labor — not as a checklist, but as the accumulated posture of two people who no longer need any of it explained to them.",
+      "scene_purposes": {
+        "scene_spirited_away_parental_transformation_0035": {
+          "purpose": "A space that once demanded vigilance now asks nothing of Gonagi at all — the clearest sign yet that the growth this Story has tracked was never really about the spaces, but about what Gonagi brought to them.",
+          "conflict_type": "internal",
+          "stakes": "whether a Story can end on stillness without that stillness reading as anticlimax",
+          "opposing_force": "the temptation to manufacture one more crisis, when the honest truth is that the crises have already done their work"
+        },
+        "scene_spirited_away_train_memory_0036": {
+          "purpose": "The bridge-crossing anchor's shape appears once more, folded into a memory of a train rather than the crossing itself — the motif has become internal, no longer needing an actual bridge to mean something.",
+          "conflict_type": "relational",
+          "stakes": "whether the relationship this Story tracked needs a final test, or whether it has already passed every test it was going to face",
+          "opposing_force": "nothing external — the last real obstacle in this Story was already cleared several episodes ago"
+        }
+      },
+      "shot_intents": {
+        "shot_spirited_00273": {
+          "intent": "A completely still frame, longer than any other in this Story — the first time stillness itself is trusted to be the entire content of a shot.",
+          "serves_scene_id": "scene_spirited_away_parental_transformation_0035"
+        },
+        "shot_spirited_00281": {
+          "intent": "A soft-focus echo of every prior establishing shot in this Story at once, deliberately unspecific — closing the visual language rather than adding to it.",
+          "serves_scene_id": "scene_spirited_away_train_memory_0036"
+        }
+      }
+    }
+  },
+  "provenance": {},
+  "structural_snapshot": {
+    "episode_id": "episode_full_circle",
+    "aggregate_status": "RESOLVED",
+    "resolved_count": 5,
+    "total_count": 5,
+    "provenance_ledger": [
+      {
+        "registry_ref": "project_brain/story_scenario_intelligence/TRUSTED_SOURCE_REGISTRY.json",
+        "registry_generated_at": "2026-08-11T01:50:40.000Z",
+        "movie_id": "spirited_away",
+        "movie_entry_found": true,
+        "movie_entry_verified_by_phase": [
+          "PHASE-036",
+          "PHASE-038",
+          "PHASE-039",
+          "PHASE-040"
+        ]
+      }
+    ],
+    "known_gaps": [],
+    "leaf_failures": [],
+    "warnings": []
+  },
+  "last_resolved_at": "2026-08-19T04:49:16.139Z",
+  "change_history": [
+    {
+      "version": 1,
+      "changed_at": "2026-08-19T04:49:16.138Z",
+      "changed_fields": [
+        "content"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.127Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    },
+    {
+      "version": 2,
+      "changed_at": "2026-08-19T04:49:16.139Z",
+      "changed_fields": [
+        "content.authored_narrative"
+      ],
+      "authorship_provenance": {
+        "author_type": "ai_assisted",
+        "tool": "claude-sonnet-5",
+        "reviewed_by_human": false,
+        "authored_at": "2026-08-19T04:49:16.127Z"
+      },
+      "drift_detected": false,
+      "drift_detail": null
+    }
+  ]
+}
