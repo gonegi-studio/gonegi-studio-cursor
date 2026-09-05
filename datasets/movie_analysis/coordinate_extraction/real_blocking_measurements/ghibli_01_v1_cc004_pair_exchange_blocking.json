@@ -1,0 +1,76 @@
+{
+  "measurement_id": "ghibli_01_v1_cc004_pair_exchange_blocking_v1",
+  "phase": "PHASE-TD-C001-REAL-BLOCKING-MEASUREMENT-PILOT",
+  "measurement_status": "REAL",
+  "estimated_only": false,
+  "synthetic": false,
+  "purpose": "One-frame, two-subject blocking measurement pilot. No backend wiring and no legacy/generated blocking-dna modification.",
+  "provenance": {
+    "source_video_id": "GHIBLI_01",
+    "source_video_path": "imports/source_videos/active/ghibli/GHIBLI_01.mp4",
+    "source_plan_file": "datasets/movie_analysis/coordinate_extraction/plans/coordinate_extraction_ghibli_01_v1.json",
+    "source_candidate_ids": ["coordinate_extraction_ghibli_01_v1_cc_004", "coordinate_extraction_ghibli_01_v1_cc_005", "coordinate_extraction_ghibli_01_v1_cc_006"],
+    "source_timestamp_ms": 53320,
+    "source_frame_index": 1280,
+    "persisted_evidence_file": "datasets/movie_analysis/coordinate_extraction/real_bbox_measurements/ghibli_01_v1_cc004_frame_1280.png",
+    "persisted_evidence_sha256": "4d0e7584bf6207c11a5d9e81ed4b9f16daf110c8a88188a021ec3672efd8f400",
+    "evidence_origin": "The persisted PNG is the byte-identical two-pass imageio+FFMPEG extraction recorded in ghibli_01_v1_multi_frame_pilot.json.",
+    "prohibited_inputs": ["hashSeed", "exports/source_video_dna/blocking-dna", "exports/source_video_numerical_dna_full", "estimated or interpolated coordinates"]
+  },
+  "scene_observation": {
+    "declared_blocking": "pair_exchange",
+    "observation": "A left-side figure reaches toward the carried bundle held by the right-side figure. The two visible figures form one direct hand-off interaction.",
+    "interaction_confidence": "high"
+  },
+  "frame_dimensions_px": {"width": 1920, "height": 1080},
+  "character_measurements": [
+    {
+      "character_id": "subject_right_third",
+      "selection_basis": "Committed source candidate cc_005 identifies the right-third subject; this is the existing PHASE-689 measurement reused without alteration.",
+      "measurement_mode": "reused_existing_real_measurement",
+      "source_measurement_file": "datasets/movie_analysis/coordinate_extraction/real_bbox_measurements/ghibli_01_v1_multi_frame_pilot.json",
+      "visible_subject_description": "Right-side figure holding the bundle; body/head silhouette only, excluding the separately held bundle.",
+      "bbox_px": {"x_min": 1078, "x_max": 1390, "y_min": 70, "y_max": 1080},
+      "screen_position_normalized": [0.6427, 0.5324],
+      "depth_layer": "foreground",
+      "depth_layer_basis": "Qualitative direct visual scene-reading from relative visible scale; not a measured z-value.",
+      "region_label": "RIGHT",
+      "confidence": "high"
+    },
+    {
+      "character_id": "subject_left_reaching",
+      "selection_basis": "The second visible figure participates in the directly observed hand-off and is not merged with the right-side subject.",
+      "measurement_mode": "direct_visual_two_pass",
+      "visible_subject_description": "Left-side figure reaching toward the bundle. Bounds cover only the visible silhouette; flowers occlude its lower body and are not included.",
+      "pass_1_bbox_px": {"x_min": 494, "x_max": 818, "y_min": 566, "y_max": 946},
+      "pass_2_bbox_px": {"x_min": 501, "x_max": 810, "y_min": 573, "y_max": 939},
+      "pass_deltas_px": {"x_min": 7, "x_max": 8, "y_min": 7, "y_max": 7},
+      "reconciled_bbox_px": {"x_min": 498, "x_max": 814, "y_min": 570, "y_max": 943},
+      "screen_position_normalized": [0.3417, 0.7005],
+      "depth_layer": "midground",
+      "depth_layer_basis": "Qualitative direct visual scene-reading from smaller scale and foreground-flower occlusion; not a measured z-value.",
+      "region_label": "LEFT",
+      "confidence": "medium",
+      "limitations": "The lower silhouette is occluded by flowers. The box stops at the last directly visible body boundary; no hidden-body extent was inferred."
+    }
+  ],
+  "blocking_map_compatibility_projection": {
+    "source_video_id": "GHIBLI_01",
+    "format": "character_region_masks_v1",
+    "frames": [{
+      "frame_index": 1280,
+      "character_regions": [
+        {"character_id": "subject_right_third", "screen_position": [0.6427, 0.5324], "depth_layer": "foreground", "region_label": "RIGHT"},
+        {"character_id": "subject_left_reaching", "screen_position": [0.3417, 0.7005], "depth_layer": "midground", "region_label": "LEFT"}
+      ],
+      "interaction_pairs": ["subject_left_reaching->subject_right_third:pair_exchange"]
+    }]
+  },
+  "compatibility_boundary": {
+    "schema_target": "ExportedBlockingMapFrame in services/conditioningMapExport.ts",
+    "schema_fields_present": ["frame_index", "character_regions.character_id", "character_regions.screen_position", "character_regions.depth_layer", "character_regions.region_label", "interaction_pairs"],
+    "backend_wiring_performed": false,
+    "legacy_blocking_dna_modified": false,
+    "full_numerical_dna_modified": false
+  }
+}
