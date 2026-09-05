@@ -98,6 +98,15 @@ export interface CharacterGrowthDeltaRecord {
   authored_growth_note: string; // NOT_DERIVABLE — interpretive/authored content
 }
 
+export interface WorldStateFactRecord {
+  entity_type: 'character' | 'location' | 'prop';
+  entity_id: string;
+  fact: string;
+  value: string;
+  established_at: { movie_id: string; scene_id: string; episode_index: number };
+  supersedes?: { movie_id: string; scene_id: string; episode_index: number };
+}
+
 // ---------------------------------------------------------------------------
 // Episode / SeasonScenario / StoryBible — the real tier objects
 // ---------------------------------------------------------------------------

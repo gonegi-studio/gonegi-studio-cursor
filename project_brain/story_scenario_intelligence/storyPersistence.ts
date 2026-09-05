@@ -65,7 +65,7 @@ import {
   authorSeriesAnchorIdentitySignature, type IdentitySignatureInputs,
   authorSeriesAnchorLocationSignature, type LocationSignatureInputs, type SeasonCarryoverRecord,
 } from './seriesContinuityContracts.js';
-import type { CharacterGrowthDeltaRecord } from './storyContracts.js';
+import type { CharacterGrowthDeltaRecord, WorldStateFactRecord } from './storyContracts.js';
 // PHASE-082: reuse the exact same Rule AU1/AU7 authoring gates storyAuthoringSampleV1.ts
 // already proved, rather than reimplementing scene-purpose/shot-intent validation here.
 import { authorField, authorShotIntent, assertControlledVocabulary, type ScenePurposeCategory } from './storyAuthoringSampleV1.js';
@@ -79,8 +79,8 @@ export class PersistenceError extends Error {}
 // Path safety (Rule PS1 — this module's own filesystem access is scoped and validated)
 // ---------------------------------------------------------------------------
 
-export type DocumentKind = 'stories' | 'seasons' | 'episodes' | 'callback_chains' | 'character_arcs' | 'relationships' | 'season_carryovers' | 'dependency_test';
-const KINDS: DocumentKind[] = ['stories', 'seasons', 'episodes', 'callback_chains', 'character_arcs', 'relationships', 'season_carryovers', 'dependency_test'];
+export type DocumentKind = 'stories' | 'seasons' | 'episodes' | 'callback_chains' | 'character_arcs' | 'relationships' | 'season_carryovers' | 'dependency_test' | 'world_state_facts';
+const KINDS: DocumentKind[] = ['stories', 'seasons', 'episodes', 'callback_chains', 'character_arcs', 'relationships', 'season_carryovers', 'dependency_test', 'world_state_facts'];
 
 function assertSafeObjectId(objectId: string): void {
   if (!/^[A-Za-z0-9_-]+$/.test(objectId)) {
@@ -252,6 +252,15 @@ export function reverifyStructuralSnapshot<S>(
 
 export function loadRawDocument<T>(kind: DocumentKind, objectId: string): PersistedDocument<T> | null {
   return readDocumentRaw<T>(kind, objectId);
+}
+
+export interface WorldStateFactDocumentContent { facts: WorldStateFactRecord[]; }
+export function appendWorldStateFact(objectId: string, expectedVersion: number, fact: WorldStateFactRecord, authorship: AuthorshipProvenance): PersistedDocument<WorldStateFactDocumentContent> {
+  if (!fact.established_at.movie_id || !fact.established_at.scene_id) throw new PersistenceError('World state fact requires movie_id + scene_id provenance');
+  return updateDocument('world_state_facts', objectId, expectedVersion, content => ({ ...content, facts: [...content.facts, fact] }), ['content.facts'], authorship);
+}
+export function resolveWorldStateAsOf(facts: WorldStateFactRecord[], episodeIndex: number): WorldStateFactRecord[] {
+  const current=new Map<string,WorldStateFactRecord>(); for(const fact of facts.filter(f=>f.established_at.episode_index<=episodeIndex).sort((a,b)=>a.established_at.episode_index-b.established_at.episode_index)){ current.set(`${fact.entity_type}:${fact.entity_id}:${fact.fact}`,fact); } return [...current.values()];
 }
 
 /** Uses the same version gate and change-history semantics as every persisted update. */
